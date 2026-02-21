@@ -130,7 +130,7 @@
               },
               "pinned": true,
               "icon": "terminal",
-              "title": "Terminal: ✳ Obsidian GitHub Sync"
+              "title": "Terminal: ✳ Obsidian Vault Repository"
             }
           },
           {
@@ -188,107 +188,9 @@
               "icon": "lucide-file",
               "title": "README"
             }
-          },
-          {
-            "id": "7363b9c866a2e96c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02 - PM Playbook/Processes/Feedback & Iteration Process.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Feedback & Iteration Process"
-            }
-          },
-          {
-            "id": "28d19ba76046c8b3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00 - Home/Automation with Obsidian Skills.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Automation with Obsidian Skills"
-            }
-          },
-          {
-            "id": "8e43eb726826eb98",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00 - Home/Automation with Obsidian Skills.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Automation with Obsidian Skills"
-            }
-          },
-          {
-            "id": "fb27e743ce9b2529",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00 - Home/Automation Master Guide.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Automation Master Guide"
-            }
-          },
-          {
-            "id": "302bade1e6f00446",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00 - Home/Automation with Obsidian Skills.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Automation with Obsidian Skills"
-            }
-          },
-          {
-            "id": "1e19c2c7d6e1bca0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00 - Home/Automation Master Guide.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Automation Master Guide"
-            }
-          },
-          {
-            "id": "5329ff70a0e21e63",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "05 - Releases & Updates/Feature Changelog.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Feature Changelog"
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -452,9 +354,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3fede3c6e5333ae4",
+  "active": "12b313a3a2a60179",
   "lastOpenFiles": [
     "00 - Home/README.md",
+    "02 - PM Playbook/Processes/Feedback & Iteration Process.md",
+    "05 - Releases & Updates/Feature Changelog.md",
+    "00 - Home/Automation Master Guide.md",
+    "00 - Home/Automation with Obsidian Skills.md",
     "01 - MAIA Product/Sales Workspace/Sales Orders/Sales Order Workflow Guide.md",
     "01 - MAIA Product/Sales Workspace/Receipts/Receipt Workflow Guide.md",
     "01 - MAIA Product/Sales Workspace/Receipts",
@@ -479,10 +385,6 @@
     "01 - MAIA Product/Sales Workspace/Quotations/Quotation Main Page/Quotation Table UI Components.md",
     "01 - MAIA Product/Sales Workspace/Quotations/Quotation Main Page/Quotation Table Column Filters.md",
     "01 - MAIA Product/Sales Workspace/Quotations/Create Quotation/New Quotation Sections Overview.md",
-    "01 - MAIA Product/Sales Workspace/Quotations/Create Quotation/06 Payment Term Section.md",
-    "01 - MAIA Product/Sales Workspace/Quotations/Create Quotation/05 Summary Section.md",
-    "01 - MAIA Product/Sales Workspace/Quotations/Create Quotation/04 Items Section.md",
-    "01 - MAIA Product/Sales Workspace/Quotations/Create Quotation/03 Customer Information Section.md",
     "04 - QA & Known Issues/Test Cases",
     "04 - QA & Known Issues/Test Summaries",
     "01 - MAIA Product/Technical/Tax Refactor",
