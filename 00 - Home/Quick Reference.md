@@ -80,9 +80,14 @@ Your cheat sheet for the most commonly used pages and workflows.
   - Quick start guides
 - [[Automation with Obsidian Skills]] — Reference for Obsidian-specific features (hybrid approach)
 
+## Guides & How-To
+
+- [[How to Create Diagrams in Obsidian]] — Mermaid, Excalidraw, Canvas diagrams
+
 ## Recent Updates
 
 - [[Changelog]] — See what changed recently
+- [[KB Audit Report]] — Recent vault audit (2026-02-21)
 
 ---
 

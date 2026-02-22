@@ -11,12 +11,39 @@ The **Quote-to-Cash** workflow is the primary business flow in MAIA for B2B sale
 
 ## Overview
 
-```
-1. Quotation  →  2. Sales Order  →  3. Invoice  →  4. Receipt
-   (DRAFT→OPEN)     (DRAFT→TO BILL)    (DRAFT→UNPAID→PAID)
+The Quote-to-Cash flow has 4 main stages, with supporting documents for returns, adjustments, and fulfillment.
+
+### Visual Workflow
+
+```mermaid
+graph LR
+    subgraph "Main Flow"
+        Q[1. Quotation<br/>DRAFT → OPEN] --> SO[2. Sales Order<br/>DRAFT → TO BILL]
+        SO --> INV[3. Invoice<br/>DRAFT → UNPAID → PAID]
+        INV --> REC[4. Receipt<br/>PAID]
+    end
+
+    subgraph "Supporting Documents"
+        CN[Credit Note<br/>Returns/Refunds]
+        DN[Debit Note<br/>Charges]
+        DEL[Delivery Note<br/>Fulfillment]
+    end
+
+    Q -.->|Can create| CN
+    INV -.->|Can create| CN
+    INV -.->|Can create| DN
+    SO -.->|Can create| DEL
+
+    style Q fill:#bbf,stroke:#333,stroke-width:2px
+    style SO fill:#bfb,stroke:#333,stroke-width:2px
+    style INV fill:#ffb,stroke:#333,stroke-width:2px
+    style REC fill:#90EE90,stroke:#333,stroke-width:3px
+    style CN fill:#fbb,stroke:#333
+    style DN fill:#fbb,stroke:#333
+    style DEL fill:#ddd,stroke:#333
 ```
 
-Supporting documents:
+**Supporting documents:**
 - **Credit Notes** — Returns, refunds, adjustments
 - **Debit Notes** — Additional charges
 - **Delivery Notes** — Shipment tracking
