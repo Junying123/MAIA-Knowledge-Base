@@ -432,6 +432,16 @@ graph LR
 - Check the code block starts with ` ```mermaid ` (three backticks + mermaid)
 - Verify syntax is correct (no typos)
 
+### Cannot Zoom In/Out?
+
+**Issue:** Mermaid diagrams are too small or too large, can't zoom
+
+**Solution:** See **[[How to Zoom Mermaid Diagrams]]** for 6 different solutions
+
+**Quick fix:**
+- Use browser zoom: `Ctrl/Cmd +` to zoom in, `Ctrl/Cmd -` to zoom out
+- Reset zoom: `Ctrl/Cmd 0`
+
 ### Syntax Errors?
 
 **Resources:**

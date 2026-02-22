@@ -8,6 +8,31 @@ last_reviewed: 2026-02-21
 
 Track all updates to the knowledge base.
 
+## 2026-02-21 — Mermaid Diagrams Import + Zoom Guide (Gareth)
+
+### Added — Workflow Diagrams from maiav2-test
+- ✅ **Imported 5 comprehensive Mermaid diagrams** from `/Users/garethng/maiav2-test/docs`
+  - Quote-to-Cash Flow: 4-module unified workflow (~152 lines)
+  - Sales Order Workflows: Detailed 6-action flow (~110 lines)
+  - Quotation Workflows: Quotation → SO conversion (~58 lines)
+  - Invoice Workflows: 7-action invoice flow (~109 lines)
+  - Credit Note Workflows: 3-action credit note flow (~71 lines)
+
+- ✅ **Created diagram guides:**
+  - `00 - Home/How to Create Diagrams in Obsidian.md` — Mermaid, Excalidraw, Canvas
+  - `00 - Home/How to Zoom Mermaid Diagrams.md` — 6 solutions for zoom issue
+
+**Updated workflow files:**
+- `01 - MAIA Product/Core Workflows/Quote-to-Cash Flow.md`
+- `01 - MAIA Product/Core Workflows/Sales Order Workflows.md`
+- `01 - MAIA Product/Core Workflows/Quotation Workflows.md`
+- `01 - MAIA Product/Core Workflows/Invoice Workflows.md`
+- `01 - MAIA Product/Core Workflows/Credit Note Workflows.md`
+
+**Result:** All core workflows now have comprehensive, color-coded visual diagrams showing all status transitions and actions
+
+---
+
 ## 2026-02-21 — KB Cleanup & Automation Consolidation (Gareth)
 
 ### Deleted — Unnecessary Files

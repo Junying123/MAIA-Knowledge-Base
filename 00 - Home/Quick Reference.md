@@ -83,6 +83,7 @@ Your cheat sheet for the most commonly used pages and workflows.
 ## Guides & How-To
 
 - [[How to Create Diagrams in Obsidian]] — Mermaid, Excalidraw, Canvas diagrams
+- [[How to Zoom Mermaid Diagrams]] — 6 solutions for zooming workflow diagrams
 
 ## Recent Updates
 

@@ -8,12 +8,66 @@ last_reviewed: 2026-02-20
 
 Detailed workflows for managing quotations in MAIA.
 
-## Quotation Lifecycle
+## Visual Workflow Diagram
 
-```
-Create → DRAFT → Submit → OPEN → Convert to SO → ORDERED
-                                      ↓
-                                  Mark as LOST
+```mermaid
+flowchart TD
+    Start([Start: Create Quotation]) --> QuoteDraft[📄 QUOTATION<br/>Status: DRAFT]
+
+    QuoteDraft --> DraftAction{Action?}
+
+    DraftAction -->|Delete| QuoteDeleted[❌ Quotation Deleted]
+    QuoteDeleted --> End1([End: Removed from System])
+
+    DraftAction -->|Submit| QuoteOpen[📄 QUOTATION<br/>Status: OPEN]
+
+    QuoteOpen --> OpenAction{Action?}
+
+    OpenAction -->|Mark as Lost| QuoteLost[📄 QUOTATION<br/>Status: LOST]
+    QuoteLost --> End2([End: Opportunity Lost])
+
+    OpenAction -->|Convert to Sales Order| ConvertProcess[🔄 Create Sales Order<br/>from Quotation]
+
+    ConvertProcess --> DataCarryOver[Transfer Data:<br/>• Biller & Customer Info<br/>• Items & Pricing<br/>• Payment Terms<br/>• Charges & Discounts]
+
+    DataCarryOver --> SOCreated[📋 SALES ORDER<br/>Status: DRAFT<br/>Reference: QUOT-XXX]
+
+    SOCreated --> QuoteStillOpen[📄 QUOTATION<br/>Status: OPEN<br/>⚠️ Status unchanged until SO submitted]
+
+    SOCreated --> SODraftAction{SO Action?}
+
+    SODraftAction -->|Edit SO| EditSO[Edit SO Details<br/>Status remains: DRAFT]
+    EditSO --> SODraftAction
+
+    SODraftAction -->|Submit SO| SOSubmit[Submit Sales Order]
+
+    SOSubmit --> SOToBill[📋 SALES ORDER<br/>Status: TO BILL<br/>🔒 Locked - Cannot Edit]
+
+    SOSubmit --> QuoteOrdered[📄 QUOTATION<br/>Status: ORDERED<br/>✅ Confirmed Order]
+
+    SOToBill --> SONext([Continue to Invoice Flow...])
+    QuoteOrdered --> End3([End: Quote Completed])
+
+    %% Styling
+    style Start fill:#e1f5e1
+    style End1 fill:#ffcdd2
+    style End2 fill:#ffcdd2
+    style End3 fill:#c8e6c9
+    style SONext fill:#e1f5e1
+
+    style QuoteDraft fill:#fff9c4
+    style QuoteOpen fill:#fff9c4
+    style QuoteStillOpen fill:#fff9c4
+    style QuoteLost fill:#ffcdd2
+    style QuoteOrdered fill:#c8e6c9
+    style QuoteDeleted fill:#ffcdd2
+
+    style SOCreated fill:#fff9c4
+    style EditSO fill:#fff9c4
+    style SOToBill fill:#c8e6c9
+    style ConvertProcess fill:#e1f0ff
+    style DataCarryOver fill:#fff3e0
+    style SOSubmit fill:#e1f0ff
 ```
 
 ## Creating a New Quotation

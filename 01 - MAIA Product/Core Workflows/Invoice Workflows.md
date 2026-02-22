@@ -8,12 +8,117 @@ last_reviewed: 2026-02-20
 
 Detailed workflows for managing invoices in MAIA.
 
-## Invoice Lifecycle
+## Visual Workflow Diagram
 
-```
-Create → DRAFT → Submit → UNPAID → Payment → PAID
-                              ↓
-                         CANCELLED
+```mermaid
+flowchart TD
+    Start([Start: Invoice]) --> CreateChoice{Invoice Creation Method?}
+
+    CreateChoice -->|Create New Invoice| NewInvoice[Create New Invoice]
+    CreateChoice -->|From Sales Order| SOConvert[Convert from Sales Order]
+
+    NewInvoice --> InvoiceDraft[🧾 INVOICE<br/>Status: DRAFT]
+    SOConvert --> InvoiceDraft
+
+    InvoiceDraft --> DraftActions{Select Action}
+
+    %% Draft Action 1: Delete
+    DraftActions -->|1. Delete| DeleteConfirm{Confirm Delete?}
+    DeleteConfirm -->|Cancel| DraftActions
+    DeleteConfirm -->|Confirm| InvoiceDeleted1[❌ Invoice Deleted]
+    InvoiceDeleted1 --> End1([End: Removed from System])
+
+    %% Draft Action 2: Submit
+    DraftActions -->|2. Submit| SubmitInvoice[Submit Invoice]
+    SubmitInvoice --> InvoiceUnpaid[🧾 INVOICE<br/>Status: UNPAID]
+
+    %% Draft Action 3: Print PDF
+    DraftActions -->|3. Print PDF| PrintDraft[Generate PDF]
+    PrintDraft --> DraftActions
+
+    %% Unpaid Status Actions
+    InvoiceUnpaid --> UnpaidActions{Select Action<br/>7 Options}
+
+    %% Unpaid Action 1: Cancel Invoice
+    UnpaidActions -->|1. Cancel Invoice| CancelConfirm{Confirm Cancel?}
+    CancelConfirm -->|Go Back| UnpaidActions
+    CancelConfirm -->|Confirm Cancel| InvoiceCancelled[🧾 INVOICE<br/>Status: CANCELLED]
+    InvoiceCancelled --> End2([End: Invoice Cancelled])
+
+    %% Unpaid Action 2: Delete
+    UnpaidActions -->|2. Delete| DeleteUnpaidConfirm{Confirm Delete?}
+    DeleteUnpaidConfirm -->|Cancel| UnpaidActions
+    DeleteUnpaidConfirm -->|Confirm| InvoiceDeleted2[❌ Invoice Deleted]
+    InvoiceDeleted2 --> End3([End: Removed from System])
+
+    %% Unpaid Action 3: Create Receipt
+    UnpaidActions -->|3. Create Receipt| CreateReceipt[🔄 Create Receipt from Invoice]
+    CreateReceipt --> DataCarryOverReceipt[Transfer Invoice Data:<br/>• Customer Info<br/>• Payment Amount<br/>• Invoice Reference]
+    DataCarryOverReceipt --> ReceiptDraft[💰 RECEIPT<br/>Status: DRAFT<br/>Reference: INV-XXX]
+    ReceiptDraft --> ReceiptFlow([Continue to Receipt Flow])
+
+    %% Unpaid Action 4: Create Debit Note
+    UnpaidActions -->|4. Create Debit Note| CreateDebitNote[🔄 Create Debit Note from Invoice]
+    CreateDebitNote --> DataCarryOverDN[Transfer Invoice Data:<br/>• Customer Info<br/>• Items & Pricing<br/>• Invoice Reference]
+    DataCarryOverDN --> DebitNoteDraft[📈 DEBIT NOTE<br/>Status: DRAFT<br/>Reference: INV-XXX]
+    DebitNoteDraft --> DebitNoteFlow([Continue to Debit Note Flow])
+
+    %% Unpaid Action 5: Create Credit Note
+    UnpaidActions -->|5. Create Credit Note| CreateCreditNote[🔄 Create Credit Note from Invoice]
+    CreateCreditNote --> DataCarryOverCN[Transfer Invoice Data:<br/>• Customer Info<br/>• Items & Pricing<br/>• Invoice Reference]
+    DataCarryOverCN --> CreditNoteDraft[📉 CREDIT NOTE<br/>Status: DRAFT<br/>Reference: INV-XXX]
+    CreditNoteDraft --> CreditNoteFlow([Continue to Credit Note Flow])
+
+    %% Unpaid Action 6: Create Delivery Note
+    UnpaidActions -->|6. Create Delivery Note| CreateDN[🔄 Create Delivery Note from Invoice]
+    CreateDN --> DataCarryOverDeliver[Transfer Invoice Data:<br/>• Customer Info<br/>• Items & Quantities<br/>• Delivery Address]
+    DataCarryOverDeliver --> DNDraft[📦 DELIVERY NOTE<br/>Status: DRAFT<br/>Reference: INV-XXX]
+    DNDraft --> DNFlow([Continue to Delivery Note Flow])
+
+    %% Unpaid Action 7: Print PDF
+    UnpaidActions -->|7. Print PDF| PrintUnpaid[Generate PDF]
+    PrintUnpaid --> UnpaidActions
+
+    %% Styling - Start/End Points
+    style Start fill:#e1f5e1
+    style End1 fill:#ffcdd2
+    style End2 fill:#ffcdd2
+    style End3 fill:#ffcdd2
+    style ReceiptFlow fill:#e1f5e1
+    style DebitNoteFlow fill:#e1f5e1
+    style CreditNoteFlow fill:#e1f5e1
+    style DNFlow fill:#e1f5e1
+
+    %% Styling - Invoice Statuses
+    style InvoiceDraft fill:#fff9c4
+    style InvoiceUnpaid fill:#ffecb3
+    style InvoiceCancelled fill:#ffcdd2
+    style InvoiceDeleted1 fill:#ffcdd2
+    style InvoiceDeleted2 fill:#ffcdd2
+
+    %% Styling - Created Documents
+    style ReceiptDraft fill:#e3f2fd
+    style DebitNoteDraft fill:#f3e5f5
+    style CreditNoteDraft fill:#fce4ec
+    style DNDraft fill:#e8f5e9
+
+    %% Styling - Processes
+    style SOConvert fill:#e1f0ff
+    style SubmitInvoice fill:#e1f0ff
+    style CreateReceipt fill:#e1f0ff
+    style CreateDebitNote fill:#e1f0ff
+    style CreateCreditNote fill:#e1f0ff
+    style CreateDN fill:#e1f0ff
+
+    %% Styling - Data Transfer
+    style DataCarryOverReceipt fill:#fff3e0
+    style DataCarryOverDN fill:#fff3e0
+    style DataCarryOverCN fill:#fff3e0
+    style DataCarryOverDeliver fill:#fff3e0
+
+    %% Styling - Print Actions
+    style PrintDraft fill:#f5f5f5
+    style PrintUnpaid fill:#f5f5f5
 ```
 
 ## Creating an Invoice
