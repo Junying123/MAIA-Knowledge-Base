@@ -13,34 +13,129 @@ The **Quote-to-Cash** workflow is the primary business flow in MAIA for B2B sale
 
 The Quote-to-Cash flow has 4 main stages, with supporting documents for returns, adjustments, and fulfillment.
 
-### Visual Workflow
+### Visual Workflow — Complete Flow
+
+This comprehensive diagram shows all 4 main modules (Quotation, Sales Order, Invoice, Credit Note) and their status transitions.
 
 ```mermaid
-graph LR
-    subgraph "Main Flow"
-        Q[1. Quotation<br/>DRAFT → OPEN] --> SO[2. Sales Order<br/>DRAFT → TO BILL]
-        SO --> INV[3. Invoice<br/>DRAFT → UNPAID → PAID]
-        INV --> REC[4. Receipt<br/>PAID]
+flowchart TD
+    %% Global Styles
+    classDef draft fill:#fff9c4,stroke:#fbc02d,stroke-width:2px,color:#000
+    classDef open fill:#c8e6c9,stroke:#388e3c,stroke-width:2px,color:#000
+    classDef unpaid fill:#ffecb3,stroke:#ffa000,stroke-width:2px,color:#000
+    classDef cancelled fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px,color:#000
+    classDef process fill:#e1f0ff,stroke:#1976d2,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+    classDef transfer fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    classDef doc fill:#f5f5f5,stroke:#616161,stroke-width:1px,color:#000
+    classDef start fill:#e1f5e1,stroke:#4caf50,stroke-width:2px,color:#000
+    classDef endState fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+
+    %% MODULE 1: QUOTATION
+    subgraph QUOTATION_MODULE [Quotation Workflow]
+        direction TB
+        Q_Start([Start: Quotation]):::start --> Q_Draft[📄 QUOTATION<br/>Status: DRAFT]:::draft
+
+        Q_Draft --> Q_DraftAction{Action?}
+        Q_DraftAction -->|Delete| Q_Deleted[❌ Quotation Deleted]:::cancelled
+        Q_DraftAction -->|Submit| Q_Open[📄 QUOTATION<br/>Status: OPEN]:::open
+
+        Q_Open --> Q_OpenAction{Action?}
+        Q_OpenAction -->|Mark as Lost| Q_Lost[📄 QUOTATION<br/>Status: LOST]:::cancelled
+        Q_OpenAction -->|Convert to SO| Q_ConvertToSO[🔄 Convert to Sales Order]:::process
     end
 
-    subgraph "Supporting Documents"
-        CN[Credit Note<br/>Returns/Refunds]
-        DN[Debit Note<br/>Charges]
-        DEL[Delivery Note<br/>Fulfillment]
+    %% MODULE 2: SALES ORDER
+    subgraph SALES_ORDER_MODULE [Sales Order Workflow]
+        direction TB
+        SO_Start([Start: Sales Order]):::start --> SO_Creation{Method?}
+        SO_Creation -->|Create New| SO_New[Create New SO]:::process
+
+        Q_ConvertToSO --> SO_DataTransfer[Transfer Quote Data]:::transfer
+        SO_DataTransfer --> SO_Draft[📋 SALES ORDER<br/>Status: DRAFT<br/>Ref: QUOT-XXX]:::draft
+        SO_New --> SO_Draft
+
+        SO_Draft --> SO_DraftAction{Action?}
+        SO_DraftAction -->|Delete| SO_Deleted[❌ Sales Order Deleted]:::cancelled
+        SO_DraftAction -->|Submit| SO_Submit[Submit SO]:::process
+
+        SO_Submit -.->|Updates Status| Q_Ordered[📄 QUOTATION<br/>Status: ORDERED]:::open
+        SO_Submit --> SO_ToBill[📋 SALES ORDER<br/>Status: TO BILL]:::open
+
+        SO_ToBill --> SO_ToBillActions{Action?}
+
+        SO_ToBillActions -->|Hold| SO_Hold[⏸️ SO Status: HOLD]:::unpaid
+        SO_Hold -->|Resume| SO_ToBill
+
+        SO_ToBillActions -->|Close| SO_Closed[✅ SO Status: CLOSED]:::doc
+        SO_ToBillActions -->|Cancel| SO_Cancelled[❌ SO Status: CANCELLED]:::cancelled
+
+        SO_ToBillActions -->|Convert to Invoice| SO_ConvertToInv[🔄 Convert to Invoice]:::process
+        SO_ToBillActions -->|Create Delivery Note| SO_CreateDN[📦 Create Delivery Note]:::process
+        SO_Hold -->|Convert to Invoice| SO_ConvertToInv
     end
 
-    Q -.->|Can create| CN
-    INV -.->|Can create| CN
-    INV -.->|Can create| DN
-    SO -.->|Can create| DEL
+    %% MODULE 3: INVOICE
+    subgraph INVOICE_MODULE [Invoice Workflow]
+        direction TB
+        INV_Start([Start: Invoice]):::start --> INV_Creation{Method?}
+        INV_Creation -->|Create New| INV_New[Create New Invoice]:::process
 
-    style Q fill:#bbf,stroke:#333,stroke-width:2px
-    style SO fill:#bfb,stroke:#333,stroke-width:2px
-    style INV fill:#ffb,stroke:#333,stroke-width:2px
-    style REC fill:#90EE90,stroke:#333,stroke-width:3px
-    style CN fill:#fbb,stroke:#333
-    style DN fill:#fbb,stroke:#333
-    style DEL fill:#ddd,stroke:#333
+        SO_ConvertToInv --> INV_DataTransfer[Transfer SO Data]:::transfer
+        INV_DataTransfer --> INV_Draft[🧾 INVOICE<br/>Status: DRAFT<br/>Ref: SO-XXX]:::draft
+        INV_New --> INV_Draft
+
+        INV_Draft --> INV_DraftAction{Action?}
+        INV_DraftAction -->|Delete| INV_Deleted[❌ Invoice Deleted]:::cancelled
+        INV_DraftAction -->|Submit| INV_Submit[Submit Invoice]:::process
+
+        INV_Submit --> INV_Unpaid[🧾 INVOICE<br/>Status: UNPAID]:::unpaid
+
+        INV_Unpaid --> INV_UnpaidActions{Action?}
+
+        INV_UnpaidActions -->|Cancel| INV_Cancelled[❌ INVOICE - CANCELLED]:::cancelled
+        INV_UnpaidActions -->|Create Receipt| INV_CreateReceipt[💰 Create Receipt]:::process
+        INV_UnpaidActions -->|Create Delivery Note| INV_CreateDN[📦 Create Delivery Note]:::process
+        INV_UnpaidActions -->|Create Debit Note| INV_CreateDN_Fin[📈 Create Debit Note]:::process
+        INV_UnpaidActions -->|Create Credit Note| INV_CreateCN[🔄 Create Credit Note]:::process
+    end
+
+    %% MODULE 4: CREDIT NOTE
+    subgraph CREDIT_NOTE_MODULE [Credit Note Workflow]
+        direction TB
+        CN_Start([Start: Credit Note]):::start --> CN_Creation{Method?}
+        CN_Creation -->|Create New| CN_New[Create New CN]:::process
+
+        INV_CreateCN --> CN_DataTransfer[Transfer Invoice Data]:::transfer
+        CN_DataTransfer --> CN_Draft[📉 CREDIT NOTE<br/>Status: DRAFT<br/>Ref: INV-XXX]:::draft
+        CN_New --> CN_Draft
+
+        CN_Draft --> CN_DraftAction{Action?}
+        CN_DraftAction -->|Delete| CN_Deleted[❌ CN Deleted]:::cancelled
+        CN_DraftAction -->|Submit| CN_Submit[Submit Credit Note]:::process
+
+        CN_Submit --> CN_Open[📉 CREDIT NOTE<br/>Status: OPEN]:::open
+
+        CN_Open --> CN_OpenActions{Action?}
+        CN_OpenActions -->|Cancel| CN_Cancelled[❌ CN CANCELLED]:::cancelled
+        CN_OpenActions -->|Create Voucher| CN_CreateVoucher[💸 Create Payment Voucher]:::process
+
+        CN_CreateVoucher --> CN_VoucherUnsaved[PAYMENT VOUCHER<br/>Status: UNSAVED]:::draft
+    end
+
+    %% TERMINAL STATES
+    Q_Deleted --> End_Removed([End: Removed]):::endState
+    Q_Lost --> End_Lost([End: Lost Opportunity]):::endState
+    SO_Deleted --> End_Removed
+    SO_Cancelled --> End_Cancelled([End: Cancelled]):::endState
+    INV_Deleted --> End_Removed
+    INV_Cancelled --> End_Cancelled
+    CN_Deleted --> End_Removed
+    CN_Cancelled --> End_Cancelled
+
+    %% Supporting Documents
+    SO_CreateDN --> DN_Draft[📦 DELIVERY NOTE<br/>Status: DRAFT]:::draft
+    INV_CreateDN --> DN_Draft
+    INV_CreateReceipt --> RCT_Draft[💰 RECEIPT<br/>Status: DRAFT]:::draft
 ```
 
 **Supporting documents:**
