@@ -21,6 +21,7 @@ Track all updates to the knowledge base.
 - ✅ **Created diagram guides:**
   - `00 - Home/How to Create Diagrams in Obsidian.md` — Mermaid, Excalidraw, Canvas
   - `00 - Home/How to Zoom Mermaid Diagrams.md` — 6 solutions for zoom issue
+  - `00 - Home/How to Present Diagrams in Obsidian.md` — 7 presentation methods for demos/training
 
 **Updated workflow files:**
 - `01 - MAIA Product/Core Workflows/Quote-to-Cash Flow.md`
