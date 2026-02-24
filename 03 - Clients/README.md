@@ -45,8 +45,20 @@ For each client, create:
 
 | Client Name | Industry | PM Owner | Go-Live Date | Status |
 |-------------|----------|----------|--------------|--------|
-| [Client 1] | [Industry] | [PM Name] | YYYY-MM-DD | Active |
+| Holsen | Industrial Chemicals / Surface Treatment | [PM Name] | TBD | Onboarding |
 | [Client 2] | [Industry] | [PM Name] | YYYY-MM-DD | Onboarding |
+
+## Client Taxonomy
+
+Every MAIA client has their own **product taxonomy** — a YAML-defined classification of their catalog that drives:
+- Frontend item filtering and browsing
+- Chatbot product search, filtering, and ordering behaviour
+- Analytics grouping and reporting
+
+Each client folder should include a `[Client Name] Product Taxonomy.md` documenting their taxonomy hierarchy, attributes, and allowed values.
+
+**Current taxonomy docs:**
+- [[03 - Clients/Holsen/Holsen Product Taxonomy]]
 
 ## See Also
 
