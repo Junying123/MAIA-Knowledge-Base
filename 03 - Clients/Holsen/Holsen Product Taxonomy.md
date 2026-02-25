@@ -2,7 +2,7 @@
 owner: Gareth
 status: approved
 last_reviewed: 2026-02-24
-source_file: holsen_product_taxonomy_final.yaml
+source_file: holsen_product_taxonomy.yaml
 ---
 
 # Holsen Product Taxonomy
@@ -195,6 +195,15 @@ The taxonomy informs how the chatbot handles product queries for Holsen:
 - [ ] Should `micron_rating` be required for Filter Cartridges subcategory? — Owner: TBD
 - [ ] Are `chatbot_hints` planned for a future taxonomy version? — Owner: TBD
 - [ ] Confirm UoM completeness — does Holsen use any units not in the enum (e.g., MT, G, ML)? — Owner: TBD
+
+---
+
+## Raw Source
+
+The original YAML taxonomy file is stored in this folder:
+`03 - Clients/Holsen/holsen_product_taxonomy.yaml`
+
+This file is the canonical machine-readable definition consumed by MAIA's backend for UI and chatbot configuration. This markdown doc is the human-readable reference — do not edit the YAML directly unless coordinating with the engineering team.
 
 ---
 

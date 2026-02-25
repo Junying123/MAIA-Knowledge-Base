@@ -1,0 +1,2353 @@
+document: "MAIA - Holsen Product Taxonomy"
+purpose: >
+  Define categorization of Holsen products based on the provided product list;
+  specify unique properties/filters/search conditions for each subcategory to enable
+  UI/chatbot behavior and analytics for the MAIA system.
+Allowed Data Types:
+  - Enum       # Single selection from predefined list
+  - Boolean    # True/false value
+  - Float      # Decimal number with defined range
+  - Integer    # Whole number with defined range
+  - Range      # Numeric range between two values
+  - List       # Multiple selections from predefined list
+  - Text       # Free-form text with character limit
+  - URL        # Web address or link
+# =============================================================================
+# ROOT LEVEL - PRODUCTS
+# =============================================================================
+products:
+  item_group: "Products"
+  level: 0
+
+  # ===========================================================================
+  # LEVEL 1 - HOLSEN CATALOG
+  # ===========================================================================
+  holsen_catalog:
+    item_group: "Holsen Catalog"
+    level: 1
+    section:
+      -
+        section_idx: 0
+        label: Identification
+        section_description: Core identification and cataloging information.
+      -
+        section_idx: 1
+        label: Packaging
+        section_description: Pack size and unit of measure.
+      -
+        section_idx: 2
+        label: Classification
+        section_description: "Client-provided class and extracted properties."
+      -
+        section_idx: 3
+        label: Others
+        section_description: Additional notes.
+    attributes:
+      product_code:
+        facet_idx: 0
+        section: Identification
+        item_facet: Product Code
+        facet_description: Client provided product code / SKU.
+        is_required: 1
+        data_type: Text
+        max_value: 50
+      product_name:
+        facet_idx: 1
+        section: Identification
+        item_facet: Product Name
+        facet_description: Client provided product name.
+        is_required: 1
+        data_type: Text
+        max_value: 200
+      packing_size:
+        facet_idx: 2
+        section: Packaging
+        item_facet: Packing Size
+        facet_description: Numeric pack size from client list.
+        is_required: 1
+        data_type: Float
+        min_value: 0.0
+        max_value: 100000.0
+        step: 0.1
+      unit_of_measure:
+        facet_idx: 3
+        section: Packaging
+        item_facet: Unit of Measure
+        facet_description: Unit of measure from client list.
+        is_required: 1
+        data_type: Enum
+        default_value: BTL
+        values:
+          - BTL
+          - KG
+          - L
+          - OZ
+          - PC
+          - PCS
+      client_class:
+        facet_idx: 4
+        section: Classification
+        item_facet: Client Class
+        facet_description: "Client-provided class column."
+        is_required: 0
+        data_type: Enum
+        default_value: Misc
+        values:
+          - Anod
+          - CA
+          - Cleaner (M)
+          - Copper
+          - Copper (M)
+          - CuCN
+          - CuSO
+          - Int.
+          - KCN
+          - Krom
+          - Misc
+          - NICL
+          - NaCN
+          - Ni. Chloride
+          - Ni. Sulfamate
+          - Ni. Sulphate
+          - Nickel
+          - Nickel (M)
+          - Poison
+          - Tin
+          - Tin (M)
+          - Zinc
+          - Zinc (M)
+      series:
+        facet_idx: 5
+        section: Classification
+        item_facet: Series
+        facet_description: Extracted series or brand token from the product name when present.
+        is_required: 0
+        data_type: Text
+        max_value: 50
+      micron_rating:
+        facet_idx: 6
+        section: Classification
+        item_facet: Micron Rating
+        facet_description: Micron value extracted from the product name when present.
+        is_required: 0
+        data_type: Float
+        min_value: 0.0
+        max_value: 10000.0
+        step: 0.1
+      metal_form:
+        facet_idx: 7
+        section: Classification
+        item_facet: Metal Form
+        facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+        is_required: 0
+        data_type: Text
+        max_value: 50
+      notes:
+        facet_idx: 8
+        section: Others
+        item_facet: Notes
+        facet_description: Free text notes.
+        is_required: 0
+        data_type: Text
+        max_value: 250
+
+    # =======================================================================
+    # LEVEL 2 - TOP CATEGORIES
+    # =======================================================================
+    level_2:
+
+      # -----------------------------------------------------------------------
+      # CATEGORY - INDUSTRIAL CHEMICALS
+      # -----------------------------------------------------------------------
+      industrial_chemicals:
+        item_group: Industrial Chemicals
+        level: 2
+        section:
+          -
+            section_idx: 0
+            label: Identification
+            section_description: Core identification and cataloging information.
+          -
+            section_idx: 1
+            label: Packaging
+            section_description: Pack size and unit of measure.
+          -
+            section_idx: 2
+            label: Classification
+            section_description: "Client-provided class and extracted properties."
+          -
+            section_idx: 3
+            label: Others
+            section_description: Additional notes.
+        attributes:
+          product_code:
+            facet_idx: 0
+            section: Identification
+            item_facet: Product Code
+            facet_description: Client provided product code / SKU.
+            is_required: 1
+            data_type: Text
+            max_value: 50
+          product_name:
+            facet_idx: 1
+            section: Identification
+            item_facet: Product Name
+            facet_description: Client provided product name.
+            is_required: 1
+            data_type: Text
+            max_value: 200
+          packing_size:
+            facet_idx: 2
+            section: Packaging
+            item_facet: Packing Size
+            facet_description: Numeric pack size from client list.
+            is_required: 1
+            data_type: Float
+            min_value: 0.0
+            max_value: 100000.0
+            step: 0.1
+          unit_of_measure:
+            facet_idx: 3
+            section: Packaging
+            item_facet: Unit of Measure
+            facet_description: Unit of measure from client list.
+            is_required: 1
+            data_type: Enum
+            default_value: BTL
+            values:
+              - BTL
+              - KG
+              - L
+              - OZ
+              - PC
+              - PCS
+          client_class:
+            facet_idx: 4
+            section: Classification
+            item_facet: Client Class
+            facet_description: "Client-provided class column."
+            is_required: 0
+            data_type: Enum
+            default_value: Misc
+            values:
+              - Anod
+              - CA
+              - Cleaner (M)
+              - Copper
+              - Copper (M)
+              - CuCN
+              - CuSO
+              - Int.
+              - KCN
+              - Krom
+              - Misc
+              - NICL
+              - NaCN
+              - Ni. Chloride
+              - Ni. Sulfamate
+              - Ni. Sulphate
+              - Nickel
+              - Nickel (M)
+              - Poison
+              - Tin
+              - Tin (M)
+              - Zinc
+              - Zinc (M)
+          series:
+            facet_idx: 5
+            section: Classification
+            item_facet: Series
+            facet_description: Extracted series or brand token from the product name when present.
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          micron_rating:
+            facet_idx: 6
+            section: Classification
+            item_facet: Micron Rating
+            facet_description: Micron value extracted from the product name when present.
+            is_required: 0
+            data_type: Float
+            min_value: 0.0
+            max_value: 10000.0
+            step: 0.1
+          metal_form:
+            facet_idx: 7
+            section: Classification
+            item_facet: Metal Form
+            facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          notes:
+            facet_idx: 8
+            section: Others
+            item_facet: Notes
+            facet_description: Free text notes.
+            is_required: 0
+            data_type: Text
+            max_value: 250
+        level_3:
+          acids:
+            item_group: Acids
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          alkalis_and_bases:
+            item_group: Alkalis and Bases
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          cleaners_and_maintenance:
+            item_group: Cleaners and Maintenance
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          cyanides:
+            item_group: Cyanides
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          lab_reagents_and_indicators:
+            item_group: Lab Reagents and Indicators
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          process_chemicals_and_additives:
+            item_group: Process Chemicals and Additives
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          salts_and_inorganics:
+            item_group: Salts and Inorganics
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+
+      # -----------------------------------------------------------------------
+      # CATEGORY - SURFACE TREATMENT AND PLATING
+      # -----------------------------------------------------------------------
+      surface_treatment_and_plating:
+        item_group: Surface Treatment and Plating
+        level: 2
+        section:
+          -
+            section_idx: 0
+            label: Identification
+            section_description: Core identification and cataloging information.
+          -
+            section_idx: 1
+            label: Packaging
+            section_description: Pack size and unit of measure.
+          -
+            section_idx: 2
+            label: Classification
+            section_description: "Client-provided class and extracted properties."
+          -
+            section_idx: 3
+            label: Others
+            section_description: Additional notes.
+        attributes:
+          product_code:
+            facet_idx: 0
+            section: Identification
+            item_facet: Product Code
+            facet_description: Client provided product code / SKU.
+            is_required: 1
+            data_type: Text
+            max_value: 50
+          product_name:
+            facet_idx: 1
+            section: Identification
+            item_facet: Product Name
+            facet_description: Client provided product name.
+            is_required: 1
+            data_type: Text
+            max_value: 200
+          packing_size:
+            facet_idx: 2
+            section: Packaging
+            item_facet: Packing Size
+            facet_description: Numeric pack size from client list.
+            is_required: 1
+            data_type: Float
+            min_value: 0.0
+            max_value: 100000.0
+            step: 0.1
+          unit_of_measure:
+            facet_idx: 3
+            section: Packaging
+            item_facet: Unit of Measure
+            facet_description: Unit of measure from client list.
+            is_required: 1
+            data_type: Enum
+            default_value: BTL
+            values:
+              - BTL
+              - KG
+              - L
+              - OZ
+              - PC
+              - PCS
+          client_class:
+            facet_idx: 4
+            section: Classification
+            item_facet: Client Class
+            facet_description: "Client-provided class column."
+            is_required: 0
+            data_type: Enum
+            default_value: Misc
+            values:
+              - Anod
+              - CA
+              - Cleaner (M)
+              - Copper
+              - Copper (M)
+              - CuCN
+              - CuSO
+              - Int.
+              - KCN
+              - Krom
+              - Misc
+              - NICL
+              - NaCN
+              - Ni. Chloride
+              - Ni. Sulfamate
+              - Ni. Sulphate
+              - Nickel
+              - Nickel (M)
+              - Poison
+              - Tin
+              - Tin (M)
+              - Zinc
+              - Zinc (M)
+          series:
+            facet_idx: 5
+            section: Classification
+            item_facet: Series
+            facet_description: Extracted series or brand token from the product name when present.
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          micron_rating:
+            facet_idx: 6
+            section: Classification
+            item_facet: Micron Rating
+            facet_description: Micron value extracted from the product name when present.
+            is_required: 0
+            data_type: Float
+            min_value: 0.0
+            max_value: 10000.0
+            step: 0.1
+          metal_form:
+            facet_idx: 7
+            section: Classification
+            item_facet: Metal Form
+            facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          notes:
+            facet_idx: 8
+            section: Others
+            item_facet: Notes
+            facet_description: Free text notes.
+            is_required: 0
+            data_type: Text
+            max_value: 250
+        level_3:
+          plating_chemistry_chromium:
+            item_group: "Plating Chemistry - Chromium"
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          plating_metals_and_anodes:
+            item_group: Plating Metals and Anodes
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          plating_salts_copper:
+            item_group: "Plating Salts - Copper"
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+          plating_salts_nickel:
+            item_group: "Plating Salts - Nickel"
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+
+      # -----------------------------------------------------------------------
+      # CATEGORY - CONSUMABLES
+      # -----------------------------------------------------------------------
+      consumables:
+        item_group: Consumables
+        level: 2
+        section:
+          -
+            section_idx: 0
+            label: Identification
+            section_description: Core identification and cataloging information.
+          -
+            section_idx: 1
+            label: Packaging
+            section_description: Pack size and unit of measure.
+          -
+            section_idx: 2
+            label: Classification
+            section_description: "Client-provided class and extracted properties."
+          -
+            section_idx: 3
+            label: Others
+            section_description: Additional notes.
+        attributes:
+          product_code:
+            facet_idx: 0
+            section: Identification
+            item_facet: Product Code
+            facet_description: Client provided product code / SKU.
+            is_required: 1
+            data_type: Text
+            max_value: 50
+          product_name:
+            facet_idx: 1
+            section: Identification
+            item_facet: Product Name
+            facet_description: Client provided product name.
+            is_required: 1
+            data_type: Text
+            max_value: 200
+          packing_size:
+            facet_idx: 2
+            section: Packaging
+            item_facet: Packing Size
+            facet_description: Numeric pack size from client list.
+            is_required: 1
+            data_type: Float
+            min_value: 0.0
+            max_value: 100000.0
+            step: 0.1
+          unit_of_measure:
+            facet_idx: 3
+            section: Packaging
+            item_facet: Unit of Measure
+            facet_description: Unit of measure from client list.
+            is_required: 1
+            data_type: Enum
+            default_value: BTL
+            values:
+              - BTL
+              - KG
+              - L
+              - OZ
+              - PC
+              - PCS
+          client_class:
+            facet_idx: 4
+            section: Classification
+            item_facet: Client Class
+            facet_description: "Client-provided class column."
+            is_required: 0
+            data_type: Enum
+            default_value: Misc
+            values:
+              - Anod
+              - CA
+              - Cleaner (M)
+              - Copper
+              - Copper (M)
+              - CuCN
+              - CuSO
+              - Int.
+              - KCN
+              - Krom
+              - Misc
+              - NICL
+              - NaCN
+              - Ni. Chloride
+              - Ni. Sulfamate
+              - Ni. Sulphate
+              - Nickel
+              - Nickel (M)
+              - Poison
+              - Tin
+              - Tin (M)
+              - Zinc
+              - Zinc (M)
+          series:
+            facet_idx: 5
+            section: Classification
+            item_facet: Series
+            facet_description: Extracted series or brand token from the product name when present.
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          micron_rating:
+            facet_idx: 6
+            section: Classification
+            item_facet: Micron Rating
+            facet_description: Micron value extracted from the product name when present.
+            is_required: 0
+            data_type: Float
+            min_value: 0.0
+            max_value: 10000.0
+            step: 0.1
+          metal_form:
+            facet_idx: 7
+            section: Classification
+            item_facet: Metal Form
+            facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          notes:
+            facet_idx: 8
+            section: Others
+            item_facet: Notes
+            facet_description: Free text notes.
+            is_required: 0
+            data_type: Text
+            max_value: 250
+        level_3:
+          filter_cartridges:
+            item_group: Filter Cartridges
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
+
+      # -----------------------------------------------------------------------
+      # CATEGORY - ABRASIVES AND POLISHING
+      # -----------------------------------------------------------------------
+      abrasives_and_polishing:
+        item_group: Abrasives and Polishing
+        level: 2
+        section:
+          -
+            section_idx: 0
+            label: Identification
+            section_description: Core identification and cataloging information.
+          -
+            section_idx: 1
+            label: Packaging
+            section_description: Pack size and unit of measure.
+          -
+            section_idx: 2
+            label: Classification
+            section_description: "Client-provided class and extracted properties."
+          -
+            section_idx: 3
+            label: Others
+            section_description: Additional notes.
+        attributes:
+          product_code:
+            facet_idx: 0
+            section: Identification
+            item_facet: Product Code
+            facet_description: Client provided product code / SKU.
+            is_required: 1
+            data_type: Text
+            max_value: 50
+          product_name:
+            facet_idx: 1
+            section: Identification
+            item_facet: Product Name
+            facet_description: Client provided product name.
+            is_required: 1
+            data_type: Text
+            max_value: 200
+          packing_size:
+            facet_idx: 2
+            section: Packaging
+            item_facet: Packing Size
+            facet_description: Numeric pack size from client list.
+            is_required: 1
+            data_type: Float
+            min_value: 0.0
+            max_value: 100000.0
+            step: 0.1
+          unit_of_measure:
+            facet_idx: 3
+            section: Packaging
+            item_facet: Unit of Measure
+            facet_description: Unit of measure from client list.
+            is_required: 1
+            data_type: Enum
+            default_value: BTL
+            values:
+              - BTL
+              - KG
+              - L
+              - OZ
+              - PC
+              - PCS
+          client_class:
+            facet_idx: 4
+            section: Classification
+            item_facet: Client Class
+            facet_description: "Client-provided class column."
+            is_required: 0
+            data_type: Enum
+            default_value: Misc
+            values:
+              - Anod
+              - CA
+              - Cleaner (M)
+              - Copper
+              - Copper (M)
+              - CuCN
+              - CuSO
+              - Int.
+              - KCN
+              - Krom
+              - Misc
+              - NICL
+              - NaCN
+              - Ni. Chloride
+              - Ni. Sulfamate
+              - Ni. Sulphate
+              - Nickel
+              - Nickel (M)
+              - Poison
+              - Tin
+              - Tin (M)
+              - Zinc
+              - Zinc (M)
+          series:
+            facet_idx: 5
+            section: Classification
+            item_facet: Series
+            facet_description: Extracted series or brand token from the product name when present.
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          micron_rating:
+            facet_idx: 6
+            section: Classification
+            item_facet: Micron Rating
+            facet_description: Micron value extracted from the product name when present.
+            is_required: 0
+            data_type: Float
+            min_value: 0.0
+            max_value: 10000.0
+            step: 0.1
+          metal_form:
+            facet_idx: 7
+            section: Classification
+            item_facet: Metal Form
+            facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+            is_required: 0
+            data_type: Text
+            max_value: 50
+          notes:
+            facet_idx: 8
+            section: Others
+            item_facet: Notes
+            facet_description: Free text notes.
+            is_required: 0
+            data_type: Text
+            max_value: 250
+        level_3:
+          abrasives_and_polishing_media:
+            item_group: Abrasives and Polishing Media
+            level: 3
+            section:
+              -
+                section_idx: 0
+                label: Identification
+                section_description: Core identification and cataloging information.
+              -
+                section_idx: 1
+                label: Packaging
+                section_description: Pack size and unit of measure.
+              -
+                section_idx: 2
+                label: Classification
+                section_description: "Client-provided class and extracted properties."
+              -
+                section_idx: 3
+                label: Others
+                section_description: Additional notes.
+            attributes:
+              product_code:
+                facet_idx: 0
+                section: Identification
+                item_facet: Product Code
+                facet_description: Client provided product code / SKU.
+                is_required: 1
+                data_type: Text
+                max_value: 50
+              product_name:
+                facet_idx: 1
+                section: Identification
+                item_facet: Product Name
+                facet_description: Client provided product name.
+                is_required: 1
+                data_type: Text
+                max_value: 200
+              packing_size:
+                facet_idx: 2
+                section: Packaging
+                item_facet: Packing Size
+                facet_description: Numeric pack size from client list.
+                is_required: 1
+                data_type: Float
+                min_value: 0.0
+                max_value: 100000.0
+                step: 0.1
+              unit_of_measure:
+                facet_idx: 3
+                section: Packaging
+                item_facet: Unit of Measure
+                facet_description: Unit of measure from client list.
+                is_required: 1
+                data_type: Enum
+                default_value: BTL
+                values:
+                  - BTL
+                  - KG
+                  - L
+                  - OZ
+                  - PC
+                  - PCS
+              client_class:
+                facet_idx: 4
+                section: Classification
+                item_facet: Client Class
+                facet_description: "Client-provided class column."
+                is_required: 0
+                data_type: Enum
+                default_value: Misc
+                values:
+                  - Anod
+                  - CA
+                  - Cleaner (M)
+                  - Copper
+                  - Copper (M)
+                  - CuCN
+                  - CuSO
+                  - Int.
+                  - KCN
+                  - Krom
+                  - Misc
+                  - NICL
+                  - NaCN
+                  - Ni. Chloride
+                  - Ni. Sulfamate
+                  - Ni. Sulphate
+                  - Nickel
+                  - Nickel (M)
+                  - Poison
+                  - Tin
+                  - Tin (M)
+                  - Zinc
+                  - Zinc (M)
+              series:
+                facet_idx: 5
+                section: Classification
+                item_facet: Series
+                facet_description: Extracted series or brand token from the product name when present.
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              micron_rating:
+                facet_idx: 6
+                section: Classification
+                item_facet: Micron Rating
+                facet_description: Micron value extracted from the product name when present.
+                is_required: 0
+                data_type: Float
+                min_value: 0.0
+                max_value: 10000.0
+                step: 0.1
+              metal_form:
+                facet_idx: 7
+                section: Classification
+                item_facet: Metal Form
+                facet_description: "Shape/form extracted from the product name when applicable (Cathode, Plate, Ball, etc.)."
+                is_required: 0
+                data_type: Text
+                max_value: 50
+              notes:
+                facet_idx: 8
+                section: Others
+                item_facet: Notes
+                facet_description: Free text notes.
+                is_required: 0
+                data_type: Text
+                max_value: 250
