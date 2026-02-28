@@ -71,6 +71,17 @@ Your cheat sheet for the most commonly used pages and workflows.
 
 - [[Publish Queue]] — Content approved and ready for Lark
 
+## AI Assistant (Cursor)
+
+- [[02 - PM Playbook/Onboarding/PM Onboarding Hub]] — New to the team? Start here
+- [[02 - PM Playbook/Onboarding/03 - Setup Cursor AI]] — Install and configure Cursor
+- [[02 - PM Playbook/Onboarding/04 - AI + KB Workflow for PMs]] — Core loop: KB + AI for every PM task
+- [[02 - PM Playbook/Onboarding/05 - AI Prompt Library for PMs]] — Copy-paste prompts for user stories, PRDs, QA, and more
+
+> [!tip] Quick AI Tip
+> In Cursor, use `@filename` to reference any KB file as context before your prompt.
+> Example: `@[Template] User Story @Glossary` then ask the AI to write a user story.
+
 ## Automation
 
 - **[[Automation Master Guide]]** ⭐ **START HERE** — Complete automation guide (9 subagents + 7 skills)

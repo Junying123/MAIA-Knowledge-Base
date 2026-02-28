@@ -6,6 +6,9 @@ last_reviewed: 2026-02-20
 
 # MAIA Knowledge Base — README
 
+> [!tip] New to the team?
+> Start with the [[PM Onboarding Hub]] — covers Obsidian setup, this KB, and your AI assistant (Cursor).
+
 Welcome to the **MAIA Product Knowledge Base**, the single source of truth for all Product Managers working on MAIA (ERP/OMS for B2B companies).
 
 ## What This KB Is
