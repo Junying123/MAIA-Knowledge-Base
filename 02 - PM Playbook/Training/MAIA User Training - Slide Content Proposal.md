@@ -73,11 +73,11 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 **How they work together:**
 - Action done in chatbot → instantly visible in the UI
 - Action done in the UI → chatbot stays in sync
-- Example: upload a PO via chatbot → Sales team sees the new order in the UI right away — no double entry, no manual re-keying
+- Example: upload a PO via chatbot → Sales team opens the UI to review the PO details → do a final check → submit to create a new order
 
 **Support:**
 - Key message: chatbot is not just for asking questions — it can **do real tasks** on your behalf
-- Chatbot scope covers: Order-to-Cash (quotations, sales orders, invoices), Fulfilment (delivery notes), Finance (receipts, payment vouchers), Master Data (customers, items)
+- Chatbot scope covers: Order-to-Cash (quotations, sales orders, invoices), Fulfilment (delivery notes), Finance (receipts), Master Data (customers, items)
 - Sidebar — **Overview**: Dashboard, My Tasks, Daily Digest
 - Sidebar — **Selling**: Customers, Items, Quotations, Sales Orders
 - Sidebar — **Billing**: Invoices, Credit Notes, Debit Notes
