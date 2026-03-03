@@ -8,6 +8,12 @@ last_reviewed: 2026-03-03
 
 Full-day training slide content structured by module. Each topic lists **Key Points** (what appears on the slide) and **Support** (trainer elaboration / speaker notes). Trainer: Johnson Goh.
 
+> [!NOTE] Vault Validation Status
+> Content validated against MAIA product knowledge in the vault (2026-03-03).
+> - ✅ Vault-confirmed — verified against KB documentation
+> - ⚠️ From training brief — sourced from training PDF, not yet in vault
+> - 🔑 Known limitation — documented in [[01 - MAIA Product/Overview/Known Limitations]]
+
 ---
 
 ## Opening — Welcome & Warm-Up
@@ -20,8 +26,9 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 **Support:**
 - Set expectations: hands-on, interactive, not just a lecture
-- Confirm group has system access / demo credentials ready
-- Quick poll: "Who has used an ERP system before?"
+- Confirm group has system access and demo credentials ready
+- Demo environment: https://maia-oms-demo.vercel.app ✅
+- Quick poll: "Who has used an ERP or order management system before?"
 
 ---
 
@@ -31,30 +38,38 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### MAIA's Role in Sales–Ops–Finance Workflows
 
 **Key Points:**
-- MAIA connects 3 core business functions: Sales → Operations → Finance
+- MAIA is an Order Management System (OMS) and ERP platform built for B2B companies ✅
+- Covers the full **Quote-to-Cash** cycle: Quotation → Sales Order → Invoice → Receipt ✅
+- Connects 3 core business teams: Sales, Finance, and Logistics — each in their own workspace ✅
 - Replaces manual handoffs between WhatsApp, spreadsheets, and accounting tools
-- Single system of record for the full order lifecycle
-- Reduces data re-entry, delays, and cross-team miscommunication
+- Single system of record — every document is linked and traceable end-to-end ✅
 
 **Support:**
+- Target businesses: B2B manufacturers, distributors, wholesalers, service providers ✅
 - Before-state: order arrives on WhatsApp → manually typed into spreadsheet → emailed to finance → errors happen
-- After-state: order captured → auto-routed to approval → invoice generated → payment logged — all in one place
-- Key message: MAIA is the thread that connects your team's work
+- After-state: order captured → Quotation created → Sales Order confirmed → Invoice issued → payment recorded via Receipt — all in one place ✅
+- Key message: MAIA is the thread that connects Sales, Operations, and Finance
+- Supporting documents: Credit Notes (returns/refunds), Debit Notes (additional charges), Delivery Notes (shipments), Payment Vouchers (refunds) ✅
 
 ---
 
 ### Interface Basics & Architecture
 
 **Key Points:**
-- 3 workspaces: Sales, Finance, Logistics
-- Dashboard is the command centre — shows pending tasks, KPIs, recent activity
-- Left navigation: Orders, Clients, Items, Reports, Settings
-- Role-based access: each user sees only what's relevant to their job
+- 3 workspaces: Sales (17 modules), Finance (16 modules), Logistics (23 modules) — each tailored to a specific team ✅
+- Role-based access: users see only what is relevant to their workspace ✅
+- Sales sidebar sections: Overview · Selling · Billing · Payments · Fulfillment · Customer Service ✅
+- Dashboard is the command centre — shows Total Sales metrics and recent activity ✅
 
 **Support:**
-- Walk through each workspace briefly — where salespeople live vs. finance team
-- Highlight the notification bell and pending approvals badge
-- Mention: no data is lost — everything is logged and searchable
+- Sidebar — **Overview**: Dashboard, My Tasks, Daily Digest ✅
+- Sidebar — **Selling**: Customers, Items, Quotations, Sales Orders ✅
+- Sidebar — **Billing**: Invoices, Credit Notes, Debit Notes ✅
+- Sidebar — **Payments**: Receipts, Vouchers ✅
+- Sidebar — **Fulfillment**: Delivery Notes, Return Notes ✅
+- After login, users land on the Sales Dashboard at `/sales` ✅
+- Finance and Logistics workspaces have their own dashboards and module sections ✅
+- Key rule: once a document is submitted, it is locked — changes require amendment or cancellation ✅
 
 ---
 
@@ -62,13 +77,13 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 **Key Points:**
 - The Problem: Orders on WhatsApp → manual copy-paste → missed items, wrong prices, delayed invoices
-- The Turning Point: MAIA's OCR captures order details from WhatsApp images automatically
-- The Result: Faster order processing, fewer errors, real-time payment visibility
+- The Turning Point: MAIA's OCR captures order details from WhatsApp images automatically ⚠️
+- The Result: Full Quote-to-Cash cycle completed faster, fewer errors, real-time payment visibility ✅
 
 **Support:**
 - Relatable scenario: a distributor receiving 50+ WhatsApp orders daily
-- Before: 1 admin spending 3 hours on data entry, 2 errors per day
-- After: same orders processed in 30 minutes, zero re-keying errors
+- Before: 1 admin spending 3 hours on data entry, repeated re-keying errors
+- After: order captured via OCR → Quotation → Sales Order → Invoice → Receipt — fully linked in MAIA ✅
 - Prompt discussion: "Does this sound familiar to your business?"
 
 ---
@@ -81,8 +96,8 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - Share with the group: what is your biggest pain point today?
 
 **Support:**
-- Simple template: boxes for Receive Order → Approve → Invoice → Collect Payment
-- Common pain points: double-entry, approval delays, payment tracking
+- Simple template: Receive Order → Create Quotation → Confirm Sales Order → Issue Invoice → Collect Payment ✅
+- Common pain points: double data entry, no visibility on outstanding payments, approval delays
 - This activity builds personal motivation to learn MAIA
 
 ---
@@ -90,13 +105,14 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### Quick Quiz & Reflection
 
 **Key Points:**
-- 5 quick questions on Module 1 content
-- What does MAIA stand for? What are the 3 workspaces? What is OCR?
+- 5 quick verbal questions on Module 1 content
+- What is MAIA's core workflow sequence? What are the 3 workspaces? What does OCR do?
 - Individual reflection: "What will MAIA change in MY daily work?"
 
 **Support:**
-- Keep quiz light and verbal — not formal, just to check comprehension
-- Reflection written on a card (revisit at end of day)
+- Keep light and verbal — check comprehension, not a formal test
+- Reflection written on a card (revisit at end of day to measure learning)
+- Expected answers: Quotation → Sales Order → Invoice → Receipt; Sales / Finance / Logistics ✅
 
 ---
 
@@ -106,77 +122,88 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### Logging In, Navigation & Dashboard Overview
 
 **Key Points:**
-- Log in with your company email and assigned password
-- Dashboard home: pending approvals, recent orders, unpaid invoices
-- Top navigation: search, notifications, profile settings
-- Quick actions shortcut: New Order, New Client, New Item
+- Login: enter company email and assigned password → click Sign In ✅
+- After login, you land on the Sales Dashboard ✅
+- Sidebar navigation groups: Overview / Selling / Billing / Payments / Fulfillment / Customer Service ✅
+- Dashboard shows: Total Sales metrics and Sales Reports ✅
+- Theme options available: System / Light / Dark ✅
 
 **Support:**
-- Demo: show login page, highlight "Forgot Password" flow
-- Point out the pending approvals counter — most important number to check daily
-- Tip: bookmark the MAIA URL and set it as browser homepage
+- Demo: show the login page — both fields must be filled before the Sign In button activates ✅
+- Highlight "Forgot Password" link on the login page ✅
+- Tip: bookmark the MAIA URL and set it as your browser homepage
+- Sidebar — Selling section: Customers, Items, Quotations, Sales Orders ✅
+- Sidebar — Billing section: Invoices, Credit Notes, Debit Notes ✅
 
 ---
 
 ### Capturing WhatsApp Orders & OCR Data Extraction
 
 **Key Points:**
-- Screenshot or forward the customer's WhatsApp order image to MAIA
-- OCR engine reads item names, quantities, and prices automatically
-- Review the extracted data before confirming — fix any OCR errors
-- Order is saved as a draft pending approval
+- WhatsApp orders arrive as images → upload or forward the image to MAIA ⚠️
+- OCR engine reads item names, quantities, and prices automatically from the image ⚠️
+- Review extracted data before confirming — fix any OCR read errors
+- Corrected data becomes the input for creating a Quotation in MAIA ✅
 
 **Support:**
-- Demo: upload a sample WhatsApp order screenshot
-- Good vs. blurry images — OCR accuracy depends on image clarity
+- OCR accuracy depends on image quality — clearer photos give better results ⚠️
 - Key tip: always review OCR output, especially item codes and quantities
+- Do NOT proceed with known OCR errors — fix first, then create the Quotation
+- Common OCR mismatches: "1" vs "l", zero vs letter O, dashes in product codes
 
 ---
 
 ### Approving Orders, Generating Quotations & Invoices
 
 **Key Points:**
-- Approver receives a notification when an order is submitted
-- Review order details → Approve or Reject with comment
-- On approval: generate Quotation PDF (send to client for confirmation)
-- On client confirmation: convert Quotation → Invoice in one click
+- In MAIA, orders flow through 3 linked documents: Quotation → Sales Order → Invoice ✅
+- **Quotation:** Sales → Quotations → New → fill in Customer, Items, Payment Terms → Submit → status becomes `OPEN` ✅
+- **Sales Order:** From OPEN Quotation → "Convert to Sales Order" → review → Submit → Quotation becomes `ORDERED`; Sales Order becomes `TO BILL` ✅
+- **Invoice:** From TO BILL Sales Order → "Create Invoice" → review → Submit → Invoice becomes `UNPAID` ✅
 
 **Support:**
-- Approval status flow: Draft → Pending → Approved / Rejected
-- Rejected orders can be edited and resubmitted — not lost
-- Demo: generate a sample quotation, show client-facing PDF format
-- Invoice auto-numbers and timestamps for audit trail
+- Quotation sections to complete: Details (date), Biller Information, Customer Information, Items (at least 1 with quantity and price), Summary (auto-calculated), Payment Terms ✅
+- Converting Quotation to Sales Order automatically transfers all data — customer, items, pricing, payment terms ✅
+- Sales Order is locked once submitted (`TO BILL`) — use "Amend" to make changes, "Cancel" to void ✅
+- Creating Invoice from Sales Order pre-fills all SO data automatically ✅
+- MAIA supports multiple Invoices from one Sales Order (e.g., 100-unit SO → Invoice 30 units, then 45, then 25) ✅
+- 🔑 Cannot create Invoice directly from a Sales Order in HOLD status — must Resume to `TO BILL` first ✅
 
 ---
 
 ### Logging Partial/Full Payments
 
 **Key Points:**
-- Open the invoice → click "Log Payment"
-- Select payment method: bank transfer, cash, cheque, etc.
-- Enter amount: partial or full, with reference number
-- Invoice status updates: Unpaid → Partially Paid → Fully Paid
+- Payments are recorded via the **Receipts** module: Sales → Receipts → New Receipt ✅
+- Select the Customer → select the Invoice(s) to pay against ✅
+- Enter: payment amount, payment method, payment date, reference number ✅
+- Payment methods: Cash, Bank Transfer, Cheque, Credit Card, Debit Card, Other ✅
+- Invoice updates to `PAID` when fully paid; remains `UNPAID` with outstanding balance for partial payments ✅
 
 **Support:**
-- Demo: show outstanding balance recalculation after partial payment
-- Key tip: always enter the bank reference number for reconciliation
-- Finance team can filter all unpaid invoices from the Reports section
+- Partial payment: enter partial amount → Invoice stays `UNPAID` but shows outstanding balance ✅
+- Full payment: enter full amount → Invoice becomes `PAID` ✅
+- Multiple Receipts can be recorded against the same Invoice for staged payments ✅
+- Key tip: always enter the bank/transaction reference number for reconciliation
+- Finance team can view all UNPAID Invoices from Billing section → Invoices ✅
 
 ---
 
 ### Hands-on Exercise — Simulate Full Order Cycle
 
 **Key Points:**
-- Step 1: Capture a sample WhatsApp order using the provided image
-- Step 2: Review OCR output, fix any errors, submit for approval
-- Step 3: Approve the order and generate a quotation
-- Step 4: Convert to invoice and log a partial payment
-- Expected outcome: Invoice shows "Partially Paid" status
+- Step 1: Create a new Quotation using provided sample customer and item data
+- Step 2: Submit Quotation (`DRAFT → OPEN`) → generate Quotation PDF ✅
+- Step 3: Convert Quotation to Sales Order → Submit (Quotation: `ORDERED`; Sales Order: `TO BILL`) ✅
+- Step 4: Create Invoice from Sales Order → Submit (Invoice: `UNPAID`) ✅
+- Step 5: Record a partial payment via Receipts → verify Invoice remains `UNPAID` with outstanding balance ✅
+- Expected outcome: full document chain — Quotation (`ORDERED`) → Sales Order (`TO BILL`) → Invoice (`UNPAID`) ✅
 
 **Support:**
-- Provide exercise credentials and sample order image
-- Trainer circulates — assist with any navigation issues
+- Provide exercise credentials and sample data (customer name, 3 items with prices and quantities)
+- Trainer circulates — assist with navigation, not with decision-making
 - Debrief: "What part felt unfamiliar? What was easier than expected?"
+- Ask participants: "Where does your real business fit into this flow?"
 
 ---
 
@@ -186,62 +213,69 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### Creating & Importing Clients and Items
 
 **Key Points:**
-- Add clients manually: company name, contact person, email, billing address
-- Bulk import clients via CSV template (download from Settings)
-- Add items: SKU, description, unit price, unit of measure
-- Import item catalogue via CSV for large product lists
+- **Customers module** (Sales → Customers): add company name, contact person, email, credit limit, payment terms ✅
+- Bulk import Customers via CSV template ✅
+- **Items module** (Sales → Items): add SKU, product name, unit price, unit of measure, product category ✅
+- Bulk import Items via CSV for large catalogues ✅
 
 **Support:**
-- Required fields for client: name, email, credit limit (optional)
-- Required fields for item: SKU, name, price — others optional
-- Demo: manual add + show CSV template format
-- Tip: clean your data in Excel before importing — no special characters
+- Note: in MAIA, the module is called **Customers** (not "Clients") — found under Sales → Customers ✅
+- Customer key fields: company name, contact person, email, credit limit (optional), payment terms ✅
+- Item key fields: SKU, name, unit price, unit of measure, product category, stock information ✅
+- Items also appear in the Logistics workspace with stock and warehouse data ✅
+- Tip: clean your data in Excel before bulk importing — avoid special characters in SKU fields
+- Customer records store full transaction history for account visibility ✅
 
 ---
 
 ### Setting Approval Rules, User Roles & Responsibilities
 
 **Key Points:**
-- Roles: Admin, Sales, Finance, Viewer — each has defined permissions
-- Approval rules: set order value thresholds (e.g., orders > RM5,000 need manager approval)
-- Assign roles to team members from the Admin panel
-- Role matrix: who can create, edit, approve, delete?
+- MAIA uses workspace-based access: Sales, Finance, Logistics — each team sees their relevant modules ✅
+- Each workspace has a dedicated dashboard and module set tailored to that team's function ✅
+- Management role has cross-workspace visibility for strategic oversight ✅
+- Best practice: assign each user to the workspace matching their job function ⚠️
 
 **Support:**
-- Sales can create orders but cannot approve their own
-- Approval threshold example: junior sales → up to RM2,000; senior → up to RM10,000
-- Key governance principle: no one should approve their own orders (segregation of duties)
+- Sales workspace users: sales agents, account managers, customer service staff ✅
+- Finance workspace users: accountants, billing staff, accounts receivable team ✅
+- Logistics workspace users: warehouse managers, logistics coordinators, inventory controllers ✅
+- Management access: all 3 workspace dashboards plus consolidated KPI and performance reports ✅
+- Key governance principle: users should not create and approve their own transactions — maintain segregation of duties
+- Specific role names and approval threshold settings are configured during MAIA implementation — confirm with IT/admin ⚠️
 
 ---
 
 ### ERP Integration Basics & Sync Management
 
 **Key Points:**
-- MAIA syncs with your ERP: items, clients, orders, and payments
-- Sync frequency: automatic (daily) or manual trigger
-- Sync log shows last sync time, items synced, and any errors
-- Field mapping: MAIA fields → ERP fields (configured during setup)
+- MAIA is built with integration-ready architecture ✅
+- Integration connects MAIA with your ERP system for items, customers, orders, and payments
+- Sync log allows monitoring of integration status and errors ⚠️
+- IT team configures the integration during initial setup — daily users monitor sync health ⚠️
 
 **Support:**
-- Demo: show sync status panel, how to trigger a manual sync
-- Common sync errors: duplicate SKUs, missing required fields in ERP
-- Key tip: check the error log before calling IT — most issues are data format mismatches
-- IT team handles initial setup; daily users just need to monitor
+- MAIA's integration-ready architecture is designed to connect with ERP systems ✅
+- Day-to-day: check sync log for any failed syncs before processing high-priority orders ⚠️
+- Common sync issues: duplicate SKUs, missing required fields, data format mismatches ⚠️
+- Key tip: if a sync fails, check the error log first — most issues are data format problems, not system failures
+- Escalation path: data issue → fix in MAIA → re-sync | system issue → contact IT team ⚠️
 
 ---
 
 ### Hands-on Exercise — Build Mini Catalogue & Process Order
 
 **Key Points:**
-- Task 1: Add 3 new items to the catalogue (use provided sample data)
-- Task 2: Create one new client profile
-- Task 3: Create and process a new order using the items and client you created
-- Expected outcome: Order in "Approved" status with a generated invoice
+- Task 1: Add 3 new Items to the catalogue (use provided sample data) ✅
+- Task 2: Create one new Customer profile ✅
+- Task 3: Run the full order cycle with your new Customer and Items:
+  - Create Quotation → Submit (`OPEN`) → Convert to Sales Order (`TO BILL`) → Create Invoice (`UNPAID`) ✅
+- Expected outcome: Invoice in `UNPAID` status, fully linked back to Quotation and Sales Order ✅
 
 **Support:**
-- Sample data sheet provided (item names, prices, client details)
-- Trainer evaluates: were items created correctly? Is the order processed end-to-end?
-- Discussion: "What would you do differently in your real catalogue setup?"
+- Sample data sheet provided (item names, prices, unit of measure, customer details)
+- Trainer evaluates: were Items created with correct required fields? Is the full document chain complete?
+- Discussion: "What would your real item catalogue look like? How many items does your business manage?"
 
 ---
 
@@ -251,45 +285,54 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### Reading Dashboards & Exporting Reports
 
 **Key Points:**
-- Dashboard panels: Sales Summary, Pending Approvals, Outstanding Payments, Top Clients
-- Filter reports by: date range, client, product, status, salesperson
-- Export options: PDF (for sharing) or Excel (for further analysis)
-- Schedule automated reports to be emailed to managers
+- **Sales Dashboard** (`/sales`): Total Sales metrics, pipeline health, revenue trends ✅
+- **Finance Dashboard** (`/finance`): Cash flow, receivables, payment collection status ✅
+- **Logistics Dashboard** (`/logistics`): Fulfillment rates, inventory levels, operational metrics ✅
+- **Daily Digest**: per-workspace daily summary of activities — Sales, Finance, Logistics ✅
+- Management view: cross-workspace consolidated dashboards for strategic oversight ✅
 
 **Support:**
-- Demo: filter last 30 days → export as PDF → show client-ready format
-- Key report for sales manager: "Orders by Salesperson" — tracks individual performance
-- Key report for finance: "Aging Receivables" — shows who owes money and for how long
+- Sales key reports: pipeline value, conversion rates, revenue vs. targets, top customers ✅
+- Finance key reports: Accounts Receivable Aging (who owes, overdue by how long), payment collection rate, DSO ✅
+- Logistics key reports: fulfillment rates, on-time delivery rate, inventory accuracy ✅
+- Daily Digest URLs: `/sales/daily-digest`, `/finance/daily-digest`, `/logistics/daily-digest` ✅
+- Report export functionality — confirm availability in demo environment before training session ⚠️
 
 ---
 
 ### Monitoring KPIs — Cycle Time, Payment Speed, Error Rate
 
 **Key Points:**
-- **Order Cycle Time:** time from order received to invoice issued (target: < 2 hours)
-- **Payment Speed:** average days from invoice to full payment (target: within credit terms)
-- **Error Rate:** % of orders requiring correction after OCR capture (target: < 5%)
-- Use KPIs in weekly team check-ins to spot trends
+- **Order Cycle Time:** time from order received to Invoice issued — target: reduce vs. your manual baseline ⚠️
+- **Payment Speed (DSO):** average days from Invoice issued to full payment received ✅
+- **Collection Rate:** % of Invoices paid within agreed credit terms ✅
+- **Error Rate:** % of orders requiring correction before processing ⚠️
+- Track KPIs in weekly team check-ins to identify bottlenecks and improvement trends
 
 **Support:**
-- Show where each KPI appears on the dashboard
-- Benchmark: industry average for order processing is 24–48 hrs; MAIA targets < 2 hrs
-- Red flag: rising error rate = team needs retraining or image quality is poor
+- Management Features in MAIA monitor: DSO, Accounts Receivable Aging, Payment Collection Rate, Revenue Growth Rate ✅
+- Sales metrics: sales pipeline value, conversion rates, customer acquisition and retention ✅
+- Logistics metrics: order fulfillment rate, on-time delivery rate, inventory turnover, stock accuracy ✅
+- Red flags to watch: rising UNPAID invoice count, increasing cycle time, high order error frequency
+- KPI benchmarks: establish your Week 1 baseline — measure improvement over 30/60/90 days ⚠️
 
 ---
 
 ### Fixing OCR/Data Mismatches & Sync Errors
 
 **Key Points:**
-- OCR mismatch: item name read incorrectly → edit directly in the order draft before submitting
-- Price mismatch: check item catalogue price vs. quoted price — update catalogue if needed
-- Sync error: check error log → identify the field → correct in MAIA → re-sync
-- Escalation path: Data issue → fix yourself | System error → contact IT
+- OCR mismatch: edit item details directly in the Quotation `DRAFT` before submitting ✅
+- Price mismatch: check Items catalogue (Sales → Items) → update item price if needed ✅
+- Wrong Invoice submitted: UNPAID Invoices cannot be deleted — use "Cancel" with a reason ✅ 🔑
+- Sales Order on HOLD: cannot create Invoice directly — Resume to `TO BILL` first ✅ 🔑
+- Multiple returns on one Invoice: only one Credit Note can be created per Invoice — consolidate all returns ✅ 🔑
 
 **Support:**
-- Common OCR mismatches: "1" vs "l", zero vs letter O, product codes with dashes
-- Do NOT submit an order with known errors — always fix first
-- Sync error checklist: duplicate entry? Missing required field? Invalid format? Connectivity issue?
+- Rule: documents can only be deleted in `DRAFT` status — once submitted, cancel or amend instead ✅
+- HOLD workaround: Sales Order → HOLD → Resume → `TO BILL` → Create Invoice ✅
+- 🔑 Cannot invoice from HOLD directly — known system limitation, always resume first ✅
+- 🔑 Multiple returns against one Invoice: consolidate all items into a single Credit Note before submitting ✅
+- Escalation path: Data issue → fix in MAIA yourself | System error → contact IT team
 
 ---
 
@@ -297,29 +340,31 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 **Key Points:**
 - Write a simple SOP for your most common MAIA tasks (e.g., "How to process a WhatsApp order")
-- Include: who does it, steps, what to check, what to do if something goes wrong
-- Review SOPs every quarter — update when MAIA is updated or processes change
-- Share SOPs with new team members as onboarding guide
+- Include: who does it, step-by-step actions in MAIA, what to check, what to do if something fails
+- Review SOPs every quarter — update whenever MAIA is updated or your process changes
+- Share SOPs with new team members as the onboarding reference
 
 **Support:**
-- SOP template: Purpose → Who → Steps → Error handling → Owner
-- Example: "WhatsApp Order Capture SOP" — 6 steps, with screenshots
-- Key principle: if you're explaining it verbally every time, write it down once
+- SOP template structure: Purpose → Who → Steps (with MAIA actions) → Error handling → Owner
+- Example SOP: "WhatsApp Order Capture" — OCR upload → review → create Quotation → submit ⚠️
+- MAIA's audit trail supports SOP compliance — every action is logged with user and timestamp ✅
+- Key principle: if you're explaining a process verbally every time, write it down once
 
 ---
 
 ### Final Practical Test & Trainer Evaluation
 
 **Key Points:**
-- Complete a full order cycle from scratch: capture → approve → invoice → payment
-- Trainer observes and evaluates: accuracy, speed, and confidence
-- Test scenario uses a fresh set of data (not from earlier exercises)
-- Pass criteria: order processed correctly end-to-end without assistance
+- Complete a full order cycle from scratch: Quotation → Sales Order → Invoice → Receipt ✅
+- Trainer observes and evaluates: correct workflow steps, correct status transitions, confidence
+- Test scenario uses fresh data not seen in earlier exercises
+- Pass criteria: complete Quote-to-Cash cycle end-to-end without assistance ✅
 
 **Support:**
-- Time limit: 20 minutes for the full cycle
-- Trainer uses a checklist: 10 checkpoints, pass = 8/10 or above
-- Supportive environment — this is a learning validation, not a high-stakes exam
+- Correct expected outcome: Quotation (`ORDERED`) → Sales Order (`TO BILL`) → Invoice (`PAID`) → Receipt (`SUBMITTED`) ✅
+- Trainer checklist: 10 checkpoints covering each document step and status transition
+- Supportive environment — learning validation, not a high-stakes exam
+- If stuck: trainer will guide direction but will not complete the task for the participant
 
 ---
 
@@ -332,15 +377,43 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - Support channels: [support email / helpdesk / WhatsApp group]
 
 **Support:**
-- Feedback form covers: content clarity, trainer delivery, platform usability, overall satisfaction
-- Certificates signed by Johnson Goh and your company's designated MAIA admin
-- Encourage participants to set a personal goal for using MAIA in Week 1
+- Feedback covers: content clarity, trainer delivery, platform usability, overall satisfaction
+- Certificate signed by Johnson Goh and your company's designated MAIA admin
+- Encourage participants to set one personal MAIA goal for Week 1
+- Remind: demo environment remains available for practice → https://maia-oms-demo.vercel.app ✅
+
+---
+
+## Validation Notes
+
+### Corrections Made vs. Previous Draft
+
+| Previous Version (Incorrect) | Corrected (Vault-aligned) |
+|---|---|
+| Status flow: `Draft → Pending → Approved / Rejected` | Quotation: `DRAFT → OPEN → ORDERED` · Sales Order: `DRAFT → TO BILL` · Invoice: `DRAFT → UNPAID → PAID` ✅ |
+| "Convert Quotation → Invoice in one click" | Quotation → Sales Order → Invoice (two steps; cannot skip Sales Order) ✅ |
+| `Unpaid → Partially Paid → Fully Paid` | Invoice stays `UNPAID` with partial payments; becomes `PAID` only when fully paid ✅ |
+| "Open invoice → click Log Payment" | Sales → Receipts → New Receipt (payments recorded via Receipts module) ✅ |
+| Navigation: "Orders, Clients, Items, Reports, Settings" | Sidebar sections: Overview / Selling / Billing / Payments / Fulfillment / Customer Service ✅ |
+| Exercise Step 3: "Approve order and generate quotation" | Quotation → submit (OPEN) → convert to Sales Order → submit (TO BILL) → create Invoice (correct sequence) ✅ |
+| Exercise expected outcome: `"Approved"` status | Sales Order: `TO BILL` · Invoice: `UNPAID` ✅ |
+
+### Not Yet in Vault — Pending Documentation ⚠️
+
+- WhatsApp OCR order capture feature
+- Specific ERP integration sync mechanics and supported ERP systems
+- Specific user role names (MAIA KB confirms workspace-based access, not named role tiers)
+- Approval threshold settings and rule-setting UI details
+- Report export format and scheduling functionality
 
 ---
 
 ## See Also
 
+- [[01 - MAIA Product/Overview/Product Overview]]
+- [[01 - MAIA Product/Core Workflows/Quote-to-Cash Flow]]
+- [[01 - MAIA Product/Overview/Document Status Flows]]
 - [[01 - MAIA Product/Overview/Known Limitations]]
-- [[02 - PM Playbook/Templates]]
+- [[01 - MAIA Product/UI Components/Sidebar/Sidebar Categories Quick Reference]]
+- [[01 - MAIA Product/Management/Management Features]]
 - [[06 - Glossary & Taxonomy/Glossary]]
-- [[02 - PM Playbook/Processes/Publish to Lark SOP]]
