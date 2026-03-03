@@ -122,12 +122,16 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 **Key Points:**
 - 5 quick verbal questions on Module 1 content
 - What is MAIA's core workflow sequence? What are the 3 workspaces? What does OCR do?
+- What are the 2 tools MAIA gives you to get work done? How do they connect?
 - Individual reflection: "What will MAIA change in MY daily work?"
+- Bonus: "Name one pain point from the group activity — how would MAIA solve it?"
 
 **Support:**
 - Keep light and verbal — check comprehension, not a formal test
 - Reflection written on a card (revisit at end of day to measure learning)
 - Expected answers: Quotation → Sales Order → Invoice → Receipt; Sales / Finance / Logistics
+- Expected answer for chatbot question: Web Interface (UI) + MAIA Chatbot — both fully connected, actions in one sync instantly to the other
+- Use the group activity pain points as material — make the reflection personal and grounded
 
 ---
 
@@ -140,14 +144,14 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - Login: enter company email and assigned password → click Sign In
 - Sidebar navigation groups: Overview / Selling / Billing / Payments / Fulfillment / Customer Service
 - Dashboard shows: Total Sales metrics and Sales Reports
-- Theme options available: System / Light / Dark
+- MAIA Chatbot is accessible alongside the UI — both share the same login and data
 
 **Support:**
 - Demo: show the login page — both fields must be filled before the Sign In button activates
-- Highlight "Forgot Password" link on the login page
 - Tip: bookmark the MAIA URL and set it as your browser homepage
 - Sidebar — Selling section: Customers, Items, Quotations, Sales Orders
 - Sidebar — Billing section: Invoices, Credit Notes, Debit Notes
+- Chatbot tip: after logging in, try asking the chatbot "What are my tasks today?" — a quick way to get started without navigating the sidebar
 
 ---
 
@@ -156,14 +160,15 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 **Key Points:**
 - WhatsApp orders arrive as images → upload or forward the image to MAIA ⚠️
 - OCR engine reads item names, quantities, and prices automatically from the image ⚠️
-- Review extracted data before confirming — fix any OCR read errors
-- Corrected data becomes the input for creating a Quotation in MAIA
+- Alternatively: upload the PO directly via the MAIA Chatbot — chatbot reads and prepares the order details
+- Review extracted data before confirming — fix any errors in the UI, then submit to create a Quotation
 
 **Support:**
 - OCR accuracy depends on image quality — clearer photos give better results ⚠️
 - Key tip: always review OCR output, especially item codes and quantities
 - Do NOT proceed with known OCR errors — fix first, then create the Quotation
 - Common OCR mismatches: "1" vs "l", zero vs letter O, dashes in product codes
+- Chatbot flow: upload PO in chat → chatbot extracts order details → open UI to review → submit to create Quotation
 
 ---
 
@@ -171,7 +176,8 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 **Key Points:**
 - In MAIA, orders flow through 3 linked documents: Quotation → Sales Order → Invoice
-- **Quotation:** Sales → Quotations → New → fill in Customer, Items, Payment Terms → Submit → status becomes `OPEN`
+- **Via UI:** Sales → Quotations → New → fill in Customer, Items, Payment Terms → Submit → status becomes `OPEN`
+- **Via Chatbot:** tell MAIA "Create a quotation for Customer A" — chatbot fills in the details, open UI to review and submit
 - **Sales Order:** From OPEN Quotation → "Convert to Sales Order" → review → Submit → Quotation becomes `ORDERED`; Sales Order becomes `TO BILL`
 - **Invoice:** From TO BILL Sales Order → "Create Invoice" → review → Submit → Invoice becomes `UNPAID`
 
@@ -181,6 +187,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - Sales Order is locked once submitted (`TO BILL`) — use "Amend" to make changes, "Cancel" to void
 - Creating Invoice from Sales Order pre-fills all SO data automatically
 - MAIA supports multiple Invoices from one Sales Order (e.g., 100-unit SO → Invoice 30 units, then 45, then 25)
+- Chatbot shortcut: ask "Show me all open quotations" to quickly find pending items without navigating the sidebar
 
 ---
 
@@ -192,6 +199,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - Enter: payment amount, payment method, payment date, reference number
 - Payment methods: Cash, Bank Transfer, Cheque, Credit Card, Debit Card, Other
 - Invoice updates to `PAID` when fully paid; remains `UNPAID` with outstanding balance for partial payments
+- Chatbot shortcut: ask "Show me unpaid invoices for Customer A" — get the list instantly, then log payment in the UI
 
 **Support:**
 - Partial payment: enter partial amount → Invoice stays `UNPAID` but shows outstanding balance
@@ -202,7 +210,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 ---
 
-### Hands-on Exercise — Simulate Full Order Cycle
+### Hands-on Exercise — Simulate Full Order Cycle (Instance not ready yet)
 
 **Key Points:**
 - Step 1: Create a new Quotation using provided sample customer and item data
