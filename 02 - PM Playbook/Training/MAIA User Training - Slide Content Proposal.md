@@ -17,7 +17,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ## Opening — Welcome & Warm-Up
 
 **Key Points:**
-- Welcome to CoreAI: MAIA User Training
+- Welcome to MAIA User Training Session
 - Trainer introduction: Johnson Goh
 - Ice-breaker activity & participant introductions
 - Agenda overview for the day
@@ -54,12 +54,23 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### Interface Basics & Architecture
 
 **Key Points:**
-- 3 workspaces: Sales (17 modules), Finance (16 modules), Logistics (23 modules) — each tailored to a specific team
+- MAIA has **2 ways to use it**: the web interface (UI) and the **MAIA Chatbot** — they work together
+- 3 workspaces: Sales, Finance, Logistics — each tailored to a specific team
 - Role-based access: users see only what is relevant to their workspace
 - Sales sidebar sections: Overview · Selling · Billing · Payments · Fulfillment · Customer Service
 - Dashboard is the command centre — shows Total Sales metrics and recent activity
 
+**The MAIA Chatbot:**
+- Chat with MAIA like you would on WhatsApp — ask questions or tell it what to do
+- You can **ask** it things: "What are my unpaid invoices?" or "Show me today's orders"
+- You can **tell it to do work**: "Create a sales order for Customer A" — it will action it for you
+- You can **upload a Purchase Order (PO)** directly into the chat — MAIA reads and processes it
+- Anything done via chatbot shows up instantly in the UI — fully in sync, no double entry
+
 **Support:**
+- Key message: chatbot is not just a help assistant — it can actually **do tasks** on your behalf
+- Example: customer sends a PO via WhatsApp → you forward it to MAIA chatbot → MAIA creates the order in the system → Sales team sees it in the UI immediately
+- Chatbot covers: Order-to-Cash (quotations, sales orders, invoices), Fulfilment (delivery notes), Finance (receipts, payment vouchers), Master Data (customers, items)
 - Sidebar — **Overview**: Dashboard, My Tasks, Daily Digest
 - Sidebar — **Selling**: Customers, Items, Quotations, Sales Orders
 - Sidebar — **Billing**: Invoices, Credit Notes, Debit Notes
