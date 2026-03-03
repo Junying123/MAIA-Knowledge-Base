@@ -158,17 +158,14 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### Capturing WhatsApp Orders & OCR Data Extraction
 
 **Key Points:**
-- WhatsApp orders arrive as images → upload or forward the image to MAIA ⚠️
-- OCR engine reads item names, quantities, and prices automatically from the image ⚠️
-- Alternatively: upload the PO directly via the MAIA Chatbot — chatbot reads and prepares the order details
-- Review extracted data before confirming — fix any errors in the UI, then submit to create a Quotation
+- Customer sends an order or PO via WhatsApp → upload it directly into the **MAIA Chatbot**
+- Chatbot reads the file and extracts item names, quantities, and prices automatically
+- Open the **UI** to review the extracted details — check for any errors before proceeding
+- Once confirmed, submit in the UI to convert to a SO — no manual re-keying needed
 
 **Support:**
-- OCR accuracy depends on image quality — clearer photos give better results ⚠️
-- Key tip: always review OCR output, especially item codes and quantities
-- Do NOT proceed with known OCR errors — fix first, then create the Quotation
-- Common OCR mismatches: "1" vs "l", zero vs letter O, dashes in product codes
-- Chatbot flow: upload PO in chat → chatbot extracts order details → open UI to review → submit to create Quotation
+- Full chatbot flow: receive order/PO → upload to chatbot → chatbot extracts details → open UI → review & fix if needed → convert into a Sales Order
+- Key tip: always review chatbot output in the UI, especially item codes and quantities — do NOT submit with known errors
 
 ---
 
@@ -177,7 +174,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 **Key Points:**
 - In MAIA, orders flow through 3 linked documents: Quotation → Sales Order → Invoice
 - **Via UI:** Sales → Quotations → New → fill in Customer, Items, Payment Terms → Submit → status becomes `OPEN`
-- **Via Chatbot:** tell MAIA "Create a quotation for Customer A" — chatbot fills in the details, open UI to review and submit
+- **Via Chatbot:** tell MAIA "Create a quotation for Customer A" — chatbot creates the Quotation draft and generates the PDF automatically → share PDF with customer for approval → once customer confirms, submit the Quotation
 - **Sales Order:** From OPEN Quotation → "Convert to Sales Order" → review → Submit → Quotation becomes `ORDERED`; Sales Order becomes `TO BILL`
 - **Invoice:** From TO BILL Sales Order → "Create Invoice" → review → Submit → Invoice becomes `UNPAID`
 
