@@ -165,7 +165,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 **Support:**
 - Full chatbot flow: receive order/PO → upload to chatbot → chatbot extracts details → open UI → review & fix if needed → convert into a Sales Order
-- Key tip: always review chatbot output in the UI, especially item codes and quantities — do NOT submit with known errors
+- Key tip: always review po daat extraction output in the UI, especially item codes and quantities — do NOT submit with known errors
 
 ---
 
@@ -232,17 +232,13 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 **Key Points:**
 - **Customers module** (Sales → Customers): add company name, contact person, email, credit limit, payment terms
-- Bulk import Customers via CSV template
 - **Items module** (Sales → Items): add SKU, product name, unit price, unit of measure, product category
-- Bulk import Items via CSV for large catalogues
 
 **Support:**
 - Note: in MAIA, the module is called **Customers** (not "Clients") — found under Sales → Customers
 - Customer key fields: company name, contact person, email, credit limit (optional), payment terms
 - Item key fields: SKU, name, unit price, unit of measure, product category, stock information
 - Items also appear in the Logistics workspace with stock and warehouse data
-- Tip: clean your data in Excel before bulk importing — avoid special characters in SKU fields
-- Customer records store full transaction history for account visibility
 
 ---
 
@@ -264,7 +260,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 ---
 
-### ERP Integration Basics & Sync Management
+### ERP Integration Basics & Sync Management (NOT FOR HOLSEN YET)
 
 **Key Points:**
 - MAIA is built with integration-ready architecture
@@ -281,7 +277,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 ---
 
-### Hands-on Exercise — Build Mini Catalogue & Process Order
+### Hands-on Exercise — Build Mini Catalogue & Process Order (Instance not ready yet)
 
 **Key Points:**
 - Task 1: Add 3 new Items to the catalogue (use provided sample data)
