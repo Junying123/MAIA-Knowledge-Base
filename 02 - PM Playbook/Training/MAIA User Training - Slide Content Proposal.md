@@ -332,19 +332,20 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 ---
 
-### Fixing OCR/Data Mismatches & Sync Errors
+### Fixing Data Mismatches & Sync Errors
 
 **Key Points:**
-- OCR mismatch: edit item details directly in the Quotation `DRAFT` before submitting
-- Price mismatch: check Items catalogue (Sales → Items) → update item price if needed
+- After chatbot extracts PO data, open the UI to review — fix any mismatches before proceeding
+- Item or price mismatch: correct the details in the UI while the document is still in `DRAFT`
 - Document error after submission: use "Cancel" action with a reason — submitted documents cannot be deleted
 - Sync error: check error log → identify the field → correct in MAIA → re-sync
 - Escalation path: Data issue → fix yourself | System error → contact IT
 
 **Support:**
-- Rule: documents can only be deleted in `DRAFT` status — once submitted, cancel or amend instead
-- Common OCR mismatches: "1" vs "l", zero vs letter O, dashes in product codes
-- Do NOT submit an order with known errors — fix first, then proceed
+- Chatbot extraction review checklist: item codes correct? quantities match the PO? prices accurate?
+- Common extraction mismatches: "1" vs "l", zero vs letter O, dashes in product codes
+- Rule: documents can only be edited or deleted in `DRAFT` status — once submitted, cancel or amend instead
+- Do NOT submit with known errors — always fix in the UI first, then proceed
 - Sync error checklist: duplicate SKU? Missing required field? Invalid format? Connectivity issue?
 
 ---
