@@ -62,7 +62,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - 3 workspaces: Sales, Finance, Logistics — each tailored to a specific team
 - Role-based access: users see only what is relevant to their workspace
 - Sales sidebar sections: Overview · Selling · Billing · Payments · Fulfillment · Customer Service
-- Dashboard is the command centre — shows Total Sales metrics and recent activity
+- Dashboard is the command centre — shows key metrics: Annual Sales, Orders to Deliver, Orders to Bill, Active Customers
 
 **MAIA Chatbot:**
 - Chat with MAIA like messaging on WhatsApp — no need to navigate menus
@@ -143,11 +143,12 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 **Key Points:**
 - Login: enter company email and assigned password → click Sign In
 - Sidebar navigation groups: Overview / Selling / Billing / Payments / Fulfillment / Customer Service
-- Dashboard shows: Total Sales metrics and Sales Reports
+- Dashboard shows: Annual Sales, Sales Orders to Deliver, Sales Orders to Bill, Active Customers — all at a glance
+- MAIA Chatbot has its own phone number — each person chats via their own number, private session, no one sees each other's chat
 - MAIA Chatbot is accessible alongside the UI — both share the same login and data
 
 **Support:**
-- Demo: show the login page — both fields must be filled before the Sign In button activates
+- Demo UI: show the login page — both fields must be filled before the Sign In button activates
 - Tip: bookmark the MAIA URL and set it as your browser homepage
 - Sidebar — Selling section: Customers, Items, Quotations, Sales Orders
 - Sidebar — Billing section: Invoices, Credit Notes, Debit Notes
@@ -299,18 +300,22 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 ### Reading Dashboards & Exporting Reports
 
 **Key Points:**
-- **Sales Dashboard** (`/sales`): Total Sales metrics, pipeline health, revenue trends
-- **Finance Dashboard** (`/finance`): Cash flow, receivables, payment collection status
-- **Logistics Dashboard** (`/logistics`): Fulfillment rates, inventory levels, operational metrics
-- **Daily Digest**: per-workspace daily summary of activities — Sales, Finance, Logistics
+- **Sales Dashboard**: 4 key metrics at the top — Annual Sales, Sales Orders to Deliver, Sales Orders to Bill, Active Customers
+- Charts below the metrics: Sales Order Trends (monthly volume), Top Customers, Sales Order Analysis (Amount to Bill vs Billed), Item-Wise Annual Sales
+- **Finance Dashboard**: Cash flow, receivables, payment collection status
+- **Logistics Dashboard**: Fulfillment rates, inventory levels, operational metrics
+- **Daily Digest**: your daily workspace snapshot — shows MTD Sales, Quotes Need Action, High Impact Orders, Overdue Payments, and At-Risk Customers
+- Drill down by tab: Quotations, Orders, Customers, Delivery, Inventory, Performance — each with actionable lists
+- Quotations tab shows impact %, expiry, open days, and value — with quick actions to WhatsApp, email, or call the customer directly
 - Management view: cross-workspace consolidated dashboards for strategic oversight
 
 **Support:**
-- Sales key reports: pipeline value, conversion rates, revenue vs. targets, top customers
-- Finance key reports: Accounts Receivable Aging (who owes, overdue by how long), payment collection rate, DSO
+- Sales Dashboard metrics explained: Annual Sales (YTD revenue), Orders to Deliver (awaiting fulfillment), Orders to Bill (pending invoicing), Active Customers (engaged this year)
+- Sales Order Analysis donut chart: shows Amount to Bill vs Billed Amount — quick view of how much revenue is still pending invoicing
+- Top Customers chart: identify your highest-value customers at a glance
+- Item-Wise Annual Sales: see which products are driving the most revenue
+- Finance key reports: Accounts Receivable Aging, payment collection rate, DSO
 - Logistics key reports: fulfillment rates, on-time delivery rate, inventory accuracy
-- Daily Digest URLs: `/sales/daily-digest`, `/finance/daily-digest`, `/logistics/daily-digest`
-- Report export functionality — confirm availability in demo environment before training session ⚠️
 
 ---
 
@@ -345,7 +350,6 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - 100% Mapped = all items matched and ready to convert to a Sales Order
 - Fix in CPO while still `Pending` — once `Success`, the CPO is read-only
 - AI extraction may not always be 100% accurate — always review the CPO before converting to a Sales Order
-- Data issue → fix in MAIA yourself | System error → escalate to IT
 
 ---
 
@@ -387,7 +391,6 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 - Complete the training feedback form (5 minutes)
 - Certificate of Completion awarded to all who pass the practical test
 - Next steps: apply MAIA to your real workflow starting tomorrow
-- Support channels: [support email / helpdesk / WhatsApp group]
 
 **Support:**
 - Feedback covers: content clarity, trainer delivery, platform usability, overall satisfaction
