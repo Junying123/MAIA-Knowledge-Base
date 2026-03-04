@@ -336,17 +336,16 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 **Key Points:**
 - After chatbot extracts PO data, open the UI to review — fix any mismatches before proceeding
-- Item or price mismatch: correct the details in the UI while the document is still in `DRAFT`
-- Document error after submission: use "Cancel" action with a reason — submitted documents cannot be deleted
-- Sync error: check error log → identify the field → correct in MAIA → re-sync
-- Escalation path: Data issue → fix yourself | System error → contact IT
+- Uploaded PO creates a **Customer PO (CPO)** in `Pending` status — check the mapping % to see how much was extracted correctly
+- Items with issues are flagged — fix them directly in the CPO (SKU, quantity, price, or other fields) before moving forward
+- Once fully mapped, click **"Create Sales Order"** — CPO moves to `Success` and is done
+- If the extraction itself was wrong, use **"Re-extract"** to reprocess
 
 **Support:**
-- Chatbot extraction review checklist: item codes correct? quantities match the PO? prices accurate?
-- Common extraction mismatches: "1" vs "l", zero vs letter O, dashes in product codes
-- Rule: documents can only be edited or deleted in `DRAFT` status — once submitted, cancel or amend instead
-- Do NOT submit with known errors — always fix in the UI first, then proceed
-- Sync error checklist: duplicate SKU? Missing required field? Invalid format? Connectivity issue?
+- 100% Mapped = all items matched and ready to convert to a Sales Order
+- Fix in CPO while still `Pending` — once `Success`, the CPO is read-only
+- AI extraction may not always be 100% accurate — always review the CPO before converting to a Sales Order
+- Data issue → fix in MAIA yourself | System error → escalate to IT
 
 ---
 
