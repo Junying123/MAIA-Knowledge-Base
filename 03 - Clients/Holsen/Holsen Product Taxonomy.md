@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-02-24
+last_reviewed: 2026-03-04
 source_file: holsen_product_taxonomy.yaml
 ---
 
@@ -49,7 +49,7 @@ Products (Level 0)
         └── Abrasives and Polishing Media
 ```
 
-**Total:** 19 item groups across 4 levels (4 Level-2 categories, 12 Level-3 subcategories)
+**Total:** 19 item groups across 4 levels (4 Level-2 categories, 13 Level-3 subcategories)
 
 ---
 
@@ -188,13 +188,75 @@ The taxonomy informs how the chatbot handles product queries for Holsen:
 
 ---
 
+## Alignment Analysis (YAML × Product List × This Doc)
+
+> [!check] Cross-check performed: 2026-03-04 against `Product List - Holsen.xlsx` (201 SKUs)
+
+### ✅ What Aligns
+
+| Check | Result |
+|-------|--------|
+| All 6 UoM values in product list (`BTL`, `KG`, `L`, `OZ`, `PC`, `PCS`) | Covered by `unit_of_measure` enum ✅ |
+| All 23 CLASS values in product list | Covered by `client_class` enum ✅ |
+| Category hierarchy in YAML vs this MD | Fully in sync ✅ |
+| Attribute definitions (9 attributes, 4 sections) | Fully in sync ✅ |
+
+---
+
+### ❌ Missing Subcategories (Taxonomy Gaps vs Product List)
+
+The following `client_class` groups have significant product volume but **no dedicated Level-3 subcategory** in the taxonomy:
+
+| Missing Subcategory | Affected Class | Affected Products (count) | Example Products |
+|---------------------|---------------|--------------------------|-----------------|
+| Plating Salts - Zinc | `Zinc (M)` | 33 | Ekozin series, Zenite series, Zepro series, Zinlite 2000A, Zinc Mist CF-2 |
+| Plating Salts - Tin | `Tin (M)` | 2 | Asitin TS Brightener, Asitin TS MU |
+| Anodising Chemicals | `Anod` | 5 | HAL 204 Etch Fume Suppressant, HAL S-23, HAL Anti-Precipitation Agent |
+| Intermediates / Special | `Int.` | 2 | G70P, HP 499 |
+
+> [!warning] Largest Gap
+> **Zinc (M)** is the 2nd largest class by volume (33 SKUs, tied with Misc) — all manufactured products. They currently have no home in `Surface Treatment and Plating`, despite being analogous to the existing Copper and Nickel plating salt subcategories.
+
+---
+
+### ⚠️ Ambiguous Product-to-Subcategory Mappings
+
+These products could reasonably belong to more than one subcategory — the taxonomy does not define placement rules:
+
+| Product(s) | Class | Ambiguity |
+|------------|-------|-----------|
+| COPPER SULPHATE MANICA / MITSUBISHI / SUMITOMO | `CuSO` | **Salts and Inorganics** vs **Plating Salts - Copper** |
+| CHROMIC ACID BROCHEM / ELEMENTIS | `CA` | **Acids** (Industrial Chemicals) vs **Plating Chemistry - Chromium** |
+| COPPER CYANIDE | `CuCN` | **Cyanides** vs **Plating Salts - Copper** |
+| NICKEL CHLORIDE SIBANYE | `NICL` | **Salts and Inorganics** vs **Plating Salts - Nickel** (inconsistent class vs NICKEL CHLORIDE SUMITOMO/ZENITH which use `Ni. Chloride`) |
+| BRASS SHEET (14×48") 8 OZ & 10 OZ | `Misc` | Logically belongs in **Plating Metals and Anodes** but classified as Misc |
+| COPPER PYROPHOSPHATE | `Misc` | Logically fits **Plating Salts - Copper** or **Salts and Inorganics** |
+
+---
+
+### ⚠️ Attribute Gap: Product TYPE Not Captured
+
+The product list has a `TYPE` column distinguishing **Trading** (94 SKUs) vs **Mfg / Manufacturing** (107 SKUs). This field is **not an attribute in the taxonomy**. Confirm with the team whether MAIA needs to capture this distinction (e.g., for supplier workflows or pricing logic).
+
+---
+
+### 📋 Documentation Fix Applied
+
+- **Count corrected:** MD previously stated "12 Level-3 subcategories" — corrected to **13** (7 under Industrial Chemicals + 4 under Surface Treatment and Plating + 1 Filter Cartridges + 1 Abrasives and Polishing Media).
+
+---
+
 ## Open Questions
 
 - [ ] Who is the PM owner for Holsen? — Owner: Gareth — Due: TBD
 - [ ] Is `Poison` client class triggering any compliance flags in MAIA? — Owner: TBD
 - [ ] Should `micron_rating` be required for Filter Cartridges subcategory? — Owner: TBD
 - [ ] Are `chatbot_hints` planned for a future taxonomy version? — Owner: TBD
-- [ ] Confirm UoM completeness — does Holsen use any units not in the enum (e.g., MT, G, ML)? — Owner: TBD
+- [ ] Confirm UoM completeness — does Holsen use any units not in the enum (e.g., MT, G, ML)? — **Status: Confirmed ✅ all 6 UoMs in product list are covered** — 2026-03-04
+- [ ] Add missing subcategories: Plating Salts - Zinc (33 SKUs), Plating Salts - Tin (2 SKUs), Anodising Chemicals (5 SKUs) — Owner: TBD — Priority: High
+- [ ] Resolve ambiguous product-to-subcategory mappings (CuSO, CA, CuCN, NICL, Brass Sheets) — Owner: TBD
+- [ ] Decide whether `TYPE` (Trading vs Mfg) should be added as a taxonomy attribute — Owner: TBD
+- [ ] Align `client_class` for NICKEL CHLORIDE SIBANYE (currently `NICL`) with NICKEL CHLORIDE SUMITOMO/ZENITH (currently `Ni. Chloride`) — inconsistency in source data
 
 ---
 
