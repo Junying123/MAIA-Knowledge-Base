@@ -9,7 +9,7 @@ tags:
   - high-priority
 ---
 
-# MAIA Strategy — Trade Orchestration Layer & Product Bets SOW
+# MAIA Product Strategy — Trade Orchestration Layer & Product Bets
 
 ## Key Highlights
 
@@ -323,6 +323,7 @@ Each event includes: `tenant_id`, `actor (human/AI)`, object IDs, timestamps, co
 
 ## See Also
 
+- [[01 - MAIA Product/Overview/Product Identity]]
 - [[01 - MAIA Product/Overview/Known Limitations]]
 - [[07 - Decisions/Decision Log]]
 - [[02 - PM Playbook/Templates]]

@@ -29,10 +29,20 @@ For each client, create:
     - Requirements Log.md
     - Feature Requests & Gaps.md
     - Onboarding Status.md
-    - Meeting Notes/
-      - 2026-02-01 Kickoff.md
-      - 2026-02-15 Weekly Sync.md
+    📁 Meetings/
+      - YYYY-MM-DD-short-topic.md
+      - YYYY-MM-DD-short-topic.md
 ```
+
+### Meetings subfolder
+All client meeting notes live in `Meetings/` using date-prefixed filenames: `YYYY-MM-DD-short-topic.md` (e.g. `2026-03-09-kickoff.md`).
+
+Use [[02 - PM Playbook/Templates/[Template] Meeting Notes]] as the base for each file. Each meeting note should capture:
+- Attendees and meeting type
+- Agenda / key topics discussed
+- Decisions made
+- Action items (checkbox format with owner + due date)
+- Strategic shifts — anything that changes how we work with this client
 
 ## Creating a New Client Folder
 
