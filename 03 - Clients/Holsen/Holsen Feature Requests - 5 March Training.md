@@ -14,7 +14,10 @@ last_reviewed: 2026-03-10
 
 ## Group 1: Compliance & Tax Documentation (C1/C2/C3)
 
-> **Context:** C1/C3 = tax exemption certificates (business compliance). Jadual C2 = the schedule/table used to compile C3 transactions.
+> **Context:**
+> - **C1** = Customer's manufacturer tax exemption cert (perpetual, reusable). Holsen holds the client's C1; records cert number on invoice. C1 can be mixed with other items on the same invoice.
+> - **C3** = Per-order import-on-behalf exemption. Applied per PO + appointment letter. Quantity-based. Always standalone DO + invoice.
+> - **Jadual C2** = SST compliance schedule recording both C3 stock movements (individual transactions: incoming/outgoing qty) and C1 sales (lumpsum per customer). Submitted periodically to SST for audit.
 
 ### Requests
 
@@ -142,6 +145,18 @@ last_reviewed: 2026-03-10
 
 ---
 
+## Group 10: PSO (Poison Sign Back Order)
+
+> **Context:** PSO is required by Malaysian Pharmacy (KKM) for all deliveries of Poison License B items. Standard form — same format every time, with item name and quantity filled in. Only applies to SKUs categorised as poison items. One PSO covers one DO (e.g. a DO with 2 items, only the poison item goes on the PSO). Currently generated manually. Captured in Feb 10 transcript but not raised in March 5 session.
+
+### Requests
+
+- [ ] Auto-generate PSO when a DO is confirmed for poison-category items
+- [ ] PSO scoped to poison SKUs only — non-poison items on the same DO are excluded
+- [ ] PSO linked to the corresponding DO
+
+---
+
 ## Open Items
 
 | # | Gap | Owner | Action |
@@ -154,6 +169,12 @@ last_reviewed: 2026-03-10
 | 6 | Blanket order — precise definition + partial fulfillment tracking rules | Holsen + PM | Document workflow |
 | 7 | Peak season handling — no requirements captured | Holsen | Follow up |
 | 8 | Role permission diagram — needs to be drafted | PM | Draft mapping |
+| 9 | Jadual C2 submission frequency — Feb 10 transcript says every 3 months; March 5 notes say every 2 months. Which is correct? | Holsen + PM | Confirm with client |
+| 10 | C1 in Jadual C2 — what exactly is lumpsum C1 per customer? Total tax-exempt sales volume per customer per period? | Holsen + PM | Clarify and define columns |
+| 11 | "Sign DO by admin → tag to SO for C1/C3 compliance" — what does signing mean? What determines if a DO is tagged C1 vs C3? | Holsen + PM | Clarify with client |
+| 12 | Group 6 approval flows — proforma invoice approval (Aili → Sales) and credit term order flow (Aili + Miss Wong) — are these two separate workflows or the same flow with a variant? | Holsen + PM | Map both flows separately |
+| 13 | Full COA vs Mask COA — Feb 10 transcript mentions both types; which customers get which? | PM | Review Feb 10 transcript + request samples |
+| 14 | K1 document — import customs form tied to C3 batch/stock entry; needs to be stored in system against the batch. Not captured in March 5 requests. | PM | Add to Group 2 or create new compliance docs group |
 
 ---
 
