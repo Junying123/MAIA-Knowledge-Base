@@ -19,6 +19,11 @@ last_reviewed: 2026-03-10
 > - **C3** = Per-order import-on-behalf exemption. Applied per PO + appointment letter. Quantity-based. Always standalone DO + invoice.
 > - **Jadual C2** = SST compliance schedule recording both C3 stock movements (individual transactions: incoming/outgoing qty) and C1 sales (lumpsum per customer). Submitted periodically to SST for audit.
 
+### Client Feedback
+
+> [!note] Client Feedback on MAIA
+> Not yet captured — follow up with Holsen on their experience with current compliance tracking in MAIA.
+
 ### Requests
 
 - [ ] C3 delivery tracking with date filters (past week, past N days)
@@ -36,6 +41,11 @@ last_reviewed: 2026-03-10
 
 > **Context:** COA = Certificate of Analysis, issued per batch/lot. Holsen has existing COA templates (in imported PDFs).
 
+### Client Feedback
+
+> [!note] Client Feedback on MAIA
+> Not yet captured — follow up with Holsen on how they currently handle COA in MAIA and what's not working.
+
 ### Requests
 
 - [ ] Customer-level COA config: some customers need 1 COA, some need 2 (exact requirement still to be confirmed with client)
@@ -46,10 +56,10 @@ last_reviewed: 2026-03-10
 
 ## Group 3: Delivery Order (DO) Management
 
-### Feedback
+### Client Feedback
 
-> [!warning] Current Pain Points
-> - Some PO fields are currently empty on DO / invoice records
+> [!quote] Client Feedback on MAIA
+> - PO fields are showing up empty on DO and invoice records in MAIA
 
 ### Requests
 
@@ -64,11 +74,11 @@ last_reviewed: 2026-03-10
 
 ## Group 4: Order Management
 
-### Feedback
+### Client Feedback
 
-> [!warning] Current Pain Points
-> - Orders are being missed for delivery — no alert when a scheduled delivery is overdue
-> - Blanket orders lose track of unfulfilled lines: after the 1st delivery is fulfilled, 2nd/3rd pending deliveries are getting dropped
+> [!quote] Client Feedback on MAIA
+> - No alert in MAIA when a scheduled delivery is overdue — orders are being missed
+> - After the 1st delivery on a blanket order is fulfilled, MAIA drops the remaining unfulfilled lines
 
 ### Requests
 
@@ -80,6 +90,11 @@ last_reviewed: 2026-03-10
 ---
 
 ## Group 5: Inventory & Lot Management
+
+### Client Feedback
+
+> [!note] Client Feedback on MAIA
+> Not yet captured — follow up with Holsen on their experience with current inventory and lot management in MAIA.
 
 ### Requests
 
@@ -93,10 +108,11 @@ last_reviewed: 2026-03-10
 
 ## Group 6: Finance & Invoice Approval Workflow
 
-### Feedback
+### Client Feedback
 
-> [!warning] Current Pain Points
-> - Current process is fragmented: Logistics handles DO and e-invoice generation separately from Finance, with no unified approval flow in MAIA — causes coordination gaps
+> [!quote] Client Feedback on MAIA
+> - Logistics and Finance work in disconnected flows in MAIA — no unified approval chain, causing coordination gaps between teams
+> - e-Invoice generation is disconnected from DO confirmation and payment triggers
 
 ### Requests
 
@@ -110,6 +126,11 @@ last_reviewed: 2026-03-10
 
 ## Group 7: Access Control & Role Permissions
 
+### Client Feedback
+
+> [!note] Client Feedback on MAIA
+> Not yet captured — follow up with Holsen on current access control issues they have observed in MAIA.
+
 ### Requests
 
 - [ ] Salesperson: can only view their own customers; no access to full customer DB
@@ -121,6 +142,11 @@ last_reviewed: 2026-03-10
 
 ## Group 8: Pricing & Product Master
 
+### Client Feedback
+
+> [!note] Client Feedback on MAIA
+> Not yet captured — follow up with Holsen on their experience with current pricing and product master configuration in MAIA.
+
 ### Requests
 
 - [ ] Same customer, different price at item level (customer-item price matrix)
@@ -131,10 +157,10 @@ last_reviewed: 2026-03-10
 
 ## Group 9: Analytics & Dashboard
 
-### Feedback
+### Client Feedback
 
-> [!warning] Current Pain Points
-> - No direct link or shortcut to the daily digest from main navigation — users cannot find it easily
+> [!quote] Client Feedback on MAIA
+> - No direct link or shortcut to the daily digest from main MAIA navigation — users cannot find it easily
 
 ### Requests
 
@@ -149,6 +175,11 @@ last_reviewed: 2026-03-10
 
 > **Context:** PSO is required by Malaysian Pharmacy (KKM) for all deliveries of Poison License B items. Standard form — same format every time, with item name and quantity filled in. Only applies to SKUs categorised as poison items. One PSO covers one DO (e.g. a DO with 2 items, only the poison item goes on the PSO). Currently generated manually. Captured in Feb 10 transcript but not raised in March 5 session.
 
+### Client Feedback
+
+> [!note] Client Feedback on MAIA
+> Not yet captured — follow up with Holsen on their experience with PSO generation in MAIA (or outside MAIA if not yet supported).
+
 ### Requests
 
 - [ ] Auto-generate PSO when a DO is confirmed for poison-category items
@@ -159,22 +190,22 @@ last_reviewed: 2026-03-10
 
 ## Open Items
 
-| # | Gap | Owner | Action |
-|---|-----|-------|--------|
-| 1 | Notification triggers — what events, what timing, who receives | Holsen + PM | Clarify with client |
-| 2 | Projected qty — current logic vs. desired state | Tech team | Schedule discussion |
-| 3 | Sticker label templates — per-customer formats | Holsen | Request files |
-| 4 | COA templates — confirm which PDFs contain them | PM | Review imported PDFs |
-| 5 | Verbal order — exact capture process Holsen wants | Holsen | Clarify |
-| 6 | Blanket order — precise definition + partial fulfillment tracking rules | Holsen + PM | Document workflow |
-| 7 | Peak season handling — no requirements captured | Holsen | Follow up |
-| 8 | Role permission diagram — needs to be drafted | PM | Draft mapping |
-| 9 | Jadual C2 submission frequency — Feb 10 transcript says every 3 months; March 5 notes say every 2 months. Which is correct? | Holsen + PM | Confirm with client |
-| 10 | C1 in Jadual C2 — what exactly is lumpsum C1 per customer? Total tax-exempt sales volume per customer per period? | Holsen + PM | Clarify and define columns |
-| 11 | "Sign DO by admin → tag to SO for C1/C3 compliance" — what does signing mean? What determines if a DO is tagged C1 vs C3? | Holsen + PM | Clarify with client |
-| 12 | Group 6 approval flows — proforma invoice approval (Aili → Sales) and credit term order flow (Aili + Miss Wong) — are these two separate workflows or the same flow with a variant? | Holsen + PM | Map both flows separately |
-| 13 | Full COA vs Mask COA — Feb 10 transcript mentions both types; which customers get which? | PM | Review Feb 10 transcript + request samples |
-| 14 | K1 document — import customs form tied to C3 batch/stock entry; needs to be stored in system against the batch. Not captured in March 5 requests. | PM | Add to Group 2 or create new compliance docs group |
+| #   | Gap                                                                                                                                                                                 | Owner       | Action                                             |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------- |
+| 1   | Notification triggers — what events, what timing, who receives                                                                                                                      | Holsen + PM | Clarify with client                                |
+| 2   | Projected qty — current logic vs. desired state                                                                                                                                     | Tech team   | Schedule discussion                                |
+| 3   | Sticker label templates — per-customer formats                                                                                                                                      | Holsen      | Request files                                      |
+| 4   | COA templates — confirm which PDFs contain them                                                                                                                                     | PM          | Review imported PDFs                               |
+| 5   | Verbal order — exact capture process Holsen wants                                                                                                                                   | Holsen      | Clarify                                            |
+| 6   | Blanket order — precise definition + partial fulfillment tracking rules                                                                                                             | Holsen + PM | Document workflow                                  |
+| 7   | Peak season handling — no requirements captured                                                                                                                                     | Holsen      | Follow up                                          |
+| 8   | Role permission diagram — needs to be drafted                                                                                                                                       | PM          | Draft mapping                                      |
+| 9   | Jadual C2 submission frequency — Feb 10 transcript says every 3 months; March 5 notes say every 2 months. Which is correct?                                                         | Holsen + PM | Confirm with client                                |
+| 10  | C1 in Jadual C2 — what exactly is lumpsum C1 per customer? Total tax-exempt sales volume per customer per period?                                                                   | Holsen + PM | Clarify and define columns                         |
+| 11  | "Sign DO by admin → tag to SO for C1/C3 compliance" — what does signing mean? What determines if a DO is tagged C1 vs C3?                                                           | Holsen + PM | Clarify with client                                |
+| 12  | Group 6 approval flows — proforma invoice approval (Aili → Sales) and credit term order flow (Aili + Miss Wong) — are these two separate workflows or the same flow with a variant? | Holsen + PM | Map both flows separately                          |
+| 13  | Full COA vs Mask COA — Feb 10 transcript mentions both types; which customers get which?                                                                                            | PM          | Review Feb 10 transcript + request samples         |
+| 14  | K1 document — import customs form tied to C3 batch/stock entry; needs to be stored in system against the batch. Not captured in March 5 requests.                                   | PM          | Add to Group 2 or create new compliance docs group |
 
 ---
 
