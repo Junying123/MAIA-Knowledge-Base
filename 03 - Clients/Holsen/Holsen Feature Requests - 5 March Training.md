@@ -16,6 +16,8 @@ last_reviewed: 2026-03-10
 
 > **Context:** C1/C3 = tax exemption certificates (business compliance). Jadual C2 = the schedule/table used to compile C3 transactions.
 
+### Requests
+
 - [ ] C3 delivery tracking with date filters (past week, past N days)
 - [ ] Reminder/notification to prompt users to log C3 transactions — prevents missed entries
 - [ ] Record C3 transactions into Jadual C2 table
@@ -31,6 +33,8 @@ last_reviewed: 2026-03-10
 
 > **Context:** COA = Certificate of Analysis, issued per batch/lot. Holsen has existing COA templates (in imported PDFs).
 
+### Requests
+
 - [ ] Customer-level COA config: some customers need 1 COA, some need 2 (exact requirement still to be confirmed with client)
 - [ ] Different COA fields per customer — same template base, different visible fields per customer
 - [ ] COA linked to lot number / batch
@@ -38,6 +42,13 @@ last_reviewed: 2026-03-10
 ---
 
 ## Group 3: Delivery Order (DO) Management
+
+### Feedback
+
+> [!warning] Current Pain Points
+> - Some PO fields are currently empty on DO / invoice records
+
+### Requests
 
 - [ ] DO format: 1 DO = 1 page; every page must carry the DO number
 - [ ] Multiple DOs can be bundled into one PDF, attached to one invoice
@@ -50,6 +61,14 @@ last_reviewed: 2026-03-10
 
 ## Group 4: Order Management
 
+### Feedback
+
+> [!warning] Current Pain Points
+> - Orders are being missed for delivery — no alert when a scheduled delivery is overdue
+> - Blanket orders lose track of unfulfilled lines: after the 1st delivery is fulfilled, 2nd/3rd pending deliveries are getting dropped
+
+### Requests
+
 - [ ] Same item, different shape/SKU/lot — product master must support this variation
 - [ ] Blanket order tracking: 1st delivery fulfilled, 2nd/3rd delivery pending — system must not drop unfulfilled lines
 - [ ] Alert: orders missed for delivery (avoid blanket order fulfillment gaps)
@@ -58,6 +77,8 @@ last_reviewed: 2026-03-10
 ---
 
 ## Group 5: Inventory & Lot Management
+
+### Requests
 
 - [ ] Full picklist workflow: SO → picklist (select lot number via dropdown) → confirm pick (lot + qty) → notify logistics → DO → Invoice
 - [ ] Picklist UI: available lot numbers shown as dropdown, with remark field (e.g. wrong lot number)
@@ -69,6 +90,13 @@ last_reviewed: 2026-03-10
 
 ## Group 6: Finance & Invoice Approval Workflow
 
+### Feedback
+
+> [!warning] Current Pain Points
+> - Current process is fragmented: Logistics handles DO and e-invoice generation separately from Finance, with no unified approval flow in MAIA — causes coordination gaps
+
+### Requests
+
 - [ ] 2-step approval for proforma invoice: Aili approves → Sales receives and sends to customer
 - [ ] Payment received → triggers e-Invoice generation → 2nd approval (Miss Wong) → issue
 - [ ] Credit term orders: Aili checks SO + DO → Miss Wong generates e-Invoice + invoice → payment triggers issuance
@@ -79,6 +107,8 @@ last_reviewed: 2026-03-10
 
 ## Group 7: Access Control & Role Permissions
 
+### Requests
+
 - [ ] Salesperson: can only view their own customers; no access to full customer DB
 - [ ] New customer onboarding: admin creates or approves, then assigns to salesperson
 - [ ] Role-based approval: define who can approve proforma invoice per role
@@ -88,6 +118,8 @@ last_reviewed: 2026-03-10
 
 ## Group 8: Pricing & Product Master
 
+### Requests
+
 - [ ] Same customer, different price at item level (customer-item price matrix)
 - [ ] Product taxonomy: review "class" column in product list *(open item)*
 - [ ] Product data sheet + safety data sheet — Holsen to provide files
@@ -95,6 +127,13 @@ last_reviewed: 2026-03-10
 ---
 
 ## Group 9: Analytics & Dashboard
+
+### Feedback
+
+> [!warning] Current Pain Points
+> - No direct link or shortcut to the daily digest from main navigation — users cannot find it easily
+
+### Requests
 
 - [ ] Daily digest: key metrics (high-value customers, revenue trends)
 - [ ] Navigation: add direct link/shortcut to daily digest
