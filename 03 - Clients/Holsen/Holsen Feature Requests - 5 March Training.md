@@ -17,7 +17,7 @@ last_reviewed: 2026-03-10
 > **Context:**
 > - **C1** = Customer's manufacturer tax exemption cert (perpetual, reusable). Holsen holds the client's C1; records cert number on invoice. C1 can be mixed with other items on the same invoice.
 > - **C3** = Per-order import-on-behalf exemption. Applied per PO + appointment letter. Quantity-based. Always standalone DO + invoice.
-> - **Jadual C2** = SST compliance schedule recording both C3 stock movements (individual transactions: incoming/outgoing qty) and C1 sales (lumpsum per customer). Submitted periodically to SST for audit.
+> - **Jadual C2** = SST compliance schedule maintained by Holsen (not a MAIA feature). Records both C3 stock movements (individual transactions: incoming/outgoing qty) and C1 sales (lumpsum per customer). Submitted periodically to SST for audit. **MAIA's role is to provide the structured data and exports that Holsen uses to populate this report — not to build or host the Jadual C2 table itself.**
 
 ### Client Feedback
 
@@ -32,35 +32,36 @@ last_reviewed: 2026-03-10
   
 
 - [ ] **Reminder/notification to prompt users to log C3 transactions — prevents missed entries**
-  - C3 exemptions are per-order, not perpetual — a missing entry means an incomplete Jadual C2 record and potential SST audit risk.
-  - Trigger: when a DO is confirmed for a C3-tagged SO, the system should push a notification to the responsible user (e.g. logistics or compliance) to log the corresponding C3 transaction into Jadual C2.
+  - C3 exemptions are per-order, not perpetual — a missing entry in MAIA means Holsen's data will be incomplete when they fill in their Jadual C2, creating SST audit risk.
+  - Trigger: when a DO is confirmed for a C3-tagged SO, the system should push a notification to the responsible user (e.g. logistics or compliance) to ensure the C3 transaction details are properly recorded in MAIA so the data is available for Holsen's compliance reporting.
   
 
-- [ ] **Record C3 transactions into Jadual C2 table**
-  - Each C3 stock movement must be captured as an individual row in the Jadual C2 table within MAIA: both **incoming qty** (when C3 stock arrives) and **outgoing qty** (when C3 stock is delivered to customer).
-  - This replaces the current manual external spreadsheet process and keeps the compliance record auditable inside MAIA.
+- [ ] **Record C3 transactions in MAIA (to feed Holsen's Jadual C2)**
+  - MAIA must capture each C3 stock movement as a structured record: both **incoming qty** (when C3 stock arrives) and **outgoing qty** (when C3 stock is delivered to customer).
+  - Holsen then uses this data to populate their Jadual C2 compliance report — MAIA is the data source, not the report itself.
+  - Required fields per record: date, PO ref, appointment letter ref, item/SKU, incoming qty, outgoing qty, linked DO/invoice number.
   
 
 - [ ] **Filter view combining C1 and C3 records**
-  - A single unified compliance view that displays both C1 and C3 records side by side (or with a toggle), since both feed into the Jadual C2 submission.
-  - C1 rows = lumpsum per customer per period; C3 rows = individual transactions per delivery.
-  - Holsen's compliance officer needs this consolidated view to prepare and cross-check the Jadual C2 before SST submission, without switching between separate modules.
+  - A single unified view in MAIA displaying both C1 and C3 records, since both feed into Holsen's Jadual C2 report.
+  - C1 rows = aggregated per customer per period; C3 rows = individual transactions per delivery.
+  - Holsen's compliance officer uses this view to review and extract the data they need before manually completing the Jadual C2 — without having to cross-reference separate modules.
 
 - [ ] **Auto-export document bundle every 2 months: customer invoice + supplier invoice + delivery note (scoped to C1/C3 records)**
-  - At the close of each Jadual C2 reporting period (frequency TBC — see Open Item #9), MAIA should compile and export a document bundle for all C1 and C3 transactions within that period.
+  - At the close of each reporting period (frequency TBC — see Open Item #9), MAIA should compile and export a document bundle that Holsen attaches to their Jadual C2 submission for SST audit.
   - Bundle per transaction: customer invoice + corresponding supplier invoice + delivery note.
-  - Export format: single PDF or zipped package, organised by customer or by PO, for audit submission to SST.
+  - Export format: single PDF or zipped package, organised by customer or by PO.
   - Only records tagged C1 or C3 are included — non-exempt transactions are excluded.
 
 - [ ] **Sign DO by admin → tag to SO for C1/C3 compliance**
-  - When an admin reviews and signs off a DO (digital approval action), the system should automatically tag the corresponding SO as either C1 or C3, based on the exemption type linked to that order.
-  - This tagging drives downstream Jadual C2 population: C1-tagged SOs contribute to the lumpsum C1 column; C3-tagged SOs generate individual transaction rows.
+  - When an user reviews and signs off a DO (digital approval action), the system should automatically tag the corresponding SO as either C1 or C3, based on the exemption type linked to that order.
+  - This tagging ensures MAIA's data is correctly categorised so Holsen can accurately separate C1 vs C3 records when filling in their Jadual C2 report.
   - **Open item (#11):** Exact definition of "signing" (is it a status change, a signature field, or an approval button?) and the logic for determining C1 vs C3 tagging (is it driven by customer cert on file, or by the PO/appointment letter?) must be confirmed with Holsen.
 
-- [ ] **Lumpsum C1 per customer within Jadual C2**
-  - Unlike C3 (individual transaction rows), C1 exemptions are recorded in Jadual C2 as a **single aggregated figure per customer per reporting period** — the total tax-exempt sales volume for that customer within the period.
-  - MAIA should aggregate all C1-tagged invoices per customer and present the lumpsum in the appropriate Jadual C2 column, auto-calculated at period close.
-  - **Open item (#10):** Exact definition of "lumpsum C1 per customer" — whether it is total invoice value, total qty, or total tax-exempt line items — must be confirmed with Holsen before column design is finalised.
+- [ ] **Lumpsum C1 per customer — aggregated view in MAIA (to feed Holsen's Jadual C2)**
+  - Unlike C3 (individual transaction records), C1 exemptions are reported as a **single aggregated figure per customer per reporting period** in Jadual C2 — the total tax-exempt sales volume for that customer.
+  - MAIA should calculate and surface this lumpsum per customer per period so Holsen can copy or export it directly into their Jadual C2 without manual calculation.
+  - **Open item (#10):** Whether "lumpsum" means total invoice value, total qty, or total tax-exempt line items must be confirmed with Holsen before this view can be designed.
 
 - [ ] **e-Invoice (LHDN) approval step before submission — configurable: auto-approve or manual**
   - Before an e-Invoice is submitted to LHDN (Malaysia's Inland Revenue Board), a configurable approval gate must be inserted in the workflow.
