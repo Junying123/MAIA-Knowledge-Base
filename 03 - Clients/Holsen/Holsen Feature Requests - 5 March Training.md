@@ -26,14 +26,48 @@ last_reviewed: 2026-03-10
 
 ### Requests
 
-- [ ] C3 delivery tracking with date filters (past week, past N days)
-- [ ] Reminder/notification to prompt users to log C3 transactions — prevents missed entries
-- [ ] Record C3 transactions into Jadual C2 table
-- [ ] Filter view combining C1 and C3 records
-- [ ] Auto-export document bundle every 2 months: customer invoice + supplier invoice + delivery note (scoped to C1/C3 records)
-- [ ] Sign DO by admin → tag to SO for C1/C3 compliance
-- [ ] Lumpsum C1 per customer within Jadual C2
-- [ ] e-Invoice (LHDN) approval step before submission — configurable: auto-approve or manual
+- [ ] **C3 delivery tracking with date filters (past week, past N days)**
+  - A dedicated tracking view listing all C3 transactions (import-on-behalf deliveries), filterable by delivery date range (e.g. past 7 days, past N days).
+  - Since C3 is quantity-based and tied to a specific PO + appointment letter, the compliance team needs to quickly audit recent C3 activity — especially before preparing the Jadual C2 submission.
+  
+
+- [ ] **Reminder/notification to prompt users to log C3 transactions — prevents missed entries**
+  - C3 exemptions are per-order, not perpetual — a missing entry means an incomplete Jadual C2 record and potential SST audit risk.
+  - Trigger: when a DO is confirmed for a C3-tagged SO, the system should push a notification to the responsible user (e.g. logistics or compliance) to log the corresponding C3 transaction into Jadual C2.
+  
+
+- [ ] **Record C3 transactions into Jadual C2 table**
+  - Each C3 stock movement must be captured as an individual row in the Jadual C2 table within MAIA: both **incoming qty** (when C3 stock arrives) and **outgoing qty** (when C3 stock is delivered to customer).
+  - This replaces the current manual external spreadsheet process and keeps the compliance record auditable inside MAIA.
+  
+
+- [ ] **Filter view combining C1 and C3 records**
+  - A single unified compliance view that displays both C1 and C3 records side by side (or with a toggle), since both feed into the Jadual C2 submission.
+  - C1 rows = lumpsum per customer per period; C3 rows = individual transactions per delivery.
+  - Holsen's compliance officer needs this consolidated view to prepare and cross-check the Jadual C2 before SST submission, without switching between separate modules.
+
+- [ ] **Auto-export document bundle every 2 months: customer invoice + supplier invoice + delivery note (scoped to C1/C3 records)**
+  - At the close of each Jadual C2 reporting period (frequency TBC — see Open Item #9), MAIA should compile and export a document bundle for all C1 and C3 transactions within that period.
+  - Bundle per transaction: customer invoice + corresponding supplier invoice + delivery note.
+  - Export format: single PDF or zipped package, organised by customer or by PO, for audit submission to SST.
+  - Only records tagged C1 or C3 are included — non-exempt transactions are excluded.
+
+- [ ] **Sign DO by admin → tag to SO for C1/C3 compliance**
+  - When an admin reviews and signs off a DO (digital approval action), the system should automatically tag the corresponding SO as either C1 or C3, based on the exemption type linked to that order.
+  - This tagging drives downstream Jadual C2 population: C1-tagged SOs contribute to the lumpsum C1 column; C3-tagged SOs generate individual transaction rows.
+  - **Open item (#11):** Exact definition of "signing" (is it a status change, a signature field, or an approval button?) and the logic for determining C1 vs C3 tagging (is it driven by customer cert on file, or by the PO/appointment letter?) must be confirmed with Holsen.
+
+- [ ] **Lumpsum C1 per customer within Jadual C2**
+  - Unlike C3 (individual transaction rows), C1 exemptions are recorded in Jadual C2 as a **single aggregated figure per customer per reporting period** — the total tax-exempt sales volume for that customer within the period.
+  - MAIA should aggregate all C1-tagged invoices per customer and present the lumpsum in the appropriate Jadual C2 column, auto-calculated at period close.
+  - **Open item (#10):** Exact definition of "lumpsum C1 per customer" — whether it is total invoice value, total qty, or total tax-exempt line items — must be confirmed with Holsen before column design is finalised.
+
+- [ ] **e-Invoice (LHDN) approval step before submission — configurable: auto-approve or manual**
+  - Before an e-Invoice is submitted to LHDN (Malaysia's Inland Revenue Board), a configurable approval gate must be inserted in the workflow.
+  - **Auto-approve mode:** system submits the e-Invoice automatically once the upstream trigger is met (e.g. payment received, or DO confirmed).
+  - **Manual approval mode:** a designated approver (e.g. Miss Wong per Group 6 workflow) must review and explicitly approve the e-Invoice before it is sent to LHDN.
+  - The approval mode should be configurable per company or per document type, not hardcoded.
+  - This checkpoint connects directly to the Group 6 finance approval flows — see Open Item #12 for clarification on whether these are the same workflow or separate variants.
 
 ---
 
@@ -185,6 +219,21 @@ last_reviewed: 2026-03-10
 - [ ] Auto-generate PSO when a DO is confirmed for poison-category items
 - [ ] PSO scoped to poison SKUs only — non-poison items on the same DO are excluded
 - [ ] PSO linked to the corresponding DO
+
+---
+
+## Group 11: Reminders & Alerts
+
+### Client Feedback
+
+> [!note] Client Feedback on MAIA
+> Not yet captured — follow up with Holsen on whether they currently receive any system notifications from MAIA, and through what channel (in-app, email, Lark).
+
+### Requests
+
+- [ ] **C3 transaction logging reminder** — trigger when a C3-tagged SO/DO is confirmed but no Jadual C2 entry has been recorded within X days. Prevents missed compliance entries. *(depends on Open Item #1 and #9)*
+- [ ] **Overdue delivery alert** — trigger when a scheduled delivery date has passed and the DO is not yet confirmed/fulfilled. Notify relevant user to follow up. *(depends on Open Item #1)*
+- [ ] **Jadual C2 export reminder** — periodic reminder aligned to submission cycle (see Open Item #9) to prompt the compliance document bundle export for C1/C3 records. *(depends on Open Item #1 and #9)*
 
 ---
 
