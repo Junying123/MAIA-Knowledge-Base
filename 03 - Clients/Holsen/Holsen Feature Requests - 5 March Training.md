@@ -12,7 +12,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-## Group 1: Compliance & Tax Documentation (C1/C2/C3)
+## Group 1: Compliance & Tax Documentation (C1/C3)
 
 > **Context:**
 > - **C1** = Customer's manufacturer tax exemption cert (perpetual, reusable). Holsen holds the client's C1; records cert number on invoice. C1 can be mixed with other items on the same invoice.
