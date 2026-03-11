@@ -3,6 +3,8 @@
     "github@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "obsidian@obsidian-skills": true,
-    "claude-md-management@claude-plugins-official": true
+    "claude-md-management@claude-plugins-official": true,
+    "everything-claude-code@everything-claude-code": true,
+    "code-simplifier@claude-plugins-official": true
   }
 }
