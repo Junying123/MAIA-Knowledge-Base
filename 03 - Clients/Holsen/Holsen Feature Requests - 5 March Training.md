@@ -30,10 +30,12 @@ last_reviewed: 2026-03-10
 
 #### 1. C3 Delivery Tracking with Date Filters
 
+> **Role:** Admin *(compliance tasks currently sit with Admin — dedicated Compliance role TBC, see Open Item #8)*
+
 **User Story**
-1. As a compliance officer, I want to view all C3 deliveries filtered by date range, so I can audit recent C3 activity before preparing the Jadual C2 submission.
+1. As an Admin, I want to view all C3 deliveries filtered by date range, so I can audit recent C3 activity before preparing the Jadual C2 submission.
    1. Scenario: Reviewing last week's C3 deliveries before Jadual C2 prep
-      1. Compliance officer opens the C3 tracking view in MAIA
+      1. Admin opens the C3 tracking view in MAIA
       2. Selects a date filter (e.g. past 7 days or custom range)
       3. System returns all C3 transactions within that range
 
@@ -47,12 +49,14 @@ last_reviewed: 2026-03-10
 
 #### 2. Reminder / Notification to Log C3 Transactions
 
+> **Role:** Logistics *(confirms the DO and triggers the event)* → notifies **Admin** *(responsible for C3 record logging)*
+
 **User Story**
-1. As a logistics or compliance user, I want to receive a notification when a C3 DO is confirmed but no C3 transaction has been recorded in MAIA, so I don't miss entries that Holsen needs for their Jadual C2.
+1. As a Logistics user, I want the system to send a notification to Admin when I confirm a C3 DO and no C3 transaction has been recorded in MAIA, so the Admin doesn't miss entries needed for the Jadual C2.
    1. Scenario: DO confirmed for a C3-tagged SO with no transaction recorded
       1. Logistics user confirms a DO linked to a C3-tagged SO
       2. System checks whether a C3 transaction record exists for that DO
-      3. If no record exists, system sends a notification to the responsible user
+      3. If no record exists, system sends a notification to Admin
 
 **Acceptance Criteria**
 1. Notification is triggered when a DO is confirmed and its linked SO is tagged C3
@@ -64,15 +68,17 @@ last_reviewed: 2026-03-10
 
 #### 3. Record C3 Transactions in MAIA
 
+> **Role:** Admin *(logs stock entries and links to compliance records)*
+
 **User Story**
-1. As a compliance officer, I want to record each C3 stock movement (incoming and outgoing qty) in MAIA, so Holsen has accurate and complete data to populate their Jadual C2 report.
+1. As an Admin, I want to record each C3 stock movement (incoming and outgoing qty) in MAIA, so Holsen has accurate and complete data to populate their Jadual C2 report.
    1. Scenario: Recording incoming C3 stock on arrival
       1. C3 stock arrives against a PO + appointment letter
-      2. User creates an incoming C3 transaction record in MAIA
+      2. Admin creates an incoming C3 transaction record in MAIA
       3. System saves the record and links it to the corresponding PO and appointment letter
    2. Scenario: Recording outgoing C3 stock on delivery
-      1. C3 delivery is confirmed via DO
-      2. User records outgoing qty in MAIA
+      1. Logistics confirms the DO for a C3 delivery
+      2. Admin records outgoing qty in MAIA
       3. System links the record to the DO and invoice
 
 **Acceptance Criteria**
@@ -86,10 +92,12 @@ last_reviewed: 2026-03-10
 
 #### 4. Unified Filter View for C1 and C3 Records
 
+> **Role:** Admin *(reviews and exports compliance data for Jadual C2 preparation)*
+
 **User Story**
-1. As a compliance officer, I want a single view in MAIA showing both C1 and C3 records together, so I can review all exemption activity in one place when preparing the Jadual C2.
+1. As an Admin, I want a single view in MAIA showing both C1 and C3 records together, so I can review all exemption activity in one place when preparing the Jadual C2.
    1. Scenario: Preparing data for Jadual C2 submission
-      1. Compliance officer opens the unified compliance view
+      1. Admin opens the unified compliance view
       2. Applies a period filter for the current reporting cycle
       3. System displays C1 aggregated rows per customer and C3 individual transaction rows in the same view
 
@@ -104,10 +112,12 @@ last_reviewed: 2026-03-10
 
 #### 5. Auto-Export Document Bundle (C1/C3 Records)
 
+> **Role:** Admin *(triggers export and submits bundle to SST)*
+
 **User Story**
-1. As a compliance officer, I want MAIA to compile and export a document bundle of all C1/C3 records at the end of each reporting period, so I have supporting documents ready to attach to the Jadual C2 SST audit submission.
+1. As an Admin, I want MAIA to compile and export a document bundle of all C1/C3 records at the end of each reporting period, so I have supporting documents ready to attach to the Jadual C2 SST audit submission.
    1. Scenario: End-of-period export triggered
-      1. Compliance officer triggers export at the close of the reporting period (manual trigger or scheduled)
+      1. Admin triggers export at the close of the reporting period (manual trigger or scheduled)
       2. System compiles customer invoice + supplier invoice + delivery note for each C1/C3 transaction in the period
       3. System generates a single PDF or ZIP package
 
@@ -122,8 +132,10 @@ last_reviewed: 2026-03-10
 
 #### 6. Admin Signs DO → Auto-Tag SO for C1/C3 Compliance
 
+> **Role:** Admin *(performs DO sign-off; Logistics creates the DO)*
+
 **User Story**
-1. As an admin, I want to sign off a DO and have the system automatically tag the corresponding SO as C1 or C3, so compliance records are correctly categorised without requiring manual re-entry.
+1. As an Admin, I want to sign off a DO and have the system automatically tag the corresponding SO as C1 or C3, so compliance records are correctly categorised without requiring manual re-entry.
    1. Scenario: Admin signs a DO for a C3 order
       1. Admin reviews the DO in MAIA
       2. Admin performs the sign-off action (mechanism TBC — Open Item #11)
@@ -142,10 +154,12 @@ last_reviewed: 2026-03-10
 
 #### 7. Lumpsum C1 per Customer — Aggregated View
 
+> **Role:** Admin *(reviews aggregated C1 data and uses it to fill in Jadual C2)*
+
 **User Story**
-1. As a compliance officer, I want MAIA to display a lumpsum C1 figure per customer per reporting period, so I can copy or export it directly into the Jadual C2 without manual calculation.
+1. As an Admin, I want MAIA to display a lumpsum C1 figure per customer per reporting period, so I can copy or export it directly into the Jadual C2 without manual calculation.
    1. Scenario: Reviewing C1 lumpsum before Jadual C2 submission
-      1. Compliance officer opens the C1 summary view
+      1. Admin opens the C1 summary view
       2. Selects the reporting period
       3. System displays one row per customer with the aggregated C1 figure for that period
 
@@ -160,15 +174,21 @@ last_reviewed: 2026-03-10
 
 #### 8. e-Invoice (LHDN) Configurable Approval Step
 
+> **Roles involved:**
+> - **Finance – Aili** — approves proforma invoice; confirms SO + DO for credit term orders
+> - **Finance – Miss Wong** — generates e-Invoice + invoice; final approval before LHDN submission
+> - **Sales** — receives approved proforma from Aili and sends to customer
+> - **Admin** — configures approval mode (auto vs manual) at the system level
+
 **User Story**
-1. As an admin or finance user, I want a configurable approval gate before e-Invoices are submitted to LHDN, so I can choose between auto-submission and manual review depending on the workflow.
+1. As Finance (Miss Wong), I want a configurable approval gate before e-Invoices are submitted to LHDN, so I can review and authorise submissions or allow the system to auto-submit based on company policy.
    1. Scenario: Manual approval mode — credit term order
-      1. Trigger condition is met (e.g. SO + DO confirmed by Aili)
-      2. System creates a pending e-Invoice and notifies the designated approver (e.g. Miss Wong)
+      1. Aili confirms SO + DO; trigger condition is met
+      2. System creates a pending e-Invoice and notifies Miss Wong
       3. Miss Wong reviews and approves or rejects
       4. On approval, system submits the e-Invoice to LHDN
-   2. Scenario: Auto-approve mode
-      1. Trigger condition is met (e.g. payment received)
+   2. Scenario: Auto-approve mode — standard order with payment received
+      1. Payment received trigger is met
       2. System auto-approves and submits e-Invoice to LHDN without manual intervention
 
 **Acceptance Criteria**
