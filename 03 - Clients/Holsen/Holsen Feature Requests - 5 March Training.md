@@ -24,51 +24,160 @@ last_reviewed: 2026-03-10
 > [!note] Client Feedback on MAIA
 > Not yet captured — follow up with Holsen on their experience with current compliance tracking in MAIA.
 
-### Requests
+### User Stories & Acceptance Criteria
 
-- [ ] **C3 delivery tracking with date filters (past week, past N days)**
-  - A dedicated tracking view listing all C3 transactions (import-on-behalf deliveries), filterable by delivery date range (e.g. past 7 days, past N days).
-  - Since C3 is quantity-based and tied to a specific PO + appointment letter, the compliance team needs to quickly audit recent C3 activity — especially before preparing the Jadual C2 submission.
-  
+---
 
-- [ ] **Reminder/notification to prompt users to log C3 transactions — prevents missed entries**
-  - C3 exemptions are per-order, not perpetual — a missing entry in MAIA means Holsen's data will be incomplete when they fill in their Jadual C2, creating SST audit risk.
-  - Trigger: when a DO is confirmed for a C3-tagged SO, the system should push a notification to the responsible user (e.g. logistics or compliance) to ensure the C3 transaction details are properly recorded in MAIA so the data is available for Holsen's compliance reporting.
-  
+#### 1. C3 Delivery Tracking with Date Filters
 
-- [ ] **Record C3 transactions in MAIA (to feed Holsen's Jadual C2)**
-  - MAIA must capture each C3 stock movement as a structured record: both **incoming qty** (when C3 stock arrives) and **outgoing qty** (when C3 stock is delivered to customer).
-  - Holsen then uses this data to populate their Jadual C2 compliance report — MAIA is the data source, not the report itself.
-  - Required fields per record: date, PO ref, appointment letter ref, item/SKU, incoming qty, outgoing qty, linked DO/invoice number.
-  
+**User Story**
+1. As a compliance officer, I want to view all C3 deliveries filtered by date range, so I can audit recent C3 activity before preparing the Jadual C2 submission.
+   1. Scenario: Reviewing last week's C3 deliveries before Jadual C2 prep
+      1. Compliance officer opens the C3 tracking view in MAIA
+      2. Selects a date filter (e.g. past 7 days or custom range)
+      3. System returns all C3 transactions within that range
 
-- [ ] **Filter view combining C1 and C3 records**
-  - A single unified view in MAIA displaying both C1 and C3 records, since both feed into Holsen's Jadual C2 report.
-  - C1 rows = aggregated per customer per period; C3 rows = individual transactions per delivery.
-  - Holsen's compliance officer uses this view to review and extract the data they need before manually completing the Jadual C2 — without having to cross-reference separate modules.
+**Acceptance Criteria**
+1. A dedicated C3 tracking view exists in MAIA listing all C3-tagged transactions
+2. Date filter options include: past 7 days, past 14 days, past 30 days, and custom date range
+3. Each row displays: PO ref, appointment letter ref, item/SKU, qty delivered, delivery date, linked DO number
+4. Results are sortable by date and filterable by customer
 
-- [ ] **Auto-export document bundle every 2 months: customer invoice + supplier invoice + delivery note (scoped to C1/C3 records)**
-  - At the close of each reporting period (frequency TBC — see Open Item #9), MAIA should compile and export a document bundle that Holsen attaches to their Jadual C2 submission for SST audit.
-  - Bundle per transaction: customer invoice + corresponding supplier invoice + delivery note.
-  - Export format: single PDF or zipped package, organised by customer or by PO.
-  - Only records tagged C1 or C3 are included — non-exempt transactions are excluded.
+---
 
-- [ ] **Sign DO by admin → tag to SO for C1/C3 compliance**
-  - When an user reviews and signs off a DO (digital approval action), the system should automatically tag the corresponding SO as either C1 or C3, based on the exemption type linked to that order.
-  - This tagging ensures MAIA's data is correctly categorised so Holsen can accurately separate C1 vs C3 records when filling in their Jadual C2 report.
-  - **Open item (#11):** Exact definition of "signing" (is it a status change, a signature field, or an approval button?) and the logic for determining C1 vs C3 tagging (is it driven by customer cert on file, or by the PO/appointment letter?) must be confirmed with Holsen.
+#### 2. Reminder / Notification to Log C3 Transactions
 
-- [ ] **Lumpsum C1 per customer — aggregated view in MAIA (to feed Holsen's Jadual C2)**
-  - Unlike C3 (individual transaction records), C1 exemptions are reported as a **single aggregated figure per customer per reporting period** in Jadual C2 — the total tax-exempt sales volume for that customer.
-  - MAIA should calculate and surface this lumpsum per customer per period so Holsen can copy or export it directly into their Jadual C2 without manual calculation.
-  - **Open item (#10):** Whether "lumpsum" means total invoice value, total qty, or total tax-exempt line items must be confirmed with Holsen before this view can be designed.
+**User Story**
+1. As a logistics or compliance user, I want to receive a notification when a C3 DO is confirmed but no C3 transaction has been recorded in MAIA, so I don't miss entries that Holsen needs for their Jadual C2.
+   1. Scenario: DO confirmed for a C3-tagged SO with no transaction recorded
+      1. Logistics user confirms a DO linked to a C3-tagged SO
+      2. System checks whether a C3 transaction record exists for that DO
+      3. If no record exists, system sends a notification to the responsible user
 
-- [ ] **e-Invoice (LHDN) approval step before submission — configurable: auto-approve or manual**
-  - Before an e-Invoice is submitted to LHDN (Malaysia's Inland Revenue Board), a configurable approval gate must be inserted in the workflow.
-  - **Auto-approve mode:** system submits the e-Invoice automatically once the upstream trigger is met (e.g. payment received, or DO confirmed).
-  - **Manual approval mode:** a designated approver (e.g. Miss Wong per Group 6 workflow) must review and explicitly approve the e-Invoice before it is sent to LHDN.
-  - The approval mode should be configurable per company or per document type, not hardcoded.
-  - This checkpoint connects directly to the Group 6 finance approval flows — see Open Item #12 for clarification on whether these are the same workflow or separate variants.
+**Acceptance Criteria**
+1. Notification is triggered when a DO is confirmed and its linked SO is tagged C3
+2. Notification is only sent if no corresponding C3 transaction record has been logged in MAIA
+3. Notification includes: SO number, DO number, customer name, delivery date
+4. Notification recipient role and channel (in-app / email / Lark) to be confirmed — see Open Item #1
+
+---
+
+#### 3. Record C3 Transactions in MAIA
+
+**User Story**
+1. As a compliance officer, I want to record each C3 stock movement (incoming and outgoing qty) in MAIA, so Holsen has accurate and complete data to populate their Jadual C2 report.
+   1. Scenario: Recording incoming C3 stock on arrival
+      1. C3 stock arrives against a PO + appointment letter
+      2. User creates an incoming C3 transaction record in MAIA
+      3. System saves the record and links it to the corresponding PO and appointment letter
+   2. Scenario: Recording outgoing C3 stock on delivery
+      1. C3 delivery is confirmed via DO
+      2. User records outgoing qty in MAIA
+      3. System links the record to the DO and invoice
+
+**Acceptance Criteria**
+1. System allows creation of a C3 transaction record with the following fields: date, PO ref, appointment letter ref, item/SKU, incoming qty, outgoing qty, linked DO number, linked invoice number
+2. Both incoming and outgoing entries are supported as separate record types
+3. Records are linked to the corresponding SO and DO
+4. All C3 records appear in the C3 tracking view (see Story 1)
+5. Records are tagged C3 and excluded from non-exempt reporting views
+
+---
+
+#### 4. Unified Filter View for C1 and C3 Records
+
+**User Story**
+1. As a compliance officer, I want a single view in MAIA showing both C1 and C3 records together, so I can review all exemption activity in one place when preparing the Jadual C2.
+   1. Scenario: Preparing data for Jadual C2 submission
+      1. Compliance officer opens the unified compliance view
+      2. Applies a period filter for the current reporting cycle
+      3. System displays C1 aggregated rows per customer and C3 individual transaction rows in the same view
+
+**Acceptance Criteria**
+1. A unified compliance view displays both C1 and C3 records (toggled or combined in one list)
+2. C1 rows show: customer name, total exempt sales for the period (lumpsum figure)
+3. C3 rows show: transaction date, PO ref, appointment letter ref, item/SKU, qty, linked DO/invoice
+4. View is filterable by: date range, exemption type (C1 / C3 / both), customer
+5. View is exportable to CSV or PDF for use in Jadual C2 preparation
+
+---
+
+#### 5. Auto-Export Document Bundle (C1/C3 Records)
+
+**User Story**
+1. As a compliance officer, I want MAIA to compile and export a document bundle of all C1/C3 records at the end of each reporting period, so I have supporting documents ready to attach to the Jadual C2 SST audit submission.
+   1. Scenario: End-of-period export triggered
+      1. Compliance officer triggers export at the close of the reporting period (manual trigger or scheduled)
+      2. System compiles customer invoice + supplier invoice + delivery note for each C1/C3 transaction in the period
+      3. System generates a single PDF or ZIP package
+
+**Acceptance Criteria**
+1. Export is scoped to C1 and C3 records only within the selected period — non-exempt records are excluded
+2. Bundle includes per transaction: customer invoice + supplier invoice + delivery note
+3. Export can be triggered manually; scheduled auto-trigger at period close is optional
+4. Output format: single merged PDF or ZIP package, organised by customer or by PO
+5. Reporting period frequency to be confirmed — see Open Item #9
+
+---
+
+#### 6. Admin Signs DO → Auto-Tag SO for C1/C3 Compliance
+
+**User Story**
+1. As an admin, I want to sign off a DO and have the system automatically tag the corresponding SO as C1 or C3, so compliance records are correctly categorised without requiring manual re-entry.
+   1. Scenario: Admin signs a DO for a C3 order
+      1. Admin reviews the DO in MAIA
+      2. Admin performs the sign-off action (mechanism TBC — Open Item #11)
+      3. System identifies the exemption type from the linked SO or customer record
+      4. System tags the SO as C3
+      5. Transaction appears in the C3 tracking view
+
+**Acceptance Criteria**
+1. Admin can perform a sign-off action on a DO (exact UI mechanism to be confirmed — Open Item #11)
+2. Upon sign-off, system automatically tags the corresponding SO as C1 or C3
+3. C1 vs C3 tagging logic to be confirmed with Holsen — Open Item #11 (customer cert on file vs PO/appointment letter)
+4. The SO tag is visible on the SO record
+5. Tagged SOs appear in the correct compliance view (C1 filter or C3 tracking view)
+
+---
+
+#### 7. Lumpsum C1 per Customer — Aggregated View
+
+**User Story**
+1. As a compliance officer, I want MAIA to display a lumpsum C1 figure per customer per reporting period, so I can copy or export it directly into the Jadual C2 without manual calculation.
+   1. Scenario: Reviewing C1 lumpsum before Jadual C2 submission
+      1. Compliance officer opens the C1 summary view
+      2. Selects the reporting period
+      3. System displays one row per customer with the aggregated C1 figure for that period
+
+**Acceptance Criteria**
+1. View shows one aggregated row per customer for the selected reporting period
+2. Aggregation includes only C1-tagged invoices/SOs — C3 and non-exempt records are excluded
+3. View is filterable by reporting period
+4. Data is exportable (CSV or PDF) for direct use in Jadual C2
+5. Definition of "lumpsum" (total invoice value / total qty / total tax-exempt line items) to be confirmed before implementation — see Open Item #10
+
+---
+
+#### 8. e-Invoice (LHDN) Configurable Approval Step
+
+**User Story**
+1. As an admin or finance user, I want a configurable approval gate before e-Invoices are submitted to LHDN, so I can choose between auto-submission and manual review depending on the workflow.
+   1. Scenario: Manual approval mode — credit term order
+      1. Trigger condition is met (e.g. SO + DO confirmed by Aili)
+      2. System creates a pending e-Invoice and notifies the designated approver (e.g. Miss Wong)
+      3. Miss Wong reviews and approves or rejects
+      4. On approval, system submits the e-Invoice to LHDN
+   2. Scenario: Auto-approve mode
+      1. Trigger condition is met (e.g. payment received)
+      2. System auto-approves and submits e-Invoice to LHDN without manual intervention
+
+**Acceptance Criteria**
+1. System supports two approval modes: **auto-approve** and **manual**
+2. Approval mode is configurable per company or per document type — not hardcoded
+3. In manual mode: designated approver receives a notification, can approve or reject; submission to LHDN only proceeds on approval
+4. In auto mode: e-Invoice is submitted to LHDN immediately upon the trigger condition being met
+5. Approver role is configurable (not hardcoded to a specific user)
+6. Trigger conditions and workflow variants to be confirmed — see Open Item #12 and Group 6 approval flows
 
 ---
 
