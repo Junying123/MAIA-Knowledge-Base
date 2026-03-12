@@ -834,6 +834,7 @@ last_reviewed: 2026-03-10
       3. When Sales Manager creates an SO for Customer X with Item A, the configured price is pre-filled
 
 **Acceptance Criteria**
+
 1. Admin can configure a price per customer per item (customer-item price matrix)
 2. When an SO is created for a customer, the item price is pre-filled from the customer-item price matrix
 3. If no customer-specific price exists, system falls back to the default item price
@@ -882,20 +883,22 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 1. Daily Digest: Key Business Metrics
+#### 1. Daily Digest: Growth-Oriented Business Metrics
 
 > **Roles:** Sales Manager, Finance Manager, Admin *(primary consumers of daily metrics)*
 
 **User Story**
-1. As a Sales Manager, I want to see a daily digest of key business metrics (high-value customers, revenue trends) in MAIA, so I can quickly assess business performance without pulling manual reports.
+1. As a Sales Manager, I want to see a daily digest of growth-oriented business metrics in MAIA — such as high-value customers, revenue trends, and top/bottom performing items — so I can make informed decisions that actively grow the business, not just monitor it.
    1. Scenario: Sales Manager checks daily digest at start of day
       1. Sales Manager opens MAIA
-      2. Views the daily digest showing high-value customers and revenue trends for the day/week
+      2. Views the daily digest showing actionable growth metrics: high-value customers, revenue trends, item performance
+      3. Uses the insights to prioritise follow-ups, upsells, or at-risk accounts for that day
 
 **Acceptance Criteria**
-1. Daily digest displays: high-value customers, revenue trends, and other key metrics (exact metrics to be confirmed with Holsen)
-2. Digest is refreshed daily
-3. Visible to Sales Manager, Finance Manager, and Admin
+1. Daily digest displays growth-oriented metrics including: high-value customers, revenue trends, top/bottom selling items — exact metric list to be confirmed with Holsen
+2. Metrics are framed as actionable insights (e.g. "top 5 customers by revenue this month") not just raw data
+3. Digest is refreshed daily
+4. Visible to Sales Manager, Finance Manager, and Admin
 
 ---
 
@@ -1102,6 +1105,7 @@ last_reviewed: 2026-03-10
 | 12  | Group 6 approval flows — proforma invoice approval (Aili → Sales) and credit term order flow (Aili + Miss Wong) — are these two separate workflows or the same flow with a variant? | Holsen + PM | Map both flows separately                          |
 | 13  | Full COA vs Mask COA — Feb 10 transcript mentions both types; which customers get which?                                                                                            | PM          | Review Feb 10 transcript + request samples         |
 | 14  | K1 document — import customs form tied to C3 batch/stock entry; needs to be stored in system against the batch. Not captured in March 5 requests.                                   | PM          | Add to Group 2 or create new compliance docs group |
+| 15  | Sticker label per-customer format — label generation in MAIA is feasible but different formats per customer adds significant complexity. Which customers require a custom format and what specifically differs? Feature cannot be scoped without this. | Holsen + PM | Confirm affected customers and request their label template files |
 
 ---
 
