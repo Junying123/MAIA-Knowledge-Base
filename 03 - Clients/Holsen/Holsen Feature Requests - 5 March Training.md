@@ -137,52 +137,29 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 6. Lumpsum C1 per Customer — Aggregated View
+#### 6. C1 Compliance Workflow — DO Sign-Off, UBS Invoice Reference & Lumpsum for Jadual C2
 
-> **Role:** Admin — Ong Siow Chui / Tam Ze Xin *(reviews aggregated C1 data and uses it to fill in Jadual C2)*
-
-**User Story**
-1. As an Admin, I want MAIA to display a lumpsum C1 figure per customer per reporting period, so I can copy or export it directly into the Jadual C2 without manual calculation.
-   1. Scenario: Reviewing C1 lumpsum before Jadual C2 submission
-      1. Admin opens the C1 summary view
-      2. Selects the reporting period
-      3. System displays one row per customer with the aggregated C1 figure for that period
-
-**Acceptance Criteria**
-1. View shows one aggregated row per customer for the selected reporting period
-2. Aggregation includes only C1-tagged invoices/SOs — C3 and non-exempt records are excluded
-3. View is filterable by reporting period
-4. Data is exportable (CSV or PDF) for direct use in Jadual C2
-5. Definition of "lumpsum" (total invoice value / total qty / total tax-exempt line items) to be confirmed before implementation — see Open Item #10
-
----
-
-#### 7. e-Invoice (LHDN) Configurable Approval Step
-
-> **Roles involved:**
-> - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(approves proforma invoice / SO; confirms SO + DO for credit term orders — has SUBMIT on SO+PI and DO)*
-> - **Finance Manager** — Wong Shui Fern (Miss Wong) *(generates e-Invoice + invoice; final approval before LHDN — has SUBMIT on INV)*
-> - **Sales Manager** — Ng Tze Chien / Tam Ze Xin *(receives approved proforma from Aili and sends to customer)*
-> - **Admin** — Ong Siow Chui / Tam Ze Xin *(configures approval mode: auto vs manual)*
+> **Roles:**
+> - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(creates and submits the DO)*
+> - **Admin** — Ong Siow Chui / Tam Ze Xin *(signs off DO; reviews C1 lumpsum for Jadual C2)*
 
 **User Story**
-1. As a Finance Manager (Wong Shui Fern), I want a configurable approval gate before e-Invoices are submitted to LHDN, so I can review and authorise submissions or allow the system to auto-submit based on company policy.
-   1. Scenario: Manual approval mode — credit term order
-      1. Logistics Manager (Noor Aili Nafiah) confirms SO + DO; trigger condition is met
-      2. System creates a pending e-Invoice and notifies Finance Manager (Miss Wong)
-      3. Miss Wong reviews and approves or rejects
-      4. On approval, system submits the e-Invoice to LHDN
-   2. Scenario: Auto-approve mode — standard order with payment received
-      1. Payment received trigger is met
-      2. System auto-approves and submits e-Invoice to LHDN without manual intervention
+1. As an Admin, I want MAIA to support the full C1 compliance workflow — from signing off a DO with the UBS invoice reference, through to an aggregated C1 lumpsum per customer — so I have all the data I need to fill in the Jadual C2 without switching between systems.
+   1. Scenario: End-to-end C1 compliance flow for a reporting period
+      1. Logistics Manager creates and submits a DO in MAIA
+      2. Admin reviews and signs off the DO — the digital equivalent of the "Authorised Signature" on the physical DO
+      3. The signed DO carries the UBS invoice number for cross-reference between MAIA and UBS
+      4. At the end of the reporting period, Admin opens the C1 summary view
+      5. MAIA displays one row per customer with all C1-tagged sales aggregated into a lumpsum figure
+      6. Admin copies or exports the lumpsum directly into the Jadual C2 for SST submission
 
 **Acceptance Criteria**
-1. System supports two approval modes: **auto-approve** and **manual**
-2. Approval mode is configurable per company or per document type — not hardcoded
-3. In manual mode: designated approver receives a notification, can approve or reject; submission to LHDN only proceeds on approval
-4. In auto mode: e-Invoice is submitted to LHDN immediately upon the trigger condition being met
-5. Approver role is configurable (not hardcoded to a specific user)
-6. Trigger conditions and workflow variants to be confirmed — see Open Item #12 and Group 6 approval flows
+1. A sign-off action is available on the DO for Admin only; DO cannot be dispatched until Admin has signed off
+2. Sign-off is recorded on the DO with Admin's name and timestamp; UI mechanism TBC — see Open Item #11
+3. DO record displays the corresponding UBS invoice number; integration mechanism with UBS to be confirmed with tech team
+4. MAIA aggregates all C1-tagged sales per customer into a lumpsum figure per reporting period
+5. C1 summary view shows one row per customer, filterable by period and exportable (CSV or PDF) for direct use in Jadual C2
+6. Definition of lumpsum (total invoice value / qty / tax-exempt line items) to be confirmed — see Open Item #10
 
 ---
 
@@ -327,27 +304,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 4. Bulk Upload DO, Auto-Tag to Corresponding SO
-
-> **Role:** Logistics Manager (Logistics) — Noor Aili Nafiah / Admin — Ong Siow Chui *(both have WRITE on DO)*
-
-**User Story**
-1. As a Logistics Manager (Logistics), I want to bulk upload multiple DOs and have the system automatically tag each one to its corresponding SO, so I don't have to manually link each DO one by one.
-   1. Scenario: Bulk uploading DOs after a busy delivery period
-      1. Logistics Manager prepares a batch of DOs in the required upload format
-      2. Uploads the batch via the bulk upload function in MAIA
-      3. System matches each DO to its corresponding SO based on PO ref or order number
-      4. Unmatched DOs are flagged for manual review
-
-**Acceptance Criteria**
-1. System supports bulk upload of DOs (CSV or PDF batch)
-2. System auto-tags each uploaded DO to the corresponding SO based on PO ref or order identifier
-3. Successfully matched DOs are linked to the SO automatically
-4. Unmatched or ambiguous DOs are flagged in an error report for manual resolution
-
----
-
-#### 5. DO Inherits Invoice Number from Accounting System *(Low Priority)*
+#### 4. DO Inherits Invoice Number from Accounting System *(Low Priority)*
 
 > **Role:** Finance Manager — Wong Shui Fern / Admin *(manage invoice and accounting integration)*
 
@@ -364,7 +321,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 6. Admin Sign-Off on DO (Dispatch Authorisation)
+#### 5. Admin Sign-Off on DO (Dispatch Authorisation)
 
 > **Roles:**
 > - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(creates and submits the DO)*
@@ -387,7 +344,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 7. Audit Report: List Invoices with No Linked DO
+#### 6. Audit Report: List Invoices with No Linked DO
 
 > **Roles:**
 > - **Finance Manager** — Wong Shui Fern *(reviews invoices)*
@@ -1026,28 +983,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 1. C3 Transaction Logging Reminder
-
-> **Roles:**
-> - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(confirms DO; event trigger)*
-> - **Admin** — Ong Siow Chui / Tam Ze Xin *(receives reminder to log C3 transaction)*
-
-**User Story**
-1. As an Admin, I want to receive a reminder if a C3-tagged SO/DO has been confirmed but no C3 transaction record has been logged in MAIA within a set number of days, so I don't miss compliance entries needed for the Jadual C2.
-   1. Scenario: C3 DO confirmed with no transaction logged after X days
-      1. Logistics Manager confirms a C3 DO
-      2. X days pass with no C3 transaction recorded in MAIA
-      3. System sends a reminder to Admin
-
-**Acceptance Criteria**
-1. Reminder is triggered when a C3-tagged SO/DO is confirmed and no transaction record is logged within X days
-2. Reminder is sent to Admin
-3. X (number of days before reminder) to be confirmed — see Open Item #1
-4. Notification channel (in-app / email / Lark) to be confirmed — see Open Item #1
-
----
-
-#### 2. Overdue Delivery Alert
+#### 1. Overdue Delivery Alert
 
 > **Roles:**
 > - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(primary recipient; responsible for delivery)*
@@ -1068,7 +1004,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 3. Jadual C2 Export Reminder
+#### 2. Jadual C2 Export Reminder
 
 > **Role:** Admin — Ong Siow Chui / Tam Ze Xin *(responsible for Jadual C2 document bundle export)*
 
