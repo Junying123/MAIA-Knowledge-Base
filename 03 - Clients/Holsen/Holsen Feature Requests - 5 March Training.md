@@ -364,7 +364,30 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 6. Audit Report: List Invoices with No Linked DO
+#### 6. Admin Sign-Off on DO (Dispatch Authorisation)
+
+> **Roles:**
+> - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(creates and submits the DO)*
+> - **Admin** — Ong Siow Chui / Tam Ze Xin *(performs the authorised signature sign-off before dispatch)*
+
+**User Story**
+1. As an Admin, I want to digitally sign off a DO in MAIA before it is dispatched, so the authorised signature step that currently happens on paper is replicated in the system and the DO cannot be sent out without formal approval.
+   1. Scenario: Admin signs off a DO before dispatch
+      1. Logistics Manager (Noor Aili Nafiah) creates and submits a DO in MAIA
+      2. Admin reviews the DO
+      3. Admin performs the sign-off action in MAIA — the digital equivalent of the "Authorised Signature" on the physical DO
+      4. DO status moves to approved and is ready for dispatch
+      5. Logistics proceeds with physical delivery
+
+**Acceptance Criteria**
+1. A sign-off action is available on the DO for Admin only
+2. DO cannot be dispatched until Admin has signed off
+3. Sign-off is recorded on the DO record with the Admin's name and timestamp
+4. UI mechanism for sign-off (button / approval action / signature field) to be confirmed — see Open Item #11
+
+---
+
+#### 7. Audit Report: List Invoices with No Linked DO
 
 > **Roles:**
 > - **Finance Manager** — Wong Shui Fern *(reviews invoices)*
