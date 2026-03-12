@@ -137,33 +137,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 6. C1/C3 Compliance Data Pipeline — DO Sign-Off to Jadual C2
-
-> **Roles:**
-> - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(creates and submits the DO)*
-> - **Admin** — Ong Siow Chui / Tam Ze Xin *(signs off DO, manages bulk upload, reviews C1 lumpsum for Jadual C2)*
-
-**User Story**
-1. As an Admin, I want a complete C1/C3 compliance data pipeline in MAIA — from DO sign-off through to a lumpsum C1 figure per customer — so I have everything I need to fill in the Jadual C2 without manual cross-referencing between systems.
-   1. Scenario: End-to-end C1/C3 compliance flow for a reporting period
-      1. Admin reviews and signs off a DO in MAIA, authorising the delivery for dispatch
-      2. The signed DO carries the UBS invoice number so both MAIA and UBS records are in sync
-      3. Any historical DOs (from UBS or pre-MAIA records) are bulk uploaded into MAIA and automatically matched to their corresponding SOs
-      4. At the end of the reporting period, Admin opens the C1 summary view — MAIA has aggregated all C1-tagged sales per customer into a single lumpsum figure
-      5. Admin copies or exports that figure directly into the Jadual C2 for SST submission
-
-**Acceptance Criteria**
-1. Admin can perform a sign-off action on a DO in MAIA (UI mechanism TBC — Open Item #11)
-2. DO record displays the corresponding UBS invoice number after sign-off
-3. Bulk upload of historical DOs is supported; system auto-matches each DO to its corresponding SO based on PO ref or order identifier — unmatched DOs are flagged for manual review
-4. Bulk upload is a one-time migration exercise, not an ongoing feature — to be confirmed with Holsen
-5. MAIA aggregates all C1-tagged sales per customer into a lumpsum figure per reporting period
-6. Lumpsum C1 view is filterable by period and exportable for direct use in Jadual C2
-7. Definition of lumpsum (total invoice value / qty / tax-exempt line items) to be confirmed — see Open Item #10
-
----
-
-#### 7. Lumpsum C1 per Customer — Aggregated View
+#### 6. Lumpsum C1 per Customer — Aggregated View
 
 > **Role:** Admin — Ong Siow Chui / Tam Ze Xin *(reviews aggregated C1 data and uses it to fill in Jadual C2)*
 
@@ -183,7 +157,7 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 8. e-Invoice (LHDN) Configurable Approval Step
+#### 7. e-Invoice (LHDN) Configurable Approval Step
 
 > **Roles involved:**
 > - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(approves proforma invoice / SO; confirms SO + DO for credit term orders — has SUBMIT on SO+PI and DO)*
