@@ -135,27 +135,29 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 6. Admin Signs DO → Auto-Tag SO for C1/C3 Compliance
+#### 6. C1/C3 Compliance Data Pipeline — DO Sign-Off to Jadual C2
 
 > **Roles:**
-> - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(creates and submits the DO; has SUBMIT on DO)*
-> - **Admin** — Ong Siow Chui / Tam Ze Xin *(performs compliance sign-off and C1/C3 tagging)*
+> - **Logistics Manager (Logistics)** — Noor Aili Nafiah *(creates and submits the DO)*
+> - **Admin** — Ong Siow Chui / Tam Ze Xin *(signs off DO, manages bulk upload, reviews C1 lumpsum for Jadual C2)*
 
 **User Story**
-1. As an Admin, I want to sign off a DO and have the system automatically tag the corresponding SO as C1 or C3, so compliance records are correctly categorised without requiring manual re-entry.
-   1. Scenario: Admin signs a DO for a C3 order
-      1. Admin reviews the DO in MAIA
-      2. Admin performs the sign-off action (mechanism TBC — Open Item #11)
-      3. System identifies the exemption type from the linked SO or customer record
-      4. System tags the SO as C3
-      5. Transaction appears in the C3 tracking view
+1. As an Admin, I want a complete C1/C3 compliance data pipeline in MAIA — from DO sign-off through to a lumpsum C1 figure per customer — so I have everything I need to fill in the Jadual C2 without manual cross-referencing between systems.
+   1. Scenario: End-to-end C1/C3 compliance flow for a reporting period
+      1. Admin reviews and signs off a DO in MAIA, authorising the delivery for dispatch
+      2. The signed DO carries the UBS invoice number so both MAIA and UBS records are in sync
+      3. Any historical DOs (from UBS or pre-MAIA records) are bulk uploaded into MAIA and automatically matched to their corresponding SOs
+      4. At the end of the reporting period, Admin opens the C1 summary view — MAIA has aggregated all C1-tagged sales per customer into a single lumpsum figure
+      5. Admin copies or exports that figure directly into the Jadual C2 for SST submission
 
 **Acceptance Criteria**
-1. Admin can perform a sign-off action on a DO (exact UI mechanism to be confirmed — Open Item #11)
-2. Upon sign-off, system automatically tags the corresponding SO as C1 or C3
-3. C1 vs C3 tagging logic to be confirmed with Holsen — Open Item #11 (customer cert on file vs PO/appointment letter)
-4. The SO tag is visible on the SO record
-5. Tagged SOs appear in the correct compliance view (C1 filter or C3 tracking view)
+1. Admin can perform a sign-off action on a DO in MAIA (UI mechanism TBC — Open Item #11)
+2. DO record displays the corresponding UBS invoice number after sign-off
+3. Bulk upload of historical DOs is supported; system auto-matches each DO to its corresponding SO based on PO ref or order identifier — unmatched DOs are flagged for manual review
+4. Bulk upload is a one-time migration exercise, not an ongoing feature — to be confirmed with Holsen
+5. MAIA aggregates all C1-tagged sales per customer into a lumpsum figure per reporting period
+6. Lumpsum C1 view is filterable by period and exportable for direct use in Jadual C2
+7. Definition of lumpsum (total invoice value / qty / tax-exempt line items) to be confirmed — see Open Item #10
 
 ---
 
