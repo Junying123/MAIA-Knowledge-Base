@@ -115,23 +115,25 @@ last_reviewed: 2026-03-10
 
 ---
 
-#### 5. Auto-Export Document Bundle (C1/C3 Records)
+#### 5. Bi-Monthly Reminder to Export C1/C3 Document Bundle
 
-> **Role:** Admin — Ong Siow Chui / Tam Ze Xin *(triggers export and attaches bundle to SST submission)*
+> **Role:** Admin — Ong Siow Chui / Tam Ze Xin *(receives reminder and manually triggers the export)*
 
 **User Story**
-1. As an Admin, I want MAIA to compile and export a document bundle of all C1/C3 records at the end of each reporting period, so I have supporting documents ready to attach to the Jadual C2 SST audit submission.
-   1. Scenario: End-of-period export triggered
-      1. Admin triggers export at the close of the reporting period (manual trigger or scheduled)
-      2. System compiles customer invoice + supplier invoice + delivery note for each C1/C3 transaction in the period
-      3. System generates a single PDF or ZIP package
+1. As an Admin, I want MAIA to remind me every 2 months to export the C1/C3 document bundle, so I never miss the Jadual C2 submission cycle and always have the supporting documents ready for SST audit.
+   1. Scenario: Bi-monthly reminder triggered
+      1. Every 2 months, MAIA sends a reminder to Admin to export the C1/C3 document bundle
+      2. Admin opens MAIA and triggers the export manually
+      3. System compiles customer invoice + supplier invoice + delivery note for all C1/C3 transactions within the period
+      4. System generates a single PDF or ZIP package ready for SST submission attachment
 
 **Acceptance Criteria**
-1. Export is scoped to C1 and C3 records only within the selected period — non-exempt records are excluded
-2. Bundle includes per transaction: customer invoice + supplier invoice + delivery note
-3. Export can be triggered manually; scheduled auto-trigger at period close is optional
-4. Output format: single merged PDF or ZIP package, organised by customer or by PO
-5. Reporting period frequency to be confirmed — see Open Item #9
+1. System sends a reminder to Admin every 2 months to trigger the C1/C3 document bundle export
+2. Reminder channel (in-app / email / Lark) to be confirmed — see Open Item #1
+3. Export is scoped to C1 and C3 records only within the 2-month period — non-exempt records are excluded
+4. Bundle includes per transaction: customer invoice + supplier invoice + delivery note
+5. Output format: single merged PDF or ZIP package, organised by customer or by PO
+6. Export is manually triggered by Admin — system does not auto-export without Admin action
 
 ---
 
