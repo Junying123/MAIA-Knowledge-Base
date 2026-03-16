@@ -1,4 +1,18 @@
-SAME ITEM , different shape, different sku, lot number 
+---
+owner: Gareth
+status: review
+last_reviewed: 2026-03-05
+---
+
+# Holsen Meeting & Training v3 — 5 March 2026
+
+**Type:** Raw meeting notes
+**Source:** Training session with Holsen team, 5 March 2026
+**See Also:** [[Holsen Feature Requests - 5 March Training]]
+
+---
+
+SAME ITEM , different shape, different sku, lot number
 c3 delivery tracking , past week , past days, 
 Remind c3 logging, record c3 into jadual c2 , filter for c3
 c3 /c1 view need filter c1 c3 and auto export docs (every 2 months) which have c1 c3, 
