@@ -1,3 +1,17 @@
+---
+owner: Gareth
+status: review
+last_reviewed: 2026-03-05
+client: Holsen
+---
+
+# Holsen v3 Prep Work
+
+**Purpose:** Internal prep notes for Holsen v3 training session — feature requests grouped by product area.
+**See Also:** [[Holsen Feature Requests - 5 March Training]], [[Holsen Meeting Training v3 - 5 March]]
+
+---
+
 ## Group 1: Compliance & Tax Documentation (C1/C3)
 
 **1. C3 Delivery Tracking with Date Filters**

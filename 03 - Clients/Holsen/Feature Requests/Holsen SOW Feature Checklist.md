@@ -74,11 +74,13 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 
 ---
 
-### 2. Sales Order Output (UBS CSV Export)
+### 2. Document Export (UBS CSV Export)
 
-- [ ] CSV generated with customer name, address, delivery type
-- [ ] CSV includes all SKUs and quantities
-- [ ] CSV includes COA/label/brand requirements, delivery date, PO notes, order remarks
+Finance users export MAIA-generated documents as CSV to use as source data when creating eInvoice records in UBS. eInvoices are generated in UBS, not MAIA.
+
+- [ ] Invoice — exportable as CSV by Finance user
+- [ ] Credit Note — exportable as CSV by Finance user
+- [ ] Debit Note — exportable as CSV by Finance user
 
 ---
 
