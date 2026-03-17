@@ -179,40 +179,40 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 - [ ] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
 
 **Sales Order + Proforma Invoice (SO + PI)**
-- [x] Sales Manager — READ
-- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
-- [x] Logistics Manager (Procurement) — READ, SUBMIT
-- [x] Logistics Manager (Production) — no access
-- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
-- [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Sales Manager — READ
+- [ ] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Logistics Manager (Procurement) — READ, SUBMIT
+- [ ] Logistics Manager (Production) — no access
+- [ ] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
 
 **Invoice (INV)**
-- [x] Sales Manager — READ
-- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE
-- [x] Logistics Manager (Procurement) — READ
-- [x] Logistics Manager (Production) — no access
-- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
-- [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Sales Manager — READ
+- [ ] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE
+- [ ] Logistics Manager (Procurement) — READ
+- [ ] Logistics Manager (Production) — no access
+- [ ] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
 
 **Payment / Receipt (RCT)**
-- [x] Sales Manager — READ
-- [x] Logistics Manager (Logistics) — READ
-- [x] Logistics Manager (Procurement) — READ
-- [x] Logistics Manager (Production) — no access
-- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
-- [x] Admin — READ, SUBMIT
+- [ ] Sales Manager — READ
+- [ ] Logistics Manager (Logistics) — READ
+- [ ] Logistics Manager (Procurement) — READ
+- [ ] Logistics Manager (Production) — no access
+- [ ] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Admin — READ, SUBMIT
 
 **Delivery Order (DO)**
-- [x] Sales Manager — READ
-- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
-- [x] Logistics Manager (Procurement) — READ, SUBMIT
-- [x] Logistics Manager (Production) — no access
-- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
-- [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Sales Manager — READ
+- [ ] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Logistics Manager (Procurement) — READ, SUBMIT
+- [ ] Logistics Manager (Production) — no access
+- [ ] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
 
 **Inventory / Stock (Item, Batch, Serial No., Warehouse, Stock Recon, Stock Entry)**
-- [x] Sales Manager — READ
-- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Sales Manager — READ
+- [ ] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
 - [x] Logistics Manager (Procurement) — READ
 - [x] Logistics Manager (Production) — READ
 - [x] Finance Manager — READ
@@ -227,10 +227,10 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 - [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
 
 **Price**
-- [x] Sales Manager — READ
-- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE
-- [x] Logistics Manager (Procurement) — READ
-- [x] Logistics Manager (Production) — no access
+- [ ] Sales Manager — READ
+- [ ] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE
+- [ ] Logistics Manager (Procurement) — READ
+- [ ] Logistics Manager (Production) — no access
 - [x] Finance Manager — READ, WRITE, CREATE, DELETE
 - [x] Admin — READ, WRITE, CREATE, DELETE
 

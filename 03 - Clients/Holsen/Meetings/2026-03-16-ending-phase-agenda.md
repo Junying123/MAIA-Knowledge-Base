@@ -223,18 +223,18 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 **Planned Closing & Go-Live Schedule:**
 
-| Date | Milestone | Owner | Status |
-|------|-----------|-------|--------|
-| 17 Mar | PSO done | Bushra | - |
-| 17 Mar | Holsen instance tested | Gareth | - |
-| 17 Mar | eInvoice attachment ready | - | - |
-| 17 Mar | Meeting prep (core MAIA scope, UAT plan) | Gareth, Bren, Ivan | - |
-| 18 Mar | Kick off UAT — core MAIA (excluding C1/C3 and A57 tax exemption enforcement) | Holsen team | - |
-| 25 Mar | UAT completed — core MAIA scope confirmed | Holsen team | - |
-| 25 Mar | Meta / WhatsApp account setup | - | - |
-| 30 Mar | Product ready — C1/C3 compliance features done | Dev | - |
-| 31 Mar | Holsen closure | Gareth | - |
-| 31 Mar | **Go-live — core MAIA (without C1/C3)** | All | - |
+| Date   | Milestone                                                                    | Owner              | Status |
+| ------ | ---------------------------------------------------------------------------- | ------------------ | ------ |
+| 17 Mar | PSO done                                                                     | Bushra             | -      |
+| 17 Mar | Holsen instance tested                                                       | Gareth             | -      |
+| 17 Mar | eInvoice attachment ready                                                    | -                  | -      |
+| 17 Mar | Meeting prep (core MAIA scope, UAT plan)                                     | Gareth, Bren, Ivan | -      |
+| 18 Mar | Kick off UAT — core MAIA (excluding C1/C3 and A57 tax exemption enforcement) | Holsen team        | -      |
+| 25 Mar | UAT completed — core MAIA scope confirmed                                    | Holsen team        | -      |
+| 25 Mar | Meta / WhatsApp account setup                                                | -                  | -      |
+| 30 Mar | Product ready — C1/C3 compliance features done                               | Dev                | -      |
+| 31 Mar | Holsen closure                                                               | Gareth             | -      |
+| 31 Mar | **Go-live — core MAIA (without C1/C3)**                                      | All                | -      |
 
 > **Note:** C1/C3 compliance and A57 tax exemption enforcement are **post-go-live** — core MAIA goes live 31 Mar without these. C1/C3 targeted ready 30 Mar for a subsequent phase.
 
