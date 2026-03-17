@@ -16,7 +16,9 @@ Holsen testers should execute each scenario in order, record pass/fail status, a
 
 **UAT Round:** 1
 **UAT Date:** [To be confirmed]
-**Environment:** Demo — https://maia-oms-demo.vercel.app
+**Web App:** https://maia-fe-holsen.vercel.app/login (Holsen production instance)
+**Chatbot (UAT):** Telegram — @maia_holsen_bot
+**Chatbot (Go-Live):** WhatsApp — pending Meta/WhatsApp account setup by MAIA team
 
 ## Test Users
 
@@ -29,18 +31,19 @@ Holsen testers should execute each scenario in order, record pass/fail status, a
 
 ## Instructions for Holsen Team
 
-1. Use the **Demo environment** only — do not test in production.
-2. Work through scenarios in order within each group — later scenarios depend on data from earlier ones.
-3. For each step, record whether the result **matches** the expected outcome.
-4. Mark each scenario in the Results Tracker as **Pass**, **Fail**, or **Blocked**.
-5. For failures or blocked scenarios, add notes describing what actually happened.
-6. If you are unsure whether a result is correct, mark it **Blocked** and flag to Gareth.
+1. **Web app:** Use https://maia-fe-holsen.vercel.app/login for all workspace and document scenarios.
+2. **Chatbot scenarios (UAT-01 to 07):** Use Telegram — @maia_holsen_bot. WhatsApp will replace Telegram after the Meta/WhatsApp account is set up; functionality is identical.
+3. Work through scenarios in order within each group — later scenarios depend on data from earlier ones.
+4. For each step, record whether the result **matches** the expected outcome.
+5. Mark each scenario in the Results Tracker as **Pass**, **Fail**, or **Blocked**.
+6. For failures or blocked scenarios, add notes describing what actually happened.
+7. If you are unsure whether a result is correct, mark it **Blocked** and flag to Gareth.
 
 ---
 
 ## Pre-Conditions
 
-Before starting, confirm the following master data is loaded in the Demo environment:
+Before starting, confirm the following master data is loaded in the Holsen production instance:
 
 - [ ] Customer records loaded (at minimum: 2–3 test customers with name and address)
 - [ ] Product/SKU catalogue loaded (at minimum: 5 SKUs with descriptions)
@@ -71,7 +74,7 @@ Before starting, confirm the following master data is loaded in the Demo environ
 
 | Step | Action | Expected Result |
 |------|--------|-----------------|
-| 1 | Open the Sales Coordinator chatbot interface | Chatbot input field is visible and active |
+| 1 | Open Telegram and start a chat with @maia_holsen_bot | Chatbot responds and is ready to receive input |
 | 2 | Type a plain-text order message, e.g.: `"Customer: ABC Trading. Order: 10 drums of Copper Sulfate, 5 bags of Sodium Hydroxide."` | Chatbot accepts the message |
 | 3 | Submit the message | System processes the text and extracts order details |
 | 4 | Review extracted data displayed by the chatbot | Customer name, SKUs, and quantities are correctly identified |
@@ -88,7 +91,7 @@ Before starting, confirm the following master data is loaded in the Demo environ
 | Step | Action | Expected Result |
 |------|--------|-----------------|
 | 1 | Prepare a photo of a handwritten order note or physical PO | Image file ready (JPG or PNG) |
-| 2 | Upload the image to the chatbot interface | Upload accepted, image processed |
+| 2 | Send the image to @maia_holsen_bot on Telegram | Upload accepted, image processed |
 | 3 | Wait for extraction to complete | Chatbot displays extracted data |
 | 4 | Review extracted Customer Name, SKUs, and Quantities | Data matches the handwritten source |
 
@@ -104,7 +107,7 @@ Before starting, confirm the following master data is loaded in the Demo environ
 | Step | Action | Expected Result |
 |------|--------|-----------------|
 | 1 | Prepare a sample customer PDF PO | PDF file ready |
-| 2 | Upload the PDF to the chatbot interface | Upload accepted, PDF processed |
+| 2 | Send the PDF to @maia_holsen_bot on Telegram | Upload accepted, PDF processed |
 | 3 | Wait for extraction to complete | Chatbot displays extracted data |
 | 4 | Review extracted Customer Name, SKUs, and Quantities | Data matches the PDF content |
 
@@ -417,7 +420,7 @@ Before starting, confirm the following master data is loaded in the Demo environ
 
 | Step | Action | Expected Result |
 |------|--------|-----------------|
-| 1 | Open https://maia-oms-demo.vercel.app in a desktop browser (Chrome recommended) | Login page loads |
+| 1 | Open https://maia-fe-holsen.vercel.app/login in a desktop browser (Chrome recommended) | Login page loads |
 | 2 | Log in as **Sales Agent** | Login successful; Sales Agent dashboard visible |
 | 3 | Log out; log in as **Finance (Miss Wong)** | Login successful; Finance view visible |
 | 4 | Log out; log in as **Logistics (Noor Aili)** | Login successful; Logistics view visible |
