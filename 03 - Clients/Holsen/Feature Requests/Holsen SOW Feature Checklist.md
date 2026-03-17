@@ -118,9 +118,9 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 - [ ] Customer Management — view/manage customer details, credit terms/limits
 
 **Supply Chain Agent Workspace**
-- [ ] Fulfillment Management — create, modify, track DOs
+- [x] Fulfillment Management — create, modify, track DOs
 - [ ] Order Lifecycle Overview (draft → to schedule → scheduled → out for delivery → delivered)
-- [ ] Output Documents — view Pick List, DO
+- [x] Output Documents — view Pick List, DO
 - [ ] Inventory Management — view and manage product details
 - [ ] Delivery Request Classification (3rd party transport documented outside MAIA)
 - [ ] `[v3]` Full picklist workflow — SO triggers picklist, Logistics confirms lot + qty, DO generated from confirmed pick, invoice follows
