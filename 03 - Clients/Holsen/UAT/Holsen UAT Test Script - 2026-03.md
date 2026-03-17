@@ -16,7 +16,7 @@ uat_round: 1
 **UAT Date:** [To be confirmed]
 **Web App:** https://maia-fe-holsen.vercel.app/login
 **Chatbot (during UAT):** Telegram — @maia_holsen_bot
-![[Pasted image 20260317183109.png|179]]
+![[Pasted image 20260317183109.png|168]]
 **Chatbot (after go-live):** WhatsApp *(same features — WhatsApp setup is in progress)*
 
 ---
