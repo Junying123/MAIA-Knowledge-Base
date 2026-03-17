@@ -242,13 +242,19 @@ uat_round: 1
 
 ---
 
-#### Test 9 — Export a Sales Order to CSV
+#### Test 9 — Export Invoice / Credit Note / Debit Note as CSV *(Finance — Miss Wong)*
+
+Finance exports these documents from MAIA as CSV files. The exported data is used to create eInvoice records in UBS.
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Open a completed Sales Order on the web app. | Sales Order record is open. |
-| 2 | Click the export or download button to get a **CSV file**. | A CSV file is downloaded to your computer. |
-| 3 | Open the CSV file. | File contains: customer name, address, delivery type, all products, and quantities. |
+| 1 | Log in as **Miss Wong (Finance)**. Open a submitted **Invoice**. | Invoice record is open. |
+| 2 | Click the export or download button and select **CSV**. | A CSV file is downloaded to your computer. |
+| 3 | Open the CSV. Check the contents. | File contains invoice details — customer, line items, quantities, prices. |
+| 4 | Open a **Credit Note** and repeat the export. | CSV downloaded. File contains credit note details. |
+| 5 | Open a **Debit Note** and repeat the export. | CSV downloaded. File contains debit note details. |
+
+> ⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in UBS. eInvoices are not generated inside MAIA.
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -448,8 +454,9 @@ Log in as **Finance Manager (Miss Wong)** and check the following:
 | 2 | Try to create and submit a **Payment / Receipt**. | ✅ You can create and submit Receipts. |
 | 3 | Try to create and submit a **Sales Order**. | ✅ You can create, edit, and submit Sales Orders. |
 | 4 | Try to create and submit a **Delivery Order**. | ✅ You can create, edit, and submit Delivery Orders. |
-| 5 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
-| 6 | Try to create a new **Incoming goods** record. | 🚫 You cannot create Incoming records — view only. |
+| 5 | Export an **Invoice**, a **Credit Note**, and a **Debit Note** as CSV files. | ✅ All three export successfully as CSV files. |
+| 6 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
+| 7 | Try to create a new **Incoming goods** record. | 🚫 You cannot create Incoming records — view only. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -606,7 +613,7 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 | Test 6 | Create a Credit Note | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 7 | Duplicate order is blocked | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 8 | Manage orders on the web app | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 9 | Export Sales Order to CSV | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 9 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 10 | Create Delivery Order and Picking List | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 11 | Stock alerts (Out of Stock / Low Stock) | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 12 | Delivery delay reminder | ☐ Pass ☐ Fail ☐ Issue | | |
