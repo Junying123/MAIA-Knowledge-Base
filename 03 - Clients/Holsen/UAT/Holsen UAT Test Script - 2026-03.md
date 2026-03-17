@@ -24,10 +24,15 @@ Holsen testers should execute each scenario in order, record pass/fail status, a
 
 | Role | Name | Login |
 |------|------|-------|
-| Sales Coordinator / Agent | [Holsen Sales Rep] | [Username] |
-| Finance | Miss Wong | [Username] |
-| Logistics | Noor Aili | [Username] |
-| Admin | Ong Siow Chui / Tam Ze Xin | [Username] |
+| Sales Manager | Ng Tze Chien | [Username] |
+| Sales Manager | Tam Ze Xin | [Username] |
+| Logistics Manager (Logistics) | Noor Aili Nafiah | [Username] |
+| Logistics Manager (Procurement) | Intan Atikah | [Username] |
+| Logistics Manager (Production) | Murugesu A/L Palanivello | [Username] |
+| Finance Manager | Wong Shui Fern (Miss Wong) | [Username] |
+| Admin | Ong Siow Chui | [Username] |
+| Admin | Tam Ze Xin | [Username] |
+| System Admin | Chin Zhao Heng | [Username] |
 
 ## Instructions for Holsen Team
 
@@ -53,6 +58,9 @@ Before starting, confirm the following master data is loaded in the Holsen produ
 - [ ] All test user accounts created and able to log in
 - [ ] Low-stock alert threshold configured
 - [ ] Delivery delay digest threshold configured (number of days)
+- [ ] At least 1 SKU in the catalogue is flagged as poison (from the 18 pre-seeded poison SKUs)
+- [ ] At least 1 test customer has a full address and phone number loaded (required for PSO FROM block)
+- [ ] Admin user account available with poison-flag edit permissions
 
 ---
 
@@ -430,6 +438,253 @@ Before starting, confirm the following master data is loaded in the Holsen produ
 
 ---
 
+### Group 5 — Role Permission Testing
+
+**Tester Role:** All roles (one scenario per role)
+**Checklist Ref:** §7 Role-Specific Approval — Document permission matrix
+**Goal:** Confirm each user can access what they're permitted to and is blocked from what they're not.
+
+> Test positive access (can do) AND negative access (blocked) for each role. Log any discrepancy in the Notes column of the Results Tracker.
+
+---
+
+#### UAT-23 — Sales Manager Permissions (Ng Tze Chien / Tam Ze Xin)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Sales Manager | Login successful |
+| 2 | Open Quotation — create a new one, edit, and submit | Full access — CREATE, WRITE, SUBMIT all work |
+| 3 | Open Purchase Order — create a new one, edit, and submit | Full access — CREATE, WRITE, SUBMIT all work |
+| 4 | Open Sales Order — attempt to create a new SO | Read-only — CREATE not available |
+| 5 | Open Invoice — attempt to submit/finalise | Read-only — SUBMIT not available |
+| 6 | Open Delivery Order — attempt to create | Read-only — CREATE not available |
+| 7 | Open Pick List | No access — Pick List not visible or accessible |
+| 8 | Open Incoming (Goods Received) | No access — not visible or accessible |
+
+**Expected Outcome:** Sales Manager has full control over Quotation and PO. Read-only on SO, Invoice, DO. No access to Pick List and Incoming.
+
+---
+
+#### UAT-24 — Logistics Manager (Logistics) Permissions (Noor Aili)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Logistics Manager (Logistics) — Noor Aili | Login successful |
+| 2 | Open Sales Order + Proforma Invoice — create, edit, and submit | Full access — CREATE, WRITE, SUBMIT all work |
+| 3 | Open Delivery Order — create, edit, and submit | Full access — CREATE, WRITE, SUBMIT all work |
+| 4 | Open Pick List — create and manage | Full access — CREATE, WRITE, SUBMIT all work |
+| 5 | Open Invoice — attempt to submit/finalise | Write access only — SUBMIT not available |
+| 6 | Open Quotation — attempt to create | Read-only — CREATE not available |
+| 7 | Open Payment / Receipt — attempt to create | Read-only — CREATE not available |
+| 8 | View Inventory items | Read-only — can view but not edit |
+
+**Expected Outcome:** Noor Aili has full operational control over SO+PI, DO, Pick List, and Inventory write. Cannot submit Invoice or create Quotations.
+
+---
+
+#### UAT-25 — Logistics Manager (Procurement) Permissions (Intan Atikah)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Logistics Manager (Procurement) — Intan Atikah | Login successful |
+| 2 | Open SO + Proforma Invoice — attempt to submit | SUBMIT available — can approve SO+PI |
+| 3 | Open Delivery Order — attempt to submit | SUBMIT available — can approve DO |
+| 4 | Open Incoming (Goods Received) — create and edit | Full write access — CREATE, WRITE all work |
+| 5 | Open Pick List — attempt to access | No access — Pick List not visible |
+| 6 | Open Invoice — attempt to submit | Read-only — SUBMIT not available |
+| 7 | Open Quotation — attempt to create | Read-only — CREATE not available |
+
+**Expected Outcome:** Intan Atikah can submit SO+PI and DO, and has full control over Incoming stock. Cannot access Pick List or submit Invoice.
+
+---
+
+#### UAT-26 — Logistics Manager (Production) Permissions (Murugesu)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Logistics Manager (Production) — Murugesu | Login successful |
+| 2 | Open Pick List — view entries | Read-only — can view Pick List |
+| 3 | Open Inventory items — view stock | Read-only — can view |
+| 4 | Open SO + Proforma Invoice — attempt to create or submit | No access — not available |
+| 5 | Open Delivery Order — attempt to create | No access — not available |
+| 6 | Open Quotation, Invoice, PO — attempt to access | No access — not visible or accessible |
+
+**Expected Outcome:** Murugesu can only view Pick List and Inventory. All document creation and submission is blocked.
+
+---
+
+#### UAT-27 — Finance Manager Permissions (Wong Shui Fern)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Finance Manager — Wong Shui Fern | Login successful |
+| 2 | Open Invoice — create, edit, and submit/finalise | Full access — CREATE, WRITE, SUBMIT all work |
+| 3 | Open Payment / Receipt — create and submit | Full access — CREATE, WRITE, SUBMIT all work |
+| 4 | Open SO + Proforma Invoice — create and submit | Full access — CREATE, WRITE, SUBMIT all work |
+| 5 | Open Delivery Order — create and submit | Full access — CREATE, WRITE, SUBMIT all work |
+| 6 | Open Pick List — attempt to access | No access — not visible |
+| 7 | Open Incoming (Goods Received) — attempt to create | Read-only — CREATE not available |
+| 8 | Confirm attachment access: can view customer PO | PO attachment viewable; COA not accessible |
+
+**Expected Outcome:** Finance Manager has full control over Invoice, Receipt, SO+PI, and DO. Cannot access Pick List or create Incoming records.
+
+---
+
+#### UAT-28 — Admin Permissions (Ong Siow Chui / Tam Ze Xin)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Admin — Ong Siow Chui | Login successful |
+| 2 | Open Quotation — create, edit, submit | Full access |
+| 3 | Open SO + Proforma Invoice — create, edit, submit | Full access |
+| 4 | Open Invoice — create, edit, submit | Full access |
+| 5 | Open Delivery Order — create, edit, submit | Full access |
+| 6 | Open Pick List — create and manage | Full access |
+| 7 | Open Incoming (Goods Received) — create and edit | Full write access |
+| 8 | Open Payment / Receipt — submit | SUBMIT available |
+| 9 | Confirm attachment access: can view PO and COA | Both PO and COA attachments accessible |
+
+**Expected Outcome:** Admin has full or near-full access across all documents. Only Inventory is read-only for Admin.
+
+---
+
+#### UAT-29 — SO Approval Workflow (Draft → Submit)
+
+**Feature:** SO draft → submit flow; approval actions
+**Checklist Ref:** §7 Role-Specific Approval — Workflow behaviour
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Sales Manager and create a new Sales Order | SO created in draft status |
+| 2 | Log out; log in as Logistics Manager (Logistics) — Noor Aili | Logged in as Noor Aili |
+| 3 | Open the draft SO | SO visible with SUBMIT option |
+| 4 | Submit the SO | SO status changes to Submitted / Approved |
+| 5 | Confirm DO creation is now unblocked | DO can now be created from the submitted SO |
+| 6 | Create a second SO; log in as Finance Manager (Miss Wong) | Logged in as Miss Wong |
+| 7 | Submit the SO as Finance Manager | SO status changes to Submitted / Approved |
+
+**Expected Outcome:** SO created by Sales Manager can be submitted by Logistics Manager (Logistics) or Finance Manager. Submission unlocks DO creation.
+
+---
+
+### Group 6 — PSO (Poison Signed Order)
+
+**Tester Role:** Admin (poison flag setup), Logistics (DN generation and printing)
+**Checklist Sections:** PSO — Poison Signed Order
+**Compliance context:** PSO is mandated by Poison License B / FARMASI/KKM. Missing or incorrect PSO = audit failure.
+
+---
+
+#### UAT-30 — Admin Sets Poison Flag on SKU
+
+**Feature:** Poison/non-poison boolean flag on SKU master (Admin/Compliance role only)
+**Checklist Ref:** PSO §SKU Setup — Poison flag, audit trail
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Admin | Login successful |
+| 2 | Navigate to SKU master and open a test SKU that is **not** currently flagged as poison | SKU detail page visible |
+| 3 | Toggle poison flag to **Poison = Yes** and save | Change saved successfully |
+| 4 | Confirm audit trail entry is recorded — who changed it, when, and what it changed from/to | Audit log entry visible with correct details |
+| 5 | Log out; log in as **Sales Manager** | Logged in as Sales Manager |
+| 6 | Attempt to change the poison flag on the same SKU | Poison flag field is read-only or not accessible — change blocked |
+
+**Expected Outcome:** Only Admin can toggle the poison flag. Every change is recorded in the audit trail. Other roles cannot modify the flag.
+
+---
+
+#### UAT-31 — DN with Poison SKU → PSO Auto-Generated
+
+**Feature:** PSO auto-generated when DN contains ≥1 poison-flagged SKU; PSO appended to DN print pack
+**Checklist Ref:** PSO §PSO Auto-Generation, §Print Pack & Document Access
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Log in as Logistics (Noor Aili) | Login successful |
+| 2 | Create a Delivery Note (DN) containing at least 1 poison-flagged SKU | DN created |
+| 3 | Trigger DN PDF generation | PDF generation initiates |
+| 4 | Open the generated PDF | PDF contains the DN pages first, followed by PSO pages appended after — one combined A4 document |
+| 5 | Confirm PSO is present in the print pack | PSO appears after last DN page |
+| 6 | Confirm PSO contains only the poison SKU lines from the DN | Non-poison lines are absent from PSO |
+
+**Expected Outcome:** PSO is automatically generated and appended to the DN PDF when at least one poison SKU is present.
+
+---
+
+#### UAT-32 — DN with No Poison SKU → No PSO
+
+**Feature:** No PSO generated when DN has zero poison lines
+**Checklist Ref:** PSO §PSO Auto-Generation
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Create a Delivery Note (DN) containing **only** non-poison SKUs | DN created |
+| 2 | Trigger DN PDF generation | PDF generation initiates |
+| 3 | Open the generated PDF | PDF contains only DN pages — no PSO appended |
+| 4 | Confirm no PSO document is generated for this DN | PSO absent; no PSO document linked to this DN |
+
+**Expected Outcome:** No PSO is generated or appended when the DN contains zero poison-flagged lines.
+
+---
+
+#### UAT-33 — Mixed DN → PSO Contains Poison Lines Only
+
+**Feature:** PSO scoped to poison lines only in mixed DNs (non-poison lines excluded)
+**Checklist Ref:** PSO §PSO Auto-Generation
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Create a DN with a mix of poison and non-poison SKU lines (e.g., 2 poison + 3 non-poison) | DN created with mixed lines |
+| 2 | Trigger DN PDF generation | Combined PDF generated |
+| 3 | Open the PSO section of the combined PDF | PSO is present |
+| 4 | Verify that only the poison SKU lines appear in the PSO line item table | Non-poison lines are absent from PSO; poison lines are all present |
+| 5 | Verify that DN still shows all lines (both poison and non-poison) | Full DN contents unchanged |
+
+**Expected Outcome:** DN shows all lines; PSO shows only poison lines. Non-poison lines do not appear on the PSO.
+
+---
+
+#### UAT-34 — PSO Layout Validation
+
+**Feature:** PSO layout replicates Holsen "POISON SIGNED ORDER FORM" (PSO Sample.xlsx)
+**Checklist Ref:** PSO §PSO Document Layout
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Open the PSO from a DN that has a poison SKU (from UAT-31 or UAT-33) | PSO page visible |
+| 2 | Check FROM block | Customer name, address, and phone number populated from MAIA customer master |
+| 3 | Check TO block | "HOLSEN INTERCHEM SDN BHD" with Holsen address shown |
+| 4 | Check header fields | PSO/DO Number and Delivery Date are present and correct |
+| 5 | Check line item table | Columns: No., Description, Quantity Ordered, Packing/UOM — all populated for poison lines |
+| 6 | Check Signature & Chop block | Signature and chop area present at the bottom of the page |
+| 7 | Check Remark field | Remark field is present but blank — no pre-filled content |
+| 8 | Check return-copy instruction note | Instruction note visible on PSO |
+| 9 | Check footer | "Powered by MAIA • Generated on DD/MM/YYYY HH:mm:ss" shown at bottom |
+
+**Expected Outcome:** PSO layout matches the Holsen POISON SIGNED ORDER FORM template with all required fields populated.
+
+---
+
+#### UAT-35 — PSO Access, Download, Reprint & Signed Copy Upload
+
+**Feature:** View, download, reprint PSO per DN; "Signed PSO Copy" attachment type
+**Checklist Ref:** PSO §Print Pack & Document Access
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Open a DN that has an associated PSO | DN record visible |
+| 2 | Locate the PSO in the document attachments or document list | PSO listed as a document linked to this DN |
+| 3 | Download the PSO | PSO PDF downloaded successfully |
+| 4 | Reprint the PSO (trigger PDF regeneration) | Reprinted PSO matches the original |
+| 5 | Upload a test file (simulating a scanned signed copy) and select attachment type **"Signed PSO Copy"** | Upload accepted; "Signed PSO Copy" attachment type available and selectable |
+| 6 | Confirm the uploaded signed copy is visible and linked to the correct DN | Attachment shows against the DN with correct type label |
+| 7 | Log in as Finance Manager (Miss Wong) | Login successful |
+| 8 | Open the same DN and attempt to view/download the PSO | PSO accessible — Finance Manager has PSO document access |
+
+**Expected Outcome:** PSO is viewable, downloadable, and reprintable from the DN record. Signed PSO can be uploaded back. PSO access works for Logistics, Admin, and Finance roles.
+
+---
+
 ## Results Tracker
 
 | Scenario ID | Feature | Checklist Ref | Tester | Status | Notes |
@@ -456,18 +711,31 @@ Before starting, confirm the following master data is loaded in the Holsen produ
 | UAT-20 | Low-Stock Alert | §3 Supply Chain Notifications | | ☐ Pass ☐ Fail ☐ Blocked | |
 | UAT-21 | Delivery Delay Digest | §3 Daily Digests | | ☐ Pass ☐ Fail ☐ Blocked | |
 | UAT-22 | Desktop Web Login — All Roles | §4 User Workspaces — General | | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-23 | Sales Manager Permissions | §7 Role Permissions | Ng Tze Chien / Tam Ze Xin | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-24 | Logistics Manager (Logistics) Permissions | §7 Role Permissions | Noor Aili | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-25 | Logistics Manager (Procurement) Permissions | §7 Role Permissions | Intan Atikah | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-26 | Logistics Manager (Production) Permissions | §7 Role Permissions | Murugesu | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-27 | Finance Manager Permissions | §7 Role Permissions | Wong Shui Fern | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-28 | Admin Permissions | §7 Role Permissions | Ong Siow Chui | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-29 | SO Approval Workflow (Draft → Submit) | §7 Role Permissions — Workflow | Noor Aili / Miss Wong | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-30 | Admin Sets Poison Flag on SKU | PSO — SKU Setup | Admin | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-31 | DN with Poison SKU → PSO Auto-Generated | PSO — Auto-Generation + Print Pack | Noor Aili | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-32 | DN with No Poison SKU → No PSO | PSO — Auto-Generation | Noor Aili | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-33 | Mixed DN → PSO Contains Poison Lines Only | PSO — Auto-Generation | Noor Aili | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-34 | PSO Layout Validation | PSO — Document Layout | Noor Aili / Admin | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-35 | PSO Access, Download, Reprint & Signed Copy Upload | PSO — Print Pack & Document Access | Noor Aili / Miss Wong | ☐ Pass ☐ Fail ☐ Blocked | |
 
 **Summary:**
 
 | Total Scenarios | Pass | Fail | Blocked |
 |----------------|------|------|---------|
-| 22 | | | |
+| 35 | | | |
 
 ---
 
 ## UAT Sign-Off
 
-By signing below, the Holsen team confirms that the scenarios marked **Pass** have been tested in the MAIA Demo environment and the results are accepted.
+By signing below, the Holsen team confirms that the scenarios marked **Pass** have been tested in the MAIA production instance (https://maia-fe-holsen.vercel.app) and the results are accepted.
 
 | Name | Role | Signature | Date |
 |------|------|-----------|------|

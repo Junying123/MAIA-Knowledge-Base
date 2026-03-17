@@ -146,11 +146,159 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 
 ### 7. Role-Specific Approval
 
-- [ ] SO stays as draft after creation (Finance review required)
-- [ ] Approver can view pricing and credit information
-- [ ] Approval action: **Approve** → SO marked "Submitted", proceeds to DO creation
-- [ ] Approval action: **Amend** → sales agent can amend and proceed
+**Role assignments configured by dev (as of 2026-03-13):**
+
+| Role Title | Product Role | Name(s) | Notes |
+|------------|-------------|---------|-------|
+| Sales Manager | Sales | Ng Tze Chien, Tam Ze Xin | |
+| Logistics Manager (Logistics) | Logistics | Noor Aili Nafiah | Different access within Logistics role |
+| Logistics Manager (Procurement) | Logistics | Intan Atikah | Different access within Logistics role |
+| Logistics Manager (Production) | Logistics | Murugesu A/L Palanivello | Different access within Logistics role |
+| Finance Manager | Finance | Wong Shui Fern | |
+| Admin | Admin | Ong Siow Chui, Tam Ze Xin | Full access to everything |
+| System Admin | System Admin | Chin Zhao Heng | Full access to all documents |
+
+**Document permission matrix configured by dev:**
+
+> **Legend:** SUBMIT = approve/finalise. `–` = no access.
+
+**Quotation**
+- [ ] Sales Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Logistics Manager (Logistics) — READ
+- [ ] Logistics Manager (Procurement) — READ
+- [ ] Logistics Manager (Production) — no access
+- [ ] Finance Manager — READ
+- [ ] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+
+**Purchase Order (PO)**
+- [ ] Sales Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [ ] Logistics Manager (Logistics) — READ
+- [ ] Logistics Manager (Procurement) — READ
+- [ ] Logistics Manager (Production) — no access
+- [ ] Finance Manager — READ
+- [ ] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+
+**Sales Order + Proforma Invoice (SO + PI)**
+- [x] Sales Manager — READ
+- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Logistics Manager (Procurement) — READ, SUBMIT
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+
+**Invoice (INV)**
+- [x] Sales Manager — READ
+- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE
+- [x] Logistics Manager (Procurement) — READ
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+
+**Payment / Receipt (RCT)**
+- [x] Sales Manager — READ
+- [x] Logistics Manager (Logistics) — READ
+- [x] Logistics Manager (Procurement) — READ
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Admin — READ, SUBMIT
+
+**Delivery Order (DO)**
+- [x] Sales Manager — READ
+- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Logistics Manager (Procurement) — READ, SUBMIT
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+
+**Inventory / Stock (Item, Batch, Serial No., Warehouse, Stock Recon, Stock Entry)**
+- [x] Sales Manager — READ
+- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Logistics Manager (Procurement) — READ
+- [x] Logistics Manager (Production) — READ
+- [x] Finance Manager — READ
+- [x] Admin — READ
+
+**Pick List (PL)**
+- [x] Sales Manager — no access
+- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE, SUBMIT
+- [x] Logistics Manager (Procurement) — no access
+- [x] Logistics Manager (Production) — READ
+- [x] Finance Manager — no access
+- [x] Admin — READ, WRITE, CREATE, DELETE, SUBMIT
+
+**Price**
+- [x] Sales Manager — READ
+- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE
+- [x] Logistics Manager (Procurement) — READ
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — READ, WRITE, CREATE, DELETE
+- [x] Admin — READ, WRITE, CREATE, DELETE
+
+**Incoming (Goods Received from Supplier)**
+- [x] Sales Manager — no access
+- [x] Logistics Manager (Logistics) — READ, WRITE, CREATE, DELETE
+- [x] Logistics Manager (Procurement) — READ, WRITE, CREATE, DELETE
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — READ
+- [x] Admin — READ, WRITE, CREATE, DELETE
+
+**Outgoing (Goods Dispatched to Customer)**
+- [x] Sales Manager — READ
+- [x] Logistics Manager (Logistics) — READ
+- [x] Logistics Manager (Procurement) — READ
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — READ
+- [x] Admin — READ
+
+**Viewable Attachments**
+- [x] Sales Manager — PO, COA
+- [x] Logistics Manager (Logistics) — PO, COA
+- [x] Logistics Manager (Procurement) — PO, BOL
+- [x] Logistics Manager (Production) — no access
+- [x] Finance Manager — PO
+- [x] Admin — PO, COA
+
+**Workflow behaviour (to confirm during UAT):**
+- [ ] SO draft → submit flow tested and working
+- [ ] Approval action: **Amend** → sales agent can amend and resubmit
 - [ ] Approval action: **Request Clarification** → order paused until resolved
+
+---
+
+## PSO — Poison Signed Order (Compliance)
+
+Triggered at DN generation. Mandated by Poison License B / FARMASI/KKM. Intake status: WIP (v1.6 — 3 open questions remain on feature ID, NFR performance target, and requestor confirmation).
+
+### SKU Setup
+
+- [ ] Poison/non-poison boolean flag on each SKU in MAIA SKU master (Admin/Compliance role only)
+- [ ] Audit trail of SKU poison flag changes — who, when, before/after value (7-year retention)
+- [ ] 18 poison SKUs pre-seeded from PSO Sample.xlsx (with packing UOM)
+
+### PSO Auto-Generation
+
+- [ ] PSO auto-generated when DN contains ≥1 poison-flagged SKU line
+- [ ] No PSO generated when DN has zero poison lines
+- [ ] Mixed DNs: PSO scoped to poison lines only — non-poison lines excluded from PSO
+
+### PSO Document Layout
+
+- [ ] FROM block: customer name, address, phone (from MAIA customer master)
+- [ ] TO block: Holsen Interchem Sdn Bhd name and address
+- [ ] PSO/DO Number and Delivery Date fields
+- [ ] Line item table: No., Description, Quantity Ordered, Packing/UOM
+- [ ] Signature & Chop by Receiver block (on every page)
+- [ ] Remark field included in layout — blank in generated PDF for manual annotation on print
+- [ ] Return-copy instruction note
+- [ ] Multi-page: continuous line numbering, no repeated PSO header on continuation pages, "Page X of Y", MAIA footer on every page
+
+### Print Pack & Document Access
+
+- [ ] PSO appended to DN printout pack — combined A4 PDF (DN pages first, PSO pages after)
+- [ ] User can view, download, and reprint PSO per DN (Logistics, Admin, Finance, Procurement, System Manager)
+- [ ] PSO linked to parent DN for traceability
+- [ ] "PSO" and "Signed PSO Copy" valid as DN-level document attachment types
+- [ ] Optional: upload scanned signed PSO copy as "Signed PSO Copy" attachment on DN record
 
 ---
 
@@ -255,6 +403,7 @@ These items have no direct SOW equivalent. Classify each as go-live blocker or p
 | Duplicate Prevention | 3 | | | | |
 | Customer Pricing | 3 | | | | |
 | Role Approval | 5 | | | | |
+| PSO — Poison Signed Order | 19 | | | | |
 | Batch Intake | 7 | | | | |
 | Compliance Enforcement | 10 | | | | |
 | COA Handling | 7 | | | | |
@@ -262,7 +411,7 @@ These items have no direct SOW equivalent. Classify each as go-live blocker or p
 | FR: DO Management | 1 | | | | |
 | FR: Inventory & Labels | 1 | | | | |
 | FR: Analytics | 2 | | | | |
-| **TOTAL** | **94** | | | | |
+| **TOTAL** | **113** | | | | |
 
 ---
 
