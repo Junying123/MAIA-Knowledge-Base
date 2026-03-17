@@ -158,17 +158,19 @@ uat_round: 1
 
 ---
 
-#### Test 5 — Generate Documents (Quotation → Sales Order → Invoice)
+#### Test 5 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
 
-*Continue from the order created in Test 4.*
+*Continue from the order created in Test 4. Different roles handle different steps — coordinate as needed.*
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Generate a **Quotation** from the chatbot. | A Quotation document is created. It shows the customer name, products, quantities, prices, and date. |
-| 2 | Convert the Quotation to a **Sales Order**. | A Sales Order is created. Prices from the Quotation are carried over — no changes. A Sales Order number is assigned. |
-| 3 | From the Sales Order, generate a **Proforma Invoice**. | A Proforma Invoice is created. It shows the same details and has its own reference number. |
-| 4 | Generate the final **Invoice** from the Sales Order. | An Invoice is created with a unique invoice number. It shows all billing details. |
-| 5 | Download any of the documents above. | Document downloads successfully as a PDF. |
+> **Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 1 | **Sales Manager** (Ng Tze Chien / Tam Ze Xin) | Generate a **Quotation** from the chatbot or web app. | A Quotation is created showing the customer name, products, quantities, prices, and date. |
+| 2 | **Noor Aili** (Logistics) or **Miss Wong** (Finance) | Log in to the web app. Open the Quotation and convert it to a **Sales Order**. | A Sales Order is created. Prices from the Quotation carry over unchanged. A Sales Order number is assigned. |
+| 3 | **Noor Aili** or **Miss Wong** | From the Sales Order, generate a **Proforma Invoice**. | A Proforma Invoice is created with its own reference number. Details match the Sales Order. |
+| 4 | **Miss Wong** (Finance) | From the Sales Order, generate and submit the final **Invoice**. | An Invoice is created and submitted with a unique invoice number showing all billing details. |
+| 5 | Any user | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF. | All documents download successfully as PDFs. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -180,15 +182,17 @@ uat_round: 1
 
 ---
 
-#### Test 6 — Create a Credit Note
+#### Test 6 — Create a Credit Note and Debit Note *(Finance — Miss Wong)*
 
-*Use an existing Invoice from Test 5.*
+*Use an existing Invoice from Test 5. Log in as **Miss Wong (Finance)**.*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Open an existing Invoice. | Invoice record is visible. |
+| 1 | Open an existing submitted **Invoice**. | Invoice record is visible. |
 | 2 | Look for the option to create a **Credit Note** and click it. | Credit Note creation screen appears. |
-| 3 | Fill in the reason and amount, then confirm. | Credit Note is created. It references the original Invoice and shows the credited amount. |
+| 3 | Fill in the reason and amount, then confirm. | Credit Note is created and saved. It references the original Invoice and shows the credited amount. |
+| 4 | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears. |
+| 5 | Fill in the reason and amount, then confirm. | Debit Note is created and saved. It references the original Invoice and shows the debited amount. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -201,15 +205,15 @@ uat_round: 1
 ---
 
 ### Group 2 — Web App: Managing Orders
-*Who tests this: Sales team*
+*Who tests this: Noor Aili (Logistics) or Miss Wong (Finance)*
 
 ---
 
-#### Test 7 — Duplicate Order is Blocked
+#### Test 7 — Duplicate Order is Blocked *(Noor Aili or Miss Wong)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Create a Sales Order for a customer with PO Number **"PO-001"**. | Order is created successfully. |
+| 1 | Log in as **Noor Aili** (Logistics) or **Miss Wong** (Finance). Create a Sales Order for a customer with PO Number **"PO-001"**. | Order is created successfully. |
 | 2 | Try to create another order for the **same customer** with the **same PO Number "PO-001"**. | System shows a warning — this order already exists. The duplicate is blocked. |
 | 3 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Order is created successfully — no warning shown. |
 
@@ -223,14 +227,17 @@ uat_round: 1
 
 ---
 
-#### Test 8 — Manage Sales Orders on the Web App
+#### Test 8 — Manage Sales Orders on the Web App *(Noor Aili or Miss Wong)*
+
+> **Note:** Sales Manager has view-only access to Sales Orders. SO creation and editing is done by Logistics (Noor Aili) or Finance (Miss Wong).
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Log in to the web app at https://maia-fe-holsen.vercel.app/login as **Sales Manager**. | Your Sales dashboard is visible. |
-| 2 | Create a new Sales Order directly from the web app (not the chatbot). | A form appears. You can fill in customer and product details. Order is saved. |
+| 1 | Log in to the web app at https://maia-fe-holsen.vercel.app/login as **Noor Aili** (Logistics) or **Miss Wong** (Finance). | Your dashboard is visible. |
+| 2 | Create a new Sales Order directly from the web app (not the chatbot). | A form appears. You can fill in customer and product details. Order is saved in Draft. |
 | 3 | Open an existing Sales Order and change a quantity. | The change is saved. Updated quantity is shown. |
 | 4 | Check the status of the order (e.g., Draft, Submitted). | Current status is visible on the order. |
+| 5 | Log out. Log in as **Sales Manager** (Ng Tze Chien). Try to edit or create a Sales Order. | 🚫 Sales Manager cannot create or edit Sales Orders — view only. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -355,9 +362,9 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 14 — Sales User (Ng Tze Chien / Tam Ze Xin)
+#### Test 14 — Sales Manager (Ng Tze Chien / Tam Ze Xin)
 
-Log in as **Sales User** and check the following:
+Log in as **Sales Manager** and check the following:
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -388,8 +395,9 @@ Log in as **Logistics (Noor Aili)** and check the following:
 | 2 | Try to create and submit a **Delivery Order**. | ✅ You can create, edit, and submit Delivery Orders. |
 | 3 | Try to create and manage a **Picking List**. | ✅ You can create, edit, and submit Picking Lists. |
 | 4 | Try to view **Inventory** (stock levels). | ✅ You can view inventory. |
-| 5 | Try to submit (finalise) an **Invoice**. | 🚫 You cannot finalise an Invoice. |
-| 6 | Try to create a **Quotation**. | 🚫 You cannot create a Quotation — view only. |
+| 5 | Try to **create** an Invoice from a Sales Order. | ✅ You can create and edit Invoices. |
+| 6 | Try to **submit (finalise)** the Invoice you just created. | 🚫 You cannot finalise/submit an Invoice — submit is Finance only. |
+| 7 | Try to create a **Quotation**. | 🚫 You cannot create a Quotation — view only. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -521,15 +529,17 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 | 1 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Quotation and click Submit. | Quotation status changes to **Submitted / Open**. |
 | 2 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Purchase Order and click Submit. | Purchase Order status changes to **Submitted**. |
 
-**Part B — Sales Order submission (Logistics and Finance can submit)**
+**Part B — Sales Order submission (Logistics and Finance can create and submit)**
+
+> **Note:** Sales Manager has view-only access on Sales Orders — SO drafts are created by Logistics or Finance.
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
-| 3 | **Ng Tze Chien** (Sales Manager) | Create a new Sales Order — leave it in **Draft**. Do not submit. | Sales Order is in Draft status. |
+| 3 | **Miss Wong** (Finance) | Create a new Sales Order — leave it in **Draft**. Do not submit. | Sales Order is in Draft status. |
 | 4 | **Noor Aili** (Logistics) | Open the Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Noor Aili can submit. |
-| 5 | **Ng Tze Chien** (Sales Manager) | Create a second new Sales Order — leave it in **Draft**. | Second Sales Order is in Draft. |
-| 6 | **Intan Atikah** (Logistics — Procurement) | Open the second Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Intan can submit but not create or edit. |
-| 7 | **Ng Tze Chien** (Sales Manager) | Create a third new Sales Order — leave it in **Draft**. | Third Sales Order is in Draft. |
+| 5 | **Noor Aili** (Logistics) | Create a second new Sales Order — leave it in **Draft**. | Second Sales Order is in Draft. |
+| 6 | **Intan Atikah** (Logistics — Procurement) | Open the second Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Intan can submit (view + submit only — cannot create or edit). |
+| 7 | **Noor Aili** (Logistics) | Create a third new Sales Order — leave it in **Draft**. | Third Sales Order is in Draft. |
 | 8 | **Miss Wong** (Finance) | Open the third Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Miss Wong can submit. |
 
 **Part C — Delivery Order submission (Logistics and Finance can submit)**
@@ -552,12 +562,15 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 |------|-----|-----------|---------------------|
 | 13 | **Miss Wong** (Finance) | Open a submitted Sales Order. Create an Invoice and click Submit. | Invoice status changes to **Submitted / Unpaid**. |
 
-**Part F — Receipt / Payment submission (Finance and Admin)**
+**Part F — Receipt / Payment submission (Finance creates; Finance and Admin can submit)**
+
+> **Note:** Admin can submit Receipts but cannot create them. Finance (Miss Wong) creates the Receipt; Admin can then submit it.
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
 | 14 | **Miss Wong** (Finance) | Create a Receipt against the Invoice from Step 13. Submit it. | Receipt is submitted. Invoice status updates. |
-| 15 | **Ong Siow Chui** (Admin) | Create and submit a Receipt against a different Invoice. | Receipt is submitted. Admin can submit Receipts. |
+| 15 | **Miss Wong** (Finance) | Create a second Receipt against a different Invoice — leave it in **Draft/Pending**. Do not submit. | Receipt is created but not yet submitted. |
+| 16 | **Ong Siow Chui** (Admin) | Open the Draft Receipt from Step 15. Click Submit. | Receipt is submitted. Admin can submit Receipts but cannot create them. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -609,16 +622,16 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 | Test 2 | Send order by photo | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 3 | Send order by PDF | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 4 | Pricing and stock check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 5 | Generate documents (Quotation → Invoice) | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 6 | Create a Credit Note | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 5 | Generate documents (Quotation → SO → Proforma Invoice → Invoice) | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 6 | Create Credit Note and Debit Note (Finance) | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 7 | Duplicate order is blocked | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 8 | Manage orders on the web app | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 8 | Manage Sales Orders on web app (Logistics/Finance create; Sales Manager view only) | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 9 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 10 | Create Delivery Order and Picking List | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 11 | Stock alerts (Out of Stock / Low Stock) | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 12 | Delivery delay reminder | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 13 | All users can log in | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 14 | Sales Manager — access check | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 14 | Sales Manager (Ng Tze Chien / Tam Ze Xin) — access check | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 15 | Logistics / Noor Aili — access check | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 16 | Logistics / Intan — access check | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 17 | Logistics / Murugesu — access check | ☐ Pass ☐ Fail ☐ Issue | | |
