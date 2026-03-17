@@ -286,12 +286,12 @@ uat_round: 1
 
 #### Test 11 — Stock Alerts (Out of Stock and Low Stock)
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Check the notification area (logged in as **Noor Aili** or **Sales Manager**). | Notifications are visible. |
-| 2 | Look for a product that has **zero stock**. | An Out-of-Stock alert is shown for that product. Both Logistics and Sales can see it. |
-| 3 | Look for a product that is below the minimum stock level. | A Low-Stock alert is shown for that product. Both Logistics and Sales can see it. |
-| 4 | Confirm the alert shows the product name and the current stock quantity. | Product name and quantity are correct on the alert. |
+| Step | What to do                                                                      | What you should see                                                                   |
+| ---- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 1    | Check the notification area (logged in as **Noor Aili** or **Sales Manager**).  | Notifications are visible.                                                            |
+| 2    | Look for a product that has **zero stock**.                                     | An Out-of-Stock alert is shown for that product. Both Logistics and Sales can see it. |
+| 3    | Look for a product that is below the safety stock level.                        | A Low-Stock alert is shown for that product. Both Logistics and Sales can see it.     |
+| 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                                   |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -503,23 +503,61 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 
 ---
 
-#### Test 21 — Sales Order Approval Flow
+#### Test 21 — Role Approval Flow
 
-*This test requires two people: a Sales Manager and either Noor Aili or Miss Wong.*
+*This test follows the full document lifecycle. Each step is done by a different person — coordinate as a group.*
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Log in as **Sales Manager**. Create a new Sales Order. | Sales Order is created with status **Draft**. |
-| 2 | Log out. Log in as **Noor Aili (Logistics)**. Open the Draft Sales Order. | The Sales Order is visible. A Submit/Approve button is available. |
-| 3 | Submit/Approve the Sales Order. | Sales Order status changes to **Submitted** or **Approved**. |
-| 4 | Confirm that a Delivery Order can now be created from this Sales Order. | The option to create a Delivery Order is now available. |
+**Part A — Quotation & Purchase Order (Sales Manager submits)**
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 1 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Quotation and click Submit. | Quotation status changes to **Submitted / Open**. |
+| 2 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Purchase Order and click Submit. | Purchase Order status changes to **Submitted**. |
+
+**Part B — Sales Order submission (Logistics and Finance can submit)**
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 3 | **Ng Tze Chien** (Sales Manager) | Create a new Sales Order — leave it in **Draft**. Do not submit. | Sales Order is in Draft status. |
+| 4 | **Noor Aili** (Logistics) | Open the Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Noor Aili can submit. |
+| 5 | **Ng Tze Chien** (Sales Manager) | Create a second new Sales Order — leave it in **Draft**. | Second Sales Order is in Draft. |
+| 6 | **Intan Atikah** (Logistics — Procurement) | Open the second Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Intan can submit but not create or edit. |
+| 7 | **Ng Tze Chien** (Sales Manager) | Create a third new Sales Order — leave it in **Draft**. | Third Sales Order is in Draft. |
+| 8 | **Miss Wong** (Finance) | Open the third Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Miss Wong can submit. |
+
+**Part C — Delivery Order submission (Logistics and Finance can submit)**
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 9 | **Noor Aili** (Logistics) | Create a Delivery Order from one of the submitted Sales Orders. Click Submit / Confirm. | Delivery Order status changes to **Confirmed / Submitted**. |
+| 10 | **Intan Atikah** (Logistics — Procurement) | Open a different Delivery Order that is still in Draft. Click Submit / Confirm. | Delivery Order is confirmed. Intan can submit but not create. |
+| 11 | **Miss Wong** (Finance) | Open another Draft Delivery Order. Click Submit / Confirm. | Delivery Order is confirmed. Miss Wong can submit. |
+
+**Part D — Pick List submission (Logistics — Noor Aili)**
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 12 | **Noor Aili** (Logistics) | Create and submit a Pick List from a confirmed Delivery Order. | Pick List is submitted. Noor Aili has full access to Pick Lists. |
+
+**Part E — Invoice submission (Finance submits)**
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 13 | **Miss Wong** (Finance) | Open a submitted Sales Order. Create an Invoice and click Submit. | Invoice status changes to **Submitted / Unpaid**. |
+
+**Part F — Receipt / Payment submission (Finance and Admin)**
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 14 | **Miss Wong** (Finance) | Create a Receipt against the Invoice from Step 13. Submit it. | Receipt is submitted. Invoice status updates. |
+| 15 | **Ong Siow Chui** (Admin) | Create and submit a Receipt against a different Invoice. | Receipt is submitted. Admin can submit Receipts. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:** _______________ (coordinate across team) &nbsp;&nbsp; **Date:** _______________
 >
-> **Notes:**
+> **Notes (note the step number if any step failed):**
 >
 
 ---
@@ -580,7 +618,7 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 | Test 18 | Finance / Miss Wong — access check | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 19 | Admin — access check | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 20 | System Admin / Chin Zhao Heng — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 21 | Sales Order approval flow | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 21 | Role approval flow (QT → PO → SO → DO → PL → INV → RCT) | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 22 | Poison Signed Order (PSO) — full test | ☐ Pass ☐ Fail ☐ Issue | | |
 
 **Total: 22 tests**
