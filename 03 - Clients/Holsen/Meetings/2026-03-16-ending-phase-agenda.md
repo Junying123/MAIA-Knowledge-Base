@@ -44,16 +44,14 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 ---
 
-> **Scope note:** This meeting covers **Phase 1 (Core MAIA) only**. All C1/C3 compliance topics, A57 tax exemption enforcement, and related role/approval workflows are deferred to Phase 2. See [Phase 2 — C1/C3 Compliance UAT](#phase-2--c1c3-compliance-uat-post-go-live) at the bottom of this document.
+> **Scope note:** Tomorrow's meeting focuses on **Phase 1 (Core MAIA) UAT briefing only**. Feature request triage and detailed role/approval workflows are deferred to Phase A3. See the [Phase A3 section](#phase-a3--deferred-items) at the bottom of this document.
 
 ## Agenda — Phase 1 (Core MAIA)
 
 1. Training Debrief & Master Data Review (15 min)
-2. Feature Request Triage: Go-Live vs. Post-Go-Live (30 min)
-3. Role Permission Sign-Off — Core MAIA (20 min)
-4. Outstanding Deliverables from Holsen (15 min)
-5. Go-Live Readiness Assessment (15 min)
-6. Timeline & Next Steps (10 min)
+2. UAT Briefing — Phase A1 Test Script Walkthrough (30 min)
+3. Outstanding Deliverables from Holsen (10 min)
+4. Go-Live Readiness & Timeline (10 min)
 
 ---
 
@@ -114,139 +112,143 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 ---
 
-### 2. Feature Request Triage: Go-Live vs. Post-Go-Live (30 min)
+### 2. UAT Briefing — Phase A1 Test Script Walkthrough (30 min)
 
-**Goal:** Classify remaining open feature requests for Phase 1 go-live (31 Mar). C1/C3 compliance items are already confirmed as Phase 2 — not discussed here.
+**Goal:** Walk the Holsen team through the UAT test script so they understand what to test, who tests what, and how to record results. UAT runs 18–25 Mar.
 
-**Group 1 — COA:**
-- Confirm customer-specific COA count and field requirements (Open Item #4)
-- Confirm if COA is needed for Phase 1 go-live or deferred to Phase 2 with C1/C3
-
-**Group 2 — DO Management:**
-- Confirm DO bundling requirement — go-live blocker or post-go-live?
-
-**Group 3 — Inventory & Lot:**
-- Picklist workflow — confirm if blocking warehouse ops at go-live
-- Lot number dropdown — confirm if needed at go-live
-- Sticker label — confirm if needed at go-live
-
-**Group 4 — Analytics:**
-- Daily digest — likely post-go-live
-- Item-level sales query — likely post-go-live
-
-**Decisions:**
-- [ ] Phase 1 go-live scope list finalised
-- [ ] Post-go-live backlog agreed
-
-**Action Items:**
-- [ ] Document agreed scope split — Owner: Gareth — Due: YYYY-MM-DD
+**Test script:** [[UAT/Holsen UAT Test Script - 2026-03]]
+**Environment:** https://maia-fe-holsen.vercel.app/login
+**Chatbot:** Telegram @maia_holsen_bot (WhatsApp after Meta setup)
 
 ---
 
-### 3. Role Permission Sign-Off — Core MAIA (20 min)
+**Overview of 21 tests across 6 groups:**
 
-**Goal:** Lock the core MAIA approval chain and access control map. C1/C3 compliance roles deferred to Phase 2.
-
-**Invoice approval chain (core MAIA):**
-- Logistics generates DO → Aili approves proforma → Miss Wong generates eInvoice — confirm final flow
-- 2-approval requirement before eInvoice issuance — confirm trigger conditions
-
-**Role permission map — Phase 1 (present diagram for Holsen to confirm):**
-- Salesperson: own customers only; new customers added/approved by Admin
-- Finance: Miss Wong (eInvoice + invoice generation)
-- Logistics: Noor Aili (DO confirm), Intan Atikah (procurement/incoming)
-- Admin: Ong Siow Chui / Tam Ze Xin (general admin — C1/C3 compliance role confirmed in Phase 2)
-
-**Open item:**
-- DO sign-off UI mechanism — digital signature or button confirm (Open Item #11)
-
-**Decisions:**
-- [ ] Invoice approval chain confirmed
-- [ ] Role permission matrix (Phase 1) confirmed
-- [ ] DO sign-off mechanism confirmed (Open Item #11)
-
-**Action Items:**
-- [ ] Update role permission matrix with confirmed map — Owner: Gareth — Due: YYYY-MM-DD
-- [ ] Share confirmed workflow diagram with Ivan / dev team — Owner: Gareth — Due: YYYY-MM-DD
+| Group | What's being tested | Who |
+|-------|-------------------|-----|
+| Group 1 — Chatbot: Sending Orders | Text / photo / PDF order input, pricing, stock check, document generation, credit note | Sales team |
+| Group 2 — Web App: Managing Orders | Duplicate order block, SO management, CSV export | Sales team |
+| Group 3 — Logistics: Deliveries & Alerts | Delivery Order + Picking List, out-of-stock, low-stock, delivery delay | Noor Aili |
+| Group 4 — Logging In | All 8 users log in and see correct workspace | Everyone |
+| Group 5 — Role Permissions | Each person checks their own access — can-do and cannot-do | Each person individually |
+| Group 6 — Poison Signed Order (PSO) | PSO auto-generation on poison deliveries, layout, download, signed copy upload | Admin + Noor Aili |
 
 ---
 
-### 4. Outstanding Deliverables from Holsen (15 min)
+**Group 1 — Chatbot: Sending Orders** *(Sales team)*
 
-**Goal:** Collect or confirm status of documents/data Holsen needs to hand over.
+| Test | What Holsen does | What to check |
+|------|-----------------|---------------|
+| Test 1 — Text message | Send order text to @maia_holsen_bot | Customer name, products, quantities extracted correctly |
+| Test 2 — Photo | Send photo of handwritten order or printed PO | Details read from photo correctly; can edit before confirming |
+| Test 3 — PDF PO | Send PDF to chatbot | Chatbot confirms upload, extracts order, link opens CPO in web app; click "Create Sales Order" |
+| Test 4 — Pricing & stock | Confirm prices; enter below-minimum price | Below-minimum blocked; available stock quantity shown |
+| Test 5 — Documents | Generate Quotation → SO → Proforma Invoice → Invoice | All 4 documents created; prices carry over; each has a reference number |
+| Test 6 — Credit Note | Create Credit Note from an Invoice | Credit Note references original Invoice; credited amount shown |
 
-**Handover Checklist:**
-- [ ] Product data sheet and safety data sheet — Owner: [Holsen] — Due: YYYY-MM-DD
-- [ ] Taxonomy class column — confirm product classification structure — Owner: [Holsen] — Due: YYYY-MM-DD
-- [ ] Updated master data (customers, items, pricing) after training corrections — Owner: [Holsen] — Due: YYYY-MM-DD
-- [ ] COA templates — imported PDFs for each customer format — Owner: [Holsen] — Due: YYYY-MM-DD
-- [ ] Notification preference confirmation (channel, timing, recipient role) — Owner: [Holsen] — Due: YYYY-MM-DD
-- [ ] C3 appointment letter reference format for MAIA field mapping — Owner: [Holsen] — Due: YYYY-MM-DD
+**Group 2 — Web App: Managing Orders** *(Sales team)*
 
-**Decisions:**
-- [ ] Agreed handover checklist with owner + deadline per item
+| Test | What Holsen does | What to check |
+|------|-----------------|---------------|
+| Test 7 — Duplicate block | Submit PO-001 twice for same customer | Second attempt blocked with warning; PO-002 allowed |
+| Test 8 — SO management | Create SO on web app; edit quantity; check status | SO saved; quantity updated; status visible |
+| Test 9 — CSV export | Export completed SO as CSV | CSV contains customer name, address, delivery type, all SKUs and quantities |
 
-**Action Items:**
-- [ ] Send handover checklist to Holsen contact — Owner: Gareth — Due: YYYY-MM-DD
+**Group 3 — Logistics: Deliveries & Alerts** *(Noor Aili)*
+
+| Test | What Holsen does | What to check |
+|------|-----------------|---------------|
+| Test 10 — DO + Picking List | Create DO from Invoice; generate Picking List | DO and Picking List both created and downloadable as PDF |
+| Test 11 — Stock alerts | Check notification area | Out-of-stock and low-stock alerts visible to Logistics and Sales |
+| Test 12 — Delivery delay | Find overdue Invoice (no DO created) | Delivery delay alert shown in digest |
+
+**Group 4 — Logging In** *(Everyone)*
+
+| Test | What Holsen does | What to check |
+|------|-----------------|---------------|
+| Test 13 — All users log in | Each of the 8 users logs in at https://maia-fe-holsen.vercel.app/login | Login works; each role sees the correct workspace |
+
+**Group 5 — Role Permissions** *(Each person tests their own account)*
+
+| Test | Who | Key checks |
+|------|-----|-----------|
+| Test 14 — Sales Manager | Ng Tze Chien / Tam Ze Xin | ✅ Quotation, PO full access · 🚫 Cannot create SO, Invoice, DO · 🚫 No Pick List |
+| Test 15 — Logistics (Noor Aili) | Noor Aili | ✅ SO, DO, Pick List full access · 🚫 Cannot finalise Invoice · 🚫 Cannot create Quotation |
+| Test 16 — Logistics Procurement | Intan Atikah | ✅ Can submit SO + DO · ✅ Incoming goods full access · 🚫 No Pick List · 🚫 Cannot finalise Invoice |
+| Test 17 — Logistics Production | Murugesu | ✅ View Pick List + Inventory only · 🚫 No SO, DO, Quotation, Invoice |
+| Test 18 — Finance (Miss Wong) | Wong Shui Fern | ✅ Invoice + Receipt full access · ✅ SO + DO submit · 🚫 No Pick List · 🚫 Cannot create Incoming |
+| Test 19 — Admin | Ong Siow Chui | ✅ Full access across all documents |
+| Test 20 — SO Approval flow | Sales Manager + Noor Aili / Miss Wong | Sales Manager creates draft SO → Noor Aili or Miss Wong submits → DO creation unlocked |
+
+**Group 6 — Poison Signed Order (PSO)** *(Admin steps 1–2, Noor Aili steps 3–10)*
+
+| Test | What Holsen does | What to check |
+|------|-----------------|---------------|
+| Test 21 — PSO full test | Admin flags a product as Poison; create DOs with/without poison items | PSO auto-appended for poison deliveries only; mixed DOs show poison items only on PSO; layout correct (FROM/TO/signature/remarks); download and re-upload signed copy works |
 
 ---
 
-### 5. Go-Live Readiness Assessment (15 min)
+**Briefing points to cover:**
+- [ ] Explain result options: ✅ Pass / ❌ Fail / ⚠️ Issue — and how to record notes
+- [ ] Confirm each user has their login credentials filled in the test script
+- [ ] Confirm UAT start date: 2026-03-18
+- [ ] Confirm UAT completion and sign-off deadline: 2026-03-25
+- [ ] Confirm who contacts Gareth if blocked during UAT
 
-**Goal:** Confirm what still needs to happen before production go-live.
+**Decisions:**
+- [ ] Holsen team confirms they understand the test scope and instructions
+- [ ] Login details confirmed for all 8 users
+- [ ] UAT schedule (18–25 Mar) agreed
 
-**Go-Live Checklist (Core MAIA — 31 Mar target):**
-- [ ] Master data fully loaded and validated in MAIA
-- [ ] Go-live scope agreed: core MAIA features only (C1/C3 and A57 tax exemption excluded)
-- [ ] Role permissions configured and tested
-- [ ] UAT completed by Holsen team with sign-off (18–25 Mar)
+---
+
+### 3. Outstanding Deliverables from Holsen (10 min)
+
+**Goal:** Confirm what Holsen needs to have ready before UAT starts 18 Mar.
+
+**Phase 1 — Must be ready by 18 Mar:**
+- [ ] Master data loaded and validated in MAIA (customers, products, pricing) — Owner: Holsen + Ivan
+- [ ] Login credentials for all 8 UAT users confirmed and working — Owner: Ivan — Due: 2026-03-17
+- [ ] Notification preferences confirmed (channel, timing, recipient) — Owner: Holsen
+
+**Phase A3 — Can wait until post-go-live:**
+- [ ] COA templates per customer format — Owner: Holsen
+- [ ] C3 appointment letter reference format — Owner: Holsen
+- [ ] Product data sheet and safety data sheet — Owner: Holsen
+
+**Decisions:**
+- [ ] Phase 1 data confirmed ready for 18 Mar UAT start
+
+---
+
+### 4. Go-Live Readiness & Timeline (10 min)
+
+**Goal:** Confirm readiness gates. Timeline already set — just confirm agreement.
+
+**Phase 1 Go-Live Checklist (31 Mar):**
+- [ ] Master data loaded and validated
+- [ ] All 8 users can log in
+- [ ] UAT completed + signed off (18–25 Mar)
 - [ ] eInvoice attachment ready (17 Mar)
 - [ ] Meta / WhatsApp account setup (by 25 Mar)
-- [ ] Training completion — confirm if any team members missed the March 5 session
 
-**Post-Go-Live (separate phase):**
-- [ ] C1/C3 compliance features (dev target: 30 Mar, deploy after go-live)
-- [ ] A57 tax exemption enforcement
+**Agreed Timeline:**
 
-**Decisions:**
-- [ ] Remaining blockers identified
-- [ ] % readiness for go-live assessed
-
-**Action Items:**
-- [ ] Document blockers list and assign owners — Owner: Gareth — Due: YYYY-MM-DD
-
----
-
-### 6. Timeline & Next Steps (10 min)
-
-**Goal:** Lock dates.
-
-**Planned Closing & Go-Live Schedule:**
-
-| Date   | Milestone                                                                    | Owner              | Status |
-| ------ | ---------------------------------------------------------------------------- | ------------------ | ------ |
-| 17 Mar | PSO done                                                                     | Bushra             | -      |
-| 17 Mar | Holsen instance tested                                                       | Gareth             | -      |
-| 17 Mar | eInvoice attachment ready                                                    | -                  | -      |
-| 17 Mar | Meeting prep (core MAIA scope, UAT plan)                                     | Gareth, Bren, Ivan | -      |
-| 18 Mar | Kick off UAT — core MAIA (excluding C1/C3 and A57 tax exemption enforcement) | Holsen team        | -      |
-| 25 Mar | UAT completed — core MAIA scope confirmed                                    | Holsen team        | -      |
-| 25 Mar | Meta / WhatsApp account setup                                                | -                  | -      |
-| 30 Mar | Product ready — C1/C3 compliance features done                               | Dev                | -      |
-| 31 Mar | Holsen closure                                                               | Gareth             | -      |
-| 31 Mar | **Go-live — core MAIA (without C1/C3)**                                      | All                | -      |
-
-> **Note:** C1/C3 compliance and A57 tax exemption enforcement are **post-go-live** — core MAIA goes live 31 Mar without these. C1/C3 targeted ready 30 Mar for a subsequent phase.
-
-**Decisions:**
-- [ ] Go-live date confirmed: 2026-03-31 (core MAIA, without C1/C3)
-- [ ] UAT session date confirmed: 2026-03-18 (start) — 2026-03-25 (done)
-- [ ] Deliverable deadline agreed: [DATE]
-- [ ] Next check-in date set: [DATE]
+| Date | Milestone | Owner |
+|------|-----------|-------|
+| 17 Mar | PSO done | Bushra |
+| 17 Mar | Holsen instance tested | Gareth |
+| 17 Mar | eInvoice attachment ready | Ivan |
+| 17 Mar | UAT script sent to Holsen | Gareth |
+| 18 Mar | UAT starts — Phase A1 (21 tests) | Holsen team |
+| 25 Mar | UAT sign-off + Meta/WhatsApp setup | Holsen team |
+| 30 Mar | C1/C3 compliance dev-complete | Dev |
+| 31 Mar | Go-live — core MAIA (Phase A1, without C1/C3) | All |
 
 **Action Items:**
-- [ ] Send meeting recap and agreed timeline — Owner: Gareth — Due: 2026-03-17
-- [ ] Share dev delivery schedule with Holsen — Owner: Ivan — Due: 2026-03-17
+- [ ] Send UAT test script to Holsen — Owner: Gareth — Due: 2026-03-17
+- [ ] Confirm all logins working — Owner: Ivan — Due: 2026-03-17
+- [ ] Send meeting recap — Owner: Gareth — Due: 2026-03-17
 
 ---
 
@@ -260,11 +262,57 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 ---
 
-## Phase 2 — C1/C3 Compliance UAT (Post-Go-Live)
+## Phase A3 — Deferred Items (Post-Go-Live)
 
-> These items are **out of scope for the 18–25 Mar UAT and the 31 Mar go-live**. Dev target for C1/C3 features is 30 Mar; Phase 2 UAT and deployment to follow after core MAIA go-live.
+> Everything below is **out of scope for the 18–25 Mar UAT and the 31 Mar go-live**. To be discussed in a separate session after core MAIA is live.
 >
-> Source: [[Feature Requests/Holsen SOW Feature Checklist]] (all `[ ]` compliance items) + [[Product/SOW for MAIA Holsen]] Phase A3.
+> Source: [[Feature Requests/Holsen SOW Feature Checklist]] + [[Product/SOW for MAIA Holsen]] Phase A3.
+
+---
+
+### A3-1. Feature Request Triage (deferred from main agenda)
+
+**Goal:** Classify remaining open feature requests — go-live blocker vs. post-go-live.
+
+**Group 1 — COA:**
+- Confirm customer-specific COA count and field requirements (Open Item #4)
+- Confirm if COA is needed at go-live or deferred to Phase A3
+
+**Group 2 — DO Management:**
+- Confirm DO bundling requirement (FR-06)
+
+**Group 3 — Inventory & Lot:**
+- Picklist workflow — blocking warehouse ops?
+- Lot number dropdown
+- Sticker label (FR-07)
+
+**Group 4 — Analytics:**
+- Daily digest (FR-08) — likely post-go-live
+- Item-level sales query (FR-09) — likely post-go-live
+
+**Decisions:**
+- [ ] Phase A3 scope list agreed
+- [ ] Post-go-live backlog agreed
+
+---
+
+### A3-2. Role Permission & Compliance Sign-Off (deferred from main agenda)
+
+**Invoice approval chain:**
+- Logistics generates DO → Aili approves proforma → Miss Wong generates eInvoice — confirm final flow
+
+**Open items:**
+- DO sign-off UI mechanism — digital signature or button confirm (Open Item #11)
+- C1 lumpsum definition — total invoice value / qty / tax-exempt lines only (Open Item #10)
+- Admin C1/C3 compliance ownership confirmed (Ong Siow Chui / Tam Ze Xin)
+- A57 tax exemption enforcement — tagging and logic on invoices
+
+**Decisions:**
+- [ ] Invoice approval chain confirmed
+- [ ] DO sign-off mechanism confirmed (Open Item #11)
+- [ ] C1 lumpsum definition confirmed (Open Item #10)
+
+---
 
 ---
 
