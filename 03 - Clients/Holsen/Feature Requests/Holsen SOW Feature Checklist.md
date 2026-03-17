@@ -9,6 +9,8 @@ client: Holsen
 
 Use this checklist to track which SOW features have been built, tested, and validated in MAIA for Holsen. Update status as features are confirmed during UAT.
 
+Items marked `[v3]` were surfaced during the March 5 training and extend the base SOW feature. Items in the **Feature Requests** section are net-new (no SOW equivalent).
+
 **Status key:**
 - `[ ]` Not started / unknown
 - `[x]` Built and confirmed
@@ -121,6 +123,8 @@ Use this checklist to track which SOW features have been built, tested, and vali
 - [ ] Output Documents — view Pick List, DO
 - [ ] Inventory Management — view and manage product details
 - [ ] Delivery Request Classification (3rd party transport documented outside MAIA)
+- [ ] `[v3]` Full picklist workflow — SO triggers picklist, Logistics confirms lot + qty, DO generated from confirmed pick, invoice follows
+- [ ] `[v3]` Picklist UI: lot number dropdown showing available lots with qty and expiry, plus remark field for discrepancies
 
 ---
 
@@ -170,6 +174,7 @@ Use this checklist to track which SOW features have been built, tested, and vali
 **C3 Allocation**
 - [ ] C3 stock hard locked to designated customer
 - [ ] Non-C3 customers shown "0 Stock Available" for C3 SKUs
+- [ ] `[v3]` Admin can record C3 stock movements in MAIA — incoming qty logged on stock arrival, outgoing qty logged against confirmed DO for Jadual C2 audit
 
 **C1 Certificate Validation**
 - [ ] C1 product check against Customer Profile for valid certificate
@@ -184,31 +189,85 @@ Use this checklist to track which SOW features have been built, tested, and vali
 
 ### 10. COA Handling
 
+**Storage & Linking**
 - [ ] Supplier COA PDFs stored per batch (uploaded at batch intake)
+- [ ] COA auto-linked to lot/batch record on delivery confirmation — searchable by lot number `[v3]`
+
+**Customer COA Configuration** `[v3]`
+- [ ] Admin configures COA count per customer (1 or 2 COAs per order) — system generates the configured number automatically on delivery
+- [ ] Admin toggles visible COA fields per customer on a shared base template — generated COA only shows fields configured for that customer
+
+**Blinded COA**
 - [ ] Customer Preference Logic applied (Standard vs. Blinded COA)
 - [ ] Blinded COA — masking/blinding instructions provided before PDF generation
 
 ---
 
+## Feature Requests — March 5 Training
+
+These items have no direct SOW equivalent. Classify each as go-live blocker or post-go-live during the ending phase meeting.
+
+### 11. C1/C3 Compliance Workflow
+
+| # | Feature | Status |
+|---|---------|--------|
+| FR-01 | **C3 Delivery Tracking with Date Filters** — Admin filters all C3 deliveries by date range to audit activity before Jadual C2 prep. Returns transactions with PO ref, qty, and linked DO. | [ ] |
+| FR-02 | **Reminder to Log C3 Transactions** — System checks for a missing C3 record when a C3 DO is confirmed, and notifies Admin to log the entry before it's missed. | [ ] |
+| FR-03 | **Unified Filter View for C1 and C3 Records** — Admin applies a period filter and sees C1 lumpsum rows per customer alongside C3 individual transaction rows in one compliance view. | [ ] |
+| FR-04 | **Bi-Monthly Reminder to Export C1/C3 Document Bundle** — MAIA reminds Admin every 2 months to export the C1/C3 bundle for SST audit. MAIA compiles customer invoice + supplier invoice + DO into a single package. | [ ] |
+| FR-05 | **C1 Compliance Workflow — DO Sign-Off, UBS Invoice Reference & Lumpsum** — Logistics submits DO, Admin signs off with UBS invoice number recorded. At period close MAIA surfaces one aggregated C1 lumpsum per customer ready for Jadual C2 export. | [ ] |
+
+---
+
+### 12. DO Management
+
+| # | Feature | Status |
+|---|---------|--------|
+| FR-06 | **Bundle Multiple DOs into One PDF** — Finance Manager selects associated DOs on an invoice; system merges them into one PDF and attaches it to the invoice record. | [ ] |
+
+---
+
+### 13. Inventory & Labels
+
+| # | Feature | Status |
+|---|---------|--------|
+| FR-07 | **Sticker Label per Product, Tied to Batch and Date** — On delivery confirmation, MAIA generates customer-specific sticker labels per product showing product name, batch number, and date in the format configured for that customer. | [ ] |
+
+---
+
+### 14. Analytics & Dashboard
+
+| # | Feature | Status |
+|---|---------|--------|
+| FR-08 | **Daily Digest: Growth-Oriented Business Metrics** — Sales Manager views actionable growth metrics (high-value customers, revenue trends, item performance) to prioritise follow-ups, upsells, and at-risk accounts. | [ ] |
+| FR-09 | **Item-Level Sales Query** — Sales Manager queries items by highest and lowest sales volume, sorts results, and exports for review. | [ ] |
+
+---
+
 ## Summary Tracker
 
-| Area                   | Total Items | Built `[x]` | In Progress `[~]` | Blocked `[!]` | Not Started `[ ]` |
-| ---------------------- | ----------- | ----------- | ----------------- | ------------- | ----------------- |
-| Sales Chatbot          | 24          |             |                   |               |                   |
-| UBS CSV Export         | 3           |             |                   |               |                   |
-| Supply Chain Chatbot   | 7           |             |                   |               |                   |
-| User Workspaces        | 14          |             |                   |               |                   |
-| Duplicate Prevention   | 3           |             |                   |               |                   |
-| Customer Pricing       | 3           |             |                   |               |                   |
-| Role Approval          | 5           |             |                   |               |                   |
-| Batch Intake           | 7           |             |                   |               |                   |
-| Compliance Enforcement | 7           |             |                   |               |                   |
-| COA Handling           | 3           |             |                   |               |                   |
-| **TOTAL**              | **76**      |             |                   |               |                   |
+| Area | Total | Built `[x]` | In Progress `[~]` | Blocked `[!]` | Not Started `[ ]` |
+|------|-------|-------------|-------------------|---------------|-------------------|
+| Sales Chatbot | 24 | | | | |
+| UBS CSV Export | 3 | | | | |
+| Supply Chain Chatbot | 7 | | | | |
+| User Workspaces | 16 | | | | |
+| Duplicate Prevention | 3 | | | | |
+| Customer Pricing | 3 | | | | |
+| Role Approval | 5 | | | | |
+| Batch Intake | 7 | | | | |
+| Compliance Enforcement | 10 | | | | |
+| COA Handling | 7 | | | | |
+| FR: C1/C3 Compliance | 5 | | | | |
+| FR: DO Management | 1 | | | | |
+| FR: Inventory & Labels | 1 | | | | |
+| FR: Analytics | 2 | | | | |
+| **TOTAL** | **94** | | | | |
 
 ---
 
 **See Also:**
-- [[03 - Clients/Holsen/SOW for MAIA Holsen]]
-- [[03 - Clients/Holsen/Holsen Feature Requests - 5 March Training]]
-- [[03 - Clients/Holsen/Meetings/2026-03-16-ending-phase-agenda]]
+- [[Product/SOW for MAIA Holsen]]
+- [[Feature Requests/Holsen Feature Requests - 5 March Training]]
+- [[Meetings/Holsen v3 prep work]]
+- [[Meetings/2026-03-16-ending-phase-agenda]]
