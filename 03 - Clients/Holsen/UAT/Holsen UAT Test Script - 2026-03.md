@@ -351,7 +351,7 @@ uat_round: 1
 
 #### Test 14 — Sales User (Ng Tze Chien / Tam Ze Xin)
 
-Log in as **Sales Manager** and check the following:
+Log in as **Sales User** and check the following:
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -397,7 +397,7 @@ Log in as **Logistics (Noor Aili)** and check the following:
 
 #### Test 16 — Logistics / Procurement (Intan Atikah)
 
-Log in as **Logistics (Intan Atikah)** and check the following:
+Log in as **Logistics User (Intan Atikah)** and check the following:
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -482,7 +482,28 @@ Log in as **Admin** and check the following:
 
 ---
 
-#### Test 20 — Sales Order Approval Flow
+#### Test 20 — System Admin (Chin Zhao Heng)
+
+Log in as **System Admin (Chin Zhao Heng)** and check the following:
+
+| Step | What to do | What you should see |
+|------|-----------|---------------------|
+| 1 | Try to create and submit a **Quotation**, **Sales Order**, **Invoice**, and **Delivery Order**. | ✅ Full access to all of these. |
+| 2 | Try to create and manage a **Picking List**. | ✅ Full access. |
+| 3 | Try to submit a **Payment / Receipt**. | ✅ You can submit Receipts. |
+| 4 | Try to open **User Management** (add or edit user accounts). | ✅ User management is accessible — you can view and manage user accounts. |
+
+> **Your result:**
+> ☐ Pass    ☐ Fail    ☐ Issue
+>
+> **Tested by:** _______________    **Date:** _______________
+>
+> **Notes (list any step that did not behave as expected):**
+>
+
+---
+
+#### Test 21 — Sales Order Approval Flow
 
 *This test requires two people: a Sales Manager and either Noor Aili or Miss Wong.*
 
@@ -510,7 +531,7 @@ Log in as **Admin** and check the following:
 
 ---
 
-#### Test 21 — Poison Signed Order (PSO) — Full Test
+#### Test 22 — Poison Signed Order (PSO) — Full Test
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -558,10 +579,11 @@ Log in as **Admin** and check the following:
 | Test 17 | Logistics / Murugesu — access check | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 18 | Finance / Miss Wong — access check | ☐ Pass ☐ Fail ☐ Issue | | |
 | Test 19 | Admin — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 20 | Sales Order approval flow | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 21 | Poison Signed Order (PSO) — full test | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 20 | System Admin / Chin Zhao Heng — access check | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 21 | Sales Order approval flow | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test 22 | Poison Signed Order (PSO) — full test | ☐ Pass ☐ Fail ☐ Issue | | |
 
-**Total: 21 tests**
+**Total: 22 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
