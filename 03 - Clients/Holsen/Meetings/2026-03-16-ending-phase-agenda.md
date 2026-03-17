@@ -50,8 +50,9 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 1. Training Debrief & Master Data Review (15 min)
 2. UAT Briefing — Phase A1 Test Script Walkthrough (30 min)
-3. Outstanding Deliverables from Holsen (10 min)
-4. Go-Live Readiness & Timeline (10 min)
+3. Meta / WhatsApp Account Setup (15 min)
+4. Outstanding Deliverables from Holsen (10 min)
+5. Go-Live Readiness & Timeline (10 min)
 
 ---
 
@@ -202,16 +203,41 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 ---
 
-### 3. Outstanding Deliverables from Holsen (10 min)
+### 3. Meta / WhatsApp Account Setup (15 min)
+
+**Goal:** Complete Meta Business account setup for Holsen so WhatsApp is ready to replace Telegram as the go-live chatbot channel.
+
+**What needs to happen:**
+- [ ] Holsen provides or confirms Meta Business account credentials / access
+- [ ] MAIA team connects Holsen's WhatsApp number to the MAIA chatbot via Meta API
+- [ ] Test message sent via WhatsApp to confirm connection is live
+- [ ] Confirm @maia_holsen_bot (Telegram) remains active for UAT period (18–25 Mar)
+- [ ] Confirm WhatsApp will be the live channel from go-live (31 Mar)
+
+**Who needs to be in the room:** Gareth / Ivan (MAIA) + Holsen admin contact with Meta Business access
+
+**Decisions:**
+- [ ] Meta Business account access confirmed
+- [ ] WhatsApp number connected and tested
+- [ ] Switch-over date confirmed: 2026-03-31 (go-live)
+
+**Action Items:**
+- [ ] Complete WhatsApp connection — Owner: Ivan — Due: 2026-03-18
+- [ ] Send confirmation to Holsen once WhatsApp is live — Owner: Gareth — Due: 2026-03-18
+
+---
+
+### 4. Outstanding Deliverables from Holsen (10 min)
+
 
 **Goal:** Confirm what Holsen needs to have ready before UAT starts 18 Mar.
 
 **Phase 1 — Must be ready by 18 Mar:**
-- [ ] Master data loaded and validated in MAIA (customers, products, pricing) — Owner: Holsen + Ivan
-- [ ] Login credentials for all 8 UAT users confirmed and working — Owner: Ivan — Due: 2026-03-17
+- [ ] Master data loaded and validated in MAIA (customers, products, pricing) — Owner: Holsen + JiaHau
+- [ ] Login credentials for all 8 UAT users confirmed and working — Owner: Gareth, JiaHau — Due: 2026-03-17
 - [ ] Notification preferences confirmed (channel, timing, recipient) — Owner: Holsen
 
-**Phase A3 — Can wait until post-go-live:**
+**Phase 2 — Can wait until post-go-live:**
 - [ ] COA templates per customer format — Owner: Holsen
 - [ ] C3 appointment letter reference format — Owner: Holsen
 - [ ] Product data sheet and safety data sheet — Owner: Holsen
@@ -221,7 +247,7 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 ---
 
-### 4. Go-Live Readiness & Timeline (10 min)
+### 5. Go-Live Readiness & Timeline (10 min)
 
 **Goal:** Confirm readiness gates. Timeline already set — just confirm agreement.
 
@@ -234,16 +260,17 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 **Agreed Timeline:**
 
-| Date | Milestone | Owner |
-|------|-----------|-------|
-| 17 Mar | PSO done | Bushra |
-| 17 Mar | Holsen instance tested | Gareth |
-| 17 Mar | eInvoice attachment ready | Ivan |
-| 17 Mar | UAT script sent to Holsen | Gareth |
-| 18 Mar | UAT starts — Phase A1 (21 tests) | Holsen team |
-| 25 Mar | UAT sign-off + Meta/WhatsApp setup | Holsen team |
-| 30 Mar | C1/C3 compliance dev-complete | Dev |
-| 31 Mar | Go-live — core MAIA (Phase A1, without C1/C3) | All |
+| Date   | Milestone                                     | Owner       |
+| ------ | --------------------------------------------- | ----------- |
+| 17 Mar | PSO done                                      | Bushra      |
+| 17 Mar | Holsen instance tested                        | Gareth      |
+| 17 Mar | eInvoice attachment ready                     | Gareth      |
+| 17 Mar | UAT script sent to Holsen                     | Gareth      |
+| 18 Mar | UAT starts — Phase A1 (21 tests)              | Holsen team |
+| 18 Mar | Meta / WhatsApp account setup                 | Gareth, Ivan |
+| 25 Mar | UAT sign-off                                  | Holsen team |
+| 30 Mar | C1/C3 compliance dev-complete                 | Dev         |
+| 31 Mar | Go-live — core MAIA (Phase A1, without C1/C3) | All         |
 
 **Action Items:**
 - [ ] Send UAT test script to Holsen — Owner: Gareth — Due: 2026-03-17
