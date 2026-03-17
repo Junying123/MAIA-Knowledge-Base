@@ -42,13 +42,51 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 **Goal:** Confirm what is working and surface blockers found during the March 5 training.
 
+**Master Data on Hand (from UBS export, as of 07/01/2026):**
+
+| Dataset | Source File | Record Count | Fields Available |
+|---------|-------------|--------------|-----------------|
+| Product List | `Product List - Holsen.xlsx` | 200 products | Name, Packing, Unit, Class, No, Type, Code |
+| Customer List | `Customer List UBS.xlsx` | 316 customers | Cust No., Name, Contact, Address (4 fields), Phone, Fax, Area, Agent, Credit Term |
+
+**Product breakdown by class:**
+
+| Class | Count |
+|-------|-------|
+| Zinc (M) | 33 |
+| Misc | 33 |
+| Krom | 30 |
+| Nickel (M) | 18 |
+| Nickel | 14 |
+| Poison | 13 |
+| Cleaner (M) | 13 |
+| Copper | 9 |
+| Other | 37 |
+
+**Customer breakdown by credit terms:**
+
+| Term | Count |
+|------|-------|
+| 60 Days | 85 |
+| Cash | 80 |
+| 30 Days | 56 |
+| CBD | 17 |
+| COD / C.O.D | 9 |
+| 90 Days | 4 |
+| T/T | 2 |
+| No term recorded | 63 |
+
 **Discussion Points:**
 - Review master data errors/gaps identified during training (action item from v3 notes)
 - Confirm which issues Holsen team has already fixed vs. still outstanding
+- Confirm whether product list and customer list above have been loaded into MAIA and validated
+- Confirm pricing data loaded — separate price list file exists (`Price List Holsen.csv`)
 - Review outstanding documents Holsen was asked to prepare post-training
 
 **Decisions:**
-- [ ] [To be confirmed during meeting]
+- [ ] Product list (200 SKUs) loaded and validated in MAIA — confirmed / gaps identified
+- [ ] Customer list (316 records) loaded and validated in MAIA — confirmed / gaps identified
+- [ ] Pricing loaded and validated — confirmed / gaps identified
 
 **Action Items:**
 - [ ] Compile final list of data readiness blockers — Owner: [Name] — Due: YYYY-MM-DD
