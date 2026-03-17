@@ -116,12 +116,12 @@ uat_round: 1
 
 #### Test 3 — Send an Order by PDF
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Prepare a customer PO in PDF format. | PDF file is ready. |
-| 2 | Send the PDF to **@maia_holsen_bot** on Telegram. | Chatbot accepts the PDF and starts processing. |
-| 3 | Wait a moment. | The chatbot shows the order details extracted from the PDF. |
-| 4 | Check that the details match the PDF. | Customer name, products, and quantities are correctly read. |
+| Step | What to do                                        | What you should see                                         |
+| ---- | ------------------------------------------------- | ----------------------------------------------------------- |
+| 1    | Prepare a customer PO in PDF format.              | PDF file is ready.                                          |
+| 2    | Send the PDF to **@maia_holsen_bot** on Telegram. | Chatbot accepts the PDF and starts processing.              |
+| 3    | Wait a moment.                                    | The chatbot shows the order details extracted from the PDF. |
+| 4    | Check that the details match the PDF.             | Customer name, products, and quantities are correctly read. |
 
 > **Your result:**
 > ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
