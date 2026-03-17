@@ -16,22 +16,23 @@ uat_round: 1
 **UAT Date:** [To be confirmed]
 **Web App:** https://maia-fe-holsen.vercel.app/login
 **Chatbot (during UAT):** Telegram — @maia_holsen_bot
+![[Pasted image 20260317183109.png|179]]
 **Chatbot (after go-live):** WhatsApp *(same features — WhatsApp setup is in progress)*
 
 ---
 
 ## Your Login Details
 
-| Name | Role in MAIA | Username | Password |
-|------|-------------|----------|----------|
-| Ng Tze Chien | Sales Manager | | |
-| Tam Ze Xin | Sales Manager / Admin | | |
-| Noor Aili Nafiah | Logistics | | |
-| Intan Atikah | Logistics (Procurement) | | |
-| Murugesu A/L Palanivello | Logistics (Production) | | |
-| Wong Shui Fern (Miss Wong) | Finance | | |
-| Ong Siow Chui | Admin | | |
-| Chin Zhao Heng | System Admin | | |
+| Name                       | Email (Username)            | Password |
+| -------------------------- | --------------------------- | -------- |
+| Ng Tze Chien               | holsensales@gmail.com       | 123456   |
+| Tam Ze Xin                 | enquiry@holseninterchem.com | 123456   |
+| Noor Aili Nafiah           | sales@holseninterchem.com   | 123456   |
+| Intan Nor Atikah           | holsen@holseninterchem.com  | 123456   |
+| Murugesu A/L Palanivello   | holsenchem@gmail.com        | 123456   |
+| Wong Shui Fern (Miss Wong) | wongsf@holseninterchem.com  | 123456   |
+| Ong Siow Chui              | holsenlab@gmail.com         | 123456   |
+| Chin Zhao Heng             | chinzh@holseninterchem.com  | 123456   |
 
 ---
 
@@ -84,13 +85,12 @@ uat_round: 1
 | 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -104,13 +104,12 @@ uat_round: 1
 | 4 | Check that the details match the photo. | Information extracted is correct. If anything is wrong, you can edit before confirming. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -128,13 +127,12 @@ uat_round: 1
 > ⚠️ **Note:** The chatbot reads the PDF automatically, but always review the details in step 5 before creating the Sales Order. If a product name or quantity looks wrong, fix it first.
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -151,13 +149,12 @@ uat_round: 1
 | 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -174,13 +171,12 @@ uat_round: 1
 | 5 | Download any of the documents above. | Document downloads successfully as a PDF. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -195,13 +191,12 @@ uat_round: 1
 | 3 | Fill in the reason and amount, then confirm. | Credit Note is created. It references the original Invoice and shows the credited amount. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -219,13 +214,12 @@ uat_round: 1
 | 3 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Order is created successfully — no warning shown. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -239,13 +233,12 @@ uat_round: 1
 | 4 | Check the status of the order (e.g., Draft, Submitted). | Current status is visible on the order. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -258,13 +251,12 @@ uat_round: 1
 | 3 | Open the CSV file. | File contains: customer name, address, delivery type, all products, and quantities. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -283,13 +275,12 @@ uat_round: 1
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -303,13 +294,12 @@ uat_round: 1
 | 4 | Confirm the alert shows the product name and the current stock quantity. | Product name and quantity are correct on the alert. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -323,13 +313,12 @@ uat_round: 1
 > ⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact Gareth to set one up.
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -343,19 +332,15 @@ uat_round: 1
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
 | 1 | Open https://maia-fe-holsen.vercel.app/login in **Google Chrome** on a laptop or desktop. | The MAIA login page loads. |
-| 2 | Log in using the **Sales Manager** account. | Login is successful. The Sales dashboard is visible. |
-| 3 | Log out. Log in as **Finance (Miss Wong)**. | Login is successful. The Finance view is visible. |
-| 4 | Log out. Log in as **Logistics (Noor Aili)**. | Login is successful. The Logistics view is visible. |
-| 5 | Log out. Log in as **Admin**. | Login is successful. The Admin view is visible. |
+| 2 | Each person logs in using their **assigned email and password** from the table above. | Login is successful. Your workspace and dashboard are visible. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -364,7 +349,7 @@ uat_round: 1
 
 ---
 
-#### Test 14 — Sales Manager (Ng Tze Chien / Tam Ze Xin)
+#### Test 14 — Sales User (Ng Tze Chien / Tam Ze Xin)
 
 Log in as **Sales Manager** and check the following:
 
@@ -378,13 +363,12 @@ Log in as **Sales Manager** and check the following:
 | 6 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes (list any step that did not behave as expected):**
 >
-> &nbsp;
 
 ---
 
@@ -402,13 +386,12 @@ Log in as **Logistics (Noor Aili)** and check the following:
 | 6 | Try to create a **Quotation**. | 🚫 You cannot create a Quotation — view only. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes (list any step that did not behave as expected):**
 >
-> &nbsp;
 
 ---
 
@@ -425,13 +408,12 @@ Log in as **Logistics (Intan Atikah)** and check the following:
 | 5 | Try to submit (finalise) an **Invoice**. | 🚫 You cannot finalise an Invoice. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes (list any step that did not behave as expected):**
 >
-> &nbsp;
 
 ---
 
@@ -447,13 +429,12 @@ Log in as **Logistics (Murugesu)** and check the following:
 | 4 | Try to open **Quotations**, **Invoices**, or **Purchase Orders**. | 🚫 Not visible or accessible. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes (list any step that did not behave as expected):**
 >
-> &nbsp;
 
 ---
 
@@ -471,13 +452,12 @@ Log in as **Finance Manager (Miss Wong)** and check the following:
 | 6 | Try to create a new **Incoming goods** record. | 🚫 You cannot create Incoming records — view only. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes (list any step that did not behave as expected):**
 >
-> &nbsp;
 
 ---
 
@@ -493,13 +473,12 @@ Log in as **Admin** and check the following:
 | 4 | Try to submit a **Payment / Receipt**. | ✅ You can submit Receipts. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes (list any step that did not behave as expected):**
 >
-> &nbsp;
 
 ---
 
@@ -515,13 +494,12 @@ Log in as **Admin** and check the following:
 | 4 | Confirm that a Delivery Order can now be created from this Sales Order. | The option to create a Delivery Order is now available. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes:**
 >
-> &nbsp;
 
 ---
 
@@ -548,13 +526,12 @@ Log in as **Admin** and check the following:
 | 10 | Download the PSO. Then upload a scanned copy back to the Delivery Order and select **"Signed PSO Copy"** as the document type. Log in as Miss Wong and check she can view the PSO. | Download works. Signed copy uploads successfully with the correct label. Miss Wong can view the PSO. |
 
 > **Your result:**
-> ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
+> ☐ Pass    ☐ Fail    ☐ Issue
 >
-> **Tested by:** _______________ &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** _______________    **Date:** _______________
 >
 > **Notes (if any step failed, note the step number and describe what happened):**
 >
-> &nbsp;
 
 ---
 
@@ -596,15 +573,11 @@ Log in as **Admin** and check the following:
 
 **Any general comments about the system?**
 
-&nbsp;
 
-&nbsp;
 
 **Any features that were confusing or difficult to use?**
 
-&nbsp;
 
-&nbsp;
 
 ---
 
@@ -623,7 +596,6 @@ By signing below, the Holsen team confirms that UAT has been completed and the r
 
 *Conditions:*
 
-&nbsp;
 
 ☐ **Not approved — Further fixes required before go live**
 
