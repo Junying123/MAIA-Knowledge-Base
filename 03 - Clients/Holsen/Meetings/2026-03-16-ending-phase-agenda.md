@@ -25,6 +25,25 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 ---
 
+## Closing & Go-Live Timeline
+
+| Date       | Milestone                                                          | Owner              |
+| ---------- | ------------------------------------------------------------------ | ------------------ |
+| 17 Mar     | PSO done                                                           | Bushra             |
+| 17 Mar     | Holsen instance tested                                             | Gareth             |
+| 17 Mar     | eInvoice attachment ready                                          | -                  |
+| 17 Mar     | Internal prep meeting (core MAIA scope, UAT plan)                  | Gareth, Bren, Ivan |
+| 18 Mar     | UAT kicks off — core MAIA only (excl. C1/C3 and A57 tax exemption) | Holsen team        |
+| 25 Mar     | UAT done + sign-off                                                | Holsen team        |
+| 25 Mar     | Meta / WhatsApp account setup                                      | -                  |
+| 30 Mar     | C1/C3 compliance features dev-complete                             | Dev                |
+| 31 Mar     | Holsen closure                                                     | Gareth             |
+| **31 Mar** | **Go-live — core MAIA (without C1/C3)**                            | All                |
+
+> C1/C3 compliance and A57 tax exemption enforcement are **post-go-live**. Core MAIA goes live 31 Mar.
+
+---
+
 ## Agenda
 
 1. Training Debrief & Master Data Review (15 min)
@@ -186,14 +205,18 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 **Goal:** Confirm what still needs to happen before production go-live.
 
-**Go-Live Checklist:**
+**Go-Live Checklist (Core MAIA — 31 Mar target):**
 - [ ] Master data fully loaded and validated in MAIA
-- [ ] Go-live scope feature list agreed (from Agenda Item 2)
+- [ ] Go-live scope agreed: core MAIA features only (C1/C3 and A57 tax exemption excluded)
 - [ ] Role permissions configured and tested
-- [ ] Compliance workflows (C1/C3) configured and validated
-- [ ] UAT completed by Holsen team with sign-off
-- [ ] eInvoice (LHDN) integration confirmed with SQL accounting system
+- [ ] UAT completed by Holsen team with sign-off (18–25 Mar)
+- [ ] eInvoice attachment ready (17 Mar)
+- [ ] Meta / WhatsApp account setup (by 25 Mar)
 - [ ] Training completion — confirm if any team members missed the March 5 session
+
+**Post-Go-Live (separate phase):**
+- [ ] C1/C3 compliance features (dev target: 30 Mar, deploy after go-live)
+- [ ] A57 tax exemption enforcement
 
 **Decisions:**
 - [ ] Remaining blockers identified
@@ -208,21 +231,32 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 **Goal:** Lock dates.
 
-- Confirm target go-live date
-- Set deadline for Holsen deliverables (Agenda Item 4)
-- Set date for UAT session
-- Agree on any remaining dev items and their delivery schedule
-- Set next check-in date
+**Planned Closing & Go-Live Schedule:**
+
+| Date | Milestone | Owner | Status |
+|------|-----------|-------|--------|
+| 17 Mar | PSO done | Bushra | - |
+| 17 Mar | Holsen instance tested | Gareth | - |
+| 17 Mar | eInvoice attachment ready | - | - |
+| 17 Mar | Meeting prep (core MAIA scope, UAT plan) | Gareth, Bren, Ivan | - |
+| 18 Mar | Kick off UAT — core MAIA (excluding C1/C3 and A57 tax exemption enforcement) | Holsen team | - |
+| 25 Mar | UAT completed — core MAIA scope confirmed | Holsen team | - |
+| 25 Mar | Meta / WhatsApp account setup | - | - |
+| 30 Mar | Product ready — C1/C3 compliance features done | Dev | - |
+| 31 Mar | Holsen closure | Gareth | - |
+| 31 Mar | **Go-live — core MAIA (without C1/C3)** | All | - |
+
+> **Note:** C1/C3 compliance and A57 tax exemption enforcement are **post-go-live** — core MAIA goes live 31 Mar without these. C1/C3 targeted ready 30 Mar for a subsequent phase.
 
 **Decisions:**
-- [ ] Go-live date confirmed: [DATE]
-- [ ] UAT session date confirmed: [DATE]
+- [x] Go-live date confirmed: 2026-03-31 (core MAIA, without C1/C3)
+- [x] UAT session date confirmed: 2026-03-18 (start) — 2026-03-25 (done)
 - [ ] Deliverable deadline agreed: [DATE]
 - [ ] Next check-in date set: [DATE]
 
 **Action Items:**
-- [ ] Send meeting recap and agreed timeline — Owner: Gareth — Due: YYYY-MM-DD
-- [ ] Share dev delivery schedule with Holsen — Owner: [Name] — Due: YYYY-MM-DD
+- [ ] Send meeting recap and agreed timeline — Owner: Gareth — Due: 2026-03-17
+- [ ] Share dev delivery schedule with Holsen — Owner: Ivan — Due: 2026-03-17
 
 ---
 
