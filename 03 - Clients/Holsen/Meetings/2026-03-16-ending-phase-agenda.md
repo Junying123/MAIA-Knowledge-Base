@@ -239,8 +239,8 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 > **Note:** C1/C3 compliance and A57 tax exemption enforcement are **post-go-live** — core MAIA goes live 31 Mar without these. C1/C3 targeted ready 30 Mar for a subsequent phase.
 
 **Decisions:**
-- [x] Go-live date confirmed: 2026-03-31 (core MAIA, without C1/C3)
-- [x] UAT session date confirmed: 2026-03-18 (start) — 2026-03-25 (done)
+- [ ] Go-live date confirmed: 2026-03-31 (core MAIA, without C1/C3)
+- [ ] UAT session date confirmed: 2026-03-18 (start) — 2026-03-25 (done)
 - [ ] Deliverable deadline agreed: [DATE]
 - [ ] Next check-in date set: [DATE]
 

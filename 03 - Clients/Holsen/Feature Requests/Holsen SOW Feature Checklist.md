@@ -28,22 +28,22 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 - [ ] Email forwarding (customer POs forwarded to MAIA)
 
 **Omni-Channel Input (IDP)**
-- [x] Text messages — forwarded from client chats
-- [x] Images — photos of handwritten notes or physical POs
-- [x] PDFs — formal customer Purchase Orders
+- [ ] Text messages — forwarded from client chats
+- [ ] Images — photos of handwritten notes or physical POs
+- [ ] PDFs — formal customer Purchase Orders
 
 **Data Extraction**
-- [x] Customer Name extraction
-- [x] SKUs and Quantities extraction (e.g., "10 drums of Copper Sulfate")
+- [ ] Customer Name extraction
+- [ ] SKUs and Quantities extraction (e.g., "10 drums of Copper Sulfate")
 - [ ] Delivery Date extraction (if mentioned)
 
 **Dynamic Pricing, Quotation & SO Generation**
-- [x] Manual price entry prompt (bot prompts agent to confirm/input price)
-- [x] Minimum price safeguards enforced
-- [x] Quotation-to-SO logic persistence (quotation logic carries over on conversion)
+- [ ] Manual price entry prompt (bot prompts agent to confirm/input price)
+- [ ] Minimum price safeguards enforced
+- [ ] Quotation-to-SO logic persistence (quotation logic carries over on conversion)
 
 **Stock Availability Display**
-- [x] Total Available Quantity shown to agent
+- [ ] Total Available Quantity shown to agent
 - [ ] C3 stock hidden from non-C3 customers (shows "0 Stock Available")
 
 **Product Attribute Tagging (SKU Level)**
@@ -62,11 +62,11 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 - [ ] SO creation via email forwarding
 
 **Output Document Generation**
-- [x] Quotation
-- [x] Sales Order
-- [x] Proforma Invoice
-- [x] Invoice
-- [x] Credit Note / Debit Note
+- [ ] Quotation
+- [ ] Sales Order
+- [ ] Proforma Invoice
+- [ ] Invoice
+- [ ] Credit Note / Debit Note
 
 **Daily Digests — Sales**
 - [ ] Unclosed Sales Orders digest (sent to Sales Representative)
@@ -76,8 +76,8 @@ Items marked `[v3]` were surfaced during the March 5 training and extend the bas
 
 ### 2. Sales Order Output (UBS CSV Export)
 
-- [x] CSV generated with customer name, address, delivery type
-- [x] CSV includes all SKUs and quantities
+- [ ] CSV generated with customer name, address, delivery type
+- [ ] CSV includes all SKUs and quantities
 - [ ] CSV includes COA/label/brand requirements, delivery date, PO notes, order remarks
 
 ---

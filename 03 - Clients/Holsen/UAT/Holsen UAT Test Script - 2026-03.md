@@ -116,12 +116,16 @@ uat_round: 1
 
 #### Test 3 — Send an Order by PDF
 
-| Step | What to do                                        | What you should see                                         |
-| ---- | ------------------------------------------------- | ----------------------------------------------------------- |
-| 1    | Prepare a customer PO in PDF format.              | PDF file is ready.                                          |
-| 2    | Send the PDF to **@maia_holsen_bot** on Telegram. | Chatbot accepts the PDF and starts processing.              |
-| 3    | Wait a moment.                                    | The chatbot shows the order details extracted from the PDF. |
-| 4    | Check that the details match the PDF.             | Customer name, products, and quantities are correctly read. |
+| Step | What to do                                                                                                                                  | What you should see                                                                                                                                                    |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Prepare a customer PO in PDF format.                                                                                                        | PDF file is ready on your phone or computer.                                                                                                                           |
+| 2    | Open **@maia_holsen_bot** on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*.                                | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                                                 |
+| 3    | Wait a moment.                                                                                                                              | Chatbot replies again: *"Document processing is complete."* It identifies the file as a Purchase Order and gives you a CPO reference number (e.g. **CPO-2026-00022**). |
+| 4    | Click the link in the chatbot message to open the web app                                                                                   | The CPO record opens. It shows the customer name, products, and quantities extracted from the PDF.                                                                     |
+| 5    | Review the extracted details carefully. Check that customer name, product names, and quantities are correct. Fix anything that looks wrong. | All details match the original PDF. Any corrections can be made before the next step.                                                                                  |
+| 6    | Click **"Create Sales Order"** from the CPO.                                                                                                | A Sales Order is created from the CPO. The CPO status changes to **Success**.                                                                                          |
+
+> ⚠️ **Note:** The chatbot reads the PDF automatically, but always review the details in step 5 before creating the Sales Order. If a product name or quantity looks wrong, fix it first.
 
 > **Your result:**
 > ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
@@ -138,13 +142,13 @@ uat_round: 1
 
 *Continue from Test 1, 2, or 3.*
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | After the chatbot shows the extracted order, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item. |
-| 2 | Enter a price **above** the minimum selling price for one item. | Price is accepted. No warning shown. |
-| 3 | Enter a price **below** the minimum selling price for another item. | Chatbot shows a warning or blocks the price — minimum price not met. |
-| 4 | Correct the price to be at or above the minimum. | Price accepted. You can continue. |
-| 5 | Check the stock quantity shown for a product. | Available stock quantity is displayed next to the product. |
+| Step | What to do                                                                | What you should see                                                  |
+| ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| 1    | After the chatbot shows the extracted order, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item.        |
+| 2    | Enter a price **above** the minimum selling price for one item.           | Price is accepted. No warning shown.                                 |
+| 3    | Enter a price **below** the minimum selling price for another item.       | Chatbot shows a warning or blocks the price — minimum price not met. |
+| 4    | Correct the price to be at or above the minimum.                          | Price accepted. You can continue.                                    |
+| 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
 
 > **Your result:**
 > ☐ Pass &nbsp;&nbsp; ☐ Fail &nbsp;&nbsp; ☐ Issue
