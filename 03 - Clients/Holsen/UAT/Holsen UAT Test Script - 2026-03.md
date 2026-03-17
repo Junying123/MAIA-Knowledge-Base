@@ -569,119 +569,31 @@ Before starting, confirm the following master data is loaded in the Holsen produ
 
 ### Group 6 — PSO (Poison Signed Order)
 
-**Tester Role:** Admin (poison flag setup), Logistics (DN generation and printing)
+**Tester Role:** Admin (steps 1–3), Logistics — Noor Aili (steps 4–14)
 **Checklist Sections:** PSO — Poison Signed Order
 **Compliance context:** PSO is mandated by Poison License B / FARMASI/KKM. Missing or incorrect PSO = audit failure.
 
 ---
 
-#### UAT-30 — Admin Sets Poison Flag on SKU
+#### UAT-30 — PSO End-to-End
 
-**Feature:** Poison/non-poison boolean flag on SKU master (Admin/Compliance role only)
-**Checklist Ref:** PSO §SKU Setup — Poison flag, audit trail
-
-| Step | Action | Expected Result |
-|------|--------|-----------------|
-| 1 | Log in as Admin | Login successful |
-| 2 | Navigate to SKU master and open a test SKU that is **not** currently flagged as poison | SKU detail page visible |
-| 3 | Toggle poison flag to **Poison = Yes** and save | Change saved successfully |
-| 4 | Confirm audit trail entry is recorded — who changed it, when, and what it changed from/to | Audit log entry visible with correct details |
-| 5 | Log out; log in as **Sales Manager** | Logged in as Sales Manager |
-| 6 | Attempt to change the poison flag on the same SKU | Poison flag field is read-only or not accessible — change blocked |
-
-**Expected Outcome:** Only Admin can toggle the poison flag. Every change is recorded in the audit trail. Other roles cannot modify the flag.
-
----
-
-#### UAT-31 — DN with Poison SKU → PSO Auto-Generated
-
-**Feature:** PSO auto-generated when DN contains ≥1 poison-flagged SKU; PSO appended to DN print pack
-**Checklist Ref:** PSO §PSO Auto-Generation, §Print Pack & Document Access
+**Feature:** Poison flag setup, PSO auto-generation, layout validation, access and document management
+**Checklist Ref:** PSO — all sections
 
 | Step | Action | Expected Result |
 |------|--------|-----------------|
-| 1 | Log in as Logistics (Noor Aili) | Login successful |
-| 2 | Create a Delivery Note (DN) containing at least 1 poison-flagged SKU | DN created |
-| 3 | Trigger DN PDF generation | PDF generation initiates |
-| 4 | Open the generated PDF | PDF contains the DN pages first, followed by PSO pages appended after — one combined A4 document |
-| 5 | Confirm PSO is present in the print pack | PSO appears after last DN page |
-| 6 | Confirm PSO contains only the poison SKU lines from the DN | Non-poison lines are absent from PSO |
+| 1 | Log in as **Admin**. Open a non-poison SKU in the SKU master and toggle poison flag to **Poison = Yes**. Save. | Flag saved. Audit trail records who changed it, when, and before/after value. |
+| 2 | Attempt to change the poison flag while logged in as **Sales Manager**. | Poison flag field is read-only or not accessible — change blocked. |
+| 3 | Log back in as **Logistics (Noor Aili)**. Create a DN with **only non-poison SKUs** and generate the PDF. | PDF contains DN pages only — no PSO appended. |
+| 4 | Create a second DN with **at least 1 poison-flagged SKU** and generate the PDF. | Combined PDF: DN pages first, PSO pages appended after — one A4 print pack. |
+| 5 | Create a third DN with a **mix of poison and non-poison lines** (e.g., 2 poison + 3 non-poison) and generate the PDF. | PSO appended. PSO line item table contains **only the poison lines** — non-poison lines absent from PSO. DN still shows all lines. |
+| 6 | Open the PSO from step 5. Check: FROM block (customer name, address, phone), TO block (Holsen Interchem Sdn Bhd), PSO/DO Number, Delivery Date. | All header fields populated correctly from MAIA master data. |
+| 7 | Check PSO line item table (No., Description, Qty Ordered, Packing/UOM), Signature & Chop block, blank Remark field, return-copy instruction note, and MAIA footer. | All layout elements present and correctly formatted per PSO Sample.xlsx. |
+| 8 | Download the PSO PDF from the DN record. Reprint it. | Download succeeds. Reprinted PSO matches original. |
+| 9 | Upload a test file as **"Signed PSO Copy"** attachment on the DN. | Upload accepted. "Signed PSO Copy" attachment type available. Attachment visible and linked to correct DN. |
+| 10 | Log in as **Finance Manager (Miss Wong)**. Open the same DN and view the PSO. | PSO accessible to Finance Manager. |
 
-**Expected Outcome:** PSO is automatically generated and appended to the DN PDF when at least one poison SKU is present.
-
----
-
-#### UAT-32 — DN with No Poison SKU → No PSO
-
-**Feature:** No PSO generated when DN has zero poison lines
-**Checklist Ref:** PSO §PSO Auto-Generation
-
-| Step | Action | Expected Result |
-|------|--------|-----------------|
-| 1 | Create a Delivery Note (DN) containing **only** non-poison SKUs | DN created |
-| 2 | Trigger DN PDF generation | PDF generation initiates |
-| 3 | Open the generated PDF | PDF contains only DN pages — no PSO appended |
-| 4 | Confirm no PSO document is generated for this DN | PSO absent; no PSO document linked to this DN |
-
-**Expected Outcome:** No PSO is generated or appended when the DN contains zero poison-flagged lines.
-
----
-
-#### UAT-33 — Mixed DN → PSO Contains Poison Lines Only
-
-**Feature:** PSO scoped to poison lines only in mixed DNs (non-poison lines excluded)
-**Checklist Ref:** PSO §PSO Auto-Generation
-
-| Step | Action | Expected Result |
-|------|--------|-----------------|
-| 1 | Create a DN with a mix of poison and non-poison SKU lines (e.g., 2 poison + 3 non-poison) | DN created with mixed lines |
-| 2 | Trigger DN PDF generation | Combined PDF generated |
-| 3 | Open the PSO section of the combined PDF | PSO is present |
-| 4 | Verify that only the poison SKU lines appear in the PSO line item table | Non-poison lines are absent from PSO; poison lines are all present |
-| 5 | Verify that DN still shows all lines (both poison and non-poison) | Full DN contents unchanged |
-
-**Expected Outcome:** DN shows all lines; PSO shows only poison lines. Non-poison lines do not appear on the PSO.
-
----
-
-#### UAT-34 — PSO Layout Validation
-
-**Feature:** PSO layout replicates Holsen "POISON SIGNED ORDER FORM" (PSO Sample.xlsx)
-**Checklist Ref:** PSO §PSO Document Layout
-
-| Step | Action | Expected Result |
-|------|--------|-----------------|
-| 1 | Open the PSO from a DN that has a poison SKU (from UAT-31 or UAT-33) | PSO page visible |
-| 2 | Check FROM block | Customer name, address, and phone number populated from MAIA customer master |
-| 3 | Check TO block | "HOLSEN INTERCHEM SDN BHD" with Holsen address shown |
-| 4 | Check header fields | PSO/DO Number and Delivery Date are present and correct |
-| 5 | Check line item table | Columns: No., Description, Quantity Ordered, Packing/UOM — all populated for poison lines |
-| 6 | Check Signature & Chop block | Signature and chop area present at the bottom of the page |
-| 7 | Check Remark field | Remark field is present but blank — no pre-filled content |
-| 8 | Check return-copy instruction note | Instruction note visible on PSO |
-| 9 | Check footer | "Powered by MAIA • Generated on DD/MM/YYYY HH:mm:ss" shown at bottom |
-
-**Expected Outcome:** PSO layout matches the Holsen POISON SIGNED ORDER FORM template with all required fields populated.
-
----
-
-#### UAT-35 — PSO Access, Download, Reprint & Signed Copy Upload
-
-**Feature:** View, download, reprint PSO per DN; "Signed PSO Copy" attachment type
-**Checklist Ref:** PSO §Print Pack & Document Access
-
-| Step | Action | Expected Result |
-|------|--------|-----------------|
-| 1 | Open a DN that has an associated PSO | DN record visible |
-| 2 | Locate the PSO in the document attachments or document list | PSO listed as a document linked to this DN |
-| 3 | Download the PSO | PSO PDF downloaded successfully |
-| 4 | Reprint the PSO (trigger PDF regeneration) | Reprinted PSO matches the original |
-| 5 | Upload a test file (simulating a scanned signed copy) and select attachment type **"Signed PSO Copy"** | Upload accepted; "Signed PSO Copy" attachment type available and selectable |
-| 6 | Confirm the uploaded signed copy is visible and linked to the correct DN | Attachment shows against the DN with correct type label |
-| 7 | Log in as Finance Manager (Miss Wong) | Login successful |
-| 8 | Open the same DN and attempt to view/download the PSO | PSO accessible — Finance Manager has PSO document access |
-
-**Expected Outcome:** PSO is viewable, downloadable, and reprintable from the DN record. Signed PSO can be uploaded back. PSO access works for Logistics, Admin, and Finance roles.
+**Expected Outcome:** Admin-only poison flag with audit trail. PSO auto-generated only when poison lines are present. PSO scoped to poison lines only on mixed DNs. Layout matches Holsen PSO template. PSO downloadable, reprintable, and accessible to Logistics, Admin, and Finance.
 
 ---
 
@@ -718,18 +630,13 @@ Before starting, confirm the following master data is loaded in the Holsen produ
 | UAT-27 | Finance Manager Permissions | §7 Role Permissions | Wong Shui Fern | ☐ Pass ☐ Fail ☐ Blocked | |
 | UAT-28 | Admin Permissions | §7 Role Permissions | Ong Siow Chui | ☐ Pass ☐ Fail ☐ Blocked | |
 | UAT-29 | SO Approval Workflow (Draft → Submit) | §7 Role Permissions — Workflow | Noor Aili / Miss Wong | ☐ Pass ☐ Fail ☐ Blocked | |
-| UAT-30 | Admin Sets Poison Flag on SKU | PSO — SKU Setup | Admin | ☐ Pass ☐ Fail ☐ Blocked | |
-| UAT-31 | DN with Poison SKU → PSO Auto-Generated | PSO — Auto-Generation + Print Pack | Noor Aili | ☐ Pass ☐ Fail ☐ Blocked | |
-| UAT-32 | DN with No Poison SKU → No PSO | PSO — Auto-Generation | Noor Aili | ☐ Pass ☐ Fail ☐ Blocked | |
-| UAT-33 | Mixed DN → PSO Contains Poison Lines Only | PSO — Auto-Generation | Noor Aili | ☐ Pass ☐ Fail ☐ Blocked | |
-| UAT-34 | PSO Layout Validation | PSO — Document Layout | Noor Aili / Admin | ☐ Pass ☐ Fail ☐ Blocked | |
-| UAT-35 | PSO Access, Download, Reprint & Signed Copy Upload | PSO — Print Pack & Document Access | Noor Aili / Miss Wong | ☐ Pass ☐ Fail ☐ Blocked | |
+| UAT-30 | PSO End-to-End (flag, generation, layout, access) | PSO — all sections | Admin / Noor Aili / Miss Wong | ☐ Pass ☐ Fail ☐ Blocked | |
 
 **Summary:**
 
 | Total Scenarios | Pass | Fail | Blocked |
 |----------------|------|------|---------|
-| 35 | | | |
+| 30 | | | |
 
 ---
 
