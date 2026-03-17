@@ -26,22 +26,22 @@ Use this checklist to track which SOW features have been built, tested, and vali
 - [ ] Email forwarding (customer POs forwarded to MAIA)
 
 **Omni-Channel Input (IDP)**
-- [ ] Text messages — forwarded from client chats
-- [ ] Images — photos of handwritten notes or physical POs
-- [ ] PDFs — formal customer Purchase Orders
+- [x] Text messages — forwarded from client chats
+- [x] Images — photos of handwritten notes or physical POs
+- [x] PDFs — formal customer Purchase Orders
 
 **Data Extraction**
-- [ ] Customer Name extraction
-- [ ] SKUs and Quantities extraction (e.g., "10 drums of Copper Sulfate")
+- [x] Customer Name extraction
+- [x] SKUs and Quantities extraction (e.g., "10 drums of Copper Sulfate")
 - [ ] Delivery Date extraction (if mentioned)
 
 **Dynamic Pricing, Quotation & SO Generation**
-- [ ] Manual price entry prompt (bot prompts agent to confirm/input price)
-- [ ] Minimum price safeguards enforced
-- [ ] Quotation-to-SO logic persistence (quotation logic carries over on conversion)
+- [x] Manual price entry prompt (bot prompts agent to confirm/input price)
+- [x] Minimum price safeguards enforced
+- [x] Quotation-to-SO logic persistence (quotation logic carries over on conversion)
 
 **Stock Availability Display**
-- [ ] Total Available Quantity shown to agent
+- [x] Total Available Quantity shown to agent
 - [ ] C3 stock hidden from non-C3 customers (shows "0 Stock Available")
 
 **Product Attribute Tagging (SKU Level)**
@@ -60,11 +60,11 @@ Use this checklist to track which SOW features have been built, tested, and vali
 - [ ] SO creation via email forwarding
 
 **Output Document Generation**
-- [ ] Quotation
-- [ ] Sales Order
-- [ ] Proforma Invoice
-- [ ] Invoice
-- [ ] Credit Note / Debit Note
+- [x] Quotation
+- [x] Sales Order
+- [x] Proforma Invoice
+- [x] Invoice
+- [x] Credit Note / Debit Note
 
 **Daily Digests — Sales**
 - [ ] Unclosed Sales Orders digest (sent to Sales Representative)
@@ -74,8 +74,8 @@ Use this checklist to track which SOW features have been built, tested, and vali
 
 ### 2. Sales Order Output (UBS CSV Export)
 
-- [ ] CSV generated with customer name, address, delivery type
-- [ ] CSV includes all SKUs and quantities
+- [x] CSV generated with customer name, address, delivery type
+- [x] CSV includes all SKUs and quantities
 - [ ] CSV includes COA/label/brand requirements, delivery date, PO notes, order remarks
 
 ---
@@ -89,26 +89,26 @@ Use this checklist to track which SOW features have been built, tested, and vali
 - [ ] Delivery Order (DO) creation via WhatsApp (natural language)
 
 **Output Document Generation**
-- [ ] Delivery Order (DO)
-- [ ] Picking List
+- [x] Delivery Order (DO)
+- [x] Picking List
 
 **Daily Digests — Logistics**
-- [ ] Delivery Delays digest (DO not generated after X days from invoice)
+- [x] Delivery Delays digest (DO not generated after X days from invoice)
 - [ ] Expiring Items alert (products approaching expiry date)
 
 **Supply Chain Notification Reminders**
-- [ ] Out of Stock alert (sent to Logistics Rep & Sales Rep)
-- [ ] Low Stock alert (below configured minimum threshold)
+- [x] Out of Stock alert (sent to Logistics Rep & Sales Rep)
+- [x] Low Stock alert (below configured minimum threshold)
 
 ---
 
 ### 4. User Workspaces
 
 **General**
-- [ ] Desktop Web login for all users
+- [x] Desktop Web login for all users
 
 **Sales Agent Workspace**
-- [ ] Sales Order Management — create, modify, track SOs
+- [x] Sales Order Management — create, modify, track SOs
 - [ ] Inactive customer notification (no order in 60 days)
 - [ ] Unclosed Sales Orders notification
 - [ ] Order Lifecycle Overview (to schedule → scheduled → out for delivery → delivered)
@@ -126,9 +126,9 @@ Use this checklist to track which SOW features have been built, tested, and vali
 
 ### 5. Duplicate Order Prevention
 
-- [ ] Real-time duplicate check on every incoming order
-- [ ] Logic: Customer Name + PO Number match → flagged as "Duplicate Order"
-- [ ] Duplicate order blocked from creation
+- [x] Real-time duplicate check on every incoming order
+- [x] Logic: Customer Name + PO Number match → flagged as "Duplicate Order"
+- [x] Duplicate order blocked from creation
 
 ---
 
@@ -192,19 +192,19 @@ Use this checklist to track which SOW features have been built, tested, and vali
 
 ## Summary Tracker
 
-| Area | Total Items | Built `[x]` | In Progress `[~]` | Blocked `[!]` | Not Started `[ ]` |
-|------|------------|-------------|-------------------|---------------|-------------------|
-| Sales Chatbot | 24 | | | | |
-| UBS CSV Export | 3 | | | | |
-| Supply Chain Chatbot | 7 | | | | |
-| User Workspaces | 14 | | | | |
-| Duplicate Prevention | 3 | | | | |
-| Customer Pricing | 3 | | | | |
-| Role Approval | 5 | | | | |
-| Batch Intake | 7 | | | | |
-| Compliance Enforcement | 7 | | | | |
-| COA Handling | 3 | | | | |
-| **TOTAL** | **76** | | | | |
+| Area                   | Total Items | Built `[x]` | In Progress `[~]` | Blocked `[!]` | Not Started `[ ]` |
+| ---------------------- | ----------- | ----------- | ----------------- | ------------- | ----------------- |
+| Sales Chatbot          | 24          |             |                   |               |                   |
+| UBS CSV Export         | 3           |             |                   |               |                   |
+| Supply Chain Chatbot   | 7           |             |                   |               |                   |
+| User Workspaces        | 14          |             |                   |               |                   |
+| Duplicate Prevention   | 3           |             |                   |               |                   |
+| Customer Pricing       | 3           |             |                   |               |                   |
+| Role Approval          | 5           |             |                   |               |                   |
+| Batch Intake           | 7           |             |                   |               |                   |
+| Compliance Enforcement | 7           |             |                   |               |                   |
+| COA Handling           | 3           |             |                   |               |                   |
+| **TOTAL**              | **76**      |             |                   |               |                   |
 
 ---
 
