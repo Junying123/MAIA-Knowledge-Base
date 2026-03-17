@@ -6,9 +6,9 @@ meeting_date: 2026-03-16
 client: Holsen
 ---
 
-# Meeting Agenda — Holsen Ending Phase — 2026-03-16
+# Meeting Agenda — Holsen Ending Phase — 2026-03-18
 
-**Date:** 2026-03-16
+**Date:** 2026-03-18
 **Time:** [HH:MM - HH:MM]
 **Attendees:** [List names and roles]
 **Meeting Type:** Client — Ending Phase Triage
@@ -112,11 +112,11 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 ---
 
-### 2. UAT Briefing — Phase A1 Test Script Walkthrough (30 min)
+### 2. UAT Briefing — Phase A1 Test Case Walkthrough (30 min)
 
-**Goal:** Walk the Holsen team through the UAT test script so they understand what to test, who tests what, and how to record results. UAT runs 18–25 Mar.
+**Goal:** Walk the Holsen team through the UAT test case so they understand what to test, who tests what, and how to record results. UAT runs 18–25 Mar.
 
-**Test script:** [[UAT/Holsen UAT Test Script - 2026-03]]
+**Test case:** [[UAT/Holsen UAT Test Script - 2026-03]]
 **Environment:** https://maia-fe-holsen.vercel.app/login
 **Chatbot:** Telegram @maia_holsen_bot (WhatsApp after Meta setup)
 
@@ -190,7 +190,7 @@ Training validated core MAIA usage but surfaced 15+ feature requests, open role 
 
 **Briefing points to cover:**
 - [ ] Explain result options: ✅ Pass / ❌ Fail / ⚠️ Issue — and how to record notes
-- [ ] Confirm each user has their login credentials filled in the test script
+- [ ] Confirm each user has their login credentials filled in the test case
 - [ ] Confirm UAT start date: 2026-03-18
 - [ ] Confirm UAT completion and sign-off deadline: 2026-03-25
 - [ ] Confirm who contacts Gareth if blocked during UAT
