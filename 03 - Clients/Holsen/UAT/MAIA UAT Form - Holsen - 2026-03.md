@@ -96,12 +96,12 @@ uat_round: 1
 
 #### Test 2 — Send an Order by Photo
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Take a photo of a handwritten order or a printed PO. | Photo is ready on your phone. |
-| 2 | Send the photo to **@maia_holsen_bot** on Telegram. | Chatbot accepts the photo and starts processing. |
-| 3 | Wait a moment. | The chatbot shows the order details it read from the photo — customer name, products, and quantities. |
-| 4 | Check that the details match the photo. | Information extracted is correct. If anything is wrong, you can edit before confirming. |
+| Step | What to do                                           | What you should see                                                                                   |
+| ---- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| 1    | Take a photo of a handwritten order or a printed PO. | Photo is ready on your phone.                                                                         |
+| 2    | Send the photo to chatbot on Telegram.               | Chatbot accepts the photo and starts processing.                                                      |
+| 3    | Wait a moment.                                       | The chatbot shows the order details it read from the photo — customer name, products, and quantities. |
+| 4    | Check that the details match the photo.              | Information extracted is correct. If anything is wrong, you can edit before confirming.               |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
