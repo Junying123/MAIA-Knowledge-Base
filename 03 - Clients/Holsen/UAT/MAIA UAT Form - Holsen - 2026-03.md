@@ -16,7 +16,7 @@ uat_round: 1
 **UAT Date:** [To be confirmed]
 **Web App:** https://maia-fe-holsen.vercel.app/login
 **Chatbot (during UAT):** Telegram — scan the QR code provided to open the MAIA Holsen chatbot
-![[Pasted image 20260317232736.png|157]]
+![[Pasted image 20260317232736.png|362]]
 **Chatbot (after go-live):** WhatsApp *(same features — WhatsApp setup is in progress)*
 
 ---
