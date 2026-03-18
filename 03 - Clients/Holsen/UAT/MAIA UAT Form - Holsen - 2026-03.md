@@ -15,7 +15,7 @@ uat_round: 1
 
 **UAT Date:** [To be confirmed]
 **Web App:** https://maia-fe-holsen.vercel.app/login
-**Chatbot (during UAT):** Telegram — @maia_holsen_bot
+**Chatbot (during UAT):** Telegram — scan the QR code provided to open the MAIA Holsen chatbot
 ![[Pasted image 20260317232736.png|157]]
 **Chatbot (after go-live):** WhatsApp *(same features — WhatsApp setup is in progress)*
 
@@ -78,12 +78,12 @@ uat_round: 1
 
 *Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Open Telegram and search for **@maia_holsen_bot**. Start a chat. | The chatbot replies and is ready to receive your message. |
-| 2 | Type a message like: *"Customer: [Customer Name]. Order: 10 drums Copper Sulfate, 5 bags Sodium Hydroxide."* | Chatbot receives the message. |
-| 3 | Wait a moment. | The chatbot shows the order details it extracted — customer name, products, and quantities. |
-| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
+| Step | What to do                                                                                                   | What you should see                                                                         |
+| ---- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| 1    | Open the **MAIA Holsen chatbot** in Telegram using the QR code provided.                                     | The chatbot replies and is ready to receive your message.                                   |
+| 2    | Type a message like: *"Customer: [Customer Name]. Order: 10 drums Copper Sulfate, 5 bags Sodium Hydroxide."* | Chatbot receives the message.                                                               |
+| 3    | Wait a moment.                                                                                               | The chatbot shows the order details it extracted — customer name, products, and quantities. |
+| 4    | Check that the details are correct.                                                                          | Customer name, product names, and quantities match what you typed.                          |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -216,16 +216,16 @@ uat_round: 1
 
 #### Test 7 — Duplicate Order is Blocked
 
-*Who tests this: **Noor Aili** (Logistics) or **Miss Wong** (Finance)*
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
-> **Note:** The duplicate check triggers when an existing order with the same customer + PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
+> **Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Log in as **Noor Aili** or **Miss Wong**. Create a Sales Order for a customer with PO Number **"PO-001"**. | Sales Order is created in **Draft** status. |
-| 2 | Submit the Sales Order. | Sales Order status changes to **TO BILL**. |
-| 3 | Try to create a new order for the **same customer** with the **same PO Number "PO-001"**. | A warning appears — this order already exists. The duplicate is blocked and not saved. |
-| 4 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Sales Order is created in **Draft** status. No warning shown. |
+| Step | What to do                                                                                                              | What you should see                                                                    |
+| ---- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 1    | Log in as **Ng Tze Chien** or **Tam Ze Xin**. Send a customer order via the chatbot — include a PO Number e.g. **"PO-001"**. | Order is received by the chatbot. A CPO is created and converted to a Sales Order.     |
+| 2    | The Sales Order is submitted by Logistics/Finance and reaches **TO BILL** status.                                       | Sales Order status shows **TO BILL**.                                                  |
+| 3    | Send the **same order again** via chatbot — same customer and same PO Number **"PO-001"**.                              | A warning appears — this order already exists. The duplicate is blocked and not saved. |
+| 4    | Send a new order for the same customer but with a **different PO Number "PO-002"**.                                     | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
