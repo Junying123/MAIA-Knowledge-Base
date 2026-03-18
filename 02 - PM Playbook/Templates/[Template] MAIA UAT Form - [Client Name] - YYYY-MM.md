@@ -81,9 +81,12 @@ uat_round: [1]
 | 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -100,9 +103,12 @@ uat_round: [1]
 | 4 | Check that the details match the photo. | Information extracted is correct. If anything is wrong, you can edit before confirming. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -123,9 +129,12 @@ uat_round: [1]
 > ⚠️ **Note:** The chatbot reads the PDF automatically, but always review the details in step 5 before creating the Sales Order. If a product name or quantity looks wrong, fix it first.
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -145,9 +154,12 @@ uat_round: [1]
 | 5 | Check the stock quantity shown for a product. | Available stock quantity is displayed next to the product. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -167,9 +179,12 @@ uat_round: [1]
 | 5 | Download any of the documents above. | Document downloads successfully as a PDF. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -187,9 +202,12 @@ uat_round: [1]
 | 3 | Fill in the reason and amount, then confirm. | Credit Note is created. It references the original Invoice and shows the credited amount. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -210,9 +228,12 @@ uat_round: [1]
 | 3 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Order is created successfully — no warning shown. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -229,9 +250,12 @@ uat_round: [1]
 | 4 | Check the status of the order (e.g., Draft, Submitted). | Current status is visible on the order. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -253,9 +277,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 > ⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in the accounting system. eInvoices are not generated inside MAIA.
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -277,9 +304,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -296,9 +326,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -315,9 +348,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 > ⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact your MAIA PM to set one up.
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -337,9 +373,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 2 | Each person logs in using their **assigned email and password** from the table above. | Login is successful. Your workspace and dashboard are visible. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -365,9 +404,12 @@ Log in as **[Role Name]** and check the following:
 | 4 | Try to [another restricted action]. | 🚫 You cannot [perform this action] — [view only / not accessible]. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -385,9 +427,12 @@ Log in as **[Role Name]** and check the following:
 | 3 | Try to [action this role cannot do]. | 🚫 You cannot [perform this action] — [view only / not accessible]. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -445,9 +490,12 @@ Log in as **[Role Name]** and check the following:
 | 12 | **[Admin Role] ([Person Name])** | Create and submit a Receipt against a different Invoice. | Receipt is submitted. [Admin Role] can submit Receipts. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________ (coordinate across team) &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** (coordinate across team)
+> **Date:**
 >
 > **Notes (note the step number if any step failed):**
 >
@@ -472,9 +520,12 @@ Log in as **[Role Name]** and check the following:
 | 2 | [Next step.] | [Expected result.] |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >

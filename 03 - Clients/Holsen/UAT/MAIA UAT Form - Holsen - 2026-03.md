@@ -86,10 +86,12 @@ uat_round: 1
 | 4    | Check that the details are correct.                                                                          | Customer name, product names, and quantities match what you typed.                          |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
->
+> **Tested by:**
+> **Date:**
 > **Notes:**
 >
 
@@ -107,9 +109,12 @@ uat_round: 1
 | 4    | Check that the details match the photo.              | Information extracted is correct. If anything is wrong, you can edit before confirming.               |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -129,9 +134,12 @@ uat_round: 1
 > ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -151,9 +159,12 @@ uat_round: 1
 | 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -181,9 +192,12 @@ uat_round: 1
 | 5    | Any user                                             | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF.      | All documents download successfully as PDFs.                                                       |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -205,9 +219,12 @@ uat_round: 1
 | 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.   |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -228,9 +245,12 @@ uat_round: 1
 | 4    | Send a new order for the same customer but with a **different PO Number "PO-002"**.                                     | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -252,9 +272,12 @@ uat_round: 1
 | 5 | Log out. Log in as **Sales Manager** (Ng Tze Chien). Try to edit or create a Sales Order. | 🚫 Sales Manager cannot create or edit Sales Orders — view only. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -278,9 +301,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 > ⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in UBS. eInvoices are not generated inside MAIA.
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -303,9 +329,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -325,9 +354,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 5    | Log out. Log in as **Sales Manager** (Ng Tze Chien). Check the same alerts.   | Both Out-of-Stock and Low-Stock alerts are visible to Sales Manager as well.          |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -346,9 +378,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 > ⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact Gareth to set one up.
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -369,9 +404,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 2 | Each person logs in using their **assigned email and password** from the table above. | Login is successful. Your workspace and dashboard are visible. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes:**
 >
@@ -398,9 +436,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 6 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -422,9 +463,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 7 | Try to create a **Quotation**. | 🚫 You cannot create a Quotation — view only. No create button visible. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -444,9 +488,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 5 | Try to submit (finalise) an **Invoice**. | 🚫 You cannot finalise an Invoice. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -465,9 +512,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Try to open **Quotations**, **Invoices**, or **Purchase Orders**. | 🚫 Not visible or accessible. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -489,9 +539,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 7 | Try to create a new **Incoming goods** record. | 🚫 You cannot create Incoming records — view only. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -510,9 +563,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Try to submit a **Payment / Receipt**. | ✅ You can submit Receipts. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -531,9 +587,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Try to open **User Management** (add or edit user accounts). | ✅ User management is accessible — you can view and manage user accounts. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (list any step that did not behave as expected):**
 >
@@ -595,9 +654,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 16 | **Ong Siow Chui** (Admin) | Open the **Draft** Receipt from Step 15. Click Submit. | Receipt is submitted. Admin can submit Receipts but cannot create them. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________ (coordinate across team) &nbsp;&nbsp; **Date:** _______________
+> **Tested by:** (coordinate across team)
+> **Date:**
 >
 > **Notes (note the step number if any step failed):**
 >
@@ -628,9 +690,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 10 | Download the PSO. Then upload a scanned copy back to the Delivery Order and select **"Signed PSO Copy"** as the document type. Log in as Miss Wong and check she can view the PSO. | Download works. Signed copy uploads successfully with the correct label. Miss Wong can view the PSO. |
 
 > **Your result:**
-> ☐ Pass    ☐ Fail    ☐ Issue
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
 >
-> **Tested by:** _______________    **Date:** _______________
+> **Tested by:**
+> **Date:**
 >
 > **Notes (if any step failed, note the step number and describe what happened):**
 >
