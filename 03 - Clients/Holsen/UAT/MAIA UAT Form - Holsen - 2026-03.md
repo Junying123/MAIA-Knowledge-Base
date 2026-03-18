@@ -42,7 +42,7 @@ uat_round: 1
 2. For each step, do what is described and check that what you see matches the **"What you should see"** column.
 3. After each test, tick your result and write any notes in the feedback box.
 4. If something does not work as expected, mark it **Fail** and describe what happened.
-5. If you are unsure or something is not loading, mark it **Issue** and contact Gareth.
+5. If you are unsure or something is not loading, mark it **Issue**.
 6. Sign off at the end when you are done.
 
 **Result options:**
