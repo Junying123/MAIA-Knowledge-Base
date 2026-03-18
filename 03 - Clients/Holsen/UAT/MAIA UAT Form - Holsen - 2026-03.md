@@ -71,11 +71,12 @@ uat_round: 1
 ---
 
 ### Group 1 — Chatbot: Sending Orders
-*Who tests this: Sales team*
 
 ---
 
 #### Test 1 — Send an Order by Text Message
+
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -96,6 +97,8 @@ uat_round: 1
 
 #### Test 2 — Send an Order by Photo
 
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
+
 | Step | What to do                                           | What you should see                                                                                   |
 | ---- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | 1    | Take a photo of a handwritten order or a printed PO. | Photo is ready on your phone.                                                                         |
@@ -115,16 +118,15 @@ uat_round: 1
 
 #### Test 3 — Send an Order by PDF
 
-| Step | What to do                                                                                                                                  | What you should see                                                                                                                                                    |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | Prepare a customer PO in PDF format.                                                                                                        | PDF file is ready on your phone or computer.                                                                                                                           |
-| 2    | Open chatbot on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*.                                             | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                                                 |
-| 3    | Wait a moment.                                                                                                                              | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**.                               |
-| 4    | Click the link in the chatbot message to open the web app.                                                                                  | The CPO record opens showing status **Pending**. Customer name, products, and quantities are filled in from the PDF.                                                   |
-| 5    | Review the extracted details carefully. Check that customer name, product names, and quantities are correct. Fix anything that looks wrong. | All details match the original PDF. Any corrections can be made before the next step.                                                                                  |
-| 6    | Click **"Create Sales Order"** from the CPO.                                                                                                | A Sales Order is created in **Draft** status. The CPO status changes to **Success**.                                                                                   |
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
-> ⚠️ **Note:** The chatbot reads the PDF automatically, but always review the details in step 5 before creating the Sales Order. If a product name or quantity looks wrong, fix it first.
+| Step | What to do                                                                                | What you should see                                                                                                                      |
+| ---- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Prepare a customer PO in PDF format.                                                      | PDF file is ready on your phone or computer.                                                                                             |
+| 2    | Open chatbot on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                              |
+| 3    | Wait a moment.                                                                            | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**. |
+
+> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -138,7 +140,7 @@ uat_round: 1
 
 #### Test 4 — Pricing and Stock Check
 
-*Continue from Test 1, 2, or 3.*
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) — continue from Test 1, 2, or 3.*
 
 | Step | What to do                                                                | What you should see                                                  |
 | ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -158,19 +160,25 @@ uat_round: 1
 
 ---
 
+### Group 2 — Web App: Managing Orders
+
+---
+
 #### Test 5 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
+
+*Who tests this: **Ng Tze Chien / Tam Ze Xin** (Sales Manager) for Step 1; **Noor Aili** (Logistics) or **Miss Wong** (Finance) for Steps 2–5*
 
 *Continue from the order created in Test 4. Different roles handle different steps — coordinate as needed.*
 
 > **Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
 
-| Step | Who                                                  | What to do                                                                     | What you should see                                                                               |
-| ---- | ---------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| 1    | **Sales Manager** (Ng Tze Chien / Tam Ze Xin)        | Generate a **Quotation** from the chatbot or web app. Submit it.               | A Quotation is created and submitted. Status shows **OPEN**.                                      |
-| 2    | **Noor Aili** (Logistics) or **Miss Wong** (Finance) | Log in to the web app. Open the Quotation and convert it to a **Sales Order**. | The Quotation status changes to **OPENED**. A new Sales Order is created with status **TO BILL**. |
-| 3    | **Noor Aili** or **Miss Wong**                       | From the Sales Order, generate a **Proforma Invoice**.                         | A Proforma Invoice is created with its own reference number. Details match the Sales Order.       |
-| 4    | **Miss Wong** (Finance)                              | From the Sales Order, generate the final **Invoice** and submit it.            | An Invoice is created and submitted. Status shows **UNPAID**.                                     |
-| 5    | Any user                                             | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF.      | All documents download successfully as PDFs.                                                      |
+| Step | Who                                                  | What to do                                                                     | What you should see                                                                                |
+| ---- | ---------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| 1    | **Sales Manager** (Ng Tze Chien / Tam Ze Xin)        | Log in to the web app. Generate a **Quotation** and submit it.                 | A Quotation is created and submitted. Status shows **OPEN**.                                       |
+| 2    | **Noor Aili** (Logistics) or **Miss Wong** (Finance) | Log in to the web app. Open the Quotation and convert it to a **Sales Order**. | The Quotation status changes to **ORDERED**. A new Sales Order is created with status **TO BILL**. |
+| 3    | **Noor Aili** or **Miss Wong**                       | From the Sales Order, generate a **Proforma Invoice**.                         | A Proforma Invoice is created with its own reference number. Details match the Sales Order.        |
+| 4    | **Miss Wong** (Finance)                              | From the Sales Order, generate the final **Invoice** and submit it.            | An Invoice is created and submitted. Status shows **UNPAID**.                                      |
+| 5    | Any user                                             | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF.      | All documents download successfully as PDFs.                                                       |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -182,15 +190,17 @@ uat_round: 1
 
 ---
 
-#### Test 6 — Create a Credit Note and Debit Note *(Finance — Miss Wong)*
+#### Test 6 — Create a Credit Note and Debit Note
 
-*Use an existing Invoice from Test 5. Log in as **Miss Wong (Finance)**.*
+*Who tests this: **Miss Wong** (Finance)*
+
+*Use an existing Invoice from Test 5.*
 
 | Step | What to do                                                                                         | What you should see                                                                                 |
 | ---- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                          |
 | 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                |
-| 3    | Fill in the amount adjust the items, then confirm.                                                 | Credit Note is created and saved. It references the original Invoice and shows the credited amount. |
+| 3    | Fill in the amount, adjust the items, then confirm.                                                | Credit Note is created and saved. It references the original Invoice and shows the credited amount. |
 | 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                 |
 | 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.   |
 
@@ -204,18 +214,18 @@ uat_round: 1
 
 ---
 
-### Group 2 — Web App: Managing Orders
-*Who tests this: Noor Aili (Logistics) or Miss Wong (Finance)*
+#### Test 7 — Duplicate Order is Blocked
 
----
+*Who tests this: **Noor Aili** (Logistics) or **Miss Wong** (Finance)*
 
-#### Test 7 — Duplicate Order is Blocked *(Noor Aili or Miss Wong)*
+> **Note:** The duplicate check triggers when an existing order with the same customer + PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Log in as **Noor Aili** (Logistics) or **Miss Wong** (Finance). Create a Sales Order for a customer with PO Number **"PO-001"**. | Sales Order is created in **Draft** status. |
-| 2 | Try to create another order for the **same customer** with the **same PO Number "PO-001"**. | A warning appears — this order already exists. The duplicate is blocked and not saved. |
-| 3 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Sales Order is created in **Draft** status. No warning shown. |
+| 1 | Log in as **Noor Aili** or **Miss Wong**. Create a Sales Order for a customer with PO Number **"PO-001"**. | Sales Order is created in **Draft** status. |
+| 2 | Submit the Sales Order. | Sales Order status changes to **TO BILL**. |
+| 3 | Try to create a new order for the **same customer** with the **same PO Number "PO-001"**. | A warning appears — this order already exists. The duplicate is blocked and not saved. |
+| 4 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Sales Order is created in **Draft** status. No warning shown. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -227,13 +237,15 @@ uat_round: 1
 
 ---
 
-#### Test 8 — Manage Sales Orders on the Web App *(Noor Aili or Miss Wong)*
+#### Test 8 — Manage Sales Orders on the Web App
+
+*Who tests this: **Noor Aili** (Logistics) or **Miss Wong** (Finance) for SO creation; **Ng Tze Chien** (Sales Manager) for view-only check*
 
 > **Note:** Sales Manager has view-only access to Sales Orders. SO creation and editing is done by Logistics (Noor Aili) or Finance (Miss Wong).
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Log in to the web app at https://maia-fe-holsen.vercel.app/login as **Noor Aili** (Logistics) or **Miss Wong** (Finance). | Your dashboard is visible. |
+| 1 | Log in to the web app as **Noor Aili** (Logistics) or **Miss Wong** (Finance). | Your dashboard is visible. |
 | 2 | Create a new Sales Order directly from the web app (not the chatbot). | A form appears. Fill in customer and product details. The order is saved with status **Draft**. |
 | 3 | Open an existing Sales Order and change a quantity. | The change is saved. Updated quantity is shown. |
 | 4 | Submit the Sales Order. | Status changes to **TO BILL**. The order is locked and ready for invoicing. |
@@ -249,7 +261,9 @@ uat_round: 1
 
 ---
 
-#### Test 9 — Export Invoice / Credit Note / Debit Note as CSV *(Finance — Miss Wong)*
+#### Test 9 — Export Invoice / Credit Note / Debit Note as CSV
+
+*Who tests this: **Miss Wong** (Finance)*
 
 Finance exports these documents from MAIA as CSV files. The exported data is used to create eInvoice records in UBS.
 
@@ -274,15 +288,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 ---
 
 ### Group 3 — Logistics: Deliveries and Stock Alerts
-*Who tests this: Noor Aili*
 
 ---
 
 #### Test 10 — Create a Delivery Order and Picking List
 
+*Who tests this: **Noor Aili** (Logistics)*
+
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Open a submitted Invoice on the web app (logged in as **Noor Aili**). Invoice status should be **UNPAID**. | Invoice record is visible. |
+| 1 | Log in to the web app as **Noor Aili**. Open a submitted Invoice. Invoice status should be **UNPAID**. | Invoice record is visible. |
 | 2 | Create a **Delivery Order (DO)** from the Invoice. Submit it. | Delivery Order is created and submitted. It shows the customer's delivery address, products, quantities, and a DO reference number. |
 | 3 | From the Delivery Order, generate a **Picking List**. Submit it. | Picking List is created and submitted. It shows all items to pick from the warehouse with quantities. |
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
@@ -299,12 +314,15 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 #### Test 11 — Stock Alerts (Out of Stock and Low Stock)
 
-| Step | What to do                                                                      | What you should see                                                                   |
-| ---- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 1    | Check the notification area (logged in as **Noor Aili** or **Sales Manager**).  | Notifications are visible.                                                            |
-| 2    | Look for a product that has **zero stock**.                                     | An Out-of-Stock alert is shown for that product. Both Logistics and Sales can see it. |
-| 3    | Look for a product that is below the safety stock level.                        | A Low-Stock alert is shown for that product. Both Logistics and Sales can see it.     |
+*Who tests this: **Noor Aili** (Logistics) and **Ng Tze Chien / Tam Ze Xin** (Sales Manager) — both should see the alerts*
+
+| Step | What to do                                                                     | What you should see                                                                   |
+| ---- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| 1    | Log in as **Noor Aili**. Check the notification area.                          | Notifications are visible.                                                            |
+| 2    | Look for a product that has **zero stock**.                                    | An Out-of-Stock alert is shown for that product.                                      |
+| 3    | Look for a product that is below the safety stock level.                       | A Low-Stock alert is shown for that product.                                          |
 | 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                                   |
+| 5    | Log out. Log in as **Sales Manager** (Ng Tze Chien). Check the same alerts.   | Both Out-of-Stock and Low-Stock alerts are visible to Sales Manager as well.          |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -318,9 +336,11 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 #### Test 12 — Delivery Delay Reminder
 
+*Who tests this: **Noor Aili** (Logistics)*
+
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified. |
+| 1 | Log in as **Noor Aili**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified. |
 | 2 | Check the daily digest or notification area. | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
 
 > ⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact Gareth to set one up.
@@ -336,11 +356,12 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 ---
 
 ### Group 4 — Logging In
-*Who tests this: Everyone*
 
 ---
 
 #### Test 13 — All Users Can Log In
+
+*Who tests this: **Everyone** — all 8 users log in with their own account*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -358,13 +379,14 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 ---
 
 ### Group 5 — What Each Person Can and Cannot Do
+
 *Each person tests their own account. Check that you can do the things listed, and that you are blocked from things outside your role.*
 
 ---
 
-#### Test 14 — Sales Manager (Ng Tze Chien / Tam Ze Xin)
+#### Test 14 — Sales Manager Access Check
 
-Log in as **Sales Manager** and check the following:
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -385,9 +407,9 @@ Log in as **Sales Manager** and check the following:
 
 ---
 
-#### Test 15 — Logistics / Operations (Noor Aili)
+#### Test 15 — Logistics / Operations Access Check
 
-Log in as **Logistics (Noor Aili)** and check the following:
+*Who tests this: **Noor Aili** (Logistics — Operations)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -409,9 +431,9 @@ Log in as **Logistics (Noor Aili)** and check the following:
 
 ---
 
-#### Test 16 — Logistics / Procurement (Intan Atikah)
+#### Test 16 — Logistics / Procurement Access Check
 
-Log in as **Logistics User (Intan Atikah)** and check the following:
+*Who tests this: **Intan Atikah** (Logistics — Procurement)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -431,9 +453,9 @@ Log in as **Logistics User (Intan Atikah)** and check the following:
 
 ---
 
-#### Test 17 — Logistics / Production (Murugesu)
+#### Test 17 — Logistics / Production Access Check
 
-Log in as **Logistics (Murugesu)** and check the following:
+*Who tests this: **Murugesu** (Logistics — Production)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -452,9 +474,9 @@ Log in as **Logistics (Murugesu)** and check the following:
 
 ---
 
-#### Test 18 — Finance Manager (Miss Wong)
+#### Test 18 — Finance Manager Access Check
 
-Log in as **Finance Manager (Miss Wong)** and check the following:
+*Who tests this: **Miss Wong** (Finance)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -476,9 +498,9 @@ Log in as **Finance Manager (Miss Wong)** and check the following:
 
 ---
 
-#### Test 19 — Admin (Ong Siow Chui / Tam Ze Xin)
+#### Test 19 — Admin Access Check
 
-Log in as **Admin** and check the following:
+*Who tests this: **Ong Siow Chui** or **Tam Ze Xin** (Admin)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -497,9 +519,9 @@ Log in as **Admin** and check the following:
 
 ---
 
-#### Test 20 — System Admin (Chin Zhao Heng)
+#### Test 20 — System Admin Access Check
 
-Log in as **System Admin (Chin Zhao Heng)** and check the following:
+*Who tests this: **Chin Zhao Heng** (System Admin)*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -520,7 +542,7 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 
 #### Test 21 — Role Approval Flow
 
-*This test follows the full document lifecycle. Each step is done by a different person — coordinate as a group.*
+*Who tests this: **All roles** — coordinate as a group across all steps*
 
 **Part A — Quotation & Purchase Order (Sales Manager submits)**
 
@@ -583,7 +605,6 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 ---
 
 ### Group 6 — Poison Signed Order (PSO)
-*Who tests this: Admin (Steps 1–2), Noor Aili (Steps 3–10)*
 
 > **What is this?** Malaysian law (Poison License B) requires Holsen to attach a signed Poison Signed Order (PSO) form to every delivery that contains poison products. MAIA generates this form automatically when needed.
 
@@ -591,10 +612,12 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 
 #### Test 22 — Poison Signed Order (PSO) — Full Test
 
+*Who tests this: **Ong Siow Chui** (Admin) for Steps 1–2; **Noor Aili** (Logistics) for Steps 3–10*
+
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Log in as **Admin**. Find a product in the catalogue that is not marked as Poison. Turn on the Poison flag and save. | The Poison flag is saved. The system records a log of who made the change and when. |
-| 2 | Log out. Log in as **Sales Manager**. Try to change the Poison flag on the same product. | 🚫 The Poison flag cannot be changed — it is not editable for Sales Manager. |
+| 1 | Log in as **Ong Siow Chui (Admin)**. Find a product in the catalogue that is not marked as Poison. Turn on the Poison flag and save. | The Poison flag is saved. The system records a log of who made the change and when. |
+| 2 | Log out. Log in as **Sales Manager** (Ng Tze Chien). Try to change the Poison flag on the same product. | 🚫 The Poison flag cannot be changed — it is not editable for Sales Manager. |
 | 3 | Log out. Log in as **Noor Aili (Logistics)**. Create a Delivery Order that contains **only non-poison products**. Generate the PDF. | PDF is generated. **No PSO is attached** — the delivery has no poison items. |
 | 4 | Create a second Delivery Order that includes **at least 1 poison product**. Generate the PDF. | PDF is generated. It contains the Delivery Order pages first, followed by the **PSO form** appended at the end — all in one PDF. |
 | 5 | Create a third Delivery Order with a **mix of poison and non-poison products** (e.g., 2 poison + 3 regular). Generate the PDF. | PSO is attached. The PSO only lists the **poison products** — the non-poison products do not appear on the PSO. The DO itself still shows all products. |
