@@ -118,11 +118,11 @@ uat_round: 1
 | Step | What to do                                                                                                                                  | What you should see                                                                                                                                                    |
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1    | Prepare a customer PO in PDF format.                                                                                                        | PDF file is ready on your phone or computer.                                                                                                                           |
-| 2    | Open **@maia_holsen_bot** on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*.                                | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                                                 |
-| 3    | Wait a moment.                                                                                                                              | Chatbot replies again: *"Document processing is complete."* It identifies the file as a Purchase Order and gives you a CPO reference number (e.g. **CPO-2026-00022**). |
-| 4    | Click the link in the chatbot message to open the web app                                                                                   | The CPO record opens. It shows the customer name, products, and quantities extracted from the PDF.                                                                     |
+| 2    | Open chatbot on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*.                                             | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                                                 |
+| 3    | Wait a moment.                                                                                                                              | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**.                               |
+| 4    | Click the link in the chatbot message to open the web app.                                                                                  | The CPO record opens showing status **Pending**. Customer name, products, and quantities are filled in from the PDF.                                                   |
 | 5    | Review the extracted details carefully. Check that customer name, product names, and quantities are correct. Fix anything that looks wrong. | All details match the original PDF. Any corrections can be made before the next step.                                                                                  |
-| 6    | Click **"Create Sales Order"** from the CPO.                                                                                                | A Sales Order is created from the CPO. The CPO status changes to **Success**.                                                                                          |
+| 6    | Click **"Create Sales Order"** from the CPO.                                                                                                | A Sales Order is created in **Draft** status. The CPO status changes to **Success**.                                                                                   |
 
 > ⚠️ **Note:** The chatbot reads the PDF automatically, but always review the details in step 5 before creating the Sales Order. If a product name or quantity looks wrong, fix it first.
 
@@ -164,13 +164,13 @@ uat_round: 1
 
 > **Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
 
-| Step | Who | What to do | What you should see |
-|------|-----|-----------|---------------------|
-| 1 | **Sales Manager** (Ng Tze Chien / Tam Ze Xin) | Generate a **Quotation** from the chatbot or web app. | A Quotation is created showing the customer name, products, quantities, prices, and date. |
-| 2 | **Noor Aili** (Logistics) or **Miss Wong** (Finance) | Log in to the web app. Open the Quotation and convert it to a **Sales Order**. | A Sales Order is created. Prices from the Quotation carry over unchanged. A Sales Order number is assigned. |
-| 3 | **Noor Aili** or **Miss Wong** | From the Sales Order, generate a **Proforma Invoice**. | A Proforma Invoice is created with its own reference number. Details match the Sales Order. |
-| 4 | **Miss Wong** (Finance) | From the Sales Order, generate and submit the final **Invoice**. | An Invoice is created and submitted with a unique invoice number showing all billing details. |
-| 5 | Any user | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF. | All documents download successfully as PDFs. |
+| Step | Who                                                  | What to do                                                                     | What you should see                                                                               |
+| ---- | ---------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| 1    | **Sales Manager** (Ng Tze Chien / Tam Ze Xin)        | Generate a **Quotation** from the chatbot or web app. Submit it.               | A Quotation is created and submitted. Status shows **OPEN**.                                      |
+| 2    | **Noor Aili** (Logistics) or **Miss Wong** (Finance) | Log in to the web app. Open the Quotation and convert it to a **Sales Order**. | The Quotation status changes to **OPENED**. A new Sales Order is created with status **TO BILL**. |
+| 3    | **Noor Aili** or **Miss Wong**                       | From the Sales Order, generate a **Proforma Invoice**.                         | A Proforma Invoice is created with its own reference number. Details match the Sales Order.       |
+| 4    | **Miss Wong** (Finance)                              | From the Sales Order, generate the final **Invoice** and submit it.            | An Invoice is created and submitted. Status shows **UNPAID**.                                     |
+| 5    | Any user                                             | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF.      | All documents download successfully as PDFs.                                                      |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -186,13 +186,13 @@ uat_round: 1
 
 *Use an existing Invoice from Test 5. Log in as **Miss Wong (Finance)**.*
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Open an existing submitted **Invoice**. | Invoice record is visible. |
-| 2 | Look for the option to create a **Credit Note** and click it. | Credit Note creation screen appears. |
-| 3 | Fill in the reason and amount, then confirm. | Credit Note is created and saved. It references the original Invoice and shows the credited amount. |
-| 4 | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears. |
-| 5 | Fill in the reason and amount, then confirm. | Debit Note is created and saved. It references the original Invoice and shows the debited amount. |
+| Step | What to do                                                                                         | What you should see                                                                                 |
+| ---- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                          |
+| 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                |
+| 3    | Fill in the amount adjust the items, then confirm.                                                 | Credit Note is created and saved. It references the original Invoice and shows the credited amount. |
+| 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                 |
+| 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.   |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -213,9 +213,9 @@ uat_round: 1
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Log in as **Noor Aili** (Logistics) or **Miss Wong** (Finance). Create a Sales Order for a customer with PO Number **"PO-001"**. | Order is created successfully. |
-| 2 | Try to create another order for the **same customer** with the **same PO Number "PO-001"**. | System shows a warning — this order already exists. The duplicate is blocked. |
-| 3 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Order is created successfully — no warning shown. |
+| 1 | Log in as **Noor Aili** (Logistics) or **Miss Wong** (Finance). Create a Sales Order for a customer with PO Number **"PO-001"**. | Sales Order is created in **Draft** status. |
+| 2 | Try to create another order for the **same customer** with the **same PO Number "PO-001"**. | A warning appears — this order already exists. The duplicate is blocked and not saved. |
+| 3 | Create a new order for the same customer but with a **different PO Number "PO-002"**. | Sales Order is created in **Draft** status. No warning shown. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -234,9 +234,9 @@ uat_round: 1
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
 | 1 | Log in to the web app at https://maia-fe-holsen.vercel.app/login as **Noor Aili** (Logistics) or **Miss Wong** (Finance). | Your dashboard is visible. |
-| 2 | Create a new Sales Order directly from the web app (not the chatbot). | A form appears. You can fill in customer and product details. Order is saved in Draft. |
+| 2 | Create a new Sales Order directly from the web app (not the chatbot). | A form appears. Fill in customer and product details. The order is saved with status **Draft**. |
 | 3 | Open an existing Sales Order and change a quantity. | The change is saved. Updated quantity is shown. |
-| 4 | Check the status of the order (e.g., Draft, Submitted). | Current status is visible on the order. |
+| 4 | Submit the Sales Order. | Status changes to **TO BILL**. The order is locked and ready for invoicing. |
 | 5 | Log out. Log in as **Sales Manager** (Ng Tze Chien). Try to edit or create a Sales Order. | 🚫 Sales Manager cannot create or edit Sales Orders — view only. |
 
 > **Your result:**
@@ -253,13 +253,13 @@ uat_round: 1
 
 Finance exports these documents from MAIA as CSV files. The exported data is used to create eInvoice records in UBS.
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Log in as **Miss Wong (Finance)**. Open a submitted **Invoice**. | Invoice record is open. |
-| 2 | Click the export or download button and select **CSV**. | A CSV file is downloaded to your computer. |
-| 3 | Open the CSV. Check the contents. | File contains invoice details — customer, line items, quantities, prices. |
-| 4 | Open a **Credit Note** and repeat the export. | CSV downloaded. File contains credit note details. |
-| 5 | Open a **Debit Note** and repeat the export. | CSV downloaded. File contains debit note details. |
+| Step | What to do                                              | What you should see                                                       |
+| ---- | ------------------------------------------------------- | ------------------------------------------------------------------------- |
+| 1    | Log into web app. Open the **Invoice** page.            | Invoice listing is visible.                                               |
+| 2    | Click the export or download button and select **CSV**. | A CSV file is downloaded to your computer.                                |
+| 3    | Open the CSV. Check the contents.                       | File contains invoice details — customer, line items, quantities, prices. |
+| 4    | Open a **Credit Note** and repeat the export.           | CSV downloaded. File contains credit note details.                        |
+| 5    | Open a **Debit Note** and repeat the export.            | CSV downloaded. File contains debit note details.                         |
 
 > ⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in UBS. eInvoices are not generated inside MAIA.
 
@@ -282,9 +282,9 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Open a confirmed Invoice on the web app (logged in as **Noor Aili**). | Invoice record is visible. |
-| 2 | Create a **Delivery Order (DO)** from the Invoice. | Delivery Order is created. It shows the customer's delivery address, products, quantities, and a DO reference number. |
-| 3 | From the Delivery Order, generate a **Picking List**. | Picking List is created. It shows all items to pick from the warehouse with quantities. |
+| 1 | Open a submitted Invoice on the web app (logged in as **Noor Aili**). Invoice status should be **UNPAID**. | Invoice record is visible. |
+| 2 | Create a **Delivery Order (DO)** from the Invoice. Submit it. | Delivery Order is created and submitted. It shows the customer's delivery address, products, quantities, and a DO reference number. |
+| 3 | From the Delivery Order, generate a **Picking List**. Submit it. | Picking List is created and submitted. It shows all items to pick from the warehouse with quantities. |
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
 
 > **Your result:**
@@ -368,9 +368,9 @@ Log in as **Sales Manager** and check the following:
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Try to create and submit a **Quotation**. | ✅ You can create, edit, and submit Quotations. |
+| 1 | Try to create and submit a **Quotation**. | ✅ You can create, edit, and submit Quotations. After submit, status shows **OPEN**. |
 | 2 | Try to create and submit a **Purchase Order**. | ✅ You can create, edit, and submit Purchase Orders. |
-| 3 | Try to create a new **Sales Order**. | 🚫 You cannot create a Sales Order — view only. |
+| 3 | Try to create a new **Sales Order**. | 🚫 You cannot create a Sales Order — view only. No create button visible. |
 | 4 | Try to submit (finalise) an **Invoice**. | 🚫 You cannot submit an Invoice — view only. |
 | 5 | Try to create a **Delivery Order**. | 🚫 You cannot create a Delivery Order — view only. |
 | 6 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
@@ -391,13 +391,13 @@ Log in as **Logistics (Noor Aili)** and check the following:
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Try to create and submit a **Sales Order**. | ✅ You can create, edit, and submit Sales Orders. |
+| 1 | Try to create and submit a **Sales Order**. | ✅ You can create, edit, and submit Sales Orders. After submit, status shows **TO BILL**. |
 | 2 | Try to create and submit a **Delivery Order**. | ✅ You can create, edit, and submit Delivery Orders. |
 | 3 | Try to create and manage a **Picking List**. | ✅ You can create, edit, and submit Picking Lists. |
-| 4 | Try to view **Inventory** (stock levels). | ✅ You can view inventory. |
-| 5 | Try to **create** an Invoice from a Sales Order. | ✅ You can create and edit Invoices. |
-| 6 | Try to **submit (finalise)** the Invoice you just created. | 🚫 You cannot finalise/submit an Invoice — submit is Finance only. |
-| 7 | Try to create a **Quotation**. | 🚫 You cannot create a Quotation — view only. |
+| 4 | Try to view **Inventory** (stock levels). | ✅ Inventory page is accessible and shows stock quantities. |
+| 5 | Try to **create** an Invoice from a **TO BILL** Sales Order. | ✅ You can create and edit Invoices. Invoice is saved but stays in **Draft**. |
+| 6 | Try to **submit (finalise)** the Invoice you just created. | 🚫 Submit button is not available — Invoice submit is Finance only. |
+| 7 | Try to create a **Quotation**. | 🚫 You cannot create a Quotation — view only. No create button visible. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
@@ -458,9 +458,9 @@ Log in as **Finance Manager (Miss Wong)** and check the following:
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
-| 1 | Try to create and finalise an **Invoice**. | ✅ You can create, edit, and finalise Invoices. |
-| 2 | Try to create and submit a **Payment / Receipt**. | ✅ You can create and submit Receipts. |
-| 3 | Try to create and submit a **Sales Order**. | ✅ You can create, edit, and submit Sales Orders. |
+| 1 | Try to create and finalise an **Invoice**. | ✅ You can create, edit, and submit Invoices. After submit, status shows **UNPAID**. |
+| 2 | Try to create and submit a **Payment / Receipt**. | ✅ You can create and submit Receipts. Invoice moves to **PAID** when fully paid. |
+| 3 | Try to create and submit a **Sales Order**. | ✅ You can create, edit, and submit Sales Orders. After submit, status shows **TO BILL**. |
 | 4 | Try to create and submit a **Delivery Order**. | ✅ You can create, edit, and submit Delivery Orders. |
 | 5 | Export an **Invoice**, a **Credit Note**, and a **Debit Note** as CSV files. | ✅ All three export successfully as CSV files. |
 | 6 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
@@ -526,8 +526,8 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
-| 1 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Quotation and click Submit. | Quotation status changes to **Submitted / Open**. |
-| 2 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Purchase Order and click Submit. | Purchase Order status changes to **Submitted**. |
+| 1 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Quotation and click Submit. | Quotation status changes to **OPEN**. |
+| 2 | **Ng Tze Chien / Tam Ze Xin** (Sales Manager) | Create a new Purchase Order and click Submit. | Purchase Order is submitted and saved. |
 
 **Part B — Sales Order submission (Logistics and Finance can create and submit)**
 
@@ -535,20 +535,20 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
-| 3 | **Miss Wong** (Finance) | Create a new Sales Order — leave it in **Draft**. Do not submit. | Sales Order is in Draft status. |
-| 4 | **Noor Aili** (Logistics) | Open the Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Noor Aili can submit. |
-| 5 | **Noor Aili** (Logistics) | Create a second new Sales Order — leave it in **Draft**. | Second Sales Order is in Draft. |
-| 6 | **Intan Atikah** (Logistics — Procurement) | Open the second Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Intan can submit (view + submit only — cannot create or edit). |
-| 7 | **Noor Aili** (Logistics) | Create a third new Sales Order — leave it in **Draft**. | Third Sales Order is in Draft. |
-| 8 | **Miss Wong** (Finance) | Open the third Draft Sales Order. Click Submit. | Sales Order status changes to **Submitted**. Miss Wong can submit. |
+| 3 | **Miss Wong** (Finance) | Create a new Sales Order — leave it in **Draft**. Do not submit. | Sales Order is saved. Status shows **Draft**. |
+| 4 | **Noor Aili** (Logistics) | Open the Draft Sales Order. Click Submit. | Sales Order status changes to **TO BILL**. Noor Aili can submit. |
+| 5 | **Noor Aili** (Logistics) | Create a second new Sales Order — leave it in **Draft**. | Sales Order is saved. Status shows **Draft**. |
+| 6 | **Intan Atikah** (Logistics — Procurement) | Open the second Draft Sales Order. Click Submit. | Sales Order status changes to **TO BILL**. Intan can submit (view + submit only — cannot create or edit). |
+| 7 | **Noor Aili** (Logistics) | Create a third new Sales Order — leave it in **Draft**. | Sales Order is saved. Status shows **Draft**. |
+| 8 | **Miss Wong** (Finance) | Open the third Draft Sales Order. Click Submit. | Sales Order status changes to **TO BILL**. Miss Wong can submit. |
 
 **Part C — Delivery Order submission (Logistics and Finance can submit)**
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
-| 9 | **Noor Aili** (Logistics) | Create a Delivery Order from one of the submitted Sales Orders. Click Submit / Confirm. | Delivery Order status changes to **Confirmed / Submitted**. |
-| 10 | **Intan Atikah** (Logistics — Procurement) | Open a different Delivery Order that is still in Draft. Click Submit / Confirm. | Delivery Order is confirmed. Intan can submit but not create. |
-| 11 | **Miss Wong** (Finance) | Open another Draft Delivery Order. Click Submit / Confirm. | Delivery Order is confirmed. Miss Wong can submit. |
+| 9 | **Noor Aili** (Logistics) | Create a Delivery Order from one of the **TO BILL** Sales Orders. Click Submit. | Delivery Order is submitted. Noor Aili can create and submit. |
+| 10 | **Intan Atikah** (Logistics — Procurement) | Open a different Delivery Order that is still in Draft. Click Submit. | Delivery Order is submitted. Intan can submit but not create. |
+| 11 | **Miss Wong** (Finance) | Open another Draft Delivery Order. Click Submit. | Delivery Order is submitted. Miss Wong can submit. |
 
 **Part D — Pick List submission (Logistics — Noor Aili)**
 
@@ -560,7 +560,7 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
-| 13 | **Miss Wong** (Finance) | Open a submitted Sales Order. Create an Invoice and click Submit. | Invoice status changes to **Submitted / Unpaid**. |
+| 13 | **Miss Wong** (Finance) | Open a **TO BILL** Sales Order. Create an Invoice and click Submit. | Invoice status changes to **UNPAID**. |
 
 **Part F — Receipt / Payment submission (Finance creates; Finance and Admin can submit)**
 
@@ -568,9 +568,9 @@ Log in as **System Admin (Chin Zhao Heng)** and check the following:
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
-| 14 | **Miss Wong** (Finance) | Create a Receipt against the Invoice from Step 13. Submit it. | Receipt is submitted. Invoice status updates. |
-| 15 | **Miss Wong** (Finance) | Create a second Receipt against a different Invoice — leave it in **Draft/Pending**. Do not submit. | Receipt is created but not yet submitted. |
-| 16 | **Ong Siow Chui** (Admin) | Open the Draft Receipt from Step 15. Click Submit. | Receipt is submitted. Admin can submit Receipts but cannot create them. |
+| 14 | **Miss Wong** (Finance) | Create a Receipt against the **UNPAID** Invoice from Step 13. Enter the full amount. Submit it. | Receipt is submitted. The Invoice status changes to **PAID**. |
+| 15 | **Miss Wong** (Finance) | Create a second Receipt against a different **UNPAID** Invoice — leave it in **Draft**. Do not submit. | Receipt is saved. Status shows **Draft**. Invoice still shows **UNPAID**. |
+| 16 | **Ong Siow Chui** (Admin) | Open the **Draft** Receipt from Step 15. Click Submit. | Receipt is submitted. Admin can submit Receipts but cannot create them. |
 
 > **Your result:**
 > ☐ Pass    ☐ Fail    ☐ Issue
