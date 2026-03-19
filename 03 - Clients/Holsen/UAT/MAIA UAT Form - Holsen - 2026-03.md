@@ -13,7 +13,21 @@ uat_round: 1
 
 ## Before You Start
 
-**UAT Date:** [To be confirmed]
+**UAT Period:** 18 March 2026 – 25 March 2026
+**Sign-Off Deadline:** 25 March 2026
+**Go-Live (Core MAIA):** 31 March 2026
+
+### UAT Timeline
+
+| Date | Milestone | Who |
+| ---------- | ------------------------------------------- | ------------ |
+| 18 Mar | UAT starts — work through all test groups | Holsen team |
+| 18 Mar | WhatsApp chatbot setup begins | MAIA team |
+| 25 Mar | All tests completed and signed off | Holsen team |
+| 31 Mar | **Go-live — core MAIA** | All |
+| Post-go-live | C1/C3 compliance features (Phase 2 UAT to follow) | TBD |
+
+> **Scope note:** This UAT covers core MAIA only. C1/C3 compliance features and A57 tax exemption enforcement are not included in this round — they will be tested separately after go-live.
 **Web App:** https://maia-fe-holsen.vercel.app/login
 **Chatbot (during UAT):** Telegram — scan the QR code provided to open the MAIA Holsen chatbot
 ![[Pasted image 20260317232736.png|362]]
@@ -42,8 +56,10 @@ uat_round: 1
 2. For each step, do what is described and check that what you see matches the **"What you should see"** column.
 3. After each test, tick your result and write any notes in the feedback box.
 4. If something does not work as expected, mark it **Fail** and describe what happened.
-5. If you are unsure or something is not loading, mark it **Issue**.
+5. If you are unsure or something is not loading, mark it **Issue** and contact **Gareth**.
 6. Sign off at the end when you are done.
+
+> **About these test cases:** All tests in this document are based on the agreed MAIA scope in the Holsen Statement of Work (SOW). If any test case does not match how your business works, or if you notice a step that seems incorrect, please do not guess — contact **Gareth** directly and we will review and update the test case together before you proceed.
 
 **Result options:**
 - ✅ **Pass** — Everything worked as described
@@ -57,7 +73,6 @@ uat_round: 1
 - [ ] All user accounts created and login details filled in above
 - [ ] Customer records loaded (at least 3 test customers with name and address)
 - [ ] Product catalogue loaded (at least 5 products with descriptions and pricing)
-- [ ] Minimum selling prices configured per product
 - [ ] Stock quantities loaded (at least 1 product at zero stock, 1 at low-stock level)
 - [ ] Low-stock threshold configured
 - [ ] Delivery delay reminder threshold configured
@@ -398,10 +413,10 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 *Who tests this: **Everyone** — all 8 users log in with their own account*
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Open https://maia-fe-holsen.vercel.app/login in **Google Chrome** on a laptop or desktop. | The MAIA login page loads. |
-| 2 | Each person logs in using their **assigned email and password** from the table above. | Login is successful. Your workspace and dashboard are visible. |
+| Step | What to do                                                                                | What you should see                                            |
+| ---- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| 1    | Open https://maia-fe-holsen.vercel.app/login in **Google Chrome** on a laptop or desktop. | The MAIA login page loads.                                     |
+| 2    | Each person logs in using their **assigned email and password** from the table above.     | Login is successful. Your workspace and dashboard are visible. |
 
 > **Your result:**
 > - [ ] Pass
