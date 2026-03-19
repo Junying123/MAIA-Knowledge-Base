@@ -23,6 +23,7 @@ Push to ending phase: triage what's needed for go-live, confirm decisions on ope
 
 Training validated core MAIA usage but surfaced 15+ feature requests, open role mapping questions, master data gaps, and unconfirmed compliance workflows.
 
+
 ---
 
 ## Closing & Go-Live Timeline
