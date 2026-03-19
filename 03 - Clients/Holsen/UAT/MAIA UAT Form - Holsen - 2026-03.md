@@ -691,18 +691,18 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 *Who tests this:  **Noor Aili** (Logistics) 
 
-| Step | What to do                                                                                                                                                                         | What you should see                                                                                                                                                                                               |
-| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | Find a product in the catalogue that is not marked as Poison. Turn on the Poison flag and save.                                                                                    | The Poison flag is saved. The system records a log of who made the change and when.                                                                                                                               |
-| 2    | Try to change the Poison flag on the same product.                                                                                                                                 | 🚫 The Poison flag cannot be changed — it is not editable for Sales Manager.                                                                                                                                      |
-| 3    | Log out. Log in as **Noor Aili (Logistics)**. Create a Delivery Order that contains **only non-poison products**. Generate the PDF.                                                | PDF is generated. **No PSO is attached** — the delivery has no poison items.                                                                                                                                      |
-| 4    | Create a second Delivery Order that includes **at least 1 poison product**. Generate the PDF.                                                                                      | PDF is generated. It contains the Delivery Order pages first, followed by the **PSO form** appended at the end — all in one PDF.                                                                                  |
-| 5    | Create a third Delivery Order with a **mix of poison and non-poison products** (e.g., 2 poison + 3 regular). Generate the PDF.                                                     | PSO is attached. The PSO only lists the **poison products** — the non-poison products do not appear on the PSO. The DO itself still shows all products.                                                           |
-| 6    | Open the PSO from Step 5. Check the top section (FROM).                                                                                                                            | Shows the **customer's name, address, and phone number**.                                                                                                                                                         |
-| 7    | Check the TO section.                                                                                                                                                              | Shows **Holsen Interchem Sdn Bhd** name and address.                                                                                                                                                              |
-| 8    | Check the table of items on the PSO.                                                                                                                                               | Lists each poison product with: item number, description, quantity, and unit/packing.                                                                                                                             |
-| 9    | Check the bottom of the PSO.                                                                                                                                                       | Contains a **Signature and Company Stamp** section for the customer to sign. A blank Remarks field is present. A note about returning a signed copy is shown. The MAIA footer shows the generation date and time. |
-| 10   | Download the PSO. Then upload a scanned copy back to the Delivery Order and select **"Signed PSO Copy"** as the document type. Log in as Miss Wong and check she can view the PSO. | Download works. Signed copy uploads successfully with the correct label. Miss Wong can view the PSO.                                                                                                              |
+| Step | What to do                                                                                                                      | What you should see                                                                                                                                                                                               |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Find a product in the catalogue that is not marked as Poison. Turn on the Poison flag and save.                                 | The Poison flag is saved. The system records a log of who made the change and when.                                                                                                                               |
+| 2    | Try to change the Poison flag on the same product.                                                                              | 🚫 The Poison flag cannot be changed — it is not editable for Sales Manager.                                                                                                                                      |
+| 3    | Create a Delivery Order that contains **only non-poison products**. Generate the PDF.                                           | PDF is generated. **No PSO is attached** — the delivery has no poison items.                                                                                                                                      |
+| 4    | Create a second Delivery Order that includes **at least 1 poison product**. Generate the PDF.                                   | PDF is generated. It contains the Delivery Order pages first, followed by the **PSO form** appended at the end — all in one PDF.                                                                                  |
+| 5    | Create a third Delivery Order with a **mix of poison and non-poison products** (e.g., 2 poison + 3 regular). Generate the PDF.  | PSO is attached. The PSO only lists the **poison products** — the non-poison products do not appear on the PSO. The DO itself still shows all products.                                                           |
+| 6    | Open the PSO from Step 5. Check the top section (FROM).                                                                         | Shows the **customer's name, address, and phone number**.                                                                                                                                                         |
+| 7    | Check the TO section.                                                                                                           | Shows **Holsen Interchem Sdn Bhd** name and address.                                                                                                                                                              |
+| 8    | Check the table of items on the PSO.                                                                                            | Lists each poison product with: item number, description, quantity, and unit/packing.                                                                                                                             |
+| 9    | Check the bottom of the PSO.                                                                                                    | Contains a **Signature and Company Stamp** section for the customer to sign. A blank Remarks field is present. A note about returning a signed copy is shown. The MAIA footer shows the generation date and time. |
+| 10   | Download the PSO. Then upload a scanned copy back to the Delivery Order and select **"Signed PSO Copy"** as the document type.  | Download works. Signed copy uploads successfully with the correct label. Miss Wong can view the PSO.                                                                                                              |
 
 > **Your result:**
 > - [ ] Pass
@@ -719,30 +719,30 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ## Results Summary
 
-| Test # | What was tested | Result | Tested by | Date |
-|--------|----------------|--------|-----------|------|
-| Test 1 | Send order by text message | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 2 | Send order by photo | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 3 | Send order by PDF | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 4 | Pricing and stock check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 5 | Generate documents (Quotation → SO → Proforma Invoice → Invoice) | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 6 | Create Credit Note and Debit Note (Finance) | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 7 | Duplicate order is blocked | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 8 | Manage Sales Orders on web app (Logistics/Finance create; Sales Manager view only) | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 9 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 10 | Create Delivery Order and Picking List | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 11 | Stock alerts (Out of Stock / Low Stock) | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 12 | Delivery delay reminder | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 13 | All users can log in | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 14 | Sales Manager (Ng Tze Chien / Tam Ze Xin) — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 15 | Logistics / Noor Aili — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 16 | Logistics / Intan — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 17 | Logistics / Murugesu — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 18 | Finance / Miss Wong — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 19 | Admin — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 20 | System Admin / Chin Zhao Heng — access check | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 21 | Role approval flow (QT → PO → SO → DO → PL → INV → RCT) | ☐ Pass ☐ Fail ☐ Issue | | |
-| Test 22 | Poison Signed Order (PSO) — full test | ☐ Pass ☐ Fail ☐ Issue | | |
+| Test # | What was tested | Result (Pass / Fail / Issue) | Tested by | Date |
+|--------|----------------|------------------------------|-----------|------|
+| Test 1 | Send order by text message | | | |
+| Test 2 | Send order by photo | | | |
+| Test 3 | Send order by PDF | | | |
+| Test 4 | Pricing and stock check | | | |
+| Test 5 | Generate documents (Quotation → SO → Proforma Invoice → Invoice) | | | |
+| Test 6 | Create Credit Note and Debit Note (Finance) | | | |
+| Test 7 | Duplicate order is blocked | | | |
+| Test 8 | Manage Sales Orders on web app (Logistics/Finance create; Sales Manager view only) | | | |
+| Test 9 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | | | |
+| Test 10 | Create Delivery Order and Picking List | | | |
+| Test 11 | Stock alerts (Out of Stock / Low Stock) | | | |
+| Test 12 | Delivery delay reminder | | | |
+| Test 13 | All users can log in | | | |
+| Test 14 | Sales Manager (Ng Tze Chien / Tam Ze Xin) — access check | | | |
+| Test 15 | Logistics / Noor Aili — access check | | | |
+| Test 16 | Logistics / Intan — access check | | | |
+| Test 17 | Logistics / Murugesu — access check | | | |
+| Test 18 | Finance / Miss Wong — access check | | | |
+| Test 19 | Admin — access check | | | |
+| Test 20 | System Admin / Chin Zhao Heng — access check | | | |
+| Test 21 | Role approval flow (QT → PO → SO → DO → PL → INV → RCT) | | | |
+| Test 22 | Poison Signed Order (PSO) — full test | | | |
 
 **Total: 22 tests**
 
@@ -769,18 +769,18 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 By signing below, the Holsen team confirms that UAT has been completed and the results above are accurate.
 
 | Name | Role | Signature | Date |
-|------|------|-----------|------|
-| | | | |
-| | | | |
+| ---- | ---- | --------- | ---- |
+|      |      |           |      |
+|      |      |           |      |
 
 **Overall outcome:**
-☐ **Approved — Ready to go live**
-☐ **Conditional — Go live with the following items to fix first:**
+- [ ] **Approved — Ready to go live**
+- [ ] **Conditional — Go live with the following items to fix first:**
 
 *Conditions:*
 
 
-☐ **Not approved — Further fixes required before go live**
+- [ ] **Not approved — Further fixes required before go live**
 
 ---
 
