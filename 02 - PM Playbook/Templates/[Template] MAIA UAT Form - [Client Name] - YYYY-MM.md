@@ -562,25 +562,25 @@ Log in as **[Role Name]** and check the following:
 
 ## Results Summary
 
-| Test #     | What was tested                                                  | Result                | Tested by | Date |
-| ---------- | ---------------------------------------------------------------- | --------------------- | --------- | ---- |
-| Test 1     | Send order by text message                                       | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 2     | Send order by photo                                              | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 3     | Send order by PDF                                                | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 4     | Pricing and stock check                                          | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 5     | Generate documents (Quotation → SO → Proforma Invoice → Invoice) | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 6     | Create Credit Note and Debit Note                                | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 7     | Duplicate order is blocked                                       | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 8     | Manage Sales Orders on web app                                   | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 9     | Export Invoice / Credit Note / Debit Note as CSV (Finance)       | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 10    | Create Delivery Order and Picking List                           | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 11    | Stock alerts (Out of Stock / Low Stock)                          | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 12    | Delivery delay reminder                                          | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 13    | All users can log in                                             | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 14    | [Role Name] — access check                                       | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test 15    | [Role Name] — access check                                       | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test [N]   | Role approval flow (QT → PO → SO → DO → PL → INV → RCT)          | ☐ Pass ☐ Fail ☐ Issue |           |      |
-| Test [N+1] | [Client-specific feature] *(if applicable)*                      | ☐ Pass ☐ Fail ☐ Issue |           |      |
+| Test #     | What was tested                                                  | Result (Pass / Fail / Issue) | Tested by | Date |
+| ---------- | ---------------------------------------------------------------- | ---------------------------- | --------- | ---- |
+| Test 1     | Send order by text message                                       |                              |           |      |
+| Test 2     | Send order by photo                                              |                              |           |      |
+| Test 3     | Send order by PDF                                                |                              |           |      |
+| Test 4     | Pricing and stock check                                          |                              |           |      |
+| Test 5     | Generate documents (Quotation → SO → Proforma Invoice → Invoice) |                              |           |      |
+| Test 6     | Create Credit Note and Debit Note                                |                              |           |      |
+| Test 7     | Duplicate order is blocked                                       |                              |           |      |
+| Test 8     | Manage Sales Orders on web app                                   |                              |           |      |
+| Test 9     | Export Invoice / Credit Note / Debit Note as CSV (Finance)       |                              |           |      |
+| Test 10    | Create Delivery Order and Picking List                           |                              |           |      |
+| Test 11    | Stock alerts (Out of Stock / Low Stock)                          |                              |           |      |
+| Test 12    | Delivery delay reminder                                          |                              |           |      |
+| Test 13    | All users can log in                                             |                              |           |      |
+| Test 14    | [Role Name] — access check                                       |                              |           |      |
+| Test 15    | [Role Name] — access check                                       |                              |           |      |
+| Test [N]   | Role approval flow (QT → PO → SO → DO → PL → INV → RCT)          |                              |           |      |
+| Test [N+1] | [Client-specific feature] *(if applicable)*                      |                              |           |      |
 
 *[Adjust row count to match tests — add one row per role access test in Group 5, and per optional test in Group 7.]*
 
@@ -614,13 +614,13 @@ By signing below, the [Client Name] team confirms that UAT has been completed an
 | | | | |
 
 **Overall outcome:**
-☐ **Approved — Ready to go live**
-☐ **Conditional — Go live with the following items to fix first:**
+- [ ] **Approved — Ready to go live**
+- [ ] **Conditional — Go live with the following items to fix first:**
 
 *Conditions:*
 
 
-☐ **Not approved — Further fixes required before go live**
+- [ ] **Not approved — Further fixes required before go live**
 
 ---
 
