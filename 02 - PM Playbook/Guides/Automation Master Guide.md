@@ -676,6 +676,7 @@ searches the KB for mentions of that client, and generates a comprehensive summa
 - [[Quick Reference]] — Quick links to KB pages
 - [[CLAUDE.md]] — KB conventions for AI assistants
 - [[Changelog]] — Recent KB updates
+- [[Autoresearch macOS — Overnight AI Workflow Improver]] — Autonomously improve AI prompts and CLAUDE.md overnight using Apple Silicon
 
 ---
 
