@@ -57,6 +57,7 @@ Use [[02 - PM Playbook/Templates/[Template] Meeting Notes]] as the base for each
 |-------------|----------|----------|--------------|--------|
 | Holsen | Industrial Chemicals / Surface Treatment | Gareth | 2026-03-31 | UAT / Pre-Go-Live |
 | Fixguru | [Industry] | [PM Name] | TBD | Pre-onboarding |
+| Xeersoft-CK Auto | Automotive (via Xeersoft partner integration) | [PM Name] | TBD | Pre-onboarding |
 
 ## Client Taxonomy
 
