@@ -18,6 +18,20 @@ client: Xeersoft-CK Auto
 
 ## Xeersoft Action Items
 
+### Before 1 April 2026 (unblocks other items)
+
+- [ ] **Confirm with CK Auto the chatbot rollout phases**
+	- Phase 1 (confirmed): internal staff only
+	- Phase 2 (TBC): client-facing — confirm timeline with CK Auto
+	- Needed before Mindhive can finalise chatbot behaviour document
+
+- [ ] **Confirm who prepares the UAT checklist and revert to Ivan**
+	- Options: Xeersoft, Mindhive, or both independently then merge
+
+- [x] **Nominate one CK Auto representative to join the project working group**
+	- Should understand day-to-day operations and order-taking flow
+	- Does not need to work on the project — just monitor and represent the client
+
 ### By 1 April 2026
 
 - [ ] **Provide raw payload/schema for all 4 master data entities**
@@ -26,7 +40,6 @@ client: Xeersoft-CK Auto
 
 - [ ] **Flag vanilla vs customised fields in the product schema**
 	- In the **Item/Product master data schema document** that Xeersoft delivers to Mindhive (same document as above), add a column to mark which fields are standard (vanilla) vs CK Auto-specific (e.g., car model, car code, brand, product origin)
-
 
 - [ ] **Provide User API documentation**
 	- Mindhive needs this to sync CK Auto users from Xeersoft into MAIA
@@ -53,23 +66,23 @@ client: Xeersoft-CK Auto
 	- If Xeersoft's ERP supports configurable webhook modules, configure to call Mindhive's endpoint
 	- If custom dev is needed, flag to Mindhive so they can prepare a generic listener endpoint
 
-### Before 1 April 2026 (unblocks other items)
-
-- [ ] **Confirm with CK Auto the chatbot rollout phases**
-	- Phase 1 (confirmed): internal staff only
-	- Phase 2 (TBC): client-facing — confirm timeline with CK Auto
-	- Needed before Mindhive can finalise chatbot behaviour document
-
-- [ ] **Confirm who prepares the UAT checklist and revert to Ivan**
-	- Options: Xeersoft, Mindhive, or both independently then merge
-
-- [ ] **Nominate one CK Auto representative to join the project working group**
-	- Should understand day-to-day operations and order-taking flow
-	- Does not need to work on the project — just monitor and represent the client
-
 ---
 
 ## Mindhive Action Items
+
+### Before 1 April 2026 (unblocks other items)
+
+- [ ] **Send Xeersoft the client onboarding document**
+	- Covers: company profile, WABA account setup requirements, chatbot config info needed
+	- Xeersoft needs this to gather info from CK Auto before integration can progress
+
+- [ ] **Send Xeersoft the chatbot behaviour document**
+	- For CK Auto to fill in — how the chatbot should behave (client-facing)
+	- Depends on Xeersoft first confirming the chatbot rollout phases with CK Auto
+
+- [ ] **Set up a dedicated project working group**
+	- Separate from the existing BD/partnership group
+	- Members: Mindhive team, Xeersoft team, one CK Auto representative
 
 ### After Receiving Xeersoft Schema (~1 April)
 
@@ -92,20 +105,6 @@ client: Xeersoft-CK Auto
 
 - [ ] **Coordinate sandbox → production switchover with Xeersoft**
 	- Validate nothing breaks after the switch before UAT begins
-
-### Before 1 April 2026 (unblocks other items)
-
-- [ ] **Send Xeersoft the client onboarding document**
-	- Covers: company profile, WABA account setup requirements, chatbot config info needed
-	- Xeersoft needs this to gather info from CK Auto before integration can progress
-
-- [ ] **Send Xeersoft the chatbot behaviour document**
-	- For CK Auto to fill in — how the chatbot should behave (client-facing)
-	- Depends on Xeersoft first confirming the chatbot rollout phases with CK Auto
-
-- [ ] **Set up a dedicated project working group**
-	- Separate from the existing BD/partnership group
-	- Members: Mindhive team, Xeersoft team, one CK Auto representative
 
 ---
 
