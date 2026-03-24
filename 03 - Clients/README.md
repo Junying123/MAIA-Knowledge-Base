@@ -55,8 +55,8 @@ Use [[02 - PM Playbook/Templates/[Template] Meeting Notes]] as the base for each
 
 | Client Name | Industry | PM Owner | Go-Live Date | Status |
 |-------------|----------|----------|--------------|--------|
-| Holsen | Industrial Chemicals / Surface Treatment | [PM Name] | TBD | Onboarding |
-| [Client 2] | [Industry] | [PM Name] | YYYY-MM-DD | Onboarding |
+| Holsen | Industrial Chemicals / Surface Treatment | Gareth | 2026-03-31 | UAT / Pre-Go-Live |
+| Fixguru | [Industry] | [PM Name] | TBD | Pre-onboarding |
 
 ## Client Taxonomy
 
