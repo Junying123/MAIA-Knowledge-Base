@@ -1,12 +1,54 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-03-24
+last_reviewed: 2026-03-25
 ---
 
 # Autoresearch macOS — Overnight AI Workflow Improver
 
 > Use this tool to autonomously iterate on and improve the MAIA KB's AI prompts, CLAUDE.md instructions, and automation recipes overnight — with no manual prompt engineering effort.
+
+---
+
+## Integration Status
+
+Quick reference for what's done, what's pending, and what's next.
+
+### KB Skills (Build-Once Agents) — ✅ Done
+
+Installed in `.claude/skills/` — available now in Claude Code:
+
+| Skill | Command | What It Does |
+|---|---|---|
+| fill-template | `/fill-template` | Auto-fills any KB template with client + date |
+| structure-meeting-notes | `/structure-meeting-notes` | Raw notes → structured KB page |
+| dev-handover | `/dev-handover` | User stories → dev handover doc |
+| gen-release-notes | `/gen-release-notes` | Changelog → formatted release notes |
+| stakeholder-update | `/stakeholder-update` | Client KB data → status email/doc |
+| prioritize-features | `/prioritize-features` | Feature gap tracker → RICE-ranked backlog |
+
+### Autoresearch Loop — ⏳ Not Yet Set Up
+
+The experiment loop still needs to be installed locally before it can run:
+
+| Step | Status | What's Needed |
+|---|---|---|
+| Clone `miolini/autoresearch-macos` | ❌ Not done | Run setup commands in [[#Setup]] below |
+| Create `maia_kb_eval.md` eval set | ❌ Not done | Write 8 golden KB tasks with expected outputs |
+| Triage Assistant skill | ❌ Not done | Build `.claude/skills/triage-assistant` + run autoresearch loop to improve it |
+| Gap Analysis Assistant skill | ❌ Not done | Build `.claude/skills/gap-analysis` + run autoresearch loop to improve it |
+| First CLAUDE.md tuning session | ❌ Not done | Run after eval set is ready |
+
+### Artefacts Available for Improvement (Once Loop is Running)
+
+| Artefact | Path | Improvement Target |
+|---|---|---|
+| `CLAUDE.md` | `MAIA Knowledge Base/CLAUDE.md` | Format compliance, wikilinks, no invented features |
+| AI Prompt Library | `02 - PM Playbook/Onboarding/05 - AI Prompt Library for PMs.md` | First-draft quality, fewer revision rounds |
+| Triage Assistant skill | `.claude/skills/triage-assistant/SKILL.md` | Classification accuracy ≥ 90% |
+| Gap Analysis Assistant skill | `.claude/skills/gap-analysis/SKILL.md` | Correct gap + correct workaround ≥ 85% |
+
+---
 
 ## What It Is
 
