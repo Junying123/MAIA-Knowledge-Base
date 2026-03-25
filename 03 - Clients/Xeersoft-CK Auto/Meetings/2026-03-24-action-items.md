@@ -25,8 +25,9 @@ client: Xeersoft-CK Auto
 	- Phase 2 (TBC): client-facing — confirm timeline with CK Auto
 	- Needed before Mindhive can finalise chatbot behaviour document
 
-- [ ] **Confirm who prepares the UAT checklist and revert to Ivan**
-	- Options: Xeersoft, Mindhive, or both independently then merge
+- [ ] **Prepare Xeersoft's own UAT checklist**
+	- Each party (Mindhive, Xeersoft, CK Auto) prepares their own checklist independently
+	- Sync in mid-April to align and finalise one unified checklist covering all 3 parties
 
 - [x] **Nominate one CK Auto representative to join the project working group**
 	- Should understand day-to-day operations and order-taking flow
@@ -100,8 +101,8 @@ client: Xeersoft-CK Auto
 
 ### Before UAT (by 2026-05-01)
 
-- [ ] **Prepare Mindhive's standard UAT checklist for MAIA features**
-	- Sync with Xeersoft to produce one unified checklist covering all 3 parties
+- [ ] **Prepare Mindhive's own UAT checklist for MAIA features**
+	- Each party prepares independently; sync in mid-April to produce one unified checklist covering all 3 parties (Mindhive, Xeersoft, CK Auto)
 
 - [ ] **Coordinate sandbox → production switchover with Xeersoft**
 	- Validate nothing breaks after the switch before UAT begins
