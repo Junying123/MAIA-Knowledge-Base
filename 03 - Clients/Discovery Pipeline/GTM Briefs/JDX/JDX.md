@@ -6,7 +6,7 @@ client: JDX
 prospect_stage: gtm_brief
 ---
 
-# GTM Brief — JDX
+# GTM Brief — JDX Tea (九鼎香)
 
 **Prepared by:** [GTM team member]
 **Date:** 2026-03-26
@@ -21,14 +21,48 @@ prospect_stage: gtm_brief
 
 | Field | Details |
 |-------|---------|
-| Company | JDX |
-| Industry | F&B / Consumer Goods (FMCG) — food products sold to supermarkets, bottle shops, and B2C |
-| HQ / Region | Malaysia |
+| Company | JDX GIFT AND FOOD SDN. BHD (九鼎香) — Reg: 1018369-U |
+| Industry | Premium Chinese Tea — Wholesale, Retail & Gifting (FMCG / Specialty F&B) |
+| HQ | 203, Jalan 1, Taman Perusahaan Ehsan Jaya, Kepong, 52100 KL |
+| Retail stores | 6 physical outlets across Klang Valley (Kepong, Klang, Puchong, Desa Parkcity, SS2 PJ) |
+| Website | jdx.com.my (Shopify, with loyalty points programme) |
 | Company size | [No. of employees — TBC] |
-| Est. users on MAIA | [TBC] |
+| Est. users on MAIA | [TBC — likely covers warehouse, retail, finance, CS, sales team] |
 | Current system | SQL-based ERP + third-party salesman mobile app (fragmented, not integrated) |
 | Decision maker | Boss (name TBC) — also owns a separate palm oil business |
 | Go-live urgency | Exploring — needs full flow mapped before committing |
+
+---
+
+## What They Sell
+
+JDX is a premium Chinese tea brand and multi-category specialty retailer. Much wider than tea alone:
+
+| Category | Products |
+|----------|---------|
+| **Teas** | Pu'er (普洱), Oolong (乌龙), Liubao (六堡), Flower (花茶), Black (红茶), Jasmine |
+| **Premium brand** | Official 大益 (TaeTea/Dayi) distributor — China's #1 Pu'er brand |
+| **Teaware** | Tea sets, Yi Gong Fang products, travel tea sets |
+| **Marine Delicacies** | Abalone, dried seafood |
+| **Daily Wellness** | Bird's nest (Borneo), Tiger Milk Mushroom + Propolis (ActiBoost), ELITEA Essence |
+| **Seasonal Gifting** | CNY hampers & gift sets, Hari Raya hampers |
+| **Services** | Modern Chinese tea service for events/offices |
+
+**Key insight:** Hampers are a major revenue line — custom-assembled gift sets for CNY and Hari Raya. This is a distinct fulfilment workflow (assembly, not pick-and-ship).
+
+---
+
+## Sales Channels (5, not 3)
+
+*More complex than the GTM conversation suggested — website reveals full picture:*
+
+| Channel | Description | % est. |
+|---------|-------------|--------|
+| **Wholesale consignment** | Products placed at Giant Grocer, AEON on consignment; invoiced on sell-through | ~50% |
+| **Salesman direct (field sales)** | Salespeople visit bottle/packet shops, issue invoice + collect payment on spot via third-party app | ~20–30% |
+| **Retail stores (6 outlets)** | Walk-in customers at 6 physical stores across Klang Valley | TBC |
+| **B2C online** | Shopify website, WhatsApp ordering (+603 9212 0997), loyalty points | TBC |
+| **Corporate B2B** | Corporate hamper orders, tea service for events/offices | TBC |
 
 ---
 
@@ -36,11 +70,11 @@ prospect_stage: gtm_brief
 
 Top pain points surfaced during GTM conversation:
 
-1. **No proper consignment tracking** — JDX places products at Giant Grocer and AEON on consignment. They manage how many units to put in each outlet, track sell-through, and invoice only based on what's sold. This is currently tracked manually / via a legacy ERP and is error-prone.
+1. **No proper consignment tracking** — JDX places products at Giant Grocer and AEON on consignment. They track how many units per outlet, monitor sell-through, and invoice only based on what's sold. Currently managed manually / via a fragmented ERP — error-prone at scale.
 
-2. **Demand forecasting is done by gut feel** — The boss openly said forecasting is "by feeling". Allocation per outlet is seasonal (e.g. Chinese New Year shifts demand significantly). There's no structured system — likely Excel underneath, but unconfirmed. This is a known gap they want solved.
+2. **Demand forecasting by gut feel** — The boss said forecasting is "by feeling". Allocation per outlet is seasonal (CNY shifts demand significantly across 6 stores + all wholesale outlets simultaneously). No structured system — likely some Excel underneath, but unconfirmed. This is a known gap.
 
-3. **Three disconnected sales channels, no unified system** — JDX runs three very different workflows simultaneously: (1) consignment to large grocers (Giant, AEON), (2) direct spot-sales via salesman app to bottle/packet shops, and (3) B2C via website and pop-up events. Each runs on a different tool with no integration.
+3. **Fragmented multi-channel system** — Multiple sales channels (consignment, field sales, 6 stores, online, corporate) running on separate tools with no integration. SQL ERP and salesman app don't talk to each other. Inventory truth is unclear.
 
 ---
 
@@ -49,52 +83,63 @@ Top pain points surfaced during GTM conversation:
 > Tick what's in scope. Don't go deep — the PM will dig into details during the discovery call.
 
 **Sales**
-- [ ] Quotation → Sales Order *(not applicable for most channels — consignment and spot sales skip PO entirely)*
-- [ ] Multi-currency pricing
-- [ ] Credit limit management
-- [x] Batch invoicing *(invoicing based on consignment sell-through, not upfront)*
+- [ ] Quotation → Sales Order *(only applies to some B2B — consignment and spot sales skip PO)*
+- [ ] Multi-currency pricing *(MYR only, likely — confirm)*
+- [ ] Credit limit management *(large grocers likely on credit)*
+- [x] Batch / periodic invoicing *(consignment sell-through invoicing)*
+- [x] Seasonal pricing / promotions *(CNY and Hari Raya hamper pricing)*
+- [x] Corporate/bulk order handling *(hampers, tea service)*
 
-**Sales Channels (unique to JDX)**
-- [x] **Consignment to large grocers (~50%)** — products placed at Giant / AEON; invoiced based on sell-through periodically
-- [x] **Salesman direct sales (~20–30%)** — field salespeople visit bottle/packet shops, take orders on the spot, issue invoice immediately, collect payment on the spot. No PO. Currently done via a third-party app.
-- [x] **B2C (~remaining %)** — website + pop-up sales, pure direct consumer
+**Sales Channels**
+- [x] **Wholesale consignment (Giant / AEON ~50%)** — placement → sell-through → invoice cycle
+- [x] **Field salesman (bottle/packet shops ~20–30%)** — third-party app, spot invoice + payment
+- [x] **Retail stores (6 locations)** — walk-in sales, likely POS; inventory per store
+- [x] **B2C online (Shopify + WhatsApp)** — website orders, loyalty points, delivery
+- [x] **Corporate B2B** — hamper bulk orders, tea service bookings
 
 **Logistics / Warehouse**
-- [x] Inventory management *(critical — need to track stock placed at each outlet)*
-- [ ] Inbound GRN / receiving
-- [ ] Outbound delivery / DO *(delivery timing TBC — may be same-day or next-day for salesman channel)*
-- [x] Multi-warehouse / multi-outlet stock placement
+- [x] Inventory management *(critical — stock across HQ warehouse + 6 stores + consignment outlets)*
+- [x] Inbound GRN / receiving *(tea imports, marine delicacies)*
+- [x] Outbound delivery / DO *(delivery to wholesale, online orders, corporate)*
+- [x] Multi-location stock management *(6 stores + HQ warehouse)*
+- [x] Hamper assembly / kitting *(seasonal — assemble multiple SKUs into gift sets)*
 
 **Finance**
-- [x] AR / collections *(consignment sell-through invoicing)*
+- [x] AR / collections *(consignment sell-through + corporate credit)*
 - [ ] AP / payments
-- [ ] Credit & debit notes
+- [x] Credit & debit notes *(returns, damaged goods)*
 - [ ] Financial reporting
 
 **Integrations (known)**
-- [ ] Accounting system: [TBC]
-- [ ] Salesman app: third-party (name unknown) — field sales, spot invoicing, payment collection
+- [ ] Salesman app: third-party (name unknown)
+- [ ] E-commerce: Shopify (website)
+- [ ] Accounting: SQL ERP (likely SQL Accounting)
 
 ---
 
 ## Initial Fit Hypothesis
 
-**Fit level:** 🟡 Partial — significant gaps likely, customisation expected
+**Fit level:** 🟡 Partial — more complex than a typical MAIA client, customisation likely needed
 
 **Reasoning:**
-JDX's core workflows don't map cleanly to MAIA's standard Quote-to-Cash. Two of their three sales channels (consignment and salesman spot-sales) have no PO and no standard SO flow. GTM already flagged this to the client: *"your case is a little bit different — most likely we need to go with customisation."* The boss acknowledged this and is open to it.
+JDX is a multi-channel specialty retailer with 6 physical stores, wholesale consignment, a field sales app, an online store, and a hamper assembly business. The standard MAIA Quote-to-Cash flow covers the wholesale B2B side reasonably well, but:
+- Consignment model (no PO, invoice on sell-through) is non-standard
+- Retail POS across 6 stores may be out of MAIA's scope
+- Hamper kitting / assembly is a distinct workflow MAIA may not support out of the box
+- Shopify integration needed for B2C
 
-**Silver lining:** The boss also owns a separate palm oil company that sells B2B to the Philippines — pure PO-based, zero consignment. That business is a much cleaner MAIA fit out of the box. If JDX is too complex or costly to customise, the palm oil business could be a quicker win.
+GTM already flagged this to the boss — customisation is expected. Boss acknowledged and is open. The palm oil sister business remains a cleaner quick-win if JDX's complexity is too high for phase 1.
 
 ---
 
 ## Suggested Questions for PM
 
-1. Walk us through the consignment cycle end-to-end — how do you decide quantity per outlet, track sell-through, trigger replenishment, and issue the invoice?
-2. What does the current salesman app do today, and what's missing? Would the team want MAIA to replace it or integrate with it?
-3. Behind the "feeling-based" forecasting — is there Excel or any data being used? How do you actually decide allocation per outlet per season?
-4. Which problem is most urgent: consignment tracking, the salesman workflow, or forecasting?
-5. Can you tell us more about the palm oil business? Is that in scope for MAIA too, or are we just focusing on JDX for now?
+1. Which channel is the biggest operational headache right now — the consignment tracking, field sales, multi-store inventory, or online?
+2. How do they manage inventory across 6 stores today — one central system, or each store independently?
+3. Walk us through the hamper assembly process — how are hampers built, tracked, and dispatched during CNY peak?
+4. Behind the "gut feel" forecasting — is there any Excel or data per store, per outlet, per season?
+5. The Shopify site is live — is e-commerce a priority for MAIA integration, or back-office first?
+6. Tell us more about the palm oil business — is that in scope, or just JDX for now?
 
 ---
 

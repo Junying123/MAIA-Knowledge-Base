@@ -7,7 +7,7 @@ client: JDX
 meeting_type: discovery
 ---
 
-# Discovery Meeting Notes — JDX — [Date]
+# Discovery Meeting Notes — JDX Tea (九鼎香) — [Date]
 
 **Date:** YYYY-MM-DD
 **Time:** HH:MM – HH:MM
@@ -22,7 +22,8 @@ meeting_type: discovery
 
 ---
 
-> **Context before this call:** JDX runs 3 completely separate sales channels — consignment to large grocers (Giant/AEON ~50%), salesman direct spot-sales to bottle/packet shops (~20–30%), and B2C via website/pop-up (remaining %). None of these follow a standard PO → SO flow. Current systems: SQL ERP + unnamed third-party salesman app, disconnected. Forecasting is done by gut feel (boss's words), likely seasonal. GTM flagged this as a likely customisation case. Boss also owns a palm oil business (pure B2B, PO-based) that could be a cleaner MAIA fit.
+> **Context before this call:**
+> JDX Tea (九鼎香) — JDX GIFT AND FOOD SDN. BHD — is a premium Chinese tea brand operating across **5 sales channels** and **6 physical stores** in Klang Valley (Kepong HQ/store, Metro Prima, Klang, Puchong, Desa Parkcity, SS2 PJ). They are the official **大益 (TaeTea/Dayi)** distributor in Malaysia. Product range: teas, teaware, marine delicacies (abalone, dried seafood), wellness products, and seasonal hampers (CNY + Hari Raya). Current systems: SQL ERP + unnamed third-party salesman app, disconnected. Boss also owns a palm oil B2B business. GTM flagged customisation as likely needed.
 >
 > **How to use:** Fill each section live during the call. Use `>` blockquotes for direct quotes. Mark anything unresolved with `⚠️`. Flag items needing follow-up with `→ FU`.
 
@@ -30,110 +31,212 @@ meeting_type: discovery
 
 ## 1. Company & Business Overview
 
-**Goal:** Re-confirm the business structure and channels before diving in.
+**Goal:** Confirm the full business scope — channels, locations, team, priorities.
 
 ### Business overview
-- Core business (what they sell, who to):
-- Number of SKUs / product range:
-- Number of outlets / customers they serve:
-- Team size (rough):
+- Full product range in scope for MAIA (all 5 categories, or prioritise?):
+- Number of active SKUs total:
+- How they describe their biggest operational bottleneck today:
 
-### Sales channel split — confirm numbers
-- Consignment to Giant / AEON: ~50% — actual %:
-- Salesman direct to bottle/packet shops: ~20–30% — actual %:
-- B2C (website + pop-up): remaining % — actual %:
-- Any other channels not mentioned:
+### Sales channel split — confirm and fill in
+| Channel | Confirmed? | Est. % revenue | Priority for MAIA? |
+|---------|-----------|---------------|-------------------|
+| Wholesale consignment (Giant / AEON) | ~50% from GTM | | |
+| Field salesman (bottle/packet shops) | ~20–30% from GTM | | |
+| 6 retail stores (walk-in) | Confirmed via website | | |
+| B2C online (Shopify + WhatsApp) | Confirmed via website | | |
+| Corporate B2B (hampers, tea service) | Confirmed via website | | |
 
-### Who's in the room today
-- Decision maker: Boss (Y/N confirmed):
-- Who manages day-to-day ops:
-- Who manages finance:
-- Who manages warehouse/logistics:
+### Team structure
+- Who manages warehouse / inventory:
+- Who manages the 6 retail stores:
+- Who manages wholesale accounts (Giant / AEON):
+- Who manages finance / AR:
+- Finance team size:
+- CS team size:
+
+### Decision maker
+- Boss name confirmed:
+- Who else has sign-off authority:
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 2. Channel 1 — Consignment (Giant Grocer / AEON)
+## 2. Channel 1 — Wholesale Consignment (Giant / AEON)
 
-**Goal:** Understand the full consignment cycle end-to-end. This is ~50% of revenue and the most complex channel — no PO, JDX controls placement.
+**Goal:** Map the full consignment cycle. No PO — JDX places stock, invoices on sell-through.
 
-### Outlets & products
-- Which Giant / AEON outlets do they supply:
-- How many outlets total:
-- Which products go to consignment vs direct:
-- Do different outlets carry different product mixes:
+### Outlets & product placement
+- Which Giant / AEON outlets (how many, which states):
+- Do different outlets carry different product mixes (e.g. Pu'er only vs full range):
+- Who decides what goes to Giant vs AEON vs bottle shops:
 
 ### Placement decision
-- Who decides how much stock to place at each outlet:
-- How is the quantity per product per outlet decided:
-- Is there any data or system behind this, or purely by judgment:
-- How often is placement reviewed:
+- How is quantity per product per outlet decided:
+- Is this the "by feeling" forecasting the boss mentioned, or a separate process:
+- Who makes the final placement call:
 
 ### Sell-through tracking
-- How do they know what Giant/AEON has sold:
-  - Does Giant/AEON send a sell-through report: (frequency, format)
-  - Or does JDX go in and check physically:
-  - Or via system integration:
-- Who on JDX's side monitors sell-through:
+- How does JDX know what was sold at each outlet:
+  - Giant/AEON sends a sell-through report: (frequency / format / system):
+  - Or JDX physically checks:
+  - Or via EDI / system connection:
+- Who on JDX's side monitors this:
 
 ### Invoicing
-- When is the invoice triggered — on placement, on sell-through report, or periodic:
-- Who creates the invoice and in which system:
-- Invoice format / doc flow:
+- When is the invoice created — on placement, on sell-through data received, or on a fixed schedule:
+- Who creates it and in which system (SQL ERP?):
 
 ### Replenishment
 - What triggers a replenishment visit:
-- Who physically restocks the shelf / outlet:
-- How is the replenishment quantity decided (e.g. top up to 100, or based on sell-through):
-- How often do they replenish each outlet:
-
-### Pain points in this channel (let them speak)
--
--
+- Who physically replenishes the shelf:
+- How is the replenishment quantity calculated (top up to fixed level / based on sell-through):
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 3. Channel 2 — Salesman Direct Sales (Bottle / Packet Shops)
+## 3. Channel 2 — Field Salesman (Bottle / Packet Shops)
 
-**Goal:** Map the salesman app workflow end-to-end. No PO — salesperson visits, takes order on spot, invoices on spot, collects payment on spot.
+**Goal:** Map the salesman app workflow. No PO — salesperson visits, invoices and collects payment on the spot.
 
-### Salesman team
-- How many salespeople:
-- How are territories / routes divided:
-- How often do they visit each shop:
+### Field sales team
+- Number of salespeople:
+- How are routes/territories divided:
+- Visit frequency per shop:
 
-### Order capture flow (step by step)
+### Order flow (step by step — fill live)
 1. Salesperson arrives at bottle/packet shop:
-2. How order is taken (verbal, picks from catalog on app):
-3. How order is entered into the app:
-4. Invoice created — on the spot in the app (Y/N):
-5. Payment collected — on the spot (Y/N):
-   - Cash only, or also transfer / QR:
-6. Goods delivered — same visit, or next day:
+2. How order is taken (verbal / app catalog):
+3. Order entered into app:
+4. Invoice issued on spot via app (Y/N):
+5. Payment collected on spot (Y/N):
+   - Cash / QR / transfer:
+6. Goods delivered — same visit or scheduled separately:
 
 ### The salesman app
-- App name / provider (confirm — GTM couldn't recall):
-- What it does today:
-  - Order capture:
-  - Invoice generation:
-  - Payment recording:
-  - Stock / inventory visibility:
-- What it does NOT do (known gaps):
-- Does the app sync back to the SQL ERP (Y/N):
-  - If no — how does sales data get into the main system:
-- Is the app on the boss's radar to replace or keep:
+- App name / provider:
+- What it handles today: order capture / invoice / payment / inventory:
+- What it cannot do (known gaps):
+- Does app sync back to SQL ERP (Y/N):
+  - If no — how does sales data get into main system:
+- Replace with MAIA or integrate:
 
-### Delivery for this channel
-- Does the salesperson carry stock on the van and deliver immediately:
-- Or is it a separate delivery the next day:
-- Who arranges the delivery if not same-visit:
+⚠️ Follow-ups:
+-
 
-### Pain points in this channel (let them speak)
+---
+
+## 4. Channel 3 — Retail Stores (6 Outlets)
+
+**Goal:** Understand how 6 stores operate — this was not mentioned in the GTM call, need full picture.
+
+### Store operations
+- Do the 6 stores use a POS system today:
+  - If yes — which one, and does it connect to SQL ERP:
+- How is inventory managed per store — centrally or each store independently:
+- How does stock move from HQ warehouse to each store:
+  - Transfer order process:
+  - Frequency:
+- Who manages each store (store manager / staff count):
+
+### Sales at store level
+- Do stores issue invoices / receipts, or just POS receipts:
+- Do they accept B2B orders at store (e.g. corporate walks in to order hampers):
+- Do stores run their own promotions, or central pricing only:
+
+### Stock visibility
+- Can HQ see real-time stock at each store today (Y/N):
+- If a customer calls HQ asking if SS2 store has a product — how does CS check:
+
+### Are stores in scope for MAIA?
+- Want MAIA to cover retail stores too, or focus on wholesale + HQ first:
+
+⚠️ Follow-ups:
+-
+
+---
+
+## 5. Channel 4 — B2C Online (Shopify + WhatsApp)
+
+**Goal:** Understand e-commerce volume and integration appetite with MAIA.
+
+### Online sales
+- Average website orders per month:
+- Average order value (rough):
+- WhatsApp ordering flow — how does it work end to end:
+- Loyalty points — how are they managed today (Shopify app / manual):
+
+### Fulfilment
+- Who picks and packs online orders — same warehouse as wholesale:
+- Delivery partner for online orders (PosLaju / J&T / DHL / others):
+- Delivery SLA (same day / next day / standard):
+- Self-collect from store option available (Y/N):
+
+### Shopify integration appetite
+- Would they want MAIA to sync with Shopify (inventory, orders):
+- Or handle online separately and focus MAIA on B2B/wholesale:
+
+⚠️ Follow-ups:
+-
+
+---
+
+## 6. Channel 5 — Corporate B2B (Hampers + Tea Service)
+
+**Goal:** Understand hamper assembly workflow and corporate tea service — both are distinct from standard MAIA flows.
+
+### Corporate hamper orders
+- Volume: approx. how many corporate hamper orders per CNY season:
+- How do corporate orders come in (WhatsApp, email, walk-in, dedicated sales):
+- Are hampers pre-configured sets or fully custom per customer:
+- Minimum order quantity for corporate:
+- Is there a quotation step before confirmation:
+
+### Hamper assembly workflow (kitting)
+- Who assembles the hampers — internal team or outsourced:
+- How is the BOM (bill of materials) managed — which products go into which hamper set:
+- How is assembly tracked — when items are pulled from main inventory, how is that recorded:
+- Are hampers assembled in advance (forecast-based) or only after order confirmed:
+- Peak period: how many hampers assembled per day during CNY / Hari Raya:
+- Does the current SQL ERP handle kitting / assembly at all:
+
+### Tea service for events/offices
+- What does this service involve (equipment, tea master, products):
+- How is it booked and invoiced:
+- Volume (how many events per month):
+
+⚠️ Follow-ups:
+-
+
+---
+
+## 7. Inventory Management
+
+**Goal:** Understand how stock is tracked across a very complex multi-location, multi-category setup.
+
+### Current state
+- Single inventory pool or separated by channel/location:
+- System used (SQL ERP / separate WMS / Excel):
+- Who is responsible for inventory accuracy:
+- Is there a regular stock count process (cycle count / full count):
+
+### Multi-location stock
+- How is stock allocated between HQ warehouse and 6 stores:
+  - Transfer process:
+  - Replenishment trigger:
+- How is consignment stock at Giant/AEON tracked (separate from warehouse stock):
+- How is stock on the salesman's van tracked (if field sales carry stock):
+
+### Product-specific considerations
+- Pu'er tea: does aging / vintage matter for inventory tracking (older stock vs new):
+- Marine delicacies (seafood): any expiry / shelf life tracking needed:
+- Hamper components: how are bundled items tracked before and after assembly:
+
+### Pain points
 -
 -
 
@@ -142,257 +245,194 @@ meeting_type: discovery
 
 ---
 
-## 4. Channel 3 — B2C (Website / Pop-up Sales)
+## 8. Demand Forecasting & Seasonal Planning
 
-**Goal:** Understand how direct consumer sales work and whether they need to be in scope.
+**Goal:** Understand the real process behind the "gut feel" — especially critical with CNY AND Hari Raya peaks across 6 stores + wholesale.
 
-### Website sales
-- Which platform (Shopify / WooCommerce / custom):
-- Average orders per month:
-- How are orders received — email notification, dashboard:
-- Who fulfils website orders:
-- Payment method (FPX / credit card / COD):
+### Forecasting today
+- Boss said "by feeling" — is there any data / Excel behind it (per store / per outlet / per SKU):
+- Who does the forecasting — boss personally or a dedicated person:
+- How far ahead do they plan for CNY: (1 month / 2 months / 3 months prior):
+- How far ahead for Hari Raya:
 
-### Pop-up sales
-- How often do they do pop-ups:
-- How are sales recorded at pop-ups (app, POS, manual):
-- Inventory brought to pop-up — how tracked:
-- Payment at pop-up (cash / QR):
+### Seasonal demand pattern
+- CNY: how much does volume spike vs normal months (rough %):
+- Hari Raya: similar spike or different scale:
+- Any other seasonal peaks (Mooncake Festival / year-end gifting):
+- Which products see the biggest swings during peak season:
 
-### Sync to main system
-- Do website and pop-up sales go into the SQL ERP:
-- Or handled separately:
-
-### Is B2C in scope for MAIA
-- Do they want MAIA to handle this channel too, or focus on B2B first:
+### Allocation decisions
+- For CNY hampers: how many units of each hamper type to produce in advance:
+- For store stock: how much extra to push to each store pre-CNY:
+- For consignment (Giant / AEON): how much more to place vs normal months:
+- Have they ever been caught with too little or too much stock during CNY:
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 5. Inventory & Forecasting
+## 9. Finance & Payment
 
-**Goal:** This is the core pain point — get the real picture behind the "gut feel" forecasting and how stock is managed across all channels.
-
-### Inventory overview
-- Where is inventory currently tracked (SQL ERP, Excel, both):
-- Is there a single inventory pool or separated by channel:
-- Who is responsible for inventory management:
-- How many SKUs total:
-
-### Forecasting — dig deeper than "by feeling"
-- Boss said forecasting is "by feeling" — is there any data / Excel behind it:
-  - If yes: what does the file look like, who maintains it:
-  - If no: how does the team actually decide numbers:
-- Who makes the final call on how much to allocate per outlet per product:
-- How far in advance do they plan (weekly / monthly / quarterly):
-
-### Seasonal demand
-- CNY was mentioned — what other seasonal peaks exist:
-- How much does demand shift between peak and off-peak (rough %):
-- How does allocation change during CNY vs normal months:
-- Have they ever gotten it badly wrong — over or under stocked significantly:
-
-### Replenishment across all channels
-- How is restock triggered (gut feel again, or threshold, or schedule):
-- Who manages the reorder from supplier:
-- Lead time from supplier:
-
-### Biggest forecasting / inventory pain point (let them speak)
--
--
-
-⚠️ Follow-ups:
--
-
----
-
-## 6. Finance & Payment
-
-**Goal:** Understand how money flows across 3 very different channels — each likely has different payment terms.
+**Goal:** Map payment flows across all 5 channels — each works differently.
 
 ### Payment by channel
 | Channel | Payment timing | Method | Credit terms |
 |---------|---------------|--------|--------------|
-| Consignment (Giant/AEON) | | | |
-| Salesman (bottle shops) | | | |
-| B2C (website/pop-up) | | | |
+| Consignment (Giant / AEON) | | | |
+| Field salesman (bottle shops) | | | |
+| Retail stores | | | |
+| B2C online | | | |
+| Corporate hampers | | | |
 
-### Credit customers (likely Giant / AEON)
-- Are Giant / AEON on credit terms (Y/N):
-  - If yes — how many days:
-- How is credit limit managed for these accounts:
-- Who monitors overdue accounts:
-- What happens if payment is overdue:
-
-### Cash customers (likely salesman channel)
-- Salesman collects cash on spot — confirmed (Y/N):
-- Is cash handed back to office, or deposited directly:
-- How is this recorded in the system:
+### Credit management
+- Which customers are on credit (likely Giant / AEON / corporate):
+- How is credit limit set and who approves:
+- What happens when a customer exceeds their limit:
+- AR aging — how is it monitored today:
 
 ### Invoicing
-- Who creates invoices for each channel:
-  - Consignment invoices — when, who, in which system:
-  - Salesman invoices — app or ERP:
-  - B2C invoices — auto from platform or manual:
-- Invoice numbering — same sequence across channels or separate:
+- Who issues invoices for each channel — one team or per channel:
+- Invoice numbering — single sequence or separate per channel:
+- Is the current SQL ERP used for all invoicing or just some:
 
-### Payment collection & reconciliation
-- How does customer notify payment (WhatsApp slip, email, auto):
-- Who receives and records:
-- Bank reconciliation — who does it, how often:
-- Any AR aging report currently in use:
+### Bank reconciliation
+- Who does it, how often:
+- Any manual matching of payments today:
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 7. Warehouse & Delivery
+## 10. Warehouse, Delivery & Fulfilment
 
-**Goal:** Understand how physical goods move for each channel — very different for consignment vs salesman vs B2C.
+**Goal:** Understand the physical goods flow — complex with 6 stores, wholesale, field sales, online, and hamper assembly all drawing from the same warehouse.
 
-### Warehouse setup
-- How many warehouse / storage locations:
-- Is stock separated by channel or one shared pool:
-- How is picking/packing done today:
-- Who generates the DO:
+### HQ warehouse
+- Location: Kepong HQ confirmed — is there only one warehouse:
+- How is the warehouse organized (zones for different product types):
+- Who manages warehouse operations:
 
-### Delivery by channel
-| Channel | Who delivers | How scheduled | Timeframe |
-|---------|-------------|---------------|-----------|
-| Consignment replenishment | | | |
-| Salesman channel | | | |
-| B2C (website orders) | | | |
+### Outbound — by channel
+| Channel | How goods move | Who arranges | Lead time |
+|---------|---------------|-------------|-----------|
+| Consignment replenishment (Giant/AEON) | | | |
+| Field salesman (does van carry stock?) | | | |
+| Store replenishment (HQ → 6 stores) | | | |
+| Online orders | | | |
+| Corporate hamper delivery | | | |
 
 ### Third-party logistics
-- Do they use DHL or any courier (Y/N):
-  - If yes — for which channel:
-- Own van / driver (Y/N):
-  - If yes — how many vehicles:
+- Couriers used (PosLaju, J&T, DHL, others — for which channels):
+- Own vehicles / drivers (Y/N — how many):
 
 ### Proof of delivery
-- Do customers sign a physical DO (Y/N):
-- Any digital POD used (Y/N):
-- For consignment — do Giant/AEON sign anything on replenishment:
+- Do B2B customers sign a physical DO:
+- Digital POD for any channel:
 
-### Failed delivery
-- How often does delivery fail:
-- What's the rescheduling process:
-- Is the driver-photo-to-coordinator process currently in place or desired:
+### Failed delivery handling
+- Process and rescheduling for managed deliveries:
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 8. Returns & Credit Notes
+## 11. Returns & Credit Notes
 
-**Goal:** Understand how returns work across channels and how credit notes are issued.
+**Goal:** Understand how returns work across categories — especially important for perishable marine delicacies and seasonal hampers.
 
-### Return scenarios by channel
-- Consignment returns — what happens to unsold stock after a period:
-  - Does Giant/AEON return unsold product to JDX:
-  - Or does JDX pull it back during replenishment:
-- Salesman channel returns — does the salesperson handle returns on the spot:
-- B2C returns — how does a consumer return:
-
-### Return process
-- How customer initiates return:
-- Who on JDX side handles it:
-- Return rate estimate per channel:
+### Return scenarios
+- Consignment: does Giant/AEON return unsold stock back to JDX (especially post-CNY):
+- Field sales: does salesperson handle returns at the shop on next visit:
+- Retail stores: walk-in customer return process:
+- Online: how does customer return an item (ship back / return to store):
+- Corporate hamper: return / exchange policy for corporate gifts:
 
 ### Product assessment
-- How is damaged vs non-damaged assessed:
-- Non-damaged → exchanged — is this a new invoice or a swap:
-- Damaged → inventory adjusted and disposed — who approves:
-- F&B products: is product expiry / shelf life a factor in returns:
+- Non-damaged → exchanged. Is this a new invoice or a swap:
+- Damaged → inventory adjusted and disposed. Who approves:
+- For marine delicacies / wellness: shelf life / expiry — does this affect return eligibility:
 
 ### Credit notes
-- When is a credit note issued vs a direct exchange:
-- Who creates the CN and in which system:
-- Can CN offset a future invoice, or only cash refund:
-- Two CN types seen in diagram (regular item / custom board) — does JDX have similar:
+- Who creates CNs and in which system:
+- Can CN offset future invoice or cash refund only:
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 9. Current Systems & Integrations
+## 12. Current Systems & Integrations
 
-**Goal:** Map every tool in use and understand where data breaks down between them.
+**Goal:** Map every tool in use — SQL ERP, salesman app, Shopify, and anything else.
 
 ### Full system list
-
 | System | Purpose | Used by | Integrated to anything? |
 |--------|---------|---------|------------------------|
-| SQL ERP (confirm name) | Main ERP / accounting | | |
-| Third-party salesman app (name TBC) | Field sales, invoicing | Salespeople | |
+| SQL ERP / SQL Accounting | Main ERP + accounting | HQ | |
+| Third-party salesman app (name TBC) | Field sales, spot invoicing | Salespeople | |
+| Shopify | B2C website, loyalty points | CS / marketing | |
+| POS system (if any) | Retail store sales | Store staff | |
+| Excel | Forecasting / ad hoc | Boss / ops | |
 | | | | |
-| | | | |
 
-### Data flow today
-- When a salesman makes a sale — does it appear in the ERP automatically or manually entered later:
-- When Giant/AEON sell-through report arrives — how does it get into the ERP:
-- Is there a single customer master list across all channels, or separate:
-- Where does the finance team go to see total AR:
+### Key data flow gaps
+- Salesman app sales → SQL ERP: manual or auto:
+- Shopify orders → SQL ERP / warehouse: how:
+- Store POS → SQL ERP: how:
+- Consignment sell-through data → SQL ERP: how:
 
-### Known system pain points
--
--
-
-### MAIA scope question
-- Would they want MAIA to replace the salesman app, or integrate with it:
-- Are they open to replacing the SQL ERP with MAIA, or just layer on top:
-- Accounting — is Autocount / SQL Accounting the same system, or separate:
+### MAIA scope — what they want replaced vs integrated
+- SQL ERP: replace or keep alongside MAIA:
+- Salesman app: replace with MAIA or integrate:
+- Shopify: integrate (sync inventory + orders) or keep separate:
+- Store POS: in scope for MAIA or keep separate:
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 10. Palm Oil Sister Business
+## 13. Palm Oil Sister Business
 
-**Goal:** Assess if this is a secondary MAIA opportunity — this one is a clean B2B PO-based fit.
+**Goal:** Assess secondary MAIA opportunity — clean B2B PO-based fit.
 
 - Company name:
-- What they sell / to whom (Philippines B2B confirmed — expand):
+- Product / market (B2B export to Philippines confirmed — expand):
 - Current system:
-- Order flow (PO from customer → SO → DO → Invoice confirmed?):
-- Scale (volume, team size):
-- Is boss open to MAIA for this business too (Y/N):
-- Would this be a separate engagement or bundled with JDX:
-- Timeline if interested:
+- Order flow (PO → SO → DO → Invoice):
+- Volume / team size:
+- Boss open to MAIA for this business (Y/N):
+- Separate or shared engagement with JDX:
 
 ⚠️ Follow-ups:
 -
 
 ---
 
-## 11. Samples to Collect
+## 14. Samples to Collect
 
-Ask at the end of the call. Mark what's received.
+Ask at the end. Mark what's received.
 
 **Documents:**
-- [ ] Sales Order (from any channel)
-- [ ] Invoice — consignment sell-through invoice
-- [ ] Invoice — salesman app invoice (screenshot or export)
+- [ ] Sales Order (any channel)
+- [ ] Invoice — consignment sell-through
+- [ ] Invoice — salesman app (screenshot)
 - [ ] Delivery Order (DO)
-- [ ] Credit Note sample
-- [ ] Quotation (if used at all)
+- [ ] Credit Note
+- [ ] Quotation (if used for corporate)
+- [ ] Hamper BOM / assembly list
 
 **Data / lists:**
-- [ ] Customer list (anonymised is fine — just need fields/structure)
+- [ ] Product/SKU list (full catalog)
 - [ ] Price list (per channel if different)
-- [ ] Inventory / product list (SKU, name, category)
-- [ ] Product catalog / product info sheet
-- [ ] Sell-through report sample from Giant or AEON (if they receive one)
+- [ ] Customer list (structure, anonymised)
+- [ ] Store list with addresses (confirm 6 locations)
+- [ ] Sell-through report sample from Giant / AEON
 - [ ] Any forecasting file (Excel or otherwise)
-
-**Pending — to follow up with:**
--
+- [ ] Shopify order export sample
 
 ---
 
@@ -408,12 +448,15 @@ Ask at the end of the call. Mark what's received.
 
 ## Key Takeaways
 
-> PM's synthesis after the call — fill this in after, not during.
+> PM's synthesis after the call — fill after, not during.
 
-- **Channel 1 (Consignment):**
-- **Channel 2 (Salesman):**
-- **Channel 3 (B2C):**
+- **Channel 1 — Consignment:**
+- **Channel 2 — Field Sales:**
+- **Channel 3 — Retail Stores (6):**
+- **Channel 4 — Online B2C:**
+- **Channel 5 — Corporate / Hampers:**
 - **Biggest pain point:**
+- **Hamper assembly complexity:**
 - **Fit assessment (first read):**
 
 ---
@@ -432,7 +475,7 @@ Ask at the end of the call. Mark what's received.
 
 - [ ] Fill in full `[[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Requirement Gathering]]`
 - [ ] Complete Fit Assessment table
-- [ ] Share with KB Lead for fit verdict decision
+- [ ] Share with KB Lead for fit verdict
 - [ ] Update pipeline tracker: `[[03 - Clients/Discovery Pipeline/README]]`
 - [ ] Schedule follow-up / demo if proceeding: [Date TBC]
 
@@ -440,6 +483,6 @@ Ask at the end of the call. Mark what's received.
 
 **See Also:**
 - [[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Discovery Call Questionnaire]]
-- [[03 - Clients/Discovery Pipeline/GTM Briefs/JDX/JDX]] — GTM brief
+- [[03 - Clients/Discovery Pipeline/GTM Briefs/JDX/JDX]] — updated GTM brief
 - [[03 - Clients/Discovery Pipeline/GTM Briefs/JDX/JDX Transcript]] — pre-sales transcript
 - [[02 - PM Playbook/Templates/[Template] Discovery Requirement Gathering]]
