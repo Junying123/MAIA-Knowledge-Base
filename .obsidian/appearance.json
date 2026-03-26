@@ -1,5 +1,6 @@
 {
   "accentColor": "#bec5cf",
   "theme": "obsidian",
-  "cssTheme": "AnuPpuccin"
+  "cssTheme": "AnuPpuccin",
+  "monoFont": "GeistMono-Regular"
 }
