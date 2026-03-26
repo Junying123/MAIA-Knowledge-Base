@@ -12,11 +12,11 @@ Pre-sales qualification for potential clients — from first GTM intel to onboar
 
 > Update this table whenever a prospect is added or progresses.
 
-**GTM Briefs:** 0 | **Req. Gathering:** 0 | **Total:** 0
+**GTM Briefs:** 1 | **Req. Gathering:** 0 | **Total:** 1
 
 | Prospect | Stage | PM Owner | Last Updated |
 |----------|-------|----------|--------------|
-| — | — | — | — |
+| [[JDX]] | GTM Brief | — | 2026-03-26 |
 
 ## Two-Stage Process
 

@@ -2,5 +2,6 @@
   "accentColor": "#bec5cf",
   "theme": "obsidian",
   "cssTheme": "AnuPpuccin",
-  "monoFont": "GeistMono-Regular"
+  "interfaceFontFamily": "Geist Mono,Andale Mono",
+  "textFontFamily": "Geist Mono"
 }
