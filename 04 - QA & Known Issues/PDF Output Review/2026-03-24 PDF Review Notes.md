@@ -9,15 +9,15 @@ last_reviewed: 2026-03-24
 ## ALL
 
 - [ ] Item description to follow this format:
-  - [ ] ITEM NAME
-  - [ ] \<Additional Remarks for line item\>
+  - [x] ITEM NAME
+  - [x] \<Additional Remarks for line item\>
   - [ ] Batch no: \<Batch No\> (label hidden when empty) (Default show)
   - [ ] Serial no: \<Serial No\> (label hidden when empty) (Default show)
   - [ ] Tax Reference: \<Certificate Type\>:\<Certificate Number\> (label hidden when empty) (Default show) (QT/SO/SI)
   - [ ] Handling: \<[Poison,Heavy,Halal]\> (label hidden when empty) (other handling requirements to add later) (Default show DN/PL, hide for SO) (SO,DN,PL)
   - [ ] Warehouse: \<Warehouse name\> (label hidden when empty) (Default hide for DN, default show for PL) (DN/PL)
   - [ ] Users have option to select to show or hide, default behavior must apply.
-- [ ] Item Code to follow this format:
+- [x] Item Code to follow this format:
   - ITEM CODE
   - \<HS CODE\> (optional to show) (default hide)
 - [ ] Add no company logo placeholder to image area when no logo is present.
@@ -25,7 +25,7 @@ last_reviewed: 2026-03-24
 ## Sales Order
 
 - [ ] Biller Information, can remove company, as its already shown at the top level header
-- [ ] Banner with Order Details between Sales Order Title and Party information to be justified alignment to fill up width
+- [x] Banner with Order Details between Sales Order Title and Party information to be justified alignment to fill up width
 - [ ] Tax Column, cell values to show tax amount, e.g. no tax = 0.00, 6% = (qty x rate) * 0.06
 - [ ] UOM, to be same font size and colour as qty.
 - [ ] Remove Warehouse information from description (add as optional, default to false)
