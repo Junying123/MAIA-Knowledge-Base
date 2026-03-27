@@ -28,7 +28,7 @@ Use this checklist during the call. Check off each item as it's answered. Leave 
 - [ ] Which channel generates the highest revenue?
 - [ ] Who handles each type of incoming order — same CS team across all channels, or different people per channel?
 - [ ] How many total orders do you process on average per month across all channels?
-- [ ] For B2B customers — do they send a formal PO, or just a WhatsApp message / verbal request?
+- [ ] For B2B customers — do they no PO, or just a WhatsApp message / verbal request?
 - [ ] Do you issue a quotation before confirming any orders, or go straight to SO?
 - [ ] How is each order currently recorded — manually keyed into the ERP, via the salesman app, or auto from Shopify?
 
