@@ -20,16 +20,17 @@ Use this checklist during the call. Check off each item as it's answered. Leave 
 
 ## 1. Sales Channel & Order Intake
 
-*Diagram shows: Sales Channel → 90% WhatsApp / 5% Email → Sales Order. Many unknowns remain.*
+*Goal: Understand the full breakdown of how sales orders come in today — by channel, by method, and by volume.*
 
-- [ ] Walk us through how a customer places an order — what's the exact flow from first contact to confirmed order?
-- [ ] The diagram shows 90% via WhatsApp, 5% via Email — what's the remaining ~5%? Phone call? In-person?
-- [ ] Who handles incoming orders — a dedicated CS person, or the sales agent themselves?
-- [ ] How many sales orders do you process on average per month?
-- [ ] Do customers send a formal PO, or is it just a WhatsApp message with a list?
-- [ ] Do you issue a quotation before the sales order, or go straight to SO?
-- [ ] How is the sales order currently created — manually keyed into the ERP, or does the CS team do it?
-- [ ] Do walk-in / self-collect customers order in advance or on the spot?
+- [ ] Across all your channels, what % of total orders comes from each — consignment (Giant/AEON), salesman (bottle shops), retail stores, online (website/WhatsApp), corporate?
+- [ ] For each channel, how exactly does an order come in? (e.g. WhatsApp message, walk-in, salesman app, website checkout, email PO)
+- [ ] Which channel generates the highest order volume per month?
+- [ ] Which channel generates the highest revenue?
+- [ ] Who handles each type of incoming order — same CS team for all, or different people per channel?
+- [ ] How many total orders do you process on average per month across all channels?
+- [ ] For B2B customers — do they send a formal PO, or just a WhatsApp message / verbal request?
+- [ ] Do you issue a quotation before confirming any orders, or go straight to SO?
+- [ ] How is each order currently recorded — manually keyed into the ERP, via the salesman app, or auto from Shopify?
 
 ---
 
