@@ -1,7 +1,8 @@
 {
-  "accentColor": "#a8c0e1",
+  "accentColor": "#dbdfe6",
   "theme": "obsidian",
   "cssTheme": "AnuPpuccin",
   "interfaceFontFamily": "Geist Mono,Andale Mono",
-  "textFontFamily": "Geist Mono"
+  "textFontFamily": "Geist Mono",
+  "translucency": false
 }

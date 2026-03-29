@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-02-23
+last_reviewed: 2026-03-29
 tags:
   - strategy
   - product
@@ -15,6 +15,9 @@ tags:
 
 > [!tip] TL;DR — What This Changes for MAIA
 > The B2B SaaS market is compressing: **point solutions die, orchestration platforms win**. MAIA must stop acting like a workflow chatbot and start acting like the **operating layer for B2B trade** — owning context, coordinating tools, and pricing on outcomes.
+
+> [!note] LinkedIn Vision Statement (confirmed direction)
+> "MAIA is evolving toward a **company operating system**, where daily operations, insights, and automation live in one control center." This is the stated long-term destination — WhatsApp-first order automation is the beachhead, not the destination.
 
 > [!abstract] The 3 Strategic Laws That Drive This
 > - **Context Law** — Models commoditize. Whoever owns the richest trade context wins.
@@ -35,6 +38,8 @@ tags:
 **Start positioning as:** The **WhatsApp-first operating layer for B2B trade** (order → fulfilment → invoice → collections) that connects ERP + people + customers.
 
 MAIA should look less like a chatbot and more like a **controlled execution engine with memory + audit**.
+
+> **Note (from ordermaia.com):** The live marketing already executes this — MAIA is branded as a "24/7 AI Sales Agent" that you *hire*, not software you *buy*. The website uses employer/employee framing throughout. This persona-first positioning is a confirmed go-to-market decision, not a future aspiration.
 
 ---
 
@@ -75,17 +80,28 @@ Make "Unified Trade Memory" a first-class product: every customer becomes smarte
 
 ---
 
-## 5. Pricing — Move to Outcomes, Not Seats
+## 5. Pricing — Outcome Pricing Is Live
 
-Outcome units are natural for MAIA:
+**As of the ordermaia.com website, outcome pricing is already in market:**
 
-- Per **order processed**
-- Per **invoice generated/sent**
-- Per **payment matched**
-- Per **successful collection / days reduced**
-- Per **dispute resolved**
+| Tier | Monthly | Volume | Setup |
+|------|---------|--------|-------|
+| Founders S | RM2,500 | 500 orders/mo | RM20,000 |
+| Founders M | RM5,000 | 1,000 orders/mo | RM20,000 |
+| Founders L | RM7,500 | 1,500 orders/mo | RM20,000 |
+| Enterprise | Custom | Custom | — |
 
-Keep RM20k setup where it works commercially, but shift recurring toward **usage/outcome** so MAIA benefits when automation succeeds (and customers feel lower risk).
+**What this confirms:**
+- Pricing is **per-order/month** — the outcome unit is "orders processed"
+- RM20,000 development/setup fee is the current commercial entry point
+- Go-live is 4–8 weeks from contract
+- The "Founders Package" framing positions early clients as co-builders
+
+Remaining items from the strategy vision still to execute:
+- Per invoice generated/sent
+- Per payment matched
+- Per dispute resolved
+- ROI/DSO dashboard for customers
 
 ---
 
