@@ -1,3 +1,9 @@
+---
+name: MAIA
+description: WhatsApp-first AI order-to-cash platform for B2B businesses in manufacturing, wholesale, and distribution across Southeast Asia.
+slug: maia
+---
+
 # COMPANY.md — MAIA Product Team
 
 This file provides company context for all Paperclip agents working on the MAIA product. Read this before starting any task.
