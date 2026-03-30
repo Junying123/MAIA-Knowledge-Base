@@ -1,0 +1,49 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - file.inFolder("03 - Clients/Active Clients")
+    - 'client != ""'
+
+formulas:
+  days_since_review: 'if(last_reviewed, (today() - date(last_reviewed)).days, "")'
+  review_health: 'if(last_reviewed, if((today() - date(last_reviewed)).days > 30, "Needs review", "Fresh"), "Missing date")'
+
+properties:
+  client:
+    displayName: Client
+  status:
+    displayName: Status
+  owner:
+    displayName: Owner
+  last_reviewed:
+    displayName: Last Reviewed
+  formula.days_since_review:
+    displayName: Days Since Review
+  formula.review_health:
+    displayName: Review Health
+
+views:
+  - type: table
+    name: "All Client Notes"
+    order:
+      - client
+      - file.name
+      - status
+      - owner
+      - last_reviewed
+      - formula.review_health
+      - formula.days_since_review
+      - file.mtime
+
+  - type: table
+    name: "Needs Review"
+    filters:
+      and:
+        - 'last_reviewed != ""'
+        - '(today() - date(last_reviewed)).days > 30'
+    order:
+      - client
+      - file.name
+      - owner
+      - last_reviewed
+      - formula.days_since_review
