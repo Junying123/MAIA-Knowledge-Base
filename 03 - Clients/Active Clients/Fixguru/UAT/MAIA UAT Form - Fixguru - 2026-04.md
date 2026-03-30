@@ -217,7 +217,34 @@ uat_round: 1
 
 ---
 
-#### Test 5 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
+#### Test 5 — Review CPO and Convert to Sales Order
+
+*Who tests this: **Xiao Ling** (Sales) for review; **Marcus Lim** (Admin) for submission*
+
+*Continue from Test 2 or Test 3 — the CPO was created by the chatbot from a photo or PDF.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Log in to https://maia-fe-fixguru.vercel.app/login. Navigate to the CPO list and open the CPO created in Test 2 or Test 3. | The CPO record is visible. Status shows **Pending**. |
+| 2 | **Xiao Ling** (Sales) | Review the extracted details — check customer name, product names, and quantities against the original photo or PDF. | Extracted details are correct and match the source document. |
+| 3 | **Xiao Ling** (Sales) | If any detail is wrong, edit it directly in the CPO. | Changes are saved. The CPO reflects the corrected information. |
+| 4 | **Xiao Ling** (Sales) | Convert the CPO to a **Sales Order**. | A Sales Order is created with status **Draft**. The CPO status updates to show it has been converted. |
+| 5 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders. |
+
+> **Your result:**
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
+>
+> **Tested by:**
+> **Date:**
+>
+> **Notes:**
+>
+
+---
+
+#### Test 6 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
 
 *Continue from Test 4. Coordinate across roles — see who does each step.*
 
@@ -246,7 +273,7 @@ uat_round: 1
 
 ---
 
-#### Test 6 — Create a Credit Note and Debit Note
+#### Test 7 — Create a Credit Note and Debit Note
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -271,7 +298,7 @@ uat_round: 1
 
 ---
 
-#### Test 7 — Duplicate Order is Blocked
+#### Test 8 — Duplicate Order is Blocked
 
 *Who tests this: **Xiao Ling** (Sales)*
 
@@ -297,7 +324,7 @@ uat_round: 1
 
 ---
 
-#### Test 8 — Create and Manage Sales Orders on the Web App
+#### Test 9 — Create and Manage Sales Orders on the Web App
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
@@ -324,7 +351,7 @@ uat_round: 1
 
 ---
 
-#### Test 9 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 10 — Export Invoice / Credit Note / Debit Note as CSV
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -355,7 +382,7 @@ uat_round: 1
 
 ---
 
-#### Test 10 — Create a Delivery Order and Picking List
+#### Test 11 — Create a Delivery Order and Picking List
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for both DO and Pick List submission*
 
@@ -383,7 +410,7 @@ uat_round: 1
 
 ---
 
-#### Test 11 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 12 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
@@ -408,7 +435,7 @@ uat_round: 1
 
 ---
 
-#### Test 12 — Delivery Delay Reminder
+#### Test 13 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
@@ -436,7 +463,7 @@ uat_round: 1
 
 ---
 
-#### Test 13 — All Users Can Log In
+#### Test 14 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 14 users log in with their own account*
 
@@ -464,7 +491,7 @@ uat_round: 1
 
 ---
 
-#### Test 14 — Sales Access Check
+#### Test 15 — Sales Access Check
 
 *Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
@@ -492,7 +519,7 @@ uat_round: 1
 
 ---
 
-#### Test 15 — Warehousing Access Check
+#### Test 16 — Warehousing Access Check
 
 *Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 10)*
 
@@ -520,9 +547,9 @@ uat_round: 1
 
 ---
 
-#### Test 16 — Finance Manager Access Check
+#### Test 17 — Finance Manager Access Check
 
-*Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 5)*
+*Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 6)*
 
 | Step | What to do                                                                   | What you should see                                                                                 |
 | ---- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -548,7 +575,7 @@ uat_round: 1
 
 ---
 
-#### Test 17 — Finance Assistant Access Check
+#### Test 18 — Finance Assistant Access Check
 
 *Who tests this: **Nisa** (Finance Assistant / Finance User)*
 
@@ -576,7 +603,7 @@ uat_round: 1
 
 ---
 
-#### Test 18 — Admin Access Check
+#### Test 19 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
@@ -603,7 +630,7 @@ uat_round: 1
 
 ---
 
-#### Test 19 — Role Approval Flow
+#### Test 20 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -673,23 +700,24 @@ uat_round: 1
 | Test 2  | Send order by photo                                                  |                              |           |      |
 | Test 3  | Send order by PDF                                                    |                              |           |      |
 | Test 4  | Pricing and stock check                                              |                              |           |      |
-| Test 5  | Generate documents (Quotation → SO → Proforma Invoice → Invoice)     |                              |           |      |
-| Test 6  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
-| Test 7  | Duplicate order is blocked                                           |                              |           |      |
-| Test 8  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
-| Test 9  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 10 | Create Delivery Order and Picking List                               |                              |           |      |
-| Test 11 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 12 | Delivery delay reminder                                              |                              |           |      |
-| Test 13 | All users can log in                                                 |                              |           |      |
-| Test 14 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 15 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 16 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 17 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 18 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 19 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 5  | Review CPO and convert to Sales Order (chatbot photo/PDF → web app)  |                              |           |      |
+| Test 6  | Generate documents (Quotation → SO → Proforma Invoice → Invoice)     |                              |           |      |
+| Test 7  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
+| Test 8  | Duplicate order is blocked                                           |                              |           |      |
+| Test 9  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
+| Test 10  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
+| Test 11 | Create Delivery Order and Picking List                               |                              |           |      |
+| Test 12 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 13 | Delivery delay reminder                                              |                              |           |      |
+| Test 14 | All users can log in                                                 |                              |           |      |
+| Test 15 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 16 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 17 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 18 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 19 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 20 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 19 tests**
+**Total: 21 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|

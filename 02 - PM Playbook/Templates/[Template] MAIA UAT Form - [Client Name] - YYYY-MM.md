@@ -184,7 +184,34 @@ uat_round: [1]
 
 ---
 
-#### Test 5 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
+#### Test 5 — Review CPO and Convert to Sales Order
+
+*Who tests this: [Sales Role] for review; [Logistics / Finance Role] for submission*
+
+*Continue from Test 2 or Test 3 — the CPO was created by the chatbot from a photo or PDF.*
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 1 | **[Sales Role]** | Log in to the web app. Navigate to the CPO list and open the CPO created in Test 2 or Test 3. | The CPO record is visible. Status shows **Pending**. |
+| 2 | **[Sales Role]** | Review the extracted details — check customer name, product names, and quantities against the original photo or PDF. | Extracted details are correct and match the source document. |
+| 3 | **[Sales Role]** | If any detail is wrong, edit it directly in the CPO. | Changes are saved. The CPO reflects the corrected information. |
+| 4 | **[Sales Role]** | Convert the CPO to a **Sales Order**. | A Sales Order is created. The CPO status updates to show it has been converted. |
+| 5 | **[Logistics / Finance / Admin Role]** | Open the Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
+
+> **Your result:**
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
+>
+> **Tested by:**
+> **Date:**
+>
+> **Notes:**
+>
+
+---
+
+#### Test 6 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
 
 *Continue from the order created in Test 4. Different roles handle different steps — coordinate as needed.*
 
@@ -211,9 +238,9 @@ uat_round: [1]
 
 ---
 
-#### Test 6 — Create a Credit Note and Debit Note
+#### Test 7 — Create a Credit Note and Debit Note
 
-*Use an existing Invoice from Test 5.*
+*Use an existing Invoice from Test 6.*
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -236,7 +263,7 @@ uat_round: [1]
 
 ---
 
-#### Test 7 — Duplicate Order is Blocked
+#### Test 8 — Duplicate Order is Blocked
 
 > **Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
 
@@ -260,7 +287,7 @@ uat_round: [1]
 
 ---
 
-#### Test 8 — Manage Sales Orders on the Web App
+#### Test 9 — Manage Sales Orders on the Web App
 
 > **Note:** [Sales Role] has view-only access to Sales Orders. SO creation and editing is done by [Logistics Role] or [Finance Role].
 
@@ -285,7 +312,7 @@ uat_round: [1]
 
 ---
 
-#### Test 9 — Export Invoice / Credit Note / Debit Note as CSV *(Finance)*
+#### Test 10 — Export Invoice / Credit Note / Debit Note as CSV *(Finance)*
 
 Finance exports these documents from MAIA as CSV files. The exported data is used to create eInvoice records in the client's accounting system.
 
@@ -317,7 +344,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 10 — Create a Delivery Order and Picking List
+#### Test 11 — Create a Delivery Order and Picking List
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -339,7 +366,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 11 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 12 — Stock Alerts (Out of Stock and Low Stock)
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -362,7 +389,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 12 — Delivery Delay Reminder
+#### Test 13 — Delivery Delay Reminder
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -389,7 +416,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 13 — All Users Can Log In
+#### Test 14 — All Users Can Log In
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -416,7 +443,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 14 — [Role Name] ([Person Name / Person A])
+#### Test 15 — [Role Name] ([Person Name / Person A])
 
 Log in as **[Role Name]** and check the following:
 
@@ -440,7 +467,7 @@ Log in as **[Role Name]** and check the following:
 
 ---
 
-#### Test 15 — [Role Name] ([Person Name / Person B])
+#### Test 16 — [Role Name] ([Person Name / Person B])
 
 Log in as **[Role Name]** and check the following:
 
@@ -569,17 +596,18 @@ Log in as **[Role Name]** and check the following:
 | Test 2     | Send order by photo                                              |                              |           |      |
 | Test 3     | Send order by PDF                                                |                              |           |      |
 | Test 4     | Pricing and stock check                                          |                              |           |      |
-| Test 5     | Generate documents (Quotation → SO → Proforma Invoice → Invoice) |                              |           |      |
-| Test 6     | Create Credit Note and Debit Note                                |                              |           |      |
-| Test 7     | Duplicate order is blocked                                       |                              |           |      |
-| Test 8     | Manage Sales Orders on web app                                   |                              |           |      |
-| Test 9     | Export Invoice / Credit Note / Debit Note as CSV (Finance)       |                              |           |      |
-| Test 10    | Create Delivery Order and Picking List                           |                              |           |      |
-| Test 11    | Stock alerts (Out of Stock / Low Stock)                          |                              |           |      |
-| Test 12    | Delivery delay reminder                                          |                              |           |      |
-| Test 13    | All users can log in                                             |                              |           |      |
-| Test 14    | [Role Name] — access check                                       |                              |           |      |
+| Test 5     | Review CPO and convert to Sales Order (chatbot photo/PDF → web app) |                           |           |      |
+| Test 6     | Generate documents (Quotation → SO → Proforma Invoice → Invoice) |                              |           |      |
+| Test 7     | Create Credit Note and Debit Note                                |                              |           |      |
+| Test 8     | Duplicate order is blocked                                       |                              |           |      |
+| Test 9     | Manage Sales Orders on web app                                   |                              |           |      |
+| Test 10     | Export Invoice / Credit Note / Debit Note as CSV (Finance)       |                              |           |      |
+| Test 11    | Create Delivery Order and Picking List                           |                              |           |      |
+| Test 12    | Stock alerts (Out of Stock / Low Stock)                          |                              |           |      |
+| Test 13    | Delivery delay reminder                                          |                              |           |      |
+| Test 14    | All users can log in                                             |                              |           |      |
 | Test 15    | [Role Name] — access check                                       |                              |           |      |
+| Test 16    | [Role Name] — access check                                       |                              |           |      |
 | Test [N]   | Role approval flow (QT → PO → SO → DO → PL → INV → RCT)          |                              |           |      |
 | Test [N+1] | [Client-specific feature] *(if applicable)*                      |                              |           |      |
 

@@ -195,7 +195,34 @@ uat_round: 1
 
 ---
 
-#### Test 5 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
+#### Test 5 — Review CPO and Convert to Sales Order
+
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) for review; **Noor Aili** (Logistics) or **Miss Wong** (Finance) for submission*
+
+*Continue from Test 2 or Test 3 — the CPO was created by the chatbot from a photo or PDF.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) | Log in to https://maia-fe-holsen.vercel.app/login. Navigate to the CPO list and open the CPO created in Test 2 or Test 3. | The CPO record is visible. Status shows **Pending**. |
+| 2 | **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) | Review the extracted details — check customer name, product names, and quantities against the original photo or PDF. | Extracted details are correct and match the source document. |
+| 3 | **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) | If any detail is wrong, edit it directly in the CPO. | Changes are saved. The CPO reflects the corrected information. |
+| 4 | **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) | Convert the CPO to a **Sales Order**. | A Sales Order is created. The CPO status updates to show it has been converted. |
+| 5 | **Noor Aili** (Logistics) or **Miss Wong** (Finance) | Open the Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
+
+> **Your result:**
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
+>
+> **Tested by:**
+> **Date:**
+>
+> **Notes:**
+>
+
+---
+
+#### Test 6 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
 
 *Who tests this: **Ng Tze Chien / Tam Ze Xin** (Sales Manager) for Step 1; **Noor Aili** (Logistics) or **Miss Wong** (Finance) for Steps 2–5*
 
@@ -224,11 +251,11 @@ uat_round: 1
 
 ---
 
-#### Test 6 — Create a Credit Note and Debit Note
+#### Test 7 — Create a Credit Note and Debit Note
 
 *Who tests this: **Miss Wong** (Finance)*
 
-*Use an existing Invoice from Test 5.*
+*Use an existing Invoice from Test 6.*
 
 | Step | What to do                                                                                         | What you should see                                                                                 |
 | ---- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -251,7 +278,7 @@ uat_round: 1
 
 ---
 
-#### Test 7 — Duplicate Order is Blocked
+#### Test 8 — Duplicate Order is Blocked
 
 *Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
@@ -277,7 +304,7 @@ uat_round: 1
 
 ---
 
-#### Test 8 — Manage Sales Orders on the Web App
+#### Test 9 — Manage Sales Orders on the Web App
 
 *Who tests this: **Noor Aili** (Logistics) or **Miss Wong** (Finance) for SO creation; **Ng Tze Chien** (Sales Manager) for view-only check*
 
@@ -304,7 +331,7 @@ uat_round: 1
 
 ---
 
-#### Test 9 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 10 — Export Invoice / Credit Note / Debit Note as CSV
 
 *Who tests this: **Miss Wong** (Finance)*
 
@@ -337,7 +364,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 10 — Create a Delivery Order and Picking List
+#### Test 11 — Create a Delivery Order and Picking List
 
 *Who tests this: **Noor Aili** (Logistics)*
 
@@ -361,7 +388,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 11 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 12 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Noor Aili** (Logistics) and **Ng Tze Chien / Tam Ze Xin** (Sales Manager) — both should see the alerts*
 
@@ -386,7 +413,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 12 — Delivery Delay Reminder
+#### Test 13 — Delivery Delay Reminder
 
 *Who tests this: **Noor Aili** (Logistics)*
 
@@ -414,7 +441,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 13 — All Users Can Log In
+#### Test 14 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 8 users log in with their own account*
 
@@ -442,7 +469,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 14 — Sales Manager Access Check
+#### Test 15 — Sales Manager Access Check
 
 *Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
@@ -468,7 +495,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 15 — Logistics / Operations Access Check
+#### Test 16 — Logistics / Operations Access Check
 
 *Who tests this: **Noor Aili** (Logistics — Operations)*
 
@@ -495,7 +522,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 16 — Logistics / Procurement Access Check
+#### Test 17 — Logistics / Procurement Access Check
 
 *Who tests this: **Intan Atikah** (Logistics — Procurement)*
 
@@ -520,7 +547,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 17 — Logistics / Production Access Check
+#### Test 18 — Logistics / Production Access Check
 
 *Who tests this: **Murugesu** (Logistics — Production)*
 
@@ -544,7 +571,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 18 — Finance Manager Access Check
+#### Test 19 — Finance Manager Access Check
 
 *Who tests this: **Miss Wong** (Finance)*
 
@@ -571,7 +598,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 19 — Admin Access Check
+#### Test 20 — Admin Access Check
 
 *Who tests this: **Ong Siow Chui** or **Tam Ze Xin** (Admin)*
 
@@ -595,7 +622,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 20 — System Admin Access Check
+#### Test 21 — System Admin Access Check
 
 *Who tests this: **Chin Zhao Heng** (System Admin)*
 
@@ -619,7 +646,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 21 — Role Approval Flow
+#### Test 22 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -692,7 +719,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 22 — Poison Signed Order (PSO) — Full Test
+#### Test 23 — Poison Signed Order (PSO) — Full Test
 
 *Who tests this:  **Noor Aili** (Logistics) 
 
@@ -730,26 +757,27 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | Test 2 | Send order by photo | | | |
 | Test 3 | Send order by PDF | | | |
 | Test 4 | Pricing and stock check | | | |
-| Test 5 | Generate documents (Quotation → SO → Proforma Invoice → Invoice) | | | |
-| Test 6 | Create Credit Note and Debit Note (Finance) | | | |
-| Test 7 | Duplicate order is blocked | | | |
-| Test 8 | Manage Sales Orders on web app (Logistics/Finance create; Sales Manager view only) | | | |
-| Test 9 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | | | |
-| Test 10 | Create Delivery Order and Picking List | | | |
-| Test 11 | Stock alerts (Out of Stock / Low Stock) | | | |
-| Test 12 | Delivery delay reminder | | | |
-| Test 13 | All users can log in | | | |
-| Test 14 | Sales Manager (Ng Tze Chien / Tam Ze Xin) — access check | | | |
-| Test 15 | Logistics / Noor Aili — access check | | | |
-| Test 16 | Logistics / Intan — access check | | | |
-| Test 17 | Logistics / Murugesu — access check | | | |
-| Test 18 | Finance / Miss Wong — access check | | | |
-| Test 19 | Admin — access check | | | |
-| Test 20 | System Admin / Chin Zhao Heng — access check | | | |
-| Test 21 | Role approval flow (QT → PO → SO → DO → PL → INV → RCT) | | | |
-| Test 22 | Poison Signed Order (PSO) — full test | | | |
+| Test 5 | Review CPO and convert to Sales Order (chatbot photo/PDF → web app) | | | |
+| Test 6 | Generate documents (Quotation → SO → Proforma Invoice → Invoice) | | | |
+| Test 7 | Create Credit Note and Debit Note (Finance) | | | |
+| Test 8 | Duplicate order is blocked | | | |
+| Test 9 | Manage Sales Orders on web app (Logistics/Finance create; Sales Manager view only) | | | |
+| Test 10 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | | | |
+| Test 11 | Create Delivery Order and Picking List | | | |
+| Test 12 | Stock alerts (Out of Stock / Low Stock) | | | |
+| Test 13 | Delivery delay reminder | | | |
+| Test 14 | All users can log in | | | |
+| Test 15 | Sales Manager (Ng Tze Chien / Tam Ze Xin) — access check | | | |
+| Test 16 | Logistics / Noor Aili — access check | | | |
+| Test 17 | Logistics / Intan — access check | | | |
+| Test 18 | Logistics / Murugesu — access check | | | |
+| Test 19 | Finance / Miss Wong — access check | | | |
+| Test 20 | Admin — access check | | | |
+| Test 21 | System Admin / Chin Zhao Heng — access check | | | |
+| Test 22 | Role approval flow (QT → PO → SO → DO → PL → INV → RCT) | | | |
+| Test 23 | Poison Signed Order (PSO) — full test | | | |
 
-**Total: 22 tests**
+**Total: 24 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
