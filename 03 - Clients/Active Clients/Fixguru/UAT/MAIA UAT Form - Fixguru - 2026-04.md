@@ -19,64 +19,65 @@ uat_round: 1
 
 ### UAT Timeline
 
-| Date        | Milestone                                         | Who          |
-| ----------- | ------------------------------------------------- | ------------ |
-| 2 Apr       | UAT starts — work through all test groups         | Fixguru team |
-| 2 Apr       | WhatsApp chatbot setup begins                     | MAIA team    |
-| 9 Apr       | All tests completed and signed off                | Fixguru team |
-| 9–14 Apr    | UAT bug fixes (if any)                            | MAIA team    |
-| 15–16 Apr   | Product ready confirmation                        | MAIA team    |
-| 16 Apr      | **Phase 1 Sign Off & Go-Live**                    | All          |
+| Date      | Milestone                                    | Who          |
+| --------- | -------------------------------------------- | ------------ |
+| 2 Apr     | UAT starts — work through all test groups    | Fixguru team |
+| 2 Apr     | WhatsApp chatbot setup begins                | MAIA team    |
+| 9 Apr     | All tests completed and signed off           | Fixguru team |
+| 9–14 Apr  | UAT bug fixes (if any)                       | MAIA team    |
+| 15–16 Apr | Product ready confirmation                   | MAIA team    |
+| 16 Apr    | **Phase 1 Sign Off & Go-Live**               | All          |
 
-> **Scope note:** This UAT covers Phase 1 core MAIA only — chatbot order intake, document flow (QT → SO → Invoice → Payment), delivery, inventory alerts, and role permissions. E-invoice integration is covered separately.
+> **Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), delivery, inventory alerts, and role permissions. E-invoice integration is covered separately.
 
-**Web App:** [Web App URL — TBD]
-**Chatbot (during UAT):** Telegram — [Bot Name / Handle — TBD]
+**Web App:** https://maia-fe-fixguru.vercel.app/login
+**Chatbot (during UAT):** Telegram — @maia_fixguru_bot *(scan the QR code provided)*
 **Chatbot (after go-live):** WhatsApp *(same features — WhatsApp setup is in progress)*
 
 ---
 
 ## Your Login Details
 
-| Name         | Role              | Email (Username) | Password |
-| ------------ | ----------------- | ---------------- | -------- |
-| [TBD]        | Sales Manager     | [TBD]            | [TBD]    |
-| Xiao Ling    | Sales User        | [TBD]            | [TBD]    |
-| Hayati       | Sales User        | [TBD]            | [TBD]    |
-| Zuha         | Sales User        | [TBD]            | [TBD]    |
-| Syahira      | Sales User        | [TBD]            | [TBD]    |
-| [TBD]        | Logistics Manager | [TBD]            | [TBD]    |
-| Asrul        | Logistics User    | [TBD]            | [TBD]    |
-| Fadzil       | Logistics User    | [TBD]            | [TBD]    |
-| Azizah       | Logistics User    | [TBD]            | [TBD]    |
-| Abishaah     | Finance Manager   | [TBD]            | [TBD]    |
-| Wendy Wang   | Finance Manager   | [TBD]            | [TBD]    |
-| Nisa         | Finance User      | [TBD]            | [TBD]    |
-| Marcus Lim   | Admin             | [TBD]            | [TBD]    |
-| Steven Gan   | Admin             | [TBD]            | [TBD]    |
-| Yvonne Choo  | Admin             | [TBD]            | [TBD]    |
-| Jennifer Gan | Admin             | [TBD]            | [TBD]    |
+| Name         | Role (Client)      | Role (MAIA)     | Email                          | Password |
+| ------------ | ------------------ | --------------- | ------------------------------ | -------- |
+| Xiao Ling    | Sales              | Sales User      | xiaoling@iamworldwide.com.my   | 123456   |
+| Hayati       | Sales              | Sales User      | hayati@iamworldwide.com.my     | 123456   |
+| Zuha         | Sales              | Sales User      | zuha@iamworldwide.com.my       | 123456   |
+| Syahira      | Sales              | Sales User      | syahira@iamworldwide.com.my    | 123456   |
+| Asrul        | Warehousing        | Logistics User  | asrul@iamworldwide.com.my      | 123456   |
+| Fadzil       | Warehousing        | Logistics User  | fadzil@iamworldwide.com.my     | 123456   |
+| Azizah       | Warehousing        | Logistics User  | azizah@iamworldwide.com.my     | 123456   |
+| Abishaah     | Finance Manager    | Finance Manager | abishaah@iamworldwide.com.my   | 123456   |
+| Wendy Wang   | Finance Manager    | Finance Manager | wendy@iamworldwide.com.my      | 123456   |
+| Nisa         | Finance Assistant  | Finance User    | nisa@iamworldwide.com.my       | 123456   |
+| Marcus Lim   | Admin              | Admin           | marcus@iamworldwide.com.my     | 123456   |
+| Steven Gan   | Admin              | Admin           | steven@iamworldwide.com.my     | 123456   |
+| Yvonne Choo  | Admin              | Admin           | yvonne@iamworldwide.com.my     | 123456   |
+| Jennifer Gan | Admin              | Admin           | jennifer@iamworldwide.com.my   | 123456   |
+
+> **Note:** There is no Sales Manager or Logistics Manager role at Fixguru. Document submission responsibilities that would normally belong to those roles are handled by **Admin**.
 
 ---
 
 ## Role Permission Summary
 
-> This table summarises what each role can do. Use it as a quick reference when running Group 5 tests.
+> Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Manager.
 
-| Document / Feature      | Sales Manager | Sales User | Logistics Manager | Logistics User | Finance Manager | Finance User | Admin       |
-| ----------------------- | ------------- | ---------- | ----------------- | -------------- | --------------- | ------------ | ----------- |
-| Quotation               | Create        | Create     | —                 | —              | Create          | Create       | **Submit**  |
-| Sales Order             | Create        | Create     | —                 | —              | Create          | Create       | **Submit**  |
-| Invoice                 | View only     | View only  | —                 | —              | **Submit**      | Create       | **Submit**  |
-| Payment / Receipt       | View only     | View only  | —                 | —              | **Submit**      | **Submit**   | **Submit**  |
-| Credit Note             | View only     | View only  | —                 | —              | **Submit**      | Create       | —           |
-| Delivery Note           | Create        | Create     | Create            | Create         | Create          | Create       | **Submit**  |
-| Inventory / Pick List   | View only     | View only  | **Submit**        | Create         | View only       | View only    | **Submit**  |
-| Issue                   | **Submit**    | Create     | **Submit**        | Create         | **Submit**      | Create       | **Submit**  |
-| Stock Reservation Entry | **Submit**    | Create     | **Submit**        | Create         | **Submit**      | Create       | **Submit**  |
-| Accounting              | —             | —          | —                 | —              | **Submit**      | Create       | **Submit**  |
+| Document / Feature      | Sales User | Warehousing (Logistics User) | Finance Manager | Finance Asst (Finance User) | Admin       |
+| ----------------------- | ---------- | ---------------------------- | --------------- | --------------------------- | ----------- |
+| Quotation               | Create     | —                            | Create          | Create                      | **Submit**  |
+| Sales Order             | Create     | —                            | Create          | Create                      | **Submit**  |
+| Invoice                 | View only  | —                            | **Submit**      | Create                      | **Submit**  |
+| Payment / Receipt       | View only  | —                            | **Submit**      | **Submit**                  | **Submit**  |
+| Credit Note             | View only  | —                            | **Submit**      | Create                      | —           |
+| Delivery Note           | Create     | Create                       | Create          | Create                      | **Submit**  |
+| Inventory / Pick List   | View only  | Create                       | View only       | View only                   | **Submit**  |
+| Issue                   | Create     | Create                       | **Submit**      | Create                      | **Submit**  |
+| Stock Reservation Entry | Create     | Create                       | **Submit**      | Create                      | **Submit**  |
 
 *"Create" = Read / Write / Create but NOT submit. "Submit" = full access including submit. "—" = no access.*
+
+> ⚠️ **Pick List note:** Since there is no Logistics Manager at Fixguru, only **Admin** can submit Pick Lists.
 
 ---
 
@@ -100,7 +101,7 @@ uat_round: 1
 
 ## Setup Checklist *(For MAIA team to complete before UAT starts)*
 
-- [ ] All user accounts created and login details filled in above
+- [ ] All user accounts created and login details confirmed above
 - [ ] Customer records loaded (at least 3 test customers with name and address)
 - [ ] Product catalogue loaded (at least 5 products with descriptions and pricing)
 - [ ] Minimum selling prices configured per product
@@ -116,18 +117,18 @@ uat_round: 1
 
 ### Group 1 — Chatbot: Sending Orders
 
-*Who tests this group: **Sales Manager** or any **Sales User** (Xiao Ling, Hayati, Zuha, or Syahira)*
+*Who tests this group: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
 
 ---
 
 #### Test 1 — Send an Order by Text Message
 
-| Step | What to do                                                                                              | What you should see                                                                         |
-| ---- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 1    | Open the **MAIA Fixguru chatbot** in Telegram using the QR code provided.                               | The chatbot replies and is ready to receive your message.                                   |
-| 2    | Type a message like: *"Customer: [Customer Name]. Order: 10 units [Product A], 5 boxes [Product B]."*   | Chatbot receives the message.                                                               |
-| 3    | Wait a moment.                                                                                          | The chatbot shows the order details it extracted — customer name, products, and quantities. |
-| 4    | Check that the details are correct.                                                                     | Customer name, product names, and quantities match what you typed.                          |
+| Step | What to do                                                                                             | What you should see                                                                         |
+| ---- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| 1    | Open **@maia_fixguru_bot** in Telegram using the QR code provided.                                     | The chatbot replies and is ready to receive your message.                                   |
+| 2    | Type a message like: *"Customer: [Customer Name]. Order: 10 units [Product A], 5 boxes [Product B]."*  | Chatbot receives the message.                                                               |
+| 3    | Wait a moment.                                                                                         | The chatbot shows the order details it extracted — customer name, products, and quantities. |
+| 4    | Check that the details are correct.                                                                    | Customer name, product names, and quantities match what you typed.                          |
 
 > **Your result:**
 > - [ ] Pass
@@ -146,7 +147,7 @@ uat_round: 1
 | Step | What to do                                           | What you should see                                                                                   |
 | ---- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | 1    | Take a photo of a handwritten order or a printed PO. | Photo is ready on your phone.                                                                         |
-| 2    | Send the photo to the chatbot on Telegram.           | Chatbot accepts the photo and starts processing.                                                      |
+| 2    | Send the photo to **@maia_fixguru_bot** on Telegram. | Chatbot accepts the photo and starts processing.                                                      |
 | 3    | Wait a moment.                                       | The chatbot shows the order details it read from the photo — customer name, products, and quantities. |
 | 4    | Check that the details match the photo.              | Information extracted is correct. If anything is wrong, you can edit before confirming.               |
 
@@ -168,7 +169,7 @@ uat_round: 1
 | Step | What to do                                                                                          | What you should see                                                                                                                      |
 | ---- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | 1    | Prepare a customer PO in PDF format.                                                                | PDF file is ready on your phone or computer.                                                                                             |
-| 2    | Open the chatbot on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                  |
+| 2    | Open **@maia_fixguru_bot** on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                            |
 | 3    | Wait a moment.                                                                                      | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00001**). The CPO status shows **Pending**. |
 
 > ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert it to a Sales Order. This is covered in Group 2.
@@ -221,15 +222,15 @@ uat_round: 1
 
 > **Role note:** Sales and Finance can **create** Quotations and Sales Orders but **cannot submit** them — only **Admin** submits. Invoice is submitted by **Finance Manager** or **Admin**.
 
-| Step | Who                                               | What to do                                                                     | What you should see                                                                               |
-| ---- | ------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| 1    | **Xiao Ling** (Sales User)                        | Log in to the web app. Create a **Quotation** and save it.                     | Quotation is created and saved. Status shows **Draft**.                                           |
-| 2    | **Marcus Lim** (Admin)                            | Log in as Admin. Open the Draft Quotation and click **Submit**.                | Quotation status changes to **OPEN**. Only Admin can submit Quotations.                           |
-| 3    | **Xiao Ling** (Sales User) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**.   | Quotation status changes to **ORDERED**. A new Sales Order is created with status **Draft**.      |
-| 4    | **Marcus Lim** (Admin)                            | Open the Draft Sales Order and click **Submit**.                               | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders.                    |
-| 5    | **Abishaah** or **Wendy Wang** (Finance Manager)  | From the Sales Order, generate a **Proforma Invoice**.                         | A Proforma Invoice is created with its own reference number. Details match the Sales Order.       |
-| 6    | **Abishaah** or **Wendy Wang** (Finance Manager)  | From the Sales Order, generate the final **Invoice** and click **Submit**.     | An Invoice is created and submitted. Status shows **UNPAID**.                                     |
-| 7    | Any user                                          | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF.      | All documents download successfully as PDFs.                                                      |
+| Step | Who                                          | What to do                                                                | What you should see                                                                          |
+| ---- | -------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| 1    | **Xiao Ling** (Sales)                        | Log in at https://maia-fe-fixguru.vercel.app/login. Create a **Quotation** and save it. | Quotation is created and saved. Status shows **Draft**.                         |
+| 2    | **Marcus Lim** (Admin)                       | Log in as Admin. Open the Draft Quotation and click **Submit**.           | Quotation status changes to **OPEN**. Only Admin can submit Quotations.                      |
+| 3    | **Xiao Ling** (Sales) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**. | Quotation status changes to **ORDERED**. A new Sales Order is created with status **Draft**. |
+| 4    | **Marcus Lim** (Admin)                       | Open the Draft Sales Order and click **Submit**.                          | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders.               |
+| 5    | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate a **Proforma Invoice**.                | A Proforma Invoice is created with its own reference number. Details match the Sales Order.  |
+| 6    | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the final **Invoice** and click **Submit**. | An Invoice is created and submitted. Status shows **UNPAID**.                           |
+| 7    | Any user                                     | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF. | All documents download successfully as PDFs.                                                 |
 
 > **Your result:**
 > - [ ] Pass
@@ -248,15 +249,13 @@ uat_round: 1
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
-*Use an existing Invoice from Test 5.*
-
-| Step | What to do                                                                                         | What you should see                                                                                 |
-| ---- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                          |
-| 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                |
+| Step | What to do                                                                                         | What you should see                                                                                    |
+| ---- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                             |
+| 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                   |
 | 3    | Fill in the amount, adjust the items, then confirm and submit.                                     | Credit Note is created and submitted. It references the original Invoice and shows the credited amount. |
-| 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                 |
-| 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.   |
+| 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                    |
+| 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.      |
 
 > **Your result:**
 > - [ ] Pass
@@ -273,16 +272,16 @@ uat_round: 1
 
 #### Test 7 — Duplicate Order is Blocked
 
-*Who tests this: **Xiao Ling** or any **Sales User***
+*Who tests this: **Xiao Ling** (Sales)*
 
-> **Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
+> **Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** status. Draft orders are not checked.
 
-| Step | What to do                                                                                      | What you should see                                                                    |
-| ---- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| 1    | Send a customer order via the chatbot — include a PO Number e.g. **"PO-001"**.                  | Order is received by the chatbot. A CPO is created and converted to a Sales Order.     |
-| 2    | **Marcus Lim** (Admin) submits the Sales Order so it reaches **TO BILL** status.               | Sales Order status shows **TO BILL**.                                                  |
-| 3    | Send the **same order again** via chatbot — same customer and same PO Number **"PO-001"**.      | A warning appears — this order already exists. The duplicate is blocked and not saved. |
-| 4    | Send a new order for the same customer but with a **different PO Number "PO-002"**.             | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
+| Step | What to do                                                                                 | What you should see                                                                    |
+| ---- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| 1    | Send a customer order via **@maia_fixguru_bot** — include a PO Number e.g. **"PO-001"**.  | Order is received by the chatbot. A CPO is created and converted to a Sales Order.     |
+| 2    | **Marcus Lim** (Admin) submits the Sales Order so it reaches **TO BILL** status.          | Sales Order status shows **TO BILL**.                                                  |
+| 3    | Send the **same order again** — same customer and same PO Number **"PO-001"**.             | A warning appears — this order already exists. The duplicate is blocked and not saved. |
+| 4    | Send a new order for the same customer with a **different PO Number "PO-002"**.            | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
 
 > **Your result:**
 > - [ ] Pass
@@ -299,17 +298,17 @@ uat_round: 1
 
 #### Test 8 — Create and Manage Sales Orders on the Web App
 
-*Who tests this: **Xiao Ling** (Sales User) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
+*Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
-> **Note:** Sales Users and Finance can create and edit Sales Orders but **cannot submit** them. Only **Admin** can submit. This is a key difference from some other MAIA clients.
+> **Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Only **Admin** can submit.
 
-| Step | What to do                                                                                         | What you should see                                                                             |
-| ---- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| 1    | Log in as **Xiao Ling** (Sales User). Create a new Sales Order directly from the web app.          | A form appears. Fill in customer and product details. Order is saved with status **Draft**.     |
-| 2    | Try to **submit** the Sales Order as Xiao Ling.                                                    | 🚫 Submit button is not available — only Admin can submit Sales Orders.                         |
-| 3    | Log in as **Abishaah** (Finance Manager). Create a new Sales Order.                               | Order is created and saved with status **Draft**. Finance Manager can create.                   |
-| 4    | Try to **submit** the Sales Order as Abishaah.                                                     | 🚫 Submit button is not available — only Admin can submit Sales Orders.                         |
-| 5    | Log in as **Marcus Lim** (Admin). Open both Draft Sales Orders and submit them.                   | Both Sales Orders change status to **TO BILL**. Admin is the only role that can submit.         |
+| Step | What to do                                                                              | What you should see                                                                         |
+| ---- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| 1    | Log in as **Hayati** (Sales). Create a new Sales Order directly from the web app.       | A form appears. Fill in customer and product details. Saved with status **Draft**.          |
+| 2    | Try to **submit** the Sales Order as Hayati.                                            | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
+| 3    | Log in as **Abishaah** (Finance Manager). Create a new Sales Order.                    | Sales Order saved with status **Draft**. Finance Manager can create.                        |
+| 4    | Try to **submit** the Sales Order as Abishaah.                                          | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
+| 5    | Log in as **Marcus Lim** (Admin). Open both Draft Sales Orders and submit them.        | Both Sales Orders change to **TO BILL**. Admin is the only role that can submit.            |
 
 > **Your result:**
 > - [ ] Pass
@@ -327,8 +326,6 @@ uat_round: 1
 #### Test 9 — Export Invoice / Credit Note / Debit Note as CSV
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
-
-Finance exports these documents from MAIA as CSV files to create eInvoice records in the accounting system.
 
 | Step | What to do                                              | What you should see                                                       |
 | ---- | ------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -353,24 +350,24 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 ---
 
-### Group 3 — Logistics: Deliveries and Stock Alerts
+### Group 3 — Warehousing: Deliveries and Stock Alerts
 
 ---
 
 #### Test 10 — Create a Delivery Order and Picking List
 
-*Who tests this: **Asrul** (Logistics User) for creation; **Marcus Lim** (Admin) for DO submission; **Logistics Manager** for Picking List submission*
+*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for both DO and Pick List submission*
 
-> **Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. For Picking Lists: **Logistics Manager** can submit; Logistics User cannot.
+> **Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. Since Fixguru has no Logistics Manager, **Admin** also submits Pick Lists.
 
-| Step | What to do                                                                                         | What you should see                                                                                                                        |
-| ---- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1    | Log in as **Asrul** (Logistics User). Open a submitted Invoice with status **UNPAID**.              | Invoice record is visible.                                                                                                                 |
-| 2    | Create a **Delivery Order (DO)** from the Invoice and save it.                                     | Delivery Order is created and saved in Draft. Shows customer's address, products, quantities, and a DO reference number.                   |
-| 3    | Try to **submit** the Delivery Order as Asrul.                                                     | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                                                                 |
-| 4    | Log in as **Marcus Lim** (Admin). Open the Draft Delivery Order and click **Submit**.              | Delivery Order is submitted successfully.                                                                                                  |
-| 5    | Log in as **Logistics Manager**. From the Delivery Order, create a **Picking List** and submit it. | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities. Logistics Manager can submit Pick Lists. |
-| 6    | Download both the DO and the Picking List as PDFs.                                                 | Both documents download successfully as PDFs.                                                                                              |
+| Step | What to do                                                                                      | What you should see                                                                                              |
+| ---- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| 1    | Log in as **Asrul** (Warehousing). Open a submitted Invoice with status **UNPAID**.             | Invoice record is visible.                                                                                       |
+| 2    | Create a **Delivery Order (DO)** from the Invoice and save it.                                  | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
+| 3    | Try to **submit** the Delivery Order as Asrul.                                                  | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                                       |
+| 4    | Log in as **Marcus Lim** (Admin). Open the Draft Delivery Order and click **Submit**.           | Delivery Order is submitted successfully.                                                                        |
+| 5    | From the Delivery Order, create a **Picking List** and click **Submit** (Admin).               | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities.               |
+| 6    | Download both the DO and the Picking List as PDFs.                                              | Both documents download successfully as PDFs.                                                                    |
 
 > **Your result:**
 > - [ ] Pass
@@ -387,15 +384,15 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 #### Test 11 — Stock Alerts (Out of Stock and Low Stock)
 
-*Who tests this: **Asrul** (Logistics User) and **Xiao Ling** (Sales User) — both roles should see the alerts*
+*Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
-| Step | What to do                                                                      | What you should see                                                          |
-| ---- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul** (Logistics User). Check the notification area.              | Notifications are visible.                                                   |
-| 2    | Look for a product that has **zero stock**.                                     | An Out-of-Stock alert is shown for that product.                             |
-| 3    | Look for a product that is below the safety stock level.                        | A Low-Stock alert is shown for that product.                                 |
-| 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                          |
-| 5    | Log out. Log in as **Xiao Ling** (Sales User). Check the same alerts.          | Both Out-of-Stock and Low-Stock alerts are visible to Sales User as well.    |
+| Step | What to do                                                                      | What you should see                                                         |
+| ---- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| 1    | Log in as **Asrul** (Warehousing). Check the notification area.                 | Notifications are visible.                                                  |
+| 2    | Look for a product that has **zero stock**.                                     | An Out-of-Stock alert is shown for that product.                            |
+| 3    | Look for a product that is below the safety stock level.                        | A Low-Stock alert is shown for that product.                                |
+| 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                         |
+| 5    | Log out. Log in as **Xiao Ling** (Sales). Check the same alerts.               | Both Out-of-Stock and Low-Stock alerts are visible to Sales users as well.  |
 
 > **Your result:**
 > - [ ] Pass
@@ -412,12 +409,12 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 #### Test 12 — Delivery Delay Reminder
 
-*Who tests this: **Asrul** (Logistics User)*
+*Who tests this: **Asrul** (Warehousing)*
 
-| Step | What to do                                                                                                                            | What you should see                                                                      |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified.                                                              |
-| 2    | Check the daily digest or notification area.                                                                                          | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
+| Step | What to do                                                                                                                                    | What you should see                                                                      |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| 1    | Log in as **Asrul**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified.                                                                   |
+| 2    | Check the daily digest or notification area.                                                                                                  | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
 
 > ⚠️ **Note:** If you cannot find an overdue Invoice, please contact Gareth to set one up.
 
@@ -440,12 +437,12 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 #### Test 13 — All Users Can Log In
 
-*Who tests this: **Everyone** — all 16 users log in with their own account*
+*Who tests this: **Everyone** — all 14 users log in with their own account*
 
 | Step | What to do                                                                            | What you should see                                            |
 | ---- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| 1    | Open **[Web App URL]** in **Google Chrome** on a laptop or desktop.                   | The MAIA login page loads.                                     |
-| 2    | Each person logs in using their **assigned email and password** from the table above. | Login is successful. Your workspace and dashboard are visible. |
+| 1    | Open https://maia-fe-fixguru.vercel.app/login in **Google Chrome** on a laptop or desktop. | The MAIA login page loads.                                |
+| 2    | Each person logs in using their **email and password** from the table above.          | Login is successful. Your workspace and dashboard are visible. |
 
 > **Your result:**
 > - [ ] Pass
@@ -466,50 +463,20 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 ---
 
-#### Test 14 — Sales Manager Access Check
+#### Test 14 — Sales Access Check
 
-*Who tests this: **Sales Manager***
+*Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
-| Step | What to do                                                              | What you should see                                                                         |
-| ---- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 1    | Try to **create** a Quotation and save it.                              | ✅ You can create and edit Quotations. Saved with status **Draft**.                         |
-| 2    | Try to **submit** the Quotation.                                        | 🚫 Submit button is not available — only Admin can submit Quotations.                       |
-| 3    | Try to **create** a Sales Order and save it.                            | ✅ You can create and edit Sales Orders. Saved with status **Draft**.                       |
-| 4    | Try to **submit** the Sales Order.                                      | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
-| 5    | Try to **create** a Delivery Order and save it.                         | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                    |
-| 6    | Try to **submit** the Delivery Order.                                   | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                  |
-| 7    | Try to view an **Invoice**.                                             | ✅ You can view Invoices — read only. No create or edit button.                             |
-| 8    | Try to view **Inventory** (stock levels).                               | ✅ Inventory page is accessible — read only. No create or edit button.                     |
-| 9    | Try to create and **submit** an **Issue**.                              | ✅ You can create and submit Issues. Sales Manager has submit access on Issues.             |
-
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
-
----
-
-#### Test 15 — Sales User Access Check
-
-*Who tests this: **Hayati** or **Zuha** (Sales User — different person from Test 1)*
-
-| Step | What to do                                                              | What you should see                                                                         |
-| ---- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 1    | Try to **create** a Quotation and save it.                              | ✅ You can create and edit Quotations. Saved with status **Draft**.                         |
-| 2    | Try to **submit** the Quotation.                                        | 🚫 Submit button is not available — only Admin can submit Quotations.                       |
-| 3    | Try to **create** a Sales Order and save it.                            | ✅ You can create and edit Sales Orders. Saved with status **Draft**.                       |
-| 4    | Try to **submit** the Sales Order.                                      | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
-| 5    | Try to **create** a Delivery Order and save it.                         | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                    |
-| 6    | Try to **submit** the Delivery Order.                                   | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                  |
-| 7    | Try to view an **Invoice**.                                             | ✅ You can view Invoices — read only. No create or edit button.                             |
-| 8    | Try to view **Inventory** (stock levels).                               | ✅ Inventory page is accessible — read only.                                                |
-| 9    | Try to create an **Issue** — then try to **submit** it.                 | ✅ You can create an Issue. 🚫 Submit button is not available — Sales User cannot submit Issues (Sales Manager can). |
+| Step | What to do                                                | What you should see                                                                     |
+| ---- | --------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| 1    | Try to **create** a Quotation and save it.                | ✅ You can create and edit Quotations. Saved with status **Draft**.                     |
+| 2    | Try to **submit** the Quotation.                          | 🚫 Submit button is not available — only Admin can submit Quotations.                   |
+| 3    | Try to **create** a Sales Order and save it.              | ✅ You can create and edit Sales Orders. Saved with status **Draft**.                   |
+| 4    | Try to **submit** the Sales Order.                        | 🚫 Submit button is not available — only Admin can submit Sales Orders.                 |
+| 5    | Try to **create** a Delivery Order and save it.           | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                |
+| 6    | Try to **submit** the Delivery Order.                     | 🚫 Submit button is not available — only Admin can submit Delivery Orders.              |
+| 7    | Try to view an **Invoice**.                               | ✅ You can view Invoices — read only. No create or edit button.                         |
+| 8    | Try to view **Inventory** (stock levels).                 | ✅ Inventory page is accessible — read only. No create or edit button.                 |
 
 > **Your result:**
 > - [ ] Pass
@@ -524,46 +491,20 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 ---
 
-#### Test 16 — Logistics Manager Access Check
+#### Test 15 — Warehousing Access Check
 
-*Who tests this: **Logistics Manager***
+*Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 10)*
 
-| Step | What to do                                                                                   | What you should see                                                                              |
-| ---- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| 1    | Try to view and manage **Inventory** (items, stock, warehouse).                              | ✅ Full access — you can create, edit, and submit inventory records.                             |
-| 2    | Try to create and **submit** a **Picking List**.                                             | ✅ You can create and submit Picking Lists. Logistics Manager has full submit access.            |
-| 3    | Try to **create** a Delivery Order and save it.                                              | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                         |
-| 4    | Try to **submit** the Delivery Order.                                                        | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                       |
-| 5    | Try to create and **submit** an **Issue**.                                                   | ✅ You can create and submit Issues. Logistics Manager has submit access.                        |
-| 6    | Try to open a **Quotation** or **Sales Order**.                                              | 🚫 Not accessible — Logistics Manager has no access to Quotations or Sales Orders.              |
-| 7    | Try to view an **Invoice**.                                                                  | 🚫 Not accessible — Logistics Manager has no access to Invoices.                                |
-
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
-
----
-
-#### Test 17 — Logistics User Access Check
-
-*Who tests this: **Fadzil** or **Azizah** (Logistics User — different person from Test 10)*
-
-| Step | What to do                                                                               | What you should see                                                                              |
-| ---- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| 1    | Try to **create** an inventory record (e.g., Stock Entry).                               | ✅ You can create and edit inventory records. Saved with status **Draft**.                       |
-| 2    | Try to **submit** the inventory record.                                                  | 🚫 Submit button is not available — only Logistics Manager or Admin can submit inventory.        |
-| 3    | Try to **create** a Picking List.                                                        | ✅ You can create a Picking List. Saved with status **Draft**.                                   |
-| 4    | Try to **submit** the Picking List.                                                      | 🚫 Submit button is not available — only Logistics Manager or Admin can submit Picking Lists.    |
-| 5    | Try to **create** a Delivery Order and save it.                                          | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                         |
-| 6    | Try to **submit** the Delivery Order.                                                    | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                       |
-| 7    | Try to open a **Quotation** or **Sales Order**.                                          | 🚫 Not accessible — Logistics User has no access to Quotations or Sales Orders.                 |
+| Step | What to do                                                                   | What you should see                                                                           |
+| ---- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| 1    | Try to **create** an inventory record (e.g., Stock Entry) and save it.       | ✅ You can create and edit inventory records. Saved with status **Draft**.                    |
+| 2    | Try to **submit** the inventory record.                                      | 🚫 Submit button is not available — only Admin can submit inventory records at Fixguru.       |
+| 3    | Try to **create** a Picking List and save it.                                | ✅ You can create a Picking List. Saved with status **Draft**.                                |
+| 4    | Try to **submit** the Picking List.                                          | 🚫 Submit button is not available — only Admin can submit Picking Lists at Fixguru.           |
+| 5    | Try to **create** a Delivery Order and save it.                              | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                      |
+| 6    | Try to **submit** the Delivery Order.                                        | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                    |
+| 7    | Try to open a **Quotation** or **Sales Order**.                              | 🚫 Not accessible — Warehousing has no access to Quotations or Sales Orders.                 |
+| 8    | Try to view an **Invoice** or **Payment**.                                   | 🚫 Not accessible — Warehousing has no access to Invoices or Payments.                       |
 
 > **Your result:**
 > - [ ] Pass
@@ -578,49 +519,20 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 ---
 
-#### Test 18 — Finance Manager Access Check
+#### Test 16 — Finance Manager Access Check
 
-*Who tests this: **Abishaah** (Finance Manager — use the other Finance Manager from Test 5)*
+*Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 5)*
 
-| Step | What to do                                                                     | What you should see                                                                                  |
-| ---- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| 1    | Try to create and **submit** an **Invoice**.                                   | ✅ You can create, edit, and submit Invoices. After submit, status shows **UNPAID**.                 |
-| 2    | Try to create and **submit** a **Payment / Receipt**.                          | ✅ You can create and submit Receipts. Invoice moves to **PAID** when fully paid.                    |
-| 3    | Try to create and **submit** a **Credit Note**.                                | ✅ You can create, edit, and submit Credit Notes.                                                    |
-| 4    | Try to **create** a Sales Order.                                               | ✅ You can create and edit Sales Orders. Saved with status **Draft**.                                |
-| 5    | Try to **submit** the Sales Order.                                             | 🚫 Submit button is not available — only Admin can submit Sales Orders.                              |
-| 6    | Try to **create** a Delivery Order.                                            | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                             |
-| 7    | Try to **submit** the Delivery Order.                                          | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                           |
-| 8    | Try to view **Inventory** (stock levels).                                      | ✅ Inventory page is accessible — read only. No create or edit button.                              |
-| 9    | Export an **Invoice**, a **Credit Note**, and a **Debit Note** as CSV files.  | ✅ All three export successfully as CSV files.                                                       |
-
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
-
----
-
-#### Test 19 — Finance User Access Check
-
-*Who tests this: **Nisa** (Finance User)*
-
-| Step | What to do                                                                  | What you should see                                                                              |
-| ---- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| 1    | Try to **create** an Invoice and save it.                                   | ✅ You can create and edit Invoices. Saved with status **Draft**.                                |
-| 2    | Try to **submit** the Invoice.                                              | 🚫 Submit button is not available — Finance Manager or Admin can submit Invoices.                |
-| 3    | Try to create and **submit** a **Payment / Receipt**.                       | ✅ You can create and submit Receipts. Finance User has submit access on Payments.               |
-| 4    | Try to **create** a Credit Note and save it.                                | ✅ You can create and edit Credit Notes. Saved with status **Draft**.                            |
-| 5    | Try to **submit** the Credit Note.                                          | 🚫 Submit button is not available — only Finance Manager can submit Credit Notes.                |
-| 6    | Try to **create** a Sales Order.                                            | ✅ You can create and edit Sales Orders. Saved with status **Draft**.                            |
-| 7    | Try to **submit** the Sales Order.                                          | 🚫 Submit button is not available — only Admin can submit Sales Orders.                          |
-| 8    | Try to view **Inventory** (stock levels).                                   | ✅ Inventory page is accessible — read only.                                                     |
+| Step | What to do                                                                   | What you should see                                                                                 |
+| ---- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| 1    | Try to create and **submit** an **Invoice**.                                 | ✅ You can create, edit, and submit Invoices. After submit, status shows **UNPAID**.                |
+| 2    | Try to create and **submit** a **Payment / Receipt**.                        | ✅ You can create and submit Receipts. Invoice moves to **PAID** when fully paid.                   |
+| 3    | Try to create and **submit** a **Credit Note**.                              | ✅ You can create, edit, and submit Credit Notes.                                                   |
+| 4    | Try to **create** a Sales Order and save it.                                 | ✅ You can create and edit Sales Orders. Saved with status **Draft**.                               |
+| 5    | Try to **submit** the Sales Order.                                           | 🚫 Submit button is not available — only Admin can submit Sales Orders.                             |
+| 6    | Try to **create** a Delivery Order and save it.                              | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                            |
+| 7    | Try to **submit** the Delivery Order.                                        | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                          |
+| 8    | Try to view **Inventory** (stock levels).                                    | ✅ Inventory page is accessible — read only. No create or edit button.                             |
 
 > **Your result:**
 > - [ ] Pass
@@ -635,19 +547,47 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 ---
 
-#### Test 20 — Admin Access Check
+#### Test 17 — Finance Assistant Access Check
+
+*Who tests this: **Nisa** (Finance Assistant / Finance User)*
+
+| Step | What to do                                                      | What you should see                                                                        |
+| ---- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 1    | Try to **create** an Invoice and save it.                       | ✅ You can create and edit Invoices. Saved with status **Draft**.                          |
+| 2    | Try to **submit** the Invoice.                                  | 🚫 Submit button is not available — only Finance Manager or Admin can submit Invoices.     |
+| 3    | Try to create and **submit** a **Payment / Receipt**.           | ✅ You can create and submit Receipts. Finance Assistant has submit access on Payments.    |
+| 4    | Try to **create** a Credit Note and save it.                    | ✅ You can create and edit Credit Notes. Saved with status **Draft**.                      |
+| 5    | Try to **submit** the Credit Note.                              | 🚫 Submit button is not available — only Finance Manager can submit Credit Notes.          |
+| 6    | Try to **create** a Sales Order and save it.                    | ✅ You can create and edit Sales Orders. Saved with status **Draft**.                      |
+| 7    | Try to **submit** the Sales Order.                              | 🚫 Submit button is not available — only Admin can submit Sales Orders.                    |
+| 8    | Try to view **Inventory** (stock levels).                       | ✅ Inventory page is accessible — read only.                                               |
+
+> **Your result:**
+> - [ ] Pass
+> - [ ] Fail
+> - [ ] Issue
+>
+> **Tested by:**
+> **Date:**
+>
+> **Notes (list any step that did not behave as expected):**
+>
+
+---
+
+#### Test 18 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
-| Step | What to do                                                                                   | What you should see                                                             |
-| ---- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| 1    | Try to create and **submit** a **Quotation**.                                                | ✅ Full access — you can create, edit, and submit Quotations.                   |
-| 2    | Try to create and **submit** a **Sales Order**.                                              | ✅ Full access — you can create, edit, and submit Sales Orders.                 |
-| 3    | Try to **submit** a Delivery Order that is in **Draft** status (created by another user).   | ✅ You can submit Delivery Orders. Admin is the only role that can.              |
-| 4    | Try to create and **submit** an **Invoice**.                                                 | ✅ Full access — you can create, edit, and submit Invoices.                     |
-| 5    | Try to create and **submit** a **Payment / Receipt**.                                        | ✅ Full access — you can create and submit Receipts.                            |
-| 6    | Try to create and **submit** an **Inventory** record (e.g., Stock Entry).                   | ✅ Full access — you can manage and submit inventory records.                   |
-| 7    | Try to **submit** a Picking List that is in **Draft** status.                               | ✅ You can submit Picking Lists.                                                 |
+| Step | What to do                                                                                 | What you should see                                                              |
+| ---- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| 1    | Try to create and **submit** a **Quotation**.                                              | ✅ Full access — you can create, edit, and submit Quotations.                    |
+| 2    | Try to create and **submit** a **Sales Order**.                                            | ✅ Full access — you can create, edit, and submit Sales Orders.                  |
+| 3    | Open a Draft **Delivery Order** (created by another user) and **submit** it.              | ✅ You can submit Delivery Orders. Admin is the only role that can.               |
+| 4    | Open a Draft **Picking List** and **submit** it.                                           | ✅ You can submit Picking Lists. Admin is the only role that can at Fixguru.     |
+| 5    | Try to create and **submit** an **Invoice**.                                               | ✅ Full access — you can create, edit, and submit Invoices.                      |
+| 6    | Try to create and **submit** a **Payment / Receipt**.                                      | ✅ Full access — you can create and submit Receipts.                             |
+| 7    | Try to create and **submit** an **Inventory** record (e.g., Stock Entry).                 | ✅ Full access — you can manage and submit inventory records.                    |
 
 > **Your result:**
 > - [ ] Pass
@@ -662,53 +602,54 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 ---
 
-#### Test 21 — Role Approval Flow
+#### Test 19 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
 **Part A — Quotation (Sales or Finance creates; Admin submits)**
 
-| Step | Who                                           | What to do                                              | What you should see                                                                   |
-| ---- | --------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 1    | **Syahira** (Sales User)                      | Create a new Quotation and save it.                     | Quotation saved. Status shows **Draft**. Syahira cannot submit.                       |
-| 2    | **Jennifer Gan** (Admin)                      | Open the Draft Quotation. Click Submit.                 | Quotation status changes to **OPEN**. Only Admin can submit.                          |
+| Step | Who                              | What to do                                                    | What you should see                                                        |
+| ---- | -------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| 1    | **Syahira** (Sales)              | Create a new Quotation and save it.                           | Quotation saved. Status shows **Draft**. Syahira cannot submit.            |
+| 2    | **Jennifer Gan** (Admin)         | Open the Draft Quotation. Click Submit.                       | Quotation status changes to **OPEN**. Only Admin can submit.               |
 
 **Part B — Sales Order (Sales or Finance creates; Admin submits)**
 
-| Step | Who                                           | What to do                                              | What you should see                                                                   |
-| ---- | --------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 3    | **Zuha** (Sales User)                         | Create a new Sales Order — leave it in **Draft**.       | Sales Order saved. Status shows **Draft**.                                            |
-| 4    | **Jennifer Gan** (Admin)                      | Open the Draft Sales Order. Click Submit.               | Sales Order status changes to **TO BILL**. Only Admin can submit.                     |
-| 5    | **Nisa** (Finance User)                       | Create a second Sales Order — leave it in **Draft**.    | Sales Order saved. Status shows **Draft**. Finance User can create.                   |
-| 6    | **Yvonne Choo** (Admin)                       | Open the second Draft Sales Order. Click Submit.        | Sales Order status changes to **TO BILL**.                                            |
+| Step | Who                              | What to do                                                    | What you should see                                                        |
+| ---- | -------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| 3    | **Zuha** (Sales)                 | Create a new Sales Order — leave it in **Draft**.             | Sales Order saved. Status shows **Draft**. Zuha cannot submit.             |
+| 4    | **Jennifer Gan** (Admin)         | Open the Draft Sales Order. Click Submit.                     | Sales Order status changes to **TO BILL**.                                 |
+| 5    | **Nisa** (Finance Assistant)     | Create a second Sales Order — leave it in **Draft**.          | Sales Order saved. Finance Assistant can create.                           |
+| 6    | **Yvonne Choo** (Admin)          | Open the second Draft Sales Order. Click Submit.              | Sales Order status changes to **TO BILL**.                                 |
 
 **Part C — Delivery Order (any role creates; Admin submits)**
 
-| Step | Who                                           | What to do                                              | What you should see                                                                   |
-| ---- | --------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 7    | **Fadzil** (Logistics User)                   | Create a Delivery Order from a **TO BILL** Sales Order. | Delivery Order saved in Draft. Logistics User can create.                             |
-| 8    | **Yvonne Choo** (Admin)                       | Open the Draft Delivery Order. Click Submit.            | Delivery Order is submitted. Admin is the only role that can submit.                  |
+| Step | Who                              | What to do                                                    | What you should see                                                        |
+| ---- | -------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| 7    | **Fadzil** (Warehousing)         | Create a Delivery Order from a **TO BILL** Sales Order.       | Delivery Order saved in Draft. Warehousing can create.                     |
+| 8    | **Yvonne Choo** (Admin)          | Open the Draft Delivery Order. Click Submit.                  | Delivery Order submitted. Admin is the only role that can submit.          |
 
-**Part D — Pick List (Logistics Manager submits)**
+**Part D — Pick List (Admin submits — no Logistics Manager at Fixguru)**
 
-| Step | Who                                           | What to do                                              | What you should see                                                                   |
-| ---- | --------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 9    | **Logistics Manager**                         | Create and submit a Pick List from the Delivery Order.  | Pick List submitted. Logistics Manager has submit access on Pick Lists.               |
+| Step | Who                              | What to do                                                    | What you should see                                                        |
+| ---- | -------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| 9    | **Asrul** (Warehousing)          | Create a Pick List from the Delivery Order and save it.       | Pick List saved in Draft. Warehousing can create.                          |
+| 10   | **Steven Gan** (Admin)           | Open the Draft Pick List. Click Submit.                       | Pick List submitted. Admin submits Pick Lists at Fixguru.                  |
 
-**Part E — Invoice (Finance Manager or Admin submits)**
+**Part E — Invoice (Finance Manager submits)**
 
-| Step | Who                                           | What to do                                              | What you should see                                                                   |
-| ---- | --------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 10   | **Nisa** (Finance User)                       | Open a **TO BILL** Sales Order. Create an Invoice and save it. | Invoice saved in Draft. Finance User can create but not submit.                 |
-| 11   | **Wendy Wang** (Finance Manager)              | Open the Draft Invoice. Click Submit.                   | Invoice status changes to **UNPAID**. Finance Manager can submit Invoices.            |
+| Step | Who                              | What to do                                                    | What you should see                                                        |
+| ---- | -------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| 11   | **Nisa** (Finance Assistant)     | Open a **TO BILL** Sales Order. Create an Invoice and save it. | Invoice saved in Draft. Finance Assistant can create but not submit.      |
+| 12   | **Wendy Wang** (Finance Manager) | Open the Draft Invoice. Click Submit.                         | Invoice status changes to **UNPAID**. Finance Manager can submit Invoices. |
 
-**Part F — Payment / Receipt (Finance User or Finance Manager or Admin submits)**
+**Part F — Payment / Receipt (Finance Assistant or Finance Manager submits)**
 
-| Step | Who                                           | What to do                                              | What you should see                                                                   |
-| ---- | --------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 12   | **Nisa** (Finance User)                       | Create a Receipt against the **UNPAID** Invoice. Submit it. | Receipt submitted. Invoice status changes to **PAID**. Finance User can submit Payments. |
-| 13   | **Nisa** (Finance User)                       | Create a second Receipt against a different **UNPAID** Invoice — leave it in **Draft**. | Receipt saved in Draft. Invoice still shows **UNPAID**. |
-| 14   | **Wendy Wang** (Finance Manager)              | Open the Draft Receipt. Click Submit.                   | Receipt submitted. Finance Manager can also submit Payments.                          |
+| Step | Who                              | What to do                                                    | What you should see                                                             |
+| ---- | -------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| 13   | **Nisa** (Finance Assistant)     | Create a Receipt against the **UNPAID** Invoice. Submit it.  | Receipt submitted. Invoice status changes to **PAID**. Finance Assistant can submit Payments. |
+| 14   | **Nisa** (Finance Assistant)     | Create a second Receipt against a different **UNPAID** Invoice — leave it in **Draft**. | Receipt saved in Draft. Invoice still shows **UNPAID**. |
+| 15   | **Wendy Wang** (Finance Manager) | Open the Draft Receipt. Click Submit.                         | Receipt submitted. Finance Manager can also submit Payments.                    |
 
 > **Your result:**
 > - [ ] Pass
@@ -725,31 +666,29 @@ Finance exports these documents from MAIA as CSV files to create eInvoice record
 
 ## Results Summary
 
-| Test # | What was tested                                                          | Result (Pass / Fail / Issue) | Tested by | Date |
-| ------ | ------------------------------------------------------------------------ | ---------------------------- | --------- | ---- |
-| Test 1  | Send order by text message                                              |                              |           |      |
-| Test 2  | Send order by photo                                                     |                              |           |      |
-| Test 3  | Send order by PDF                                                       |                              |           |      |
-| Test 4  | Pricing and stock check                                                 |                              |           |      |
-| Test 5  | Generate documents (Quotation → SO → Proforma Invoice → Invoice)        |                              |           |      |
-| Test 6  | Create Credit Note and Debit Note (Finance Manager)                     |                              |           |      |
-| Test 7  | Duplicate order is blocked                                              |                              |           |      |
-| Test 8  | Create and manage Sales Orders (Sales/Finance create; Admin submits)    |                              |           |      |
-| Test 9  | Export Invoice / Credit Note / Debit Note as CSV (Finance)              |                              |           |      |
-| Test 10 | Create Delivery Order and Picking List                                  |                              |           |      |
-| Test 11 | Stock alerts (Out of Stock / Low Stock)                                 |                              |           |      |
-| Test 12 | Delivery delay reminder                                                 |                              |           |      |
-| Test 13 | All users can log in                                                    |                              |           |      |
-| Test 14 | Sales Manager — access check                                            |                              |           |      |
-| Test 15 | Sales User (Hayati / Zuha) — access check                               |                              |           |      |
-| Test 16 | Logistics Manager — access check                                        |                              |           |      |
-| Test 17 | Logistics User (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 18 | Finance Manager (Abishaah / Wendy Wang) — access check                  |                              |           |      |
-| Test 19 | Finance User (Nisa) — access check                                      |                              |           |      |
-| Test 20 | Admin (Steven Gan / Yvonne Choo) — access check                         |                              |           |      |
-| Test 21 | Role approval flow (QT → SO → DO → PL → INV → RCT)                     |                              |           |      |
+| Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
+| ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
+| Test 1  | Send order by text message                                           |                              |           |      |
+| Test 2  | Send order by photo                                                  |                              |           |      |
+| Test 3  | Send order by PDF                                                    |                              |           |      |
+| Test 4  | Pricing and stock check                                              |                              |           |      |
+| Test 5  | Generate documents (Quotation → SO → Proforma Invoice → Invoice)     |                              |           |      |
+| Test 6  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
+| Test 7  | Duplicate order is blocked                                           |                              |           |      |
+| Test 8  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
+| Test 9  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
+| Test 10 | Create Delivery Order and Picking List                               |                              |           |      |
+| Test 11 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 12 | Delivery delay reminder                                              |                              |           |      |
+| Test 13 | All users can log in                                                 |                              |           |      |
+| Test 14 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 15 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 16 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 17 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 18 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 19 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 21 tests**
+**Total: 19 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|

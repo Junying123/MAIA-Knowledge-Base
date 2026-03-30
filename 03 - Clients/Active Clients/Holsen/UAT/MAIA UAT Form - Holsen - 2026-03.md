@@ -17,15 +17,19 @@ uat_round: 1
 **Sign-Off Deadline:** 25 March 2026
 **Go-Live (Core MAIA):** 31 March 2026
 
-### UAT Timeline
+### UAT Timeline — Phase 1
 
-| Date         | Milestone                                         | Who         |
-| ------------ | ------------------------------------------------- | ----------- |
-| 18 Mar       | UAT starts — work through all test groups         | Holsen team |
-| 18 Mar       | WhatsApp chatbot setup begins                     | MAIA team   |
-| 26 Mar       | All tests completed and signed off                | Holsen team |
-| 31 Mar       | **Go-live — core MAIA**                           | All         |
-| Post-go-live | C1/C3 compliance features (Phase 2 UAT to follow) | TBD         |
+| # | Milestone                        | Start      | End        | Owner     | Status      |
+|---|----------------------------------|------------|------------|-----------|-------------|
+| 1 | UAT Brief                        | 18 Mar     | 18 Mar     | Gareth Ng | Completed   |
+| 2 | UAT Testing                      | 18 Mar     | 03 Apr     | Gareth Ng | In Progress |
+| 3 | UAT Follow Up                    | 31 Mar     | 31 Mar     | Gareth Ng | Not Started |
+| 4 | Meta Account Setup               | 03 Apr     | 03 Apr     | Gareth Ng | Not Started |
+| 5 | Product Ready                    | 07 Apr     | 07 Apr     | Gareth Ng | Not Started |
+| 6 | Poison Signing Order Form (Phase 2) | 30 Mar  | 31 Mar     | Gareth Ng | In Progress |
+| 7 | Customer Group for Sales User    | 31 Mar     | 02 Apr     | Gareth Ng | Not Started |
+| 8 | UAT Bug Fixes                    | 31 Mar     | 04 Apr     | Gareth Ng | Not Started |
+| 9 | Phase 1 Sign Off                 | 08 Apr     | 08 Apr     | Gareth Ng | Not Started |
 
 > **Scope note:** This UAT covers core MAIA only. C1/C3 compliance features and A57 tax exemption enforcement are not included in this round — they will be tested separately after go-live.
 **Web App:** https://maia-fe-holsen.vercel.app/login
