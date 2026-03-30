@@ -116,16 +116,17 @@ uat_round: 1
 
 ---
 
-#### Test 2 — Send an Order by Photo
+#### Test 2 — Send an Order by Photo (PO)
 
 *Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
-| Step | What to do                                           | What you should see                                                                                   |
-| ---- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| 1    | Take a photo of a handwritten order or a printed PO. | Photo is ready on your phone.                                                                         |
-| 2    | Send the photo to chatbot on Telegram.               | Chatbot accepts the photo and starts processing.                                                      |
-| 3    | Wait a moment.                                       | The chatbot shows the order details it read from the photo — customer name, products, and quantities. |
-| 4    | Check that the details match the photo.              | Information extracted is correct. If anything is wrong, you can edit before confirming.               |
+| Step | What to do                                                                                                           | What you should see                                                                                                                      |
+| ---- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Take a photo of a **printed PO or handwritten order**.                                                               | Photo is ready on your phone.                                                                                                            |
+| 2    | Send the photo to the **MAIA Holsen chatbot** on Telegram with a short message, e.g. *"pls process this for CPO"*.   | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                   |
+| 3    | Wait a moment.                                                                                                       | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**. |
+
+> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
 
 > **Your result:**
 > - [ ] Pass
@@ -167,7 +168,7 @@ uat_round: 1
 
 #### Test 4 — Pricing and Stock Check
 
-*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) — continue from Test 1, 2, or 3.*
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) — continue from **Test 1 only** (text message order). Tests 2 and 3 go directly to a CPO in the web app — pricing for those is reviewed there, not in the chatbot.*
 
 | Step | What to do                                                                | What you should see                                                  |
 | ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
