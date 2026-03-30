@@ -1,0 +1,37 @@
+﻿ROLES ,,,,,,,,,,,,,,,,,,,,
+SALES MANAGER ,,,,,,,,,,,,,,,,,,,,
+SALES USER ,"XIAO LING
+HAYATI
+ZUHA
+SYAHIRA",,,,,,,,,,,,,,,,,,,
+LOGISTICS MANAGER ,,,,,,,,,,,,,,,,,,,,
+LOGISTICS USER ,"ASRUL
+FADZIL
+AZIZAH",,,,,,,,,,,,,,,,,,,
+FINANCE MANAGER ,"ABISHAAH 
+WENDY WANG",,,,,,,,,,,,,,,,,,,
+FINANCE USER ,NISA,,,,,,,,,,,,,,,,,,,
+ADMIN,"MARCUS LIM
+STEVEN GAN
+YVONNE CHOO
+JENNIFER GAN",,,,,,,,,,,,,,,,,,,
+SECTION/ROLE,SALES MANAGER ,SALES USER ,LOGISTICS MANAGER ,LOGISTICS USER ,FINANCE MANAGER ,FINANCE USER ,Admin,,,,,,,,,,,,,
+Core Documents,,,,,,,"READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Customer ,READ,READ,READ ,READ ,"READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Quotation ,"READ, WRITE, CREATE,  ","READ, WRITE, CREATE, ",,,"READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Sales Order ,"READ, WRITE, CREATE,  ","READ, WRITE, CREATE, ",,,"READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Invoice ,READ,READ,,,"READ, WRITE, CREATE, ,SUBMIT","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Payment ,READ,READ,,,"READ, WRITE, CREATE, ,SUBMIT","READ, WRITE, CREATE, ,SUBMIT","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+"Credit note, return",READ ,READ ,,,"READ, WRITE, CREATE, ,SUBMIT","READ, WRITE, CREATE, ",,,,,,,,,,,,,,
+"Inventory 
+Item, Batch, Serial No, Warehouse, Stock Entry, Pick List",READ ,READ ,"READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ",READ ,READ ,"READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Operations ,,,,,,,,,,,,,,,,,,,,
+ Delivery Note,"READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Issue ,"READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+Stock Reservation Entry ,"READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+"Accounting 
+GL Entry, Payment Entry, Sales Invoice ",,,,,"READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+,,,,,,,"READ, WRITE, CREATE, DELETE, SUBMIT ",,,,,,,,,,,,,
+Sales Taxes and Charges ,"READ, WRITE, CREATE, , SUBMIT ","READ, WRITE, CREATE, ",,,"READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
+"Configuration 
+Payment Term, Item Tax Template ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, ",,,"READ, WRITE, CREATE, ","READ, WRITE, CREATE, ","READ, WRITE, CREATE, , SUBMIT ",,,,,,,,,,,,,
