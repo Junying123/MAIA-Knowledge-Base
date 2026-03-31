@@ -5,6 +5,9 @@ last_reviewed: 2026-03-31
 client: JDX Tea (九鼎香)
 meeting_date: 2026-03-27
 transcript_ref: "[[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Meeting Notes/JDX Meeting Transcript - YYYY-MM-DD]]"
+pain_points_sources:
+  - "[[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Meeting Notes/JDX Meeting Transcript - YYYY-MM-DD]]"
+  - "[[03 - Clients/Discovery Pipeline/GTM Briefs/JDX/JDX Transcript]]"
 ---
 
 # Requirement Gathering Output — JDX Tea (九鼎香) — 2026-03
@@ -19,40 +22,81 @@ transcript_ref: "[[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Mee
 
 ---
 
+## Pain points — from meeting transcripts
+
+Synthesised from **verbatim / near-verbatim** discussion in:
+
+- **RG** — Requirements gathering with Mr. Kong (full transcript in [[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Meeting Notes/JDX Meeting Transcript - YYYY-MM-DD]], same session as [[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering]])
+- **GTM** — Pre-sales / GTM debrief ([[03 - Clients/Discovery Pipeline/GTM Briefs/JDX/JDX Transcript]], Mar 25)
+
+These are **their** problems as stated — not MAIA’s interpretation — grouped for proposal, demo, and scope.
+
+### Peak season, staffing, and urgency (RG)
+
+- **Volume cliff:** Hundreds of orders **per day** in a few peak windows vs **often zero** orders a day for long off-season stretches — hard to size permanent headcount.
+- **Surge hiring:** Must **hire and train many part-timers / “newbies”** each festival; split outlets across coordinators; daily checking of promoter reports vs transfers.
+- **Always-on pressure:** Customers contact **after office hours**; someone must **stand by early morning or overnight** to **issue / re-send invoices** so customers can pay and move forward.
+- **Where they want help first:** Mr. Kong summarised the priority as **(1) billing** and **(2) delivery / order tracking** — if MAIA can reduce temporary hiring for those two, “that would help a lot already.” (RG)
+
+### Billing, pro forma, and payment coordination (RG)
+
+- **Pro forma as “sales order”:** Customers need the word **invoice** for internal payment approval → heavy use of **pro forma invoice** before payment; only then convert to **actual invoice**.
+- **Rich remarks, single document:** Customisation (ribbon / organza / shrink-wrap, greeting card wording, urgency vs standard 5–7 working days, price tag on/off, item swaps like mushroom → pineapple tart) lives in a **remark column**, not separate SKUs — same instructions must **flow to warehouse, ops, and delivery**.
+- **WhatsApp-native billing workflow:** Separate group chatter: **billing requests** vs **payment advice** — coordinators and accounts assistants post bills to promoter groups; payment must be **matched** to pro forma before **delivery orders** go out. Highly manual, thread-based.
+- **Tiered discounts & exceptions:** **Fixed rules** by order value band (e.g. 5% / 10% / 15%) **change by season** and market (e.g. COVID online norms); **custom / bring-your-own** hamper work **voids** standard discount — **human judgment**, not fully rule-automatable in their view. (RG)
+
+### Delivery, proof, and multi-drop complexity (RG)
+
+- **Addresses outside structured channels:** Multi-recipient corporate orders: delivery details often captured **verbally / WhatsApp**, then reflected on **DO / operational paperwork** — error-prone.
+- **High-effort edge cases (few incidents, large time sink):** Wrong item, wrong date, late driver → **refused sign**, return, **re-schedule** — “chaotic” even if infrequent.
+- **Split fulfilment model:** **Klang Valley** — own fleet + contracted courier, **photo POD** in a shared group; **outstation** — 3PL (e.g. JT, Skynet, CityLink), **tracking numbers / screenshots / consignee notes**. Coordinators **chase partners** and **evidence**; customers **chase** CS or promoters.
+- **Single order, many destinations:** One order → **dozens of addresses** (mix of local and outstation, some batched to offices) — dedicated ops for **packing, cartons, handoff to express**; status updates are **labour-intensive**.
+
+### Outlets, consignment kiosks, and stock movement (RG · GTM)
+
+- **No PO consignment:** Giant / AEON seasonal kiosks — **no purchase order**; placement, sell-through billing, and replenishment logic are **non-standard** vs typical B2B PO flows.
+- **Daily promoter discipline:** Fixed-format **daily stock report** (opening, inflow, transfers, adjustments, returns, closing); **top-up requests** often **also** typed in WhatsApp (not only in the report).
+- **Rationalising top-ups:** Ops must **challenge** promoters who **over-order** “out of fear” of stockouts — extra coordination load.
+- **Outlet placement & forecasting (GTM):** Which SKUs and quantities go to **which hypermarket outlet** is a **heavy judgment** problem; boss described forecasting as **“by feeling”** — internally may use Excel / time series, but **unclear** and needs discovery (GTM).
+
+### Inventory, data, and “system mess” (RG)
+
+- **Excel + manual truth:** Stock and operational quantity sense live largely in **Excel** and manual checks; **SQL** used for **accounting / boom codes**, not production or live inventory modules.
+- **Past failed SKU hygiene:** They tried loading **full procurement** into the system → became **“so messy”** that accuracy effort **wasn’t worth it** — shapes **low appetite** for inventory-heavy MAIA scope unless sales bottleneck is solved first.
+- **Substitution & OOS:** ~**70%** procurement forecast accuracy; **substitutions** with customer consent; **end-of-season** brochure vs shelf alignment — operational load even when “allowed” in T&Cs.
+- **Competition & season volatility (RG):** Sales can **swing** hard year on year (packaging innovation, competitor dumping, promoter / floor placement changes) — undermines **stable** forecasting; reinforces **manual** and **judgment-heavy** ops.
+
+### Channel scope and expectations (RG · GTM)
+
+- **Buying / discovery friction:** Early in the session Mr. Kong asked to **skip abstract flow diagrams** and instead run **on-the-spot examples** in MAIA — diagrams felt **too complicated** before imagining the tool in **their** context (team explained why process discovery still had to come first). Useful for **demo style**: lead with **their** samples, not generic charts. (RG)
+- **Seasonal B2B / hampers first:** **~80%** of peak sales in the seasonal / corporate hamper pattern; **tea retail** and **van (QSoft) routes** are **lower priority** for efficiency gains vs peak.
+- **Tea / SKU complexity deferred:** **~3,000 SKUs** for tea art (year, factory, grade, batch) — Mr. Kong explicitly **parked** deep system treatment until **seasonal** use case is proven (“messy”; “how [would] AI cope”).
+- **Iron Man / “Jarvis” expectation:** Wants **conversational, magical** automation; realistic expectation set that much may still be **process change** (left hand vs right hand) — tension to manage in change management (RG; aligns with [[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering]]).
+
+### Giant / AEON B2B portal billing (RG)
+
+- **Explicitly lower priority for MAIA:** Monthly **hypermarket B2B portal** billing, commission / display charge deductions, CN from retailer — **few bills**, often **after** peak; staff have **slack time**; “not critical” if MAIA never touches it.
+
+---
+
 ## E2E Workflow — Seasonal Hamper (Main Priority)
 
 > This is the primary flow JDX wants MAIA to support. Covers from order intake to delivery proof.
 
-```
-Customer order (WhatsApp / Facebook / promoter / website)
-        ↓
-Accounts assistant creates Pro Forma Invoice
-  — includes customisation remarks (ribbon, greeting card, delivery date, item subs)
-  — sent to customer via WhatsApp group
-        ↓
-Customer reviews Pro Forma Invoice → confirms & pays
-  — payment via bank transfer / Touch & Go / cheque
-  — sends payment advice slip via WhatsApp (payment advice group)
-        ↓
-Accounts team matches payment advice against Pro Forma Invoice
-        ↓
-Delivery Order (DO) created
-  — customisation remarks flow from Pro Forma → DO
-  — operations / warehouse team pick & pack according to DO
-  — for custom orders: produce new batch (don't dismantle existing packed stock)
-        ↓
-Delivery scheduling
-  — Klang Valley: own vehicles (lorry / double-deck van / normal van), route-optimised
-  — Outstation: 3PL (JT, Skynet, CityLink)
-  — Multi-address orders: split to separate drops (e.g. 50 hampers → 50 locations)
-        ↓
-Delivery
-  — Driver delivers; customer signs physical DO as POD
-  — Driver takes photo as proof; uploaded to WhatsApp group
-  — Failed delivery: reschedule (common pain point, very manual today)
-        ↓
-Pro Forma Invoice converted to Invoice (post-payment + delivery confirmed)
-```
+| Step | Today (Current) | With MAIA |
+|------|----------------|-----------|
+| **Order intake** | Customer contacts via WhatsApp / Facebook / promoter / website — no central log | Same channels retained; all orders logged and tracked in MAIA from first contact |
+| **Pro Forma Invoice creation** | Accounts assistant manually creates pro forma in SQL; customisation remarks typed in free text | Accounts creates Pro Forma Invoice in MAIA with structured remarks column; product bundle selected from catalogue |
+| **Discount applied** | Manual calculation per order value; coordinator applies season rules from memory | Discount tiers configured in MAIA; auto-applied at Pro Forma stage; admin updates tiers each season |
+| **Send to customer** | Pro Forma sent via WhatsApp group manually | Pro Forma sent from MAIA (email / WhatsApp link); customer receives clean formatted document |
+| **Payment confirmation** | Customer sends payment advice slip to a separate WhatsApp group; accounts manually matches slip to pro forma | Payment advice recorded in MAIA; matched against open Pro Forma; triggers DO creation when confirmed |
+| **DO creation** | Manually created after payment matched; customisation remarks re-typed or copy-pasted from pro forma | DO auto-generated from confirmed Pro Forma; all remarks propagated automatically — visible to warehouse |
+| **Warehouse packing** | Ops team reads printed / WhatsApp DO; must cross-check remarks manually; custom orders re-batched | Warehouse works from MAIA DO with full remarks visible; component substitutions logged in MAIA with reason |
+| **Delivery scheduling** | Manual routing; coordinator assigns vehicle via WhatsApp; multi-address orders tracked on spreadsheet | Delivery scheduling in MAIA; vehicle assignment; multi-address orders split into individual drops from one order |
+| **Delivery & POD** | Driver delivers; customer signs physical DO; photos sent to WhatsApp group; coordinator retrieves manually | Driver captures photo POD in MAIA (mobile); delivery status updated in real time; coordinator sees instantly |
+| **Customer delivery tracking** | Customer chases coordinator / promoter via WhatsApp to find out status | Customer-facing tracking link / status page; reduces inbound WhatsApp chases |
+| **Failed delivery** | Coordinator handles rescheduling manually via phone / WhatsApp; time-consuming and error-prone | Failed delivery flagged in MAIA; rescheduling logged; coordinator notified with context |
+| **Invoice conversion** | Manual conversion Pro Forma → Invoice in SQL after payment and delivery confirmed | One-click Pro Forma → Invoice conversion in MAIA; triggered on payment confirmation |
 
 **Discount rules (applied at Pro Forma stage):**
 
@@ -72,39 +116,26 @@ Pro Forma Invoice converted to Invoice (post-payment + delivery confirmed)
 
 > Lower MAIA priority per client, but understanding it helps scope the full picture.
 
-```
-Season opens → JDX places promoter + kiosk at outlet
-        ↓
-Promoter sells daily; cashier collects payment on JDX's behalf
-        ↓
-Promoter submits daily stock report via WhatsApp group
-  (opening balance, inflow, stock transfer, stock return, closing balance)
-        ↓
-Top-up request sent via WhatsApp group → ops team reviews & allocates
-        ↓
-JDX delivers top-up stock to outlet
-        ↓
-End of month: hypermarket B2B portal generates sales report
-  → JDX converts to bill on portal
-  → Portal deducts commission + display charges
-  → Hypermarket pays remainder
-```
+| Step | Today (Current) | With MAIA |
+|------|----------------|-----------|
+| **Season setup** | JDX manually deploys promoter + kiosk to outlet; no system record of outlet assignment | Outlet registered in MAIA; opening stock logged; promoter assigned to outlet |
+| **Daily stock report** | Promoter fills fixed-format report manually; sends via WhatsApp group; coordinator reads and verifies | Promoter submits digital daily stock report in MAIA per outlet; auto-validated against previous closing balance |
+| **Top-up request** | Promoter messages WhatsApp group; ops team reads, manually decides allocation; can over-order | Top-up request raised in MAIA; ops team reviews, approves / adjusts; over-ordering challenged via system |
+| **Stock delivery to outlet** | Manually coordinated; stock transfer noted in SQL | DO generated in MAIA for outlet top-up delivery; stock movement tracked |
+| **Monthly billing** | JDX manually bills on hypermarket's B2B portal; deducts commission and display charges | Out of scope for MAIA — hypermarket portal handles this; MAIA records the resulting receivable only |
 
 ---
 
 ## E2E Workflow — Van Sales (Regular, Non-Seasonal)
 
-> ~10–15 client visits/day; currently on QSoft. Assess keep vs replace.
+> ~10–15 client visits/day; currently on QSoft. Assess keep vs replace with tech team.
 
-```
-Salesman visits bottle/packet shop
-        ↓
-Places stock; opens bill on QSoft tablet on the spot
-        ↓
-Prints bill via mini printer (QSoft → SQL integrated)
-        ↓
-Customer receives printed bill; salesman collects payment or logs account
-```
+| Step | Today (Current) | With MAIA |
+|------|----------------|-----------|
+| **Visit & bill** | Salesman opens bill on QSoft tablet on the spot; prints via mini printer | **Option A (keep QSoft):** QSoft integrates to MAIA via API instead of SQL. **Option B (replace):** Salesman uses MAIA mobile/tablet to create invoice on spot and print |
+| **Inventory update** | QSoft → SQL sync (real-time unclear) | Inventory updated in MAIA in real time on bill creation; no sync lag |
+| **Payment recording** | Recorded in QSoft / SQL separately | Recorded directly in MAIA; single source of truth |
+| **Reconciliation** | Manual reconciliation between QSoft and SQL at end of day | All van sales in MAIA; no reconciliation gap |
 
 ---
 
