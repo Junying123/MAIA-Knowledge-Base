@@ -8,6 +8,23 @@ last_reviewed: 2026-03-31
 
 Track all updates to the knowledge base.
 
+## 2026-03-31 — Tech lead briefing transcript (Gareth)
+
+### Added
+- **`02 - PM Playbook/Internal Sessions/Tech lead — PM dev briefing session — Transcript.md`** — Full internal session transcript (listening/processing, high-level vs in-depth briefs, product–tech language, LLM + MAIA Codex intake workflow). Linked from [[02 - PM Playbook/Internal Sessions/Internal Sessions]].
+
+---
+
+## 2026-03-31 — Tech lead briefing structured notes (Gareth)
+
+### Added
+- **`02 - PM Playbook/Internal Sessions/Tech lead — PM dev briefing session — Structured notes.md`** — Companion note (session metadata, themed sections, decisions/actions, wikilink to verbatim transcript). **Updated** [[02 - PM Playbook/Internal Sessions/Internal Sessions]] example line and added **See Also** on that hub page.
+
+### Updated (same day, later)
+- **Filled** structured notes with **summary**, `[!summary]` executive highlights, and **theme-by-theme** takeaways from [[Tech lead — PM dev briefing session — Transcript]]; concrete **action items** and **parking lot**.
+
+---
+
 ## 2026-03-31 — Client training vs internal sessions (Gareth)
 
 ### Reorganized — Training content by audience

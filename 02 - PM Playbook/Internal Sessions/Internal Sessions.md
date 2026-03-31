@@ -16,6 +16,8 @@ Internal-only material for the MAIA PM team: briefings from engineering leads, c
 | **Not here** | Client-facing training decks, slide outlines, or facilitator notes → [[01 - MAIA Product/Client Training/MAIA User Training - Slide Content Proposal]] |
 | **Not here** | Client-specific training or demos → `03 - Clients/[Client]/Meetings/` (or that client’s folders) |
 
+**Example:** [[Tech lead — PM dev briefing session — Structured notes]] (summary + action skeleton) and [[Tech lead — PM dev briefing session — Transcript]] (verbatim transcript).
+
 ## Adding a new note
 
 1. Create a new `.md` file in this folder (or a subfolder if you later split by year, e.g. `2026/`).
@@ -24,4 +26,8 @@ Internal-only material for the MAIA PM team: briefings from engineering leads, c
 4. For structure, start from `[[02 - PM Playbook/Templates/[Template] Meeting Notes]]` or paste the transcript under headings (summary first, full transcript below).
 5. Link related process pages in **See Also** (e.g. dev handover).
 
+## See Also
+
+- [[02 - PM Playbook/Processes/Dev Handover Guide]]
+- [[02 - PM Playbook/Templates/[Template] Meeting Notes]]
 
