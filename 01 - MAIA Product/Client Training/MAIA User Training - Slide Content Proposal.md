@@ -1,10 +1,12 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-03-03
+last_reviewed: 2026-03-31
 ---
 
 # MAIA User Training — Slide Content Proposal
+
+**Audience:** Client end-user training and facilitators — not internal PM-only sessions (those live under [[02 - PM Playbook/Internal Sessions/Internal Sessions]]).
 
 Full-day training slide content structured by module. Each topic lists **Key Points** (what appears on the slide) and **Support** (trainer elaboration / speaker notes). Trainer: Johnson Goh.
 
@@ -426,6 +428,7 @@ Full-day training slide content structured by module. Each topic lists **Key Poi
 
 ## See Also
 
+- [[02 - PM Playbook/Internal Sessions/Internal Sessions]] — internal PM/engineering briefings (contrast)
 - [[01 - MAIA Product/Overview/Product Overview]]
 - [[01 - MAIA Product/Core Workflows/Quote-to-Cash Flow]]
 - [[01 - MAIA Product/Overview/Document Status Flows]]

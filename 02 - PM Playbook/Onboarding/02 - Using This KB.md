@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-02-28
+last_reviewed: 2026-03-31
 ---
 
 # Using This KB
@@ -41,8 +41,8 @@ If you notice something wrong, fix it. If you learn something new, write it in. 
 
 ```
 📁 00 - Home               → Start here. Governance, quick reference, this onboarding.
-📁 01 - MAIA Product       → Product features, modules, workflows, known limitations.
-📁 02 - PM Playbook        → PM processes, templates, SOPs, onboarding guides.
+📁 01 - MAIA Product       → Product features, modules, workflows, known limitations, client-facing training (`Client Training/`).
+📁 02 - PM Playbook        → PM processes, templates, SOPs, onboarding guides, internal sessions (`Internal Sessions/`).
 📁 03 - Clients            → One subfolder per client. Context, history, requirements.
 📁 04 - QA & Known Issues  → Test scenarios, known bugs, workarounds.
 📁 05 - Releases & Updates → Release notes, upcoming features, changelog.
@@ -52,7 +52,7 @@ If you notice something wrong, fix it. If you learn something new, write it in. 
 📁 09 - Intake & Triage    → New request workflow and inbox.
 ```
 
-**Rule of thumb:** When you're not sure where something belongs, ask: *who needs to find this?* Client-specific → `03 - Clients`. Product behaviour → `01 - MAIA Product`. Process or template → `02 - PM Playbook`.
+**Rule of thumb:** When you're not sure where something belongs, ask: *who needs to find this?* Client-specific → `03 - Clients`. Product behaviour → `01 - MAIA Product`. Process or template → `02 - PM Playbook`. **Client-facing** training slides and facilitator notes → `01 - MAIA Product/Client Training/`. **Internal** PM/engineering briefings and transcripts → `02 - PM Playbook/Internal Sessions/`.
 
 ---
 

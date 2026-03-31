@@ -13,8 +13,8 @@ This file contains rules and conventions for AI assistants (like Claude Code) wo
 
 ```
 📁 00 - Home               → Governance, quick reference
-📁 01 - MAIA Product       → Product features, modules, workflows
-📁 02 - PM Playbook        → Processes, templates, SOPs
+📁 01 - MAIA Product       → Product features, modules, workflows, client-facing training (`Client Training/`)
+📁 02 - PM Playbook        → Processes, templates, SOPs, onboarding, internal sessions (`Internal Sessions/`)
 📁 03 - Clients            → Per-client context
 📁 04 - QA & Known Issues  → Testing, bugs, workarounds
 📁 05 - Releases & Updates → Release notes, changelog
@@ -214,5 +214,5 @@ Key external docs:
 
 ---
 
-**Last Updated:** 2026-02-20
+**Last Updated:** 2026-03-31
 **Maintained By:** Gareth (KB Lead)

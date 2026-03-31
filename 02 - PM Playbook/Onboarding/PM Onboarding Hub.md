@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-02-28
+last_reviewed: 2026-03-31
 ---
 
 
@@ -115,6 +115,7 @@ Work through these in order. Each item links to a guide.
 
 ## See Also
 
+- [[02 - PM Playbook/Internal Sessions/Internal Sessions]] — Internal briefings and transcripts (vs client training in `01 - MAIA Product/Client Training/`)
 - [[README]] — KB governance and contribution rules
 - [[Quick Reference]] — Curated index of most-used pages
 - [[01 - Setup Obsidian]] — Install and configure Obsidian

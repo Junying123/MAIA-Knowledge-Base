@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-02-20
+last_reviewed: 2026-03-31
 ---
 
 # MAIA Knowledge Base — README
@@ -65,8 +65,8 @@ lark_url: [optional - URL if published to Lark]
 
 ```
 📁 00 - Home               → Start here, governance, quick reference
-📁 01 - MAIA Product       → Product features, modules, workflows
-📁 02 - PM Playbook        → Processes, templates, SOPs
+📁 01 - MAIA Product       → Product features, modules, workflows, client-facing training materials (`Client Training/`)
+📁 02 - PM Playbook        → Processes, templates, SOPs, onboarding, internal sessions (`Internal Sessions/`)
 📁 03 - Clients            → Per-client context and history
 📁 04 - QA & Known Issues  → Test scenarios, bugs, workarounds
 📁 05 - Releases & Updates → Release notes, upcoming features

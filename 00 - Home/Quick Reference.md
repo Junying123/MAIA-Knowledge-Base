@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-02-21
+last_reviewed: 2026-03-31
 ---
 
 # Quick Reference — MAIA KB
@@ -21,6 +21,11 @@ Your cheat sheet for the most commonly used pages and workflows.
 - [[01 - MAIA Product/Overview/Workspaces Overview]] — Sales / Finance / Logistics
 - [[01 - MAIA Product/Overview/Document Status Flows]] — All document statuses
 - [[01 - MAIA Product/Overview/Known Limitations]] — Product gaps + workarounds
+- [[01 - MAIA Product/Client Training/MAIA User Training - Slide Content Proposal]] — Client end-user full-day training slide outline
+
+## Internal sessions (PM team)
+
+- [[02 - PM Playbook/Internal Sessions/Internal Sessions]] — Tech-lead briefings, internal transcripts (not client-facing)
 
 ## Templates (Copy & Use)
 

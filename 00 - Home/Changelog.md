@@ -1,12 +1,23 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-02-21
+last_reviewed: 2026-03-31
 ---
 
 # MAIA KB — Changelog
 
 Track all updates to the knowledge base.
+
+## 2026-03-31 — Client training vs internal sessions (Gareth)
+
+### Reorganized — Training content by audience
+- **Moved** `MAIA User Training - Slide Content Proposal.md` from `02 - PM Playbook/Training/` to **`01 - MAIA Product/Client Training/`** — client end-user / facilitator material, not internal PM craft.
+- **Removed** empty `02 - PM Playbook/Training/` folder (it only held that file).
+- **Added** **`02 - PM Playbook/Internal Sessions/Internal Sessions.md`** — hub for internal briefings, tech-lead talks, and PM team transcripts; documents naming and what *not* to put here.
+
+**Updated indexes:** `00 - Home/README.md` (KB structure lines), `00 - Home/Quick Reference.md`, `02 - PM Playbook/Onboarding/02 - Using This KB.md`, `02 - PM Playbook/Onboarding/PM Onboarding Hub.md` (See Also), `CLAUDE.md`, `AGENTS.md` (folder structure).
+
+---
 
 ## 2026-02-21 — Mermaid Diagrams Import + Zoom Guide (Gareth)
 
