@@ -19,6 +19,95 @@ transcript_ref: "[[03 - Clients/Discovery Pipeline/Requirement Gathering/JDX/Mee
 
 ---
 
+## E2E Workflow — Seasonal Hamper (Main Priority)
+
+> This is the primary flow JDX wants MAIA to support. Covers from order intake to delivery proof.
+
+```
+Customer order (WhatsApp / Facebook / promoter / website)
+        ↓
+Accounts assistant creates Pro Forma Invoice
+  — includes customisation remarks (ribbon, greeting card, delivery date, item subs)
+  — sent to customer via WhatsApp group
+        ↓
+Customer reviews Pro Forma Invoice → confirms & pays
+  — payment via bank transfer / Touch & Go / cheque
+  — sends payment advice slip via WhatsApp (payment advice group)
+        ↓
+Accounts team matches payment advice against Pro Forma Invoice
+        ↓
+Delivery Order (DO) created
+  — customisation remarks flow from Pro Forma → DO
+  — operations / warehouse team pick & pack according to DO
+  — for custom orders: produce new batch (don't dismantle existing packed stock)
+        ↓
+Delivery scheduling
+  — Klang Valley: own vehicles (lorry / double-deck van / normal van), route-optimised
+  — Outstation: 3PL (JT, Skynet, CityLink)
+  — Multi-address orders: split to separate drops (e.g. 50 hampers → 50 locations)
+        ↓
+Delivery
+  — Driver delivers; customer signs physical DO as POD
+  — Driver takes photo as proof; uploaded to WhatsApp group
+  — Failed delivery: reschedule (common pain point, very manual today)
+        ↓
+Pro Forma Invoice converted to Invoice (post-payment + delivery confirmed)
+```
+
+**Discount rules (applied at Pro Forma stage):**
+
+| Order value (MYR) | Discount |
+|-------------------|---------|
+| Any single hamper > 200 | Free delivery (KV only) |
+| < 500 | 5% |
+| 500 – 1,500 | 10% |
+| > 1,500 | 15% |
+| Customised orders | No standard discount — manual decision |
+
+> Note: Discount tiers are reviewed and adjusted each season.
+
+---
+
+## E2E Workflow — Consignment (Giant / AEON, Seasonal)
+
+> Lower MAIA priority per client, but understanding it helps scope the full picture.
+
+```
+Season opens → JDX places promoter + kiosk at outlet
+        ↓
+Promoter sells daily; cashier collects payment on JDX's behalf
+        ↓
+Promoter submits daily stock report via WhatsApp group
+  (opening balance, inflow, stock transfer, stock return, closing balance)
+        ↓
+Top-up request sent via WhatsApp group → ops team reviews & allocates
+        ↓
+JDX delivers top-up stock to outlet
+        ↓
+End of month: hypermarket B2B portal generates sales report
+  → JDX converts to bill on portal
+  → Portal deducts commission + display charges
+  → Hypermarket pays remainder
+```
+
+---
+
+## E2E Workflow — Van Sales (Regular, Non-Seasonal)
+
+> ~10–15 client visits/day; currently on QSoft. Assess keep vs replace.
+
+```
+Salesman visits bottle/packet shop
+        ↓
+Places stock; opens bill on QSoft tablet on the spot
+        ↓
+Prints bill via mini printer (QSoft → SQL integrated)
+        ↓
+Customer receives printed bill; salesman collects payment or logs account
+```
+
+---
+
 ## Captured Requirements
 
 ### Sales Workflow
