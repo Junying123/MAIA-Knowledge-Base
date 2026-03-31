@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-03-17
+last_reviewed: 2026-03-31
 client: Holsen
 uat_round: 1
 ---
@@ -31,7 +31,7 @@ uat_round: 1
 | 8 | UAT Bug Fixes                    | 31 Mar     | 04 Apr     | Gareth Ng | Not Started |
 | 9 | Phase 1 Sign Off                 | 08 Apr     | 08 Apr     | Gareth Ng | Not Started |
 
-> **Scope note:** This UAT covers core MAIA only. C1/C3 compliance features and A57 tax exemption enforcement are not included in this round — they will be tested separately after go-live.
+**Scope note:** This UAT covers core MAIA only. C1/C3 compliance features and A57 tax exemption enforcement are not included in this round — they will be tested separately after go-live.
 **Web App:** https://maia-fe-holsen.vercel.app/login
 **Chatbot (during UAT):** Telegram — scan the QR code provided to open the MAIA Holsen chatbot
 ![[Pasted image 20260317232736.png|239]]
@@ -63,7 +63,7 @@ uat_round: 1
 5. If you are unsure or something is not loading, mark it **Issue** and contact **Gareth**.
 6. Sign off at the end when you are done.
 
-> **About these test cases:** All tests in this document are based on the agreed MAIA scope in the Holsen SOW. If any test case does not match how your business works, or if you notice a step that seems incorrect, please do not guess — contact **Gareth** directly and we will review and update the test case before you proceed.
+**About these test cases:** All tests in this document are based on the agreed MAIA scope in the Holsen SOW. If any test case does not match how your business works, or if you notice a step that seems incorrect, please do not guess — contact **Gareth** directly and we will review and update the test case before you proceed.
 
 **Result options:**
 - ✅ **Pass** — Everything worked as described
@@ -104,15 +104,15 @@ uat_round: 1
 | 3    | Wait a moment.                                                                                               | The chatbot shows the order details it extracted — customer name, products, and quantities. |
 | 4    | Check that the details are correct.                                                                          | Customer name, product names, and quantities match what you typed.                          |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
 
 ---
 
@@ -126,18 +126,18 @@ uat_round: 1
 | 2    | Send the photo to the **MAIA Holsen chatbot** on Telegram with a short message, e.g. *"pls process this for CPO"*.   | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                   |
 | 3    | Wait a moment.                                                                                                       | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**. |
 
-> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
+⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -151,18 +151,18 @@ uat_round: 1
 | 2    | Open chatbot on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                              |
 | 3    | Wait a moment.                                                                            | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**. |
 
-> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
+⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -178,16 +178,16 @@ uat_round: 1
 | 4    | Correct the price to be at or above the minimum.                          | Price accepted. You can continue.                                    |
 | 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -209,16 +209,16 @@ uat_round: 1
 | 4 | **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager) | Convert the CPO to a **Sales Order**. | A Sales Order is created. The CPO status updates to show it has been converted. |
 | 5 | **Noor Aili** (Logistics) or **Miss Wong** (Finance) | Open the Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -228,7 +228,7 @@ uat_round: 1
 
 *Continue from the order created in Test 4. Different roles handle different steps — coordinate as needed.*
 
-> **Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
+**Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
 
 | Step | Who                                                  | What to do                                                                     | What you should see                                                                                |
 | ---- | ---------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
@@ -238,16 +238,16 @@ uat_round: 1
 | 4    | **Miss Wong** (Finance)                              | From the Sales Order, generate the final **Invoice** and submit it.            | An Invoice is created and submitted. Status shows **UNPAID**.                                      |
 | 5    | Any user                                             | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF.      | All documents download successfully as PDFs.                                                       |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -265,16 +265,16 @@ uat_round: 1
 | 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                 |
 | 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.   |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -282,7 +282,7 @@ uat_round: 1
 
 *Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
 
-> **Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
+**Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
 
 | Step | What to do                                                                                                              | What you should see                                                                    |
 | ---- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -291,16 +291,16 @@ uat_round: 1
 | 3    | Send the **same order again** via chatbot — same customer and same PO Number **"PO-001"**.                              | A warning appears — this order already exists. The duplicate is blocked and not saved. |
 | 4    | Send a new order for the same customer but with a **different PO Number "PO-002"**.                                     | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -308,7 +308,7 @@ uat_round: 1
 
 *Who tests this: **Noor Aili** (Logistics) or **Miss Wong** (Finance) for SO creation; **Ng Tze Chien** (Sales Manager) for view-only check*
 
-> **Note:** Sales Manager has view-only access to Sales Orders. SO creation and editing is done by Logistics (Noor Aili) or Finance (Miss Wong).
+**Note:** Sales Manager has view-only access to Sales Orders. SO creation and editing is done by Logistics (Noor Aili) or Finance (Miss Wong).
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -318,16 +318,16 @@ uat_round: 1
 | 4 | Submit the Sales Order. | Status changes to **TO BILL**. The order is locked and ready for invoicing. |
 | 5 | Log out. Log in as **Sales Manager** (Ng Tze Chien). Try to edit or create a Sales Order. | 🚫 Sales Manager cannot create or edit Sales Orders — view only. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -345,18 +345,18 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4    | Open a **Credit Note** and repeat the export.           | CSV downloaded. File contains credit note details.                        |
 | 5    | Open a **Debit Note** and repeat the export.            | CSV downloaded. File contains debit note details.                         |
 
-> ⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in UBS. eInvoices are not generated inside MAIA.
+⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in UBS. eInvoices are not generated inside MAIA.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -375,16 +375,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 3 | From the Delivery Order, generate a **Picking List**. Submit it. | Picking List is created and submitted. It shows all items to pick from the warehouse with quantities. |
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -400,16 +400,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                                   |
 | 5    | Log out. Log in as **Sales Manager** (Ng Tze Chien). Check the same alerts.   | Both Out-of-Stock and Low-Stock alerts are visible to Sales Manager as well.          |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -422,18 +422,18 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 1 | Log in as **Noor Aili**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified. |
 | 2 | Check the daily digest or notification area. | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
 
-> ⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact Gareth to set one up.
+⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact Gareth to set one up.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -450,16 +450,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 1    | Open https://maia-fe-holsen.vercel.app/login in **Google Chrome** on a laptop or desktop. | The MAIA login page loads.                                     |
 | 2    | Each person logs in using their **assigned email and password** from the table above.     | Login is successful. Your workspace and dashboard are visible. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -482,16 +482,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 5 | Try to create a **Delivery Order**. | 🚫 You cannot create a Delivery Order — view only. |
 | 6 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -509,16 +509,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 6 | Try to **submit (finalise)** the Invoice you just created. | 🚫 Submit button is not available — Invoice submit is Finance only. |
 | 7 | Try to create a **Quotation**. | 🚫 You cannot create a Quotation — view only. No create button visible. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -534,16 +534,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
 | 5 | Try to submit (finalise) an **Invoice**. | 🚫 You cannot finalise an Invoice. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -558,16 +558,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 3 | Try to create or submit a **Sales Order** or **Delivery Order**. | 🚫 Not available — you cannot create or submit these documents. |
 | 4 | Try to open **Quotations**, **Invoices**, or **Purchase Orders**. | 🚫 Not visible or accessible. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -585,16 +585,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 6 | Try to open the **Picking List**. | 🚫 Picking List is not visible or accessible. |
 | 7 | Try to create a new **Incoming goods** record. | 🚫 You cannot create Incoming records — view only. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -609,16 +609,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 3 | Try to create an **Incoming goods** record. | ✅ Full write access. |
 | 4 | Try to submit a **Payment / Receipt**. | ✅ You can submit Receipts. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -633,16 +633,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 3 | Try to submit a **Payment / Receipt**. | ✅ You can submit Receipts. |
 | 4 | Try to open **User Management** (add or edit user accounts). | ✅ User management is accessible — you can view and manage user accounts. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -659,7 +659,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 **Part B — Sales Order submission (Logistics and Finance can create and submit)**
 
-> **Note:** Sales Manager has view-only access on Sales Orders — SO drafts are created by Logistics or Finance.
+**Note:** Sales Manager has view-only access on Sales Orders — SO drafts are created by Logistics or Finance.
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
@@ -692,7 +692,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 **Part F — Receipt / Payment submission (Finance creates; Finance and Admin can submit)**
 
-> **Note:** Admin can submit Receipts but cannot create them. Finance (Miss Wong) creates the Receipt; Admin can then submit it.
+**Note:** Admin can submit Receipts but cannot create them. Finance (Miss Wong) creates the Receipt; Admin can then submit it.
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
@@ -700,22 +700,22 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 15 | **Miss Wong** (Finance) | Create a second Receipt against a different **UNPAID** Invoice — leave it in **Draft**. Do not submit. | Receipt is saved. Status shows **Draft**. Invoice still shows **UNPAID**. |
 | 16 | **Ong Siow Chui** (Admin) | Open the **Draft** Receipt from Step 15. Click Submit. | Receipt is submitted. Admin can submit Receipts but cannot create them. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:** (coordinate across team)
-> **Date:**
->
-> **Notes (note the step number if any step failed):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:** (coordinate across team)
+**Date:**
+
+**Notes (note the step number if any step failed):**
+
 
 ---
 
 ### Group 6 — Poison Signed Order (PSO)
 
-> **What is this?** Holsen requires to attach a signed Poison Signed Order (PSO) form to every delivery that contains poison products. MAIA generates this form automatically when needed.
+**What is this?** Holsen requires to attach a signed Poison Signed Order (PSO) form to every delivery that contains poison products. MAIA generates this form automatically when needed.
 
 ---
 
@@ -736,16 +736,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 9    | Check the bottom of the PSO.                                                                                                    | Contains a **Signature and Company Stamp** section for the customer to sign. A blank Remarks field is present. A note about returning a signed copy is shown. The MAIA footer shows the generation date and time. |
 | 10   | Download the PSO. Then upload a scanned copy back to the Delivery Order and select **"Signed PSO Copy"** as the document type.  | Download works. Signed copy uploads successfully with the correct label. Miss Wong can view the PSO.                                                                                                              |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (if any step failed, note the step number and describe what happened):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (if any step failed, note the step number and describe what happened):**
+
 
 ---
 

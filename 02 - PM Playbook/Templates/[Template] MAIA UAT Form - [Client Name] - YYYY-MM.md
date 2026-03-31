@@ -27,7 +27,7 @@ uat_round: [1]
 | [Date] | **Go-live — core MAIA** | All |
 | Post-go-live | [Any Phase 2 items] | TBD |
 
-> **Scope note:** [Describe what is and is not included in this UAT round.]
+**Scope note:** [Describe what is and is not included in this UAT round.]
 
 **Web App:** [Web App URL]
 **Chatbot (during UAT):** Telegram — [Bot Name / Handle]
@@ -95,16 +95,16 @@ uat_round: [1]
 | 3 | Wait a moment. | The chatbot shows the order details it extracted — customer name, products, and quantities. |
 | 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -116,18 +116,18 @@ uat_round: [1]
 | 2 | Send the photo to **[Bot Name / Handle]** on Telegram with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."* |
 | 3 | Wait a moment. | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**. |
 
-> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
+⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -139,18 +139,18 @@ uat_round: [1]
 | 2 | Open **[Bot Name / Handle]** on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."* |
 | 3 | Wait a moment. | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00022**). The CPO status shows **Pending**. |
 
-> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
+⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert the CPO to a Sales Order. This is covered in the Group 2 web app tests.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -166,16 +166,16 @@ uat_round: [1]
 | 4 | Correct the price to be at or above the minimum. | Price accepted. You can continue. |
 | 5 | Check the stock quantity shown for a product. | Available stock quantity is displayed next to the product. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -198,16 +198,16 @@ uat_round: [1]
 | 4 | **[Sales Role]** | Convert the CPO to a **Sales Order**. | A Sales Order is created. The CPO status updates to show it has been converted. |
 | 5 | **[Logistics / Finance / Admin Role]** | Open the Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -215,7 +215,7 @@ uat_round: [1]
 
 *Continue from the order created in Test 4. Different roles handle different steps — coordinate as needed.*
 
-> **Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
+**Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
@@ -225,16 +225,16 @@ uat_round: [1]
 | 4 | **[Finance Role] ([Person Name])** | From the Sales Order, generate the final **Invoice** and submit it. | An Invoice is created and submitted. Status shows **UNPAID**. |
 | 5 | Any user | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF. | All documents download successfully as PDFs. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -250,22 +250,22 @@ uat_round: [1]
 | 4 | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears. |
 | 5 | Fill in the amount & adjust the items, then confirm. | Debit Note is created and saved. It references the original Invoice and shows the debited amount. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
 #### Test 8 — Duplicate Order is Blocked
 
-> **Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
+**Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** (submitted) status. Draft orders are not checked.
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -274,22 +274,22 @@ uat_round: [1]
 | 3 | Send the **same order again** via chatbot — same customer and same PO Number **"PO-001"**. | A warning appears — this order already exists. The duplicate is blocked and not saved. |
 | 4 | Send a new order for the same customer but with a **different PO Number "PO-002"**. | Order is accepted. A new CPO and Sales Order are created. No warning shown. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
 #### Test 9 — Manage Sales Orders on the Web App
 
-> **Note:** [Sales Role] has view-only access to Sales Orders. SO creation and editing is done by [Logistics Role] or [Finance Role].
+**Note:** [Sales Role] has view-only access to Sales Orders. SO creation and editing is done by [Logistics Role] or [Finance Role].
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -299,16 +299,16 @@ uat_round: [1]
 | 4 | Submit the Sales Order. | Status changes to **TO BILL**. The order is locked and ready for invoicing. |
 | 5 | Log out. Log in as **[Sales Role]**. Try to edit or create a Sales Order. | 🚫 [Sales Role] cannot create or edit Sales Orders — view only. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -324,18 +324,18 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Open a **Credit Note** and repeat the export. | CSV downloaded. File contains credit note details. |
 | 5 | Open a **Debit Note** and repeat the export. | CSV downloaded. File contains debit note details. |
 
-> ⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in the accounting system. eInvoices are not generated inside MAIA.
+⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in the accounting system. eInvoices are not generated inside MAIA.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -353,16 +353,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 3 | From the Delivery Order, generate a **Picking List**. Submit it. | Picking List is created and submitted. It shows all items to pick from the warehouse with quantities. |
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -376,16 +376,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 4 | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert. |
 | 5 | Log out. Log in as **[Sales Role]**. Check the same alerts. | Both Out-of-Stock and Low-Stock alerts are visible to Sales as well. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -396,18 +396,18 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 1 | Log in as **[Logistics Person]**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified. |
 | 2 | Check the daily digest or notification area. | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
 
-> ⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact your MAIA PM to set one up.
+⚠️ **Note:** If you cannot find an overdue Invoice to test this, please contact your MAIA PM to set one up.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -423,23 +423,23 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 1 | Open **[Web App URL]** in **Google Chrome** on a laptop or desktop. | The MAIA login page loads. |
 | 2 | Each person logs in using their **assigned email and password** from the table above. | Login is successful. Your workspace and dashboard are visible. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
 ### Group 5 — What Each Person Can and Cannot Do
 *Each person tests their own account. Check that you can do the things listed, and that you are blocked from things outside your role.*
 
-> *(This group is client-specific — define one test per role based on the client's permission setup. The examples below are common MAIA roles. Add, remove, or rename tests to match this client's configuration.)*
+*(This group is client-specific — define one test per role based on the client's permission setup. The examples below are common MAIA roles. Add, remove, or rename tests to match this client's configuration.)*
 
 ---
 
@@ -454,16 +454,16 @@ Log in as **[Role Name]** and check the following:
 | 3 | Try to [action this role cannot do]. | 🚫 You cannot [perform this action] — [view only / not accessible]. |
 | 4 | Try to [another restricted action]. | 🚫 You cannot [perform this action] — [view only / not accessible]. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -477,16 +477,16 @@ Log in as **[Role Name]** and check the following:
 | 2 | Try to [another allowed action]. | ✅ You can [perform this action]. |
 | 3 | Try to [action this role cannot do]. | 🚫 You cannot [perform this action] — [view only / not accessible]. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -507,7 +507,7 @@ Log in as **[Role Name]** and check the following:
 
 **Part B — Sales Order submission ([Logistics / Finance Role] can create and submit)**
 
-> **Note:** [Sales Role] has view-only access on Sales Orders — SO drafts are created by [Logistics Role] or [Finance Role].
+**Note:** [Sales Role] has view-only access on Sales Orders — SO drafts are created by [Logistics Role] or [Finance Role].
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
@@ -537,7 +537,7 @@ Log in as **[Role Name]** and check the following:
 
 **Part F — Receipt / Payment submission ([Finance / Admin Role])**
 
-> **Note:** [Admin Role] can submit Receipts but cannot create them. [Finance Role] creates the Receipt; [Admin Role] can then submit it.
+**Note:** [Admin Role] can submit Receipts but cannot create them. [Finance Role] creates the Receipt; [Admin Role] can then submit it.
 
 | Step | Who | What to do | What you should see |
 |------|-----|-----------|---------------------|
@@ -545,28 +545,28 @@ Log in as **[Role Name]** and check the following:
 | 12 | **[Finance Role] ([Person Name])** | Create a second Receipt against a different **UNPAID** Invoice — leave it in **Draft**. Do not submit. | Receipt is saved. Status shows **Draft**. Invoice still shows **UNPAID**. |
 | 13 | **[Admin Role] ([Person Name])** | Open the **Draft** Receipt from Step 12. Click Submit. | Receipt is submitted. [Admin Role] can submit Receipts but cannot create them. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:** (coordinate across team)
-> **Date:**
->
-> **Notes (note the step number if any step failed):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:** (coordinate across team)
+**Date:**
+
+**Notes (note the step number if any step failed):**
+
 
 ---
 
 ### Group 7 — Optional: Client-Specific Features
 
-> *(Include only if applicable — e.g., compliance forms, regulated product workflows, custom integrations, or business-specific rules agreed in the SOW.)*
+*(Include only if applicable — e.g., compliance forms, regulated product workflows, custom integrations, or business-specific rules agreed in the SOW.)*
 
 ---
 
 #### Test [N+1] — [Feature Name]
 
-> *(Optional — include if this feature is enabled for this client)*
+*(Optional — include if this feature is enabled for this client)*
 
 *Who tests this: [Role]*
 
@@ -575,16 +575,16 @@ Log in as **[Role Name]** and check the following:
 | 1 | [Describe the step specific to this feature.] | [Expected result.] |
 | 2 | [Next step.] | [Expected result.] |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 

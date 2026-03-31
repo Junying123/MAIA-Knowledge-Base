@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-03-30
+last_reviewed: 2026-03-31
 client: Fixguru
 uat_round: 1
 ---
@@ -28,7 +28,7 @@ uat_round: 1
 | 15–16 Apr | Product ready confirmation                   | MAIA team    |
 | 16 Apr    | **Phase 1 Sign Off & Go-Live**               | All          |
 
-> **Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), delivery, inventory alerts, and role permissions. E-invoice integration is covered separately.
+**Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), delivery, inventory alerts, and role permissions. E-invoice integration is covered separately.
 
 **Web App:** https://maia-fe-fixguru.vercel.app/login
 **Chatbot (during UAT):** Telegram — @maia_fixguru_bot *(scan the QR code provided)*
@@ -55,13 +55,13 @@ uat_round: 1
 | Yvonne Choo  | Admin              | Admin           | yvonne@iamworldwide.com.my     | 123456   |
 | Jennifer Gan | Admin              | Admin           | jennifer@iamworldwide.com.my   | 123456   |
 
-> **Note:** There is no Sales Manager or Logistics Manager role at Fixguru. Document submission responsibilities that would normally belong to those roles are handled by **Admin**.
+**Note:** There is no Sales Manager or Logistics Manager role at Fixguru. Document submission responsibilities that would normally belong to those roles are handled by **Admin**.
 
 ---
 
 ## Role Permission Summary
 
-> Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Manager.
+Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Manager.
 
 | Document / Feature      | Sales User | Warehousing (Logistics User) | Finance Manager | Finance Asst (Finance User) | Admin       |
 | ----------------------- | ---------- | ---------------------------- | --------------- | --------------------------- | ----------- |
@@ -77,7 +77,7 @@ uat_round: 1
 
 *"Create" = Read / Write / Create but NOT submit. "Submit" = full access including submit. "—" = no access.*
 
-> ⚠️ **Pick List note:** Since there is no Logistics Manager at Fixguru, only **Admin** can submit Pick Lists.
+⚠️ **Pick List note:** Since there is no Logistics Manager at Fixguru, only **Admin** can submit Pick Lists.
 
 ---
 
@@ -90,7 +90,7 @@ uat_round: 1
 5. If you are unsure or something is not loading, mark it **Issue** and contact Gareth.
 6. Sign off at the end when you are done.
 
-> **About these test cases:** All tests are based on the agreed MAIA scope for Fixguru. If any step does not match how your business works, do not guess — contact Gareth directly and we will review the test case before you proceed.
+**About these test cases:** All tests are based on the agreed MAIA scope for Fixguru. If any step does not match how your business works, do not guess — contact Gareth directly and we will review the test case before you proceed.
 
 **Result options:**
 - ✅ **Pass** — Everything worked as described
@@ -130,15 +130,15 @@ uat_round: 1
 | 3    | Wait a moment.                                                                                         | The chatbot shows the order details it extracted — customer name, products, and quantities. |
 | 4    | Check that the details are correct.                                                                    | Customer name, product names, and quantities match what you typed.                          |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
 
 ---
 
@@ -150,18 +150,18 @@ uat_round: 1
 | 2    | Send the photo to **@maia_fixguru_bot** on Telegram with a short message, e.g. *"pls process this for CPO"*.    | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                   |
 | 3    | Wait a moment.                                                                                                  | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00002**). The CPO status shows **Pending**. |
 
-> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert it to a Sales Order. This is covered in Group 2.
+⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert it to a Sales Order. This is covered in Group 2.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -173,18 +173,18 @@ uat_round: 1
 | 2    | Open **@maia_fixguru_bot** on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                            |
 | 3    | Wait a moment.                                                                                      | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00001**). The CPO status shows **Pending**. |
 
-> ⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert it to a Sales Order. This is covered in Group 2.
+⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert it to a Sales Order. This is covered in Group 2.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -200,16 +200,16 @@ uat_round: 1
 | 4    | Correct the price to be at or above the minimum.                          | Price accepted. You can continue.                                    |
 | 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -231,16 +231,16 @@ uat_round: 1
 | 4 | **Xiao Ling** (Sales) | Convert the CPO to a **Sales Order**. | A Sales Order is created with status **Draft**. The CPO status updates to show it has been converted. |
 | 5 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -248,7 +248,7 @@ uat_round: 1
 
 *Continue from Test 4. Coordinate across roles — see who does each step.*
 
-> **Role note:** Sales and Finance can **create** Quotations and Sales Orders but **cannot submit** them — only **Admin** submits. Invoice is submitted by **Finance Manager** or **Admin**.
+**Role note:** Sales and Finance can **create** Quotations and Sales Orders but **cannot submit** them — only **Admin** submits. Invoice is submitted by **Finance Manager** or **Admin**.
 
 | Step | Who                                          | What to do                                                                | What you should see                                                                          |
 | ---- | -------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -260,16 +260,16 @@ uat_round: 1
 | 6    | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the final **Invoice** and click **Submit**. | An Invoice is created and submitted. Status shows **UNPAID**.                           |
 | 7    | Any user                                     | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF. | All documents download successfully as PDFs.                                                 |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -285,16 +285,16 @@ uat_round: 1
 | 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                    |
 | 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.      |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -302,7 +302,7 @@ uat_round: 1
 
 *Who tests this: **Xiao Ling** (Sales)*
 
-> **Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** status. Draft orders are not checked.
+**Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** status. Draft orders are not checked.
 
 | Step | What to do                                                                                 | What you should see                                                                    |
 | ---- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
@@ -311,16 +311,16 @@ uat_round: 1
 | 3    | Send the **same order again** — same customer and same PO Number **"PO-001"**.             | A warning appears — this order already exists. The duplicate is blocked and not saved. |
 | 4    | Send a new order for the same customer with a **different PO Number "PO-002"**.            | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -328,7 +328,7 @@ uat_round: 1
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
-> **Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Only **Admin** can submit.
+**Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Only **Admin** can submit.
 
 | Step | What to do                                                                              | What you should see                                                                         |
 | ---- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -338,16 +338,16 @@ uat_round: 1
 | 4    | Try to **submit** the Sales Order as Abishaah.                                          | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
 | 5    | Log in as **Marcus Lim** (Admin). Open both Draft Sales Orders and submit them.        | Both Sales Orders change to **TO BILL**. Admin is the only role that can submit.            |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -363,18 +363,18 @@ uat_round: 1
 | 4    | Open a **Credit Note** and repeat the export.           | CSV downloaded. File contains credit note details.                        |
 | 5    | Open a **Debit Note** and repeat the export.            | CSV downloaded. File contains debit note details.                         |
 
-> ⚠️ **Note:** This CSV is used by Finance to create eInvoice records in the accounting system. eInvoices are not generated inside MAIA.
+⚠️ **Note:** This CSV is used by Finance to create eInvoice records in the accounting system. eInvoices are not generated inside MAIA.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -386,7 +386,7 @@ uat_round: 1
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for both DO and Pick List submission*
 
-> **Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. Since Fixguru has no Logistics Manager, **Admin** also submits Pick Lists.
+**Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. Since Fixguru has no Logistics Manager, **Admin** also submits Pick Lists.
 
 | Step | What to do                                                                                      | What you should see                                                                                              |
 | ---- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -397,16 +397,16 @@ uat_round: 1
 | 5    | From the Delivery Order, create a **Picking List** and click **Submit** (Admin).               | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities.               |
 | 6    | Download both the DO and the Picking List as PDFs.                                              | Both documents download successfully as PDFs.                                                                    |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -422,16 +422,16 @@ uat_round: 1
 | 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                         |
 | 5    | Log out. Log in as **Xiao Ling** (Sales). Check the same alerts.               | Both Out-of-Stock and Low-Stock alerts are visible to Sales users as well.  |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -444,18 +444,18 @@ uat_round: 1
 | 1    | Log in as **Asrul**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified.                                                                   |
 | 2    | Check the daily digest or notification area.                                                                                                  | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
 
-> ⚠️ **Note:** If you cannot find an overdue Invoice, please contact Gareth to set one up.
+⚠️ **Note:** If you cannot find an overdue Invoice, please contact Gareth to set one up.
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -472,16 +472,16 @@ uat_round: 1
 | 1    | Open https://maia-fe-fixguru.vercel.app/login in **Google Chrome** on a laptop or desktop. | The MAIA login page loads.                                |
 | 2    | Each person logs in using their **email and password** from the table above.          | Login is successful. Your workspace and dashboard are visible. |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes:**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
 
 ---
 
@@ -506,16 +506,16 @@ uat_round: 1
 | 7    | Try to view an **Invoice**.                               | ✅ You can view Invoices — read only. No create or edit button.                         |
 | 8    | Try to view **Inventory** (stock levels).                 | ✅ Inventory page is accessible — read only. No create or edit button.                 |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -534,16 +534,16 @@ uat_round: 1
 | 7    | Try to open a **Quotation** or **Sales Order**.                              | 🚫 Not accessible — Warehousing has no access to Quotations or Sales Orders.                 |
 | 8    | Try to view an **Invoice** or **Payment**.                                   | 🚫 Not accessible — Warehousing has no access to Invoices or Payments.                       |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -562,16 +562,16 @@ uat_round: 1
 | 7    | Try to **submit** the Delivery Order.                                        | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                          |
 | 8    | Try to view **Inventory** (stock levels).                                    | ✅ Inventory page is accessible — read only. No create or edit button.                             |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -590,16 +590,16 @@ uat_round: 1
 | 7    | Try to **submit** the Sales Order.                              | 🚫 Submit button is not available — only Admin can submit Sales Orders.                    |
 | 8    | Try to view **Inventory** (stock levels).                       | ✅ Inventory page is accessible — read only.                                               |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -617,16 +617,16 @@ uat_round: 1
 | 6    | Try to create and **submit** a **Payment / Receipt**.                                      | ✅ Full access — you can create and submit Receipts.                             |
 | 7    | Try to create and **submit** an **Inventory** record (e.g., Stock Entry).                 | ✅ Full access — you can manage and submit inventory records.                    |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:**
-> **Date:**
->
-> **Notes (list any step that did not behave as expected):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes (list any step that did not behave as expected):**
+
 
 ---
 
@@ -679,16 +679,16 @@ uat_round: 1
 | 14   | **Nisa** (Finance Assistant)     | Create a second Receipt against a different **UNPAID** Invoice — leave it in **Draft**. | Receipt saved in Draft. Invoice still shows **UNPAID**. |
 | 15   | **Wendy Wang** (Finance Manager) | Open the Draft Receipt. Click Submit.                         | Receipt submitted. Finance Manager can also submit Payments.                    |
 
-> **Your result:**
-> - [ ] Pass
-> - [ ] Fail
-> - [ ] Issue
->
-> **Tested by:** (coordinate across team)
-> **Date:**
->
-> **Notes (note the step number if any step failed):**
->
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:** (coordinate across team)
+**Date:**
+
+**Notes (note the step number if any step failed):**
+
 
 ---
 
