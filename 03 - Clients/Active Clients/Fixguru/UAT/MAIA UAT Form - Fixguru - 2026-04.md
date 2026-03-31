@@ -142,55 +142,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 2 — Send an Order by Photo (PO)
+#### Test 2 — Pricing and Stock Check
 
-| Step | What to do                                                                                                      | What you should see                                                                                                                      |
-| ---- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | Take a photo of a **printed PO or handwritten order**.                                                          | Photo is ready on your phone.                                                                                                            |
-| 2    | Send the photo to **@maia_fixguru_bot** on Telegram with a short message, e.g. *"pls process this for CPO"*.    | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                                   |
-| 3    | Wait a moment.                                                                                                  | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00002**). The CPO status shows **Pending**. |
-
-⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert it to a Sales Order. This is covered in Group 2.
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### Test 3 — Send an Order by PDF
-
-| Step | What to do                                                                                          | What you should see                                                                                                                      |
-| ---- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | Prepare a customer PO in PDF format.                                                                | PDF file is ready on your phone or computer.                                                                                             |
-| 2    | Open **@maia_fixguru_bot** on Telegram. Send the PDF with a short message, e.g. *"pls process this for CPO"*. | Chatbot replies: *"The upload was successful and I am handling it in the background."*                                            |
-| 3    | Wait a moment.                                                                                      | Chatbot replies: *"Document processing is complete."* A CPO number is shown (e.g. **CPO-2026-00001**). The CPO status shows **Pending**. |
-
-⚠️ **Note:** After the chatbot confirms the CPO is created, go to the web app to review the extracted details and convert it to a Sales Order. This is covered in Group 2.
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### Test 4 — Pricing and Stock Check
-
-*Continue from **Test 1 only** (text message order). Tests 2 and 3 go directly to a CPO in the web app — pricing for those is reviewed there, not in the chatbot.*
+*Continue from **Test 1** (text message order).*
 
 | Step | What to do                                                                | What you should see                                                  |
 | ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -217,16 +171,16 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 5 — Review CPO and Convert to Sales Order
+#### Test 3 — Review CPO and Convert to Sales Order
 
 *Who tests this: **Xiao Ling** (Sales) for review; **Marcus Lim** (Admin) for submission*
 
-*Continue from Test 2 or Test 3 — the CPO was created by the chatbot from a photo or PDF.*
+*Continue from Test 1 — the CPO was created by the chatbot from a text message order.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Log in to https://maia-fe-fixguru.vercel.app/login. Navigate to the CPO list and open the CPO created in Test 2 or Test 3. | The CPO record is visible. Status shows **Pending**. |
-| 2 | **Xiao Ling** (Sales) | Review the extracted details — check customer name, product names, and quantities against the original photo or PDF. | Extracted details are correct and match the source document. |
+| 1 | **Xiao Ling** (Sales) | Log in to https://maia-fe-fixguru.vercel.app/login. Navigate to the CPO list and open the CPO created in Test 1. | The CPO record is visible. Status shows **Pending**. |
+| 2 | **Xiao Ling** (Sales) | Review the extracted details — check customer name, product names, and quantities against the text order. | Extracted details are correct and match what was typed. |
 | 3 | **Xiao Ling** (Sales) | If any detail is wrong, edit it directly in the CPO. | Changes are saved. The CPO reflects the corrected information. |
 | 4 | **Xiao Ling** (Sales) | Convert the CPO to a **Sales Order**. | A Sales Order is created with status **Draft**. The CPO status updates to show it has been converted. |
 | 5 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders. |
@@ -244,9 +198,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 6 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
+#### Test 4 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
 
-*Continue from Test 4. Coordinate across roles — see who does each step.*
+*Continue from Test 2. Coordinate across roles — see who does each step.*
 
 **Role note:** Sales and Finance can **create** Quotations and Sales Orders but **cannot submit** them — only **Admin** submits. Invoice is submitted by **Finance Manager** or **Admin**.
 
@@ -273,7 +227,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 7 — Create a Credit Note and Debit Note
+#### Test 5 — Create a Credit Note and Debit Note
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -298,18 +252,18 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 8 — Duplicate Order is Blocked
+#### Test 6 — Duplicate Order is Blocked
 
 *Who tests this: **Xiao Ling** (Sales)*
 
-**Note:** The duplicate check triggers when an existing order with the same PO number is already in **TO BILL** status. Draft orders are not checked.
+**Note:** The duplicate check triggers when an existing order for the same customer and items is already in **TO BILL** status. Draft orders are not checked.
 
 | Step | What to do                                                                                 | What you should see                                                                    |
 | ---- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| 1    | Send a customer order via **@maia_fixguru_bot** — include a PO Number e.g. **"PO-001"**.  | Order is received by the chatbot. A CPO is created and converted to a Sales Order.     |
+| 1    | Send a customer order via **@maia_fixguru_bot** — e.g. *"Customer: [Name]. Order: 10 units [Product A]."*  | Order is received by the chatbot. A CPO is created and converted to a Sales Order.     |
 | 2    | **Marcus Lim** (Admin) submits the Sales Order so it reaches **TO BILL** status.          | Sales Order status shows **TO BILL**.                                                  |
-| 3    | Send the **same order again** — same customer and same PO Number **"PO-001"**.             | A warning appears — this order already exists. The duplicate is blocked and not saved. |
-| 4    | Send a new order for the same customer with a **different PO Number "PO-002"**.            | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
+| 3    | Send the **exact same order again** — same customer and same items.                        | A warning appears — this order already exists. The duplicate is blocked and not saved. |
+| 4    | Send a new order for the same customer with **different items or quantities**.             | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
 
 **Your result:**
 - [ ] Pass
@@ -324,7 +278,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 9 — Create and Manage Sales Orders on the Web App
+#### Test 7 — Create and Manage Sales Orders on the Web App
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
@@ -351,7 +305,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 10 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 8 — Export Invoice / Credit Note / Debit Note as CSV
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -382,7 +336,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 11 — Create a Delivery Order and Picking List
+#### Test 9 — Create a Delivery Order and Picking List
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for both DO and Pick List submission*
 
@@ -410,7 +364,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 12 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 10 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
@@ -435,7 +389,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 13 — Delivery Delay Reminder
+#### Test 11 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
@@ -463,7 +417,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 14 — All Users Can Log In
+#### Test 12 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 14 users log in with their own account*
 
@@ -491,7 +445,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 15 — Sales Access Check
+#### Test 13 — Sales Access Check
 
 *Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
@@ -519,7 +473,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 16 — Warehousing Access Check
+#### Test 14 — Warehousing Access Check
 
 *Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 10)*
 
@@ -547,7 +501,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 17 — Finance Manager Access Check
+#### Test 15 — Finance Manager Access Check
 
 *Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 6)*
 
@@ -575,7 +529,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 18 — Finance Assistant Access Check
+#### Test 16 — Finance Assistant Access Check
 
 *Who tests this: **Nisa** (Finance Assistant / Finance User)*
 
@@ -603,7 +557,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 19 — Admin Access Check
+#### Test 17 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
@@ -630,7 +584,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 20 — Role Approval Flow
+#### Test 18 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -697,27 +651,25 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
 | ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
 | Test 1  | Send order by text message                                           |                              |           |      |
-| Test 2  | Send order by photo                                                  |                              |           |      |
-| Test 3  | Send order by PDF                                                    |                              |           |      |
-| Test 4  | Pricing and stock check                                              |                              |           |      |
-| Test 5  | Review CPO and convert to Sales Order (chatbot photo/PDF → web app)  |                              |           |      |
-| Test 6  | Generate documents (Quotation → SO → Proforma Invoice → Invoice)     |                              |           |      |
-| Test 7  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
-| Test 8  | Duplicate order is blocked                                           |                              |           |      |
-| Test 9  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
-| Test 10  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 11 | Create Delivery Order and Picking List                               |                              |           |      |
-| Test 12 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 13 | Delivery delay reminder                                              |                              |           |      |
-| Test 14 | All users can log in                                                 |                              |           |      |
-| Test 15 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 16 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 17 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 18 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 19 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 20 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 2  | Pricing and stock check                                              |                              |           |      |
+| Test 3  | Review CPO and convert to Sales Order (chatbot text → web app)       |                              |           |      |
+| Test 4  | Generate documents (Quotation → SO → Proforma Invoice → Invoice)     |                              |           |      |
+| Test 5  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
+| Test 6  | Duplicate order is blocked                                           |                              |           |      |
+| Test 7  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
+| Test 8  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
+| Test 9  | Create Delivery Order and Picking List                               |                              |           |      |
+| Test 10 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 11 | Delivery delay reminder                                              |                              |           |      |
+| Test 12 | All users can log in                                                 |                              |           |      |
+| Test 13 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 14 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 15 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 16 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 17 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 18 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 21 tests**
+**Total: 18 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
