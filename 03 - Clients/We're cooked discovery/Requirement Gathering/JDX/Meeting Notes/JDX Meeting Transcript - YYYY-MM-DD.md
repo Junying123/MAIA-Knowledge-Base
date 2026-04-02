@@ -429,6 +429,6 @@ kong kong: 01:37:48
 
 **See Also:**
 - [[JDX Discovery Call - YYYY-MM-DD]] — discovery questionnaire-style live notes template
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
 - [[JDX Transcript]] — pre-sales GTM transcript (reference)
 - [[JDX]] — GTM brief

@@ -246,6 +246,6 @@ Before or at the end of the call, ask for:
 
 - [[Ming Medical - GTM Proposal]]
 - [[Ming Medical - GTM Brief Transcript]]
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Ming Medical - E2E Business Workflow]] — full As-Is and To-Be workflow with customer tracks
+- [[Ming Medical - E2E Business Workflow]] — full As-Is and To-Be workflow with customer tracks
 - [[02 - PM Playbook/Templates/[Template] Discovery Requirement Gathering]] — fill after the call
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/README]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/README]]

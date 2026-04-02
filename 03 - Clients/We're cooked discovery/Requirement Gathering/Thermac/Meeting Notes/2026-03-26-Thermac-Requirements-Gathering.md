@@ -199,10 +199,10 @@ Current systems:
 - [ ] Map service work order flow in detail once samples received
 - [ ] Assess Esoft integration feasibility
 - [ ] Prepare MAIA solution proposal
-- [ ] Update pipeline tracker: [[03 - Clients/We're cooked man discovery/README]]
+- [ ] Update pipeline tracker: [[03 - Clients/We're cooked discovery/README]]
 
 ---
 
 **See Also:**
-- [[03 - Clients/We're cooked man discovery/README]]
+- [[03 - Clients/We're cooked discovery/README]]
 - [[01 - MAIA Product/Overview/Known Limitations]]

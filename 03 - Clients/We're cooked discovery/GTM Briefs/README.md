@@ -30,4 +30,4 @@ The GTM Brief gives the PM enough context to run a smart discovery call — with
 
 - [[03 - Clients/Discovery Pipeline/Requirement Gathering]] — PM fills this after the discovery call
 - [[02 - PM Playbook/Templates/[Template] GTM Brief]] — template to copy
-- [[03 - Clients/We're cooked man discovery/README]] — full pipeline overview
+- [[03 - Clients/We're cooked discovery/README]] — full pipeline overview

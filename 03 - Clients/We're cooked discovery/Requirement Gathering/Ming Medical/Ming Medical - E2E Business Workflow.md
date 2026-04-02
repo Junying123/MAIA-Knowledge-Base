@@ -347,5 +347,5 @@ Doctors and Ming Medical staff can ask the MAIA chatbot clinical questions witho
 
 - [[Ming Medical - GTM Proposal]]
 - [[Ming Medical - GTM Brief Transcript]]
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Gathering Requirement Prep - Ming Medical]]
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
+- [[Gathering Requirement Prep - Ming Medical]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]

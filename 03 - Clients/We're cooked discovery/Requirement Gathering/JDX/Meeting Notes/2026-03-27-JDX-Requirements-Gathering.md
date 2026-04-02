@@ -148,12 +148,12 @@ This was the first requirements gathering / demo session. Jeremy walked through 
 
 - [ ] Brendan to collect sample documents
 - [ ] Jeremy to check SQL API availability
-- [ ] Fill in questionnaire gaps from this session: [[03 - Clients/We're cooked man discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
+- [ ] Fill in questionnaire gaps from this session: [[03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
 - [ ] Prepare customised MAIA proposal once samples received
-- [ ] Update pipeline tracker: [[03 - Clients/We're cooked man discovery/README]]
+- [ ] Update pipeline tracker: [[03 - Clients/We're cooked discovery/README]]
 
 ---
 
 **See Also:**
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
 - [[JDX]]

@@ -18,7 +18,7 @@ meeting_type: discovery
 - [Name, Title] — Ming Medical
 - [Name, Title] — Ming Medical
 
-**Reference:** [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
+**Reference:** [[03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
 
 ---
 
@@ -99,6 +99,6 @@ meeting_type: discovery
 
 ## See Also
 
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
 - [[Ming Medical - GTM Proposal]]
 - Pair transcript (verbatim): [[Ming Medical Meeting Transcript - YYYY-MM-DD]] *(rename file + update links when dated)*

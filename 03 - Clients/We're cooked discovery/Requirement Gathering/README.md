@@ -42,4 +42,4 @@ Requirement Gathering/
 - [[03 - Clients/Discovery Pipeline/GTM Briefs]] — read this before the discovery call
 - [[02 - PM Playbook/Templates/[Template] Discovery Requirement Gathering]] — template to copy
 - [[03 - Clients/Active Clients]] — where prospects go after onboarding decision
-- [[03 - Clients/We're cooked man discovery/README]] — full pipeline overview
+- [[03 - Clients/We're cooked discovery/README]] — full pipeline overview

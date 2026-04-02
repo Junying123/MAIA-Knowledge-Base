@@ -284,7 +284,14 @@ Use this table so the **product demo** uses JDX-shaped data where possible. Rows
 | Proposal deck | | not started | |
 | SOW document | | not started | |
 | PRD | | not started | |
-
+  Message to prep JDX
+  Hi Mr Kong, hope you’re well.
+  Could you help send customer examples + a small customer list, inventory list (Excel ok), and product 
+  catalogue / product details when you have a chance? If you can add pro forma, invoice, DO, credit note
+  samples too, that would be great. Anonymise is fine, and no need to send everything at once.
+  After we have these, we’ll arrange the product demo — you pick the date and time, we’ll follow.
+  Thanks!
+  [Your name]
 ---
 
 ## See Also

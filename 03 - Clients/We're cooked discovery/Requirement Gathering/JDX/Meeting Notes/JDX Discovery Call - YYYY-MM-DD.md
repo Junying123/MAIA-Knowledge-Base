@@ -18,7 +18,7 @@ meeting_type: discovery
 - [Boss Name, Title] — JDX
 - [Name, Title] — JDX
 
-**Reference:** [[03 - Clients/We're cooked man discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
+**Reference:** [[03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
 
 ---
 
@@ -482,7 +482,7 @@ Ask at the end. Mark what's received.
 ---
 
 **See Also:**
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Discovery Call Questionnaire]]
 - [[JDX]] — updated GTM brief
 - [[JDX Transcript]] — pre-sales transcript
 - [[02 - PM Playbook/Templates/[Template] Discovery Requirement Gathering]]

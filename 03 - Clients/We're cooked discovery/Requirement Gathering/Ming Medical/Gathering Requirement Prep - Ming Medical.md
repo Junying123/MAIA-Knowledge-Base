@@ -121,5 +121,5 @@ document_type: requirement_gathering_prep
 
 - [[Ming Medical - GTM Proposal]]
 - [[Ming Medical - GTM Brief Transcript]]
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
 - [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering]]

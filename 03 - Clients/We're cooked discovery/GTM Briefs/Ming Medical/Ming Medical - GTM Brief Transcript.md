@@ -25,4 +25,4 @@ Me: Being vertical okay backstory. This is a company based in aradha mansara ran
 ## See Also
 
 - [[Ming Medical - GTM Proposal]]
-- [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
+- [[03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Discovery Call Questionnaire]]
