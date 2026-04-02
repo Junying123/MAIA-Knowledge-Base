@@ -7,23 +7,34 @@ last_reviewed: 2026-04-02
 *📅 02 Apr 2026 – Gareth (PM)*
 
 *✅ Done*
-• Holsen UAT 80% complete; pick list & pricing bugs identified
-• Fixguru core MAIA features completed; UAT form finalized
+*Holsen*
+• UAT testing 80% completed
+• Pick list fix done
 
-*📊 Progress*
-• Planned: Holsen UAT full cycle + Fixguru UAT kick-off
-• Actual: UAT progressing, several fixes pending FE & client
-• Delta: Slipped
+*Fixguru*
+• Core MAIA features completed
+• UAT form finalized
 
 *🚧 Blockers*
-• Role config fix – FE team (both Holsen & Fixguru)
-• PSO deploy to Holsen – Bushra (on leave)
-• More POs to test – Holsen client
-• eInvoice follow-up – ZIB
+*Holsen*
+• Role config fix – pending FE
+• PSO deploy – Bushra on leave
+• More PO for testing – pending client
+
+*Fixguru*
+• Role config retest – pending FE fix
+• Calculator – not in FE quotation yet
+• eInvoice – need to follow up with Zib
 
 *🔄 Tomorrow*
-• Prep Ming Medical onboarding materials
-• Retest pricing fix when FE ready
-• Follow up PSO deploy & eInvoice
+*Holsen*
+• Retest pricing fix
+• Customer group config (post-fix)
 
-*📌 Confidence:* Medium – multiple external blockers in queue
+*Fixguru*
+• Schedule UAT brief
+
+*Ming Medical*
+• Prep work
+
+*📌 Confidence:* Medium – 2 client blockers outside PM control
