@@ -22,8 +22,8 @@ document_type: gtm_proposal
 
 ---
 
-1. ## Current key challenges faced by Ming Medical's team
-    
+## Current key challenges faced by Ming Medical's team
+  
 
 From **Ming Medical's** workflow, the bottleneck is clear: the **proposal step depends heavily on the Ming Medical's time**.
 
