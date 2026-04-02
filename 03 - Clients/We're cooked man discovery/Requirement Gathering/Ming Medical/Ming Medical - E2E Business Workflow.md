@@ -8,7 +8,7 @@ document_type: workflow
 
 # Ming Medical — End-to-End Business Workflow
 
-**Purpose:** Map Ming Medical's full business workflow, from enquiry to order fulfillment — both current (As-Is) and future state with MAIA (To-Be).  
+**Purpose:** Map Ming Medical's business workflow from customer first contact through to Sales Order creation — both current (As-Is) and future state with MAIA (To-Be). Post-SO fulfillment is out of scope.  
 **Use this for:** Requirements gathering prep, UAT scoping, dev handover, stakeholder alignment.
 
 ---
@@ -108,8 +108,9 @@ Patient accepts [UNCONFIRMED: how acceptance is confirmed not stated]
            ↓
 [MING MEDICAL]
 Order created [UNCONFIRMED: how/by whom not stated]
-Fulfillment — stem cells sourced, treatment arranged
 ```
+
+> **Scope boundary:** This workflow ends at Sales Order creation. Post-SO fulfillment (stem cell sourcing, treatment scheduling, logistics) is out of scope for this document.
 
 ### Track B: Partner Doctor
 
@@ -135,7 +136,7 @@ Notifies Ming Medical: "this customer confirmed, I need to create an order"
            ↓
 [MING MEDICAL]
 Creates order based on the confirmed proposal
-Fulfillment [UNCONFIRMED: whether stem cells shipped to doctor or patient travels to Ming Medical]
+← Workflow ends here
 ```
 
 > **Key distinction (source-confirmed):** In Track B, Ming Medical never directly interacts with the end patient. The partner doctor is the one who presents the proposal to their patient and closes the sale. Ming Medical only hears back once the patient has already said yes.
@@ -155,7 +156,8 @@ Fulfillment [UNCONFIRMED: whether stem cells shipped to doctor or patient travel
 | 9 | Customer / patient accepts | Patient (via doctor in Track B) | ✅ Confirmed | How acceptance is formally recorded — unconfirmed |
 | 10 | Partner doctor notifies Ming Medical of acceptance (Track B) | Partner Doctor | ✅ Confirmed | — |
 | 11 | Order created | Ming Medical | ✅ Confirmed (implied) | How/by whom — unconfirmed |
-| 12 | Fulfillment | Ming Medical | ⚠️ Unconfirmed | Shipping / delivery details not in source |
+
+> **Scope boundary:** Workflow ends at Sales Order creation. Post-SO fulfillment is out of scope for this document.
 
 **Key bottleneck (source-confirmed):** Steps 3–5 all depend on Sean. The proposal says *"the proposal step depends heavily on Ming Medical's time"* and *"it's also repetitive and time-consuming."*
 
@@ -198,7 +200,7 @@ Patient accepts [UNCONFIRMED: how]
            ↓
 [MING MEDICAL]
 Sales Order created in MAIA OMS
-Fulfillment
+← Workflow ends here
 ```
 
 ### Track B: Partner Doctor (With MAIA)
@@ -231,9 +233,7 @@ Notifies Ming Medical: patient confirmed, create order
            ↓
 [MAIA OMS]
 Sales Order created from confirmed proposal
-           ↓
-[MING MEDICAL]
-Fulfillment [UNCONFIRMED: shipping / logistics details not in source]
+← Workflow ends here
 ```
 
 ### To-Be Step-by-Step (Combined)
@@ -251,7 +251,8 @@ Fulfillment [UNCONFIRMED: shipping / logistics details not in source]
 | 9 | Patient acceptance | Patient (via doctor in Track B) | ✅ Confirmed | — |
 | 10 | Partner doctor notifies Ming Medical (Track B) | Partner Doctor | ✅ Confirmed | — |
 | 11 | Sales Order created | Ming Medical + MAIA OMS | ✅ Confirmed (implied) | OMS generates SO from proposal |
-| 12 | Fulfillment | Ming Medical | ⚠️ Unconfirmed | OMS tracks — logistics details TBC |
+
+> **Scope boundary:** Workflow ends at Sales Order creation. Post-SO fulfillment is out of scope for this document.
 
 ---
 
@@ -279,7 +280,7 @@ Doctors and Ming Medical staff can ask the MAIA chatbot clinical questions witho
 | **Ming Medical (Sean)** | Reviews MAIA-generated drafts; clinical oversight; approves proposals |
 | **Ming Medical (Mindy)** | Finance oversight; signs off on commercials; controls payment |
 | **MAIA Chatbot** | Reads reports, matches CPG, drafts proposals, answers Q&A |
-| **MAIA OMS** | Creates and tracks sales orders post-acceptance |
+| **MAIA OMS** | Creates Sales Orders post-acceptance |
 
 ---
 
@@ -310,6 +311,8 @@ Doctors and Ming Medical staff can ask the MAIA chatbot clinical questions witho
 | Answer doctor Q&A (CPG-bound) | ✅ | — |
 | Update or edit CPG content | — | ✅ Ming Medical |
 
+> **Note:** Post-SO activities (fulfillment, logistics, shipping) are outside the scope of this workflow and Phase 1 documentation.
+
 ---
 
 ## Phase Scope Summary
@@ -324,6 +327,7 @@ Doctors and Ming Medical staff can ask the MAIA chatbot clinical questions witho
 | Review / approval workflow + audit trail | ✅ | — |
 | WhatsApp quotation delivery | ✅ | — |
 | Base MAIA OMS (sales orders) | ✅ | — |
+| Post-SO fulfillment tracking | — | Out of scope / TBD |
 | Patient-facing portal | — | TBD |
 | AP / AR / Finance modules | — | TBD |
 | Advanced reporting / analytics | — | TBD |
@@ -336,7 +340,6 @@ Doctors and Ming Medical staff can ask the MAIA chatbot clinical questions witho
 - [ ] What triggers the WhatsApp quotation — automatic after approval, or manual send?
 - [ ] Does the patient-facing quotation look the same as the internal proposal, or is it a stripped-down version?
 - [ ] After customer acceptance, who creates the SO — Ming Medical or does it auto-generate?
-- [ ] Any fulfilment tracking needs (inventory, cold chain, shipping) in Phase 1?
 
 ---
 
