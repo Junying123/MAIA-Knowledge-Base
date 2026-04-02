@@ -252,5 +252,5 @@ Your KB is in **excellent shape**. Only 2 files definitely need deletion (planni
 ## See Also
 
 - [[Changelog]] — Track all KB updates
-- [[README]] — KB governance
+- [[00 - Home/README]] — KB governance
 - [[Automation Master Guide]] — Consolidated automation guide

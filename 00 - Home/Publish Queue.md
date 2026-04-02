@@ -46,4 +46,4 @@ Once content is published to Lark:
 
 **See Also:**
 - [[02 - PM Playbook/Processes/Publish to Lark SOP]]
-- [[README]]
+- [[00 - Home/README]]

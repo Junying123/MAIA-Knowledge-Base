@@ -105,7 +105,7 @@ Work through these in order. Each item links to a guide.
 
 ## Questions?
 
-- KB structure: See [[README]]
+- KB structure: See [[00 - Home/README]]
 - Terminology: See [[06 - Glossary & Taxonomy/Glossary]]
 - Publishing to Lark: See [[02 - PM Playbook/Processes/Publish to Lark SOP]]
 - Templates: Browse `02 - PM Playbook/Templates/`
@@ -116,7 +116,7 @@ Work through these in order. Each item links to a guide.
 ## See Also
 
 - [[02 - PM Playbook/Internal Sessions/Internal Sessions]] — Internal briefings and transcripts (vs client training in `01 - MAIA Product/Client Training/`)
-- [[README]] — KB governance and contribution rules
+- [[00 - Home/README]] — KB governance and contribution rules
 - [[Quick Reference]] — Curated index of most-used pages
 - [[01 - Setup Obsidian]] — Install and configure Obsidian
 - [[02 - Using This KB]] — Folder structure, templates, conventions

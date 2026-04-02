@@ -672,7 +672,7 @@ searches the KB for mentions of that client, and generates a comprehensive summa
 
 ## See Also
 
-- [[README]] — KB governance
+- [[00 - Home/README]] — KB governance
 - [[Quick Reference]] — Quick links to KB pages
 - [[CLAUDE.md]] — KB conventions for AI assistants
 - [[Changelog]] — Recent KB updates
