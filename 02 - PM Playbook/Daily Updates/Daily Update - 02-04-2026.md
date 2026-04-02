@@ -9,32 +9,35 @@ last_reviewed: 2026-04-02
 *✅ Done*
 *Holsen*
 • UAT testing 80% completed
-• Pick list fix done
+• Customer group per sales user testing
 
 *Fixguru*
-• Core MAIA features completed
-• UAT form finalized
+• Core MAIA features testing for FE
+• UAT form 
 
 *🚧 Blockers*
 *Holsen*
+• Pricing fix – need to retest
 • Role config fix – pending FE
 • PSO deploy – Bushra on leave
 • More PO for testing – pending client
 
 *Fixguru*
+- UAT Brief schedule pending
 • Role config retest – pending FE fix
 • Calculator – not in FE quotation yet
-• eInvoice – need to follow up with Zib
+• autocount/eInvoice – need to follow up with Zib
 
 *🔄 Tomorrow*
 *Holsen*
-• Retest pricing fix
-• Customer group config (post-fix)
+• Retest role config
 
 *Fixguru*
-• Schedule UAT brief
+- Chatbot testing
+• Follow up UAT Brief schedule
+- Start testing calculator
 
 *Ming Medical*
-• Prep work
+• Prep work requirement gathering
 
 *📌 Confidence:* Medium – 2 client blockers outside PM control
