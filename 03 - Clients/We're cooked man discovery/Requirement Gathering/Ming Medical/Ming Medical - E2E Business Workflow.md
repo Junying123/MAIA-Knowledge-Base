@@ -79,159 +79,179 @@ Ming Medical has two distinct customer types that interact with them differently
 
 ## As-Is Workflow (Without MAIA)
 
-Two parallel tracks depending on whether the customer is a direct patient or a partner doctor. Both converge at the proposal step.
+Two parallel tracks depending on whether the customer is a direct patient or a partner doctor. Both converge at the proposal generation step.
+
+> **Source note:** Tracks below are based on the GTM Brief Transcript (2026-03-30) and GTM Proposal. Items marked `[UNCONFIRMED]` are inferred — to be verified at requirement gathering.
 
 ### Track A: Direct Patient
 
+**Source:** *"People typically acquire the boss and they tell them that oh I just did my medical analysis here's my medical report I face this these issues can you help me solve. So what upon receiving this request what the boss needs to do is go home and then they has this file called CPG file..."*
+
 ```
-[CUSTOMER]
-Patient (UHNW, international) hears about Ming Medical via referral / word of mouth
-           ↓
-Contacts Sean directly via WhatsApp or email
-Sends: medical report (PDF / photo of scan / long text message) + description of condition
+[CUSTOMER — UHNW patient, international]
+Contacts Sean directly [UNCONFIRMED: channel not stated in source]
+Provides medical report + description of condition
+(Format: PDF, image/photo of scan, or long text message — confirmed in transcript)
            ↓
 [MING MEDICAL — Sean]
-Reads the medical report manually
-Opens CPG file → manually looks up: condition → treatment → dosage → duration → side effects
-Manually fills Word/PDF proposal template (all fields including price)
-           ↓
-Internal review (Sean / Mindy, ad-hoc — no formal version control)
-           ↓
-Sends proposal to patient via WhatsApp or email
-           ↓
-[CUSTOMER]
-Patient reviews, may ask follow-up questions (back via WhatsApp)
-Patient accepts
-           ↓
-[MING MEDICAL — Mindy]
-Payment terms agreed manually (no system)
+Receives the report
+Manually opens CPG file → looks up: condition → treatment → dosage → duration → side effects
+Manually fills Word/PDF proposal template (including price)
            ↓
 [MING MEDICAL]
-Order created manually
-Stem cells sourced, treatment scheduled
+Internal review [UNCONFIRMED: review process not described in source]
+           ↓
+Sends proposal to patient [UNCONFIRMED: delivery channel not stated]
+           ↓
+[CUSTOMER]
+Patient accepts [UNCONFIRMED: how acceptance is confirmed not stated]
+           ↓
+[MING MEDICAL]
+Order created [UNCONFIRMED: how/by whom not stated]
+Fulfillment — stem cells sourced, treatment arranged
 ```
 
 ### Track B: Partner Doctor
 
+**Source:** *"They also partner with doctors from overseas country like Oman Dubai Nigeria. So those partner doctors are also helping him sort of sell the stem cells up because they're using his stem cell to treat their own patients... after proposal done already they sent to the customers or whatever once the customers want it let's say their doctors are sent to their own customer the patient they want it then they let Ming Medical know okay this customer own already I need to create order."*
+
 ```
-[PARTNER DOCTOR]
-Doctor (Oman / Dubai / Nigeria) contacts Sean via WhatsApp or email
-Submits their patient's medical report on the patient's behalf
+[PARTNER DOCTOR — overseas, e.g. Oman / Dubai / Nigeria]
+Submits their patient's medical report to Sean / Ming Medical
+(Same report formats: PDF, image, long text)
            ↓
 [MING MEDICAL — Sean]
-Same manual CPG lookup and proposal drafting process as Track A
-           ↓
-Sends proposal back to the partner doctor (not directly to patient)
+Same manual CPG lookup + proposal drafting as Track A
            ↓
 [PARTNER DOCTOR]
-Reviews proposal, confirms treatment plan and pricing with Ming Medical
-Places order for the stem cells (to administer to their own patient)
+Receives the proposal from Ming Medical
+Takes it to their own patient
+           ↓
+[PATIENT — of the partner doctor]
+Patient accepts with the partner doctor
+           ↓
+[PARTNER DOCTOR]
+Notifies Ming Medical: "this customer confirmed, I need to create an order"
            ↓
 [MING MEDICAL]
-Fulfillment — stem cells sourced, packed, and shipped to doctor's location
+Creates order based on the confirmed proposal
+Fulfillment [UNCONFIRMED: whether stem cells shipped to doctor or patient travels to Ming Medical]
 ```
+
+> **Key distinction (source-confirmed):** In Track B, Ming Medical never directly interacts with the end patient. The partner doctor is the one who presents the proposal to their patient and closes the sale. Ming Medical only hears back once the patient has already said yes.
 
 ### As-Is Step-by-Step (Combined)
 
-| # | Step | Actor | Channel / Tool | Pain Point |
-|---|------|-------|---------------|------------|
-| 1 | Customer makes first contact | Patient / Partner Doctor | WhatsApp, email, phone | No standard intake process |
-| 2 | Medical report submitted | Patient / Partner Doctor | WhatsApp (PDF, image, or long text), email attachment | Variable format; no standard — MAIA must handle all formats |
-| 3 | Report read and interpreted | Sean | Manual reading | Sean is the only person capable; creates bottleneck |
-| 4 | CPG lookup | Sean | Opens CPG file manually | Time-consuming; error-prone if volume grows |
-| 5 | Proposal drafted | Sean | Word / PDF template, filled manually | Repetitive; inconsistent quality across cases |
-| 6 | Internal review | Sean / Mindy | Ad-hoc | No version history; no formal sign-off |
-| 7 | Proposal sent to customer | Sean / Mindy | WhatsApp or email | Delayed when Sean is unavailable |
-| 8 | Customer Q&A | Patient / Partner Doctor ↔ Sean | WhatsApp | Sean must personally answer all clinical questions |
-| 9 | Customer accepts | Patient / Partner Doctor | WhatsApp confirmation | No formal record or audit trail |
-| 10 | Payment agreed | Mindy | Manual (WhatsApp / verbal) | No system; fully manual |
-| 11 | Order created | Ming Medical | Manual | No OMS; tracked informally |
-| 12 | Fulfillment | Ming Medical | Manual | — |
+| # | Step | Actor | Source Status | Pain Point |
+|---|------|-------|--------------|------------|
+| 1 | Customer / partner doctor makes contact with Sean | Patient or Partner Doctor | ✅ Confirmed | — |
+| 2 | Medical report handed to Sean | Patient or Partner Doctor | ✅ Confirmed (PDF / image / long text) | Variable format; no standard |
+| 3 | Sean reads and interprets report | Sean | ✅ Confirmed | Sean is the only person who does this — key bottleneck |
+| 4 | Sean manually looks up CPG | Sean | ✅ Confirmed | Time-consuming; cannot be delegated easily |
+| 5 | Sean drafts proposal manually | Sean | ✅ Confirmed (Word/PDF template) | Repetitive; price inserted by Sean |
+| 6 | Internal review before sending | Sean / Mindy | ⚠️ Unconfirmed | Review process not described in source |
+| 7 | Proposal sent to customer or partner doctor | Sean | ✅ Confirmed | Delivery channel not stated |
+| 8 | Partner doctor presents proposal to their patient (Track B only) | Partner Doctor | ✅ Confirmed | Ming Medical has no visibility into this step |
+| 9 | Customer / patient accepts | Patient (via doctor in Track B) | ✅ Confirmed | How acceptance is formally recorded — unconfirmed |
+| 10 | Partner doctor notifies Ming Medical of acceptance (Track B) | Partner Doctor | ✅ Confirmed | — |
+| 11 | Order created | Ming Medical | ✅ Confirmed (implied) | How/by whom — unconfirmed |
+| 12 | Fulfillment | Ming Medical | ⚠️ Unconfirmed | Shipping / delivery details not in source |
 
-**Key bottleneck:** Steps 3–7 all depend on Sean. No one else can reliably do the CPG lookup or draft the proposal. Volume cannot grow without him being blocked.
+**Key bottleneck (source-confirmed):** Steps 3–5 all depend on Sean. The proposal says *"the proposal step depends heavily on Ming Medical's time"* and *"it's also repetitive and time-consuming."*
 
 ---
 
 ## To-Be Workflow (With MAIA — Phase 1)
 
-Same two customer tracks — but MAIA absorbs the CPG matching, proposal drafting, and Q&A steps, freeing Sean to only review and approve.
+Same two customer tracks. MAIA absorbs the CPG matching and proposal drafting steps. The key difference by track is **who uploads the report** and **who receives the final output**.
+
+> **Source note:** To-Be flow is based on the GTM Proposal and transcript description of MAIA's intended role. Items marked `[UNCONFIRMED]` are inferred — to be verified at requirement gathering.
 
 ### Track A: Direct Patient (With MAIA)
 
+**Source:** *"Receiving medical reports from... the boss... the doctors and the boss will submit a medical report be it in the form of PDF image or like potentially even the longest text message... the chatbot's job is to understand all of these medical reports and then go to the CPG file there to map..."*
+
 ```
-[CUSTOMER]
-Patient contacts Ming Medical via WhatsApp or email
-Sends: medical report (PDF / image / text) + condition description
+[CUSTOMER — UHNW patient]
+Contacts Sean / Ming Medical [UNCONFIRMED: channel]
+Provides medical report (PDF / image / long text)
            ↓
-[MING MEDICAL]
-Uploads the report into the MAIA chatbot (drag-and-drop / paste)
+[MING MEDICAL — Sean]
+Uploads the report into the MAIA chatbot
+(Source: "the boss will submit a medical report" — Sean uploads, not the patient directly)
            ↓
 [MAIA]
-Reads and parses the report — extracts condition signals, symptoms, history
-Queries the CPG knowledge base → maps condition to treatment plan, dosage, duration, side effects
-Drafts the full proposal in Ming Medical's template format
+Reads and parses the report
+Queries CPG knowledge base → maps condition to treatment plan, dosage, duration, side effects
+Drafts full proposal in Ming Medical's template format
 Price column left blank
            ↓
 [MING MEDICAL / Doctor]
-Reviews MAIA draft in the doctor workspace
-Edits if needed → inserts price → approves
-           ↓
-[MAIA + Ming Medical]
-WhatsApp quotation generated from the approved proposal → sent to patient
-           ↓
-[CUSTOMER]
-Patient reviews, may ask follow-up questions (answered by MAIA within CPG guardrails)
-Patient accepts
+Reviews MAIA draft in workspace
+Inserts price → approves
            ↓
 [MING MEDICAL]
-Sales Order created in MAIA OMS from the approved proposal
+Sends approved proposal / quotation to patient [UNCONFIRMED: channel; WhatsApp mentioned in proposal]
            ↓
-Fulfillment tracked in OMS (stem cells sourced, treatment scheduled)
+[CUSTOMER]
+Patient accepts [UNCONFIRMED: how]
+           ↓
+[MING MEDICAL]
+Sales Order created in MAIA OMS
+Fulfillment
 ```
 
 ### Track B: Partner Doctor (With MAIA)
 
+**Source:** *"Receiving medical reports from doctors... the doctors... will submit a medical report... after proposal done already they sent to the customers or whatever once the customers want it let's say their doctors are sent to their own customer the patient they want it then they let Ming Medical know okay this customer own already I need to create order."*
+
 ```
 [PARTNER DOCTOR]
-Contacts Ming Medical via WhatsApp or email
-Submits patient's medical report
-           ↓
-[MING MEDICAL / Partner Doctor — if given access]
-Uploads report into MAIA chatbot
+Submits patient's medical report to MAIA
+(Source: "doctors will submit a medical report" — doctor uploads directly)
            ↓
 [MAIA]
 Same report parsing + CPG matching + proposal drafting as Track A
+Price column left blank
            ↓
 [MING MEDICAL / Doctor]
-Reviews, prices, approves in workspace
-           ↓
-Proposal shared with partner doctor for confirmation
+Reviews MAIA draft in workspace → inserts price → approves
            ↓
 [PARTNER DOCTOR]
-Confirms treatment plan → places order
+Receives approved proposal from Ming Medical
+Takes it to their own patient
+(Source: "their doctors are sent to their own customer the patient")
+           ↓
+[PATIENT — of the partner doctor]
+Patient accepts with the doctor
+           ↓
+[PARTNER DOCTOR]
+Notifies Ming Medical: patient confirmed, create order
+(Source: "they let Ming Medical know okay this customer own already I need to create order")
            ↓
 [MAIA OMS]
-Sales Order created
+Sales Order created from confirmed proposal
            ↓
 [MING MEDICAL]
-Fulfillment — stem cells sourced and shipped to doctor's location
+Fulfillment [UNCONFIRMED: shipping / logistics details not in source]
 ```
 
 ### To-Be Step-by-Step (Combined)
 
-| # | Step | Actor | MAIA Role | Output |
-|---|------|-------|-----------|--------|
-| 1 | Customer makes first contact | Patient / Partner Doctor | — | Enquiry received via WhatsApp / email |
-| 2 | Medical report submitted | Patient / Partner Doctor → Ming Medical | Accepts PDF, image, or unstructured text | Report ingested into MAIA |
-| 3 | Report analysis | MAIA | Reads report, extracts condition signals and patient history | Structured medical summary |
-| 4 | CPG matching | MAIA | Queries CPG → maps condition to treatment plan, dosage, duration, side effects | Condition-to-treatment mapping |
-| 5 | Proposal drafted | MAIA | Fills Ming Medical's template with CPG output. **Price left blank.** | Draft proposal ready for review |
-| 6 | Review, pricing & approval | Ming Medical / Doctor | Human review in doctor workspace; price inserted; final approval | Approved, priced proposal |
-| 7 | Quotation delivered | MAIA + Ming Medical | WhatsApp quotation generated post-approval | Customer-facing quote sent |
-| 8 | Customer Q&A | Patient / Partner Doctor ↔ MAIA | Answers clinical questions from CPG + approved sites only | Consistent, guardrailed answers |
-| 9 | Customer acceptance | Patient / Partner Doctor | Acceptance logged in system | — |
-| 10 | Sales Order created | Ming Medical + MAIA OMS | SO generated from approved proposal | Sales Order record |
-| 11 | Fulfillment | Ming Medical | OMS tracks order status | Order fulfilled |
+| # | Step | Actor | Source Status | MAIA Role |
+|---|------|-------|--------------|-----------|
+| 1 | Customer / doctor makes contact | Patient or Partner Doctor | ✅ Confirmed | — |
+| 2 | Medical report uploaded to MAIA | **Sean (Track A)** / **Partner Doctor (Track B)** | ✅ Confirmed — *not* the patient directly | Accepts PDF, image, or long text |
+| 3 | Report analysis | MAIA | ✅ Confirmed (proposal) | Extracts condition signals |
+| 4 | CPG matching | MAIA | ✅ Confirmed | Maps to treatment plan, dosage, duration, side effects |
+| 5 | Proposal drafted | MAIA | ✅ Confirmed | Fills template; price left blank |
+| 6 | Review, pricing & approval | Ming Medical / Doctor | ✅ Confirmed | Human step — workspace provided by MAIA |
+| 7 | Proposal delivered to customer or partner doctor | Ming Medical | ✅ Confirmed | WhatsApp quotation — confirmed in proposal |
+| 8 | Partner doctor presents to their patient (Track B) | Partner Doctor | ✅ Confirmed | MAIA not involved |
+| 9 | Patient acceptance | Patient (via doctor in Track B) | ✅ Confirmed | — |
+| 10 | Partner doctor notifies Ming Medical (Track B) | Partner Doctor | ✅ Confirmed | — |
+| 11 | Sales Order created | Ming Medical + MAIA OMS | ✅ Confirmed (implied) | OMS generates SO from proposal |
+| 12 | Fulfillment | Ming Medical | ⚠️ Unconfirmed | OMS tracks — logistics details TBC |
 
 ---
 

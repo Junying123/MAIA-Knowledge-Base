@@ -32,27 +32,66 @@ Use this checklist during the call. Check off each item as it is answered. Leave
 
 ---
 
-## 2. Business Context & Customer Journey
+## 2. Customer Profile & Acquisition
 
-*Proposal describes ultra–high-value contracts and international / partner-doctor channels. Validate volumes, locales, and how proposals convert to revenue.*
+*Workflow mapping shows two distinct customer tracks — direct patients and partner doctors — with different entry points, inputs, and interaction patterns. Validate assumptions before the call.*
 
-- [ ] Describe the **typical buyer journey** from first enquiry to signed agreement — all parties (patient, partner doctor, Ming Medical).
-- [ ] Rough split: **direct vs partner-doctor**-originated enquiries (% or qualitative).
-- [ ] Key geographies / languages for **end patients** (e.g. UAE, UK, Australia, local) — anything missing from EN / 中文 / العربية?
-- [ ] Typical **contract size** range and what drives variance (treatment length, product mix, concierge services).
-- [ ] After the patient accepts a proposal, what are the **exact next steps** today (deposit, scheduling, legal, travel, etc.)?
+### Who Are the Customers?
+
+- [ ] Confirm the two customer types: **direct patients** (UHNW individuals) and **partner doctors** (overseas clinicians). Are there any other customer types not yet identified?
+- [ ] For **direct patients**: how do they typically discover Ming Medical? (Referrals? Personal network? Partner doctor recommendations? Online presence?)
+- [ ] For **partner doctors**: how does the relationship start? (Sean's personal network? Medical conferences? Inbound?)
+- [ ] Roughly how many **active partner doctors** are there today?
+- [ ] Rough split: **direct patient vs partner-doctor**-originated enquiries (% or qualitative).
+
+### How Customers Make First Contact
+
+- [ ] Confirm: is **WhatsApp the primary channel** for all inbound enquiries (both tracks)?
+- [ ] For **VIP / royal clients** who call by phone first — how does Sean capture the medical report afterwards? (Asks them to send via WhatsApp? Email? Collects in person?)
+- [ ] Are there any customers who contact Ming Medical in a way not yet identified (e.g. clinic walk-in, third-party agent, concierge service)?
+
+### What Customers Provide
+
+- [ ] Confirm the report formats received: **PDF, image (photo of scan), and long text message** — are there others (e.g. video, voice note, structured form)?
+- [ ] Is the medical report always in a formal clinical format, or do some patients send informal self-descriptions of their condition?
+- [ ] For partner doctors: does the report come from the **doctor's own assessment**, or is it the patient's existing report from another hospital/clinic?
+- [ ] Do customers provide all required information upfront, or does Sean typically need to ask follow-up questions before generating a proposal?
+
+### Buyer Journey & Post-Proposal Interaction
+
+- [ ] Walk through the **Track A journey** (direct patient): first contact → report submitted → proposal received → follow-up Q&A → acceptance. How long does each stage typically take?
+- [ ] Walk through the **Track B journey** (partner doctor): first contact → report submitted → proposal reviewed with doctor → order placed. What's different vs Track A?
+- [ ] After the proposal is sent, customers often ask **follow-up questions** before accepting. Who answers these today — always Sean? How long does this back-and-forth take?
+- [ ] How is **customer acceptance confirmed** today? (WhatsApp reply? Signed document? Verbal? Email?)
+- [ ] After the patient accepts a proposal, what are the **exact next steps** (deposit, scheduling, legal, travel arrangements, etc.)?
+- [ ] Key geographies / languages for **end patients** — anything missing from EN / 中文 / العربية?
+- [ ] Typical **contract size** range and what drives variance (treatment length, product mix, concierge add-ons).
 
 ---
 
 ## 3. Current Proposal Workflow (As-Is)
 
-*Proposal and transcript: bottleneck is manual proposal building from medical reports + CPG. Map the real steps, systems, and handoffs.*
+*Workflow mapping shows two parallel tracks that converge at the proposal step. Walk through both — they have different handoffs and fulfillment paths.*
 
-- [ ] Walk through **one real example** from enquiry → medical report received → CPG lookup → draft proposal → internal review → sent to customer.
-- [ ] How long does each step take **today** (hours/days)? Where are the delays?
-- [ ] Who performs **CPG matching** today — always the same person(s), or delegated to doctors?
-- [ ] How are **edge cases** handled when the report does not fit the CPG cleanly?
-- [ ] What **tools** are used now (WhatsApp, email, Word, PDF, spreadsheets, other)? Any system of record?
+### Track A: Direct Patient
+
+- [ ] Walk through **one real Track A example**: patient contacts via WhatsApp → report submitted → Sean reads report → CPG lookup → proposal drafted → sent to patient → Q&A → acceptance → payment → fulfillment.
+- [ ] How long does each step take **today** (hours / days)? Where do things sit idle?
+- [ ] After Sean sends the proposal, how many **back-and-forth messages** does a typical patient send before accepting? Who answers them?
+
+### Track B: Partner Doctor
+
+- [ ] Walk through **one real Track B example**: doctor contacts → submits patient report → proposal drafted → shared with doctor → doctor confirms plan and pricing → order placed → stem cells shipped.
+- [ ] How is the proposal **shared with the partner doctor** — same WhatsApp/email flow, or different?
+- [ ] Who reviews and approves the proposal on the Ming Medical side before it goes to the partner doctor?
+- [ ] After the partner doctor confirms, does the stem cell shipment go to **the doctor's clinic** or does the patient travel to Ming Medical for treatment?
+
+### General
+
+- [ ] Who performs **CPG matching** today — always Sean, or are there cases where another person does it?
+- [ ] How are **edge cases** handled when the report does not map cleanly to any CPG entry?
+- [ ] What **tools** are used across the whole workflow today (WhatsApp, Word, PDF, email, spreadsheets)? Is there any system of record, or is it all in Sean's head and chat history?
+- [ ] How are **verbal / phone enquiries** documented today before the medical report arrives?
 
 ---
 
@@ -106,12 +145,21 @@ Use this checklist during the call. Check off each item as it is answered. Leave
 
 ## 8. Roles: Ming Medical vs Partner Doctors
 
-*End users include Ming Medical staff and partner doctors; workflow is draft → review → approve.*
+*Workflow mapping shows partner doctors have a distinct journey — they receive the proposal, confirm it, and place the order. Clarify whether they are internal MAIA users or external recipients.*
 
-- [ ] Full list of **user roles** (e.g. admin, clinician, partner doctor, read-only).
-- [ ] Which roles may **upload reports**, **generate drafts**, **edit**, **approve**, **send** to customer?
-- [ ] Do partner doctors need **separate tenancy**, branding, or audit views?
-- [ ] **Training** expectations: languages, time zones, self-serve docs.
+### Access & Permissions
+
+- [ ] Full list of **user roles** needed (e.g. admin, Ming Medical clinician, partner doctor, read-only / finance).
+- [ ] Which roles may **upload reports**, **generate drafts**, **edit proposals**, **approve**, **send to customer**?
+- [ ] Are **partner doctors internal MAIA users** (they log in and use the chatbot themselves), or are they always external — receiving only the finished proposal from Ming Medical?
+- [ ] If partner doctors get access: do they need **separate tenancy**, isolated views, or their own branding on outputs?
+
+### Partner Doctor Specifics
+
+- [ ] After Ming Medical approves a proposal, is it **sent to the partner doctor** for their review, or does Ming Medical send it directly to the end patient?
+- [ ] Does the partner doctor have authority to **edit or reject** a proposal, or only to confirm and place the order?
+- [ ] Post-confirmation: do stem cells ship to **the doctor's clinic**, or does the patient travel to Ming Medical for treatment? (Affects fulfillment and OMS scope.)
+- [ ] How are partner doctors **onboarded** to MAIA — training expectations, languages, time zones, self-serve docs?
 
 ---
 
@@ -198,5 +246,6 @@ Before or at the end of the call, ask for:
 
 - [[Ming Medical - GTM Proposal]]
 - [[Ming Medical - GTM Brief Transcript]]
+- [[03 - Clients/We're cooked man discovery/Requirement Gathering/Ming Medical/Ming Medical - E2E Business Workflow]] — full As-Is and To-Be workflow with customer tracks
 - [[02 - PM Playbook/Templates/[Template] Discovery Requirement Gathering]] — fill after the call
 - [[03 - Clients/We're cooked man discovery/Requirement Gathering/README]]
