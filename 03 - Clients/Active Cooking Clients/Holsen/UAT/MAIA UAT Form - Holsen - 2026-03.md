@@ -70,6 +70,9 @@ uat_round: 1
 - ❌ **Fail** — Something did not work correctly
 - ⚠️ **Issue** — Could not complete the test (e.g., button missing, page not loading)
 
+**Reporting issues:** If you find a bug or something is not working correctly, use **Jam** to record your screen and share the issue with the MAIA team. Jam works in Chrome, Edge, and Firefox.
+→ [How to Record and Share Issues with Jam](https://eg69120xnei.sg.larksuite.com/wiki/TeDLwCfCFiYmKSkAn40lHYFrg5c)
+
 ---
 
 ## Setup Checklist *(For MAIA team to complete before UAT starts)*
@@ -821,4 +824,5 @@ By signing below, the Holsen team confirms that UAT has been completed and the r
 
 - [[Holsen SOW Feature Checklist]]
 - [[SOW for MAIA Holsen]]
+- [How to Record and Share Issues with Jam](https://eg69120xnei.sg.larksuite.com/wiki/TeDLwCfCFiYmKSkAn40lHYFrg5c)
 - [[2026-03-16-ending-phase-agenda]]

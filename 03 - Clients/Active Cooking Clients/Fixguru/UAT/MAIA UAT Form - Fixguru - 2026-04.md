@@ -97,6 +97,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 - ❌ **Fail** — Something did not work correctly
 - ⚠️ **Issue** — Could not complete the test (e.g., button missing, page not loading)
 
+**Reporting issues:** If you find a bug or something is not working correctly, use **Jam** to record your screen and share the issue with the MAIA team. Jam works in Chrome, Edge, and Firefox.
+→ [How to Record and Share Issues with Jam](https://eg69120xnei.sg.larksuite.com/wiki/TeDLwCfCFiYmKSkAn40lHYFrg5c)
+
 ---
 
 ## Setup Checklist *(For MAIA team to complete before UAT starts)*
@@ -715,5 +718,6 @@ By signing below, the Fixguru team confirms that UAT has been completed and the 
 
 - [[03 - Clients/Active Cooking Clients/Fixguru/Client Overview]]
 - [[Fixguru Timeline]]
+- [How to Record and Share Issues with Jam](https://eg69120xnei.sg.larksuite.com/wiki/TeDLwCfCFiYmKSkAn40lHYFrg5c)
 - [[03 - Clients/Active Cooking Clients/Fixguru/Config Overlay]]
 - [[MAIA_Role_Permission_Fixguru_Completed.csv]]

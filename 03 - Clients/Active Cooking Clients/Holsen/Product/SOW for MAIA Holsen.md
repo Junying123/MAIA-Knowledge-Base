@@ -79,7 +79,8 @@ Data Extraction — the system automatically identifies and extracts:
 - MAIA checks inventory managed within the system and displays **Total Available Quantity** to the agent (e.g., "Stock Available: 50 Tons").
 - C3 items are set up as separate SKUs — MAIA enforces stock and batch restrictions at this stage. Only compliant C3 stock is shown to eligible customers.
 
----
+
+
 
 **Product Attribute Tagging (SKU Level)**
 
