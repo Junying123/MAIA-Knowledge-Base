@@ -73,7 +73,6 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Credit Note             | View only  | —                            | **Submit**      | Create                      | —           |
 | Delivery Note           | Create     | Create                       | Create          | Create                      | **Submit**  |
 | Inventory / Pick List   | View only  | Create                       | View only       | View only                   | **Submit**  |
-| Issue                   | Create     | Create                       | **Submit**      | Create                      | **Submit**  |
 | Stock Reservation Entry | Create     | Create                       | **Submit**      | Create                      | **Submit**  |
 
 *"Create" = Read / Write / Create but NOT submit. "Submit" = full access including submit. "—" = no access.*
@@ -338,11 +337,37 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
+#### Test 9 — Record Payment / Receipt
+
+*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager), **Nisa** (Finance Assistant), and **Marcus Lim** (Admin)*
+
+*Continue from Test 4 — use the UNPAID Invoice created there.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Abishaah** (Finance Manager) | Log in. Open the **UNPAID Invoice** from Test 4. Click to create a **Receipt / Payment**. | Receipt creation screen appears. Invoice reference is pre-filled. |
+| 2 | **Abishaah** (Finance Manager) | Enter the payment amount and method (e.g. bank transfer). Click **Submit**. | Receipt is submitted. Invoice status changes to **PAID**. A receipt reference number is generated. |
+| 3 | **Nisa** (Finance Assistant) | Log in. Open a different **UNPAID Invoice**. Create a Receipt and click **Submit**. | Receipt is submitted. Invoice status changes to **PAID**. Finance Assistant has submit access on Payments. |
+| 4 | **Marcus Lim** (Admin) | Log in. Open a third **UNPAID Invoice**. Create a Receipt and click **Submit**. | Receipt is submitted. Invoice status changes to **PAID**. Admin can also submit Receipts. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
 ### Group 3 — Warehousing: Deliveries and Stock Alerts
 
 ---
 
-#### Test 9 — Create a Delivery Order and Picking List
+#### Test 10 — Create a Delivery Order and Picking List
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for both DO and Pick List submission*
 
@@ -370,7 +395,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 10 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 11 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
@@ -395,7 +420,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 11 — Delivery Delay Reminder
+#### Test 12 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
@@ -419,11 +444,35 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
+#### Test 13 — Create and Submit a Stock Reservation Entry
+
+*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** or **Abishaah** (Admin or Finance Manager) for submission*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Asrul** (Warehousing) | Log in. Navigate to the **Stock Reservation Entry** section. Create a new entry — select a product and quantity to reserve. Save it. | Stock Reservation Entry is created and saved in Draft. Shows product name, quantity, and reference. |
+| 2 | **Asrul** (Warehousing) | Try to **submit** the Stock Reservation Entry. | 🚫 Submit button is not available — Warehousing can create but not submit. |
+| 3 | **Marcus Lim** (Admin) | Log in. Open the Draft Stock Reservation Entry and click **Submit**. | Stock Reservation Entry is submitted. The reserved quantity is reflected in stock. |
+| 4 | **Abishaah** (Finance Manager) | Log in. Create a second Stock Reservation Entry and click **Submit**. | Stock Reservation Entry is submitted. Finance Manager also has submit access. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
 ### Group 4 — Logging In
 
 ---
 
-#### Test 12 — All Users Can Log In
+#### Test 14 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 14 users log in with their own account*
 
@@ -451,7 +500,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 13 — Sales Access Check
+#### Test 15 — Sales Access Check
 
 *Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
@@ -479,9 +528,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 14 — Warehousing Access Check
+#### Test 16 — Warehousing Access Check
 
-*Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 10)*
+*Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 11)*
 
 | Step | What to do                                                                   | What you should see                                                                           |
 | ---- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -507,7 +556,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 15 — Finance Manager Access Check
+#### Test 17 — Finance Manager Access Check
 
 *Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 6)*
 
@@ -535,7 +584,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 16 — Finance Assistant Access Check
+#### Test 18 — Finance Assistant Access Check
 
 *Who tests this: **Nisa** (Finance Assistant / Finance User)*
 
@@ -563,7 +612,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 17 — Admin Access Check
+#### Test 19 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
@@ -590,7 +639,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 18 — Role Approval Flow
+#### Test 20 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -664,18 +713,19 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test 6  | Duplicate order is blocked                                           |                              |           |      |
 | Test 7  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
 | Test 8  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 9  | Create Delivery Order and Picking List                               |                              |           |      |
-| Test 10 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 11 | Delivery delay reminder                                              |                              |           |      |
-| Test 12 | All users can log in                                                 |                              |           |      |
-| Test 13 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 14 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 15 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 16 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 17 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 18 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 9  | Record Payment / Receipt (Finance Manager / Finance Assistant / Admin) |                            |           |      |
+| Test 10 | Create Delivery Order and Picking List                               |                              |           |      |
+| Test 11 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 12 | Delivery delay reminder                                              |                              |           |      |
+| Test 13 | All users can log in                                                 |                              |           |      |
+| Test 14 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 15 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 16 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 17 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 18 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 19 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 18 tests**
+**Total: 19 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
