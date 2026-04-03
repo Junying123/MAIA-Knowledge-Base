@@ -186,6 +186,26 @@ flowchart TD
 
 ---
 
+### Step 2.5: Generate Proforma Invoice (Optional — Cash-in-Advance Customers Only)
+
+**Purpose:** Send a pre-invoice PDF to the customer so they can make payment upfront before the final Invoice is raised
+
+**When to use:** Only for customers on **cash-in-advance payment terms**. Skip this step for customers on credit terms.
+
+**Important:** A Proforma Invoice is **not a separate document** in MAIA. It is a PDF export of the Sales Order.
+
+**Process:**
+1. Open the submitted Sales Order (status: **TO BILL**)
+2. Click **Generate PDF** on the Sales Order page
+3. Select **Proforma Invoice** from the options
+4. PDF downloads immediately — send to customer for payment
+
+No new record is created. The Sales Order stays in **TO BILL** status.
+
+**See:** [[Proforma Invoice]] for full details
+
+---
+
 ### Step 3: Create Invoice
 
 **Purpose:** Bill the customer for delivered goods/services
@@ -228,6 +248,13 @@ flowchart TD
 ---
 
 ## Alternative Paths
+
+### Cash-in-Advance → Proforma Invoice Before Billing
+For customers who must pay upfront before the final Invoice is raised.
+
+**Path:** Quotation → Sales Order → **Generate Proforma Invoice PDF** → Customer pays → Invoice → Receipt
+
+**See:** [[Proforma Invoice]]
 
 ### Skip Quotation → Direct Sales Order
 Some businesses allow direct Sales Order creation without quotation.
@@ -306,6 +333,7 @@ Each document references its parent document for traceability.
 
 - [[Quotation Workflows]] — Detailed quotation processes
 - [[Sales Order Workflows]] — SO management and statuses
+- [[Proforma Invoice]] — PDF export for cash-in-advance customers
 - [[Invoice Workflows]] — Invoicing and billing
 - [[Credit Note Workflows]] — Returns and credits
 - [[Receipt & Payment Workflows]] — Payment recording
