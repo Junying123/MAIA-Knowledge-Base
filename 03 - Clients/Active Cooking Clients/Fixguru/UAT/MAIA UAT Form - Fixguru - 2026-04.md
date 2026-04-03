@@ -540,8 +540,10 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | 4    | Try to **submit** the Picking List.                                          | 🚫 Submit button is not available — only Admin can submit Picking Lists at Fixguru.           |
 | 5    | Try to **create** a Delivery Order and save it.                              | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                      |
 | 6    | Try to **submit** the Delivery Order.                                        | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                    |
-| 7    | Try to open a **Quotation** or **Sales Order**.                              | 🚫 Not accessible — Warehousing has no access to Quotations or Sales Orders.                 |
-| 8    | Try to view an **Invoice** or **Payment**.                                   | 🚫 Not accessible — Warehousing has no access to Invoices or Payments.                       |
+| 7    | Try to **create** a **Stock Reservation Entry** and save it.                 | ✅ You can create a Stock Reservation Entry. Saved with status **Draft**.                     |
+| 8    | Try to **submit** the Stock Reservation Entry.                               | 🚫 Submit button is not available — only Admin or Finance Manager can submit.                 |
+| 9    | Try to open a **Quotation** or **Sales Order**.                              | 🚫 Not accessible — Warehousing has no access to Quotations or Sales Orders.                 |
+| 10   | Try to view an **Invoice** or **Payment**.                                   | 🚫 Not accessible — Warehousing has no access to Invoices or Payments.                       |
 
 **Your result:**
 - [ ] Pass
@@ -570,6 +572,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | 6    | Try to **create** a Delivery Order and save it.                              | ✅ You can create and edit Delivery Orders. Saved with status **Draft**.                            |
 | 7    | Try to **submit** the Delivery Order.                                        | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                          |
 | 8    | Try to view **Inventory** (stock levels).                                    | ✅ Inventory page is accessible — read only. No create or edit button.                             |
+| 9    | Open a Draft **Stock Reservation Entry** and click **Submit**.               | ✅ You can submit Stock Reservation Entries. Finance Manager has submit access.                     |
 
 **Your result:**
 - [ ] Pass
@@ -625,6 +628,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | 5    | Try to create and **submit** an **Invoice**.                                               | ✅ Full access — you can create, edit, and submit Invoices.                      |
 | 6    | Try to create and **submit** a **Payment / Receipt**.                                      | ✅ Full access — you can create and submit Receipts.                             |
 | 7    | Try to create and **submit** an **Inventory** record (e.g., Stock Entry).                 | ✅ Full access — you can manage and submit inventory records.                    |
+| 8    | Open a Draft **Stock Reservation Entry** (created by Warehousing) and **submit** it.      | ✅ Full access — Admin can submit Stock Reservation Entries.                     |
 
 **Your result:**
 - [ ] Pass
@@ -717,15 +721,16 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test 10 | Create Delivery Order and Picking List                               |                              |           |      |
 | Test 11 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
 | Test 12 | Delivery delay reminder                                              |                              |           |      |
-| Test 13 | All users can log in                                                 |                              |           |      |
-| Test 14 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 15 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 16 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 17 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 18 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 19 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 13 | Create and submit Stock Reservation Entry                            |                              |           |      |
+| Test 14 | All users can log in                                                 |                              |           |      |
+| Test 15 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 16 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 17 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 18 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 19 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 20 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 19 tests**
+**Total: 20 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
