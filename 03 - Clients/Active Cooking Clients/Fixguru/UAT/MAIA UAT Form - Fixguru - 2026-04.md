@@ -203,9 +203,13 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 4 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
+#### Test 4 — Generate Documents (Quotation → Sales Order → Invoice)
 
 *Continue from Test 2. Coordinate across roles — see who does each step.*
+
+**How Fixguru creates orders:** Fixguru does not use Purchase Orders. All orders start from a **Quotation**, which converts into a Sales Order. For customers on **cash-in-advance payment terms**, a Proforma Invoice PDF is generated from the Sales Order and sent to the customer to collect payment before the final Invoice is raised.
+
+**About Proforma Invoice:** The Proforma Invoice is not a separate document in MAIA. It is a **PDF export of the Sales Order** — on the Sales Order page, click **Generate PDF** and select **Proforma Invoice** to download it as a PDF. No separate record is created.
 
 **Role note:** Sales and Finance can **create** Quotations and Sales Orders but **cannot submit** them — only **Admin** submits. Invoice is submitted by **Finance Manager** or **Admin**.
 
@@ -215,9 +219,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | 2    | **Marcus Lim** (Admin)                       | Log in as Admin. Open the Draft Quotation and click **Submit**.           | Quotation status changes to **OPEN**. Only Admin can submit Quotations.                      |
 | 3    | **Xiao Ling** (Sales) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**. | Quotation status changes to **ORDERED**. A new Sales Order is created with status **Draft**. |
 | 4    | **Marcus Lim** (Admin)                       | Open the Draft Sales Order and click **Submit**.                          | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders.               |
-| 5    | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate a **Proforma Invoice**.                | A Proforma Invoice is created with its own reference number. Details match the Sales Order.  |
+| 5    | **Abishaah** or **Wendy Wang** (Finance Manager) | Open the submitted Sales Order. Click **Generate PDF** and select **Proforma Invoice**. Download the PDF. | A Proforma Invoice PDF is downloaded. It uses the Sales Order details — no separate record is created in the system. |
 | 6    | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the final **Invoice** and click **Submit**. | An Invoice is created and submitted. Status shows **UNPAID**.                           |
-| 7    | Any user                                     | Download each document (Quotation, SO, Proforma Invoice, Invoice) as PDF. | All documents download successfully as PDFs.                                                 |
+| 7    | Any user                                     | Download the Quotation, Sales Order, and Invoice each as PDF.             | All three documents download successfully as PDFs.                                           |
 
 **Your result:**
 - [ ] Pass
@@ -367,20 +371,21 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 10 — Create a Delivery Order and Picking List
+#### Test 10 — Create a Delivery Order, Picking List, and Mark as Delivered
 
-*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for both DO and Pick List submission*
+*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for DO submission, Pick List submission, and marking delivery*
 
-**Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. Since Fixguru has no Logistics Manager, **Admin** also submits Pick Lists.
+**Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. Since Fixguru has no Logistics Manager, **Admin** also submits Pick Lists and marks deliveries as completed.
 
 | Step | What to do                                                                                      | What you should see                                                                                              |
 | ---- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | 1    | Log in as **Asrul** (Warehousing). Open a submitted Invoice with status **UNPAID**.             | Invoice record is visible.                                                                                       |
 | 2    | Create a **Delivery Order (DO)** from the Invoice and save it.                                  | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
 | 3    | Try to **submit** the Delivery Order as Asrul.                                                  | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                                       |
-| 4    | Log in as **Marcus Lim** (Admin). Open the Draft Delivery Order and click **Submit**.           | Delivery Order is submitted successfully.                                                                        |
+| 4    | Log in as **Marcus Lim** (Admin). Open the Draft Delivery Order and click **Submit**.           | Delivery Order status changes to **To Schedule**.                                                                |
 | 5    | From the Delivery Order, create a **Picking List** and click **Submit** (Admin).               | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities.               |
 | 6    | Download both the DO and the Picking List as PDFs.                                              | Both documents download successfully as PDFs.                                                                    |
+| 7    | On the submitted Delivery Order, click **Actions → Mark as Delivered**.                         | Delivery Order status changes to **Delivered**. Delivery is recorded as completed.                               |
 
 **Your result:**
 - [ ] Pass
@@ -712,13 +717,13 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test 1  | Send order by text message                                           |                              |           |      |
 | Test 2  | Pricing and stock check                                              |                              |           |      |
 | Test 3  | Review CPO and convert to Sales Order (chatbot text → web app)       |                              |           |      |
-| Test 4  | Generate documents (Quotation → SO → Proforma Invoice → Invoice)     |                              |           |      |
+| Test 4  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
 | Test 5  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
 | Test 6  | Duplicate order is blocked                                           |                              |           |      |
 | Test 7  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
 | Test 8  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
 | Test 9  | Record Payment / Receipt (Finance Manager / Finance Assistant / Admin) |                            |           |      |
-| Test 10 | Create Delivery Order and Picking List                               |                              |           |      |
+| Test 10 | Create Delivery Order, Picking List, and Mark as Delivered           |                              |           |      |
 | Test 11 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
 | Test 12 | Delivery delay reminder                                              |                              |           |      |
 | Test 13 | Create and submit Stock Reservation Entry                            |                              |           |      |
