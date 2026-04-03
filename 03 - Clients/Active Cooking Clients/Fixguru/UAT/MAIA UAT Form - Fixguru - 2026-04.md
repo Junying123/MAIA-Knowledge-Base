@@ -176,23 +176,21 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 #### Test 3 — Generate Documents (Quotation → Sales Order → Invoice)
 
-*Continue from Test 2. Coordinate across roles — see who does each step.*
+*Coordinate across roles — see who does each step.*
 
-**How Fixguru creates orders:** All orders start from a **Quotation**, which converts into a Sales Order. For customers on **cash-in-advance payment terms**, a Proforma Invoice PDF is generated from the Sales Order and sent to the customer to collect payment before the final Invoice is raised.
+**Role note:** Sales and Finance can **create** but not **submit**. Only **Admin** submits Quotations and Sales Orders. **Finance Manager** or **Admin** submits Invoices.
 
-**About Proforma Invoice:** The Proforma Invoice is not a separate document in MAIA. It is a **PDF export of the Sales Order** — on the Sales Order page, click **Generate PDF** and select **Proforma Invoice** to download it as a PDF. No separate record is created.
+**Proforma Invoice note:** Not a separate document — it's a PDF export from the Sales Order. Used for cash-in-advance customers only.
 
-**Role note:** Sales and Finance can **create** Quotations and Sales Orders but **cannot submit** them — only **Admin** submits. Invoice is submitted by **Finance Manager** or **Admin**.
-
-| Step | Who                                          | What to do                                                                | What you should see                                                                          |
-| ---- | -------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| 1    | **Xiao Ling** (Sales)                        | Log in at https://maia-fe-fixguru.vercel.app/login. Create a **Quotation** and save it. | Quotation is created and saved. Status shows **Draft**.                         |
-| 2    | **Marcus Lim** (Admin)                       | Log in as Admin. Open the Draft Quotation and click **Submit**.           | Quotation status changes to **OPEN**. Only Admin can submit Quotations.                      |
-| 3    | **Xiao Ling** (Sales) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**. | Quotation status changes to **ORDERED**. A new Sales Order is created with status **Draft**. |
-| 4    | **Marcus Lim** (Admin)                       | Open the Draft Sales Order and click **Submit**.                          | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders.               |
-| 5    | **Abishaah** or **Wendy Wang** (Finance Manager) | Open the submitted Sales Order. Click **Generate PDF** and select **Proforma Invoice**. Download the PDF. | A Proforma Invoice PDF is downloaded. It uses the Sales Order details — no separate record is created in the system. |
-| 6    | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the final **Invoice** and click **Submit**. | An Invoice is created and submitted. Status shows **UNPAID**.                           |
-| 7    | Any user                                     | Download the Quotation, Sales Order, and Invoice each as PDF.             | All three documents download successfully as PDFs.                                           |
+| Step | Who                                                     | What to do                                                                                                | What you should see                                                                                                  |
+| ---- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 1    | **Xiao Ling** (Sales)                                   | Log in at https://maia-fe-fixguru.vercel.app/login. Create a **Quotation** and save it.                   | Quotation is created and saved. Status shows **Draft**.                                                              |
+| 2    | **Marcus Lim** (Admin)                                  | Log in as Admin. Open the Draft Quotation and click **Submit**.                                           | Quotation status changes to **OPEN**. Only Admin can submit Quotations.                                              |
+| 3    | **Xiao Ling** (Sales) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**.                                         | Quotation status changes to **ORDERED**. A new Sales Order is created with status **Draft**.                         |
+| 4    | **Marcus Lim** (Admin)                                  | Open the Draft Sales Order and click **Submit**.                                                          | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders.                                       |
+| 5    | **Abishaah** or **Wendy Wang** (Finance Manager)        | Open the submitted Sales Order. Click **Generate PDF** and select **Proforma Invoice**. Download the PDF. | A Proforma Invoice PDF is downloaded. It uses the Sales Order details — no separate record is created in the system. |
+| 6    | **Abishaah** or **Wendy Wang** (Finance Manager)        | From the Sales Order, generate the final **Invoice** and click **Submit**.                                | An Invoice is created and submitted. Status shows **UNPAID**.                                                        |
+| 7    | Any user                                                | Download the Quotation, Sales Order, and Invoice each as PDF.                                             | All three documents download successfully as PDFs.                                                                   |
 
 **Your result:**
 - [ ] Pass
@@ -232,33 +230,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 5 — Duplicate Order is Blocked
-
-*Who tests this: **Xiao Ling** (Sales)*
-
-**Note:** The duplicate check triggers when an existing order for the same customer and items is already in **TO BILL** status. Draft orders are not checked.
-
-| Step | What to do                                                                                 | What you should see                                                                    |
-| ---- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| 1    | Send a customer order via **@maia_fixguru_bot** — e.g. *"Customer: [Name]. Order: 10 units [Product A]."*  | Order is received by the chatbot. A CPO is created and converted to a Sales Order.     |
-| 2    | **Marcus Lim** (Admin) submits the Sales Order so it reaches **TO BILL** status.          | Sales Order status shows **TO BILL**.                                                  |
-| 3    | Send the **exact same order again** — same customer and same items.                        | A warning appears — this order already exists. The duplicate is blocked and not saved. |
-| 4    | Send a new order for the same customer with **different items or quantities**.             | Order is accepted. A new CPO and Sales Order are created. No warning shown.            |
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### Test 6 — Create and Manage Sales Orders on the Web App
+#### Test 5 — Create and Manage Sales Orders on the Web App
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
@@ -285,7 +257,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 7 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 6 — Export Invoice / Credit Note / Debit Note as CSV
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -316,7 +288,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 8 — Create a Delivery Order, Picking List, and Mark as Delivered
+#### Test 7 — Create a Delivery Order, Picking List, and Mark as Delivered
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for DO submission, Pick List submission, and marking delivery*
 
@@ -345,7 +317,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 9 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 8 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
@@ -370,7 +342,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 10 — Delivery Delay Reminder
+#### Test 9 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
@@ -394,7 +366,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 11 — Create and Submit a Stock Reservation Entry
+#### Test 10 — Create and Submit a Stock Reservation Entry
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** or **Abishaah** (Admin or Finance Manager) for submission*
 
@@ -422,7 +394,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 12 — All Users Can Log In
+#### Test 11 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 14 users log in with their own account*
 
@@ -450,7 +422,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 13 — Sales Access Check
+#### Test 12 — Sales Access Check
 
 *Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
@@ -478,9 +450,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 14 — Warehousing Access Check
+#### Test 13 — Warehousing Access Check
 
-*Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 9)*
+*Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 8)*
 
 | Step | What to do                                                                   | What you should see                                                                           |
 | ---- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -508,7 +480,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 15 — Finance Manager Access Check
+#### Test 14 — Finance Manager Access Check
 
 *Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 6)*
 
@@ -537,7 +509,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 16 — Finance Assistant Access Check
+#### Test 15 — Finance Assistant Access Check
 
 *Who tests this: **Nisa** (Finance Assistant / Finance User)*
 
@@ -565,7 +537,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 17 — Admin Access Check
+#### Test 16 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
@@ -593,7 +565,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 18 — Role Approval Flow
+#### Test 17 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -663,22 +635,21 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test 2  | Pricing and stock check                                              |                              |           |      |
 | Test 3  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
 | Test 4  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
-| Test 5  | Duplicate order is blocked                                           |                              |           |      |
-| Test 6  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
-| Test 7  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 8  | Create Delivery Order, Picking List, and Mark as Delivered           |                              |           |      |
-| Test 9  | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 10 | Delivery delay reminder                                              |                              |           |      |
-| Test 11 | Create and submit Stock Reservation Entry                            |                              |           |      |
-| Test 12 | All users can log in                                                 |                              |           |      |
-| Test 13 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 14 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 15 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 16 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 17 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 18 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 5  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
+| Test 6  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
+| Test 7  | Create Delivery Order, Picking List, and Mark as Delivered           |                              |           |      |
+| Test 8  | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 9  | Delivery delay reminder                                              |                              |           |      |
+| Test 10 | Create and submit Stock Reservation Entry                            |                              |           |      |
+| Test 11 | All users can log in                                                 |                              |           |      |
+| Test 12 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 13 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 14 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 15 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 16 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 17 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 18 tests**
+**Total: 17 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
