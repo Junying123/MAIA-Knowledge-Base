@@ -23,11 +23,13 @@ This onboarding is not about learning tools. It is about joining a shared way of
 |------|-----------|----------------|
 | **Obsidian** | Local Markdown editor | Opens the shared KB vault — your knowledge home |
 | **This KB** | Shared team knowledge base | Templates, workflows, product docs, client context — all in one place |
+| **Hermes** | AI Orchestrator | Leads coding agents (Codex, Claude Code, Cursor) to maximize PM productivity — like having an AI chief of staff |
 | **Cursor** | AI-powered editor | AI assistant that reads your KB files — not generic internet advice, but MAIA-specific output |
 
-These three tools work together:
+These tools work together:
 - **Obsidian** is where you read and write KB content
 - **The KB** is the content itself — the shared product brain
+- **Hermes** is the AI orchestrator that leads other coding agents
 - **Cursor** is the AI that reads the KB to help you produce PM outputs faster
 
 ---
@@ -114,10 +116,11 @@ Work through these in order. Each item links to a guide.
 ---
 
 ## See Also
-
 - [[02 - PM Playbook/Internal Sessions/Internal Sessions]] — Internal briefings and transcripts (vs client training in `01 - MAIA Product/Client Training/`)
 - [[00 - Home/README]] — KB governance and contribution rules
 - [[Quick Reference]] — Curated index of most-used pages
+- [[02 - PM Playbook/Processes/PM E2E Workflow]] — Full end-to-end PM workflow from lead to launch
+- [[00 - Home/Team & Org]] — Team structure and roles
 - [[01 - Setup Obsidian]] — Install and configure Obsidian
 - [[02 - Using This KB]] — Folder structure, templates, conventions
 - [[03 - Setup Cursor AI]] — Set up your AI assistant
