@@ -151,6 +151,12 @@
   },
   "hotPaths": [
     {
+      "path": "CLAUDE.md",
+      "accessCount": 4,
+      "lastAccessed": 1775299878352,
+      "type": "file"
+    },
+    {
       "path": "brain/North Star.md",
       "accessCount": 1,
       "lastAccessed": 1775298586878,
@@ -178,6 +184,36 @@
       "path": "brain/Gotchas.md",
       "accessCount": 1,
       "lastAccessed": 1775298588719,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/standup.md",
+      "accessCount": 1,
+      "lastAccessed": 1775299835468,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/wrap-up.md",
+      "accessCount": 1,
+      "lastAccessed": 1775299835862,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/daily-update.md",
+      "accessCount": 1,
+      "lastAccessed": 1775299836345,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/dump.md",
+      "accessCount": 1,
+      "lastAccessed": 1775299836876,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/client-sync.md",
+      "accessCount": 1,
+      "lastAccessed": 1775299837462,
       "type": "file"
     }
   ],

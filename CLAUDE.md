@@ -12,6 +12,7 @@ This file contains rules and conventions for AI assistants (like Claude Code) wo
 ## Folder Structure & Naming
 
 ```
+📁 brain/                  → Session context (North Star, Memories, Patterns, Gotchas, Key Decisions)
 📁 00 - Home               → Governance, quick reference
 📁 01 - MAIA Product       → Product features, modules, workflows, client-facing training (`Client Training/`)
 📁 02 - PM Playbook        → Processes, templates, SOPs, onboarding, internal sessions (`Internal Sessions/`)
@@ -185,18 +186,59 @@ See `[[01 - MAIA Product/Overview/Known Limitations]]`
 - All processes have "See Also" links
 - All product pages have accurate status
 
+## Session Workflow
+
+### Starting a Session
+Run `/standup` to load context: reads `brain/North Star.md`, `brain/Memories.md`, recent git changes, and active client status. Outputs today's priorities and open items.
+
+### During a Session
+- Use `/dump [notes]` to capture freeform input and route it to the right KB folder
+- Use `/client-sync` to pull a live snapshot of all active client statuses
+- Use `/daily-update [notes]` to format the WhatsApp daily update
+
+### Ending a Session
+Run `/wrap-up` to review changes, check frontmatter, flag orphans, update `brain/Memories.md` Recent Context, and commit.
+
+## Brain Folder
+
+The `brain/` folder is the session context layer — read by Claude at the start of every session.
+
+| File | Purpose |
+|---|---|
+| `brain/North Star.md` | Team goals, current focus, anti-goals, shifts log |
+| `brain/Memories.md` | Index of all persistent context and active client summaries |
+| `brain/Key Decisions.md` | Architectural and workflow decisions (quick reference) |
+| `brain/Patterns.md` | Recurring PM and KB patterns that work well |
+| `brain/Gotchas.md` | Known MAIA product issues, KB traps, git warnings |
+
+**Always read `brain/Gotchas.md` before touching client folders or git operations.**
+
+## Slash Commands
+
+Available via `.claude/commands/`:
+
+| Command | Usage |
+|---|---|
+| `/standup` | Morning context load — priorities, clients, open items |
+| `/wrap-up` | Session close — review, clean, update brain/, commit |
+| `/daily-update [notes]` | Format WhatsApp daily client update |
+| `/dump [notes]` | Capture freeform input and route to correct KB folder |
+| `/client-sync` | Snapshot of all active client statuses and deadlines |
+
 ## AI Assistant Guidelines
 
 When working in this KB:
 
-1. **Preserve structure** — Don't reorganize folders without approval
-2. **Use templates** — Always copy templates, don't invent new formats
-3. **Maintain frontmatter** — All pages need YAML metadata
-4. **Use wikilinks** — `[[Page Name]]` not relative paths
-5. **Update indexes** — When creating ADRs, update Decision Log
-6. **Check glossary** — Use canonical terms from Glossary
-7. **Don't invent MAIA features** — Document what exists, not what could be
-8. **Link liberally** — Add "See Also" sections to connect related content
+1. **Start with brain/** — Read `North Star.md` and `Memories.md` at session start
+2. **Preserve structure** — Don't reorganize folders without approval
+3. **Use templates** — Always copy templates, don't invent new formats
+4. **Maintain frontmatter** — All pages need YAML metadata
+5. **Use wikilinks** — `[[Page Name]]` not relative paths
+6. **Update indexes** — When creating ADRs, update Decision Log
+7. **Check glossary** — Use canonical terms from Glossary
+8. **Don't invent MAIA features** — Document what exists, not what could be
+9. **Link liberally** — Add "See Also" sections to connect related content
+10. **End with wrap-up** — Update `brain/Memories.md` and commit at session end
 
 ## External References
 
@@ -214,5 +256,5 @@ Key external docs:
 
 ---
 
-**Last Updated:** 2026-03-31
+**Last Updated:** 2026-04-04
 **Maintained By:** Gareth (KB Lead)
