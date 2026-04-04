@@ -1,218 +1,156 @@
 # AGENTS.md — MAIA Knowledge Base
 
-This file contains rules and conventions for AI assistants (like Codex) working in this knowledge base.
+Instructions for AI coding agents (Codex, Copilot, etc.) working in this knowledge base. For Claude Code, see `CLAUDE.md`. For company context, see `COMPANY.md`.
 
-## KB Overview
+---
 
-**Purpose:** Single source of truth for MAIA Product Management team
-**Tool:** Obsidian (Markdown-based knowledge base)
-**Primary Users:** 4 junior PMs managing B2B ERP/OMS product
-**Governance:** KB Lead (Gareth) + team contributions
+## Project Overview
 
-## Folder Structure & Naming
+**What this is:** Obsidian-based Markdown knowledge base for the MAIA Product Management team.
+**What you do here:** Create, edit, and organise Markdown notes. No code to run, no tests to execute.
+**Source of truth:** This Markdown repo. Lark is a read-only published mirror — never edit there.
+
+---
+
+## Folder Map
 
 ```
-📁 00 - Home               → Governance, quick reference
-📁 01 - MAIA Product       → Product features, modules, workflows, client-facing training (`Client Training/`)
-📁 02 - PM Playbook        → Processes, templates, SOPs, onboarding, internal sessions (`Internal Sessions/`)
-📁 03 - Clients            → Per-client context
-📁 04 - QA & Known Issues  → Testing, bugs, workarounds
-📁 05 - Releases & Updates → Release notes, changelog
-📁 06 - Glossary & Taxonomy → Definitions, tags
-📁 07 - Decisions          → ADRs, decision log
-📁 08 - Configuration & Integrations → System config
-📁 09 - Intake & Triage    → Request workflow
+brain/                         # Session context — read first
+  North Star.md                # Team goals and current focus
+  Memories.md                  # Active client index and recent context
+  Key Decisions.md             # Architectural/workflow decisions
+  Patterns.md                  # Recurring PM and KB patterns
+  Gotchas.md                   # Known traps — read before touching client folders or git
+
+00 - Home/                     # Governance, quick reference
+  Mindhive/                    # Company identity, strategy, values
+01 - MAIA Product/             # Product docs, organised by workspace
+  Overview/                    # Product identity, strategy, known limitations
+  Core Workflows/              # Quote-to-Cash, status guides
+  Sales Workspace/             # Quotations, SOs, Invoices, Receipts, Credit/Debit Notes
+  Finance Workspace/
+  Logistics Workspace/
+  Management/
+  Client Training/
+  Technical/
+  UI Components/
+02 - PM Playbook/              # PM processes and resources
+  Templates/                   # [Template] *.md — COPY, never edit originals
+  Processes/                   # SOPs: onboarding, PRD, QA, publishing, dev handover
+  Onboarding/                  # 5-step PM onboarding sequence
+  Guides/                      # AI, automation, diagram, Lark CLI guides
+  Daily Updates/               # Running log of daily PM updates
+  Internal Sessions/           # Session notes and transcripts
+03 - Clients/                  # Client context — two-tier structure
+  Active Cooking Clients/      # Active clients: Holsen, Fixguru, Xeersoft-CK Auto
+  We're cooked discovery/      # Discovery: Ming Medical, JDX, Thermac
+04 - QA & Known Issues/        # Bugs, test cases, workarounds
+05 - Releases & Updates/       # Release notes, changelog, upcoming features
+06 - Glossary & Taxonomy/      # Glossary.md, Tag Dictionary.md
+07 - Decisions/                # ADR-NNN-short-title.md, Decision Log
+08 - Configuration & Integrations/
+09 - Intake & Triage/          # Request intake and triage SOP
 ```
 
-**Naming Conventions:**
-- Folders: `NN - Descriptive Name` (numbers for ordering)
-- Templates: `[Template] Name.md`
-- ADRs: `ADR-NNN-short-title.md`
-- Client folders: `03 - Clients/[Client Name]/`
+---
 
-## File Standards
+## Content Conventions
 
-### YAML Frontmatter (Required)
-
-Every KB page must have:
+### Every file must have YAML frontmatter
 
 ```yaml
 ---
 owner: [Name]
 status: draft | review | approved | archived
 last_reviewed: YYYY-MM-DD
-lark_url: [optional - if published to Lark]
+lark_url: [optional]
 ---
 ```
 
-### Markdown Style
+### Markdown rules
+- ATX headers only (`#`, not underlines)
+- Internal links: `[[Page Name]]` wikilinks, not relative paths
+- Tables for structured data
+- Checkboxes for action items: `- [ ] Task`
+- Code blocks with language tag: ` ```yaml `
 
-- Use ATX headers (`#` syntax, not underlines)
-- Use wikilinks for internal references: `[[Page Name]]`
-- Use tables for structured data
-- Use checkboxes for action items: `- [ ] Task`
-- Use code blocks with language tags: ` ```yaml `
-
-### Section Order
-
-Standard page structure:
+### Page structure
 1. YAML frontmatter
-2. Page title (H1)
-3. Overview/purpose
-4. Main content (H2 sections)
-5. "See Also" section at bottom with wikilinks
-
-## Single Source of Truth Rule
-
-**CRITICAL:** This Markdown KB is the canonical source. Lark is a published mirror.
-
-- All edits happen in Markdown
-- Lark is read-only for consumers
-- After publishing to Lark, add `lark_url` to frontmatter
-- Never edit directly in Lark
-
-**Publishing workflow:** See `[[02 - PM Playbook/Processes/Publish to Lark SOP]]`
-
-## Writing Style
-
-### SOPs and Processes
-- Use active voice
-- Start with purpose/context
-- Include step-by-step instructions
-- Add examples where helpful
-- Link to related templates
-
-### Templates
-- Use placeholder text in `[brackets]`
-- Include YAML frontmatter examples
-- Add "See Also" section
-- Keep concise but comprehensive
-
-### Product Documentation
-- Focus on "what" and "why", not just "how"
-- Include status flows and workflows
-- Document known limitations
-- Link to related modules/workflows
-
-## Tagging Strategy
-
-See `[[06 - Glossary & Taxonomy/Tag Dictionary]]` for approved tags.
-
-**Key tags:**
-- Status: `#draft`, `#review`, `#approved`, `#archived`
-- Type: `#workflow`, `#template`, `#module`, `#guide`, `#decision`
-- Priority: `#critical`, `#high-priority`, `#medium-priority`, `#low-priority`
-
-**Don't:**
-- Over-tag (5 tags max per page)
-- Create new tags without checking dictionary
-- Use client-specific tags (use folders instead)
-
-## Content Organization
-
-### When to Create New File
-- New workflow or process
-- New template
-- New module documentation
-- Per-client content
-
-### When to Update Existing File
-- Clarifications or corrections
-- Status changes
-- Adding examples
-- Updating "See Also" links
-
-### When to Archive
-- Outdated workflows
-- Deprecated features
-- Old decisions (superseded ADRs)
-
-**Archive process:**
-1. Change `status: archived` in frontmatter
-2. Add deprecation note at top
-3. Link to replacement content
-4. Move to `archive/` subfolder if needed
-
-## Working with Templates
-
-Templates live in: `02 - PM Playbook/Templates/`
-
-**Using a template:**
-1. Copy entire template file
-2. Rename with actual content title
-3. Fill in all `[placeholder]` values
-4. Update frontmatter (owner, date, status)
-5. Save in appropriate folder
-
-**Don't** edit template files directly — always copy first.
-
-## Product-Specific Context
-
-### MAIA Product
-- ERP/OMS for B2B companies
-- 3 workspaces: Sales, Finance, Logistics
-- 56 modules total
-- Core workflow: Quote-to-Cash (Quotation → Sales Order → Invoice → Receipt)
-
-### Known Limitations
-See `[[01 - MAIA Product/Overview/Known Limitations]]`
-
-**Critical issues:**
-- Cannot create multiple credit notes per invoice
-- Cannot invoice directly from HOLD status
-- Bulk operations not available
-
-### Test Environment
-- **Dev:** https://maia-oms-dev.vercel.app (for dev team testing)
-- **Demo:** https://maia-oms-demo.vercel.app (for client demos, PM testing)
-
-## Maintenance
-
-### Regular Reviews
-- KB Lead reviews all `#review` content weekly
-- Update `last_reviewed` dates when reviewing
-- Archive outdated content
-- Keep Quick Reference current
-
-### Contribution Workflow
-1. Small changes: Edit directly, notify KB Lead
-2. New content: Create as `status: draft`, request review
-3. Major changes: Create ADR if architectural decision
-
-### Quality Standards
-- No broken wikilinks
-- All templates have examples
-- All processes have "See Also" links
-- All product pages have accurate status
-
-## AI Assistant Guidelines
-
-When working in this KB:
-
-1. **Preserve structure** — Don't reorganize folders without approval
-2. **Use templates** — Always copy templates, don't invent new formats
-3. **Maintain frontmatter** — All pages need YAML metadata
-4. **Use wikilinks** — `[[Page Name]]` not relative paths
-5. **Update indexes** — When creating ADRs, update Decision Log
-6. **Check glossary** — Use canonical terms from Glossary
-7. **Don't invent MAIA features** — Document what exists, not what could be
-8. **Link liberally** — Add "See Also" sections to connect related content
-
-## External References
-
-Key external docs:
-- Test automation: `/Users/garethng/maiav2-test/`
-- User stories: `/Users/garethng/maiav2-test/USER_STORIES_CSV_ANALYSIS_SUMMARY.md`
-- Product docs: `/Users/garethng/maiav2-test/docs/`
-
-## Questions?
-
-- KB structure: See `[[00 - Home/README]]`
-- Terminology: See `[[06 - Glossary & Taxonomy/Glossary]]`
-- Publishing: See `[[02 - PM Playbook/Processes/Publish to Lark SOP]]`
-- Templates: Browse `[[02 - PM Playbook/Templates]]`
+2. H1 title
+3. Overview paragraph
+4. H2 content sections
+5. See Also section with wikilinks
 
 ---
 
-**Last Updated:** 2026-03-31
+## File Placement Rules
+
+| Content type | Where it goes |
+|---|---|
+| New active client | `03 - Clients/Active Cooking Clients/[Client Name]/` |
+| New discovery client | `03 - Clients/We're cooked discovery/[Client Name]/` |
+| New template | `02 - PM Playbook/Templates/[Template] Name.md` |
+| New process/SOP | `02 - PM Playbook/Processes/` |
+| New ADR | `07 - Decisions/ADR-NNN-short-title.md` — also update `Decision Log.md` |
+| Bug or workaround | `04 - QA & Known Issues/` |
+| Release note | `05 - Releases & Updates/` |
+| Glossary term | `06 - Glossary & Taxonomy/Glossary.md` |
+
+---
+
+## Security & Confidentiality
+
+- **Ming Medical content: NEVER commit or push to GitHub.** Files live in `We're cooked discovery/` and must stay local.
+- **No client-specific tags** — use folders to separate client content, not tags.
+- **Lark is read-only** — never suggest or make edits in Lark directly.
+
+---
+
+## Git Rules
+
+- Always use `git mv` to move files — never drag in Finder (preserves history)
+- Commit messages: short imperative summary, e.g. `add Holsen UAT form 2026-04`
+- Remote: `github.com/Junying123/MAIA-Knowledge-Base`
+- **Do not commit Ming Medical content**
+
+---
+
+## Tagging
+
+Max 5 tags per page. Check `06 - Glossary & Taxonomy/Tag Dictionary.md` before creating new tags.
+
+Key approved tags: `#draft` `#review` `#approved` `#archived` `#workflow` `#template` `#module` `#guide` `#decision` `#critical`
+
+---
+
+## Product Context
+
+- **MAIA:** WhatsApp-first AI order-to-cash platform for B2B companies in SEA (manufacturing, wholesale, distribution)
+- **Workspaces:** Sales, Finance, Logistics (+ Management)
+- **Core flow:** Quotation → Sales Order → Invoice → Receipt
+- **Known limits:** No multiple credit notes per invoice · No invoice from HOLD status · No bulk operations
+
+### Active clients
+| Client | Path | Status |
+|---|---|---|
+| Holsen | `Active Cooking Clients/Holsen/` | Phase 1 go-live |
+| Fixguru | `Active Cooking Clients/Fixguru/` | UAT (no CPO step) |
+| Xeersoft-CK Auto | `Active Cooking Clients/Xeersoft-CK Auto/` | Integration planning |
+| Ming Medical | `We're cooked discovery/.../Ming Medical/` | Discovery — DO NOT PUSH |
+| JDX | `We're cooked discovery/.../JDX/` | Discovery |
+| Thermac | `We're cooked discovery/.../Thermac/` | Discovery |
+
+---
+
+## Do Not
+
+- Reorganise folder structure without Gareth's approval
+- Edit `[Template] *.md` files directly — always copy first
+- Invent MAIA features — document only what exists
+- Create new tags without checking Tag Dictionary
+- Commit or push anything from `We're cooked discovery/Ming Medical/`
+
+---
+
+**Last Updated:** 2026-04-05
 **Maintained By:** Gareth (KB Lead)
