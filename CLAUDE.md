@@ -12,24 +12,58 @@ This file contains rules and conventions for AI assistants (like Claude Code) wo
 ## Folder Structure & Naming
 
 ```
-📁 brain/                  → Session context (North Star, Memories, Patterns, Gotchas, Key Decisions)
-📁 00 - Home               → Governance, quick reference
-📁 01 - MAIA Product       → Product features, modules, workflows, client-facing training (`Client Training/`)
-📁 02 - PM Playbook        → Processes, templates, SOPs, onboarding, internal sessions (`Internal Sessions/`)
-📁 03 - Clients            → Per-client context
-📁 04 - QA & Known Issues  → Testing, bugs, workarounds
-📁 05 - Releases & Updates → Release notes, changelog
-📁 06 - Glossary & Taxonomy → Definitions, tags
-📁 07 - Decisions          → ADRs, decision log
-📁 08 - Configuration & Integrations → System config
-📁 09 - Intake & Triage    → Request workflow
+📁 brain/                          → Session context (North Star, Memories, Patterns, Gotchas, Key Decisions)
+📁 00 - Home/                      → Governance, quick reference
+│   ├── Mindhive/                  → Company identity, org structure, strategy, values
+│   ├── README.md                  → KB entry point
+│   ├── Quick Reference.md
+│   ├── Team & Org.md
+│   ├── Publish Queue.md
+│   └── Changelog.md
+📁 01 - MAIA Product/              → Product features, modules, workflows
+│   ├── Overview/                  → Product identity, strategy, workspaces, known limitations
+│   ├── Core Workflows/            → Quote-to-Cash, status guides, key corrections
+│   ├── Sales Workspace/           → Quotations, Sales Orders, Invoices, Receipts, Credit/Debit Notes
+│   ├── Finance Workspace/         → Finance modules, user persona
+│   ├── Logistics Workspace/       → Logistics modules, user persona
+│   ├── Management/                → Management features and persona
+│   ├── Client Training/           → Client-facing training materials
+│   ├── Technical/                 → Tax refactor, technical decisions
+│   └── UI Components/             → Sidebar, login, UI exploration
+📁 02 - PM Playbook/               → Processes, templates, SOPs
+│   ├── Templates/                 → All [Template] *.md files (copy, never edit)
+│   ├── Processes/                 → SOPs: onboarding, PRD, QA, publishing, dev handover
+│   ├── Onboarding/                → 5-step PM onboarding sequence
+│   ├── Guides/                    → AI, automation, diagram, Lark CLI guides
+│   ├── Daily Updates/             → Running log of daily PM updates
+│   └── Internal Sessions/         → Session notes and transcripts
+📁 03 - Clients/                   → Per-client context
+│   ├── Active Cooking Clients/    → Active clients (Holsen, Fixguru, Xeersoft-CK Auto)
+│   └── We're cooked discovery/    → Discovery/prospects (Ming Medical, JDX, Thermac)
+📁 04 - QA & Known Issues/         → Testing, bugs, workarounds
+│   ├── Test Cases/
+│   ├── Test Summaries/
+│   └── PDF Output Review/
+📁 05 - Releases & Updates/        → Release notes, changelog, upcoming features
+📁 06 - Glossary & Taxonomy/       → Glossary, Tag Dictionary
+📁 07 - Decisions/                 → ADRs, Decision Log
+📁 08 - Configuration & Integrations/ → System config, permissions, GitHub sync
+📁 09 - Intake & Triage/           → Request intake, triage SOP
 ```
+
+**Root-level files:**
+- `CLAUDE.md` — AI assistant instructions for Claude Code (this file)
+- `AGENTS.md` — AI assistant instructions for Codex
+- `COMPANY.md` — Company context for all AI agents (MAIA product description)
+- `codex.md` — Codex-specific AI config
+- `Excalidraw/` — Diagram source files (.excalidraw.md)
 
 **Naming Conventions:**
 - Folders: `NN - Descriptive Name` (numbers for ordering)
 - Templates: `[Template] Name.md`
 - ADRs: `ADR-NNN-short-title.md`
-- Client folders: `03 - Clients/[Client Name]/`
+- Active client folders: `03 - Clients/Active Cooking Clients/[Client Name]/`
+- Discovery client folders: `03 - Clients/We're cooked discovery/[Client Name]/`
 
 ## File Standards
 
@@ -115,7 +149,7 @@ See `[[06 - Glossary & Taxonomy/Tag Dictionary]]` for approved tags.
 - New workflow or process
 - New template
 - New module documentation
-- Per-client content
+- Per-client content: active clients → `03 - Clients/Active Cooking Clients/[Client]/`, discovery → `03 - Clients/We're cooked discovery/[Client]/`
 
 ### When to Update Existing File
 - Clarifications or corrections
@@ -150,10 +184,21 @@ Templates live in: `02 - PM Playbook/Templates/`
 ## Product-Specific Context
 
 ### MAIA Product
-- ERP/OMS for B2B companies
-- 3 workspaces: Sales, Finance, Logistics
+- WhatsApp-first AI order-to-cash platform for B2B companies (manufacturing, wholesale, distribution) in Southeast Asia
+- 3 workspaces: Sales, Finance, Logistics (+ Management layer)
 - 56 modules total
 - Core workflow: Quote-to-Cash (Quotation → Sales Order → Invoice → Receipt)
+- Product docs live in `01 - MAIA Product/` organised by workspace, with `Overview/` and `Core Workflows/` as cross-workspace references
+
+### Active Clients
+| Client | Folder | Status |
+|---|---|---|
+| Holsen | `Active Cooking Clients/Holsen/` | Phase 1 go-live |
+| Fixguru | `Active Cooking Clients/Fixguru/` | UAT |
+| Xeersoft-CK Auto | `Active Cooking Clients/Xeersoft-CK Auto/` | Integration planning |
+| Ming Medical | `We're cooked discovery/Requirement Gathering/Ming Medical/` | Discovery |
+| JDX | `We're cooked discovery/Requirement Gathering/JDX/` | Discovery |
+| Thermac | `We're cooked discovery/Requirement Gathering/Thermac/` | Discovery |
 
 ### Known Limitations
 See `[[01 - MAIA Product/Overview/Known Limitations]]`

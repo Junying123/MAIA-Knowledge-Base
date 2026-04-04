@@ -152,8 +152,8 @@
   "hotPaths": [
     {
       "path": "CLAUDE.md",
-      "accessCount": 4,
-      "lastAccessed": 1775299878352,
+      "accessCount": 10,
+      "lastAccessed": 1775314214680,
       "type": "file"
     },
     {
@@ -214,6 +214,18 @@
       "path": ".claude/commands/client-sync.md",
       "accessCount": 1,
       "lastAccessed": 1775299837462,
+      "type": "file"
+    },
+    {
+      "path": "AGENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1775314179223,
+      "type": "file"
+    },
+    {
+      "path": "COMPANY.md",
+      "accessCount": 1,
+      "lastAccessed": 1775314179503,
       "type": "file"
     }
   ],
