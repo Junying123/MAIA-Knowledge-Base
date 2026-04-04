@@ -157,6 +157,12 @@
       "type": "file"
     },
     {
+      "path": "AGENTS.md",
+      "accessCount": 2,
+      "lastAccessed": 1775323318968,
+      "type": "file"
+    },
+    {
       "path": "brain/North Star.md",
       "accessCount": 1,
       "lastAccessed": 1775298586878,
@@ -214,12 +220,6 @@
       "path": ".claude/commands/client-sync.md",
       "accessCount": 1,
       "lastAccessed": 1775299837462,
-      "type": "file"
-    },
-    {
-      "path": "AGENTS.md",
-      "accessCount": 1,
-      "lastAccessed": 1775314179223,
       "type": "file"
     },
     {
