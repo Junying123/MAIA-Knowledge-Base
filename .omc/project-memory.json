@@ -149,6 +149,37 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "brain/North Star.md",
+      "accessCount": 1,
+      "lastAccessed": 1775298586878,
+      "type": "file"
+    },
+    {
+      "path": "brain/Memories.md",
+      "accessCount": 1,
+      "lastAccessed": 1775298587315,
+      "type": "file"
+    },
+    {
+      "path": "brain/Key Decisions.md",
+      "accessCount": 1,
+      "lastAccessed": 1775298587754,
+      "type": "file"
+    },
+    {
+      "path": "brain/Patterns.md",
+      "accessCount": 1,
+      "lastAccessed": 1775298588254,
+      "type": "file"
+    },
+    {
+      "path": "brain/Gotchas.md",
+      "accessCount": 1,
+      "lastAccessed": 1775298588719,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }
