@@ -1,0 +1,154 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775297175143,
+  "projectRoot": "/Users/garethng/Documents/MAIA Knowledge Base",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "00 - Home": {
+      "path": "00 - Home",
+      "purpose": null,
+      "fileCount": 7,
+      "lastAccessed": 1775297175126,
+      "keyFiles": [
+        "Changelog.md",
+        "Client Notes Dashboard.base",
+        "KB Audit Report.md",
+        "Publish Queue.md",
+        "Quick Reference.md"
+      ]
+    },
+    "01 - MAIA Product": {
+      "path": "01 - MAIA Product",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1775297175127,
+      "keyFiles": []
+    },
+    "02 - PM Playbook": {
+      "path": "02 - PM Playbook",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1775297175128,
+      "keyFiles": []
+    },
+    "03 - Clients": {
+      "path": "03 - Clients",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1775297175128,
+      "keyFiles": [
+        "README.md"
+      ]
+    },
+    "04 - QA & Known Issues": {
+      "path": "04 - QA & Known Issues",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1775297175129,
+      "keyFiles": [
+        "Feature Gap Tracker.md",
+        "Known Bugs & Limitations.md",
+        "Test Scenarios Index.md",
+        "Workarounds Library.md"
+      ]
+    },
+    "05 - Releases & Updates": {
+      "path": "05 - Releases & Updates",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1775297175129,
+      "keyFiles": [
+        "Feature Changelog.md",
+        "Release Notes.md",
+        "Upcoming Features.md"
+      ]
+    },
+    "06 - Glossary & Taxonomy": {
+      "path": "06 - Glossary & Taxonomy",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1775297175130,
+      "keyFiles": [
+        "Glossary.md",
+        "Tag Dictionary.md"
+      ]
+    },
+    "07 - Decisions": {
+      "path": "07 - Decisions",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1775297175130,
+      "keyFiles": [
+        "ADR Template.md",
+        "Decision Log.md"
+      ]
+    },
+    "08 - Configuration & Integrations": {
+      "path": "08 - Configuration & Integrations",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1775297175131,
+      "keyFiles": [
+        "Client Configuration Overlay Template.md",
+        "Configuration Index.md",
+        "Integrations Index.md",
+        "KB GitHub Sync — How It Works.md",
+        "Permissions & Roles.md"
+      ]
+    },
+    "09 - Intake & Triage": {
+      "path": "09 - Intake & Triage",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1775297175131,
+      "keyFiles": [
+        "Request Intake Inbox.md",
+        "Triage Decision Record Template.md",
+        "Triage SOP (Product vs Config vs Custom).md"
+      ]
+    },
+    "Excalidraw": {
+      "path": "Excalidraw",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1775297175131,
+      "keyFiles": [
+        "Drawing 2026-02-22 17.59.46.excalidraw.md",
+        "Drawing 2026-02-22 18.13.08.excalidraw.md",
+        "Drawing 2026-02-26 18.59.22.excalidraw.md",
+        "Drawing 2026-02-26 18.59.34.excalidraw.md",
+        "Drawing 2026-02-26 18.59.35.excalidraw.md"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
