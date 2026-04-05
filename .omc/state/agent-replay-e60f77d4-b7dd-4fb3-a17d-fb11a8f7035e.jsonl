@@ -1,1 +1,3 @@
 {"t":0,"agent":"a251c41","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"obsidian:obsidian-cli"}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"obsidian:obsidian-markdown"}
