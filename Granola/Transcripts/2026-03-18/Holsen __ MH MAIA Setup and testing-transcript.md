@@ -8,6 +8,8 @@ attendees:
   - chinzh@holseninterchem.com
   - brendan@mindhive.asia
   - holsenlab@gmail.com
+folders: 
+  - Holsen
 ---
 
 # Transcript for:  Holsen <> MH MAIA Setup and testing 

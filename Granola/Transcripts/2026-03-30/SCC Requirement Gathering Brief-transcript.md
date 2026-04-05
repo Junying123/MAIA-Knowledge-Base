@@ -8,6 +8,8 @@ attendees:
   - jeremy@mindhive.asia
   - lim.junyan@gmail.com
   - brendan@mindhive.asia
+folders: 
+  - Requirement Gathering
 ---
 
 # Transcript for: SCC Requirement Gathering Brief

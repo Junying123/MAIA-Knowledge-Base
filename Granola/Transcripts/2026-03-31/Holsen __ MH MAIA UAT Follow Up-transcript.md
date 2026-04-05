@@ -7,6 +7,8 @@ updated: 2026-03-31T06:22:58.533Z
 attendees: 
   - brendan@mindhive.asia
   - holsenlab@gmail.com
+folders: 
+  - Holsen
 ---
 
 # Transcript for: Holsen <> MH MAIA UAT Follow Up

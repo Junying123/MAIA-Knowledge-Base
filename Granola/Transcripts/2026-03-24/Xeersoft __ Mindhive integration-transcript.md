@@ -5,6 +5,8 @@ type: transcript
 created: 2026-03-24T07:02:33.689Z
 updated: 2026-03-24T07:57:07.167Z
 attendees: []
+folders: 
+  - Xeersoft
 ---
 
 # Transcript for: Xeersoft <> Mindhive integration
