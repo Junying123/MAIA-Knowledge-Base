@@ -1,4 +1,4 @@
-Pull a current status snapshot of all active clients.
+Pull a current status snapshot of all active clients and save it to the KB.
 
 Steps:
 1. Read `brain/Memories.md` for the client list
@@ -15,8 +15,29 @@ Output a status table:
 | Xeersoft/CK Auto | Integration | Planning | UAT environment setup | 2026-05-01 |
 | Ming Medical | Discovery | Pending review | Internal review | TBD |
 | Thermac | Discovery | Prospect | Customer Narrative output | TBD |
+| JDX | Discovery | Prospect | Requirements gathering | TBD |
 
 Then flag:
 - Any client with no file modified in the last 7 days (potential stale context)
 - Any client with open intake requests
 - Any upcoming deadlines in the next 14 days
+
+**Save snapshot** — write the full status table to `brain/client-health.md` with today's date:
+```
+---
+owner: Gareth
+status: approved
+last_reviewed: YYYY-MM-DD
+---
+# Client Health Snapshot
+_Last updated: YYYY-MM-DD_
+
+[status table]
+
+## Flags
+[flagged items]
+```
+
+After saving:
+- Append to `brain/log.md`: `YYYY-MM-DD | client-sync | snapshot saved to brain/client-health.md`
+- Confirm to user that snapshot is saved and will be available next session

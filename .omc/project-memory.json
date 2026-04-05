@@ -181,6 +181,18 @@
       "type": "file"
     },
     {
+      "path": ".claude/commands/wrap-up.md",
+      "accessCount": 2,
+      "lastAccessed": 1775369815725,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/client-sync.md",
+      "accessCount": 2,
+      "lastAccessed": 1775369815994,
+      "type": "file"
+    },
+    {
       "path": "brain/Key Decisions.md",
       "accessCount": 1,
       "lastAccessed": 1775298587754,
@@ -199,12 +211,6 @@
       "type": "file"
     },
     {
-      "path": ".claude/commands/wrap-up.md",
-      "accessCount": 1,
-      "lastAccessed": 1775299835862,
-      "type": "file"
-    },
-    {
       "path": ".claude/commands/daily-update.md",
       "accessCount": 1,
       "lastAccessed": 1775299836345,
@@ -214,12 +220,6 @@
       "path": ".claude/commands/dump.md",
       "accessCount": 1,
       "lastAccessed": 1775299836876,
-      "type": "file"
-    },
-    {
-      "path": ".claude/commands/client-sync.md",
-      "accessCount": 1,
-      "lastAccessed": 1775299837462,
       "type": "file"
     },
     {
@@ -244,6 +244,18 @@
       "path": "brain/log.md",
       "accessCount": 1,
       "lastAccessed": 1775364222082,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/compile.md",
+      "accessCount": 1,
+      "lastAccessed": 1775369815268,
+      "type": "file"
+    },
+    {
+      "path": ".claude/commands/health-check.md",
+      "accessCount": 1,
+      "lastAccessed": 1775369815505,
       "type": "file"
     }
   ],
