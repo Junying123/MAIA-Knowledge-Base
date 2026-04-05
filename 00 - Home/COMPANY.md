@@ -91,11 +91,11 @@ Outcome-based, per order/month:
 
 ## Environments
 
-| Environment | URL | Purpose |
-|-------------|-----|---------|
-| Production (marketing) | https://www.ordermaia.com | Public website |
-| Dev | https://maia-oms-dev.vercel.app | Dev team testing |
-| Demo | https://maia-oms-demo.vercel.app | Client demos, PM testing |
+| Environment            | URL                              | Purpose                  |
+| ---------------------- | -------------------------------- | ------------------------ |
+| Production (marketing) | https://www.ordermaia.com        | Public website           |
+| Dev                    | https://maia-oms-dev.vercel.app  | Dev team testing         |
+| Demo                   | https://maia-oms-demo.vercel.app | Client demos, PM testing |
 
 ---
 
