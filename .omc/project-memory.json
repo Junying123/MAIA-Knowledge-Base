@@ -257,6 +257,24 @@
       "accessCount": 1,
       "lastAccessed": 1775369815505,
       "type": "file"
+    },
+    {
+      "path": "TaskNotes/Views/tasks-default.base",
+      "accessCount": 1,
+      "lastAccessed": 1775372088517,
+      "type": "file"
+    },
+    {
+      "path": "TaskNotes/Views/kanban-default.base",
+      "accessCount": 1,
+      "lastAccessed": 1775372088686,
+      "type": "file"
+    },
+    {
+      "path": "TaskNotes/Views/relationships.base",
+      "accessCount": 1,
+      "lastAccessed": 1775372089055,
+      "type": "file"
     }
   ],
   "userDirectives": []
