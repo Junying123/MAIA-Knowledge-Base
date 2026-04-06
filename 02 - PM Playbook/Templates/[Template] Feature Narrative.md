@@ -2,6 +2,7 @@
 owner: [Name]
 status: draft
 last_reviewed: YYYY-MM-DD
+feature_type: compliance | workflow | ui | integration
 lark_url:
 ---
 
@@ -9,17 +10,23 @@ lark_url:
 
 ## Feature Narrative — MAIA
 
+> **How to use this template**
+> - Sections marked `[REQUIRED]` appear in every Feature Narrative — do not skip them
+> - Sections marked `[OPTIONAL BLOCK]` are modular — include only if the "include when" condition applies
+> - Delete all guidance notes (lines in _italics_) before publishing
+> - Copy this file, never edit it directly
+
 ---
 
-## 🧠 What This Feature Actually Is
+## 🧠 What This Feature Actually Is `[REQUIRED]`
 
-_Define the core artifact or concept in one sentence. Then answer: what does it verify, certify, or enable? List real-world use cases (3–6 bullets). Close with a bold positioning statement — what this IS, not just what it does._
+_Define the core artifact or concept in one sentence. What does it verify, certify, or enable? List 3–6 real-world use cases. Close with a bold positioning statement — what this IS, not just what it does._
 
-A **[Feature Name]** is a **[type of artifact/process/record]** that:
+A **[Feature Name]** is a **[type of artifact / process / record]** that:
 
-- [Use case 1 — what it enables operationally]
+- [Use case 1 — operational enablement]
 - [Use case 2 — compliance or contractual purpose]
-- [Use case 3 — audit or dispute resolution use]
+- [Use case 3 — audit or dispute resolution]
 - [Use case 4 — legal or commercial protection]
 
 This is not [common misconception — what people think this is].
@@ -28,39 +35,37 @@ This is **[true positioning — what it actually is and why it matters]**.
 
 ---
 
-## 🔎 Why This Feature Exists in MAIA Specifically
+## 🔎 Why This Feature Exists in MAIA Specifically `[REQUIRED]`
 
-_Connect this feature to MAIA's core design principles. State the wrong mental model teams often bring to this feature. Then state the correct frame explicitly._
+_Connect to MAIA's design principles. Name the wrong mental model. State the correct frame explicitly._
 
-MAIA's core design principle is that **[relevant design principle — e.g., document trail continuity, traceability, enforcement over reminders]**.
+MAIA's core design principle is that **[relevant principle — e.g., document trail continuity / enforcement over reminders / traceability at every step]**.
 
-[Explain how this feature fits that principle — 2–3 sentences.]
+[2–3 sentences on how this feature fits that principle.]
 
 If your team thinks of [Feature Name] as "[wrong implementation framing]," they've already built the wrong thing.
 
-The correct frame is: **[correct implementation frame — one sentence, bold]**. [Expand on what this means for MAIA's architecture — 3–5 bullets.]
+The correct frame is: **[correct frame — one sentence, bold]**. In MAIA, this means:
 
 - [Implication 1]
 - [Implication 2]
 - [Implication 3]
-- [Implication 4]
-- [Implication 5]
 
 ---
 
-## 📖 Before MAIA — The Reality on the Ground
+## 📖 Before MAIA — The Reality on the Ground `[REQUIRED]`
 
-_Tell the story through the persona. Walk through one specific failure scenario. Separate "what happens internally" from "what happens next." Close with the uncomfortable truth._
+_Story-driven. One persona, one scenario. Separate "what happens internally" from "what happens next." Close with the uncomfortable truth._
 
-Meet [Persona Name — use Ah Hock or a new persona as appropriate].
+Meet [Persona Name — Ah Hock or appropriate persona].
 
-[2–3 sentences describing who they are, what their business looks like, and why this problem is inevitable for them.]
+[2–3 sentences: who they are, what their business looks like, why this problem is inevitable at their scale.]
 
-That [knowledge/process/record] is not written down anywhere.
+That [knowledge / process / record] is not written down anywhere.
 
 ---
 
-[Set the scene: a specific transaction or customer interaction that triggers the failure.]
+[Set the scene — a specific transaction or customer interaction that triggers the failure.]
 
 Everything looks fine — until [triggering event]:
 
@@ -74,14 +79,13 @@ Now the breakdown starts.
 
 [Person] asks [person]: _"[Question that reveals the process gap.]"_
 
-[Person] checks [manual method — handwritten notes, email, WhatsApp, spreadsheet]. [What they find — or don't find.]
+[Person] checks [manual method — handwritten notes, email, WhatsApp, spreadsheet].
 
 [Role] starts searching:
 
 - [Place 1]
 - [Place 2]
 - [Place 3]
-- [Place 4]
 
 They find something that looks like [the document/record they need].
 
@@ -90,7 +94,6 @@ But no one can confirm:
 - [Verification question 1]
 - [Verification question 2]
 - [Verification question 3]
-- [Verification question 4]
 
 They [action anyway], because [pressure — customer waiting, clock ticking].
 
@@ -107,9 +110,7 @@ Now you've created, in sequence:
 - A **[consequence 1]** — [brief explanation]
 - A **[consequence 2]** — [brief explanation]
 - A potential **[consequence 3]** — [brief explanation]
-- A **[consequence 4]** — [brief explanation]
-- Possible **[consequence 5]** — [brief explanation]
-- **[consequence 6]** — [brief explanation]
+- Possible **[consequence 4]** — [brief explanation]
 
 ---
 
@@ -122,16 +123,14 @@ This is a **system design failure** that will repeat every time this business sc
 - [Root cause 1]
 - [Root cause 2]
 - [Root cause 3]
-- [Root cause 4]
-- [Root cause 5]
 
 Every additional [role], every new [hire], every additional [scale vector] makes this worse.
 
 ---
 
-## 💡 After MAIA — What Changes
+## 💡 After MAIA — What Changes `[REQUIRED]`
 
-_Replay the same scenario step by step showing MAIA's correct behaviour. Each step should map to a system design component defined later._
+_Replay the same scenario step by step. Each step should correspond to a system or workflow change. End with the dispute resolution proof point._
 
 Now replay the same scenario with MAIA implemented correctly.
 
@@ -141,9 +140,9 @@ Now replay the same scenario with MAIA implemented correctly.
 
 _What happens at this stage? Who does what? What does MAIA enforce or automate?_
 
-[Step description — 2–4 sentences. Be specific about system behaviour.]
+[Step description — 2–4 sentences.]
 
-This changes [the culture / the workflow / the data model]: [why this step matters beyond the mechanics].
+This changes [the culture / the workflow / the enforcement model]: [why this step matters beyond the mechanics].
 
 ---
 
@@ -151,7 +150,7 @@ This changes [the culture / the workflow / the data model]: [why this step matte
 
 [Step description.]
 
-This is not [common shortcut or reminder approach].
+This is not [common shortcut or reminder-based approach].
 
 This is **[what it actually is — system-enforced, automatic, deterministic]**.
 
@@ -159,14 +158,13 @@ This is **[what it actually is — system-enforced, automatic, deterministic]**.
 
 ### Step 3 — [Step Name]: [One-line description]
 
-[Step description. Include the resolution sequence if applicable:]
+[Step description. If this step has a resolution sequence:]
 
 1. [Action 1]
 2. [Action 2]
 3. [Action 3]
-4. [Action 4]
 
-If [failure condition], the system does not [silent failure mode]. It [enforcement action].
+If [failure condition], the system does not [silent failure]. It [enforcement action].
 
 No one is asked to remember. No one makes a judgment call.
 
@@ -174,12 +172,11 @@ No one is asked to remember. No one makes a judgment call.
 
 ### Step [N] — If a Dispute Happens: Immediate, Irrefutable Response
 
-[Dispute scenario.] Your team opens [record] in MAIA and immediately sees:
+Your team opens [record] in MAIA and immediately sees:
 
 - [Audit data point 1]
 - [Audit data point 2]
 - [Audit data point 3]
-- [Audit data point 4]
 
 Your response:
 
@@ -191,13 +188,24 @@ One lookup. Full answer.
 
 ---
 
-## 🧱 Core System Design
+<!--
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  OPTIONAL BLOCKS — include only what applies
+  Delete any block that does not fit this feature
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+-->
 
 ---
 
-### 1. [Data Model Component Name]
+## 🧱 Core System Design `[OPTIONAL BLOCK]`
 
-_What entity carries this data? What fields are required? Include a table with field name, type, and description. Explain why the data model is designed this way — not just what it is._
+_Include when: the feature has a data model, configuration fields, or processing logic the dev team needs to implement correctly._
+
+---
+
+### 1. [Data Model Component]
+
+_Include when: the feature introduces a new entity or extends an existing one with required fields._
 
 Each **[Entity Name]** carries:
 
@@ -206,34 +214,32 @@ Each **[Entity Name]** carries:
 | `[field_name]` | [Type] | [Description] |
 | `[field_name]` | [Type] | [Description] |
 | `[field_name]` | [Type] | [Description] |
-| `[field_name]` | [Type] | [Description] |
 
-Because [rationale — why this data lives here and not elsewhere, and what goes wrong if you put it somewhere else].
+Because [rationale — why this data lives here and not elsewhere].
 
 ---
 
-### 2. [Key Capability — Usually the Non-Obvious One]
+### 2. [Key Non-Obvious Capability]
 
-_This is often a capability teams skip or underestimate. Explain what it enables commercially or operationally, what the binary failure looks like without it, and why it must be system-level._
+_Include when: there's a capability teams commonly skip that causes real commercial damage. Name it. Explain the binary failure without it._
 
 [Capability name] allows you to:
 
 - [Benefit 1]
-- [Benefit 2 — commercial protection]
-- [Benefit 3 — confidentiality or compliance]
+- [Benefit 2 — commercial or compliance protection]
 
 Without [Capability], your users face an impossible binary:
 
 - [Option A] → [bad outcome A]
 - [Option B] → [bad outcome B]
 
-Both outcomes are bad. [Capability] resolves this at system level without making it a judgment call every time.
+Both outcomes are bad. [Capability] resolves this at system level.
 
 ---
 
-### 3. [Configuration Component — Customer/Preference/Rules]
+### 3. [Configuration / Preference Component]
 
-_Stored where? Applied when? Include a field table. Tie it to MAIA's existing architecture._
+_Include when: the feature has per-customer or per-entity configuration that the system must apply automatically (not rely on users remembering)._
 
 Stored in [Location], applied automatically at [trigger point]:
 
@@ -241,118 +247,88 @@ Stored in [Location], applied automatically at [trigger point]:
 |---|---|---|
 | `[field_name]` | [Type] | [Options] |
 | `[field_name]` | [Type] | [Options] |
-| `[field_name]` | [Type] | [Options] |
 
-This field set integrates with MAIA's existing [architecture component] — [brief description of what that architecture does and why this feature belongs there].
+This integrates with MAIA's existing [architecture component] — [why it belongs there].
 
 ---
 
 ### 4. [Resolution / Processing Logic]
 
-_The core logic. Write it as a pseudocode block. It should be deterministic and not depend on user judgment._
+_Include when: the feature has a deterministic processing sequence (selection logic, validation, resolution engine). Write it as pseudocode._
 
-On [trigger event], MAIA executes the following resolution sequence:
+On [trigger event], MAIA executes:
 
 ```
 For each [item/line/record] in [document]:
   1. [Resolution step 1]
-  2. For each [sub-entity]:
-     a. [Check condition 1]
-     b. [Read preference]
-     c. [Select: condition A if X; else condition B]
-     d. If [required] and no [valid resource] exists → BLOCK
-  3. [Attach / record / execute outcome]
-  4. Log: [field 1], [field 2], [field 3], timestamp, user
+  2. [Check condition]
+  3. [Select outcome based on preference/config]
+  4. If [required] and no [valid resource] exists → BLOCK
+  5. Log: [field], [field], timestamp, user
 ```
 
-This is deterministic. It does not rely on user judgment. It does not depend on who is on shift. It produces the same correct outcome for every [transaction], every time.
+This is deterministic. It produces the same correct outcome every time.
 
 ---
 
-### 5. Enforcement Layer — Where Most Systems Fail
+## 🔒 Enforcement Layer `[OPTIONAL BLOCK]`
 
-_This is what separates a real compliance feature from compliance theatre. Define every condition and what the system does in each case._
+_Include when: the feature must gate or block a transaction if a condition isn't met. Compliance, approval, or certification features almost always need this._
 
-Most systems that claim to "[support this feature]" treat [the feature] as [optional/manual]. The result is inconsistent compliance — fine when someone remembers, broken when they don't.
+Most systems treat [this feature] as optional. The result is inconsistent compliance — fine when someone remembers, broken when they don't.
 
 MAIA enforces:
 
 | Condition | System Behaviour |
 |---|---|
-| [Condition 1 — happy path] | [Auto-action, proceed] |
-| [Condition 2 — expired/invalid] | [Block, surface exception] |
-| [Condition 3 — missing] | [Block, surface exception] |
-| [Condition 4 — prerequisite missing] | [Block, surface exception] |
-| [Condition 5 — not required] | [Skip or optional behaviour] |
-| [Condition 6 — fallback] | [Fallback with warning] |
+| [Happy path — all conditions met] | [Auto-proceed] |
+| [Condition invalid or expired] | [Block, surface exception] |
+| [Condition missing entirely] | [Block, surface exception] |
+| [Prerequisite not met] | [Block, surface exception] |
+| [Not required for this customer/case] | [Skip or optional] |
+| [Fallback available] | [Use fallback with warning] |
 
-Enforcement is not optional. It is the difference between a [feature type] feature and a [feature type] theatre feature.
+Enforcement is not optional. It is the difference between a [feature type] feature and [feature type] theatre.
 
----
+**Exception routing** — when blocked, MAIA generates a task in the exception workspace:
 
-### 6. Exception Surfacing — Integrated with MAIA's ToDo System
-
-When the [engine] blocks [action], it does not silently fail.
-
-It generates an exception — routed to the correct owner via MAIA's exception workspace:
-
-- **Task type**: `[EXCEPTION_TYPE_1]` / `[EXCEPTION_TYPE_2]` / `[EXCEPTION_TYPE_3]`
-- **Owner**: [Team responsible for resolution]
-- **Linked document**: [Entity 1] + [Entity 2]
-- **SLA**: Configurable per severity — e.g., [X hours] for [severity description]
-- **Resolution action**: [What the user must do] → system re-validates → [action proceeds]
-
-This is not a generic error message. It is a tracked, owned, time-bounded task in the exception register.
+- **Task type**: `[EXCEPTION_TYPE]`
+- **Owner**: [Team responsible]
+- **Linked document**: [Entity]
+- **SLA**: [X hours] for [severity]
+- **Resolution**: [What owner must do] → system re-validates → proceeds
 
 ---
 
-### 7. Audit Trail — The Immutable Record
+## ⚠️ Critical Edge Cases `[OPTIONAL BLOCK]`
 
-Every [action] event is recorded with:
+_Include when: the feature has data scenarios that will break a naive implementation in production. Each edge case should name the scenario, why it breaks, and what the correct pattern is._
 
-- [Document ID type]
-- [Entity ID type]
-- [Version or state reference]
-- [Type or category field]
-- Timestamp
-- User who triggered [action]
-- [Key configuration] at time of [action] (snapshot, not live link)
-
-The snapshot of [configuration] at [action] time is important. If [configuration changes after the fact], the audit record reflects what was applicable when [action occurred] — not what [the record] says today.
-
-This protects you legally. It makes dispute resolution unambiguous.
-
----
-
-## ⚠️ Critical Edge Cases — Every One of These Will Hit You in Production
-
-_List the edge cases teams skip and that break silently in production. For each: describe the scenario, why it breaks a naive implementation, and what must be true in the system to handle it correctly._
-
-Teams that build this feature without handling these cases ship something that breaks silently in real operations.
+Teams that skip these ship something that breaks silently in real operations.
 
 ---
 
 ### 1. [Edge Case Name]
 
-[Describe the scenario — what happens in real operations that creates this case.]
+[Scenario — what happens in real operations.]
 
-[Why a naive implementation fails here — what the shortcut is and what it breaks.]
+[Why a naive implementation fails — what shortcut breaks it.]
 
-Implementation shortcut that kills this: [Specific bad pattern]. It must be [correct pattern].
-
----
-
-### 2. [Edge Case Name]
-
-[Describe the scenario.]
-
-This only works correctly if [condition is met at the right level/time], not [wrong level/time].
+Implementation shortcut that kills this: [bad pattern]. It must be [correct pattern].
 
 ---
 
-### 3. [Edge Case Name]
+### 2. [Edge Case Name — Partial / Split scenarios]
 
-[Describe the scenario — timing issue, edge of validity window, etc.]
+[Scenario — e.g., partial delivery, split batch, multi-stage fulfillment.]
+
+This only works correctly if [condition met at right level/time], not [wrong level/time].
+
+---
+
+### 3. [Edge Case Name — Timing / Expiry]
+
+[Scenario — validity windows, transit time, time-sensitive certification.]
 
 MAIA must:
 
@@ -362,146 +338,122 @@ MAIA must:
 
 ---
 
-### 4. [Edge Case Name — Versioning/Revision]
+### 4. [Edge Case Name — Versioning / Revision]
 
-[Describe the scenario — revisions, corrections, superseded records.]
+[Scenario — records get revised, superseded, or corrected after the fact.]
 
-MAIA must track:
-
-- [Tracking requirement 1]
-- [Tracking requirement 2]
-- [Tracking requirement 3]
-
-If [record is revised after action], the historical audit record must remain intact. The revision must be logged as [new version / new entry], not an overwrite.
+If [record revised after action], the historical audit record must stay intact. Log as [new version], not an overwrite.
 
 ---
 
-### 5. [Edge Case Name — Incomplete Upstream Data]
+### 5. [Edge Case Name — Incomplete Upstream]
 
-[Describe the scenario — upstream step not completed before downstream action is needed.]
+[Scenario — upstream step not completed before downstream action is needed.]
 
-MAIA must:
-
-- Flag [entities] where [required field] is missing as incomplete for any [dependent entity/action]
-- Surface this as a proactive exception — not just a [action]-time block
-- Ideally surface it at [earlier trigger], not at the moment [urgent situation]
+MAIA must surface this proactively — not just at [action]-time when it's already urgent.
 
 ---
 
-### 6. [Edge Case Name — Severity Differentiation]
+## 🔁 End-to-End Flow `[OPTIONAL BLOCK]`
 
-[Describe the scenario — two types of the same requirement with different severity levels.]
-
-The enforcement severity should reflect this. [Type A case] is not the same as [Type B case]. Configuration should allow differentiation — and the exception routing should reflect the actual risk level.
-
----
-
-## 🔁 End-to-End Flow
+_Include when: the feature spans multiple documents, roles, or system steps and the full sequence isn't obvious from the After MAIA section alone._
 
 ```
-[Upstream event — e.g., supplier delivers / customer places order]
-  → [Step 1 action]
-  → [Step 2 action]
-  → [Record marked complete]
+[Upstream trigger]
+  → [Step 1]
+  → [Step 2]
+  → [Record marked complete / gate passed]
 
-[Configuration step]
+[Config applied]
   → [Config field 1] = [value]
   → [Config field 2] = [value]
-  → [Config field 3] = [value]
 
 [Transaction created] → [Document generated]
-  → [Resolution engine fires]:
+  → [Engine fires]:
       [Check 1]? ✓
       [Check 2]? ✓
-      [Preference] → [Selected option]
-      [Resource available]? ✓
-      → [Attach / execute outcome]
-      → Log: [field], [field], [field], timestamp, user
+      [Preference resolved] → [Outcome selected]
+      → [Execute / attach / record]
+      → Log: [field], [field], timestamp, user
 
-[Action executed]
-  → [Recipient] receives [goods/output] + [document] with [artifact] attached
+[Delivery / execution]
+  → [Recipient] receives [output] with [artifact]
 
-[Dispute raised (if any)]
-  → Open [document] → audit trail shows [field], [field], [field]
+[Dispute (if any)]
   → One lookup → full answer
 ```
 
 ---
 
-## 📊 Operational Impact
+## 🧭 Implementation Priorities `[OPTIONAL BLOCK]`
+
+_Include when: the feature requires phased delivery or the build sequence is non-obvious. Sequence correctly — do not skip ahead._
+
+**Phase 1 — Data Model**
+- [Entity + fields]
+- [Config fields]
+- [Child table or attachment structure]
+
+**Phase 2 — Core Logic**
+- [Processing / resolution logic]
+- [Validation and fallback]
+- [Logging with snapshot]
+
+**Phase 3 — Enforcement**
+- [Block conditions]
+- [Exception generation → MAIA ToDo]
+- [Override with audit log]
+
+**Phase 4 — Document Integration**
+- [Artifact visible from document record]
+- [Output format / PDF bundle]
+- [Dispatch channel]
+
+**Phase 5 — Proactive Visibility**
+- [Dashboard: missing or expiring items]
+- [Pre-action status check in UI]
+- [Digest signal]
+
+**Phase 6 — Audit and Reporting**
+- [Attachment history per document]
+- [Version history per entity]
+- [Compliance report]
+
+---
+
+<!--
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  END OF OPTIONAL BLOCKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+-->
+
+---
+
+## 📊 Operational Impact `[REQUIRED]`
 
 | Dimension | Before MAIA | After MAIA |
 |---|---|---|
-| [Dimension 1] | [Manual / ad hoc / memory-dependent] | [Automatic / system-enforced] |
+| [Dimension 1] | [Manual / memory-dependent] | [Automatic / system-enforced] |
 | [Dimension 2] | [Ad hoc] | [Enforced] |
 | [Dimension 3] | [Tribal knowledge] | [System-configured, always applied] |
-| [Dimension 4] | [None — risk of X] | [Versioned / controlled] |
-| [Dimension 5] | [None — proceeds regardless] | [Blocked — cannot proceed without compliance] |
-| [Dimension 6] | [Scramble, delay, escalation] | [One lookup — full audit record] |
-| [Dimension 7] | [Judgment call — often wrong] | [System-enforced] |
-| [Dimension 8] | [High — inconsistent] | [Low — irrefutable audit trail] |
+| [Dimension 4] | [No enforcement] | [Blocked until compliant] |
+| [Dimension 5] | [Scramble, delay] | [One lookup — full audit record] |
 
 ---
 
-## 🧭 Implementation Priorities
-
-_Sequence these correctly. Do not skip ahead. Each phase must be complete before the next begins._
-
-**Phase 1 — Data Model**
-
-- [Data entity + fields]
-- [Version/history table]
-- [Configuration fields]
-- [Child table or attachment structure]
-
-**Phase 2 — Resolution Engine**
-
-- [Core logic — selection / assignment / preference resolution]
-- [Validation check — expiry, completeness]
-- [Fallback logic]
-- [Logging with snapshot of configuration at time of action]
-
-**Phase 3 — Enforcement Layer**
-
-- [Block conditions]
-- [Exception generation → MAIA ToDo / exception workspace]
-- [Override mechanism for authorised users with audit log entry]
-
-**Phase 4 — Document Integration**
-
-- [[Artifact] visible and downloadable from [document] record]
-- [PDF bundle or output format]
-- [Dispatch channel — email, chatbot, attached to document]
-
-**Phase 5 — Proactive Visibility**
-
-- [[Entity] compliance dashboard: items with missing or expiring [artifacts]]
-- [Pre-[action] status check surfaced in [document] creation UI]
-- [Digest signal: "[X items] have [artifacts] [expiring / missing] in the next [N] days"]
-
-**Phase 6 — Audit and Reporting**
-
-- [[Artifact] attachment history per [document]]
-- [[Artifact] version history per [entity]]
-- [Compliance report: [transactions] to [requirement]-required [counterparties] by period, pass/fail]
-
----
-
-## 🧩 Final Positioning — Non-Negotiable
+## 🧩 Final Positioning — Non-Negotiable `[REQUIRED]`
 
 This is not:
 
-> _"[Common oversimplification of what teams build when they miss the point.]"_
+> _"[Common oversimplification — what teams build when they miss the point.]"_
 
 This is:
 
-> **[Full correct positioning statement — include: what it does, how it does it, what it protects, and why it's first-class. One paragraph, bold.]**
+> **[Full correct positioning — what it does, how, what it protects, why it's first-class. One paragraph, bold.]**
 
 If your team builds this as [wrong implementation], they have failed.
 
-If they build it as [correct implementation — deterministic, enforced, auditable, exception-handled] — they have built something that actually protects the business.
-
-The difference between those two implementations is the difference between a feature that looks like [capability] and one that actually delivers it.
+If they build it as [correct implementation — deterministic, enforced, auditable] — they have built something that actually protects the business.
 
 Build the real one.
 
@@ -509,6 +461,6 @@ Build the real one.
 
 ## See Also
 
-- [[03 - Clients/Active Cooking Clients/Holsen/Feature Requests/Feature Narrative/Feature Narrative -]] — COA reference example
+- [[03 - Clients/Active Cooking Clients/Holsen/Feature Requests/Feature Narrative/Feature Narrative -]] — COA reference example (full compliance feature)
 - [[02 - PM Playbook/Templates]] — All templates
 - [[01 - MAIA Product/Overview]] — Product context
