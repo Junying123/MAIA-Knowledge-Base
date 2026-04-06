@@ -250,6 +250,12 @@
       "type": "file"
     },
     {
+      "path": "",
+      "accessCount": 2,
+      "lastAccessed": 1775481722911,
+      "type": "directory"
+    },
+    {
       "path": "brain/Key Decisions.md",
       "accessCount": 1,
       "lastAccessed": 1775298587754,
@@ -322,15 +328,15 @@
       "type": "file"
     },
     {
-      "path": "",
-      "accessCount": 1,
-      "lastAccessed": 1775444551467,
-      "type": "directory"
-    },
-    {
       "path": "Granola/Transcripts/2026-04-06/Mindhive  Daily Standup-transcript.md",
       "accessCount": 1,
       "lastAccessed": 1775444551554,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/Active Cooking Clients/Holsen/Feature Requests/Feature Narrative/Feature Narrative -.md",
+      "accessCount": 1,
+      "lastAccessed": 1775481486998,
       "type": "file"
     }
   ],
