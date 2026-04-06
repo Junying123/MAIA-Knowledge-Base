@@ -238,6 +238,18 @@
       "type": "file"
     },
     {
+      "path": "02 - PM Playbook/Daily Updates/Daily Update - 02-04-2026.md",
+      "accessCount": 2,
+      "lastAccessed": 1775444555374,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Daily Updates/Daily Updates Index.md",
+      "accessCount": 2,
+      "lastAccessed": 1775444555569,
+      "type": "file"
+    },
+    {
       "path": "brain/Key Decisions.md",
       "accessCount": 1,
       "lastAccessed": 1775298587754,
@@ -274,18 +286,6 @@
       "type": "file"
     },
     {
-      "path": "02 - PM Playbook/Daily Updates/Daily Updates Index.md",
-      "accessCount": 1,
-      "lastAccessed": 1775362813955,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Daily Updates/Daily Update - 02-04-2026.md",
-      "accessCount": 1,
-      "lastAccessed": 1775362814156,
-      "type": "file"
-    },
-    {
       "path": "brain/log.md",
       "accessCount": 1,
       "lastAccessed": 1775364222082,
@@ -319,6 +319,18 @@
       "path": "TaskNotes/Views/relationships.base",
       "accessCount": 1,
       "lastAccessed": 1775372089055,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1775444551467,
+      "type": "directory"
+    },
+    {
+      "path": "Granola/Transcripts/2026-04-06/Mindhive  Daily Standup-transcript.md",
+      "accessCount": 1,
+      "lastAccessed": 1775444551554,
       "type": "file"
     }
   ],
