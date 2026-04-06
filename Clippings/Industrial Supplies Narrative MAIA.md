@@ -386,6 +386,3 @@ That says everything.
 ---
 
 End.
-
-  
-**
