@@ -208,6 +208,12 @@
       "type": "file"
     },
     {
+      "path": "",
+      "accessCount": 3,
+      "lastAccessed": 1775489127166,
+      "type": "directory"
+    },
+    {
       "path": "brain/Memories.md",
       "accessCount": 2,
       "lastAccessed": 1775333325257,
@@ -250,10 +256,10 @@
       "type": "file"
     },
     {
-      "path": "",
+      "path": "02 - PM Playbook/Templates/[Template] Feature Narrative.md",
       "accessCount": 2,
-      "lastAccessed": 1775481722911,
-      "type": "directory"
+      "lastAccessed": 1775489034320,
+      "type": "file"
     },
     {
       "path": "brain/Key Decisions.md",
