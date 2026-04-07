@@ -5,6 +5,8 @@ type: transcript
 created: 2026-04-07T01:44:12.171Z
 updated: 2026-04-07T10:46:15.439Z
 attendees: []
+folders: 
+  - Mindhive Daily Standup
 ---
 
 # Transcript for: Mindhive  Daily Standup

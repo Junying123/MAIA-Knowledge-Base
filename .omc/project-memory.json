@@ -235,21 +235,27 @@
       "type": "directory"
     },
     {
+      "path": "",
+      "accessCount": 5,
+      "lastAccessed": 1775562517229,
+      "type": "directory"
+    },
+    {
       "path": "AGENTS.md",
       "accessCount": 4,
       "lastAccessed": 1775325538090,
       "type": "file"
     },
     {
-      "path": "",
-      "accessCount": 4,
-      "lastAccessed": 1775533078359,
-      "type": "directory"
-    },
-    {
       "path": "02 - PM Playbook/Templates/[Template] Feature Narrative.md",
       "accessCount": 3,
       "lastAccessed": 1775489352166,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Daily Updates/Daily Update - 02-04-2026.md",
+      "accessCount": 3,
+      "lastAccessed": 1775562520124,
       "type": "file"
     },
     {
@@ -280,12 +286,6 @@
       "path": ".claude/commands/client-sync.md",
       "accessCount": 2,
       "lastAccessed": 1775369815994,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Daily Updates/Daily Update - 02-04-2026.md",
-      "accessCount": 2,
-      "lastAccessed": 1775444555374,
       "type": "file"
     },
     {
