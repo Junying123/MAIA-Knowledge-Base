@@ -206,14 +206,14 @@
   "hotPaths": [
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Customer Narrative - Ming Medical.md",
-      "accessCount": 24,
-      "lastAccessed": 1775559589793,
+      "accessCount": 27,
+      "lastAccessed": 1775560485747,
       "type": "file"
     },
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Meeting Notes/Ming Medical Meeting Transcript - YYYY-MM-DD.md",
-      "accessCount": 17,
-      "lastAccessed": 1775559081241,
+      "accessCount": 23,
+      "lastAccessed": 1775560411691,
       "type": "file"
     },
     {
@@ -229,6 +229,12 @@
       "type": "file"
     },
     {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical",
+      "accessCount": 5,
+      "lastAccessed": 1775559872656,
+      "type": "directory"
+    },
+    {
       "path": "AGENTS.md",
       "accessCount": 4,
       "lastAccessed": 1775325538090,
@@ -238,12 +244,6 @@
       "path": "",
       "accessCount": 4,
       "lastAccessed": 1775533078359,
-      "type": "directory"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical",
-      "accessCount": 4,
-      "lastAccessed": 1775559419911,
       "type": "directory"
     },
     {
@@ -401,6 +401,24 @@
       "accessCount": 1,
       "lastAccessed": 1775556294692,
       "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery",
+      "accessCount": 1,
+      "lastAccessed": 1775559875791,
+      "type": "directory"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/GTM Briefs/Ming Medical/Ming Medical - GTM Proposal.md",
+      "accessCount": 1,
+      "lastAccessed": 1775559881460,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/GTM Briefs/Ming Medical/Ming Medical - GTM Brief Transcript.md",
+      "accessCount": 1,
+      "lastAccessed": 1775559888631,
+      "type": "directory"
     }
   ],
   "userDirectives": []

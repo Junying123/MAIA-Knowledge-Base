@@ -136,12 +136,9 @@ The workflow does not end when the proposal is approved and sent. For cases wher
 - **Base proposal-to-order operational handoff** — confirmed proposal support into OMS order creation flow.
 - **Multi-language baseline support** — English, Mandarin, Arabic (final implementation subject to approved examples and UAT).
 
-### Designed For, Not Included (Phase 2)
+### Deferred — Not Committed
 
-- **Advanced fulfillment tracking and post-order operations** — Phase 1 ends at order creation; production scheduling and logistics tracking are designed to extend from this foundation in Phase 2.
-- **Expanded finance automation** — invoicing and receipt flows beyond the baseline order handoff are deferred; Phase 1 architecture accommodates this extension.
-- **Analytics and reporting modules** — proposal volume, conversion, and partner channel performance dashboards are not in Phase 1 scope but the data structure is being built to support them.
-- **Voice/text-to-speech** — flagged as a future requirement; commercials and timeline to be agreed separately with the relevant team.
+- **Text-to-voice and voice-to-text** — Sean explicitly requested the ability for the system to read proposals aloud (text-to-voice) and accept voice input from doctors who cannot type easily. Raised in the meeting; Brendan confirmed it is technically feasible but deferred: commercials and timeline to be discussed separately with the relevant team before committing to scope.
 
 ### Requires Clarification
 
