@@ -218,8 +218,14 @@
     },
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Meeting Notes/Ming Medical Meeting Transcript - YYYY-MM-DD.md",
-      "accessCount": 6,
-      "lastAccessed": 1775533757107,
+      "accessCount": 9,
+      "lastAccessed": 1775555155720,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Customer Narrative - Ming Medical.md",
+      "accessCount": 5,
+      "lastAccessed": 1775555204761,
       "type": "file"
     },
     {
@@ -238,12 +244,6 @@
       "path": "02 - PM Playbook/Templates/[Template] Feature Narrative.md",
       "accessCount": 3,
       "lastAccessed": 1775489352166,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Customer Narrative - Ming Medical.md",
-      "accessCount": 3,
-      "lastAccessed": 1775533976909,
       "type": "file"
     },
     {

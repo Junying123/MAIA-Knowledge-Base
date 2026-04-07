@@ -1,179 +1,112 @@
-+------------+---------------------------------------------------------+
-| Date       | : 20^th^ November, 2025                                 |
-|            |                                                         |
-|            | 18^th^ December, 2025 (update)                          |
-+============+=========================================================+
-| Name       | : XXXXX                                                 |
-+------------+---------------------------------------------------------+
-| Gender     | : Female                                                |
-+------------+---------------------------------------------------------+
-| Age        | : 67 years old (DOB 9^th^ January 1958)                 |
-+------------+---------------------------------------------------------+
-| Indication | : Pleurisy *(inflammation of the membrane around the    |
-|            | lungs and chest cavity)*                                |
-+------------+---------------------------------------------------------+
+---
+owner: Gareth
+status: draft
+last_reviewed: 2026-04-07
+---
 
-17^th^ December 2025, history via WhatsApp message
+# Sample Case — Ming Medical Cell Therapy
 
-- Right knee osteoarthritis joint pain, difficulty in climbing stairs
+---
 
-- When waking up, experience lower back (mainly left side) pain, hip
+## Patient Overview
 
-- Stiff hands and joints in general.
+| Field | Details |
+|---|---|
+| **Date** | 20th November 2025 *(updated 18th December 2025)* |
+| **Name** | XXXXX |
+| **Gender** | Female |
+| **Age** | 67 years old (DOB 9th January 1958) |
+| **Indication** | Pleurisy *(inflammation of the membrane around the lungs and chest cavity)* |
 
-- High inflammation blood markers (eg CRO, ESR) signs of injuries (eg
-  OA) and autoimmune disease (eg hashimoto), Hypothyroid from Hashimotos
+---
 
-- Interest in Anti-Aging, and Longevity
+## Patient History
 
-- Face and Neck Anti-Aging Treatment
+### Reported via WhatsApp (17th December 2025)
 
-15^th^ October 2025, XR Xhest PA and Lateral (Outptient)
+- Right knee osteoarthritis joint pain, difficulty climbing stairs
+- Lower back pain (mainly left side) when waking up, hip pain
+- Stiff hands and joints in general
+- High inflammation blood markers (CRP, ESR) — signs of injuries (OA) and autoimmune disease (Hashimoto's), Hypothyroid from Hashimoto's
+- Interest in anti-aging and longevity
+- Face and neck anti-aging treatment
 
-- New small right plural effusion -- stable
+### Chest X-Ray — 15th October 2025 (Outpatient)
 
-- Left plural effusion resolved
+- New small right pleural effusion — stable
+- Left pleural effusion resolved
 
-History (as related by patient)
+### Medical History (as related by patient)
 
-- History of Hashimoto thyroiditis *( autoimmue disease where thyroid
-  gland is gradually eliminated)* Current treatment of;
+- **Hashimoto's thyroiditis** *(autoimmune disease where thyroid gland is gradually eliminated)*
+  - Hormone replacement therapy — daily levothyroxine
+  - Immunosuppressants
 
-  - Hormone replacement therapy, daily medication levothyroxine
+---
 
-  - Immunosuppresents
+## Proposed Cell Therapy
 
-Proposed cell therapy
+| Condition | Therapy | Targeted Outcome |
+|---|---|---|
+| **Hashimoto's Thyroiditis** + inflammation (CRP & ESR); stiff hands/joints from rheumatoid arthritis (autoimmune) | 200 million Stem Cell (IV bolus) | Regenerate thyroid gland tissue lost from autoimmune disease (multiple sessions required); repair joint damage from accumulated autoimmune damage; modulate body's autoimmune condition; lower inflammation markers as tissue is repaired |
+| **Osteoarthritis** (right knee) | 50 million Stem Cell (L & R intraarticular) in 2× 3 mL saline | Likely requires 4–6 months to see results; 2nd dose may be required |
+| **Lower back pain** (left side), early signs of sciatica | 50 million Stem Cell (local intramuscular) in 4× 3 mL saline | Regenerate damaged nerve in lower back |
+| **Anti-aging** — face, neck & fragile tissues | 200 FU Exosomes (IV bolus); 2× 50 mL 20 FU Exosomes HydroGel (topical); 31G 10 million SC micro-needling of subcutaneous skin layers (face and neck) | Increase micro-capillary density; increase collagen support; tighten and brighten skin |
+| **Longevity** | 400 FU Telomere Exosomes (IV bolus) | Increase DNA telomere length to increase lifespan; increase body's metabolism, preventing onset of Type 2 diabetes |
 
-+----------------------+-----------------------+-----------------------+
-| [Condition]{.mark}   | [Therapy]{.mark}      | [Targeted             |
-|                      |                       | Outcome]{.mark}       |
-+======================+=======================+=======================+
-| Hashimoto            | 200 million Stem Cell | Regenerate thyroid    |
-| Thyroiditis, and     | (IV bolus)            | gland tissue lost     |
-| inflammation (CRP &  |                       | from the autoimmune   |
-| ESR) marker          |                       | disease. Will require |
-|                      |                       | multiple sessions.    |
-| Stiff hands and      |                       |                       |
-| joints, likely from  |                       | Repair of joint       |
-| rheumatoid           |                       | damage from           |
-| arthritis, from      |                       | accumulated           |
-| autoimmune disease   |                       | autoimmune damage.    |
-|                      |                       |                       |
-|                      |                       | Modulate body's       |
-|                      |                       | autoimmune condition  |
-|                      |                       |                       |
-|                      |                       | Lower inflammation    |
-|                      |                       | markers, as tissue    |
-|                      |                       | are repaired.         |
-+----------------------+-----------------------+-----------------------+
-| Osteoarthritis       | 50 million Stem Cell  | Will likely require   |
-| (Right Knee)         | (L & R                | 4-6 months to see     |
-|                      | intraarticular) in 2x | results. 2^nd^ dose   |
-|                      | 3mL saline            | might be required.    |
-+----------------------+-----------------------+-----------------------+
-| Lower Back Pain      | 50 million Stem Cell  | Regenerate damage     |
-| (left side), early   | (local intramuscular) | nerve in lower back.  |
-| signs of sciatica    | in 4 x 3mL saline     |                       |
-+----------------------+-----------------------+-----------------------+
-| Anti-Aging Face,     | 200 FU Exosomes (IV   | Increase              |
-| Neck & fragile       | bolus)                | micro-capillary       |
-| tissues              |                       | density               |
-|                      | 2x50mL 20FU Exosomes  |                       |
-|                      | Hydrogel (topical     | Increase collagen     |
-|                      | application)          | support               |
-|                      |                       |                       |
-|                      | 31G 10 million Stem   | Tighten and brighten  |
-|                      | Cell Micro-needling   | skin                  |
-|                      | of subcutaneous skin  |                       |
-|                      | layers for face and   |                       |
-|                      | neck                  |                       |
-+----------------------+-----------------------+-----------------------+
-| Longevity            | 400FU Telomere        | Increase DNA Telomere |
-|                      | Exosomes (IV bolus)   | length, to increase   |
-|                      |                       | life span             |
-|                      |                       |                       |
-|                      |                       | Increase body's       |
-|                      |                       | metabolism,           |
-|                      |                       | preventing onset of   |
-|                      |                       | type2 diabetes.       |
-+----------------------+-----------------------+-----------------------+
-|                      |                       |                       |
-+----------------------+-----------------------+-----------------------+
+---
 
-+------------+-------------------------------------------+-------------+
-| Duration   | Proposed Treatment Protocol               | Cost        |
-+============+===========================================+============:+
-| Month-0    | 300 million Stem Cell dose (IV bolus)     | USD X       |
-|            |                                           |             |
-| *(3 day    | Exosomes 200FU (IV bolus)                 | USD X       |
-| stay in    |                                           |             |
-| Malaysia)* | Telomere Exosomes 400FU *(400,000 bil     | USD X       |
-|            | particle)*                                |             |
-|            |                                           | USD X       |
-|            | Exosomes Hydrogel 20FU 2 jars             |             |
-|            |                                           | USD X       |
-|            | Transplant and micro-needling procedures  |             |
-|            | over 3 days                               | USD X       |
-+------------+-------------------------------------------+-------------+
-| Month-3    | 200 million Stem Cell dose (IV bolus)     | USD X       |
-|            |                                           |             |
-| *(3 day    | Exosomes 200FU (IV bolus)                 | USD X       |
-| stay in    |                                           |             |
-| Malaysia)* | Telomere Exosomes 400FU *(400,000 bil     | USD X       |
-|            | particle)*                                |             |
-|            |                                           | USD X       |
-|            | Exosomes Hydrogel 10FU 2 jars             |             |
-|            |                                           | USD X       |
-|            | Transplant and micro-needling procedures  |             |
-|            | over 3 days                               | USD X       |
-+------------+-------------------------------------------+-------------+
-| Month-6    | 200 million Stem Cell dose (IV bolus)     | USD X       |
-|            |                                           |             |
-| *(3 day    | Exosomes 200FU (IV bolus)                 | USD X       |
-| stay in    |                                           |             |
-| Malaysia)* | Telomere Exosomes 400FU *(400,000 bil     | USD X       |
-|            | particle)*                                |             |
-|            |                                           | USD X       |
-|            | Exosomes Hydrogel 10FU 2 jars             |             |
-|            |                                           | USD X       |
-|            | Transplant and micro-needling procedures  |             |
-|            | over 3 days                               | USD X       |
-+------------+-------------------------------------------+-------------+
+## Proposed Treatment Protocol
 
-**NOTES**:
+| Duration | Treatment | Cost |
+|---|---|---|
+| **Month 0** *(3-day stay in Malaysia)* | 300 million Stem Cell dose (IV bolus) | USD X |
+| | Exosomes 200 FU (IV bolus) | USD X |
+| | Telomere Exosomes 400 FU *(400,000 bil particles)* | USD X |
+| | Exosomes HydroGel 20 FU — 2 jars | USD X |
+| | Transplant and micro-needling procedures over 3 days | USD X |
+| **Month 3** *(3-day stay in Malaysia)* | 200 million Stem Cell dose (IV bolus) | USD X |
+| | Exosomes 200 FU (IV bolus) | USD X |
+| | Telomere Exosomes 400 FU *(400,000 bil particles)* | USD X |
+| | Exosomes HydroGel 10 FU — 2 jars | USD X |
+| | Transplant and micro-needling procedures over 3 days | USD X |
+| **Month 6** *(3-day stay in Malaysia)* | 200 million Stem Cell dose (IV bolus) | USD X |
+| | Exosomes 200 FU (IV bolus) | USD X |
+| | Telomere Exosomes 400 FU *(400,000 bil particles)* | USD X |
+| | Exosomes HydroGel 10 FU — 2 jars | USD X |
+| | Transplant and micro-needling procedures over 3 days | USD X |
 
-\*Prices **DO NOT include, if treatment undertaken in Malaysia:**
+---
 
-- Flight tickets and accommodation in Kuala Lumpur, Malaysia.
+## Notes
 
-- Inpatient Hospital Charges (if any).
+> Prices **do not include** (if treatment undertaken in Malaysia):
+> - Flight tickets and accommodation in Kuala Lumpur, Malaysia
+> - Inpatient hospital charges (if any)
+> - Blood tests (if any)
+> - Transportation
 
-- Blood tests (if any).
+> **The degree of recovery / success rate of the treatment may vary from patient to patient.**
 
-- Transportation.
+---
 
-<!-- -->
+## Payment Options
 
-- **The degree of recovery/ success rate of the treatment may vary from
-  patient to patient.**
+1. **One day prior to treatment** — credit card *(attracts 3% charge)* and cash payment
+2. **TT payment upon confirmation** — at least ONE week prior to courier date
 
-**Payment Options**
+| | |
+|---|---|
+| **Account Name** | MING MEDICAL SDN BHD |
+| **Bank Name** | XXX |
+| **Bank Address** | XXX |
+| **Account No.** | XXX |
+| **Swift Address** | XXX |
 
-1)  **One day prior treatment, for credit card** *(attracts 3% charge)*
-    **and cash payment.**
+---
 
-2)  **TT payment to our account upon confirmation, at least ONE week
-    prior to courier date.**
+## See Also
 
-  ---------------------------------------------------------------
-  Name of Account :   **MING MEDICAL SDN BHD**
-  --------------- --- -------------------------------------------
-  Bank Name       :   **XXX**
-
-  Address of Bank :   **XXX**
-
-  Account No.     :   **XXX**
-
-  Swift Address   :   **XXX**
-  ---------------------------------------------------------------
+- [[CPG (2025)]]
+- [[Ming Medical - Customer Profile]]
+- [[Ming Medical - E2E Business Workflow]]

@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"claude mcp add markitdown-mcp\"}",
+  "error": "Exit code 1\nerror: missing required argument 'commandOrUrl'\n[rerun: b1]",
+  "timestamp": "2026-04-07T10:00:12.634Z",
+  "retry_count": 1
+}
