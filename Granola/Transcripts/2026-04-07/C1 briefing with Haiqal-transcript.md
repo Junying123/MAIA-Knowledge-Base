@@ -5,6 +5,8 @@ type: transcript
 created: 2026-04-07T08:03:48.595Z
 updated: 2026-04-07T08:25:58.446Z
 attendees: []
+folders: 
+  - C1 briefing
 ---
 
 # Transcript for: C1 briefing with Haiqal

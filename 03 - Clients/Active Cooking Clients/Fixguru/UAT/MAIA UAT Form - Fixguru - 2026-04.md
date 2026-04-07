@@ -33,9 +33,7 @@ uat_round: 1
 **Web App:** https://maia-fe-fixguru.vercel.app/login
 **Chatbot (during UAT):** Telegram — @maia_fixguru_bot *(scan the QR code provided)*
 ![[Pasted image 20260407144220.png|209]]
-**Chatbot (after go-live):** WhatsApp *(same features — WhatsApp setup is in progress)*
-
----
+**Chatbot (after go-live):** WhatsApp (+6012‑491 2154)
 
 ## Your Login Details
 
