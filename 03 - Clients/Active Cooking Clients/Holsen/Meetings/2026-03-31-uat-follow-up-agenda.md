@@ -20,7 +20,7 @@ Close the loop on **Phase 1 UAT**: confirm testing progress, surface blockers, a
 
 **Background:**
 
-- **2026-03-18** — UAT kickoff and setup/testing session ([[Meeting -  Holsen <> MH MAIA Setup and testing Mar 18]])
+- **2026-03-18** — UAT kickoff and setup/testing session ([[Meeting -  Holsen - MH MAIA Setup and testing Mar 18]])
 - **[[MAIA UAT Form - Holsen - 2026-03]]** — canonical test script and results / sign-off section
 - **[[Holsen Phase 1 Timeline]]** — milestone **UAT Follow Up** on 2026-03-31; UAT testing window currently through **2026-04-03**; Phase 1 sign-off **2026-04-08**
 
@@ -159,7 +159,7 @@ Close the loop on **Phase 1 UAT**: confirm testing progress, surface blockers, a
 
 - [[Holsen Phase 1 Timeline]]
 - [[MAIA UAT Form - Holsen - 2026-03]]
-- [[Meeting -  Holsen <> MH MAIA Setup and testing Mar 18]]
+- [[Meeting -  Holsen - MH MAIA Setup and testing Mar 18]]
 - [[2026-03-16-ending-phase-agenda]]
 - [[03 - Clients/Active Cooking Clients/Holsen/Onboarding Status]]
 - [[Holsen Feature Requests - 18 March Setup & Testing]]

@@ -80,7 +80,8 @@ This feature keeps the right control with Ming Medical while still reducing repe
 
 **What it does:** Supports draft -> review -> approve flow and preserves manual pricing entry by Ming Medical/doctors.
 
-**What it won't do:** It will not auto-generate final commercial pricing or bypass approval authority.
+**What it won't do:** It will not auto-
+generate final commercial pricing or bypass approval authority.
 
 **Why it matters:** It protects quality and governance while enabling scale.
 

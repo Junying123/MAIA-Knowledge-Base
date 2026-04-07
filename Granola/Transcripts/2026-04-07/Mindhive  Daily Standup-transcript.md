@@ -20,6 +20,8 @@ attendees:
   - bushramualla0@gmail.com
   - wansin.mh@gmail.com
   - lim.junyan@gmail.com
+folders: 
+  - Mindhive Daily Standup
 ---
 
 # Transcript for: Mindhive  Daily Standup

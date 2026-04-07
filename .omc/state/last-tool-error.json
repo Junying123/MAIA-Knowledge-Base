@@ -1,0 +1,7 @@
+{
+  "tool_name": "WebFetch",
+  "tool_input_preview": "{\"url\":\"https://www.mingmedical.net/pagesphp/telomere.php\",\"prompt\":\"Extract details about telomere exosome therapy: conditions treated, target patients, how it works.\"}",
+  "error": "Request failed with status code 404",
+  "timestamp": "2026-04-07T03:20:36.433Z",
+  "retry_count": 6
+}
