@@ -206,8 +206,8 @@
   "hotPaths": [
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Customer Narrative - Ming Medical.md",
-      "accessCount": 56,
-      "lastAccessed": 1775576184731,
+      "accessCount": 109,
+      "lastAccessed": 1775576767471,
       "type": "file"
     },
     {
@@ -229,15 +229,15 @@
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical",
-      "accessCount": 5,
-      "lastAccessed": 1775559872656,
+      "path": "",
+      "accessCount": 6,
+      "lastAccessed": 1775576218094,
       "type": "directory"
     },
     {
-      "path": "",
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical",
       "accessCount": 5,
-      "lastAccessed": 1775562517229,
+      "lastAccessed": 1775559872656,
       "type": "directory"
     },
     {
