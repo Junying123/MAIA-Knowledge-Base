@@ -43,6 +43,8 @@ Once the medical report is read and the case is understood, Sean drafts the prop
 
 Every proposal starts from a blank page. There is no template that auto-populates from the report. There is no system that recalls what Sean did for a similar case. There is no draft that a coordinator can start and Sean can finish. The entire cognitive load — from report reading to CPG mapping to proposal writing — sits with one person, every time.
 
+What makes this particularly frustrating is that the format itself is not the problem. Sean already has a consistent structure — patient overview, conditions mapped to treatments, month-by-month protocol, payment terms. He described version three of a recent proposal and noted: *"the format is still the same."* The structure exists. It works. It just only exists in Sean's head, rewritten from scratch every time. MAIA's job is not to invent a new format — it is to capture the one Sean already uses and make it available to the whole operation.
+
 As enquiry volume grows through partner-doctor channels and the international pipeline, this model cannot hold. The ceiling is Sean's availability. When he is in a meeting, cases wait. When he is travelling, cases wait. When volume doubles, the output does not — because there is only one person who knows how to produce it.
 
 ### One Patient, Two Completely Different Documents
@@ -89,7 +91,7 @@ This is the core of the engagement — the capability that directly addresses th
 
 **What it won't do:** It will not make final clinical decisions. It will not auto-finalise a treatment plan without human review. It will not operate without a structured, machine-ready CPG — the CPG must be prepared and handed over by Ming Medical before the system can produce reliable output. It will not generate treatment recommendations for conditions flagged as "No experience" in the CPG (currently includes Parkinson's disease, ALS, Stroke, Autism, Down Syndrome, and others) — these cases require Sean's direct judgment and cannot be handled by the copilot alone. It will not process voice recordings in the baseline scope.
 
-**Why it matters:** Sean currently spends roughly two hours per case on work that is fundamentally repetitive — reading a report, mapping it to logic he already knows, writing a document he has written hundreds of times before. MAIA collapses that into a draft-and-review cycle. The draft does the heavy lifting. Sean does the judgment. As case volume grows through partner channels and the international pipeline, the system scales. Sean does not.
+**Why it matters:** Sean currently spends roughly two hours per case on work that is fundamentally repetitive — reading a report, mapping it to logic he already knows, writing a document he has written hundreds of times before in the same format. MAIA is not inventing a new structure — it is formalising the one Sean already uses. The format already exists. The CPG logic already exists. What is missing is a system that holds them together and produces the output without Sean having to reconstruct it manually every time. MAIA collapses that into a draft-and-review cycle. The draft does the heavy lifting. Sean does the judgment. As case volume grows through partner channels and the international pipeline, the system scales. Sean does not.
 
 ### 2. Structured Pricing Column for Partner Doctors
 
