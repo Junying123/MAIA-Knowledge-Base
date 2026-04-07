@@ -1,0 +1,7 @@
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"stop-slop"}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"humanizer"}
+{"t":0,"agent":"a21ef93","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"stop-slop"}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"humanizer"}
+{"t":0,"agent":"a5faa58","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"stop-slop"}
