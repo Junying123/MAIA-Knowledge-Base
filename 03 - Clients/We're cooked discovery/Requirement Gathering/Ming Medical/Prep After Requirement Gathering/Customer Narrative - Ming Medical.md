@@ -89,7 +89,7 @@ This is the core of the engagement — the capability that directly addresses th
 
 **What it does:** Ingests two types of medical input. The first is **narrative medical reports** — PDFs, scanned images, unstructured text in English or Arabic — from which the system extracts patient demographics, diagnosed conditions, current medications, treatment history, and clinical findings. The second is **blood test reports**, which follow a standardised fixed format and carry specific markers that directly drive dosage decisions: CRP and ESR for inflammation and autoimmune conditions (e.g. Hashimoto's, rheumatoid arthritis), creatinine and eGFR for kidney cases, C-Peptide for Type 1 diabetes monitoring, HbA1c for Type 2 diabetes response, and serum albumin and uric acid for renal failure. Sean noted that blood tests are standardised — "the standard blood test is fixed" — making them more reliably parseable than narrative reports. The system extracts the relevant markers, maps them to CPG thresholds and dosage tiers, and generates a full proposal output: patient overview, conditions-to-therapy mapping table, month-by-month treatment schedule, recovery timeline notes, and payment structure — in Ming Medical's approved format. Patient-facing language and doctor-facing language are produced as separate outputs where required.
 
-**What it won't do:** It will not make final clinical decisions. It will not auto-finalise a treatment plan without human review. It will not operate without a structured, machine-ready CPG — the CPG must be prepared and handed over by Ming Medical before the system can produce reliable output. It will not generate treatment recommendations for conditions flagged as "No experience" in the CPG (currently includes Parkinson's disease, ALS, Stroke, Autism, Down Syndrome, and others) — these cases require Sean's direct judgment and cannot be handled by the copilot alone. It will not process voice recordings in the baseline scope.
+**What it won't do:** It will not make final clinical decisions. It will not auto-finalise a treatment plan without human review. It will not operate without a structured, machine-ready CPG — the CPG must be prepared and handed over by Ming Medical before the system can produce reliable output. It will not generate treatment recommendations for conditions flagged as "No experience" in the CPG (currently includes Parkinson's disease, ALS, Stroke, Autism, Down Syndrome, and others) — these cases require Sean's direct judgment and cannot be handled by the copilot alone.
 
 **Why it matters:** Sean currently spends roughly two hours per case on work that is fundamentally repetitive — reading a report, mapping it to logic he already knows, writing a document he has written hundreds of times before in the same format. MAIA is not inventing a new structure — it is formalising the one Sean already uses. The format already exists. The CPG logic already exists. What is missing is a system that holds them together and produces the output without Sean having to reconstruct it manually every time. MAIA collapses that into a draft-and-review cycle. The draft does the heavy lifting. Sean does the judgment. As case volume grows through partner channels and the international pipeline, the system scales. Sean does not.
 
@@ -149,7 +149,7 @@ The workflow does not end when the proposal is approved and sent. For cases wher
 
 ### Deferred — Not Committed
 
-- **Text-to-voice and voice-to-text** — Sean explicitly requested the ability for the system to read proposals aloud (text-to-voice) and accept voice input from doctors who cannot type easily. Raised in the meeting; Brendan confirmed it is technically feasible but deferred: commercials and timeline to be discussed separately with the relevant team before committing to scope.
+- **Text-to-voice (output)** — Sean explicitly requested that the system read proposals aloud so that elderly doctors who cannot type or read small text can interact without a screen. Voice-to-text input is already supported by the MAIA chatbot. Text-to-voice output is deferred: commercials and timeline to be discussed separately with the relevant team before committing to scope.
 
 ### Requires Clarification
 
@@ -164,7 +164,6 @@ The workflow does not end when the proposal is approved and sent. For cases wher
 - Automatic pricing decision-making or markup calculation without doctor input.
 - Clinical decision replacement by AI without Sean or doctor oversight.
 - Unrestricted external medical web sourcing.
-- Voice recording processing in Phase 1 baseline.
 - Production scheduling or cell inventory management.
 
 ---
@@ -185,5 +184,6 @@ _MAIA structures the workflow. Humans remain the decision-makers._
 
 - [[Requirement Gathering Output - Ming Medical - 2026-04]] — structured requirements and open questions
 - [[Ming Medical - Customer Profile]] — company background and stakeholder contacts
-- [[09 - Intake & Triage/Request Intake Inbox]] — feature intake log
-- [[02 - PM Playbook/Templates/[Template] PRD]]
+- [[Ming Medical Meeting Transcript - YYYY-MM-DD]] — raw meeting transcript
+- [[Ming Medical - GTM Brief Transcript]] — GTM brief transcript
+- [[Ming Medical - GTM Proposal]] — GTM proposal document
