@@ -73,7 +73,7 @@ The real CPG — the logic that Sean applies when he reads a case and maps it to
 
 **A coordinator** opens the MAIA intake flow and uploads the medical report received on WhatsApp — whether it is a PDF, a scanned image, or a text-based summary. MAIA parses the document, extracts the key clinical signals, identifies the relevant conditions and patient variables, and maps them to the CPG. A proposal draft is generated in Ming Medical's approved format. The coordinator no longer needs to hold cases in a WhatsApp thread and wait for Sean to be available. The queue moves.
 
-**Sean** opens the draft and reviews it. The clinical structure is already there — conditions identified, treatments mapped, dosage and duration logic applied. He reads for accuracy, makes adjustments where his clinical judgment overrides the system's inference, and approves. He does not start from a blank page. He does not spend two hours building what the system has already built in minutes. He focuses on the judgment calls — the 20% that genuinely requires his expertise — and leaves the repetitive formatting work to MAIA.
+**Sean** opens the draft and reviews it. The clinical structure is already there — conditions identified, treatments mapped, dosage and duration logic applied. He reads for accuracy, makes adjustments where his clinical judgment overrides the system's inference, and approves. Every adjustment he makes is tracked — the system records what was changed, by whom, and when, so there is a full audit trail from generated draft to final approved proposal. He does not start from a blank page. He does not spend two hours building what the system has already built in minutes. He focuses on the judgment calls — the 20% that genuinely requires his expertise — and leaves the repetitive formatting work to the system. For straightforward cases, his stated goal is to eventually step out of the loop entirely: the draft goes out, the doctor reviews pricing, and the proposal reaches the patient without Sean ever needing to be in the room.
 
 **A partner doctor** receives the proposal with a structured pricing column and row already in place. They open it, enter their clinic's pricing for each treatment item, and the proposal is ready to present to the patient. There is no manual formatting, no pricing conversation via WhatsApp, no guesswork about where to put the numbers. Every partner doctor fills in the same structure — and Ming Medical has a consistent, auditable record of what was proposed, even if not what was charged.
 
@@ -127,7 +127,7 @@ The workflow does not end when the proposal is approved and sent. For cases wher
 
 ## Scope Summary
 
-### Included in RM 35,000
+### Included
 
 - **Report-to-proposal copilot core flow** — report intake (PDF/image/text, EN/AR), CPG-aligned mapping, proposal draft generation in approved template format, patient-facing and doctor-facing output variants.
 - **Structured pricing column for partner doctors** — empty pricing row/column structure in all proposals; manual entry by doctors; auditable record within MAIA workflow.
