@@ -11,26 +11,29 @@ last_reviewed: 2026-04-07
 | Attribute | Detail |
 |---|---|
 | **Company Name** | Ming Medical SDN BHD |
-| **Industry** | Regenerative Medicine / Cell Therapy |
-| **Founded** | Not found on website |
-| **Headquarters** | D3-3 (2nd Floor), Block D3, Dana 1 Commercial Centre, Jalan PJU 1A/46, Petaling Jaya, 47301, Selangor, Malaysia |
-| **Geographic Reach** | Malaysia |
+| **Industry** | Regenerative Medicine / Cell Therapy (BioMedical) |
+| **Founded** | 1999 |
+| **SSM No** | 1098244-A |
+| **Headquarters** | D3-3-2, PST Perdagangan Puncak Dana 1, Jalan PJU 1A/46, 47301 Petaling Jaya, Selangor, Malaysia |
+| **Geographic Reach** | Malaysia; collaborates with research institutes in Malaysia and abroad |
 | **Website** | https://www.mingmedical.net |
-| **Contact** | +603-7842 7381 / info@mingmedical.net |
-| **Company Type** | Private (SDN BHD) |
+| **Contact (General)** | +603-7842 7381 / info@mingmedical.net |
+| **Contact (Director)** | +60 12 288-0001 / mimi@mingmedical.net |
+| **Company Size** | 1–50 employees |
+| **Company Type** | Private (SDN BHD); BioNexus-status company under Malaysia Bioeconomy Corporation |
 
-Ming Medical is a Malaysia-based regenerative medicine provider specialising in advanced cell therapies — including stem cells, natural killer (NK) cells, exosomes, and telomere exosomes. Operating under the tagline "Giving HOPE where there is none," the company positions itself as a provider of cutting-edge, side-effect-free biological treatments for patients with chronic, complex, or treatment-resistant conditions.
+Founded in 1999, Ming Medical is a Malaysia-based R&D and commercialisation company specialising in cell-based therapies — specifically Wharton's Jelly Mesenchymal Stem Cells (WJ-MSC), Natural Killer (NK) cells, and exosomes. Recognised as a BioNexus company by the Malaysia Bioeconomy Development Corporation, it operates under the tagline "Giving HOPE where there is none" and positions itself as a provider of cutting-edge, side-effect-free biological treatments for patients with chronic, complex, or treatment-resistant conditions.
 
 ## Products & Services
 
 | Category | Description |
 |---|---|
-| **Stem Cell Therapy** | Biological treatment targeting anti-aging, diabetic complications, tissue damage repair, orthopedic issues, neurological conditions, and sickle cell anemia |
+| **Stem Cell Therapy (WJ-MSC)** | Uses Wharton's Jelly Mesenchymal Stem Cells (WJ-MSC); targets anti-aging, diabetic complications, tissue damage repair, orthopedic issues, neurological conditions, and sickle cell anemia |
 | **Natural Killer (NK) Cell Treatment** | Cell-based therapy targeting viral infections, antibiotic-resistant bacteria, and multiple cancer types including brain, lung, colorectal, breast, pancreatic, and lymphoma |
 | **Exosome Therapy** | Extracellular vesicles derived from mesenchymal stem cells (MSCs); treats chronic kidney disease, cardiomyopathy, and neuro-related diseases; delivered via hydrogel, eye drops, nebulizer (spray), or IV bolus injection |
 | **Telomere Exosome** | Specialised exosome formulation focused on longevity enhancement and diabetes management |
 
-Not found on website: pricing, specific product brands, regulatory approvals (e.g. MDA Malaysia), clinical trial references, named OEM or supply partners.
+Not found on website: pricing, specific product brands, clinical trial results. Research partners (DTERM institute) confirmed via research project page.
 
 ## Target Markets & Customers
 
@@ -45,11 +48,11 @@ Not found on website: pricing, specific product brands, regulatory approvals (e.
 
 | Aspect | Details |
 |---|---|
-| **Model** | Private medical/wellness clinic providing regenerative cell therapies |
+| **Model** | R&D and commercialisation company; develops and provides cell-based therapies (stem cells, NK cells, exosomes) |
 | **Revenue model** | Patient consultations and treatment packages (pricing not disclosed on website) |
 | **Sales cycle** | Direct patient enquiry → consultation → treatment plan |
 | **Delivery model** | In-clinic administration (IV, injections, topical); some formulations (eye drops, hydrogel, nebulizer) may allow take-home or outpatient use |
-| **Regulatory/compliance** | Not found on website — regulatory licensing and compliance status to be confirmed |
+| **Regulatory/compliance** | BioNexus-accredited by Malaysia Bioeconomy Development Corporation; governed under MOH–NPRA–MMC framework for cell therapy in Malaysia; specific licensing status to be confirmed |
 
 ## Customer Problems
 
@@ -68,7 +71,16 @@ Not found on website: pricing, specific product brands, regulatory approvals (e.
 
 ## Key Contacts / Stakeholders
 
-Not found on website — to be confirmed.
+| Name | Role | Contact |
+|---|---|---|
+| **Ms. Mimi Lee** | Director | +60 12 288-0001 / mimi@mingmedical.net |
+| **Dr. Siti Aminah Muhammad Imran** | Chief Scientific Officer (Stem Cell & Telomere Researcher) | — |
+| **Dr. Ahmad Azri Zulkifli** | NK Cell & Cancer Researcher | — |
+| **Assoc. Prof. Dr. Angela Ng** | Research Collaborator (DTERM) | — |
+| **Dr. Fazlina Nordin** | Research Collaborator (DTERM) | — |
+| **Assoc. Prof. Dr. Daniel Law** | Research Collaborator (DTERM) | — |
+
+Sources: Bioeconomy Corporation BioNexus listing, mingmedical.net research project page.
 
 ## See Also
 

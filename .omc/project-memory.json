@@ -205,15 +205,15 @@
   },
   "hotPaths": [
     {
-      "path": "CLAUDE.md",
-      "accessCount": 11,
-      "lastAccessed": 1775525722591,
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Ming Medical - Customer Profile.md",
+      "accessCount": 14,
+      "lastAccessed": 1775532838654,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Ming Medical - Customer Profile.md",
-      "accessCount": 7,
-      "lastAccessed": 1775532252542,
+      "path": "CLAUDE.md",
+      "accessCount": 11,
+      "lastAccessed": 1775525722591,
       "type": "file"
     },
     {
@@ -224,9 +224,15 @@
     },
     {
       "path": "",
-      "accessCount": 3,
-      "lastAccessed": 1775489127166,
+      "accessCount": 4,
+      "lastAccessed": 1775533078359,
       "type": "directory"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Meeting Notes/Ming Medical Meeting Transcript - YYYY-MM-DD.md",
+      "accessCount": 4,
+      "lastAccessed": 1775533097674,
+      "type": "file"
     },
     {
       "path": "02 - PM Playbook/Templates/[Template] Feature Narrative.md",
@@ -274,6 +280,12 @@
       "path": "02 - PM Playbook/Daily Updates/Daily Updates Index.md",
       "accessCount": 2,
       "lastAccessed": 1775444555569,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Customer Narrative - Ming Medical.md",
+      "accessCount": 2,
+      "lastAccessed": 1775533190524,
       "type": "file"
     },
     {
@@ -358,6 +370,18 @@
       "path": "03 - Clients/Active Cooking Clients/Holsen/Feature Requests/Feature Narrative/Feature Narrative -.md",
       "accessCount": 1,
       "lastAccessed": 1775481486998,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Requirement Gathering Output - Ming Medical - 2026-04.md",
+      "accessCount": 1,
+      "lastAccessed": 1775533075177,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Templates/[Template] Customer Narrative.md",
+      "accessCount": 1,
+      "lastAccessed": 1775533299094,
       "type": "file"
     }
   ],
