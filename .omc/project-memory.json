@@ -206,8 +206,8 @@
   "hotPaths": [
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Customer Narrative - Ming Medical.md",
-      "accessCount": 27,
-      "lastAccessed": 1775560485747,
+      "accessCount": 34,
+      "lastAccessed": 1775570143796,
       "type": "file"
     },
     {
@@ -419,6 +419,12 @@
       "accessCount": 1,
       "lastAccessed": 1775559888631,
       "type": "directory"
+    },
+    {
+      "path": "02 - PM Playbook/Daily Updates/Daily Update - 07-04-2026.md",
+      "accessCount": 1,
+      "lastAccessed": 1775569563324,
+      "type": "file"
     }
   ],
   "userDirectives": []

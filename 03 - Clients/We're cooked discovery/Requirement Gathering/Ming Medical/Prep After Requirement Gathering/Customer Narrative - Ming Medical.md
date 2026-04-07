@@ -113,7 +113,17 @@ For a system handling last-resort medical cases, what the AI does not draw from 
 
 **Why it matters:** Ming Medical's patients have already failed with conventional medicine. An output grounded in the wrong source — a general medical site, an outdated reference, an unapproved treatment protocol — carries real clinical and reputational risk. The guardrail is not a technical constraint. It is a trust condition.
 
-### 4. Proposal-to-Order Operational Handoff
+### 4. Doctor Q&A Mode
+
+Beyond generating proposals, doctors need a fast way to query Ming Medical's CPG knowledge without drafting a full case. A partner doctor in a clinic may need to quickly confirm the recommended protocol for a condition, check the expected duration of a treatment, or understand the side effect profile before advising a patient. This is a distinct use case from proposal generation — it is conversational, on-demand, and bounded to approved knowledge.
+
+**What it does:** Allows Ming Medical staff and partner doctors to ask natural language questions directly against the CPG and approved knowledge sources — for example, "What is the recommended treatment plan for Type 2 diabetes in a patient over 65?" or "What are the side effects and duration for NK cell therapy at early-stage cancer?" The system retrieves and presents answers grounded strictly in Ming Medical's CPG and approved trusted links. Responses reference the relevant CPG section so doctors can verify the source.
+
+**What it won't do:** It will not answer questions about conditions marked "No experience" in the CPG — these are flagged and routed to Sean. It will not draw from any source outside the approved knowledge boundary. It will not replace clinical judgment — it surfaces what the CPG says, not what the doctor should decide.
+
+**Why it matters:** Sean currently fields repetitive clinical queries from partner doctors and patients — the same questions about the same protocols, answered from memory every time. A bounded Q&A mode offloads these routine queries without introducing clinical risk, because every answer is traceable to Ming Medical's own approved knowledge. Doctors get faster answers. Sean gets time back.
+
+### 5. Proposal-to-Order Operational Handoff
 
 The workflow does not end when the proposal is approved and sent. For cases where the patient confirms and treatment is to proceed, the proposal must translate into an operational order.
 
@@ -132,6 +142,7 @@ The workflow does not end when the proposal is approved and sent. For cases wher
 - **Report-to-proposal copilot core flow** — report intake (PDF/image/text, EN/AR), CPG-aligned mapping, proposal draft generation in approved template format, patient-facing and doctor-facing output variants.
 - **Structured pricing column for partner doctors** — empty pricing row/column structure in all proposals; manual entry by doctors; auditable record within MAIA workflow.
 - **Review and approval workflow baseline** — draft → review → approve structure with manual pricing control retained at doctor level.
+- **Doctor Q&A mode** — conversational CPG and approved-source querying for doctors; bounded strictly to approved knowledge; conditions with no CPG experience flagged and routed to Sean.
 - **Knowledge guardrails baseline** — CPG + approved trusted links only; no open web sourcing.
 - **Base proposal-to-order operational handoff** — confirmed proposal support into OMS order creation flow.
 - **Multi-language baseline support** — English, Mandarin, Arabic (final implementation subject to approved examples and UAT).
@@ -164,7 +175,7 @@ MAIA's role at Ming Medical is not to replace clinical judgment — it is to sto
 
 Ming Medical was built on a premise that the rest of the medical industry dismissed: that bodies can be repaired, not just managed. Sean has spent 26 years proving that — case by case, condition by condition, from spinal cord injuries to incurable cancers. The business has grown to the edge of what one person can operate. The partner doctor channel is expanding. International cases are arriving. The clinical capability is ready to scale. The operational infrastructure is not — yet.
 
-The RM 35,000 investment buys the first layer of that infrastructure: a proposal engine that turns Sean's CPG knowledge into a repeatable system, a pricing structure that works for every partner doctor regardless of their markup, a review workflow that keeps humans in control of every clinical and commercial decision, and an order handoff that connects the proposal to execution without re-entry. It is not everything. It is the right first layer — the one that removes the ceiling and makes everything else possible.
+This engagement delivers the first layer of that infrastructure: a proposal engine that turns Sean's CPG knowledge into a repeatable system, a pricing structure that works for every partner doctor regardless of their markup, a review workflow that keeps humans in control of every clinical and commercial decision, and an order handoff that connects the proposal to execution without re-entry. It is not everything. It is the right first layer — the one that removes the ceiling and makes everything else possible.
 
 _MAIA structures the workflow. Humans remain the decision-makers._
 
