@@ -197,14 +197,20 @@
   "hotPaths": [
     {
       "path": "CLAUDE.md",
-      "accessCount": 10,
-      "lastAccessed": 1775314214680,
+      "accessCount": 11,
+      "lastAccessed": 1775525722591,
       "type": "file"
     },
     {
       "path": "AGENTS.md",
       "accessCount": 4,
       "lastAccessed": 1775325538090,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Ming Medical - Customer Profile.md",
+      "accessCount": 4,
+      "lastAccessed": 1775526030218,
       "type": "file"
     },
     {

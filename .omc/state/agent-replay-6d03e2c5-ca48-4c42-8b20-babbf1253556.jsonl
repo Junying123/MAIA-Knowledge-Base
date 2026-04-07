@@ -1,2 +1,5 @@
 {"t":0,"agent":"system","event":"skill_invoked","skill_name":"codex:codex-cli-runtime"}
 {"t":0,"agent":"a4e2a8f","agent_type":"codex:codex-rescue","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a4e2a8f","agent_type":"codex:codex-rescue","event":"agent_stop","success":true,"duration_ms":412125}
+{"t":0,"agent":"adecc63","agent_type":"Explore","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"adecc63","agent_type":"Explore","event":"agent_stop","success":true,"duration_ms":139882}
