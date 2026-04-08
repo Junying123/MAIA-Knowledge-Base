@@ -177,9 +177,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | 1    | After the chatbot shows the extracted quotation details, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item. |
 | 2    | Enter a price **above** the minimum selling price for one item.           | Price is accepted. No warning shown.                                 |
-| 3    | Enter a price **below** the minimum selling price for another item.       | Chatbot warns you that the price is below the minimum and does not accept it. |
-| 4    | Correct the price to be at or above the minimum.                          | Price accepted. You can continue.                                    |
-| 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
+| 3    | Enter a price **below** the minimum selling price for another item. For example, type `RM 1.00` for a product with a minimum of `RM 1.20`. | Chatbot rejects the price and says it is below the minimum selling price. It offers to set the price to the minimum allowed (e.g. `RM 1.20`) or lets you adjust the quantity or choose a different item. |
+| 4    | Reply to accept the minimum price suggested by the chatbot.               | Price is updated to the minimum. You can continue with the quotation. |
+| 5    | Ask the chatbot for the available quantity of a product. For example, type *"What is the quantity of [Product]?"* | Chatbot replies with the available stock quantity for that product. |
 
 **Your result:**
 - [ ] Pass
@@ -198,20 +198,19 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 3 — Price Below Minimum Requires Approval (Web App)
+#### Test 3 — Price Below Minimum Auto-Adjusts (Web App)
 
-*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to approve*
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
-*Test 2 checks the chatbot blocks a low price during intake. This test checks the same rule on the web app — when a Quotation or Sales Order is created manually with a price below minimum, Admin must approve it before it can be submitted.*
+*Test 2 checks the chatbot blocks a low price during intake. This test checks the same rule on the web app — when a price below the minimum is entered on a Quotation or Sales Order, the system immediately blocks the input and auto-adjusts the price to the minimum allowed.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Quotation**. Add a product and enter a price **below** the minimum selling price. Save it. | Quotation is saved in Draft. |
-| 2 | **Marcus Lim** (Admin) | Open the Quotation and try to **submit** it. | A warning appears — price is below minimum. An approval is required before submission. |
-| 3 | **Marcus Lim** (Admin) | Approve the Quotation to override the minimum price. | Approval is recorded. Quotation can now be submitted. Status changes to **OPEN**. |
-| 4 | **Xiao Ling** (Sales) | Create a new **Sales Order** with a price **below** the minimum. Save it. | Sales Order is saved in Draft. |
-| 5 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | A warning appears — price is below minimum. Approval required. |
-| 6 | **Marcus Lim** (Admin) | Approve and submit the Sales Order. | Sales Order is approved and submitted. Status changes to **TO BILL**. |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Quotation**. Add a product and enter a price **below** the minimum selling price. | The system blocks the input immediately and shows: *"Unit Price set is too low, auto adjusting to the closest allowed price range."* The price is automatically adjusted to the minimum. |
+| 2 | **Xiao Ling** (Sales) | Check the price field after the auto-adjustment. | Price has been updated to the minimum allowed price. Save the Quotation. |
+| 3 | **Marcus Lim** (Admin) | Open the Quotation and submit it. | Quotation submits successfully. Status changes to **OPEN**. |
+| 4 | **Xiao Ling** (Sales) | Create a new **Sales Order**. Add a product and enter a price **below** the minimum. | The system blocks the input and shows: *"Unit Price set is too low, auto adjusting to the closest allowed price range."* Price is auto-adjusted to the minimum. |
+| 5 | **Marcus Lim** (Admin) | Open the Sales Order and submit it. | Sales Order submits successfully. Status changes to **TO BILL**. |
 
 **Your result:**
 - [ ] Pass
@@ -232,11 +231,11 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 *This tests that when a customer is close to or has exceeded their credit limit, the system warns or blocks the Sales Order and requires management approval before proceeding.*
 
-⚠️ **Note:** Ask Gareth to set up a test customer with a credit limit that is nearly reached before running this test.
+⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** as the test customer — a credit limit has already been set for this account.
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Sales Order** for the test customer who is near their credit limit. Fill in the items and save. | Sales Order is saved in Draft. |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Sales Order** for **ZARA BIOTECH SDN BHD**. Fill in the items and save. | Sales Order is saved in Draft. |
 | 2 | **Marcus Lim** (Admin) | Try to **submit** the Sales Order. | A warning appears — the customer is approaching or has exceeded their credit limit. Submission requires approval. |
 | 3 | **Marcus Lim** (Admin) | Approve the Sales Order to proceed. | Sales Order is approved and submitted. Status changes to **TO BILL**. |
 
@@ -712,7 +711,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
 | Test 1  | Send quotation by text message and voice note                        |                              |           |      |
 | Test 2  | Pricing and stock check (chatbot)                                    |                              |           |      |
-| Test 3  | Price below minimum triggers approval (web app)                      |                              |           |      |
+| Test 3  | Price below minimum auto-adjusts (web app)                           |                              |           |      |
 | Test 4  | Credit limit check before Sales Order creation                       |                              |           |      |
 | Test 5  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
 | Test 6  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
