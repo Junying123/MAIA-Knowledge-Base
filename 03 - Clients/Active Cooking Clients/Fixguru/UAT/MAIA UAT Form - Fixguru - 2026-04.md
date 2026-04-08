@@ -225,19 +225,19 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 4 — Credit Limit Check Before Sales Order Creation
+#### Test 4 — Credit Limit Check on Sales Order Submission
 
-*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to review*
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
-*This tests that when a customer is close to or has exceeded their credit limit, the system warns or blocks the Sales Order and requires management approval before proceeding.*
+*This tests that when a Sales Order is submitted for a customer who has used 80% or more of their credit limit, the system blocks submission and shows an error message.*
 
-⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** as the test customer — a credit limit has already been set for this account.
+⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** as the test customer — the credit limit has already been set to 80% usage for this account.
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
 | 1 | **Xiao Ling** (Sales) | Log in. Create a new **Sales Order** for **ZARA BIOTECH SDN BHD**. Fill in the items and save. | Sales Order is saved in Draft. |
-| 2 | **Marcus Lim** (Admin) | Try to **submit** the Sales Order. | A warning appears — the customer is approaching or has exceeded their credit limit. Submission requires approval. |
-| 3 | **Marcus Lim** (Admin) | Approve the Sales Order to proceed. | Sales Order is approved and submitted. Status changes to **TO BILL**. |
+| 2 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | The system checks the customer's credit usage. An error message appears — the customer has reached or exceeded their credit limit. Submission is blocked. |
+| 3 | **Marcus Lim** (Admin) | Note the error message shown. | Error message is clear and mentions the credit limit issue. |
 
 **Your result:**
 - [ ] Pass
