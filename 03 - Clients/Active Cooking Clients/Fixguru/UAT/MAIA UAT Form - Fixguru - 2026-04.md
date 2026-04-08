@@ -116,15 +116,15 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-### Group 1 — Chatbot: Sending Orders
+### Group 1 — Chatbot: Sending a Quotation
 
 *Who tests this group: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
 
 ---
 
-#### Test 1 — Send an Order via Text, Image, and Voice Note
+#### Test 1 — Send a Quotation via Text, Image, and Voice Note
 
-*Test the chatbot three times — once by typing, once by sending a photo, and once by sending a voice note.*
+*Test the chatbot three times — once by typing, once by sending a photo, and once by sending a voice note. The chatbot will create a Quotation from what you send.*
 
 ---
 
@@ -133,9 +133,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
 | 1 | Open **@maia_fixguru_bot** in Telegram using the QR code provided. | The chatbot replies and is ready to receive your message. |
-| 2 | Type an order like: *"Customer: [Customer Name]. Order: 10 units [Product A], 5 boxes [Product B]."* | Chatbot receives the message. |
-| 3 | Wait a moment. | The chatbot shows the order details — customer name, products, and quantities. |
-| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
+| 2 | Type a quotation request like: *"Customer: [Customer Name]. Items: 10 units [Product A], 5 boxes [Product B]."* | Chatbot receives the message. |
+| 3 | Wait a moment. | The chatbot shows the details it picked up — customer name, products, and quantities — and prepares a Quotation. |
+| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. A Quotation is created. |
 
 **Part A result:**
 - [ ] Pass
@@ -146,14 +146,17 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-**Part B — Image (Photo of an Order)**
+**Part B — Image / PDF (Photo or PDF of an Order)**
 
 | Step | What to do                                                                                            | What you should see                                                                                         |
 | ---- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| 1    | Take a photo of a handwritten or printed order (e.g., a piece of paper with customer name and items). | Photo is ready to send.                                                                                     |
+| 1    | Take a photo of a handwritten note with a customer name and list of items they want to quote. | Photo is ready to send. |
 | 2    | In the same Telegram chat, send the photo to **@maia_fixguru_bot**.                                   | Chatbot receives the image.                                                                                 |
-| 3    | Wait a moment.                                                                                        | The chatbot reads the image and shows the order details it found — customer name, products, and quantities. |
-| 4    | Check that the details are correct.                                                                   | Details match what was written in the photo.                                                                |
+| 3    | Wait a moment.                                                                                        | The chatbot reads the image and shows the details — customer name, products, and quantities — and prepares a Quotation. |
+| 4    | Check that the details are correct.                                                                   | Details match what was in the photo. A Quotation is created.                                                |
+| 5    | Now send a **PDF** of an order (e.g., a customer's order saved or scanned as a PDF) to the same chat. | Chatbot receives the PDF. |
+| 6    | Wait a moment.                                                                                        | The chatbot reads the PDF and shows the details — customer name, products, and quantities — and prepares a Quotation. |
+| 7    | Check that the details are correct.                                                                   | Details match what was in the PDF. A Quotation is created.                                                  |
 
 **Part B result:**
 - [ ] Pass
@@ -168,9 +171,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | In the same Telegram chat, record a voice note. Say something like: *"Order for [Customer Name] — 10 units of [Product A] and 5 boxes of [Product B]."* | Voice note is sent to the chatbot. |
-| 2 | Wait a moment. | The chatbot transcribes your voice note and shows the order details — customer name, products, and quantities. |
-| 3 | Check that the details are correct. | Details match what you said in the voice note. |
+| 1 | In the same Telegram chat, record a voice note. Say something like: *"Quote for [Customer Name] — 10 units of [Product A] and 5 boxes of [Product B]."* | Voice note is sent to the chatbot. |
+| 2 | Wait a moment. | The chatbot transcribes your voice note and shows the details — customer name, products, and quantities — and prepares a Quotation. |
+| 3 | Check that the details are correct. | Details match what you said. A Quotation is created. |
 
 **Part C result:**
 - [ ] Pass
@@ -673,7 +676,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 | Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
 | ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
-| Test 1  | Send order by text message, image, and voice note                    |                              |           |      |
+| Test 1  | Send quotation by text message, image, and voice note                |                              |           |      |
 | Test 2  | Pricing and stock check                                              |                              |           |      |
 | Test 3  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
 | Test 4  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
