@@ -333,15 +333,18 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
-**Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Only **Admin** can submit.
+**Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Once saved, they need to tag Admin so Admin can submit the document.
 
-| Step | What to do                                                                              | What you should see                                                                         |
-| ---- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 1    | Log in as **Hayati** (Sales). Create a new Sales Order directly from the web app.       | A form appears. Fill in customer and product details. Saved with status **Draft**.          |
-| 2    | Try to **submit** the Sales Order as Hayati.                                            | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
-| 3    | Log in as **Abishaah** (Finance Manager). Create a new Sales Order.                    | Sales Order saved with status **Draft**. Finance Manager can create.                        |
-| 4    | Try to **submit** the Sales Order as Abishaah.                                          | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
-| 5    | Log in as **Marcus Lim** (Admin). Open both Draft Sales Orders and submit them.        | Both Sales Orders change to **TO BILL**. Admin is the only role that can submit.            |
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Hayati** (Sales) | Log in. Create a new Sales Order and save it. | Sales Order saved with status **Draft**. |
+| 2 | **Hayati** (Sales) | Try to **submit** the Sales Order. | 🚫 Submit button is not available — only Admin can submit Sales Orders. |
+| 3 | **Hayati** (Sales) | In the **sidebar comment**, tag **@Marcus Lim** (Admin) to notify him to submit. | Marcus Lim receives a notification that a Sales Order is ready for submission. |
+| 4 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
+| 5 | **Abishaah** (Finance Manager) | Log in. Create a new Sales Order and save it. | Sales Order saved with status **Draft**. Finance Manager can create. |
+| 6 | **Abishaah** (Finance Manager) | Try to **submit** the Sales Order. | 🚫 Submit button is not available — only Admin can submit Sales Orders. |
+| 7 | **Abishaah** (Finance Manager) | In the **sidebar comment**, tag **@Marcus Lim** (Admin) to notify him to submit. | Marcus Lim receives a notification that a Sales Order is ready for submission. |
+| 8 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
 
 **Your result:**
 - [ ] Pass
