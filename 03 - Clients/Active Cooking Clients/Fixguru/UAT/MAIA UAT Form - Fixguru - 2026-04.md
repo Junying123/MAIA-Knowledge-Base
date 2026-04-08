@@ -122,9 +122,9 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 1 — Send a Quotation via Text, Image, and Voice Note
+#### Test 1 — Send a Quotation via Text Message and Voice Note
 
-*Test the chatbot three times — once by typing, once by sending a photo, and once by sending a voice note. The chatbot will create a Quotation from what you send.*
+*Test the chatbot twice — once by typing, and once by sending a voice note. The chatbot will create a Quotation from what you send.*
 
 ---
 
@@ -146,28 +146,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-**Part B — Image / PDF (Photo or PDF of an Order)**
-
-| Step | What to do                                                                                            | What you should see                                                                                         |
-| ---- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| 1    | Take a photo of a handwritten note with a customer name and list of items they want to quote. | Photo is ready to send. |
-| 2    | In the same Telegram chat, send the photo to **@maia_fixguru_bot**.                                   | Chatbot receives the image.                                                                                 |
-| 3    | Wait a moment.                                                                                        | The chatbot reads the image and shows the details — customer name, products, and quantities — and prepares a Quotation. |
-| 4    | Check that the details are correct.                                                                   | Details match what was in the photo. A Quotation is created.                                                |
-| 5    | Now send a **PDF** of an order (e.g., a customer's order saved or scanned as a PDF) to the same chat. | Chatbot receives the PDF. |
-| 6    | Wait a moment.                                                                                        | The chatbot reads the PDF and shows the details — customer name, products, and quantities — and prepares a Quotation. |
-| 7    | Check that the details are correct.                                                                   | Details match what was in the PDF. A Quotation is created.                                                  |
-
-**Part B result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Notes:**
-
----
-
-**Part C — Voice Note**
+**Part B — Voice Note**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
@@ -175,7 +154,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | 2 | Wait a moment. | The chatbot transcribes your voice note and shows the details — customer name, products, and quantities — and prepares a Quotation. |
 | 3 | Check that the details are correct. | Details match what you said. A Quotation is created. |
 
-**Part C result:**
+**Part B result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
@@ -190,15 +169,15 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 2 — Pricing and Stock Check
+#### Test 2 — Pricing and Stock Check (Chatbot)
 
-*Continue from **Test 1** (text message quotation).*
+*Continue from **Test 1** (text message quotation). This tests the chatbot's price and stock checks during quotation intake.*
 
 | Step | What to do                                                                | What you should see                                                  |
 | ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1    | After the chatbot shows the extracted order, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item.        |
+| 1    | After the chatbot shows the extracted quotation details, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item. |
 | 2    | Enter a price **above** the minimum selling price for one item.           | Price is accepted. No warning shown.                                 |
-| 3    | Enter a price **below** the minimum selling price for another item.       | Chatbot shows a warning or blocks the price — minimum price not met. |
+| 3    | Enter a price **below** the minimum selling price for another item.       | Chatbot warns you that the price is below the minimum and does not accept it. |
 | 4    | Correct the price to be at or above the minimum.                          | Price accepted. You can continue.                                    |
 | 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
 
@@ -219,20 +198,20 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 3 — Price Below Minimum Triggers Approval (Web App)
+#### Test 3 — Price Below Minimum Requires Approval (Web App)
 
-*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to review*
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to approve*
 
-*This tests that when a price is entered below the minimum selling price on a manually created Quotation or Sales Order, the system blocks submission and requires approval.*
+*Test 2 checks the chatbot blocks a low price during intake. This test checks the same rule on the web app — when a Quotation or Sales Order is created manually with a price below minimum, Admin must approve it before it can be submitted.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Quotation**. Add a product and enter a price **below** the minimum selling price for that product. Save it. | Quotation is saved in Draft. |
-| 2 | **Marcus Lim** (Admin) | Try to **submit** the Quotation. | A warning appears — the price is below the minimum. Submission is blocked until the price is corrected or approved. |
-| 3 | **Xiao Ling** (Sales) | Correct the price to be at or above the minimum. | Price is accepted. No warning shown. |
-| 4 | **Marcus Lim** (Admin) | Submit the Quotation. | Quotation submits successfully. Status changes to **OPEN**. |
-| 5 | **Xiao Ling** (Sales) | Create a new **Sales Order**. Add a product and enter a price **below** the minimum. Save it. | Sales Order is saved in Draft. |
-| 6 | **Marcus Lim** (Admin) | Try to **submit** the Sales Order. | A warning appears — the price is below the minimum. Submission is blocked. |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Quotation**. Add a product and enter a price **below** the minimum selling price. Save it. | Quotation is saved in Draft. |
+| 2 | **Marcus Lim** (Admin) | Open the Quotation and try to **submit** it. | A warning appears — price is below minimum. An approval is required before submission. |
+| 3 | **Marcus Lim** (Admin) | Approve the Quotation to override the minimum price. | Approval is recorded. Quotation can now be submitted. Status changes to **OPEN**. |
+| 4 | **Xiao Ling** (Sales) | Create a new **Sales Order** with a price **below** the minimum. Save it. | Sales Order is saved in Draft. |
+| 5 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | A warning appears — price is below minimum. Approval required. |
+| 6 | **Marcus Lim** (Admin) | Approve and submit the Sales Order. | Sales Order is approved and submitted. Status changes to **TO BILL**. |
 
 **Your result:**
 - [ ] Pass
@@ -731,7 +710,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 | Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
 | ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
-| Test 1  | Send quotation by text message, image, and voice note                |                              |           |      |
+| Test 1  | Send quotation by text message and voice note                        |                              |           |      |
 | Test 2  | Pricing and stock check (chatbot)                                    |                              |           |      |
 | Test 3  | Price below minimum triggers approval (web app)                      |                              |           |      |
 | Test 4  | Credit limit check before Sales Order creation                       |                              |           |      |
