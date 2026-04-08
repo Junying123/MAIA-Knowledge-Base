@@ -28,7 +28,7 @@ uat_round: 1
 | 15–16 Apr | Product ready confirmation                   | MAIA team    |
 | 16 Apr    | **Phase 1 Sign Off & Go-Live**               | All          |
 
-**Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), delivery, inventory alerts, and role permissions. E-invoice integration is covered separately.
+**Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), approval flows (min price, credit limit), delivery, inventory alerts, and role permissions. E-invoice integration and the Custom Box Calculator are covered separately in a later phase.
 
 **Web App:** https://maia-fe-fixguru.vercel.app/login
 **Chatbot (during UAT):** Telegram — @maia_fixguru_bot *(scan the QR code provided)*
@@ -192,7 +192,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 #### Test 2 — Pricing and Stock Check
 
-*Continue from **Test 1** (text message order).*
+*Continue from **Test 1** (text message quotation).*
 
 | Step | What to do                                                                | What you should see                                                  |
 | ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -219,7 +219,62 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 3 — Generate Documents (Quotation → Sales Order → Invoice)
+#### Test 3 — Price Below Minimum Triggers Approval (Web App)
+
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to review*
+
+*This tests that when a price is entered below the minimum selling price on a manually created Quotation or Sales Order, the system blocks submission and requires approval.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Quotation**. Add a product and enter a price **below** the minimum selling price for that product. Save it. | Quotation is saved in Draft. |
+| 2 | **Marcus Lim** (Admin) | Try to **submit** the Quotation. | A warning appears — the price is below the minimum. Submission is blocked until the price is corrected or approved. |
+| 3 | **Xiao Ling** (Sales) | Correct the price to be at or above the minimum. | Price is accepted. No warning shown. |
+| 4 | **Marcus Lim** (Admin) | Submit the Quotation. | Quotation submits successfully. Status changes to **OPEN**. |
+| 5 | **Xiao Ling** (Sales) | Create a new **Sales Order**. Add a product and enter a price **below** the minimum. Save it. | Sales Order is saved in Draft. |
+| 6 | **Marcus Lim** (Admin) | Try to **submit** the Sales Order. | A warning appears — the price is below the minimum. Submission is blocked. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 4 — Credit Limit Check Before Sales Order Creation
+
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to review*
+
+*This tests that when a customer is close to or has exceeded their credit limit, the system warns or blocks the Sales Order and requires management approval before proceeding.*
+
+⚠️ **Note:** Ask Gareth to set up a test customer with a credit limit that is nearly reached before running this test.
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Sales Order** for the test customer who is near their credit limit. Fill in the items and save. | Sales Order is saved in Draft. |
+| 2 | **Marcus Lim** (Admin) | Try to **submit** the Sales Order. | A warning appears — the customer is approaching or has exceeded their credit limit. Submission requires approval. |
+| 3 | **Marcus Lim** (Admin) | Approve the Sales Order to proceed. | Sales Order is approved and submitted. Status changes to **TO BILL**. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 7 — Generate Documents (Quotation → Sales Order → Invoice)
 
 *Coordinate across roles — see who does each step.*
 
@@ -275,7 +330,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 5 — Create and Manage Sales Orders on the Web App
+#### Test 7 — Create and Manage Sales Orders on the Web App
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
@@ -302,7 +357,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 6 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 8 — Export Invoice / Credit Note / Debit Note as CSV
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -333,7 +388,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 7 — Create a Delivery Order, Picking List, and Mark as Delivered
+#### Test 9 — Create a Delivery Order, Picking List, and Mark as Delivered
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for DO submission, Pick List submission, and marking delivery*
 
@@ -362,7 +417,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 8 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 10 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
@@ -387,7 +442,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 9 — Delivery Delay Reminder
+#### Test 11 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
@@ -411,7 +466,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 10 — Create and Submit a Stock Reservation Entry
+#### Test 12 — Create and Submit a Stock Reservation Entry
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** or **Abishaah** (Admin or Finance Manager) for submission*
 
@@ -439,7 +494,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 11 — All Users Can Log In
+#### Test 13 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 14 users log in with their own account*
 
@@ -467,7 +522,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 12 — Sales Access Check
+#### Test 14 — Sales Access Check
 
 *Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
@@ -495,7 +550,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 13 — Warehousing Access Check
+#### Test 15 — Warehousing Access Check
 
 *Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 8)*
 
@@ -525,7 +580,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 14 — Finance Manager Access Check
+#### Test 16 — Finance Manager Access Check
 
 *Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 6)*
 
@@ -554,7 +609,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 15 — Finance Assistant Access Check
+#### Test 17 — Finance Assistant Access Check
 
 *Who tests this: **Nisa** (Finance Assistant / Finance User)*
 
@@ -582,7 +637,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 16 — Admin Access Check
+#### Test 18 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
@@ -610,7 +665,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 17 — Role Approval Flow
+#### Test 19 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -677,24 +732,26 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
 | ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
 | Test 1  | Send quotation by text message, image, and voice note                |                              |           |      |
-| Test 2  | Pricing and stock check                                              |                              |           |      |
-| Test 3  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
-| Test 4  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
-| Test 5  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
-| Test 6  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 7  | Create Delivery Order, Picking List, and Mark as Delivered           |                              |           |      |
-| Test 8  | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 9  | Delivery delay reminder                                              |                              |           |      |
-| Test 10 | Create and submit Stock Reservation Entry                            |                              |           |      |
-| Test 11 | All users can log in                                                 |                              |           |      |
-| Test 12 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 13 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 14 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 15 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 16 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 17 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 2  | Pricing and stock check (chatbot)                                    |                              |           |      |
+| Test 3  | Price below minimum triggers approval (web app)                      |                              |           |      |
+| Test 4  | Credit limit check before Sales Order creation                       |                              |           |      |
+| Test 5  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
+| Test 6  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
+| Test 7  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
+| Test 8  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
+| Test 9  | Create Delivery Order, Picking List, and Mark as Delivered           |                              |           |      |
+| Test 10 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 11 | Delivery delay reminder                                              |                              |           |      |
+| Test 12 | Create and submit Stock Reservation Entry                            |                              |           |      |
+| Test 13 | All users can log in                                                 |                              |           |      |
+| Test 14 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 15 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 16 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 17 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 18 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 19 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 17 tests**
+**Total: 19 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
