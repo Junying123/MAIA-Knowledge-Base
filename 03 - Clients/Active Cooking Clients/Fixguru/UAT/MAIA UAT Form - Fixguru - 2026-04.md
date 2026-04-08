@@ -397,7 +397,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | 2    | Create a **Delivery Order (DO)** from the Invoice and save it.                                  | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
 | 3    | Try to **submit** the Delivery Order as Asrul.                                                  | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                                       |
 | 4    | Log in as **Marcus Lim** (Admin). Open the Draft Delivery Order and click **Submit**.           | Delivery Order status changes to **To Schedule**.                                                                |
-| 5    | From the Delivery Order, create a **Picking List** and click **Submit** (Admin).               | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities.               |
+| 5    | From the **Sales Order**, create a **Picking List** and click **Submit** (Admin).              | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities.               |
 | 6    | Download both the DO and the Picking List as PDFs.                                              | Both documents download successfully as PDFs.                                                                    |
 | 7    | On the submitted Delivery Order, click **Actions → Mark as Delivered**.                         | Delivery Order status changes to **Delivered**. Delivery is recorded as completed.                               |
 
@@ -707,7 +707,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 | Step | Who                              | What to do                                                    | What you should see                                                        |
 | ---- | -------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| 9    | **Asrul** (Warehousing)          | Create a Pick List from the Delivery Order and save it.       | Pick List saved in Draft. Warehousing can create.                          |
+| 9    | **Asrul** (Warehousing)          | Create a Pick List from the **Sales Order** and save it.      | Pick List saved in Draft. Warehousing can create.                          |
 | 10   | **Steven Gan** (Admin)           | Open the Draft Pick List. Click Submit.                       | Pick List submitted. Admin submits Pick Lists at Fixguru.                  |
 
 **Part E — Invoice (Finance Manager submits)**
