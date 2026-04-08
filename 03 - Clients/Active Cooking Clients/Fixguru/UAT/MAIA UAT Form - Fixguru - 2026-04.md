@@ -196,6 +196,8 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ### Group 2 — Web App: Managing Orders
 
+💡 **Note:** Tests in this group can be done via the **web app** (https://maia-fe-fixguru.vercel.app/login) or the **chatbot** — both are supported.
+
 ---
 
 #### Test 3 — Price Below Minimum Auto-Adjusts (Web App)
