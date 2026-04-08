@@ -227,11 +227,13 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 #### Test 4 — Credit Limit Check on Sales Order Submission
 
-*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit; **Steven Gan** (Admin) to approve*
 
-*This tests that when a Sales Order is submitted for a customer who has used 80% or more of their credit limit, the system blocks submission and shows an error message.*
+*This tests two things: (A) the system blocks SO submission when a customer is near their credit limit, and (B) a manager can approve the SO to override the block.*
 
 ⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** as the test customer — the credit limit has already been set to 80% usage for this account.
+
+**Part A — Credit Limit Block**
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
@@ -239,7 +241,24 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | 2 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | The system checks the customer's credit usage. An error message appears — the customer has reached or exceeded their credit limit. Submission is blocked. |
 | 3 | **Marcus Lim** (Admin) | Note the error message shown. | Error message is clear and mentions the credit limit issue. |
 
-**Your result:**
+**Part A result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part B — Management Approval to Override**
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 4 | **Marcus Lim** (Admin) | After the block in Part A, look for an option to **request approval** or escalate the Sales Order for management review. | An approval request is sent or the SO enters a pending approval state. |
+| 5 | **Steven Gan** (Admin) | Log in. Check for a pending approval notification or approval queue. Open the flagged Sales Order. | The Sales Order is visible in the approval queue with a note about the credit limit. |
+| 6 | **Steven Gan** (Admin) | **Approve** the Sales Order. | Sales Order is approved and status changes to **TO BILL**. The credit limit override is recorded. |
+
+**Part B result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
@@ -252,7 +271,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 7 — Generate Documents (Quotation → Sales Order → Invoice)
+#### Test 5 — Generate Documents (Quotation → Sales Order → Invoice)
 
 *Coordinate across roles — see who does each step.*
 
@@ -283,7 +302,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 4 — Create a Credit Note and Debit Note
+#### Test 6 — Create a Credit Note and Debit Note
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -712,7 +731,8 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test 1  | Send quotation by text message and voice note                        |                              |           |      |
 | Test 2  | Pricing and stock check (chatbot)                                    |                              |           |      |
 | Test 3  | Price below minimum auto-adjusts (web app)                           |                              |           |      |
-| Test 4  | Credit limit check before Sales Order creation                       |                              |           |      |
+| Test 4A | Credit limit block on Sales Order submission                         |                              |           |      |
+| Test 4B | Management approval to override credit limit block                   |                              |           |      |
 | Test 5  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
 | Test 6  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
 | Test 7  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
@@ -729,7 +749,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test 18 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
 | Test 19 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 19 tests**
+**Total: 19 tests (20 parts)**
 
 | Pass | Fail | Issue |
 |------|------|-------|
