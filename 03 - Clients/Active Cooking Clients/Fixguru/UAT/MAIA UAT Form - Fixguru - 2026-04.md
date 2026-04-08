@@ -418,13 +418,26 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
-| Step | What to do                                                                      | What you should see                                                         |
-| ---- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul** (Warehousing). Check the notification area.                 | Notifications are visible.                                                  |
-| 2    | Look for a product that has **zero stock**.                                     | An Out-of-Stock alert is shown for that product.                            |
-| 3    | Look for a product that is below the safety stock level.                        | A Low-Stock alert is shown for that product.                                |
-| 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                         |
-| 5    | Log out. Log in as **Xiao Ling** (Sales). Check the same alerts.               | Both Out-of-Stock and Low-Stock alerts are visible to Sales users as well.  |
+**Part A — Out of Stock Alert**
+
+⚠️ **Setup:** Use a product that has exactly 100 units available. Create a Sales Order that uses all 100 units. Once the order is submitted, the stock hits zero and should trigger the out-of-stock notification.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Create and submit a Sales Order that uses up all available stock of a product (e.g. 100 units for a product with 100 units available). | Sales Order is submitted successfully. |
+| 2 | Log in as **Asrul** (Warehousing). Check the notification area. | An Out-of-Stock alert is shown for that product — stock is now at zero. |
+| 3 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Out-of-Stock alert is visible to Sales users as well. |
+
+**Part B — Low Stock Alert**
+
+⚠️ **Setup:** Go to the **Item module** and set a safety quantity for a product (e.g. set safety quantity to 50). Then make sure the available quantity for that product drops below 50. This will trigger the low stock notification.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in as **Asrul** (Warehousing). Go to the **Item module**. Find a product and set its **safety quantity** (e.g. 50 units). | Safety quantity is saved for that product. |
+| 2 | Ensure the available quantity for that product is below the safety quantity you just set. | Available quantity is lower than the safety quantity. |
+| 3 | Check the notification area. | A Low-Stock alert is shown for that product — remaining quantity is below the safety level. |
+| 4 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Low-Stock alert is visible to Sales users as well. |
 
 **Your result:**
 - [ ] Pass
