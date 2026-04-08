@@ -456,12 +456,13 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 *Who tests this: **Asrul** (Warehousing)*
 
-| Step | What to do                                                                                                                                    | What you should see                                                                      |
-| ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified.                                                                   |
-| 2    | Check the daily digest or notification area.                                                                                                  | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
+*The system sends a notification when a Sales Order has been submitted but no Delivery Order has been created within 5 hours.*
 
-⚠️ **Note:** If you cannot find an overdue Invoice, please contact Gareth to set one up.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in as **Asrul** (Warehousing). Check the notification area. | A notification is shown — flagging that a Sales Order has no Delivery Order created after 5 hours. The notification shows the Sales Order reference. |
+| 2 | Check the details of the notification. | The Sales Order reference and customer name are correct. |
 
 **Your result:**
 - [ ] Pass
