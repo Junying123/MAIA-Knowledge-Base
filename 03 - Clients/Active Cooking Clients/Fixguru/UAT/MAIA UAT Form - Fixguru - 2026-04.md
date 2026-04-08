@@ -122,23 +122,67 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 1 — Send an Order by Text Message
+#### Test 1 — Send an Order via Text, Image, and Voice Note
 
-| Step | What to do                                                                                             | What you should see                                                                         |
-| ---- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| 1    | Open **@maia_fixguru_bot** in Telegram using the QR code provided.                                     | The chatbot replies and is ready to receive your message.                                   |
-| 2    | Type a message like: *"Customer: [Customer Name]. Order: 10 units [Product A], 5 boxes [Product B]."*  | Chatbot receives the message.                                                               |
-| 3    | Wait a moment.                                                                                         | The chatbot shows the order details it extracted — customer name, products, and quantities. |
-| 4    | Check that the details are correct.                                                                    | Customer name, product names, and quantities match what you typed.                          |
+*Test the chatbot three times — once by typing, once by sending a photo, and once by sending a voice note.*
 
-**Your result:**
+---
+
+**Part A — Text Message**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open **@maia_fixguru_bot** in Telegram using the QR code provided. | The chatbot replies and is ready to receive your message. |
+| 2 | Type an order like: *"Customer: [Customer Name]. Order: 10 units [Product A], 5 boxes [Product B]."* | Chatbot receives the message. |
+| 3 | Wait a moment. | The chatbot shows the order details — customer name, products, and quantities. |
+| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
+
+**Part A result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 
+**Notes:**
+
+---
+
+**Part B — Image (Photo of an Order)**
+
+| Step | What to do                                                                                            | What you should see                                                                                         |
+| ---- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| 1    | Take a photo of a handwritten or printed order (e.g., a piece of paper with customer name and items). | Photo is ready to send.                                                                                     |
+| 2    | In the same Telegram chat, send the photo to **@maia_fixguru_bot**.                                   | Chatbot receives the image.                                                                                 |
+| 3    | Wait a moment.                                                                                        | The chatbot reads the image and shows the order details it found — customer name, products, and quantities. |
+| 4    | Check that the details are correct.                                                                   | Details match what was written in the photo.                                                                |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part C — Voice Note**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | In the same Telegram chat, record a voice note. Say something like: *"Order for [Customer Name] — 10 units of [Product A] and 5 boxes of [Product B]."* | Voice note is sent to the chatbot. |
+| 2 | Wait a moment. | The chatbot transcribes your voice note and shows the order details — customer name, products, and quantities. |
+| 3 | Check that the details are correct. | Details match what you said in the voice note. |
+
+**Part C result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
 **Tested by:**
 **Date:**
-**Notes:**
 
 
 ---
@@ -629,7 +673,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 | Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
 | ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
-| Test 1  | Send order by text message                                           |                              |           |      |
+| Test 1  | Send order by text message, image, and voice note                    |                              |           |      |
 | Test 2  | Pricing and stock check                                              |                              |           |      |
 | Test 3  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
 | Test 4  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
