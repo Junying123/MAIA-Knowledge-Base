@@ -354,52 +354,23 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 8 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 8 — Full Delivery Flow (SO → Picklist → DO → Invoice → Mark as Delivered)
 
-*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
+*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for submissions and marking delivery*
 
-| Step | What to do                                              | What you should see                                                       |
-| ---- | ------------------------------------------------------- | ------------------------------------------------------------------------- |
-| 1    | Log in as **Finance Manager**. Open the **Invoice** page. | Invoice listing is visible.                                               |
-| 2    | Click the export or download button and select **CSV**. | A CSV file is downloaded to your computer.                                |
-| 3    | Open the CSV. Check the contents.                       | File contains invoice details — customer, line items, quantities, prices. |
-| 4    | Open a **Credit Note** and repeat the export.           | CSV downloaded. File contains credit note details.                        |
-| 5    | Open a **Debit Note** and repeat the export.            | CSV downloaded. File contains debit note details.                         |
+**Note:** Only **Admin** can submit Picking Lists and Delivery Orders at Fixguru. The flow starts from a submitted Sales Order or Proforma Invoice.
 
-⚠️ **Note:** This CSV is used by Finance to create eInvoice records in the accounting system. eInvoices are not generated inside MAIA.
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-### Group 3 — Warehousing: Deliveries and Stock Alerts
-
----
-
-#### Test 9 — Create a Delivery Order, Picking List, and Mark as Delivered
-
-*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for DO submission, Pick List submission, and marking delivery*
-
-**Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. Since Fixguru has no Logistics Manager, **Admin** also submits Pick Lists and marks deliveries as completed.
-
-| Step | What to do                                                                                      | What you should see                                                                                              |
-| ---- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul** (Warehousing). Open a submitted Invoice with status **UNPAID**.             | Invoice record is visible.                                                                                       |
-| 2    | Create a **Delivery Order (DO)** from the Invoice and save it.                                  | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
-| 3    | Try to **submit** the Delivery Order as Asrul.                                                  | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                                       |
-| 4    | Log in as **Marcus Lim** (Admin). Open the Draft Delivery Order and click **Submit**.           | Delivery Order status changes to **To Schedule**.                                                                |
-| 5    | From the **Sales Order**, create a **Picking List** and click **Submit** (Admin).              | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities.               |
-| 6    | Download both the DO and the Picking List as PDFs.                                              | Both documents download successfully as PDFs.                                                                    |
-| 7    | On the submitted Delivery Order, click **Actions → Mark as Delivered**.                         | Delivery Order status changes to **Delivered**. Delivery is recorded as completed.                               |
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Marcus Lim** (Admin) | Open a submitted **Sales Order** (or Proforma Invoice). | Sales Order is visible with status **TO BILL**. |
+| 2 | **Asrul** (Warehousing) | From the Sales Order, create a **Picking List** and save it. | Picking List is created and saved in Draft. Shows all items and quantities to pick. |
+| 3 | **Marcus Lim** (Admin) | Open the Draft Picking List and click **Submit**. | Picking List is submitted. |
+| 4 | **Asrul** (Warehousing) | From the Sales Order, create a **Delivery Order (DO)** and save it. | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
+| 5 | **Asrul** (Warehousing) | Try to **submit** the Delivery Order. | 🚫 Submit button is not available — only Admin can submit Delivery Orders. |
+| 6 | **Marcus Lim** (Admin) | Open the Draft Delivery Order and click **Submit**. | Delivery Order status changes to **To Schedule**. |
+| 7 | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the **Invoice** and submit it. | Invoice is created and submitted. Status shows **UNPAID**. |
+| 8 | **Marcus Lim** (Admin) | On the submitted Delivery Order, click **Actions → Mark as Delivered**. | Delivery Order status changes to **Delivered**. Delivery is recorded as completed. |
+| 9 | Any user | Download the Picking List and Delivery Order as PDFs. | Both documents download successfully as PDFs. |
 
 **Your result:**
 - [ ] Pass
@@ -414,7 +385,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 10 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 9 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
@@ -452,7 +423,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 11 — Delivery Delay Reminder
+#### Test 10 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
@@ -477,7 +448,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 12 — Create and Submit a Stock Reservation Entry
+#### Test 11 — Create and Submit a Stock Reservation Entry
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** or **Abishaah** (Admin or Finance Manager) for submission*
 
@@ -505,7 +476,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 13 — All Users Can Log In
+#### Test 12 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 14 users log in with their own account*
 
@@ -533,7 +504,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 14 — Sales Access Check
+#### Test 13 — Sales Access Check
 
 *Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
@@ -561,7 +532,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 15 — Warehousing Access Check
+#### Test 14 — Warehousing Access Check
 
 *Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 8)*
 
@@ -591,7 +562,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 16 — Finance Manager Access Check
+#### Test 15 — Finance Manager Access Check
 
 *Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 6)*
 
@@ -620,7 +591,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 17 — Finance Assistant Access Check
+#### Test 16 — Finance Assistant Access Check
 
 *Who tests this: **Nisa** (Finance Assistant / Finance User)*
 
@@ -648,7 +619,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 18 — Admin Access Check
+#### Test 17 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
@@ -676,7 +647,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 19 — Role Approval Flow
+#### Test 18 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -747,21 +718,21 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 | Test 3  | Price below minimum auto-adjusts (web app)                           |                              |           |      |
 | Test 4A | Credit limit block on Sales Order submission                         |                              |           |      |
 | Test 4B | Management approval to override credit limit block                   |                              |           |      |
-| Test 5  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
-| Test 6  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
-| Test 7  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
-| Test 8  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 9  | Create Delivery Order, Picking List, and Mark as Delivered           |                              |           |      |
-| Test 10 | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 11 | Delivery delay reminder                                              |                              |           |      |
-| Test 12 | Create and submit Stock Reservation Entry                            |                              |           |      |
-| Test 13 | All users can log in                                                 |                              |           |      |
-| Test 14 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 15 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 16 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 17 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 18 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 19 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 4  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
+| Test 5  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
+| Test 6  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
+| Test 7  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
+| Test 8  | Full delivery flow (SO → Picklist → DO → Invoice → Mark as Delivered) |                              |           |      |
+| Test 9  | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 10 | Delivery delay reminder                                              |                              |           |      |
+| Test 11 | Create and submit Stock Reservation Entry                            |                              |           |      |
+| Test 12 | All users can log in                                                 |                              |           |      |
+| Test 13 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 14 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 15 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 16 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 17 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 18 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
 **Total: 19 tests (20 parts)**
 
