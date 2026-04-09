@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1775443239384,
+  "lastScanned": 1775531217118,
   "projectRoot": "/Users/garethng/Documents/MAIA Knowledge Base",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "00 - Home",
       "purpose": null,
       "fileCount": 8,
-      "lastAccessed": 1775443239357,
+      "lastAccessed": 1775531217108,
       "keyFiles": [
         "COMPANY.md",
         "Changelog.md",
@@ -49,21 +49,21 @@
       "path": "01 - MAIA Product",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1775443239359,
+      "lastAccessed": 1775531217109,
       "keyFiles": []
     },
     "02 - PM Playbook": {
       "path": "02 - PM Playbook",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1775443239362,
+      "lastAccessed": 1775531217109,
       "keyFiles": []
     },
     "03 - Clients": {
       "path": "03 - Clients",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1775443239362,
+      "lastAccessed": 1775531217109,
       "keyFiles": [
         "README.md"
       ]
@@ -72,7 +72,7 @@
       "path": "04 - QA & Known Issues",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1775443239362,
+      "lastAccessed": 1775531217109,
       "keyFiles": [
         "Feature Gap Tracker.md",
         "Known Bugs & Limitations.md",
@@ -84,7 +84,7 @@
       "path": "05 - Releases & Updates",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1775443239363,
+      "lastAccessed": 1775531217109,
       "keyFiles": [
         "Feature Changelog.md",
         "Release Notes.md",
@@ -95,7 +95,7 @@
       "path": "06 - Glossary & Taxonomy",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1775443239363,
+      "lastAccessed": 1775531217109,
       "keyFiles": [
         "Glossary.md",
         "Tag Dictionary.md"
@@ -105,7 +105,7 @@
       "path": "07 - Decisions",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1775443239363,
+      "lastAccessed": 1775531217110,
       "keyFiles": [
         "ADR Template.md",
         "Decision Log.md"
@@ -115,7 +115,7 @@
       "path": "08 - Configuration & Integrations",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1775443239363,
+      "lastAccessed": 1775531217110,
       "keyFiles": [
         "Client Configuration Overlay Template.md",
         "Configuration Index.md",
@@ -128,7 +128,7 @@
       "path": "09 - Intake & Triage",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1775443239363,
+      "lastAccessed": 1775531217110,
       "keyFiles": [
         "Request Intake Inbox.md",
         "Triage Decision Record Template.md",
@@ -139,14 +139,23 @@
       "path": "10 - Outputs",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1775443239364,
+      "lastAccessed": 1775531217110,
       "keyFiles": []
+    },
+    "Clippings": {
+      "path": "Clippings",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1775531217110,
+      "keyFiles": [
+        "Industrial Supplies Narrative MAIA.md"
+      ]
     },
     "Excalidraw": {
       "path": "Excalidraw",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1775443239364,
+      "lastAccessed": 1775531217110,
       "keyFiles": [
         "Drawing 2026-02-22 17.59.46.excalidraw.md",
         "Drawing 2026-02-22 18.13.08.excalidraw.md",
@@ -159,21 +168,21 @@
       "path": "Granola",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1775443239369,
+      "lastAccessed": 1775531217110,
       "keyFiles": []
     },
     "TaskNotes": {
       "path": "TaskNotes",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1775443239369,
+      "lastAccessed": 1775531217110,
       "keyFiles": []
     },
     "brain": {
       "path": "brain",
       "purpose": null,
       "fileCount": 6,
-      "lastAccessed": 1775443239370,
+      "lastAccessed": 1775531217110,
       "keyFiles": [
         "Gotchas.md",
         "Key Decisions.md",
@@ -186,7 +195,7 @@
       "path": "TaskNotes/Views",
       "purpose": "View templates",
       "fileCount": 6,
-      "lastAccessed": 1775443239384,
+      "lastAccessed": 1775531217112,
       "keyFiles": [
         "agenda-default.base",
         "calendar-default.base",
@@ -196,10 +205,40 @@
   },
   "hotPaths": [
     {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Customer Narrative - Ming Medical.md",
+      "accessCount": 109,
+      "lastAccessed": 1775576767471,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Meeting Notes/Ming Medical Meeting Transcript - YYYY-MM-DD.md",
+      "accessCount": 29,
+      "lastAccessed": 1775652626268,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Ming Medical - Customer Profile.md",
+      "accessCount": 15,
+      "lastAccessed": 1775652298934,
+      "type": "file"
+    },
+    {
       "path": "CLAUDE.md",
       "accessCount": 11,
       "lastAccessed": 1775525722591,
       "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 6,
+      "lastAccessed": 1775576218094,
+      "type": "directory"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical",
+      "accessCount": 5,
+      "lastAccessed": 1775559872656,
+      "type": "directory"
     },
     {
       "path": "AGENTS.md",
@@ -208,21 +247,15 @@
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Ming Medical - Customer Profile.md",
-      "accessCount": 4,
-      "lastAccessed": 1775526030218,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 3,
-      "lastAccessed": 1775489127166,
-      "type": "directory"
-    },
-    {
       "path": "02 - PM Playbook/Templates/[Template] Feature Narrative.md",
       "accessCount": 3,
       "lastAccessed": 1775489352166,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Daily Updates/Daily Update - 02-04-2026.md",
+      "accessCount": 3,
+      "lastAccessed": 1775562520124,
       "type": "file"
     },
     {
@@ -256,15 +289,15 @@
       "type": "file"
     },
     {
-      "path": "02 - PM Playbook/Daily Updates/Daily Update - 02-04-2026.md",
-      "accessCount": 2,
-      "lastAccessed": 1775444555374,
-      "type": "file"
-    },
-    {
       "path": "02 - PM Playbook/Daily Updates/Daily Updates Index.md",
       "accessCount": 2,
       "lastAccessed": 1775444555569,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/CPG (2025).md",
+      "accessCount": 2,
+      "lastAccessed": 1775652311238,
       "type": "file"
     },
     {
@@ -349,6 +382,60 @@
       "path": "03 - Clients/Active Cooking Clients/Holsen/Feature Requests/Feature Narrative/Feature Narrative -.md",
       "accessCount": 1,
       "lastAccessed": 1775481486998,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Requirement Gathering Output - Ming Medical - 2026-04.md",
+      "accessCount": 1,
+      "lastAccessed": 1775533075177,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Templates/[Template] Customer Narrative.md",
+      "accessCount": 1,
+      "lastAccessed": 1775533299094,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/sample case.md",
+      "accessCount": 1,
+      "lastAccessed": 1775556294692,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery",
+      "accessCount": 1,
+      "lastAccessed": 1775559875791,
+      "type": "directory"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/GTM Briefs/Ming Medical/Ming Medical - GTM Proposal.md",
+      "accessCount": 1,
+      "lastAccessed": 1775559881460,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/GTM Briefs/Ming Medical/Ming Medical - GTM Brief Transcript.md",
+      "accessCount": 1,
+      "lastAccessed": 1775559888631,
+      "type": "directory"
+    },
+    {
+      "path": "02 - PM Playbook/Daily Updates/Daily Update - 07-04-2026.md",
+      "accessCount": 1,
+      "lastAccessed": 1775569563324,
+      "type": "file"
+    },
+    {
+      "path": ".claude/skills/stop-slop/SKILL.md",
+      "accessCount": 1,
+      "lastAccessed": 1775575899382,
+      "type": "file"
+    },
+    {
+      "path": ".claude/skills/humanizer/SKILL.md",
+      "accessCount": 1,
+      "lastAccessed": 1775575899968,
       "type": "file"
     }
   ],

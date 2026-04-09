@@ -28,14 +28,12 @@ uat_round: 1
 | 15–16 Apr | Product ready confirmation                   | MAIA team    |
 | 16 Apr    | **Phase 1 Sign Off & Go-Live**               | All          |
 
-**Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), delivery, inventory alerts, and role permissions. E-invoice integration is covered separately.
+**Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), approval flows (min price, credit limit), delivery, inventory alerts, and role permissions. E-invoice integration and the Custom Box Calculator are covered separately in a later phase.
 
 **Web App:** https://maia-fe-fixguru.vercel.app/login
 **Chatbot (during UAT):** Telegram — @maia_fixguru_bot *(scan the QR code provided)*
-
-**Chatbot (after go-live):** WhatsApp *(same features — WhatsApp setup is in progress)*
-
----
+![[Pasted image 20260407144220.png|209]]
+**Chatbot (after go-live):** WhatsApp (+6012‑491 2154)
 
 ## Your Login Details
 
@@ -118,44 +116,70 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-### Group 1 — Chatbot: Sending Orders
+### Group 1 — Chatbot: Sending a Quotation
 
 *Who tests this group: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
 
 ---
 
-#### Test 1 — Send an Order by Text Message
+#### Test 1 — Send a Quotation via Text Message and Voice Note
 
-| Step | What to do                                                                                             | What you should see                                                                         |
-| ---- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| 1    | Open **@maia_fixguru_bot** in Telegram using the QR code provided.                                     | The chatbot replies and is ready to receive your message.                                   |
-| 2    | Type a message like: *"Customer: [Customer Name]. Order: 10 units [Product A], 5 boxes [Product B]."*  | Chatbot receives the message.                                                               |
-| 3    | Wait a moment.                                                                                         | The chatbot shows the order details it extracted — customer name, products, and quantities. |
-| 4    | Check that the details are correct.                                                                    | Customer name, product names, and quantities match what you typed.                          |
+*Test the chatbot twice — once by typing, and once by sending a voice note. The chatbot will create a Quotation from what you send.*
 
-**Your result:**
+---
+
+**Part A — Text Message**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open **@maia_fixguru_bot** in Telegram using the QR code provided. | The chatbot replies and is ready to receive your message. |
+| 2 | Type a quotation request like: *"Customer: [Customer Name]. Items: 10 units [Product A], 5 boxes [Product B]."* | Chatbot receives the message. |
+| 3 | Wait a moment. | The chatbot shows the details it picked up — customer name, products, and quantities — and prepares a Quotation. |
+| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. A Quotation is created. |
+
+**Part A result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 
+**Notes:**
+
+---
+
+**Part B — Voice Note**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | In the same Telegram chat, record a voice note. Say something like: *"Quote for [Customer Name] — 10 units of [Product A] and 5 boxes of [Product B]."* | Voice note is sent to the chatbot. |
+| 2 | Wait a moment. | The chatbot transcribes your voice note and shows the details — customer name, products, and quantities — and prepares a Quotation. |
+| 3 | Check that the details are correct. | Details match what you said. A Quotation is created. |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
 **Tested by:**
 **Date:**
-**Notes:**
 
 
 ---
 
-#### Test 2 — Pricing and Stock Check
+#### Test 2 — Pricing and Stock Check (Chatbot)
 
-*Continue from **Test 1** (text message order).*
+*Continue from **Test 1** (text message quotation). This tests the chatbot's price and stock checks during quotation intake.*
 
 | Step | What to do                                                                | What you should see                                                  |
 | ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1    | After the chatbot shows the extracted order, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item.        |
+| 1    | After the chatbot shows the extracted quotation details, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item. |
 | 2    | Enter a price **above** the minimum selling price for one item.           | Price is accepted. No warning shown.                                 |
-| 3    | Enter a price **below** the minimum selling price for another item.       | Chatbot shows a warning or blocks the price — minimum price not met. |
-| 4    | Correct the price to be at or above the minimum.                          | Price accepted. You can continue.                                    |
-| 5    | Check the stock quantity shown for a product.                             | Available stock quantity is displayed next to the product.           |
+| 3    | Enter a price **below** the minimum selling price for another item. For example, type `RM 1.00` for a product with a minimum of `RM 1.20`. | Chatbot rejects the price and says it is below the minimum selling price. It offers to set the price to the minimum allowed (e.g. `RM 1.20`) or lets you adjust the quantity or choose a different item. |
+| 4    | Reply to accept the minimum price suggested by the chatbot.               | Price is updated to the minimum. You can continue with the quotation. |
+| 5    | Ask the chatbot for the available quantity of a product. For example, type *"What is the quantity of [Product]?"* | Chatbot replies with the available stock quantity for that product. |
 
 **Your result:**
 - [ ] Pass
@@ -172,9 +196,84 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ### Group 2 — Web App: Managing Orders
 
+💡 **Note:** Tests in this group can be done via the **web app** (https://maia-fe-fixguru.vercel.app/login) or the **chatbot** — both are supported.
+
 ---
 
-#### Test 3 — Generate Documents (Quotation → Sales Order → Invoice)
+#### Test 3 — Price Below Minimum Auto-Adjusts (Web App)
+
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
+
+*Test 2 checks the chatbot blocks a low price during intake. This test checks the same rule on the web app — when a price below the minimum is entered on a Quotation or Sales Order, the system immediately blocks the input and auto-adjusts the price to the minimum allowed.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Quotation**. Add a product and enter a price **below** the minimum selling price. | The system blocks the input immediately and shows: *"Unit Price set is too low, auto adjusting to the closest allowed price range."* The price is automatically adjusted to the minimum. |
+| 2 | **Xiao Ling** (Sales) | Check the price field after the auto-adjustment. | Price has been updated to the minimum allowed price. Save the Quotation. |
+| 3 | **Marcus Lim** (Admin) | Open the Quotation and submit it. | Quotation submits successfully. Status changes to **OPEN**. |
+| 4 | **Xiao Ling** (Sales) | Create a new **Sales Order**. Add a product and enter a price **below** the minimum. | The system blocks the input and shows: *"Unit Price set is too low, auto adjusting to the closest allowed price range."* Price is auto-adjusted to the minimum. |
+| 5 | **Marcus Lim** (Admin) | Open the Sales Order and submit it. | Sales Order submits successfully. Status changes to **TO BILL**. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 4 — Credit Limit Check on Sales Order Submission
+
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit; **Steven Gan** (Admin) to approve*
+
+*This tests two things: (A) the system blocks SO submission when a customer is near their credit limit, and (B) a manager can approve the SO to override the block.*
+
+⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** as the test customer — the credit limit has already been set to 80% usage for this account.
+
+**Part A — Credit Limit Block**
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Sales Order** for **ZARA BIOTECH SDN BHD**. Fill in the items and save. | Sales Order is saved in Draft. |
+| 2 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | The system checks the customer's credit usage. An error message appears — the customer has reached or exceeded their credit limit. Submission is blocked. |
+| 3 | **Marcus Lim** (Admin) | Note the error message shown. | Error message is clear and mentions the credit limit issue. |
+
+**Part A result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part B — Management Approval to Override**
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 4 | **Marcus Lim** (Admin) | After the block in Part A, look for an option to **request approval** or escalate the Sales Order for management review. | An approval request is sent or the SO enters a pending approval state. |
+| 5 | **Steven Gan** (Admin) | Log in. Check for a pending approval notification or approval queue. Open the flagged Sales Order. | The Sales Order is visible in the approval queue with a note about the credit limit. |
+| 6 | **Steven Gan** (Admin) | **Approve** the Sales Order. | Sales Order is approved and status changes to **TO BILL**. The credit limit override is recorded. |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 5 — Generate Documents (Quotation → Sales Order → Invoice)
 
 *Coordinate across roles — see who does each step.*
 
@@ -205,7 +304,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 4 — Create a Credit Note and Debit Note
+#### Test 6 — Create a Credit Note and Debit Note
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
@@ -230,46 +329,22 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 5 — Create and Manage Sales Orders on the Web App
+#### Test 7 — Create and Manage Sales Orders on the Web App
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
-**Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Only **Admin** can submit.
+**Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Once saved, they need to tag Admin so Admin can submit the document.
 
-| Step | What to do                                                                              | What you should see                                                                         |
-| ---- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 1    | Log in as **Hayati** (Sales). Create a new Sales Order directly from the web app.       | A form appears. Fill in customer and product details. Saved with status **Draft**.          |
-| 2    | Try to **submit** the Sales Order as Hayati.                                            | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
-| 3    | Log in as **Abishaah** (Finance Manager). Create a new Sales Order.                    | Sales Order saved with status **Draft**. Finance Manager can create.                        |
-| 4    | Try to **submit** the Sales Order as Abishaah.                                          | 🚫 Submit button is not available — only Admin can submit Sales Orders.                     |
-| 5    | Log in as **Marcus Lim** (Admin). Open both Draft Sales Orders and submit them.        | Both Sales Orders change to **TO BILL**. Admin is the only role that can submit.            |
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### Test 6 — Export Invoice / Credit Note / Debit Note as CSV
-
-*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
-
-| Step | What to do                                              | What you should see                                                       |
-| ---- | ------------------------------------------------------- | ------------------------------------------------------------------------- |
-| 1    | Log in as **Finance Manager**. Open the **Invoice** page. | Invoice listing is visible.                                               |
-| 2    | Click the export or download button and select **CSV**. | A CSV file is downloaded to your computer.                                |
-| 3    | Open the CSV. Check the contents.                       | File contains invoice details — customer, line items, quantities, prices. |
-| 4    | Open a **Credit Note** and repeat the export.           | CSV downloaded. File contains credit note details.                        |
-| 5    | Open a **Debit Note** and repeat the export.            | CSV downloaded. File contains debit note details.                         |
-
-⚠️ **Note:** This CSV is used by Finance to create eInvoice records in the accounting system. eInvoices are not generated inside MAIA.
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Hayati** (Sales) | Log in. Create a new Sales Order and save it. | Sales Order saved with status **Draft**. |
+| 2 | **Hayati** (Sales) | Try to **submit** the Sales Order. | 🚫 Submit button is not available — only Admin can submit Sales Orders. |
+| 3 | **Hayati** (Sales) | In the **sidebar comment**, tag **@Marcus Lim** (Admin) to notify him to submit. | Marcus Lim receives a notification that a Sales Order is ready for submission. |
+| 4 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
+| 5 | **Abishaah** (Finance Manager) | Log in. Create a new Sales Order and save it. | Sales Order saved with status **Draft**. Finance Manager can create. |
+| 6 | **Abishaah** (Finance Manager) | Try to **submit** the Sales Order. | 🚫 Submit button is not available — only Admin can submit Sales Orders. |
+| 7 | **Abishaah** (Finance Manager) | In the **sidebar comment**, tag **@Marcus Lim** (Admin) to notify him to submit. | Marcus Lim receives a notification that a Sales Order is ready for submission. |
+| 8 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
 
 **Your result:**
 - [ ] Pass
@@ -284,25 +359,23 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-### Group 3 — Warehousing: Deliveries and Stock Alerts
+#### Test 8 — Full Delivery Flow (SO → Picklist → DO → Invoice → Mark as Delivered)
 
----
+*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for submissions and marking delivery*
 
-#### Test 7 — Create a Delivery Order, Picking List, and Mark as Delivered
+**Note:** Only **Admin** can submit Picking Lists and Delivery Orders at Fixguru. The flow starts from a submitted Sales Order or Proforma Invoice.
 
-*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for DO submission, Pick List submission, and marking delivery*
-
-**Note:** All roles can **create** Delivery Orders, but only **Admin** can submit them. Since Fixguru has no Logistics Manager, **Admin** also submits Pick Lists and marks deliveries as completed.
-
-| Step | What to do                                                                                      | What you should see                                                                                              |
-| ---- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul** (Warehousing). Open a submitted Invoice with status **UNPAID**.             | Invoice record is visible.                                                                                       |
-| 2    | Create a **Delivery Order (DO)** from the Invoice and save it.                                  | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
-| 3    | Try to **submit** the Delivery Order as Asrul.                                                  | 🚫 Submit button is not available — only Admin can submit Delivery Orders.                                       |
-| 4    | Log in as **Marcus Lim** (Admin). Open the Draft Delivery Order and click **Submit**.           | Delivery Order status changes to **To Schedule**.                                                                |
-| 5    | From the Delivery Order, create a **Picking List** and click **Submit** (Admin).               | Picking List is created and submitted. Shows all items to pick from the warehouse with quantities.               |
-| 6    | Download both the DO and the Picking List as PDFs.                                              | Both documents download successfully as PDFs.                                                                    |
-| 7    | On the submitted Delivery Order, click **Actions → Mark as Delivered**.                         | Delivery Order status changes to **Delivered**. Delivery is recorded as completed.                               |
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Marcus Lim** (Admin) | Open a submitted **Sales Order** (or Proforma Invoice). | Sales Order is visible with status **TO BILL**. |
+| 2 | **Asrul** (Warehousing) | From the Sales Order, create a **Picking List** and save it. | Picking List is created and saved in Draft. Shows all items and quantities to pick. |
+| 3 | **Marcus Lim** (Admin) | Open the Draft Picking List and click **Submit**. | Picking List is submitted. |
+| 4 | **Asrul** (Warehousing) | From the Sales Order, create a **Delivery Order (DO)** and save it. | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
+| 5 | **Asrul** (Warehousing) | Try to **submit** the Delivery Order. | 🚫 Submit button is not available — only Admin can submit Delivery Orders. |
+| 6 | **Marcus Lim** (Admin) | Open the Draft Delivery Order and click **Submit**. | Delivery Order status changes to **To Schedule**. |
+| 7 | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the **Invoice** and submit it. | Invoice is created and submitted. Status shows **UNPAID**. |
+| 8 | **Marcus Lim** (Admin) | On the submitted Delivery Order, click **Actions → Mark as Delivered**. | Delivery Order status changes to **Delivered**. Delivery is recorded as completed. |
+| 9 | Any user | Download the Picking List and Delivery Order as PDFs. | Both documents download successfully as PDFs. |
 
 **Your result:**
 - [ ] Pass
@@ -317,17 +390,30 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 8 — Stock Alerts (Out of Stock and Low Stock)
+#### Test 9 — Stock Alerts (Out of Stock and Low Stock)
 
 *Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
 
-| Step | What to do                                                                      | What you should see                                                         |
-| ---- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul** (Warehousing). Check the notification area.                 | Notifications are visible.                                                  |
-| 2    | Look for a product that has **zero stock**.                                     | An Out-of-Stock alert is shown for that product.                            |
-| 3    | Look for a product that is below the safety stock level.                        | A Low-Stock alert is shown for that product.                                |
-| 4    | Confirm the notification shows the product name and the current stock quantity. | Product name and quantity are correct on the alert.                         |
-| 5    | Log out. Log in as **Xiao Ling** (Sales). Check the same alerts.               | Both Out-of-Stock and Low-Stock alerts are visible to Sales users as well.  |
+**Part A — Out of Stock Alert**
+
+⚠️ **Setup:** Use a product that has exactly 100 units available. Create a Sales Order that uses all 100 units. Once the order is submitted, the stock hits zero and should trigger the out-of-stock notification.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Create and submit a Sales Order that uses up all available stock of a product (e.g. 100 units for a product with 100 units available). | Sales Order is submitted successfully. |
+| 2 | Log in as **Asrul** (Warehousing). Check the notification area. | An Out-of-Stock alert is shown for that product — stock is now at zero. |
+| 3 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Out-of-Stock alert is visible to Sales users as well. |
+
+**Part B — Low Stock Alert**
+
+⚠️ **Setup:** Go to the **Item module** and set a safety quantity for a product (e.g. set safety quantity to 50). Then make sure the available quantity for that product drops below 50. This will trigger the low stock notification.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in as **Asrul** (Warehousing). Go to the **Item module**. Find a product and set its **safety quantity** (e.g. 50 units). | Safety quantity is saved for that product. |
+| 2 | Ensure the available quantity for that product is below the safety quantity you just set. | Available quantity is lower than the safety quantity. |
+| 3 | Check the notification area. | A Low-Stock alert is shown for that product — remaining quantity is below the safety level. |
+| 4 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Low-Stock alert is visible to Sales users as well. |
 
 **Your result:**
 - [ ] Pass
@@ -342,16 +428,17 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 9 — Delivery Delay Reminder
+#### Test 10 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
-| Step | What to do                                                                                                                                    | What you should see                                                                      |
-| ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| 1    | Log in as **Asrul**. Find an Invoice where no Delivery Order has been created yet, and it has been open for more than the allowed number of days. | Invoice identified.                                                                   |
-| 2    | Check the daily digest or notification area.                                                                                                  | A delivery delay alert is shown for that Invoice — flagging that no DO has been created. |
+*The system sends a notification when a Sales Order has been submitted but no Delivery Order has been created within 5 hours.*
 
-⚠️ **Note:** If you cannot find an overdue Invoice, please contact Gareth to set one up.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in as **Asrul** (Warehousing). Check the notification area. | A notification is shown — flagging that a Sales Order has no Delivery Order created after 5 hours. The notification shows the Sales Order reference. |
+| 2 | Check the details of the notification. | The Sales Order reference and customer name are correct. |
 
 **Your result:**
 - [ ] Pass
@@ -366,7 +453,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 10 — Create and Submit a Stock Reservation Entry
+#### Test 11 — Create and Submit a Stock Reservation Entry
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** or **Abishaah** (Admin or Finance Manager) for submission*
 
@@ -394,7 +481,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 11 — All Users Can Log In
+#### Test 12 — All Users Can Log In
 
 *Who tests this: **Everyone** — all 14 users log in with their own account*
 
@@ -422,7 +509,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 12 — Sales Access Check
+#### Test 13 — Sales Access Check
 
 *Who tests this: **Zuha** or **Syahira** (Sales — different person from Group 1)*
 
@@ -450,7 +537,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 13 — Warehousing Access Check
+#### Test 14 — Warehousing Access Check
 
 *Who tests this: **Fadzil** or **Azizah** (Warehousing — different person from Test 8)*
 
@@ -480,7 +567,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 14 — Finance Manager Access Check
+#### Test 15 — Finance Manager Access Check
 
 *Who tests this: **Wendy Wang** (Finance Manager — use the other Finance Manager from Test 6)*
 
@@ -509,7 +596,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 15 — Finance Assistant Access Check
+#### Test 16 — Finance Assistant Access Check
 
 *Who tests this: **Nisa** (Finance Assistant / Finance User)*
 
@@ -537,7 +624,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 16 — Admin Access Check
+#### Test 17 — Admin Access Check
 
 *Who tests this: **Steven Gan** or **Yvonne Choo** (Admin — different person from other tests)*
 
@@ -565,7 +652,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 17 — Role Approval Flow
+#### Test 18 — Role Approval Flow
 
 *Who tests this: **All roles** — coordinate as a group across all steps*
 
@@ -596,7 +683,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 | Step | Who                              | What to do                                                    | What you should see                                                        |
 | ---- | -------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| 9    | **Asrul** (Warehousing)          | Create a Pick List from the Delivery Order and save it.       | Pick List saved in Draft. Warehousing can create.                          |
+| 9    | **Asrul** (Warehousing)          | Create a Pick List from the **Sales Order** and save it.      | Pick List saved in Draft. Warehousing can create.                          |
 | 10   | **Steven Gan** (Admin)           | Open the Draft Pick List. Click Submit.                       | Pick List submitted. Admin submits Pick Lists at Fixguru.                  |
 
 **Part E — Invoice (Finance Manager submits)**
@@ -631,25 +718,28 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 | Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
 | ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
-| Test 1  | Send order by text message                                           |                              |           |      |
-| Test 2  | Pricing and stock check                                              |                              |           |      |
-| Test 3  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
-| Test 4  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
-| Test 5  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
-| Test 6  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 7  | Create Delivery Order, Picking List, and Mark as Delivered           |                              |           |      |
-| Test 8  | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 9  | Delivery delay reminder                                              |                              |           |      |
-| Test 10 | Create and submit Stock Reservation Entry                            |                              |           |      |
-| Test 11 | All users can log in                                                 |                              |           |      |
-| Test 12 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 13 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 14 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 15 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 16 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 17 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test 1  | Send quotation by text message and voice note                        |                              |           |      |
+| Test 2  | Pricing and stock check (chatbot)                                    |                              |           |      |
+| Test 3  | Price below minimum auto-adjusts (web app)                           |                              |           |      |
+| Test 4A | Credit limit block on Sales Order submission                         |                              |           |      |
+| Test 4B | Management approval to override credit limit block                   |                              |           |      |
+| Test 4  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
+| Test 5  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
+| Test 6  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
+| Test 7  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
+| Test 8  | Full delivery flow (SO → Picklist → DO → Invoice → Mark as Delivered) |                              |           |      |
+| Test 9  | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
+| Test 10 | Delivery delay reminder                                              |                              |           |      |
+| Test 11 | Create and submit Stock Reservation Entry                            |                              |           |      |
+| Test 12 | All users can log in                                                 |                              |           |      |
+| Test 13 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
+| Test 14 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
+| Test 15 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
+| Test 16 | Finance Assistant / Nisa — access check                              |                              |           |      |
+| Test 17 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
+| Test 18 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
 
-**Total: 17 tests**
+**Total: 19 tests (20 parts)**
 
 | Pass | Fail | Issue |
 |------|------|-------|
