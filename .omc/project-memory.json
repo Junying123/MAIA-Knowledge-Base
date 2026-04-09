@@ -313,6 +313,18 @@
       "type": "file"
     },
     {
+      "path": "02 - PM Playbook/Templates/Client Sample Data Demo/[Template] Sample Customers.csv",
+      "accessCount": 2,
+      "lastAccessed": 1775716795448,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Templates/Client Sample Data Demo/[Template] Sample Products.csv",
+      "accessCount": 2,
+      "lastAccessed": 1775716798849,
+      "type": "file"
+    },
+    {
       "path": "brain/Key Decisions.md",
       "accessCount": 1,
       "lastAccessed": 1775298587754,
@@ -454,6 +466,12 @@
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Products (Synthetic).csv",
       "accessCount": 1,
       "lastAccessed": 1775710892605,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
+      "accessCount": 1,
+      "lastAccessed": 1775716740783,
       "type": "file"
     }
   ],

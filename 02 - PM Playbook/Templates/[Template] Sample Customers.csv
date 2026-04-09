@@ -1,5 +1,0 @@
-customer_code,customer_name,customer_contact_name,customer_contact_email,customer_contact_number,address_line_1,address_line_2,city,state,country,postcode,payment_term,credit_limit,notes
-,ABC Trading Sdn Bhd,John Tan,john.tan@abctrading.com,+60123456789,No. 12 Jalan Industri 3,Taman Perindustrian Maju,Petaling Jaya,Selangor,Malaysia,47810,Net 30,50000,
-,XYZ Supplies Pte Ltd,Sarah Lim,sarah.lim@xyzsupplies.com,+6591234567,101 Tuas South Avenue 2,#05-10 Tuas Industrial Park,Singapore,,Singapore,637229,COD,,
-C001,Amanah Raya Berhad,Puan Siti Rahimah,procurement@amanah.com.my,603-2612 0000,Lot 3 Jalan Ampang,,Kuala Lumpur,,Malaysia,50450,Cash In Advance,,CNY & Raya hamper orders; 30–50 pcs/season
-C002,Syarikat Minuman Sejahtera,Encik Farid,farid@sejahtera.my,6011-2233 4455,Lot 7 Jalan Industri 3,,Shah Alam,Selangor,Malaysia,40150,Net 30,10000,One of 2 credit-term dealers
