@@ -235,6 +235,12 @@
       "type": "directory"
     },
     {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Customer Narrative - JDX.md",
+      "accessCount": 6,
+      "lastAccessed": 1775728689711,
+      "type": "file"
+    },
+    {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical",
       "accessCount": 5,
       "lastAccessed": 1775559872656,
@@ -484,6 +490,12 @@
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering.md",
       "accessCount": 1,
       "lastAccessed": 1775723200304,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX - Customer Profile.md",
+      "accessCount": 1,
+      "lastAccessed": 1775728351440,
       "type": "file"
     }
   ],
