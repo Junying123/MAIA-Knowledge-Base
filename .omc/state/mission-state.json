@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-09T01:35:14.034Z",
+  "updatedAt": "2026-04-09T08:42:53.906Z",
   "missions": [
     {
       "id": "session:6d03e2c5-ca48-4c42-8b20-babbf1253556:none",
@@ -72,6 +72,72 @@
           "agent": "Explore:adecc63",
           "detail": "completed",
           "sourceKey": "session-stop:adecc63f26b73181a"
+        }
+      ]
+    },
+    {
+      "id": "session:7594400b-f038-4e6a-98b8-9fbc99da0801:none",
+      "source": "session",
+      "name": "none",
+      "objective": "Session mission",
+      "createdAt": "2026-04-09T08:42:27.337Z",
+      "updatedAt": "2026-04-09T08:42:53.906Z",
+      "status": "running",
+      "workerCount": 2,
+      "taskCounts": {
+        "total": 2,
+        "pending": 0,
+        "blocked": 0,
+        "inProgress": 1,
+        "completed": 1,
+        "failed": 0
+      },
+      "agents": [
+        {
+          "name": "Explore:acce963",
+          "role": "Explore",
+          "ownership": "acce96384129463a6",
+          "status": "running",
+          "currentStep": null,
+          "latestUpdate": null,
+          "completedSummary": null,
+          "updatedAt": "2026-04-09T08:42:27.337Z"
+        },
+        {
+          "name": "Explore:a2b2bb2",
+          "role": "Explore",
+          "ownership": "a2b2bb22d4850890b",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-09T08:42:53.906Z"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "session-start:acce96384129463a6:2026-04-09T08:42:27.337Z",
+          "at": "2026-04-09T08:42:27.337Z",
+          "kind": "update",
+          "agent": "Explore:acce963",
+          "detail": "started Explore:acce963",
+          "sourceKey": "session-start:acce96384129463a6"
+        },
+        {
+          "id": "session-start:a2b2bb22d4850890b:2026-04-09T08:42:30.210Z",
+          "at": "2026-04-09T08:42:30.210Z",
+          "kind": "update",
+          "agent": "Explore:a2b2bb2",
+          "detail": "started Explore:a2b2bb2",
+          "sourceKey": "session-start:a2b2bb22d4850890b"
+        },
+        {
+          "id": "session-stop:a2b2bb22d4850890b:2026-04-09T08:42:53.906Z",
+          "at": "2026-04-09T08:42:53.906Z",
+          "kind": "completion",
+          "agent": "Explore:a2b2bb2",
+          "detail": "completed",
+          "sourceKey": "session-stop:a2b2bb22d4850890b"
         }
       ]
     }

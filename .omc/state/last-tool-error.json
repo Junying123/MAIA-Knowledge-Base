@@ -1,0 +1,7 @@
+{
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"/Users/garethng/Documents/MAIA Knowledge Base/03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Customer Narrative - Ming Medical.md\"}",
+  "error": "File does not exist. Note: your current working directory is /Users/garethng/Documents/MAIA Knowledge Base.",
+  "timestamp": "2026-04-09T08:42:32.119Z",
+  "retry_count": 1
+}
