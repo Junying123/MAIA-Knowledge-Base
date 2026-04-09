@@ -259,6 +259,12 @@
       "type": "file"
     },
     {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Products (Synthetic).csv",
+      "accessCount": 3,
+      "lastAccessed": 1775720056956,
+      "type": "file"
+    },
+    {
       "path": "brain/Memories.md",
       "accessCount": 2,
       "lastAccessed": 1775333325257,
@@ -463,15 +469,15 @@
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Products (Synthetic).csv",
-      "accessCount": 1,
-      "lastAccessed": 1775710892605,
-      "type": "file"
-    },
-    {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
       "accessCount": 1,
       "lastAccessed": 1775716740783,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Customers (Synthetic).csv",
+      "accessCount": 1,
+      "lastAccessed": 1775720070023,
       "type": "file"
     }
   ],

@@ -1,0 +1,5 @@
+customer_code,customer_name,customer_contact_name,customer_contact_email,customer_contact_number,address_line_1,address_line_2,city,state,country,postcode,payment_term,credit_limit,notes
+C001,Amanah Raya Berhad,Puan Siti Rahimah,procurement@amanah.com.my,603-2612 0000,Lot 3 Jalan Ampang,,Kuala Lumpur,,Malaysia,50450,Cash In Advance,,CNY & Raya hamper orders; 30–50 pcs/season
+C002,CIMB Bank Berhad,Encik Hafiz Azman,hafiz.azman@cimb.com,603-2261 8888,Menara CIMB Jalan Stesen Sentral 2,KL Sentral,Kuala Lumpur,,Malaysia,50470,Cash In Advance,,Corporate CNY hamper gifting; 80–120 pcs; multi-address delivery to branches
+C003,Syarikat Minuman Sejahtera Sdn Bhd,Encik Farid,farid@sejahtera.my,6011-2233 4455,Lot 7 Jalan Industri 3,,Shah Alam,Selangor,Malaysia,40150,Net 30,10000,One of 2 credit-term dealers; orders CNY and Raya hampers for resale
+C004,Majlis Perbandaran Subang Jaya,Pn Rosnah Bt Ismail,rosnah@mpsj.gov.my,603-8026 2800,Persiaran Perpaduan Pusat Bandar UEP,,Subang Jaya,Selangor,Malaysia,47500,Cash In Advance,,Government procurement; Raya hampers for staff; 50–100 pcs/season
