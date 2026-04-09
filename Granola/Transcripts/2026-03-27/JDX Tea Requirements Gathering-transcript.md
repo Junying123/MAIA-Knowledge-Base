@@ -3,7 +3,7 @@ granola_id: 56ec58de-b84e-4a59-85ad-3a6fc11db55d
 title: JDX Tea Requirements Gathering - Transcript
 type: transcript
 created: 2026-03-27T05:53:22.589Z
-updated: 2026-03-27T08:03:13.175Z
+updated: 2026-04-09T09:28:50.896Z
 attendees: 
   - jeremy@mindhive.asia
   - brendan@mindhive.asia
