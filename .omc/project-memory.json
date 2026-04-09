@@ -331,6 +331,12 @@
       "type": "file"
     },
     {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
+      "accessCount": 2,
+      "lastAccessed": 1775723199908,
+      "type": "file"
+    },
+    {
       "path": "brain/Key Decisions.md",
       "accessCount": 1,
       "lastAccessed": 1775298587754,
@@ -469,15 +475,15 @@
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
-      "accessCount": 1,
-      "lastAccessed": 1775716740783,
-      "type": "file"
-    },
-    {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Customers (Synthetic).csv",
       "accessCount": 1,
       "lastAccessed": 1775720070023,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering.md",
+      "accessCount": 1,
+      "lastAccessed": 1775723200304,
       "type": "file"
     }
   ],
