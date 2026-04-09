@@ -1,0 +1,25 @@
+﻿SKU,Product Name,Category,Sub-category,Unit,Unit Price (MYR),Components (if hamper),Customisation Options,Season,Description / Notes
+HAM-CNY-001,Fortune Abundance CNY Hamper,Seasonal Hamper,CNY,Set,388.00,1x TEA-PU-002 (Pu'er cake) + 1x TEA-OO-001 (Oolong 150g) + 1x WEL-BN-001 (Bird's nest 6-btl) + 1x WEL-AB-001 (Abalone 1-tin),Ribbon colour; greeting card wording; price tag on/off,CNY,Best-seller mid-tier hamper; standard 5–7 working days delivery
+HAM-CNY-002,Golden Prosperity CNY Hamper,Seasonal Hamper,CNY,Set,588.00,1x TEA-PU-001 (Dayi 7542 Pu'er) + 1x WEL-BN-002 (Bird's nest 12-btl) + 1x WEL-AB-002 (Abalone 2-tin),Ribbon colour; organza wrap; greeting card wording; price tag on/off,CNY,Premium tier; Dayi brand Pu'er; popular for corporate gifting
+HAM-CNY-003,Jade Blessings CNY Hamper (Budget),Seasonal Hamper,CNY,Set,188.00,1x TEA-OO-001 (Oolong 150g) + 1x TEA-FL-001 (Jasmine 100g) + 1x CONF-PT-001 (Pineapple tart 400g),Ribbon colour; greeting card wording,CNY,Entry-level corporate gift; high volume orders; no abalone or bird's nest
+HAM-CNY-004,Custom Corporate CNY Hamper,Seasonal Hamper,CNY,Set,TBC (custom quote),Customer-specified items — no standard BOM,Full custom: item selection; ribbon; organza; greeting card; shrink-wrap; price tag on/off; item swap (e.g. mushroom → pineapple tart),CNY,Bring-your-own hamper; voids standard discount; manual pricing decision by coordinator
+HAM-RAYA-001,Ramadan Barakah Hamper,Seasonal Hamper,Hari Raya,Set,298.00,1x TEA-LB-001 (Liubao 100g) + 1x CONF-DT-001 (Dates 500g) + 1x CONF-KC-001 (Kurma cookies) + 1x WEL-BN-001 (Bird's nest 6-btl),Ribbon colour (green default); greeting card wording; price tag on/off,Hari Raya,Halal-certified components; green ribbon default; mid-tier
+HAM-RAYA-002,Eid Mubarak Premium Hamper,Seasonal Hamper,Hari Raya,Set,498.00,1x TEA-PU-002 (Pu'er cake) + 1x CONF-DT-002 (Premium dates) + 1x WEL-BN-002 (Bird's nest 12-btl) + 1x WEL-AB-001 (Abalone 1-tin),Organza wrap; ribbon colour; greeting card wording; price tag on/off,Hari Raya,Premium Raya gift; halal-certified; organza wrap standard
+HAM-MC-001,Mid-Autumn Mooncake & Tea Gift Set,Seasonal Hamper,Mooncake Festival,Set,248.00,1x CONF-MK-001 (Mooncake 4-pc box) + 1x TEA-OO-002 (High Mountain Oolong 100g) + 1x TWR-TRV-001 (Travel tea set),Ribbon colour; greeting card wording,Mooncake Festival,Seasonal; smaller volume vs CNY/Raya; tea + mooncake pairing
+WEL-BN-001,Borneo Bird's Nest 70ml (6-bottle pack),Wellness,Bird's Nest,Pack,138.00,-,-,Year-round,Ready-to-drink; no sugar added; common hamper component; also sold standalone
+WEL-BN-002,Borneo Bird's Nest 70ml (12-bottle pack),Wellness,Bird's Nest,Pack,258.00,-,-,Year-round,Bulk pack; used in premium hampers; also sold standalone
+WEL-AB-001,Premium Abalone 425g (1 tin),Wellness,Marine Delicacies,Tin,88.00,-,-,CNY / Year-round,Braised abalone in brine; CNY hamper staple; also sold standalone
+WEL-AB-002,Premium Abalone 425g (2-tin pack),Wellness,Marine Delicacies,Pack,168.00,-,-,CNY / Year-round,Twin-pack; used in mid-to-high tier hampers
+TEA-PU-001,Dayi 7542 Pu'er Cake 357g (2022),Tea,Pu'er (普洱),Cake,168.00,-,-,Year-round,Official Dayi distributor; 2022 batch; raw (sheng); used in premium hampers
+TEA-PU-002,Dayi 7572 Pu'er Cake 357g (2022),Tea,Pu'er (普洱),Cake,148.00,-,-,Year-round,Ripe (shou) Pu'er; smooth and mellow; used in mid-tier hampers
+TEA-OO-001,Tie Guan Yin Oolong 150g,Tea,Oolong (乌龙),Pack,48.00,-,-,Year-round,Medium roast; popular for gifting and retail; used in budget hampers
+TEA-OO-002,High Mountain Oolong 100g,Tea,Oolong (乌龙),Pack,78.00,-,-,Year-round,Taiwan-style; premium tier; used in Mooncake gift set
+TEA-LB-001,Liubao Black Tea 100g,Tea,Liubao (六堡),Pack,58.00,-,-,Year-round,Earthy and smooth; used in Raya hampers
+TEA-FL-001,Jasmine Green Tea 100g,Tea,Flower (花茶),Pack,28.00,-,-,Year-round,Light floral; popular retail SKU; used in budget CNY hamper
+CONF-PT-001,Pineapple Tart 400g,Confectionery,CNY Cookies,Box,38.00,-,-,CNY,Common item swap (e.g. mushroom → pineapple tart per customer request)
+CONF-DT-001,Premium Dates 500g,Confectionery,Raya Add-ons,Box,28.00,-,-,Hari Raya,Halal; standard Raya hamper filler
+CONF-DT-002,Medjool Dates Premium 500g,Confectionery,Raya Add-ons,Box,48.00,-,-,Hari Raya,Premium grade dates; used in Eid Mubarak Premium Hamper
+CONF-KC-001,Kurma Cookies Assorted 350g,Confectionery,Raya Add-ons,Box,32.00,-,-,Hari Raya,Halal-certified; Raya hamper component
+CONF-MK-001,Snowskin Mooncake 4-pc Box,Confectionery,Mooncake,Box,88.00,-,-,Mooncake Festival,Assorted flavours; used in Mid-Autumn gift set
+TWR-SET-001,Classic Gongfu Tea Set (6-piece),Teaware,Tea Sets,Set,228.00,-,-,Year-round,Teapot + 4 cups + tray; Yi Gong Fang brand
+TWR-TRV-001,Travel Tea Set (portable),Teaware,Travel Sets,Set,128.00,-,-,Year-round,Compact; teapot + 2 cups in carry pouch; used in Mooncake gift set
