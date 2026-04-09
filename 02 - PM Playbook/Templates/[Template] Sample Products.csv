@@ -1,0 +1,3 @@
+item_code,item_name,item_group,item_uom,weight_per_unit,weight_uom,description,standard_selling_price,maximum_selling_price,minimum_selling_price,default_tax
+ITEM-001,Product Name A,Category A,PCS,0.5,KG,Brief description of the product and its key specifications,100.00,120.00,90.00,SST 6%
+ITEM-002,Product Name B,Category B,BOX,2.0,KG,Brief description of the product and its key specifications,250.00,300.00,220.00,

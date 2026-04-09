@@ -437,6 +437,24 @@
       "accessCount": 1,
       "lastAccessed": 1775575899968,
       "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Products (Synthetic).csv",
+      "accessCount": 1,
+      "lastAccessed": 1775710892605,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Templates/[Template] Sample Customers.csv",
+      "accessCount": 1,
+      "lastAccessed": 1775714498174,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Templates/[Template] Sample Products.csv",
+      "accessCount": 1,
+      "lastAccessed": 1775714498526,
+      "type": "file"
     }
   ],
   "userDirectives": []
