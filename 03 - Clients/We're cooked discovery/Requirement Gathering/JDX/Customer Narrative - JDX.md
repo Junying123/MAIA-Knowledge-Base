@@ -89,11 +89,11 @@ By the time a discrepancy surfaces, a number that doesn't add up or a transfer t
 
 ## Feature Deep Dive
 
-### 1. Pro Forma Invoice with Structured Remarks
+### 1. Sales Order with Pro Forma Invoice Generation
 
-JDX doesn't use a standard sales order. It uses a pro forma invoice as the first formal document in every corporate transaction. MAIA supports this flow natively, with a structured remarks section that captures all order-level customisation in one place.
+JDX doesn't use a standard sales order for invoicing, but MAIA uses a sales order as the operational backbone. Accounts staff create a sales order with structured remarks, and MAIA generates a pro forma invoice PDF to send to the customer — the document JDX actually uses for payment requests.
 
-**What it does:** Accounts staff create the pro forma in MAIA, selecting products from the loaded catalogue and filling in structured customisation fields: ribbon colour, greeting card wording, item substitutions, delivery date, price tag preference. The pro forma generates a formatted document that can be sent to the customer as a PDF. All remarks fields are stored against the order record and carry through to the delivery order and warehouse view automatically.
+**What it does:** Accounts staff create a sales order in MAIA, selecting products from the loaded catalogue and filling in structured customisation fields: ribbon colour, greeting card wording, item substitutions, delivery date, price tag preference. MAIA generates a pro forma invoice PDF from that sales order, which is sent to the customer. All remarks fields are stored against the sales order record and carry through to the delivery order and warehouse view automatically.
 
 **What it won't do:** MAIA won't validate that a customisation request is feasible, for example whether a specific ribbon colour is in stock. That judgment stays with the coordinator. MAIA also won't enforce which remarks fields are mandatory: the team decides which fields to use per order type.
 
@@ -113,15 +113,15 @@ JDX's billing flow requires a pro forma first, then an actual invoice only after
 
 ---
 
-### 3. Payment Advice Matching
+### 3. Payment Advice Recording and Matching
 
-The gap between a customer paying and JDX knowing about it is a WhatsApp group and a coordinator with a sharp eye. MAIA closes that gap.
+The gap between a customer paying and JDX knowing about it is a WhatsApp group and a coordinator reading through it manually. MAIA closes that gap.
 
-**What it does:** When a customer receives their pro forma, they can upload their payment slip directly against that order in MAIA. The system matches the uploaded slip to the open pro forma, marks the payment as received, and triggers delivery order creation. Coordinators see payment status on the order record in real time. For customers who still send slips via WhatsApp, coordinators can manually record the payment in MAIA and upload the slip themselves.
+**What it does:** When a customer receives their pro forma, they send the payment slip via WhatsApp to JDX. The coordinator receives the slip, attaches it to the receipt module in MAIA against that pro forma order, and the system matches it to the open pro forma. Once the payment is confirmed, MAIA triggers delivery order creation automatically. Coordinators see payment status on the order record in real time.
 
-**What it won't do:** MAIA won't automatically verify bank transfer amounts against the pro forma value. A coordinator reviews and confirms. MAIA doesn't connect to banking systems or process payments directly.
+**What it won't do:** MAIA won't automatically verify bank transfer amounts against the pro forma value. A coordinator reviews and confirms the amount matches. MAIA doesn't connect to banking systems or process payments directly. Customers still send slips via WhatsApp; there's no direct upload channel for them.
 
-**Why it matters:** During CNY peak, payment slips arrive at all hours across a busy WhatsApp group. Matching each slip to the right pro forma, while also managing the rest of the order flow, is a nightly task for coordinators. Linking payment upload to the order record means slips land in the right place and trigger the next step without someone having to catch them in a chat thread.
+**Why it matters:** During CNY peak, payment slips arrive at all hours across a busy WhatsApp group. Today, a coordinator has to manually match each slip to the right pro forma and then manually trigger delivery order creation. Recording the payment in MAIA and attaching the slip means the slip lands in the right place and triggers the next step automatically, without a coordinator having to chase it through a chat thread.
 
 ---
 

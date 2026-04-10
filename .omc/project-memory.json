@@ -217,15 +217,15 @@
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Ming Medical - Customer Profile.md",
-      "accessCount": 16,
-      "lastAccessed": 1775724151899,
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Customer Narrative - JDX.md",
+      "accessCount": 17,
+      "lastAccessed": 1775797537421,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Customer Narrative - JDX.md",
-      "accessCount": 14,
-      "lastAccessed": 1775796630128,
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/Ming Medical/Ming Medical - Customer Profile.md",
+      "accessCount": 16,
+      "lastAccessed": 1775724151899,
       "type": "file"
     },
     {
@@ -242,8 +242,8 @@
     },
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/JDX Meeting Transcript - YYYY-MM-DD.md",
-      "accessCount": 6,
-      "lastAccessed": 1775794268113,
+      "accessCount": 8,
+      "lastAccessed": 1775797517333,
       "type": "directory"
     },
     {
@@ -274,6 +274,12 @@
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Products (Synthetic).csv",
       "accessCount": 3,
       "lastAccessed": 1775720056956,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
+      "accessCount": 3,
+      "lastAccessed": 1775797523162,
       "type": "file"
     },
     {
@@ -340,12 +346,6 @@
       "path": "02 - PM Playbook/Templates/Client Sample Data Demo/[Template] Sample Products.csv",
       "accessCount": 2,
       "lastAccessed": 1775716798849,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
-      "accessCount": 2,
-      "lastAccessed": 1775723199908,
       "type": "file"
     },
     {
