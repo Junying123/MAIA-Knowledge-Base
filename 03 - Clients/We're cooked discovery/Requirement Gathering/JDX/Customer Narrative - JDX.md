@@ -81,7 +81,7 @@ By the time a discrepancy surfaces, a number that doesn't add up or a transfer t
 
 **A warehouse operator** opens the delivery order for a corporate hamper batch. The remarks column is right there: gold ribbon, "Happy Hari Raya from the Team at Nexus Capital," no price tag, pineapple tart instead of mushroom. He doesn't need the original pro forma. He doesn't need to ask the coordinator. The instruction came with the order.
 
-**A driver** completes delivery at one of twelve addresses on a corporate order. He opens MAIA on his phone, marks the drop as delivered, and uploads the photo. The coordinator's dashboard updates in real time. If a delivery is refused, the driver flags it in MAIA with a reason. The coordinator sees it flagged, has the full context in one place, and handles rescheduling without piecing together a WhatsApp thread.
+**A coordinator** receives delivery confirmation from the driver, either via photo or signed delivery note. She opens MAIA and marks that drop as delivered. The customer-facing tracking link updates in real time. If the driver reports a delivery was refused or failed, she flags it in MAIA with the reason. All drop statuses for that order are visible in one view, so rescheduling is straightforward.
 
 **Management** opens MAIA during CNY peak and sees the full order pipeline: pro formas issued, payments pending, deliveries in transit, deliveries completed. Not a count from a spreadsheet someone updated this morning. A live view. If the boss asks how many orders are still waiting on payment confirmation, the answer is on the screen.
 
@@ -93,7 +93,7 @@ By the time a discrepancy surfaces, a number that doesn't add up or a transfer t
 
 JDX doesn't use a standard sales order. It uses a pro forma invoice as the first formal document in every corporate transaction. MAIA supports this flow natively, with a structured remarks section that captures all order-level customisation in one place.
 
-**What it does:** Accounts staff create the pro forma in MAIA, selecting products from the loaded catalogue and filling in structured customisation fields: ribbon colour, greeting card wording, item substitutions, delivery date, price tag preference. The pro forma generates a formatted document that can be sent to the customer as a PDF or shared link. All remarks fields are stored against the order record and carry through to the delivery order and warehouse view automatically.
+**What it does:** Accounts staff create the pro forma in MAIA, selecting products from the loaded catalogue and filling in structured customisation fields: ribbon colour, greeting card wording, item substitutions, delivery date, price tag preference. The pro forma generates a formatted document that can be sent to the customer as a PDF. All remarks fields are stored against the order record and carry through to the delivery order and warehouse view automatically.
 
 **What it won't do:** MAIA won't validate that a customisation request is feasible, for example whether a specific ribbon colour is in stock. That judgment stays with the coordinator. MAIA also won't enforce which remarks fields are mandatory: the team decides which fields to use per order type.
 
