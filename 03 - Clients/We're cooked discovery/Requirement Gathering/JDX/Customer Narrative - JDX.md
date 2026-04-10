@@ -137,23 +137,11 @@ Corporate orders with multiple delivery destinations are where JDX's process str
 
 ---
 
-### 5. Photo POD Capture (Mobile)
-
-Proof of delivery today is a photo sent to a WhatsApp group and found later by whoever needs it. MAIA attaches it to the delivery record.
-
-**What it does:** When a driver completes a delivery, they open MAIA on their phone, navigate to the delivery drop, mark it delivered, and upload a photo. The photo attaches to that specific delivery record, timestamped, and visible to the coordinator immediately. If a delivery is refused or fails, the driver selects a reason: wrong item, wrong date, not home, or refused. The drop is flagged for coordinator action with the driver's notes attached.
-
-**What it won't do:** MAIA won't verify that the photo shows the correct location or recipient. The driver's confirmation is the record. MAIA won't automatically reschedule failed deliveries: the coordinator reviews the flagged drop and decides next steps.
-
-**Why it matters:** Coordinators scroll WhatsApp groups during peak looking for delivery photos and matching each photo to the right drop by memory. When a customer asks if their order was delivered, finding the answer means hunting through a group chat. MAIA makes POD retrieval a one-click action on the order record, and failed deliveries surface the moment the driver flags them.
-
----
-
-### 6. Tiered Discount Configuration
+### 5. Tiered Discount Configuration
 
 JDX's discount structure has fixed rules by order value, adjusted each season. Coordinators apply these from memory or by checking a reference document. MAIA makes the rules part of the system.
 
-**What it does:** Admins configure discount tiers in MAIA: 5% for orders under RM500, 10% for RM500 to RM1,500, 15% above RM1,500, with settings per season. When a coordinator creates a pro forma, the system applies the correct discount based on order value. For customised or bring-your-own-packaging orders, the coordinator flags the order as custom, which voids the standard tier and requires manual input. Tier settings can be updated by an admin at the start of each season without a developer.
+**What it does:** Admins configure discount tiers in MAIA: 5% for orders under RM500, 10% for RM500 to RM1,500, 15% above RM1,500, with settings per season. When a coordinator creates a pro forma, the system applies the correct discount based on order value. For customised or bring-your-own-packaging orders, the coordinator flags the order as custom, which voids the standard tier and requires manual input. Tier settings can be updated by an admin at the start of each season.
 
 **What it won't do:** MAIA won't apply client-specific negotiated rates automatically. Those exceptions require coordinator override, and the override is logged. MAIA won't prevent a coordinator from adjusting a discount manually: the adjustment is visible in the audit trail.
 
@@ -165,12 +153,11 @@ JDX's discount structure has fixed rules by order value, adjusted each season. C
 
 ### Included
 
-- **Pro Forma Invoice with Structured Remarks** — structured pro forma creation with customisation remarks propagated to delivery order and warehouse view
-- **Pro Forma → Invoice Conversion** — one-click conversion on payment confirmation, logged with timestamp and user
-- **Payment Advice Matching** — customer or coordinator uploads payment slip against open pro forma; triggers DO creation on confirmation
-- **Multi-Address Delivery Scheduling** — one order split into individual drops, each with status tracking and coordinator view
-- **Photo POD Capture (Mobile)** — driver logs delivery photo and status in MAIA mobile; failed deliveries flagged immediately
-- **Tiered Discount Configuration** — admin-configurable discount rules applied at pro forma stage; custom order flag for exceptions
+- **Sales Order with Pro Forma Invoice Generation** — sales order creation with structured customisation remarks; MAIA generates pro forma invoice PDF for customer
+- **Sales Order → Invoice Conversion** — one-click conversion on payment confirmation, logged with timestamp and user
+- **Payment Advice Recording and Matching** — coordinator attaches payment slip to receipt module in MAIA; matches to open sales order; triggers delivery note creation on confirmation
+- **Multi-Address Delivery Scheduling** — one order split into individual delivery lines, each generating separate delivery notes with status tracking
+- **Tiered Discount Configuration** — admin-configurable discount rules applied at sales order stage; custom order flag for exceptions
 
 ### Designed For, Not Included (Phase 2)
 
@@ -181,15 +168,14 @@ JDX's discount structure has fixed rules by order value, adjusted each season. C
 ### Requires Clarification
 
 - **QSoft van sales: integrate or replace?** JDX uses a QSoft tablet for roughly 10 to 15 van route visits per day, integrated to SQL. The decision to keep QSoft and build an API bridge, or replace it with MAIA mobile, affects Phase 2 scope and SQL vendor engagement.
-- **Multi-address delivery feasibility** — MAIA's multi-drop delivery scheduling at the scale JDX describes, one order to 50 addresses, needs a tech team feasibility confirmation before the feature is committed to scope.
 
 ### Not in Scope
 
-- Giant/AEON B2B portal billing (monthly commission deductions, display charges: JDX confirmed low priority)
-- Deep inventory management or live stock level tracking
-- B2C online / Shopify channel
-- Tea retail POS for walk-in stores
-- SQL accounting system integration
+- **Giant/AEON B2B portal billing** — Hypermarket commission deductions and display charges are billed monthly through the grocer's own B2B portal. JDX confirmed this is low priority; it happens after peak season when staff have slack time, and the grocer's system handles it independently.
+- **Deep inventory management or live stock level tracking** — JDX explicitly prioritised solving the billing and delivery bottleneck first. Inventory lives in Excel and manual processes today; moving to live MAIA stock management is deferred until Phase 2 when the core order flow is stable.
+- **B2C online / Shopify channel** — E-commerce fulfillment was not a priority for JDX in this engagement. Corporate hamper B2B is the revenue focus during peak season.
+- **Tea retail POS for walk-in stores** — Walk-in retail at the 6 JDX stores is separate from the seasonal hamper business and was not prioritised for Phase 1.
+- **SQL accounting system integration** — JDX's SQL system handles accounting codes only and runs disconnected from operations. MAIA supports SQL integration; discuss with tech lead for Phase 2 if needed, but not a Phase 1 priority.
 
 ---
 
