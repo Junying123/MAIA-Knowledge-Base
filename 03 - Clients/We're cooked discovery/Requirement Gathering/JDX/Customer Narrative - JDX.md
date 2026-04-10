@@ -175,7 +175,7 @@ JDX's discount structure has fixed rules by order value, adjusted each season. C
 - **Deep inventory management or live stock level tracking** — JDX explicitly prioritised solving the billing and delivery bottleneck first. Inventory lives in Excel and manual processes today; moving to live MAIA stock management is deferred until Phase 2 when the core order flow is stable.
 - **B2C online / Shopify channel** — E-commerce fulfillment was not a priority for JDX in this engagement. Corporate hamper B2B is the revenue focus during peak season.
 - **Tea retail POS for walk-in stores** — Walk-in retail at the 6 JDX stores is separate from the seasonal hamper business and was not prioritised for Phase 1.
-- **SQL accounting system integration** — JDX's SQL system handles accounting codes only and runs disconnected from operations. MAIA supports SQL integration; discuss with tech lead for Phase 2 if needed, but not a Phase 1 priority.
+- **SQL accounting system integration** — JDX's SQL system is a post-operational accounting ledger: it records accounting codes and stock transfer entries manually, after operations are complete. SQL is not used for live inventory, order management, or real-time decisions. Those are coordinated through WhatsApp groups, Excel sheets, and the QSoft tablet. Since MAIA solves the operational workflows (billing, payment, delivery), SQL integration is not needed for Phase 1. MAIA supports SQL sync capability; if JDX later wants to auto-sync invoice records or van sales transactions to SQL for accounting, that's a Phase 2 conversation with the tech team.
 
 ---
 
