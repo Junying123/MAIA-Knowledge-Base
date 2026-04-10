@@ -37,7 +37,7 @@ Corporate customers need to see the word "invoice" before they can process inter
 
 Once the pro forma leaves SQL, those remarks have to travel with the order: to the warehouse, to the packing team, to the driver. There's no automated handoff. Coordinators retype or copy-paste the remarks into the delivery order. Ops staff read printed documents or screenshots forwarded through WhatsApp groups. Every step is a chance for a detail to drop.
 
-During peak, an accounts assistant might create dozens of pro formas in a day, each with its own set of customisation remarks, each one requiring the next person in the chain to read carefully and act correctly. The workload doesn't slow down for human error.
+During peak, an accounts assistant creates dozens of pro formas a day. Each one carries customisation remarks in free text: ribbon colour, greeting card wording, item substitutions. Those remarks travel manually through four handoffs: pro forma to delivery order, delivery order to warehouse, warehouse to operations. There's no system checking that a remark made it through intact. When one gets missed, the warehouse finds out too late and has to unpick and repack that batch. By then, the next batch of pro formas is already queued.
 
 ### The WhatsApp Payment Chase
 
