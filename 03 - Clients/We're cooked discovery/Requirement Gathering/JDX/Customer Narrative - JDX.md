@@ -129,7 +129,7 @@ The gap between a customer paying and JDX knowing about it is a WhatsApp group a
 
 Corporate orders with multiple delivery destinations are where JDX's process strains most visibly. MAIA handles the split at the order level.
 
-**What it does:** For orders with multiple delivery addresses, the coordinator enters each address as a separate delivery line within the same order. MAIA generates individual delivery orders per drop, each with the full order details and customisation remarks. The coordinator assigns vehicles or 3PL couriers per drop and sets delivery dates. Each drop has its own status: pending, in transit, delivered, or failed. Coordinators see the full picture across all drops in one order view.
+**What it does:** For orders with multiple delivery addresses, the coordinator enters each address as a separate delivery line within the same sales order. MAIA generates individual delivery notes per drop, each linked back to the source sales order with the full order details and customisation remarks intact. The coordinator assigns vehicles or 3PL couriers per drop and sets delivery dates. Each drop has its own status: pending, in transit, delivered, or failed. Coordinators see all delivery notes for that order in one view, tracked from the source SO.
 
 **What it won't do:** MAIA won't automatically route drops across vehicles or optimise delivery sequences. That planning stays with the coordinator. MAIA won't book 3PL couriers: the coordinator books externally and logs the tracking number in MAIA.
 
