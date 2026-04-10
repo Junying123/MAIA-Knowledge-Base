@@ -355,6 +355,12 @@
       "type": "file"
     },
     {
+      "path": "02 - PM Playbook/Daily Updates/Daily Update - 07-04-2026.md",
+      "accessCount": 2,
+      "lastAccessed": 1775819215091,
+      "type": "file"
+    },
+    {
       "path": "brain/Key Decisions.md",
       "accessCount": 1,
       "lastAccessed": 1775298587754,
@@ -467,12 +473,6 @@
       "accessCount": 1,
       "lastAccessed": 1775559888631,
       "type": "directory"
-    },
-    {
-      "path": "02 - PM Playbook/Daily Updates/Daily Update - 07-04-2026.md",
-      "accessCount": 1,
-      "lastAccessed": 1775569563324,
-      "type": "file"
     },
     {
       "path": ".claude/skills/stop-slop/SKILL.md",
