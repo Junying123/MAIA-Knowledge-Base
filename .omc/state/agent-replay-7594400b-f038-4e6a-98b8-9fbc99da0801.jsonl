@@ -1,8 +1,0 @@
-{"t":0,"agent":"system","event":"skill_invoked","skill_name":"customer-profile"}
-{"t":0,"agent":"acce963","agent_type":"Explore","event":"agent_start","parent_mode":"none"}
-{"t":0,"agent":"a2b2bb2","agent_type":"Explore","event":"agent_start","parent_mode":"none"}
-{"t":0,"agent":"a2b2bb2","agent_type":"Explore","event":"agent_stop","success":true,"duration_ms":23696}
-{"t":0,"agent":"acce963","agent_type":"Explore","event":"agent_stop","success":true,"duration_ms":1392523}
-{"t":0,"agent":"system","event":"skill_invoked","skill_name":"customer-narrative"}
-{"t":0,"agent":"system","event":"skill_invoked","skill_name":"stop-slop"}
-{"t":0,"agent":"system","event":"skill_invoked","skill_name":"humanizer"}
