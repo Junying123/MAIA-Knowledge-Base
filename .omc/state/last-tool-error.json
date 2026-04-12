@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"/opt/homebrew/bin/python3.10 -m graphify.cli install\",\"description\":\"Install graphify for Claude Code\"}",
-  "error": "Exit code 1\n/opt/homebrew/opt/python@3.10/bin/python3.10: No module named graphify.cli\n[rerun: b14]",
-  "timestamp": "2026-04-12T02:43:12.879Z",
-  "retry_count": 1
-}
