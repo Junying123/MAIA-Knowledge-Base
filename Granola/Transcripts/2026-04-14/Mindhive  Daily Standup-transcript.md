@@ -3,7 +3,7 @@ granola_id: 9a1d6a67-3049-4d3e-8137-771ff76e667d
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-04-14T01:46:18.968Z
-updated: 2026-04-14T01:46:29.453Z
+updated: 2026-04-14T02:09:38.661Z
 attendees: 
   - afiqaqill261203@gmail.com
   - ghostsketon@gmail.com
@@ -213,5 +213,25 @@ Fixed with. I already fixed with Akara. So I need to retest also. Yeah. I think 
 
 ### Guest (2026-04-14T02:00:31.358Z)
 
-Yes. Hello. Can you hear me? Okay, farah. How's the ingestion for accredited? The. Intention. I have a bit of question that I need to consult with Yong, but then I'm going to do it outside of this panel. Everything else. I got no issue. Yeah, but I wait. Yeah. Okay. So I have a question for the. For us to update the outstanding.
+Yes. Hello. Can you hear me? Okay, farah. How's the ingestion for accredited? The. Intention. I have a bit of question that I need to consult with Yong, but then I'm going to do it outside of this panel. Everything else. I got no issue. Yeah, but I wait. Yeah. Okay. So I have a question for the. For us to update the outstanding. Okay, we have to option, which is to use payment entry. And journal entry. So in this case, I'm choosing general entry because, like, it's less complicated. Less. Factor involved. Yeah. Just used to reflective. And then. So psycho with Jenna and Srila can. Okay. Another thing is regarding the workflow. When I look into it, the workflow is more suitable for tasks that is triggered by user. Not the one Yamacha. We want to out. Do, let's say auto update the status. Just like how behave. I see. I see. So that better to use the. In my case, there are some situation that I can use. Some I can use workflow. Young, young upper status unfold that need a user to. Openly approve or reject. I don't think I can use our flora. I see. But I think that one. Let's just stick with the current way we are doing, which is block everything on. On draft and then on submitted first. Because for using the workflow and there is impact on the API and the chatbot tooling. So. So, yeah, so we don't want to go down that rabbit hole first. Okay. All right. Thank you. On the travel side, I'm still working on the plugin. One. Okay. And one thing yesterday you told me the favor. What I'm created on our site. Yeah. The one is. Oh, you guys discussing the product thing already. Right? Yeah. Okay. Okay. Yep. Okay. Recent data. We were saying up. Ivan. Sorry. One thing. For the. The email that we are going to use for the favorable one. Is it going to be favor specific at all? It's just Maya. It's just my. Okay, so who should I approach to create the account for? Jermaine? Okay, Maya at MindHive issue. Right. Yeah. Correct. Okay. All right. Thank you. Just remember that the email must be. To one client. I emailed one client. What do you mean? Every client must have their own email. Yeah. He's going to record all the others. One. I see. So then we must put, like, my. Own. Okay. All right. Yeah. Okay. That's off of my. Side. And then in that case. For this email. Do we need to create for all clients? Actually, actually, one thing you just asked for two. One is a generic Maya. One, and then another one is the Maya wall table. Okay. Okay. Oh, yeah. Just a question. Last time. Well, I remember you set up MindHive production. The one I don't think anyone is using. Or not. I'm turning almost because. Oh, okay. Okay. Just the case then. Okay. Then the MindHive Maya can just attach to demo. 1. They want to use the. Just in the demo one. Yeah. Yeah. But I think just now the discussion that you guys talked about, Maya, favor and Maya. At MindHive. The. You. You want the Maya favor to be client agnostic clients. One client. One is because they got some input from email. Right? Then I think the one that Ivan mentioned is actually to send out the email one. Is it possible to have two different one? So for the one that sent out email will always use the Maya at my hyphen. I think that one is set up on my outside. Probably not gonna be set up in chatbot also. Right. That one is. So you're saying using that email to send out to users also. No, no, no. From to send out, it will always use the one only Maya at MindHive. And shouldune, if. Let's say favorite castle then to reply to the user, it should use the Maya favorite castle. Oh, okay. Yeah. Why the. We cannot use one email and then everything points to that email is that if all clients post to this email. Right, then me it's gonna record all the other clients when you email. So they're gonna share one and then. Yeah. But I'm thinking because actually it's just right now it's just favorable that it's using the index one. Other client actually not using the email inbox one. Right. Yeah. So we can just set up for two demo and table. Okay. Okay. Anything else?
+
+### You (2026-04-14T02:07:12.318Z)
+
+Okay. How's the fiscal price?
+
+### Guest (2026-04-14T02:07:21.038Z)
+
+Yeah, for that one I've seen in the group the specs still need to refine it. You can. Wait one more thing actually. Like how we handling the one row regarding the submit issue thing on front. What is this? About? All right, hold on. Okay, so the issue that there's actually a one of the rules that. Was it hosting a fixed guru? Day one, they roll for this specific user to have submit, but they don't want to write. So the thing is, yeah, just put right. So include. Right. Yeah. I wouldn't. Yeah, that one should. It's not. I don't think it's a big. Yeah, I just don't. They just don't write. I mean, if that guy can only submit means that they have a. They are approving. Right. Yeah. They have a higher clearance than the. The sales user or whatever. Then they should also able to write. But if they don't want to write, they just don't write only. Oh, okay. All right, then. Thanks, Ryan.
+
+### You (2026-04-14T02:08:54.078Z)
+
+Okay. Anything else? No. All right.
+
+### Guest (2026-04-14T02:09:02.958Z)
+
+What time are we having the discussion for the historical pricing? School? It's okay if we do at 12. Wow. A little bit. Lunch time. 11. Okay. Okay. Oh, wait. You said ready. Okay, let me review.
+
+### You (2026-04-14T02:09:28.558Z)
+
+All right. Thank you, guys. Good night.
 
