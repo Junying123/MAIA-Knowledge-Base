@@ -178,6 +178,7 @@ Detailed capability specs (4-layer: capability list → feature spec → user st
 | Delivery Note | [[Delivery Note Spec]] | Stub — [TO FILL] |
 | Return Note | [[Return Note Spec]] | Stub — [TO FILL] |
 | Payment Voucher | [[Voucher Spec]] | Stub — [TO FILL] |
+| Blanket Order | [[Blanket Order Spec]] | Full spec — cross-doctype (SO + DN) |
 
 ---
 
