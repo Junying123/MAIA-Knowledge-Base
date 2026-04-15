@@ -29,7 +29,8 @@ This file contains rules and conventions for AI assistants (like Claude Code) wo
 │   ├── Management/                → Management features and persona
 │   ├── Client Training/           → Client-facing training materials
 │   ├── Technical/                 → Tax refactor, technical decisions
-│   └── UI Components/             → Sidebar, login, UI exploration
+│   ├── UI Components/             → Sidebar, login, UI exploration
+│   └── Product Specs/             → Per-doctype capability specs (PM reference + AI agent harness context)
 📁 02 - PM Playbook/               → Processes, templates, SOPs
 │   ├── Templates/                 → All [Template] *.md files (copy, never edit)
 │   ├── Processes/                 → SOPs: onboarding, PRD, QA, publishing, dev handover
@@ -284,6 +285,8 @@ When working in this KB:
 8. **Don't invent MAIA features** — Document what exists, not what could be
 9. **Link liberally** — Add "See Also" sections to connect related content
 10. **End with wrap-up** — Update `brain/Memories.md` and commit at session end
+11. **Read Product Specs first** — Before working on any doctype (Quotation, SO, Invoice, etc.), read `01 - MAIA Product/Product Specs/[Doctype] Spec.md` for full capability context
+12. **Maintain spec structure** — Product Specs use a 4-layer format (capability list → feature spec → user story → AC); preserve this when adding content; mark gaps as `[TO FILL]`
 
 ## External References
 

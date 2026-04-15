@@ -33,7 +33,8 @@ last_reviewed: 2026-04-15
 - [x] Cancel SO (two-step, terminal)
 - [x] Delete SO (DRAFT only)
 - [x] Convert to Invoice (data carryover)
-- [x] Create Delivery Note from SO
+- [x] Create Delivery Note from SO — **Blanket Order**: multiple DNs per SO with different qty, date, address
+- [x] Chatbot-initiated DN splitting ("Split SO to 4 DN: 50/20/20/10")
 - [x] Generate PDF (Proforma Invoice)
 - [x] Partial invoicing (multiple invoices from one SO)
 - [x] Multi-line items with SKU, qty, unit price, UoM, notes
@@ -214,20 +215,26 @@ DRAFT → [Delete] → Removed
 
 ---
 
-### F-08: Create Delivery Note
+### F-08: Create Delivery Note (Blanket Order)
 
 | Attribute | Detail |
 |---|---|
-| Description | Creates a Delivery Note (DRAFT) to track goods fulfillment for this order |
-| Business Rule | Available from TO BILL and HOLD statuses |
-| Field Behaviour | DN created in DRAFT with SO reference; SO status unchanged |
-| Edge Cases | Can create DN from HOLD (unlike Invoice which requires Resume first) |
+| Description | One SO can generate multiple Delivery Notes — each with its own qty split, delivery date, and delivery address. This is the **Blanket Order** pattern for staged fulfillment |
+| Business Rule | Available from TO BILL and HOLD; DN qty per item ≤ remaining unfulfilled qty on SO; SO stays TO BILL throughout |
+| Field Behaviour | DN created in DRAFT; qty per line item configurable (not required to take full SO qty) |
+| Edge Cases | Can create DN from HOLD (unlike Invoice which requires Resume first); total DN qty across all DNs must not exceed SO qty |
 | Client Examples | [TO FILL] |
 
 **Subfeatures:**
 - Data carried: Biller info, Customer info, Items & Quantities, Delivery Address, SO reference
-- DN created as DRAFT
-- `[TO FILL]` — multiple DNs per SO (partial shipments)
+- **Multiple DNs per SO supported** (Blanket Order): e.g., SO with 100 units → 4 DNs of 25/25/25/25
+- **Flexible qty splits**: uneven splits supported — e.g., 50/20/20/10 across 4 DNs
+- **Different delivery date per DN**: each DN scheduled independently
+- **Different delivery address per DN**: useful for customers with multiple sites/warehouses
+- Creating DN does NOT change SO status (remains TO BILL)
+- Remaining unfulfilled qty stays on SO until next DN created
+- **Chatbot splitting**: agent can instruct MAIA WhatsApp bot to split SO into DNs via natural language (e.g., "Split SO-0001 to 4 DN: 50/20/20/10")
+- `[TO FILL]` — Does SO auto-close when all qty fully delivered across DNs?
 
 ---
 
