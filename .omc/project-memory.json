@@ -242,8 +242,8 @@
     },
     {
       "path": "",
-      "accessCount": 8,
-      "lastAccessed": 1775724155126,
+      "accessCount": 9,
+      "lastAccessed": 1776261478233,
       "type": "directory"
     },
     {
@@ -260,8 +260,8 @@
     },
     {
       "path": "02 - PM Playbook/Templates/[Template] Feature Narrative.md",
-      "accessCount": 3,
-      "lastAccessed": 1775489352166,
+      "accessCount": 4,
+      "lastAccessed": 1776261469417,
       "type": "file"
     },
     {
@@ -283,21 +283,27 @@
       "type": "file"
     },
     {
-      "path": "brain/Memories.md",
-      "accessCount": 2,
-      "lastAccessed": 1775333325257,
+      "path": "brain/North Star.md",
+      "accessCount": 3,
+      "lastAccessed": 1776261473439,
       "type": "file"
     },
     {
-      "path": "brain/North Star.md",
-      "accessCount": 2,
-      "lastAccessed": 1775333325676,
+      "path": "brain/Memories.md",
+      "accessCount": 3,
+      "lastAccessed": 1776261473729,
       "type": "file"
     },
     {
       "path": "brain/Patterns.md",
-      "accessCount": 2,
-      "lastAccessed": 1775333330594,
+      "accessCount": 3,
+      "lastAccessed": 1776261473973,
+      "type": "file"
+    },
+    {
+      "path": "brain/Key Decisions.md",
+      "accessCount": 3,
+      "lastAccessed": 1776261483051,
       "type": "file"
     },
     {
@@ -361,15 +367,9 @@
       "type": "file"
     },
     {
-      "path": "brain/Key Decisions.md",
-      "accessCount": 1,
-      "lastAccessed": 1775298587754,
-      "type": "file"
-    },
-    {
       "path": "brain/Gotchas.md",
-      "accessCount": 1,
-      "lastAccessed": 1775298588719,
+      "accessCount": 2,
+      "lastAccessed": 1776261474096,
       "type": "file"
     },
     {
