@@ -17,6 +17,7 @@ last_reviewed: 2026-04-04
 | Version control | Git → GitHub | Track changes, enable collaboration |
 | Folder naming | `NN - Descriptive Name` | Obsidian sort order, clear purpose |
 | AI context | brain/ folder + slash commands | Persistent Claude Code session context |
+| Product Specs | `01 - MAIA Product/Product Specs/` | PM reference + AI agent harness context; 4-layer format (capability list → feature spec → user story → AC) |
 
 ## Active Client Decisions
 
