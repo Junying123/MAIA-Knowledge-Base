@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776136971378,
+  "lastScanned": 1776259997983,
   "projectRoot": "/Users/garethng/Documents/MAIA Knowledge Base",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "00 - Home",
       "purpose": null,
       "fileCount": 8,
-      "lastAccessed": 1776136971357,
+      "lastAccessed": 1776259997906,
       "keyFiles": [
         "COMPANY.md",
         "Changelog.md",
@@ -49,21 +49,21 @@
       "path": "01 - MAIA Product",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776136971362,
+      "lastAccessed": 1776259997907,
       "keyFiles": []
     },
     "02 - PM Playbook": {
       "path": "02 - PM Playbook",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776136971362,
+      "lastAccessed": 1776259997907,
       "keyFiles": []
     },
     "03 - Clients": {
       "path": "03 - Clients",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1776136971364,
+      "lastAccessed": 1776259997910,
       "keyFiles": [
         "README.md"
       ]
@@ -72,7 +72,7 @@
       "path": "04 - QA & Known Issues",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1776136971364,
+      "lastAccessed": 1776259997926,
       "keyFiles": [
         "Feature Gap Tracker.md",
         "Known Bugs & Limitations.md",
@@ -84,7 +84,7 @@
       "path": "05 - Releases & Updates",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776136971365,
+      "lastAccessed": 1776259997929,
       "keyFiles": [
         "Feature Changelog.md",
         "Release Notes.md",
@@ -95,7 +95,7 @@
       "path": "06 - Glossary & Taxonomy",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1776136971365,
+      "lastAccessed": 1776259997930,
       "keyFiles": [
         "Glossary.md",
         "Tag Dictionary.md"
@@ -105,7 +105,7 @@
       "path": "07 - Decisions",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1776136971365,
+      "lastAccessed": 1776259997931,
       "keyFiles": [
         "ADR Template.md",
         "Decision Log.md"
@@ -115,7 +115,7 @@
       "path": "08 - Configuration & Integrations",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1776136971365,
+      "lastAccessed": 1776259997933,
       "keyFiles": [
         "Client Configuration Overlay Template.md",
         "Configuration Index.md",
@@ -128,7 +128,7 @@
       "path": "09 - Intake & Triage",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776136971366,
+      "lastAccessed": 1776259997935,
       "keyFiles": [
         "Request Intake Inbox.md",
         "Triage Decision Record Template.md",
@@ -139,14 +139,14 @@
       "path": "10 - Outputs",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776136971366,
+      "lastAccessed": 1776259997935,
       "keyFiles": []
     },
     "Clippings": {
       "path": "Clippings",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776136971366,
+      "lastAccessed": 1776259997938,
       "keyFiles": [
         "Industrial Supplies Narrative MAIA.md"
       ]
@@ -155,7 +155,7 @@
       "path": "Excalidraw",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1776136971367,
+      "lastAccessed": 1776259997939,
       "keyFiles": [
         "Drawing 2026-02-22 17.59.46.excalidraw.md",
         "Drawing 2026-02-22 18.13.08.excalidraw.md",
@@ -168,21 +168,21 @@
       "path": "Granola",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1776136971368,
+      "lastAccessed": 1776259997939,
       "keyFiles": []
     },
     "TaskNotes": {
       "path": "TaskNotes",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1776136971368,
+      "lastAccessed": 1776259997939,
       "keyFiles": []
     },
     "brain": {
       "path": "brain",
       "purpose": null,
       "fileCount": 6,
-      "lastAccessed": 1776136971368,
+      "lastAccessed": 1776259997940,
       "keyFiles": [
         "Gotchas.md",
         "Key Decisions.md",
@@ -195,7 +195,7 @@
       "path": "TaskNotes/Views",
       "purpose": "View templates",
       "fileCount": 6,
-      "lastAccessed": 1776136971377,
+      "lastAccessed": 1776259997982,
       "keyFiles": [
         "agenda-default.base",
         "calendar-default.base",
