@@ -54,17 +54,16 @@ The primary workspace for sales staff creating and managing proforma invoices an
 For finance staff managing payment confirmation and invoice finalisation.
 
 **Features:**
-- **Payment Advice Recording and Matching** — coordinator attaches customer payment slip to the receipt module in MAIA against the open pro forma. System matches slip to order, marks payment confirmed, and triggers delivery order creation automatically.
-- **Pro Forma → Invoice Conversion** — one-click conversion once payment is confirmed. Invoice inherits all line items, pricing, and customer details from the pro forma.
-- **Invoice Visibility** — view and manage all invoices, status, and outstanding balances.
-- **Receipt Creation** — coordinator attaches customer payment slip against the order and issues an official receipt to the customer upon payment confirmation.
-- **Approval Tracking** — approve or hold orders pending payment confirmation before DO creation proceeds.
+- **Receipt Creation** — coordinator records the customer's payment against the open pro forma and issues an official receipt to the customer. Once payment is confirmed, MAIA triggers delivery order creation automatically.
+- **Pro Forma → Invoice Conversion** — one-click conversion from pro forma to invoice once payment is confirmed. Invoice inherits all line items, pricing, and customer details from the pro forma. Logged with timestamp and user.
+- **Invoice Visibility** — view and manage all invoices, outstanding balances, and conversion status across all orders.
+- **Approval Tracking** — approve or hold orders pending payment confirmation before DO creation proceeds. Logged with timestamp and user.
 
-> Note: MAIA does not auto-verify bank transfer amounts against pro forma value. A coordinator reviews and confirms the amount before marking payment as confirmed. MAIA does not connect to banking systems. Customers continue to send payment slips via WhatsApp; the coordinator attaches the slip in MAIA manually.
+> Note: MAIA does not auto-verify bank transfer amounts against pro forma value. A coordinator reviews and confirms the payment amount manually. MAIA does not connect to banking systems. Customers continue to send payment slips via WhatsApp; the coordinator records the payment in MAIA.
 
 ---
 
-#### Logistics / Operations Workspace
+#### Logistics Workspace
 
 For operations staff managing delivery orders, multi-address dispatch, and proof of delivery.
 
