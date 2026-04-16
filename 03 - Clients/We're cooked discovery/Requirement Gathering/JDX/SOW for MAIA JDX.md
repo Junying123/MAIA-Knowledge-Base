@@ -27,7 +27,6 @@ This SOW defines a phased implementation of MAIA that delivers:
 - Multi-address delivery scheduling and status tracking for corporate hamper orders
 - Tiered discount configuration applied at pro forma stage
 
-**Current investment: [TBC]**
 
 ---
 
