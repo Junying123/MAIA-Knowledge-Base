@@ -68,10 +68,9 @@ For finance staff managing payment confirmation and invoice finalisation.
 For operations staff managing delivery orders, multi-address dispatch, and proof of delivery.
 
 **Features:**
-- **Delivery Order (DO) Creation** — DO auto-generated on payment confirmation. All customisation remarks from the sales order (ribbon colour, greeting card wording, substitutions) propagate automatically to the DO — no retyping required.
+- **Delivery Order (DO) Creation** — DO created from the sales order once the finance staff has issued the invoice. All customisation remarks from the sales order (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) propagate automatically through to the invoice and DO — no retyping required.
 - **Multi-Address Delivery Scheduling** — one corporate order split into individual delivery lines per address. Each drop generates a separate DO, linked to the source sales order. Coordinator assigns vehicle or 3PL courier per drop, sets delivery date, and logs 3PL tracking number.
 - **Delivery Status Tracking** — each drop has its own status: pending, in transit, delivered, failed. Coordinator views all drops for an order in one place. Failed delivery flagged in MAIA with reason; rescheduling logged.
-- **Photo Proof of Delivery (POD)** — driver captures photo POD via MAIA mobile; delivery status updated in real time.
 - **Output Documents:** Delivery Note (DO), Picking List
 
 > Note: MAIA does not automatically route drops across vehicles or optimise delivery sequences — that planning stays with the coordinator. MAIA does not book 3PL couriers; coordinator books externally and logs the tracking number in MAIA.
@@ -276,3 +275,7 @@ This is an internal draft. The following must be resolved before this document i
 7. **Tiered Discount Application — Tech Feasibility**
    Why this matters: Tiered discount auto-application (5%/10%/15% by order value, configurable per season) is not currently supported in MAIA. This is a core JDX requirement — if not buildable for Phase 1, coordinator applies discounts manually and the feature drops from scope.
    What I need: Tech team confirmation on feasibility and build effort before this is committed to Phase 1.
+
+8. **Multi-Address Delivery — Recipient Address Model**
+   Why this matters: Current MAIA requires delivery addresses to be pre-registered in the customer module. For JDX's corporate hamper orders, delivery recipients (10–50+ addresses per order) are one-time destinations that change every season — they are not customers. Pre-adding them to the customer module is impractical and creates noise in the system.
+   What I need: Tech team to confirm whether MAIA can support ad-hoc delivery addresses entered per DN (not tied to the customer module), or a recipient list attached to the SO that auto-generates the DNs. This must be resolved before multi-address delivery is committed to Phase 1 scope.
