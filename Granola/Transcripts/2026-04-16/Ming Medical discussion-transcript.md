@@ -3,7 +3,7 @@ granola_id: c9271005-1cea-4041-b856-112d7c1ad28a
 title: Ming Medical discussion - Transcript
 type: transcript
 created: 2026-04-16T05:59:07.503Z
-updated: 2026-04-16T06:51:28.433Z
+updated: 2026-04-16T07:12:00.262Z
 attendees: 
   - brendan@mindhive.asia
   - ivan.cyh1996@gmail.com
@@ -2194,5 +2194,833 @@ So based on the.
 
 ### Guest (2026-04-16T06:51:36.848Z)
 
-Based on the stuff that we draw like what do you add anything.
+Based on the stuff that we draw like what do you add anything. I need had time to for that expand more meeting this morning and also like AR stuff I need to surface up for editing yeah a lot of things I have the picture.
+
+### You (2026-04-16T06:51:58.129Z)
+
+One. I have the picture. So by now we need.
+
+### Guest (2026-04-16T06:52:04.928Z)
+
+So but now we need to draw a new diagram which is this three three element.
+
+### You (2026-04-16T06:52:06.609Z)
+
+To exist.
+
+### Guest (2026-04-16T06:52:13.888Z)
+
+Being able to enrich the request incoming request.
+
+### You (2026-04-16T06:52:15.409Z)
+
+And reach the. With the medical.
+
+### Guest (2026-04-16T06:52:20.048Z)
+
+With facial medical history relevant medical facial latest relevant medical history to the question the example we gave right domain that if let's say this latest request is because you know the ACL pair or something five years ago there was a latest x-ray so that will be relevant but then between the five years or maybe did some beauty related procedure which is not relevant.
+
+### You (2026-04-16T06:52:20.209Z)
+
+History. Just now the. I just request. The ACL payout. And my other go. Maybe he did something. In that first page.
+
+### Guest (2026-04-16T06:52:55.648Z)
+
+So in the first page in the summary that should be excluded from what's relevant to know about this lesson.
+
+### You (2026-04-16T06:52:58.049Z)
+
+It should be excluded from. This perception. So that's how you.
+
+### Guest (2026-04-16T06:53:05.008Z)
+
+That's how you okay so this is how we slowly define step one what is the success criteria here.
+
+### You (2026-04-16T06:53:05.329Z)
+
+Here's how we slowly. Step one. What is something? That's cases?
+
+### Guest (2026-04-16T06:53:11.808Z)
+
+And certain test cases with your.
+
+### You (2026-04-16T06:53:33.089Z)
+
+So the outcome.
+
+### Guest (2026-04-16T06:53:34.448Z)
+
+Outcome.
+
+### You (2026-04-16T06:53:34.689Z)
+
+Of phase Y.
+
+### Guest (2026-04-16T06:53:35.488Z)
+
+Of basis one that's not.
+
+### You (2026-04-16T06:53:40.769Z)
+
+The simple step.
+
+### Guest (2026-04-16T06:53:42.448Z)
+
+The step will be the patient's latest relevant mental health history.
+
+### You (2026-04-16T06:53:42.689Z)
+
+Of the. Face.
+
+### Guest (2026-04-16T06:53:48.288Z)
+
+This is the phase one.
+
+### You (2026-04-16T06:53:50.849Z)
+
+Of course.
+
+### Guest (2026-04-16T06:53:51.168Z)
+
+This one is of course very tailored to Mind's language which is medical history but in generic terms it's framing the problem.
+
+### You (2026-04-16T06:53:55.009Z)
+
+In generic terms. It's. One that we. Leave.
+
+### Guest (2026-04-16T06:54:01.728Z)
+
+Again really training.
+
+### You (2026-04-16T06:54:03.089Z)
+
+And laying out.
+
+### Guest (2026-04-16T06:54:03.888Z)
+
+And laying out all.
+
+### You (2026-04-16T06:54:04.689Z)
+
+All. Considerations.
+
+### Guest (2026-04-16T06:54:06.528Z)
+
+Considerations.
+
+### You (2026-04-16T06:54:07.569Z)
+
+Before we propose.
+
+### Guest (2026-04-16T06:54:08.608Z)
+
+Before we propose.
+
+### You (2026-04-16T06:54:11.169Z)
+
+Okay, let's just slash it.
+
+### Guest (2026-04-16T06:54:12.288Z)
+
+We got to slash it like requirements understanding. The way similar like how.
+
+### You (2026-04-16T06:54:25.169Z)
+
+Okay, so second phase will be.
+
+### Guest (2026-04-16T06:54:26.528Z)
+
+So second phase will be actually.
+
+### You (2026-04-16T06:54:28.129Z)
+
+Defining.
+
+### Guest (2026-04-16T06:54:29.008Z)
+
+Defining.
+
+### You (2026-04-16T06:54:31.969Z)
+
+The stranger.
+
+### Guest (2026-04-16T06:54:33.648Z)
+
+Constraints or the universe of the candle account do?
+
+### You (2026-04-16T06:54:36.849Z)
+
+Like.
+
+### Guest (2026-04-16T06:54:37.408Z)
+
+Yeah. Defining the sandbox. If you can say define it. Is in the Facebook case constraints.
+
+### You (2026-04-16T06:54:58.289Z)
+
+Basically.
+
+### Guest (2026-04-16T06:54:59.168Z)
+
+Basically what the first one is the what mark is the problem like problem framing is to say that the current issues your primary issue and your secondary or the string of the rest.
+
+### You (2026-04-16T06:55:07.729Z)
+
+Your fin. Al. Issue. And your.
+
+### Guest (2026-04-16T06:55:18.128Z)
+
+To get clear of what problem we are trying but the goal of the framing the problem right is to have that one page framing out one video to digit but the revelation is there the goal is to have that only the second part we go to is defining the knowledge base.
+
+### You (2026-04-16T06:55:23.409Z)
+
+Economy. One billion. Yes, correct.
+
+### Guest (2026-04-16T06:55:34.288Z)
+
+Yes not knowledge base I mean do you see the sandbox stuff depending the box defining the box yeah it includes stuff like what we offer.
+
+### You (2026-04-16T06:55:34.689Z)
+
+No, not knowledge. If he choose suffering, whatever. To what extent.
+
+### Guest (2026-04-16T06:55:46.208Z)
+
+To what extent we can move or we cannot do what's needed what tables guideline works we should not do and offer them like you know like Halloween or you know like the green drugs kind of thing.
+
+### You (2026-04-16T06:55:59.489Z)
+
+You know, like green or. Those things together.
+
+### Guest (2026-04-16T06:56:06.448Z)
+
+But it needs to be laid out. Defining the box. For other businesses like for buyers at what might cancer. Yeah how. Integration you have you know certain technological limitations.
+
+### You (2026-04-16T06:56:28.849Z)
+
+You know, Last time got llam. Box change.
+
+### Guest (2026-04-16T06:56:36.368Z)
+
+The box the box change prospect over time. The flow from the RFQ to the quotation like how we put it how it fit into my no this is the building of the IQ that guys box the meaningful year box.
+
+### You (2026-04-16T06:56:42.689Z)
+
+S. For people.
+
+### Guest (2026-04-16T06:56:59.008Z)
+
+Let me say oh.
+
+### You (2026-04-16T06:57:01.889Z)
+
+I said it's level eight. Confirm.
+
+### Guest (2026-04-16T06:57:07.328Z)
+
+They call it no experience case which is like whatever the middle carbon.
+
+### You (2026-04-16T06:57:11.649Z)
+
+We have to divide what is.
+
+### Guest (2026-04-16T06:57:14.368Z)
+
+Is got actually big laugh a bit.
+
+### You (2026-04-16T06:57:19.249Z)
+
+Like that C.
+
+### Guest (2026-04-16T06:57:20.128Z)
+
+Like that the liver index below 109 is one of.
+
+### You (2026-04-16T06:57:25.329Z)
+
+Rusion criteria.
+
+### Guest (2026-04-16T06:57:25.968Z)
+
+The exclusion criteria.
+
+### You (2026-04-16T06:57:39.329Z)
+
+So. So I know these are.
+
+### Guest (2026-04-16T06:57:40.208Z)
+
+So so I know these are just some elements of course when you this thing will be reverted to their industry that we track these are just things that we find in the box.
+
+### You (2026-04-16T06:57:47.489Z)
+
+Just. And Define.
+
+### Guest (2026-04-16T06:57:50.368Z)
+
+Er this the you guys know this this one. This project in total totality timeline is about three months.
+
+### You (2026-04-16T06:57:59.329Z)
+
+Two to three months.
+
+### Guest (2026-04-16T06:58:00.368Z)
+
+To three months so I know it's three months this is weeks. Yeah this should be free we need to look at cost of appliances I mean like yeah.
+
+### You (2026-04-16T06:58:13.249Z)
+
+What I was thinking.
+
+### Guest (2026-04-16T06:58:14.208Z)
+
+Of course I was thinking whether you can put one month in one trade development.
+
+### You (2026-04-16T06:58:15.089Z)
+
+About. Is this cost.
+
+### Guest (2026-04-16T06:58:20.288Z)
+
+For this discourse right so.
+
+### You (2026-04-16T06:58:21.169Z)
+
+Right. So. Sure designer can.
+
+### Guest (2026-04-16T06:58:23.648Z)
+
+Sure design work can take longer than that because there's some back of scoping but actual doing.
+
+### You (2026-04-16T06:58:27.169Z)
+
+For scoping. So actual doing. Less than that.
+
+### Guest (2026-04-16T06:58:31.648Z)
+
+Less than that so why we having like you know all this now so that we make sure we're on the right track and it's allowing to being in the rally as well is supposed to be a.
+
+### You (2026-04-16T06:58:32.049Z)
+
+So. So. You know, on this now is so that we make. Two. If me. Early as well. That's our constraint.
+
+### Guest (2026-04-16T06:58:47.648Z)
+
+That's our constraints.
+
+### You (2026-04-16T06:58:49.409Z)
+
+Yeah. So it's a little bit.
+
+### Guest (2026-04-16T06:58:52.368Z)
+
+The budget image right I think any mock because design is based on like budget limits it's like.
+
+### You (2026-04-16T06:58:54.609Z)
+
+Scary based on that. Because. Okay, so why? Why?
+
+### Guest (2026-04-16T06:59:00.208Z)
+
+Because okay so why budget limit is a constraint. Because they only pay a very small amount but they're expecting like a full effect. Okay you go to the industrial you have can be this here.
+
+### You (2026-04-16T06:59:17.649Z)
+
+We have. This kind of. Y. Will always come.
+
+### Guest (2026-04-16T06:59:27.408Z)
+
+They will always come and pass your budget because they know what to offer you if you can afford a Jerry I won't push you can be.
+
+### You (2026-04-16T06:59:27.409Z)
+
+In. If you have. I will push you. There. So similar.
+
+### Guest (2026-04-16T06:59:39.728Z)
+
+So similar. Machine it's not initially the proposal right when they sign off like this a lot of things that we should do.
+
+### You (2026-04-16T06:59:46.609Z)
+
+Right? They sign up. So right now thing is something. That.
+
+### Guest (2026-04-16T06:59:57.488Z)
+
+Not just like you know because we are in the same budget right now Uni can do like certificates.
+
+### You (2026-04-16T07:00:02.449Z)
+
+No, no, no.
+
+### Guest (2026-04-16T07:00:04.368Z)
+
+No no we're not considering the budget at all is how to do it right.
+
+### You (2026-04-16T07:00:05.729Z)
+
+It's how to do it. Right? So now. Now I'm talking.
+
+### Guest (2026-04-16T07:00:08.528Z)
+
+So now I'm talking about genetic approach so after this actually once we agree on this generic approach.
+
+### You (2026-04-16T07:00:08.769Z)
+
+About. After this, actually. End and outside. Maybe I think the join together.
+
+### Guest (2026-04-16T07:00:18.128Z)
+
+Maybe I think the joints.
+
+### You (2026-04-16T07:00:22.289Z)
+
+Yeah. So came up history.
+
+### Guest (2026-04-16T07:00:23.328Z)
+
+Yeah so actually if this is a bit more there's actually another dimension phase two is because remember he said it had international and patients that will actually indicate what the pricing.
+
+### You (2026-04-16T07:00:26.449Z)
+
+A bit more. Facebook is because. That will actually.
+
+### Guest (2026-04-16T07:00:40.768Z)
+
+Surprise you when you say pricing is determined by the offerings actually best for the lower likeness of interest they actually char.
+
+### You (2026-04-16T07:00:42.849Z)
+
+Offering such. Best for them. Yeah.
+
+### Guest (2026-04-16T07:00:53.008Z)
+
+Ge yeah True Malaysian they will charge so this is why they price you take because this is a pricing is they handle it in South no pricing also does affect of what we can offer.
+
+### You (2026-04-16T07:01:01.969Z)
+
+Look, pricing also affect. Okay. Like.
+
+### Guest (2026-04-16T07:01:09.408Z)
+
+Okay like for UAE people you tend to push longer courses or courses that has stacked up it's mainly building the treatment plan yes it's a consideration of how you tangle your sale.
+
+### You (2026-04-16T07:01:09.969Z)
+
+For. Ces of that has stacked up a lot. Yes. It's a consideration. So that is.
+
+### Guest (2026-04-16T07:01:26.528Z)
+
+So that is actually enforced in the technologize this product more and so they want to initialize better.
+
+### You (2026-04-16T07:01:34.609Z)
+
+My. Genome.
+
+### Guest (2026-04-16T07:01:39.888Z)
+
+Products you want to push out for the website adding patients.
+
+### You (2026-04-16T07:01:44.209Z)
+
+So those are.
+
+### Guest (2026-04-16T07:01:45.968Z)
+
+So those are considered then now just for the most this is more related to. Like or not.
+
+### You (2026-04-16T07:01:53.329Z)
+
+The position.
+
+### Guest (2026-04-16T07:01:54.208Z)
+
+For the positioning. Conversation but yeah pricing is ended up. So that you also have. Seen the.
+
+### You (2026-04-16T07:02:32.289Z)
+
+You need.
+
+### Guest (2026-04-16T07:02:32.528Z)
+
+Next expand as well.
+
+### You (2026-04-16T07:02:32.929Z)
+
+To.
+
+### Guest (2026-04-16T07:02:35.328Z)
+
+Whereby.
+
+### You (2026-04-16T07:02:36.289Z)
+
+For each of.
+
+### Guest (2026-04-16T07:02:37.088Z)
+
+For each of the products right there we have like sort of can this be something.
+
+### You (2026-04-16T07:02:37.329Z)
+
+The. Sort of.
+
+### Guest (2026-04-16T07:02:44.528Z)
+
+Oh yeah substitution 30 years. Because. The patient profile so H gender inside the number two that relevant to that medical knowledge.
+
+### You (2026-04-16T07:03:07.009Z)
+
+The number. Of knowledge. Disease database.
+
+### Guest (2026-04-16T07:03:13.168Z)
+
+Disease database.
+
+### You (2026-04-16T07:03:14.049Z)
+
+Cpj.
+
+### Guest (2026-04-16T07:03:17.728Z)
+
+Compliance.
+
+### You (2026-04-16T07:03:20.449Z)
+
+So you can see.
+
+### Guest (2026-04-16T07:03:21.568Z)
+
+So you can see very clearly S3 three buckets.
+
+### You (2026-04-16T07:03:24.929Z)
+
+One is about the second one.
+
+### Guest (2026-04-16T07:03:26.048Z)
+
+One is about.
+
+### You (2026-04-16T07:03:28.209Z)
+
+Is. How to solve this. Within the universe.
+
+### Guest (2026-04-16T07:03:32.848Z)
+
+This within the univers.
+
+### You (2026-04-16T07:03:36.049Z)
+
+So.
+
+### Guest (2026-04-16T07:03:38.048Z)
+
+E. General concept of it and what are the elements that go inside when you have these three things right and you can like there's not going to give the example you can put it in the right bucket.
+
+### You (2026-04-16T07:03:41.249Z)
+
+What are the. District? In the right bucket? The one that.
+
+### Guest (2026-04-16T07:03:52.928Z)
+
+The one that you may want actually increase in two buckets.
+
+### You (2026-04-16T07:03:57.089Z)
+
+S the concept.
+
+### Guest (2026-04-16T07:03:59.408Z)
+
+Know what fits in. Next okay in this one here that's going to talk about this continue look at the documents that we have and the documents available on board each one of these things each one of these things will have the web yeah like a goal which is that document for proposal is a summarization of these few things.
+
+### You (2026-04-16T07:04:06.689Z)
+
+Continue. Look at the documents that. I. Put on board. And put it inside the same each one of these things. Will happen. Output. Yeah. That document for the proposal is a summary action of this. Meeting. It's a. Whole.
+
+### Guest (2026-04-16T07:04:29.408Z)
+
+That's called proposal okay is talking about more the tools partner like what we have counter match all the stout things about the tools side effects all that also included for the tools so that the treatment plan is so here is three dimension but in each dimension that's not all no dimensions so for example in the solution of tools you have one interaction line is one of the.
+
+### You (2026-04-16T07:04:33.889Z)
+
+Yes, correct. How to match. And how to use. It. Certain things about the do side effects or that. A lot. Pricey. So I think it's three dimensions. Has multiple more dimensions. Right. So. So for example. You have injection like this and that. Quadratic price. Certain. Recovery. Time.
+
+### Guest (2026-04-16T07:05:06.128Z)
+
+Recovery time yeah side effects everything.
+
+### You (2026-04-16T07:05:09.249Z)
+
+What do you call it? Damage. Certain sort of.
+
+### Guest (2026-04-16T07:05:18.288Z)
+
+The outcomes as well because certain benefits outcomes and then they give us a recovery horizon or efficacy timeline because certain things you do is valid for you do both of them.
+
+### You (2026-04-16T07:05:28.449Z)
+
+Timeline. To do for a few. More times, whether it's for three months. Kind of thing. And then just.
+
+### Guest (2026-04-16T07:05:40.128Z)
+
+And then it doesn't matter the last option and changes and all that it says another dimension of this you know inside is more of like.
+
+### You (2026-04-16T07:05:48.849Z)
+
+Yeah. So that one is more. Like. It's a solution, but it's not our solution.
+
+### Guest (2026-04-16T07:05:57.248Z)
+
+Is a solution but it's not our solution. Means solution to the customers so for each of the RF2 that helps each industrial for any businesses.
+
+### You (2026-04-16T07:06:06.609Z)
+
+So for each of. Them.
+
+### Guest (2026-04-16T07:06:15.008Z)
+
+Okay.
+
+### You (2026-04-16T07:06:15.569Z)
+
+So then you have. A final step which is. Consolidation of. The. Cheese not face like I mentioned.
+
+### Guest (2026-04-16T07:06:24.528Z)
+
+It's like actually I mean like.
+
+### You (2026-04-16T07:06:27.089Z)
+
+I give you three dimensions.
+
+### Guest (2026-04-16T07:06:28.528Z)
+
+Three dimensions. For the.
+
+### You (2026-04-16T07:06:45.889Z)
+
+This Define the structure.
+
+### Guest (2026-04-16T07:06:48.688Z)
+
+Structure of the problem.
+
+### You (2026-04-16T07:06:48.849Z)
+
+Actually. This is.
+
+### Guest (2026-04-16T07:06:52.128Z)
+
+Basically this is our publication and this is the justification of the quotation.
+
+### You (2026-04-16T07:06:52.609Z)
+
+The outcome is quotation. This is the justification. So basically the.
+
+### Guest (2026-04-16T07:06:57.728Z)
+
+So basically the explains itself how come into this.
+
+### You (2026-04-16T07:06:58.929Z)
+
+How this. Point. Okay. So yeah, what are the sources I'm going to?
+
+### Guest (2026-04-16T07:07:04.208Z)
+
+Okay so here key things that must highlight especially in this condition one of the sources and references.
+
+### You (2026-04-16T07:07:10.449Z)
+
+Show you when.
+
+### Guest (2026-04-16T07:07:11.088Z)
+
+Especially it could involve it because your high blood pressure is this building that therefore the proposed plant is this.
+
+### You (2026-04-16T07:07:15.969Z)
+
+It. S us 100. Death. Because of what?
+
+### Guest (2026-04-16T07:07:25.168Z)
+
+Because of what.
+
+### You (2026-04-16T07:07:27.009Z)
+
+S the path.
+
+### Guest (2026-04-16T07:07:28.128Z)
+
+S the part of the knowledge of.
+
+### You (2026-04-16T07:07:28.929Z)
+
+Of. Issues?
+
+### Guest (2026-04-16T07:07:33.408Z)
+
+I said table.
+
+### You (2026-04-16T07:07:34.369Z)
+
+The table will.
+
+### Guest (2026-04-16T07:07:35.088Z)
+
+That people with the this one here defining what this proposal so can be put inside.
+
+### You (2026-04-16T07:07:37.889Z)
+
+Sound here. Also defining. What is. The. So tooling also. Has.
+
+### Guest (2026-04-16T07:07:47.808Z)
+
+Which is.
+
+### You (2026-04-16T07:07:48.289Z)
+
+How to.
+
+### Guest (2026-04-16T07:07:49.248Z)
+
+How to.
+
+### You (2026-04-16T07:07:50.689Z)
+
+How to.
+
+### Guest (2026-04-16T07:07:51.408Z)
+
+How to.
+
+### You (2026-04-16T07:07:53.569Z)
+
+Dash Matrix.
+
+### Guest (2026-04-16T07:07:54.688Z)
+
+Get in those.
+
+### You (2026-04-16T07:07:58.769Z)
+
+Basically.
+
+### Guest (2026-04-16T07:07:59.888Z)
+
+Basically for example like terms and election.
+
+### You (2026-04-16T07:08:04.129Z)
+
+H. The dosage is different.
+
+### Guest (2026-04-16T07:08:06.608Z)
+
+The dosage is different. Okay so whether you're male or female also is different based on your current ethnicity or whatever is different.
+
+### You (2026-04-16T07:08:12.449Z)
+
+Based on the current. So these are the point.
+
+### Guest (2026-04-16T07:08:17.328Z)
+
+So these are for you is metrics.
+
+### You (2026-04-16T07:08:20.049Z)
+
+For these two. That is.
+
+### Guest (2026-04-16T07:08:21.248Z)
+
+For these two that is a certain way to use it.
+
+### You (2026-04-16T07:08:25.969Z)
+
+So this case.
+
+### Guest (2026-04-16T07:08:27.088Z)
+
+So this case how to use that.
+
+### You (2026-04-16T07:08:28.209Z)
+
+On how to use that. So actually it's. Massive.
+
+### Guest (2026-04-16T07:08:32.848Z)
+
+Is massive knowledge base. That not the software.
+
+### You (2026-04-16T07:08:35.889Z)
+
+Doctors operate. Between somebody.
+
+### Guest (2026-04-16T07:08:40.928Z)
+
+To print the new.
+
+### You (2026-04-16T07:08:44.529Z)
+
+So then besides.
+
+### Guest (2026-04-16T07:08:45.968Z)
+
+Besides stem cell they also have over the counter medicine. No no no one is more specialized like exosomal theories particular in what we do. Cells for cancer on this now is with race specifically they need to administer it so even if you are in Dubai you're fucking flying stay three days do here you come back. Clear this is the same program you can do this you can replace of the.
+
+### You (2026-04-16T07:09:23.409Z)
+
+The same project. What he says.
+
+### Guest (2026-04-16T07:09:31.408Z)
+
+But what you see is true we need to model it against.
+
+### You (2026-04-16T07:09:35.089Z)
+
+RFQ steps.
+
+### Guest (2026-04-16T07:09:36.208Z)
+
+Typical RFQ steps.
+
+### You (2026-04-16T07:09:37.409Z)
+
+What changes is.
+
+### Guest (2026-04-16T07:09:38.448Z)
+
+What changes is all the parameters design what we read what knowledge we need what kind of compliance what kind of like rubrics to say that oh how do I match oh you have this problem is to match with this data solved your problems the concept will not change but what goes in will change.
+
+### You (2026-04-16T07:09:46.609Z)
+
+Like weeks to say. The content will. Be done. I would say.
+
+### Guest (2026-04-16T07:10:14.448Z)
+
+I would say there are some parts.
+
+### You (2026-04-16T07:10:17.249Z)
+
+Not. Some of us have. Really.
+
+### Guest (2026-04-16T07:10:19.008Z)
+
+Have really enough for some parts like for example like the medical history that one is it whether it's in like they have they keep it physical don't have information about that question no you can create a draft those are the open versions like how to download what to download from shots right there for meeting tomorrow I can do what I can draw first but obviously there will be some open questions I will ask him tomorrow so then after the next I can send him like the finalized proposal because the goal of meeting tomorrow right is to show a glimpse of a proposal and then also like oh have some open questions then after that I mean not a claim I mean like a draft fund office all these phases I think and the open question that we need to ask him then after that you finalize based on the open questions that we asked.
+
+### You (2026-04-16T07:10:29.729Z)
+
+Questions. No. How to download. Function. The quality. And then nothing.
+
+### Guest (2026-04-16T07:11:13.328Z)
+
+So I need to show you everyone.
+
+### You (2026-04-16T07:11:22.689Z)
+
+Okay.
+
+### Guest (2026-04-16T07:11:23.488Z)
+
+Okay yeah so I think that we all are for now I need to private off. Later at 4:30 I have for meeting you need for the other so I don't know whether you know.
+
+### You (2026-04-16T07:11:46.689Z)
+
+All right. Thank you guys.
 

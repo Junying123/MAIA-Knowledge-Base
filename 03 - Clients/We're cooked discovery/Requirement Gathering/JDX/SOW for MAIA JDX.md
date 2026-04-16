@@ -11,7 +11,7 @@ lark_url:
 
 **Between:** Mindhive Sdn Bhd ("Mindhive") — 7, Jln Penyajak U1/45A, Hicom-glenmarie Industrial Park, 40150 Shah Alam, Selangor
 
-**And:** JDX Gift and Food Sdn. Bhd. ("JDX") — [TBC — full registered address, Kepong, KL]
+**And:** JDX Gift and Food Sdn. Bhd. ("JDX") — 203, Jalan 1, Taman Perusahaan Ehsan Jaya, Kepong, 52100 Kuala Lumpur, Malaysia
 
 ---
 
@@ -36,16 +36,14 @@ This SOW defines a phased implementation of MAIA that delivers:
 
 Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel: the revenue engine and highest-pain workflow. It covers pro forma invoice creation with a remarks text area for customisation instructions, payment matching, delivery order generation with full remarks propagation, multi-address delivery tracking, and tiered discount rules — replacing the current WhatsApp-thread-and-manual-SQL workflow.
 
-**No SQL accounting integration is required for Phase 1.** SQL is JDX's post-operational accounting ledger and is not used for live order management or real-time decisions. MAIA handles the operational workflow independently; SQL sync can be added in Phase 2 if needed.
-
 ---
 
 #### Sales Agent / Accounts Workspace
 
-The primary workspace for accounts coordinators and sales staff creating and managing pro forma invoices and sales orders.
+The primary workspace for  sales staff creating and managing proforma invoices and sales orders.
 
 **Features:**
-- **Pro Forma Invoice Creation** — create sales order in MAIA with a remarks text area to capture customisation instructions (ribbon colour, greeting card wording, item substitution, delivery date, price tag preference). MAIA generates a pro forma invoice PDF for the customer from the sales order record.
+- **Pro Forma Invoice Creation** — create sales order in MAIA with a remarks text area to capture customisation instructions (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off). MAIA generates a pro forma invoice PDF for the customer from the sales order record.
 - **Tiered Discount Application** — discount rules configured per season by admin (5% under RM500 / 10% for RM500–RM1,500 / 15% above RM1,500); auto-applied at pro forma stage. Custom or bring-your-own-packaging orders flagged manually, voiding the standard tier. Admin updates tiers at season start; overrides logged with audit trail.
 - **Pro Forma → Invoice Conversion** — one-click conversion once payment is confirmed. Invoice inherits all line items, pricing, discount, and customer details from the pro forma. Logged with timestamp and user.
 - **Output Documents:** Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt
@@ -100,7 +98,7 @@ For business owners and senior staff needing operational visibility during peak.
 | Sales | Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt |
 | Logistics | Delivery Note (DO), Picking List |
 
-All documents carry the full customisation remarks from the original sales order: ribbon colour, greeting card wording, item substitutions, delivery date, price tag preference.
+All documents carry the full customisation remarks from the original sales order: ribbon colour, greeting card wording, item substitutions, delivery date, price tag on/off.
 
 ---
 
@@ -257,11 +255,7 @@ Date:
 
 This is an internal draft. The following must be resolved before this document is shared with JDX:
 
-1. **Header — Client registered address**
-   Why this matters: Required in the parties block for legal validity.
-   What I need: JDX's full registered address (not just Kepong).
-
-2. **Header — Effective date**
+1. **Header — Effective date**
    Why this matters: Sets the commercial reference date for the engagement.
    What I need: Agreed start date or signing date.
 
