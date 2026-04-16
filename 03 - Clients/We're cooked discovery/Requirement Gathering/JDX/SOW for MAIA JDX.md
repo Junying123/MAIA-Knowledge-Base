@@ -55,7 +55,7 @@ For finance staff managing payment confirmation and invoice finalisation.
 
 **Features:**
 - **Payment Advice Recording and Matching** — coordinator attaches customer payment slip to the receipt module in MAIA against the open pro forma. System matches slip to order, marks payment confirmed, and triggers delivery order creation automatically.
-- **Pro Forma → Invoice Conversion** — one-click conversion once payment is confirmed. Invoice inherits all line items, pricing, discount, and customer details from the pro forma. Logged with timestamp and user.
+- **Pro Forma → Invoice Conversion** — one-click conversion once payment is confirmed. Invoice inherits all line items, pricing, and customer details from the pro forma.
 - **Invoice Visibility** — view and manage all invoices, status, and outstanding balances.
 - **Receipt Creation** — coordinator attaches customer payment slip against the order and issues an official receipt to the customer upon payment confirmation.
 - **Approval Tracking** — approve or hold orders pending payment confirmation before DO creation proceeds.
