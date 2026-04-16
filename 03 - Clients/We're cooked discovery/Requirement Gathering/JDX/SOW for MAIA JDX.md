@@ -38,27 +38,26 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 
 ---
 
-#### Sales Agent / Accounts Workspace
+#### Sales Workspace
 
-The primary workspace for  sales staff creating and managing proforma invoices and sales orders.
+The primary workspace for sales staff creating and managing proforma invoices and sales orders.
 
 **Features:**
 - **Pro Forma Invoice Creation** — create sales order in MAIA with a remarks text area to capture customisation instructions (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off). MAIA generates a pro forma invoice PDF for the customer from the sales order record.
-- **Tiered Discount Application** — discount rules configured per season by admin (5% under RM500 / 10% for RM500–RM1,500 / 15% above RM1,500); auto-applied at pro forma stage. Custom or bring-your-own-packaging orders flagged manually, voiding the standard tier. Admin updates tiers at season start; overrides logged with audit trail.
-- **Pro Forma → Invoice Conversion** — one-click conversion once payment is confirmed. Invoice inherits all line items, pricing, discount, and customer details from the pro forma. Logged with timestamp and user.
 - **Output Documents:** Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt
-- **Daily Digest** — unclosed pro formas, pending payment confirmation, outstanding invoices
+- **Daily Digest** — unclosed Sales Order, pending payment confirmation, outstanding invoices
 
 ---
 
 #### Finance Workspace
 
-For accounts assistants managing payment confirmation and invoice finalisation.
+For finance staff managing payment confirmation and invoice finalisation.
 
 **Features:**
 - **Payment Advice Recording and Matching** — coordinator attaches customer payment slip to the receipt module in MAIA against the open pro forma. System matches slip to order, marks payment confirmed, and triggers delivery order creation automatically.
-- **Invoice Visibility** — view and manage all invoices, conversion status, and outstanding balances.
-- **Receipt Management** — record and track incoming payments against orders.
+- **Pro Forma → Invoice Conversion** — one-click conversion once payment is confirmed. Invoice inherits all line items, pricing, discount, and customer details from the pro forma. Logged with timestamp and user.
+- **Invoice Visibility** — view and manage all invoices, status, and outstanding balances.
+- **Receipt Creation** — coordinator attaches customer payment slip against the order and issues an official receipt to the customer upon payment confirmation.
 - **Approval Tracking** — approve or hold orders pending payment confirmation before DO creation proceeds.
 
 > Note: MAIA does not auto-verify bank transfer amounts against pro forma value. A coordinator reviews and confirms the amount before marking payment as confirmed. MAIA does not connect to banking systems. Customers continue to send payment slips via WhatsApp; the coordinator attaches the slip in MAIA manually.
@@ -102,14 +101,6 @@ All documents carry the full customisation remarks from the original sales order
 
 ---
 
-#### Integration — Phase 1
-
-No accounting system integration is required for Phase 1.
-
-SQL is used by JDX as a post-operational accounting ledger. It is not used for live inventory, order management, or real-time decisions. MAIA handles the operational workflow (pro forma, payment, delivery) independently. If JDX later wants to auto-sync invoice or receipt records to SQL, that is a Phase 2 scoping conversation with the tech team.
-
----
-
 ### Phase 2 — Customisations & Extensions
 
 Phase 2 extends the platform once the core seasonal hamper flow is stable. The following are confirmed priorities for Phase 2:
@@ -148,6 +139,14 @@ JDX explicitly prioritised solving the billing and delivery bottleneck before ad
 | Phase 2 | Kiosk reporting, QSoft integration/replacement, inventory | [TBC] weeks | [TBC] | 1–2 weeks |
 
 > Phase 2 timeline is contingent on the QSoft feasibility assessment and client readiness after Phase 1 go-live.
+
+---
+
+## Integration
+
+No accounting system integration is required for Phase 1.
+
+SQL is used by JDX as a post-operational accounting ledger. It is not used for live inventory, order management, or real-time decisions. MAIA handles the operational workflow (pro forma, payment, delivery) independently. If JDX later wants to auto-sync invoice or receipt records to SQL, that is a Phase 2 scoping conversation with the tech team.
 
 ---
 
@@ -274,3 +273,7 @@ This is an internal draft. The following must be resolved before this document i
 6. **Timelines — Phase 1 build duration and go-live target**
    Why this matters: JDX is a seasonal business. Peak windows are CNY, Hari Raya, Mooncake. Go-live must land before the next peak or it loses its entire value proposition.
    What I need: Agreed Phase 1 build duration and target go-live date.
+
+7. **Tiered Discount Application — Tech Feasibility**
+   Why this matters: Tiered discount auto-application (5%/10%/15% by order value, configurable per season) is not currently supported in MAIA. This is a core JDX requirement — if not buildable for Phase 1, coordinator applies discounts manually and the feature drops from scope.
+   What I need: Tech team confirmation on feasibility and build effort before this is committed to Phase 1.
