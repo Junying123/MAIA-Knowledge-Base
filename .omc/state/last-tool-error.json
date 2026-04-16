@@ -1,7 +1,7 @@
 {
   "tool_name": "Read",
-  "tool_input_preview": "{\"file_path\":\"/Users/garethng/Documents/MAIA Knowledge Base/01 - MAIA Product/Overview\"}",
-  "error": "EISDIR: illegal operation on a directory, read '/Users/garethng/Documents/MAIA Knowledge Base/01 - MAIA Product/Overview'",
-  "timestamp": "2026-04-15T13:35:13.662Z",
-  "retry_count": 1
+  "tool_input_preview": "{\"file_path\":\"/Users/garethng/Documents/MAIA Knowledge Base/03 - Clients/We're cooked discovery/Requirement Gathering/Thermac/Customer Narrative - Thermac.md\"}",
+  "error": "File does not exist. Note: your current working directory is /Users/garethng/Documents/MAIA Knowledge Base.",
+  "timestamp": "2026-04-16T00:37:22.929Z",
+  "retry_count": 2
 }
