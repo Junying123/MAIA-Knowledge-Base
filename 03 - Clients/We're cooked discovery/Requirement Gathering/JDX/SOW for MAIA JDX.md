@@ -17,9 +17,15 @@ lark_url:
 
 ## Executive Summary
 
-JDX Gift and Food Sdn. Bhd., trading as JDX Tea (九鼎香), is a Kuala Lumpur-based distributor and retailer of premium Chinese teas, specialty foods, and seasonal gift hampers — and the official Malaysian distributor of DaYi (大益), one of China's most recognised Pu'er tea brands. The business runs five sales channels: corporate B2B hamper orders, hypermarket consignment kiosks (Giant/AEON), van route sales, retail walk-in, and B2C online. Today's operations run on a combination of WhatsApp groups, SQL accounting, Excel spreadsheets, and a QSoft tablet for van sales — a setup built for steady-state volume that buckles under peak-season surge.
+JDX Gift and Food Sdn. Bhd. (JDX Tea / 九鼎香) is a Kepong-based distributor of premium Chinese teas, specialty foods, and seasonal gift hampers — official Malaysian distributor of DaYi (大益). Corporate hamper B2B orders drive ~80% of peak-season revenue, processed today via WhatsApp groups, manual SQL pro formas, and Excel spreadsheets.
 
-The seasonal hamper B2B channel drives roughly 80% of peak revenue. It is also where the operational strain is most acute: pro forma invoices created manually in SQL with free-text customisation remarks, payment slips matched to orders by reading WhatsApp groups overnight, delivery orders re-typed from pro formas with remarks that sometimes don't survive the handoff, and multi-address corporate orders tracked across spreadsheets. MAIA Phase 1 solves this: structured pro forma creation with remarks that carry automatically to the delivery order, payment matching that triggers DO creation on confirmation, multi-address delivery scheduling, and tiered discount configuration. Phase 2 addresses consignment kiosk reporting and the van sales QSoft question once the core flow is stable.
+**Current tools:** WhatsApp, SQL (accounting only), Excel, QSoft (van sales tablet)
+
+This SOW defines a phased implementation of MAIA that delivers:
+- Structured pro forma invoice creation with customisation remarks that propagate automatically to the delivery order
+- Payment advice matching that triggers DO creation on confirmation — no manual WhatsApp group monitoring
+- Multi-address delivery scheduling and status tracking for corporate hamper orders
+- Tiered discount configuration applied at pro forma stage
 
 **Current investment: [TBC]**
 
@@ -29,7 +35,7 @@ The seasonal hamper B2B channel drives roughly 80% of peak revenue. It is also w
 
 ### Phase 1 — Core MAIA (Seasonal Hamper B2B Flow)
 
-Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel: the revenue engine and highest-pain workflow. It covers structured pro forma invoice creation, payment matching, delivery order generation with full remarks propagation, multi-address delivery tracking, and tiered discount rules — replacing the current WhatsApp-thread-and-manual-SQL workflow.
+Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel: the revenue engine and highest-pain workflow. It covers pro forma invoice creation with a remarks text area for customisation instructions, payment matching, delivery order generation with full remarks propagation, multi-address delivery tracking, and tiered discount rules — replacing the current WhatsApp-thread-and-manual-SQL workflow.
 
 **No SQL accounting integration is required for Phase 1.** SQL is JDX's post-operational accounting ledger and is not used for live order management or real-time decisions. MAIA handles the operational workflow independently; SQL sync can be added in Phase 2 if needed.
 
@@ -40,7 +46,7 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 The primary workspace for accounts coordinators and sales staff creating and managing pro forma invoices and sales orders.
 
 **Features:**
-- **Pro Forma Invoice Creation** — create sales order with structured customisation fields: ribbon colour, greeting card wording, item substitution, delivery date, price tag preference. MAIA generates a pro forma invoice PDF for the customer from the sales order record.
+- **Pro Forma Invoice Creation** — create sales order in MAIA with a remarks text area to capture customisation instructions (ribbon colour, greeting card wording, item substitution, delivery date, price tag preference). MAIA generates a pro forma invoice PDF for the customer from the sales order record.
 - **Tiered Discount Application** — discount rules configured per season by admin (5% under RM500 / 10% for RM500–RM1,500 / 15% above RM1,500); auto-applied at pro forma stage. Custom or bring-your-own-packaging orders flagged manually, voiding the standard tier. Admin updates tiers at season start; overrides logged with audit trail.
 - **Pro Forma → Invoice Conversion** — one-click conversion once payment is confirmed. Invoice inherits all line items, pricing, discount, and customer details from the pro forma. Logged with timestamp and user.
 - **Output Documents:** Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt

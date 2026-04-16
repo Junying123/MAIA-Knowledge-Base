@@ -236,8 +236,8 @@
     },
     {
       "path": "",
-      "accessCount": 13,
-      "lastAccessed": 1776299845525,
+      "accessCount": 14,
+      "lastAccessed": 1776310521409,
       "type": "directory"
     },
     {
@@ -265,6 +265,12 @@
       "type": "file"
     },
     {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
+      "accessCount": 5,
+      "lastAccessed": 1776310526348,
+      "type": "file"
+    },
+    {
       "path": "AGENTS.md",
       "accessCount": 4,
       "lastAccessed": 1775325538090,
@@ -274,12 +280,6 @@
       "path": "02 - PM Playbook/Templates/[Template] Feature Narrative.md",
       "accessCount": 4,
       "lastAccessed": 1776261469417,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
-      "accessCount": 4,
-      "lastAccessed": 1776309506067,
       "type": "file"
     },
     {
@@ -370,6 +370,12 @@
       "path": "brain/Gotchas.md",
       "accessCount": 2,
       "lastAccessed": 1776261474096,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering.md",
+      "accessCount": 2,
+      "lastAccessed": 1776310525535,
       "type": "file"
     },
     {
@@ -490,12 +496,6 @@
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/JDX - Sample Customers (Synthetic).csv",
       "accessCount": 1,
       "lastAccessed": 1775720070023,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering.md",
-      "accessCount": 1,
-      "lastAccessed": 1775723200304,
       "type": "file"
     },
     {
