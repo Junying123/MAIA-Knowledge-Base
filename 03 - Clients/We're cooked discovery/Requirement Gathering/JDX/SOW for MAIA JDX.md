@@ -38,13 +38,39 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 
 ---
 
+#### Internal Chatbots
+
+**Sales Agent Chatbot**
+
+**Platform:** WhatsApp
+
+- Create pro forma invoice via natural language — no rigid keywords required
+- Add customisation remarks (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) directly in the chat
+- Daily digest: unclosed sales orders, pending payment confirmation, outstanding invoices
+
+**Logistics Agent Chatbot**
+
+**Platform:** WhatsApp
+
+- Create delivery order from sales order via WhatsApp
+- Update delivery status (mark as delivered, mark as failed, reschedule)
+- Daily digest: DOs pending scheduling, DOs in transit, failed deliveries requiring follow-up
+
+---
+
+#### MAIA Web App — User Workspaces
+
+**Platform:** MAIA Web Application
+
+---
+
 #### Sales Workspace
 
-The primary workspace for sales staff creating and managing proforma invoices and sales orders.
+The primary workspace for sales staff creating and managing pro forma invoices and sales orders.
 
 **Features:**
 - **Pro Forma Invoice Creation** — create sales order in MAIA with a remarks text area to capture customisation instructions (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off). MAIA generates a pro forma invoice PDF for the customer from the sales order record.
-- **Output Documents:** Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt
+- **PDF Document Generation** — MAIA generates all sales documents as downloadable PDFs: Pro Forma Invoice, Invoice, Credit Note, Receipt.
 - **Daily Digest** — unclosed Sales Order, pending payment confirmation, outstanding invoices
 
 ---
@@ -54,8 +80,8 @@ The primary workspace for sales staff creating and managing proforma invoices an
 For finance staff managing payment confirmation and invoice finalisation.
 
 **Features:**
-- **Receipt Creation** — coordinator records the customer's payment against the open pro forma and issues an official receipt to the customer. Once payment is confirmed, MAIA triggers delivery order creation automatically.
-- **Pro Forma → Invoice Conversion** — one-click conversion from pro forma to invoice once payment is confirmed. Invoice inherits all line items, pricing, and customer details from the pro forma. Logged with timestamp and user.
+- **Receipt Creation** — coordinator records the customer's payment against the open pro forma and issues an official receipt to the customer.
+- **Pro Forma → Invoice Conversion** — one-click conversion from pro forma to invoice once payment is confirmed. Invoice inherits all line items, pricing, and customer details from the pro forma. 
 - **Invoice Visibility** — view and manage all invoices, outstanding balances, and conversion status across all orders.
 - **Approval Tracking** — approve or hold orders pending payment confirmation before DO creation proceeds. Logged with timestamp and user.
 
@@ -65,26 +91,16 @@ For finance staff managing payment confirmation and invoice finalisation.
 
 #### Logistics Workspace
 
-For operations staff managing delivery orders, multi-address dispatch, and proof of delivery.
+For operations staff managing delivery orders, multi-drop dispatch, and delivery tracking.
 
 **Features:**
 - **Delivery Order (DO) Creation** — DO created from the sales order once the finance staff has issued the invoice. All customisation remarks from the sales order (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) propagate automatically through to the invoice and DO — no retyping required.
-- **Multi-Address Delivery Scheduling** — one corporate order split into individual delivery lines per address. Each drop generates a separate DO, linked to the source sales order. Coordinator assigns vehicle or 3PL courier per drop, sets delivery date, and logs 3PL tracking number.
-- **Delivery Status Tracking** — each drop has its own status: pending, in transit, delivered, failed. Coordinator views all drops for an order in one place. Failed delivery flagged in MAIA with reason; rescheduling logged.
+- **Multi-Drop Delivery (Blanket Order)** — one sales order can generate multiple DOs, each linked to the source SO. Coordinator creates individual DOs per drop from the same SO; remaining unfulfilled quantity stays on the SO for subsequent DOs.
+- **Delivery Date Scheduling** — each DO has its own delivery date set independently.
+- **Delivery Status Tracking** — each DO has its own status (e.g. To Schedule, Delivered, Failed). Coordinator can mark a DO as delivered, mark as failed, or reschedule the delivery date. All DOs for an order are viewable in one place.
 - **Output Documents:** Delivery Note (DO), Picking List
 
-> Note: MAIA does not automatically route drops across vehicles or optimise delivery sequences — that planning stays with the coordinator. MAIA does not book 3PL couriers; coordinator books externally and logs the tracking number in MAIA.
-
----
-
-#### Management Workspace
-
-For business owners and senior staff needing operational visibility during peak.
-
-**Features:**
-- **Order Pipeline View** — live view of pro formas issued, payments pending, deliveries in transit, deliveries completed.
-- **Outstanding Payments Overview** — orders awaiting payment confirmation at any point in time.
-- **Delivery Status Dashboard** — all active delivery drops, their statuses, and any exceptions.
+> Note: MAIA does not automatically route drops across vehicles or optimise delivery sequences — that planning stays with the coordinator.
 
 ---
 
@@ -202,7 +218,7 @@ SQL is used by JDX as a post-operational accounting ledger. It is not used for l
 
 ## Caveats & Exclusions
 
-- **Third-Party Dependencies:** Mindhive not liable for downtime or issues in WhatsApp, 3PL courier systems (J&T, Skynet, CityLink), or QSoft
+- **Third-Party Dependencies:** Mindhive not liable for downtime or issues in WhatsApp or QSoft
 - **Connectivity:** JDX responsible for internet access and device readiness for all users
 - **Data Accuracy:** Responsibility lies with JDX for correctness of product catalogue, customer data, and discount tier configurations
 - **Client-Side Integrations:** QSoft and SQL integrations outside agreed Phase 1 scope require a formal change request and feasibility assessment
