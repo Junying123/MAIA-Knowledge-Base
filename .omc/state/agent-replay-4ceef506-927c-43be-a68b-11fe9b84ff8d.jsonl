@@ -3,3 +3,5 @@
 {"t":0,"agent":"system","event":"skill_invoked","skill_name":"find-skills"}
 {"t":0,"agent":"system","event":"skill_invoked","skill_name":"customer-narrative"}
 {"t":0,"agent":"a17145f","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"sow-writer"}
+{"t":0,"agent":"a40a1e1","agent_type":"unknown","event":"agent_stop","success":true}
