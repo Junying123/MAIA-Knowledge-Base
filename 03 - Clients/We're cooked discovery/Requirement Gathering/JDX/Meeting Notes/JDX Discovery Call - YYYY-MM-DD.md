@@ -6,7 +6,7 @@ meeting_date: YYYY-MM-DD
 client: JDX
 meeting_type: discovery
 ---
-@
+
 # Discovery Meeting Notes — JDX Tea (九鼎香) — [Date]
 
 **Date:** YYYY-MM-DD

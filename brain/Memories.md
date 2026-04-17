@@ -26,6 +26,8 @@ last_reviewed: 2026-04-04
 | Agentfiles & Skillkit | `reference_agentfiles_skillkit.md` | Obsidian plugin v0.4.1, skillkit CLI |
 | Custom PM skills | `reference_skills.md` | req-gathering-output created; Customer Narrative planned |
 
+| Product Specs layer | (in KB, not memory file) | `01 - MAIA Product/Product Specs/` — read relevant spec before working on any doctype; 10 spec files (5 full, 4 stubs) |
+
 ## Recent Context
 
 > Updated each session via `/wrap-up`

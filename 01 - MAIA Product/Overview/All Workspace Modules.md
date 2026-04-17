@@ -163,6 +163,25 @@ Some modules appear in multiple workspaces with different perspectives:
 
 ---
 
+## Product Specs Available
+
+Detailed capability specs (4-layer: capability list → feature spec → user story → AC) live in `01 - MAIA Product/Product Specs/`.
+
+| Doctype | Spec | Status |
+|---|---|---|
+| Quotation | [[Quotation Spec]] | Full spec |
+| Sales Order | [[Sales Order Spec]] | Full spec |
+| Invoice | [[Invoice Spec]] | Full spec |
+| Credit Note | [[Credit Note Spec]] | Full spec |
+| Receipt | [[Receipt Spec]] | Full spec |
+| Debit Note | [[Debit Note Spec]] | Stub — [TO FILL] |
+| Delivery Note | [[Delivery Note Spec]] | Stub — [TO FILL] |
+| Return Note | [[Return Note Spec]] | Stub — [TO FILL] |
+| Payment Voucher | [[Voucher Spec]] | Stub — [TO FILL] |
+| Blanket Order | [[Blanket Order Spec]] | Full spec — cross-doctype (SO + DN) |
+
+---
+
 ## See Also
 
 - [[Sales Workspace Modules]]

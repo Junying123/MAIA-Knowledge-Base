@@ -40,6 +40,8 @@ var Timer = class {
     this.onUpdate = callback;
   }
   start() {
+    if (this.intervalId !== null)
+      return;
     this.intervalId = window.setInterval(() => {
       this.elapsedTime += 1e3;
       if (this.onUpdate) {
@@ -48,20 +50,18 @@ var Timer = class {
     }, 1e3);
   }
   pause() {
-    if (this.intervalId !== null) {
-      clearInterval(this.intervalId);
-      this.intervalId = null;
-      if (this.onUpdate) {
-        this.onUpdate();
-      }
-    } else {
-      this.intervalId = window.setInterval(() => {
-        this.elapsedTime += 1e3;
-        if (this.onUpdate) {
-          this.onUpdate();
-        }
-      }, 1e3);
+    if (this.intervalId === null)
+      return;
+    clearInterval(this.intervalId);
+    this.intervalId = null;
+    if (this.onUpdate) {
+      this.onUpdate();
     }
+  }
+  resume() {
+    if (this.intervalId !== null)
+      return;
+    this.start();
   }
   reset() {
     this.elapsedTime = 0;
@@ -90,13 +90,21 @@ var StatusBar = class {
   constructor(plugin) {
     this.statusBarItem = null;
     this.status = "idle" /* Idle */;
+    this.listeners = [];
     this.plugin = plugin;
     this.statusBarItem = this.plugin.addStatusBarItem();
     this.updateStatusBarItem();
   }
+  onChange(listener) {
+    this.listeners.push(listener);
+  }
+  offChange(listener) {
+    this.listeners = this.listeners.filter((fn) => fn !== listener);
+  }
   updateStatus(status) {
     this.status = status;
     this.updateStatusBarItem();
+    this.listeners.forEach((fn) => fn(status));
   }
   updateStatusBarItem() {
     if (this.statusBarItem) {
@@ -105,9 +113,13 @@ var StatusBar = class {
           this.statusBarItem.textContent = "Recording...";
           this.statusBarItem.style.color = "red";
           break;
+        case "paused" /* Paused */:
+          this.statusBarItem.textContent = "Paused";
+          this.statusBarItem.style.color = "yellow";
+          break;
         case "processing" /* Processing */:
-          this.statusBarItem.textContent = "Processing audio...";
-          this.statusBarItem.style.color = "orange";
+          this.statusBarItem.textContent = "Processing...";
+          this.statusBarItem.style.color = "gray";
           break;
         case "idle" /* Idle */:
         default:
@@ -139,64 +151,69 @@ var Controls = class extends import_obsidian.Modal {
       cls: "button-group"
     });
     this.startButton = new import_obsidian.ButtonComponent(buttonGroupEl);
-    this.startButton.setIcon("microphone").setButtonText(" Record").onClick(this.startRecording.bind(this)).buttonEl.addClass("button-component");
+    this.startButton.setIcon("circle").setButtonText(" Record").onClick(() => this.plugin.startRecording()).buttonEl.addClass("button-component");
     this.pauseButton = new import_obsidian.ButtonComponent(buttonGroupEl);
-    this.pauseButton.setIcon("pause").setButtonText(" Pause").onClick(this.pauseRecording.bind(this)).buttonEl.addClass("button-component");
+    this.pauseButton.setIcon("pause").setButtonText(" Pause").onClick(() => this.plugin.pauseRecording()).buttonEl.addClass("button-component");
     this.stopButton = new import_obsidian.ButtonComponent(buttonGroupEl);
-    this.stopButton.setIcon("square").setButtonText(" Stop").onClick(this.stopRecording.bind(this)).buttonEl.addClass("button-component");
+    this.stopButton.setIcon("square").setButtonText(" Stop").onClick(async () => {
+      await this.plugin.stopRecording();
+      this.close();
+    }).buttonEl.addClass("button-component");
+    this.cancelButton = new import_obsidian.ButtonComponent(buttonGroupEl);
+    this.cancelButton.setIcon("x").setButtonText(" Cancel").onClick(async () => {
+      await this.plugin.cancelRecording();
+      this.close();
+    }).buttonEl.addClass("button-component");
+    this.statusListener = () => {
+      this.resetGUI();
+      this.updateTimerDisplay();
+    };
   }
-  async startRecording() {
-    console.log("start");
-    this.plugin.statusBar.updateStatus("recording" /* Recording */);
-    await this.plugin.recorder.startRecording();
-    this.plugin.timer.start();
+  onOpen() {
     this.resetGUI();
+    this.updateTimerDisplay();
+    this.plugin.statusBar.onChange(this.statusListener);
   }
-  async pauseRecording() {
-    console.log("pausing recording...");
-    await this.plugin.recorder.pauseRecording();
-    this.plugin.timer.pause();
-    this.resetGUI();
-  }
-  async stopRecording() {
-    var _a;
-    console.log("stopping recording...");
-    this.plugin.statusBar.updateStatus("processing" /* Processing */);
-    const blob = await this.plugin.recorder.stopRecording();
-    this.plugin.timer.reset();
-    this.resetGUI();
-    const extension = (_a = this.plugin.recorder.getMimeType()) == null ? void 0 : _a.split("/")[1];
-    const fileName = `${(/* @__PURE__ */ new Date()).toISOString().replace(/[:.]/g, "-")}.${extension}`;
-    await this.plugin.audioHandler.sendAudioData(blob, fileName);
-    this.plugin.statusBar.updateStatus("idle" /* Idle */);
-    this.close();
+  onClose() {
+    this.plugin.statusBar.offChange(this.statusListener);
   }
   updateTimerDisplay() {
     this.timerDisplay.textContent = this.plugin.timer.getFormattedTime();
   }
   resetGUI() {
-    const recorderState = this.plugin.recorder.getRecordingState();
-    this.startButton.setDisabled(
-      recorderState === "recording" || recorderState === "paused"
-    );
-    this.pauseButton.setDisabled(recorderState === "inactive");
-    this.stopButton.setDisabled(recorderState === "inactive");
-    this.pauseButton.setButtonText(
-      recorderState === "paused" ? " Resume" : " Pause"
-    );
+    const status = this.plugin.statusBar.status;
+    const isIdle = status === "idle" /* Idle */;
+    const isPaused = status === "paused" /* Paused */;
+    this.startButton.buttonEl.style.display = isIdle ? "" : "none";
+    this.startButton.buttonEl.empty();
+    this.startButton.setIcon("circle");
+    this.startButton.buttonEl.appendText(" Record");
+    this.pauseButton.buttonEl.style.display = isIdle ? "none" : "";
+    this.pauseButton.buttonEl.empty();
+    this.pauseButton.setIcon(isPaused ? "play" : "pause");
+    this.pauseButton.buttonEl.appendText(isPaused ? " Resume" : " Pause");
+    this.stopButton.buttonEl.style.display = isIdle ? "none" : "";
+    this.stopButton.buttonEl.empty();
+    this.stopButton.setIcon("square");
+    this.stopButton.buttonEl.appendText(" Stop");
+    this.cancelButton.buttonEl.style.display = isIdle ? "none" : "";
+    this.cancelButton.buttonEl.empty();
+    this.cancelButton.setIcon("x");
+    this.cancelButton.buttonEl.appendText(" Cancel");
   }
 };
 
-// node_modules/axios/lib/helpers/bind.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/bind.js
 function bind(fn, thisArg) {
   return function wrap() {
     return fn.apply(thisArg, arguments);
   };
 }
 
-// node_modules/axios/lib/utils.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/utils.js
 var { toString } = Object.prototype;
 var { getPrototypeOf } = Object;
+var { iterator, toStringTag } = Symbol;
 var kindOf = ((cache) => (thing) => {
   const str = toString.call(thing);
   return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
@@ -230,21 +247,56 @@ var isPlainObject = (val) => {
   if (kindOf(val) !== "object") {
     return false;
   }
-  const prototype3 = getPrototypeOf(val);
-  return (prototype3 === null || prototype3 === Object.prototype || Object.getPrototypeOf(prototype3) === null) && !(Symbol.toStringTag in val) && !(Symbol.iterator in val);
+  const prototype2 = getPrototypeOf(val);
+  return (prototype2 === null || prototype2 === Object.prototype || Object.getPrototypeOf(prototype2) === null) && !(toStringTag in val) && !(iterator in val);
+};
+var isEmptyObject = (val) => {
+  if (!isObject(val) || isBuffer(val)) {
+    return false;
+  }
+  try {
+    return Object.keys(val).length === 0 && Object.getPrototypeOf(val) === Object.prototype;
+  } catch (e) {
+    return false;
+  }
 };
 var isDate = kindOfTest("Date");
 var isFile = kindOfTest("File");
+var isReactNativeBlob = (value) => {
+  return !!(value && typeof value.uri !== "undefined");
+};
+var isReactNative = (formData) => formData && typeof formData.getParts !== "undefined";
 var isBlob = kindOfTest("Blob");
 var isFileList = kindOfTest("FileList");
 var isStream = (val) => isObject(val) && isFunction(val.pipe);
+function getGlobal() {
+  if (typeof globalThis !== "undefined")
+    return globalThis;
+  if (typeof self !== "undefined")
+    return self;
+  if (typeof window !== "undefined")
+    return window;
+  if (typeof global !== "undefined")
+    return global;
+  return {};
+}
+var G = getGlobal();
+var FormDataCtor = typeof G.FormData !== "undefined" ? G.FormData : void 0;
 var isFormData = (thing) => {
   let kind;
-  return thing && (typeof FormData === "function" && thing instanceof FormData || isFunction(thing.append) && ((kind = kindOf(thing)) === "formdata" || // detect form-data instance
+  return thing && (FormDataCtor && thing instanceof FormDataCtor || isFunction(thing.append) && ((kind = kindOf(thing)) === "formdata" || // detect form-data instance
   kind === "object" && isFunction(thing.toString) && thing.toString() === "[object FormData]"));
 };
 var isURLSearchParams = kindOfTest("URLSearchParams");
-var trim = (str) => str.trim ? str.trim() : str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
+var [isReadableStream, isRequest, isResponse, isHeaders] = [
+  "ReadableStream",
+  "Request",
+  "Response",
+  "Headers"
+].map(kindOfTest);
+var trim = (str) => {
+  return str.trim ? str.trim() : str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
+};
 function forEach(obj, fn, { allOwnKeys = false } = {}) {
   if (obj === null || typeof obj === "undefined") {
     return;
@@ -259,6 +311,9 @@ function forEach(obj, fn, { allOwnKeys = false } = {}) {
       fn.call(null, obj[i], i, obj);
     }
   } else {
+    if (isBuffer(obj)) {
+      return;
+    }
     const keys = allOwnKeys ? Object.getOwnPropertyNames(obj) : Object.keys(obj);
     const len = keys.length;
     let key;
@@ -269,6 +324,9 @@ function forEach(obj, fn, { allOwnKeys = false } = {}) {
   }
 }
 function findKey(obj, key) {
+  if (isBuffer(obj)) {
+    return null;
+  }
   key = key.toLowerCase();
   const keys = Object.keys(obj);
   let i = keys.length;
@@ -288,9 +346,12 @@ var _global = (() => {
 })();
 var isContextDefined = (context) => !isUndefined(context) && context !== _global;
 function merge() {
-  const { caseless } = isContextDefined(this) && this || {};
+  const { caseless, skipUndefined } = isContextDefined(this) && this || {};
   const result = {};
   const assignValue = (val, key) => {
+    if (key === "__proto__" || key === "constructor" || key === "prototype") {
+      return;
+    }
     const targetKey = caseless && findKey(result, key) || key;
     if (isPlainObject(result[targetKey]) && isPlainObject(val)) {
       result[targetKey] = merge(result[targetKey], val);
@@ -298,7 +359,7 @@ function merge() {
       result[targetKey] = merge({}, val);
     } else if (isArray(val)) {
       result[targetKey] = val.slice();
-    } else {
+    } else if (!skipUndefined || !isUndefined(val)) {
       result[targetKey] = val;
     }
   };
@@ -308,13 +369,27 @@ function merge() {
   return result;
 }
 var extend = (a, b, thisArg, { allOwnKeys } = {}) => {
-  forEach(b, (val, key) => {
-    if (thisArg && isFunction(val)) {
-      a[key] = bind(val, thisArg);
-    } else {
-      a[key] = val;
-    }
-  }, { allOwnKeys });
+  forEach(
+    b,
+    (val, key) => {
+      if (thisArg && isFunction(val)) {
+        Object.defineProperty(a, key, {
+          value: bind(val, thisArg),
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
+      } else {
+        Object.defineProperty(a, key, {
+          value: val,
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
+      }
+    },
+    { allOwnKeys }
+  );
   return a;
 };
 var stripBOM = (content) => {
@@ -323,9 +398,14 @@ var stripBOM = (content) => {
   }
   return content;
 };
-var inherits = (constructor, superConstructor, props, descriptors2) => {
-  constructor.prototype = Object.create(superConstructor.prototype, descriptors2);
-  constructor.prototype.constructor = constructor;
+var inherits = (constructor, superConstructor, props, descriptors) => {
+  constructor.prototype = Object.create(superConstructor.prototype, descriptors);
+  Object.defineProperty(constructor.prototype, "constructor", {
+    value: constructor,
+    writable: true,
+    enumerable: false,
+    configurable: true
+  });
   Object.defineProperty(constructor, "super", {
     value: superConstructor.prototype
   });
@@ -382,10 +462,10 @@ var isTypedArray = ((TypedArray) => {
   };
 })(typeof Uint8Array !== "undefined" && getPrototypeOf(Uint8Array));
 var forEachEntry = (obj, fn) => {
-  const generator = obj && obj[Symbol.iterator];
-  const iterator = generator.call(obj);
+  const generator = obj && obj[iterator];
+  const _iterator = generator.call(obj);
   let result;
-  while ((result = iterator.next()) && !result.done) {
+  while ((result = _iterator.next()) && !result.done) {
     const pair = result.value;
     fn.call(obj, pair[0], pair[1]);
   }
@@ -400,21 +480,19 @@ var matchAll = (regExp, str) => {
 };
 var isHTMLForm = kindOfTest("HTMLFormElement");
 var toCamelCase = (str) => {
-  return str.toLowerCase().replace(
-    /[-_\s]([a-z\d])(\w*)/g,
-    function replacer(m, p1, p2) {
-      return p1.toUpperCase() + p2;
-    }
-  );
+  return str.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g, function replacer(m, p1, p2) {
+    return p1.toUpperCase() + p2;
+  });
 };
 var hasOwnProperty = (({ hasOwnProperty: hasOwnProperty2 }) => (obj, prop) => hasOwnProperty2.call(obj, prop))(Object.prototype);
 var isRegExp = kindOfTest("RegExp");
 var reduceDescriptors = (obj, reducer) => {
-  const descriptors2 = Object.getOwnPropertyDescriptors(obj);
+  const descriptors = Object.getOwnPropertyDescriptors(obj);
   const reducedDescriptors = {};
-  forEach(descriptors2, (descriptor, name) => {
-    if (reducer(descriptor, name, obj) !== false) {
-      reducedDescriptors[name] = descriptor;
+  forEach(descriptors, (descriptor, name) => {
+    let ret;
+    if ((ret = reducer(descriptor, name, obj)) !== false) {
+      reducedDescriptors[name] = ret || descriptor;
     }
   });
   Object.defineProperties(obj, reducedDescriptors);
@@ -452,26 +530,10 @@ var toObjectSet = (arrayOrString, delimiter) => {
 var noop = () => {
 };
 var toFiniteNumber = (value, defaultValue) => {
-  value = +value;
-  return Number.isFinite(value) ? value : defaultValue;
-};
-var ALPHA = "abcdefghijklmnopqrstuvwxyz";
-var DIGIT = "0123456789";
-var ALPHABET = {
-  DIGIT,
-  ALPHA,
-  ALPHA_DIGIT: ALPHA + ALPHA.toUpperCase() + DIGIT
-};
-var generateString = (size = 16, alphabet = ALPHABET.ALPHA_DIGIT) => {
-  let str = "";
-  const { length } = alphabet;
-  while (size--) {
-    str += alphabet[Math.random() * length | 0];
-  }
-  return str;
+  return value != null && Number.isFinite(value = +value) ? value : defaultValue;
 };
 function isSpecCompliantForm(thing) {
-  return !!(thing && isFunction(thing.append) && thing[Symbol.toStringTag] === "FormData" && thing[Symbol.iterator]);
+  return !!(thing && isFunction(thing.append) && thing[toStringTag] === "FormData" && thing[iterator]);
 }
 var toJSONObject = (obj) => {
   const stack = new Array(10);
@@ -479,6 +541,9 @@ var toJSONObject = (obj) => {
     if (isObject(source)) {
       if (stack.indexOf(source) >= 0) {
         return;
+      }
+      if (isBuffer(source)) {
+        return source;
       }
       if (!("toJSON" in source)) {
         stack[i] = source;
@@ -497,6 +562,28 @@ var toJSONObject = (obj) => {
 };
 var isAsyncFn = kindOfTest("AsyncFunction");
 var isThenable = (thing) => thing && (isObject(thing) || isFunction(thing)) && isFunction(thing.then) && isFunction(thing.catch);
+var _setImmediate = ((setImmediateSupported, postMessageSupported) => {
+  if (setImmediateSupported) {
+    return setImmediate;
+  }
+  return postMessageSupported ? ((token, callbacks) => {
+    _global.addEventListener(
+      "message",
+      ({ source, data }) => {
+        if (source === _global && data === token) {
+          callbacks.length && callbacks.shift()();
+        }
+      },
+      false
+    );
+    return (cb) => {
+      callbacks.push(cb);
+      _global.postMessage(token, "*");
+    };
+  })(`axios@${Math.random()}`, []) : (cb) => setTimeout(cb);
+})(typeof setImmediate === "function", isFunction(_global.postMessage));
+var asap = typeof queueMicrotask !== "undefined" ? queueMicrotask.bind(_global) : typeof process !== "undefined" && process.nextTick || _setImmediate;
+var isIterable = (thing) => thing != null && isFunction(thing[iterator]);
 var utils_default = {
   isArray,
   isArrayBuffer,
@@ -508,9 +595,16 @@ var utils_default = {
   isBoolean,
   isObject,
   isPlainObject,
+  isEmptyObject,
+  isReadableStream,
+  isRequest,
+  isResponse,
+  isHeaders,
   isUndefined,
   isDate,
   isFile,
+  isReactNativeBlob,
+  isReactNative,
   isBlob,
   isRegExp,
   isFunction,
@@ -544,31 +638,57 @@ var utils_default = {
   findKey,
   global: _global,
   isContextDefined,
-  ALPHABET,
-  generateString,
   isSpecCompliantForm,
   toJSONObject,
   isAsyncFn,
-  isThenable
+  isThenable,
+  setImmediate: _setImmediate,
+  asap,
+  isIterable
 };
 
-// node_modules/axios/lib/core/AxiosError.js
-function AxiosError(message, code, config, request, response) {
-  Error.call(this);
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, this.constructor);
-  } else {
-    this.stack = new Error().stack;
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/AxiosError.js
+var AxiosError = class _AxiosError extends Error {
+  static from(error, code, config, request, response, customProps) {
+    const axiosError = new _AxiosError(error.message, code || error.code, config, request, response);
+    axiosError.cause = error;
+    axiosError.name = error.name;
+    if (error.status != null && axiosError.status == null) {
+      axiosError.status = error.status;
+    }
+    customProps && Object.assign(axiosError, customProps);
+    return axiosError;
   }
-  this.message = message;
-  this.name = "AxiosError";
-  code && (this.code = code);
-  config && (this.config = config);
-  request && (this.request = request);
-  response && (this.response = response);
-}
-utils_default.inherits(AxiosError, Error, {
-  toJSON: function toJSON() {
+  /**
+   * Create an Error with the specified message, config, error code, request and response.
+   *
+   * @param {string} message The error message.
+   * @param {string} [code] The error code (for example, 'ECONNABORTED').
+   * @param {Object} [config] The config.
+   * @param {Object} [request] The request.
+   * @param {Object} [response] The response.
+   *
+   * @returns {Error} The created error.
+   */
+  constructor(message, code, config, request, response) {
+    super(message);
+    Object.defineProperty(this, "message", {
+      value: message,
+      enumerable: true,
+      writable: true,
+      configurable: true
+    });
+    this.name = "AxiosError";
+    this.isAxiosError = true;
+    code && (this.code = code);
+    config && (this.config = config);
+    request && (this.request = request);
+    if (response) {
+      this.response = response;
+      this.status = response.status;
+    }
+  }
+  toJSON() {
     return {
       // Standard
       message: this.message,
@@ -584,50 +704,28 @@ utils_default.inherits(AxiosError, Error, {
       // Axios
       config: utils_default.toJSONObject(this.config),
       code: this.code,
-      status: this.response && this.response.status ? this.response.status : null
+      status: this.status
     };
   }
-});
-var prototype = AxiosError.prototype;
-var descriptors = {};
-[
-  "ERR_BAD_OPTION_VALUE",
-  "ERR_BAD_OPTION",
-  "ECONNABORTED",
-  "ETIMEDOUT",
-  "ERR_NETWORK",
-  "ERR_FR_TOO_MANY_REDIRECTS",
-  "ERR_DEPRECATED",
-  "ERR_BAD_RESPONSE",
-  "ERR_BAD_REQUEST",
-  "ERR_CANCELED",
-  "ERR_NOT_SUPPORT",
-  "ERR_INVALID_URL"
-  // eslint-disable-next-line func-names
-].forEach((code) => {
-  descriptors[code] = { value: code };
-});
-Object.defineProperties(AxiosError, descriptors);
-Object.defineProperty(prototype, "isAxiosError", { value: true });
-AxiosError.from = (error, code, config, request, response, customProps) => {
-  const axiosError = Object.create(prototype);
-  utils_default.toFlatObject(error, axiosError, function filter2(obj) {
-    return obj !== Error.prototype;
-  }, (prop) => {
-    return prop !== "isAxiosError";
-  });
-  AxiosError.call(axiosError, error.message, code, config, request, response);
-  axiosError.cause = error;
-  axiosError.name = error.name;
-  customProps && Object.assign(axiosError, customProps);
-  return axiosError;
 };
+AxiosError.ERR_BAD_OPTION_VALUE = "ERR_BAD_OPTION_VALUE";
+AxiosError.ERR_BAD_OPTION = "ERR_BAD_OPTION";
+AxiosError.ECONNABORTED = "ECONNABORTED";
+AxiosError.ETIMEDOUT = "ETIMEDOUT";
+AxiosError.ERR_NETWORK = "ERR_NETWORK";
+AxiosError.ERR_FR_TOO_MANY_REDIRECTS = "ERR_FR_TOO_MANY_REDIRECTS";
+AxiosError.ERR_DEPRECATED = "ERR_DEPRECATED";
+AxiosError.ERR_BAD_RESPONSE = "ERR_BAD_RESPONSE";
+AxiosError.ERR_BAD_REQUEST = "ERR_BAD_REQUEST";
+AxiosError.ERR_CANCELED = "ERR_CANCELED";
+AxiosError.ERR_NOT_SUPPORT = "ERR_NOT_SUPPORT";
+AxiosError.ERR_INVALID_URL = "ERR_INVALID_URL";
 var AxiosError_default = AxiosError;
 
-// node_modules/axios/lib/helpers/null.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/null.js
 var null_default = null;
 
-// node_modules/axios/lib/helpers/toFormData.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/toFormData.js
 function isVisitable(thing) {
   return utils_default.isPlainObject(thing) || utils_default.isArray(thing);
 }
@@ -653,13 +751,18 @@ function toFormData(obj, formData, options) {
     throw new TypeError("target must be an object");
   }
   formData = formData || new (null_default || FormData)();
-  options = utils_default.toFlatObject(options, {
-    metaTokens: true,
-    dots: false,
-    indexes: false
-  }, false, function defined(option, source) {
-    return !utils_default.isUndefined(source[option]);
-  });
+  options = utils_default.toFlatObject(
+    options,
+    {
+      metaTokens: true,
+      dots: false,
+      indexes: false
+    },
+    false,
+    function defined(option, source) {
+      return !utils_default.isUndefined(source[option]);
+    }
+  );
   const metaTokens = options.metaTokens;
   const visitor = options.visitor || defaultVisitor;
   const dots = options.dots;
@@ -675,6 +778,9 @@ function toFormData(obj, formData, options) {
     if (utils_default.isDate(value)) {
       return value.toISOString();
     }
+    if (utils_default.isBoolean(value)) {
+      return value.toString();
+    }
     if (!useBlob && utils_default.isBlob(value)) {
       throw new AxiosError_default("Blob is not supported. Use a Buffer instead.");
     }
@@ -685,6 +791,10 @@ function toFormData(obj, formData, options) {
   }
   function defaultVisitor(value, key, path) {
     let arr = value;
+    if (utils_default.isReactNative(formData) && utils_default.isReactNativeBlob(value)) {
+      formData.append(renderKey(path, key, dots), convertValue(value));
+      return false;
+    }
     if (value && !path && typeof value === "object") {
       if (utils_default.endsWith(key, "{}")) {
         key = metaTokens ? key : key.slice(0, -2);
@@ -721,13 +831,7 @@ function toFormData(obj, formData, options) {
     }
     stack.push(value);
     utils_default.forEach(value, function each(el, key) {
-      const result = !(utils_default.isUndefined(el) || el === null) && visitor.call(
-        formData,
-        el,
-        utils_default.isString(key) ? key.trim() : key,
-        path,
-        exposedHelpers
-      );
+      const result = !(utils_default.isUndefined(el) || el === null) && visitor.call(formData, el, utils_default.isString(key) ? key.trim() : key, path, exposedHelpers);
       if (result === true) {
         build(el, path ? path.concat(key) : [key]);
       }
@@ -742,7 +846,7 @@ function toFormData(obj, formData, options) {
 }
 var toFormData_default = toFormData;
 
-// node_modules/axios/lib/helpers/AxiosURLSearchParams.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/AxiosURLSearchParams.js
 function encode(str) {
   const charMap = {
     "!": "%21",
@@ -761,11 +865,11 @@ function AxiosURLSearchParams(params, options) {
   this._pairs = [];
   params && toFormData_default(params, this, options);
 }
-var prototype2 = AxiosURLSearchParams.prototype;
-prototype2.append = function append(name, value) {
+var prototype = AxiosURLSearchParams.prototype;
+prototype.append = function append(name, value) {
   this._pairs.push([name, value]);
 };
-prototype2.toString = function toString2(encoder) {
+prototype.toString = function toString2(encoder) {
   const _encode = encoder ? function(value) {
     return encoder.call(this, value, encode);
   } : encode;
@@ -775,21 +879,24 @@ prototype2.toString = function toString2(encoder) {
 };
 var AxiosURLSearchParams_default = AxiosURLSearchParams;
 
-// node_modules/axios/lib/helpers/buildURL.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/buildURL.js
 function encode2(val) {
-  return encodeURIComponent(val).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+").replace(/%5B/gi, "[").replace(/%5D/gi, "]");
+  return encodeURIComponent(val).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+");
 }
 function buildURL(url, params, options) {
   if (!params) {
     return url;
   }
   const _encode = options && options.encode || encode2;
-  const serializeFn = options && options.serialize;
+  const _options = utils_default.isFunction(options) ? {
+    serialize: options
+  } : options;
+  const serializeFn = _options && _options.serialize;
   let serializedParams;
   if (serializeFn) {
-    serializedParams = serializeFn(params, options);
+    serializedParams = serializeFn(params, _options);
   } else {
-    serializedParams = utils_default.isURLSearchParams(params) ? params.toString() : new AxiosURLSearchParams_default(params, options).toString(_encode);
+    serializedParams = utils_default.isURLSearchParams(params) ? params.toString() : new AxiosURLSearchParams_default(params, _options).toString(_encode);
   }
   if (serializedParams) {
     const hashmarkIndex = url.indexOf("#");
@@ -801,7 +908,7 @@ function buildURL(url, params, options) {
   return url;
 }
 
-// node_modules/axios/lib/core/InterceptorManager.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/InterceptorManager.js
 var InterceptorManager = class {
   constructor() {
     this.handlers = [];
@@ -811,6 +918,7 @@ var InterceptorManager = class {
    *
    * @param {Function} fulfilled The function to handle `then` for a `Promise`
    * @param {Function} rejected The function to handle `reject` for a `Promise`
+   * @param {Object} options The options for the interceptor, synchronous and runWhen
    *
    * @return {Number} An ID used to remove interceptor later
    */
@@ -828,7 +936,7 @@ var InterceptorManager = class {
    *
    * @param {Number} id The ID that was returned by `use`
    *
-   * @returns {Boolean} `true` if the interceptor was removed, `false` otherwise
+   * @returns {void}
    */
   eject(id) {
     if (this.handlers[id]) {
@@ -865,34 +973,24 @@ var InterceptorManager = class {
 };
 var InterceptorManager_default = InterceptorManager;
 
-// node_modules/axios/lib/defaults/transitional.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/defaults/transitional.js
 var transitional_default = {
   silentJSONParsing: true,
   forcedJSONParsing: true,
-  clarifyTimeoutError: false
+  clarifyTimeoutError: false,
+  legacyInterceptorReqResOrdering: true
 };
 
-// node_modules/axios/lib/platform/browser/classes/URLSearchParams.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/platform/browser/classes/URLSearchParams.js
 var URLSearchParams_default = typeof URLSearchParams !== "undefined" ? URLSearchParams : AxiosURLSearchParams_default;
 
-// node_modules/axios/lib/platform/browser/classes/FormData.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/platform/browser/classes/FormData.js
 var FormData_default = typeof FormData !== "undefined" ? FormData : null;
 
-// node_modules/axios/lib/platform/browser/classes/Blob.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/platform/browser/classes/Blob.js
 var Blob_default = typeof Blob !== "undefined" ? Blob : null;
 
-// node_modules/axios/lib/platform/browser/index.js
-var isStandardBrowserEnv = (() => {
-  let product;
-  if (typeof navigator !== "undefined" && ((product = navigator.product) === "ReactNative" || product === "NativeScript" || product === "NS")) {
-    return false;
-  }
-  return typeof window !== "undefined" && typeof document !== "undefined";
-})();
-var isStandardBrowserWebWorkerEnv = (() => {
-  return typeof WorkerGlobalScope !== "undefined" && // eslint-disable-next-line no-undef
-  self instanceof WorkerGlobalScope && typeof self.importScripts === "function";
-})();
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/platform/browser/index.js
 var browser_default = {
   isBrowser: true,
   classes: {
@@ -900,25 +998,48 @@ var browser_default = {
     FormData: FormData_default,
     Blob: Blob_default
   },
-  isStandardBrowserEnv,
-  isStandardBrowserWebWorkerEnv,
   protocols: ["http", "https", "file", "blob", "url", "data"]
 };
 
-// node_modules/axios/lib/helpers/toURLEncodedForm.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/platform/common/utils.js
+var utils_exports = {};
+__export(utils_exports, {
+  hasBrowserEnv: () => hasBrowserEnv,
+  hasStandardBrowserEnv: () => hasStandardBrowserEnv,
+  hasStandardBrowserWebWorkerEnv: () => hasStandardBrowserWebWorkerEnv,
+  navigator: () => _navigator,
+  origin: () => origin
+});
+var hasBrowserEnv = typeof window !== "undefined" && typeof document !== "undefined";
+var _navigator = typeof navigator === "object" && navigator || void 0;
+var hasStandardBrowserEnv = hasBrowserEnv && (!_navigator || ["ReactNative", "NativeScript", "NS"].indexOf(_navigator.product) < 0);
+var hasStandardBrowserWebWorkerEnv = (() => {
+  return typeof WorkerGlobalScope !== "undefined" && // eslint-disable-next-line no-undef
+  self instanceof WorkerGlobalScope && typeof self.importScripts === "function";
+})();
+var origin = hasBrowserEnv && window.location.href || "http://localhost";
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/platform/index.js
+var platform_default = {
+  ...utils_exports,
+  ...browser_default
+};
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/toURLEncodedForm.js
 function toURLEncodedForm(data, options) {
-  return toFormData_default(data, new browser_default.classes.URLSearchParams(), Object.assign({
+  return toFormData_default(data, new platform_default.classes.URLSearchParams(), {
     visitor: function(value, key, path, helpers) {
-      if (browser_default.isNode && utils_default.isBuffer(value)) {
+      if (platform_default.isNode && utils_default.isBuffer(value)) {
         this.append(key, value.toString("base64"));
         return false;
       }
       return helpers.defaultVisitor.apply(this, arguments);
-    }
-  }, options));
+    },
+    ...options
+  });
 }
 
-// node_modules/axios/lib/helpers/formDataToJSON.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/formDataToJSON.js
 function parsePropPath(name) {
   return utils_default.matchAll(/\w+|\[(\w*)]/g, name).map((match) => {
     return match[0] === "[]" ? "" : match[1] || match[0];
@@ -939,6 +1060,8 @@ function arrayToObject(arr) {
 function formDataToJSON(formData) {
   function buildPath(path, value, target, index) {
     let name = path[index++];
+    if (name === "__proto__")
+      return true;
     const isNumericKey = Number.isFinite(+name);
     const isLast = index >= path.length;
     name = !name && utils_default.isArray(target) ? target.length : name;
@@ -970,10 +1093,7 @@ function formDataToJSON(formData) {
 }
 var formDataToJSON_default = formDataToJSON;
 
-// node_modules/axios/lib/defaults/index.js
-var DEFAULT_CONTENT_TYPE = {
-  "Content-Type": void 0
-};
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/defaults/index.js
 function stringifySafely(rawValue, parser, encoder) {
   if (utils_default.isString(rawValue)) {
     try {
@@ -989,71 +1109,75 @@ function stringifySafely(rawValue, parser, encoder) {
 }
 var defaults = {
   transitional: transitional_default,
-  adapter: ["xhr", "http"],
-  transformRequest: [function transformRequest(data, headers) {
-    const contentType = headers.getContentType() || "";
-    const hasJSONContentType = contentType.indexOf("application/json") > -1;
-    const isObjectPayload = utils_default.isObject(data);
-    if (isObjectPayload && utils_default.isHTMLForm(data)) {
-      data = new FormData(data);
-    }
-    const isFormData2 = utils_default.isFormData(data);
-    if (isFormData2) {
-      if (!hasJSONContentType) {
+  adapter: ["xhr", "http", "fetch"],
+  transformRequest: [
+    function transformRequest(data, headers) {
+      const contentType = headers.getContentType() || "";
+      const hasJSONContentType = contentType.indexOf("application/json") > -1;
+      const isObjectPayload = utils_default.isObject(data);
+      if (isObjectPayload && utils_default.isHTMLForm(data)) {
+        data = new FormData(data);
+      }
+      const isFormData2 = utils_default.isFormData(data);
+      if (isFormData2) {
+        return hasJSONContentType ? JSON.stringify(formDataToJSON_default(data)) : data;
+      }
+      if (utils_default.isArrayBuffer(data) || utils_default.isBuffer(data) || utils_default.isStream(data) || utils_default.isFile(data) || utils_default.isBlob(data) || utils_default.isReadableStream(data)) {
         return data;
       }
-      return hasJSONContentType ? JSON.stringify(formDataToJSON_default(data)) : data;
-    }
-    if (utils_default.isArrayBuffer(data) || utils_default.isBuffer(data) || utils_default.isStream(data) || utils_default.isFile(data) || utils_default.isBlob(data)) {
-      return data;
-    }
-    if (utils_default.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils_default.isURLSearchParams(data)) {
-      headers.setContentType("application/x-www-form-urlencoded;charset=utf-8", false);
-      return data.toString();
-    }
-    let isFileList2;
-    if (isObjectPayload) {
-      if (contentType.indexOf("application/x-www-form-urlencoded") > -1) {
-        return toURLEncodedForm(data, this.formSerializer).toString();
+      if (utils_default.isArrayBufferView(data)) {
+        return data.buffer;
       }
-      if ((isFileList2 = utils_default.isFileList(data)) || contentType.indexOf("multipart/form-data") > -1) {
-        const _FormData = this.env && this.env.FormData;
-        return toFormData_default(
-          isFileList2 ? { "files[]": data } : data,
-          _FormData && new _FormData(),
-          this.formSerializer
-        );
+      if (utils_default.isURLSearchParams(data)) {
+        headers.setContentType("application/x-www-form-urlencoded;charset=utf-8", false);
+        return data.toString();
       }
-    }
-    if (isObjectPayload || hasJSONContentType) {
-      headers.setContentType("application/json", false);
-      return stringifySafely(data);
-    }
-    return data;
-  }],
-  transformResponse: [function transformResponse(data) {
-    const transitional2 = this.transitional || defaults.transitional;
-    const forcedJSONParsing = transitional2 && transitional2.forcedJSONParsing;
-    const JSONRequested = this.responseType === "json";
-    if (data && utils_default.isString(data) && (forcedJSONParsing && !this.responseType || JSONRequested)) {
-      const silentJSONParsing = transitional2 && transitional2.silentJSONParsing;
-      const strictJSONParsing = !silentJSONParsing && JSONRequested;
-      try {
-        return JSON.parse(data);
-      } catch (e) {
-        if (strictJSONParsing) {
-          if (e.name === "SyntaxError") {
-            throw AxiosError_default.from(e, AxiosError_default.ERR_BAD_RESPONSE, this, null, this.response);
-          }
-          throw e;
+      let isFileList2;
+      if (isObjectPayload) {
+        if (contentType.indexOf("application/x-www-form-urlencoded") > -1) {
+          return toURLEncodedForm(data, this.formSerializer).toString();
+        }
+        if ((isFileList2 = utils_default.isFileList(data)) || contentType.indexOf("multipart/form-data") > -1) {
+          const _FormData = this.env && this.env.FormData;
+          return toFormData_default(
+            isFileList2 ? { "files[]": data } : data,
+            _FormData && new _FormData(),
+            this.formSerializer
+          );
         }
       }
+      if (isObjectPayload || hasJSONContentType) {
+        headers.setContentType("application/json", false);
+        return stringifySafely(data);
+      }
+      return data;
     }
-    return data;
-  }],
+  ],
+  transformResponse: [
+    function transformResponse(data) {
+      const transitional2 = this.transitional || defaults.transitional;
+      const forcedJSONParsing = transitional2 && transitional2.forcedJSONParsing;
+      const JSONRequested = this.responseType === "json";
+      if (utils_default.isResponse(data) || utils_default.isReadableStream(data)) {
+        return data;
+      }
+      if (data && utils_default.isString(data) && (forcedJSONParsing && !this.responseType || JSONRequested)) {
+        const silentJSONParsing = transitional2 && transitional2.silentJSONParsing;
+        const strictJSONParsing = !silentJSONParsing && JSONRequested;
+        try {
+          return JSON.parse(data, this.parseReviver);
+        } catch (e) {
+          if (strictJSONParsing) {
+            if (e.name === "SyntaxError") {
+              throw AxiosError_default.from(e, AxiosError_default.ERR_BAD_RESPONSE, this, null, this.response);
+            }
+            throw e;
+          }
+        }
+      }
+      return data;
+    }
+  ],
   /**
    * A timeout in milliseconds to abort a request. If set to 0 (default) a
    * timeout is not created.
@@ -1064,27 +1188,25 @@ var defaults = {
   maxContentLength: -1,
   maxBodyLength: -1,
   env: {
-    FormData: browser_default.classes.FormData,
-    Blob: browser_default.classes.Blob
+    FormData: platform_default.classes.FormData,
+    Blob: platform_default.classes.Blob
   },
   validateStatus: function validateStatus(status) {
     return status >= 200 && status < 300;
   },
   headers: {
     common: {
-      "Accept": "application/json, text/plain, */*"
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": void 0
     }
   }
 };
-utils_default.forEach(["delete", "get", "head"], function forEachMethodNoData(method) {
+utils_default.forEach(["delete", "get", "head", "post", "put", "patch"], (method) => {
   defaults.headers[method] = {};
-});
-utils_default.forEach(["post", "put", "patch"], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils_default.merge(DEFAULT_CONTENT_TYPE);
 });
 var defaults_default = defaults;
 
-// node_modules/axios/lib/helpers/parseHeaders.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/parseHeaders.js
 var ignoreDuplicateOf = utils_default.toObjectSet([
   "age",
   "authorization",
@@ -1129,7 +1251,7 @@ var parseHeaders_default = (rawHeaders) => {
   return parsed;
 };
 
-// node_modules/axios/lib/core/AxiosHeaders.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/AxiosHeaders.js
 var $internals = Symbol("internals");
 function normalizeHeader(header) {
   return header && String(header).trim().toLowerCase();
@@ -1138,7 +1260,7 @@ function normalizeValue(value) {
   if (value === false || value == null) {
     return value;
   }
-  return utils_default.isArray(value) ? value.map(normalizeValue) : String(value);
+  return utils_default.isArray(value) ? value.map(normalizeValue) : String(value).replace(/[\r\n]+$/, "");
 }
 function parseTokens(str) {
   const tokens = /* @__PURE__ */ Object.create(null);
@@ -1203,6 +1325,15 @@ var AxiosHeaders = class {
       setHeaders(header, valueOrRewrite);
     } else if (utils_default.isString(header) && (header = header.trim()) && !isValidHeaderName(header)) {
       setHeaders(parseHeaders_default(header), valueOrRewrite);
+    } else if (utils_default.isObject(header) && utils_default.isIterable(header)) {
+      let obj = {}, dest, key;
+      for (const entry of header) {
+        if (!utils_default.isArray(entry)) {
+          throw TypeError("Object iterator must return a key-value pair");
+        }
+        obj[key = entry[0]] = (dest = obj[key]) ? utils_default.isArray(dest) ? [...dest, entry[1]] : [dest, entry[1]] : entry[1];
+      }
+      setHeaders(obj, valueOrRewrite);
     } else {
       header != null && setHeader(valueOrRewrite, header, rewrite);
     }
@@ -1306,6 +1437,9 @@ var AxiosHeaders = class {
   toString() {
     return Object.entries(this.toJSON()).map(([header, value]) => header + ": " + value).join("\n");
   }
+  getSetCookie() {
+    return this.get("set-cookie") || [];
+  }
   get [Symbol.toStringTag]() {
     return "AxiosHeaders";
   }
@@ -1322,11 +1456,11 @@ var AxiosHeaders = class {
       accessors: {}
     };
     const accessors = internals.accessors;
-    const prototype3 = this.prototype;
+    const prototype2 = this.prototype;
     function defineAccessor(_header) {
       const lHeader = normalizeHeader(_header);
       if (!accessors[lHeader]) {
-        buildAccessors(prototype3, _header);
+        buildAccessors(prototype2, _header);
         accessors[lHeader] = true;
       }
     }
@@ -1334,12 +1468,27 @@ var AxiosHeaders = class {
     return this;
   }
 };
-AxiosHeaders.accessor(["Content-Type", "Content-Length", "Accept", "Accept-Encoding", "User-Agent", "Authorization"]);
-utils_default.freezeMethods(AxiosHeaders.prototype);
+AxiosHeaders.accessor([
+  "Content-Type",
+  "Content-Length",
+  "Accept",
+  "Accept-Encoding",
+  "User-Agent",
+  "Authorization"
+]);
+utils_default.reduceDescriptors(AxiosHeaders.prototype, ({ value }, key) => {
+  let mapped = key[0].toUpperCase() + key.slice(1);
+  return {
+    get: () => value,
+    set(headerValue) {
+      this[mapped] = headerValue;
+    }
+  };
+});
 utils_default.freezeMethods(AxiosHeaders);
 var AxiosHeaders_default = AxiosHeaders;
 
-// node_modules/axios/lib/core/transformData.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/transformData.js
 function transformData(fns, response) {
   const config = this || defaults_default;
   const context = response || config;
@@ -1352,149 +1501,55 @@ function transformData(fns, response) {
   return data;
 }
 
-// node_modules/axios/lib/cancel/isCancel.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/cancel/isCancel.js
 function isCancel(value) {
   return !!(value && value.__CANCEL__);
 }
 
-// node_modules/axios/lib/cancel/CanceledError.js
-function CanceledError(message, config, request) {
-  AxiosError_default.call(this, message == null ? "canceled" : message, AxiosError_default.ERR_CANCELED, config, request);
-  this.name = "CanceledError";
-}
-utils_default.inherits(CanceledError, AxiosError_default, {
-  __CANCEL__: true
-});
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/cancel/CanceledError.js
+var CanceledError = class extends AxiosError_default {
+  /**
+   * A `CanceledError` is an object that is thrown when an operation is canceled.
+   *
+   * @param {string=} message The message.
+   * @param {Object=} config The config.
+   * @param {Object=} request The request.
+   *
+   * @returns {CanceledError} The created error.
+   */
+  constructor(message, config, request) {
+    super(message == null ? "canceled" : message, AxiosError_default.ERR_CANCELED, config, request);
+    this.name = "CanceledError";
+    this.__CANCEL__ = true;
+  }
+};
 var CanceledError_default = CanceledError;
 
-// node_modules/axios/lib/core/settle.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/settle.js
 function settle(resolve, reject, response) {
   const validateStatus2 = response.config.validateStatus;
   if (!response.status || !validateStatus2 || validateStatus2(response.status)) {
     resolve(response);
   } else {
-    reject(new AxiosError_default(
-      "Request failed with status code " + response.status,
-      [AxiosError_default.ERR_BAD_REQUEST, AxiosError_default.ERR_BAD_RESPONSE][Math.floor(response.status / 100) - 4],
-      response.config,
-      response.request,
-      response
-    ));
+    reject(
+      new AxiosError_default(
+        "Request failed with status code " + response.status,
+        [AxiosError_default.ERR_BAD_REQUEST, AxiosError_default.ERR_BAD_RESPONSE][Math.floor(response.status / 100) - 4],
+        response.config,
+        response.request,
+        response
+      )
+    );
   }
 }
 
-// node_modules/axios/lib/helpers/cookies.js
-var cookies_default = browser_default.isStandardBrowserEnv ? (
-  // Standard browser envs support document.cookie
-  function standardBrowserEnv() {
-    return {
-      write: function write(name, value, expires, path, domain, secure) {
-        const cookie = [];
-        cookie.push(name + "=" + encodeURIComponent(value));
-        if (utils_default.isNumber(expires)) {
-          cookie.push("expires=" + new Date(expires).toGMTString());
-        }
-        if (utils_default.isString(path)) {
-          cookie.push("path=" + path);
-        }
-        if (utils_default.isString(domain)) {
-          cookie.push("domain=" + domain);
-        }
-        if (secure === true) {
-          cookie.push("secure");
-        }
-        document.cookie = cookie.join("; ");
-      },
-      read: function read(name) {
-        const match = document.cookie.match(new RegExp("(^|;\\s*)(" + name + ")=([^;]*)"));
-        return match ? decodeURIComponent(match[3]) : null;
-      },
-      remove: function remove(name) {
-        this.write(name, "", Date.now() - 864e5);
-      }
-    };
-  }()
-) : (
-  // Non standard browser env (web workers, react-native) lack needed support.
-  function nonStandardBrowserEnv() {
-    return {
-      write: function write() {
-      },
-      read: function read() {
-        return null;
-      },
-      remove: function remove() {
-      }
-    };
-  }()
-);
-
-// node_modules/axios/lib/helpers/isAbsoluteURL.js
-function isAbsoluteURL(url) {
-  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
-}
-
-// node_modules/axios/lib/helpers/combineURLs.js
-function combineURLs(baseURL, relativeURL) {
-  return relativeURL ? baseURL.replace(/\/+$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
-}
-
-// node_modules/axios/lib/core/buildFullPath.js
-function buildFullPath(baseURL, requestedURL) {
-  if (baseURL && !isAbsoluteURL(requestedURL)) {
-    return combineURLs(baseURL, requestedURL);
-  }
-  return requestedURL;
-}
-
-// node_modules/axios/lib/helpers/isURLSameOrigin.js
-var isURLSameOrigin_default = browser_default.isStandardBrowserEnv ? (
-  // Standard browser envs have full support of the APIs needed to test
-  // whether the request URL is of the same origin as current location.
-  function standardBrowserEnv2() {
-    const msie = /(msie|trident)/i.test(navigator.userAgent);
-    const urlParsingNode = document.createElement("a");
-    let originURL;
-    function resolveURL(url) {
-      let href = url;
-      if (msie) {
-        urlParsingNode.setAttribute("href", href);
-        href = urlParsingNode.href;
-      }
-      urlParsingNode.setAttribute("href", href);
-      return {
-        href: urlParsingNode.href,
-        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, "") : "",
-        host: urlParsingNode.host,
-        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, "") : "",
-        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, "") : "",
-        hostname: urlParsingNode.hostname,
-        port: urlParsingNode.port,
-        pathname: urlParsingNode.pathname.charAt(0) === "/" ? urlParsingNode.pathname : "/" + urlParsingNode.pathname
-      };
-    }
-    originURL = resolveURL(window.location.href);
-    return function isURLSameOrigin(requestURL) {
-      const parsed = utils_default.isString(requestURL) ? resolveURL(requestURL) : requestURL;
-      return parsed.protocol === originURL.protocol && parsed.host === originURL.host;
-    };
-  }()
-) : (
-  // Non standard browser envs (web workers, react-native) lack needed support.
-  function nonStandardBrowserEnv2() {
-    return function isURLSameOrigin() {
-      return true;
-    };
-  }()
-);
-
-// node_modules/axios/lib/helpers/parseProtocol.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/parseProtocol.js
 function parseProtocol(url) {
   const match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
   return match && match[1] || "";
 }
 
-// node_modules/axios/lib/helpers/speedometer.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/speedometer.js
 function speedometer(samplesCount, min) {
   samplesCount = samplesCount || 10;
   const bytes = new Array(samplesCount);
@@ -1530,11 +1585,46 @@ function speedometer(samplesCount, min) {
 }
 var speedometer_default = speedometer;
 
-// node_modules/axios/lib/adapters/xhr.js
-function progressEventReducer(listener, isDownloadStream) {
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/throttle.js
+function throttle(fn, freq) {
+  let timestamp = 0;
+  let threshold = 1e3 / freq;
+  let lastArgs;
+  let timer;
+  const invoke = (args, now = Date.now()) => {
+    timestamp = now;
+    lastArgs = null;
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    fn(...args);
+  };
+  const throttled = (...args) => {
+    const now = Date.now();
+    const passed = now - timestamp;
+    if (passed >= threshold) {
+      invoke(args, now);
+    } else {
+      lastArgs = args;
+      if (!timer) {
+        timer = setTimeout(() => {
+          timer = null;
+          invoke(lastArgs);
+        }, threshold - passed);
+      }
+    }
+  };
+  const flush = () => lastArgs && invoke(lastArgs);
+  return [throttled, flush];
+}
+var throttle_default = throttle;
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/progressEventReducer.js
+var progressEventReducer = (listener, isDownloadStream, freq = 3) => {
   let bytesNotified = 0;
   const _speedometer = speedometer_default(50, 250);
-  return (e) => {
+  return throttle_default((e) => {
     const loaded = e.loaded;
     const total = e.lengthComputable ? e.total : void 0;
     const progressBytes = loaded - bytesNotified;
@@ -1548,249 +1638,111 @@ function progressEventReducer(listener, isDownloadStream) {
       bytes: progressBytes,
       rate: rate ? rate : void 0,
       estimated: rate && total && inRange ? (total - loaded) / rate : void 0,
-      event: e
+      event: e,
+      lengthComputable: total != null,
+      [isDownloadStream ? "download" : "upload"]: true
     };
-    data[isDownloadStream ? "download" : "upload"] = true;
     listener(data);
-  };
-}
-var isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
-var xhr_default = isXHRAdapterSupported && function(config) {
-  return new Promise(function dispatchXhrRequest(resolve, reject) {
-    let requestData = config.data;
-    const requestHeaders = AxiosHeaders_default.from(config.headers).normalize();
-    const responseType = config.responseType;
-    let onCanceled;
-    function done() {
-      if (config.cancelToken) {
-        config.cancelToken.unsubscribe(onCanceled);
-      }
-      if (config.signal) {
-        config.signal.removeEventListener("abort", onCanceled);
-      }
-    }
-    if (utils_default.isFormData(requestData)) {
-      if (browser_default.isStandardBrowserEnv || browser_default.isStandardBrowserWebWorkerEnv) {
-        requestHeaders.setContentType(false);
-      } else {
-        requestHeaders.setContentType("multipart/form-data;", false);
-      }
-    }
-    let request = new XMLHttpRequest();
-    if (config.auth) {
-      const username = config.auth.username || "";
-      const password = config.auth.password ? unescape(encodeURIComponent(config.auth.password)) : "";
-      requestHeaders.set("Authorization", "Basic " + btoa(username + ":" + password));
-    }
-    const fullPath = buildFullPath(config.baseURL, config.url);
-    request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
-    request.timeout = config.timeout;
-    function onloadend() {
-      if (!request) {
+  }, freq);
+};
+var progressEventDecorator = (total, throttled) => {
+  const lengthComputable = total != null;
+  return [
+    (loaded) => throttled[0]({
+      lengthComputable,
+      total,
+      loaded
+    }),
+    throttled[1]
+  ];
+};
+var asyncDecorator = (fn) => (...args) => utils_default.asap(() => fn(...args));
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/isURLSameOrigin.js
+var isURLSameOrigin_default = platform_default.hasStandardBrowserEnv ? ((origin2, isMSIE) => (url) => {
+  url = new URL(url, platform_default.origin);
+  return origin2.protocol === url.protocol && origin2.host === url.host && (isMSIE || origin2.port === url.port);
+})(
+  new URL(platform_default.origin),
+  platform_default.navigator && /(msie|trident)/i.test(platform_default.navigator.userAgent)
+) : () => true;
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/cookies.js
+var cookies_default = platform_default.hasStandardBrowserEnv ? (
+  // Standard browser envs support document.cookie
+  {
+    write(name, value, expires, path, domain, secure, sameSite) {
+      if (typeof document === "undefined")
         return;
+      const cookie = [`${name}=${encodeURIComponent(value)}`];
+      if (utils_default.isNumber(expires)) {
+        cookie.push(`expires=${new Date(expires).toUTCString()}`);
       }
-      const responseHeaders = AxiosHeaders_default.from(
-        "getAllResponseHeaders" in request && request.getAllResponseHeaders()
-      );
-      const responseData = !responseType || responseType === "text" || responseType === "json" ? request.responseText : request.response;
-      const response = {
-        data: responseData,
-        status: request.status,
-        statusText: request.statusText,
-        headers: responseHeaders,
-        config,
-        request
-      };
-      settle(function _resolve(value) {
-        resolve(value);
-        done();
-      }, function _reject(err) {
-        reject(err);
-        done();
-      }, response);
-      request = null;
-    }
-    if ("onloadend" in request) {
-      request.onloadend = onloadend;
-    } else {
-      request.onreadystatechange = function handleLoad() {
-        if (!request || request.readyState !== 4) {
-          return;
-        }
-        if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf("file:") === 0)) {
-          return;
-        }
-        setTimeout(onloadend);
-      };
-    }
-    request.onabort = function handleAbort() {
-      if (!request) {
-        return;
+      if (utils_default.isString(path)) {
+        cookie.push(`path=${path}`);
       }
-      reject(new AxiosError_default("Request aborted", AxiosError_default.ECONNABORTED, config, request));
-      request = null;
-    };
-    request.onerror = function handleError() {
-      reject(new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config, request));
-      request = null;
-    };
-    request.ontimeout = function handleTimeout() {
-      let timeoutErrorMessage = config.timeout ? "timeout of " + config.timeout + "ms exceeded" : "timeout exceeded";
-      const transitional2 = config.transitional || transitional_default;
-      if (config.timeoutErrorMessage) {
-        timeoutErrorMessage = config.timeoutErrorMessage;
+      if (utils_default.isString(domain)) {
+        cookie.push(`domain=${domain}`);
       }
-      reject(new AxiosError_default(
-        timeoutErrorMessage,
-        transitional2.clarifyTimeoutError ? AxiosError_default.ETIMEDOUT : AxiosError_default.ECONNABORTED,
-        config,
-        request
-      ));
-      request = null;
-    };
-    if (browser_default.isStandardBrowserEnv) {
-      const xsrfValue = (config.withCredentials || isURLSameOrigin_default(fullPath)) && config.xsrfCookieName && cookies_default.read(config.xsrfCookieName);
-      if (xsrfValue) {
-        requestHeaders.set(config.xsrfHeaderName, xsrfValue);
+      if (secure === true) {
+        cookie.push("secure");
       }
-    }
-    requestData === void 0 && requestHeaders.setContentType(null);
-    if ("setRequestHeader" in request) {
-      utils_default.forEach(requestHeaders.toJSON(), function setRequestHeader(val, key) {
-        request.setRequestHeader(key, val);
-      });
-    }
-    if (!utils_default.isUndefined(config.withCredentials)) {
-      request.withCredentials = !!config.withCredentials;
-    }
-    if (responseType && responseType !== "json") {
-      request.responseType = config.responseType;
-    }
-    if (typeof config.onDownloadProgress === "function") {
-      request.addEventListener("progress", progressEventReducer(config.onDownloadProgress, true));
-    }
-    if (typeof config.onUploadProgress === "function" && request.upload) {
-      request.upload.addEventListener("progress", progressEventReducer(config.onUploadProgress));
-    }
-    if (config.cancelToken || config.signal) {
-      onCanceled = (cancel) => {
-        if (!request) {
-          return;
-        }
-        reject(!cancel || cancel.type ? new CanceledError_default(null, config, request) : cancel);
-        request.abort();
-        request = null;
-      };
-      config.cancelToken && config.cancelToken.subscribe(onCanceled);
-      if (config.signal) {
-        config.signal.aborted ? onCanceled() : config.signal.addEventListener("abort", onCanceled);
+      if (utils_default.isString(sameSite)) {
+        cookie.push(`SameSite=${sameSite}`);
       }
+      document.cookie = cookie.join("; ");
+    },
+    read(name) {
+      if (typeof document === "undefined")
+        return null;
+      const match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+      return match ? decodeURIComponent(match[1]) : null;
+    },
+    remove(name) {
+      this.write(name, "", Date.now() - 864e5, "/");
     }
-    const protocol = parseProtocol(fullPath);
-    if (protocol && browser_default.protocols.indexOf(protocol) === -1) {
-      reject(new AxiosError_default("Unsupported protocol " + protocol + ":", AxiosError_default.ERR_BAD_REQUEST, config));
-      return;
+  }
+) : (
+  // Non-standard browser env (web workers, react-native) lack needed support.
+  {
+    write() {
+    },
+    read() {
+      return null;
+    },
+    remove() {
     }
-    request.send(requestData || null);
-  });
-};
+  }
+);
 
-// node_modules/axios/lib/adapters/adapters.js
-var knownAdapters = {
-  http: null_default,
-  xhr: xhr_default
-};
-utils_default.forEach(knownAdapters, (fn, value) => {
-  if (fn) {
-    try {
-      Object.defineProperty(fn, "name", { value });
-    } catch (e) {
-    }
-    Object.defineProperty(fn, "adapterName", { value });
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/isAbsoluteURL.js
+function isAbsoluteURL(url) {
+  if (typeof url !== "string") {
+    return false;
   }
-});
-var adapters_default = {
-  getAdapter: (adapters) => {
-    adapters = utils_default.isArray(adapters) ? adapters : [adapters];
-    const { length } = adapters;
-    let nameOrAdapter;
-    let adapter;
-    for (let i = 0; i < length; i++) {
-      nameOrAdapter = adapters[i];
-      if (adapter = utils_default.isString(nameOrAdapter) ? knownAdapters[nameOrAdapter.toLowerCase()] : nameOrAdapter) {
-        break;
-      }
-    }
-    if (!adapter) {
-      if (adapter === false) {
-        throw new AxiosError_default(
-          `Adapter ${nameOrAdapter} is not supported by the environment`,
-          "ERR_NOT_SUPPORT"
-        );
-      }
-      throw new Error(
-        utils_default.hasOwnProp(knownAdapters, nameOrAdapter) ? `Adapter '${nameOrAdapter}' is not available in the build` : `Unknown adapter '${nameOrAdapter}'`
-      );
-    }
-    if (!utils_default.isFunction(adapter)) {
-      throw new TypeError("adapter is not a function");
-    }
-    return adapter;
-  },
-  adapters: knownAdapters
-};
-
-// node_modules/axios/lib/core/dispatchRequest.js
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-  if (config.signal && config.signal.aborted) {
-    throw new CanceledError_default(null, config);
-  }
-}
-function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-  config.headers = AxiosHeaders_default.from(config.headers);
-  config.data = transformData.call(
-    config,
-    config.transformRequest
-  );
-  if (["post", "put", "patch"].indexOf(config.method) !== -1) {
-    config.headers.setContentType("application/x-www-form-urlencoded", false);
-  }
-  const adapter = adapters_default.getAdapter(config.adapter || defaults_default.adapter);
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-    response.data = transformData.call(
-      config,
-      config.transformResponse,
-      response
-    );
-    response.headers = AxiosHeaders_default.from(response.headers);
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-      if (reason && reason.response) {
-        reason.response.data = transformData.call(
-          config,
-          config.transformResponse,
-          reason.response
-        );
-        reason.response.headers = AxiosHeaders_default.from(reason.response.headers);
-      }
-    }
-    return Promise.reject(reason);
-  });
+  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
 }
 
-// node_modules/axios/lib/core/mergeConfig.js
-var headersToObject = (thing) => thing instanceof AxiosHeaders_default ? thing.toJSON() : thing;
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/combineURLs.js
+function combineURLs(baseURL, relativeURL) {
+  return relativeURL ? baseURL.replace(/\/?\/$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
+}
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/buildFullPath.js
+function buildFullPath(baseURL, requestedURL, allowAbsoluteUrls) {
+  let isRelativeUrl = !isAbsoluteURL(requestedURL);
+  if (baseURL && (isRelativeUrl || allowAbsoluteUrls == false)) {
+    return combineURLs(baseURL, requestedURL);
+  }
+  return requestedURL;
+}
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/mergeConfig.js
+var headersToObject = (thing) => thing instanceof AxiosHeaders_default ? { ...thing } : thing;
 function mergeConfig(config1, config2) {
   config2 = config2 || {};
   const config = {};
-  function getMergedValue(target, source, caseless) {
+  function getMergedValue(target, source, prop, caseless) {
     if (utils_default.isPlainObject(target) && utils_default.isPlainObject(source)) {
       return utils_default.merge.call({ caseless }, target, source);
     } else if (utils_default.isPlainObject(source)) {
@@ -1800,11 +1752,11 @@ function mergeConfig(config1, config2) {
     }
     return source;
   }
-  function mergeDeepProperties(a, b, caseless) {
+  function mergeDeepProperties(a, b, prop, caseless) {
     if (!utils_default.isUndefined(b)) {
-      return getMergedValue(a, b, caseless);
+      return getMergedValue(a, b, prop, caseless);
     } else if (!utils_default.isUndefined(a)) {
-      return getMergedValue(void 0, a, caseless);
+      return getMergedValue(void 0, a, prop, caseless);
     }
   }
   function valueFromConfig2(a, b) {
@@ -1837,6 +1789,7 @@ function mergeConfig(config1, config2) {
     timeout: defaultToConfig2,
     timeoutMessage: defaultToConfig2,
     withCredentials: defaultToConfig2,
+    withXSRFToken: defaultToConfig2,
     adapter: defaultToConfig2,
     responseType: defaultToConfig2,
     xsrfCookieName: defaultToConfig2,
@@ -1854,20 +1807,655 @@ function mergeConfig(config1, config2) {
     socketPath: defaultToConfig2,
     responseEncoding: defaultToConfig2,
     validateStatus: mergeDirectKeys,
-    headers: (a, b) => mergeDeepProperties(headersToObject(a), headersToObject(b), true)
+    headers: (a, b, prop) => mergeDeepProperties(headersToObject(a), headersToObject(b), prop, true)
   };
-  utils_default.forEach(Object.keys(Object.assign({}, config1, config2)), function computeConfigValue(prop) {
-    const merge2 = mergeMap[prop] || mergeDeepProperties;
+  utils_default.forEach(Object.keys({ ...config1, ...config2 }), function computeConfigValue(prop) {
+    if (prop === "__proto__" || prop === "constructor" || prop === "prototype")
+      return;
+    const merge2 = utils_default.hasOwnProp(mergeMap, prop) ? mergeMap[prop] : mergeDeepProperties;
     const configValue = merge2(config1[prop], config2[prop], prop);
     utils_default.isUndefined(configValue) && merge2 !== mergeDirectKeys || (config[prop] = configValue);
   });
   return config;
 }
 
-// node_modules/axios/lib/env/data.js
-var VERSION = "1.4.0";
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/resolveConfig.js
+var resolveConfig_default = (config) => {
+  const newConfig = mergeConfig({}, config);
+  let { data, withXSRFToken, xsrfHeaderName, xsrfCookieName, headers, auth } = newConfig;
+  newConfig.headers = headers = AxiosHeaders_default.from(headers);
+  newConfig.url = buildURL(
+    buildFullPath(newConfig.baseURL, newConfig.url, newConfig.allowAbsoluteUrls),
+    config.params,
+    config.paramsSerializer
+  );
+  if (auth) {
+    headers.set(
+      "Authorization",
+      "Basic " + btoa(
+        (auth.username || "") + ":" + (auth.password ? unescape(encodeURIComponent(auth.password)) : "")
+      )
+    );
+  }
+  if (utils_default.isFormData(data)) {
+    if (platform_default.hasStandardBrowserEnv || platform_default.hasStandardBrowserWebWorkerEnv) {
+      headers.setContentType(void 0);
+    } else if (utils_default.isFunction(data.getHeaders)) {
+      const formHeaders = data.getHeaders();
+      const allowedHeaders = ["content-type", "content-length"];
+      Object.entries(formHeaders).forEach(([key, val]) => {
+        if (allowedHeaders.includes(key.toLowerCase())) {
+          headers.set(key, val);
+        }
+      });
+    }
+  }
+  if (platform_default.hasStandardBrowserEnv) {
+    withXSRFToken && utils_default.isFunction(withXSRFToken) && (withXSRFToken = withXSRFToken(newConfig));
+    if (withXSRFToken || withXSRFToken !== false && isURLSameOrigin_default(newConfig.url)) {
+      const xsrfValue = xsrfHeaderName && xsrfCookieName && cookies_default.read(xsrfCookieName);
+      if (xsrfValue) {
+        headers.set(xsrfHeaderName, xsrfValue);
+      }
+    }
+  }
+  return newConfig;
+};
 
-// node_modules/axios/lib/helpers/validator.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/adapters/xhr.js
+var isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
+var xhr_default = isXHRAdapterSupported && function(config) {
+  return new Promise(function dispatchXhrRequest(resolve, reject) {
+    const _config = resolveConfig_default(config);
+    let requestData = _config.data;
+    const requestHeaders = AxiosHeaders_default.from(_config.headers).normalize();
+    let { responseType, onUploadProgress, onDownloadProgress } = _config;
+    let onCanceled;
+    let uploadThrottled, downloadThrottled;
+    let flushUpload, flushDownload;
+    function done() {
+      flushUpload && flushUpload();
+      flushDownload && flushDownload();
+      _config.cancelToken && _config.cancelToken.unsubscribe(onCanceled);
+      _config.signal && _config.signal.removeEventListener("abort", onCanceled);
+    }
+    let request = new XMLHttpRequest();
+    request.open(_config.method.toUpperCase(), _config.url, true);
+    request.timeout = _config.timeout;
+    function onloadend() {
+      if (!request) {
+        return;
+      }
+      const responseHeaders = AxiosHeaders_default.from(
+        "getAllResponseHeaders" in request && request.getAllResponseHeaders()
+      );
+      const responseData = !responseType || responseType === "text" || responseType === "json" ? request.responseText : request.response;
+      const response = {
+        data: responseData,
+        status: request.status,
+        statusText: request.statusText,
+        headers: responseHeaders,
+        config,
+        request
+      };
+      settle(
+        function _resolve(value) {
+          resolve(value);
+          done();
+        },
+        function _reject(err) {
+          reject(err);
+          done();
+        },
+        response
+      );
+      request = null;
+    }
+    if ("onloadend" in request) {
+      request.onloadend = onloadend;
+    } else {
+      request.onreadystatechange = function handleLoad() {
+        if (!request || request.readyState !== 4) {
+          return;
+        }
+        if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf("file:") === 0)) {
+          return;
+        }
+        setTimeout(onloadend);
+      };
+    }
+    request.onabort = function handleAbort() {
+      if (!request) {
+        return;
+      }
+      reject(new AxiosError_default("Request aborted", AxiosError_default.ECONNABORTED, config, request));
+      request = null;
+    };
+    request.onerror = function handleError(event) {
+      const msg = event && event.message ? event.message : "Network Error";
+      const err = new AxiosError_default(msg, AxiosError_default.ERR_NETWORK, config, request);
+      err.event = event || null;
+      reject(err);
+      request = null;
+    };
+    request.ontimeout = function handleTimeout() {
+      let timeoutErrorMessage = _config.timeout ? "timeout of " + _config.timeout + "ms exceeded" : "timeout exceeded";
+      const transitional2 = _config.transitional || transitional_default;
+      if (_config.timeoutErrorMessage) {
+        timeoutErrorMessage = _config.timeoutErrorMessage;
+      }
+      reject(
+        new AxiosError_default(
+          timeoutErrorMessage,
+          transitional2.clarifyTimeoutError ? AxiosError_default.ETIMEDOUT : AxiosError_default.ECONNABORTED,
+          config,
+          request
+        )
+      );
+      request = null;
+    };
+    requestData === void 0 && requestHeaders.setContentType(null);
+    if ("setRequestHeader" in request) {
+      utils_default.forEach(requestHeaders.toJSON(), function setRequestHeader(val, key) {
+        request.setRequestHeader(key, val);
+      });
+    }
+    if (!utils_default.isUndefined(_config.withCredentials)) {
+      request.withCredentials = !!_config.withCredentials;
+    }
+    if (responseType && responseType !== "json") {
+      request.responseType = _config.responseType;
+    }
+    if (onDownloadProgress) {
+      [downloadThrottled, flushDownload] = progressEventReducer(onDownloadProgress, true);
+      request.addEventListener("progress", downloadThrottled);
+    }
+    if (onUploadProgress && request.upload) {
+      [uploadThrottled, flushUpload] = progressEventReducer(onUploadProgress);
+      request.upload.addEventListener("progress", uploadThrottled);
+      request.upload.addEventListener("loadend", flushUpload);
+    }
+    if (_config.cancelToken || _config.signal) {
+      onCanceled = (cancel) => {
+        if (!request) {
+          return;
+        }
+        reject(!cancel || cancel.type ? new CanceledError_default(null, config, request) : cancel);
+        request.abort();
+        request = null;
+      };
+      _config.cancelToken && _config.cancelToken.subscribe(onCanceled);
+      if (_config.signal) {
+        _config.signal.aborted ? onCanceled() : _config.signal.addEventListener("abort", onCanceled);
+      }
+    }
+    const protocol = parseProtocol(_config.url);
+    if (protocol && platform_default.protocols.indexOf(protocol) === -1) {
+      reject(
+        new AxiosError_default(
+          "Unsupported protocol " + protocol + ":",
+          AxiosError_default.ERR_BAD_REQUEST,
+          config
+        )
+      );
+      return;
+    }
+    request.send(requestData || null);
+  });
+};
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/composeSignals.js
+var composeSignals = (signals, timeout) => {
+  const { length } = signals = signals ? signals.filter(Boolean) : [];
+  if (timeout || length) {
+    let controller = new AbortController();
+    let aborted;
+    const onabort = function(reason) {
+      if (!aborted) {
+        aborted = true;
+        unsubscribe();
+        const err = reason instanceof Error ? reason : this.reason;
+        controller.abort(
+          err instanceof AxiosError_default ? err : new CanceledError_default(err instanceof Error ? err.message : err)
+        );
+      }
+    };
+    let timer = timeout && setTimeout(() => {
+      timer = null;
+      onabort(new AxiosError_default(`timeout of ${timeout}ms exceeded`, AxiosError_default.ETIMEDOUT));
+    }, timeout);
+    const unsubscribe = () => {
+      if (signals) {
+        timer && clearTimeout(timer);
+        timer = null;
+        signals.forEach((signal2) => {
+          signal2.unsubscribe ? signal2.unsubscribe(onabort) : signal2.removeEventListener("abort", onabort);
+        });
+        signals = null;
+      }
+    };
+    signals.forEach((signal2) => signal2.addEventListener("abort", onabort));
+    const { signal } = controller;
+    signal.unsubscribe = () => utils_default.asap(unsubscribe);
+    return signal;
+  }
+};
+var composeSignals_default = composeSignals;
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/trackStream.js
+var streamChunk = function* (chunk, chunkSize) {
+  let len = chunk.byteLength;
+  if (!chunkSize || len < chunkSize) {
+    yield chunk;
+    return;
+  }
+  let pos = 0;
+  let end;
+  while (pos < len) {
+    end = pos + chunkSize;
+    yield chunk.slice(pos, end);
+    pos = end;
+  }
+};
+var readBytes = async function* (iterable, chunkSize) {
+  for await (const chunk of readStream(iterable)) {
+    yield* streamChunk(chunk, chunkSize);
+  }
+};
+var readStream = async function* (stream) {
+  if (stream[Symbol.asyncIterator]) {
+    yield* stream;
+    return;
+  }
+  const reader = stream.getReader();
+  try {
+    for (; ; ) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+      yield value;
+    }
+  } finally {
+    await reader.cancel();
+  }
+};
+var trackStream = (stream, chunkSize, onProgress, onFinish) => {
+  const iterator2 = readBytes(stream, chunkSize);
+  let bytes = 0;
+  let done;
+  let _onFinish = (e) => {
+    if (!done) {
+      done = true;
+      onFinish && onFinish(e);
+    }
+  };
+  return new ReadableStream(
+    {
+      async pull(controller) {
+        try {
+          const { done: done2, value } = await iterator2.next();
+          if (done2) {
+            _onFinish();
+            controller.close();
+            return;
+          }
+          let len = value.byteLength;
+          if (onProgress) {
+            let loadedBytes = bytes += len;
+            onProgress(loadedBytes);
+          }
+          controller.enqueue(new Uint8Array(value));
+        } catch (err) {
+          _onFinish(err);
+          throw err;
+        }
+      },
+      cancel(reason) {
+        _onFinish(reason);
+        return iterator2.return();
+      }
+    },
+    {
+      highWaterMark: 2
+    }
+  );
+};
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/adapters/fetch.js
+var DEFAULT_CHUNK_SIZE = 64 * 1024;
+var { isFunction: isFunction2 } = utils_default;
+var globalFetchAPI = (({ Request, Response }) => ({
+  Request,
+  Response
+}))(utils_default.global);
+var { ReadableStream: ReadableStream2, TextEncoder } = utils_default.global;
+var test = (fn, ...args) => {
+  try {
+    return !!fn(...args);
+  } catch (e) {
+    return false;
+  }
+};
+var factory = (env) => {
+  env = utils_default.merge.call(
+    {
+      skipUndefined: true
+    },
+    globalFetchAPI,
+    env
+  );
+  const { fetch: envFetch, Request, Response } = env;
+  const isFetchSupported = envFetch ? isFunction2(envFetch) : typeof fetch === "function";
+  const isRequestSupported = isFunction2(Request);
+  const isResponseSupported = isFunction2(Response);
+  if (!isFetchSupported) {
+    return false;
+  }
+  const isReadableStreamSupported = isFetchSupported && isFunction2(ReadableStream2);
+  const encodeText = isFetchSupported && (typeof TextEncoder === "function" ? ((encoder) => (str) => encoder.encode(str))(new TextEncoder()) : async (str) => new Uint8Array(await new Request(str).arrayBuffer()));
+  const supportsRequestStream = isRequestSupported && isReadableStreamSupported && test(() => {
+    let duplexAccessed = false;
+    const body = new ReadableStream2();
+    const hasContentType = new Request(platform_default.origin, {
+      body,
+      method: "POST",
+      get duplex() {
+        duplexAccessed = true;
+        return "half";
+      }
+    }).headers.has("Content-Type");
+    body.cancel();
+    return duplexAccessed && !hasContentType;
+  });
+  const supportsResponseStream = isResponseSupported && isReadableStreamSupported && test(() => utils_default.isReadableStream(new Response("").body));
+  const resolvers = {
+    stream: supportsResponseStream && ((res) => res.body)
+  };
+  isFetchSupported && (() => {
+    ["text", "arrayBuffer", "blob", "formData", "stream"].forEach((type) => {
+      !resolvers[type] && (resolvers[type] = (res, config) => {
+        let method = res && res[type];
+        if (method) {
+          return method.call(res);
+        }
+        throw new AxiosError_default(
+          `Response type '${type}' is not supported`,
+          AxiosError_default.ERR_NOT_SUPPORT,
+          config
+        );
+      });
+    });
+  })();
+  const getBodyLength = async (body) => {
+    if (body == null) {
+      return 0;
+    }
+    if (utils_default.isBlob(body)) {
+      return body.size;
+    }
+    if (utils_default.isSpecCompliantForm(body)) {
+      const _request = new Request(platform_default.origin, {
+        method: "POST",
+        body
+      });
+      return (await _request.arrayBuffer()).byteLength;
+    }
+    if (utils_default.isArrayBufferView(body) || utils_default.isArrayBuffer(body)) {
+      return body.byteLength;
+    }
+    if (utils_default.isURLSearchParams(body)) {
+      body = body + "";
+    }
+    if (utils_default.isString(body)) {
+      return (await encodeText(body)).byteLength;
+    }
+  };
+  const resolveBodyLength = async (headers, body) => {
+    const length = utils_default.toFiniteNumber(headers.getContentLength());
+    return length == null ? getBodyLength(body) : length;
+  };
+  return async (config) => {
+    let {
+      url,
+      method,
+      data,
+      signal,
+      cancelToken,
+      timeout,
+      onDownloadProgress,
+      onUploadProgress,
+      responseType,
+      headers,
+      withCredentials = "same-origin",
+      fetchOptions
+    } = resolveConfig_default(config);
+    let _fetch = envFetch || fetch;
+    responseType = responseType ? (responseType + "").toLowerCase() : "text";
+    let composedSignal = composeSignals_default(
+      [signal, cancelToken && cancelToken.toAbortSignal()],
+      timeout
+    );
+    let request = null;
+    const unsubscribe = composedSignal && composedSignal.unsubscribe && (() => {
+      composedSignal.unsubscribe();
+    });
+    let requestContentLength;
+    try {
+      if (onUploadProgress && supportsRequestStream && method !== "get" && method !== "head" && (requestContentLength = await resolveBodyLength(headers, data)) !== 0) {
+        let _request = new Request(url, {
+          method: "POST",
+          body: data,
+          duplex: "half"
+        });
+        let contentTypeHeader;
+        if (utils_default.isFormData(data) && (contentTypeHeader = _request.headers.get("content-type"))) {
+          headers.setContentType(contentTypeHeader);
+        }
+        if (_request.body) {
+          const [onProgress, flush] = progressEventDecorator(
+            requestContentLength,
+            progressEventReducer(asyncDecorator(onUploadProgress))
+          );
+          data = trackStream(_request.body, DEFAULT_CHUNK_SIZE, onProgress, flush);
+        }
+      }
+      if (!utils_default.isString(withCredentials)) {
+        withCredentials = withCredentials ? "include" : "omit";
+      }
+      const isCredentialsSupported = isRequestSupported && "credentials" in Request.prototype;
+      const resolvedOptions = {
+        ...fetchOptions,
+        signal: composedSignal,
+        method: method.toUpperCase(),
+        headers: headers.normalize().toJSON(),
+        body: data,
+        duplex: "half",
+        credentials: isCredentialsSupported ? withCredentials : void 0
+      };
+      request = isRequestSupported && new Request(url, resolvedOptions);
+      let response = await (isRequestSupported ? _fetch(request, fetchOptions) : _fetch(url, resolvedOptions));
+      const isStreamResponse = supportsResponseStream && (responseType === "stream" || responseType === "response");
+      if (supportsResponseStream && (onDownloadProgress || isStreamResponse && unsubscribe)) {
+        const options = {};
+        ["status", "statusText", "headers"].forEach((prop) => {
+          options[prop] = response[prop];
+        });
+        const responseContentLength = utils_default.toFiniteNumber(response.headers.get("content-length"));
+        const [onProgress, flush] = onDownloadProgress && progressEventDecorator(
+          responseContentLength,
+          progressEventReducer(asyncDecorator(onDownloadProgress), true)
+        ) || [];
+        response = new Response(
+          trackStream(response.body, DEFAULT_CHUNK_SIZE, onProgress, () => {
+            flush && flush();
+            unsubscribe && unsubscribe();
+          }),
+          options
+        );
+      }
+      responseType = responseType || "text";
+      let responseData = await resolvers[utils_default.findKey(resolvers, responseType) || "text"](
+        response,
+        config
+      );
+      !isStreamResponse && unsubscribe && unsubscribe();
+      return await new Promise((resolve, reject) => {
+        settle(resolve, reject, {
+          data: responseData,
+          headers: AxiosHeaders_default.from(response.headers),
+          status: response.status,
+          statusText: response.statusText,
+          config,
+          request
+        });
+      });
+    } catch (err) {
+      unsubscribe && unsubscribe();
+      if (err && err.name === "TypeError" && /Load failed|fetch/i.test(err.message)) {
+        throw Object.assign(
+          new AxiosError_default(
+            "Network Error",
+            AxiosError_default.ERR_NETWORK,
+            config,
+            request,
+            err && err.response
+          ),
+          {
+            cause: err.cause || err
+          }
+        );
+      }
+      throw AxiosError_default.from(err, err && err.code, config, request, err && err.response);
+    }
+  };
+};
+var seedCache = /* @__PURE__ */ new Map();
+var getFetch = (config) => {
+  let env = config && config.env || {};
+  const { fetch: fetch2, Request, Response } = env;
+  const seeds = [Request, Response, fetch2];
+  let len = seeds.length, i = len, seed, target, map = seedCache;
+  while (i--) {
+    seed = seeds[i];
+    target = map.get(seed);
+    target === void 0 && map.set(seed, target = i ? /* @__PURE__ */ new Map() : factory(env));
+    map = target;
+  }
+  return target;
+};
+var adapter = getFetch();
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/adapters/adapters.js
+var knownAdapters = {
+  http: null_default,
+  xhr: xhr_default,
+  fetch: {
+    get: getFetch
+  }
+};
+utils_default.forEach(knownAdapters, (fn, value) => {
+  if (fn) {
+    try {
+      Object.defineProperty(fn, "name", { value });
+    } catch (e) {
+    }
+    Object.defineProperty(fn, "adapterName", { value });
+  }
+});
+var renderReason = (reason) => `- ${reason}`;
+var isResolvedHandle = (adapter2) => utils_default.isFunction(adapter2) || adapter2 === null || adapter2 === false;
+function getAdapter(adapters, config) {
+  adapters = utils_default.isArray(adapters) ? adapters : [adapters];
+  const { length } = adapters;
+  let nameOrAdapter;
+  let adapter2;
+  const rejectedReasons = {};
+  for (let i = 0; i < length; i++) {
+    nameOrAdapter = adapters[i];
+    let id;
+    adapter2 = nameOrAdapter;
+    if (!isResolvedHandle(nameOrAdapter)) {
+      adapter2 = knownAdapters[(id = String(nameOrAdapter)).toLowerCase()];
+      if (adapter2 === void 0) {
+        throw new AxiosError_default(`Unknown adapter '${id}'`);
+      }
+    }
+    if (adapter2 && (utils_default.isFunction(adapter2) || (adapter2 = adapter2.get(config)))) {
+      break;
+    }
+    rejectedReasons[id || "#" + i] = adapter2;
+  }
+  if (!adapter2) {
+    const reasons = Object.entries(rejectedReasons).map(
+      ([id, state]) => `adapter ${id} ` + (state === false ? "is not supported by the environment" : "is not available in the build")
+    );
+    let s = length ? reasons.length > 1 ? "since :\n" + reasons.map(renderReason).join("\n") : " " + renderReason(reasons[0]) : "as no adapter specified";
+    throw new AxiosError_default(
+      `There is no suitable adapter to dispatch the request ` + s,
+      "ERR_NOT_SUPPORT"
+    );
+  }
+  return adapter2;
+}
+var adapters_default = {
+  /**
+   * Resolve an adapter from a list of adapter names or functions.
+   * @type {Function}
+   */
+  getAdapter,
+  /**
+   * Exposes all known adapters
+   * @type {Object<string, Function|Object>}
+   */
+  adapters: knownAdapters
+};
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/dispatchRequest.js
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+  if (config.signal && config.signal.aborted) {
+    throw new CanceledError_default(null, config);
+  }
+}
+function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+  config.headers = AxiosHeaders_default.from(config.headers);
+  config.data = transformData.call(config, config.transformRequest);
+  if (["post", "put", "patch"].indexOf(config.method) !== -1) {
+    config.headers.setContentType("application/x-www-form-urlencoded", false);
+  }
+  const adapter2 = adapters_default.getAdapter(config.adapter || defaults_default.adapter, config);
+  return adapter2(config).then(
+    function onAdapterResolution(response) {
+      throwIfCancellationRequested(config);
+      response.data = transformData.call(config, config.transformResponse, response);
+      response.headers = AxiosHeaders_default.from(response.headers);
+      return response;
+    },
+    function onAdapterRejection(reason) {
+      if (!isCancel(reason)) {
+        throwIfCancellationRequested(config);
+        if (reason && reason.response) {
+          reason.response.data = transformData.call(
+            config,
+            config.transformResponse,
+            reason.response
+          );
+          reason.response.headers = AxiosHeaders_default.from(reason.response.headers);
+        }
+      }
+      return Promise.reject(reason);
+    }
+  );
+}
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/env/data.js
+var VERSION = "1.14.0";
+
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/validator.js
 var validators = {};
 ["object", "boolean", "number", "function", "string", "symbol"].forEach((type, i) => {
   validators[type] = function validator(thing) {
@@ -1898,6 +2486,12 @@ validators.transitional = function transitional(validator, version, message) {
     return validator ? validator(value, opt, opts) : true;
   };
 };
+validators.spelling = function spelling(correctSpelling) {
+  return (value, opt) => {
+    console.warn(`${opt} is likely a misspelling of ${correctSpelling}`);
+    return true;
+  };
+};
 function assertOptions(options, schema, allowUnknown) {
   if (typeof options !== "object") {
     throw new AxiosError_default("options must be an object", AxiosError_default.ERR_BAD_OPTION_VALUE);
@@ -1911,7 +2505,10 @@ function assertOptions(options, schema, allowUnknown) {
       const value = options[opt];
       const result = value === void 0 || validator(value, opt, options);
       if (result !== true) {
-        throw new AxiosError_default("option " + opt + " must be " + result, AxiosError_default.ERR_BAD_OPTION_VALUE);
+        throw new AxiosError_default(
+          "option " + opt + " must be " + result,
+          AxiosError_default.ERR_BAD_OPTION_VALUE
+        );
       }
       continue;
     }
@@ -1925,11 +2522,11 @@ var validator_default = {
   validators
 };
 
-// node_modules/axios/lib/core/Axios.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/core/Axios.js
 var validators2 = validator_default.validators;
 var Axios = class {
   constructor(instanceConfig) {
-    this.defaults = instanceConfig;
+    this.defaults = instanceConfig || {};
     this.interceptors = {
       request: new InterceptorManager_default(),
       response: new InterceptorManager_default()
@@ -1943,7 +2540,27 @@ var Axios = class {
    *
    * @returns {Promise} The Promise to be fulfilled
    */
-  request(configOrUrl, config) {
+  async request(configOrUrl, config) {
+    try {
+      return await this._request(configOrUrl, config);
+    } catch (err) {
+      if (err instanceof Error) {
+        let dummy = {};
+        Error.captureStackTrace ? Error.captureStackTrace(dummy) : dummy = new Error();
+        const stack = dummy.stack ? dummy.stack.replace(/^.+\n/, "") : "";
+        try {
+          if (!err.stack) {
+            err.stack = stack;
+          } else if (stack && !String(err.stack).endsWith(stack.replace(/^.+\n.+\n/, ""))) {
+            err.stack += "\n" + stack;
+          }
+        } catch (e) {
+        }
+      }
+      throw err;
+    }
+  }
+  _request(configOrUrl, config) {
     if (typeof configOrUrl === "string") {
       config = config || {};
       config.url = configOrUrl;
@@ -1953,11 +2570,16 @@ var Axios = class {
     config = mergeConfig(this.defaults, config);
     const { transitional: transitional2, paramsSerializer, headers } = config;
     if (transitional2 !== void 0) {
-      validator_default.assertOptions(transitional2, {
-        silentJSONParsing: validators2.transitional(validators2.boolean),
-        forcedJSONParsing: validators2.transitional(validators2.boolean),
-        clarifyTimeoutError: validators2.transitional(validators2.boolean)
-      }, false);
+      validator_default.assertOptions(
+        transitional2,
+        {
+          silentJSONParsing: validators2.transitional(validators2.boolean),
+          forcedJSONParsing: validators2.transitional(validators2.boolean),
+          clarifyTimeoutError: validators2.transitional(validators2.boolean),
+          legacyInterceptorReqResOrdering: validators2.transitional(validators2.boolean)
+        },
+        false
+      );
     }
     if (paramsSerializer != null) {
       if (utils_default.isFunction(paramsSerializer)) {
@@ -1965,24 +2587,35 @@ var Axios = class {
           serialize: paramsSerializer
         };
       } else {
-        validator_default.assertOptions(paramsSerializer, {
-          encode: validators2.function,
-          serialize: validators2.function
-        }, true);
+        validator_default.assertOptions(
+          paramsSerializer,
+          {
+            encode: validators2.function,
+            serialize: validators2.function
+          },
+          true
+        );
       }
     }
+    if (config.allowAbsoluteUrls !== void 0) {
+    } else if (this.defaults.allowAbsoluteUrls !== void 0) {
+      config.allowAbsoluteUrls = this.defaults.allowAbsoluteUrls;
+    } else {
+      config.allowAbsoluteUrls = true;
+    }
+    validator_default.assertOptions(
+      config,
+      {
+        baseUrl: validators2.spelling("baseURL"),
+        withXsrfToken: validators2.spelling("withXSRFToken")
+      },
+      true
+    );
     config.method = (config.method || this.defaults.method || "get").toLowerCase();
-    let contextHeaders;
-    contextHeaders = headers && utils_default.merge(
-      headers.common,
-      headers[config.method]
-    );
-    contextHeaders && utils_default.forEach(
-      ["delete", "get", "head", "post", "put", "patch", "common"],
-      (method) => {
-        delete headers[method];
-      }
-    );
+    let contextHeaders = headers && utils_default.merge(headers.common, headers[config.method]);
+    headers && utils_default.forEach(["delete", "get", "head", "post", "put", "patch", "common"], (method) => {
+      delete headers[method];
+    });
     config.headers = AxiosHeaders_default.concat(contextHeaders, headers);
     const requestInterceptorChain = [];
     let synchronousRequestInterceptors = true;
@@ -1991,7 +2624,13 @@ var Axios = class {
         return;
       }
       synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;
-      requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
+      const transitional3 = config.transitional || transitional_default;
+      const legacyInterceptorReqResOrdering = transitional3 && transitional3.legacyInterceptorReqResOrdering;
+      if (legacyInterceptorReqResOrdering) {
+        requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
+      } else {
+        requestInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
+      }
     });
     const responseInterceptorChain = [];
     this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
@@ -2002,8 +2641,8 @@ var Axios = class {
     let len;
     if (!synchronousRequestInterceptors) {
       const chain = [dispatchRequest.bind(this), void 0];
-      chain.unshift.apply(chain, requestInterceptorChain);
-      chain.push.apply(chain, responseInterceptorChain);
+      chain.unshift(...requestInterceptorChain);
+      chain.push(...responseInterceptorChain);
       len = chain.length;
       promise = Promise.resolve(config);
       while (i < len) {
@@ -2013,7 +2652,6 @@ var Axios = class {
     }
     len = requestInterceptorChain.length;
     let newConfig = config;
-    i = 0;
     while (i < len) {
       const onFulfilled = requestInterceptorChain[i++];
       const onRejected = requestInterceptorChain[i++];
@@ -2038,30 +2676,34 @@ var Axios = class {
   }
   getUri(config) {
     config = mergeConfig(this.defaults, config);
-    const fullPath = buildFullPath(config.baseURL, config.url);
+    const fullPath = buildFullPath(config.baseURL, config.url, config.allowAbsoluteUrls);
     return buildURL(fullPath, config.params, config.paramsSerializer);
   }
 };
-utils_default.forEach(["delete", "get", "head", "options"], function forEachMethodNoData2(method) {
+utils_default.forEach(["delete", "get", "head", "options"], function forEachMethodNoData(method) {
   Axios.prototype[method] = function(url, config) {
-    return this.request(mergeConfig(config || {}, {
-      method,
-      url,
-      data: (config || {}).data
-    }));
+    return this.request(
+      mergeConfig(config || {}, {
+        method,
+        url,
+        data: (config || {}).data
+      })
+    );
   };
 });
-utils_default.forEach(["post", "put", "patch"], function forEachMethodWithData2(method) {
+utils_default.forEach(["post", "put", "patch"], function forEachMethodWithData(method) {
   function generateHTTPMethod(isForm) {
     return function httpMethod(url, data, config) {
-      return this.request(mergeConfig(config || {}, {
-        method,
-        headers: isForm ? {
-          "Content-Type": "multipart/form-data"
-        } : {},
-        url,
-        data
-      }));
+      return this.request(
+        mergeConfig(config || {}, {
+          method,
+          headers: isForm ? {
+            "Content-Type": "multipart/form-data"
+          } : {},
+          url,
+          data
+        })
+      );
     };
   }
   Axios.prototype[method] = generateHTTPMethod();
@@ -2069,8 +2711,8 @@ utils_default.forEach(["post", "put", "patch"], function forEachMethodWithData2(
 });
 var Axios_default = Axios;
 
-// node_modules/axios/lib/cancel/CancelToken.js
-var CancelToken = class {
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/cancel/CancelToken.js
+var CancelToken = class _CancelToken {
   constructor(executor) {
     if (typeof executor !== "function") {
       throw new TypeError("executor must be a function.");
@@ -2142,13 +2784,22 @@ var CancelToken = class {
       this._listeners.splice(index, 1);
     }
   }
+  toAbortSignal() {
+    const controller = new AbortController();
+    const abort = (err) => {
+      controller.abort(err);
+    };
+    this.subscribe(abort);
+    controller.signal.unsubscribe = () => this.unsubscribe(abort);
+    return controller.signal;
+  }
   /**
    * Returns an object that contains a new `CancelToken` and a function that, when called,
    * cancels the `CancelToken`.
    */
   static source() {
     let cancel;
-    const token = new CancelToken(function executor(c) {
+    const token = new _CancelToken(function executor(c) {
       cancel = c;
     });
     return {
@@ -2159,19 +2810,19 @@ var CancelToken = class {
 };
 var CancelToken_default = CancelToken;
 
-// node_modules/axios/lib/helpers/spread.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/spread.js
 function spread(callback) {
   return function wrap(arr) {
     return callback.apply(null, arr);
   };
 }
 
-// node_modules/axios/lib/helpers/isAxiosError.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/isAxiosError.js
 function isAxiosError(payload) {
   return utils_default.isObject(payload) && payload.isAxiosError === true;
 }
 
-// node_modules/axios/lib/helpers/HttpStatusCode.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/helpers/HttpStatusCode.js
 var HttpStatusCode = {
   Continue: 100,
   SwitchingProtocols: 101,
@@ -2235,14 +2886,20 @@ var HttpStatusCode = {
   InsufficientStorage: 507,
   LoopDetected: 508,
   NotExtended: 510,
-  NetworkAuthenticationRequired: 511
+  NetworkAuthenticationRequired: 511,
+  WebServerIsDown: 521,
+  ConnectionTimedOut: 522,
+  OriginIsUnreachable: 523,
+  TimeoutOccurred: 524,
+  SslHandshakeFailed: 525,
+  InvalidSslCertificate: 526
 };
 Object.entries(HttpStatusCode).forEach(([key, value]) => {
   HttpStatusCode[value] = key;
 });
 var HttpStatusCode_default = HttpStatusCode;
 
-// node_modules/axios/lib/axios.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/lib/axios.js
 function createInstance(defaultConfig) {
   const context = new Axios_default(defaultConfig);
   const instance = bind(Axios_default.prototype.request, context);
@@ -2270,11 +2927,12 @@ axios.isAxiosError = isAxiosError;
 axios.mergeConfig = mergeConfig;
 axios.AxiosHeaders = AxiosHeaders_default;
 axios.formToJSON = (thing) => formDataToJSON_default(utils_default.isHTMLForm(thing) ? new FormData(thing) : thing);
+axios.getAdapter = adapters_default.getAdapter;
 axios.HttpStatusCode = HttpStatusCode_default;
 axios.default = axios;
 var axios_default = axios;
 
-// node_modules/axios/index.js
+// node_modules/.pnpm/axios@1.14.0/node_modules/axios/index.js
 var {
   Axios: Axios2,
   AxiosError: AxiosError2,
@@ -2290,6 +2948,7 @@ var {
   AxiosHeaders: AxiosHeaders2,
   HttpStatusCode: HttpStatusCode2,
   formToJSON,
+  getAdapter: getAdapter2,
   mergeConfig: mergeConfig2
 } = axios_default;
 
@@ -2297,53 +2956,187 @@ var {
 var import_obsidian2 = require("obsidian");
 
 // src/utils.ts
+function getCursorContext(editor, contextLines = 5) {
+  const lines = editor.getValue().split("\n");
+  const cursorLine = editor.getCursor().line;
+  const start = Math.max(0, cursorLine - contextLines);
+  const end = Math.min(lines.length, cursorLine + contextLines + 1);
+  return lines.slice(start, end).join("\n").trim();
+}
+function getExtensionFromMimeType(mimeType) {
+  if (!mimeType)
+    return "webm";
+  const base = mimeType.split(";")[0];
+  const subtype = base.split("/")[1];
+  const extensionMap = {
+    "mp4a.40.2": "m4a",
+    mpeg: "mp3",
+    "x-m4a": "m4a"
+  };
+  return extensionMap[subtype] || subtype;
+}
+function buildTemplateVariables(transcription, title, audioFilePath) {
+  const now = /* @__PURE__ */ new Date();
+  const date = now.toISOString().split("T")[0];
+  const time = now.toTimeString().split(" ")[0].replace(/:/g, "-");
+  const datetime = `${date} ${now.toTimeString().split(" ")[0]}`;
+  return {
+    date,
+    time,
+    datetime,
+    title,
+    transcription,
+    audioFile: audioFilePath
+  };
+}
+function resolveTemplate(template, vars) {
+  return template.replace(/\{\{date\}\}/g, vars.date).replace(/\{\{time\}\}/g, vars.time).replace(/\{\{datetime\}\}/g, vars.datetime).replace(/\{\{title\}\}/g, vars.title).replace(/\{\{transcription\}\}/g, vars.transcription).replace(/\{\{audioFile\}\}/g, vars.audioFile);
+}
 function getBaseFileName(filePath) {
   const fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
-  const baseFileName = fileName.substring(0, fileName.lastIndexOf("."));
-  return baseFileName;
+  const dotIndex = fileName.lastIndexOf(".");
+  return dotIndex > 0 ? fileName.substring(0, dotIndex) : fileName;
 }
+
+// src/PostProcessor.ts
+var PostProcessor = class {
+  constructor(config) {
+    this.config = config;
+  }
+  async process(text, prompt) {
+    if (this.config.provider === "anthropic") {
+      return this.callAnthropic(text, prompt);
+    }
+    return this.callOpenAI(text, prompt);
+  }
+  async callOpenAI(text, prompt) {
+    const response = await axios_default.post(
+      this.config.url,
+      {
+        model: this.config.model,
+        messages: [
+          { role: "system", content: prompt },
+          { role: "user", content: text }
+        ]
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${this.config.apiKey}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    return response.data.choices[0].message.content.trim();
+  }
+  async callAnthropic(text, prompt) {
+    const response = await axios_default.post(
+      this.config.url,
+      {
+        model: this.config.model,
+        max_tokens: 8192,
+        system: prompt,
+        messages: [{ role: "user", content: text }]
+      },
+      {
+        headers: {
+          "x-api-key": this.config.apiKey,
+          "anthropic-version": "2023-06-01",
+          "anthropic-dangerous-direct-browser-access": "true",
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    return response.data.content[0].text;
+  }
+};
 
 // src/AudioHandler.ts
 var AudioHandler = class {
   constructor(plugin) {
     this.plugin = plugin;
   }
-  async sendAudioData(blob, fileName) {
-    var _a;
-    const baseFileName = getBaseFileName(fileName);
-    const audioFilePath = `${this.plugin.settings.saveAudioFilePath ? `${this.plugin.settings.saveAudioFilePath}/` : ""}${fileName}`;
-    const noteFilePath = `${this.plugin.settings.createNewFileAfterRecordingPath ? `${this.plugin.settings.createNewFileAfterRecordingPath}/` : ""}${baseFileName}.md`;
-    if (this.plugin.settings.debugMode) {
-      new import_obsidian2.Notice(`Sending audio data size: ${blob.size / 1e3} KB`);
+  getPostProcessingApiKey() {
+    switch (this.plugin.settings.postProcessingProvider) {
+      case "anthropic":
+        return this.plugin.settings.anthropicApiKey;
+      case "openai":
+        return this.plugin.settings.openAiApiKey;
+      case "custom":
+        return this.plugin.settings.postProcessingApiKey;
     }
-    if (!this.plugin.settings.apiKey) {
-      new import_obsidian2.Notice(
-        "API key is missing. Please add your API key in the settings."
-      );
+  }
+  async ensureFolderExists(folderPath) {
+    if (folderPath && !await this.plugin.app.vault.adapter.exists(folderPath)) {
+      await this.plugin.app.vault.createFolder(folderPath);
+    }
+  }
+  async sendAudioData(blob, fileName) {
+    var _a, _b;
+    const baseFileName = getBaseFileName(fileName);
+    const audioFilePath = `${this.plugin.settings.audioSavePath ? `${this.plugin.settings.audioSavePath}/` : ""}${fileName}`;
+    const noteFilePath = `${this.plugin.settings.noteSavePath ? `${this.plugin.settings.noteSavePath}/` : ""}${baseFileName}.md`;
+    if (this.plugin.settings.debugMode) {
+      new import_obsidian2.Notice(`Sending ${Math.round(blob.size / 1e3)} KB...`);
+    }
+    const isDefaultApi = this.plugin.settings.apiUrl === "https://api.openai.com/v1/audio/transcriptions";
+    if (isDefaultApi && !this.plugin.settings.apiKey) {
+      new import_obsidian2.Notice("\u2718 Add your API key in Whisper settings");
+      return;
+    }
+    const MIN_AUDIO_SIZE_BYTES = 1e3;
+    if (blob.size < MIN_AUDIO_SIZE_BYTES) {
+      new import_obsidian2.Notice("\u2718 Recording too short");
       return;
     }
     const formData = new FormData();
     formData.append("file", blob, fileName);
     formData.append("model", this.plugin.settings.model);
-    formData.append("language", this.plugin.settings.language);
-    if (this.plugin.settings.prompt)
-      formData.append("prompt", this.plugin.settings.prompt);
+    if (this.plugin.settings.language && this.plugin.settings.language !== "auto") {
+      formData.append("language", this.plugin.settings.language);
+    }
+    let prompt = this.plugin.settings.prompt || "";
+    if (this.plugin.settings.cursorContext) {
+      const editor = (_a = this.plugin.app.workspace.getActiveViewOfType(
+        import_obsidian2.MarkdownView
+      )) == null ? void 0 : _a.editor;
+      if (editor) {
+        const context = getCursorContext(editor);
+        prompt = prompt ? `${prompt}
+${context}` : context;
+      }
+    }
+    if (prompt)
+      formData.append("prompt", prompt);
+    if (this.plugin.settings.temperature !== 0)
+      formData.append(
+        "temperature",
+        String(this.plugin.settings.temperature)
+      );
+    if (this.plugin.settings.responseFormat !== "json")
+      formData.append(
+        "response_format",
+        this.plugin.settings.responseFormat
+      );
     try {
       if (this.plugin.settings.saveAudioFile) {
+        await this.ensureFolderExists(
+          this.plugin.settings.audioSavePath
+        );
         const arrayBuffer = await blob.arrayBuffer();
         await this.plugin.app.vault.adapter.writeBinary(
           audioFilePath,
           new Uint8Array(arrayBuffer)
         );
-        new import_obsidian2.Notice("Audio saved successfully.");
       }
     } catch (err) {
       console.error("Error saving audio file:", err);
-      new import_obsidian2.Notice("Error saving audio file: " + err.message);
+      new import_obsidian2.Notice(
+        "\u2718 Couldn't save audio: " + (err instanceof Error ? err.message : String(err))
+      );
     }
     try {
       if (this.plugin.settings.debugMode) {
-        new import_obsidian2.Notice("Parsing audio data:" + fileName);
+        new import_obsidian2.Notice("Transcribing...");
       }
       const response = await axios_default.post(
         this.plugin.settings.apiUrl,
@@ -2351,47 +3144,249 @@ var AudioHandler = class {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${this.plugin.settings.apiKey}`
+            ...this.plugin.settings.apiKey ? {
+              Authorization: `Bearer ${this.plugin.settings.apiKey}`
+            } : {}
           }
         }
       );
-      const activeView = this.plugin.app.workspace.getActiveViewOfType(import_obsidian2.MarkdownView);
-      const shouldCreateNewFile = this.plugin.settings.createNewFileAfterRecording || !activeView;
-      if (shouldCreateNewFile) {
-        await this.plugin.app.vault.create(
-          noteFilePath,
-          `![[${audioFilePath}]]
-${response.data.text}`
-        );
-        await this.plugin.app.workspace.openLinkText(
-          noteFilePath,
-          "",
-          true
-        );
-      } else {
-        const editor = (_a = this.plugin.app.workspace.getActiveViewOfType(
-          import_obsidian2.MarkdownView
-        )) == null ? void 0 : _a.editor;
-        if (editor) {
-          const cursorPosition = editor.getCursor();
-          editor.replaceRange(response.data.text, cursorPosition);
-          const newPosition = {
-            line: cursorPosition.line,
-            ch: cursorPosition.ch + response.data.text.length
-          };
-          editor.setCursor(newPosition);
+      const originalText = response.data.text;
+      let finalText = originalText;
+      if (this.plugin.settings.postProcessing) {
+        const ppApiKey = this.getPostProcessingApiKey();
+        if (!ppApiKey) {
+          new import_obsidian2.Notice(
+            "\u2718 Add your post-processing API key in settings"
+          );
+          return;
+        }
+        try {
+          if (this.plugin.settings.debugMode) {
+            new import_obsidian2.Notice("Post-processing...");
+          }
+          const processor = new PostProcessor({
+            apiKey: ppApiKey,
+            model: this.plugin.settings.postProcessingModel,
+            url: this.plugin.settings.postProcessingUrl,
+            provider: this.plugin.settings.postProcessingProvider
+          });
+          finalText = await processor.process(
+            originalText,
+            this.plugin.settings.postProcessingPrompt
+          );
+        } catch (err) {
+          console.error("Post-processing failed:", err);
+          new import_obsidian2.Notice(
+            "\u2718 Post-processing failed, using original transcription"
+          );
+          finalText = originalText;
         }
       }
-      new import_obsidian2.Notice("Audio parsed successfully.");
+      let generatedTitle = baseFileName;
+      if (this.plugin.settings.autoGenerateTitle && this.plugin.settings.createNoteFile) {
+        const ppApiKey = this.getPostProcessingApiKey();
+        if (ppApiKey) {
+          try {
+            const processor = new PostProcessor({
+              apiKey: ppApiKey,
+              model: this.plugin.settings.postProcessingModel,
+              url: this.plugin.settings.postProcessingUrl,
+              provider: this.plugin.settings.postProcessingProvider
+            });
+            const title = await processor.process(
+              finalText,
+              this.plugin.settings.titleGenerationPrompt
+            );
+            const sanitizedTitle = title.replace(/[/\\?%*:|"<>\n]/g, "-").trim();
+            if (sanitizedTitle) {
+              generatedTitle = sanitizedTitle;
+            }
+          } catch (err) {
+            console.error("Title generation failed:", err);
+          }
+        }
+      }
+      const outputText = this.plugin.settings.keepOriginalTranscription && finalText !== originalText ? `${finalText}
+
+---
+
+*Original transcription:*
+${originalText}` : finalText;
+      if (this.plugin.settings.createNoteFile) {
+        await this.ensureFolderExists(
+          this.plugin.settings.noteSavePath
+        );
+        const vars = buildTemplateVariables(
+          outputText,
+          generatedTitle,
+          audioFilePath
+        );
+        const resolvedFilename = resolveTemplate(
+          this.plugin.settings.noteFilenameTemplate,
+          vars
+        ).replace(/[/\\?%*:|"<>\n]/g, "-").trim() || baseFileName;
+        const folder = this.plugin.settings.noteSavePath;
+        const resolvedNoteFilePath = `${folder ? `${folder}/` : ""}${resolvedFilename}.md`;
+        const noteContent = resolveTemplate(
+          this.plugin.settings.noteTemplate,
+          vars
+        ).trim();
+        await this.plugin.app.vault.create(
+          resolvedNoteFilePath,
+          noteContent
+        );
+      }
+      const editor = (_b = this.plugin.app.workspace.getActiveViewOfType(
+        import_obsidian2.MarkdownView
+      )) == null ? void 0 : _b.editor;
+      if (editor) {
+        const cursorPosition = editor.getCursor();
+        editor.replaceRange(outputText, cursorPosition);
+        const newPosition = {
+          line: cursorPosition.line,
+          ch: cursorPosition.ch + outputText.length
+        };
+        editor.setCursor(newPosition);
+      }
+      new import_obsidian2.Notice("Transcription complete");
     } catch (err) {
       console.error("Error parsing audio:", err);
-      new import_obsidian2.Notice("Error parsing audio: " + err.message);
+      new import_obsidian2.Notice(
+        "\u2718 Transcription failed: " + (err instanceof Error ? err.message : String(err))
+      );
     }
   }
 };
 
 // src/WhisperSettingsTab.ts
 var import_obsidian3 = require("obsidian");
+
+// src/SettingsManager.ts
+var SECRET_IDS = {
+  apiKey: "api-key",
+  openAiApiKey: "openai-api-key",
+  anthropicApiKey: "anthropic-api-key",
+  postProcessingApiKey: "post-processing-api-key"
+};
+var PROVIDER_URLS = {
+  anthropic: "https://api.anthropic.com/v1/messages",
+  openai: "https://api.openai.com/v1/chat/completions",
+  custom: ""
+};
+var PROVIDER_DEFAULT_MODELS = {
+  anthropic: "claude-haiku-4-5-20251001",
+  openai: "gpt-5.4-nano-2026-03-17",
+  custom: ""
+};
+var DEFAULT_API_KEYS = {
+  apiKey: "",
+  openAiApiKey: "",
+  anthropicApiKey: "",
+  postProcessingApiKey: ""
+};
+var DEFAULT_WHISPER = {
+  apiUrl: "https://api.openai.com/v1/audio/transcriptions",
+  model: "whisper-1",
+  language: "",
+  prompt: "",
+  temperature: 0,
+  responseFormat: "json",
+  cursorContext: false,
+  audioDeviceId: "default",
+  saveAudioFile: true,
+  audioSavePath: "",
+  createNoteFile: true,
+  noteSavePath: "",
+  noteFilenameTemplate: "{{datetime}}",
+  noteTemplate: "![[{{audioFile}}]]\n{{transcription}}",
+  debugMode: false
+};
+var DEFAULT_POST_PROCESSING = {
+  postProcessing: false,
+  postProcessingProvider: "anthropic",
+  postProcessingUrl: "https://api.anthropic.com/v1/messages",
+  postProcessingModel: "claude-haiku-4-5-20251001",
+  postProcessingPrompt: 'You are a transcription editor. Clean up the following voice transcription: fix grammar, remove filler words (um, uh, like) and repetitions, and improve readability. Format the text in markdown. If there are action items or to-dos, format them as task lists with "[ ]". Preserve the original meaning and language. Return only the polished text, nothing else.',
+  autoGenerateTitle: false,
+  titleGenerationPrompt: "Generate a short title (1-5 words) for the following text. Return only the title, nothing else.",
+  keepOriginalTranscription: false
+};
+var DEFAULT_SETTINGS = {
+  ...DEFAULT_API_KEYS,
+  ...DEFAULT_WHISPER,
+  ...DEFAULT_POST_PROCESSING
+};
+var SettingsManager = class {
+  constructor(plugin) {
+    this.plugin = plugin;
+  }
+  get secrets() {
+    return this.plugin.app.secretStorage;
+  }
+  migrateKeysFromDataJson(settings) {
+    let migrated = false;
+    for (const [field, secretId] of Object.entries(SECRET_IDS)) {
+      const key = field;
+      if (settings[key]) {
+        this.secrets.setSecret(secretId, settings[key]);
+        settings[key] = "";
+        migrated = true;
+      }
+    }
+    return migrated;
+  }
+  syncKeysToSecretStorage(settings) {
+    for (const [field, secretId] of Object.entries(SECRET_IDS)) {
+      const key = field;
+      this.secrets.setSecret(secretId, settings[key]);
+      settings[key] = "";
+    }
+  }
+  loadKeysFromSecretStorage(settings) {
+    var _a;
+    for (const [field, secretId] of Object.entries(SECRET_IDS)) {
+      const key = field;
+      settings[key] = (_a = this.secrets.getSecret(secretId)) != null ? _a : "";
+    }
+  }
+  migratePostProcessingProvider(settings) {
+    if (settings.postProcessingProvider)
+      return false;
+    for (const [provider, url] of Object.entries(PROVIDER_URLS)) {
+      if (url && settings.postProcessingUrl === url) {
+        settings.postProcessingProvider = provider;
+        return true;
+      }
+    }
+    if (settings.postProcessingUrl) {
+      settings.postProcessingProvider = "custom";
+      return true;
+    }
+    return false;
+  }
+  async loadSettings() {
+    const settings = Object.assign(
+      {},
+      DEFAULT_SETTINGS,
+      await this.plugin.loadData()
+    );
+    if (this.migratePostProcessingProvider(settings)) {
+      await this.plugin.saveData(settings);
+    }
+    if (this.migrateKeysFromDataJson(settings)) {
+      await this.plugin.saveData(settings);
+    }
+    this.loadKeysFromSecretStorage(settings);
+    return settings;
+  }
+  async saveSettings(settings) {
+    this.syncKeysToSecretStorage(settings);
+    await this.plugin.saveData(settings);
+    this.loadKeysFromSecretStorage(settings);
+  }
+};
+
+// src/WhisperSettingsTab.ts
 var WhisperSettingsTab = class extends import_obsidian3.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
@@ -2400,46 +3395,95 @@ var WhisperSettingsTab = class extends import_obsidian3.PluginSettingTab {
   }
   display() {
     const { containerEl } = this;
+    const scrollTop = containerEl.scrollTop;
     containerEl.empty();
-    this.createHeader();
-    this.createApiKeySetting();
+    new import_obsidian3.Setting(containerEl).setName("API Keys").setHeading();
+    this.createWhisperApiKeySetting();
+    this.createOpenAiApiKeySetting();
+    this.createAnthropicApiKeySetting();
+    new import_obsidian3.Setting(containerEl).setName("Transcription").setHeading();
     this.createApiUrlSetting();
     this.createModelSetting();
-    this.createPromptSetting();
     this.createLanguageSetting();
+    this.createPromptSetting();
+    this.createSendCursorContextSetting();
+    this.createTemperatureSetting();
+    this.createResponseFormatSetting();
+    new import_obsidian3.Setting(containerEl).setName("Recording").setHeading();
+    void this.createAudioDeviceSetting();
     this.createSaveAudioFileToggleSetting();
-    this.createSaveAudioFilePathSetting();
-    this.createNewFileToggleSetting();
-    this.createNewFilePathSetting();
-    this.createDebugModeToggleSetting();
-  }
-  getUniqueFolders() {
-    const files = this.app.vault.getMarkdownFiles();
-    const folderSet = /* @__PURE__ */ new Set();
-    for (const file of files) {
-      const parentFolder = file.parent;
-      if (parentFolder && parentFolder instanceof import_obsidian3.TFolder) {
-        folderSet.add(parentFolder);
-      }
+    if (this.plugin.settings.saveAudioFile) {
+      this.createSaveAudioFilePathSetting();
     }
-    return Array.from(folderSet);
+    new import_obsidian3.Setting(containerEl).setName("Output").setHeading();
+    this.createNewFileToggleSetting();
+    if (this.plugin.settings.createNoteFile) {
+      this.createNewFilePathSetting();
+      this.createNoteFilenameTemplateSetting();
+      this.createNoteTemplateSetting();
+    }
+    new import_obsidian3.Setting(containerEl).setName("Post-processing").setHeading();
+    this.createPostProcessingToggleSetting();
+    if (this.plugin.settings.postProcessing) {
+      this.createPostProcessingProviderSetting();
+      this.createPostProcessingUrlSetting();
+      this.createPostProcessingApiKeySetting();
+      this.createPostProcessingModelSetting();
+      this.createPostProcessingPromptSetting();
+      this.createAutoGenerateTitleSetting();
+      this.createTitleGenerationPromptSetting();
+      this.createKeepOriginalTranscriptionSetting();
+    }
+    new import_obsidian3.Setting(containerEl).setName("Advanced").setHeading();
+    this.createDebugModeToggleSetting();
+    containerEl.scrollTop = scrollTop;
   }
-  createHeader() {
-    this.containerEl.createEl("h2", { text: "Settings for Whisper." });
+  async save() {
+    await this.settingsManager.saveSettings(this.plugin.settings);
   }
   createTextSetting(name, desc, placeholder, value, onChange) {
     new import_obsidian3.Setting(this.containerEl).setName(name).setDesc(desc).addText(
       (text) => text.setPlaceholder(placeholder).setValue(value).onChange(async (value2) => await onChange(value2))
     );
   }
-  createApiKeySetting() {
-    this.createTextSetting(
-      "API Key",
-      "Enter your OpenAI API key",
+  createApiKeySetting(name, desc, placeholder, value, onChange) {
+    new import_obsidian3.Setting(this.containerEl).setName(name).setDesc(desc).addText((text) => {
+      text.setPlaceholder(placeholder).setValue(value).onChange(async (value2) => await onChange(value2));
+      text.inputEl.type = "password";
+    });
+  }
+  createWhisperApiKeySetting() {
+    this.createApiKeySetting(
+      "Whisper API Key",
+      "API key for Whisper transcription (OpenAI, Groq, or Azure)",
       "sk-...xxxx",
       this.plugin.settings.apiKey,
       async (value) => {
         this.plugin.settings.apiKey = value;
+        await this.settingsManager.saveSettings(this.plugin.settings);
+      }
+    );
+  }
+  createOpenAiApiKeySetting() {
+    this.createApiKeySetting(
+      "OpenAI API Key",
+      "API key for GPT post-processing models",
+      "sk-...xxxx",
+      this.plugin.settings.openAiApiKey,
+      async (value) => {
+        this.plugin.settings.openAiApiKey = value;
+        await this.settingsManager.saveSettings(this.plugin.settings);
+      }
+    );
+  }
+  createAnthropicApiKeySetting() {
+    this.createApiKeySetting(
+      "Anthropic API Key",
+      "API key for Claude post-processing models",
+      "sk-ant-...xxxx",
+      this.plugin.settings.anthropicApiKey,
+      async (value) => {
+        this.plugin.settings.anthropicApiKey = value;
         await this.settingsManager.saveSettings(this.plugin.settings);
       }
     );
@@ -2459,7 +3503,7 @@ var WhisperSettingsTab = class extends import_obsidian3.PluginSettingTab {
   createModelSetting() {
     this.createTextSetting(
       "Model",
-      "Specify the machine learning model to use for generating text",
+      "Model for transcription (whisper-1 for OpenAI, whisper-large-v3 for Groq)",
       "whisper-1",
       this.plugin.settings.model,
       async (value) => {
@@ -2483,8 +3527,8 @@ var WhisperSettingsTab = class extends import_obsidian3.PluginSettingTab {
   createLanguageSetting() {
     this.createTextSetting(
       "Language",
-      "Specify the language of the message being whispered",
-      "en",
+      "Specify the language, or leave empty for auto-detection",
+      "en (leave empty for auto-detect)",
       this.plugin.settings.language,
       async (value) => {
         this.plugin.settings.language = value;
@@ -2492,68 +3536,265 @@ var WhisperSettingsTab = class extends import_obsidian3.PluginSettingTab {
       }
     );
   }
+  async createAudioDeviceSetting() {
+    const setting = new import_obsidian3.Setting(this.containerEl).setName("Microphone").setDesc("Select the audio input device to use for recording");
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: true
+      });
+      stream.getTracks().forEach((track) => track.stop());
+    } catch (err) {
+      console.log(
+        "Microphone permission not granted, device labels may be limited"
+      );
+    }
+    let devices = [];
+    try {
+      const allDevices = await navigator.mediaDevices.enumerateDevices();
+      devices = allDevices.filter(
+        (device) => device.kind === "audioinput"
+      );
+    } catch (err) {
+      console.error("Error enumerating audio devices:", err);
+    }
+    const options = {};
+    options["default"] = "Default";
+    devices.forEach((device) => {
+      const label = device.label || `Unknown device (${device.deviceId.substring(0, 8)})`;
+      options[device.deviceId] = label;
+    });
+    let currentValue = this.plugin.settings.audioDeviceId || "default";
+    if (currentValue !== "default" && !options[currentValue]) {
+      currentValue = "default";
+      this.plugin.settings.audioDeviceId = "default";
+      await this.settingsManager.saveSettings(this.plugin.settings);
+    }
+    setting.addDropdown((dropdown) => {
+      Object.keys(options).forEach((deviceId) => {
+        dropdown.addOption(deviceId, options[deviceId]);
+      });
+      dropdown.setValue(currentValue);
+      dropdown.onChange(async (value) => {
+        this.plugin.settings.audioDeviceId = value;
+        await this.settingsManager.saveSettings(this.plugin.settings);
+        this.plugin.recorder.setDeviceId(
+          value === "default" ? null : value
+        );
+      });
+    });
+  }
   createSaveAudioFileToggleSetting() {
-    new import_obsidian3.Setting(this.containerEl).setName("Save recording").setDesc(
-      "Turn on to save the audio file after sending it to the Whisper API"
-    ).addToggle(
+    new import_obsidian3.Setting(this.containerEl).setName("Save audio file").setDesc("Save the audio recording to the vault").addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.saveAudioFile).onChange(async (value) => {
         this.plugin.settings.saveAudioFile = value;
         if (!value) {
-          this.plugin.settings.saveAudioFilePath = "";
+          this.plugin.settings.audioSavePath = "";
         }
-        await this.settingsManager.saveSettings(
-          this.plugin.settings
-        );
-        this.saveAudioFileInput.setDisabled(!value);
+        await this.save();
+        this.display();
       })
     );
   }
   createSaveAudioFilePathSetting() {
-    this.saveAudioFileInput = new import_obsidian3.Setting(this.containerEl).setName("Recordings folder").setDesc(
-      "Specify the path in the vault where to save the audio files"
-    ).addText(
-      (text) => text.setPlaceholder("Example: folder/audio").setValue(this.plugin.settings.saveAudioFilePath).onChange(async (value) => {
-        this.plugin.settings.saveAudioFilePath = value;
-        await this.settingsManager.saveSettings(
-          this.plugin.settings
-        );
+    new import_obsidian3.Setting(this.containerEl).setName("Audio save path").setDesc("Folder in the vault where audio files are saved").addText(
+      (text) => text.setPlaceholder("Example: folder/audio").setValue(this.plugin.settings.audioSavePath).onChange(async (value) => {
+        this.plugin.settings.audioSavePath = value;
+        await this.save();
       })
-    ).setDisabled(!this.plugin.settings.saveAudioFile);
+    );
+  }
+  createTemperatureSetting() {
+    this.createTextSetting(
+      "Temperature",
+      "Sampling temperature (0 to 1). Higher values produce more random output.",
+      "0",
+      String(this.plugin.settings.temperature),
+      async (value) => {
+        const num = parseFloat(value);
+        this.plugin.settings.temperature = isNaN(num) ? 0 : Math.max(0, Math.min(1, num));
+        await this.settingsManager.saveSettings(this.plugin.settings);
+      }
+    );
+  }
+  createResponseFormatSetting() {
+    this.createTextSetting(
+      "Response format",
+      "Output format: json, text, srt, verbose_json, or vtt",
+      "json",
+      this.plugin.settings.responseFormat,
+      async (value) => {
+        this.plugin.settings.responseFormat = value;
+        await this.settingsManager.saveSettings(this.plugin.settings);
+      }
+    );
   }
   createNewFileToggleSetting() {
-    new import_obsidian3.Setting(this.containerEl).setName("Save transcription").setDesc(
-      "Turn on to create a new file for each recording, or leave off to add transcriptions at your cursor"
-    ).addToggle((toggle) => {
-      toggle.setValue(this.plugin.settings.createNewFileAfterRecording).onChange(async (value) => {
-        this.plugin.settings.createNewFileAfterRecording = value;
+    new import_obsidian3.Setting(this.containerEl).setName("Create note file").setDesc("Create a new note file for each transcription").addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.createNoteFile).onChange(async (value) => {
+        this.plugin.settings.createNoteFile = value;
         if (!value) {
-          this.plugin.settings.createNewFileAfterRecordingPath = "";
+          this.plugin.settings.noteSavePath = "";
         }
-        await this.settingsManager.saveSettings(
-          this.plugin.settings
-        );
-        this.createNewFileInput.setDisabled(!value);
+        await this.save();
+        this.display();
       });
     });
   }
   createNewFilePathSetting() {
-    this.createNewFileInput = new import_obsidian3.Setting(this.containerEl).setName("Transcriptions folder").setDesc(
-      "Specify the path in the vault where to save the transcription files"
-    ).addText((text) => {
-      text.setPlaceholder("Example: folder/note").setValue(
-        this.plugin.settings.createNewFileAfterRecordingPath
-      ).onChange(async (value) => {
-        this.plugin.settings.createNewFileAfterRecordingPath = value;
+    new import_obsidian3.Setting(this.containerEl).setName("Note save path").setDesc("Folder in the vault where note files are saved").addText((text) => {
+      text.setPlaceholder("Example: folder/note").setValue(this.plugin.settings.noteSavePath).onChange(async (value) => {
+        this.plugin.settings.noteSavePath = value;
+        await this.save();
+      });
+    });
+  }
+  createNoteFilenameTemplateSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Note filename template").setDesc(
+      "Template for note filenames. Variables: {{date}}, {{time}}, {{datetime}}, {{title}}"
+    ).addText(
+      (text) => text.setPlaceholder("{{datetime}}").setValue(this.plugin.settings.noteFilenameTemplate).onChange(async (value) => {
+        this.plugin.settings.noteFilenameTemplate = value;
+        await this.settingsManager.saveSettings(
+          this.plugin.settings
+        );
+      })
+    );
+  }
+  createNoteTemplateSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Note template").setDesc(
+      "Template for note content. Variables: {{transcription}}, {{audioFile}}, {{date}}, {{time}}, {{datetime}}, {{title}}. Use ![[{{audioFile}}]] to embed or [[{{audioFile}}]] to link."
+    ).addTextArea((text) => {
+      text.setPlaceholder("![[{{audioFile}}]]\n{{transcription}}").setValue(this.plugin.settings.noteTemplate).onChange(async (value) => {
+        this.plugin.settings.noteTemplate = value;
+        await this.settingsManager.saveSettings(
+          this.plugin.settings
+        );
+      });
+      text.inputEl.rows = 4;
+      text.inputEl.cols = 50;
+    });
+  }
+  createSendCursorContextSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Cursor context").setDesc(
+      "Send text around the cursor to Whisper for better transcription accuracy"
+    ).addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.cursorContext).onChange(async (value) => {
+        this.plugin.settings.cursorContext = value;
         await this.settingsManager.saveSettings(
           this.plugin.settings
         );
       });
     });
   }
-  createDebugModeToggleSetting() {
-    new import_obsidian3.Setting(this.containerEl).setName("Debug Mode").setDesc(
-      "Turn on to increase the plugin's verbosity for troubleshooting."
+  createPostProcessingToggleSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Enable post-processing").setDesc(
+      "Clean up transcriptions with an LLM \u2014 fix grammar, remove filler words, improve readability"
     ).addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.postProcessing).onChange(async (value) => {
+        this.plugin.settings.postProcessing = value;
+        await this.save();
+        this.display();
+      });
+    });
+  }
+  createPostProcessingProviderSetting() {
+    const providers = {
+      anthropic: "Anthropic",
+      openai: "OpenAI",
+      custom: "Custom"
+    };
+    new import_obsidian3.Setting(this.containerEl).setName("Provider").setDesc(
+      "Anthropic and OpenAI use the API keys from the API Keys section above"
+    ).addDropdown((dropdown) => {
+      for (const [value, label] of Object.entries(providers)) {
+        dropdown.addOption(value, label);
+      }
+      dropdown.setValue(this.plugin.settings.postProcessingProvider).onChange(async (value) => {
+        const provider = value;
+        this.plugin.settings.postProcessingProvider = provider;
+        if (provider !== "custom") {
+          this.plugin.settings.postProcessingUrl = PROVIDER_URLS[provider];
+          this.plugin.settings.postProcessingModel = PROVIDER_DEFAULT_MODELS[provider];
+        }
+        await this.save();
+        this.display();
+      });
+    });
+  }
+  createPostProcessingUrlSetting() {
+    if (this.plugin.settings.postProcessingProvider !== "custom")
+      return;
+    new import_obsidian3.Setting(this.containerEl).setName("Post-processing API URL").setDesc("Endpoint for post-processing requests").addText(
+      (text) => text.setPlaceholder("https://api.example.com/v1/chat/completions").setValue(this.plugin.settings.postProcessingUrl).onChange(async (value) => {
+        this.plugin.settings.postProcessingUrl = value;
+        await this.save();
+      })
+    );
+  }
+  createPostProcessingApiKeySetting() {
+    if (this.plugin.settings.postProcessingProvider !== "custom")
+      return;
+    new import_obsidian3.Setting(this.containerEl).setName("Post-processing API Key").setDesc("API key for the custom endpoint").addText((text) => {
+      text.setPlaceholder("sk-...xxxx").setValue(this.plugin.settings.postProcessingApiKey).onChange(async (value) => {
+        this.plugin.settings.postProcessingApiKey = value;
+        await this.save();
+      });
+      text.inputEl.type = "password";
+    });
+  }
+  createPostProcessingModelSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Post-processing model").setDesc("Model ID for the selected provider").addText(
+      (text) => text.setPlaceholder("claude-haiku-4-5-20251001").setValue(this.plugin.settings.postProcessingModel).onChange(async (value) => {
+        this.plugin.settings.postProcessingModel = value;
+        await this.save();
+      })
+    );
+  }
+  createPostProcessingPromptSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Post-processing prompt").setDesc(
+      "Instructions for the LLM on how to clean up the transcription"
+    ).addTextArea((text) => {
+      text.setPlaceholder("You are a transcription editor...").setValue(this.plugin.settings.postProcessingPrompt).onChange(async (value) => {
+        this.plugin.settings.postProcessingPrompt = value;
+        await this.save();
+      });
+      text.inputEl.rows = 4;
+      text.inputEl.cols = 50;
+    });
+  }
+  createAutoGenerateTitleSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Auto-generate title").setDesc("Use the LLM to generate a descriptive filename for notes").addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.autoGenerateTitle).onChange(async (value) => {
+        this.plugin.settings.autoGenerateTitle = value;
+        await this.save();
+        this.display();
+      });
+    });
+  }
+  createTitleGenerationPromptSetting() {
+    if (!this.plugin.settings.autoGenerateTitle)
+      return;
+    new import_obsidian3.Setting(this.containerEl).setName("Title generation prompt").setDesc("Instructions for the LLM on how to generate the title").addTextArea((text) => {
+      text.setPlaceholder("Generate a short title...").setValue(this.plugin.settings.titleGenerationPrompt).onChange(async (value) => {
+        this.plugin.settings.titleGenerationPrompt = value;
+        await this.save();
+      });
+      text.inputEl.rows = 2;
+      text.inputEl.cols = 50;
+    });
+  }
+  createKeepOriginalTranscriptionSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Keep original transcription").setDesc(
+      "Append the raw Whisper transcription below the post-processed text"
+    ).addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.keepOriginalTranscription).onChange(async (value) => {
+        this.plugin.settings.keepOriginalTranscription = value;
+        await this.save();
+      });
+    });
+  }
+  createDebugModeToggleSetting() {
+    new import_obsidian3.Setting(this.containerEl).setName("Debug mode").setDesc("Increase the plugin's verbosity for troubleshooting").addToggle((toggle) => {
       toggle.setValue(this.plugin.settings.debugMode).onChange(async (value) => {
         this.plugin.settings.debugMode = value;
         await this.settingsManager.saveSettings(
@@ -2564,39 +3805,20 @@ var WhisperSettingsTab = class extends import_obsidian3.PluginSettingTab {
   }
 };
 
-// src/SettingsManager.ts
-var DEFAULT_SETTINGS = {
-  apiKey: "",
-  apiUrl: "https://api.openai.com/v1/audio/transcriptions",
-  model: "whisper-1",
-  prompt: "",
-  language: "en",
-  saveAudioFile: true,
-  saveAudioFilePath: "",
-  debugMode: false,
-  createNewFileAfterRecording: true,
-  createNewFileAfterRecordingPath: ""
-};
-var SettingsManager = class {
-  constructor(plugin) {
-    this.plugin = plugin;
-  }
-  async loadSettings() {
-    return Object.assign(
-      {},
-      DEFAULT_SETTINGS,
-      await this.plugin.loadData()
-    );
-  }
-  async saveSettings(settings) {
-    await this.plugin.saveData(settings);
-  }
-};
-
 // src/AudioRecorder.ts
 var import_obsidian4 = require("obsidian");
 function getSupportedMimeType() {
-  const mimeTypes = ["audio/webm", "audio/ogg", "audio/mp3", "audio/mp4"];
+  const mimeTypes = [
+    "audio/webm",
+    "audio/webm;codecs=opus",
+    "audio/ogg",
+    "audio/ogg;codecs=opus",
+    "audio/mp4",
+    "audio/mp4;codecs=mp4a.40.2",
+    "audio/aac",
+    "audio/wav",
+    "audio/mp3"
+  ];
   for (const mimeType of mimeTypes) {
     if (MediaRecorder.isTypeSupported(mimeType)) {
       return mimeType;
@@ -2608,6 +3830,7 @@ var NativeAudioRecorder = class {
   constructor() {
     this.chunks = [];
     this.recorder = null;
+    this.deviceId = null;
   }
   getRecordingState() {
     var _a;
@@ -2616,11 +3839,15 @@ var NativeAudioRecorder = class {
   getMimeType() {
     return this.mimeType;
   }
+  setDeviceId(deviceId) {
+    this.deviceId = deviceId;
+  }
   async startRecording() {
     if (!this.recorder) {
       try {
+        const audioConstraints = this.deviceId && this.deviceId !== "default" ? { deviceId: { exact: this.deviceId } } : true;
         const stream = await navigator.mediaDevices.getUserMedia({
-          audio: true
+          audio: audioConstraints
         });
         this.mimeType = getSupportedMimeType();
         if (!this.mimeType) {
@@ -2629,12 +3856,11 @@ var NativeAudioRecorder = class {
         const options = { mimeType: this.mimeType };
         const recorder = new MediaRecorder(stream, options);
         recorder.addEventListener("dataavailable", (e) => {
-          console.log("dataavailable", e.data.size);
           this.chunks.push(e.data);
         });
         this.recorder = recorder;
       } catch (err) {
-        new import_obsidian4.Notice("Error initializing recorder: " + err);
+        new import_obsidian4.Notice("\u2718 Couldn't access microphone");
         console.error("Error initializing recorder:", err);
         return;
       }
@@ -2656,7 +3882,6 @@ var NativeAudioRecorder = class {
       if (!this.recorder || this.recorder.state === "inactive") {
         const blob = new Blob(this.chunks, { type: this.mimeType });
         this.chunks.length = 0;
-        console.log("Stop recording (no active recorder):", blob);
         resolve(blob);
       } else {
         this.recorder.addEventListener(
@@ -2666,7 +3891,6 @@ var NativeAudioRecorder = class {
               type: this.mimeType
             });
             this.chunks.length = 0;
-            console.log("Stop recording (active recorder):", blob);
             if (this.recorder) {
               this.recorder.stream.getTracks().forEach((track) => track.stop());
               this.recorder = null;
@@ -2690,18 +3914,61 @@ var Whisper = class extends import_obsidian5.Plugin {
   async onload() {
     this.settingsManager = new SettingsManager(this);
     this.settings = await this.settingsManager.loadSettings();
-    this.addRibbonIcon("activity", "Open recording controls", (evt) => {
-      if (!this.controls) {
-        this.controls = new Controls(this);
-      }
-      this.controls.open();
+    this.addRibbonIcon("mic", "Open recording controls", () => {
+      this.openControls();
     });
     this.addSettingTab(new WhisperSettingsTab(this.app, this));
     this.timer = new Timer();
     this.audioHandler = new AudioHandler(this);
     this.recorder = new NativeAudioRecorder();
+    const deviceId = this.settings.audioDeviceId === "default" ? null : this.settings.audioDeviceId;
+    this.recorder.setDeviceId(deviceId);
     this.statusBar = new StatusBar(this);
+    this.statusBar.onChange((status) => {
+      switch (status) {
+        case "recording" /* Recording */:
+          this.timer.start();
+          break;
+        case "paused" /* Paused */:
+          this.timer.pause();
+          break;
+        case "processing" /* Processing */:
+        case "idle" /* Idle */:
+          this.timer.reset();
+          break;
+      }
+    });
     this.addCommands();
+    this.registerUriHandler();
+    this.registerEvent(
+      this.app.workspace.on("file-menu", (menu, file) => {
+        if (!(file instanceof import_obsidian5.TFile))
+          return;
+        const audioExtensions = [
+          ".mp3",
+          ".mp4",
+          ".mpeg",
+          ".mpga",
+          ".m4a",
+          ".wav",
+          ".webm",
+          ".ogg"
+        ];
+        if (!audioExtensions.some((ext) => file.path.endsWith(ext)))
+          return;
+        menu.addItem((item) => {
+          item.setTitle("Transcribe audio file \u{1F50A}").setIcon("document").onClick(async () => {
+            const audioBlob = new Blob([
+              await file.vault.readBinary(file)
+            ]);
+            await this.audioHandler.sendAudioData(
+              audioBlob,
+              file.name
+            );
+          });
+        });
+      })
+    );
   }
   onunload() {
     if (this.controls) {
@@ -2709,30 +3976,70 @@ var Whisper = class extends import_obsidian5.Plugin {
     }
     this.statusBar.remove();
   }
+  // --- Recording state transitions (single source of truth) ---
+  async startRecording() {
+    if (this.statusBar.status === "recording" /* Recording */ || this.statusBar.status === "paused" /* Paused */) {
+      new import_obsidian5.Notice("Already recording");
+      return;
+    }
+    try {
+      await this.recorder.startRecording();
+      this.statusBar.updateStatus("recording" /* Recording */);
+      new import_obsidian5.Notice("Recording...");
+    } catch (err) {
+      this.statusBar.updateStatus("idle" /* Idle */);
+      new import_obsidian5.Notice("\u2718 Could not start recording");
+    }
+  }
+  async stopRecording() {
+    if (this.statusBar.status !== "recording" /* Recording */ && this.statusBar.status !== "paused" /* Paused */) {
+      return;
+    }
+    this.statusBar.updateStatus("processing" /* Processing */);
+    const audioBlob = await this.recorder.stopRecording();
+    const extension = getExtensionFromMimeType(this.recorder.getMimeType());
+    const fileName = `${(/* @__PURE__ */ new Date()).toISOString().replace(/[:.]/g, "-")}.${extension}`;
+    await this.audioHandler.sendAudioData(audioBlob, fileName);
+    this.statusBar.updateStatus("idle" /* Idle */);
+  }
+  async pauseRecording() {
+    if (this.statusBar.status === "recording" /* Recording */) {
+      await this.recorder.pauseRecording();
+      this.statusBar.updateStatus("paused" /* Paused */);
+      new import_obsidian5.Notice("Recording paused");
+    } else if (this.statusBar.status === "paused" /* Paused */) {
+      await this.recorder.pauseRecording();
+      this.statusBar.updateStatus("recording" /* Recording */);
+      new import_obsidian5.Notice("Recording resumed");
+    }
+  }
+  async cancelRecording() {
+    if (this.statusBar.status !== "recording" /* Recording */ && this.statusBar.status !== "paused" /* Paused */) {
+      return;
+    }
+    await this.recorder.stopRecording();
+    this.statusBar.updateStatus("idle" /* Idle */);
+    new import_obsidian5.Notice("Recording cancelled");
+  }
+  openControls() {
+    if (!this.controls) {
+      this.controls = new Controls(this);
+    }
+    this.controls.open();
+  }
+  // --- Commands ---
   addCommands() {
     this.addCommand({
       id: "start-stop-recording",
       name: "Start/stop recording",
       callback: async () => {
-        var _a;
-        if (this.statusBar.status !== "recording" /* Recording */) {
-          this.statusBar.updateStatus("recording" /* Recording */);
-          await this.recorder.startRecording();
+        if (this.statusBar.status !== "recording" /* Recording */ && this.statusBar.status !== "paused" /* Paused */) {
+          await this.startRecording();
         } else {
-          this.statusBar.updateStatus("processing" /* Processing */);
-          const audioBlob = await this.recorder.stopRecording();
-          const extension = (_a = this.recorder.getMimeType()) == null ? void 0 : _a.split("/")[1];
-          const fileName = `${(/* @__PURE__ */ new Date()).toISOString().replace(/[:.]/g, "-")}.${extension}`;
-          await this.audioHandler.sendAudioData(audioBlob, fileName);
-          this.statusBar.updateStatus("idle" /* Idle */);
+          await this.stopRecording();
         }
       },
-      hotkeys: [
-        {
-          modifiers: ["Alt"],
-          key: "Q"
-        }
-      ]
+      hotkeys: [{ modifiers: ["Alt"], key: "Q" }]
     });
     this.addCommand({
       id: "upload-audio-file",
@@ -2740,20 +4047,55 @@ var Whisper = class extends import_obsidian5.Plugin {
       callback: () => {
         const fileInput = document.createElement("input");
         fileInput.type = "file";
-        fileInput.accept = "audio/*";
+        fileInput.accept = "audio/*,video/*,.mp4,.m4a,.wav,.webm,.ogg,.mp3";
         fileInput.onchange = async (event) => {
           const files = event.target.files;
           if (files && files.length > 0) {
             const file = files[0];
-            const fileName = file.name;
             const audioBlob = file.slice(0, file.size, file.type);
             await this.audioHandler.sendAudioData(
               audioBlob,
-              fileName
+              file.name
             );
           }
         };
         fileInput.click();
+      }
+    });
+    this.addCommand({
+      id: "pause-resume-recording",
+      name: "Pause/resume recording",
+      callback: () => this.pauseRecording()
+    });
+    this.addCommand({
+      id: "open-recording-controls",
+      name: "Open recording controls",
+      callback: () => this.openControls()
+    });
+  }
+  // --- URI Handler ---
+  registerUriHandler() {
+    this.registerObsidianProtocolHandler("whisper", async (params) => {
+      const command = params.command;
+      if (!command) {
+        this.openControls();
+        return;
+      }
+      switch (command) {
+        case "start":
+          await this.startRecording();
+          break;
+        case "stop":
+          await this.stopRecording();
+          break;
+        case "pause":
+          await this.pauseRecording();
+          break;
+        case "cancel":
+          await this.cancelRecording();
+          break;
+        default:
+          new import_obsidian5.Notice(`\u2718 Unknown whisper command: ${command}`);
       }
     });
   }

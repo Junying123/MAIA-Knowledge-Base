@@ -1,0 +1,5 @@
+item_code,item_name,item_group,item_uom,weight_per_unit,weight_uom,description,standard_selling_price,maximum_selling_price,minimum_selling_price,default_tax
+HAM-CNY-001,Fortune Abundance CNY Hamper,Seasonal Hamper,Set,3.5,KG,1x Pu'er cake + 1x Oolong 150g + 1x Bird's nest 6-btl + 1x Abalone 1-tin; ribbon colour and greeting card customisation available; standard 5–7 working days delivery,388.00,450.00,350.00,SST 6%
+HAM-CNY-002,Golden Prosperity CNY Hamper,Seasonal Hamper,Set,4.2,KG,1x Dayi Pu'er 357g + 1x Bird's nest 12-btl + 1x Abalone 2-tin; premium tier; popular for corporate gifting; organza wrap available,588.00,650.00,520.00,SST 6%
+HAM-RAYA-001,Ramadan Barakah Hamper,Seasonal Hamper,Set,3.0,KG,1x Liubao 100g + 1x Dates 500g + 1x Kurma cookies + 1x Bird's nest 6-btl; halal-certified; green ribbon default; greeting card customisation available,298.00,350.00,260.00,SST 6%
+TEA-PUE-357,Pu'er Cake 357g,Loose Tea,PCS,0.4,KG,Aged Pu'er tea cake; year and grade may vary by batch; suitable as standalone gift or hamper component,120.00,150.00,100.00,SST 6%

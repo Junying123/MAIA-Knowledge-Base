@@ -1,3 +1,9 @@
+---
+owner: Gareth
+status: draft
+last_reviewed: 2026-04-17
+---
+
 # MAIA for Thermac Engineering
 
 ### Bringing Structure to Service Operations
