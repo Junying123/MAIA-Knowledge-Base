@@ -3,7 +3,7 @@ granola_id: e83bf48f-eb6c-41ec-a15a-ef256d228639
 title: Ming Medical <> Mindhive Meeting - Transcript
 type: transcript
 created: 2026-04-17T07:31:48.701Z
-updated: 2026-04-17T08:38:02.915Z
+updated: 2026-04-17T08:38:22.674Z
 attendees: 
   - jeremy@mindhive.asia
   - ng@mingmedical.net
