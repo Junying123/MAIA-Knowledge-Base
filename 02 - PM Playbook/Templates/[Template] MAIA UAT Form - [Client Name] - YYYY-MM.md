@@ -115,12 +115,12 @@ uat_round: [1]
 
 **Part A — Text Message**
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Open the **MAIA [Client Name] chatbot** in Telegram using the QR code provided. | The chatbot replies and is ready to receive your message. |
-| 2 | Type a message like: *"Customer: [Customer Name]. Order: 10 drums [Product A], 5 bags [Product B]."* | Chatbot receives the message. |
-| 3 | Wait a moment. | The chatbot shows the order details it extracted — customer name, products, and quantities. |
-| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
+| Step | What to do                                                                                           | What you should see                                                                         |
+| ---- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| 1    | Open the **MAIA [Client Name] chatbot** in Telegram using the QR code provided.                      | The chatbot replies and is ready to receive your message.                                   |
+| 2    | Type a message like: *"Customer: [Customer Name]. Order: 10 drums [Product A], 5 bags [Product B]."* | Chatbot receives the message.                                                               |
+| 3    | Wait a moment.                                                                                       | The chatbot shows the order details it extracted — customer name, products, and quantities. |
+| 4    | Check that the details are correct.                                                                  | Customer name, product names, and quantities match what you typed.                          |
 
 **Part A result:**
 - [ ] Pass
@@ -133,11 +133,11 @@ uat_round: [1]
 
 **Part B — Voice Note** *(include only if voice note intake is enabled for this client)*
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | In the same Telegram chat, record a voice note. Say something like: *"Order for [Customer Name] — 10 drums of [Product A] and 5 bags of [Product B]."* | Voice note is sent to the chatbot. |
-| 2 | Wait a moment. | The chatbot transcribes your voice note and shows the extracted details — customer name, products, and quantities. |
-| 3 | Check that the details are correct. | Details match what you said. |
+| Step | What to do                                                                                                                                             | What you should see                                                                                                |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| 1    | In the same Telegram chat, record a voice note. Say something like: *"Order for [Customer Name] — 10 drums of [Product A] and 5 bags of [Product B]."* | Voice note is sent to the chatbot.                                                                                 |
+| 2    | Wait a moment.                                                                                                                                         | The chatbot transcribes your voice note and shows the extracted details — customer name, products, and quantities. |
+| 3    | Check that the details are correct.                                                                                                                    | Details match what you said.                                                                                       |
 
 **Part B result:**
 - [ ] Pass
@@ -392,14 +392,23 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 11 — Create a Delivery Order and Picking List
+#### Test 11 — Full Delivery Flow (SO → Picking List → DO → Invoice → Mark as Delivered)
 
-| Step | What to do | What you should see |
-|------|-----------|---------------------|
-| 1 | Log in to the web app as **[Logistics Person]**. Open a submitted Invoice. Invoice status should be **UNPAID**. | Invoice record is visible. |
-| 2 | Create a **Delivery Order (DO)** from the Invoice. Submit it. | Delivery Order is created and submitted. It shows the customer's delivery address, products, quantities, and a DO reference number. |
-| 3 | From the Delivery Order, generate a **Picking List**. Submit it. | Picking List is created and submitted. It shows all items to pick from the warehouse with quantities. |
-| 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
+*Who tests this: [Logistics Person] for creation; [submit role] for submissions and marking delivery*
+
+**Note:** Check the client's Role Permission Matrix — only certain roles can submit Picking Lists and Delivery Orders. Confirm who submits before running this test.
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 1 | **[Submit Role]** | Open a submitted **Sales Order** with status **TO BILL**. | Sales Order is visible. |
+| 2 | **[Logistics Person]** | From the Sales Order, create a **Picking List** and save it. | Picking List is created and saved in Draft. Shows all items and quantities to pick. |
+| 3 | **[Submit Role]** | Open the Draft Picking List and click **Submit**. | Picking List is submitted. |
+| 4 | **[Logistics Person]** | From the Sales Order, create a **Delivery Order (DO)** and save it. | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
+| 5 | **[Logistics Person]** | Try to **submit** the Delivery Order. | 🚫 Submit button is not available — only [submit role] can submit Delivery Orders. *(Skip this step if Logistics can submit at this client.)* |
+| 6 | **[Submit Role]** | Open the Draft Delivery Order and click **Submit**. | Delivery Order status changes to **To Schedule**. |
+| 7 | **[Finance Role]** | From the Sales Order, generate the **Invoice** and submit it. | Invoice is created and submitted. Status shows **UNPAID**. |
+| 8 | **[Submit Role]** | On the submitted Delivery Order, click **Actions → Mark as Delivered**. | Delivery Order status changes to **Delivered**. |
+| 9 | Any user | Download the Picking List and Delivery Order as PDFs. | Both documents download successfully as PDFs. |
 
 **Your result:**
 - [ ] Pass
@@ -459,12 +468,38 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
+#### Test 14 — Create and Submit a Stock Reservation Entry
+
+*Who tests this: [Logistics Person] for creation; [Finance Role] or [Admin Role] for submission*
+
+*(Include only if Stock Reservation Entry is part of this client's scope.)*
+
+| Step | Who | What to do | What you should see |
+|------|-----|-----------|---------------------|
+| 1 | **[Logistics Person]** | Log in. Navigate to **Stock Reservation Entry**. Create a new entry — select a product and quantity to reserve. Save it. | Stock Reservation Entry is created and saved in Draft. Shows product name, quantity, and reference. |
+| 2 | **[Logistics Person]** | Try to **submit** the Stock Reservation Entry. | 🚫 Submit button is not available — [Logistics Person] can create but not submit. |
+| 3 | **[Admin Role]** | Log in. Open the Draft Stock Reservation Entry and click **Submit**. | Stock Reservation Entry is submitted. The reserved quantity is reflected in stock. |
+| 4 | **[Finance Role]** | Log in. Create a second Stock Reservation Entry and click **Submit**. | Stock Reservation Entry is submitted. [Finance Role] also has submit access. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
 ### Group 4 — Logging In
 *Who tests this: Everyone*
 
 ---
 
-#### Test 14 — All Users Can Log In
+#### Test 15 — All Users Can Log In
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -491,7 +526,7 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
-#### Test 15 — [Role Name] ([Person Name / Person A])
+#### Test 16 — [Role Name] ([Person Name / Person A])
 
 Log in as **[Role Name]** and check the following:
 
@@ -515,7 +550,7 @@ Log in as **[Role Name]** and check the following:
 
 ---
 
-#### Test 16 — [Role Name] ([Person Name / Person B])
+#### Test 17 — [Role Name] ([Person Name / Person B])
 
 Log in as **[Role Name]** and check the following:
 
@@ -645,17 +680,18 @@ Log in as **[Role Name]** and check the following:
 | Test 3     | Send order by PDF                                                |                              |           |      |
 | Test 4     | Pricing and stock check                                          |                              |           |      |
 | Test 5     | Review CPO and convert to Sales Order (chatbot photo/PDF → web app) |                           |           |      |
-| Test 6     | Generate documents (Quotation → SO → Proforma Invoice → Invoice) |                              |           |      |
+| Test 6     | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                          |           |      |
 | Test 7     | Create Credit Note and Debit Note                                |                              |           |      |
 | Test 8     | Duplicate order is blocked                                       |                              |           |      |
 | Test 9     | Manage Sales Orders on web app                                   |                              |           |      |
 | Test 10     | Export Invoice / Credit Note / Debit Note as CSV (Finance)       |                              |           |      |
-| Test 11    | Create Delivery Order and Picking List                           |                              |           |      |
+| Test 11    | Full delivery flow (SO → Picklist → DO → Invoice → Mark as Delivered) |                         |           |      |
 | Test 12    | Stock alerts (Out of Stock / Low Stock)                          |                              |           |      |
 | Test 13    | Delivery delay reminder                                          |                              |           |      |
-| Test 14    | All users can log in                                             |                              |           |      |
-| Test 15    | [Role Name] — access check                                       |                              |           |      |
+| Test 14    | Create and submit Stock Reservation Entry *(if in scope)*        |                              |           |      |
+| Test 15    | All users can log in                                             |                              |           |      |
 | Test 16    | [Role Name] — access check                                       |                              |           |      |
+| Test 17    | [Role Name] — access check                                       |                              |           |      |
 | Test [N]   | Role approval flow (QT → PO → SO → DO → PL → INV → RCT)          |                              |           |      |
 | Test [N+1] | [Client-specific feature] *(if applicable)*                      |                              |           |      |
 
