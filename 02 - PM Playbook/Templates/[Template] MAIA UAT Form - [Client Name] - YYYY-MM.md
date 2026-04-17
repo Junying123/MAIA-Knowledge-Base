@@ -1,7 +1,7 @@
 ---
 owner: [Your Name]
 status: draft
-last_reviewed: YYYY-MM-DD
+last_reviewed: 2026-04-17
 client: [Client Name]
 uat_round: [1]
 ---
@@ -37,13 +37,33 @@ uat_round: [1]
 
 ## Your Login Details
 
-| Name | Email (Username) | Password |
-| ---- | ---------------- | -------- |
-| [Name] | [email@client.com] | [password] |
-| [Name] | [email@client.com] | [password] |
-| [Name] | [email@client.com] | [password] |
+| Name | Role (Client) | Role (MAIA) | Email | Password |
+| ---- | ------------- | ----------- | ----- | -------- |
+| [Name] | [e.g. Sales] | [e.g. Sales User] | [email@client.com] | [password] |
+| [Name] | [e.g. Finance] | [e.g. Finance Manager] | [email@client.com] | [password] |
+| [Name] | [e.g. Warehouse] | [e.g. Logistics User] | [email@client.com] | [password] |
 
 *Add or remove rows to match the number of test users.*
+
+**Note:** If the client has no [Role Name] role, add a note here explaining which role covers those responsibilities (e.g. "There is no Sales Manager at [Client] — Admin handles document submission.").
+
+---
+
+## Role Permission Summary
+
+*Quick reference for Group 5 access tests. Adjust columns to match this client's roles.*
+
+| Document / Feature | [Role A] | [Role B] | [Role C] | [Role D] |
+| ------------------ | -------- | -------- | -------- | -------- |
+| Quotation | [Create / Submit / View / —] | | | |
+| Sales Order | | | | |
+| Invoice | | | | |
+| Payment / Receipt | | | | |
+| Credit Note | | | | |
+| Delivery Note | | | | |
+| Inventory / Pick List | | | | |
+
+*"Create" = Read/Write/Create but NOT submit. "Submit" = full access including submit. "—" = no access.*
 
 ---
 
@@ -89,7 +109,11 @@ uat_round: [1]
 
 ---
 
-#### Test 1 — Send an Order by Text Message
+#### Test 1 — Send an Order by Text Message and Voice Note
+
+*Test the chatbot twice — once by typing, and once by sending a voice note.*
+
+**Part A — Text Message**
 
 | Step | What to do | What you should see |
 |------|-----------|---------------------|
@@ -98,15 +122,34 @@ uat_round: [1]
 | 3 | Wait a moment. | The chatbot shows the order details it extracted — customer name, products, and quantities. |
 | 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. |
 
-**Your result:**
+**Part A result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 
-**Tested by:**
-**Date:**
+**Notes:**
+
+---
+
+**Part B — Voice Note** *(include only if voice note intake is enabled for this client)*
+
+| Step | What to do | What you should see |
+|------|-----------|---------------------|
+| 1 | In the same Telegram chat, record a voice note. Say something like: *"Order for [Customer Name] — 10 drums of [Product A] and 5 bags of [Product B]."* | Voice note is sent to the chatbot. |
+| 2 | Wait a moment. | The chatbot transcribes your voice note and shows the extracted details — customer name, products, and quantities. |
+| 3 | Check that the details are correct. | Details match what you said. |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
 
 **Notes:**
+
+---
+
+**Tested by:**
+**Date:**
 
 
 ---
@@ -214,11 +257,13 @@ uat_round: [1]
 
 ---
 
-#### Test 6 — Generate Documents (Quotation → Sales Order → Proforma Invoice → Invoice)
+#### Test 6 — Generate Documents (Quotation → Sales Order → Invoice)
 
 *Continue from the order created in Test 4. Different roles handle different steps — coordinate as needed.*
 
 **Why different roles?** Sales Manager can create Quotations but cannot create or edit Sales Orders (view only). SO creation and Invoice submission must be done by Logistics or Finance.
+
+**Proforma Invoice note:** Not a separate document — it is a PDF export from the Sales Order. Used for cash-in-advance customers only. No separate record is created in the system.
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
