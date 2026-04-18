@@ -46,7 +46,6 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 
 **Pre-Order Checks**
 - Check available item quantities before confirming an order
-- Check customer outstanding balance before order creation
 
 **Sales Order Creation**
 - Create sales order via natural language — specify customer name, items, and quantities directly in WhatsApp; no rigid keywords required
@@ -57,16 +56,12 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 
 **Invoicing & Payment**
 - Convert sales order to invoice via chat once payment is confirmed
+- Attach customer payment slip and create receipt directly in WhatsApp
 - Track payment status of open invoices via chat
 
 **Real-Time Order Monitoring**
 - Query sales order status at any time via chat
 - Receive next-step reminders when an order is ready for logistics follow-up
-
-**Daily Digest — Sales**
-- Unclosed sales orders
-- Pending payment confirmation
-- Outstanding invoices
 
 **Logistics Agent Chatbot**
 
