@@ -80,12 +80,6 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 - Ask MAIA for a live view of pending, in-progress, or completed deliveries at any time via chat
 - Receive next-step alerts when an invoice is ready for logistics action — no manual WhatsApp group monitoring required
 
-**Daily Digest — Logistics**
-- Pending scheduling
-- Scheduled
-- Out for delivery
-- Completed
-
 **Notification Reminders**
 - **Delivery Delays** — triggered when a Delivery Note has not been scheduled after X days from invoice creation
 
@@ -118,8 +112,6 @@ For finance staff managing payment confirmation and invoice finalisation.
 - **Invoice Visibility** — view and manage all invoices, outstanding balances, and conversion status across all orders.
 - **Approval Tracking** — approve or hold orders pending payment confirmation before DO creation proceeds. Logged with timestamp and user.
 
-> Note: MAIA does not auto-verify bank transfer amounts against pro forma value. A coordinator reviews and confirms the payment amount manually. MAIA does not connect to banking systems. Customers continue to send payment slips via WhatsApp; the coordinator records the payment in MAIA.
-
 ---
 
 #### Logistics Workspace
@@ -131,18 +123,14 @@ For operations staff managing delivery orders, multi-drop dispatch, and delivery
 - **Multi-Drop Delivery (Blanket Order)** — one sales order can generate multiple DOs, each linked to the source SO. Coordinator creates individual DOs per drop from the same SO; remaining unfulfilled quantity stays on the SO for subsequent DOs.
 - **Delivery Date Scheduling** — each DO has its own delivery date set independently.
 - **Delivery Status Tracking** — each DO has its own status (e.g. To Schedule, Delivered, Failed). Coordinator can mark a DO as delivered, mark as failed, or reschedule the delivery date. All DOs for an order are viewable in one place.
-- **Output Documents:** Delivery Note (DO), Picking List
-
-> Note: MAIA does not automatically route drops across vehicles or optimise delivery sequences — that planning stays with the coordinator.
-
----
+- **Output Documents:** Delivery Note (DO), Pick List
 
 #### Document Generation Summary — Phase 1
 
-| Category | Documents |
-|----------|-----------|
-| Sales | Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt |
-| Logistics | Delivery Note (DO), Picking List |
+| Category  | Documents                                                     |
+| --------- | ------------------------------------------------------------- |
+| Sales     | Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt |
+| Logistics | Delivery Note (DO), Pick List                                 |
 
 All documents carry the full customisation remarks from the original sales order: ribbon colour, greeting card wording, item substitutions, delivery date, price tag on/off.
 
