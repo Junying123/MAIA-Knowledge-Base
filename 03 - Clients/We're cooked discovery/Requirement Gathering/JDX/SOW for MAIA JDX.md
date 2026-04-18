@@ -70,11 +70,13 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 **Delivery Order (DO) Creation**
 - Create Delivery Orders directly via WhatsApp — specify the sales order reference, quantities, and delivery date in natural language; no rigid keywords required
 - DO inherits all customisation remarks from the source sales order automatically — ribbon colour, greeting card wording, item substitution, price tag on/off — no retyping required
-- Split one sales order into multiple DOs for staged or multi-drop delivery, specifying quantities per drop in the same chat thread
 
-**Delivery Status Updates**
-- Mark a DO as delivered, mark as failed, or reschedule the delivery date via WhatsApp chat
-- Query the current status of any DO or batch of DOs by sales order reference
+**Blanket Order — Multi-Drop Splitting**
+- Split one sales order into multiple DOs via WhatsApp chat — specify quantities per drop in natural language; no login required
+- Supports equal splits and uneven splits across any number of drops
+- Each DO created independently with its own delivery date
+- Remaining unfulfilled quantity stays on the SO after each split — coordinator can continue creating DOs against the same order across multiple runs
+- MAIA confirms each DO created in chat
 
 **Real-Time Fulfillment Monitoring**
 - Ask MAIA for a live view of pending, in-progress, or completed deliveries at any time via chat
