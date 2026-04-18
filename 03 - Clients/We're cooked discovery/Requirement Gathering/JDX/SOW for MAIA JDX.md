@@ -44,12 +44,20 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 
 **Platform:** WhatsApp
 
-- Create sales order by specifying customer name, items, and quantities via natural language — no rigid keywords required
-- Add customisation remarks (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) directly in the chat
-- Generate pro forma invoice PDF from the sales order after creation
+**Sales Order Creation**
+- Create sales order via natural language — specify customer name, items, and quantities directly in WhatsApp; no rigid keywords required
 - Check available item quantities before or during order creation
-- Track sales order status via chat
-- Daily digest: unclosed sales orders, pending payment confirmation, outstanding invoices
+- Add customisation remarks (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) in the same chat thread
+- Generate and send pro forma invoice PDF to the customer directly from WhatsApp after order creation
+
+**Real-Time Order Monitoring**
+- Query sales order status at any time via chat
+- Receive next-step reminders when an order is ready for logistics follow-up
+
+**Daily Digest — Sales**
+- Unclosed sales orders
+- Pending payment confirmation
+- Outstanding invoices
 
 **Logistics Agent Chatbot**
 
@@ -61,13 +69,6 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 
 **Delivery Status Updates**
 - Mark DO as delivered, mark as failed, or reschedule delivery date via WhatsApp
-
-**Output Documents Generated:**
-
-| Document | Included |
-|----------|---------|
-| Delivery Note (DO) | ✓ |
-| Picking List | ✓ |
 
 **Daily Digest — Logistics**
 - Pending scheduling
