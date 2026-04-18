@@ -44,11 +44,20 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 
 **Platform:** WhatsApp
 
+**Pre-Order Checks**
+- Check available item quantities before confirming an order
+- Check customer outstanding balance before order creation
+
 **Sales Order Creation**
 - Create sales order via natural language — specify customer name, items, and quantities directly in WhatsApp; no rigid keywords required
-- Check available item quantities before or during order creation
 - Add customisation remarks (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) in the same chat thread
+
+**Document Generation**
 - Generate and send pro forma invoice PDF to the customer directly from WhatsApp after order creation
+
+**Invoicing & Payment**
+- Convert sales order to invoice via chat once payment is confirmed
+- Track payment status of open invoices via chat
 
 **Real-Time Order Monitoring**
 - Query sales order status at any time via chat
@@ -64,11 +73,17 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 **Platform:** WhatsApp
 
 **Delivery Order (DO) Creation**
-- DOs are created via WhatsApp messages (natural language — no rigid keywords required)
-- Linked to the source sales order; customisation remarks propagate automatically
+- Create Delivery Orders directly via WhatsApp — specify the sales order reference, quantities, and delivery date in natural language; no rigid keywords required
+- DO inherits all customisation remarks from the source sales order automatically — ribbon colour, greeting card wording, item substitution, price tag on/off — no retyping required
+- Split one sales order into multiple DOs for staged or multi-drop delivery, specifying quantities per drop in the same chat thread
 
 **Delivery Status Updates**
-- Mark DO as delivered, mark as failed, or reschedule delivery date via WhatsApp
+- Mark a DO as delivered, mark as failed, or reschedule the delivery date via WhatsApp chat
+- Query the current status of any DO or batch of DOs by sales order reference
+
+**Real-Time Fulfillment Monitoring**
+- Ask MAIA for a live view of pending, in-progress, or completed deliveries at any time via chat
+- Receive next-step alerts when an invoice is ready for logistics action — no manual WhatsApp group monitoring required
 
 **Daily Digest — Logistics**
 - Pending scheduling
