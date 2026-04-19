@@ -106,7 +106,13 @@ _Demo slide content for MAIA presentation to JDX Tea. Structured around the E2E 
 
 ## Slide 8 — Demo Step 5: Delivery Status Tracking
 
-**Pain:** Coordinator scrolls WhatsApp group to match driver photos to drops; failed deliveries rescheduled by phone with no record
+**Pain:** JDX runs two delivery modes from the same order — own fleet for Klang Valley drops, 3PL couriers (J&T, Skynet, CityLink) for outstation. Both feed into the same manual tracking problem.
+
+For KV drops: driver delivers, takes a photo, sends it to a **shared WhatsApp delivery group**. Coordinator scrolls through the group, figures out which photo belongs to which drop, and logs it manually. For outstation: coordinator chases 3PL partners for tracking numbers and screenshots their system or sends the consignee number to the customer.
+
+When a delivery fails — wrong item, wrong date, driver arrived late and customer refused — the coordinator handles rescheduling entirely by phone and WhatsApp, **piecing context together across multiple threads with no central record**. Each failure is a disproportionate time sink even if infrequent. During peak, the coordinator's day is mostly a recovery operation.
+
+Customers don't wait — they chase promoters or the CS team for delivery status. The CS team then chases the coordinator. The coordinator chases the driver or 3PL. **There is no single view of what's delivered, what's failed, and what's still open.**
 
 **MAIA solves it:**
 - Each DO status: To Schedule → Scheduled → Out for Delivery → Completed / Failed
