@@ -2,7 +2,7 @@
 owner: Gareth
 status: draft
 doctype: Quotation
-last_reviewed: 2026-04-15
+last_reviewed: 2026-04-19
 ---
 
 # Quotation — Product Spec
@@ -41,11 +41,9 @@ last_reviewed: 2026-04-15
 - [x] Remarks field (free text)
 - [x] Terms and Conditions field (free text)
 - [x] List view with status tabs, sortable columns, search, Export CSV
-- [ ] [TO FILL] — PDF export from Quotation
-- [ ] [TO FILL] — Quotation numbering format (SAL-QTN-YYYY-NNNNN)
+- [x] Generate PDF — available on OPEN, LOST, EXPIRED statuses; `[TO FILL]` — available on DRAFT?
+- [x] Quotation numbering format: SAL-QTN-YYYY-NNNNN (e.g. SAL-QTN-2026-00304) — confirmed
 - [ ] [TO FILL] — Duplicate / Clone Quotation
-- [ ] [TO FILL] — Email Quotation to customer from MAIA
-
 ---
 
 ## 3. Feature Specs
@@ -155,7 +153,7 @@ last_reviewed: 2026-04-15
 | Description | Quotation progresses from DRAFT to OPEN, then either ORDERED (via SO) or LOST |
 | Business Rule | LOST is terminal (cannot reopen); ORDERED only set when converted SO is submitted |
 | Field Behaviour | DRAFT editable; OPEN locked |
-| Edge Cases | Mark as Lost uses native browser dialog (window.confirm) — not a component modal |
+| Edge Cases | Mark as Lost shows a component modal (not native browser dialog) with optional Lost Reasons dropdown |
 | Client Examples | All clients |
 
 **Status flow:**
@@ -167,15 +165,27 @@ Create New → DRAFT → [Submit] → OPEN → [Convert to SO + Submit SO] → O
                      Removed
 ```
 
+**Actions per status (confirmed from live app):**
+
+| Status | Available Actions |
+|---|---|
+| DRAFT | Submit (→ OPEN), Delete |
+| OPEN | Generate PDF, Create Sales Order (→ SO DRAFT), dropdown → Mark as Lost |
+| LOST | Generate PDF only (terminal) |
+| EXPIRED | Generate PDF only (auto-terminal; Valid Until date passed) |
+| CANCELLED | `[TO FILL]` — no examples in demo |
+| PARTIALLY ORDERED | `[TO FILL]` — no examples in demo |
+| ORDERED | `[TO FILL]` — no examples in demo |
+
 **Subfeatures:**
 - DRAFT: all fields editable; Delete (simple confirm); Submit (validation run)
-- OPEN: locked; Convert to SO; Mark as Lost; `[TO FILL]` — Amend flow from OPEN?
+- OPEN: locked; "Create Sales Order" is primary action; dropdown reveals only "Mark as Lost"
+- OPEN → Mark as Lost: component modal — "Are you sure you want to mark [QTN] as lost? This action cannot be undone." + optional "Lost Reasons" dropdown (multi-select combobox) + Cancel / Mark as Lost / Close buttons
 - PARTIALLY ORDERED: some but not all line items converted to SO; quotation stays active
 - ORDERED: all items converted; Quotation won/closed
-- LOST: terminal; no further actions; retained
-- EXPIRED: system auto-sets when Valid Until date passes — confirmed via "Expired" and "Expiring Soon" list tabs
+- LOST: terminal; Generate PDF only; no further actions; retained for audit
+- EXPIRED: system auto-sets when Valid Until date passes — confirmed via "Expired" and "Expiring Soon" list tabs; Generate PDF only
 - "Warm Leads" and "Follow-up Overdue" are list view filters, not Quotation statuses
-- "Mark as Lost" uses native `window.confirm()` browser dialog — cannot be automated in Playwright
 
 ---
 
