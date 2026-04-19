@@ -40,9 +40,12 @@ last_reviewed: 2026-04-15
 - [x] Payment terms (same as SO payment terms)
 - [x] Charges and discounts
 - [x] Tax settings
+- [x] PARTLY PAID status (confirmed via list tabs)
+- [x] OVERDUE status (confirmed via list tabs)
+- [x] CREDIT NOTE ISSUED status (confirmed via list tabs — undocumented previously)
+- [x] List view with status tabs, sortable columns, Credit Utilization column, Export CSV
 - [ ] [TO FILL] — Invoice numbering format (ACC-SINV-YYYY-NNNNN)
-- [ ] [TO FILL] — Partial payment tracking (PARTLY PAID status)
-- [ ] [TO FILL] — OVERDUE status and trigger logic
+- [ ] [TO FILL] — OVERDUE trigger logic (days past due date?)
 - [ ] [TO FILL] — E-invoice compliance (Malaysia LHDN requirements)
 - [ ] [TO FILL] — Email/send invoice to customer
 
@@ -97,9 +100,10 @@ Create New / From SO → DRAFT → [Submit] → UNPAID → [Cancel (two-step)] �
 - CANCELLED: terminal; no further actions; retained for audit trail; cannot create downstream docs
 - Cancel from UNPAID is two-step: Cancel → Go Back (no change) OR Confirm Cancel → CANCELLED
 - UNPAID delete requires extra confirmation warning about financial impact
-- `[TO FILL]` — PARTLY PAID status: when does invoice move from UNPAID to PARTLY PAID?
-- `[TO FILL]` — PAID status: when fully paid, does status auto-update?
-- `[TO FILL]` — OVERDUE status: trigger logic (days past due date?)
+- PARTLY PAID: invoice transitions when a Receipt is completed for partial amount (auto-triggered)
+- PAID: invoice transitions when total receipts = Grand Total (auto-triggered)
+- OVERDUE: `[TO FILL]` — trigger logic (days past due date?)
+- CREDIT NOTE ISSUED: status set when a Credit Note is created against this invoice; invoice stays collectible
 
 ---
 

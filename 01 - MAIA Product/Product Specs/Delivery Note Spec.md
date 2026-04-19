@@ -29,20 +29,24 @@ last_reviewed: 2026-04-15
 - [x] Create DN from Sales Order (TO BILL)
 - [x] Create DN from Sales Order (HOLD)
 - [x] Create DN from Invoice (UNPAID)
+- [x] Standalone DN creation (manual, no SO/Invoice link)
 - [x] Partial qty delivery (DN qty < SO total qty)
 - [x] Multiple DNs per SO — Blanket Order pattern (see [[Blanket Order Spec]])
-- [x] Different delivery date per DN
+- [x] Different delivery date per DN (Expected + Scheduled dates)
 - [x] Different delivery address per DN
 - [x] Chatbot-initiated DN splitting (see [[Blanket Order Spec]])
-- [ ] [TO FILL] — Status flow (DRAFT → ? → ?)
-- [ ] [TO FILL] — PDF / delivery receipt generation
-- [ ] [TO FILL] — Driver / vehicle / warehouse assignment
+- [x] Source Warehouse selection (unlocks address/contact)
+- [x] Weight tracking (Total Net Weight in Kg)
+- [x] PO Number field
+- [x] Remarks and Terms and Conditions fields
+- [x] Status flow: Draft → To Schedule → Scheduled → To Deliver → Out For Delivery → Success / Failed → Return Issued → Closed (+ Cancelled)
+- [x] List view columns: DN ID, Customer, City, State, Postcode, Country, Fulfillment Method, No. of Items, Weight, Status, Expected Delivery Date, Scheduled Delivery Date, Total, Created at, Updated at
+- [ ] [TO FILL] — PDF / delivery receipt generation per status
 - [ ] [TO FILL] — Proof of delivery (customer signature, photo)
 - [ ] [TO FILL] — Packing List / Pick List integration
 - [ ] [TO FILL] — Delivery Trip linking
-- [ ] [TO FILL] — Return Note creation from DN
+- [ ] [TO FILL] — Actions available at each status (To Schedule, Scheduled, etc.)
 - [ ] [TO FILL] — DN numbering format
-- [ ] [TO FILL] — Column filters and sort on DN list view
 
 ---
 
@@ -92,23 +96,58 @@ For multi-DN splitting, flexible qty, different dates/addresses, chatbot → see
 
 | Attribute | Detail |
 |---|---|
-| Description | `[TO FILL]` — DN status flow not yet fully validated |
-| Business Rule | `[TO FILL]` |
-| Field Behaviour | `[TO FILL]` |
-| Edge Cases | `[TO FILL]` |
+| Description | DN moves through a fulfilment lifecycle from creation to delivery success/failure |
+| Business Rule | Cancelled is terminal; Return Issued indicates a Return Note was created from this DN |
+| Field Behaviour | `[TO FILL]` — which fields lock at each status transition |
+| Edge Cases | Failed delivery can result in Return Issued; Success is final positive terminal |
 | Client Examples | All clients |
 
-**Status flow:** `[TO FILL]`
+**Status flow:**
+```
+Create (standalone / from SO / from Invoice) → DRAFT → [Submit?] → TO SCHEDULE
+  → [Schedule] → SCHEDULED → [Dispatch] → TO DELIVER → [Out] → OUT FOR DELIVERY
+  → [Delivered] → SUCCESS (terminal positive)
+  → [Failed] → FAILED → [Return created] → RETURN ISSUED
+  → [Close] → CLOSED
+  → [Cancel] → CANCELLED (terminal)
+```
+
+**Status tab names (confirmed from list view):**
+Draft → To Schedule → Scheduled → To Deliver → Out For Delivery → Success → Failed → Return Issued → Closed → Cancelled
 
 **Subfeatures:**
-- `[TO FILL]` — DRAFT → ? → ? → terminal
-- `[TO FILL]` — Actions available per status
-- `[TO FILL]` — PDF / delivery receipt per status
-- `[TO FILL]` — Proof of delivery capture (signature, photo)
+- `[TO FILL]` — Exact actions/buttons available at each status
+- `[TO FILL]` — PDF / delivery receipt generation (which statuses?)
+- `[TO FILL]` — Proof of delivery capture (customer signature, photo)
+- Return Issued: indicates a Return Note was created from this DN; see [[Return Note Spec]]
 
 ---
 
-### F-04: Logistics Integration
+### F-04: DN Form Fields
+
+| Attribute | Detail |
+|---|---|
+| Description | Fields on the Create Delivery Note form (standalone or pre-filled from SO/Invoice) |
+| Business Rule | Warehouse selection unlocks Address and Contact fields |
+| Field Behaviour | Expected Delivery Date defaults to 7 days from today; Scheduled Delivery Date is optional |
+| Edge Cases | Standalone DN has no SO/Invoice reference; all fields entered manually |
+| Client Examples | All clients |
+
+**Subfeatures:**
+- Date (today default), Expected Delivery Date (7 days default), Scheduled Delivery Date (optional)
+- Currency (MYR default), Incoterm (optional)
+- **Warehouse Information**: Source Warehouse → unlocks Address and Contact
+- Fulfillment Method (required)
+- **Customer Information**: Customer → Billing Contact, Shipping Contact, Billing Address, Shipping Address
+- PO Number (optional free text)
+- Items section (customer must be selected first)
+- Remarks (free text, optional)
+- Terms and Conditions (free text, optional)
+- Summary: shows **Total Net Weight (Kg)** — not a monetary total
+
+---
+
+### F-05: Logistics Integration
 
 | Attribute | Detail |
 |---|---|

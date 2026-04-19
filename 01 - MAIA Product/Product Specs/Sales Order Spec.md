@@ -44,9 +44,10 @@ last_reviewed: 2026-04-15
 - [x] Incoterm selection (11 options)
 - [x] Order type selection
 - [x] Currency selection
+- [x] List view with status tabs, sortable columns, search, Export CSV
+- [x] Customer credit utilization visible on SO list and SO form
 - [ ] [TO FILL] — Credit check on SO creation/submission
 - [ ] [TO FILL] — Bulk actions on SO list view
-- [ ] [TO FILL] — Column filters and sort on SO list view
 - [ ] [TO FILL] — Customer outstanding balance check
 
 ---
@@ -211,6 +212,28 @@ DRAFT → [Delete] → Removed
 - PDF downloads immediately
 - No new document created in system
 - `[TO FILL]` — other PDF export options available
+
+---
+
+### F-09: Sales Order List View
+
+| Attribute | Detail |
+|---|---|
+| Description | Main list of all Sales Orders with status tabs, sortable columns, and pipeline views |
+| Business Rule | Tab labels reflect computed pipeline states — not all match internal status names |
+| Field Behaviour | Column headers clickable for sort; search box filters by SO content |
+| Edge Cases | "Delivery Overdue" and "Stale Orders" tabs are computed views based on dates/activity |
+| Client Examples | All clients |
+
+**Subfeatures:**
+- Table columns: Order ID, Customer, Credit Utilization, Status, Progress, Total, Created at, Updated at, Actions
+- Status tabs: All Orders, Draft, In Progress, Completed, Pending Delivery, Pending Billing, Pending Payment, Delivery Overdue, Stale Orders, Closed, Cancelled
+- "Progress" column — tracks fulfillment/billing progress on SO; `[TO FILL]` — exact metric (e.g., % invoiced, % delivered?)
+- "In Progress" tab likely = TO BILL + HOLD combined (computed view)
+- "Pending Delivery" = SO with no DN created yet; "Pending Billing" = no Invoice yet; "Pending Payment" = Invoice exists but unpaid
+- "Delivery Overdue" = expected delivery date passed with no completed DN
+- "Stale Orders" = `[TO FILL]` — definition (inactive for N days?)
+- Credit Utilization column — customer's used credit vs limit
 
 ---
 
