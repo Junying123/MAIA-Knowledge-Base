@@ -7,3 +7,4 @@
 {"t":0,"agent":"a59f87c","agent_type":"Explore","event":"agent_start","parent_mode":"none"}
 {"t":0,"agent":"a59f87c","agent_type":"Explore","event":"agent_stop","success":true,"duration_ms":234632}
 {"t":0,"agent":"a933da5","agent_type":"unknown","event":"agent_stop","success":true}
+{"t":0,"agent":"a72d18a","agent_type":"unknown","event":"agent_stop","success":true}
