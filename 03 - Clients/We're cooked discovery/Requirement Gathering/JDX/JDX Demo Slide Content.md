@@ -86,7 +86,9 @@ _Demo slide content for MAIA presentation to JDX Tea. Structured around the E2E 
 - Same remarks flow automatically: SO → Invoice → Delivery Order → Warehouse view
 - No retyping. No copy-paste. No WhatsApp forwarding.
 
-**Demo:** Open the DO created from the same SO — show remarks already there, unchanged, no manual step
+**Demo — Web App:** Show remarks field on the SO — point out where customisation is captured
+**Demo — Chatbot:** Show remarks added in the same chat thread when creating the SO
+> ⚠ Do not click through to Invoice or DO — remarks propagation is not yet live in MAIA. Explain verbally: "This is built for JDX in Phase 1 — when configured, these remarks will carry through automatically to the DO and warehouse view. We won't demo it live today."
 
 ---
 
