@@ -18,7 +18,8 @@ Index of all test scenarios and test coverage for MAIA.
 | Credit Notes | 8 | 4 | 0 | 0 | 50% |
 | Receipts | 2 | 0 | 0 | 0 | 0% |
 | Integration | 23 | 1 | 0 | 1 | 4% |
-| **Total** | **106** | **57** | **0** | **3** | **54%** |
+| Certificate (Tax Reference) | 35 | 0 | 0 | 0 | 0% |
+| **Total** | **141** | **57** | **0** | **3** | **40%** |
 
 ## Test Scenario Categories
 
@@ -44,6 +45,13 @@ Index of all test scenarios and test coverage for MAIA.
 - **Dev Environment:** https://maia-oms-dev.vercel.app (for dev team testing)
 - **Demo Environment:** https://maia-oms-demo.vercel.app (for client demos, PM testing)
 - **Automation:** Playwright test suite
+
+## Test Case Files
+
+- [[04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases]] — C1, C3, A57 tax exemption (35 cases)
+- [[04 - QA & Known Issues/Test Cases/Receipt Test Cases Guide]]
+- [[04 - QA & Known Issues/Test Cases/Debit Note TC-DN-001 Testing Guide]]
+- [[04 - QA & Known Issues/Test Cases/Stock Availability Warning Test Guide]]
 
 ## See Also
 
