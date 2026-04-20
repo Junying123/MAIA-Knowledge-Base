@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"ls -la ~/Downloads/jdx-maia-demo/project/uploads/\",\"description\":\"List uploads folder contents\"}",
+  "error": "Exit code 1\nls: /Users/garethng/Downloads/jdx-maia-demo/project/uploads/: No such file or directory",
+  "timestamp": "2026-04-20T15:10:18.254Z",
+  "retry_count": 2
+}
