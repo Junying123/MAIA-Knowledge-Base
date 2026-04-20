@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAIA for JDX Tea — Demo Deck</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="deck-stage.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #000; font-family: 'DM Sans', sans-serif; }
+body { background: #000; font-family: 'Inter', sans-serif; }
 
 /* ── CSS CUSTOM PROPERTIES ── */
 @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
@@ -32,9 +32,10 @@ body { background: #000; font-family: 'DM Sans', sans-serif; }
   --red:         #D83D3E;
   --green:       #47B150;
   --blue:        #3B8EFF;
-  --font-display:'DM Serif Display', serif;
-  --font-head:   'Syne', sans-serif;
-  --font-body:   'DM Sans', sans-serif;
+  --font-display:'Inter', sans-serif;
+  --font-head:   'Inter', sans-serif;
+  --font-body:   'Inter', sans-serif;
+  --font-mono:   'Menlo', 'Monaco', 'Courier New', monospace;
 }
 
 /* ── PROGRESS BAR ── */
@@ -177,7 +178,7 @@ section::before {
   display: flex; justify-content: space-between; align-items: center;
 }
 .s-cover .maia-wordmark {
-  font-family: var(--font-head); font-size: 22px; font-weight: 800;
+  font-family: var(--font-head); font-size: 22px; font-weight: 600;
   color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
 }
 .s-cover .top-meta {
@@ -188,7 +189,7 @@ section::before {
   justify-content: center; padding: 0 60px 0 0;
 }
 .s-cover .eyebrow {
-  font-family: var(--font-head); font-size: 20px; font-weight: 600;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
   color: var(--amber); letter-spacing: 0.18em; text-transform: uppercase;
   margin-bottom: 32px; display: flex; align-items: center; gap: 16px;
 }
@@ -198,7 +199,7 @@ section::before {
 }
 .s-cover .hero-line {
   font-family: var(--font-display); font-size: 116px;
-  font-weight: 400; line-height: 0.92; color: var(--text);
+  font-weight: 700; line-height: 0.92; color: var(--text);
   display: block;
 }
 .s-cover .hero-line.chaos-line { display: flex; align-items: baseline; gap: 12px; }
@@ -218,7 +219,7 @@ section::before {
   vertical-align: middle; border-radius: 2px; flex-shrink: 0;
 }
 .s-cover .hero-sub {
-  font-family: var(--font-body); font-size: 28px; font-weight: 300;
+  font-family: var(--font-body); font-size: 28px; font-weight: 400;
   color: var(--text-2); margin-top: 32px; max-width: 680px; line-height: 1.5;
 }
 .s-cover .bottom-bar {
@@ -245,7 +246,7 @@ section[data-deck-active].s-cover .screenshot-wrap { animation: float    5s ease
   display: flex; flex-direction: column; gap: 10px;
 }
 .slide-header .eyebrow {
-  font-family: var(--font-head); font-size: 20px; font-weight: 600;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
   color: var(--amber); letter-spacing: 0.16em; text-transform: uppercase;
   display: flex; align-items: center; gap: 14px;
 }
@@ -254,8 +255,8 @@ section[data-deck-active].s-cover .screenshot-wrap { animation: float    5s ease
   background: linear-gradient(90deg, var(--amber), var(--amber-2)); flex-shrink: 0;
 }
 .slide-header .title {
-  font-family: var(--font-head); font-size: 62px; font-weight: 800;
-  line-height: 1.0; letter-spacing: -0.025em; color: var(--text);
+  font-family: var(--font-head); font-size: 62px; font-weight: 600;
+  line-height: 1.0; letter-spacing: -0.02em; color: var(--text);
 }
 .slide-body { padding: 0 96px 56px; flex: 1; display: flex; flex-direction: column; }
 
@@ -278,8 +279,8 @@ section[data-deck-active] .slide-header .title   { animation: fadeUp 0.5s  cubic
 .pain-card:hover { transform: translateY(-4px) scale(1.01); }
 .pain-card .card-top { display: flex; align-items: center; gap: 14px; }
 .pain-card .num {
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
-  color: var(--text-3); letter-spacing: 0.1em;
+  font-family: var(--font-mono); font-size: 20px; font-weight: 400;
+  color: var(--text-3); letter-spacing: 0.08em;
 }
 .pain-card .icon {
   width: 38px; height: 38px; border-radius: 9px;
@@ -289,7 +290,7 @@ section[data-deck-active] .slide-header .title   { animation: fadeUp 0.5s  cubic
 }
 .pain-card .icon svg { color: var(--amber); }
 .pain-card .label {
-  font-family: var(--font-head); font-size: 22px; font-weight: 700;
+  font-family: var(--font-head); font-size: 22px; font-weight: 600;
   color: var(--text); letter-spacing: -0.01em;
 }
 .pain-card .body {
@@ -338,18 +339,18 @@ section[data-deck-active] .quote-strip            { animation: fadeUp  0.5s cubi
 }
 .fl-side-text {
   writing-mode: vertical-rl; transform: rotate(180deg);
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
   letter-spacing: 0.16em; text-transform: uppercase;
 }
 .fl-side.today .fl-side-text { color: var(--text-3); }
 .fl-side.maia  .fl-side-text { color: var(--amber); }
 .fl-head { padding: 0 14px 10px; display: flex; flex-direction: column; gap: 2px; }
 .fl-head-num  {
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
-  color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; line-height: 1;
+  font-family: var(--font-mono); font-size: 20px; font-weight: 400;
+  color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1;
 }
 .fl-head-name {
-  font-family: var(--font-head); font-size: 24px; font-weight: 700;
+  font-family: var(--font-head); font-size: 24px; font-weight: 600;
   color: var(--text); line-height: 1.15;
 }
 .fl-today {
@@ -423,8 +424,8 @@ section[data-deck-active] .fl-maia.last           { animation: scaleIn 0.4s cubi
   display: inline-flex; align-items: center; gap: 10px;
   background: var(--amber-dim); border: 1px solid rgba(232,150,17,0.28);
   border-radius: 100px; padding: 8px 20px 8px 12px;
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
-  color: var(--amber); letter-spacing: 0.04em; white-space: nowrap; flex-shrink: 0;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  color: var(--amber); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
 }
 .demo-step-pill .step-num {
   background: linear-gradient(135deg, var(--amber), var(--amber-2));
@@ -433,8 +434,8 @@ section[data-deck-active] .fl-maia.last           { animation: scaleIn 0.4s cubi
   font-size: 20px; font-weight: 900;
 }
 .demo-title {
-  font-family: var(--font-head); font-size: 48px; font-weight: 800;
-  letter-spacing: -0.02em; line-height: 1.05; color: var(--text); flex: 1;
+  font-family: var(--font-head); font-size: 48px; font-weight: 600;
+  letter-spacing: -0.015em; line-height: 1.05; color: var(--text); flex: 1;
 }
 .demo-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; }
 .demo-col {
@@ -447,7 +448,7 @@ section[data-deck-active] .fl-maia.last           { animation: scaleIn 0.4s cubi
 .demo-col.solve-col { background: rgba(232,150,17,0.04); border: 1px solid rgba(232,150,17,0.28); }
 .demo-col-head {
   display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.12em;
   padding-bottom: 14px; border-bottom: 1px solid var(--border);
 }
@@ -482,7 +483,7 @@ section[data-deck-active] .fl-maia.last           { animation: scaleIn 0.4s cubi
 }
 .wa-header .wa-dot { width: 28px; height: 28px; border-radius: 50%; background: #128C7E; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .wa-header .wa-dot svg { color: #fff; }
-.wa-header .wa-name { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text); }
+.wa-header .wa-name { font-family: var(--font-head); font-size: 18px; font-weight: 600; color: var(--text); }
 .wa-header .wa-status { font-size: 16px; color: #47B150; margin-top: 1px; }
 .wa-chat { display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
 .wa-row { display: flex; }
@@ -531,8 +532,9 @@ section[data-deck-active] .wa-row:nth-child(5) .wa-bubble { animation: bubble-in
 }
 .demo-ch:hover { border-color: var(--border-hi); }
 .demo-ch .ch-badge {
-  font-family: var(--font-head); font-size: 19px; font-weight: 700;
+  font-family: var(--font-head); font-size: 19px; font-weight: 500;
   padding: 4px 12px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+  letter-spacing: 0.04em; text-transform: uppercase;
 }
 .demo-ch .ch-badge.web { background: rgba(59,142,255,0.14); color: var(--blue); }
 .demo-ch .ch-badge.wa  { background: rgba(71,177,80,0.14);  color: var(--green); }
@@ -572,7 +574,7 @@ section[data-deck-active] .demo-items li:nth-child(4) { animation: fadeUp 0.35s 
 .scope-col.p2  { background: rgba(59,142,255,0.03); border: 1px solid rgba(59,142,255,0.22); }
 .scope-col.out { background: rgba(255,255,255,0.02); border: 1px solid var(--border); opacity: 0.7; }
 .scope-head {
-  font-family: var(--font-head); font-size: 20px; font-weight: 700;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.12em;
   padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border);
 }
@@ -605,12 +607,12 @@ section[data-deck-active] .scope-col.out { animation: scaleIn 0.5s cubic-bezier(
 .s-close { justify-content: space-between; padding: 72px 96px; }
 .s-close .close-top { display: flex; justify-content: space-between; align-items: flex-start; }
 .s-close .close-headline {
-  font-family: var(--font-display); font-size: 94px; line-height: 0.94;
-  letter-spacing: -0.01em; color: var(--text); max-width: 1100px;
+  font-family: var(--font-display); font-size: 94px; font-weight: 700; line-height: 0.94;
+  letter-spacing: -0.025em; color: var(--text); max-width: 1100px;
 }
 .s-close .close-brand { text-align: right; }
 .s-close .close-brand-name {
-  font-family: var(--font-head); font-size: 26px; font-weight: 800;
+  font-family: var(--font-head); font-size: 26px; font-weight: 600;
   color: var(--amber); letter-spacing: 0.1em;
 }
 .s-close .close-brand-tag { font-size: 20px; color: var(--text-3); margin-top: 5px; }
@@ -662,7 +664,7 @@ section[data-deck-active].s-close .close-bottom    { animation: fadeUp 0.5s cubi
 .mockup-tab.active { color: #F2F2F4; border-color: rgba(255,255,255,0.1); }
 .mockup-body { padding: 18px 18px 14px; }
 .mockup-title {
-  font-size: 14px; font-weight: 700; color: #F2F2F4;
+  font-size: 14px; font-weight: 600; color: #F2F2F4;
   margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;
   font-family: var(--font-head);
 }
@@ -682,12 +684,12 @@ section[data-deck-active].s-close .close-bottom    { animation: fadeUp 0.5s cubi
 }
 .mockup-row:last-child { border-radius: 0 0 8px 8px; }
 .mockup-row:hover { background: rgba(255,255,255,0.02); }
-.so-num { color: #E89611; font-weight: 700; font-family: var(--font-head); }
+.so-num { color: #E89611; font-weight: 400; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em; }
 .so-cust { color: #F2F2F4; font-weight: 500; }
 .chip {
   display: inline-flex; align-items: center; padding: 3px 9px;
-  border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
-  font-family: var(--font-head);
+  border-radius: 100px; font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; font-family: var(--font-head);
 }
 .chip.tobill  { background: rgba(232,150,17,0.15); color: #E89611; }
 .chip.paid    { background: rgba(71,177,80,0.15);  color: #47B150; }
@@ -700,8 +702,8 @@ section[data-deck-active].s-close .close-bottom    { animation: fadeUp 0.5s cubi
   background: #09090D; border: 1px solid rgba(255,255,255,0.06);
   border-radius: 8px; padding: 11px 12px;
 }
-.stat-lbl  { font-size: 10px; color: #42474F; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-head); }
-.stat-val  { font-size: 20px; font-weight: 800; color: #F2F2F4; margin-top: 3px; font-family: var(--font-head); }
+.stat-lbl  { font-size: 10px; color: #42474F; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-head); }
+.stat-val  { font-size: 20px; font-weight: 600; color: #F2F2F4; margin-top: 3px; font-family: var(--font-head); }
 .stat-val span { font-size: 11px; font-weight: 500; color: #47B150; margin-left: 4px; }
 </style>
 </head>
