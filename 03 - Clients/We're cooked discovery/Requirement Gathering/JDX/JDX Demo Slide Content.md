@@ -37,19 +37,19 @@ _Demo slide content for MAIA presentation to JDX Tea. Structured around the E2E 
 
 **Title:** Current Process → MAIA Process
 
-| Step | Today | With MAIA |
-|---|---|---|
-| **Order intake** | Orders arrive via WhatsApp, Facebook, website, and kiosk promoters — no central log; each channel feeds a separate conversation thread | SO created in MAIA (web app or chatbot) — all orders in one place |
-| **Pro forma creation** | Accounts assistant manually creates pro forma in SQL one by one; customisation (ribbon colour, greeting card, item swap, delivery date, price tag) typed as free text in remarks column | SO + structured remarks → pro forma PDF generated instantly |
-| **Discount applied** | Coordinator applies discount tier from memory — part-timers often get it wrong; rules change each season | Discount tiers configured in MAIA; applied at SO stage |
-| **Send to customer** | Pro forma printed or forwarded manually via WhatsApp | PDF sent from MAIA directly |
-| **Payment confirmation** | Customer sends bank slip to a dedicated WhatsApp payment group; coordinator reads group, manually matches each slip to the right pro forma; someone stands by overnight during peak | Coordinator attaches slip in MAIA; one-click invoice conversion |
-| **DO creation** | DO created manually after payment matched; customisation remarks retyped or copy-pasted from pro forma — details drop at every handoff | DO auto-created from invoice; remarks propagate automatically |
-| **Warehouse packing** | Warehouse reads printed DO or WhatsApp screenshot; cross-checks remarks manually; customised orders pulled out and repacked separately | Warehouse opens DO in MAIA — all remarks already there |
-| **Multi-drop scheduling** | 50+ delivery addresses per corporate order tracked on a spreadsheet built per order; addresses captured verbally or via WhatsApp | One SO → multiple DOs in MAIA; each drop has own date and status |
-| **Delivery tracking** | KV: driver photos sent to WhatsApp group; coordinator matches photos to drops manually. Outstation: coordinator chases 3PL for tracking numbers and screenshots | Mark delivered/failed/reschedule in MAIA or chatbot; live status per drop |
-| **Failed delivery** | Coordinator reschedules by phone and WhatsApp; no central record; each failure takes disproportionate time | Flag DO as failed in MAIA; reschedule logged; full context retained |
-| **Invoice conversion** | Manual pro forma → invoice conversion in SQL after delivery confirmed | Triggered on payment confirmation; one click |
+| Step                      | Today                                                                                                                                                                                   | With MAIA                                                                 |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Order intake**          | Orders arrive via WhatsApp, Facebook, website, and kiosk promoters — no central log; each channel feeds a separate conversation thread                                                  | SO created in MAIA (web app or chatbot) — all orders in one place         |
+| **Pro forma creation**    | Accounts assistant manually creates pro forma in SQL one by one; customisation (ribbon colour, greeting card, item swap, delivery date, price tag) typed as free text in remarks column | SO + structured remarks → pro forma PDF generated instantly               |
+| **Discount applied**      | Coordinator applies discount tier from memory — part-timers often get it wrong; rules change each season                                                                                | Discount tiers configured in MAIA; applied at SO stage                    |
+| **Send to customer**      | Pro forma printed or forwarded manually via WhatsApp                                                                                                                                    | PDF sent from MAIA directly                                               |
+| **Payment confirmation**  | Customer sends bank slip to a dedicated WhatsApp payment group; coordinator reads group, manually matches each slip to the right pro forma; someone stands by overnight during peak     | Coordinator attaches slip in MAIA; one-click invoice conversion           |
+| **DO creation**           | DO created manually after payment matched; customisation remarks retyped or copy-pasted from pro forma — details drop at every handoff                                                  | DO auto-created from invoice; remarks propagate automatically             |
+| **Warehouse packing**     | Warehouse reads printed DO or WhatsApp screenshot; cross-checks remarks manually; customised orders pulled out and repacked separately                                                  | Warehouse opens DO in MAIA — all remarks already there                    |
+| **Multi-drop scheduling** | 50+ delivery addresses per corporate order tracked on a spreadsheet built per order; addresses captured verbally or via WhatsApp                                                        | One SO → multiple DOs in MAIA; each drop has own date and status          |
+| **Delivery tracking**     | KV: driver photos sent to WhatsApp group; coordinator matches photos to drops manually. Outstation: coordinator chases 3PL for tracking numbers and screenshots                         | Mark delivered/failed/reschedule in MAIA or chatbot; live status per drop |
+| **Failed delivery**       | Coordinator reschedules by phone and WhatsApp; no central record; each failure takes disproportionate time                                                                              | Flag DO as failed in MAIA; reschedule logged; full context retained       |
+| **Invoice conversion**    | Manual pro forma → invoice conversion in SQL after delivery confirmed                                                                                                                   | Triggered on payment confirmation; one click                              |
 
 ---
 
