@@ -1,0 +1,271 @@
+/* ============================================================
+   MAIA Design System — Colors & Typography
+   Brand: Mindhive Sdn Bhd / MAIA
+   Source: MAIA Design.fig, MAIA Introduction Deck v4.pptx
+   ============================================================ */
+
+/* ── Google Fonts (Inter + Menlo fallback) ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+/* ============================================================
+   BASE COLOR TOKENS
+   ============================================================ */
+:root {
+  /* Backgrounds */
+  --color-bg-base:          #0D0E11;   /* rgb(13,14,17)   — page/app canvas */
+  --color-bg-surface:       #131519;   /* rgb(19,21,25)   — sidebar, panels */
+  --color-bg-elevated:      #202329;   /* rgb(32,35,41)   — cards, inputs */
+  --color-bg-overlay:       #20232A;   /* rgb(32,35,42)   — dropdowns, tooltips */
+
+  /* Borders */
+  --color-border-default:   #2B2F35;   /* rgb(43,47,53)   — dividers, card outlines */
+  --color-border-subtle:    rgba(86,86,95,0.2); /* sidebar inner borders */
+  --color-border-strong:    #373A42;   /* rgb(55,58,66)   — heavier borders */
+
+  /* Text */
+  --color-text-primary:     #FDFDFD;   /* rgb(253,253,253) — headings, key labels */
+  --color-text-secondary:   #878E99;   /* rgb(135,142,153) — supporting text */
+  --color-text-muted:       #6B717D;   /* rgb(107,113,125) — placeholders, hints */
+  --color-text-disabled:    #9DA4AE;   /* rgb(157,164,174) — disabled states */
+  --color-text-inverse:     #0B0B0B;   /* rgb(11,11,11)   — text on light bg */
+
+  /* Brand Accent — Amber/Orange */
+  --color-accent:           #E89611;   /* rgb(232,150,17)  — active nav, CTAs */
+  --color-accent-light:     #F78313;   /* rgb(247,131,19)  — lighter variant */
+  --color-accent-dark:      #A73D00;   /* rgb(167,61,0)    — pressed/dark variant */
+
+  /* Semantic — Red (Danger / Overdue) */
+  --color-danger:           #D83D3E;   /* rgb(216,61,62)   — overdue, delete */
+  --color-danger-light:     #EC5955;   /* rgb(236,89,85)   — lighter danger text */
+  --color-danger-muted:     #FB7069;   /* rgb(251,112,105) — soft danger */
+  --color-danger-bg:        #491616;   /* rgb(73,24,22)    — danger chip bg */
+  --color-danger-bg-dark:   #7A1B1C;   /* rgb(122,27,28)   — danger badge border */
+
+  /* Semantic — Green (Success / Paid) */
+  --color-success:          #47B150;   /* rgb(71,177,80)   — paid, fulfilled */
+
+  /* Semantic — Blue (Info / Links) */
+  --color-info:             #0060BE;   /* rgb(0,96,190)    — info borders */
+  --color-info-light:       #359BFF;   /* rgb(53,155,255)  — links, info text */
+
+  /* Semantic — Amber (Warning) */
+  --color-warning:          #E89611;   /* same as accent */
+  --color-warning-bg:       #281508;   /* rgb(40,21,8)     — warning chip bg */
+  --color-warning-bg-dark:  #1C0E00;   /* rgb(28,14,0)     — warning text */
+
+  /* Neutrals (gray scale) */
+  --color-neutral-50:       #FDFDFD;
+  --color-neutral-100:      #EBEBEB;   /* rgb(235,235,235) */
+  --color-neutral-200:      #9DA4AE;
+  --color-neutral-300:      #878E99;
+  --color-neutral-400:      #6B717D;
+  --color-neutral-500:      #535862;   /* rgb(83,88,98)    */
+  --color-neutral-600:      #373A42;
+  --color-neutral-700:      #2B2F35;
+  --color-neutral-800:      #202329;
+  --color-neutral-900:      #131519;
+  --color-neutral-950:      #0D0E11;
+
+  /* ============================================================
+     TYPOGRAPHY TOKENS
+     ============================================================ */
+
+  /* Font families */
+  --font-sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:   'Montserrat', 'Inter', sans-serif;
+  --font-mono:      'Menlo', 'Monaco', 'Courier New', monospace;
+
+  /* Font weights */
+  --fw-regular:     400;
+  --fw-medium:      500;
+  --fw-semibold:    600;
+  --fw-bold:        700;
+
+  /* Font sizes */
+  --text-xs:        10px;
+  --text-sm:        12px;
+  --text-base:      14px;
+  --text-md:        16px;
+  --text-lg:        18px;
+  --text-xl:        20px;
+  --text-2xl:       24px;
+  --text-3xl:       30px;
+  --text-4xl:       36px;
+
+  /* Line heights */
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+  --leading-loose:  1.7;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+
+  /* ============================================================
+     SPACING TOKENS
+     ============================================================ */
+  --space-1:   4px;
+  --space-2:   6px;
+  --space-3:   8px;
+  --space-4:   12px;
+  --space-5:   16px;
+  --space-6:   20px;
+  --space-7:   24px;
+  --space-8:   32px;
+  --space-9:   40px;
+  --space-10:  48px;
+
+  /* ============================================================
+     BORDER RADIUS
+     ============================================================ */
+  --radius-sm:    4px;
+  --radius-md:    6px;   /* primary — buttons, cards, badges */
+  --radius-lg:    8px;
+  --radius-xl:    12px;
+  --radius-full:  9999px;
+
+  /* ============================================================
+     SHADOWS
+     ============================================================ */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.10);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.20);
+  --shadow-tooltip: 0 8px 24px rgba(0,0,0,0.30);
+
+  /* ============================================================
+     SEMANTIC COMPONENT VARS
+     ============================================================ */
+
+  /* Page */
+  --page-bg:          var(--color-bg-base);
+  --sidebar-bg:       var(--color-bg-surface);
+  --sidebar-border:   var(--color-border-default);
+  --sidebar-width:    192px;
+
+  /* Nav items */
+  --nav-item-color:         var(--color-text-secondary);
+  --nav-item-active-color:  var(--color-text-primary);
+  --nav-item-active-bg:     var(--color-bg-elevated);
+  --nav-item-active-accent: var(--color-accent);
+  --nav-section-label:      var(--color-text-muted);
+
+  /* Table */
+  --table-header-color:   var(--color-text-muted);
+  --table-row-hover-bg:   rgba(255,255,255,0.03);
+  --table-border:         var(--color-border-default);
+
+  /* Inputs */
+  --input-bg:           var(--color-bg-elevated);
+  --input-border:       var(--color-border-default);
+  --input-color:        var(--color-text-primary);
+  --input-placeholder:  var(--color-text-muted);
+  --input-focus-border: var(--color-accent);
+
+  /* Buttons */
+  --btn-primary-bg:       var(--color-accent);
+  --btn-primary-color:    #0D0E11;
+  --btn-secondary-bg:     var(--color-bg-elevated);
+  --btn-secondary-border: var(--color-border-default);
+  --btn-secondary-color:  var(--color-text-primary);
+  --btn-danger-bg:        var(--color-danger-bg);
+  --btn-danger-color:     var(--color-danger-light);
+}
+
+/* ============================================================
+   SEMANTIC TYPOGRAPHIC STYLES
+   ============================================================ */
+
+/* Display / Hero */
+.text-display {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+/* Headings */
+h1, .h1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  font-weight: var(--fw-semibold);
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+}
+
+h2, .h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: var(--fw-semibold);
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+}
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--fw-medium);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+}
+
+/* Body */
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
+.body-md {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
+/* Labels */
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.label-sm {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+}
+
+/* Monospace */
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+/* Caption */
+.caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
