@@ -170,12 +170,7 @@ JDX explicitly prioritised solving the billing and delivery bottleneck before ad
 
 ---
 
-## Integration
-
-MAIA integrates with SQL in Phase 1 as follows:
-
-- **Pull from SQL → MAIA:** Customer and item master data is pulled from SQL into MAIA, ensuring JDX does not need to maintain two separate product and customer lists.
-- **Push from MAIA → SQL:** Invoice and receipt records created in MAIA are synced back to SQL, keeping JDX's accounting ledger up to date without manual data entry.
+r
 
 ---
 
