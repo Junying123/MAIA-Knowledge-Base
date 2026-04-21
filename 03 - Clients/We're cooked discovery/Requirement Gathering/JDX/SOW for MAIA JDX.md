@@ -127,6 +127,22 @@ For operations staff managing delivery orders, multi-drop dispatch, and delivery
 - **Delivery Status Tracking** — each DN has its own status: Draft → To Schedule → Scheduled → Success (or Failed). Coordinator manually marks a DN as delivered (Success), reschedules the delivery date, or marks as failed. All DNs for an order are viewable in one place. No Delivery Trip or 3PL integration is in scope.
 - **Output Documents:** Delivery Note (DO)
 
+---
+
+### SQL Integration
+
+JDX's existing data (customers, items, pricing) lives in SQL. As part of Phase 1 onboarding, Mindhive will extract and push the data into MAIA to ensure the system is ready for go-live without requiring JDX to re-enter records manually.
+
+**Scope:**
+- **Customer data** — existing customer records migrated from SQL into MAIA customer module
+- **Item catalogue** — product SKUs, descriptions, and UOM migrated from SQL into MAIA item module
+- **Pricing** — existing price list migrated into MAIA pricing configuration
+- **Inventory sync** — opening stock quantities ingested into MAIA at go-live
+
+> This is a one-time data migration. Ongoing two-way SQL sync is not in scope.
+
+---
+
 #### Document Generation Summary — Phase 1
 
 | Category  | Documents                                                     |
@@ -161,16 +177,36 @@ JDX explicitly prioritised solving the billing and delivery bottleneck before ad
 
 ## Estimated Timelines
 
-| Phase | Scope | Build & Integration | Expected Date | Go-Live & Hypercare |
-|-------|-------|-------------------|---------------|-------------------|
-| Phase 1 | Core MAIA — pro forma, payment matching, DO, multi-address delivery | [TBC] weeks | [TBC] | 1–2 weeks |
-| Phase 2 | Kiosk reporting, inventory | [TBC] weeks | [TBC] | 1–2 weeks |
+### Phase 1 — Core MAIA + SQL Integration
+
+| Activity | Estimate |
+|----------|----------|
+| Onboarding & Setup | 1 week |
+| SQL Integration (customers, items, pricing, inventory sync) | 1–2 weeks |
+| Build & Configuration (chatbots, workspaces, remarks propagation, multi-drop DO) | 3–4 weeks |
+| User Training & UAT | 1–2 weeks |
+| Go-Live & Hypercare | 1 week |
+| **Phase 1 Total** | **7–9 weeks** |
+
+### Phase 2 — Kiosk Reporting + Inventory Management
+
+| Activity | Estimate |
+|----------|----------|
+| Kiosk Daily Stock Reporting (5 mandays) | 1 week |
+| Inventory Management (SKU stock, movement tracking, safety stock alerts) | 2–3 weeks |
+| User Training & UAT | 1 week |
+| Go-Live & Hypercare | 1 week |
+| **Phase 2 Total** | **5–6 weeks** |
+
+### Overall Summary
+
+| Phase | Scope | Build & Integration | Go-Live & Hypercare | Total |
+|-------|-------|-------------------|---------------------|-------|
+| Phase 1 | Core MAIA — pro forma, payment matching, DO, multi-address delivery, SQL integration | 5–6 weeks | 2–3 weeks | **7–9 weeks** |
+| Phase 2 | Kiosk stock reporting, inventory management | 3–4 weeks | 2 weeks | **5–6 weeks** |
+| **Full Engagement** | | | | **12–15 weeks** |
 
 > Phase 2 timeline is contingent on client readiness after Phase 1 go-live.
-
----
-
-r
 
 ---
 
@@ -178,29 +214,33 @@ r
 
 ### One-off Development Cost
 
-| Item | Price |
-|------|-------|
-| Phase 1 — Core MAIA (Pro Forma, Payment Matching, Delivery) | [TBC] |
-| Phase 2 — Kiosk Reporting, Inventory | [TBC] |
-| **Grand Total** | **[TBC]** |
+|                                                             |           |
+| ----------------------------------------------------------- | --------- |
+| Item                                                        | Price     |
+| Phase 1 — Core MAIA (Pro Forma, Payment Matching, Delivery) | RM 20,000 |
+| Phase 2 — Kiosk Reporting, Inventory                        | RM 7,500  |
+| Grand Total                                                 | RM 27,500 |
 
 ### Payment Terms
 
-| Milestone | Percentage | Price | Trigger |
-|-----------|-----------|-------|---------|
-| Milestone 1 — Project Confirmation | 50% | [TBC] | Upon project commencement |
-| Milestone 2 — UAT Sign-Off | 50% | [TBC] | Upon UAT completion and client acceptance |
+|   |   |   |   |
+|---|---|---|---|
+|Milestone|Percentage|Price|Trigger|
+|Milestone 1 — Project Confirmation|50%|RM 13,750|Upon project commencement|
+|Milestone 2 — UAT Sign-Off|50%|RM 13,750|Upon UAT completion and client acceptance|
 
 ### Monthly Maintenance
 
-| Item | Estimated |
-|------|-----------|
-| Platform maintenance | TBC |
-| Infrastructure / hosting | TBC |
-| OpenAI / AI costs | TBC |
-| WhatsApp Business | TBC |
-| **Estimated Monthly Total** | **TBC** |
+|   |   |
+|---|---|
+|Item|Estimated|
+|Platform maintenance|RM 2,500|
+|Infrastructure / hosting|
+|OpenAI / AI costs|
+|WhatsApp Business|
+|Estimated Monthly Total|RM 2,500|
 
+---
 
 ---
 
