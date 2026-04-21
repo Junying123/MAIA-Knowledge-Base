@@ -34,8 +34,7 @@ If the user has already provided these, skip straight to Phase 1.
 
 ## Phase 1 — Research the Website
 
-Use Codex (`codex:codex-rescue`) to browse the website thoroughly. If Codex is
-not available, use WebFetch on the URL directly.
+Use WebFetch on the URL directly. If an agent-browser tool is available, use it to browse additional pages beyond the main URL. In Codex environments, `codex:codex-rescue` can be used instead.
 
 Pages to visit (in order of priority):
 1. Main / landing page
@@ -54,7 +53,7 @@ Extract from the website:
 - Named partners, clients, certifications, regulatory mentions
 - Key personnel or contact names (if listed)
 
-If content is thin or the website is limited, note what was not found — do not fabricate.
+If content is thin or the website is limited, note what was not found — do not fabricate. If the website is entirely inaccessible (e.g. returns a 404, requires login, or times out), stop and ask the user for an alternative URL or any offline materials (pitch deck, email, brochure) before proceeding.
 
 ---
 
@@ -121,7 +120,7 @@ Aim for 4–6 solutions grounded in the website content.
 Names and roles found on the website. If none found, write:
 "Not found on website — to be confirmed."
 
-Do not add a "To discover" sub-list — that belongs in a discovery call prep doc, not here.
+Include the section regardless — even if empty, the placeholder signals it was checked. Do not add a "To discover" sub-list — that belongs in a discovery call prep doc, not here.
 
 ---
 
@@ -161,7 +160,7 @@ YAML frontmatter required:
 ---
 owner: Gareth
 status: draft
-last_reviewed: YYYY-MM-DD
+last_reviewed: YYYY-MM-DD  # Use today's date in YYYY-MM-DD format
 ---
 ```
 
