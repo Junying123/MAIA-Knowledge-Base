@@ -554,11 +554,11 @@ End-to-end scenarios based on real client business situations. Each tests the fu
 
 > ⚠️ **Correction:** The original scenario described using **both C1 and C3 on the same order**. MAIA enforces **one tax reference per Sales Order** — you cannot mix C1 and C3 on a single order. The correct approach: use C1 for the whole order. Salt and Sugar (both TC001, in C1 refs) are exempt and locked. Flour (TC003, not in C1 refs) carries standard tax on the same order. If Sugar specifically requires C3, it must go on a **separate Sales Order**.
 
-| | |
-|---|---|
-| **Precondition** | DEF Manufacturing has a valid C1 certificate with TC001 (salt and sugar) in its references; flour (TC003) is not in any certificate |
-| **Steps** | 1. Create Sales Order for DEF Manufacturing → 2. Select C1 certificate → 3. Add 2,000kg Salt (TC001) — confirm locked → 4. Add 1,500kg Sugar (TC001) — confirm locked → 5. Add 1,000kg Flour (TC003) — confirm warning "not eligible", Tax on Items editable → 6. Set standard tax on Flour manually → 7. Save → 8. Review order summary |
-| **Expected** | Salt and Sugar: exempt, locked; Flour: no exemption, standard tax editable; order summary shows RM10,500 exempt + RM3,000 taxable; customer can see clearly which items are exempt |
+|                  |                                                                                                                                                                                                                                                                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Precondition** | DEF Manufacturing has a valid C1 certificate with TC001 (salt and sugar) in its references; flour (TC003) is not in any certificate                                                                                                                                                                                                      |
+| **Steps**        | 1. Create Sales Order for DEF Manufacturing → 2. Select C1 certificate → 3. Add 2,000kg Salt (TC001) — confirm locked → 4. Add 1,500kg Sugar (TC001) — confirm locked → 5. Add 1,000kg Flour (TC003) — confirm warning "not eligible", Tax on Items editable → 6. Set standard tax on Flour manually → 7. Save → 8. Review order summary |
+| **Expected**     | Salt and Sugar: exempt, locked; Flour: no exemption, standard tax editable; order summary shows RM10,500 exempt + RM3,000 taxable; customer can see clearly which items are exempt                                                                                                                                                       |
 
 ---
 
