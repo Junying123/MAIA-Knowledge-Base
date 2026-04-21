@@ -78,8 +78,9 @@ Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel:
 - MAIA confirms each DO created in chat
 
 **Real-Time Fulfillment Monitoring**
-- Ask MAIA for a live view of pending, in-progress, or completed deliveries at any time via chat
-- Receive next-step alerts when an invoice is ready for logistics action — no manual WhatsApp group monitoring required
+- Ask MAIA for a live view of Delivery Notes by status — Draft, To Schedule, Scheduled, or Success — at any time via chat
+- Receive next-step alerts when an invoice is ready for a Delivery Note to be created — no manual WhatsApp group monitoring required
+- Coordinator marks a DN as delivered (→ Success), reschedules the delivery date, or marks as failed directly via chat — no login required
 
 **Notification Reminders**
 - **Delivery Delays** — triggered when a Delivery Note has not been scheduled after X days from invoice creation
@@ -123,7 +124,7 @@ For operations staff managing delivery orders, multi-drop dispatch, and delivery
 - **Delivery Order (DO) Creation** — DO created from the sales order once the finance staff has issued the invoice. All customisation remarks from the sales order (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) propagate automatically through to the invoice and DO — no retyping required.
 - **Multi-Drop Delivery (Blanket Order)** — one sales order can generate multiple DOs, each linked to the source SO. Coordinator creates individual DOs per drop from the same SO; remaining unfulfilled quantity stays on the SO for subsequent DOs.
 - **Delivery Date Scheduling** — each DO has its own delivery date set independently.
-- **Delivery Status Tracking** — each DO has its own status (e.g. To Schedule, Delivered, Failed). Coordinator can mark a DO as delivered, mark as failed, or reschedule the delivery date. All DOs for an order are viewable in one place.
+- **Delivery Status Tracking** — each DN has its own status: Draft → To Schedule → Scheduled → Success (or Failed). Coordinator manually marks a DN as delivered (Success), reschedules the delivery date, or marks as failed. All DNs for an order are viewable in one place. No Delivery Trip or 3PL integration is in scope.
 - **Output Documents:** Delivery Note (DO)
 
 #### Document Generation Summary — Phase 1
@@ -251,6 +252,8 @@ The following are explicitly excluded from this engagement. These are items JDX 
 - **Tea retail POS for walk-in stores** — Walk-in retail at the 6 JDX stores is separate from the seasonal hamper business and is not in scope.
 - **~3,000 tea SKU deep management** — JDX explicitly parked complex tea SKU treatment (year, factory, grade, batch codes) until the seasonal use case is proven. Phase 1 uses a simplified product catalogue.
 - **Automated discount rules for negotiated / client-specific rates** — Custom rates require coordinator override; MAIA applies standard tiers only.
+- **Delivery Trip management** — DN status is updated manually by the coordinator (mark as delivered, reschedule, mark as failed). Delivery Trip grouping, route planning, and driver assignment are not in scope.
+- **3PL / courier integration** — No integration to third-party logistics providers or courier APIs. Delivery tracking is coordinator-driven within MAIA only.
 
 ---
 
