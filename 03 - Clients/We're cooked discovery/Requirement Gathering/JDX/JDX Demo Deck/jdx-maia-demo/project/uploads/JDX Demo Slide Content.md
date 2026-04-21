@@ -135,11 +135,10 @@ _Demo slide content for MAIA presentation to JDX Tea. Structured around the E2E 
 - Delivery status tracking
 - Sales Agent Chatbot (WhatsApp)
 - Logistics Agent Chatbot (WhatsApp)
-- PDF output: Pro Forma Invoice, Invoice, Credit Note, Receipt, Delivery Note, Picking List
+- PDF output: Pro Forma Invoice, Invoice, Credit Note, Receipt, Delivery Note
 
 **Phase 2:**
 - Consignment kiosk daily stock reporting
-- QSoft van sales integration or replacement
 - Inventory management
 
 **Not in scope:**

@@ -125,14 +125,14 @@ For operations staff managing delivery orders, multi-drop dispatch, and delivery
 - **Multi-Drop Delivery (Blanket Order)** — one sales order can generate multiple DOs, each linked to the source SO. Coordinator creates individual DOs per drop from the same SO; remaining unfulfilled quantity stays on the SO for subsequent DOs.
 - **Delivery Date Scheduling** — each DO has its own delivery date set independently.
 - **Delivery Status Tracking** — each DO has its own status (e.g. To Schedule, Delivered, Failed). Coordinator can mark a DO as delivered, mark as failed, or reschedule the delivery date. All DOs for an order are viewable in one place.
-- **Output Documents:** Delivery Note (DO), Pick List
+- **Output Documents:** Delivery Note (DO)
 
 #### Document Generation Summary — Phase 1
 
 | Category  | Documents                                                     |
 | --------- | ------------------------------------------------------------- |
 | Sales     | Pro Forma Invoice, Sales Order, Invoice, Credit Note, Receipt |
-| Logistics | Delivery Note (DO), Pick List                                 |
+| Logistics | Delivery Note (DO)                                            |
 
 All documents carry the full customisation remarks from the original sales order: ribbon colour, greeting card wording, item substitutions, delivery date, price tag on/off.
 

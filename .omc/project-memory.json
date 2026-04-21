@@ -212,8 +212,20 @@
     },
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/SOW for MAIA JDX.md",
-      "accessCount": 16,
-      "lastAccessed": 1776742550079,
+      "accessCount": 19,
+      "lastAccessed": 1776744106384,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Script.md",
+      "accessCount": 6,
+      "lastAccessed": 1776744106710,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck-1.html",
+      "accessCount": 5,
+      "lastAccessed": 1776744123122,
       "type": "file"
     },
     {
@@ -223,21 +235,27 @@
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck-1.html",
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/JDX Demo Slide Content.md",
+      "accessCount": 3,
+      "lastAccessed": 1776744068075,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck.html",
+      "accessCount": 3,
+      "lastAccessed": 1776744120457,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/JDX Demo Slide Content.md",
       "accessCount": 2,
-      "lastAccessed": 1776743034880,
+      "lastAccessed": 1776744118970,
       "type": "file"
     },
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Customer Narrative - JDX.md",
       "accessCount": 1,
       "lastAccessed": 1776735090101,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Script.md",
-      "accessCount": 1,
-      "lastAccessed": 1776735162225,
       "type": "file"
     },
     {
@@ -271,15 +289,45 @@
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck.html",
-      "accessCount": 1,
-      "lastAccessed": 1776738406367,
-      "type": "file"
-    },
-    {
       "path": "",
       "accessCount": 1,
       "lastAccessed": 1776743011416,
+      "type": "directory"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Sales Order Spec.md",
+      "accessCount": 1,
+      "lastAccessed": 1776743348159,
+      "type": "file"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Delivery Note Spec.md",
+      "accessCount": 1,
+      "lastAccessed": 1776743348324,
+      "type": "file"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Blanket Order Spec.md",
+      "accessCount": 1,
+      "lastAccessed": 1776743349006,
+      "type": "file"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Invoice Spec.md",
+      "accessCount": 1,
+      "lastAccessed": 1776743349322,
+      "type": "file"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Receipt Spec.md",
+      "accessCount": 1,
+      "lastAccessed": 1776743349624,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX",
+      "accessCount": 1,
+      "lastAccessed": 1776744079903,
       "type": "directory"
     }
   ],

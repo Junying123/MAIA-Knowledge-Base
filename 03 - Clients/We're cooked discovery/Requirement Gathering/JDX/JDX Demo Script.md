@@ -162,9 +162,9 @@ If a delivery fails — recipient not at office, wrong address — the coordinat
 **Say:**
 "Let me be clear about what's in Phase 1 so there are no surprises.
 
-Everything you saw in the demo today is in scope: Sales Order and Pro Forma, payment matching and invoice conversion, remarks propagation, multi-drop delivery with Delivery Orders, delivery status tracking, and both the Sales and Logistics WhatsApp chatbots. All PDF documents — Pro Forma, Invoice, Receipt, Credit Note, Delivery Note, Picking List.
+Everything you saw in the demo today is in scope: Sales Order and Pro Forma, payment matching and invoice conversion, remarks propagation, multi-drop delivery with Delivery Orders, delivery status tracking, and both the Sales and Logistics WhatsApp chatbots. All PDF documents — Pro Forma, Invoice, Receipt, Credit Note, Delivery Note.
 
-Phase 2, once Phase 1 is stable: consignment kiosk stock reporting, QSoft van sales integration or replacement, and inventory management. We've scoped these for Phase 2 because Phase 1 solves your highest-pain workflow first — the corporate hamper B2B channel.
+Phase 2, once Phase 1 is stable: consignment kiosk stock reporting and inventory management. We've scoped these for Phase 2 because Phase 1 solves your highest-pain workflow first — the corporate hamper B2B channel.
 
 Not in scope for Phase 1: Giant/AEON B2B portal, SQL accounting integration, automated bank reconciliation, delivery route optimisation."
 
@@ -190,7 +190,6 @@ What questions do you have before we move forward?"
 | Question | How to answer |
 |---|---|
 | "Can MAIA connect to SQL?" | MAIA and SQL coexist. SQL stays as the accounting ledger. MAIA handles operations. Phase 2 can explore a sync bridge. |
-| "What about the van sales / QSoft?" | Phase 2. QSoft stays for now. After Phase 1 is stable, we scope whether to integrate or replace. |
 | "What happens to our 3,000 tea SKUs?" | We load your product catalogue during onboarding. Your team verifies it before go-live. |
 | "Can customers upload payment slips themselves?" | Phase 1: coordinator attaches slip in MAIA. Direct customer upload is a Phase 2 enhancement. |
 | "What about tiered discounts?" | Tech team is confirming Phase 1 feasibility. If auto-application isn't ready for Phase 1, coordinator applies manually — the audit trail is still there. |
