@@ -23,8 +23,8 @@ JDX Gift and Food Sdn. Bhd. (JDX Tea / 九鼎香) is a Kepong-based distributor 
 
 This SOW defines a phased implementation of MAIA that delivers:
 - Structured pro forma invoice creation with customisation remarks that propagate automatically to the delivery order
+- Payment receipt creation against confirmed customer payments
 - Multi-address delivery scheduling and status tracking for corporate hamper orders
-- Tiered discount configuration applied at pro forma stage
 
 
 ---
@@ -33,61 +33,61 @@ This SOW defines a phased implementation of MAIA that delivers:
 
 ### Phase 1 — Core MAIA (Seasonal Hamper B2B Flow)
 
-Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel: the revenue engine and highest-pain workflow. It covers pro forma invoice creation with a remarks text area for customisation instructions, payment matching, delivery order generation with full remarks propagation, multi-address delivery tracking, and tiered discount rules — replacing the current WhatsApp-thread-and-manual-SQL workflow.
+Phase 1 delivers the operating foundation for JDX's seasonal hamper B2B channel: the revenue engine and highest-pain workflow. It covers pro forma invoice creation with a remarks text area for customisation instructions, payment matching, delivery order generation with full remarks propagation, and multi-address delivery tracking — replacing the current WhatsApp-thread-and-manual-SQL workflow.
 
 ---
 
-#### Internal Chatbots
+### Internal Chatbots
 
-**Sales Agent Chatbot**
+#### Sales Agent Chatbot
 
 **Platform:** WhatsApp
 
-**Pre-Order Checks**
+##### Pre-Order Checks
 - Check available item quantities before confirming an order
 
-**Sales Order Creation**
+##### Sales Order Creation
 - Create sales order via natural language — specify customer name, items, and quantities directly in WhatsApp; no rigid keywords required
 - Add customisation remarks (ribbon colour, greeting card wording, item substitution, delivery date, price tag on/off) in the same chat thread
 
-**Document Generation**
-- Generate and send pro forma invoice PDF to the customer directly from WhatsApp after order creation
+##### Document Generation
+- Generate and return the pro forma invoice PDF to the Sales User in WhatsApp after order creation — Sales User can then forward it directly to the customer
 
-**Invoicing & Payment**
+##### Invoicing & Payment
 - Convert sales order to invoice via chat once payment is confirmed
 - Attach customer payment slip and create receipt directly in WhatsApp
 - Track payment status of open invoices via chat
 
-**Real-Time Order Monitoring**
+##### Real-Time Order Monitoring
 - Query sales order status at any time via chat
 - Receive next-step reminders when an order is ready for logistics follow-up
 
-**Logistics Agent Chatbot**
+#### Logistics Agent Chatbot
 
 **Platform:** WhatsApp
 
-**Delivery Order (DO) Creation**
+##### Delivery Order (DO) Creation
 - Create Delivery Orders directly via WhatsApp — specify the sales order reference, quantities, and delivery date in natural language; no rigid keywords required
 - DO inherits all customisation remarks from the source sales order automatically — ribbon colour, greeting card wording, item substitution, price tag on/off — no retyping required
 
-**Blanket Order — Multi-Drop Splitting**
+##### Blanket Order — Multi-Drop Splitting
 - Split one sales order into multiple DOs via WhatsApp chat — specify quantities per drop in natural language; no login required
 - Supports equal splits and uneven splits across any number of drops
 - Each DO created independently with its own delivery date
 - Remaining unfulfilled quantity stays on the SO after each split — coordinator can continue creating DOs against the same order across multiple runs
 - MAIA confirms each DO created in chat
 
-**Real-Time Fulfillment Monitoring**
+##### Real-Time Fulfillment Monitoring
 - Ask MAIA for a live view of Delivery Notes by status — Draft, To Schedule, Scheduled, or Success — at any time via chat
 - Receive next-step alerts when an invoice is ready for a Delivery Note to be created — no manual WhatsApp group monitoring required
 - Coordinator marks a DN as delivered (→ Success), reschedules the delivery date, or marks as failed directly via chat — no login required
 
-**Notification Reminders**
+##### Notification Reminders
 - **Delivery Delays** — triggered when a Delivery Note has not been scheduled after X days from invoice creation
 
 ---
 
-#### MAIA Web App — User Workspaces
+### MAIA Web App — User Workspaces
 
 **Platform:** MAIA Web Application
 
@@ -163,7 +163,7 @@ JDX explicitly prioritised solving the billing and delivery bottleneck before ad
 
 | Phase | Scope | Build & Integration | Expected Date | Go-Live & Hypercare |
 |-------|-------|-------------------|---------------|-------------------|
-| Phase 1 | Core MAIA — pro forma, payment matching, DO, multi-address delivery, discount config | [TBC] weeks | [TBC] | 1–2 weeks |
+| Phase 1 | Core MAIA — pro forma, payment matching, DO, multi-address delivery | [TBC] weeks | [TBC] | 1–2 weeks |
 | Phase 2 | Kiosk reporting, inventory | [TBC] weeks | [TBC] | 1–2 weeks |
 
 > Phase 2 timeline is contingent on client readiness after Phase 1 go-live.
@@ -172,9 +172,10 @@ JDX explicitly prioritised solving the billing and delivery bottleneck before ad
 
 ## Integration
 
-No accounting system integration is required for Phase 1.
+MAIA integrates with SQL in Phase 1 as follows:
 
-SQL is used by JDX as a post-operational accounting ledger. It is not used for live inventory, order management, or real-time decisions. MAIA handles the operational workflow (pro forma, payment, delivery) independently. If JDX later wants to auto-sync invoice or receipt records to SQL, that is a Phase 2 scoping conversation with the tech team.
+- **Pull from SQL → MAIA:** Customer and item master data is pulled from SQL into MAIA, ensuring JDX does not need to maintain two separate product and customer lists.
+- **Push from MAIA → SQL:** Invoice and receipt records created in MAIA are synced back to SQL, keeping JDX's accounting ledger up to date without manual data entry.
 
 ---
 
@@ -184,7 +185,7 @@ SQL is used by JDX as a post-operational accounting ledger. It is not used for l
 
 | Item | Price |
 |------|-------|
-| Phase 1 — Core MAIA (Pro Forma, Payment Matching, Delivery, Discount Config) | [TBC] |
+| Phase 1 — Core MAIA (Pro Forma, Payment Matching, Delivery) | [TBC] |
 | Phase 2 — Kiosk Reporting, Inventory | [TBC] |
 | **Grand Total** | **[TBC]** |
 
@@ -205,39 +206,6 @@ SQL is used by JDX as a post-operational accounting ledger. It is not used for l
 | WhatsApp Business | TBC |
 | **Estimated Monthly Total** | **TBC** |
 
----
-
-## SLAs
-
-### Mindhive Commitments
-
-- **System Availability:** 99.5% uptime (excluding scheduled maintenance)
-- **Critical (P1):** Within 2 hours
-- **High (P2):** Within 8 hours
-- **Normal (P3):** Within 2 business days
-- **Maintenance Windows:** Pre-communicated, typically weekends or off-peak hours
-- **Data Protection:** Regular backups and disaster recovery commitments
-- **Lifetime Upgrades & Support**
-
-### JDX Commitments
-
-- Designate system administrators and enforce internal user policies
-- Provide accurate product catalogue, customer list, and pricing data for onboarding
-- Provide sample documents (pro forma, invoice, DO, credit note) for configuration and testing
-- Provide approvals, clarifications, and input within **2–3 working days**
-- Designate a primary point of contact (POC): Mr. Kong Kong
-- Ensure timely payment settlement per agreed commercial terms
-
----
-
-## Caveats & Exclusions
-
-- **Third-Party Dependencies:** Mindhive not liable for downtime or issues in WhatsApp
-- **Connectivity:** JDX responsible for internet access and device readiness for all users
-- **Data Accuracy:** Responsibility lies with JDX for correctness of product catalogue, customer data, and discount tier configurations
-- **Client-Side Integrations:** SQL integrations outside agreed Phase 1 scope require a formal change request and feasibility assessment
-- **Payment Verification:** MAIA does not connect to banking systems; payment slip matching is a coordinator-confirmed action, not automated bank reconciliation
-- **Customisation Feasibility:** MAIA does not validate whether customisation requests (e.g. specific ribbon colours) are operationally feasible; that judgment stays with JDX's ops team
 
 ---
 
@@ -246,12 +214,11 @@ SQL is used by JDX as a post-operational accounting ledger. It is not used for l
 The following are explicitly excluded from this engagement. These are items JDX may reasonably expect MAIA to cover — they are called out here to prevent scope disputes:
 
 - **Giant/AEON B2B portal billing** — Monthly hypermarket commission deductions and display charges are billed through the grocer's own B2B portal. JDX confirmed this is low priority; it happens after peak season when staff have slack time.
-- **SQL accounting system integration (Phase 1)** — SQL is a post-operational accounting ledger at JDX; not used for live order management. SQL sync capability can be added in Phase 2.
 - **Deep inventory management / live stock tracking** — JDX explicitly deferred this until the billing and delivery bottleneck is solved in Phase 1.
 - **B2C online / Shopify / Facebook channel fulfilment** — E-commerce fulfilment was not prioritised for this engagement.
 - **Tea retail POS for walk-in stores** — Walk-in retail at the 6 JDX stores is separate from the seasonal hamper business and is not in scope.
 - **~3,000 tea SKU deep management** — JDX explicitly parked complex tea SKU treatment (year, factory, grade, batch codes) until the seasonal use case is proven. Phase 1 uses a simplified product catalogue.
-- **Automated discount rules for negotiated / client-specific rates** — Custom rates require coordinator override; MAIA applies standard tiers only.
+- **Tiered discount configuration** — Tiered discount auto-application (e.g. 5%/10%/15% by order value) is not in scope. Coordinators apply discounts manually when required.
 - **Delivery Trip management** — DN status is updated manually by the coordinator (mark as delivered, reschedule, mark as failed). Delivery Trip grouping, route planning, and driver assignment are not in scope.
 - **3PL / courier integration** — No integration to third-party logistics providers or courier APIs. Delivery tracking is coordinator-driven within MAIA only.
 
@@ -300,10 +267,6 @@ This is an internal draft. The following must be resolved before this document i
    Why this matters: JDX is a seasonal business. Peak windows are CNY, Hari Raya, Mooncake. Go-live must land before the next peak or it loses its entire value proposition.
    What I need: Agreed Phase 1 build duration and target go-live date.
 
-6. **Tiered Discount Application — Tech Feasibility**
-   Why this matters: Tiered discount auto-application (5%/10%/15% by order value, configurable per season) is not currently supported in MAIA. This is a core JDX requirement — if not buildable for Phase 1, coordinator applies discounts manually and the feature drops from scope.
-   What I need: Tech team confirmation on feasibility and build effort before this is committed to Phase 1.
-
-7. **Multi-Address Delivery — Recipient Address Model**
+6. **Multi-Address Delivery — Recipient Address Model**
    Why this matters: Current MAIA requires delivery addresses to be pre-registered in the customer module. For JDX's corporate hamper orders, delivery recipients (10–50+ addresses per order) are one-time destinations that change every season — they are not customers. Pre-adding them to the customer module is impractical and creates noise in the system.
    What I need: Tech team to confirm whether MAIA can support ad-hoc delivery addresses entered per DN (not tied to the customer module), or a recipient list attached to the SO that auto-generates the DNs. This must be resolved before multi-address delivery is committed to Phase 1 scope.
