@@ -261,7 +261,7 @@ This is human-in-the-loop by design. MAIA reduces re-keying and error risk, but 
 
 ### 5. Role-Based Permissions And Salesperson Visibility
 
-The proposal review surfaced a specific access requirement: each salesperson should only be able to see their own quotations, sales orders, and related records.
+The proposal review surfaced a specific access requirement: each salesperson should only be able to see their own quotations, sales orders, and related records. While managers and management will have access to all records.
 
 This is commercially understandable. Quotes, pricing, margin behaviour, and customer ownership can be sensitive. But Thermac still needs broader visibility for the right roles.
 

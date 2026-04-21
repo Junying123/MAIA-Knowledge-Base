@@ -299,3 +299,4 @@ The team should treat this as the core design and scoping issue before committin
 - [[16_Apr_2026_Thermac_client_narrative]]
 - [[03-04-26_Customer Narrative - Thermac]]
 - [[13 Apr 2026 Thermac SOW]]
+- [[16 Apr 2026 Thermac SOW v2]]

@@ -29,7 +29,7 @@ The service side is more operationally complex. Service jobs require quotation, 
 This SOW defines a phased implementation of MAIA that introduces:
 
 - a standard MAIA product-sales operating foundation for quotations, sales orders, invoices, delivery notes, and related records
-- a service operations layer for work orders, technician scheduling, service history, equipment records, and maintenance reminders
+- a service operations layer for work orders, technician scheduling, service history, and maintenance reminders
 - pricing intelligence, PO-to-sales order conversion, quotation loss tracking, statement of account visibility, and role-based permissions
 - integration and data handling assumptions for AutoCount, Esoft, email, WhatsApp, and client-provided sample files
 
@@ -49,7 +49,7 @@ The current documented implementation investment is **RM 35,000**, subject to fi
   - Failed extraction, incomplete information, or mismatched item data remains in review status and is not auto-confirmed.
 
 - **Phase 02 - Service Operations and Work Order Layer**
-  - Approved service jobs are converted into structured work orders linked to the customer and relevant equipment record.
+  - Approved service jobs are converted into structured work orders linked to the customer.
   - Work orders capture job type, job scope, technician assignment, scheduled date, planned parts, actual work performed, deviations, actual parts used, photos, worksheets, and customer sign-off attachments.
   - Calendar and Gantt views display active work orders, scheduling dates, assigned technicians, and scheduling conflicts.
   - Technicians and operations users manually update work order status as work progresses.
@@ -311,14 +311,14 @@ Sales, service coordinators, technicians, operations/admin, and management.
 1. Completed work order sample form
 2. Confirmed service job types
 3. Required work order fields
-4. Customer and equipment records
+4. Customer and equipment 
 5. Technician role and assignment rules
 6. Parts-planned and parts-used fields
 
 **MAIA Provides**
 
 - work order creation from sales order
-- customer and equipment linkage
+- customer linkage
 - job type, job scope, technician assignment, scheduled date, and status fields
 - planned parts and actual parts-used tracking
 - actual work performed and deviation capture
@@ -369,10 +369,10 @@ Scheduling changes are reflected in the work order schedule views. Users remain 
 - MAIA does not provide AI-driven scheduling optimisation in the current scope.
 - Advanced manpower capacity planning and absence-aware scheduling are future extension items.
 
-### 2.4.3 Customer Service History and Equipment Records
+### 2.4.3 Customer Service History
 
 **Purpose**  
-To preserve service history, equipment context, and technician notes at customer and equipment level.
+To preserve service history, equipment context, and technician notes at customer level.
 
 **Applies To**  
 Sales, technicians, service coordinators, operations/admin, and management.
