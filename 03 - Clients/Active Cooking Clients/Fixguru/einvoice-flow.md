@@ -55,7 +55,7 @@ QUEUED
 To avoid hammering the external system, checks use an **exponential backoff** strategy — the wait time grows between each attempt:
 
 ```
-5 min → 15 min → 30 min → 1 hr → 2 hr → ...
+5 min → 15 min → 30 min → 1 hr → 2 hr → ...let r
 ```
 
 This means early failures are caught quickly, while long-running submissions don't waste resources.
