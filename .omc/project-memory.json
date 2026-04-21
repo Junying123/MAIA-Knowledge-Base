@@ -211,9 +211,21 @@
       "type": "file"
     },
     {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/SOW for MAIA JDX.md",
+      "accessCount": 16,
+      "lastAccessed": 1776742550079,
+      "type": "file"
+    },
+    {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Context Background.md",
-      "accessCount": 3,
-      "lastAccessed": 1776735828735,
+      "accessCount": 4,
+      "lastAccessed": 1776742286622,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck-1.html",
+      "accessCount": 2,
+      "lastAccessed": 1776743034880,
       "type": "file"
     },
     {
@@ -263,6 +275,12 @@
       "accessCount": 1,
       "lastAccessed": 1776738406367,
       "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1776743011416,
+      "type": "directory"
     }
   ],
   "userDirectives": []

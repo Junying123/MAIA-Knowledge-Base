@@ -19,7 +19,7 @@ lark_url:
 
 JDX Gift and Food Sdn. Bhd. (JDX Tea / 九鼎香) is a Kepong-based distributor of premium Chinese teas, specialty foods, and seasonal gift hampers — official Malaysian distributor of DaYi (大益). Corporate hamper B2B orders drive ~80% of peak-season revenue, processed today via WhatsApp groups, manual SQL pro formas, and Excel spreadsheets.
 
-**Current tools:** WhatsApp, SQL (accounting only), Excel, QSoft (van sales tablet)
+**Current tools:** WhatsApp, SQL (accounting only), Excel
 
 This SOW defines a phased implementation of MAIA that delivers:
 - Structured pro forma invoice creation with customisation remarks that propagate automatically to the delivery order
@@ -153,15 +153,6 @@ JDX deploys its own promoters to Giant and AEON seasonal kiosks. Today, promoter
 - DO generated in MAIA for outlet top-up deliveries; stock movement tracked
 - Phase 1 core framework (orders, DOs, delivery tracking) makes this extension straightforward
 
-#### QSoft Van Sales — Integration or Replacement
-
-JDX runs ~10–15 client visits per day via a QSoft tablet integrated to SQL. Two options to assess with the tech team and JDX before committing scope:
-
-- **Option A — Keep QSoft, integrate to MAIA:** QSoft integrates via API to MAIA instead of SQL. All van sales flow into MAIA as the single source of truth.
-- **Option B — Replace QSoft with MAIA:** Salesperson uses MAIA mobile/tablet to create invoice on the spot and print. Inventory updated in real time on bill creation; no sync lag.
-
-**Open question:** The decision between Option A and Option B requires a feasibility assessment with the tech team and JDX's SQL/QSoft vendor before this can be scoped and priced.
-
 #### Inventory Management
 
 JDX explicitly prioritised solving the billing and delivery bottleneck before addressing inventory. Phase 1 does not include live stock management. Once the core order flow is stable, inventory management (SKU-level stock, movement tracking, safety stock alerts) can be layered onto Phase 2.
@@ -173,9 +164,9 @@ JDX explicitly prioritised solving the billing and delivery bottleneck before ad
 | Phase | Scope | Build & Integration | Expected Date | Go-Live & Hypercare |
 |-------|-------|-------------------|---------------|-------------------|
 | Phase 1 | Core MAIA — pro forma, payment matching, DO, multi-address delivery, discount config | [TBC] weeks | [TBC] | 1–2 weeks |
-| Phase 2 | Kiosk reporting, QSoft integration/replacement, inventory | [TBC] weeks | [TBC] | 1–2 weeks |
+| Phase 2 | Kiosk reporting, inventory | [TBC] weeks | [TBC] | 1–2 weeks |
 
-> Phase 2 timeline is contingent on the QSoft feasibility assessment and client readiness after Phase 1 go-live.
+> Phase 2 timeline is contingent on client readiness after Phase 1 go-live.
 
 ---
 
@@ -194,7 +185,7 @@ SQL is used by JDX as a post-operational accounting ledger. It is not used for l
 | Item | Price |
 |------|-------|
 | Phase 1 — Core MAIA (Pro Forma, Payment Matching, Delivery, Discount Config) | [TBC] |
-| Phase 2 — Kiosk Reporting, QSoft, Inventory | [TBC] |
+| Phase 2 — Kiosk Reporting, Inventory | [TBC] |
 | **Grand Total** | **[TBC]** |
 
 ### Payment Terms
@@ -241,10 +232,10 @@ SQL is used by JDX as a post-operational accounting ledger. It is not used for l
 
 ## Caveats & Exclusions
 
-- **Third-Party Dependencies:** Mindhive not liable for downtime or issues in WhatsApp or QSoft
+- **Third-Party Dependencies:** Mindhive not liable for downtime or issues in WhatsApp
 - **Connectivity:** JDX responsible for internet access and device readiness for all users
 - **Data Accuracy:** Responsibility lies with JDX for correctness of product catalogue, customer data, and discount tier configurations
-- **Client-Side Integrations:** QSoft and SQL integrations outside agreed Phase 1 scope require a formal change request and feasibility assessment
+- **Client-Side Integrations:** SQL integrations outside agreed Phase 1 scope require a formal change request and feasibility assessment
 - **Payment Verification:** MAIA does not connect to banking systems; payment slip matching is a coordinator-confirmed action, not automated bank reconciliation
 - **Customisation Feasibility:** MAIA does not validate whether customisation requests (e.g. specific ribbon colours) are operationally feasible; that judgment stays with JDX's ops team
 
@@ -259,7 +250,6 @@ The following are explicitly excluded from this engagement. These are items JDX 
 - **Deep inventory management / live stock tracking** — JDX explicitly deferred this until the billing and delivery bottleneck is solved in Phase 1.
 - **B2C online / Shopify / Facebook channel fulfilment** — E-commerce fulfilment was not prioritised for this engagement.
 - **Tea retail POS for walk-in stores** — Walk-in retail at the 6 JDX stores is separate from the seasonal hamper business and is not in scope.
-- **QSoft van sales (Phase 1)** — Van sales assessment and integration/replacement is a Phase 2 decision pending tech feasibility review.
 - **~3,000 tea SKU deep management** — JDX explicitly parked complex tea SKU treatment (year, factory, grade, batch codes) until the seasonal use case is proven. Phase 1 uses a simplified product catalogue.
 - **Automated discount rules for negotiated / client-specific rates** — Custom rates require coordinator override; MAIA applies standard tiers only.
 
@@ -303,18 +293,15 @@ This is an internal draft. The following must be resolved before this document i
    Why this matters: JDX needs to budget for ongoing costs, not just one-off development.
    What I need: Estimated monthly figures (platform, hosting, AI, WhatsApp) or confirm TBC is acceptable for now.
 
-5. **Phase 2 — QSoft decision (integrate vs replace)**
-   Why this matters: Affects Phase 2 scope, pricing, and SQL vendor engagement. Cannot be committed to scope until feasibility is confirmed.
-   What I need: Tech team and JDX alignment on Option A (integrate) vs Option B (replace).
+5. **Timelines — Phase 1 build duration and go-live target**
 
-6. **Timelines — Phase 1 build duration and go-live target**
    Why this matters: JDX is a seasonal business. Peak windows are CNY, Hari Raya, Mooncake. Go-live must land before the next peak or it loses its entire value proposition.
    What I need: Agreed Phase 1 build duration and target go-live date.
 
-7. **Tiered Discount Application — Tech Feasibility**
+6. **Tiered Discount Application — Tech Feasibility**
    Why this matters: Tiered discount auto-application (5%/10%/15% by order value, configurable per season) is not currently supported in MAIA. This is a core JDX requirement — if not buildable for Phase 1, coordinator applies discounts manually and the feature drops from scope.
    What I need: Tech team confirmation on feasibility and build effort before this is committed to Phase 1.
 
-8. **Multi-Address Delivery — Recipient Address Model**
+7. **Multi-Address Delivery — Recipient Address Model**
    Why this matters: Current MAIA requires delivery addresses to be pre-registered in the customer module. For JDX's corporate hamper orders, delivery recipients (10–50+ addresses per order) are one-time destinations that change every season — they are not customers. Pre-adding them to the customer module is impractical and creates noise in the system.
    What I need: Tech team to confirm whether MAIA can support ad-hoc delivery addresses entered per DN (not tied to the customer module), or a recipient list attached to the SO that auto-generates the DNs. This must be resolved before multi-address delivery is committed to Phase 1 scope.
