@@ -206,8 +206,8 @@
   "hotPaths": [
     {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck Enhanced.html",
-      "accessCount": 34,
-      "lastAccessed": 1776735089774,
+      "accessCount": 35,
+      "lastAccessed": 1776738407444,
       "type": "file"
     },
     {
@@ -256,6 +256,12 @@
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/JDX Meeting Transcript - YYYY-MM-DD.md",
       "accessCount": 1,
       "lastAccessed": 1776735723586,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck.html",
+      "accessCount": 1,
+      "lastAccessed": 1776738406367,
       "type": "file"
     }
   ],
