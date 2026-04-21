@@ -23,7 +23,6 @@ JDX Gift and Food Sdn. Bhd. (JDX Tea / 九鼎香) is a Kepong-based distributor 
 
 This SOW defines a phased implementation of MAIA that delivers:
 - Structured pro forma invoice creation with customisation remarks that propagate automatically to the delivery order
-- Payment advice matching that triggers DO creation on confirmation — no manual WhatsApp group monitoring
 - Multi-address delivery scheduling and status tracking for corporate hamper orders
 - Tiered discount configuration applied at pro forma stage
 
