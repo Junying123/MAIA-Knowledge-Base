@@ -166,7 +166,9 @@ Everything you saw in the demo today is in scope: Sales Order and Pro Forma, pay
 
 Phase 2, once Phase 1 is stable: consignment kiosk stock reporting and inventory management. We've scoped these for Phase 2 because Phase 1 solves your highest-pain workflow first — the corporate hamper B2B channel.
 
-Not in scope for Phase 1: Giant/AEON B2B portal, SQL accounting integration, automated bank reconciliation, delivery route optimisation."
+Also included in Phase 1: a one-time SQL data migration — your customer records, item catalogue, pricing, and opening stock will be loaded into MAIA before go-live. Your team won't need to re-enter anything manually.
+
+Not in scope for Phase 1: Giant/AEON B2B portal, ongoing SQL accounting integration, automated bank reconciliation, delivery route optimisation."
 
 **If Mr. Kong asks about SQL:** "MAIA and SQL can coexist. SQL stays as your accounting ledger. MAIA handles the operational workflow — orders, billing, delivery. We can explore a sync bridge in Phase 2 once the core is stable."
 

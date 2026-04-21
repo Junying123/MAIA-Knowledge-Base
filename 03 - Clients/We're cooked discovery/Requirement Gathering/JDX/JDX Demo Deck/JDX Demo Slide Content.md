@@ -140,6 +140,7 @@ _Demo slide content for MAIA presentation to JDX Tea. Structured around the E2E 
 - Sales Agent Chatbot (WhatsApp)
 - Logistics Agent Chatbot (WhatsApp)
 - PDF output: Pro Forma Invoice, Invoice, Credit Note, Receipt, Delivery Note
+- SQL data migration (one-time) — customers, item catalogue, pricing, opening stock loaded into MAIA before go-live
 
 **Phase 2:**
 - Consignment kiosk daily stock reporting
