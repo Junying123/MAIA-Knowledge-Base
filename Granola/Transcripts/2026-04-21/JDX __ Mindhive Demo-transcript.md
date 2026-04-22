@@ -3,7 +3,7 @@ granola_id: b8ffbfaa-b7f3-42a7-bc91-f1704486aae3
 title: JDX <> Mindhive Demo  - Transcript
 type: transcript
 created: 2026-04-21T06:59:09.882Z
-updated: 2026-04-22T07:01:08.384Z
+updated: 2026-04-22T10:38:25.775Z
 attendees: []
 ---
 
