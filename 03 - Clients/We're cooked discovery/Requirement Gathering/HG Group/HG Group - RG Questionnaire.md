@@ -113,91 +113,117 @@ They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active 
 
 ---
 
-## Section 5 — Permit & Compliance Tracking
+## Section 5 — Service Dependencies & Division Sequencing
+
+*Purpose: Surface whether HG is conscious of the sequential dependencies between their divisions — and whether they feel the pain of managing those handoffs manually. We know the sequence from our research: hoarding → printing, scaffold → reinstatement, reinstatement → subcon fit-out, lorry running parallel throughout. Let them map it themselves first, then probe where the handoffs break.*
+
+20. When HG takes on a full tenant transition job — hoarding, reinstatement, new fit-out support — how do you decide which division starts first and which ones wait? Is that sequence written down anywhere, or does everyone just know?
+
+21. For a reinstatement job, scaffold has to go in before the reinstatement team can work at height. How do you make sure the scaffold team is done before the reinstatement team mobilises? What's the actual mechanism that triggers that handoff today?
+
+22. Hoarding goes up first, then printing wraps the hoarding. When does the printing team get told the hoarding is ready for them? Is there a formal trigger, or does someone just remember to send a message?
+
+23. Lorry and rorobin run throughout reinstatement — debris removal is continuous, not a one-time handoff. How do you coordinate the lorry schedule with the reinstatement team's progress? What happens when debris piles up faster than the lorry can clear it?
+
+24. Once reinstatement is complete and the lot is bare — how does the subcon fit-out team know they can start? Who makes that call, and how is it communicated to the team and to the client's contractor?
+
+25. Has a downstream division ever shown up ready to work and found the upstream division hadn't finished yet — hoarding not up, scaffold not ready, lot not fully cleared? Walk me through what that situation looked like and what it cost.
+
+26. For jobs where some divisions run in parallel — say lorry is clearing debris while reinstatement is still demolishing — how do you manage the on-site coordination so both teams aren't blocking each other? Is there a site lead who owns that?
+
+27. When a job involves 4 or 5 divisions, is there one person who has visibility across all of them and knows the real sequence and status — or is each division lead only aware of their own piece?
+
+28. If the scaffold team finishes a day early — or a day late — what's the downstream effect on the reinstatement schedule? How does that ripple get communicated and managed across all the other divisions on the same job?
+
+> **Listen for:** "We just know the sequence," "I have to call each team lead," "sometimes reinstatement shows up and scaffold isn't done," "the site lead manages it on the day." Invisible sequencing and manual handoffs are the pain. If they struggle to describe how the sequence is communicated — that's the gap.
+
+---
+
+## Section 7 — Permit & Compliance Tracking
 
 *Purpose: Surface the risk of managing permit status across 20+ active jobs by memory or informal tracking. Let them describe what happens when it fails.*
 
-20. When you apply for a work permit on behalf of a client, how do you track whether it's been approved or is still pending — especially when you have 20 permits in flight at the same time?
+29. When you apply for a work permit on behalf of a client, how do you track whether it's been approved or is still pending — especially when you have 20 permits in flight at the same time?
 
-21. Different malls have different compliance requirements. When you're onboarding a job at a new mall, how does your team know what that mall specifically requires for permits and site access? Is that written down anywhere, or does it live in specific people's heads?
+30. Different malls have different compliance requirements. When you're onboarding a job at a new mall, how does your team know what that mall specifically requires for permits and site access? Is that written down anywhere, or does it live in specific people's heads?
 
-22. Has HG ever turned up to a site on the day of an install and been turned away because the permit wasn't approved yet, or a document was missing? What happened? How did you recover?
+31. Has HG ever turned up to a site on the day of an install and been turned away because the permit wasn't approved yet, or a document was missing? What happened? How did you recover?
 
-23. If one of your most experienced coordinators — the one who knows all the mall requirements from memory — wasn't available for two weeks, what would the impact be on your permit process?
+32. If one of your most experienced coordinators — the one who knows all the mall requirements from memory — wasn't available for two weeks, what would the impact be on your permit process?
 
 > **Listen for:** "We usually just know," "I track it myself," "[person] handles that," "it's happened before." Knowledge trapped in individuals is the pain.
 
 ---
 
-## Section 6 — Completion Reports & The 48-Hour Promise
+## Section 8 — Completion Reports & The 48-Hour Promise
 
 *Purpose: Surface whether the completion report bottleneck is real. HG promises reports within 48 hours — let them tell us what that actually costs to deliver at volume.*
 
-24. Your website commits to a completion report within 48 hours of every job. Walk me through how a completion report actually gets made — who does it, how long does it take, what goes into it?
+33. Your website commits to a completion report within 48 hours of every job. Walk me through how a completion report actually gets made — who does it, how long does it take, what goes into it?
 
-25. On a day when 5 or 6 jobs all complete at the same time, how does your team manage producing that many reports without it becoming a backlog? Has the 48-hour window ever been missed?
+34. On a day when 5 or 6 jobs all complete at the same time, how does your team manage producing that many reports without it becoming a backlog? Has the 48-hour window ever been missed?
 
-26. Site photos are usually part of a completion report. How do the photos get from the field team to the person writing the report? What does that process look like in practice?
+35. Site photos are usually part of a completion report. How do the photos get from the field team to the person writing the report? What does that process look like in practice?
 
-27. If a client from 6 months ago asked you to resend their completion report from a job HG did at Sunway Pyramid last October — how easy would that be to retrieve?
+36. If a client from 6 months ago asked you to resend their completion report from a job HG did at Sunway Pyramid last October — how easy would that be to retrieve?
 
-28. Have clients ever come back to query what was in a completion report — or disputed whether certain work was done? How do you handle that?
+37. Have clients ever come back to query what was in a completion report — or disputed whether certain work was done? How do you handle that?
 
 > **Listen for:** "We WhatsApp the photos to the coordinator," "sometimes it takes longer," "we'd have to search for it," "it's a lot of work when we're busy." Manual compilation at volume is the pain.
 
 ---
 
-## Section 7 — Invoicing & The Cash That's Owed
+## Section 9 — Invoicing & The Cash That's Owed
 
 *Purpose: Expose the gap between job completion and invoice sent, and the invisible receivables problem. Let them quantify the exposure themselves.*
 
-29. After a job is fully completed and the completion report has been sent — how long does it typically take for the invoice to go out to the client? What's the process between "job done" and "invoice sent"?
+38. After a job is fully completed and the completion report has been sent — how long does it typically take for the invoice to go out to the client? What's the process between "job done" and "invoice sent"?
 
-30. For a job that involved 4 divisions — scaffold, reinstatement, lorry, and storage — how does the invoice get compiled? Who gathers the scope from each division to make sure the invoice is complete and accurate?
+39. For a job that involved 4 divisions — scaffold, reinstatement, lorry, and storage — how does the invoice get compiled? Who gathers the scope from each division to make sure the invoice is complete and accurate?
 
-31. Right now, today — if I asked you how much money is owed to HG in total across all outstanding invoices, could you tell me that number? How would you find it?
+40. Right now, today — if I asked you how much money is owed to HG in total across all outstanding invoices, could you tell me that number? How would you find it?
 
-32. When an invoice goes unpaid past the payment term, how does HG know to follow up? Who tracks that, and how?
+41. When an invoice goes unpaid past the payment term, how does HG know to follow up? Who tracks that, and how?
 
-33. Has HG ever had a client dispute an invoice — saying the charge was different from what was quoted? How was that resolved, and how often does it happen?
+42. Has HG ever had a client dispute an invoice — saying the charge was different from what was quoted? How was that resolved, and how often does it happen?
 
-34. When you think about the gap between the work you've delivered and the money that hasn't been collected yet — is that a number that keeps you up at night, or is it generally under control?
+43. When you think about the gap between the work you've delivered and the money that hasn't been collected yet — is that a number that keeps you up at night, or is it generally under control?
 
 > **Listen for:** "We invoice when we remember," "we'd need to check with accounting," "sometimes it takes a while," "we've had disputes before." Invisible receivables and billing lag are the pain.
 
 ---
 
-## Section 8 — Relationship & Client History
+## Section 10 — Relationship & Client History
 
 *Purpose: Surface how much of the client relationship lives in individuals, not in the business. The question about someone leaving usually lands hardest here.*
 
-35. Who are your most important clients — the ones that give HG repeat work across multiple malls or projects? How many of those relationships would you say are managed personally by one coordinator or salesperson?
+44. Who are your most important clients — the ones that give HG repeat work across multiple malls or projects? How many of those relationships would you say are managed personally by one coordinator or salesperson?
 
-36. When one of those key clients calls in a new job, how quickly can the team pull up their full history — past jobs, service types used, any outstanding invoices, which malls they operate in?
+45. When one of those key clients calls in a new job, how quickly can the team pull up their full history — past jobs, service types used, any outstanding invoices, which malls they operate in?
 
-37. If your most experienced coordinator — the one who manages your top 5 clients — handed in their notice tomorrow, what would happen to those relationships? How much of the context is in their head vs accessible to the rest of the team?
+46. If your most experienced coordinator — the one who manages your top 5 clients — handed in their notice tomorrow, what would happen to those relationships? How much of the context is in their head vs accessible to the rest of the team?
 
-38. Has HG ever lost a repeat client, or missed a follow-up job, because something slipped — a quote didn't go out, a call wasn't returned, a completion report was late? What happened?
+47. Has HG ever lost a repeat client, or missed a follow-up job, because something slipped — a quote didn't go out, a call wasn't returned, a completion report was late? What happened?
 
 > **Listen for:** "We'd have to ask [person]," "that's mostly handled by [name]," "we'd reach out but it would take time," "yes, that happened once." Single-person dependency is the pain.
 
 ---
 
-## Section 9 — Growth & the Ceiling They're Approaching
+## Section 11 — Growth & the Ceiling They're Approaching
 
 *Purpose: End the discovery section with a forward-looking question that surfaces whether they feel constrained by their current operations. This sets up the MAIA conversation naturally.*
 
-39. HG has grown significantly since 2018 — from one install to 20+ a day. Looking at where the business is now, what does your operation need to look like in two years? More jobs, more divisions, more malls?
+48. HG has grown significantly since 2018 — from one install to 20+ a day. Looking at where the business is now, what does your operation need to look like in two years? More jobs, more divisions, more malls?
 
-40. When you think about doubling the volume of jobs HG runs per day — what part of your current operation would break first? What's the thing that would crack under that kind of pressure?
+49. When you think about doubling the volume of jobs HG runs per day — what part of your current operation would break first? What's the thing that would crack under that kind of pressure?
 
-41. Right now, what's the one operational problem — if it were solved — that would make the biggest difference to how the business runs day to day?
+50. Right now, what's the one operational problem — if it were solved — that would make the biggest difference to how the business runs day to day?
 
 > **Listen for:** "We'd need more coordinators," "the paperwork would kill us," "the WhatsApp coordination can't scale," "we'd lose control of the jobs." This is the ceiling — and it's where MAIA starts.
 
 ---
 
-## Section 10 — Must-Confirm Before Leaving
+## Section 12 — Must-Confirm Before Leaving
 
 *Non-negotiable. These are the 10 open gaps from the customer narrative that must be answered before the session ends. Weave these into the conversation — don't save them for a rapid-fire at the end.*
 
@@ -210,11 +236,12 @@ They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active 
 - [ ] **Accounting / invoicing software** — SQL, QuickBooks, Excel, or fully manual?
 - [ ] **Equipment tracking appetite** — Do they want hoarding/scaffold/lorry inventory visible in the system?
 - [ ] **Division coordination structure** — Central coordinator for all 8 divisions, or each division runs independently?
+- [ ] **Division sequencing method** — Is the sequence (hoarding → printing, scaffold → reinstatement, reinstatement → subcon) written down anywhere or tribal knowledge? How are handoffs triggered today?
 - [ ] **Decision-maker in the room** — Who at HG has sign-off authority for a system implementation?
 
 ---
 
-## Section 11 — Demo Sample Requests
+## Section 13 — Demo Sample Requests
 
 *Ask at the very end of the session. Frame it as making the demo feel real and relevant to them.*
 
