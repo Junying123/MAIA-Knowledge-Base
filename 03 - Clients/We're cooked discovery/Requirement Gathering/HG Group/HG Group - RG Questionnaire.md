@@ -7,197 +7,231 @@ last_reviewed: 2026-04-21
 # HG Group — Requirement Gathering Questionnaire
 
 **Client:** HG Services (M) Sdn Bhd
-**Purpose:** Pre-session discovery questionnaire to guide the requirement gathering meeting
+**Purpose:** Discovery session guide — surface pain points through conversation, not confirmation
 **Prepared by:** Mindhive PM team
-
-> HG's 7-step engagement flow and 8-document intake checklist are confirmed from their website — these aren't hypotheses. The questions below are built to validate the *pain behind the process*, not re-confirm the process itself. Use this as a guide, not a script. Walk through one real job end-to-end before asking anything on this list.
 
 ---
 
-## Reference: HG's Confirmed 7-Step Engagement Flow
+> **How to use this.**
+> This is not a form to fill in. It's a conversation guide.
+>
+> Each section opens with a **warm-up** question — broad, easy, gets them talking. Then it goes deeper with **consequence** questions — these are the ones that surface real pain. The goal is for HG to describe their own problems in their own words before we ever suggest a solution.
+>
+> **Golden rule:** If they give a short answer, follow up with *"Can you walk me through a recent example?"* or *"What happened when that went wrong?"* — stories reveal pain faster than questions do.
+>
+> We already know their 7-step process and 8-division structure. Don't re-confirm what we know. Ask about what breaks.
 
-Every job across all 8 divisions (Hoarding, Printing, Scaffold, Reinstatement, Subcon Fit-Out, Signage, Lorry & Rorobin, Temporary Storage) runs through:
+---
+
+## Reference: What We Already Know
+
+HG runs every job — across all 8 divisions — through this confirmed sequence:
 
 | Step | What Happens |
 |---|---|
-| 1 | Enquiry received (WhatsApp / call / web form) |
+| 1 | Enquiry received |
 | 2 | Site visit / measurement |
 | 3 | Quotation sent |
 | 4 | Client confirmation |
-| 5 | Permit application to mall (if required) |
+| 5 | Permit application to mall |
 | 6 | Job execution on-site |
-| 7 | Completion report delivered within 48 hours |
+| 7 | Completion report within 48 hours |
 
-Before Step 3 can proceed, HG requires up to **8 items from the client**: lot number, mall name, job drawings, start date, work permit copy, mall contact person, insurance cover note, and payment slip.
+Before Step 3, HG requires **8 items from the client**: lot number, mall name, job drawings, start date, work permit copy, mall contact, insurance cover note, payment slip.
 
----
-
-## Section 1 — Business Scale & Team Structure
-
-*Confirm the real numbers. Website figures ("20+ jobs/day", "100+ malls") need validating before they go into the proposal.*
-
-1. How many jobs does HG typically run per day right now — across all 8 divisions combined? Is there a division that dominates volume (e.g. hoarding is the majority)?
-2. How many staff are on the team today — office/coordination vs field? Has headcount grown significantly in the last 1–2 years to keep up with volume?
-3. Who owns a job from enquiry to completion report? Is there one coordinator who runs the whole 7 steps, or does responsibility hand off between people?
-4. Are the 8 divisions managed by separate team leads with separate coordination flows, or does one central coordinator manage all of them?
-5. On a multi-division job (e.g. reinstatement + scaffold + lorry + storage), who is responsible for making sure all divisions are in sync?
+They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active malls. The questions below are about what that actually feels like to manage.
 
 ---
 
-## Section 2 — The 7-Step Flow in Practice
+## Section 1 — Opening: How the Business Runs Today
 
-*The flow is confirmed. These questions are about where it breaks down. Walk through a real job — pick the most complex one they handled last week.*
+*Purpose: Warm them up. Get them talking about daily operations in their own words. Don't steer yet — just listen for where they naturally mention friction.*
 
-6. Can you walk us through a recent multi-division job from Step 1 to Step 7? What actually happened at each stage — who did what, what tool was used, where did things get stuck?
-7. At what step does a job most commonly get delayed or fall apart? What usually causes it?
-8. When you're running 20+ jobs simultaneously, how do you know which stage each job is at right now? Is there a tracker, or does someone carry that in their head?
-9. Has a job ever been mobilised on the wrong day, or a team turned up to a site that wasn't ready? What caused it and how was it resolved?
-10. How does a client find out where their job stands mid-process — do they call HG, or does HG proactively update them?
+1. Walk me through what a typical day looks like for you and your team. What does the morning look like, and what does end-of-day usually look like?
 
----
+2. On any given day, how many jobs are actively running across HG right now? How do you personally keep track of all of them?
 
-## Section 3 — The 8-Document Intake Checklist
+3. If I called you right now and asked — "what's the status of the reinstatement job at Pavilion?" — how would you find that answer? How long would it take?
 
-*This is a flagged open gap from the customer narrative. The checklist is confirmed; how it's collected today is unknown and directly affects how the Work Order intake flow is designed.*
+4. Which part of running HG's operations day-to-day do you find most exhausting? Not the hardest technically — just the most draining to manage consistently.
 
-11. When a new job comes in, how do you collect the 8 required items from the client — lot number, mall name, job drawings, start date, work permit copy, mall contact, insurance cover note, payment slip? WhatsApp back-and-forth, email, a form?
-12. Do clients typically send all 8 items at once, or do they trickle in over multiple days?
-13. When something is missing — say the insurance cover note hasn't arrived — how do you track that? Is there a checklist per job, or does someone just remember to follow up?
-14. How many jobs at any given time are stuck waiting on a missing document from the client? Is that a significant drag on your ability to schedule and permit jobs?
-15. Has HG ever had a job delayed at Step 5 (permit application) because a required document came in too late? How often does that happen?
+> **Listen for:** Mentions of WhatsApp chasing, calling team leads to get status, jobs tracked in someone's head, coordinators being the single point of failure. These are your entry points.
 
 ---
 
-## Section 4 — Quotation & Pricing
+## Section 2 — Job Intake & The Document Chase
 
-*A flagged open gap: rate card vs ad hoc pricing directly changes how the Quotation module is configured.*
+*Purpose: Surface the pain of collecting 8 documents per job, across 20+ simultaneous jobs, through WhatsApp. Let them describe the back-and-forth before we name it as a problem.*
 
-16. When you quote a reinstatement job or a hoarding install, are you working from a standard price list (e.g. per linear foot, per sqft), or is every job priced from scratch based on site specifics?
-17. Who prepares the quote — is it one person, or can multiple coordinators generate quotes?
-18. What tool is used to prepare a quote today — Excel template, Word document, WhatsApp message with a number, something else?
-19. Once a quote is sent, where does the copy live? If a client calls back three weeks later to adjust scope, how do you find the original quote?
-20. How are scope changes and variations handled after a client has confirmed? Is there a variation process, or is it adjusted informally?
-21. For multi-division jobs — does HG send a single combined quote, or separate quotes per division?
+5. When a new job comes in, take me through exactly what happens from the moment the enquiry arrives to the moment you're ready to send the quote. Who does what, and what goes back and forth with the client?
 
----
+6. You need up to 8 things from a client before a job can properly start — lot number, drawings, permit copy, insurance, and so on. How do those usually come in? All at once, or piece by piece?
 
-## Section 5 — Permit Application (Step 5)
+7. What happens on the days when a client sends the insurance cover note three days after everything else? How do you keep track of what's still missing across all active jobs?
 
-*A flagged open gap: Step 5 is a 3-party flow — HG acts as the client's agent with the mall. Whether MAIA needs to track this or just document it changes the Work Order design.*
+8. Have you ever had a job get held up — or had to delay the permit application — because one document from the client was still outstanding? What was the situation?
 
-22. When HG applies for a work permit on behalf of a client, what does that process look like from start to finish? Who submits, to whom, and what documents are involved?
-23. How do you track whether a permit is pending, approved, or rejected across 20+ active jobs? Is there a tracker (spreadsheet, folder, mental map)?
-24. Different malls have different permit requirements — how does HG know what each mall needs? Is that written down somewhere or is it experience held by specific people?
-25. Has a job ever failed site access on the day of install because a permit wasn't approved in time? What happened?
-26. Is there a case where HG manages the permit entirely, vs where the client supplies the permit? How does that split work?
+9. On a week where you have 30 active jobs at different stages — how many of those are currently waiting on something from a client? Is there any way to see that number quickly?
+
+> **Listen for:** "We just WhatsApp them again," "I have to check with [person]," "sometimes things slip," "we found out on the day." These phrases signal the pain.
 
 ---
 
-## Section 6 — Job Work Order & Multi-Division Coordination
+## Section 3 — Quoting & The Quote That Disappears
 
-*The Work Order module is now Phase 1 scope. These questions shape exactly how it needs to be built.*
+*Purpose: Expose that quotes sent over WhatsApp or as one-off PDFs have no lasting record. Let HG surface the consequence themselves — client disputes, reconstruction from memory, lost history.*
 
-27. For a job involving scaffold + reinstatement + lorry + storage, how does each division know when it's their turn? What triggers the handoff between divisions?
-28. Is there any kind of job brief or Work Order document that HG currently sends to team leads before a job starts? Even an informal one — a WhatsApp message, a printed sheet, anything?
-29. Does each division sign off separately when their stage is complete, or is there one sign-off at the end of the entire job?
-30. When the field team completes their work, how do they communicate that back to the office? WhatsApp message? A call? Do they attach photos?
-31. Can you show us an example of a job brief or Work Order format you currently use — even a photo of a printed sheet counts?
+10. When a client asks for a quote, how does that get prepared and sent? Walk me through the last quote your team sent — who wrote it, what it looked like, and where was it sent?
 
----
+11. Once a quote has been sent and the client hasn't replied yet — how do you know which quotes are still outstanding? Is there a list somewhere, or does someone keep track mentally?
 
-## Section 7 — Completion Report (Step 7)
+12. If a client came back to you six weeks after confirming a job and said "this invoice doesn't match what we agreed" — how would you find the original quote to verify?
 
-*A flagged open gap: the current format is unknown and directly shapes the Work Order module's report generation design.*
+13. Has scope ever changed after a client confirmed — extra work added, something removed, timeline shifted? How was that variation tracked and reflected in the final invoice?
 
-32. Can you walk us through how a completion report is currently produced? Who does it, what tool, and roughly how long does it take per job?
-33. Is there an existing PDF template for the completion report, or does the format vary by coordinator?
-34. What information does a typical completion report include — photos, scope performed, division sign-offs, dates, lot details? Are there specific fields a mall or client always requires?
-35. How are site photos currently captured and stored? Do field teams send them via WhatsApp, and if so, how are they then compiled into the report?
-36. At 20+ jobs a day, if 5–10 reach completion on a given day — how many reports are you generating, and is that a bottleneck?
-37. Has a client ever asked for a completion report reprint from a job that completed months ago? How easy was it to retrieve the original?
+14. When a coordinator who manages a certain set of clients goes on leave or leaves the company, what happens to their quote history and job records? Is that information accessible to the rest of the team?
+
+> **Listen for:** "We'd have to look through WhatsApp," "I'd need to ask [person]," "we just re-quote them," "sometimes clients dispute it." The absence of a searchable record is the pain.
 
 ---
 
-## Section 8 — Invoicing & Payment Tracking
+## Section 4 — The Multi-Division Job Nobody Fully Owns
 
-*A flagged open gap: invoicing is now in Phase 1 scope. Need to understand current setup and whether there's an existing accounting software integration requirement.*
+*Purpose: This is the core operational pain — a reinstatement job touching 5 divisions with no single record, no automated handoff, and coordination by memory. Let HG describe it before we name it.*
 
-38. What software does HG use today for invoicing — SQL Accounting, QuickBooks, Xero, Excel, or fully manual?
-39. How long does it typically take from job completion (Step 7) to invoice being sent to the client? Is there a delay — and if so, why?
-40. When a job spans multiple divisions, does HG send one invoice for the full job or separate invoices per division?
-41. What are the typical payment terms for HG's clients — 30 days, 60 days, COD?
-42. Right now, if you wanted to know which clients have outstanding invoices older than 60 days — how would you find that information? Is there a view for this anywhere?
-43. Do clients ever dispute invoices — claiming the charge doesn't match what was agreed? How is that resolved, and how often does it happen?
+15. Tell me about the most complex job HG has run in the last month — one that involved multiple divisions. Who was involved, how did the handoffs between divisions work, and how did you keep everyone in sync?
 
----
+16. When the scaffold team finishes their part and the reinstatement team needs to know the site is ready — how does that handoff happen? Who tells who, and through what channel?
 
-## Section 9 — Customer & Relationship Management
+17. Has a team ever shown up to a site and found it wasn't ready for them — wrong day, wrong materials, previous division hadn't finished? What happened, and how much did that cost in time or money?
 
-*Understand how repeat clients are managed and what happens when a coordinator who owns those relationships leaves.*
+18. If I asked your scaffold team lead and your reinstatement team lead both "what's the status of the Pavilion job?" right now — would they give me the same answer?
 
-44. Who are HG's most important client types right now — mall management companies, retail chains, or main contractors? Which drives the most volume and revenue?
-45. For a repeat client that gives HG regular work at multiple malls, is there one person at HG who owns that relationship? What happens if that person leaves?
-46. When a returning client calls in a new job, how quickly can you pull up their history — past jobs, services used, payment behaviour? Or does that have to be looked up manually?
-47. Has HG ever lost a repeat client or a follow-on job because something fell through the cracks — a missed follow-up, a quote never sent, a completion report that was late? What happened?
+19. When a client calls mid-job asking for a status update, and the job spans three divisions — what does that conversation actually look like? How long does it take to get them an answer?
+
+> **Listen for:** "Each team leads manages their own bit," "we WhatsApp the team lead," "usually [name] handles that," "sometimes we find out on the day." Fragmentation is the pain.
 
 ---
 
-## Section 10 — Material & Equipment Tracking Appetite
+## Section 5 — Permit & Compliance Tracking
 
-*A flagged open gap: HG manages significant physical assets — hoarding panels, scaffold systems, lorry fleet. If they want visibility on these, the Logistics workspace becomes relevant and scope expands.*
+*Purpose: Surface the risk of managing permit status across 20+ active jobs by memory or informal tracking. Let them describe what happens when it fails.*
 
-48. Do you track your hoarding panel inventory, scaffold system availability, or lorry fleet anywhere today? Even a spreadsheet or a whiteboard?
-49. Is there a pain point around not knowing what equipment is deployed on which site — e.g. trying to schedule a new hoarding install but not knowing if your panels are still out at another mall?
-50. Is equipment and inventory tracking something HG would want in the system from day one, or is getting the commercial workflow (quote → job → invoice) sorted first the priority?
+20. When you apply for a work permit on behalf of a client, how do you track whether it's been approved or is still pending — especially when you have 20 permits in flight at the same time?
 
----
+21. Different malls have different compliance requirements. When you're onboarding a job at a new mall, how does your team know what that mall specifically requires for permits and site access? Is that written down anywhere, or does it live in specific people's heads?
 
-## Section 11 — Technology & Field Team Readiness
+22. Has HG ever turned up to a site on the day of an install and been turned away because the permit wasn't approved yet, or a document was missing? What happened? How did you recover?
 
-*Affects Phase 2 mobile planning and whether a WhatsApp-integrated MAIA intake flow is viable.*
+23. If one of your most experienced coordinators — the one who knows all the mall requirements from memory — wasn't available for two weeks, what would the impact be on your permit process?
 
-51. What devices do coordinators and field team leads use day-to-day — smartphones, laptops, both? Are they company-issued?
-52. Is the team generally comfortable using apps, or is WhatsApp the primary tool for most people — including team leads in the field?
-53. Does HG currently use any tools for job tracking or operations beyond WhatsApp — Google Sheets, Trello, any ERP, even informal spreadsheets?
-54. At sites like KLIA or large mall complexes, is internet connectivity reliable for field teams? Or are there locations where teams are frequently offline?
+> **Listen for:** "We usually just know," "I track it myself," "[person] handles that," "it's happened before." Knowledge trapped in individuals is the pain.
 
 ---
 
-## Section 12 — Must-Confirm Before Leaving (Open Gaps from Customer Narrative)
+## Section 6 — Completion Reports & The 48-Hour Promise
 
-*Non-negotiable checkboxes. Don't close the session without getting answers to all of these.*
+*Purpose: Surface whether the completion report bottleneck is real. HG promises reports within 48 hours — let them tell us what that actually costs to deliver at volume.*
 
-- [ ] **Scale confirmation** — Confirm actual daily job volume today, across all 8 divisions. Is "20+ per day" current? Are hoarding jobs the dominant count?
-- [ ] **Pain validation** — Walk through the 6 assumed pain areas (quote trail, no single job record, 8-document chase, invoice gap, receivables blindspot, compliance tracking by memory). Ask: *"Which of these resonates most? What are we missing?"*
-- [ ] **8-document intake method** — How are the 8 required items collected from clients today? WhatsApp? Email? A form? What happens when a document comes in 3 days late?
-- [ ] **Permit tracking today** — How does HG track permit status across 20+ active jobs? Any existing system or tracker?
-- [ ] **Work Order / job brief format** — Does a current job brief format exist? Request a sample (even a photo). Does each division sign off separately or one sign-off at the end?
-- [ ] **Completion report format** — Request a sample PDF. What fields are currently in it?
-- [ ] **Pricing structure** — Rate card per service type, or ad hoc every time?
-- [ ] **Accounting/invoicing software** — SQL, QuickBooks, Excel, or fully manual? Integration requirement or clean slate?
-- [ ] **Equipment tracking appetite** — Do they want hoarding/scaffold/lorry tracking in scope, or is commercial workflow the priority?
-- [ ] **Decision-maker in the room** — Who at HG has sign-off authority for a MAIA implementation? Are they in today's session?
+24. Your website commits to a completion report within 48 hours of every job. Walk me through how a completion report actually gets made — who does it, how long does it take, what goes into it?
+
+25. On a day when 5 or 6 jobs all complete at the same time, how does your team manage producing that many reports without it becoming a backlog? Has the 48-hour window ever been missed?
+
+26. Site photos are usually part of a completion report. How do the photos get from the field team to the person writing the report? What does that process look like in practice?
+
+27. If a client from 6 months ago asked you to resend their completion report from a job HG did at Sunway Pyramid last October — how easy would that be to retrieve?
+
+28. Have clients ever come back to query what was in a completion report — or disputed whether certain work was done? How do you handle that?
+
+> **Listen for:** "We WhatsApp the photos to the coordinator," "sometimes it takes longer," "we'd have to search for it," "it's a lot of work when we're busy." Manual compilation at volume is the pain.
 
 ---
 
-## Section 13 — Demo Sample Requests
+## Section 7 — Invoicing & The Cash That's Owed
 
-*Brief HG at the end of the session on what to prepare before the product demo. Tailor based on what came up.*
+*Purpose: Expose the gap between job completion and invoice sent, and the invisible receivables problem. Let them quantify the exposure themselves.*
 
-> "To demo MAIA using your actual data — not generic examples — we'd love a few things before the demo day. Nothing confidential; just working samples of how you operate today."
+29. After a job is fully completed and the completion report has been sent — how long does it typically take for the invoice to go out to the client? What's the process between "job done" and "invoice sent"?
 
-- [ ] **A recent quote (PDF or screenshot)** — any service type; we'll use this to configure a quotation template in your format
-- [ ] **A completion report example** — your current PDF so we can map the fields into the MAIA Work Order report template
-- [ ] **A multi-division job example** — walk us through a recent job that touched 3+ divisions so we can build the Work Order demo scenario
-- [ ] **Your 8-item intake checklist** — even a WhatsApp message thread showing how you collect the documents counts; we'll build the intake flow around the real items
-- [ ] **A client list (anonymised or partial)** — top 5–10 client companies; we'll pre-load these into MAIA's customer records for the demo
-- [ ] **Any existing job brief or Work Order format** — physical printout, Word doc, or WhatsApp message format you currently use with team leads
+30. For a job that involved 4 divisions — scaffold, reinstatement, lorry, and storage — how does the invoice get compiled? Who gathers the scope from each division to make sure the invoice is complete and accurate?
+
+31. Right now, today — if I asked you how much money is owed to HG in total across all outstanding invoices, could you tell me that number? How would you find it?
+
+32. When an invoice goes unpaid past the payment term, how does HG know to follow up? Who tracks that, and how?
+
+33. Has HG ever had a client dispute an invoice — saying the charge was different from what was quoted? How was that resolved, and how often does it happen?
+
+34. When you think about the gap between the work you've delivered and the money that hasn't been collected yet — is that a number that keeps you up at night, or is it generally under control?
+
+> **Listen for:** "We invoice when we remember," "we'd need to check with accounting," "sometimes it takes a while," "we've had disputes before." Invisible receivables and billing lag are the pain.
+
+---
+
+## Section 8 — Relationship & Client History
+
+*Purpose: Surface how much of the client relationship lives in individuals, not in the business. The question about someone leaving usually lands hardest here.*
+
+35. Who are your most important clients — the ones that give HG repeat work across multiple malls or projects? How many of those relationships would you say are managed personally by one coordinator or salesperson?
+
+36. When one of those key clients calls in a new job, how quickly can the team pull up their full history — past jobs, service types used, any outstanding invoices, which malls they operate in?
+
+37. If your most experienced coordinator — the one who manages your top 5 clients — handed in their notice tomorrow, what would happen to those relationships? How much of the context is in their head vs accessible to the rest of the team?
+
+38. Has HG ever lost a repeat client, or missed a follow-up job, because something slipped — a quote didn't go out, a call wasn't returned, a completion report was late? What happened?
+
+> **Listen for:** "We'd have to ask [person]," "that's mostly handled by [name]," "we'd reach out but it would take time," "yes, that happened once." Single-person dependency is the pain.
+
+---
+
+## Section 9 — Growth & the Ceiling They're Approaching
+
+*Purpose: End the discovery section with a forward-looking question that surfaces whether they feel constrained by their current operations. This sets up the MAIA conversation naturally.*
+
+39. HG has grown significantly since 2018 — from one install to 20+ a day. Looking at where the business is now, what does your operation need to look like in two years? More jobs, more divisions, more malls?
+
+40. When you think about doubling the volume of jobs HG runs per day — what part of your current operation would break first? What's the thing that would crack under that kind of pressure?
+
+41. Right now, what's the one operational problem — if it were solved — that would make the biggest difference to how the business runs day to day?
+
+> **Listen for:** "We'd need more coordinators," "the paperwork would kill us," "the WhatsApp coordination can't scale," "we'd lose control of the jobs." This is the ceiling — and it's where MAIA starts.
+
+---
+
+## Section 10 — Must-Confirm Before Leaving
+
+*Non-negotiable. These are the 10 open gaps from the customer narrative that must be answered before the session ends. Weave these into the conversation — don't save them for a rapid-fire at the end.*
+
+- [ ] **Real job volume** — How many jobs per day across all 8 divisions, today? Which division dominates?
+- [ ] **Document intake method** — How are the 8 required items collected from clients? WhatsApp, email, form? What happens when one arrives 3 days late?
+- [ ] **Permit tracking method** — How is permit status tracked across 20+ active jobs right now?
+- [ ] **Pricing structure** — Standard rate card per service type, or ad hoc for every job?
+- [ ] **Work Order / job brief format** — Does a current format exist? Request a sample. Does each division sign off separately or one sign-off at the end?
+- [ ] **Completion report format** — Request a sample PDF. What fields does it currently contain?
+- [ ] **Accounting / invoicing software** — SQL, QuickBooks, Excel, or fully manual?
+- [ ] **Equipment tracking appetite** — Do they want hoarding/scaffold/lorry inventory visible in the system?
+- [ ] **Division coordination structure** — Central coordinator for all 8 divisions, or each division runs independently?
+- [ ] **Decision-maker in the room** — Who at HG has sign-off authority for a system implementation?
+
+---
+
+## Section 11 — Demo Sample Requests
+
+*Ask at the very end of the session. Frame it as making the demo feel real and relevant to them.*
+
+> "To show you MAIA using your actual jobs — not generic examples — we'd love a few things before demo day. Nothing confidential, just working samples of how you operate today."
+
+- [ ] **A recent quote (PDF or screenshot)** — any service type; we'll pre-configure a quotation template in your exact format
+- [ ] **A completion report example** — your current PDF so we can map the fields into the Work Order report
+- [ ] **A multi-division job example** — a recent job that touched 3+ divisions so we can build the Work Order demo around it
+- [ ] **A WhatsApp thread showing document collection** — the back-and-forth with a client sending the 8 intake items; we'll build the intake checklist from it
+- [ ] **Any current job brief or Work Order format** — printout, Word doc, or WhatsApp message format you use with team leads
+- [ ] **A client list (top 5–10, anonymised if needed)** — we'll pre-load these into MAIA's customer records for the demo
 
 ---
 
 ## See Also
 
-- [[HG Group - Customer Profile]] — business background, service divisions, confirmed 7-step flow
+- [[HG Group - Customer Profile]] — business background and confirmed 8-division structure
 - [[Customer Narrative - HG Group]] — pre-built proposal narrative with all open gaps listed
 - [[02 - PM Playbook/Templates/[Template] Requirement Gathering Output]] — for structuring notes after this session
 - [[09 - Intake & Triage/Request Intake Inbox]] — log feature requests after the session
