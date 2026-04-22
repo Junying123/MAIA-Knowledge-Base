@@ -23,6 +23,7 @@ This folder documents how ERPNext and Frappe underpin MAIA. It is the reference 
 
 | File / Subfolder | What It Covers |
 |---|---|
+| `Work Order.md` | Work Order doctype — status flow, fields, Job Cards, v16 enhancements, MAIA build notes ✅ |
 | `Frappe Framework Overview.md` | Core Frappe concepts: DocTypes, Controllers, Hooks, Permissions |
 | `ERPNext Modules Used.md` | Which ERPNext modules MAIA leverages and how |
 | `Custom Doctypes & Apps.md` | MAIA-specific doctypes and custom Frappe apps built from scratch |
