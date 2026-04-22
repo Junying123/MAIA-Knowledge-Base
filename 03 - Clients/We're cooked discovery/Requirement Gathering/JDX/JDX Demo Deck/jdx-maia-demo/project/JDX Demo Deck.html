@@ -26,6 +26,9 @@ body { background: #000; font-family: 'Inter', sans-serif; }
   --red:       #D83D3E;
   --green:     #47B150;
   --blue:      #359BFF;
+  --font-head: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', ui-monospace, monospace;
 }
 
 /* ── SLIDE BASE ── */
@@ -597,7 +600,99 @@ section > * { position: relative; z-index: 1; }
 .scope-col.out .scope-list li::before { background: var(--red); }
 
 /* ══════════════════════════════════════════════
-   SLIDE 10 — CLOSE
+   SLIDE 10 — TIMELINE
+══════════════════════════════════════════════ */
+.grad-text { color: var(--amber); font-style: normal; }
+.timeline-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; }
+.timeline-phase {
+  border-radius: 14px; padding: 28px 28px 30px;
+  display: flex; flex-direction: column; gap: 0;
+}
+.timeline-phase.p1 { background: rgba(232,150,17,0.04); border: 1px solid rgba(232,150,17,0.32); }
+.timeline-phase.p2 { background: rgba(59,142,255,0.03); border: 1px solid rgba(59,142,255,0.22); }
+.timeline-phase-head {
+  font-size: 20px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.timeline-phase.p1 .timeline-phase-head { color: var(--amber); border-bottom-color: rgba(232,150,17,0.2); }
+.timeline-phase.p2 .timeline-phase-head { color: var(--blue); border-bottom-color: rgba(59,142,255,0.2); }
+.timeline-rows { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.timeline-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  font-size: 22px;
+}
+.timeline-row .tr-label { color: var(--text-2); flex: 1; }
+.timeline-row .tr-est {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 500;
+  white-space: nowrap; margin-left: 16px;
+}
+.timeline-phase.p1 .timeline-row .tr-est { color: var(--amber); }
+.timeline-phase.p2 .timeline-row .tr-est { color: var(--blue); }
+.timeline-row.total-row {
+  background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); margin-top: 4px;
+}
+.timeline-row.total-row .tr-label { color: var(--text); font-weight: 600; }
+.timeline-row.total-row .tr-est { font-size: 22px; font-weight: 700; }
+.timeline-summary-bar {
+  margin-top: 18px; padding: 16px 22px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+  border-radius: 10px; display: flex; justify-content: space-between; align-items: center;
+}
+.timeline-summary-bar .tsb-label { font-size: 22px; color: var(--text-2); }
+.timeline-summary-bar .tsb-value { font-size: 28px; font-weight: 700; color: var(--text); }
+.timeline-summary-bar .tsb-note { font-size: 19px; color: var(--text-3); margin-top: 3px; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 11 — COMMERCIAL
+══════════════════════════════════════════════ */
+.comm-block {
+  border-radius: 14px; padding: 28px 28px 30px;
+  display: flex; flex-direction: column; gap: 0;
+}
+.comm-block.dev    { background: rgba(232,150,17,0.04); border: 1px solid rgba(232,150,17,0.32); }
+.comm-block.monthly { background: rgba(255,255,255,0.02); border: 1px solid var(--border); }
+.comm-block-head {
+  font-size: 20px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.comm-block.dev .comm-block-head { color: var(--amber); border-bottom-color: rgba(232,150,17,0.2); }
+.comm-block.monthly .comm-block-head { color: var(--text-3); }
+.comm-rows { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.comm-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  font-size: 22px;
+}
+.comm-row .cr-label { color: var(--text-2); flex: 1; }
+.comm-row .cr-value {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 500;
+  color: var(--text-3); margin-left: 16px; white-space: nowrap;
+}
+.comm-row.total-row { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); margin-top: 4px; }
+.comm-row.total-row .cr-label { color: var(--text); font-weight: 600; }
+.comm-row.total-row .cr-value { color: var(--amber); font-size: 22px; font-weight: 700; }
+.milestone-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.milestone-item {
+  padding: 12px 16px; border-radius: 10px;
+  background: rgba(232,150,17,0.03); border: 1px solid rgba(232,150,17,0.15);
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.ms-badge {
+  font-size: 17px; font-weight: 600;
+  color: var(--amber); background: rgba(232,150,17,0.1); border-radius: 6px;
+  padding: 4px 10px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; letter-spacing: 0.04em;
+}
+.ms-body { flex: 1; }
+.ms-trigger { font-size: 21px; color: var(--text-2); line-height: 1.4; }
+.ms-pct { font-size: 19px; font-weight: 600; color: var(--text-3); margin-top: 3px; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 12 — CLOSE
 ══════════════════════════════════════════════ */
 .s-close {
   justify-content: space-between;
@@ -693,23 +788,8 @@ section > * { position: relative; z-index: 1; }
     </div>
 
     <!-- Right: product screenshot -->
-    <div style="width:900px; flex-shrink:0; position:relative; height:100%; overflow:hidden; display:flex; align-items:center; justify-content:flex-start;">
-      <!-- Fade mask on left edge -->
-      <div style="position:absolute; left:0; top:0; bottom:0; width:260px; background:linear-gradient(90deg, #0D0E11 20%, transparent 100%); z-index:2; pointer-events:none;"></div>
-      <!-- Fade mask top -->
-      <div style="position:absolute; left:0; right:0; top:0; height:120px; background:linear-gradient(180deg, #0D0E11 0%, transparent 100%); z-index:2; pointer-events:none;"></div>
-      <!-- Fade mask bottom -->
-      <div style="position:absolute; left:0; right:0; bottom:0; height:120px; background:linear-gradient(0deg, #0D0E11 0%, transparent 100%); z-index:2; pointer-events:none;"></div>
-      <!-- Amber glow -->
-      <div style="position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); width:900px; height:700px; border-radius:50%; background:radial-gradient(ellipse, rgba(232,150,17,0.18) 0%, rgba(232,150,17,0.08) 35%, transparent 70%); pointer-events:none; z-index:1; filter:blur(40px);"></div>
-      <!-- Secondary blue-ish halo for depth -->
-      <div style="position:absolute; left:55%; top:50%; transform:translate(-50%, -50%); width:700px; height:500px; border-radius:50%; background:radial-gradient(ellipse, rgba(53,155,255,0.06) 0%, transparent 65%); pointer-events:none; z-index:1; filter:blur(60px);"></div>
-      <!-- Screenshot -->
-      <div style="position:relative; z-index:2; transform:perspective(1600px) rotateY(-4deg); transform-origin:right center;">
-        <div style="border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.07); box-shadow:0 48px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(232,150,17,0.07);">
-          <img src="uploads/pasted-1776603199402-0.png" style="width:920px; height:558px; object-fit:cover; display:block;" alt="MAIA product screenshot">
-        </div>
-      </div>
+    <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+      <img src="uploads/pasted-1776603199402-0.png" style="width:920px; height:558px; object-fit:cover; display:block; border-radius:12px;" alt="MAIA product screenshot">
     </div>
 
   </div>
@@ -1018,7 +1098,109 @@ section > * { position: relative; z-index: 1; }
 </section>
 
 <!-- ══════════════════════════════════════════
-     10 — CLOSE
+     10 — ESTIMATED TIMELINE
+══════════════════════════════════════════ -->
+<section data-label="Estimated Timeline">
+  <div class="slide-header">
+    <div class="eyebrow">Delivery Plan</div>
+    <div class="title">Estimated <em>Timeline</em></div>
+  </div>
+  <div class="slide-body" style="gap:18px;">
+    <div class="timeline-cols">
+
+      <div class="timeline-phase p1">
+        <div class="timeline-phase-head">Phase 1 — Core MAIA + SQL Integration</div>
+        <div class="timeline-rows">
+          <div class="timeline-row"><span class="tr-label">Onboarding &amp; Setup</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row"><span class="tr-label">SQL Data Migration (customers, items, pricing, inventory)</span><span class="tr-est">1–2 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">Build &amp; Configuration (chatbots, workspaces, remarks, multi-drop)</span><span class="tr-est">3–4 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">User Training &amp; UAT</span><span class="tr-est">1–2 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">Go-Live &amp; Hypercare</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row total-row"><span class="tr-label">Phase 1 Total</span><span class="tr-est">7–9 weeks</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-phase p2">
+        <div class="timeline-phase-head">Phase 2 — Kiosk Reporting + Inventory</div>
+        <div class="timeline-rows">
+          <div class="timeline-row"><span class="tr-label">Consignment Kiosk Daily Stock Reporting</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row"><span class="tr-label">Inventory Management (SKU stock, movements, alerts)</span><span class="tr-est">2–3 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">User Training &amp; UAT</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row"><span class="tr-label">Go-Live &amp; Hypercare</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row total-row"><span class="tr-label">Phase 2 Total</span><span class="tr-est">5–6 weeks</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="timeline-summary-bar">
+      <div>
+        <div class="tsb-label">Full engagement estimate</div>
+        <div class="tsb-note">Phase 2 timeline contingent on Phase 1 go-live readiness</div>
+      </div>
+      <div class="tsb-value">12–15 weeks total</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     11 — COMMERCIAL STRUCTURE
+══════════════════════════════════════════ -->
+<section data-label="Commercial">
+  <div class="slide-header">
+    <div class="eyebrow">Investment</div>
+    <div class="title">Commercial <em>Structure</em></div>
+  </div>
+  <div class="slide-body" style="gap:18px;">
+    <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:22px;flex:1;">
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="comm-block dev" style="flex:0 0 auto;">
+          <div class="comm-block-head">One-Off Development Cost</div>
+          <div class="comm-rows">
+            <div class="comm-row"><span class="cr-label">Phase 1 — Core MAIA + SQL Integration</span><span class="cr-value" style="color:var(--amber);">RM 20,000</span></div>
+            <div class="comm-row"><span class="cr-label">Phase 2 — Kiosk Reporting + Inventory</span><span class="cr-value" style="color:var(--amber);">RM 7,500</span></div>
+            <div class="comm-row total-row"><span class="cr-label">Grand Total</span><span class="cr-value" style="color:var(--amber);font-size:24px;">RM 27,500</span></div>
+          </div>
+        </div>
+
+        <div class="comm-block dev" style="flex:0 0 auto;background:rgba(232,150,17,0.02);border-color:rgba(232,150,17,0.18);">
+          <div class="comm-block-head" style="color:var(--text-2);">Payment Terms</div>
+          <div class="milestone-stack" style="margin-top:0;">
+            <div class="milestone-item">
+              <div class="ms-badge">M1 · 50%</div>
+              <div class="ms-body">
+                <div class="ms-trigger">Project Confirmation — <strong style="color:var(--amber);">RM 13,750</strong></div>
+                <div class="ms-pct">Due upon project commencement</div>
+              </div>
+            </div>
+            <div class="milestone-item">
+              <div class="ms-badge">M2 · 50%</div>
+              <div class="ms-body">
+                <div class="ms-trigger">UAT Sign-Off — <strong style="color:var(--amber);">RM 13,750</strong></div>
+                <div class="ms-pct">Due upon UAT completion &amp; client acceptance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comm-block monthly" style="align-self:start;">
+        <div class="comm-block-head">Monthly Maintenance</div>
+        <div class="comm-rows">
+          <div class="comm-row"><span class="cr-label">Platform maintenance</span><span class="cr-value" style="color:var(--amber);">RM 2,500</span></div>
+          <div class="comm-row"><span class="cr-label">Infrastructure &amp; hosting</span><span class="cr-value">TBC</span></div>
+          <div class="comm-row"><span class="cr-label">OpenAI / AI usage</span><span class="cr-value">TBC</span></div>
+          <div class="comm-row"><span class="cr-label">WhatsApp Business</span><span class="cr-value">TBC</span></div>
+          <div class="comm-row total-row"><span class="cr-label">Estimated Monthly Total</span><span class="cr-value" style="color:var(--amber);font-size:22px;">From RM 2,500</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     12 — CLOSE
 ══════════════════════════════════════════ -->
 <section data-label="Close" class="s-close">
   <div class="close-top">
