@@ -139,17 +139,41 @@ They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active 
 
 ---
 
+## Section 6 — The Job Work Order: Before, During & After
+
+*Purpose: This section goes deep on the job record itself — what information travels to the field before a job, what comes back after, and whether deviations ever get captured. This is modelled directly on the Thermac Engineering Work Order build, where the same "2-page worksheet" problem existed: a planned scope before the job, and actual work done after — with nothing in between structured in a system. HG has the same gap. Let them describe it.*
+
+29. Before your team lead goes to site, what does a typical job brief look like — what information do they actually have in hand when they arrive? Lot number, scope, permit status, contact person, materials list — how does that reach them?
+
+30. Is that briefing the same every time, or does it depend on which coordinator is managing the job? Have there been situations where a team lead arrived on site without everything they needed?
+
+31. Think of the job in two halves: before the work starts, and after the work is done. Right now, is there any document that captures both — what was planned and what actually happened? Even a physical form, a WhatsApp message, anything?
+
+32. When a job deviates from what was originally scoped — extra hours, additional materials used on site, scope added by the client on the day — how does that get recorded? Does it make it back to the office in a way that the invoice can reflect it?
+
+33. Has HG ever completed a job, sent an invoice, and then had a client question a charge — where the actual work on site was different from the original quote but nobody had formally captured the change? How was that resolved?
+
+34. Site photos — who takes them, how do they get back to the office, and where do they end up? Is there a structured way they're filed against a specific job, or do they sit in a WhatsApp group until someone needs them?
+
+35. If a different coordinator needed to pick up a job mid-way through — say the original coordinator was sick — how quickly could they get up to speed on what's been done and what's still outstanding? Where would they even look?
+
+36. When the field team marks a job complete, what does "complete" look like in practice? Is there a formal sign-off from the client on site, or does the coordinator just get a "done" message on WhatsApp?
+
+> **Listen for:** "The team lead just knows," "they WhatsApp us the photos," "sometimes the invoice is a bit different," "we'd have to ask [person] what happened on site." The before/after job record gap and the photo-filing-via-WhatsApp problem are the pain — identical to what Thermac described before their Work Order build.
+
+---
+
 ## Section 7 — Permit & Compliance Tracking
 
 *Purpose: Surface the risk of managing permit status across 20+ active jobs by memory or informal tracking. Let them describe what happens when it fails.*
 
-29. When you apply for a work permit on behalf of a client, how do you track whether it's been approved or is still pending — especially when you have 20 permits in flight at the same time?
+37. When you apply for a work permit on behalf of a client, how do you track whether it's been approved or is still pending — especially when you have 20 permits in flight at the same time?
 
-30. Different malls have different compliance requirements. When you're onboarding a job at a new mall, how does your team know what that mall specifically requires for permits and site access? Is that written down anywhere, or does it live in specific people's heads?
+38. Different malls have different compliance requirements. When you're onboarding a job at a new mall, how does your team know what that mall specifically requires for permits and site access? Is that written down anywhere, or does it live in specific people's heads?
 
-31. Has HG ever turned up to a site on the day of an install and been turned away because the permit wasn't approved yet, or a document was missing? What happened? How did you recover?
+39. Has HG ever turned up to a site on the day of an install and been turned away because the permit wasn't approved yet, or a document was missing? What happened? How did you recover?
 
-32. If one of your most experienced coordinators — the one who knows all the mall requirements from memory — wasn't available for two weeks, what would the impact be on your permit process?
+40. If one of your most experienced coordinators — the one who knows all the mall requirements from memory — wasn't available for two weeks, what would the impact be on your permit process?
 
 > **Listen for:** "We usually just know," "I track it myself," "[person] handles that," "it's happened before." Knowledge trapped in individuals is the pain.
 
@@ -159,15 +183,15 @@ They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active 
 
 *Purpose: Surface whether the completion report bottleneck is real. HG promises reports within 48 hours — let them tell us what that actually costs to deliver at volume.*
 
-33. Your website commits to a completion report within 48 hours of every job. Walk me through how a completion report actually gets made — who does it, how long does it take, what goes into it?
+41. Your website commits to a completion report within 48 hours of every job. Walk me through how a completion report actually gets made — who does it, how long does it take, what goes into it?
 
-34. On a day when 5 or 6 jobs all complete at the same time, how does your team manage producing that many reports without it becoming a backlog? Has the 48-hour window ever been missed?
+42. On a day when 5 or 6 jobs all complete at the same time, how does your team manage producing that many reports without it becoming a backlog? Has the 48-hour window ever been missed?
 
-35. Site photos are usually part of a completion report. How do the photos get from the field team to the person writing the report? What does that process look like in practice?
+43. Site photos are usually part of a completion report. How do the photos get from the field team to the person writing the report? What does that process look like in practice?
 
-36. If a client from 6 months ago asked you to resend their completion report from a job HG did at Sunway Pyramid last October — how easy would that be to retrieve?
+44. If a client from 6 months ago asked you to resend their completion report from a job HG did at Sunway Pyramid last October — how easy would that be to retrieve?
 
-37. Have clients ever come back to query what was in a completion report — or disputed whether certain work was done? How do you handle that?
+45. Have clients ever come back to query what was in a completion report — or disputed whether certain work was done? How do you handle that?
 
 > **Listen for:** "We WhatsApp the photos to the coordinator," "sometimes it takes longer," "we'd have to search for it," "it's a lot of work when we're busy." Manual compilation at volume is the pain.
 
@@ -177,17 +201,17 @@ They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active 
 
 *Purpose: Expose the gap between job completion and invoice sent, and the invisible receivables problem. Let them quantify the exposure themselves.*
 
-38. After a job is fully completed and the completion report has been sent — how long does it typically take for the invoice to go out to the client? What's the process between "job done" and "invoice sent"?
+46. After a job is fully completed and the completion report has been sent — how long does it typically take for the invoice to go out to the client? What's the process between "job done" and "invoice sent"?
 
-39. For a job that involved 4 divisions — scaffold, reinstatement, lorry, and storage — how does the invoice get compiled? Who gathers the scope from each division to make sure the invoice is complete and accurate?
+47. For a job that involved 4 divisions — scaffold, reinstatement, lorry, and storage — how does the invoice get compiled? Who gathers the scope from each division to make sure the invoice is complete and accurate?
 
-40. Right now, today — if I asked you how much money is owed to HG in total across all outstanding invoices, could you tell me that number? How would you find it?
+48. Right now, today — if I asked you how much money is owed to HG in total across all outstanding invoices, could you tell me that number? How would you find it?
 
-41. When an invoice goes unpaid past the payment term, how does HG know to follow up? Who tracks that, and how?
+49. When an invoice goes unpaid past the payment term, how does HG know to follow up? Who tracks that, and how?
 
-42. Has HG ever had a client dispute an invoice — saying the charge was different from what was quoted? How was that resolved, and how often does it happen?
+50. Has HG ever had a client dispute an invoice — saying the charge was different from what was quoted? How was that resolved, and how often does it happen?
 
-43. When you think about the gap between the work you've delivered and the money that hasn't been collected yet — is that a number that keeps you up at night, or is it generally under control?
+51. When you think about the gap between the work you've delivered and the money that hasn't been collected yet — is that a number that keeps you up at night, or is it generally under control?
 
 > **Listen for:** "We invoice when we remember," "we'd need to check with accounting," "sometimes it takes a while," "we've had disputes before." Invisible receivables and billing lag are the pain.
 
@@ -197,27 +221,49 @@ They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active 
 
 *Purpose: Surface how much of the client relationship lives in individuals, not in the business. The question about someone leaving usually lands hardest here.*
 
-44. Who are your most important clients — the ones that give HG repeat work across multiple malls or projects? How many of those relationships would you say are managed personally by one coordinator or salesperson?
+52. Who are your most important clients — the ones that give HG repeat work across multiple malls or projects? How many of those relationships would you say are managed personally by one coordinator or salesperson?
 
-45. When one of those key clients calls in a new job, how quickly can the team pull up their full history — past jobs, service types used, any outstanding invoices, which malls they operate in?
+53. When one of those key clients calls in a new job, how quickly can the team pull up their full history — past jobs, service types used, any outstanding invoices, which malls they operate in?
 
-46. If your most experienced coordinator — the one who manages your top 5 clients — handed in their notice tomorrow, what would happen to those relationships? How much of the context is in their head vs accessible to the rest of the team?
+54. If your most experienced coordinator — the one who manages your top 5 clients — handed in their notice tomorrow, what would happen to those relationships? How much of the context is in their head vs accessible to the rest of the team?
 
-47. Has HG ever lost a repeat client, or missed a follow-up job, because something slipped — a quote didn't go out, a call wasn't returned, a completion report was late? What happened?
+55. Has HG ever lost a repeat client, or missed a follow-up job, because something slipped — a quote didn't go out, a call wasn't returned, a completion report was late? What happened?
+
+56. For clients who give HG work repeatedly — the same mall management company sending 10 reinstatement jobs a year — do you have any visibility into when their next job is likely to come in? Or does it always arrive as a new enquiry out of nowhere?
 
 > **Listen for:** "We'd have to ask [person]," "that's mostly handled by [name]," "we'd reach out but it would take time," "yes, that happened once." Single-person dependency is the pain.
 
 ---
 
-## Section 11 — Growth & the Ceiling They're Approaching
+## Section 11 — Bill of Materials: What Goes Into Each Job
+
+*Purpose: In MAIA's product side, Bill of Materials (BOM) defines the standard materials or components that make up a deliverable — a recipe for what's needed to execute a job. For HG, every service type has a predictable material list: a hoarding install needs specific panel types, board materials, fixings, and door configurations; a scaffold job needs ringlock or modular components; a reinstatement job needs screed, paint, and ceiling materials. The questions below establish whether HG already thinks in terms of a standard materials list per job type — and where the gaps are when that list isn't followed or tracked.*
+
+60. When your team prepares for a hoarding installation — say a 20-linear-foot job with 2 doors — is there a standard list of materials, panels, and components they know they need to bring? Where does that list live — in someone's head, a spreadsheet, a printed sheet?
+
+61. Different job types use different materials — a hoarding job uses different things from a scaffold job or a reinstatement. Do you have any kind of standard material breakdown per service type, or is it worked out fresh each time based on the specific site?
+
+62. When a quote is prepared, how are the material costs factored in — is there a standard unit rate that includes materials, or does someone calculate materials separately per job?
+
+63. After a job is done, how do you know what materials were actually used on site versus what was planned? Does the team lead report back the actual quantities consumed, or is it assumed to match what was sent?
+
+64. Has HG ever run into a situation where the team arrived on site with the wrong materials, the wrong quantity, or something missing — because the job prep relied on informal knowledge rather than a structured list? What happened?
+
+65. For hoarding specifically — you carry 8 board material types and 4 structure options. When a job is quoted and scoped, how does the coordinator specify exactly which combination is needed? Is that captured formally, or does it live in the briefing message to the team lead?
+
+66. Do you maintain a stock of standard materials at your Bandar Kinrara warehouse — hoarding panels, scaffold components, screed, paint? If so, how do you know when you're running low on something? Is there a reorder trigger or does someone notice when it's gone?
+
+67. If MAIA could generate a standard material list automatically when a job is created — based on service type and scope — and track what was actually used after the job, would that be useful to how HG operates today? Or is the materials side already well-managed and not a pain point?
+
+> **Listen for:** "The team lead just knows what to take," "we've had jobs where the wrong materials went out," "we reorder when we notice it's low," "the quote includes materials but we don't break it out separately." A missing BOM layer means quoting is imprecise, stock is invisible, and deviations never get captured. If they confirm materials are ad hoc — that's a scoping signal for BOM as a custom build, similar to the Work Order.
 
 *Purpose: End the discovery section with a forward-looking question that surfaces whether they feel constrained by their current operations. This sets up the MAIA conversation naturally.*
 
-48. HG has grown significantly since 2018 — from one install to 20+ a day. Looking at where the business is now, what does your operation need to look like in two years? More jobs, more divisions, more malls?
+68. HG has grown significantly since 2018 — from one install to 20+ a day. Looking at where the business is now, what does your operation need to look like in two years? More jobs, more divisions, more malls?
 
-49. When you think about doubling the volume of jobs HG runs per day — what part of your current operation would break first? What's the thing that would crack under that kind of pressure?
+69. When you think about doubling the volume of jobs HG runs per day — what part of your current operation would break first? What's the thing that would crack under that kind of pressure?
 
-50. Right now, what's the one operational problem — if it were solved — that would make the biggest difference to how the business runs day to day?
+70. Right now, what's the one operational problem — if it were solved — that would make the biggest difference to how the business runs day to day?
 
 > **Listen for:** "We'd need more coordinators," "the paperwork would kill us," "the WhatsApp coordination can't scale," "we'd lose control of the jobs." This is the ceiling — and it's where MAIA starts.
 
@@ -235,8 +281,14 @@ They run this 7-step process 20+ times a day, across 8 divisions, at 40+ active 
 - [ ] **Completion report format** — Request a sample PDF. What fields does it currently contain?
 - [ ] **Accounting / invoicing software** — SQL, QuickBooks, Excel, or fully manual?
 - [ ] **Equipment tracking appetite** — Do they want hoarding/scaffold/lorry inventory visible in the system?
+- [ ] **Bill of Materials (BOM)** — Is there a standard material list per service type and scope, or is every job worked out ad hoc? Does HG track planned vs actual materials used per job? This determines whether BOM is a custom build requirement.
 - [ ] **Division coordination structure** — Central coordinator for all 8 divisions, or each division runs independently?
 - [ ] **Division sequencing method** — Is the sequence (hoarding → printing, scaffold → reinstatement, reinstatement → subcon) written down anywhere or tribal knowledge? How are handoffs triggered today?
+- [ ] **Job brief format (before the job)** — What information travels to the field team before a job starts? Request a sample — physical sheet, WhatsApp message, anything.
+- [ ] **Deviation capture (during the job)** — How are scope changes, extra materials used, or extra time on site recorded and communicated back to the office?
+- [ ] **Client sign-off format** — Is there a formal client sign-off on site when the job is complete, or just a "done" message?
+- [ ] **Recurring clients with predictable job patterns** — Are there clients (e.g. mall management companies) who send HG work on a regular cycle? Do HG track or anticipate these?
+- [ ] **Role access needs** — Who needs access to what: coordinators, team leads in the field, management, finance? Are there roles that should NOT see pricing or financials?
 - [ ] **Decision-maker in the room** — Who at HG has sign-off authority for a system implementation?
 
 ---
