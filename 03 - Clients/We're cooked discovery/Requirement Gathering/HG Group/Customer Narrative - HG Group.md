@@ -1,13 +1,13 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-04-21
+last_reviewed: 2026-04-23
 lark_url:
 ---
 
 # MAIA for HG Group
 
-### Bringing Order to the Contractor Behind the Malls
+### The Contractor Behind the Malls — Finally Running on a System
 
 _Prepared by Mindhive for HG Services (M) Sdn Bhd_ _Investment: RM [XX,XXX — to be confirmed]_
 
@@ -15,162 +15,137 @@ _Prepared by Mindhive for HG Services (M) Sdn Bhd_ _Investment: RM [XX,XXX — t
 
 ## Who HG Is
 
-Founded in 2015 and headquartered in Puchong, Selangor, HG Services (M) Sdn Bhd is Malaysia's specialist contractor support company for the retail construction lifecycle. They don't build malls — they handle the operationally demanding work that happens every time a retail lot changes hands: putting up the hoarding, stripping out the old fit-out, and supporting the new tenant's renovation. Their tagline says it plainly: one contractor, one point of contact, every service.
+Founded in 2015 and headquartered in Puchong, Selangor, HG Services (M) Sdn Bhd is Malaysia's specialist contractor support company for the retail construction lifecycle. They don't build malls — they handle the operationally complex work that happens every time a retail lot changes hands: installing hoarding, stripping out old fit-outs, supporting new tenant renovations, removing debris, and everything in between. Their founder puts it plainly: "We are not a contractor. We are the nurse behind the contractor. The contractor is the doctor — we are the ones who make sure everything around the doctor works."
 
-HG runs 8 in-house service divisions — Hoarding, Printing & Visual, Scaffold, Reinstatement, Subcon Fit-Out, Signage, Lorry & Rorobin, and Temporary Storage. These aren't loosely affiliated trades; they are purpose-built to work in sequence. When a retail lot changes tenants, HG's hoarding team closes it off, their printing team wraps it in visuals, their reinstatement team guts it, their subcon team supports the new build, and their lorry team removes the debris. Each division feeds the next. The business model is built around removing the coordination burden that would otherwise fall on mall management, main contractors, and retail tenants.
+HG operates 8 in-house service divisions — Hoarding, Printing & Visual, Scaffold, Reinstatement, Subcon Fit-Out, Signage, Lorry & Rorobin, and Temporary Storage. These aren't loosely affiliated trades — they are purpose-built to work in sequence, and the sequencing is HG's core competency. When a retail lot changes tenants, HG's hoarding team closes it off, their printing team wraps it in visuals, their reinstatement team guts it, their lorry team removes the debris, and their temporary storage facility holds the outgoing tenant's items. Each division feeds the next. No need to coordinate three separate contractors. One call to HG covers it. That's the model.
 
-Since their first hoarding install in March 2018, HG has grown to executing 20+ hoarding installations every day across 40+ active malls nationwide. Their client base spans Malaysia's most prominent retail assets — Pavilion KL, Suria KLCC, TRX, KLIA, Subang Parade — and they hold CIDB Grade G7 certification, JKKP scaffold competency at Levels 1–3, and are the authorised Malaysian distributor of the Titan Hoarding System from Australia. In 2022, they were recognised as an Outstanding SME at the Golden Bull Awards.
+HG's scale is substantial. They run 10 to 40 jobs a day, all with their own permanent in-house teams — no subcontracting, no outsourcing. They operate 15 lorries, all typically deployed simultaneously. Their internal structure has three operating teams: the Commercial team handles client relationships and job confirmation; the Fabrication team manufactures and prepares materials; and the Installer team executes on-site. They are panel contractors for Malaysia's most prominent retail assets — Pavilion KL, Suria KLCC, TRX, and ICC — meaning any tenant doing work at those malls is directed to HG. At those malls, engagement is not optional: HG is the designated contractor support. They hold CIDB Grade G7 certification, JKKP scaffold competency at Levels 1–3, and are the authorised Malaysian distributor of the Titan Hoarding System. In 2022 they received the Outstanding SME recognition at the Golden Bull Awards.
 
-HG operates on a project-by-project basis across a defined 7-step engagement flow: enquiry received → site visit/measurement → quotation sent → client confirmation → permit applied (if required) → job executed on-site → completion report delivered. Every single job — whether it's an overnight hoarding install or a full reinstatement — runs through this same sequence. The operational challenge isn't winning the work — it's managing 20+ of these 7-step sequences simultaneously, across 8 divisions, with every job requiring up to 8 documents from the client before work can start. MAIA fits squarely into the Sales and Finance layer of HG's operation: structuring the journey from enquiry to quote, quote to confirmed job, job to Work Order, Work Order to invoice, and invoice to payment.
+MAIA fits squarely into the commercial infrastructure layer of HG's operation: structuring the journey from enquiry to quote, quote to confirmed job, confirmed job to Work Order, Work Order to invoice, and invoice to payment. The Commercial team's quotation workflow and job management process are the primary out-of-the-box fit. The Job Work Order — tracking a multi-division job through its 7-step lifecycle — requires custom configuration to match HG's specific teams, service structure, and completion reporting format.
 
 ---
 
 ## Before MAIA: How HG Operates Today
 
-HG's strength is operational — fast teams, deep mall relationships, in-house everything. But a services business doing 20+ jobs a day across 8 divisions, with quotes going out over WhatsApp and jobs tracked by memory, is sitting on a growing operational debt. Every job that isn't in a system is a job that depends on the right person being available, the right chat being findable, and nobody having a bad day.
+HG's commercial strength is built on relationships, in-house capability, and a founder who personally understands every service in the portfolio well enough to quote and manage any job himself. That depth is an asset. It's also the reason everything routes through one person — and why, at 40 jobs a day across 900 active WhatsApp groups, the operation runs on memory, coordinator instinct, and threads that nobody can fully search.
 
-### How Every HG Job Actually Flows — Across All 8 Divisions
+### The Quote That Lives Only in a Chat
 
-Every job at HG — regardless of which division handles it — follows the exact same 7-step sequence. This isn't just how reinstatement works, or just how scaffold works. It's the standardised engagement process across all 8 divisions: Hoarding, Printing, Scaffold, Reinstatement, Subcon Fit-Out, Signage, Lorry & Rorobin, and Temporary Storage. Same flow. Same 3 parties. Same document checklist.
+Every HG quotation starts with the founder — because he's the one who knows the rates, the scope boundaries, and what each job actually involves. When an enquiry arrives via WhatsApp, web form, or Google Ads, it routes to him first. A typical hoarding quote involves measuring the perimeter (panels A, B, C), calculating total length × height to get square metres, converting to square feet, then applying the preset rate — RM1 per square foot, or RM800 flat for smaller jobs, plus line items for door type, counterweight, skirting, and receipt channel. That formula exists in the founder's head and in informal records shared with the team.
 
-| Step | What Happens | Who Acts |
-|---|---|---|
-| 1. Enquiry | Client sends job details via WhatsApp, call, or web form | Client → HG |
-| 2. Site Visit / Measurement | HG visits site to measure and assess scope (if required) | HG on-site |
-| 3. Quotation | HG prepares and sends a structured quote | HG → Client |
-| 4. Confirmation | Client confirms the quote and job is locked in | Client → HG |
-| 5. Permit Application | HG applies for work permit with the mall/building (if required) | HG → Mall |
-| 6. Job Execution | HG's in-house teams execute on-site — day or night | HG on-site |
-| 7. Completion Report | HG delivers a PDF completion report to the client within 48 hours | HG → Client |
+Once the quote is generated — typically WhatsApp message or PDF — it leaves the building and lives in a chat. There is no system record. If the client comes back three weeks later to confirm, someone has to find the chat. If the job closes and the invoice needs to match, the quotation has to be reconstructed from memory or tracked down across a thread. At 10–40 jobs per day, the volume of quotes in circulation at any given time is enormous — and none of it is searchable, traceable, or auditable as a body of commercial data.
 
-Before Step 1 can progress to Step 3, HG requires up to **8 documents and details** from the client — the same checklist regardless of which division is engaged:
+### 900 Groups, No Single View of What's Actually Running
 
-1. Lot number
-2. Mall / building name
-3. Job drawing & details (lot size, pictures)
-4. Installation or job start date
-5. Work permit copy
-6. Mall contact person name & number (if HG applies permit)
-7. Insurance cover note (if required for permit)
-8. Full payment slip (if under client/contractor arrangement)
+HG operates one WhatsApp group per client engagement. Every inquiry, confirmation, job update, and completion report goes through the group. At the time of the RG session, HG had over 900 active groups — with approximately 200 of those requiring active follow-up at any given time. A senior coordinator monitors these groups daily, essentially acting as a traffic controller across a sprawl that no one can fully see.
 
-The implication of this standardisation is significant: HG is not managing 20+ jobs a day. They are managing **20+ instances of the same 7-step process per day**, each requiring up to 8 documents, each potentially spanning multiple divisions, each generating a quote, a permit trail, and a completion report. The process is sound and consistent. The infrastructure holding it together — at this volume, across 8 divisions — is not.
+The problem isn't that the groups don't work — they do, and the model has scaled HG to 40 jobs a day. The problem is that there is no view above the groups. When management wants to know how many jobs are active this week, the answer requires checking. When a client calls to ask about job status, the coordinator has to locate the correct group and trace the thread to piece together an answer. When a job is missed — and it does happen — the root cause is that a job existed only in a chat, and the chat got lost in the noise of 200 others requiring attention on the same day.
 
-### The Quote That Disappears After It's Sent
+### The Missed Job That Cost More Than a Day's Revenue
 
-HG promises a quote within 2 hours. That's a serious commercial commitment — and for a business running at this volume, it means someone is writing and sending quotes almost constantly. But where do those quotes live after they're sent? Most likely: in a WhatsApp chat, or a copy-pasted message, or a PDF attached to an email that nobody filed.
+Three missed jobs in two months. Out of approximately 400–600 total jobs executed in that period, three were incomplete or delayed due to coordination failure. In any other industry, that would be a rounding error. In HG's world, it is not.
 
-When a client comes back three weeks later asking to adjust scope, or when a job completes and the invoice needs to match the original quote, that quote has to be found. If the coordinator who sent it has left, or the chat is buried under 300 other messages, reconstruction from memory begins. At 20+ jobs a day, the volume of quotes issued is enormous. Without a system, none of that is searchable, traceable, or auditable.
+HG operates at malls that cannot have their shopfronts open without hoarding. A missed overnight hoarding install doesn't result in a delayed delivery — it results in a mall outlet that cannot close or cannot open, a tenant that misses their trading day, and mall management holding HG accountable. "This is a kindergarten mistake," the founder said. "One missed job. We are dying already." The most recent incident: 30 jobs assigned, 29 completed, 1 missed because a new team member received three simultaneous priority tasks, handled two, and forgot the third. The job was a real outlet. The outlet couldn't close. The reputational consequence was disproportionate to the operational error — because in the mall industry, reliability is everything.
 
-### The Job with No Single Owner
+The root cause isn't the team — it's the system. Priority jobs are tracked in WhatsApp groups, communicated verbally or via message, and held together by whoever is on that thread. When that person is juggling two other priorities at the same time, the third one drops.
 
-A typical reinstatement job at HG touches 4–5 divisions: scaffold goes in first for access, reinstatement team does the demolition, lorry removes the debris, temporary storage holds the tenant's items, and hoarding may go up the same night. Each division has its own team lead. Each team lead coordinates separately. There is no single record that says: this job, these divisions involved, this timeline, this current status.
+### The Pricing Formula That Only Exists in One Person's Head
 
-When a client calls to ask where their job stands, the coordinator has to contact each team lead individually to piece together an answer. When the scaffold team finishes and the reinstatement team needs to know the site is ready, that handoff happens through WhatsApp — which means it happens when someone remembers to send the message. One missed message and the reinstatement team shows up to a site that isn't ready. That's a wasted mobilisation, a delayed handover, and an unhappy client.
+Every service HG offers has a preset pricing formula. Hoarding: perimeter (A+B+C lengths) × height = square metres → converted to square feet × rate. Scaffold: by structure height and week. Reinstatement: by linear metre or scope. Lorry: by trip. Temporary storage: by week, day, or month. LPG gas: by metre. Flushing: by floor trap. The formulas are real, documented on HG's website in summary form, and used consistently for every job.
 
-### The Invoice That Doesn't Match the Job
+But they live in the founder's knowledge and informal team records — not in a system. When a new coordinator needs to quote a job, they rely on the founder to verify the scope and rate. When a junior team member quotes independently, the risk of mispricing — under-quoting by one metre on a 25-foot shopfront facade — means a built hoarding that doesn't fit, client fury, and a redo at HG's cost. The formula is solid. The container holding it is fragile.
 
-HG's engagement process ends with a PDF completion report and, presumably, an invoice. But when the job spanned multiple divisions, ran over multiple days, and had scope adjustments along the way, what does the invoice reflect? If the original quote wasn't saved in a structured system, if variations weren't logged, if each division's work was tracked separately — the invoice is built from whatever the coordinator can piece together after the fact.
+### No Invoice, No Job — But the Invoice Comes Late
 
-Clients who receive an invoice that doesn't clearly map to what was agreed will query it. That query goes back to the coordinator, who has to re-trace the job to justify the charge. At low volume, this is annoying. At 20+ jobs a day, it's a receivables bottleneck that costs real money in delayed payments.
+HG has a hard rule: no invoice number, no valid job. Every job must have an invoice number before any expenses are released, any materials are purchased, and any team is deployed. It's a strong discipline. But the invoice itself is generated manually, in Infotech (their accounting system), by someone who has to match the job scope against what was originally quoted.
 
-### The Payment That Nobody Is Chasing
+When the quote lived in a WhatsApp message three weeks ago, and the job has since had scope variations discussed across two different groups, the invoice writer is reconstructing the charge from memory and fragments. At 10–40 jobs a day, this happens daily. The gap between job completion and invoice generation — which should be same-day — stretches to days. Every day of that gap is a day HG has fronted operational costs without recovering them.
 
-HG's per-project billing model means every completed job generates an invoice. Some clients pay promptly. Others don't — and in the absence of a system tracking which invoices are outstanding, chasing payment falls to whoever remembers to do it. There's no aged receivables view, no automatic reminder, no list of "jobs completed but not yet paid." The cash that's owed to HG at any given time is largely invisible.
+### The Completion Report Built from WhatsApp Photos and Claude
 
-For a business with high operational costs — permanent standby manpower, lorry fleet, materials on hand — cash flow is critical. A job that's delivered but unpaid is a job where HG has fronted the cost without recovering it. Without a payment tracking system, the size of that exposure is unknown.
+HG's completion report — the final deliverable to the client after a job closes — is built by the founder or a senior assistant from photos taken on-site by the supervisor or driver. The photos are collected from WhatsApp, fed into Claude, and a PDF report is generated. This process works, and HG is proud of it. But it depends on photos being properly labelled, the right person doing the compilation, and the founder being available to review and send.
 
-### The 8-Document Chase Before Every Job Can Start
-
-Before HG can mobilise for any job, they need up to 8 pieces of information from the client: lot number, mall name, job drawings, start date, work permit copy, mall contact, insurance cover note, and payment slip. Each one is a dependency — a missing insurance cover note means the permit application can't go in; a missing payment slip means HG can't confirm the job under certain client arrangements.
-
-Today, collecting these 8 items almost certainly happens through WhatsApp — a back-and-forth thread that stretches across days as clients send documents one at a time. There's no checklist the client fills in, no system that flags which items are still outstanding, no single place where the coordinator can see "job A is missing the insurance cover note and the permit copy." Instead, someone has to mentally track the status of each document across 20+ active jobs, and follow up manually when something is missing.
-
-A job that's stuck at Step 1 because two documents haven't arrived yet is a job that can't be scheduled, can't be permitted, and can't generate revenue. At 20+ jobs a day, the cumulative drag of document chasing is significant — and entirely invisible without a system.
-
-### The Compliance Trail Held Together by Memory
-
-Every HG job has a permit and compliance component. Work permits, insurance cover notes, engineering drawings for hoarding, Green Tag endorsements for scaffold — different malls require different documents, and HG often handles permit applications on behalf of clients. Across 20+ active jobs, the compliance status of each job lives in the head of whoever is handling it.
-
-A permit that hasn't been approved is a job that can't start. A missing insurance cover note is a blocked site access on the day of the install. When these issues surface on the morning of an overnight job, the scramble to resolve them is stressful, expensive, and entirely avoidable with a system that tracks document status per job.
+For simple jobs, this is manageable. For a multi-division job involving scaffold, reinstatement, lorry, and temporary storage — where photos come from four different teams, across multiple site visits, across two or three days — the compilation is significant manual effort. The current process has no structured handoff: a photo taken by a foreign worker on-site may or may not be captioned, may or may not be in the right group, and may or may not surface when the report is being built.
 
 ---
 
 ## After MAIA: What Changes
 
-**A coordinator at HG** receives a WhatsApp enquiry for an urgent overnight hoarding job at a KL mall. They open MAIA and log the job intake — client name, lot number, mall, service type, requested date. MAIA shows the client's full job history immediately: three prior jobs at this mall, all paid. The coordinator generates a structured quote in under 10 minutes, line-itemised by scope. It goes to the client as a PDF. At the same time, MAIA surfaces the intake checklist: 8 required items before the job can proceed. The coordinator sends the client a single consolidated request — not a series of follow-up messages across three days. As documents arrive, they're uploaded against the job record. The coordinator can see at a glance what's in and what's still outstanding. When the client confirms, the quote converts to a confirmed job with one click. The job is ready to permit and schedule. No reconstruction. No "wait, which chat was that in?"
+**A commercial coordinator at HG** receives a WhatsApp enquiry for an overnight hoarding job at TRX. They open MAIA and create the job intake — client name, lot number, mall, service type, requested date. MAIA surfaces the client's full history immediately: four prior jobs at TRX, all paid on time, preferred contact confirmed. They open the quotation builder, enter the perimeter measurements (A, B, C panels), height, and door type. MAIA calculates square footage, applies the preset rate, adds the counterweight and skirting line items, and produces a structured quote in under 10 minutes. The quote goes to the client as a PDF. MAIA logs it as sent. When the client confirms, the quote converts to a confirmed job with one click. All line items carry forward. No reconstruction.
 
-**A project lead managing a multi-division reinstatement** opens the Job Work Order in MAIA and sees every division tagged to it — scaffold, reinstatement, lorry, temporary storage — each with their own status and scheduled date. When the scaffold team lead marks their stage complete, reinstatement sees the update and knows the site is ready without anyone sending a message. As each division closes their stage, they attach site photos directly to the Work Order. When the final division marks complete, the Work Order compiles into a completion report PDF — pre-filled with job details, scope performed, and photos. The coordinator sends it to the client. No manual writing. No photo hunting. The 48-hour promise is easy to keep.
+**The founder, Lee** opens MAIA in the morning and sees the active job board: 22 jobs confirmed, 7 in progress, 4 pending invoice. He checks two specific jobs flagged as overdue on document intake — lot number is missing for one, insurance cover note for another. He sends a single follow-up request to each client via WhatsApp with the exact outstanding item. The 900-group sprawl is still there for communication, but the tracking layer above it now exists. He no longer needs to hold 40 jobs in his head.
 
-**A finance coordinator at HG** runs their end-of-week billing. MAIA surfaces every completed job that hasn't been invoiced yet — the list is right there, no chasing, no cross-referencing against a handwritten tracker. Each invoice is generated from the confirmed job and original quote: the line items are already there, the amounts are already there. The invoice goes out the same day the job closes. The gap between delivery and billing shrinks from days to hours.
+**A fabrication team lead** receives a new Job Work Order notification. It contains the full brief: lot number, mall, scope per division, scheduled date, permit status, and the site drawings attached during intake. He knows exactly what to prepare and when. When fabrication is complete, he marks his stage done in MAIA. The installer team sees the update and knows the materials are ready. No message needed. No "did you see my message?" the next morning.
 
-**A director or operations manager** opens the dashboard on a Monday morning and sees: active jobs by stage, outstanding invoices by age, revenue by service division this month, jobs completed last week. The business that runs at 20+ jobs a day is no longer invisible. When a client asks "how much have we spent with HG this year?", the answer exists. When management wants to know which division is carrying the most volume, the data is there.
+**An installer supervisor on site** completes a hoarding job at 2am. His team takes the required photos — facade, entrance, corners, completion — and uploads them directly to the Work Order via MAIA. The photos are logged against the job record, with the correct lot number and timestamp. When the coordinator builds the completion report the next morning, all photos are already in the system, labelled, and attached to the right job. The report takes 15 minutes, not 45.
 
-**Every team lead in the field** works from a clear job brief: scope, timeline, site details, permit status. No calls to the office to ask if the permit came through. No showing up to a site to find the access isn't ready. The information that needs to travel from coordinator to site travels through the system, not through a chain of WhatsApp messages that may or may not have been read.
+**The finance coordinator** runs end-of-week billing. MAIA surfaces every completed job that hasn't been invoiced — the list is right there, no cross-referencing against a separate tracker. Each invoice is generated from the confirmed job: the line items are already there, the amounts are already there, the scope matches what was quoted. Invoices go out same-day. Outstanding receivables are visible by client, by age, without making a single call.
+
+**Management** opens the dashboard Monday morning: active jobs by stage, revenue by service division this month, outstanding invoices by age, jobs completed last week. The operation that runs at 40 jobs a day is no longer invisible. When a client asks "how much have we spent with HG this year?", the answer exists. When a panel mall wants to know HG's job completion rate, the data is there.
 
 ---
 
 ## Feature Deep Dive
 
-### 1. Quotation Management — The Quote That Stays
+### 1. Quotation Management — The Formula in the System
 
-For HG, the quote is the start of every commercial relationship. At the moment, it's also where the record trail ends.
+For HG, every quote follows a formula that currently exists only in the founder's knowledge and informal records. MAIA locks that formula into a structured, repeatable quotation builder.
 
-**What it does:** Creates structured, line-itemised quotations linked to a client and job record. Captures scope, service types, quantities, and pricing. Saves every quote with a status — draft, sent, accepted, expired. When a client confirms, the quotation converts directly to a Sales Order (confirmed job) with one action. All line items carry forward. Variation requests can be logged against the original. Full quote history is searchable by client, mall, or service type.
+**What it does:** Creates line-itemised quotations linked to a client and job record. Supports HG's specific pricing logic — perimeter measurement inputs that auto-calculate square footage and apply preset rates for each service type (hoarding, scaffold, reinstatement, lorry, temporary storage, and all sub-line items). Each service type has its own rate card: square-footage pricing, per-unit pricing, per-trip pricing, per-week pricing. Quotations capture scope, service types, quantities, and pricing. Every quote is saved with a status — draft, sent, accepted, expired — and is searchable by client, mall, or service type. When a client confirms, the quotation converts to a Sales Order with one action. All line items carry forward. Variation requests are logged against the original. Full quote history per client is permanent and auditable.
 
-**What it won't do:** Won't auto-generate pricing without HG configuring a rate structure during setup. Won't send quotes via WhatsApp natively — the PDF exports for sending through existing channels. Won't flag margin issues automatically without pricing rules being set.
+**What it won't do:** Won't generate quotes without HG configuring the rate card for each service type during setup. Won't send quotes via WhatsApp natively — the PDF exports for sending through existing channels. Won't auto-detect scope changes from WhatsApp messages. Won't price jobs that require on-site assessment before quoting — those still need a site visit before the quotation builder is used.
 
-**Why it matters:** Every quote HG sends over WhatsApp today is a record that exists only in a chat. When a client queries their invoice six weeks later, the quote has to be found. When a coordinator leaves, their quote history goes with them. MAIA makes every quote a permanent, searchable record that belongs to the business — not to a person's phone.
+**Why it matters:** Every quote HG sends today is a record that exists only in a chat. When the client confirms three weeks later, that quote has to be found. When the invoice needs to match the original scope, the quote has to be reconstructed. When a new coordinator needs to quote a scaffold job independently, they need the founder to verify the rate. MAIA makes every quote a permanent, searchable record that belongs to the business — and puts the pricing formula in a system anyone trained on it can use correctly.
 
-### 2. Sales Order (Job Confirmation) — The Job Record That Holds Everything
+### 2. Sales Order (Job Confirmation) — The Job That Has a Home
 
-Once a client confirms, the job needs a home. Right now, it probably lives across a confirmation message, a group chat, and someone's memory.
+Once a client confirms, the job needs a record that any coordinator can find, open, and understand — not a group chat that requires knowing who was in it.
 
-**What it does:** Creates a Sales Order — HG's confirmed job record — from the accepted quotation. Captures all job details: client, lot number, mall/building, service scope, divisions involved, timeline, and status. Tracks the job through its lifecycle: confirmed → in progress → completed → billed. Supports multi-service jobs where 4–5 divisions are all linked to one parent record. Links to the invoice when billing happens. Surfaces in the dashboard as an active job until it's closed.
+**What it does:** Creates a confirmed job record (Sales Order) from the accepted quotation. Captures client name, lot number, mall/building, service scope, divisions involved, timeline, and status. Tracks the job lifecycle: confirmed → in progress → completed → billed. Supports multi-division jobs — scaffold, reinstatement, lorry, and temporary storage all linked to one parent record. Links to the Work Order when the job is dispatched and to the invoice when billing happens. Surfaces in the active job board until closed.
 
-**What it won't do:** Won't automatically assign team leads or schedule divisions — coordination decisions stay with HG's operations team. Won't replace WhatsApp for real-time field communication between team leads. Won't track individual worker activity or time-on-site.
+**What it won't do:** Won't automatically assign team leads or schedule divisions — coordination decisions stay with the Commercial team. Won't replace WhatsApp for real-time field communication. Won't track individual worker activity or time-on-site.
 
-**Why it matters:** HG's biggest operational gap is that a job with 5 divisions involved has no single record. The Sales Order in MAIA is that record. It's the spine that everything else — the invoice, the completion report, the payment — attaches to. Without it, each job is a one-time event that leaves no trace.
+**Why it matters:** HG's biggest operational risk is the job with no single record. A confirmed job that exists only across a confirmation message, a group chat, and a coordinator's memory is a job that can be missed when that coordinator is juggling two other priorities. The Sales Order is the single source of truth — the record that proves the job exists, confirms what was agreed, and holds the chain from quote to invoice.
 
-### 3. Invoicing — Bill the Day the Job Closes
+### 3. Job Work Order — The Brief That Every Team Works From
 
-The gap between job completion and invoice sent is where cash flow leaks.
+The most critical custom module for HG. Adapted from MAIA's Work Order framework, configured for HG's three-team structure (Commercial, Fabrication, Installer) and 7-step engagement flow.
 
-**What it does:** Generates an invoice directly from the completed Sales Order. All line items — service types, quantities, amounts — carry forward from the original quote and confirmed job. Invoice status tracks through: draft → submitted → unpaid → paid. Supports partial payments and payment tracking. Links receipts to the invoice when payment is received. Flags invoices that are overdue.
+**What it does:** Creates a structured Job Work Order from every confirmed Sales Order. Captures the full job brief: client name, lot number, mall, scope per division, assigned team leads (Commercial, Fabrication, Installer), scheduled dates, permit status, and a built-in intake checklist for the 8 required documents (lot number, mall name, job drawings, start date, work permit copy, mall contact, insurance cover note, payment slip). Each division has its own status within the Work Order — Commercial confirms scope; Fabrication marks materials ready; Installer marks site complete. Photo attachments are uploaded per stage, directly from mobile, against the correct job record. When all stages are marked complete and photos uploaded, the Work Order compiles the completion report PDF — pre-filled with job details, scope performed, and photos. Actual scope vs. original quoted scope is tracked for variation billing.
 
-**What it won't do:** Won't integrate with HG's existing accounting software automatically without a configured integration. Won't chase clients for payment automatically — it surfaces the outstanding list, humans make the calls. Won't handle SST/GST filing.
+**What it won't do:** Won't advance stages automatically — a team lead must update their own status. Won't assign teams or schedule jobs automatically — the Commercial team coordinator retains that responsibility. Won't replace the WhatsApp groups for real-time site communication — it captures the record, not the conversation. Won't generate the hoarding measurement sketch — site measurement remains a human task.
 
-**Why it matters:** Today, HG's invoicing is likely reactive — someone notices a job is done and generates an invoice when they remember to. MAIA makes invoicing a triggered step in the job lifecycle: job closes, invoice is ready to send. The outstanding invoices list is always current. The question "how much is owed to us right now?" has an answer.
+**Why it matters:** Right now, a multi-division job at HG has no single document that all three teams work from. The Commercial team knows their bit. The Fabrication team knows their bit. The Installer team shows up to a site they've been briefed on verbally, or via a chat message that may have scrolled past. The Work Order is the full brief — structured, attached to the correct client and lot, updated as work progresses, and converted into the completion report when the job closes. The missed-job incidents happen because the job existed only in a message. The Work Order makes every job visible.
 
-### 4. Receipt & Payment Tracking — Know What's Paid and What Isn't
+### 4. Invoicing — Bill the Day the Job Closes
 
-Cash flow visibility is a basic operational need that becomes critical at HG's volume.
+HG's rule is correct: no invoice number, no valid job. The gap is that the invoice is currently written manually from memory, after the job, from a quote that may have been sent weeks ago in a chat.
 
-**What it does:** Records payments against outstanding invoices. Marks invoices as fully or partially paid. Maintains an aged receivables view — which clients owe what, for how long. Surfaces unpaid invoices by age: 30 days, 60 days, 90 days+. Links payment records to the original job for full audit trail from quote to cash.
+**What it does:** Generates an invoice directly from the completed Sales Order. All line items — service types, quantities, amounts — carry forward from the original quotation. Invoice status tracks through draft → submitted → unpaid → paid. Supports partial payments and payment recording. Links receipts to the invoice when payment is confirmed. Flags invoices that are overdue by age.
+
+**What it won't do:** Won't integrate directly with Infotech (HG's current accounting system) without a configured integration — Phase 1 MAIA invoicing may run in parallel with Infotech, with migration assessed in Phase 2. Won't chase clients for payment automatically — it surfaces the outstanding list, humans make the calls. Won't handle SST filing.
+
+**Why it matters:** Today, HG's invoice is reconstructed after the fact from a quote in a chat and a job brief that may have had scope variations along the way. The result is invoices that go out late, and occasionally invoices that clients query because the amount doesn't match what they expected. MAIA makes invoicing a triggered step: job closes, invoice is ready to send. No reconstruction. No memory required. The gap between delivery and billing shrinks from days to same-day.
+
+### 5. Receipt & Payment Tracking — Know What You're Owed
+
+With 40 jobs a day, the total amount owed to HG at any given moment is significant — and currently invisible.
+
+**What it does:** Records payments against outstanding invoices. Marks invoices as fully or partially paid. Maintains an aged receivables view — which clients owe what, for how long. Surfaces unpaid invoices by age: 30 days, 60 days, 90 days+. Links payment records to the original job for a full audit trail from quote to cash received.
 
 **What it won't do:** Won't send automated payment reminders via WhatsApp or email without additional configuration. Won't process online payments or bank transfers. Won't reconcile against bank statements automatically.
 
-**Why it matters:** For a business with high operational costs — manpower on permanent standby, lorry fleet, materials — the gap between cash owed and cash received is a real risk. Right now, HG likely has no single view of outstanding receivables. MAIA gives them that view from day one.
+**Why it matters:** HG operates with high fixed operational costs — permanent standby manpower, 15 lorries in daily rotation, materials and equipment on hand. A job that's delivered but unpaid is a job where HG has fronted the full cost without recovering it. Without a payment tracking view, the total size of that exposure is unknown. MAIA makes it visible from day one.
 
-### 5. Job Work Order — The Brief That Travels With the Job
+### 6. Customer Records — The Relationship That Belongs to HG
 
-This is the feature that directly addresses HG's core operational challenge: running multi-division jobs without a single record that all teams work from. Adapted from the same Work Order module built for Thermac Engineering, but shaped for HG's contractor context — lots, malls, and divisions instead of equipment and technicians.
+HG's client base — mall operators, retail chains, main contractors across 40+ malls — is a repeat-buyer network built over 11 years. That network has real commercial value. It currently lives across 900 WhatsApp groups and the founder's memory.
 
-**What it does:** Creates a structured Job Work Order from every confirmed Sales Order, covering all 7 steps of HG's engagement flow. Each Work Order captures: client name, lot number, mall/building, job scope per division, assigned team leads, scheduled dates, and a built-in document checklist tracking the 8 required intake items (lot number, mall name, job drawings, start date, work permit copy, mall contact, insurance cover note, payment slip). Step status tracks through the full lifecycle: enquiry → site visit → quoted → confirmed → permit applied → in progress → completed → report sent. Supports multi-division jobs — scaffold, reinstatement, lorry, and printing each have their own status within the same Work Order. Team leads update their division's status and attach site photos directly. When all divisions mark complete, the Work Order compiles the completion report PDF — pre-filled with job details, scope performed, and photos. Captures actual scope vs. original quoted scope for variation tracking.
+**What it does:** Maintains a client record for every company HG works with — contact details, billing information, full job history, quote history, active jobs, outstanding invoices, and payment behaviour. When a new enquiry comes in from an existing client, their full history is immediately visible: which malls they've worked at, what services they've used, their payment track record. Supports client tagging — blacklisted clients, slow payers, preferred contacts — surfaced during quote creation before any work is committed.
 
-**What it won't do:** Won't automatically advance a job between stages without a team lead updating it. Won't assign divisions or schedule teams automatically — that stays with the operations coordinator. Won't replace WhatsApp for real-time field chatter — it captures the record, not the conversation. Final Work Order fields depend on HG providing samples of their current job brief format.
+**What it won't do:** Won't auto-import historical data from WhatsApp or Infotech without a structured data migration. Won't flag relationship health scores or predict churn risk.
 
-**Why it matters:** Right now, a multi-division job at HG has no single document that every team lead works from. The scaffold team knows their bit. The reinstatement team knows their bit. Nobody has the full picture except the coordinator holding it in their head. The Work Order is that full picture — structured, attached to the client and lot, updated as work progresses, and converted into the completion report when the job closes. It's the difference between a job that's managed and a job that's remembered.
-
-### 6. Customer Records — The Relationship That Belongs to the Business
-
-HG's clients — mall operators, retail chains, main contractors — are repeat buyers. That relationship has commercial value. It shouldn't live only in a coordinator's head.
-
-**What it does:** Maintains a client record for every company HG works with — contact details, billing information, full job history, quote history, active jobs, outstanding invoices. When a new enquiry comes in from an existing client, their full history is visible immediately. Supports notes and tags for client-specific context (e.g. preferred contact, mall-specific requirements, payment behaviour).
-
-**What it won't do:** Won't auto-import historical client data from WhatsApp or Excel without a data migration exercise. Won't predict which clients are at churn risk or flag relationship health scores.
-
-**Why it matters:** When a coordinator who managed 15 client relationships leaves HG, those relationships don't walk out the door with them. Every past job, every quote, every payment record is in MAIA. The business owns the relationship history, not the individual.
+**Why it matters:** When the coordinator who manages 15 client relationships leaves HG, every piece of institutional knowledge about those clients walks out with her. Every past job, every quote, every payment record, every "this client always pays 45 days late" note — gone. MAIA means the business owns the relationship history, not any individual. And it means the first thing a coordinator sees when a new enquiry comes in from a known client is exactly what kind of client they're dealing with — before a single message is sent.
 
 ---
 
@@ -178,48 +153,49 @@ HG's clients — mall operators, retail chains, main contractors — are repeat 
 
 ### Included in RM [XX,XXX — to be confirmed]
 
-- **Quotation Management** — Structured, line-itemised quotes linked to clients and jobs; quote history; quote-to-job conversion
-- **Sales Order / Job Confirmation** — Confirmed job records with scope, client, lot, and mall details; status tracking from confirmed to completed
-- **Job Work Order** — Multi-division job brief with per-division status, site photo attachments, scope vs actual tracking, and completion report PDF generation (custom module, adapted from Thermac Work Order)
-- **Invoicing** — Invoice generation from completed jobs; status tracking from draft to paid
-- **Receipt & Payment Tracking** — Payment recording against invoices; aged receivables view
-- **Customer Records** — Full client history with job, quote, and payment records
+- **Quotation Management** — Structured quotation builder with HG-specific rate card per service type; square-footage auto-calculation; quote-to-job conversion; full quote history per client
+- **Sales Order / Job Confirmation** — Confirmed job records with client, lot, mall, scope, and multi-division linkage; status tracking from confirmed to completed
+- **Job Work Order** — Custom multi-division job brief with per-team status (Commercial, Fabrication, Installer); intake document checklist; mobile photo upload per stage; completion report PDF generation
+- **Invoicing** — Invoice generation from completed Sales Orders; line items carried forward from original quote; status tracking from draft to paid
+- **Receipt & Payment Tracking** — Payment recording against invoices; aged receivables view by client and by age
+- **Customer Records** — Full client history with job, quote, payment records; client tagging for blacklist, slow pay, and preferred contact
 
 ### Designed For, Not Included (Phase 2)
 
-- **Calendar & Gantt Scheduling View (Custom)** — Shared calendar of active Work Orders by division and date; Gantt view for multi-division job timelines; scheduling conflict visibility — Phase 1 Work Order architecture is designed to extend into this
-- **Permit & Document Tracker (Custom)** — Per-job document storage and permit status tracking; deferred to Phase 2 as an extension of the Work Order module
-- **WhatsApp Enquiry Intake** — AI-assisted job intake from WhatsApp messages; deferred to Phase 2 pending Phase 1 adoption
-- **Dashboard & Reporting** — Revenue by division, job volume by mall, team utilisation; deferred to Phase 2 once core job data is established
+- **Mall Unit Measurement Database** — The founder's vision of a database containing every unit measurement for every mall (currently ~8,000 units), queryable by lot number to auto-populate quotation dimensions. Phase 1 Work Order and Quotation architecture is designed to extend into this as a structured data layer.
+- **AI Measurement Extraction** — Integration with Claude or similar to extract measurements from hoarding sketch drawings and populate the quotation builder automatically. Dependent on Phase 1 measurement data being structured.
+- **WhatsApp Enquiry Intake via MAIA AI** — Routing incoming enquiries by service type to the correct team lead via AI-assisted intake; deferred to Phase 2 pending Phase 1 job record adoption
+- **Calendar & Gantt Scheduling View** — Shared calendar of active Work Orders by division and date; conflict visibility across lorry and team allocation; Phase 1 architecture is designed to extend into this
+- **Dashboard & Reporting** — Revenue by service division, job volume by mall, team utilisation, outstanding receivables summary; deferred to Phase 2 once core job data is established
+- **Infotech Integration** — Sync of invoice and payment records between MAIA and HG's existing Infotech accounting system; deferred to Phase 2, assessed after Phase 1 invoicing workflow is stable
 
 ### Requires Clarification
 
-- **Pricing structure** — Does HG operate from a rate card per service type, or is every job priced ad hoc? Affects how quotation templates are configured.
-- **Division coordination flow** — Are divisions coordinated centrally by one operations coordinator, or does each division manage its own job queue? Affects how the Sales Order record is structured.
-- **Current invoicing workflow** — Does HG use any accounting software today (SQL, QuickBooks, Excel)? Is there an integration requirement, or is MAIA replacing the current method entirely?
-- **Completion report format** — Is there an existing PDF template? What fields does it currently contain? This shapes Phase 2 scoping.
-- **WhatsApp usage in the sales process** — Are quotes and confirmations handled entirely over WhatsApp, or does HG also use email? Affects how the enquiry-to-quote flow is designed.
+- **Rate card completeness** — The hoarding pricing formula was confirmed in detail (perimeter × height → sq ft × rate). The rates for Scaffold (by height and week), Reinstatement (by metre), Lorry (per trip), Temporary Storage (per week/day/month), LPG (per metre), and Flushing (per floor trap) were described but not fully specified. HG stated they can provide all descriptions, formulas, and rates for setup — a documentation session is needed before Quotation module configuration begins.
+- **Infotech invoice workflow** — HG currently generates invoices in Infotech. Phase 1 MAIA invoicing may need to run in parallel initially. Need to confirm: does Phase 1 MAIA replace Infotech invoicing, or sit alongside it?
+- **Completion report current format** — HG currently builds completion reports via Claude from site photos. A sample of the current PDF output is needed to ensure the Work Order completion report matches HG's format and client expectations.
+- **Division assignment flow** — The Commercial team confirms jobs and coordinates handoff. Need to confirm: does one central coordinator assign all three teams (Commercial, Fabrication, Installer), or does the Fabrication and Installer head self-assign from the Work Order queue?
+- **Mall panel document requirements** — Different malls have different permit and document requirements. Does HG maintain a mall-by-mall checklist of what's required, or is this held in the team's memory? This affects how the intake document checklist in the Work Order is configured per mall.
 
 ### Not in Scope
 
-- Inventory or stock management (HG is a services business — no product inventory)
-- Logistics workspace modules (delivery notes, stock entries, pick lists — not applicable)
-- Payroll or HR management
-- Subcontractor management (HG is fully in-house)
+- Inventory or stock management (hoarding panel inventory, scaffold equipment tracking — Phase 2 if needed)
+- Payroll, HR management, or worker scheduling
+- LiDAR or physical measurement device integration
 - Accounting, SST filing, or tax reporting
-- ERP integration with third-party accounting software (Phase 1)
+- Subcontractor management (HG is fully in-house)
+- Logistics workspace delivery notes, pick lists, or stock entries
+- ERP integration with Infotech or Odoo (Phase 1)
 
 ---
 
 ## The Design Principle
 
-MAIA is built for B2B businesses where the work happens through WhatsApp and the back-office runs on memory and spreadsheets. HG is exactly that business — except instead of selling products, they're selling service jobs, and instead of managing inventory, they're managing people, permits, and deadlines across 8 divisions at 20+ jobs a day. The most important thing to understand about HG's operation is that all 8 divisions run the same 7-step process: enquiry, site visit, quote, confirmation, permit, execution, completion report. The process is standardised and repeatable. What isn't standardised is how it's tracked — because right now, each division tracks it separately, and the connective tissue is a coordinator's memory and a WhatsApp thread. MAIA doesn't change the 7 steps. It gives every instance of those 7 steps a home — a single record that holds the quote, the documents, the Work Order, the invoice, and the completion report, from first message to final payment.
+MAIA is built for B2B businesses where the work is executed by people — not automated — and the systems behind those people should surface what's needed, track what's happening, and generate what's required, without adding friction to a team already running at full speed. HG is that business: three in-house teams, 15 lorries, 40 jobs a day, and a founder who personally closes deals, reviews quotes, and approves completion reports because the knowledge required to do it well hasn't yet been transferred to a system. MAIA's job is to receive that knowledge — the rate card, the 7-step flow, the intake checklist, the completion report format — and hold it in a structure that any coordinator or team lead can use without routing everything through the founder.
 
-HG started with one hoarding install in 2018 and built to 20+ a day through expertise, reliability, and a fully in-house team that nobody else in the market can match. The Golden Bull Award, the 100+ mall relationships, the Titan distributorship — these are real achievements built on operational excellence. But operational excellence at this scale has an infrastructure ceiling. A business can only scale as fast as its systems can hold. Right now, the system is the coordinator's memory and a WhatsApp chat history. That ceiling is approaching.
+HG Services was founded with one hoarding install in 2015 and built to 40 jobs a day across 40+ malls through expertise, in-house investment, and a founder who genuinely understands every service in the portfolio. The Golden Bull Award, the Titan distributorship, the KLCC and TRX panel status, the 900 active client groups — these are real achievements built on a combination of technical depth and operational reliability. But 900 groups is also a number that makes the fragility of the current system legible. The operation is running well because the right people are paying the right amount of attention to the right threads at the right time. That's not a system. That's a very talented team doing very well without one. The ceiling is not far off.
 
-What this build delivers is the commercial infrastructure layer HG needs to operate at their current scale without it depending on specific people being available. Structured quotes that belong to the business. Job records that any coordinator can pick up. Invoices that go out the day a job closes. Receivables that are visible without having to call anyone. It won't automate the work — the work is done by HG's in-house teams and that's exactly the right model. But it gives the business a single source of truth for every commercial transaction, and the foundation to grow beyond the ceiling that manual coordination creates.
-
----
+What this build delivers is the commercial infrastructure layer HG needs to operate at their current scale — and grow beyond it — without it depending on the founder being available, a senior coordinator having memorised 200 active jobs, or a new team member having the same institutional knowledge as someone who's been in the business for six years. Structured quotes that belong to the business. Job records that any coordinator can open and understand. Work Orders that every team lead works from independently. Invoices that go out the day a job closes. Receivables that are visible without making a single call. The foundation for the measurement database, the AI intake routing, and the scheduling view that come next.
 
 _MAIA structures the workflow. Humans remain the decision-makers._
 
@@ -227,36 +203,24 @@ _MAIA structures the workflow. Humans remain the decision-makers._
 
 ## ⚠️ Gaps Still Open
 
-This narrative is written from the customer profile and publicly available process documentation — no requirement gathering session has been conducted yet. The 7-step engagement flow and 8-document intake checklist are confirmed from HG's own website. Everything else below needs validation in the first discovery session.
+The narrative has been updated from the 23 April RG transcript. The following items remain open before this document is ready to share externally:
 
 1. **Investment figure — RM [XX,XXX] placeholder**
-   Why this matters: Referenced in the opening and Scope Summary. Document looks unfinished without it.
-   What I need: Confirm proposed engagement fee before sharing externally.
+   Why this matters: Cited in the opening and Scope Summary. Document looks incomplete without it.
+   What I need: Confirm proposed engagement fee before sharing.
 
-2. **Pain areas — assumed, not confirmed**
-   Why this matters: All 6 Before MAIA pain areas are inferred from HG's business model and process flow. The 7-step flow is confirmed; the pain behind it is assumed.
-   What I need: Walk through one real job end-to-end with HG. Ask: *"Where does this process break down most often?"* and *"What's the most painful part of managing 20+ jobs at once?"*
+2. **Rate card documentation session**
+   Why this matters: Quotation module configuration requires complete rates for all service types. Hoarding formula confirmed. All others described but not fully specified.
+   What I need: A dedicated session where HG provides all service type descriptions, calculation formulas, and preset rates. The founder confirmed he can prepare this.
 
-3. **How the 8-document intake actually happens today**
-   Why this matters: The 8-item checklist is confirmed from HG's website. But we don't know if they chase these documents via WhatsApp, email, or an existing form. This shapes how the intake flow in MAIA is designed.
-   What I need: Ask — *"When a new job comes in, how do you collect the lot number, permit copy, insurance cover note, etc. from the client? WhatsApp? Email? A form?"* and *"What happens when a client sends them one at a time over three days?"*
+3. **Completion report sample**
+   Why this matters: Work Order completion report PDF must match HG's current output format. Without a sample, the Work Order is designed blind.
+   What I need: A sample PDF from any completed job — even a photo of a printed one.
 
-4. **Permit application process in practice**
-   Why this matters: Step 5 (permit application to mall) is a 3-party flow — HG acts as the client's agent with the mall. Whether MAIA needs to track this or just document it changes the Work Order design.
-   What I need: Ask — *"When you apply for a permit on behalf of a client, what does that process look like? How do you track whether it's been approved or is still pending?"*
+4. **Infotech parallel-run decision**
+   Why this matters: If HG needs MAIA and Infotech to run in parallel during transition, that affects Phase 1 invoicing design and training plan.
+   What I need: Ask — "Do you want to stop using Infotech for invoicing when MAIA goes live, or run both systems side by side initially?"
 
-5. **Work Order and completion report current format**
-   Why this matters: The Job Work Order PDF needs to match what HG currently sends clients. If they already have a PDF template, we build to match it. If not, we design from scratch with their input.
-   What I need: Ask for a sample completion report — even a photo of a printed one counts. Also ask: *"Does each division sign off separately, or is there one sign-off at the end of the whole job?"*
-
-6. **Pricing and quotation method**
-   Why this matters: The Quotation module is configured very differently depending on whether HG has a rate card per service type or prices every job ad hoc.
-   What I need: Ask — *"When you quote a reinstatement job, are you working from a standard price list, or does every job get priced from scratch?"*
-
-7. **Current accounting and invoicing setup**
-   Why this matters: If HG uses SQL Accounting, QuickBooks, or similar, there may be an integration requirement that changes Phase 1 scope.
-   What I need: Ask — *"What software do you use today for invoicing and tracking payments? Or is that all done manually?"*
-
-8. **Material and equipment tracking appetite**
-   Why this matters: HG manages significant physical assets — hoarding panels, scaffold systems, lorry fleet. If they want MAIA to track these, the Logistics workspace becomes relevant and scope expands.
-   What I need: Ask — *"Do you track your hoarding panels, scaffold inventory, or lorry availability anywhere today? Is that something you'd want visibility on in a system?"*
+5. **Mall-specific permit and document requirements**
+   Why this matters: The intake checklist in the Work Order should ideally surface the correct required documents based on which mall the job is at. If HG has a mall-by-mall reference, we can configure this. If not, a generic checklist is used and this becomes Phase 2.
+   What I need: Ask — "Do you have a list of which documents each mall requires, or is that knowledge held by the team?"
