@@ -17,6 +17,9 @@ last_reviewed: 2026-04-21
 >
 > Target: **25 questions across ~90 minutes**, leaving 30 minutes for demo sample requests and wrap-up.
 
+> 🎙️ **Run the opening script first before Question 1:**
+> [[HG Group - RG Meeting Opening Script]]
+
 ---
 
 ## What We Already Know
@@ -25,13 +28,15 @@ last_reviewed: 2026-04-21
 |---|---|
 | 1 | Enquiry received (WhatsApp / call / web form) |
 | 2 | Site visit / measurement |
-| 3 | Quotation sent (within 2 hours) |
+| 3 | Quotation sent (within 24 hours) |
 | 4 | Client confirmation |
 | 5 | Permit application to mall |
 | 6 | Job execution on-site |
 | 7 | Completion report within 48 hours |
 
 8 items required from client before Step 3 can proceed: lot number, mall name, job drawings, start date, work permit copy, mall contact, insurance cover note, payment slip.
+
+This same 7-step flow applies across **all 8 divisions** — Hoarding, Printing, Scaffold, Reinstatement, Subcon, Signage, Lorry & Rorobin, Temporary Storage.
 
 ---
 
@@ -169,6 +174,7 @@ Ask at the end. Frame it as making the demo feel real.
 
 ## See Also
 
+- [[HG Group - RG Meeting Opening Script]] — opening script for Gareth to run before Question 1
 - [[HG Group - Customer Profile]] — business background and confirmed 8-division structure
 - [[Customer Narrative - HG Group]] — pre-built proposal narrative with all open gaps listed
 - [[02 - PM Playbook/Templates/[Template] Requirement Gathering Output]] — for structuring notes after this session
