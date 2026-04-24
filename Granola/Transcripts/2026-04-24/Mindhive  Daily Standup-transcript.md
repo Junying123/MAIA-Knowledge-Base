@@ -3,7 +3,7 @@ granola_id: b2729aeb-63c0-4db5-ac3c-ed08373fb601
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-04-24T01:44:05.900Z
-updated: 2026-04-24T01:44:16.015Z
+updated: 2026-04-24T02:31:08.927Z
 attendees: 
   - afiqaqill261203@gmail.com
   - ghostsketon@gmail.com
@@ -381,5 +381,149 @@ No, ese no hay talking.
 
 ### You (2026-04-24T02:12:38.650Z)
 
-So she says she she needs to work on two things. Firstly, first, the So but this what we are doing, we asking for invoice the resendant, invoice Yep. First thing first first Subscription because what she mentioned yesterday, the there's not a lot It just that the the one one is, like, four plus one might use the policy. This might be to monthly, like, monthly. Yeah. Yeah. Yeah. That one
+So she says she she needs to work on two things. Firstly, first, the So but this what we are doing, we asking for invoice the resendant, invoice Yep. First thing first first Subscription because what she mentioned yesterday, the there's not a lot It just that the the one one is, like, four plus one might use the policy. This might be to monthly, like, monthly. Yeah. Yeah. Yeah. That one I'll just check on I will just check straight away on the payload and see can create on my staging which should be fine with Second thing is the the near use this one. She says she needs the the details of the API. To her. Yeah. I need to do link that to her to create user page. Once they are done with that, then we continue on our search. Means that okay. If this user is a new user, and who comments stand back to this one, it will something so we know this guy some sign up. They email or whatever. That's that's a web there's a web call up. Like, when every time we create a new sales order right now, because it's gonna into our system. Right? That's that's the the only method we come out of is Do it. Help them set up the the telephone number as the password. Right? To there's a few fallback if they if we we have them but they go then we will go Second point is So because they only they're gonna introduce them in So they want the the requirements is are we able to separate b to b, b to b, b to b, b to c, orders? We have like a like a header tab One b to b audience, and one b to c audience. That's one point. Second point is this is a is a big concern for their end up. Because every time let's say, invoice job is created. Right? Ding? Usually drop we have a cancel status. So because at times, let's say the invoice is is in draft. It's not meaning meaning, like, they will they will want to deliver already by because no stop. They want to cancel the keep it. The order interact inside inside my inside my inside inside itself. So the problem is now is this order is always So once you cancel, think Wai Park Hong Oh, is this the one that you brought out? See? Or Do you wanna see cancel? The status cancel. The reason why they wanna submit is because this idea is always They they don't put it. They don't want to upload. So they want to have the job status for every order that can also have a delete and also a cancel status. Also. Delete means delete the whole thing, cancel means cancel status also. I know whether I don't think we can we can do Okay. So credit note, the listing table, we need to add a return note column there. So this is for them to use to write down the return note just in case to like any duplications. Just right now, how do you usually track quantification they write a return on ID in the credit note search then. See your any the eight. Person who get the the friendly thought. You're keen two times. And then this will work. Will just upload to every call, and then the So they they they wanna prevent that, so they want to ask us to create a, like, new color. To write down their Okay. Then there's smaller export CSV. There I go. I can go on later. For the sales agents. I'm a sales manager to do their financial report because we paid it in currently in the MVP, dashboard. Right? They want to do like a like their report. It's very hard for them to fix like two or three weeks. Pivot everything. But they repeat up the CSV lah. Yeah. Yeah. See. This side. And then just statuses, they also did mention that right now the statuses are all very quite messy lah. Because the statuses right now, they say they already deliver everything right. But everything is listed as, like, incomplete. All orders are incomplete. Why? It's because I passed my own pay yet. Which makes sense in our in our system, makes sense. But for them, it's not that's not how they track. So how they track is, are when items deliver at the total value there. They will see the what all orders has What's how many orders has haven't paid yet? How many orders is still in, like, in the draft status and they have a ship out there? They wanna see it in the in that range on that. So the tabs they us to add on is delivered, pending payment, complete payment. For this this three year. Yeah. But do we have the filter there already? For Well, this time, in the future, we we need to discuss first time before can actually do any action plans here. Because all there's a lot of things that I think I can foresee is that we've got to restructure the whole court based on. So it's yeah. These are the few things at the smaller ones. I've got the other bigger things. They want like a weekly sales report. Quarterly sales report. What the hell? Yeah. All these Yeah. I think we don't we do one other we can discuss later in the yeah. Okay. So one more thing is so I think it's quite big as well. Logistic side, lah? They want, like, after they after they submitted the draft with you. Easter of being submitted, is pending for critique. Pending for what? The the document. Because after they submit it there, right, that means it's it's confirmed. This this is the end confirmed. When they're like making all these huge requests now, like, this is Because they use our system, they find out a lot. They got pinpoints out. So they want to like, change. Previously, they do all the printing stuff. Because right now the business, they still need to print out the DMs. Because they need the the customer to sign. What do they need to traceability. Mhmm. Like cause there are a lot of others right now. Right? And then they will be messy. And they deal. For them, like I say, they want to track the the order, like, because let's say some orders, right, is from last week, but haven't delivered yet. They don't they don't don't properly enough. And that's why they keep missing orders and anything. Asked me to This is one of those areas where you find out when practicing it in actual So for the printing oil, we know you do But what I think, yesterday I talked to them, what we can approach. After they submit, they send a notification to them. That's all. They are okay with that. Yeah. A notification meaning is either we can do it in chatbot or in the front end. Just two two things This one is for after someone submit then to notify someone to the printing in it. Okay? That's all. Yeah. We can do that. And then think the ones that you can the I think the the song is yes. I mentioned this during the send up, we have a discussion after stand up for the next release for Farm Shop. Right? We do it around, like, 11:00? Are you guys free? O'clock. Free?
+
+### Guest (2026-04-24T02:23:16.727Z)
+
+Yeah. Can can can can
+
+### You (2026-04-24T02:23:17.040Z)
+
+You Yeah. Because there are a few things that the simple things, I think we can do it. I think it'll release next Friday Probably a few small stuff that does have, I think it's Oh, this one. Okay. This one's the new one. The discussion later is more like the existing one we've sent previously with Okay. That's Link gap. Yeah. K. So Lin Gap, ER site has a lot of foreground issues on. K. So, the last day I want I already uploaded. I upload everything okay. This fine. Extraction. Extract is okay also. So let's say, but when it comes to like, you know, linking everything and also removing something else. Right? Because there's a lot of issues there. I'll say, let's say, cause I wanna, let's say I wanna adjust the extracted amount. You know, I wanna click the extracted amount, try to edit it. Mhmm. So I can't click the button. I cannot click and edit. Sometimes I can only can click and edit when I remove all the links and I can click and edit.
+
+### Guest (2026-04-24T02:24:21.087Z)
+
+When when done last time you you test on?
+
+### You (2026-04-24T02:24:25.190Z)
+
+What's that?
+
+### Guest (2026-04-24T02:24:25.627Z)
+
+When when last time you test?
+
+### You (2026-04-24T02:24:27.120Z)
+
+It was yesterday before
+
+### Guest (2026-04-24T02:24:33.237Z)
+
+Yeah. I think maybe I think
+
+### You (2026-04-24T02:24:36.130Z)
+
+Yeah.
+
+### Guest (2026-04-24T02:24:36.467Z)
+
+I think I can test again. Somebody plug in last year.
+
+### You (2026-04-24T02:24:42.100Z)
+
+Okay. And also I noticed right, there's no delete rows
+
+### Guest (2026-04-24T02:24:50.917Z)
+
+Delete transition rate.
+
+### You (2026-04-24T02:24:51.630Z)
+
+The delete transaction What? Delete. No. Because just just in case, like, let's say, want to remove this role. Right? Just provide a tool for the beauty. Because from my perspective, they don't want to link anything they just don't link anything, then wouldn't create on their site already. So you will get a brand transaction, right? Link whatever. Eight or seven transaction that you want. And so you go over to one If you don't put that, the moment they submit, would create seven catch receipt there. Yeah. The just leave it there, like, what we're affected from. Yeah. Oh, they can Yeah. Yeah. I didn't know about it. It Yeah. That's okay. And then I want to ask right, the Epicosa because we the Eric side have they haven't like everything. That's why you can I thought I match or match? Right? I need to check the I gotta put a crawl up. So what my crawl will do is it will do like, every thirty minutes. I go check every call, last update, minutes data I mean, sixty minutes data. Insert that into our system. Yeah. But right now, I think the even the cloud is up. In their site is some. Large data. There's no new data for us to come in. Data, like, before March and February 1, like, but it's wouldn't match the whatever is in their Yeah. Did you take a look at the whole open PDL? View on a
+
+### Guest (2026-04-24T02:26:22.107Z)
+
+The the one the PDF is you cannot zoom in everything. Right? Yeah. So the one also, I I deployed also.
+
+### You (2026-04-24T02:26:30.490Z)
+
+Okay. Thanks. Okay. So later, I'll test one more time again. After the test with this, everything's LBD. Right? Then we push to do to Linkin what? Linkin instance Thanks. K. What else? I think that's what holding it. McKesson, right now they gonna know update They just they are very busy with their own things, so no updates for that. Okay. Okay. Medical, you're also in the call. Right? Yeah. Yeah. He explained to you here what he did. All the thing. Yeah. Actually, the one of curious to you, they share it to you guys The the mock. The mock fit. I think it's run locally. For fixed guru side, I mean, I already test the historical pricing
+
+### Guest (2026-04-24T02:27:33.857Z)
+
+Yeah.
+
+### You (2026-04-24T02:27:34.170Z)
+
+So thing to know is, like, when try to test it in invoice. Right? Because the invoice the unit price is disabled. So how how can
+
+### Guest (2026-04-24T02:27:40.027Z)
+
+Yep.
+
+### You (2026-04-24T02:27:44.710Z)
+
+I assess the drop down?
+
+### Guest (2026-04-24T02:27:44.917Z)
+
+Oh, you need to press disassemble,
+
+### You (2026-04-24T02:27:46.100Z)
+
+In
+
+### Guest (2026-04-24T02:27:52.277Z)
+
+Okay.
+
+### You (2026-04-24T02:27:52.360Z)
+
+This one it's
+
+### Guest (2026-04-24T02:27:55.747Z)
+
+We take a look together.
+
+### You (2026-04-24T02:27:56.010Z)
+
+Right? Yeah. Thank you. So this is the e voice showcase. Right? Mhmm. So I didn't find any to add. Something. Right? Yeah. I he get it if you better already. Just haven't began implementing it. Yeah. So I think back back hand side, not any I think got a lot of feedback, no? The yesterday showcased invoice. 하지. Hello. Happy birthday.
+
+### Guest (2026-04-24T02:28:29.567Z)
+
+Ya, ya, por eso se vive.
+
+### You (2026-04-24T02:28:31.790Z)
+
+Happy Happy birthday. Can you repeat?
+
+### Guest (2026-04-24T02:28:45.887Z)
+
+Want to do more pizza. The yesterday's your case?
+
+### You (2026-04-24T02:28:48.130Z)
+
+I want to check on the just wanna check on the invoice one. Later, maybe we can just send it to the chat on the back end will do. Your site got any stuff that you need to continue work on, the in working?
+
+### Guest (2026-04-24T02:29:05.427Z)
+
+One thing is our guys can hear me?
+
+### You (2026-04-24T02:29:12.940Z)
+
+Yeah. Yeah. Yeah. You just you just In in the group, do have it.
+
+### Guest (2026-04-24T02:29:16.297Z)
+
+I think it's just to add a code to By the way, Azeep, the the one that I mentioned yesterday, the the discount and also the pricing. That's it? Sí, pero yo, Can you just ping me later on? Because
+
+### You (2026-04-24T02:29:44.680Z)
+
+Yeah. Yeah. Yeah. He's fine.
+
+### Guest (2026-04-24T02:29:46.887Z)
+
+it's quite loud here.
+
+### You (2026-04-24T02:29:47.690Z)
+
+Yeah. Yeah. He's like a beacon of that. Okay. Alan? Okay. AM for the PSL. How's the
+
+### Guest (2026-04-24T02:29:49.787Z)
+
+Okay. Okay.
+
+### You (2026-04-24T02:29:55.290Z)
+
+I checked already. My time is because the PSO in Joseon the need to rerun the new well, Customer preference lah? That customer preference is not even in the Disabled as well. Hudson. Hudson. No, he's not Hudson. Oh, no. He She put it in the YAML file already. I think she run some receipt in Yeah. But she didn't run under hosen instance. Yeah. Thank you. I'll just run the hosen instance and I'll let you know. Yeah. Then that one should affect your your PSOL. It's just that only. Right? Yeah. Just the electrobating thing only. Right? Yeah. Often cool. Okay, din kaiso. 그게 한데서 편만어요. Thank you, hon.
 
