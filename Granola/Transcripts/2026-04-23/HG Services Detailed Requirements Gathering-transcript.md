@@ -3,7 +3,7 @@ granola_id: fb9a2052-5e66-4db5-8416-3662a39f1064
 title: HG Services Detailed Requirements Gathering - Transcript
 type: transcript
 created: 2026-04-23T08:08:30.853Z
-updated: 2026-04-23T11:53:18.087Z
+updated: 2026-04-24T12:10:36.352Z
 attendees: 
   - Jeremy Chan
   - Brendan Ou Yong
