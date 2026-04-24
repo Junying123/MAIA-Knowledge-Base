@@ -52,7 +52,7 @@ Eleven tools. None of them talk to each other. Quotations are drafted mentally a
 ### The Quote That Lives Only in WhatsApp
 
 Every HG quotation starts with the founder — because he's the one who knows the rates, the scope boundaries, and what each job actually involves. When an enquiry arrives via WhatsApp, the website, or Google Ads (routed through Wati), it routes to him first. A typical hoarding quote involves measuring the perimeter (panels A, B, C), calculating total length × height to get square metres, converting to square feet, then applying the preset rate — RM1 per square foot, or RM800 flat for smaller jobs, plus line items for door type, counterweight, skirting, and receipt channel. That formula exists in the founder's head and in informal records shared with the team — not in Infotech, not in Odoo, not anywhere searchable.
-
+plspls
 Once the quote is generated — typically a WhatsApp message or a PDF sent through the group — it leaves the building and lives in a chat. There is no system record. If the client comes back three weeks later to confirm, someone has to find the WhatsApp thread. If the job closes and the Infotech invoice needs to match the original scope, the quote has to be reconstructed from memory or tracked down across a thread that may have 300 other messages in it. At 10–40 jobs per day, the volume of quotes in circulation is enormous — and none of it is searchable, traceable, or auditable.
 
 ### 900 Groups, No Single View of What's Actually Running
