@@ -18,6 +18,123 @@ The formula is already preset. The rates are already known. The only missing pie
 
 ---
 
+## Pre-Quotation: Enquiry Intake & CRM
+
+### Does HG Need a CRM Layer?
+
+**Short answer: Yes — and this is a known MAIA gap that Ivan (Tech Lead) flagged at the 24 April 2026 daily standup.**
+
+> *"On the quotation side, right now we can only issue quotations to customers. But actually, a lot of the main reason why a lot of systems don't have quotation modules is because normally you will issue quotations to people who are not your customers. So in a way, you would issue quotations to leads and prospects — which is not yet a customer."*
+> — Ivan, Daily Standup, 24 April 2026
+
+> *"Customer is someone who is registered already. In B2B businesses, if I'm offering certain credit terms or certain payment terms or certain special pricing, I will need you to go through a registration process with me first. There's a business process where they will go to your SSM, pull your audit report — that's why not everybody can create a customer."*
+> — Ivan, Daily Standup, 24 April 2026
+
+Ivan confirmed he's already working on a back-end fix: **the Quotation doctype will be extended to support Leads and Prospects**, not just registered Customers. This directly applies to HG's enquiry-to-quote flow.
+
+---
+
+### HG's Enquiry Reality
+
+HG's inquiries come in three channels today:
+1. **Lee's personal WhatsApp** — direct from mall coordinators or repeat clients
+2. **Wati (planned)** — WhatsApp Business API for inbound routing
+3. **Self-built chatbot (planned)** — routes inquiry to the right team member
+
+At point of first enquiry, the caller is often **not yet a registered customer** — they want a price first. Only after they accept the quote and confirm the order does the relationship formalise.
+
+This is exactly the Lead → Prospect → Customer pipeline Ivan described.
+
+---
+
+### Proposed Pre-Quotation Flow
+
+```
+Inbound enquiry (WhatsApp / Wati / call)
+     ↓
+Create Lead in MAIA
+  - Name / company
+  - Contact number
+  - Enquiry type (Hoarding / Scaffold / Reinstatement / Lorry / Printing)
+  - Site / Mall (optional at this stage)
+  - Source (WhatsApp / referral / walk-in)
+     ↓
+Qualify → convert to Prospect
+  - Confirm job scope
+  - Confirm site details
+  - Get measurements (or note: "to measure")
+     ↓
+Issue Quotation to Prospect (Ivan's upcoming fix)
+  - Uses the Quotation form with calculator + menu
+  - No need to register as Customer yet
+     ↓
+Client confirms quote
+     ↓
+Convert Prospect → Customer (registration step)
+  - SSM number, business name, billing address
+  - Payment terms assigned (default: CIA for HG)
+  - Credit limit set (if applicable — most HG clients are CIA)
+     ↓
+Convert Quotation → Sales Order
+     ↓
+Invoice → Payment → Job Released
+```
+
+---
+
+### Lead & Prospect Fields for HG
+
+| Field | Type | Notes |
+|---|---|---|
+| Lead Name | Text | Contact person's name |
+| Company / Client | Text | Free text at this stage |
+| Phone | Phone | WhatsApp number — primary |
+| Enquiry Type | Select | Hoarding / Scaffold / Reinstatement / Lorry / Printing / Other |
+| Mall / Site | Text | Optional — fill when known |
+| Source | Select | WhatsApp / Referral / Walk-in / Wati / Chatbot |
+| Assigned To | Link | Coordinator handling this lead |
+| Status | Select | New → Qualifying → Quoted → Won → Lost |
+| Remarks | Long Text | Notes from the first call |
+| Lost Reason | Select | Price / Timing / Competitor / Client unresponsive |
+
+> **Why track Lost Reason?** Black mentioned that some jobs don't proceed because clients don't understand the pricing or scope. Tracking loss reasons gives HG data to improve their quotation process and identify where they're losing on price vs. other factors.
+
+---
+
+### Lead → Prospect → Customer: The Conversion Rules
+
+This mirrors Ivan's description of how MAIA will enforce the business process:
+
+| Stage | What it means | Who can create |
+|---|---|---|
+| **Lead** | First contact — just a name and enquiry | Any coordinator |
+| **Prospect** | Qualified — scope confirmed, quotation can be issued | Any coordinator |
+| **Customer** | Registered — KYC done, credit terms set | Finance / Admin only |
+
+> **Ivan's key rule:** When a coordinator tries to convert a Quotation to a Sales Order, MAIA checks whether the Prospect is a registered Customer. If not, it prompts: *"Convert to Customer first."* For HG, most clients are CIA — the Customer registration is a quick step (just SSM + billing address), but it still needs to happen before a Sales Order is created.
+
+---
+
+### Wati Integration (Phase 2)
+
+HG plans to use Wati for WhatsApp Business. When connected:
+
+```
+Client messages HG WhatsApp number
+     ↓
+Wati chatbot routes to correct coordinator
+     ↓
+Coordinator opens MAIA → new Lead auto-created from Wati contact
+     ↓
+Lead pre-filled with: name, phone, first message
+     ↓
+Coordinator qualifies → creates Quotation
+```
+
+This completes the full loop: no inquiry is missed, every WhatsApp conversation has a MAIA record.
+
+---
+
 ## The Problem: Today's Quotation Flow
 
 ```
@@ -233,6 +350,61 @@ Each service is a separate line item. Coordinator picks from the menu, enters th
 | Grand Total | Auto |
 | Payment Terms | Defaults to CIA (Cash in Advance) — matches HG's hard rule |
 | Due Date | Defaults to today — payment before job starts |
+
+---
+
+### Section 5 — Quote Actions
+
+*"Once it's sent out, within 10–15 minutes I get it back. Then I create a group chat."*
+
+Today that sequence is: type in chat → coordinator builds in Infotech → PDF back → Lee shares to new group.
+
+With MAIA the sequence becomes:
+
+```
+Coordinator opens MAIA → New Quotation
+     ↓
+Fill Job Header (customer, lot, mall)
+     ↓
+Enter measurements in calculator → sqft auto-fills
+     ↓
+Select service items from menu → amounts auto-calculate
+     ↓
+Submit → PDF generated instantly
+     ↓
+Share PDF link or download → send to client WhatsApp group
+     ↓
+Client confirms → "Convert to Sales Order" one click
+     ↓
+Invoice generated from SO → invoice number created
+     ↓
+Payment received → job released
+```
+
+**10–15 minute wait collapses to under 5 minutes. Black's relay step disappears entirely. The formula is in the system, not in his head.**
+
+#### Action Buttons on the Quotation
+
+| Action | When | What Happens |
+|---|---|---|
+| **Submit** | Quote is ready | Locks the doc, generates PDF, sets status to *Submitted* |
+| **Share PDF** | After submit | Downloads PDF or copies shareable link — coordinator pastes into client WhatsApp group |
+| **Convert to Sales Order** | Client verbally confirms | One-click conversion — all line items and amounts carry over, no re-entry |
+| **Create Invoice** | From the Sales Order | Invoice generated automatically — invoice number issued |
+| **Mark Payment Received** | Payment confirmed | Job released — triggers Job Work Order / scheduling |
+| **Cancel** | Client doesn't proceed | Cancels with a reason note — original quote archived |
+| **Amend** | Client requests changes | Creates amended version — original version preserved for audit trail |
+
+#### Status Flow
+
+```
+Draft → Submitted → [Sent to Client] → Converted to SO → [SO] → Invoice → Paid → Job Released
+                  ↘ Cancelled (client didn't proceed)
+                  ↘ Amended (client requested changes)
+```
+
+> **Key rule — no invoice number, no job:**
+> MAIA enforces the conversion sequence. A job cannot enter scheduling without an invoice number. An invoice number only exists once the SO is converted. CIA payment terms mean the receipt must be confirmed before any expenses are approved. This mirrors exactly what Black described: *"I want to tighten the process — no invoice number means it's not a valid job."*
 
 ---
 
