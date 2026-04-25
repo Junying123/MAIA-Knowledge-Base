@@ -123,6 +123,8 @@ For a simple single-division job, this takes 20–30 minutes. For a multi-divisi
 
 **Execution visibility improves at the point where HG feels pain most.** Fabrication and installer leads can see exactly what is scheduled, what is in progress, and what is blocked. Asset deployment (e.g. scaffold units and lorries) is linked to work orders so operations can see what is out, what is due back, and where conflicts may occur.
 
+**Teammates track every job they own, with reminder support at stage level.** Each stage owner sees their assigned jobs in one queue and gets reminders for overdue or unadvanced work orders, so jobs do not rely on memory or chat follow-up to stay on track.
+
 **Invoice control matches Black's operating rule.** Invoice is generated from Sales Order data, not reconstructed from chat. The invoice number becomes a formal gate in the flow, and finance tracks payment state directly on the customer record. Management can open customer profiles and immediately see outstanding balances by aging bucket (current/30+/60+/90+) instead of manually chasing across threads.
 
 **Completion reporting is improved but intentionally treated as an open validation item.** Work Orders centralize execution evidence and attachments, but the final completion-report format and mandatory evidence set remain under confirmation with Black before scope lock. This keeps implementation realistic while still moving reporting toward a structured, job-linked record.
