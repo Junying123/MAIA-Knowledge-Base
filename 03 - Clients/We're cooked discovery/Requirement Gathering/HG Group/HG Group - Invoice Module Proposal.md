@@ -167,6 +167,32 @@ Spend Released
 
 ---
 
+## Customer Outstanding Balance Visibility (Requested Focus)
+
+To match your direction, keep this simple and operational: **show what each customer owes, clearly and fast.**
+
+### Required view
+
+| Field | Description |
+|---|---|
+| Customer | Customer name |
+| Total Outstanding | Sum of all unpaid/partially paid invoices |
+| Current | Not yet overdue amount |
+| 30+ Days | Overdue 30+ days amount |
+| 60+ Days | Overdue 60+ days amount |
+| 90+ Days | Overdue 90+ days amount |
+| Last Payment Date | Most recent recorded receipt date |
+
+### Required behavior
+
+1. Finance and authorized users can open a customer and immediately see outstanding totals.
+2. Users can drill down from customer balance to the exact unpaid invoices.
+3. Aging updates automatically based on invoice due dates and recorded receipts.
+
+This gives HG immediate answers to: **"Which customer owes us how much right now?"**
+
+---
+
 ## Open Items to Confirm with Black and Finance
 
 | Item | Why it matters | Needed decision |
