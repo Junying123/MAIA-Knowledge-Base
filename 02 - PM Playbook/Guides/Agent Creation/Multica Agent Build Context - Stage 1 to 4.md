@@ -171,10 +171,15 @@ Run Stage 1 end-to-end:
 ```text
 Run Stage 2 end-to-end:
 1) Ask Claude to plan extraction and classification flow.
-2) Delegate transcript synthesis and RG filling to Codex.
-3) Delegate consistency and AC-format checks to OpenCode.
-4) Use Cursor for cleanup if needed.
-5) Return final RG output + classification + follow-ups.
+2) Run transcript quality gate (speaker clarity, missing segments, unclear passages).
+3) Delegate transcript synthesis and RG filling to Codex.
+4) Generate transcript evidence snippets for each major requirement and proposal claim.
+5) Run contradiction detection and confidence scoring (confirmed/inferred/unclear).
+6) Delegate consistency and AC-format checks to OpenCode.
+7) Build open-questions register with owner and due date.
+8) Generate Stage-3-ready module candidates block.
+9) Use Cursor for cleanup if needed.
+10) Return final RG output + classification + evidence snippet appendix + follow-ups.
 ```
 
 **Skills**
@@ -182,14 +187,21 @@ Run Stage 2 end-to-end:
 - `discovery-process` (Codex)
 - `discovery-interview-prep` (Codex)
 - `problem-statement` (Codex)
+- `systematic-debugging` (Codex)
+- `verification-before-completion` (Codex)
 
 ### Stage 2 Subagents
 
 | Subagent | Description | Runtime | Input | Output |
 |---|---|---|---|---|
 | S2 Planner | Plan extraction + classification | claude | Transcript + template path | Execution plan |
+| S2 Transcript QA | Run raw transcript quality gate before synthesis | codex | Raw transcript | QA report + flagged gaps |
 | S2 Synthesizer | Fill RG from transcript | codex | Transcript + plan | Filled RG draft |
+| S2 Evidence Snippet Extractor | Extract quote snippets from raw transcript for each key requirement/proposal | codex | Raw transcript + RG draft | Evidence snippet appendix (claim -> quote -> location) |
+| S2 Contradiction Checker | Flag conflicting requirements and assign confidence levels | codex | RG draft + transcript snippets | Contradiction/confidence report |
 | S2 Validator | Validate consistency and gaps | opencode | RG draft + checklist | Validation report |
+| S2 Open Questions Owner | Create open-questions register with owner and due date | codex | RG draft + validation report | Questions register |
+| S2 Stage-3 Packager | Build stage-3-ready module candidates and rationale | codex | Final RG output + evidence appendix | Stage 3 handoff block |
 | S2 Polisher (optional) | Final formatting and readability | cursor | Validated RG draft | Final RG output |
 
 ---
@@ -253,6 +265,7 @@ Run Stage 4 end-to-end:
 
 **Skills**
 - `sow-writer` (Claude)
+- `sow-to-slide-deck` (Claude)
 - `writing-plans` (Codex)
 - `storyboard` (Codex)
 - `workshop-facilitation` (Codex)
@@ -352,10 +365,30 @@ These bundles are selected only from skills currently available in your local en
 - `discovery-process` (Codex)
 - `discovery-interview-prep` (Codex)
 - `user-story` (Codex)
+- `systematic-debugging` (Codex)
+- `verification-before-completion` (Codex)
 
 **Cursor finishing**
 - `shell` (Cursor)
 - `statusline` (Cursor)
+
+### Stage 2 Evidence Rule (Mandatory)
+
+Every major requirement, risk, and proposal statement in Stage 2 output must be traceable to raw transcript evidence.
+
+Minimum evidence format:
+
+```text
+Claim: [requirement/proposal statement]
+Evidence snippet: "[exact or near-exact transcript quote]"
+Source: [transcript file] | [speaker if known] | [timestamp or segment marker if available]
+Confidence: [confirmed/inferred/unclear]
+```
+
+If evidence is missing:
+- mark claim as `[TO VALIDATE]`
+- add it to open-questions register
+- do not present it as confirmed fact
 
 ### Stage 3 Bundle - Post-RG Synthesis
 
@@ -376,6 +409,7 @@ These bundles are selected only from skills currently available in your local en
 
 **Claude-first planning/review**
 - `sow-writer` (Claude)
+- `sow-to-slide-deck` (Claude)
 - `humanizer` (Claude)
 - `stop-slop` (Claude)
 

@@ -17,7 +17,7 @@ This file lists local skills discovered for:
 
 ## Claude Code Skills
 
-### Project-local (`/Users/garethng/Documents/MAIA Knowledge Base/.claude/skills`) - 7
+### Project-local (`/Users/garethng/Documents/MAIA Knowledge Base/.claude/skills`) - 8
 - `customer-profile`
 - `humanizer`
 - `stop-slop`
@@ -25,6 +25,7 @@ This file lists local skills discovered for:
 - `discovery-pipeline`
 - `feature-narrative`
 - `customer-narrative`
+- `sow-to-slide-deck`
 
 ### User-global (`/Users/garethng/.claude/skills`) - 8
 - `sow-writer`
@@ -36,7 +37,7 @@ This file lists local skills discovered for:
 - `req-gathering-output`
 - `skill-creator`
 
-### Unique Claude skill names (combined) - 10
+### Unique Claude skill names (combined) - 11
 - `customer-narrative`
 - `customer-profile`
 - `discovery-pipeline`
@@ -45,6 +46,7 @@ This file lists local skills discovered for:
 - `humanizer`
 - `req-gathering-output`
 - `skill-creator`
+- `sow-to-slide-deck`
 - `sow-writer`
 - `stop-slop`
 
