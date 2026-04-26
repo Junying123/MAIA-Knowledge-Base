@@ -225,11 +225,18 @@ Run Stage 3 end-to-end:
 5) Return final narrative + all module proposal file paths.
 ```
 
-**Skills**
-- `customer-narrative` (Claude)
-- `feature-narrative` (Claude)
-- `user-story` (Codex)
-- `epic-breakdown-advisor` (Codex)
+**Skills (Must Use in Stage 3)**
+- `customer-narrative` (Claude): required for customer narrative structure and before/after transformation logic
+- `module-proposal` (Claude): required for one-module-per-file proposal generation from RG evidence
+- `feature-narrative` (Claude): required for module proposal depth and system behavior framing
+- `user-story` (Codex): required to convert module requirements into testable story-style statements
+- `epic-breakdown-advisor` (Codex): required when module scope is too large or ambiguous
+- `verification-before-completion` (Codex): required final gate before stage handoff
+
+**Skills (Optional but Recommended)**
+- `storyboard` (Codex): improve narrative flow from problem -> solution -> outcome
+- `user-story-mapping` (Codex): organize multi-module journeys when scope is broad
+- `humanizer` (Claude): improve client-facing readability without changing meaning
 
 ### Stage 3 Subagents
 
@@ -237,9 +244,19 @@ Run Stage 3 end-to-end:
 |---|---|---|---|---|
 | S3 Planner | Plan narrative + module fan-out | claude | RG output + module list | Generation plan |
 | S3 Narrative Generator | Draft customer narrative | codex | RG output + plan | Narrative draft |
-| S3 Module Generator | Generate one proposal per module | codex | RG output + module name | Module proposal drafts |
+| S3 Module Generator | Generate one proposal per module (one invocation = one module = one file) | codex | RG output + module name | Module proposal drafts |
 | S3 Validator | Validate all outputs against structure | opencode | Narrative + module drafts | Validation report |
 | S3 Polisher (optional) | Improve readability | cursor | Validated outputs | PM-ready files |
+
+### Stage 3 Skill-to-Subagent Mapping (Operational)
+
+| Subagent | Required Skills | Optional Skills |
+|---|---|---|
+| S3 Planner | `customer-narrative` (Claude), `module-proposal` (Claude), `feature-narrative` (Claude) | `storyboard` (Codex) |
+| S3 Narrative Generator | `customer-narrative` (Claude), `user-story` (Codex) | `humanizer` (Claude) |
+| S3 Module Generator | `module-proposal` (Claude), `feature-narrative` (Claude), `epic-breakdown-advisor` (Codex), `user-story` (Codex) | `user-story-mapping` (Codex) |
+| S3 Validator | `verification-before-completion` (Codex) | `receiving-code-review` (Codex) |
+| S3 Polisher | `humanizer` (Claude) | `stop-slop` (Claude), `statusline` (Cursor) |
 
 ---
 
@@ -394,6 +411,7 @@ If evidence is missing:
 
 **Claude-first planning/review**
 - `customer-narrative` (Claude)
+- `module-proposal` (Claude)
 - `feature-narrative` (Claude)
 
 **Codex execution**
