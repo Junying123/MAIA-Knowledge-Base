@@ -8,126 +8,115 @@ last_reviewed: 2026-04-26
 
 ## Overview
 
-Three-tier hierarchy. Head agent owns the full pipeline. Stage leads own one stage each. Step agents execute single tasks within a stage.
+This architecture uses Hermes as a dual-role head agent:
+- **Orchestrator mode** for routing, sequencing, and quality gates
+- **Executor mode** for short bounded tasks where delegation overhead is unnecessary
 
-**Core rule: each sub-subagent (step agent) runs exactly one coding agent in one runtime.** One step = one agent = one invocation. If a task needs a different agent, it is a separate step.
+The swarm is restructured around five active coding agents only:
+- `claude-code`
+- `codex`
+- `opencode`
+- `pi`
+- `cursor`
+
+**Core execution rule:** one step runs one primary executor agent. Cross-agent handoff happens at explicit stage boundaries.
+
+**Core planning rule:** use Claude Code to plan and review, not to absorb all heavy execution. This keeps Claude quota for high-leverage reasoning.
 
 ```
-                        ┌─────────────────────────────────┐
-                        │  HEAD AGENT (Hermes Master)     │
-                        │  Orchestrate full pipeline       │
-                        │  Stages 1 → 4                   │
-                        └──────────────┬──────────────────┘
-                                       │
-       ┌───────────────────────────────┼──────────────────────────────┐
-       │                               │                              │
-┌──────▼─────────┐       ┌─────────────▼──────────┐      ┌───────────▼──────────┐
-│  SUBAGENT 1    │       │  SUBAGENT 2             │      │  SUBAGENT 3          │
-│  Stage 1 Lead  │       │  Stage 2 Lead           │      │  Stage 3 Lead        │
-│  GTM Proposal  │       │  Requirement Gathering  │      │  Post-RG Synthesis   │
-└──────┬─────────┘       └─────────────┬──────────┘      └───────────┬──────────┘
-       │                               │                              │
-  ┌────┴─────┐                 ┌───────┴───────┐              ┌──────┴──────┐
-  │          │                 │               │              │             │
-┌─▼──┐  ┌───▼──┐          ┌───▼───┐      ┌────▼───┐      ┌───▼───┐   ┌────▼───┐
-│ S1 │  │  S2  │          │  S1   │      │   S2   │      │  S1   │   │   S2   │
-│CC  │  │Goose │          │  CC   │      │  Goose │      │  CC   │   │  Goose │
-└────┘  └──────┘          └───────┘      └────────┘      └───────┘   └────────┘
-
-                        ┌──────────────────┐
-                        │   SUBAGENT 4     │
-                        │   Stage 4 Lead   │
-                        │   SOW Writing    │
-                        └────────┬─────────┘
-                                 │
-                          ┌──────┴──────┐
-                          │             │
-                      ┌───▼───┐    ┌────▼───┐
-                      │  S1   │    │   S2   │
-                      │  CC   │    │  Goose │
-                      └───────┘    └────────┘
+                   ┌────────────────────────────────────┐
+                   │ HERMES (Head Agent)               │
+                   │ Orchestrator + Executor            │
+                   └───────────────┬────────────────────┘
+                                   │
+         ┌─────────────────────────┼─────────────────────────┐
+         │                         │                         │
+ ┌───────▼────────┐        ┌──────▼────────┐        ┌──────▼────────┐
+ │ Claude Code    │        │ Codex         │        │ OpenCode      │
+ │ Planner/Reviewer│       │ Main Executor │        │ Validator      │
+ └───────┬────────┘        └──────┬────────┘        └──────┬────────┘
+         │                         │                         │
+         └──────────────┬──────────┴──────────┬──────────────┘
+                        │                     │
+                 ┌──────▼──────┐       ┌──────▼──────┐
+                 │ Pi           │       │ Cursor      │
+                 │ Custom Flow  │       │ Daily Cockpit│
+                 └──────────────┘       └─────────────┘
 ```
-
-> CC = Claude Code. Granular step agents per stage to be added as each stage is designed.
 
 ---
 
-## Tier 1 – Head Agent
+## Role Model (v2)
 
 | Field | Value |
 |---|---|
-| Agent | Hermes Master Orchestrator |
-| Role | Route input to the correct stage lead, track overall pipeline state, confirm handoffs between stages |
-| Input | PM trigger + client context |
-| Output | Completed pipeline artifact per stage |
-| File | *(to be created)* `Stage Workflows/Head Agent - Full Pipeline - Orchestrate All Stages - Hermes Master.md` |
+| Head Agent | Hermes |
+| Core Responsibilities | Intake, routing, sequencing, milestone checks, final closure, mode switching |
+| Input | PM trigger + client context + current stage |
+| Output | Stage artifacts + decision log + handoff state |
+
+### Hermes Mode Switch Rules
+
+| Mode | When to Use | Expected Behavior |
+|---|---|---|
+| Orchestrator | Multi-step, parallel, high-risk, cross-client, or cross-agent tasks | Build plan, dispatch executors, enforce review gates, manage handoffs |
+| Executor | Single-context tasks, under 30 min, low risk | Execute directly, keep audit trail, escalate only if blocked |
+
+### Agent Responsibilities
+
+| Agent | Primary Role | Best Use |
+|---|---|---|
+| Claude Code | Planner + critical reviewer | Planning, ambiguity reduction, architecture review, final QA gate |
+| Codex | Main executor | Heavy implementation, repetitive execution, structured breakdown output |
+| OpenCode | Validator + batch operator | Consistency checks, document sweeps, rule-based QA across files |
+| Pi | Custom workflow engine | Extension-driven flows, reusable internal commands, workflow glue |
+| Cursor | Daily cockpit + quick executor | Fast local edits, inline review loop, manual approval and polish |
 
 ---
 
-## Tier 2 – Stage Leads (Subagents)
+## Stage Architecture (Discovery Pipeline)
 
-| Subagent     | Stage                 | Input                                     | Output                                            | File                                                                                                                                       |
-| ------------ | --------------------- | ----------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Stage 1 Lead | GTM Proposal          | GTM handoff doc + client context          | GTM Proposal draft → client validation            | `Stage Workflows/Stage1/Stage 1 - GTM Proposal - Orchestrate Proposal Creation - Orchestrator.md`                                          |
-| Stage 2 Lead | Requirement Gathering | RG session transcript + customer profile  | Filled RG template + classification block         | `Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Orchestrate RG Synthesis and Validation - Orchestrator.md` |
-| Stage 3 Lead | Post-RG Synthesis     | Filled RG template + module list          | Customer Narrative + N × Feature Module Proposals | *(to be created)*                                                                                                                          |
-| Stage 4 Lead | SOW Writing           | Customer Narrative + all module proposals | SOW draft ready for senior PM review              | *(to be created)*                                                                                                                          |
+| Stage | Stage Lead | Input | Output | Default Execution Split |
+|---|---|---|---|---|
+| Stage 1: GTM Proposal | Hermes | GTM handoff + client context | GTM proposal draft | Claude plan -> Codex draft -> OpenCode validate -> Cursor polish |
+| Stage 2: Requirement Gathering | Hermes | RG transcript + profile | Filled RG output + classification | Claude plan -> Codex synthesize -> OpenCode consistency -> Cursor finalize |
+| Stage 3: Post-RG Synthesis | Hermes | RG output + confirmed modules | Customer narrative + module proposals | Claude plan -> Codex per-module generation -> OpenCode cross-file validation |
+| Stage 4: SOW Writing | Hermes | Narrative + module proposals | SOW draft for PM review | Claude plan -> Codex draft -> OpenCode scope checks -> Cursor final review |
 
 ---
 
-## Tier 3 – Step Agents (Sub-subagents)
+## Stage Step Templates (Reusable)
 
-### Stage 1 – GTM Proposal
+### Stage Template A — Standard Multi-Step
 
-| Step         | Agent       | Runtime | Task                                           | File                                                                                                        |
-| ------------ | ----------- | ------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Step 1       | Claude Code | 1×      | Synthesise GTM brief into proposal draft       | `Stage Workflows/Stage1/Stage 1 - GTM Proposal - Synthesise GTM Brief into Proposal Draft - Claude Code.md` |
-| Step 2       | Goose       | 1×      | Copy template, file-ops, link to client folder | *(to be created)*                                                                                           |
-| Step 3 (opt) | Pi          | 1×      | Polish language of client-facing proposal      | *(to be created)*                                                                                           |
+| Step | Agent | Runtime | Purpose |
+|---|---|---|---|
+| Step 0 | Claude Code | 1x | Plan: scope, steps, owner mapping, done criteria |
+| Step 1 | Codex | 1x+ | Execute heavy drafting/synthesis/structured output |
+| Step 2 | OpenCode | 1x | Validate completeness, consistency, rule compliance |
+| Step 3 | Cursor | 1x (optional) | Fast local edits and PM-ready polish |
+| Step 4 | Claude Code | 1x | Final review gate for critical outputs |
 
-### Stage 2 – Requirement Gathering
+### Stage Template B — Hermes Direct Execute
 
-| Step | Agent | Runtime | Task | File |
-|---|---|---|---|---|
-| Step 1 | Claude Code | 1× | Extract answers from transcript, fill RG template, classify | `Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Extract and Fill RG Template from Transcript - Claude Code.md` |
-| Step 2 | Goose | 1× | Completeness + consistency check, add metadata footer | `Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Template Copy, Completeness and Consistency Check - Goose.md` |
-| Step 3 (opt) | OpenCode | 1× | Deep consistency scan — AC testability, priority format | *(to be created)* |
-| Step 4 (opt) | Pi | 1× | Polish Q&A log / client-facing text | *(to be created)* |
-| Step 5 (opt) | Codex | 1× | Generate User Story if classification = Product Enhancement | *(to be created)* |
+| Step | Agent | Runtime | Purpose |
+|---|---|---|---|
+| Step 0 | Hermes | 1x | Execute directly for bounded low-risk task |
+| Step 1 | OpenCode or Cursor | 1x (optional) | Quick validation or format cleanup |
+| Step 2 | Claude Code | 1x (optional) | Review only if output is strategic or client-critical |
 
-### Stage 3 – Post-RG Synthesis
+---
 
-**What this stage produces** (validated from HG Group real output):
-- Customer Narrative — full "Before MAIA / After MAIA" transformation story with scope summary and open gaps
-- N × Feature Module Proposals — one file per confirmed module, each following the same pattern:
-  - Current state flow (problem diagram)
-  - Proposed flow (after MAIA diagram)
-  - Form design (field-by-field table)
-  - Actions + status flow
-  - Open items to confirm with client
+## Routing Matrix (Task -> Agent)
 
-**Number of module proposals = number of modules confirmed in Stage 2 RG classification.**
-
-Each step = one Claude Code or Goose runtime. Stage lead (Hermes) invokes Step 2 once per confirmed module — each invocation is a separate runtime producing one proposal file.
-
-| Step | Agent | Runtime | Task | File |
-|---|---|---|---|---|
-| Step 1 | Claude Code | 1× | From RG output → draft Customer Narrative | *(to be created)* |
-| Step 2 | Claude Code | 1× per module | From RG output + module name → draft one Feature Module Proposal | *(to be created)* |
-| Step 3 | Goose | 1× | Copy module proposal template per module, completeness check all output files | *(to be created)* |
-| Step 4 (opt) | Pi | 1× | Polish Customer Narrative language for client-facing readiness | *(to be created)* |
-
-### Stage 4 – SOW Writing
-
-**What this stage produces:**
-- SOW draft — scoped from Customer Narrative + all module proposals
-- Sections: scope included, Phase 2 items, requires clarification, not in scope, investment figure placeholder
-
-| Step | Agent | Runtime | Task | File |
-|---|---|---|---|---|
-| Step 1 | Claude Code | 1× | From Customer Narrative + module proposals → draft SOW | *(to be created)* |
-| Step 2 | Goose | 1× | Completeness check — all modules in narrative appear in SOW scope | *(to be created)* |
-| Step 3 (opt) | Pi | 1× | Polish SOW language for senior PM review | *(to be created)* |
+| Task Type | Primary | Secondary | Notes |
+|---|---|---|---|
+| Ambiguous planning, tradeoff decisions | Claude Code | Hermes | Always do first before large execution |
+| Heavy drafting, repetitive generation | Codex | Hermes | Default execution engine |
+| Cross-file consistency/quality sweep | OpenCode | Codex | Use for validation loops |
+| Custom command/workflow automation | Pi | Hermes | Use Pi extensions/skills |
+| Fast local edits and final polish | Cursor | Hermes | Keep this as PM cockpit workflow |
+| Small bounded PM ops task | Hermes | Cursor | Executor mode path |
 
 ---
 
@@ -135,11 +124,13 @@ Each step = one Claude Code or Goose runtime. Stage lead (Hermes) invokes Step 2
 
 | From | To | Trigger |
 |---|---|---|
-| Head Agent | Stage Lead | PM triggers pipeline with client name + stage number |
-| Stage Lead | Step Agent | Lead routes to first step on receive |
-| Step Agent → Step Agent | Next step | Previous step returns output + no blocker |
-| Stage Lead | Head Agent | All steps complete + PM approval |
-| Head Agent | Next Stage Lead | Head confirms handoff, updates pipeline state |
+| PM | Hermes | Any new task/client-stage trigger |
+| Hermes | Claude Code | Task requires planning/risk framing |
+| Claude Code | Hermes | Plan returned with owners and done criteria |
+| Hermes | Codex/OpenCode/Pi/Cursor | Dispatch execution by routing matrix |
+| Executor Agent | Hermes | Step complete, blocked, or needs escalation |
+| Hermes | Claude Code | Critical review gate before client-facing release |
+| Hermes | PM | Final output + decision summary |
 
 ---
 
@@ -151,7 +142,7 @@ All agents invoked via:
 ~/.hermes/agent-wrappers/route.sh <agent-name> "<prompt>"
 ```
 
-Valid agent names: `claude-code`, `goose`, `codex`, `opencode`, `pi`
+Valid agent names: `claude-code`, `codex`, `opencode`, `pi`, `cursor`, `hermes`
 
 ---
 
@@ -172,39 +163,18 @@ HG Group is the validated reference case for Stages 2–4. All stage output patt
 ## Gaps & To-Do
 
 ### Immediate
-- [ ] Create Head Agent MD file
-- [ ] Create Stage 3 Orchestrator MD file
-- [ ] Create Stage 4 Orchestrator MD file
+- [ ] Create Hermes head-agent workflow file (v2 dual-mode)
+- [ ] Create Claude planning gate prompt template
+- [ ] Create Codex execution prompt templates by stage
+- [ ] Create OpenCode validation checklist template
+- [ ] Create Cursor final-polish checklist
+- [ ] Create Pi automation hooks for recurring PM workflows
 
-### Stage 1 missing agents
-- [ ] Create Stage 1 Step 2 – Goose file
-- [ ] Create Stage 1 Step 3 – Pi file (optional)
-
-### Stage 2 missing agents
-- [ ] Create Stage 2 Step 3 – OpenCode file (optional)
-- [ ] Create Stage 2 Step 4 – Pi file (optional)
-- [ ] Create Stage 2 Step 5 – Codex file (optional)
-
-### Stage 3 missing agents
-- [ ] Create Stage 3 Step 1 – Claude Code (Customer Narrative) file
-- [ ] Create Stage 3 Step 2 – Claude Code (Feature Module Proposal) file
-- [ ] Create Stage 3 Step 3 – Goose file
-- [ ] Create Stage 3 Step 4 – Pi file (optional)
-
-### Stage 4 missing agents
-- [ ] Create Stage 4 Step 1 – Claude Code (SOW) file
-- [ ] Create Stage 4 Step 2 – Goose file
-- [ ] Create Stage 4 Step 3 – Pi file (optional)
-
-### Granular details to add later (per stage)
-- [ ] Stage 2: pre-session prep steps (questionnaire + opening script generation from customer profile)
-- [ ] Stage 3: module detection logic — how agent reads classification block to determine which proposal files to generate
-- [ ] Stage 4: SOW template structure to standardise output
-
-### Infrastructure
-- [ ] Verify `[Template] GTM Proposal.md` exists in Templates
-- [ ] Verify `[Template] Feature Module Proposal.md` exists in Templates
-- [ ] Verify `04 - QA & Known Issues/Feature Gap Tracker` exists
+### Stage-specific v2 templates
+- [ ] Stage 1 template: GTM proposal flow (plan -> execute -> validate -> polish)
+- [ ] Stage 2 template: RG synthesis flow
+- [ ] Stage 3 template: module fan-out generation flow
+- [ ] Stage 4 template: SOW draft + scope validation flow
 
 ## See Also
 
