@@ -1,1250 +1,1252 @@
 {
-  "type": "excalidraw",
-  "version": 2,
-  "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.22.0",
-  "elements": [
-    {
-      "type": "rectangle",
-      "id": "stage_0",
-      "x": -529.256676387077,
-      "y": 143.8437667868928,
-      "width": 600,
-      "height": 130,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 123,
-      "versionNonce": 780153668,
-      "index": "a0",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_0"
-        },
-        {
-          "id": "arrow_0",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184398248,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "text",
-      "id": "text_0",
-      "x": -506.2805106155927,
-      "y": 148.8437667868928,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 1: GTM PROPOSAL\n\nGTM team sends proposal to client\nGTM briefs PM (handover)\nPM receives: company profile, pain points, proposed solution, commercial\nterms",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_0",
-      "originalText": "STAGE 1: GTM PROPOSAL\n\nGTM team sends proposal to client\nGTM briefs PM (handover)\nPM receives: company profile, pain points, proposed solution, commercial terms",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 554.0476684570312,
-      "height": 120,
-      "version": 123,
-      "versionNonce": 1453490628,
-      "index": "a1",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184390121,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_0",
-      "x": 76.74332361292294,
-      "y": 208.73576456841974,
-      "width": 82.23993745683383,
-      "height": 1.6585358132266208,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          82.23993745683383,
-          -1.6585358132266208
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 194,
-      "versionNonce": 1874067780,
-      "index": "a2",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184407865,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_0",
-        "mode": "orbit",
-        "fixedPoint": [
-          1,
-          0.5001
-        ]
-      },
-      "endBinding": {
-        "elementId": "stage_1",
-        "mode": "orbit",
-        "fixedPoint": [
-          0,
-          0.5001
-        ]
-      },
-      "startArrowhead": null
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_1",
-      "x": 164.98326106975674,
-      "y": 91.9332265367201,
-      "width": 600,
-      "height": 230,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 69,
-      "versionNonce": 845206524,
-      "index": "a3",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_1"
-        },
-        {
-          "id": "arrow_0",
-          "type": "arrow"
-        },
-        {
-          "id": "arrow_1",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184416897,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "text",
-      "id": "text_1",
-      "x": 285.85536189983486,
-      "y": 96.9332265367201,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 2: REQUIREMENT GATHERING (RG)\nPM runs discovery call with client\n- Understand current business workflows\n- Pain points in detail\n- What they need and want to achieve\n\nPM documents in MAIA KB:\n- Meeting notes\n- RG output document (using [[02 - PM Playbook/Templates/[Template] Requirement Gathering]])\n- Discovery call questionnaire\n\nProcess steps:\n1. Prepare: review client setup, prior requirements, prepare questions, have template ready.\n2. Conduct discovery: listen first, ask clarifying questions (problem, current workaround, expected outcome, users/transactions affected, priority).\n3. Document requirements: use template to capture business context, current vs desired state, expected behavior, acceptance criteria, priority, dependencies.\n4. Classify requirement: use [[09 - Intake & Triage/Triage SOP (Product vs Config vs Custom)]] to determine Product Enhancement, Configuration, or Custom Development.\n5. Next steps: route to appropriate track (User Story/roadmap, Config documentation, or tech lead feasibility).\n\nBest practices:\n- Always confirm understanding with client.\n- Document same day while fresh.\n- Link requirements to client folder in [[03 - Clients]].\n- Add to [[04 - QA & Known Issues/Feature Gap Tracker]] if gap identified.\n- Do NOT commit to delivery dates or design solutions during discovery.",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_1",
-      "originalText": "STAGE 2: REQUIREMENT GATHERING (RG)\n\nPM runs discovery call with client\n- Understand current business workflows\n- Pain points in detail\n- What they need and want to achieve\n\nPM documents in MAIA KB:\n- Meeting notes\n- RG output document\n- Discovery call questionnaire",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 358.25579833984375,
-      "height": 220,
-      "version": 68,
-      "versionNonce": 745832316,
-      "index": "a4",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184405305,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_2",
-      "x": 850.4280657662498,
-      "y": 112.29025976517539,
-      "width": 600,
-      "height": 190,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 113,
-      "versionNonce": 1876234492,
-      "index": "a6",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_2"
-        },
-        {
-          "id": "arrow_1",
-          "type": "arrow"
-        },
-        {
-          "id": "arrow_2",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184477508,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_1",
-      "x": 763.2144021947663,
-      "y": 207.32282633719586,
-      "width": 81.21366357148338,
-      "height": 0.012633238540502134,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          81.21366357148338,
-          -0.012633238540502134
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 229,
-      "versionNonce": 1211758020,
-      "index": "a6V",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184429365,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_1",
-        "mode": "inside",
-        "fixedPoint": [
-          0.9970519018750159,
-          0.5016939121759816
-        ]
-      },
-      "endBinding": {
-        "elementId": "stage_2",
-        "mode": "orbit",
-        "fixedPoint": [
-          0,
-          0.5001
-        ]
-      },
-      "startArrowhead": null
-    },
-    {
-      "type": "text",
-      "id": "text_2",
-      "x": 931.7641711129295,
-      "y": 117.29025976517539,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 3: FIT ASSESSMENT + SOLUTION PROPOSAL\n\nPM assesses: can MAIA solve their problem?\n- Strong fit \u2192 propose solution\n- Partial fit \u2192 propose what's possible\n- Poor fit \u2192 park or disqualify\n\nDiscuss with Tech Lead, CTO, CEO\nDecision gates: Proceed / Park / Reject",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_2",
-      "originalText": "STAGE 3: FIT ASSESSMENT + SOLUTION PROPOSAL\n\nPM assesses: can MAIA solve their problem?\n- Strong fit \u2192 propose solution\n- Partial fit \u2192 propose what's possible\n- Poor fit \u2192 park or disqualify\n\nDiscuss with Tech Lead, CTO, CEO\nDecision gates: Proceed / Park / Reject",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 437.3277893066406,
-      "height": 180,
-      "version": 112,
-      "versionNonce": 1326739012,
-      "index": "a7",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184425899,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_2",
-      "x": 1155.955749750595,
-      "y": 300.3970819584069,
-      "width": 0.7274969160237106,
-      "height": 95.00236935001163,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          0.7274969160237106,
-          95.00236935001163
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 370,
-      "versionNonce": 1749547004,
-      "index": "a8",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184482250,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_2",
-        "mode": "inside",
-        "fixedPoint": [
-          0.5092128066405753,
-          0.9900359062801658
-        ]
-      },
-      "endBinding": {
-        "elementId": "stage_3",
-        "mode": "orbit",
-        "fixedPoint": [
-          0.5001,
-          0
-        ]
-      },
-      "startArrowhead": null,
-      "moveMidPointsWithElement": false
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_3",
-      "x": 856.6691926943442,
-      "y": 401.3994513084185,
-      "width": 600,
-      "height": 150,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 167,
-      "versionNonce": 678596988,
-      "index": "a9",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_3"
-        },
-        {
-          "id": "arrow_2",
-          "type": "arrow"
-        },
-        {
-          "id": "arrow_3",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184490060,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "text",
-      "id": "text_3",
-      "x": 952.5092958437583,
-      "y": 406.3994513084185,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 4: DEMO (optional)\n\nDepends on client \u2014 if they need to see it working\nPM prepares demo scenarios using client's data\nRun demo with client\nDemo successful \u2192 move to SOW\nDemo not successful \u2192 iterate on solution or park",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_3",
-      "originalText": "STAGE 4: DEMO (optional)\n\nDepends on client \u2014 if they need to see it working\nPM prepares demo scenarios using client's data\nRun demo with client\nDemo successful \u2192 move to SOW\nDemo not successful \u2192 iterate on solution or park",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 408.3197937011719,
-      "height": 140,
-      "version": 166,
-      "versionNonce": 1829128060,
-      "index": "aA",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184482249,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_4",
-      "x": 158.74812946051725,
-      "y": 363.05032230834183,
-      "width": 600,
-      "height": 230,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 123,
-      "versionNonce": 2142380156,
-      "index": "aC",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_4"
-        },
-        {
-          "id": "arrow_3",
-          "type": "arrow"
-        },
-        {
-          "id": "arrow_4",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184504942,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_3",
-      "x": 850.6691926943444,
-      "y": 476.5160967120818,
-      "width": 85.92106323382711,
-      "height": 1.4555801925968126,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          -85.92106323382711,
-          1.4555801925968126
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 218,
-      "versionNonce": 1312101956,
-      "index": "aCV",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184499000,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_3",
-        "mode": "orbit",
-        "fixedPoint": [
-          0,
-          0.5001
-        ]
-      },
-      "endBinding": {
-        "elementId": "stage_4",
-        "mode": "orbit",
-        "fixedPoint": [
-          1,
-          0.5001
-        ]
-      },
-      "startArrowhead": null,
-      "moveMidPointsWithElement": false
-    },
-    {
-      "type": "text",
-      "id": "text_4",
-      "x": 253.98827228278287,
-      "y": 368.05032230834183,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 5: SOW (Statement of Work)\n\nPM drafts SOW covering:\n- Scope (what's included and excluded)\n- Timeline and milestones\n- Deliverables\n- Commercial terms\n\nReview with Tech Lead, CTO, CEO\nClient may request tweaks \u2192 multiple SOW versions\nClient signs final SOW",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_4",
-      "originalText": "STAGE 5: SOW (Statement of Work)\n\nPM drafts SOW covering:\n- Scope (what's included and excluded)\n- Timeline and milestones\n- Deliverables\n- Commercial terms\n\nReview with Tech Lead, CTO, CEO\nClient may request tweaks \u2192 multiple SOW versions\nClient signs final SOW",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 409.51971435546875,
-      "height": 220,
-      "version": 122,
-      "versionNonce": 1435209412,
-      "index": "aD",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184498999,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_4",
-      "x": 152.74812946051725,
-      "y": 478.303132008997,
-      "width": 55.20597037832863,
-      "height": 2.1144779211694527,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          -55.20597037832863,
-          2.1144779211694527
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 95,
-      "versionNonce": 1879163132,
-      "index": "aE",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184507049,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_4",
-        "mode": "orbit",
-        "fixedPoint": [
-          0,
-          0.5001
-        ]
-      },
-      "endBinding": null,
-      "startArrowhead": null
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_5",
-      "x": -504.8017707773771,
-      "y": 376.1710056787658,
-      "width": 600,
-      "height": 210,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 136,
-      "versionNonce": 300564164,
-      "index": "aF",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_5"
-        },
-        {
-          "id": "arrow_5",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184555441,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "text",
-      "id": "text_5",
-      "x": -408.4336372324552,
-      "y": 381.1710056787658,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 6: FEATURE SPEC (MAIA CODEX)\n\nPM writes detailed feature spec in MAIA CODEX:\n- prd.md \u2014 product requirements document\n- design.md \u2014 design and architecture\n- tasks.md \u2014 work breakdown\n- user stories + acceptance criteria\n\nPush to GitHub\nDev team checks MAIA CODEX for latest updates",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_5",
-      "originalText": "STAGE 6: FEATURE SPEC (MAIA CODEX)\n\nPM writes detailed feature spec in MAIA CODEX:\n- prd.md \u2014 product requirements document\n- design.md \u2014 design and architecture\n- tasks.md \u2014 work breakdown\n- user stories + acceptance criteria\n\nPush to GitHub\nDev team checks MAIA CODEX for latest updates",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 407.26373291015625,
-      "height": 200,
-      "version": 136,
-      "versionNonce": 1153628100,
-      "index": "aG",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184527031,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_6",
-      "x": -506.14472220090556,
-      "y": 716.3663091857876,
-      "width": 600,
-      "height": 190,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 124,
-      "versionNonce": 1038907516,
-      "index": "aI",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_6"
-        },
-        {
-          "id": "arrow_5",
-          "type": "arrow"
-        },
-        {
-          "id": "arrow_6",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184566992,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_5",
-      "x": -204.80366017218722,
-      "y": 592.1710056787658,
-      "width": 1.2191726339082152,
-      "height": 118.19530350702166,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          -1.2191726339082152,
-          118.19530350702166
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 210,
-      "versionNonce": 135527236,
-      "index": "aIV",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184559549,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_5",
-        "mode": "orbit",
-        "fixedPoint": [
-          0.5001,
-          1
-        ]
-      },
-      "endBinding": {
-        "elementId": "stage_6",
-        "mode": "orbit",
-        "fixedPoint": [
-          0.5001,
-          0
-        ]
-      },
-      "startArrowhead": null,
-      "moveMidPointsWithElement": false
-    },
-    {
-      "type": "text",
-      "id": "text_6",
-      "x": -428.99259207395244,
-      "y": 721.3663091857876,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 7: BRIEF DEV (via LARK)\n\nPM converts MAIA CODEX spec \u2192 readable Lark doc\nDev team reads LARK for context\nDev team uses their AI coding agents on MAIA CODEX\n\nDaily standup: PM reports progress per client\nBlockers \u2192 PM hosts discussion with PIC or Tech Lead\n\u2192 Get clarity \u2192 Make decision \u2192 Continue",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_6",
-      "originalText": "STAGE 7: BRIEF DEV (via LARK)\n\nPM converts MAIA CODEX spec \u2192 readable Lark doc\nDev team reads LARK for context\nDev team uses their AI coding agents on MAIA CODEX\n\nDaily standup: PM reports progress per client\nBlockers \u2192 PM hosts discussion with PIC or Tech Lead\n\u2192 Get clarity \u2192 Make decision \u2192 Continue",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 445.69573974609375,
-      "height": 180,
-      "version": 123,
-      "versionNonce": 849548228,
-      "index": "aJ",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184559548,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_7",
-      "x": 174.06017381628425,
-      "y": 713.9351354462436,
-      "width": 600,
-      "height": 170,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 80,
-      "versionNonce": 150163012,
-      "index": "aL",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_7"
-        },
-        {
-          "id": "arrow_6",
-          "type": "arrow"
-        },
-        {
-          "id": "arrow_7",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184580623,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_6",
-      "x": 99.85527779909444,
-      "y": 793.842642356835,
-      "width": 68.20489601718981,
-      "height": 4.6963537929214,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          68.20489601718981,
-          4.6963537929214
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 141,
-      "versionNonce": 192487164,
-      "index": "aLV",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184571799,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_6",
-        "mode": "inside",
-        "fixedPoint": [
-          1.01,
-          0.40777017458445985
-        ]
-      },
-      "endBinding": {
-        "elementId": "stage_7",
-        "mode": "orbit",
-        "fixedPoint": [
-          0,
-          0.5001
-        ]
-      },
-      "startArrowhead": null,
-      "moveMidPointsWithElement": false
-    },
-    {
-      "type": "text",
-      "id": "text_7",
-      "x": 262.52428514440925,
-      "y": 718.9351354462436,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 8: PM MANUAL TEST\n\nNo QA team \u2014 PM tests manually\nTest based on client business scenarios\nDoes feature work as specified?\n\nBug found \u2192 inform dev \u2192 dev fixes \u2192 PM re-tests\nRepeat until no issues",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_7",
-      "originalText": "STAGE 8: PM MANUAL TEST\n\nNo QA team \u2014 PM tests manually\nTest based on client business scenarios\nDoes feature work as specified?\n\nBug found \u2192 inform dev \u2192 dev fixes \u2192 PM re-tests\nRepeat until no issues",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 423.07177734375,
-      "height": 160,
-      "version": 79,
-      "versionNonce": 1896894076,
-      "index": "aM",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184571798,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    },
-    {
-      "type": "rectangle",
-      "id": "stage_8",
-      "x": 863.2400621594659,
-      "y": 707.7269108280253,
-      "width": 600,
-      "height": 170,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "#fafafa",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "roundness": {
-        "type": 3
-      },
-      "version": 142,
-      "versionNonce": 511341252,
-      "index": "aO",
-      "isDeleted": false,
-      "strokeStyle": "solid",
-      "angle": 0,
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [
-        {
-          "type": "text",
-          "id": "text_8"
-        },
-        {
-          "id": "arrow_7",
-          "type": "arrow"
-        }
-      ],
-      "updated": 1777184585797,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false
-    },
-    {
-      "type": "arrow",
-      "id": "arrow_7",
-      "x": 780.0601738162842,
-      "y": 798.5344476872505,
-      "width": 77.17988834318169,
-      "height": 5.372849100232088,
-      "strokeColor": "#1e1e1e",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "opacity": 100,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          77.17988834318169,
-          -5.372849100232088
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "version": 192,
-      "versionNonce": 348623300,
-      "index": "aOV",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "roundness": null,
-      "boundElements": [],
-      "updated": 1777184585797,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "startBinding": {
-        "elementId": "stage_7",
-        "mode": "orbit",
-        "fixedPoint": [
-          1,
-          0.5001
-        ]
-      },
-      "endBinding": {
-        "elementId": "stage_8",
-        "mode": "orbit",
-        "fixedPoint": [
-          0,
-          0.5001
-        ]
-      },
-      "startArrowhead": null,
-      "moveMidPointsWithElement": false
-    },
-    {
-      "type": "text",
-      "id": "text_8",
-      "x": 997.664164942669,
-      "y": 712.7269108280253,
-      "strokeColor": "#1e1e1e",
-      "fontSize": 16,
-      "fontFamily": 1,
-      "text": "STAGE 9: UAT WITH CLIENT\n\nPM runs UAT with client\nTest case by test case\nAll test cases pass \u2192 client sign off\n\nBug found \u2192 inform dev \u2192 fix \u2192 re-UAT\nClient sign off \u2192 LAUNCH",
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "opacity": 100,
-      "roundness": null,
-      "strokeWidth": 2,
-      "containerId": "stage_8",
-      "originalText": "STAGE 9: UAT WITH CLIENT\n\nPM runs UAT with client\nTest case by test case\nAll test cases pass \u2192 client sign off\n\nBug found \u2192 inform dev \u2192 fix \u2192 re-UAT\nClient sign off \u2192 LAUNCH",
-      "autoResize": true,
-      "lineHeight": 1.25,
-      "width": 331.15179443359375,
-      "height": 160,
-      "version": 142,
-      "versionNonce": 1604811332,
-      "index": "aP",
-      "isDeleted": false,
-      "fillStyle": "solid",
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "angle": 0,
-      "backgroundColor": "transparent",
-      "seed": 1,
-      "groupIds": [],
-      "frameId": null,
-      "boundElements": [],
-      "updated": 1777184585797,
-      "link": null,
-      "hasTextLink": false,
-      "locked": false,
-      "rawText": ""
-    }
-  ],
-  "appState": {
-    "theme": "light",
-    "viewBackgroundColor": "#ffffff",
-    "currentItemStrokeColor": "#1e1e1e",
-    "currentItemBackgroundColor": "transparent",
-    "currentItemFillStyle": "solid",
-    "currentItemStrokeWidth": 2,
-    "currentItemStrokeStyle": "solid",
-    "currentItemRoughness": 1,
-    "currentItemOpacity": 100,
-    "currentItemFontFamily": 5,
-    "currentItemFontSize": 20,
-    "currentItemTextAlign": "left",
-    "currentItemStartArrowhead": null,
-    "currentItemEndArrowhead": "arrow",
-    "currentItemArrowType": "round",
-    "currentItemFrameRole": null,
-    "scrollX": 408.7614263348634,
-    "scrollY": 248.49200171887495,
-    "zoom": {
-      "value": 0.701512
-    },
-    "currentItemRoundness": "round",
-    "gridSize": 20,
-    "gridStep": 5,
-    "gridModeEnabled": false,
-    "gridColor": {
-      "Bold": "rgba(217, 217, 217, 0.5)",
-      "Regular": "rgba(230, 230, 230, 0.5)"
-    },
-    "currentStrokeOptions": null,
-    "frameRendering": {
-      "enabled": true,
-      "clip": true,
-      "name": true,
-      "outline": true,
-      "markerName": true,
-      "markerEnabled": true
-    },
-    "objectsSnapModeEnabled": false,
-    "activeTool": {
-      "type": "selection",
-      "customType": null,
-      "locked": false,
-      "fromSelection": false,
-      "lastActiveTool": null
-    },
-    "disableContextMenu": false,
-    "bindingPreference": "enabled",
-    "isBindingEnabled": true,
-    "isMidpointSnappingEnabled": true,
-    "boxSelectionMode": "contain"
-  },
-  "files": {}
+	"type": "excalidraw",
+	"version": 2,
+	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.22.0",
+	"elements": [
+		{
+			"type": "rectangle",
+			"id": "stage_0",
+			"x": -529.256676387077,
+			"y": 143.8437667868928,
+			"width": 600,
+			"height": 130,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 123,
+			"versionNonce": 780153668,
+			"index": "a0",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_0"
+				},
+				{
+					"id": "arrow_0",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184398248,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "text",
+			"id": "text_0",
+			"x": -506.2805106155927,
+			"y": 148.8437667868928,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 1: GTM PROPOSAL\n\nGTM team sends proposal to client\nGTM briefs PM (handover)\nPM receives: company profile, pain points, proposed solution, commercial\nterms",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_0",
+			"originalText": "STAGE 1: GTM PROPOSAL\n\nGTM team sends proposal to client\nGTM briefs PM (handover)\nPM receives: company profile, pain points, proposed solution, commercial\nterms",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 554.0476684570312,
+			"height": 120,
+			"version": 123,
+			"versionNonce": 1453490628,
+			"index": "a1",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184390121,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_0",
+			"x": 76.74332361292294,
+			"y": 192.37804470721207,
+			"width": 81.04683557666878,
+			"height": 222.5913798175843,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					81.04683557666878,
+					-222.5913798175843
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 249,
+			"versionNonce": 1336885116,
+			"index": "a2",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777185887100,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_0",
+				"mode": "orbit",
+				"fixedPoint": [
+					1,
+					0.5001
+				]
+			},
+			"endBinding": {
+				"elementId": "stage_1",
+				"mode": "orbit",
+				"fixedPoint": [
+					0,
+					0.5001
+				]
+			},
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_1",
+			"x": 163.7901591895917,
+			"y": -391.76105719005295,
+			"width": 600,
+			"height": 690,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 123,
+			"versionNonce": 1420013180,
+			"index": "a3",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_1"
+				},
+				{
+					"id": "arrow_0",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow_1",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777185887098,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "text",
+			"id": "text_1",
+			"x": 170.9503154395917,
+			"y": -376.76105719005295,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 2: REQUIREMENT GATHERING (RG)\nPM runs discovery call with client\n- Understand current business workflows\n- Pain points in detail\n- What they need and want to achieve\n\nPM documents in MAIA KB:\n- Meeting notes\n- RG output document \n- Discovery call questionnaire\n\nProcess steps:\n1. Prepare: review client setup, prior requirements, prepare questions, have\ntemplate ready.\n2. Conduct discovery: listen first, ask clarifying questions (problem,\ncurrent workaround, expected outcome, users/transactions affected,\npriority).\n3. Document requirements: use template to capture business context,\ncurrent vs desired state, expected behavior, acceptance criteria, priority,\ndependencies.\n4. Classify requirement: use [[09 - Intake & Triage/Triage SOP\n(Product vs Config vs Custom)]] to determine Product Enhancement,\nConfiguration, or Custom Development.\n5. Next steps: route to appropriate track (User Story/roadmap, Config\ndocumentation, or tech lead feasibility).\n\nBest practices:\n- Always confirm understanding with client.\n- Document same day while fresh.\n- Link requirements to client folder in [[03 - Clients]].\n- Add to [[04 - QA & Known Issues/Feature Gap Tracker]] if gap\nidentified.\n- Do NOT commit to delivery dates or design solutions during discovery.",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_1",
+			"originalText": "STAGE 2: REQUIREMENT GATHERING (RG)\nPM runs discovery call with client\n- Understand current business workflows\n- Pain points in detail\n- What they need and want to achieve\n\nPM documents in MAIA KB:\n- Meeting notes\n- RG output document \n- Discovery call questionnaire\n\nProcess steps:\n1. Prepare: review client setup, prior requirements, prepare questions, have template ready.\n2. Conduct discovery: listen first, ask clarifying questions (problem, current workaround, expected outcome, users/transactions affected, priority).\n3. Document requirements: use template to capture business context, current vs desired state, expected behavior, acceptance criteria, priority, dependencies.\n4. Classify requirement: use [[09 - Intake & Triage/Triage SOP (Product vs Config vs Custom)]] to determine Product Enhancement, Configuration, or Custom Development.\n5. Next steps: route to appropriate track (User Story/roadmap, Config documentation, or tech lead feasibility).\n\nBest practices:\n- Always confirm understanding with client.\n- Document same day while fresh.\n- Link requirements to client folder in [[03 - Clients]].\n- Add to [[04 - QA & Known Issues/Feature Gap Tracker]] if gap identified.\n- Do NOT commit to delivery dates or design solutions during discovery.",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 585.6796875,
+			"height": 660,
+			"version": 127,
+			"versionNonce": 1705017084,
+			"index": "a4",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777185887098,
+			"hasTextLink": true,
+			"locked": false,
+			"rawText": "STAGE 2: REQUIREMENT GATHERING (RG)\nPM runs discovery call with client\n- Understand current business workflows\n- Pain points in detail\n- What they need and want to achieve\n\nPM documents in MAIA KB:\n- Meeting notes\n- RG output document \n- Discovery call questionnaire\n\nProcess steps:\n1. Prepare: review client setup, prior requirements, prepare questions, have template ready.\n2. Conduct discovery: listen first, ask clarifying questions (problem, current workaround, expected outcome, users/transactions affected, priority).\n3. Document requirements: use template to capture business context, current vs desired state, expected behavior, acceptance criteria, priority, dependencies.\n4. Classify requirement: use [[09 - Intake & Triage/Triage SOP (Product vs Config vs Custom)]] to determine Product Enhancement, Configuration, or Custom Development.\n5. Next steps: route to appropriate track (User Story/roadmap, Config documentation, or tech lead feasibility).\n\nBest practices:\n- Always confirm understanding with client.\n- Document same day while fresh.\n- Link requirements to client folder in [[03 - Clients]].\n- Add to [[04 - QA & Known Issues/Feature Gap Tracker]] if gap identified.\n- Do NOT commit to delivery dates or design solutions during discovery."
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_2",
+			"x": 850.4280657662498,
+			"y": 112.29025976517539,
+			"width": 600,
+			"height": 190,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 113,
+			"versionNonce": 1876234492,
+			"index": "a6",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_2"
+				},
+				{
+					"id": "arrow_1",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow_2",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184477508,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_1",
+			"x": 762.0213003146013,
+			"y": -45.59225778862566,
+			"width": 82.40676545164843,
+			"height": 235.73756977705813,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					82.40676545164843,
+					235.73756977705813
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 283,
+			"versionNonce": 2064773116,
+			"index": "a6V",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777185887101,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_1",
+				"mode": "inside",
+				"fixedPoint": [
+					0.9970519018750159,
+					0.5016939121759816
+				]
+			},
+			"endBinding": {
+				"elementId": "stage_2",
+				"mode": "orbit",
+				"fixedPoint": [
+					0,
+					0.5001
+				]
+			},
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "text",
+			"id": "text_2",
+			"x": 931.7641711129295,
+			"y": 117.29025976517539,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 3: FIT ASSESSMENT + SOLUTION PROPOSAL\n\nPM assesses: can MAIA solve their problem?\n- Strong fit → propose solution\n- Partial fit → propose what's possible\n- Poor fit → park or disqualify\n\nDiscuss with Tech Lead, CTO, CEO\nDecision gates: Proceed / Park / Reject",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_2",
+			"originalText": "STAGE 3: FIT ASSESSMENT + SOLUTION PROPOSAL\n\nPM assesses: can MAIA solve their problem?\n- Strong fit → propose solution\n- Partial fit → propose what's possible\n- Poor fit → park or disqualify\n\nDiscuss with Tech Lead, CTO, CEO\nDecision gates: Proceed / Park / Reject",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 437.3277893066406,
+			"height": 180,
+			"version": 112,
+			"versionNonce": 1326739012,
+			"index": "a7",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184425899,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_2",
+			"x": 1155.955749750595,
+			"y": 300.3970819584069,
+			"width": 0.7274969160237106,
+			"height": 95.00236935001163,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					0.7274969160237106,
+					95.00236935001163
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 370,
+			"versionNonce": 1749547004,
+			"index": "a8",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777184482250,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_2",
+				"mode": "inside",
+				"fixedPoint": [
+					0.5092128066405753,
+					0.9900359062801658
+				]
+			},
+			"endBinding": {
+				"elementId": "stage_3",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5001,
+					0
+				]
+			},
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_3",
+			"x": 856.6691926943442,
+			"y": 401.3994513084185,
+			"width": 600,
+			"height": 150,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 167,
+			"versionNonce": 678596988,
+			"index": "a9",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_3"
+				},
+				{
+					"id": "arrow_2",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow_3",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184490060,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "text",
+			"id": "text_3",
+			"x": 952.5092958437583,
+			"y": 406.3994513084185,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 4: DEMO (optional)\n\nDepends on client — if they need to see it working\nPM prepares demo scenarios using client's data\nRun demo with client\nDemo successful → move to SOW\nDemo not successful → iterate on solution or park",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_3",
+			"originalText": "STAGE 4: DEMO (optional)\n\nDepends on client — if they need to see it working\nPM prepares demo scenarios using client's data\nRun demo with client\nDemo successful → move to SOW\nDemo not successful → iterate on solution or park",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 408.3197937011719,
+			"height": 140,
+			"version": 166,
+			"versionNonce": 1829128060,
+			"index": "aA",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184482249,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_4",
+			"x": 158.74812946051725,
+			"y": 363.05032230834183,
+			"width": 600,
+			"height": 230,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 123,
+			"versionNonce": 2142380156,
+			"index": "aC",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_4"
+				},
+				{
+					"id": "arrow_3",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow_4",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184504942,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_3",
+			"x": 850.6691926943444,
+			"y": 476.5160967120818,
+			"width": 85.92106323382711,
+			"height": 1.4555801925968126,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-85.92106323382711,
+					1.4555801925968126
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 218,
+			"versionNonce": 1312101956,
+			"index": "aCV",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777184499000,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_3",
+				"mode": "orbit",
+				"fixedPoint": [
+					0,
+					0.5001
+				]
+			},
+			"endBinding": {
+				"elementId": "stage_4",
+				"mode": "orbit",
+				"fixedPoint": [
+					1,
+					0.5001
+				]
+			},
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "text",
+			"id": "text_4",
+			"x": 253.98827228278287,
+			"y": 368.05032230834183,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 5: SOW (Statement of Work)\n\nPM drafts SOW covering:\n- Scope (what's included and excluded)\n- Timeline and milestones\n- Deliverables\n- Commercial terms\n\nReview with Tech Lead, CTO, CEO\nClient may request tweaks → multiple SOW versions\nClient signs final SOW",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_4",
+			"originalText": "STAGE 5: SOW (Statement of Work)\n\nPM drafts SOW covering:\n- Scope (what's included and excluded)\n- Timeline and milestones\n- Deliverables\n- Commercial terms\n\nReview with Tech Lead, CTO, CEO\nClient may request tweaks → multiple SOW versions\nClient signs final SOW",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 409.51971435546875,
+			"height": 220,
+			"version": 122,
+			"versionNonce": 1435209412,
+			"index": "aD",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184498999,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_4",
+			"x": 152.74812946051725,
+			"y": 478.303132008997,
+			"width": 55.20597037832863,
+			"height": 2.1144779211694527,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-55.20597037832863,
+					2.1144779211694527
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 96,
+			"versionNonce": 76936772,
+			"index": "aE",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777185413530,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_4",
+				"mode": "orbit",
+				"fixedPoint": [
+					0,
+					0.5001
+				]
+			},
+			"endBinding": null,
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_5",
+			"x": -504.8017707773771,
+			"y": 376.1710056787658,
+			"width": 600,
+			"height": 210,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 136,
+			"versionNonce": 300564164,
+			"index": "aF",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_5"
+				},
+				{
+					"id": "arrow_5",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184555441,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "text",
+			"id": "text_5",
+			"x": -408.4336372324552,
+			"y": 381.1710056787658,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 6: FEATURE SPEC (MAIA CODEX)\n\nPM writes detailed feature spec in MAIA CODEX:\n- prd.md — product requirements document\n- design.md — design and architecture\n- tasks.md — work breakdown\n- user stories + acceptance criteria\n\nPush to GitHub\nDev team checks MAIA CODEX for latest updates",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_5",
+			"originalText": "STAGE 6: FEATURE SPEC (MAIA CODEX)\n\nPM writes detailed feature spec in MAIA CODEX:\n- prd.md — product requirements document\n- design.md — design and architecture\n- tasks.md — work breakdown\n- user stories + acceptance criteria\n\nPush to GitHub\nDev team checks MAIA CODEX for latest updates",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 407.26373291015625,
+			"height": 200,
+			"version": 136,
+			"versionNonce": 1153628100,
+			"index": "aG",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184527031,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_6",
+			"x": -506.14472220090556,
+			"y": 716.3663091857876,
+			"width": 600,
+			"height": 190,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 124,
+			"versionNonce": 1038907516,
+			"index": "aI",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_6"
+				},
+				{
+					"id": "arrow_5",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow_6",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184566992,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_5",
+			"x": -204.80366017218722,
+			"y": 592.1710056787658,
+			"width": 1.2191726339082152,
+			"height": 118.19530350702166,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-1.2191726339082152,
+					118.19530350702166
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 210,
+			"versionNonce": 135527236,
+			"index": "aIV",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777184559549,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_5",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5001,
+					1
+				]
+			},
+			"endBinding": {
+				"elementId": "stage_6",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5001,
+					0
+				]
+			},
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "text",
+			"id": "text_6",
+			"x": -428.99259207395244,
+			"y": 721.3663091857876,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 7: BRIEF DEV (via LARK)\n\nPM converts MAIA CODEX spec → readable Lark doc\nDev team reads LARK for context\nDev team uses their AI coding agents on MAIA CODEX\n\nDaily standup: PM reports progress per client\nBlockers → PM hosts discussion with PIC or Tech Lead\n→ Get clarity → Make decision → Continue",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_6",
+			"originalText": "STAGE 7: BRIEF DEV (via LARK)\n\nPM converts MAIA CODEX spec → readable Lark doc\nDev team reads LARK for context\nDev team uses their AI coding agents on MAIA CODEX\n\nDaily standup: PM reports progress per client\nBlockers → PM hosts discussion with PIC or Tech Lead\n→ Get clarity → Make decision → Continue",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 445.69573974609375,
+			"height": 180,
+			"version": 123,
+			"versionNonce": 849548228,
+			"index": "aJ",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184559548,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_7",
+			"x": 174.06017381628425,
+			"y": 713.9351354462436,
+			"width": 600,
+			"height": 170,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 80,
+			"versionNonce": 150163012,
+			"index": "aL",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_7"
+				},
+				{
+					"id": "arrow_6",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow_7",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184580623,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_6",
+			"x": 99.85527779909444,
+			"y": 793.842642356835,
+			"width": 68.20489601718981,
+			"height": 4.6963537929214,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					68.20489601718981,
+					4.6963537929214
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 141,
+			"versionNonce": 192487164,
+			"index": "aLV",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777184571799,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_6",
+				"mode": "inside",
+				"fixedPoint": [
+					1.01,
+					0.40777017458445985
+				]
+			},
+			"endBinding": {
+				"elementId": "stage_7",
+				"mode": "orbit",
+				"fixedPoint": [
+					0,
+					0.5001
+				]
+			},
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "text",
+			"id": "text_7",
+			"x": 262.52428514440925,
+			"y": 718.9351354462436,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 8: PM MANUAL TEST\n\nNo QA team — PM tests manually\nTest based on client business scenarios\nDoes feature work as specified?\n\nBug found → inform dev → dev fixes → PM re-tests\nRepeat until no issues",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_7",
+			"originalText": "STAGE 8: PM MANUAL TEST\n\nNo QA team — PM tests manually\nTest based on client business scenarios\nDoes feature work as specified?\n\nBug found → inform dev → dev fixes → PM re-tests\nRepeat until no issues",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 423.07177734375,
+			"height": 160,
+			"version": 79,
+			"versionNonce": 1896894076,
+			"index": "aM",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184571798,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"id": "stage_8",
+			"x": 863.2400621594659,
+			"y": 707.7269108280253,
+			"width": 600,
+			"height": 170,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fafafa",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"roundness": {
+				"type": 3
+			},
+			"version": 142,
+			"versionNonce": 511341252,
+			"index": "aO",
+			"isDeleted": false,
+			"strokeStyle": "solid",
+			"angle": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "text_8"
+				},
+				{
+					"id": "arrow_7",
+					"type": "arrow"
+				}
+			],
+			"updated": 1777184585797,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false
+		},
+		{
+			"type": "arrow",
+			"id": "arrow_7",
+			"x": 780.0601738162842,
+			"y": 798.5344476872505,
+			"width": 77.17988834318169,
+			"height": 5.372849100232088,
+			"strokeColor": "#1e1e1e",
+			"strokeWidth": 2,
+			"roughness": 1,
+			"opacity": 100,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					77.17988834318169,
+					-5.372849100232088
+				]
+			],
+			"endArrowhead": "arrow",
+			"version": 192,
+			"versionNonce": 348623300,
+			"index": "aOV",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1777184585797,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"startBinding": {
+				"elementId": "stage_7",
+				"mode": "orbit",
+				"fixedPoint": [
+					1,
+					0.5001
+				]
+			},
+			"endBinding": {
+				"elementId": "stage_8",
+				"mode": "orbit",
+				"fixedPoint": [
+					0,
+					0.5001
+				]
+			},
+			"startArrowhead": null,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "text",
+			"id": "text_8",
+			"x": 997.664164942669,
+			"y": 712.7269108280253,
+			"strokeColor": "#1e1e1e",
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "STAGE 9: UAT WITH CLIENT\n\nPM runs UAT with client\nTest case by test case\nAll test cases pass → client sign off\n\nBug found → inform dev → fix → re-UAT\nClient sign off → LAUNCH",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"opacity": 100,
+			"roundness": null,
+			"strokeWidth": 2,
+			"containerId": "stage_8",
+			"originalText": "STAGE 9: UAT WITH CLIENT\n\nPM runs UAT with client\nTest case by test case\nAll test cases pass → client sign off\n\nBug found → inform dev → fix → re-UAT\nClient sign off → LAUNCH",
+			"autoResize": true,
+			"lineHeight": 1.25,
+			"width": 331.15179443359375,
+			"height": 160,
+			"version": 142,
+			"versionNonce": 1604811332,
+			"index": "aP",
+			"isDeleted": false,
+			"fillStyle": "solid",
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"angle": 0,
+			"backgroundColor": "transparent",
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [],
+			"updated": 1777184585797,
+			"link": null,
+			"hasTextLink": false,
+			"locked": false,
+			"rawText": ""
+		}
+	],
+	"appState": {
+		"theme": "light",
+		"viewBackgroundColor": "#ffffff",
+		"currentItemStrokeColor": "#1e1e1e",
+		"currentItemBackgroundColor": "transparent",
+		"currentItemFillStyle": "solid",
+		"currentItemStrokeWidth": 2,
+		"currentItemStrokeStyle": "solid",
+		"currentItemRoughness": 1,
+		"currentItemOpacity": 100,
+		"currentItemFontFamily": 5,
+		"currentItemFontSize": 20,
+		"currentItemTextAlign": "left",
+		"currentItemStartArrowhead": null,
+		"currentItemEndArrowhead": "arrow",
+		"currentItemArrowType": "round",
+		"currentItemFrameRole": null,
+		"scrollX": -56.82364029338204,
+		"scrollY": 510.9334539482361,
+		"zoom": {
+			"value": 1.021937
+		},
+		"currentItemRoundness": "round",
+		"gridSize": 20,
+		"gridStep": 5,
+		"gridModeEnabled": false,
+		"gridColor": {
+			"Bold": "rgba(217, 217, 217, 0.5)",
+			"Regular": "rgba(230, 230, 230, 0.5)"
+		},
+		"currentStrokeOptions": null,
+		"frameRendering": {
+			"enabled": true,
+			"clip": true,
+			"name": true,
+			"outline": true,
+			"markerName": true,
+			"markerEnabled": true
+		},
+		"objectsSnapModeEnabled": false,
+		"activeTool": {
+			"type": "hand",
+			"customType": null,
+			"locked": false,
+			"fromSelection": false,
+			"lastActiveTool": null
+		},
+		"disableContextMenu": false,
+		"bindingPreference": "enabled",
+		"isBindingEnabled": true,
+		"isMidpointSnappingEnabled": true,
+		"boxSelectionMode": "contain"
+	},
+	"files": {}
 }
