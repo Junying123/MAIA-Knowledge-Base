@@ -1,0 +1,500 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "stage_0",
+      "x": 100,
+      "y": 100,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_0",
+      "x": 400,
+      "y": 160,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 1: GTM PROPOSAL\n\nGTM team sends proposal to client\nGTM briefs PM (handover)\nPM receives: company profile, pain points, proposed solution, commercial terms",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_0",
+      "originalText": "STAGE 1: GTM PROPOSAL\n\nGTM team sends proposal to client\nGTM briefs PM (handover)\nPM receives: company profile, pain points, proposed solution, commercial terms"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_0",
+      "x": 400,
+      "y": 220,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_1",
+      "x": 100,
+      "y": 260,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "x": 400,
+      "y": 320,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 2: REQUIREMENT GATHERING (RG)\n\nPM runs discovery call with client\n- Understand current business workflows\n- Pain points in detail\n- What they need and want to achieve\n\nPM documents in MAIA KB:\n- Meeting notes\n- RG output document\n- Discovery call questionnaire",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_1",
+      "originalText": "STAGE 2: REQUIREMENT GATHERING (RG)\n\nPM runs discovery call with client\n- Understand current business workflows\n- Pain points in detail\n- What they need and want to achieve\n\nPM documents in MAIA KB:\n- Meeting notes\n- RG output document\n- Discovery call questionnaire"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_1",
+      "x": 400,
+      "y": 380,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_2",
+      "x": 100,
+      "y": 420,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "x": 400,
+      "y": 480,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 3: FIT ASSESSMENT + SOLUTION PROPOSAL\n\nPM assesses: can MAIA solve their problem?\n- Strong fit \u2192 propose solution\n- Partial fit \u2192 propose what's possible\n- Poor fit \u2192 park or disqualify\n\nDiscuss with Tech Lead, CTO, CEO\nDecision gates: Proceed / Park / Reject",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_2",
+      "originalText": "STAGE 3: FIT ASSESSMENT + SOLUTION PROPOSAL\n\nPM assesses: can MAIA solve their problem?\n- Strong fit \u2192 propose solution\n- Partial fit \u2192 propose what's possible\n- Poor fit \u2192 park or disqualify\n\nDiscuss with Tech Lead, CTO, CEO\nDecision gates: Proceed / Park / Reject"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_2",
+      "x": 400,
+      "y": 540,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_3",
+      "x": 100,
+      "y": 580,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "x": 400,
+      "y": 640,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 4: DEMO (optional)\n\nDepends on client \u2014 if they need to see it working\nPM prepares demo scenarios using client's data\nRun demo with client\nDemo successful \u2192 move to SOW\nDemo not successful \u2192 iterate on solution or park",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_3",
+      "originalText": "STAGE 4: DEMO (optional)\n\nDepends on client \u2014 if they need to see it working\nPM prepares demo scenarios using client's data\nRun demo with client\nDemo successful \u2192 move to SOW\nDemo not successful \u2192 iterate on solution or park"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_3",
+      "x": 400,
+      "y": 700,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_4",
+      "x": 100,
+      "y": 740,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_4",
+      "x": 400,
+      "y": 800,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 5: SOW (Statement of Work)\n\nPM drafts SOW covering:\n- Scope (what's included and excluded)\n- Timeline and milestones\n- Deliverables\n- Commercial terms\n\nReview with Tech Lead, CTO, CEO\nClient may request tweaks \u2192 multiple SOW versions\nClient signs final SOW",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_4",
+      "originalText": "STAGE 5: SOW (Statement of Work)\n\nPM drafts SOW covering:\n- Scope (what's included and excluded)\n- Timeline and milestones\n- Deliverables\n- Commercial terms\n\nReview with Tech Lead, CTO, CEO\nClient may request tweaks \u2192 multiple SOW versions\nClient signs final SOW"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_4",
+      "x": 400,
+      "y": 860,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_5",
+      "x": 100,
+      "y": 900,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_5",
+      "x": 400,
+      "y": 960,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 6: FEATURE SPEC (MAIA CODEX)\n\nPM writes detailed feature spec in MAIA CODEX:\n- prd.md \u2014 product requirements document\n- design.md \u2014 design and architecture\n- tasks.md \u2014 work breakdown\n- user stories + acceptance criteria\n\nPush to GitHub\nDev team checks MAIA CODEX for latest updates",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_5",
+      "originalText": "STAGE 6: FEATURE SPEC (MAIA CODEX)\n\nPM writes detailed feature spec in MAIA CODEX:\n- prd.md \u2014 product requirements document\n- design.md \u2014 design and architecture\n- tasks.md \u2014 work breakdown\n- user stories + acceptance criteria\n\nPush to GitHub\nDev team checks MAIA CODEX for latest updates"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_5",
+      "x": 400,
+      "y": 1020,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_6",
+      "x": 100,
+      "y": 1060,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_6",
+      "x": 400,
+      "y": 1120,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 7: BRIEF DEV (via LARK)\n\nPM converts MAIA CODEX spec \u2192 readable Lark doc\nDev team reads LARK for context\nDev team uses their AI coding agents on MAIA CODEX\n\nDaily standup: PM reports progress per client\nBlockers \u2192 PM hosts discussion with PIC or Tech Lead\n\u2192 Get clarity \u2192 Make decision \u2192 Continue",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_6",
+      "originalText": "STAGE 7: BRIEF DEV (via LARK)\n\nPM converts MAIA CODEX spec \u2192 readable Lark doc\nDev team reads LARK for context\nDev team uses their AI coding agents on MAIA CODEX\n\nDaily standup: PM reports progress per client\nBlockers \u2192 PM hosts discussion with PIC or Tech Lead\n\u2192 Get clarity \u2192 Make decision \u2192 Continue"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_6",
+      "x": 400,
+      "y": 1180,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_7",
+      "x": 100,
+      "y": 1220,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_7",
+      "x": 400,
+      "y": 1280,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 8: PM MANUAL TEST\n\nNo QA team \u2014 PM tests manually\nTest based on client business scenarios\nDoes feature work as specified?\n\nBug found \u2192 inform dev \u2192 dev fixes \u2192 PM re-tests\nRepeat until no issues",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_7",
+      "originalText": "STAGE 8: PM MANUAL TEST\n\nNo QA team \u2014 PM tests manually\nTest based on client business scenarios\nDoes feature work as specified?\n\nBug found \u2192 inform dev \u2192 dev fixes \u2192 PM re-tests\nRepeat until no issues"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_7",
+      "x": 400,
+      "y": 1340,
+      "width": 0,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ],
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "rectangle",
+      "id": "stage_8",
+      "x": 100,
+      "y": 1380,
+      "width": 600,
+      "height": 120,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#fafafa",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "text_8",
+      "x": 400,
+      "y": 1440,
+      "strokeColor": "#1e1e1e",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "text": "STAGE 9: UAT WITH CLIENT\n\nPM runs UAT with client\nTest case by test case\nAll test cases pass \u2192 client sign off\n\nBug found \u2192 inform dev \u2192 fix \u2192 re-UAT\nClient sign off \u2192 LAUNCH",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "opacity": 100,
+      "roundness": null,
+      "strokeWidth": 2,
+      "containerId": "stage_8",
+      "originalText": "STAGE 9: UAT WITH CLIENT\n\nPM runs UAT with client\nTest case by test case\nAll test cases pass \u2192 client sign off\n\nBug found \u2192 inform dev \u2192 fix \u2192 re-UAT\nClient sign off \u2192 LAUNCH"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  }
+}
