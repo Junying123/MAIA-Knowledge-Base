@@ -230,6 +230,12 @@
       "type": "file"
     },
     {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Agent Swarm Architecture.md",
+      "accessCount": 11,
+      "lastAccessed": 1777195651788,
+      "type": "file"
+    },
+    {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Script.md",
       "accessCount": 8,
       "lastAccessed": 1776757550514,
@@ -425,12 +431,6 @@
       "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Goose.md",
       "accessCount": 1,
       "lastAccessed": 1777193194748,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Agent Swarm Architecture.md",
-      "accessCount": 1,
-      "lastAccessed": 1777193767800,
       "type": "file"
     },
     {
