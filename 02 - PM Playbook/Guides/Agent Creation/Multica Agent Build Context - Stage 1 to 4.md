@@ -40,12 +40,13 @@ Use this file when creating agents so you do not need to jump between:
 - `hermes`: orchestration and bounded direct execution
 
 ### Core Operating Rule
-1. Plan first with `claude`.
-2. Execute mostly with `codex`.
-3. Validate with `opencode`.
-4. Polish in `cursor` when needed.
-5. Return critical outputs to `claude` for review gate.
-6. Hermes closes loop and reports to PM.
+1. Plan first with `hermes` planning stack (`plan` -> `writing-plans`).
+2. Use `claude` for high-ambiguity reasoning and critical review gates.
+3. Execute mostly with `codex`.
+4. Validate with `opencode`.
+5. Polish in `cursor` when needed.
+6. Run execution via `subagent-driven-development` and `multi-agent-dispatcher` where applicable.
+7. Hermes closes loop and reports to PM.
 
 ---
 
@@ -113,9 +114,15 @@ Execution rules:
 ```
 
 ### Parent Skills
+- `plan` (Hermes): planning-only mode and plan artifact creation
 - `writing-plans` (Codex): structure stage plans and handoff sequence
+- `writing-plans` (Hermes): detailed implementation planning in Hermes runtime
+- `subagent-driven-development` (Hermes): execute approved plan task-by-task with review gates
+- `multi-agent-dispatcher` (Hermes): route tasks across runtimes consistently
 - `dispatching-parallel-agents` (Codex): parallelize module-heavy execution safely
 - `verification-before-completion` (Codex): enforce completion checks before handoff
+- `multica-agent-skill-manager` (Hermes): manage skill assignment by agent role
+- `maia-multica-agent-config` (Hermes): apply MAIA-specific Multica agent configurations
 - `statusline` (Cursor): keep orchestration context visible in CLI flow
 
 ---
@@ -134,11 +141,12 @@ Execution rules:
 **Instructions**
 ```text
 Run Stage 1 end-to-end:
-1) Request Claude planning pass for scope and section completeness.
-2) Delegate drafting to Codex from GTM handoff.
-3) Delegate consistency check to OpenCode.
-4) Use Cursor for final polish if required.
-5) Return final proposal path and summary to Hermes Master.
+1) Run Hermes planning pass (`plan` + `writing-plans`) for scope and section completeness.
+2) Request Claude reasoning pass only for ambiguous tradeoffs.
+3) Delegate drafting to Codex from GTM handoff.
+4) Delegate consistency check to OpenCode.
+5) Use Cursor for final polish if required.
+6) Return final proposal path and summary to Hermes Master.
 ```
 
 **Skills**
@@ -170,16 +178,17 @@ Run Stage 1 end-to-end:
 **Instructions**
 ```text
 Run Stage 2 end-to-end:
-1) Ask Claude to plan extraction and classification flow.
-2) Run transcript quality gate (speaker clarity, missing segments, unclear passages).
-3) Delegate transcript synthesis and RG filling to Codex.
-4) Generate transcript evidence snippets for each major requirement and proposal claim.
-5) Run contradiction detection and confidence scoring (confirmed/inferred/unclear).
-6) Delegate consistency and AC-format checks to OpenCode.
-7) Build open-questions register with owner and due date.
-8) Generate Stage-3-ready module candidates block.
-9) Use Cursor for cleanup if needed.
-10) Return final RG output + classification + evidence snippet appendix + follow-ups.
+1) Run Hermes planning pass (`plan` + `writing-plans`) for extraction and classification flow.
+2) Ask Claude reasoning pass only for ambiguity reduction.
+3) Run transcript quality gate (speaker clarity, missing segments, unclear passages).
+4) Delegate transcript synthesis and RG filling to Codex.
+5) Generate transcript evidence snippets for each major requirement and proposal claim.
+6) Run contradiction detection and confidence scoring (confirmed/inferred/unclear).
+7) Delegate consistency and AC-format checks to OpenCode.
+8) Build open-questions register with owner and due date.
+9) Generate Stage-3-ready module candidates block.
+10) Use Cursor for cleanup if needed.
+11) Return final RG output + classification + evidence snippet appendix + follow-ups.
 ```
 
 **Skills**
@@ -218,11 +227,12 @@ Run Stage 2 end-to-end:
 **Instructions**
 ```text
 Run Stage 3 end-to-end:
-1) Ask Claude to plan module fan-out logic.
-2) Delegate narrative and module proposal generation to Codex.
-3) Delegate cross-file consistency checks to OpenCode.
-4) Use Cursor for final readability pass where needed.
-5) Return final narrative + all module proposal file paths.
+1) Run Hermes planning pass (`plan` + `writing-plans`) for module fan-out logic.
+2) Ask Claude reasoning pass only for narrative framing and edge cases.
+3) Delegate narrative and module proposal generation to Codex.
+4) Delegate cross-file consistency checks to OpenCode.
+5) Use Cursor for final readability pass where needed.
+6) Return final narrative + all module proposal file paths.
 ```
 
 **Skills (Must Use in Stage 3)**
@@ -272,12 +282,13 @@ Run Stage 3 end-to-end:
 **Instructions**
 ```text
 Run Stage 4 end-to-end:
-1) Ask Claude to define SOW structure and scope validation criteria.
-2) Delegate SOW drafting to Codex.
-3) Delegate scope-completeness checks to OpenCode.
-4) Create a slide deck draft from final SOW using JDX demo deck pattern (deck-stage HTML structure).
-5) Use Cursor for final PM review formatting.
-6) Return final SOW draft, slide deck draft, and unresolved items list.
+1) Run Hermes planning pass (`plan` + `writing-plans`) for SOW structure and scope validation criteria.
+2) Ask Claude reasoning pass for critical framing only.
+3) Delegate SOW drafting to Codex.
+4) Delegate scope-completeness checks to OpenCode.
+5) Create a slide deck draft from final SOW using JDX demo deck pattern (deck-stage HTML structure).
+6) Use Cursor for final PM review formatting.
+7) Return final SOW draft, slide deck draft, and unresolved items list.
 ```
 
 **Skills**
@@ -343,6 +354,7 @@ Execution rules:
 
 ## 7) Quick Runtime Guidance for Multica
 
+- Prefer `hermes` for planning and orchestration first (`plan`, `writing-plans`, `subagent-driven-development`, `multi-agent-dispatcher`).
 - Prefer `claude` for planning and critical review only.
 - Prefer `codex` for heavy generation and repetitive execution.
 - Prefer `opencode` for consistency sweeps.
