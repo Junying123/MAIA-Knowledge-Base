@@ -360,6 +360,78 @@
       "accessCount": 1,
       "lastAccessed": 1777014750345,
       "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Hermes.md",
+      "accessCount": 1,
+      "lastAccessed": 1777192912087,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Claude_Code.md",
+      "accessCount": 1,
+      "lastAccessed": 1777192912815,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Hermes.md",
+      "accessCount": 1,
+      "lastAccessed": 1777192913331,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Claude_Code.md",
+      "accessCount": 1,
+      "lastAccessed": 1777192913615,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Goose.md",
+      "accessCount": 1,
+      "lastAccessed": 1777192914041,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Agent Creation Guide.md",
+      "accessCount": 1,
+      "lastAccessed": 1777192924554,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Stage 1 - GTM Proposal - Orchestrator.md",
+      "accessCount": 1,
+      "lastAccessed": 1777193193142,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Stage 1 - GTM Proposal - Claude Code.md",
+      "accessCount": 1,
+      "lastAccessed": 1777193193357,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Orchestrator.md",
+      "accessCount": 1,
+      "lastAccessed": 1777193193685,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Claude Code.md",
+      "accessCount": 1,
+      "lastAccessed": 1777193194408,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Goose.md",
+      "accessCount": 1,
+      "lastAccessed": 1777193194748,
+      "type": "file"
+    },
+    {
+      "path": "02 - PM Playbook/Guides/Agent Creation/Agent Swarm Architecture.md",
+      "accessCount": 1,
+      "lastAccessed": 1777193767800,
+      "type": "file"
     }
   ],
   "userDirectives": []
