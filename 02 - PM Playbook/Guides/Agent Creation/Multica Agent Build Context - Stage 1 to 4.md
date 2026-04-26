@@ -113,9 +113,10 @@ Execution rules:
 ```
 
 ### Parent Skills
-- `planning`: task decomposition and routing
-- `workflow-governance`: handoff checks and closure criteria
-- `kb-standards`: frontmatter, naming, and wikilink hygiene
+- `writing-plans` (Codex): structure stage plans and handoff sequence
+- `dispatching-parallel-agents` (Codex): parallelize module-heavy execution safely
+- `verification-before-completion` (Codex): enforce completion checks before handoff
+- `statusline` (Cursor): keep orchestration context visible in CLI flow
 
 ---
 
@@ -141,8 +142,10 @@ Run Stage 1 end-to-end:
 ```
 
 **Skills**
-- `stage-routing`
-- `proposal-quality-check`
+- `writing-plans` (Codex)
+- `brainstorming` (Codex)
+- `problem-statement` (Codex)
+- `workshop-facilitation` (Codex)
 
 ### Stage 1 Subagents
 
@@ -175,9 +178,10 @@ Run Stage 2 end-to-end:
 ```
 
 **Skills**
-- `requirements-extraction`
-- `triage-classification`
-- `rg-quality-gate`
+- `customer-profile` (Claude)
+- `discovery-process` (Codex)
+- `discovery-interview-prep` (Codex)
+- `problem-statement` (Codex)
 
 ### Stage 2 Subagents
 
@@ -210,9 +214,10 @@ Run Stage 3 end-to-end:
 ```
 
 **Skills**
-- `module-fanout`
-- `narrative-synthesis`
-- `cross-file-consistency`
+- `customer-narrative` (Claude)
+- `feature-narrative` (Claude)
+- `user-story` (Codex)
+- `epic-breakdown-advisor` (Codex)
 
 ### Stage 3 Subagents
 
@@ -241,14 +246,19 @@ Run Stage 4 end-to-end:
 1) Ask Claude to define SOW structure and scope validation criteria.
 2) Delegate SOW drafting to Codex.
 3) Delegate scope-completeness checks to OpenCode.
-4) Use Cursor for final PM review formatting.
-5) Return final SOW draft and unresolved items list.
+4) Create a slide deck draft from final SOW using JDX demo deck pattern (deck-stage HTML structure).
+5) Use Cursor for final PM review formatting.
+6) Return final SOW draft, slide deck draft, and unresolved items list.
 ```
 
 **Skills**
-- `sow-structuring`
-- `scope-validation`
-- `review-readiness`
+- `sow-writer` (Claude)
+- `writing-plans` (Codex)
+- `storyboard` (Codex)
+- `workshop-facilitation` (Codex)
+- `press-release` (Codex)
+- `requesting-code-review` (Codex)
+- `verification-before-completion` (Codex)
 
 ### Stage 4 Subagents
 
@@ -257,6 +267,7 @@ Run Stage 4 end-to-end:
 | S4 Planner | Plan SOW sections and checks | claude | Narrative + module proposals | SOW plan |
 | S4 Drafter | Draft SOW | codex | Plan + source docs | SOW draft |
 | S4 Validator | Check scope completeness and alignment | opencode | SOW draft + source docs | Validation report |
+| S4 Slide Builder | Build slide deck from finalized SOW using JDX pattern | codex | Final SOW + deck template pattern | Slide deck draft (`.md` or `.html`) |
 | S4 Polisher (optional) | Final PM formatting pass | cursor | Validated SOW | Final SOW draft |
 
 ---
@@ -311,7 +322,89 @@ Execution rules:
 
 ---
 
-## 8) Build Checklist (Before Creating Agents)
+## 8) Applicable Skill Bundles (From Local Skills)
+
+These bundles are selected only from skills currently available in your local environment.
+
+### Stage 1 Bundle - GTM Proposal
+
+**Claude-first planning/review**
+- `customer-profile` (Claude)
+- `humanizer` (Claude)
+
+**Codex execution**
+- `writing-plans` (Codex)
+- `brainstorming` (Codex)
+- `problem-statement` (Codex)
+
+**Cursor finishing**
+- `shell` (Cursor)
+- `statusline` (Cursor)
+
+### Stage 2 Bundle - Requirement Gathering
+
+**Claude-first planning/review**
+- `customer-profile` (Claude)
+- `req-gathering-output` (Claude)
+- `discovery-pipeline` (Claude)
+
+**Codex execution**
+- `discovery-process` (Codex)
+- `discovery-interview-prep` (Codex)
+- `user-story` (Codex)
+
+**Cursor finishing**
+- `shell` (Cursor)
+- `statusline` (Cursor)
+
+### Stage 3 Bundle - Post-RG Synthesis
+
+**Claude-first planning/review**
+- `customer-narrative` (Claude)
+- `feature-narrative` (Claude)
+
+**Codex execution**
+- `epic-breakdown-advisor` (Codex)
+- `user-story-mapping` (Codex)
+- `storyboard` (Codex)
+
+**Cursor finishing**
+- `shell` (Cursor)
+- `statusline` (Cursor)
+
+### Stage 4 Bundle - SOW Writing
+
+**Claude-first planning/review**
+- `sow-writer` (Claude)
+- `humanizer` (Claude)
+- `stop-slop` (Claude)
+
+**Codex execution**
+- `writing-plans` (Codex)
+- `storyboard` (Codex)
+- `workshop-facilitation` (Codex)
+- `press-release` (Codex)
+- `obsidian-markdown` (Codex)
+- `verification-before-completion` (Codex)
+- `requesting-code-review` (Codex)
+
+**Cursor finishing**
+- `shell` (Cursor)
+- `statusline` (Cursor)
+- `canvas` (Cursor)
+
+### Cross-Stage Quality Bundle
+
+- `verification-before-completion` (Codex)
+- `requesting-code-review` (Codex)
+- `receiving-code-review` (Codex)
+- `systematic-debugging` (Codex)
+- `humanizer` (Claude)
+- `stop-slop` (Claude)
+
+---
+
+## 9) Build Checklist (Before Creating Agents)
 
 - [ ] Parent Hermes Master agent created
 - [ ] Stage 1-4 lead agents created
@@ -320,6 +413,7 @@ Execution rules:
 - [ ] Runtime choice is explicit and valid
 - [ ] Handoff and escalation are defined
 - [ ] Done criteria are measurable
+- [ ] Stage skills are selected from local inventory only
 
 ---
 
