@@ -169,11 +169,11 @@ Run Stage 1 end-to-end:
 ## Stage 2 - Requirement Gathering
 
 ### Stage Lead Agent
-| Field | Value |
-|---|---|
-| Name | Stage 2 Lead - Requirement Gathering |
+| Field       | Value                                                            |
+| ----------- | ---------------------------------------------------------------- |
+| Name        | Stage 2 Lead - Requirement Gathering                             |
 | Description | Converts transcript into structured RG output and classification |
-| Runtime | hermes |
+| Runtime     | hermes                                                           |
 
 **Instructions**
 ```text
