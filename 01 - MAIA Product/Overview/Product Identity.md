@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-03-29
+last_reviewed: 2026-04-22
 ---
 
 # MAIA Product Identity
@@ -88,6 +88,19 @@ These beliefs shape every product decision:
 4. **Automation should shrink, not eliminate, human judgment** — MAIA handles routine steps; humans handle exceptions and approvals. The goal is 60%+ automation with clear human-in-the-loop boundaries.
 
 5. **Outcomes over features** — The right measure of MAIA's value is business outcomes: DSO reduced, invoice errors eliminated, AR headcount freed. Not feature count.
+
+---
+
+## Technical Foundation
+
+MAIA is built on **ERPNext / Frappe** as its core open-source platform.
+
+| Layer | Approach |
+|---|---|
+| ERPNext / Frappe capability exists | Leverage it — extend, configure, or lightly customise the existing module |
+| ERPNext / Frappe has no equivalent | Build from scratch as a custom Frappe app or standalone module |
+
+This means every feature decision starts with the question: *"Can ERPNext do this already?"* Only if the answer is no (or the native behaviour conflicts with MAIA's UX) do we invest in custom builds. This keeps the core maintainable and accelerates delivery where the platform already solves the problem.
 
 ---
 

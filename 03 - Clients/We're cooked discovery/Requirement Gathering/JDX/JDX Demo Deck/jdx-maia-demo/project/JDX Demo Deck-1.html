@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAIA for JDX Tea — Demo Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="deck-stage.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #000; font-family: 'Inter', sans-serif; }
+
+/* ── CSS CUSTOM PROPERTIES ── */
+@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@property --shimmer-pos { syntax: '<percentage>'; initial-value: 0%; inherits: false; }
+
+:root {
+  --bg:          #09090D;
+  --surface:     #0F1014;
+  --glass:       rgba(255,255,255,0.028);
+  --glass-hi:    rgba(255,255,255,0.055);
+  --border:      rgba(255,255,255,0.07);
+  --border-hi:   rgba(255,255,255,0.13);
+  --text:        #F2F2F4;
+  --text-2:      #868E9A;
+  --text-3:      #42474F;
+  --amber:       #E89611;
+  --amber-2:     #FFB830;
+  --amber-dim:   rgba(232,150,17,0.12);
+  --amber-glow:  rgba(232,150,17,0.08);
+  --red:         #D83D3E;
+  --green:       #47B150;
+  --blue:        #3B8EFF;
+  --font-display:'Inter', sans-serif;
+  --font-head:   'Inter', sans-serif;
+  --font-body:   'Inter', sans-serif;
+  --font-mono:   'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+/* ── PROGRESS BAR ── */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--amber-2));
+  transition: width 0.5s cubic-bezier(0.16,1,0.3,1);
+  z-index: 9999;
+  box-shadow: 0 0 16px rgba(232,150,17,0.7), 0 0 4px rgba(232,150,17,1);
+}
+#slide-label {
+  position: fixed; top: 16px; right: 28px;
+  font-family: var(--font-head); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); z-index: 9999;
+  transition: opacity 0.4s;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9998; opacity: 0.4;
+}
+
+/* ── SLIDE BASE ── */
+section {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+section > * { position: relative; z-index: 1; }
+
+/* Subtle dot grid */
+section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: perspective(1800px) rotateY(-5deg) translateY(0px); }
+  50%       { transform: perspective(1800px) rotateY(-5deg) translateY(-12px); }
+}
+@keyframes pulse-amber {
+  0%, 100% { opacity: 0.15; transform: translate(-50%,-50%) scale(1); }
+  50%       { opacity: 0.28; transform: translate(-50%,-50%) scale(1.1); }
+}
+@keyframes rotate-border { to { --angle: 360deg; } }
+@keyframes shimmer-text {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes drawLine {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes bubble-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── GRADIENT TEXT ── */
+.grad-text {
+  background: linear-gradient(120deg, var(--amber) 0%, var(--amber-2) 40%, var(--amber) 80%);
+  background-size: 250% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-text 4s linear infinite;
+}
+
+/* ── GLASS CARD ── */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.glass-amber {
+  background: rgba(232,150,17,0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(232,150,17,0.22);
+  border-radius: 14px;
+}
+
+/* ── ANIMATED BORDER CARD ── */
+.border-card {
+  position: relative;
+  border-radius: 14px;
+}
+.border-card::before {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: 15px;
+  background: conic-gradient(from var(--angle), transparent 30%, rgba(232,150,17,0.6) 50%, transparent 70%);
+  animation: rotate-border 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.35s;
+  z-index: 0;
+}
+.border-card:hover::before { opacity: 1; }
+.border-card > * { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 1 — COVER
+══════════════════════════════════════════════ */
+.s-cover { justify-content: space-between; padding: 68px 96px; }
+.s-cover .top-bar {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.s-cover .maia-wordmark {
+  font-family: var(--font-head); font-size: 22px; font-weight: 600;
+  color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
+}
+.s-cover .top-meta {
+  font-family: var(--font-body); font-size: 20px; color: var(--text-3); font-weight: 400; letter-spacing: 0.06em;
+}
+.s-cover .center-block {
+  flex: 0 0 840px; display: flex; flex-direction: column;
+  justify-content: center; padding: 0 60px 0 0;
+}
+.s-cover .eyebrow {
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  color: var(--amber); letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 32px; display: flex; align-items: center; gap: 16px;
+}
+.s-cover .eyebrow::before {
+  content: ''; display: block; width: 36px; height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--amber-2));
+}
+.s-cover .hero-line {
+  font-family: var(--font-display); font-size: 116px;
+  font-weight: 700; line-height: 0.92; color: var(--text);
+  display: block;
+}
+.s-cover .hero-line.chaos-line { display: flex; align-items: baseline; gap: 12px; }
+.s-cover .typewriter-wrap {
+  display: inline-flex; align-items: baseline; gap: 0;
+}
+.s-cover .typewriter-text {
+  font-family: var(--font-display); font-size: 116px;
+  font-style: italic; line-height: 0.92; overflow: hidden;
+  max-width: 0; white-space: nowrap;
+  transition: max-width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.s-cover .typewriter-text.revealed { max-width: 600px; }
+.s-cover .cursor {
+  display: inline-block; width: 4px; height: 90px; background: var(--amber);
+  margin-left: 4px; margin-bottom: 4px; animation: cursor-blink 0.9s step-end infinite;
+  vertical-align: middle; border-radius: 2px; flex-shrink: 0;
+}
+.s-cover .hero-sub {
+  font-family: var(--font-body); font-size: 28px; font-weight: 400;
+  color: var(--text-2); margin-top: 32px; max-width: 680px; line-height: 1.5;
+}
+.s-cover .bottom-bar {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-top: 28px; border-top: 1px solid var(--border);
+}
+.s-cover .presented-by { font-size: 20px; color: var(--text-3); }
+.s-cover .client-name { font-family: var(--font-head); font-size: 24px; font-weight: 700; color: var(--text-2); }
+
+/* Cover entrance */
+section[data-deck-active].s-cover .top-bar        { animation: fadeIn    0.6s ease both; }
+section[data-deck-active].s-cover .eyebrow         { animation: fadeUp   0.55s cubic-bezier(0.16,1,0.3,1) 0.12s both; }
+section[data-deck-active].s-cover .hero-line:not(.chaos-line) { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
+section[data-deck-active].s-cover .hero-sub        { animation: fadeUp   0.6s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+section[data-deck-active].s-cover .bottom-bar      { animation: fadeIn   0.5s ease 0.55s both; }
+section[data-deck-active].s-cover .cover-right     { animation: fadeIn   0.9s ease 0.3s both; }
+section[data-deck-active].s-cover .screenshot-wrap { animation: float    5s ease-in-out 1.2s infinite; }
+
+/* ══════════════════════════════════════════════
+   SHARED SLIDE HEADER
+══════════════════════════════════════════════ */
+.slide-header {
+  padding: 56px 96px 0; margin-bottom: 36px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.slide-header .eyebrow {
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  color: var(--amber); letter-spacing: 0.16em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 14px;
+}
+.slide-header .eyebrow::before {
+  content: ''; display: block; width: 28px; height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--amber-2)); flex-shrink: 0;
+}
+.slide-header .title {
+  font-family: var(--font-head); font-size: 62px; font-weight: 600;
+  line-height: 1.0; letter-spacing: -0.02em; color: var(--text);
+}
+.slide-body { padding: 0 96px 56px; flex: 1; display: flex; flex-direction: column; }
+
+section[data-deck-active] .slide-header .eyebrow { animation: fadeUp 0.45s cubic-bezier(0.16,1,0.3,1) 0.06s both; }
+section[data-deck-active] .slide-header .title   { animation: fadeUp 0.5s  cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 2 — THE PAIN
+══════════════════════════════════════════════ */
+.pain-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr; gap: 18px; flex: 1;
+}
+.pain-card {
+  padding: 26px 28px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  cursor: default; overflow: hidden;
+}
+.pain-card:hover { transform: translateY(-4px) scale(1.01); }
+.pain-card .card-top { display: flex; align-items: center; gap: 14px; }
+.pain-card .num {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 400;
+  color: var(--text-3); letter-spacing: 0.08em;
+}
+.pain-card .icon {
+  width: 38px; height: 38px; border-radius: 9px;
+  background: var(--amber-dim); border: 1px solid rgba(232,150,17,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.pain-card .icon svg { color: var(--amber); }
+.pain-card .label {
+  font-family: var(--font-head); font-size: 22px; font-weight: 600;
+  color: var(--text); letter-spacing: -0.01em;
+}
+.pain-card .body {
+  font-family: var(--font-body); font-size: 23px; color: var(--text-2);
+  line-height: 1.45; font-weight: 400;
+}
+.quote-strip {
+  margin-top: 16px;
+  border-left: 3px solid var(--amber); border-radius: 0 12px 12px 0;
+  padding: 20px 28px; display: flex; gap: 28px; align-items: center;
+}
+.quote-strip .q-mark {
+  font-family: var(--font-display); font-size: 72px;
+  color: var(--amber); line-height: 0.75; flex-shrink: 0; opacity: 0.4;
+}
+.quote-strip .q-text {
+  font-family: var(--font-body); font-size: 23px; color: var(--text-2);
+  line-height: 1.55; font-style: italic;
+}
+.quote-strip .q-attr {
+  font-family: var(--font-head); font-size: 20px; color: var(--text-3);
+  font-weight: 600; margin-top: 10px; font-style: normal;
+}
+
+section[data-deck-active] .pain-card:nth-child(1) { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+section[data-deck-active] .pain-card:nth-child(2) { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.24s both; }
+section[data-deck-active] .pain-card:nth-child(3) { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.34s both; }
+section[data-deck-active] .pain-card:nth-child(4) { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.44s both; }
+section[data-deck-active] .quote-strip            { animation: fadeUp  0.5s cubic-bezier(0.16,1,0.3,1) 0.56s both; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 3 — FLOW DIAGRAM
+══════════════════════════════════════════════ */
+.flow-wrap {
+  flex: 1; display: flex; flex-direction: column;
+  padding: 0 76px 44px; min-height: 0; gap: 10px;
+}
+.flow-grid {
+  display: grid;
+  grid-template-columns: 52px repeat(6, 1fr);
+  grid-template-rows: auto 290px 32px 290px;
+  gap: 0;
+}
+.fl-side {
+  display: flex; align-items: center; justify-content: center;
+}
+.fl-side-text {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+.fl-side.today .fl-side-text { color: var(--text-3); }
+.fl-side.maia  .fl-side-text { color: var(--amber); }
+.fl-head { padding: 0 14px 10px; display: flex; flex-direction: column; gap: 2px; }
+.fl-head-num  {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 400;
+  color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1;
+}
+.fl-head-name {
+  font-family: var(--font-head); font-size: 24px; font-weight: 600;
+  color: var(--text); line-height: 1.15;
+}
+.fl-today {
+  background: rgba(255,255,255,0.02); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.06); border-right: none;
+  padding: 14px 14px; font-family: var(--font-body); font-size: 21px;
+  color: var(--text-3); line-height: 1.4;
+  display: flex; align-items: flex-start; height: 290px; overflow: hidden;
+  transition: background 0.2s, color 0.2s;
+}
+.fl-today:hover { background: rgba(255,255,255,0.04); color: var(--text-2); }
+.fl-today.first { border-radius: 10px 0 0 10px; }
+.fl-today.last  { border-right: 1px solid rgba(255,255,255,0.06); border-radius: 0 10px 10px 0; }
+.fl-maia {
+  background: rgba(71,150,17,0.04); backdrop-filter: blur(8px);
+  border: 1px solid rgba(232,150,17,0.22); border-right: none;
+  padding: 14px 14px; font-family: var(--font-body); font-size: 21px;
+  color: var(--text); font-weight: 500; line-height: 1.4;
+  display: flex; align-items: flex-start; height: 290px; overflow: hidden;
+  transition: background 0.2s, border-color 0.2s;
+}
+.fl-maia:hover { background: rgba(232,150,17,0.07); border-color: rgba(232,150,17,0.4); }
+.fl-maia.first { border-radius: 10px 0 0 10px; }
+.fl-maia.last  { border-right: 1px solid rgba(232,150,17,0.22); border-radius: 0 10px 10px 0; }
+.fl-transform { display: flex; align-items: center; justify-content: center; }
+.fl-transform svg path {
+  stroke: rgba(232,150,17,0.5);
+  stroke-dasharray: 40; stroke-dashoffset: 40;
+}
+section[data-deck-active] .fl-transform svg path {
+  animation: drawLine 0.4s ease forwards;
+}
+section[data-deck-active] .fl-transform:nth-of-type(1) svg path { animation-delay: 0.52s; }
+section[data-deck-active] .fl-transform:nth-of-type(2) svg path { animation-delay: 0.58s; }
+section[data-deck-active] .fl-transform:nth-of-type(3) svg path { animation-delay: 0.64s; }
+section[data-deck-active] .fl-transform:nth-of-type(4) svg path { animation-delay: 0.70s; }
+section[data-deck-active] .fl-transform:nth-of-type(5) svg path { animation-delay: 0.76s; }
+section[data-deck-active] .fl-transform:nth-of-type(6) svg path { animation-delay: 0.82s; }
+
+/* Flow stagger */
+section[data-deck-active] .fl-head:nth-child(2)   { animation: fadeUp 0.4s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
+section[data-deck-active] .fl-head:nth-child(3)   { animation: fadeUp 0.4s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+section[data-deck-active] .fl-head:nth-child(4)   { animation: fadeUp 0.4s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
+section[data-deck-active] .fl-head:nth-child(5)   { animation: fadeUp 0.4s cubic-bezier(0.16,1,0.3,1) 0.29s both; }
+section[data-deck-active] .fl-head:nth-child(6)   { animation: fadeUp 0.4s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+section[data-deck-active] .fl-head:nth-child(7)   { animation: fadeUp 0.4s cubic-bezier(0.16,1,0.3,1) 0.43s both; }
+section[data-deck-active] .fl-side.today          { animation: fadeIn 0.4s ease 0.10s both; }
+section[data-deck-active] .fl-today.first         { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+section[data-deck-active] .fl-today:nth-of-type(2){ animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.21s both; }
+section[data-deck-active] .fl-today:nth-of-type(3){ animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.28s both; }
+section[data-deck-active] .fl-today:nth-of-type(4){ animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.35s both; }
+section[data-deck-active] .fl-today:nth-of-type(5){ animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.42s both; }
+section[data-deck-active] .fl-today.last          { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.49s both; }
+section[data-deck-active] .fl-side.maia           { animation: fadeIn  0.4s ease 0.54s both; }
+section[data-deck-active] .fl-maia.first          { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.58s both; }
+section[data-deck-active] .fl-maia:nth-of-type(2) { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.65s both; }
+section[data-deck-active] .fl-maia:nth-of-type(3) { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.72s both; }
+section[data-deck-active] .fl-maia:nth-of-type(4) { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.79s both; }
+section[data-deck-active] .fl-maia:nth-of-type(5) { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.86s both; }
+section[data-deck-active] .fl-maia.last           { animation: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) 0.93s both; }
+
+/* ══════════════════════════════════════════════
+   DEMO SLIDES
+══════════════════════════════════════════════ */
+.demo-slide { padding: 44px 96px 44px; flex: 1; display: flex; flex-direction: column; }
+.demo-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 24px; gap: 40px;
+}
+.demo-step-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--amber-dim); border: 1px solid rgba(232,150,17,0.28);
+  border-radius: 100px; padding: 8px 20px 8px 12px;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  color: var(--amber); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
+}
+.demo-step-pill .step-num {
+  background: linear-gradient(135deg, var(--amber), var(--amber-2));
+  color: #0D0E11; width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 900;
+}
+.demo-title {
+  font-family: var(--font-head); font-size: 48px; font-weight: 600;
+  letter-spacing: -0.015em; line-height: 1.05; color: var(--text); flex: 1;
+}
+.demo-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; }
+.demo-col {
+  border-radius: 14px; padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.demo-col:hover { transform: translateY(-2px); }
+.demo-col.pain-col  { background: rgba(255,255,255,0.025); border: 1px solid var(--border); }
+.demo-col.solve-col { background: rgba(232,150,17,0.04); border: 1px solid rgba(232,150,17,0.28); }
+.demo-col-head {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.pain-col  .demo-col-head { color: var(--text-3); }
+.solve-col .demo-col-head { color: var(--amber); border-bottom-color: rgba(232,150,17,0.18); }
+.demo-col-head .head-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.pain-col  .head-dot { background: var(--text-3); }
+.solve-col .head-dot { background: var(--amber); }
+.demo-items { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.demo-items li {
+  display: flex; gap: 13px; font-family: var(--font-body);
+  font-size: 24px; line-height: 1.4; align-items: flex-start;
+}
+.demo-items li::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 10px;
+}
+.pain-col  .demo-items li { color: var(--text-2); }
+.pain-col  .demo-items li::before { background: var(--text-3); }
+.solve-col .demo-items li { color: var(--text); }
+.solve-col .demo-items li::before { background: var(--amber); }
+
+/* ── WHATSAPP CHAT MOCKUP ── */
+.wa-demo {
+  flex: 1; display: flex; flex-direction: column; gap: 10px;
+  overflow: hidden;
+}
+.wa-header {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 10px; border-bottom: 1px solid rgba(232,150,17,0.15);
+  margin-bottom: 4px;
+}
+.wa-header .wa-dot { width: 28px; height: 28px; border-radius: 50%; background: #128C7E; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.wa-header .wa-dot svg { color: #fff; }
+.wa-header .wa-name { font-family: var(--font-head); font-size: 18px; font-weight: 600; color: var(--text); }
+.wa-header .wa-status { font-size: 16px; color: #47B150; margin-top: 1px; }
+.wa-chat { display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+.wa-row { display: flex; }
+.wa-row.recv { justify-content: flex-start; }
+.wa-row.sent { justify-content: flex-end; }
+.wa-bubble {
+  max-width: 85%; padding: 9px 14px; font-family: var(--font-body);
+  font-size: 20px; line-height: 1.45; position: relative;
+}
+.wa-row.recv .wa-bubble {
+  background: #1F2C34; border-radius: 0 10px 10px 10px; color: #E9EDEF;
+}
+.wa-row.sent .wa-bubble {
+  background: #005C4B; border-radius: 10px 0 10px 10px; color: #E9EDEF;
+}
+.wa-time {
+  font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 3px;
+  text-align: right;
+}
+.wa-tick { color: #53BDEB; margin-left: 3px; }
+.wa-doc {
+  background: rgba(0,0,0,0.25); border-radius: 8px;
+  padding: 8px 12px; display: flex; align-items: center; gap: 8px;
+  margin-top: 4px; border: 1px solid rgba(255,255,255,0.08);
+}
+.wa-doc-icon { width: 32px; height: 32px; background: var(--amber); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.wa-doc-icon svg { color: #000; }
+.wa-doc-name { font-family: var(--font-body); font-size: 16px; color: var(--text); font-weight: 500; }
+.wa-doc-size { font-size: 14px; color: var(--text-3); }
+
+/* WA bubble entrance animations */
+section[data-deck-active] .wa-row:nth-child(1) .wa-bubble { animation: bubble-in 0.35s ease 0.3s both; }
+section[data-deck-active] .wa-row:nth-child(2) .wa-bubble { animation: bubble-in 0.35s ease 0.5s both; }
+section[data-deck-active] .wa-row:nth-child(3) .wa-bubble { animation: bubble-in 0.35s ease 0.7s both; }
+section[data-deck-active] .wa-row:nth-child(4) .wa-bubble { animation: bubble-in 0.35s ease 0.9s both; }
+section[data-deck-active] .wa-row:nth-child(5) .wa-bubble { animation: bubble-in 0.35s ease 1.1s both; }
+
+/* ── DEMO CHANNELS (non-WA slides) ── */
+.demo-channels { display: flex; gap: 14px; margin-top: 14px; }
+.demo-ch {
+  flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: 10px; padding: 13px 18px;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-family: var(--font-body); font-size: 21px; color: var(--text-2); line-height: 1.4;
+  transition: border-color 0.2s;
+}
+.demo-ch:hover { border-color: var(--border-hi); }
+.demo-ch .ch-badge {
+  font-family: var(--font-head); font-size: 19px; font-weight: 500;
+  padding: 4px 12px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.demo-ch .ch-badge.web { background: rgba(59,142,255,0.14); color: var(--blue); }
+.demo-ch .ch-badge.wa  { background: rgba(71,177,80,0.14);  color: var(--green); }
+
+/* Notice box */
+.notice-box {
+  background: rgba(216,61,62,0.05); border: 1px solid rgba(216,61,62,0.22);
+  border-radius: 10px; padding: 16px 22px;
+  font-family: var(--font-body); font-size: 21px; color: #EC5955;
+  line-height: 1.5; margin-top: 14px;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.notice-box strong { font-weight: 700; }
+
+/* Demo entrance animations */
+section[data-deck-active] .demo-top              { animation: fadeUp       0.45s cubic-bezier(0.16,1,0.3,1) 0.06s both; }
+section[data-deck-active] .demo-col.pain-col     { animation: slideFromLeft  0.5s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+section[data-deck-active] .demo-col.solve-col    { animation: slideFromRight 0.5s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
+section[data-deck-active] .demo-channels         { animation: fadeUp       0.45s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+section[data-deck-active] .notice-box            { animation: fadeUp       0.45s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+section[data-deck-active] .demo-items li:nth-child(1) { animation: fadeUp 0.35s ease 0.26s both; }
+section[data-deck-active] .demo-items li:nth-child(2) { animation: fadeUp 0.35s ease 0.34s both; }
+section[data-deck-active] .demo-items li:nth-child(3) { animation: fadeUp 0.35s ease 0.42s both; }
+section[data-deck-active] .demo-items li:nth-child(4) { animation: fadeUp 0.35s ease 0.50s both; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 9 — SCOPE
+══════════════════════════════════════════════ */
+.scope-cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 22px; flex: 1; }
+.scope-col {
+  border-radius: 14px; padding: 26px 26px 28px;
+  display: flex; flex-direction: column; gap: 0;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+}
+.scope-col:hover { transform: translateY(-5px); box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.scope-col.in  { background: rgba(232,150,17,0.04); border: 1px solid rgba(232,150,17,0.32); }
+.scope-col.p2  { background: rgba(59,142,255,0.03); border: 1px solid rgba(59,142,255,0.22); }
+.scope-col.out { background: rgba(255,255,255,0.02); border: 1px solid var(--border); opacity: 0.7; }
+.scope-head {
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.scope-col.in  .scope-head { color: var(--amber); border-bottom-color: rgba(232,150,17,0.2); }
+.scope-col.p2  .scope-head { color: var(--blue); border-bottom-color: rgba(59,142,255,0.2); }
+.scope-col.out .scope-head { color: var(--red); }
+.scope-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.scope-list li {
+  display: flex; gap: 11px; font-family: var(--font-body);
+  font-size: 22px; line-height: 1.35; align-items: flex-start;
+}
+.scope-list li::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 9px;
+}
+.scope-col.in  .scope-list li { color: var(--text); }
+.scope-col.in  .scope-list li::before { background: var(--amber); }
+.scope-col.p2  .scope-list li { color: var(--text-2); }
+.scope-col.p2  .scope-list li::before { background: var(--blue); }
+.scope-col.out .scope-list li { color: var(--text-2); }
+.scope-col.out .scope-list li::before { background: var(--red); }
+
+section[data-deck-active] .scope-col.in  { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+section[data-deck-active] .scope-col.p2  { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
+section[data-deck-active] .scope-col.out { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.38s both; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 10 — TIMELINE
+══════════════════════════════════════════════ */
+.timeline-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; flex: 1; }
+.timeline-phase {
+  border-radius: 14px; padding: 28px 28px 30px;
+  display: flex; flex-direction: column; gap: 0;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+}
+.timeline-phase:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(0,0,0,0.5); }
+.timeline-phase.p1 { background: rgba(232,150,17,0.04); border: 1px solid rgba(232,150,17,0.32); }
+.timeline-phase.p2 { background: rgba(59,142,255,0.03); border: 1px solid rgba(59,142,255,0.22); }
+.timeline-phase-head {
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.timeline-phase.p1 .timeline-phase-head { color: var(--amber); border-bottom-color: rgba(232,150,17,0.2); }
+.timeline-phase.p2 .timeline-phase-head { color: var(--blue); border-bottom-color: rgba(59,142,255,0.2); }
+.timeline-rows { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.timeline-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  font-family: var(--font-body); font-size: 22px;
+}
+.timeline-row .tr-label { color: var(--text-2); flex: 1; }
+.timeline-row .tr-est {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 500;
+  white-space: nowrap; margin-left: 16px;
+}
+.timeline-phase.p1 .timeline-row .tr-est { color: var(--amber); }
+.timeline-phase.p2 .timeline-row .tr-est { color: var(--blue); }
+.timeline-row.total-row {
+  background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1);
+  margin-top: 4px;
+}
+.timeline-row.total-row .tr-label { color: var(--text); font-weight: 600; }
+.timeline-row.total-row .tr-est { font-size: 22px; font-weight: 700; }
+.timeline-summary-bar {
+  margin-top: 18px; padding: 16px 22px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+  border-radius: 10px; display: flex; justify-content: space-between; align-items: center;
+}
+.timeline-summary-bar .tsb-label { font-family: var(--font-body); font-size: 22px; color: var(--text-2); }
+.timeline-summary-bar .tsb-value {
+  font-family: var(--font-head); font-size: 28px; font-weight: 700; color: var(--text);
+}
+.timeline-summary-bar .tsb-note { font-size: 19px; color: var(--text-3); margin-top: 3px; }
+
+section[data-deck-active] .timeline-phase.p1 { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+section[data-deck-active] .timeline-phase.p2 { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
+section[data-deck-active] .timeline-summary-bar { animation: fadeUp 0.45s cubic-bezier(0.16,1,0.3,1) 0.4s both; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 11 — COMMERCIAL
+══════════════════════════════════════════════ */
+.commercial-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 22px; flex: 1; }
+.comm-block {
+  border-radius: 14px; padding: 28px 28px 30px;
+  display: flex; flex-direction: column; gap: 0;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.comm-block:hover { transform: translateY(-3px); }
+.comm-block.dev  { background: rgba(232,150,17,0.04); border: 1px solid rgba(232,150,17,0.32); }
+.comm-block.monthly { background: rgba(255,255,255,0.02); border: 1px solid var(--border); }
+.comm-block-head {
+  font-family: var(--font-head); font-size: 20px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.comm-block.dev .comm-block-head { color: var(--amber); border-bottom-color: rgba(232,150,17,0.2); }
+.comm-block.monthly .comm-block-head { color: var(--text-3); }
+.comm-rows { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.comm-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  font-family: var(--font-body); font-size: 22px;
+}
+.comm-row .cr-label { color: var(--text-2); flex: 1; }
+.comm-row .cr-value {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 500;
+  color: var(--text-3); margin-left: 16px; white-space: nowrap;
+}
+.comm-row.total-row { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); margin-top: 4px; }
+.comm-row.total-row .cr-label { color: var(--text); font-weight: 600; }
+.comm-row.total-row .cr-value { color: var(--amber); font-size: 22px; font-weight: 700; }
+.milestone-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.milestone-item {
+  padding: 12px 16px; border-radius: 10px;
+  background: rgba(232,150,17,0.03); border: 1px solid rgba(232,150,17,0.15);
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.ms-badge {
+  font-family: var(--font-head); font-size: 17px; font-weight: 600;
+  color: var(--amber); background: rgba(232,150,17,0.1); border-radius: 6px;
+  padding: 4px 10px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+  letter-spacing: 0.04em;
+}
+.ms-body { flex: 1; }
+.ms-trigger { font-family: var(--font-body); font-size: 21px; color: var(--text-2); line-height: 1.4; }
+.ms-pct { font-family: var(--font-head); font-size: 19px; font-weight: 600; color: var(--text-3); margin-top: 3px; }
+
+section[data-deck-active] .comm-block.dev     { animation: slideFromLeft  0.5s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+section[data-deck-active] .comm-block.monthly { animation: slideFromRight 0.5s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
+section[data-deck-active] .milestone-stack    { animation: fadeUp 0.45s cubic-bezier(0.16,1,0.3,1) 0.38s both; }
+
+/* ══════════════════════════════════════════════
+   SLIDE 12 — CLOSE
+══════════════════════════════════════════════ */
+.s-close { justify-content: space-between; padding: 72px 96px; }
+.s-close .close-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.s-close .close-headline {
+  font-family: var(--font-display); font-size: 94px; font-weight: 700; line-height: 0.94;
+  letter-spacing: -0.025em; color: var(--text); max-width: 1100px;
+}
+.s-close .close-brand { text-align: right; }
+.s-close .close-brand-name {
+  font-family: var(--font-head); font-size: 26px; font-weight: 600;
+  color: var(--amber); letter-spacing: 0.1em;
+}
+.s-close .close-brand-tag { font-size: 20px; color: var(--text-3); margin-top: 5px; }
+.s-close .close-bottom {
+  display: flex; gap: 22px; align-items: stretch;
+  padding-top: 44px; border-top: 1px solid var(--border);
+}
+.contact-card {
+  background: rgba(255,255,255,0.025); border: 1px solid var(--border);
+  border-radius: 12px; padding: 22px 32px;
+  display: flex; flex-direction: column; gap: 5px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.contact-card:hover { border-color: rgba(232,150,17,0.3); transform: translateY(-2px); }
+.contact-card .c-label {
+  font-family: var(--font-head); font-size: 20px; font-weight: 600;
+  color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em;
+}
+.contact-card .c-value { font-family: var(--font-body); font-size: 26px; font-weight: 600; color: var(--text); }
+.s-close .next-steps {
+  flex: 1; font-family: var(--font-body); font-size: 24px;
+  color: var(--text-2); line-height: 1.5;
+  display: flex; align-items: center; padding-left: 8px;
+}
+
+section[data-deck-active].s-close .close-headline { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+section[data-deck-active].s-close .close-brand     { animation: fadeIn 0.5s ease 0.28s both; }
+section[data-deck-active].s-close .close-bottom    { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.4s both; }
+
+/* ══ MAIA UI MOCKUP ══ */
+.maia-mockup {
+  background: #0E1015; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; overflow: hidden; width: 920px;
+  box-shadow: 0 56px 140px rgba(0,0,0,0.9), 0 0 0 1px rgba(232,150,17,0.08);
+  font-family: var(--font-body);
+}
+.mockup-topbar {
+  background: #09090D; border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 13px 18px; display: flex; align-items: center; gap: 14px;
+}
+.mockup-dots { display: flex; gap: 6px; }
+.mockup-dot  { width: 10px; height: 10px; border-radius: 50%; }
+.mockup-dot.r { background: #D83D3E; } .mockup-dot.y { background: #E89611; } .mockup-dot.g { background: #47B150; }
+.mockup-tab {
+  font-size: 12px; font-weight: 600; color: #868E9A;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px; padding: 5px 14px; font-family: var(--font-body);
+}
+.mockup-tab.active { color: #F2F2F4; border-color: rgba(255,255,255,0.1); }
+.mockup-body { padding: 18px 18px 14px; }
+.mockup-title {
+  font-size: 14px; font-weight: 600; color: #F2F2F4;
+  margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-head);
+}
+.mockup-btn { font-size: 11px; font-weight: 700; background: #E89611; color: #09090D; border-radius: 5px; padding: 5px 12px; }
+.mockup-th {
+  display: grid; grid-template-columns: 1.2fr 2fr 1fr 1fr 1fr;
+  padding: 7px 11px; background: #09090D;
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 8px 8px 0 0;
+  font-size: 10px; font-weight: 600; color: #42474F; text-transform: uppercase; letter-spacing: 0.08em;
+  font-family: var(--font-head);
+}
+.mockup-row {
+  display: grid; grid-template-columns: 1.2fr 2fr 1fr 1fr 1fr;
+  padding: 9px 11px; border: 1px solid rgba(255,255,255,0.06); border-top: none;
+  font-size: 11px; color: #868E9A; align-items: center;
+  transition: background 0.15s; font-family: var(--font-body);
+}
+.mockup-row:last-child { border-radius: 0 0 8px 8px; }
+.mockup-row:hover { background: rgba(255,255,255,0.02); }
+.so-num { color: #E89611; font-weight: 400; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em; }
+.so-cust { color: #F2F2F4; font-weight: 500; }
+.chip {
+  display: inline-flex; align-items: center; padding: 3px 9px;
+  border-radius: 100px; font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; font-family: var(--font-head);
+}
+.chip.tobill  { background: rgba(232,150,17,0.15); color: #E89611; }
+.chip.paid    { background: rgba(71,177,80,0.15);  color: #47B150; }
+.chip.pending { background: rgba(59,142,255,0.12); color: #3B8EFF; }
+.chip.draft   { background: rgba(255,255,255,0.06); color: #42474F; }
+.mockup-stats {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 12px;
+}
+.stat-card {
+  background: #09090D; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 11px 12px;
+}
+.stat-lbl  { font-size: 10px; color: #42474F; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-head); }
+.stat-val  { font-size: 20px; font-weight: 600; color: #F2F2F4; margin-top: 3px; font-family: var(--font-head); }
+.stat-val span { font-size: 11px; font-weight: 500; color: #47B150; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div id="progress-bar" style="width:10%;"></div>
+<div id="slide-label"></div>
+
+<deck-stage width="1920" height="1080">
+
+<!-- ════════════════════════════════════════════
+     01 — COVER
+════════════════════════════════════════════ -->
+<section data-label="Cover" class="s-cover" style="display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;">
+
+  <!-- Canvas particle bg -->
+  <canvas id="cover-particles" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.6;"></canvas>
+
+  <!-- Ambient glow blobs -->
+  <div style="position:absolute;left:28%;top:40%;width:700px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(232,150,17,0.12) 0%,transparent 70%);pointer-events:none;z-index:0;filter:blur(60px);animation:pulse-amber 5s ease-in-out infinite;"></div>
+  <div style="position:absolute;left:60%;top:30%;width:500px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(59,142,255,0.07) 0%,transparent 70%);pointer-events:none;z-index:0;filter:blur(80px);"></div>
+
+  <div class="top-bar">
+    <div class="maia-wordmark">MAIA</div>
+    <div class="top-meta">Product Demo &nbsp;·&nbsp; April 2026</div>
+  </div>
+
+  <div style="flex:1;display:flex;align-items:center;overflow:hidden;">
+    <!-- Left text -->
+    <div class="center-block">
+      <div class="eyebrow">Mindhive × JDX Tea 九鼎香</div>
+      <span class="hero-line">From</span>
+      <span class="hero-line">Festival</span>
+      <span class="hero-line chaos-line">
+        <span class="typewriter-wrap">
+          <span class="typewriter-text grad-text" id="tw-chaos"><em style="-webkit-text-fill-color:unset;background:inherit;background-clip:inherit;">Chaos.</em></span>
+          <span class="cursor" id="tw-cursor"></span>
+        </span>
+      </span>
+      <div class="hero-sub">To frictionless orders — from intake to delivery, end to end.</div>
+    </div>
+
+    <!-- Right: screenshot or mockup -->
+    <div class="cover-right" style="flex:1;position:relative;height:100%;overflow:hidden;display:flex;align-items:center;">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:240px;background:linear-gradient(90deg,var(--bg) 20%,transparent);z-index:10;pointer-events:none;"></div>
+      <div style="position:absolute;left:0;right:0;top:0;height:110px;background:linear-gradient(180deg,var(--bg) 0%,transparent);z-index:10;pointer-events:none;"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(0deg,var(--bg) 0%,transparent);z-index:10;pointer-events:none;"></div>
+      <div style="position:absolute;left:50%;top:50%;width:860px;height:660px;border-radius:50%;background:radial-gradient(ellipse,rgba(232,150,17,0.16) 0%,rgba(232,150,17,0.06) 40%,transparent 70%);pointer-events:none;z-index:1;filter:blur(45px);animation:pulse-amber 4s ease-in-out 0.5s infinite;"></div>
+      <div class="screenshot-wrap" style="position:relative;z-index:5;">
+        <img src="uploads/pasted-1776603199402-0.png"
+             style="width:920px;height:558px;object-fit:cover;display:block;border-radius:14px;border:1px solid rgba(255,255,255,0.06);box-shadow:0 56px 140px rgba(0,0,0,0.85),0 0 0 1px rgba(232,150,17,0.09);"
+             alt="MAIA product screenshot"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <div style="display:none;" id="mockup-fallback"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="presented-by">Presented by Mindhive Sdn Bhd &nbsp;·&nbsp; johnson@mindhive.asia</div>
+    <div class="client-name">JDX Tea 九鼎香</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     02 — THE PAIN
+════════════════════════════════════════════ -->
+<section data-label="The Pain">
+  <div class="slide-header">
+    <div class="eyebrow">The Problem</div>
+    <div class="title">Hundreds of orders. <em class="grad-text">One WhatsApp thread.</em></div>
+  </div>
+  <div class="slide-body" style="gap:18px;">
+    <div class="pain-grid">
+
+      <div class="pain-card glass">
+        <div class="card-top">
+          <div class="num">01</div>
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="label">Order intake</div>
+        </div>
+        <div class="body">WhatsApp, Facebook, website — all channels feed a separate thread; no central log</div>
+      </div>
+
+      <div class="pain-card glass">
+        <div class="card-top">
+          <div class="num">02</div>
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="label">Document handling</div>
+        </div>
+        <div class="body">Pro formas created manually in SQL; customisation remarks typed as free text</div>
+      </div>
+
+      <div class="pain-card glass">
+        <div class="card-top">
+          <div class="num">03</div>
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <div class="label">Payment matching</div>
+        </div>
+        <div class="body">Slips sent to WhatsApp group; coordinators match manually — overnight during peak</div>
+      </div>
+
+      <div class="pain-card glass">
+        <div class="card-top">
+          <div class="num">04</div>
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div class="label">Multi-drop delivery</div>
+        </div>
+        <div class="body">50+ addresses on a spreadsheet; failed deliveries chased by phone — no record</div>
+      </div>
+
+    </div>
+
+    <div class="quote-strip glass">
+      <div class="q-mark">"</div>
+      <div>
+        <div class="q-text">If MAIA can optimise our human power in terms of billing and delivery tracking — if these two parts MAIA can do more efficiently than temporarily hiring newbies, that would help a lot already.</div>
+        <div class="q-attr">— Mr. Kong, JDX Tea (Requirements Gathering, March 2026)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     03 — E2E FLOW
+════════════════════════════════════════════ -->
+<section data-label="E2E Flow">
+  <div class="slide-header" style="margin-bottom:12px;">
+    <div class="eyebrow">The Full Picture</div>
+    <div class="title">Order to Cash — <em class="grad-text">Reimagined</em></div>
+  </div>
+  <div class="flow-wrap">
+    <div class="flow-grid">
+      <div></div>
+      <div class="fl-head"><div class="fl-head-num">01</div><div class="fl-head-name">Order Intake</div></div>
+      <div class="fl-head"><div class="fl-head-num">02</div><div class="fl-head-name">Pro Forma Invoice</div></div>
+      <div class="fl-head"><div class="fl-head-num">03</div><div class="fl-head-name">Payment Confirmation</div></div>
+      <div class="fl-head"><div class="fl-head-num">04</div><div class="fl-head-name">Remarks Propagation</div></div>
+      <div class="fl-head"><div class="fl-head-num">05</div><div class="fl-head-name">Multi-Drop Delivery</div></div>
+      <div class="fl-head"><div class="fl-head-num">06</div><div class="fl-head-name">Delivery Tracking</div></div>
+
+      <div class="fl-side today"><div class="fl-side-text">Today</div></div>
+      <div class="fl-today first">Orders via WhatsApp, Facebook, website & kiosk — no central log; each channel is a separate thread</div>
+      <div class="fl-today">Pro forma created manually in SQL; discount applied from memory; customisation typed as free text</div>
+      <div class="fl-today">Bank slip sent to WhatsApp payment group; coordinator manually matches each slip — standing by overnight</div>
+      <div class="fl-today">DO created after payment; remarks retyped from pro forma — details drop at handoff; warehouse reads screenshots</div>
+      <div class="fl-today">50+ delivery addresses tracked on a per-order spreadsheet; addresses captured verbally or via WhatsApp</div>
+      <div class="fl-today last">KV: driver photos matched manually from WhatsApp. Outstation: 3PL chased. Reschedules by phone — no record</div>
+
+      <div></div>
+      <div class="fl-transform"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M7 13l4 5 4-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="fl-transform"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M7 13l4 5 4-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="fl-transform"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M7 13l4 5 4-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="fl-transform"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M7 13l4 5 4-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="fl-transform"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M7 13l4 5 4-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="fl-transform"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v14M7 13l4 5 4-5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <div class="fl-side maia"><div class="fl-side-text">With MAIA</div></div>
+      <div class="fl-maia first">SO created in MAIA via web app or WhatsApp chatbot</div>
+      <div class="fl-maia">PDF generated instantly; structured remarks captured once</div>
+      <div class="fl-maia">Coordinator attaches slip in MAIA → one-click Invoice conversion</div>
+      <div class="fl-maia">Entered once at SO → flows to Invoice, DO, warehouse automatically</div>
+      <div class="fl-maia">One SO → multiple DOs; each drop tracked independently</div>
+      <div class="fl-maia last">Live status per drop; Daily Digest + delay alerts via chatbot</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     04 — DEMO 1: ORDER + PRO FORMA
+════════════════════════════════════════════ -->
+<section data-label="Demo 1 — Order & Pro Forma" class="demo-slide">
+  <div class="demo-top">
+    <div class="demo-step-pill"><span class="step-num">1</span>Demo Step 1 of 5</div>
+    <div class="demo-title">Create Order + <em class="grad-text">Pro Forma Invoice</em></div>
+  </div>
+  <div class="demo-cols">
+    <div class="demo-col pain-col">
+      <div class="demo-col-head"><span class="head-dot"></span>Pain today</div>
+      <ul class="demo-items">
+        <li>Accounts assistant manually creates pro forma in SQL one by one</li>
+        <li>Customisation remarks typed as free text — no structure; details drop at handoff</li>
+        <li>No central order log — orders arrive via WhatsApp, Facebook, website</li>
+      </ul>
+    </div>
+    <div class="demo-col solve-col">
+      <div class="demo-col-head"><span class="head-dot"></span>MAIA — WhatsApp Chatbot</div>
+      <div class="wa-demo">
+        <div class="wa-header">
+          <div class="wa-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.549 4.124 1.514 5.872L0 24l6.266-1.494C8.012 23.451 9.977 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.861 0-3.621-.5-5.147-1.38l-.369-.218-3.822.911.944-3.713-.24-.382A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></div>
+          <div><div class="wa-name">MAIA Sales Agent</div><div class="wa-status">● Online</div></div>
+        </div>
+        <div class="wa-chat">
+          <div class="wa-row sent"><div class="wa-bubble">Create order for Nexus Capital, 10x Corporate Hamper 108, gold ribbon, "Happy Hari Raya", no price tag<div class="wa-time">09:42<span class="wa-tick">✓✓</span></div></div></div>
+          <div class="wa-row recv"><div class="wa-bubble">✓ Order SO-0042 created for Nexus Capital<br>10× Corporate Hamper 108 — RM 4,200<br>Remarks: Gold ribbon · "Happy Hari Raya" · No price tag<div class="wa-doc"><div class="wa-doc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div><div class="wa-doc-name">Pro Forma Invoice SO-0042.pdf</div><div class="wa-doc-size">84 KB · Tap to open</div></div></div><div class="wa-time">09:42</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo-channels">
+    <div class="demo-ch"><span class="ch-badge web">Web App</span>Sales Workspace → Create SO → remarks fields → Generate PDF → Pro Forma Invoice</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     05 — DEMO 2: PAYMENT + INVOICE
+════════════════════════════════════════════ -->
+<section data-label="Demo 2 — Payment & Invoice" class="demo-slide">
+  <div class="demo-top">
+    <div class="demo-step-pill"><span class="step-num">2</span>Demo Step 2 of 5</div>
+    <div class="demo-title">Payment Confirmation + <em class="grad-text">Invoice Conversion</em></div>
+  </div>
+  <div class="demo-cols">
+    <div class="demo-col pain-col">
+      <div class="demo-col-head"><span class="head-dot"></span>Pain today</div>
+      <ul class="demo-items">
+        <li>Customer sends payment slip to a WhatsApp payment group</li>
+        <li>Coordinator manually matches each slip to the right pro forma</li>
+        <li>Someone stands by overnight during peak to keep orders moving</li>
+      </ul>
+    </div>
+    <div class="demo-col solve-col">
+      <div class="demo-col-head"><span class="head-dot"></span>MAIA — WhatsApp Chatbot</div>
+      <div class="wa-demo">
+        <div class="wa-header">
+          <div class="wa-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.549 4.124 1.514 5.872L0 24l6.266-1.494C8.012 23.451 9.977 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.861 0-3.621-.5-5.147-1.38l-.369-.218-3.822.911.944-3.713-.24-.382A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></div>
+          <div><div class="wa-name">MAIA Finance Agent</div><div class="wa-status">● Online</div></div>
+        </div>
+        <div class="wa-chat">
+          <div class="wa-row sent"><div class="wa-bubble">Payment received for SO-0042, attaching slip now [image]<div class="wa-time">10:15<span class="wa-tick">✓✓</span></div></div></div>
+          <div class="wa-row recv"><div class="wa-bubble">✓ Payment slip received for SO-0042 (RM 4,200)<br>Ready to convert to Invoice — confirm?<div class="wa-time">10:15</div></div></div>
+          <div class="wa-row sent"><div class="wa-bubble">Yes, convert<div class="wa-time">10:15<span class="wa-tick">✓✓</span></div></div></div>
+          <div class="wa-row recv"><div class="wa-bubble">✓ Invoice INV-0087 created for Nexus Capital<br>Receipt issued · Order status: Paid<div class="wa-time">10:15</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo-channels">
+    <div class="demo-ch"><span class="ch-badge web">Web App</span>Finance Workspace → attach payment slip against order → Convert to Invoice (one click)</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     06 — DEMO 3: REMARKS PROPAGATION
+════════════════════════════════════════════ -->
+<section data-label="Demo 3 — Remarks Propagation" class="demo-slide">
+  <div class="demo-top">
+    <div class="demo-step-pill"><span class="step-num">3</span>Demo Step 3 of 5</div>
+    <div class="demo-title">Customisation Remarks — <em class="grad-text">Entered Once, Used Everywhere</em></div>
+  </div>
+  <div class="demo-cols">
+    <div class="demo-col pain-col">
+      <div class="demo-col-head"><span class="head-dot"></span>Pain today</div>
+      <ul class="demo-items">
+        <li>Same remarks retyped or copy-pasted at 4 handoffs: pro forma → DO → warehouse → ops</li>
+        <li>Details drop along the way — warehouse discovers missed instructions mid-pack</li>
+        <li>Batch has to be unpicked and repacked; next batch already queued</li>
+      </ul>
+    </div>
+    <div class="demo-col solve-col">
+      <div class="demo-col-head"><span class="head-dot"></span>MAIA solves it</div>
+      <ul class="demo-items">
+        <li>Remarks entered once at the Sales Order</li>
+        <li>Automatically flow: SO → Invoice → Delivery Order → Warehouse view</li>
+        <li>No retyping. No copy-paste. No WhatsApp forwarding.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     07 — DEMO 4: MULTI-DROP
+════════════════════════════════════════════ -->
+<section data-label="Demo 4 — Multi-Drop Delivery" class="demo-slide">
+  <div class="demo-top">
+    <div class="demo-step-pill"><span class="step-num">4</span>Demo Step 4 of 5</div>
+    <div class="demo-title">Multi-Drop Delivery — <em class="grad-text">One Order, Many Destinations</em></div>
+  </div>
+  <div class="demo-cols">
+    <div class="demo-col pain-col">
+      <div class="demo-col-head"><span class="head-dot"></span>Pain today</div>
+      <ul class="demo-items">
+        <li>One corporate order = 50+ delivery addresses tracked on a per-order spreadsheet</li>
+        <li>No live view of what's pending, in progress, or complete</li>
+        <li>Failed deliveries rescheduled by phone — no record kept</li>
+      </ul>
+    </div>
+    <div class="demo-col solve-col">
+      <div class="demo-col-head"><span class="head-dot"></span>MAIA — WhatsApp Chatbot</div>
+      <div class="wa-demo">
+        <div class="wa-header">
+          <div class="wa-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.549 4.124 1.514 5.872L0 24l6.266-1.494C8.012 23.451 9.977 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.861 0-3.621-.5-5.147-1.38l-.369-.218-3.822.911.944-3.713-.24-.382A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></div>
+          <div><div class="wa-name">MAIA Logistics Agent</div><div class="wa-status">● Online</div></div>
+        </div>
+        <div class="wa-chat">
+          <div class="wa-row sent"><div class="wa-bubble">Split SO-0042 to 3 DOs: 20 units first, 15 units second, 15 units third<div class="wa-time">11:03<span class="wa-tick">✓✓</span></div></div></div>
+          <div class="wa-row recv"><div class="wa-bubble">✓ 3 Delivery Orders created from SO-0042<br>DO-0081 · 20 units · To Schedule<br>DO-0082 · 15 units · To Schedule<br>DO-0083 · 15 units · To Schedule<br>Set delivery dates when ready.<div class="wa-time">11:03</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo-channels">
+    <div class="demo-ch"><span class="ch-badge web">Web App</span>Logistics Workspace → create multiple DOs from one SO → each with own date and status</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     08 — DEMO 5: DELIVERY TRACKING
+════════════════════════════════════════════ -->
+<section data-label="Demo 5 — Delivery Tracking" class="demo-slide">
+  <div class="demo-top">
+    <div class="demo-step-pill"><span class="step-num">5</span>Demo Step 5 of 5</div>
+    <div class="demo-title">Delivery Status — <em class="grad-text">Live, Per Drop</em></div>
+  </div>
+  <div class="demo-cols">
+    <div class="demo-col pain-col">
+      <div class="demo-col-head"><span class="head-dot"></span>Pain today</div>
+      <ul class="demo-items">
+        <li>Coordinator scrolls WhatsApp to match driver photos to the right drop</li>
+        <li>Outstation: chasing 3PL for tracking numbers and screenshots</li>
+        <li>Failed deliveries rescheduled by phone — no record, no context retained</li>
+      </ul>
+    </div>
+    <div class="demo-col solve-col">
+      <div class="demo-col-head"><span class="head-dot"></span>MAIA — WhatsApp Chatbot</div>
+      <div class="wa-demo">
+        <div class="wa-header">
+          <div class="wa-dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.549 4.124 1.514 5.872L0 24l6.266-1.494C8.012 23.451 9.977 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.861 0-3.621-.5-5.147-1.38l-.369-.218-3.822.911.944-3.713-.24-.382A9.938 9.938 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></div>
+          <div><div class="wa-name">MAIA Logistics Agent</div><div class="wa-status">● Online</div></div>
+        </div>
+        <div class="wa-chat">
+          <div class="wa-row sent"><div class="wa-bubble">Mark DO-0081 as delivered<div class="wa-time">14:22<span class="wa-tick">✓✓</span></div></div></div>
+          <div class="wa-row recv"><div class="wa-bubble">✓ DO-0081 marked Delivered · 14:22<br><br>📋 SO-0042 Summary<br>DO-0081 · 20 units · ✅ Delivered<br>DO-0082 · 15 units · 🕐 Scheduled Apr 22<br>DO-0083 · 15 units · 📋 To Schedule<div class="wa-time">14:22</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="demo-channels">
+    <div class="demo-ch"><span class="ch-badge web">Web App</span>Logistics Workspace → update DO status → all drops for one order in one view</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     09 — SCOPE SUMMARY
+════════════════════════════════════════════ -->
+<section data-label="Phase 1 Scope">
+  <div class="slide-header">
+    <div class="eyebrow">Scope Summary</div>
+    <div class="title">What's In, <em class="grad-text">What's Out</em></div>
+  </div>
+  <div class="slide-body">
+    <div class="scope-cols">
+      <div class="scope-col in">
+        <div class="scope-head">Phase 1 — Included</div>
+        <ul class="scope-list">
+          <li>Sales Order creation + Pro Forma Invoice PDF</li>
+          <li>Customisation remarks — structured + auto-propagation</li>
+          <li>Payment matching + Invoice conversion</li>
+          <li>Delivery Order creation from Invoice</li>
+          <li>Multi-Drop Delivery (Blanket Order)</li>
+          <li>Delivery status tracking</li>
+          <li>Sales Agent Chatbot (WhatsApp)</li>
+          <li>Logistics Agent Chatbot (WhatsApp)</li>
+          <li>PDF output: Pro Forma, Invoice, Credit Note, Receipt, DO</li>
+        </ul>
+      </div>
+      <div class="scope-col p2">
+        <div class="scope-head">Phase 2</div>
+        <ul class="scope-list">
+          <li>Consignment kiosk daily stock reporting</li>
+          <li>Inventory management</li>
+        </ul>
+      </div>
+      <div class="scope-col out">
+        <div class="scope-head">Not in Scope</div>
+        <ul class="scope-list">
+          <li>Giant / AEON B2B portal billing</li>
+          <li>SQL accounting integration</li>
+          <li>Automated bank reconciliation</li>
+          <li>Delivery route optimisation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     10 — ESTIMATED TIMELINE
+════════════════════════════════════════════ -->
+<section data-label="Estimated Timeline">
+  <div class="slide-header">
+    <div class="eyebrow">Delivery Plan</div>
+    <div class="title">Estimated <em class="grad-text">Timeline</em></div>
+  </div>
+  <div class="slide-body" style="gap:18px;">
+    <div class="timeline-cols">
+
+      <div class="timeline-phase p1">
+        <div class="timeline-phase-head">Phase 1 — Core MAIA + SQL Integration</div>
+        <div class="timeline-rows">
+          <div class="timeline-row"><span class="tr-label">Onboarding &amp; Setup</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row"><span class="tr-label">SQL Data Migration (customers, items, pricing, inventory)</span><span class="tr-est">1–2 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">Build &amp; Configuration (chatbots, workspaces, remarks, multi-drop)</span><span class="tr-est">3–4 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">User Training &amp; UAT</span><span class="tr-est">1–2 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">Go-Live &amp; Hypercare</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row total-row"><span class="tr-label">Phase 1 Total</span><span class="tr-est">7–9 weeks</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-phase p2">
+        <div class="timeline-phase-head">Phase 2 — Kiosk Reporting + Inventory</div>
+        <div class="timeline-rows">
+          <div class="timeline-row"><span class="tr-label">Consignment Kiosk Daily Stock Reporting</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row"><span class="tr-label">Inventory Management (SKU stock, movements, alerts)</span><span class="tr-est">2–3 weeks</span></div>
+          <div class="timeline-row"><span class="tr-label">User Training &amp; UAT</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row"><span class="tr-label">Go-Live &amp; Hypercare</span><span class="tr-est">1 week</span></div>
+          <div class="timeline-row total-row"><span class="tr-label">Phase 2 Total</span><span class="tr-est">5–6 weeks</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="timeline-summary-bar">
+      <div>
+        <div class="tsb-label">Full engagement estimate</div>
+        <div class="tsb-note">Phase 2 timeline contingent on Phase 1 go-live readiness</div>
+      </div>
+      <div class="tsb-value">12–15 weeks total</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     11 — COMMERCIAL STRUCTURE
+════════════════════════════════════════════ -->
+<section data-label="Commercial">
+  <div class="slide-header">
+    <div class="eyebrow">Investment</div>
+    <div class="title">Commercial <em class="grad-text">Structure</em></div>
+  </div>
+  <div class="slide-body" style="gap:18px;">
+    <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:22px;flex:1;">
+
+      <!-- LEFT: dev cost + payment terms -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <div class="comm-block dev" style="flex:0 0 auto;">
+          <div class="comm-block-head">One-Off Development Cost</div>
+          <div class="comm-rows">
+            <div class="comm-row"><span class="cr-label">Phase 1 — Core MAIA + SQL Integration</span><span class="cr-value" style="color:var(--amber);">RM 20,000</span></div>
+            <div class="comm-row"><span class="cr-label">Phase 2 — Kiosk Reporting + Inventory</span><span class="cr-value" style="color:var(--amber);">RM 7,500</span></div>
+            <div class="comm-row total-row"><span class="cr-label">Grand Total</span><span class="cr-value" style="color:var(--amber);font-size:24px;">RM 27,500</span></div>
+          </div>
+        </div>
+
+        <div class="comm-block dev" style="flex:0 0 auto;background:rgba(232,150,17,0.02);border-color:rgba(232,150,17,0.18);">
+          <div class="comm-block-head" style="color:var(--text-2);">Payment Terms</div>
+          <div class="milestone-stack" style="margin-top:0;">
+            <div class="milestone-item">
+              <div class="ms-badge">M1 · 50%</div>
+              <div class="ms-body">
+                <div class="ms-trigger">Project Confirmation — <strong style="color:var(--amber);">RM 13,750</strong></div>
+                <div class="ms-pct">Due upon project commencement</div>
+              </div>
+            </div>
+            <div class="milestone-item">
+              <div class="ms-badge">M2 · 50%</div>
+              <div class="ms-body">
+                <div class="ms-trigger">UAT Sign-Off — <strong style="color:var(--amber);">RM 13,750</strong></div>
+                <div class="ms-pct">Due upon UAT completion &amp; client acceptance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: monthly maintenance -->
+      <div class="comm-block monthly" style="align-self:start;">
+        <div class="comm-block-head">Monthly Maintenance</div>
+        <div class="comm-rows">
+          <div class="comm-row"><span class="cr-label">Platform maintenance</span><span class="cr-value" style="color:var(--amber);">RM 2,500</span></div>
+          <div class="comm-row"><span class="cr-label">Infrastructure &amp; hosting</span><span class="cr-value">TBC</span></div>
+          <div class="comm-row"><span class="cr-label">OpenAI / AI usage</span><span class="cr-value">TBC</span></div>
+          <div class="comm-row"><span class="cr-label">WhatsApp Business</span><span class="cr-value">TBC</span></div>
+          <div class="comm-row total-row"><span class="cr-label">Estimated Monthly Total</span><span class="cr-value" style="color:var(--amber);font-size:22px;">From RM 2,500</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     12 — CLOSE
+════════════════════════════════════════════ -->
+<section data-label="Close" class="s-close" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;left:20%;bottom:0;width:900px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(232,150,17,0.09) 0%,transparent 65%);pointer-events:none;filter:blur(80px);z-index:0;"></div>
+  <div class="close-top">
+    <div class="close-headline">Ready to run<br>peak season<br><em class="grad-text">without the chaos.</em></div>
+    <div class="close-brand">
+      <div class="close-brand-name">MAIA</div>
+      <div class="close-brand-tag">mindhive.asia</div>
+    </div>
+  </div>
+  <div class="close-bottom">
+    <div class="next-steps">Questions? Let's walk through anything you'd like to revisit.</div>
+    <div class="contact-card">
+      <div class="c-label">Email</div>
+      <div class="c-value">johnson@mindhive.asia</div>
+    </div>
+    <div class="contact-card">
+      <div class="c-label">Phone</div>
+      <div class="c-value">+60 17-706 5922</div>
+    </div>
+  </div>
+</section>
+
+</deck-stage>
+
+<script>
+// ── PROGRESS BAR + SLIDE LABEL ──
+const progressBar = document.getElementById('progress-bar');
+const slideLabelEl = document.getElementById('slide-label');
+const stage = document.querySelector('deck-stage');
+
+stage.addEventListener('slidechange', (e) => {
+  const { index, total, slide } = e.detail;
+  progressBar.style.width = ((index + 1) / total * 100) + '%';
+  slideLabelEl.textContent = slide ? (slide.getAttribute('data-label') || '') : '';
+
+  // Trigger typewriter when cover becomes active
+  if (slide && slide.getAttribute('data-label') === 'Cover') {
+    startTypewriter();
+  }
+
+  // Trigger canvas particles on cover
+  if (slide && slide.getAttribute('data-label') === 'Cover') {
+    startParticles();
+  } else {
+    stopParticles();
+  }
+});
+
+// ── TYPEWRITER ──
+let twDone = false;
+function startTypewriter() {
+  if (twDone) return;
+  const el = document.getElementById('tw-chaos');
+  const cursor = document.getElementById('tw-cursor');
+  if (!el) return;
+  setTimeout(() => {
+    el.classList.add('revealed');
+    setTimeout(() => {
+      if (cursor) cursor.style.display = 'none';
+      twDone = true;
+    }, 1800);
+  }, 700);
+}
+
+// ── CANVAS PARTICLES ──
+let particleAnim = null;
+let particleCanvas = null;
+let particles = [];
+
+function startParticles() {
+  if (particleAnim) return;
+  particleCanvas = document.getElementById('cover-particles');
+  if (!particleCanvas) return;
+  particleCanvas.width  = 1920;
+  particleCanvas.height = 1080;
+  const ctx = particleCanvas.getContext('2d');
+  particles = Array.from({ length: 55 }, () => ({
+    x: Math.random() * 1920, y: Math.random() * 1080,
+    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
+    r: Math.random() * 1.8 + 0.5,
+    o: Math.random() * 0.5 + 0.2,
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, 1920, 1080);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > 1920) p.vx *= -1;
+      if (p.y < 0 || p.y > 1080) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(232,150,17,${p.o * 0.7})`;
+      ctx.fill();
+    });
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 130) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(232,150,17,${0.1 * (1 - d / 130)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    particleAnim = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function stopParticles() {
+  if (particleAnim) { cancelAnimationFrame(particleAnim); particleAnim = null; }
+}
+
+// ── MAIA UI MOCKUP FALLBACK ──
+const fallback = document.getElementById('mockup-fallback');
+if (fallback) {
+  fallback.innerHTML = `<div class="maia-mockup">
+    <div class="mockup-topbar">
+      <div class="mockup-dots"><div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div></div>
+      <div class="mockup-tab">Dashboard</div>
+      <div class="mockup-tab active">Sales Orders</div>
+      <div class="mockup-tab">Invoices</div>
+    </div>
+    <div class="mockup-body">
+      <div class="mockup-title"><span>Sales Orders</span><span class="mockup-btn">+ New Order</span></div>
+      <div class="mockup-th"><span>Order No.</span><span>Customer</span><span>Amount</span><span>Status</span><span>Date</span></div>
+      <div class="mockup-row"><span class="so-num">SO-0042</span><span class="so-cust">Nexus Capital Sdn Bhd</span><span>RM 4,200</span><span><span class="chip tobill">To Bill</span></span><span>20 Apr</span></div>
+      <div class="mockup-row"><span class="so-num">SO-0041</span><span class="so-cust">Petronas Corporate</span><span>RM 8,750</span><span><span class="chip paid">Paid</span></span><span>19 Apr</span></div>
+      <div class="mockup-row"><span class="so-num">SO-0040</span><span class="so-cust">Maybank Berhad</span><span>RM 2,100</span><span><span class="chip pending">Pending</span></span><span>18 Apr</span></div>
+      <div class="mockup-row"><span class="so-num">SO-0039</span><span class="so-cust">TM One Enterprise</span><span>RM 6,300</span><span><span class="chip paid">Paid</span></span><span>17 Apr</span></div>
+      <div class="mockup-row"><span class="so-num">SO-0038</span><span class="so-cust">CIMB Group Holdings</span><span>RM 1,850</span><span><span class="chip draft">Draft</span></span><span>16 Apr</span></div>
+      <div class="mockup-stats">
+        <div class="stat-card"><div class="stat-lbl">Total Orders</div><div class="stat-val">142 <span>↑ 18%</span></div></div>
+        <div class="stat-card"><div class="stat-lbl">Pending Payment</div><div class="stat-val">23</div></div>
+        <div class="stat-card"><div class="stat-lbl">Revenue MTD</div><div class="stat-val">RM 94k</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Auto-start on first load if cover is active
+const initSlide = stage.querySelector('[data-deck-active]');
+if (initSlide && initSlide.getAttribute('data-label') === 'Cover') {
+  startParticles();
+  startTypewriter();
+}
+</script>
+</body>
+</html>

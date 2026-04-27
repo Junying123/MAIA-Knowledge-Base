@@ -2,7 +2,7 @@
 owner: Gareth
 status: draft
 doctype: Quotation
-last_reviewed: 2026-04-15
+last_reviewed: 2026-04-19
 ---
 
 # Quotation — Product Spec
@@ -38,12 +38,12 @@ last_reviewed: 2026-04-15
 - [x] Order type selection (Sales, Maintenance, Shopping Cart)
 - [x] Valid Until date
 - [x] Currency selection (MYR only currently)
-- [ ] [TO FILL] — PDF export from Quotation
-- [ ] [TO FILL] — Column filters and sort on Quotation list view
-- [ ] [TO FILL] — Quotation numbering format (SAL-QTN-YYYY-NNNNN)
+- [x] Remarks field (free text)
+- [x] Terms and Conditions field (free text)
+- [x] List view with status tabs, sortable columns, search, Export CSV
+- [x] Generate PDF — available on OPEN, LOST, EXPIRED statuses; `[TO FILL]` — available on DRAFT?
+- [x] Quotation numbering format: SAL-QTN-YYYY-NNNNN (e.g. SAL-QTN-2026-00304) — confirmed
 - [ ] [TO FILL] — Duplicate / Clone Quotation
-- [ ] [TO FILL] — Email Quotation to customer from MAIA
-
 ---
 
 ## 3. Feature Specs
@@ -63,7 +63,7 @@ last_reviewed: 2026-04-15
 **Subfeatures:**
 - **Details section** (no validation errors — all fields have defaults):
   - Date: defaults to today (MM/DD/YYYY)
-  - Valid Until: defaults to tomorrow
+  - Valid Until: defaults to 30 days from today (not tomorrow — spec corrected 2026-04-19)
   - Order Type: Sales / Maintenance / Shopping Cart (default: Sales)
   - Currency: MYR (RM) only
   - Incoterm: 11 options — CFR, CIF, CIP, CPT, DAP, DDP, DPU, EXW, FAS, FCA, FOB
@@ -117,8 +117,8 @@ last_reviewed: 2026-04-15
 - `Subtotal = Sum of all item Amounts`
 - `Grand Total = Subtotal + Charges − Discount`
 - Real-time cascade: item change → Subtotal → Grand Total → Payment Amounts
-- Charges: `[TO FILL]` — types (delivery, handling, etc.)
-- Discount: `[TO FILL]` — fixed amount or percentage?
+- Charges: 5 fixed types — Delivery, Handling, Service, Packaging, Insurance (each independently addable)
+- Discount: fixed RM amount only (not percentage); single header-level discount field
 
 ---
 
@@ -153,26 +153,39 @@ last_reviewed: 2026-04-15
 | Description | Quotation progresses from DRAFT to OPEN, then either ORDERED (via SO) or LOST |
 | Business Rule | LOST is terminal (cannot reopen); ORDERED only set when converted SO is submitted |
 | Field Behaviour | DRAFT editable; OPEN locked |
-| Edge Cases | Mark as Lost uses native browser dialog (window.confirm) — not a component modal |
+| Edge Cases | Mark as Lost shows a component modal (not native browser dialog) with optional Lost Reasons dropdown |
 | Client Examples | All clients |
 
 **Status flow:**
 ```
-Create New → DRAFT → [Submit] → OPEN → [Convert to SO + Submit SO] → ORDERED
-                        ↓              → [Mark as Lost] → LOST (terminal)
-                     Delete
-                        ↓
+Create New → DRAFT → [Submit] → OPEN → [Convert to SO + Submit SO] → ORDERED (fully)
+                        ↓              → [Partial SO conversion] → PARTIALLY ORDERED
+                     Delete            → [Mark as Lost] → LOST (terminal)
+                        ↓              → [Valid Until date passes] → EXPIRED (auto)
                      Removed
 ```
 
+**Actions per status (confirmed from live app):**
+
+| Status | Available Actions |
+|---|---|
+| DRAFT | Submit (→ OPEN), Delete |
+| OPEN | Generate PDF, Create Sales Order (→ SO DRAFT), dropdown → Mark as Lost |
+| LOST | Generate PDF only (terminal) |
+| EXPIRED | Generate PDF only (auto-terminal; Valid Until date passed) |
+| CANCELLED | `[TO FILL]` — no examples in demo |
+| PARTIALLY ORDERED | `[TO FILL]` — no examples in demo |
+| ORDERED | `[TO FILL]` — no examples in demo |
+
 **Subfeatures:**
 - DRAFT: all fields editable; Delete (simple confirm); Submit (validation run)
-- OPEN: locked; Convert to SO; Mark as Lost; `[TO FILL]` — any other actions from OPEN
-- ORDERED: set when converted SO is submitted; Quotation effectively closed/won
-- LOST: terminal; no further actions; retained in system
-- "Mark as Lost" uses native `window.confirm()` browser dialog — cannot be automated in Playwright
-- `[TO FILL]` — can OPEN quotation be edited? Amend flow?
-- `[TO FILL]` — Quotation expiry (Valid Until date) — does system auto-expire?
+- OPEN: locked; "Create Sales Order" is primary action; dropdown reveals only "Mark as Lost"
+- OPEN → Mark as Lost: component modal — "Are you sure you want to mark [QTN] as lost? This action cannot be undone." + optional "Lost Reasons" dropdown (multi-select combobox) + Cancel / Mark as Lost / Close buttons
+- PARTIALLY ORDERED: some but not all line items converted to SO; quotation stays active
+- ORDERED: all items converted; Quotation won/closed
+- LOST: terminal; Generate PDF only; no further actions; retained for audit
+- EXPIRED: system auto-sets when Valid Until date passes — confirmed via "Expired" and "Expiring Soon" list tabs; Generate PDF only
+- "Warm Leads" and "Follow-up Overdue" are list view filters, not Quotation statuses
 
 ---
 
@@ -199,20 +212,24 @@ Create New → DRAFT → [Submit] → OPEN → [Convert to SO + Submit SO] → O
 
 | Attribute | Detail |
 |---|---|
-| Description | Main page listing all quotations with search, filter, and navigation capabilities |
-| Business Rule | [TO FILL] |
-| Field Behaviour | [TO FILL] |
-| Edge Cases | [TO FILL] |
+| Description | Main page listing all quotations with search, status tabs, sortable columns, and Export CSV |
+| Business Rule | All status tabs are pre-filtered views; "All Quotations" shows full list |
+| Field Behaviour | Column headers are clickable sort buttons; search box filters by quotation content |
+| Edge Cases | Expired/Expiring Soon tabs confirm system auto-expires based on Valid Until date |
 | Client Examples | All clients |
 
 **Subfeatures:**
-- Table columns: `[TO FILL — Quotation No., Customer, Date, Status, Grand Total, etc.]`
-- Column-level filters: `[TO FILL]`
-- Sort by: `[TO FILL]`
-- Status filter: `[TO FILL]`
-- Date range filter: `[TO FILL]`
-- Search: `[TO FILL]`
-- See [[Quotation Table Column Filters]] and [[Quotation Table UI Components]] for detailed UI exploration
+- Table columns: Quotation ID, Customer, Credit Utilization, Status, Valid Till, Value, Created at, Updated at, Actions
+- Status tabs: All Quotations, Draft, Open, Partially Ordered, Ordered, Lost, Cancelled, Warm Leads, Follow-up Overdue, Expiring Soon, Expired
+- All column headers sortable (click to sort)
+- Search box: "Search quotations..."
+- Export CSV button available
+- Rows per page selector (default 25)
+- Pagination controls
+- "Expiring Soon" and "Expired" tabs confirm system auto-tracks Valid Until date — quotations do expire automatically
+- "Partially Ordered" status — exists when Quotation has been partially converted to SO (not fully ordered)
+- "Warm Leads" and "Follow-up Overdue" tabs — CRM-style pipeline views (criteria `[TO FILL]`)
+- Credit Utilization column — shows customer's credit usage against limit
 
 ---
 

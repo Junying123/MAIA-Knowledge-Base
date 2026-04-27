@@ -8,6 +8,17 @@ last_reviewed: 2026-04-04
 
 > Architectural and workflow choices that shape how we work. Full ADRs in [[07 - Decisions]].
 
+## Product Architecture
+
+| Decision | Choice | Reason |
+|---|---|---|
+| Core platform | ERPNext / Frappe (open-source) | Provides ERP primitives (doctypes, workflows, permissions, reporting) out of the box |
+| Build strategy | Leverage ERPNext first; build custom only when ERPNext has no equivalent | Keeps core maintainable, accelerates delivery |
+| Custom builds | Frappe custom app or standalone module | Used when ERPNext behaviour conflicts with MAIA UX or capability doesn't exist |
+
+> **Rule of thumb:** Before designing any feature, ask — *"Does ERPNext already handle this?"* If yes, extend it. If no, build it.
+> Full context: [[01 - MAIA Product/Technical/ERPNext & Frappe/README]]
+
 ## KB Architecture
 
 | Decision | Choice | Reason |
