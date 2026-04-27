@@ -90,11 +90,11 @@ last_reviewed: 2026-04-19
 
 #### TC-CERT-C1-01: Create C1 — Happy Path
 
-| | |
-|---|---|
-| **Precondition** | Company is selected; the customer has at least one saved address and one saved contact |
-| **Steps** | Go to Certificates tab → Click Create → Select Type: C1 → Fill in certificate title, tax registration number, status, customer address, customer contact → Click Submit |
-| **Expected** | Certificate saved and appears in the list with type C1; detail view shows five item category sections: Raw Materials, Components, Packaging Materials, Manufacturing Aids, Cleanroom Equipment |
+|                  |                                                                                                                                                                                                |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Precondition** | Company is selected; the customer has at least one saved address and one saved contact                                                                                                         |
+| **Steps**        | Go to Certificates tab → Click Create → Select Type: C1 → Fill in certificate title, tax registration number, status, customer address, customer contact → Click Submit                        |
+| **Expected**     | Certificate saved and appears in the list with type C1; detail view shows five item category sections: Raw Materials, Components, Packaging Materials, Manufacturing Aids, Cleanroom Equipment |
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1777192614412,
+  "lastScanned": 1777306707833,
   "projectRoot": "/Users/garethng/Documents/MAIA Knowledge Base",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "00 - Home",
       "purpose": null,
       "fileCount": 8,
-      "lastAccessed": 1777192614404,
+      "lastAccessed": 1777306707675,
       "keyFiles": [
         "COMPANY.md",
         "Changelog.md",
@@ -49,21 +49,21 @@
       "path": "01 - MAIA Product",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777192614405,
+      "lastAccessed": 1777306707679,
       "keyFiles": []
     },
     "02 - PM Playbook": {
       "path": "02 - PM Playbook",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777192614405,
+      "lastAccessed": 1777306707683,
       "keyFiles": []
     },
     "03 - Clients": {
       "path": "03 - Clients",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1777192614406,
+      "lastAccessed": 1777306707699,
       "keyFiles": [
         "README.md"
       ]
@@ -72,7 +72,7 @@
       "path": "04 - QA & Known Issues",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1777192614406,
+      "lastAccessed": 1777306707705,
       "keyFiles": [
         "Feature Gap Tracker.md",
         "Known Bugs & Limitations.md",
@@ -84,7 +84,7 @@
       "path": "05 - Releases & Updates",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1777192614406,
+      "lastAccessed": 1777306707707,
       "keyFiles": [
         "Feature Changelog.md",
         "Release Notes.md",
@@ -95,7 +95,7 @@
       "path": "06 - Glossary & Taxonomy",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1777192614406,
+      "lastAccessed": 1777306707712,
       "keyFiles": [
         "Glossary.md",
         "Tag Dictionary.md"
@@ -105,7 +105,7 @@
       "path": "07 - Decisions",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1777192614408,
+      "lastAccessed": 1777306707723,
       "keyFiles": [
         "ADR Template.md",
         "Decision Log.md"
@@ -115,7 +115,7 @@
       "path": "08 - Configuration & Integrations",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1777192614409,
+      "lastAccessed": 1777306707729,
       "keyFiles": [
         "Client Configuration Overlay Template.md",
         "Configuration Index.md",
@@ -128,7 +128,7 @@
       "path": "09 - Intake & Triage",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1777192614409,
+      "lastAccessed": 1777306707734,
       "keyFiles": [
         "Request Intake Inbox.md",
         "Triage Decision Record Template.md",
@@ -139,14 +139,14 @@
       "path": "10 - Outputs",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777192614410,
+      "lastAccessed": 1777306707752,
       "keyFiles": []
     },
     "Clippings": {
       "path": "Clippings",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777192614410,
+      "lastAccessed": 1777306707827,
       "keyFiles": [
         "Industrial Supplies Narrative MAIA.md"
       ]
@@ -155,7 +155,7 @@
       "path": "Excalidraw",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1777192614410,
+      "lastAccessed": 1777306707828,
       "keyFiles": [
         "Drawing 2026-02-22 17.59.46.excalidraw.md",
         "Drawing 2026-02-22 18.13.08.excalidraw.md",
@@ -168,21 +168,21 @@
       "path": "Granola",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1777192614410,
+      "lastAccessed": 1777306707829,
       "keyFiles": []
     },
     "TaskNotes": {
       "path": "TaskNotes",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1777192614410,
+      "lastAccessed": 1777306707829,
       "keyFiles": []
     },
     "brain": {
       "path": "brain",
       "purpose": null,
       "fileCount": 6,
-      "lastAccessed": 1777192614410,
+      "lastAccessed": 1777306707829,
       "keyFiles": [
         "Gotchas.md",
         "Key Decisions.md",
@@ -191,18 +191,25 @@
         "Patterns.md"
       ]
     },
+    "graphify-out": {
+      "path": "graphify-out",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1777306707830,
+      "keyFiles": []
+    },
     "~": {
       "path": "~",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1777192614410,
+      "lastAccessed": 1777306707830,
       "keyFiles": []
     },
     "TaskNotes/Views": {
       "path": "TaskNotes/Views",
       "purpose": "View templates",
       "fileCount": 6,
-      "lastAccessed": 1777192614412,
+      "lastAccessed": 1777306707832,
       "keyFiles": [
         "agenda-default.base",
         "calendar-default.base",
@@ -212,285 +219,15 @@
   },
   "hotPaths": [
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck Enhanced.html",
-      "accessCount": 36,
-      "lastAccessed": 1776738603114,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/SOW for MAIA JDX.md",
-      "accessCount": 21,
-      "lastAccessed": 1776745354961,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck.html",
-      "accessCount": 13,
-      "lastAccessed": 1776869245094,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Agent Swarm Architecture.md",
-      "accessCount": 11,
-      "lastAccessed": 1777195651788,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Script.md",
-      "accessCount": 8,
-      "lastAccessed": 1776757550514,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck-1.html",
-      "accessCount": 7,
-      "lastAccessed": 1776868853539,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/JDX Demo Slide Content.md",
-      "accessCount": 6,
-      "lastAccessed": 1776868826944,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Context Background.md",
-      "accessCount": 4,
-      "lastAccessed": 1776742286622,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
-      "accessCount": 4,
-      "lastAccessed": 1777002791742,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering.md",
-      "accessCount": 3,
-      "lastAccessed": 1777004148503,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/JDX Demo Slide Content.md",
-      "accessCount": 2,
-      "lastAccessed": 1776744118970,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/Customer Narrative - HG Group.md",
-      "accessCount": 2,
-      "lastAccessed": 1777292798247,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Customer Narrative - JDX.md",
+      "path": "01 - MAIA Product/Product Specs/Certificate Tax Reference Spec.md",
       "accessCount": 1,
-      "lastAccessed": 1776735090101,
+      "lastAccessed": 1777307297077,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX - Customer Profile.md",
+      "path": "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
       "accessCount": 1,
-      "lastAccessed": 1776735407629,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/JDX Discovery Call - YYYY-MM-DD.md",
-      "accessCount": 1,
-      "lastAccessed": 1776735723402,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/JDX Meeting Transcript - YYYY-MM-DD.md",
-      "accessCount": 1,
-      "lastAccessed": 1776735723586,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 1,
-      "lastAccessed": 1776743011416,
-      "type": "directory"
-    },
-    {
-      "path": "01 - MAIA Product/Product Specs/Sales Order Spec.md",
-      "accessCount": 1,
-      "lastAccessed": 1776743348159,
-      "type": "file"
-    },
-    {
-      "path": "01 - MAIA Product/Product Specs/Delivery Note Spec.md",
-      "accessCount": 1,
-      "lastAccessed": 1776743348324,
-      "type": "file"
-    },
-    {
-      "path": "01 - MAIA Product/Product Specs/Blanket Order Spec.md",
-      "accessCount": 1,
-      "lastAccessed": 1776743349006,
-      "type": "file"
-    },
-    {
-      "path": "01 - MAIA Product/Product Specs/Invoice Spec.md",
-      "accessCount": 1,
-      "lastAccessed": 1776743349322,
-      "type": "file"
-    },
-    {
-      "path": "01 - MAIA Product/Product Specs/Receipt Spec.md",
-      "accessCount": 1,
-      "lastAccessed": 1776743349624,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX",
-      "accessCount": 1,
-      "lastAccessed": 1776744079903,
-      "type": "directory"
-    },
-    {
-      "path": "01 - MAIA Product/Product Specs/Item Historical Pricing & Discount - User Stories & Test Cases.md",
-      "accessCount": 1,
-      "lastAccessed": 1776759561853,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/deck-stage.js",
-      "accessCount": 1,
-      "lastAccessed": 1776868552444,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/pasted-1776603199402-0.png",
-      "accessCount": 1,
-      "lastAccessed": 1776869200292,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX SOW Review Discussion - 2026-04-24.md",
-      "accessCount": 1,
-      "lastAccessed": 1777014750345,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Hermes.md",
-      "accessCount": 1,
-      "lastAccessed": 1777192912087,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Claude_Code.md",
-      "accessCount": 1,
-      "lastAccessed": 1777192912815,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Hermes.md",
-      "accessCount": 1,
-      "lastAccessed": 1777192913331,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Claude_Code.md",
-      "accessCount": 1,
-      "lastAccessed": 1777192913615,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Goose.md",
-      "accessCount": 1,
-      "lastAccessed": 1777192914041,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Agent Creation Guide.md",
-      "accessCount": 1,
-      "lastAccessed": 1777192924554,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Stage 1 - GTM Proposal - Orchestrator.md",
-      "accessCount": 1,
-      "lastAccessed": 1777193193142,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Stage 1 - GTM Proposal - Claude Code.md",
-      "accessCount": 1,
-      "lastAccessed": 1777193193357,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Orchestrator.md",
-      "accessCount": 1,
-      "lastAccessed": 1777193193685,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Claude Code.md",
-      "accessCount": 1,
-      "lastAccessed": 1777193194408,
-      "type": "file"
-    },
-    {
-      "path": "02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage2-Requirement Gathering/Stage 2 - Requirement Gathering - Goose.md",
-      "accessCount": 1,
-      "lastAccessed": 1777193194748,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Customer Profile.md",
-      "accessCount": 1,
-      "lastAccessed": 1777194202492,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Quotation Module Proposal.md",
-      "accessCount": 1,
-      "lastAccessed": 1777194202910,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Job Work Order Module Proposal.md",
-      "accessCount": 1,
-      "lastAccessed": 1777194203689,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Invoice Module Proposal.md",
-      "accessCount": 1,
-      "lastAccessed": 1777194204103,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - CRM & Enquiry Intake Proposal.md",
-      "accessCount": 1,
-      "lastAccessed": 1777194204831,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Completion Report Module Proposal (Open Questions).md",
-      "accessCount": 1,
-      "lastAccessed": 1777194205643,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - RG Questionnaire.md",
-      "accessCount": 1,
-      "lastAccessed": 1777194205929,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - RG Meeting Opening Script.md",
-      "accessCount": 1,
-      "lastAccessed": 1777194206198,
-      "type": "file"
-    },
-    {
-      "path": "03 - Clients/Active Cooking Clients/Leon Fuat/23Apr26 - Final Narrative.md",
-      "accessCount": 1,
-      "lastAccessed": 1777292802874,
+      "lastAccessed": 1777307297715,
       "type": "file"
     }
   ],
