@@ -3,7 +3,6 @@ owner: Gareth
 status: draft
 last_reviewed: 2026-04-20
 ---
-
 # Item Historical Pricing & Discount — User Stories & Test Cases
 
 ## Overview
