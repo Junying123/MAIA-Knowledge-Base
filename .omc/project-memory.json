@@ -220,14 +220,14 @@
   "hotPaths": [
     {
       "path": "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
-      "accessCount": 18,
-      "lastAccessed": 1777346903827,
+      "accessCount": 25,
+      "lastAccessed": 1777352671510,
       "type": "file"
     },
     {
       "path": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
-      "accessCount": 5,
-      "lastAccessed": 1777351260273,
+      "accessCount": 12,
+      "lastAccessed": 1777352696200,
       "type": "file"
     },
     {
@@ -246,6 +246,18 @@
       "path": "01 - MAIA Product/Product Specs/Item Historical Pricing & Discount.md",
       "accessCount": 1,
       "lastAccessed": 1777339235357,
+      "type": "file"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Cert-Exemption-Reference/cpo-tax-reference-brief.md",
+      "accessCount": 1,
+      "lastAccessed": 1777352568871,
+      "type": "file"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Cert-Exemption-Reference/sales-order-tax-reference-brief.md",
+      "accessCount": 1,
+      "lastAccessed": 1777352569244,
       "type": "file"
     }
   ],

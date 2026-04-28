@@ -6,7 +6,7 @@ last_reviewed: 2026-04-28
 
 # Certificate (Tax Reference) Test Cases
 
-**Total Test Cases:** 52
+**Total Test Cases:** 59
 **Feature:** Certificate / Tax Reference (C1, C3, A57)
 **Design Ref:** [[01 - MAIA Product/Product Specs/Certificate Tax Reference Spec]]
 
@@ -72,6 +72,13 @@ last_reviewed: 2026-04-28
 | 50  | TC-LIST-ADV-01  | Listing — filter by expiry date (valid_till)                             |
 | 51  | TC-LIST-ADV-02  | Listing — all certificates without customer filter (company-level view)  |
 | 52  | TC-SO-A57-02    | SO A57 — certificate eligible via extracted data customer name match     |
+| 53  | TC-CPO-C3-01    | CPO upload — link C3 cert at upload time |
+| 54  | TC-CPO-C1-01    | CPO upload — link C1 cert at upload time |
+| 55  | TC-CPO-UPD-01   | CPO update — add, change, and remove cert on existing CPO |
+| 56  | TC-CPO-SO-01    | CPO → SO conversion — cert carries over to Sales Order |
+| 57  | TC-CPO-GRD-01   | CPO upload — inactive cert blocked |
+| 58  | TC-SO-VAL-01    | SO submit — C3 fails without required attachments |
+| 59  | TC-SO-VAL-02    | SO submit — fails when item HS code not in certificate |
 
 ---
 
@@ -363,7 +370,7 @@ last_reviewed: 2026-04-28
 |---|---|
 | **Precondition** | A Sales Order is open with 3 items; all 3 are listed in the C1 certificate's item references |
 | **Steps** | In the Tax Reference section → open the certificate dropdown → select the C1 certificate |
-| **Expected** | Certificate details (title, tax registration number, dates, status) auto-filled; system checks each item against the certificate; all 3 items show tax exemption applied and Tax on Items field locked; global tax field on the order cleared and disabled |
+| **Expected** | Certificate details (title, tax registration number, dates, status) auto-filled; system checks each item against the certificate via HS code matching; all 3 items show tax exemption applied and Tax on Items field locked; global tax field on the order cleared and disabled; `tax_reference_certificate` attachment required before save succeeds |
 
 ---
 
@@ -431,7 +438,7 @@ last_reviewed: 2026-04-28
 |---|---|
 | **Precondition** | Sales Order has items; all items are listed in the C3 certificate references |
 | **Steps** | Select the C3 certificate from the Tax Reference dropdown → Click Save |
-| **Expected** | Tax exemption applied at the order level; certificate details shown; individual line items are not individually marked — the whole order is covered; global tax on the order unchanged; on Save: order saved with C3 certificate linked at the order level, no per-item exemption references stored individually |
+| **Expected** | Tax exemption applied at the order level; certificate details shown; individual line items are not individually marked — the whole order is covered; `tax_on_total_id` set to 0% tax template; on Save: order saved with C3 certificate linked at order level, `po_attachments` and `appointment_letter` attachments uploaded, no per-item exemption references stored individually |
 
 ---
 
@@ -564,6 +571,92 @@ last_reviewed: 2026-04-28
 | **Precondition** | User has manually uploaded a PDF to the Tax Reference attachment field before selecting a certificate |
 | **Steps** | Select a certificate that has its own attached file |
 | **Expected** | User's manually uploaded file kept; not replaced by the certificate's own attachment |
+
+---
+
+---
+
+# Part 2.5: CPO — Tax Reference
+
+CPO can carry a `tax_reference` (certificate) that is validated on upload and carried through to the Sales Order on conversion.
+
+---
+
+## TC-CPO-C3-01: CPO Upload — Link C3 Certificate at Upload Time
+
+| | |
+|---|---|
+| **Precondition** | A valid, Active C3 certificate exists in MAIA |
+| **Steps** | Upload a CPO PDF via the chatbot or web app → in the tax reference field, select the C3 certificate → Submit |
+| **Expected** | CPO created with the C3 certificate linked; CPO detail view shows `tax_reference_details` with certificate type C3, tax registration number, and Active status |
+
+---
+
+## TC-CPO-C1-01: CPO Upload — Link C1 Certificate at Upload Time
+
+| | |
+|---|---|
+| **Precondition** | A valid, Active C1 certificate exists in MAIA |
+| **Steps** | Upload a CPO PDF → in the tax reference field, select the C1 certificate → Submit |
+| **Expected** | CPO created with the C1 certificate linked; CPO detail view shows `tax_reference_details` with certificate type C1, tax registration number, and Active status |
+
+---
+
+## TC-CPO-UPD-01: CPO Update — Add, Change, and Remove Certificate on Existing CPO
+
+| | |
+|---|---|
+| **Precondition** | An existing CPO with no certificate linked; Active C3 certificate and Active C1 certificate exist |
+| **Steps** | 1. Open the CPO → in the Tax Reference field, select the C3 certificate → Save → verify C3 is linked · 2. Change the tax reference to the C1 certificate → Save → verify C1 replaces C3 · 3. Clear the tax reference field → Save → verify no certificate linked |
+| **Expected** | Step 1: C3 certificate linked and visible on CPO · Step 2: C1 certificate replaces C3 with no error · Step 3: Tax reference removed; CPO shows no certificate |
+
+---
+
+## TC-CPO-SO-01: CPO → SO Conversion — Certificate Carries Over
+
+| | |
+|---|---|
+| **Precondition** | A CPO exists with an Active C3 certificate linked |
+| **Steps** | Open the CPO → Convert to Sales Order |
+| **Expected** | Sales Order created; Tax Reference section on the SO shows the same C3 certificate that was on the CPO; certificate details (title, tax registration number, dates) are populated |
+
+---
+
+## TC-CPO-GRD-01: CPO Upload — Inactive Certificate Blocked
+
+| | |
+|---|---|
+| **Precondition** | A certificate exists in MAIA with status other than Active (e.g. Draft or Expired) |
+| **Steps** | Upload a CPO → attempt to link the inactive certificate |
+| **Expected** | Error shown: *"Certificate '{id}' is not active. Ensure certificate extraction is complete before linking to a CPO."* CPO is not saved with that certificate |
+
+---
+
+---
+
+# Part 2.6: SO Submit Validations
+
+Validation failures that block the Sales Order from saving. These run on submit only, not on draft.
+
+---
+
+## TC-SO-VAL-01: SO Submit — C3 Fails Without Required Attachments
+
+| | |
+|---|---|
+| **Precondition** | A C3 certificate is selected on a Sales Order; `po_attachments` and/or `appointment_letter` have not been uploaded |
+| **Steps** | Select a C3 certificate → do not upload the PO attachment or appointment letter → click Save |
+| **Expected** | Save blocked; error indicates that `po_attachments` and `appointment_letter` are required for C3 orders; order is not submitted until all required attachments are present |
+
+---
+
+## TC-SO-VAL-02: SO Submit — Fails When Item HS Code Not in Certificate
+
+| | |
+|---|---|
+| **Precondition** | A C1 or C3 certificate is selected on a Sales Order; at least one line item either has no HS code set in the item master, or its HS code is not listed in the certificate's reference data |
+| **Steps** | Select the certificate → add a line item whose HS code does not appear in the certificate → click Save |
+| **Expected** | Save blocked; error indicates the item's HS code is not covered by the certificate; agent must either remove the item, use a different certificate, or update the item's HS code in the item master |
 
 ---
 
