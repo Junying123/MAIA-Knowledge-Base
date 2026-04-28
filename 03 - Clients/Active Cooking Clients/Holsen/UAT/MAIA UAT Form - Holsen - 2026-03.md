@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-03-31
+last_reviewed: 2026-04-28
 client: Holsen
 uat_round: 1
 ---
@@ -752,6 +752,185 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
+## 7. Tax Reference / Certificate (C1 & C3)
+
+---
+
+#### Test 24 — Create C1 Certificate Manually
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Go to Customer Details → Certificates tab → Click **Create** | Create button is visible; form opens |
+| 2 | Select Type: **C1** → Fill in: Certificate Title, Tax Registration Number, Status, Customer Address, Customer Contact | All fields accept input; C1 shows 5 item category sections (Raw Materials, Components, Packaging Materials, Manufacturing Aids, Cleanroom Equipment) |
+| 3 | Add at least one item row — enter HS Code and Description | Row is added to the table |
+| 4 | Click **Submit** | Certificate saved; appears in the listing with type C1; detail view shows all entered fields including HS Code, Description, Classification columns |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 25 — Upload C1 Certificate via PDF
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Certificates tab → Click **Upload** | Upload dialog opens |
+| 2 | Select a C1 certificate PDF file → Confirm type as C1 → Click **Submit** | System shows processing indicator |
+| 3 | Wait for processing to complete | Certificate appears in the listing; certificate type, tax registration number, and dates are populated from the PDF |
+| 4 | Click the certificate row to open the detail view | Detail view opens; reference item tables are empty (PDF-uploaded certificates store raw extracted data separately) |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 26 — Apply C1 Certificate on Sales Order — All Items Covered
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open a Sales Order that has items all listed in the C1 certificate | Sales Order is open |
+| 2 | In the **Tax Reference** section → open the certificate dropdown → select the C1 certificate | Certificate details (title, tax registration number, dates, status) auto-filled |
+| 3 | Check each line item in the order | All items show tax exemption applied; Tax on Items field is locked and cannot be edited |
+| 4 | Check the global tax field on the order | Global tax field is cleared and disabled; cannot be re-applied while C1 is active |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 27 — Apply C1 Certificate — Partial Coverage + Save
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open a Sales Order with a mix of items — some are in the C1 certificate, at least one is not | Sales Order is open |
+| 2 | Select the C1 certificate in the Tax Reference section | Covered items show tax exemption locked; uncovered item shows message: *"This item is not eligible for tax exemption"* with Tax on Items still editable |
+| 3 | On the uncovered item, manually set a standard tax in the Tax on Items field | Tax is applied to that line |
+| 4 | Click **Save** | Order saved successfully; covered items carry the C1 exemption reference; uncovered item carries standard tax; no global tax on the order |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 28 — Create C3 Certificate Manually
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Go to Customer Details → Certificates tab → Click **Create** | Form opens |
+| 2 | Select Type: **C3** → Fill in: Certificate Title, Tax Registration Number, Status, Eligible Customer, Company Address, Customer Contact, Customer Address | C3-specific fields are visible; 5 item category sections shown |
+| 3 | Add at least one item row with HS Code and Description | Row saved in table |
+| 4 | Click **Submit** | C3 certificate saved; detail view shows eligible customer, company address, and 5 item category sections with HS Code, Description, Classification, Effective Date columns |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 29 — Upload C3 Certificate via PDF
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Certificates tab → Click **Upload** | Upload dialog opens |
+| 2 | Select a C3 certificate PDF → Click **Submit** | System processes the file; loading indicator shown |
+| 3 | Wait for processing | Certificate appears in listing with correct type and tax registration number from the PDF |
+| 4 | Click the certificate to open detail view | Parent fields (type, tax reg no, dates) populated; reference item tables are empty |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 30 — Apply C3 Certificate on Sales Order — All Items Covered
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open a Sales Order where all items are listed in the C3 certificate | Sales Order is open |
+| 2 | In the **Tax Reference** section → select the C3 certificate | Certificate details auto-filled; order-level exemption applied; no per-item locks (C3 is order-level, not per item) |
+| 3 | Click **Save** | Order saved; C3 certificate linked at the order level; global tax on the order is unchanged |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 31 — C3 Certificate — Ineligible Items Removal Prompt
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open a Sales Order with a mix of items — some are in the C3 certificate, some are not | Sales Order is open |
+| 2 | Select the C3 certificate in the Tax Reference section | A confirmation prompt appears listing items not covered: *"The following items are not covered by this certificate and will be removed. Continue?"* |
+| 3 | Click **Confirm** | Ineligible items are removed; C3 certificate is applied; remaining items are covered |
+| 4 | Repeat step 1–2 on a new order with the same mix → this time click **Cancel** | Certificate selection is reverted; all original items remain on the order unchanged |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
 ## Results Summary
 
 | Test # | What was tested | Result (Pass / Fail / Issue) | Tested by | Date |
@@ -779,8 +958,16 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | Test 21 | System Admin / Chin Zhao Heng — access check | | | |
 | Test 22 | Role approval flow (QT → PO → SO → DO → PL → INV → RCT) | | | |
 | Test 23 | Poison Signed Order (PSO) — full test | | | |
+| Test 24 | Create C1 certificate manually | | | |
+| Test 25 | Upload C1 certificate via PDF | | | |
+| Test 26 | Apply C1 certificate on Sales Order — all items covered | | | |
+| Test 27 | Apply C1 certificate — partial coverage + save | | | |
+| Test 28 | Create C3 certificate manually | | | |
+| Test 29 | Upload C3 certificate via PDF | | | |
+| Test 30 | Apply C3 certificate on Sales Order — all items covered | | | |
+| Test 31 | C3 certificate — ineligible items removal prompt | | | |
 
-**Total: 24 tests**
+**Total: 31 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|
