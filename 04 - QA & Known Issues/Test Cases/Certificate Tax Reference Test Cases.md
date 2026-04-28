@@ -18,60 +18,60 @@ last_reviewed: 2026-04-28
 
 ## Test Case Index
 
-| # | ID | Description |
-|---|---|---|
-| 1 | TC-CERT-C1-01 | Create C1 — happy path |
-| 2 | TC-CERT-C3-01 | Create C3 — happy path |
-| 3 | TC-CERT-A57-01 | Create A57 — happy path |
-| 4 | TC-CERT-GRD-01 | Create/Upload — no company selected |
-| 5 | TC-CERT-GRD-02 | Create — missing certificate title |
-| 6 | TC-CERT-GRD-03 | Create — missing tax registration number |
-| 7 | TC-CERT-C1-02 | Create C1 — missing customer address |
-| 8 | TC-CERT-C1-03 | Create C1 — missing customer contact |
-| 9 | TC-CERT-C3-02 | Create C3 — missing eligible customer |
-| 10 | TC-CERT-A57-02 | Create A57 — missing company contact |
-| 11 | TC-CERT-UPL-01 | Upload C1 PDF — happy path |
-| 12 | TC-CERT-UPL-02 | Upload C3 PDF — happy path |
-| 13 | TC-CERT-UPL-04 | Upload — extraction timeout |
-| 14 | TC-CERT-UPL-05 | Upload — extraction fails |
-| 15 | TC-CERT-LIST-01 | Listing — status filter |
-| 16 | TC-CERT-LIST-02 | Listing — view certificate details |
-| 17 | TC-CERT-LIST-03 | Listing — edit certificate |
-| 18 | TC-CERT-LIST-04 | Listing — delete certificate |
-| 19 | TC-CERT-LIST-05 | Listing — attachment preview |
-| 20 | TC-SO-C1-01 | SO C1 — all items covered (happy path) |
-| 21 | TC-SO-C1-02 | SO C1 — partial coverage + save |
-| 22 | TC-SO-C1-03 | SO C1 — add non-covered item after cert selected |
-| 23 | TC-SO-C1-04 | SO C1 — add covered item after cert selected |
-| 24 | TC-SO-C1-06 | SO C1 — clears global tax |
-| 25 | TC-SO-C1-07 | SO C1 — save blocked, item has no tax |
-| 26 | TC-SO-C3-01 | SO C3 — all items covered + save (happy path) |
-| 27 | TC-SO-C3-02 | SO C3 — ineligible items prompt removal |
-| 28 | TC-SO-C3-03 | SO C3 — no items on order yet |
-| 29 | TC-SO-A57-01 | SO A57 — order-level exemption |
-| 30 | TC-SO-GRD-05 | SO guard — dropdown disabled, no company |
-| 31 | TC-SO-GRD-06 | SO guard — no certificates available |
-| 32 | TC-SO-GRD-01 | SO guard — customer mismatch |
-| 33 | TC-SO-GRD-02 | SO guard — cert with no customer link |
-| 34 | TC-SO-GRD-03 | SO guard — remove certificate, locks cleared |
-| 35 | TC-SO-GRD-04 | SO guard — validation fails, selection reverted |
-| 36 | TC-SO-GRD-07 | SO guard — reopen order, locks restored |
-| 37 | TC-SO-GRD-08 | SO guard — manual attachment not overwritten |
-| 38 | TC-SCN-01 | Scenario — new customer, C1 first order |
-| 39 | TC-SCN-02 | Scenario — expired C1 certificate |
-| 40 | TC-SCN-04 | Scenario — mixed C1 + non-exempt items |
-| 41 | TC-SCN-06 | Scenario — VIP pricing with C1 exemption |
-| 42 | TC-SCN-09 | Scenario — rush order, C1, insufficient stock |
-| 43 | TC-SCN-03 | Scenario — C3, quota partially used |
-| 44 | TC-SCN-07 | Scenario — C3 batch allocation, two customers |
-| 45 | TC-SCN-10 | Scenario — customer requests to combine C3 orders |
-| 46 | TC-SCN-05 | Scenario — A57, full PO coverage, attempt to add extra item |
-| 47 | TC-SCN-08 | Scenario — COA requirement, warehouse has wrong format |
-| 48 | TC-CERT-MAN-01 | Create certificate — free-text references, no item record match required |
-| 49 | TC-CERT-UPL-03 | Upload — view detail of PDF-extracted certificate |
-| 50 | TC-LIST-ADV-01 | Listing — filter by expiry date (valid_till) |
-| 51 | TC-LIST-ADV-02 | Listing — all certificates without customer filter (company-level view) |
-| 52 | TC-SO-A57-02 | SO A57 — certificate eligible via extracted data customer name match |
+| #   | ID              | Description                                                              |
+| --- | --------------- | ------------------------------------------------------------------------ |
+| 1   | TC-CERT-C1-01   | Create C1 — happy path                                                   |
+| 2   | TC-CERT-C3-01   | Create C3 — happy path                                                   |
+| 3   | TC-CERT-A57-01  | Create A57 — happy path                                                  |
+| 4   | TC-CERT-GRD-01  | Create/Upload — no company selected                                      |
+| 5   | TC-CERT-GRD-02  | Create — missing certificate title                                       |
+| 6   | TC-CERT-GRD-03  | Create — missing tax registration number                                 |
+| 7   | TC-CERT-C1-02   | Create C1 — missing customer address                                     |
+| 8   | TC-CERT-C1-03   | Create C1 — missing customer contact                                     |
+| 9   | TC-CERT-C3-02   | Create C3 — missing eligible customer                                    |
+| 10  | TC-CERT-A57-02  | Create A57 — missing company contact                                     |
+| 11  | TC-CERT-UPL-01  | Upload C1 PDF — happy path                                               |
+| 12  | TC-CERT-UPL-02  | Upload C3 PDF — happy path                                               |
+| 13  | TC-CERT-UPL-04  | Upload — extraction timeout                                              |
+| 14  | TC-CERT-UPL-05  | Upload — extraction fails                                                |
+| 15  | TC-CERT-LIST-01 | Listing — status filter                                                  |
+| 16  | TC-CERT-LIST-02 | Listing — view certificate details                                       |
+| 17  | TC-CERT-LIST-03 | Listing — edit certificate                                               |
+| 18  | TC-CERT-LIST-04 | Listing — delete certificate                                             |
+| 19  | TC-CERT-LIST-05 | Listing — attachment preview                                             |
+| 20  | TC-SO-C1-01     | SO C1 — all items covered (happy path)                                   |
+| 21  | TC-SO-C1-02     | SO C1 — partial coverage + save                                          |
+| 22  | TC-SO-C1-03     | SO C1 — add non-covered item after cert selected                         |
+| 23  | TC-SO-C1-04     | SO C1 — add covered item after cert selected                             |
+| 24  | TC-SO-C1-06     | SO C1 — clears global tax                                                |
+| 25  | TC-SO-C1-07     | SO C1 — save blocked, item has no tax                                    |
+| 26  | TC-SO-C3-01     | SO C3 — all items covered + save (happy path)                            |
+| 27  | TC-SO-C3-02     | SO C3 — ineligible items prompt removal                                  |
+| 28  | TC-SO-C3-03     | SO C3 — no items on order yet                                            |
+| 29  | TC-SO-A57-01    | SO A57 — order-level exemption                                           |
+| 30  | TC-SO-GRD-05    | SO guard — dropdown disabled, no company                                 |
+| 31  | TC-SO-GRD-06    | SO guard — no certificates available                                     |
+| 32  | TC-SO-GRD-01    | SO guard — customer mismatch                                             |
+| 33  | TC-SO-GRD-02    | SO guard — cert with no customer link                                    |
+| 34  | TC-SO-GRD-03    | SO guard — remove certificate, locks cleared                             |
+| 35  | TC-SO-GRD-04    | SO guard — validation fails, selection reverted                          |
+| 36  | TC-SO-GRD-07    | SO guard — reopen order, locks restored                                  |
+| 37  | TC-SO-GRD-08    | SO guard — manual attachment not overwritten                             |
+| 38  | TC-SCN-01       | Scenario — new customer, C1 first order                                  |
+| 39  | TC-SCN-02       | Scenario — expired C1 certificate                                        |
+| 40  | TC-SCN-04       | Scenario — mixed C1 + non-exempt items                                   |
+| 41  | TC-SCN-06       | Scenario — VIP pricing with C1 exemption                                 |
+| 42  | TC-SCN-09       | Scenario — rush order, C1, insufficient stock                            |
+| 43  | TC-SCN-03       | Scenario — C3, quota partially used                                      |
+| 44  | TC-SCN-07       | Scenario — C3 batch allocation, two customers                            |
+| 45  | TC-SCN-10       | Scenario — customer requests to combine C3 orders                        |
+| 46  | TC-SCN-05       | Scenario — A57, full PO coverage, attempt to add extra item              |
+| 47  | TC-SCN-08       | Scenario — COA requirement, warehouse has wrong format                   |
+| 48  | TC-CERT-MAN-01  | Create certificate — free-text references, no item record match required |
+| 49  | TC-CERT-UPL-03  | Upload — view detail of PDF-extracted certificate                        |
+| 50  | TC-LIST-ADV-01  | Listing — filter by expiry date (valid_till)                             |
+| 51  | TC-LIST-ADV-02  | Listing — all certificates without customer filter (company-level view)  |
+| 52  | TC-SO-A57-02    | SO A57 — certificate eligible via extracted data customer name match     |
 
 ---
 

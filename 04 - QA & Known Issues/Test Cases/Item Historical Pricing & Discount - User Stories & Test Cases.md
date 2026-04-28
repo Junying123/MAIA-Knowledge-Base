@@ -19,13 +19,15 @@ User stories and test cases for the Item Historical Pricing & Discount feature. 
 
 ### Test Cases
 
-| ID | Scenario | Steps | Expected Result |
-|----|----------|-------|-----------------|
-| TC-01-01 | Single past transaction | Open unit price dropdown for item with 1 past transaction for this customer | Row labeled "Last Price" with value, source doc ref, date |
-| TC-01-02 | Multiple past transactions | Open dropdown for item with 2+ past transactions | Row labeled "Past Price" with most recent value, source doc ref, date |
-| TC-01-03 | No past transactions | Open dropdown for item never transacted with this customer | No Last/Past Price row shown |
-| TC-01-04 | Select past price | Click "Last Price" or "Past Price" row | Unit price field populates with that value |
-| TC-01-05 | Existing highlight unchanged | Customer has a Customer Price set; open dropdown | Customer Price row still highlighted/defaulted as before |
+| ID       | Scenario                                | Steps                                                                       | Expected Result                                                       |
+| -------- | --------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| TC-01-01 | Single past transaction                 | Open unit price dropdown for item with 1 past transaction for this customer | Row labeled "Last Price" with value, source doc ref, date             |
+| TC-01-02 | Multiple past transactions              | Open dropdown for item with 2+ past transactions                            | Row labeled "Past Price" with most recent value, source doc ref, date |
+| TC-01-03 | No past transactions                    | Open dropdown for item never transacted with this customer                  | No Last/Past Price row shown                                          |
+| TC-01-04 | Select past price                       | Click "Last Price" or "Past Price" row                                      | Unit price field populates with that value                            |
+| TC-01-05 | Existing highlight unchanged            | Customer has a Customer Price set; open dropdown                            | Customer Price row still highlighted/defaulted as before              |
+| TC-01-06 | Draft doc excluded from history         | Customer has 1 submitted SI + 1 draft QT for same item                      | Dropdown shows "Last Price" (N=1, from SI only); draft QT not counted |
+| TC-01-07 | No submitted history, only draft exists | Customer has 1 draft QT for item, no submitted docs                         | No Last/Past Price row shown                                          |
 
 ---
 
@@ -37,13 +39,13 @@ User stories and test cases for the Item Historical Pricing & Discount feature. 
 
 ### Test Cases
 
-| ID | Scenario | Steps | Expected Result |
-|----|----------|-------|-----------------|
-| TC-02-01 | Discount shown on Customer Price | Open dropdown; item has Standard Selling = RM10, Customer Price = RM9 | Customer Price row shows `vs current Standard: -10%` |
-| TC-02-02 | Discount shown on historical row | Open dropdown; Last Price = RM8.50, Standard = RM10 | Last Price row shows `vs current Standard: -15%` |
-| TC-02-03 | Markup shown on price tier | Open dropdown; Max Selling = RM15, Standard = RM10 | Max Selling row shows `+50%` |
-| TC-02-04 | Discount hidden when no Standard Selling | Open dropdown for item with no Standard Selling Price set | Discount % not shown on any row |
-| TC-02-05 | Discount vs current standard (not historical) | Item standard was RM8 at time of last transaction (RM7.20), now standard = RM10 | Last Price row discount = `-28%` (vs RM10, not RM8) |
+| ID       | Scenario                                      | Steps                                                                           | Expected Result                                      |
+| -------- | --------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| TC-02-01 | Discount shown on Customer Price              | Open dropdown; item has Standard Selling = RM10, Customer Price = RM9           | Customer Price row shows `vs current Standard: -10%` |
+| TC-02-02 | Discount shown on historical row              | Open dropdown; Last Price = RM8.50, Standard = RM10                             | Last Price row shows `vs current Standard: -15%`     |
+| TC-02-03 | Markup shown on price tier                    | Open dropdown; Max Selling = RM15, Standard = RM10                              | Max Selling row shows `+50%`                         |
+| TC-02-04 | Discount hidden when no Standard Selling      | Open dropdown for item with no Standard Selling Price set                       | Discount % not shown on any row                      |
+| TC-02-05 | Discount vs current standard (not historical) | Item standard was RM8 at time of last transaction (RM7.20), now standard = RM10 | Last Price row discount = `-28%` (vs RM10, not RM8)  |
 
 ---
 
