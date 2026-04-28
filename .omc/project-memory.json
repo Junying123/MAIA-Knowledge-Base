@@ -219,15 +219,27 @@
   },
   "hotPaths": [
     {
+      "path": "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
+      "accessCount": 17,
+      "lastAccessed": 1777339094549,
+      "type": "file"
+    },
+    {
       "path": "01 - MAIA Product/Product Specs/Certificate Tax Reference Spec.md",
       "accessCount": 1,
       "lastAccessed": 1777307297077,
       "type": "file"
     },
     {
-      "path": "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
+      "path": "04 - QA & Known Issues/Test Cases/Item Historical Pricing & Discount - User Stories & Test Cases.md",
       "accessCount": 1,
-      "lastAccessed": 1777307297715,
+      "lastAccessed": 1777339235199,
+      "type": "file"
+    },
+    {
+      "path": "01 - MAIA Product/Product Specs/Item Historical Pricing & Discount.md",
+      "accessCount": 1,
+      "lastAccessed": 1777339235357,
       "type": "file"
     }
   ],

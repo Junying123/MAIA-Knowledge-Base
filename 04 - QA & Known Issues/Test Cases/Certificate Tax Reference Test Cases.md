@@ -1,16 +1,18 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-04-19
+last_reviewed: 2026-04-28
 ---
 
 # Certificate (Tax Reference) Test Cases
 
-**Total Test Cases:** 43
+**Total Test Cases:** 52
 **Feature:** Certificate / Tax Reference (C1, C3, A57)
 **Design Ref:** [[01 - MAIA Product/Product Specs/Certificate Tax Reference Spec]]
 
 > **Merge note:** TC-SO-C1-05 merged into TC-SO-C1-02 (save step added); TC-SO-C3-04 merged into TC-SO-C3-01 (save step added). Both were redundant as their expected outcomes were already covered.
+
+> **Update 2026-04-28:** TCs updated for DD-001 (reference data model redesign — free-text KV, extracted_data split) and DD-002 (get_tax_reference_listing API changes). New TCs: TC-CERT-MAN-01, TC-CERT-UPL-03, TC-LIST-ADV-01, TC-LIST-ADV-02, TC-SO-A57-02.
 
 ---
 
@@ -65,6 +67,11 @@ last_reviewed: 2026-04-19
 | 45 | TC-SCN-10 | Scenario — customer requests to combine C3 orders |
 | 46 | TC-SCN-05 | Scenario — A57, full PO coverage, attempt to add extra item |
 | 47 | TC-SCN-08 | Scenario — COA requirement, warehouse has wrong format |
+| 48 | TC-CERT-MAN-01 | Create certificate — free-text references, no item record match required |
+| 49 | TC-CERT-UPL-03 | Upload — view detail of PDF-extracted certificate |
+| 50 | TC-LIST-ADV-01 | Listing — filter by expiry date (valid_till) |
+| 51 | TC-LIST-ADV-02 | Listing — all certificates without customer filter (company-level view) |
+| 52 | TC-SO-A57-02 | SO A57 — certificate eligible via extracted data customer name match |
 
 ---
 
@@ -94,7 +101,7 @@ last_reviewed: 2026-04-19
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Precondition** | Company is selected; the customer has at least one saved address and one saved contact                                                                                                         |
 | **Steps**        | Go to Certificates tab → Click Create → Select Type: C1 → Fill in certificate title, tax registration number, status, customer address, customer contact → Click Submit                        |
-| **Expected**     | Certificate saved and appears in the list with type C1; detail view shows five item category sections: Raw Materials, Components, Packaging Materials, Manufacturing Aids, Cleanroom Equipment |
+| **Expected**     | Certificate saved and appears in the list with type C1; detail view shows five item category sections: Raw Materials, Components, Packaging Materials, Manufacturing Aids, Cleanroom Equipment; each item row in the reference tables shows: HS Code, Description, Classification, and Effective Date columns |
 
 ---
 
@@ -104,7 +111,7 @@ last_reviewed: 2026-04-19
 |---|---|
 | **Precondition** | An eligible customer, company address, customer contact, and customer address are all available |
 | **Steps** | Click Create → Select Type: C3 → Fill in all required fields → Add items to the reference tables → Click Submit |
-| **Expected** | C3 certificate saved; detail view shows the eligible customer, company address, and five item category sections |
+| **Expected** | C3 certificate saved; detail view shows the eligible customer, company address, and five item category sections; each item row in the reference tables shows: HS Code, Description, Classification, and Effective Date columns |
 
 ---
 
@@ -115,6 +122,16 @@ last_reviewed: 2026-04-19
 | **Precondition** | Company address and company contact are available |
 | **Steps** | Click Create → Select Type: A57 → Fill in company address and company contact → Add goods items → Click Submit |
 | **Expected** | A57 certificate saved; detail view shows a single "Goods" table (no five-category tables); no Customer Information section shown |
+
+---
+
+#### TC-CERT-MAN-01: Create Certificate — Free-Text References (No Item Record Match Required)
+
+| | |
+|---|---|
+| **Precondition** | Company is selected; user has a physical certificate with item references that do not correspond to any product in the MAIA item master |
+| **Steps** | Click Create → Select any certificate type → Fill in all required fields → In the reference item table, enter HS code, description, and classification values that do not match any existing item record → Click Submit |
+| **Expected** | Certificate saved successfully; no validation error on reference fields; detail view shows the entered reference rows exactly as keyed in; system does not reject unrecognised item codes or descriptions — reference fields are free text with no record-level validation |
 
 ---
 
@@ -208,7 +225,7 @@ last_reviewed: 2026-04-19
 |---|---|
 | **Precondition** | A valid C1 certificate PDF is available; company is selected |
 | **Steps** | Click Upload → Select the C1 PDF file → Confirm type as C1 and verify customer is pre-filled → Click Submit |
-| **Expected** | System processes the file; loading indicator shown while extraction runs; once complete the certificate appears in the listing with details extracted from the PDF |
+| **Expected** | System processes the file; loading indicator shown while extraction runs; once complete the certificate appears in the listing with parent fields (certificate type, tax registration number, issue date, status) populated from the PDF extraction; reference item tables are empty — PDF-uploaded certificates store raw data in `extracted_data`, not in `references` |
 
 ---
 
@@ -218,7 +235,17 @@ last_reviewed: 2026-04-19
 |---|---|
 | **Precondition** | A valid C3 certificate PDF is available; company is selected |
 | **Steps** | Click Upload → Select the C3 PDF file → Click Submit |
-| **Expected** | System extracts the certificate data; C3 certificate appears in the listing with correct fields populated |
+| **Expected** | System extracts the certificate data; C3 certificate appears in the listing with parent fields populated from the PDF extraction; reference item tables are empty — extracted data stored in `extracted_data`, not `references` |
+
+---
+
+#### TC-CERT-UPL-03: View Detail — PDF-Uploaded Certificate
+
+| | |
+|---|---|
+| **Precondition** | At least one certificate was created via PDF upload (not manual creation) |
+| **Steps** | Click on the uploaded certificate row in the listing |
+| **Expected** | Detail view opens; parent fields (certificate type, tax registration number, issue date, status) are populated from the PDF extraction; reference item tables are empty — PDF-uploaded certificates store raw extraction data in `extracted_data`, not in `references`; no warning is shown for empty reference tables |
 
 ---
 
@@ -255,6 +282,26 @@ last_reviewed: 2026-04-19
 | **Precondition** | Certificates list has certs with different statuses |
 | **Steps** | On the certificates list → filter by a specific status (e.g. Active) |
 | **Expected** | Only certificates matching that status are shown; others are hidden |
+
+---
+
+#### TC-LIST-ADV-01: Listing — Filter by Expiry Date (valid_till)
+
+| | |
+|---|---|
+| **Precondition** | Certificates list contains certs with a mix of future and past valid_till dates, plus at least one with no valid_till set |
+| **Steps** | Apply a filter for valid_till >= today's date |
+| **Expected** | Only certificates whose valid_till is today or in the future are shown; certificates with no valid_till (null) are included — null means no expiry; certificates with a past valid_till are excluded |
+
+---
+
+#### TC-LIST-ADV-02: Listing — All Certificates Without Customer Filter (Company-Level View)
+
+| | |
+|---|---|
+| **Precondition** | Multiple certificates exist under a company, each linked to different customers |
+| **Steps** | View the Certificates tab on the Company Details page (not Customer Details) |
+| **Expected** | All certificates for that company are shown regardless of which customer they are linked to; no customer eligibility filter applied; pagination, status filter, and search still work normally |
 
 ---
 
@@ -417,6 +464,16 @@ last_reviewed: 2026-04-19
 | **Precondition** | A57 certificate exists and is available in the dropdown |
 | **Steps** | Select an A57 certificate from the Tax Reference dropdown on a Sales Order |
 | **Expected** | Tax exemption applied at the order level (same behaviour as C3); certificate details auto-filled; global order tax not affected |
+
+---
+
+#### TC-SO-A57-02: A57 Certificate Eligible via Extracted Data Customer Name Match
+
+| | |
+|---|---|
+| **Precondition** | An A57 certificate was created via PDF upload; the customer's name appears in the certificate's extracted data; the customer is set on the Sales Order |
+| **Steps** | Open a Sales Order for that customer → Open the Tax Reference certificate dropdown |
+| **Expected** | The A57 certificate appears in the dropdown for this customer; eligibility is resolved server-side via the customer name match in `extracted_data` (not a direct `customer_id` FK); selecting the certificate applies order-level exemption following standard A57 behaviour (same as C3: order-level tax reference, no per-item locks, global tax unchanged) |
 
 ---
 
