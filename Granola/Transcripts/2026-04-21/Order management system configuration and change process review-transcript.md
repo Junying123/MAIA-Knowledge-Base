@@ -1,13 +1,13 @@
 ---
 granola_id: 55c8f4dd-7150-4161-90d4-0d4f0863d50f
-title: Untitled Granola Note at 2026-04-21 09-42-47 - Transcript
+title: Order management system configuration and change process review - Transcript
 type: transcript
 created: 2026-04-21T01:42:47.521Z
-updated: 2026-04-21T01:42:59.469Z
+updated: 2026-04-28T10:28:41.412Z
 attendees: []
 ---
 
-# Transcript for: Untitled Granola Note at 2026-04-21 09-42-47
+# Transcript for: Order management system configuration and change process review
 
 ### You (2026-04-21T01:46:05.345Z)
 

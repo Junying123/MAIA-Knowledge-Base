@@ -1,13 +1,13 @@
 ---
 granola_id: 675afe4e-0185-45a8-b4dd-404738d6edbf
-title: GST Fine Food   - Transcript
+title: GST Fine Food  GTM brief - Transcript
 type: transcript
 created: 2026-04-27T10:06:06.512Z
-updated: 2026-04-27T10:30:56.935Z
+updated: 2026-04-28T10:29:31.911Z
 attendees: []
 ---
 
-# Transcript for: GST Fine Food  
+# Transcript for: GST Fine Food  GTM brief
 
 ### You (2026-04-27T10:06:08.769Z)
 

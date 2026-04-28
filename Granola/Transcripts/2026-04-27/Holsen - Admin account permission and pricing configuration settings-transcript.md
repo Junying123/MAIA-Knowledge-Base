@@ -1,13 +1,13 @@
 ---
 granola_id: ccf142e1-2e6c-4f1b-8d99-363e240155fa
-title: Admin account permission and pricing configuration settings - Transcript
+title: Holsen - Admin account permission and pricing configuration settings - Transcript
 type: transcript
 created: 2026-04-27T02:21:45.523Z
-updated: 2026-04-27T03:05:21.487Z
+updated: 2026-04-28T10:29:15.334Z
 attendees: []
 ---
 
-# Transcript for: Admin account permission and pricing configuration settings
+# Transcript for: Holsen - Admin account permission and pricing configuration settings
 
 ### You (2026-04-27T02:21:47.799Z)
 
