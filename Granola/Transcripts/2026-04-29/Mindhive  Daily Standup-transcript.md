@@ -3,7 +3,7 @@ granola_id: f8353cb8-960c-40ab-bdc7-2b83af75feb1
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-04-29T01:44:44.363Z
-updated: 2026-04-29T01:44:54.648Z
+updated: 2026-04-29T02:39:36.801Z
 attendees: 
   - afiqaqill261203@gmail.com
   - ghostsketon@gmail.com
@@ -273,5 +273,525 @@ Item name item discussion
 
 ### Guest (2026-04-29T02:10:10.995Z)
 
-So
+So send by photo with
+
+### You (2026-04-29T02:10:20.326Z)
+
+You're
+
+### Guest (2026-04-29T02:10:22.485Z)
+
+for societ societ request So
+
+### You (2026-04-29T02:10:29.136Z)
+
+이 있 다에요요. 이 많지를. 시나 원낌 해 이요 탄스에 나지다 같아니 있스 하면 했는 거라시다.
+
+### Guest (2026-04-29T02:10:51.935Z)
+
+and
+
+### You (2026-04-29T02:11:00.486Z)
+
+Okay.
+
+### Guest (2026-04-29T02:11:01.925Z)
+
+test
+
+### You (2026-04-29T02:11:08.936Z)
+
+내게 내리기 많 많이 쓰에 어 하스잖아. चलो thank you. Oh,
+
+### Guest (2026-04-29T02:11:30.805Z)
+
+jaeng na. Zach strike through
+
+### You (2026-04-29T02:11:38.436Z)
+
+Okay. See you think?
+
+### Guest (2026-04-29T02:11:38.905Z)
+
+so the it can't use to that's a sec kind of
+
+### You (2026-04-29T02:11:43.046Z)
+
+你 中 想 咁 㗎 啲 ， 分
+
+### Guest (2026-04-29T02:11:47.835Z)
+
+시이 있 아에 가다 쓰
+
+### You (2026-04-29T02:11:50.036Z)
+
+bing bang bangs bangs
+
+### Guest (2026-04-29T02:12:11.985Z)
+
+tau huay generate naga c p o mah.
+
+### You (2026-04-29T02:12:12.016Z)
+
+うん。
+
+### Guest (2026-04-29T02:12:14.265Z)
+
+Sin za yung myu chu 你 就 generates this order 你
+
+### You (2026-04-29T02:12:17.706Z)
+
+오. 대 대 대. 저들수 도 해는. 해는?
+
+### Guest (2026-04-29T02:12:21.435Z)
+
+skip JSO.
+
+### You (2026-04-29T02:12:26.356Z)
+
+트도 트도 트도
+
+### Guest (2026-04-29T02:12:32.825Z)
+
+你 就 钱 我 似 Pdf 件 CPO.
+
+### You (2026-04-29T02:12:43.646Z)
+
+This
+
+### Guest (2026-04-29T02:12:44.625Z)
+
+Issue critique customer. The PDF. So generate CPU create sales order. Create Yes. Sí.
+
+### You (2026-04-29T02:13:27.326Z)
+
+nou har pukin ikke dinghyen
+
+### Guest (2026-04-29T02:13:35.205Z)
+
+다의에요. 그 수지 지지 다에. आप लोग 了 你게 PO PO CPU.
+
+### You (2026-04-29T02:13:44.306Z)
+
+但 。 係 。
+
+### Guest (2026-04-29T02:13:52.655Z)
+
+跟 跟许 ， So
+
+### You (2026-04-29T02:14:14.866Z)
+
+Okay. 你 就 他 就 你 大 自 己 게 사면 해 있 상도로 ，
+
+### Guest (2026-04-29T02:14:32.255Z)
+
+Okay. Number two and number three, just temporarily meal. Four, 아하가 지지 나만. Price meant to be low minimum price
+
+### You (2026-04-29T02:15:25.356Z)
+
+세어요. 호도 그 我 你 ， 좀기 같시마에
+
+### Guest (2026-04-29T02:15:27.435Z)
+
+PDF именно?
+
+### You (2026-04-29T02:15:31.856Z)
+
+나게 미나.
+
+### Guest (2026-04-29T02:15:32.925Z)
+
+Sixth Net point coding.
+
+### You (2026-04-29T02:15:37.006Z)
+
+Just order ID.
+
+### Guest (2026-04-29T02:15:44.345Z)
+
+Sells for the idea
+
+### You (2026-04-29T02:16:14.566Z)
+
+Payment 五 pdf 해시 알
+
+### Guest (2026-04-29T02:16:27.065Z)
+
+Ah, taja dinner raffle in su yeah, pusese seba la banik. Adjust the value.
+
+### You (2026-04-29T02:16:50.426Z)
+
+Yeah. No. No. I think I
+
+### Guest (2026-04-29T02:16:51.315Z)
+
+मरने का quantity is increased. Higher quality
+
+### You (2026-04-29T02:17:09.106Z)
+
+있기 있스고 다
+
+### Guest (2026-04-29T02:17:16.475Z)
+
+あ、 대대대대 소어에으장 때 뭐 이 있아 아면나 다 你하다 我 있다 있면 한 나자 나자 Taju emen le yang sudah. Taami o emen le le naka jag jag jag jag jag jag I. 으자.
+
+### You (2026-04-29T02:17:37.196Z)
+
+three, Ipanèvoli.
+
+### Guest (2026-04-29T02:17:40.985Z)
+
+Number. Oh, Rahul, follow from follow from ah, so tah meyo generate down naga dumsi. Move to next step, jau ta menlo li ji zhuo mah. Jiu jang jau jeke ke order
+
+### You (2026-04-29T02:18:05.896Z)
+
+Ontem dia está a gente,
+
+### Guest (2026-04-29T02:18:13.215Z)
+
+review down that sixty days
+
+### You (2026-04-29T02:18:19.246Z)
+
+自 己 係 ， 我 哋 咁 自
+
+### Guest (2026-04-29T02:18:25.965Z)
+
+So customer pricing
+
+### You (2026-04-29T02:18:32.006Z)
+
+Okay.
+
+### Guest (2026-04-29T02:18:33.605Z)
+
+test test
+
+### You (2026-04-29T02:18:38.646Z)
+
+Payment term
+
+### Guest (2026-04-29T02:18:39.435Z)
+
+test
+
+### You (2026-04-29T02:18:40.656Z)
+
+use use 히는 ok 하? 다시 히
+
+### Guest (2026-04-29T02:18:55.175Z)
+
+customer the payment term sixty days.
+
+### You (2026-04-29T02:19:08.256Z)
+
+你 就 我 覺 比 有 比 c u s m r 你 好 생히나 s I c t e d 啲 啲 ， 我 싸씀 하스 면통요, 你 明 比 你 디
+
+### Guest (2026-04-29T02:19:28.855Z)
+
+Capture 나
+
+### You (2026-04-29T02:19:44.396Z)
+
+朗 樣 我 书
+
+### Guest (2026-04-29T02:19:52.295Z)
+
+Okay. Lilio. Every time we'll amend price,
+
+### You (2026-04-29T02:20:06.766Z)
+
+tese. 。
+
+### Guest (2026-04-29T02:20:12.375Z)
+
+men price to 9 ringgit per k g.
+
+### You (2026-04-29T02:20:15.536Z)
+
+Okay.
+
+### Guest (2026-04-29T02:20:41.295Z)
+
+One KG, one unit instead of fries. Which is ega se sebumil. Sodau naga wu warning wah.
+
+### You (2026-04-29T02:21:01.386Z)
+
+Ну,
+
+### Guest (2026-04-29T02:21:02.705Z)
+
+Quantity
+
+### You (2026-04-29T02:21:08.496Z)
+
+뭐 이 시에 시아이 많하고. 但 自 己 啦
+
+### Guest (2026-04-29T02:21:22.115Z)
+
+Number four.
+
+### You (2026-04-29T02:21:28.056Z)
+
+Ok.
+
+### Guest (2026-04-29T02:21:37.915Z)
+
+Sorry. Turned in. I'll take it now. Reply to it. Okay. How are you?
+
+### You (2026-04-29T02:24:23.086Z)
+
+Okay. Yeah.
+
+### Guest (2026-04-29T02:24:28.285Z)
+
+Then price price meal update. Quantity.
+
+### You (2026-04-29T02:24:34.136Z)
+
+Okay. 你 你 예요 수어에 어스 거 많에요.
+
+### Guest (2026-04-29T02:24:44.405Z)
+
+Minimum price prompt sí, se nadie hizo sin hoy,
+
+### You (2026-04-29T02:25:37.826Z)
+
+テスト Intest will
+
+### Guest (2026-04-29T02:25:43.775Z)
+
+Ready? Test test test number nine So okay. Okay.
+
+### You (2026-04-29T02:26:24.136Z)
+
+아대는데
+
+### Guest (2026-04-29T02:26:24.735Z)
+
+So test item drop down zero notification notification check item out of stock. Okay. Meo trigger notification test. Customer customer means complete delivery. Test ammonium by flow. Right? Five project out of stock instead of low stock.
+
+### You (2026-04-29T02:27:31.906Z)
+
+了
+
+### Guest (2026-04-29T02:27:34.945Z)
+
+Minimum safety quantity 25. Sí. Sí. Low stop instead of out of stop. Ammonium zero quantity se ching out of stock, 你 prompt
+
+### You (2026-04-29T02:28:12.846Z)
+
+ammonium fluoride
+
+### Guest (2026-04-29T02:28:30.835Z)
+
+t I
+
+### You (2026-04-29T02:28:32.876Z)
+
+safety 거는 히이 히이 저로 就 你 你 你 你
+
+### Guest (2026-04-29T02:28:48.775Z)
+
+Okay.
+
+### You (2026-04-29T02:28:50.496Z)
+
+trigger based on safety quantity trigger.
+
+### Guest (2026-04-29T02:28:56.815Z)
+
+So case, below safety quantity. Means deliver trigger
+
+### You (2026-04-29T02:29:03.006Z)
+
+Doorstall.
+
+### Guest (2026-04-29T02:29:05.765Z)
+
+你 你
+
+### You (2026-04-29T02:29:20.766Z)
+
+你 있이 나 알 같은 되요. 이런 다요에서 하는 notificatio n makere r ， 你 得 notificatio n d o 不 一 人 ， 我 아니자 내자, 있 명가 있어지는.
+
+### Guest (2026-04-29T02:30:03.685Z)
+
+Oh,
+
+### You (2026-04-29T02:30:22.996Z)
+
+㗎
+
+### Guest (2026-04-29T02:30:31.755Z)
+
+buen día.
+
+### You (2026-04-29T02:30:36.906Z)
+
+들글습 내용 할 는 ikke ikke se jaang ingin 你 你 ，
+
+### Guest (2026-04-29T02:31:10.935Z)
+
+Test multiple will
+
+### You (2026-04-29T02:31:14.996Z)
+
+你 就 你 囉 log in
+
+### Guest (2026-04-29T02:31:15.605Z)
+
+Firefox
+
+### You (2026-04-29T02:31:28.366Z)
+
+우. 저이 나 notificiation 좋이리들 있으면는 그
+
+### Guest (2026-04-29T02:32:03.205Z)
+
+And the logistics. Is a male.
+
+### You (2026-04-29T02:32:09.626Z)
+
+delivery no missing si, test 할 할나지스.
+
+### Guest (2026-04-29T02:32:15.545Z)
+
+Ah, 이가 이에 이지에나 하서
+
+### You (2026-04-29T02:32:22.896Z)
+
+Delivery delay.
+
+### Guest (2026-04-29T02:32:28.135Z)
+
+Ok, ok.
+
+### You (2026-04-29T02:32:36.616Z)
+
+你 你 哋
+
+### Guest (2026-04-29T02:32:38.885Z)
+
+After after day one day day day
+
+### You (2026-04-29T02:32:56.526Z)
+
+이가나 바스 수 때는 수 때나 수 때.
+
+### Guest (2026-04-29T02:32:58.095Z)
+
+create 소래 수지아 뭐 같아는 그 Telegram message. Sales order overdue.
+
+### You (2026-04-29T02:33:23.706Z)
+
+Okay.
+
+### Guest (2026-04-29T02:33:28.535Z)
+
+So case 수는 거 같 보라, The awning.
+
+### You (2026-04-29T02:33:57.946Z)
+
+No notification. Okay. 한도 한
+
+### Guest (2026-04-29T02:34:19.765Z)
+
+Oh, okay.
+
+### You (2026-04-29T02:34:21.186Z)
+
+한나까
+
+### Guest (2026-04-29T02:34:25.785Z)
+
+No stop
+
+### You (2026-04-29T02:34:27.146Z)
+
+okay.
+
+### Guest (2026-04-29T02:34:27.195Z)
+
+no stock stock
+
+### You (2026-04-29T02:34:31.196Z)
+
+Okay.
+
+### Guest (2026-04-29T02:34:38.705Z)
+
+notification
+
+### You (2026-04-29T02:34:46.186Z)
+
+你 notifikation 你 你 啲 即 啲 有 啲 大 啲 你 마 나 나 나 게에서 s e l s e t d 啊에요 s ， 你 이렇 하 어렇 你
+
+### Guest (2026-04-29T02:35:21.645Z)
+
+então, o Fadio, 시 때다 Sí.
+
+### You (2026-04-29T02:36:00.186Z)
+
+你 哋 에요 ，
+
+### Guest (2026-04-29T02:36:06.675Z)
+
+Sí. Update. S
+
+### You (2026-04-29T02:36:39.636Z)
+
+지냐 알에 에 있어나에 있스나. 한 우리고 있가스 보해 만? T e s n e g c e e g e feature the backend cjem bupen den ammen jingyang ne fix yuh fix å.
+
+### Guest (2026-04-29T02:37:11.755Z)
+
+Oh, okay.
+
+### You (2026-04-29T02:37:12.426Z)
+
+㗎 什 么 咁 即 미으는 알는 게
+
+### Guest (2026-04-29T02:37:42.605Z)
+
+나다가런 시가 있가수시에요. 哋 after work 你 你
+
+### You (2026-04-29T02:38:10.786Z)
+
+알 싸 싸 싸 싸 있 많는 많 하서
+
+### Guest (2026-04-29T02:38:28.805Z)
+
+as it is,
+
+### You (2026-04-29T02:38:29.646Z)
+
+オ ッケ ー、 ジャ ック チャ ム 我
+
+### Guest (2026-04-29T02:38:32.575Z)
+
+proceed to PSO. B c one c three test.
+
+### You (2026-04-29T02:38:48.526Z)
+
+Ok. 。 你 쓰 한 한 Okay. Okay.
+
+### Guest (2026-04-29T02:39:00.175Z)
+
+Okay. K.
+
+### You (2026-04-29T02:39:01.166Z)
+
+That that'll be enough.
+
+### Guest (2026-04-29T02:39:02.555Z)
+
+Okay. K. Well, continue Ok. Okay.
+
+### You (2026-04-29T02:39:09.026Z)
+
+Thank you भी सत्ताम. Bye.
+
+### Guest (2026-04-29T02:39:11.325Z)
+
+Okay. Thank you. Bye.
 
