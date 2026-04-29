@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1777306707833,
+  "lastScanned": 1777421246971,
   "projectRoot": "/Users/garethng/Documents/MAIA Knowledge Base",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "00 - Home",
       "purpose": null,
       "fileCount": 8,
-      "lastAccessed": 1777306707675,
+      "lastAccessed": 1777421246697,
       "keyFiles": [
         "COMPANY.md",
         "Changelog.md",
@@ -49,21 +49,21 @@
       "path": "01 - MAIA Product",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777306707679,
+      "lastAccessed": 1777421246744,
       "keyFiles": []
     },
     "02 - PM Playbook": {
       "path": "02 - PM Playbook",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777306707683,
+      "lastAccessed": 1777421246744,
       "keyFiles": []
     },
     "03 - Clients": {
       "path": "03 - Clients",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1777306707699,
+      "lastAccessed": 1777421246745,
       "keyFiles": [
         "README.md"
       ]
@@ -72,7 +72,7 @@
       "path": "04 - QA & Known Issues",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1777306707705,
+      "lastAccessed": 1777421246745,
       "keyFiles": [
         "Feature Gap Tracker.md",
         "Known Bugs & Limitations.md",
@@ -84,7 +84,7 @@
       "path": "05 - Releases & Updates",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1777306707707,
+      "lastAccessed": 1777421246745,
       "keyFiles": [
         "Feature Changelog.md",
         "Release Notes.md",
@@ -95,7 +95,7 @@
       "path": "06 - Glossary & Taxonomy",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1777306707712,
+      "lastAccessed": 1777421246746,
       "keyFiles": [
         "Glossary.md",
         "Tag Dictionary.md"
@@ -105,7 +105,7 @@
       "path": "07 - Decisions",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1777306707723,
+      "lastAccessed": 1777421246746,
       "keyFiles": [
         "ADR Template.md",
         "Decision Log.md"
@@ -115,7 +115,7 @@
       "path": "08 - Configuration & Integrations",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1777306707729,
+      "lastAccessed": 1777421246746,
       "keyFiles": [
         "Client Configuration Overlay Template.md",
         "Configuration Index.md",
@@ -128,7 +128,7 @@
       "path": "09 - Intake & Triage",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1777306707734,
+      "lastAccessed": 1777421246746,
       "keyFiles": [
         "Request Intake Inbox.md",
         "Triage Decision Record Template.md",
@@ -139,14 +139,14 @@
       "path": "10 - Outputs",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777306707752,
+      "lastAccessed": 1777421246747,
       "keyFiles": []
     },
     "Clippings": {
       "path": "Clippings",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1777306707827,
+      "lastAccessed": 1777421246747,
       "keyFiles": [
         "Industrial Supplies Narrative MAIA.md"
       ]
@@ -155,7 +155,7 @@
       "path": "Excalidraw",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1777306707828,
+      "lastAccessed": 1777421246747,
       "keyFiles": [
         "Drawing 2026-02-22 17.59.46.excalidraw.md",
         "Drawing 2026-02-22 18.13.08.excalidraw.md",
@@ -168,21 +168,21 @@
       "path": "Granola",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1777306707829,
+      "lastAccessed": 1777421246747,
       "keyFiles": []
     },
     "TaskNotes": {
       "path": "TaskNotes",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1777306707829,
+      "lastAccessed": 1777421246747,
       "keyFiles": []
     },
     "brain": {
       "path": "brain",
       "purpose": null,
       "fileCount": 6,
-      "lastAccessed": 1777306707829,
+      "lastAccessed": 1777421246747,
       "keyFiles": [
         "Gotchas.md",
         "Key Decisions.md",
@@ -191,25 +191,18 @@
         "Patterns.md"
       ]
     },
-    "graphify-out": {
-      "path": "graphify-out",
-      "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1777306707830,
-      "keyFiles": []
-    },
     "~": {
       "path": "~",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1777306707830,
+      "lastAccessed": 1777421246748,
       "keyFiles": []
     },
     "TaskNotes/Views": {
       "path": "TaskNotes/Views",
       "purpose": "View templates",
       "fileCount": 6,
-      "lastAccessed": 1777306707832,
+      "lastAccessed": 1777421246762,
       "keyFiles": [
         "agenda-default.base",
         "calendar-default.base",
@@ -258,6 +251,48 @@
       "path": "01 - MAIA Product/Product Specs/Cert-Exemption-Reference/sales-order-tax-reference-brief.md",
       "accessCount": 1,
       "lastAccessed": 1777352569244,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/Customer Narrative - HG Group.md",
+      "accessCount": 1,
+      "lastAccessed": 1777421589194,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Completion Report Module Proposal (Open Questions).md",
+      "accessCount": 1,
+      "lastAccessed": 1777421590546,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Job Work Order Module Proposal.md",
+      "accessCount": 1,
+      "lastAccessed": 1777421595030,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - CRM & Enquiry Intake Proposal.md",
+      "accessCount": 1,
+      "lastAccessed": 1777421595479,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Invoice Module Proposal.md",
+      "accessCount": 1,
+      "lastAccessed": 1777421596414,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Quotation Module Proposal.md",
+      "accessCount": 1,
+      "lastAccessed": 1777421596725,
+      "type": "file"
+    },
+    {
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Customer Profile.md",
+      "accessCount": 1,
+      "lastAccessed": 1777421596901,
       "type": "file"
     }
   ],
