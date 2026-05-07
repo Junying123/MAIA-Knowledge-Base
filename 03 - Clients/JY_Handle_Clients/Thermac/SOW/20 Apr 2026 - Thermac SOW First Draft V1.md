@@ -377,9 +377,17 @@ Notes: All durations are indicative and depend on scope complexity, sample docum
 
 # 5. Commercial Structure
 
-* **Pricing Model:** One-off implementation investment with any recurring subscription, maintenance, hosting, or third-party costs to be confirmed.
+* **Pricing Model:** One-off upfront implementation investment plus a yearly recurring fee covering hosting, database support, server support, and ongoing platform access within the agreed usage cap.
 
-* **Customisation Fees:** Current documented investment is RM 35,000. Any additional scope outside this SOW will be quoted separately on a fixed-price or time-and-materials basis.
+* **Upfront Implementation Fee:** RM 35,000.
+
+* **Yearly Recurring Fee:** RM 10,000.
+
+* **Usage Cap:** The included hosting and server arrangement is capped at 500 quotations generated and 200 orders created.
+
+* **Hosting Model:** Mindhive will host the database and servers on shared infrastructure together with a small number of other clients. Thermac's access will remain restricted to Thermac's own data only.
+
+* **Customisation Fees:** Any additional scope outside this SOW will be quoted separately on a fixed-price or time-and-materials basis.
 
 * **Payment Terms:** TBC unless otherwise agreed.
 
@@ -391,26 +399,35 @@ Notes: All durations are indicative and depend on scope complexity, sample docum
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
 | **Core** - Baseline Enterprise MAIA System - Product Sales Document Lifecycle - Sales Agent Assistant - Sales, Finance, Operations, Storekeeper, and Management Workspaces - Role-Based Permissions - Pricing Intelligence - Quotation Loss Tracking - Statement of Account Internal View - Periodic System and Feature Updates - Storage, Model Training, Ingestion | Included in total |
 | **Customisations** - Service Work Order Management - Calendar and Gantt Scheduling Views - Customer Service History and Proactive Service Reminders - PO-to-Sales Order Conversion - Statement of Account Customer View, subject to confirmation                                                                                                                     | Included in total |
-| **Grand Total**                                                                                                                                                                                                                                                                                                                                                      | **RM 35,000**     |
+| **Grand Total Upfront Implementation Fee**                                                                                                                                                                                                                                                                                                                          | **RM 35,000**     |
 
-Note: The source material states a total investment of RM 35,000. A phase-by-phase fee allocation has not been confirmed and remains subject to commercial review.
+Note: The RM 35,000 amount is the upfront implementation fee for the currently documented scope. Any additional scope outside this SOW will require separate review and approval.
 
 ## 5.2 Payment Terms
 
-| Milestone                          | Percentage | Price    |
-| ---------------------------------- | ---------- | -------- |
-| Milestone 1 - Phase One Initiation | 50%        | RM17,500 |
-| Milestone 2 - UAT Sign Off         | 50%        | RM17,500 |
+| Milestone                                | Percentage | Price    |
+| ---------------------------------------- | ---------- | -------- |
+| Milestone 1 - Upfront Implementation Fee | 100%       | RM35,000 |
+| Milestone 2 - Yearly Recurring Fee       | TBC        | RM10,000 |
 
 ## 5.3 Yearly Maintenance and Third-Party Costs
 
-| Item                                                   | Estimated     |
-| ------------------------------------------------------ | ------------- |
-| Monthly platform maintenance                           | TBC           |
-| Hosting or infrastructure                              | TBC           |
-| WhatsApp, email, AI, OCR, or document-processing usage | TBC           |
-| External vendor or integration fees                    | TBC           |
-| **Estimated Monthly Total**                            | **RM 10,000** |
+| Item                                                         | Estimated     |
+| ------------------------------------------------------------ | ------------- |
+| Yearly hosting, database, and server support                 | RM10,000      |
+| Included quotation generation cap                            | 500           |
+| Included order creation cap                                  | 200           |
+| WhatsApp, email, AI, OCR, or document-processing overage, if any | TBC       |
+| External vendor or integration fees                          | TBC           |
+| **Estimated Yearly Total**                                   | **RM 10,000** |
+
+Notes:
+
+* Mindhive will host the database and servers for Thermac together with a small number of other clients on shared infrastructure.
+
+* Data access will remain segregated so that only Thermac can access Thermac's own data.
+
+* If quotation or order volume exceeds the included cap, the commercial impact should be reviewed separately.
 
 # 6. Caveats & Exclusions
 
