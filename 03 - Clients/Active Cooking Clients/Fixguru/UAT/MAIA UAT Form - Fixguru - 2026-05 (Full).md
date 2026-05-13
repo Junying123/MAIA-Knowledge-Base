@@ -131,7 +131,7 @@ Format per line: `ID. Title [Mode]`
 - `1.3.1 Edit Customer Discount % and Price [FE]`
 - `1.3.2 Auto-Derived Customer Price from Discount % [FE]`
 - `1.3.3 Discount % in Unit Price Dropdown [FE]`
-- `1.3.4 Chatbot Last Invoice Price Retrieval [Chatbot]`
+- `1.3.4 Chatbot Last Quotation Price Retrieval [Chatbot]`
 - `1.3.5 Chatbot Average Price + Quotation History [Chatbot]`
 - `1.4 Price and Stock Check [Chatbot]`
 - `1.5 Quotation Approval and Output [FE]`
@@ -152,10 +152,11 @@ Format per line: `ID. Title [Mode]`
 
 #### 4. Invoice Phase
 - `4.1 Invoice Submit and Generate PDF (Finance Manager) [FE + Chatbot]`
+- `4.2 eInvoice / AutoCount Sync [FE]`
+- `4.3 Receipt / Record Payment [FE + Chatbot]`
 
 #### 5. Post-Invoice Adjustment + Payment Phase
-- `5.1 Credit Note and Debit Note Flow [FE]`
-- `5.2 Receipt / Payment Submit Flow [FE]`
+- `5.1 Credit Note and Debit Note Flow [FE + Chatbot]`
 
 #### 6. Cross-Workflow Control Layer
 - `6.1 Login Baseline (All Users) [FE]`
@@ -777,11 +778,78 @@ Format per line: `ID. Title [Mode]`
 
 *Invoice can be created from a submitted Sales Order (TO BILL) or a submitted Delivery Order. PDF can be generated via web app or chatbot.*
 
+| Step | Who                                              | What to do                                                                                                                       | What you should see                                                                               |
+| ---- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| 1    | **Abishaah** or **Wendy Wang** (Finance Manager) | Create an Invoice — from a submitted **Sales Order** (status **TO BILL**) or from a  **Delivery Order**. Save it.                | Invoice created with status **Draft**. Items, quantities, and customer match the source document. |
+| 2    | **Abishaah** or **Wendy Wang** (Finance Manager) | Click **Submit** on the Invoice.                                                                                                 | Invoice status changes to **UNPAID**.                                                             |
+| 3    | Any user                                         | Generate the Invoice PDF — via web app (open Invoice, click **Download PDF**) or chatbot (request Invoice PDF for the document). | Invoice PDF downloads. Details are correct.                                                       |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 4.2 — eInvoice / AutoCount Sync
+
+*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
+
+*This checks that MAIA decides the correct e-invoice mode on Invoice submission and pushes the Invoice to AutoCount. MAIA's scope ends at the push. What AutoCount does after receiving it is out of scope for this UAT.*
+
+**Part A — Individual e-Invoice (invoice above RM 10,000)**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in as Finance Manager. Open a submitted Sales Order with a total above **RM 10,000**. Generate an Invoice from it and submit. | Invoice is submitted. Status shows **UNPAID**. |
+| 2 | Open the submitted Invoice. Check the **e-Invoice** section or status field. | `E-Invoice Mode` shows **Individual**. `E-Invoice Status` shows **Queued** — confirming MAIA has pushed the Invoice to AutoCount. |
+
+**Part A result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part B — Consolidated e-Invoice (invoice at or below RM 10,000)**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open a submitted Sales Order with a total at or below **RM 10,000**. Generate an Invoice from it and submit. | Invoice is submitted. Status shows **UNPAID**. |
+| 2 | Open the submitted Invoice. Check the **e-Invoice** section or status field. | `E-Invoice Mode` shows **Consolidated**. `E-Invoice Status` shows **Queued** — confirming MAIA has pushed the Invoice to AutoCount with consolidated mode. |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 4.3 — Create Receipt / Record Payment
+
+*Who tests this: **Nisa** (Finance Assistant) or **Abishaah** / **Wendy Wang** (Finance Manager)*
+
+*Receipt can be created via web app or chatbot. On the chatbot, upload the payment slip and reference the Invoice number — the system creates the receipt automatically.*
+
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Abishaah** or **Wendy Wang** (Finance Manager) | Generate an Invoice — from a submitted **Sales Order** (status **TO BILL**) or from a submitted **Delivery Order**. Save it. | Invoice created with status **Draft**. Items, quantities, and customer match the source document. |
-| 2 | **Abishaah** or **Wendy Wang** (Finance Manager) | Click **Submit** on the Invoice. | Invoice status changes to **UNPAID**. |
-| 3 | Any user | Generate the Invoice PDF — via web app (open Invoice, click **Download PDF**) or chatbot (request Invoice PDF for the document). | Invoice PDF downloads. Details are correct. |
+| 1 | **Nisa** / **Abishaah** / **Wendy Wang** | Create a Receipt against an **UNPAID** Invoice — via web app (open Invoice, create Receipt, enter payment amount, submit) or chatbot (upload payment slip and say *"Pay for Invoice [Invoice No.]"*). | Receipt created and submitted. Invoice status changes to **PAID**. |
+| 2 | **Nisa** / **Abishaah** / **Wendy Wang** | Create a second Receipt against a different **UNPAID** Invoice — save as **Draft** only, do not submit. | Receipt saved in Draft. Invoice still shows **UNPAID**. |
+| 3 | **Abishaah** or **Wendy Wang** (Finance Manager) | Open the Draft Receipt and click **Submit**. | Receipt submitted. Invoice status changes to **PAID**. |
 
 **Your result:**
 - [ ] Pass
@@ -802,13 +870,12 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
-| Step | What to do                                                                                         | What you should see                                                                                     |
-| ---- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                              |
-| 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                    |
-| 3    | Fill in the amount, adjust the items, then confirm and submit.                                     | Credit Note is created and submitted. It references the original Invoice and shows the credited amount. |
-| 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                     |
-| 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.       |
+*Credit Note and Debit Note can be created via web app or chatbot.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Abishaah** / **Wendy Wang** | Create a **Credit Note** from a submitted Invoice — via web app (open Invoice, click Create Credit Note, fill in amount and items, submit) or chatbot (request Credit Note for the Invoice). | Credit Note created and submitted. References the original Invoice and shows the credited amount. |
+| 2 | **Abishaah** / **Wendy Wang** | Create a **Debit Note** from a submitted Invoice — via web app (open Invoice, click Create Debit Note, fill in amount and items, confirm) or chatbot (request Debit Note for the Invoice). | Debit Note created and saved. References the original Invoice and shows the debited amount. |
 
 **Your result:**
 - [ ] Pass
@@ -1064,39 +1131,40 @@ Format per line: `ID. Title [Mode]`
 
 ## Results Summary
 
-| E2E ID | What was tested                                               | Mode         | Result (Pass / Fail / Issue) | Tested by | Date | Blocker Owner | ETA |
-| ------ | ------------------------------------------------------------- | ------------ | ---------------------------- | --------- | ---- | ------------- | --- |
-| 1.1    | Quotation creation by chatbot (text + voice)                  | Chatbot      |                              |           |      |               |     |
-| 1.2.1  | RSC calculator full flow                                      | Chatbot→FE   |                              |           |      |               |     |
-| 1.2.2  | Diecut calculator full flow                                   | Chatbot→FE   |                              |           |      |               |     |
-| 1.2.3  | Calculator output flows into quotation and SO                 | FE           |                              |           |      |               |     |
-| 1.3.1  | Historical pricing: edit customer discount % and price        | FE           |                              |           |      |               |     |
-| 1.3.2  | Historical pricing: auto-derived customer price               | FE           |                              |           |      |               |     |
-| 1.3.3  | Historical pricing: discount % in unit price dropdown         | FE           |                              |           |      |               |     |
-| 1.3.4  | Historical pricing chatbot: last invoice price retrieval      | Chatbot      |                              |           |      |               |     |
-| 1.3.5  | Historical pricing chatbot: average price + quotation history | Chatbot      |                              |           |      |               |     |
-| 1.4    | Price and stock check                                         | Chatbot      |                              |           |      |               |     |
-| 1.5.1  | Price below minimum auto-adjust + submit gate                 | FE           |                              |           |      |               |     |
-| 1.5.2  | Quotation/SO/Invoice generation + proforma PDF export         | FE           |                              |           |      |               |     |
-| 2.1    | SO create/manage + Admin submit notify flow                   | FE           |                              |           |      |               |     |
-| 2.2    | Credit limit block on SO submission                           | FE           |                              |           |      |               |     |
-| 2.3    | Management approval to override credit limit block            | FE           |                              |           |      |               |     |
-| 3.1    | Create Delivery Order and Mark as Delivered                   | FE           |                              |           |      |               |     |
-| 3.2    | Stock reservation entry create/submit                         | FE           |                              |           |      |               |     |
-| 3.3    | SO→DO delay reminder                                          | Chatbot/FE   |                              |           |      |               |     |
-| 3.4    | Stock alerts (out-of-stock / low-stock)                       | FE + Chatbot |                              |           |      |               |     |
-| 4.1    | Invoice submit and generate PDF (Finance Manager)             | FE           |                              |           |      |               |     |
-| 5.1    | Credit note and debit note flow                               | FE           |                              |           |      |               |     |
-| 5.2    | Receipt/payment submit flow                                   | FE           |                              |           |      |               |     |
-| 6.1    | Login baseline for all users                                  | FE           |                              |           |      |               |     |
-| 6.2    | Sales access control check                                    | FE           |                              |           |      |               |     |
-| 6.3    | Warehousing access control check                              | FE           |                              |           |      |               |     |
-| 6.4    | Finance Manager access check                                  | FE           |                              |           |      |               |     |
-| 6.5    | Finance assistant access control check                        | FE           |                              |           |      |               |     |
-| 6.6    | Admin access control check                                    | FE           |                              |           |      |               |     |
-| 6.7    | Cross-doc role approval flow                                  | FE           |                              |           |      |               |     |
+| E2E ID | What was tested                                               | Mode           | Result (Pass / Fail / Issue) | Tested by | Date | Blocker Owner | ETA |
+| ------ | ------------------------------------------------------------- | -------------- | ---------------------------- | --------- | ---- | ------------- | --- |
+| 1.1    | Quotation creation by chatbot (text + voice)                  | Chatbot        |                              |           |      |               |     |
+| 1.2.1  | RSC calculator full flow                                      | Chatbot→FE     |                              |           |      |               |     |
+| 1.2.2  | Diecut calculator full flow                                   | Chatbot→FE     |                              |           |      |               |     |
+| 1.2.3  | Calculator price flows into quotation correctly               | FE             |                              |           |      |               |     |
+| 1.3.1  | Historical pricing: edit customer discount % and price        | FE             |                              |           |      |               |     |
+| 1.3.2  | Historical pricing: auto-derived customer price               | FE             |                              |           |      |               |     |
+| 1.3.3  | Historical pricing: discount % in unit price dropdown         | FE             |                              |           |      |               |     |
+| 1.3.4  | Chatbot: last invoice price retrieval                         | Chatbot        |                              |           |      |               |     |
+| 1.3.5  | Chatbot: average price + quotation history                    | Chatbot        |                              |           |      |               |     |
+| 1.4    | Price and stock check (chatbot)                               | Chatbot        |                              |           |      |               |     |
+| 1.5.1  | Price below minimum auto-adjust (web app)                     | FE             |                              |           |      |               |     |
+| 1.6    | Generate quotation PDF                                        | FE + Chatbot   |                              |           |      |               |     |
+| 2.1    | SO create/manage + Admin submit notify flow                   | FE + Chatbot   |                              |           |      |               |     |
+| 2.2    | Credit limit block on SO submission                           | FE + Chatbot   |                              |           |      |               |     |
+| 2.3    | Management approval to override credit limit block            | FE + Chatbot   |                              |           |      |               |     |
+| 2.4    | Proforma Invoice PDF generation                               | FE + Chatbot   |                              |           |      |               |     |
+| 3.1    | Create Delivery Order and mark as delivered                   | FE + Chatbot   |                              |           |      |               |     |
+| 3.2    | Pick List create and submit                                   | FE             |                              |           |      |               |     |
+| 3.3    | SO→DO delivery delay reminder                                 | Chatbot / FE   |                              |           |      |               |     |
+| 3.4    | Stock alerts (out-of-stock / low-stock)                       | FE + Chatbot   |                              |           |      |               |     |
+| 4.1    | Invoice submit and generate PDF                               | FE + Chatbot   |                              |           |      |               |     |
+| 4.2    | Create receipt / record payment                               | FE + Chatbot   |                              |           |      |               |     |
+| 5.1    | Credit note and debit note flow                               | FE + Chatbot   |                              |           |      |               |     |
+| 6.1    | Login baseline for all users                                  | FE             |                              |           |      |               |     |
+| 6.2    | Sales access control check                                    | FE             |                              |           |      |               |     |
+| 6.3    | Warehousing access control check                              | FE             |                              |           |      |               |     |
+| 6.4    | Finance Manager access check                                  | FE             |                              |           |      |               |     |
+| 6.5    | Finance Assistant access check                               | FE             |                              |           |      |               |     |
+| 6.6    | Admin access control check                                    | FE             |                              |           |      |               |     |
+| 6.7    | Cross-doc role approval flow                                  | FE             |                              |           |      |               |     |
 
-**Total: 28 E2E checkpoints**
+**Total: 30 E2E checkpoints**
 
 | Pass | Fail | Issue |
 |------|------|-------|

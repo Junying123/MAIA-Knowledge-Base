@@ -299,7 +299,7 @@
                     "name": "zsh 94"
                   }
                 ],
-                "activeId": 94,
+                "activeId": 92,
                 "nextId": 95
               },
               "icon": "terminal",
@@ -339,7 +339,7 @@
       "tasknotes:Create new task": false
     }
   },
-  "active": "8c6b1a9e8e45a419",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-04.md",
