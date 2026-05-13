@@ -142,16 +142,16 @@ Format per line: `ID. Title [Mode]`
 - `2.1 SO Create/Edit/Submit Role Flow + Admin Tag Notify [FE + Chatbot]`
 - `2.2 Credit Limit Block on SO Submission [FE + Chatbot]`
 - `2.3 Management Approval Override for Credit Limit [FE + Chatbot]`
-- `2.4 Proforma Invoice PDF Generation [FE]`
+- `2.4 Proforma Invoice PDF Generation [FE + Chatbot]`
 
 #### 3. Delivery Phase
-- `3.1 Full Delivery Flow (SO→Picklist→DO→Invoice→Delivered) [FE]`
-- `3.2 Stock Reservation Entry Submit Flow [FE]`
+- `3.1 Full Delivery Flow (SO→Picklist→DO→Invoice→Delivered) [FE + Chatbot]`
+- `3.2 Pick List Create and Submit Flow [FE]`
 - `3.3 Delivery Delay Reminder [Chatbot/FE]`
 - `3.4 Stock Alerts (Out of Stock / Low Stock) [FE + Chatbot]`
 
 #### 4. Invoice Phase
-- `4.1 Invoice Submit and Generate PDF (Finance Manager) [FE]`
+- `4.1 Invoice Submit and Generate PDF (Finance Manager) [FE + Chatbot]`
 
 #### 5. Post-Invoice Adjustment + Payment Phase
 - `5.1 Credit Note and Debit Note Flow [FE]`
@@ -520,14 +520,14 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
-*Checks that a submitted Quotation can be exported as a PDF with correct details.*
+*Checks that a submitted Quotation can be exported as a PDF with correct details. PDF can be generated via the web app or by requesting it through the chatbot.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Log in. Create a **Quotation** with at least one line item and save it. | Quotation saved with status **Draft**. |
+| 1 | **Xiao Ling** (Sales) | Create a Quotation — via web app (log in, fill form, save) or chatbot (send quotation message, confirm). | Quotation saved with status **Draft**. |
 | 2 | **Marcus Lim** (Admin) | Open the Draft Quotation and click **Submit**. | Quotation status changes to **OPEN**. |
-| 3 | **Xiao Ling** (Sales) | Open the submitted Quotation. Click **Generate PDF**. Download the PDF. | A Quotation PDF is downloaded. It shows the correct customer name, line items, quantities, unit prices, and totals. |
-| 4 | **Xiao Ling** (Sales) | Check the PDF contents: customer name, item names, quantities, unit prices, and total amount. | All details match what was entered in the Quotation. No blank or incorrect fields. |
+| 3 | **Xiao Ling** (Sales) | Generate the PDF — via web app (open Quotation, click **Generate PDF**) or chatbot (request PDF for the quotation). Download the PDF. | Quotation PDF downloads. Correct customer name, line items, quantities, unit prices, and totals. |
+| 4 | **Xiao Ling** (Sales) | Check the PDF contents. | All details match the Quotation. No blank or incorrect fields. |
 
 **Your result:**
 - [ ] Pass
@@ -574,38 +574,68 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 2.2/2.3 — Credit Limit Check on Sales Order Submission
+#### Test 2.2 — Credit Limit Block on Sales Order Submission
 
-*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit; **Steven Gan** (Admin) to approve*
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
-*Tests two things: (1) system blocks SO submission when customer exceeds credit limit, (2) manager can approve to override. SO can be created via web app or chatbot.*
+*System blocks SO submission when customer exceeds credit limit. SO can be created via web app or chatbot.*
 
 ⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** — credit limit already set to 80% usage for this test.
 
-**Test 2.2 — Credit Limit Block**
+| Step | Who                    | What to do                                                                                                                | What you should see                                                            |
+| ---- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 1    | **Xiao Ling** (Sales)  | Create a Sales Order for Customer A — via web app (log in, fill form, save) or via chatbot (send order message, confirm). | Sales Order saved in **Draft**.                                                |
+| 2    | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it.                                                                            | Submission blocked. Error message appears — customer has reached credit limit. |
 
-| Step | Who | What to do | What you should see |
-| ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Create a Sales Order for **ZARA BIOTECH SDN BHD** — via web app (log in, fill form, save) or via chatbot (send order message, confirm). | Sales Order saved in **Draft**. |
-| 2 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | Submission blocked. Error message appears — customer has reached credit limit. |
-
-**Test 2.2 result:**
+**Your result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 
+**Tested by:**
+**Date:**
+
 **Notes:**
+
 
 ---
 
-**Test 2.3 — Management Approval Override**
+#### Test 2.3 — Management Approval Override for Credit Limit
+
+*Who tests this: **Marcus Lim** (Admin) to escalate; **Steven Gan** (Admin) to approve*
+
+*Continue from Test 2.2. Manager approves the blocked SO to override the credit limit.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
 | 1 | **Marcus Lim** (Admin) | From the blocked Sales Order, request approval or escalate for management review. | Approval request sent. SO enters pending approval state. |
 | 2 | **Steven Gan** (Admin) | Check approval queue. Open the flagged Sales Order and **Approve** it. | SO approved. Status changes to **TO BILL**. Override recorded. |
 
-**Test 2.3 result:**
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 2.4 — Proforma Invoice PDF Generation
+
+*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
+
+*Proforma Invoice is not a separate document — it is a PDF export from a submitted Sales Order. Used for cash-in-advance customers only. PDF can be generated via web app or chatbot.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Abishaah** / **Wendy Wang** | Generate the Proforma Invoice PDF — via web app (open submitted SO, click **Generate PDF** → **Proforma Invoice**) or chatbot (request Proforma Invoice PDF for the SO). | Proforma Invoice PDF downloads. No new record created in the system. |
+| 2 | **Abishaah** / **Wendy Wang** | Check the PDF contents: customer name, items, quantities, unit prices, and total. | All details match the Sales Order. No blank or incorrect fields. |
+
+**Your result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
@@ -624,13 +654,15 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for submission and marking delivery*
 
+*Delivery Order can be created via web app or chatbot. Submission and mark-as-delivered done via web app by Admin only.*
+
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Asrul** (Warehousing) | Open a submitted **Sales Order** or **Invoice**. Create a **Delivery Order (DO)** from it and save it. | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
-| 2 | **Asrul** (Warehousing) | Try to **submit** the Delivery Order. | 🚫 Submit button is not available — only Admin can submit Delivery Orders. |
-| 3 | **Marcus Lim** (Admin) | Open the Draft Delivery Order and click **Submit**. | Delivery Order status changes to **To Schedule**. |
-| 4 | **Marcus Lim** (Admin) | Click **Actions → Mark as Delivered**. | Delivery Order status changes to **Delivered**. Delivery is recorded as complete. |
-| 5 | Any user | Download the Delivery Order as a **PDF**. | Delivery Order PDF downloads successfully. |
+| 1 | **Asrul** (Warehousing) | Create a **Delivery Order (DO)** from a submitted Sales Order or Invoice — via web app (open document, create DO, save) or chatbot (request DO creation for the SO/Invoice). | DO created and saved in Draft. Shows customer address, products, quantities, and DO reference. |
+| 2 | **Asrul** (Warehousing) | Try to **submit** the Delivery Order. | 🚫 Submit button not available — only Admin can submit. |
+| 3 | **Marcus Lim** (Admin) | Open the Draft DO and click **Submit**. | Status changes to **To Schedule**. |
+| 4 | **Marcus Lim** (Admin) | Click **Actions → Mark as Delivered**. | Status changes to **Delivered**. Delivery recorded as complete. |
+| 5 | Any user | Download the DO PDF — via web app or chatbot. | Delivery Order PDF downloads. Details are correct. |
 
 **Your result:**
 - [ ] Pass
@@ -708,16 +740,17 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 3.2 — Create and Submit a Stock Reservation Entry
+#### Test 3.2 — Create and Submit a Pick List
 
-*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** or **Abishaah** (Admin or Finance Manager) for submission*
+*Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for submission*
+
+⚠️ **Note:** Only Admin can submit Pick Lists — there is no Logistics Manager at Fixguru.
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Asrul** (Warehousing) | Log in. Navigate to the **Stock Reservation Entry** section. Create a new entry — select a product and quantity to reserve. Save it. | Stock Reservation Entry is created and saved in Draft. Shows product name, quantity, and reference. |
-| 2 | **Asrul** (Warehousing) | Try to **submit** the Stock Reservation Entry. | 🚫 Submit button is not available — Warehousing can create but not submit. |
-| 3 | **Marcus Lim** (Admin) | Log in. Open the Draft Stock Reservation Entry and click **Submit**. | Stock Reservation Entry is submitted. The reserved quantity is reflected in stock. |
-| 4 | **Abishaah** (Finance Manager) | Log in. Create a second Stock Reservation Entry and click **Submit**. | Stock Reservation Entry is submitted. Finance Manager also has submit access. |
+| 1 | **Asrul** (Warehousing) | Log in. Open a submitted **Sales Order**. Create a **Pick List** from it and save it. | Pick List created and saved in Draft. Shows products, quantities, and SO reference. |
+| 2 | **Asrul** (Warehousing) | Try to **submit** the Pick List. | 🚫 Submit button not available — only Admin can submit Pick Lists. |
+| 3 | **Marcus Lim** (Admin) | Open the Draft Pick List and click **Submit**. | Pick List submitted. Status changes to confirmed. |
 
 **Your result:**
 - [ ] Pass
@@ -742,11 +775,13 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
+*Invoice can be created from a submitted Sales Order (TO BILL) or a submitted Delivery Order. PDF can be generated via web app or chatbot.*
+
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Abishaah** or **Wendy Wang** (Finance Manager) | Open a submitted **Sales Order** with status **TO BILL**. Generate an **Invoice** from it. | Invoice is created with status **Draft**. |
+| 1 | **Abishaah** or **Wendy Wang** (Finance Manager) | Generate an Invoice — from a submitted **Sales Order** (status **TO BILL**) or from a submitted **Delivery Order**. Save it. | Invoice created with status **Draft**. Items, quantities, and customer match the source document. |
 | 2 | **Abishaah** or **Wendy Wang** (Finance Manager) | Click **Submit** on the Invoice. | Invoice status changes to **UNPAID**. |
-| 3 | Any user | Download the Invoice as a **PDF**. | Invoice PDF downloads successfully. Details match the Sales Order. |
+| 3 | Any user | Generate the Invoice PDF — via web app (open Invoice, click **Download PDF**) or chatbot (request Invoice PDF for the document). | Invoice PDF downloads. Details are correct. |
 
 **Your result:**
 - [ ] Pass
@@ -767,13 +802,13 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
 
-| Step | What to do                                                                                         | What you should see                                                                                    |
-| ---- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                             |
-| 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                   |
+| Step | What to do                                                                                         | What you should see                                                                                     |
+| ---- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                              |
+| 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                    |
 | 3    | Fill in the amount, adjust the items, then confirm and submit.                                     | Credit Note is created and submitted. It references the original Invoice and shows the credited amount. |
-| 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                    |
-| 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.      |
+| 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                     |
+| 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.       |
 
 **Your result:**
 - [ ] Pass
