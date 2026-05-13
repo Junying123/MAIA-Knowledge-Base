@@ -128,8 +128,8 @@ Format per line: `ID. Title [Mode]`
 - `1.2.2 Diecut Calculator Full Flow [FE]`
 - `1.2.3 Calculator Output Flows into Quotation and SO [FE]`
 - `1.3 Item Historical Pricing [FE]`
-- `1.3.1 Edit Customer Discount % and Price [FE]`
-- `1.3.2 Auto-Derived Customer Price from Discount % [FE]`
+- `1.3.1 Edit Customer Discount % and Price (Optional) [FE]`
+- `1.3.2 Auto-Derived Customer Price from Discount % (Optional) [FE]`
 - `1.3.3 Discount % in Unit Price Dropdown [FE]`
 - `1.3.4 Chatbot Last Quotation Price Retrieval [Chatbot]`
 - `1.3.5 Chatbot Average Price + Quotation History [Chatbot]`
@@ -360,7 +360,7 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-##### Test 1.3.1 — Edit Customer Discount % and Price in Customer Profile
+##### Test 1.3.1 — Edit Customer Discount % and Price in Customer Profile (Optional)
 
 *Who tests this: **Marcus Lim** (Admin)*
 
@@ -387,7 +387,7 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-##### Test 1.3.2 — Customer Price Auto-Derived When Standard Price Changes
+##### Test 1.3.2 — Customer Price Auto-Derived When Standard Price Changes (Optional)
 
 *Who tests this: **Xiao Ling** (Sales)*
 
@@ -411,18 +411,21 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-##### Test 1.3.3 — Discount % Shown in Unit Price Dropdown
+##### Test 1.3.3 — Discount % and Last Quotation Price Shown in Unit Price Dropdown
 
 *Who tests this: **Hayati** (Sales)*
+
+*This test checks two things in the web app unit price dropdown: the discount % display, and that the last quotation price is surfaced for the selected customer and item.*
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
 | 1 | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created from the chatbot. Add an item. Click the **unit price field**. | The unit price dropdown opens showing available price options. |
-| 2 | Check the **Customer Price** row. | Shows the price and a secondary line *"-X% vs current Standard"* — discount % calculated against today's Standard Selling Price. Customer Price appears first in the dropdown. |
-| 3 | Check the **Latest Quotation Price** row. | Shows the last quoted price for this customer and item, with a secondary line *"-X% vs Standard"*. |
-| 4 | Check the **Avg Lifetime Quotation Price** row. | Shows the average price across all past quotations. No discount % line shown. |
-| 5 | Check the **Maximum Selling Price** and other price list rows. | Price is shown. No discount % secondary line shown for these rows. |
-| 6 | Add an item that has **no Standard Selling Price** set. Click the unit price field. | No discount % secondary line appears for any option in the dropdown. |
+| 2 | Check the **Customer Price** row. | Shows the customer price and a secondary line *"-X% vs current Standard"* — discount % calculated against today's Standard Selling Price. Customer Price appears first in the dropdown. |
+| 3 | Check the **Latest Quotation Price** row for the same customer and item. | The last quotation price is surfaced in the dropdown. It shows the last quoted price for this customer and item, with a secondary line *"-X% vs Standard"*. |
+| 4 | Cross-check the **Latest Quotation Price** against the latest submitted/relevant Quotation for that customer and item. | The price shown in the dropdown matches the latest quotation record in MAIA. |
+| 5 | Check the **Avg Lifetime Quotation Price** row. | Shows the average price across past quotations. No discount % line shown. |
+| 6 | Check the **Maximum Selling Price** and other price list rows. | Price is shown. No discount % secondary line shown for these rows. |
+| 7 | Add an item that has **no Standard Selling Price** set. Click the unit price field. | No discount % secondary line appears for any option in the dropdown. |
 
 **Your result:**
 - [ ] Pass
@@ -1244,41 +1247,41 @@ Format per line: `ID. Title [Mode]`
 
 ## Results Summary
 
-| E2E ID | What was tested                                               | Mode           | Result (Pass / Fail / Issue) | Tested by | Date | Blocker Owner | ETA |
-| ------ | ------------------------------------------------------------- | -------------- | ---------------------------- | --------- | ---- | ------------- | --- |
-| 1.1    | Quotation creation via web app / chatbot (text + voice)       | FE + Chatbot   |                              |           |      |               |     |
-| 1.2.1  | RSC calculator full flow                                      | FE             |                              |           |      |               |     |
-| 1.2.2  | Diecut calculator full flow                                   | FE             |                              |           |      |               |     |
-| 1.2.3  | Calculator price flows into quotation correctly               | FE             |                              |           |      |               |     |
-| 1.3.1  | Historical pricing: edit customer discount % and price        | FE             |                              |           |      |               |     |
-| 1.3.2  | Historical pricing: auto-derived customer price               | FE             |                              |           |      |               |     |
-| 1.3.3  | Historical pricing: discount % in unit price dropdown         | FE             |                              |           |      |               |     |
-| 1.3.4  | Chatbot: last invoice price retrieval                         | Chatbot        |                              |           |      |               |     |
-| 1.3.5  | Chatbot: average price + quotation history                    | Chatbot        |                              |           |      |               |     |
-| 1.4    | Price and stock check (chatbot)                               | Chatbot        |                              |           |      |               |     |
-| 1.5    | Quotation approval flow                                       | FE             |                              |           |      |               |     |
-| 1.5.1  | Price below minimum auto-adjust (web app)                     | FE             |                              |           |      |               |     |
-| 1.5.2  | Generate quotation PDF                                        | FE + Chatbot   |                              |           |      |               |     |
-| 2.1    | SO create/manage + Admin submit notify flow                   | FE + Chatbot   |                              |           |      |               |     |
-| 2.2    | Credit limit block on SO submission                           | FE + Chatbot   |                              |           |      |               |     |
-| 2.3    | Management approval to override credit limit block            | FE + Chatbot   |                              |           |      |               |     |
-| 2.4    | Proforma Invoice PDF generation                               | FE + Chatbot   |                              |           |      |               |     |
-| 3.1    | Create Delivery Order and mark as delivered                   | FE + Chatbot   |                              |           |      |               |     |
-| 3.2    | Pick List create and submit                                   | FE             |                              |           |      |               |     |
-| 3.3    | SO→DO delivery delay reminder                                 | Chatbot / FE   |                              |           |      |               |     |
-| 3.4    | Stock alerts (out-of-stock / low-stock)                       | FE + Chatbot   |                              |           |      |               |     |
-| 4.1    | Invoice submit and generate PDF                               | FE + Chatbot   |                              |           |      |               |     |
-| 4.2    | eInvoice / AutoCount sync                                     | FE             |                              |           |      |               |     |
-| 4.3    | Create receipt / record payment                               | FE + Chatbot   |                              |           |      |               |     |
-| 5.1    | Credit note and debit note flow                               | FE + Chatbot   |                              |           |      |               |     |
-| 6.1    | Login baseline for all users                                  | FE             |                              |           |      |               |     |
-| 6.2    | Sales access control check                                    | FE             |                              |           |      |               |     |
-| 6.3    | Warehousing access control check                              | FE             |                              |           |      |               |     |
-| 6.4    | Finance Manager access check                                  | FE             |                              |           |      |               |     |
-| 6.5    | Finance Assistant access check                               | FE             |                              |           |      |               |     |
-| 6.6    | Admin access control check                                    | FE             |                              |           |      |               |     |
-| 6.7    | Cross-doc role approval flow                                  | FE             |                              |           |      |               |     |
-| 7.1    | AutoCount customer and item sync (optional)                   | FE + AutoCount |                              |           |      |               |     |
+| E2E ID | What was tested                                         | Mode           | Result (Pass / Fail / Issue) | Tested by | Date | Blocker Owner | ETA |
+| ------ | ------------------------------------------------------- | -------------- | ---------------------------- | --------- | ---- | ------------- | --- |
+| 1.1    | Quotation creation via web app / chatbot (text + voice) | FE + Chatbot   |                              |           |      |               |     |
+| 1.2.1  | RSC calculator full flow                                | FE             |                              |           |      |               |     |
+| 1.2.2  | Diecut calculator full flow                             | FE             |                              |           |      |               |     |
+| 1.2.3  | Calculator price flows into quotation correctly         | FE             |                              |           |      |               |     |
+| 1.3.1  | Historical pricing: edit customer discount % and price (optional) | FE      |                              |           |      |               |     |
+| 1.3.2  | Historical pricing: auto-derived customer price (optional) | FE         |                              |           |      |               |     |
+| 1.3.3  | Historical pricing: discount % in unit price dropdown   | FE             |                              |           |      |               |     |
+| 1.3.4  | Chatbot: last invoice price retrieval                   | Chatbot        |                              |           |      |               |     |
+| 1.3.5  | Chatbot: average price + quotation history              | Chatbot        |                              |           |      |               |     |
+| 1.4    | Price and stock check (chatbot)                         | Chatbot        |                              |           |      |               |     |
+| 1.5    | Quotation approval flow                                 | FE             |                              |           |      |               |     |
+| 1.6    | Price below minimum auto-adjust (web app)               | FE             |                              |           |      |               |     |
+| 1.7    | Generate quotation PDF                                  | FE + Chatbot   |                              |           |      |               |     |
+| 2.1    | SO create/manage + Admin submit notify flow             | FE + Chatbot   |                              |           |      |               |     |
+| 2.2    | Credit limit block on SO submission                     | FE + Chatbot   |                              |           |      |               |     |
+| 2.3    | Management approval to override credit limit block      | FE + Chatbot   |                              |           |      |               |     |
+| 2.4    | Proforma Invoice PDF generation                         | FE + Chatbot   |                              |           |      |               |     |
+| 3.1    | Create Delivery Order and mark as delivered             | FE + Chatbot   |                              |           |      |               |     |
+| 3.2    | Pick List create and submit                             | FE             |                              |           |      |               |     |
+| 3.3    | SO→DO delivery delay reminder                           | Chatbot / FE   |                              |           |      |               |     |
+| 3.4    | Stock alerts (out-of-stock / low-stock)                 | FE + Chatbot   |                              |           |      |               |     |
+| 4.1    | Invoice submit and generate PDF                         | FE + Chatbot   |                              |           |      |               |     |
+| 4.2    | eInvoice / AutoCount sync                               | FE             |                              |           |      |               |     |
+| 4.3    | Create receipt / record payment                         | FE + Chatbot   |                              |           |      |               |     |
+| 5.1    | Credit note and debit note flow                         | FE + Chatbot   |                              |           |      |               |     |
+| 6.1    | Login baseline for all users                            | FE             |                              |           |      |               |     |
+| 6.2    | Sales access control check                              | FE             |                              |           |      |               |     |
+| 6.3    | Warehousing access control check                        | FE             |                              |           |      |               |     |
+| 6.4    | Finance Manager access check                            | FE             |                              |           |      |               |     |
+| 6.5    | Finance Assistant access check                          | FE             |                              |           |      |               |     |
+| 6.6    | Admin access control check                              | FE             |                              |           |      |               |     |
+| 6.7    | Cross-doc role approval flow                            | FE             |                              |           |      |               |     |
+| 7.1    | AutoCount customer and item sync (optional)             | FE + AutoCount |                              |           |      |               |     |
 
 **Total: 33 E2E checkpoints**
 
