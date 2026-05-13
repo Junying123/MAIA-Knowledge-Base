@@ -1083,6 +1083,28 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
+#### Test 36 — Tagging and Trading Item Price Prompt Alert
+
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open any SO, SI, or Item record → click the **right comment sidebar** → under **Tags**, click **Manage** → type a new tag name in the input field → click the **Add** (`+`) button. | New tag is created and available in the system. |
+| 2 | On the same document, apply a tag at the **doctype level**: in the Tags panel, search for the tag → click `+` to apply it. | The tag appears **below the doctype ID** (e.g., below the SO number) on the document. Repeat with up to 4 tags — a maximum of 4 doctype-level tags can be applied. |
+| 3 | Open a Sales Order → add a line item that has the **Trading** attribute tag. | Under the SKU cell for that line item, the **Trading** tag is displayed. |
+| 4 | Observe the page after adding the Trading item. | A **toast message** appears, alerting the user to manually input the unit price — the unit price defaults to **RM 0** for Trading items. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
 ## Results Summary
 
 | Test # | What was tested | Result (Pass / Fail / Issue) | Tested by | Date |
@@ -1122,8 +1144,9 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | Test 33 | CPO with certificate converts to SO — cert carries over | | | |
 | Test 34 | SO submit blocked — C3 missing required attachments | | | |
 | Test 35 | SO submit blocked — item HS code not in certificate | | | |
+| Test 36 | Tagging and trading item price prompt alert | | | |
 
-**Total: 35 tests**
+**Total: 36 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|

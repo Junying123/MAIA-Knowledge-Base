@@ -1,0 +1,394 @@
+{
+  "main": {
+    "id": "80a2cd5b6c32a274",
+    "type": "split",
+    "children": [
+      {
+        "id": "258d7a54c6be4141",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8c6b1a9e8e45a419",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "MAIA UAT Form - Fixguru - 2026-05 (Full)"
+            }
+          },
+          {
+            "id": "eba5f50d9f1e51f0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "MAIA UAT Form - Fixguru - Phase 2 - Draft"
+            }
+          },
+          {
+            "id": "510f61fc23589b61",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-04.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "MAIA UAT Form - Fixguru - 2026-04"
+            }
+          },
+          {
+            "id": "9fde83d8b4ce98f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "SOW for MAIA GST Fine Foods"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9cb2e88015672f0a",
+    "type": "split",
+    "children": [
+      {
+        "id": "af358b857ba1eca1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7599767bb9a0f5b8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "holsen uat",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "byModifiedTime"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "785c6f8d67308809",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "334971eca25715a2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 265.5,
+    "collapsed": true
+  },
+  "right": {
+    "id": "4643902206108d97",
+    "type": "split",
+    "children": [
+      {
+        "id": "f027f6516dcea1aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "480f399428b3488a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "03 - Clients/We're cooked discovery/Requirement Gathering/Thermac/Customer Narrative - Thermac.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Customer Narrative - Thermac"
+            }
+          },
+          {
+            "id": "ed43382ba778243a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "03 - Clients/We're cooked discovery/Requirement Gathering/Thermac/Customer Narrative - Thermac.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Customer Narrative - Thermac"
+            }
+          },
+          {
+            "id": "29ebdc60007920f2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "703c04ae6e45342c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "7d81c135eb01870b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "03 - Clients/We're cooked discovery/Requirement Gathering/Thermac/Customer Narrative - Thermac.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Customer Narrative - Thermac"
+            }
+          },
+          {
+            "id": "e0e65b9d7ae31534",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "2abe2995e1e24dad",
+            "type": "leaf",
+            "state": {
+              "type": "vin-terminal-view",
+              "state": {
+                "sessions": [
+                  {
+                    "id": 52,
+                    "name": "zsh 52"
+                  },
+                  {
+                    "id": 75,
+                    "name": "zsh 75"
+                  },
+                  {
+                    "id": 79,
+                    "name": "zsh 79"
+                  },
+                  {
+                    "id": 86,
+                    "name": "zsh 86"
+                  },
+                  {
+                    "id": 91,
+                    "name": "zsh 91"
+                  },
+                  {
+                    "id": 92,
+                    "name": "zsh 92"
+                  },
+                  {
+                    "id": 93,
+                    "name": "zsh 93"
+                  },
+                  {
+                    "id": 94,
+                    "name": "zsh 94"
+                  }
+                ],
+                "activeId": 93,
+                "nextId": 95
+              },
+              "icon": "terminal",
+              "title": "Terminal"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "horizontal",
+    "width": 764.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "terminal:Open terminal": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian42-brat:BRAT": false,
+      "internetvin-terminal:Open Terminal": false,
+      "whisper:Open recording controls": false,
+      "agentfiles:Agentfiles": false,
+      "tasknotes:Open mini calendar view": false,
+      "tasknotes:Open calendar view": false,
+      "tasknotes:Open tasks view": false,
+      "tasknotes:Open agenda view": false,
+      "tasknotes:Open kanban board": false,
+      "tasknotes:Open pomodoro timer": false,
+      "tasknotes:Open pomodoro statistics": false,
+      "tasknotes:Create new task": false
+    }
+  },
+  "active": "8c6b1a9e8e45a419",
+  "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
+    "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-04.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Guide] Channel & Infrastructure Setup Guide Copy.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru business workflow.md",
+    "Granola/Transcripts/2026-05-13/Fixguru __ Mindhive - UAT Brief & Historical Pricing Testing-transcript.md",
+    "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-05-13",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Issue.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/HG Group/SOW for MAIA HG Group.md",
+    "Excalidraw/Certificate Tax Reference E2E Workflow.excalidraw",
+    "codex.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/HG Group/HG Group - Gaps & Actions.md",
+    "Granola/Transcripts/2026-05-12/C1_C3 Wrap up-transcript.md",
+    "Granola/Transcripts/2026-05-07/HG GROUP scoping discussion-transcript.md",
+    "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-05-12",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Filled Draft] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
+    "03 - Clients/Active Cooking Clients/Thermac/Thermac_SOW.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/7May26 -  GST X MAIA Gaps - Sheet1.csv",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-delivery.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-customers.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/pasted-1776603199402-0.png",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/JDX Demo Slide Content.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3h.png",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3g.png",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3f.png",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3e.png",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/colors_and_type.css",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/deck-stage.js",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/chats/chat1.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/README.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/Ming Medical/context/learnings.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Requirement Gathering Output - Ming Medical - 2026-04.md",
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "Untitled 2.canvas"
+  ]
+}

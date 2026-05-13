@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-04-20
+last_reviewed: 2026-05-07
 ---
 # Item Historical Pricing & Discount — User Stories & Test Cases
 
@@ -19,33 +19,33 @@ User stories and test cases for the Item Historical Pricing & Discount feature. 
 
 ### Test Cases
 
-| ID       | Scenario                                | Steps                                                                       | Expected Result                                                       |
-| -------- | --------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| TC-01-01 | Single past transaction                 | Open unit price dropdown for item with 1 past transaction for this customer | Row labeled "Last Price" with value, source doc ref, date             |
-| TC-01-02 | Multiple past transactions              | Open dropdown for item with 2+ past transactions                            | Row labeled "Past Price" with most recent value, source doc ref, date |
-| TC-01-03 | No past transactions                    | Open dropdown for item never transacted with this customer                  | No Last/Past Price row shown                                          |
-| TC-01-04 | Select past price                       | Click "Last Price" or "Past Price" row                                      | Unit price field populates with that value                            |
-| TC-01-05 | Existing highlight unchanged            | Customer has a Customer Price set; open dropdown                            | Customer Price row still highlighted/defaulted as before              |
-| TC-01-06 | Draft doc excluded from history         | Customer has 1 submitted SI + 1 draft QT for same item                      | Dropdown shows "Last Price" (N=1, from SI only); draft QT not counted |
-| TC-01-07 | No submitted history, only draft exists | Customer has 1 draft QT for item, no submitted docs                         | No Last/Past Price row shown                                          |
+| ID       | Scenario                                | Steps                                                                       | Expected Result                                                                  |
+| -------- | --------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| TC-01-01 | Has past quotation history              | Open unit price dropdown for item with at least 1 past QT for this customer | Row labeled **"Latest Quotation Price"** with value, source doc ref, date        |
+| TC-01-02 | No past transactions                    | Open dropdown for item never transacted with this customer                  | No "Latest Quotation Price" row shown                                            |
+| TC-01-03 | Select past price                       | Click "Latest Quotation Price" row                                          | Unit price field populates with that value                                       |
+| TC-01-04 | Existing highlight unchanged            | Customer has a Customer Price set; open dropdown                            | Customer Price row still highlighted/defaulted as before                         |
+| TC-01-05 | Draft doc excluded from history         | Customer has 1 submitted SI + 1 draft QT for same item                      | Dropdown shows "Latest Quotation Price" from submitted doc only; draft not shown |
+| TC-01-06 | No submitted history, only draft exists | Customer has 1 draft QT for item, no submitted docs                         | No "Latest Quotation Price" row shown                                            |
 
 ---
 
-## US-02: See Discount % on Every Price Option
+## US-02: See Discount % on Relevant Price Options
 
 > As a sales rep,
-> I want to see what discount each price option represents vs today's standard,
+> I want to see what discount the Customer Price and latest quotation price represent vs today's standard,
 > so I know the impact of my pricing decision without manual calculation.
 
 ### Test Cases
 
-| ID       | Scenario                                      | Steps                                                                           | Expected Result                                      |
-| -------- | --------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| TC-02-01 | Discount shown on Customer Price              | Open dropdown; item has Standard Selling = RM10, Customer Price = RM9           | Customer Price row shows `vs current Standard: -10%` |
-| TC-02-02 | Discount shown on historical row              | Open dropdown; Last Price = RM8.50, Standard = RM10                             | Last Price row shows `vs current Standard: -15%`     |
-| TC-02-03 | Markup shown on price tier                    | Open dropdown; Max Selling = RM15, Standard = RM10                              | Max Selling row shows `+50%`                         |
-| TC-02-04 | Discount hidden when no Standard Selling      | Open dropdown for item with no Standard Selling Price set                       | Discount % not shown on any row                      |
-| TC-02-05 | Discount vs current standard (not historical) | Item standard was RM8 at time of last transaction (RM7.20), now standard = RM10 | Last Price row discount = `-28%` (vs RM10, not RM8)  |
+| ID       | Scenario                                      | Steps                                                                                    | Expected Result                                                                         |
+| -------- | --------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| TC-02-01 | Discount shown on Customer Price              | Open dropdown; item has Standard Selling = RM10, Customer Price = RM9                   | Customer Price row shows secondary line `vs current Standard: -10%`                    |
+| TC-02-02 | Discount shown on Latest Quotation Price      | Open dropdown; Latest Quotation Price = RM8.50, Standard = RM10                         | "Latest Quotation Price" row shows secondary line `vs Standard: -15%`                  |
+| TC-02-03 | No discount % on Avg Lifetime Quotation Price | Open dropdown; Avg Lifetime Quotation Price available                                    | Avg Lifetime row shows price only — **no discount % secondary line**                   |
+| TC-02-04 | No discount % on price list rows              | Open dropdown; Max Selling = RM15, Standard = RM10                                      | Max Selling and other price list rows show price only — **no discount % secondary line** |
+| TC-02-05 | Discount hidden when no Standard Selling      | Open dropdown for item with no Standard Selling Price set                                | Discount % secondary line not shown on any row                                          |
+| TC-02-06 | Discount vs current standard (not historical) | Item standard was RM8 at time of last transaction (RM7.20), now standard = RM10          | Latest Quotation Price row discount = `-28%` (vs RM10, not RM8)                        |
 
 ---
 
@@ -106,6 +106,22 @@ User stories and test cases for the Item Historical Pricing & Discount feature. 
 
 ---
 
+## US-05b: Customer Price Auto-Derived When Standard Price Changes
+
+> As a sales rep,
+> I want the system to automatically compute the customer's unit price from their stored discount % when the standard price has changed,
+> so I don't need to calculate the new price manually.
+
+### Test Cases
+
+| ID | Scenario | Steps | Expected Result |
+|----|----------|-------|-----------------|
+| TC-05b-01 | Derived price reflects updated standard | Customer has `discount_percentage = 10` stored; standard price changes from RM10 to RM14.30; open unit price dropdown for that customer+item | Customer Price row shows **RM 12.87** (14.30 × 0.9, rounded); secondary line shows `-10% vs current Standard` |
+| TC-05b-02 | Derived price correct on save | Select the derived Customer Price and save the Quotation | Unit price saved as RM 12.87; team did not calculate this manually |
+| TC-05b-03 | No Customer Price row when standard unavailable | Customer has `discount_percentage = 10`; item has no Standard Selling Price | Customer Price row is **hidden** from dropdown — cannot derive without standard |
+
+---
+
 ## US-06: Customer Pricing Enforcement Works for Discount-Based Records
 
 > As a system,
@@ -133,9 +149,8 @@ User stories and test cases for the Item Historical Pricing & Discount feature. 
 
 | ID | Scenario | Steps | Expected Result |
 |----|----------|-------|-----------------|
-| TC-07-01 | Avg price shown with history | Open dropdown; customer has 12 past invoices for item | Row "Avg Lifetime Invoiced" shows value, `12 invoices · Jun25–Mar26`, discount vs current standard |
-| TC-07-02 | Row hidden with no history | Open dropdown; customer has no invoice history for item | "Avg Lifetime Invoiced" row not shown |
-| TC-07-03 | Discount shown on avg row | Standard = RM10; avg lifetime = RM8.75 | Row shows `vs current Standard: -12.5%` |
+| TC-07-01 | Avg price shown with history | Open dropdown; customer has 12 past invoices for item | Row "Avg Lifetime Quotation Price" shows value and transaction span — **no discount % secondary line** |
+| TC-07-02 | Row hidden with no history | Open dropdown; customer has no invoice history for item | "Avg Lifetime Quotation Price" row not shown |
 
 ---
 
@@ -149,9 +164,72 @@ User stories and test cases for the Item Historical Pricing & Discount feature. 
 
 ---
 
+---
+
+## US-08: Ask Chatbot for Last Invoice Price for a Customer Item
+
+> As a sales rep using the MAIA chatbot,
+> I want to ask what price was last billed to a customer for a specific item,
+> so I can reference it when quoting without opening the invoice manually.
+
+### Test Cases
+
+| ID       | Scenario                        | Steps                                                                                                                | Expected Result                                                                      |
+| -------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| TC-08-01 | Last invoice price returned     | Ask chatbot: "What was the last price we sold [Item X] to [Customer Y]?" (customer has at least 1 submitted Invoice) | Chatbot returns unit price with UOM, invoice date, and invoice document number       |
+| TC-08-02 | Response matches actual Invoice | Cross-check chatbot response against the submitted Invoice in MAIA                                                   | Price, date, and doc number match the most recent submitted Invoice                  |
+| TC-08-03 | No history response             | Ask same question for a customer with no invoice history for that item                                               | Chatbot responds that there is no prior invoice history — no error, no made-up price |
+| TC-08-04 | Currency and UOM always quoted  | Chatbot returns price for an item with a non-standard UOM (e.g. Carton)                                              | Response includes UOM and currency — not a bare number                               |
+
+---
+
+## US-09: Ask Chatbot for Average Price and Quotation History
+
+> As a sales rep using the MAIA chatbot,
+> I want to ask for a customer's lifetime average price and recent quotation history for an item,
+> so I have a longer-term benchmark when preparing a quote.
+
+### Test Cases
+
+| ID | Scenario | Steps | Expected Result |
+|----|----------|-------|-----------------|
+| TC-09-01 | Lifetime average returned | Ask chatbot: "What is the average price [Customer Y] has paid for [Item X]?" (customer has multiple submitted Invoices) | Chatbot returns average unit price, number of invoices counted, and date range covered |
+| TC-09-02 | Recent quotation history returned | Ask chatbot: "Have we quoted [Item X] to [Customer Y] recently?" | Chatbot returns most recent Quotation price, quotation date, and document number — or confirms no recent quotation |
+| TC-09-03 | No history — average | Ask average question for a customer+item with no invoice history | Chatbot responds that there is no prior history — no error, no made-up value |
+| TC-09-04 | No history — quotation | Ask quotation question for a customer+item with no quotation history | Chatbot confirms no prior quotation exists for this customer and item |
+| TC-09-05 | Quoted vs invoiced distinction | Ask chatbot for "price" without specifying QT or SI | Chatbot defaults to Invoice (what was actually billed) and states which doctype it used |
+
+---
+
+## US-10: Ask Chatbot for Last Pricing Across SI / SO / QTN
+
+> As a sales rep using the MAIA chatbot,
+> I want to ask for a customer's last price on a specific item across Invoice, Sales Order, or Quotation,
+> so I can reference it before quoting without opening each doc manually.
+
+**Reference prompt:** *"Can you get the Leather Sneakers Black Size 8 pricing from Niadia Jane last order?"*
+
+### Test Cases
+
+| ID       | Scenario                         | Example Prompt                                                                           | Expected Result                                                                                                                      |
+| -------- | -------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| TC-10-01 | Last order — defaults to SI      | "Can you get the Leather Sneakers Black Size 8 pricing from Niadia Jane last invoice?"   | Chatbot returns last **Invoice** unit price, currency, UOM, invoice doc number, and date. States it used Invoice (SI) as the source. |
+| TC-10-02 | Last order — explicit SI         | "What was the last invoice price for Leather Sneakers Black Size 8 for Niadia Jane?"     | Returns SI `latest_transaction`: unit price, `source_docname`, `posting_date`, UOM, currency                                         |
+| TC-10-03 | Last order — explicit SO         | "What was the last Sales Order price for Leather Sneakers Black Size 8 for Niadia Jane?" | Returns SO `latest_transaction`: unit price, `source_docname`, `posting_date`, UOM, currency                                         |
+| TC-10-04 | Last order — explicit QTN        | "What price did we last quote Niadia Jane for Leather Sneakers Black Size 8?"            | Returns QT `latest_transaction`: unit price, `source_docname`, `posting_date`, UOM, currency                                         |
+| TC-10-05 | Draft excluded                   | Niadia Jane has 1 submitted SI + 1 draft SO for Leather Sneakers Black Size 8            | Chatbot returns submitted SI price only. Draft SO not surfaced.                                                                      |
+| TC-10-06 | No submitted history             | Niadia Jane has never had a submitted doc for this item                                  | Chatbot responds: no prior history found — no invented price                                                                         |
+| TC-10-07 | QTN ≠ SI — never conflated       | Ask for "last price" then ask "last quotation price" for same customer+item              | Two different responses if QT and SI prices differ — chatbot does not merge or average across doctypes                               |
+| TC-10-08 | UOM and currency always included | Item is sold in Pairs; last SI price = RM 125.00/Pair                                    | Response includes "RM 125.00 / Pair" — not bare "125.00"                                                                             |
+| TC-10-09 | Citation included                | Any last-price query                                                                     | Response includes doc number (e.g. `SI-2026-0042`) and date so rep can verify                                                        |
+| TC-10-10 | Company scope                    | Two companies share same customer; ask without specifying company                        | Chatbot asks which company, or infers from session context — does not mix company data                                               |
+
+---
+
 ## See Also
 
 - [[Item Historical Pricing & Discount]] — full feature spec
+- [[chatbot-brief-item-historical-pricing]] — chatbot API reference and intents
 - [[Quotation Spec]]
 - [[Sales Order Spec]]
 - [[Invoice Spec]]

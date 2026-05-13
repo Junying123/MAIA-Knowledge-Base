@@ -1,0 +1,109 @@
+﻿GST FINE FOODS — MAIA IMPLEMENTATION ACTION ITEMS,,,,,,,,,,,,,,,,,,,
+Pre-Phase 1 Gates · Build Tasks · Client Deliverables · Open Questions to Resolve,,,,,,,,,,,,,,,,,,,
+#,Action Item,Detail / Notes,Category,Owner,Status,Sizing Bucket,Remarks,Effort (md),,,,,,,,,,,
+ PRE-PHASE 1 GATE,,,,,,,,,,,,,,,,,,,
+1,Schedule three-party meeting: GST + Mindhive + SAP vendor,Confirm SAP B1 Service Layer deployment status and Blanket Agreement API access. This is the critical unblock. Nothing else can be sized until this is done.,Gate,Mindhive / GST,In Progress,Coordination,,,,,,,,,,,,,
+2,Confirm SAP B1 Service Layer is deployed and network-accessible from AWS,"Ask SAP vendor directly. If not deployed, assess feasibility and timeline or scope fallback (Excel sync).",Gate,SAP Vendor,Not Started,Discovery,,,,,,,,,,,,,
+3,Confirm Blanket Agreement API fields are exposed via Service Layer,"List fields needed: customer, item, agreed price, planned qty, UOM, validity. Validate against GST's actual Blanket Agreement structure.",Gate,SAP Vendor,Completed,Discovery,,,,,,,,,,,,,
+4,Confirm KL branch uses same Blanket Agreement practice as Penang,Check if KL branch has its own Blanket Agreements or inherits from Penang. Affects data model.,Gate,GST,Completed,Discovery,Same,,,,,,,,,,,,
+5,Establish SAP VPN access from AWS environment,Network routing must be confirmed before integration work begins. SAP vendor + GST IT to align.,Gate,GST + SAP Vendor,In Progress,Infrastructure,,,,,,,,,,,,,
+6,Obtain UAT SAP B1 account for Mindhive engineers,Integration development requires test SAP credentials with read/write access.,Gate,GST,In Progress,Infrastructure,,,,,,,,,,,,,
+7,"GST to export sample data: customer master, item master, price lists, open SOs",Needed for data model validation and MAIA onboarding prep. Define format and volume with GST.,Gate,GST,Not Started,Data,,,,,,,,,,,,,
+8,"GST to provide sample Crystal Report PDFs (QT, SO, DN/DO, Invoice, Pick List, CN)",Required for PDF layout matching. Collect all 6 document types from both branches.,Gate,GST,Not Started,Data,,,,,,,,,,,,,
+9,GST to record SAP stock transformation screen,Video walkthrough of how floor-to-exec transformation record is entered in SAP. Needed to understand sync timing dependency.,Gate,GST,Completed,Discovery,"Ivan recorded the video in SAP, and we did a shop floor visit",,,,,,,,,,,,
+10,Confirm consolidated pick list → per-customer DN split is native ERPNext,"Test in MAIA staging instance. If not native, custom handler required (2-3 md).",Gate,Mindhive,Completed,Test,"yes can be done by MAIA, however the PDF print format may not be suitable for their working document. 
+
+We can learn from their SAP format.
+
+Pick list is across SO, so to create the individual customer Dn from SO must be from the SO level.
+
+A gap could be to create a DN from a picklist with multiple SO, they may need to pick an SO.",1,,,,,,,,,,,
+11,Confirm warehouse section → item group mapping logic,How does GST determine which items go to frozen team vs ready-packed team? Map item groups to warehouse sections.,Gate,GST,Completed,Discovery,"Good to know and learn their process. 
+
+This is done by item type, so when they print out the shop floor pick lists it only includes the specific item types. and not both.
+
+They did mention this require customisation from SAP Vendor",,,,,,,,,,,,
+12,Clarify document numbering scheme: DO / Invoice same-number?,Confirm whether Delivery Order and Invoice share a numbering scheme in GST's current SAP setup.,Gate,GST,Completed,Discovery,"This one they did a hack in their PDF generator, when you generate invoice or do, both documents will be generated at the same time with the same invoice number.
+
+ie. when generate invoice 001, a duplcate page (with invoice > DO) will also be generated.",,,,,,,,,,,,
+13,Clarify credit approval authority structure,Single approver or tiered? Capture paper form fields for digital equivalent.,Gate,GST,Completed,Discovery,Specific people have authority to approve credit.,,,,,,,,,,,,
+14,Confirm glazing percentage: item attribute or separate SKU,"Affects item master data model. If separate SKU, no custom build needed.",Gate,GST,Completed,Discovery,"This is a processing method of the inventory. ie for frozen fish, customer may request for spec of 10% glazing, but another customer may not need.
+
+This may change the unit price, as glazing may add unnecessary weight to the fish.
+
+Good case practice is a different SKU, but their SAP may not be set up that way.",,,,,,,,,,,,
+15,Confirm historical order data availability for preference mining,Can GST export 6-12 months of SO/QT history including item remarks? Volume estimate needed.,Gate,GST,In Progress,Data,,,,,,,,,,,,,
+16,Confirm historical migration scope with all three parties,"What goes into MAIA at day 0: customer master, item master, blanket agreements, open SOs, balances, historical orders. Sign off on scope before build.",Gate,GST + Mindhive,Not Started,Data,,,,,,,,,,,,,
+ INFRASTRUCTURE,,,,,,,,,,,,,,,,,,,
+1,Provision AWS environment for GST MAIA instance,"Standard MAIA deployment stack. Confirm region, sizing, S3 bucket, Redis, MariaDB.",Infrastructure,Mindhive,Not Started,Infra Build,,,,,,,,,,,,,
+2,Register company phone number for WABA,GST to provide dedicated number. Start immediately — Meta KYC takes time.,Infrastructure,GST,Not Started,Infra / Admin,,,,,,,,,,,,,
+3,Create Meta Business Account and submit WABA application,Risk of Meta account ban on self-service. Mindhive to supervise or manage as WABA provider.,Infrastructure,Mindhive,Not Started,Infra Build,,,,,,,,,,,,,
+4,Obtain OpenAI API key for GST instance,GST or Mindhive to provision. Budget estimate to be included in commercial discussion.,Infrastructure,Mindhive / GST,Not Started,Infra / Admin,,,,,,,,,,,,,
+ SAP INTEGRATION — READ,,,,,,,,,,,,,,,,,,,
+1,Build SAP B1 Service Layer connector,Authenticated connection layer from MAIA to SAP B1. Used for all READ sync operations.,Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+2,Sync customer master SAP → MAIA,"One-way, read-only. Webhook preferred, cron poll 15-30 min fallback.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+3,Sync item master SAP → MAIA,"One-way. Include item attributes, UOM, category tags, shelf life fields.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+4,Sync inventory / stock levels SAP → MAIA,One-way. Webhook preferred. Must handle transformation timing lag — do not block DN on stale stock.,Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+5,Sync pricing / price lists SAP → MAIA,Standard price lists. Volume break structures to be mapped.,Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+6,Sync Blanket Agreements SAP → MAIA,"Requires Service Layer BlanketAgreementsService. Map: customer, item, agreed price, planned qty, validity.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+7,Sync credit standing data SAP → MAIA,"Credit limit, outstanding balance, overdue amount. Pre-submission credit check depends on this.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+8,Integration reconciliation test: master data accuracy 100%,Spot-check SAP vs MAIA for all synced entities after initial load. Acceptance metric #5.,Integration,Mindhive,Not Started,Test,,,,,,,,,,,,,
+ SAP INTEGRATION — WRITE,,,,,,,,,,,,,,,,,,,
+1,Build SO push MAIA → SAP,"On SO confirmation in MAIA, push structured record to SAP. MAIA is source of truth.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+2,Build Sales Invoice push MAIA → SAP,"On SI creation in MAIA, push to SAP.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+3,Build Delivery Note push MAIA → SAP,"On DN creation in MAIA, push to SAP.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+4,Build Credit Note push MAIA → SAP,"On CN creation in MAIA, push to SAP.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+5,Build Payment Entry push MAIA → SAP,"On payment entry confirmation, push to SAP.",Integration,Mindhive,Not Started,Build,,,,,,,,,,,,,
+6,Integration reconciliation test: document push accuracy 100%,End-to-end test all 5 write paths. Acceptance metric #6.,Integration,Mindhive,Not Started,Test,,,,,,,,,,,,,
+ NEW DOCTYPE BUILD,,,,,,,,,,,,,,,,,,,
+1,Build Blanket Order doctype in MAIA,"Custom doctype: customer link, agreement method, validity, status lifecycle, line items (item, agreed price, planned/fulfilled qty, UOM). Auto-pricing hook on QT/SO. SAP→MAIA sync only.",Build,Mindhive,Scoping,Build,"Abstraction Layer above SO, need to study and scope the blast radius and design points of BO",10,,,,,,,,,,,
+2,Build Branch / Outlet doctype in MAIA,"Fields: name, code, address, linked warehouse(s), default cost centre. Branch field on all transactional doctypes. UserPermission scoping. Cross-branch access for management.",Build,Mindhive,Scoping,Build,"Simpler, but need to add these fields to the documents to have link to branch, user as well, and default behaviour.",5,,,,,,,,,,,
+3,Configure Branch as Accounting Dimension,Enables branch-level P&L and balance sheet reporting without separate companies. Validate against ERPNext constraints.,Build,Mindhive,Not Started,Build,"Potentially not needed for now, need to assess",,,,,,,,,,,,
+ CORE MAIA — EXTENSION,,,,,,,,,,,,,,,,,,,
+1,Build consolidated pick list with warehouse team split,Pick list consolidated across SOs. Filter/print view split by frozen vs ready-packed team based on item group. Must confirm item group mapping before build.,Build,Mindhive,Completed,Build,,,,,,,,,,,,,
+2,Build pick list → per-customer DN split handler,"If not native ERPNext, custom handler required. Test native first.",Build,Mindhive,Completed,Build,,,,,,,,,,,,,
+3,Build actual picked quantity capture on pick list,Warehouse updates actual quantities directly in MAIA pick list UI. Flows to DN. Eliminates paper-to-re-entry cycle. Acceptance metric #11.,Build,Mindhive,Not Started,Build,,,,,,,,,,,,,
+4,Build auto-pricing hook from Blanket Agreement on QT/SO creation,"When QT/SO created for customer, check active Blanket Agreement and auto-populate agreed prices. Override standard price list where Blanket Agreement applies. Acceptance metric #7.",Build,Mindhive,Scoping,Build,,2,,,,,,,,,,,
+5,Build credit standing display on pre-submission check,"Before SO confirmation, surface credit limit, outstanding, overdue, and available credit. Credit controller notified + ToDo created if blocked. Acceptance metric #8 and #9.",Build,Mindhive,Completed,Build,,,,,,,,,,,,,
+6,Build payment proof → draft payment entry workflow,Proof upload → draft payment entry routed to finance for review and confirmation. Acceptance metric #12.,Build,Mindhive,Completed,Build,,,,,,,,,,,,,
+7,Build invoice retrieval by salesperson,Search and retrieve any invoice from MAIA without VPN. Forward to customer directly. Acceptance metric #13.,Build,Mindhive,Completed,Build,,,,,,,,,,,,,
+8,"Create DN from Pick List,"," if Pick List spans across Orders, they will need to pick which other to Create DN for.",Build,Mindhive,Not Started,Build,,2,,,,,,,,,,,
+9,"Mark Pick List as Completed, Need UI to set the actual Picked QTY","This set the actual picked qty of the order, if low stock there is an exception case here which is not currently supported by the UI.",Build,Mindhive,Not Started,Build,,1,,,,,,,,,,,
+ cRFQ / QUOTATION,,,,,,,,,,,,,,,,,,,
+1,Configure cRFQ module for GST frozen food catalog,"Load GST item master into cRFQ knowledge source. Configure domain reasoning for frozen seafood: product matching, standard substitution logic, UOM handling.",Build,Mindhive,Out of Scope,Build,,,,,,,,,,,,,
+2,Build/validate quotation draft generation for GST order profile,"Target: 100% produce usable draft, ≥95% line item completeness, ≥80% product match without correction. Acceptance metrics #1-3.",Build,Mindhive,Out of Scope,Build,,,,,,,,,,,,,
+3,Measure and validate QT preparation time reduction ≥50%,Timed comparison: old process vs MAIA. Acceptance metric #4.,Test,Mindhive + GST,Out of Scope,UAT,,,,,,,,,,,,,
+4,Build customer preference semantic capture on QT/SO/DN remarks,"RAG-based retrieval: when new QT/SO created for customer, surface relevant historical remarks. Accept/modify/ignore flow. Wow feature.",Build,Mindhive,Scoping,Build,"Brief sent to chatbot team to scope
+
+Trigger remarks, on item addition when click or add to remarks etc.
+
+Weight by frequency and recency
+
+Make it a suggestion ",3,,,,,,,,,,,
+ PDF GENERATION,,,,,,,,,,,,,,,,,,,
+1,Build QT PDF matched to Crystal Report sample,Layout must match GST's existing Crystal Report output. Acceptance metric #14.,Build,Mindhive,Not Started,Build,Check w client if we give them more modern format can,,,,,,,,,,,,
+2,Build SO PDF,,Build,Mindhive,Not Started,Build,,,,,,,,,,,,,
+3,Build DN/DO PDF,,Build,Mindhive,Not Started,Build,,,,,,,,,,,,,
+4,Build Sales Invoice PDF,,Build,Mindhive,Not Started,Build,,,,,,,,,,,,,
+5,Build Pick List PDF (team-split view),Separate print views for frozen and ready-packed teams.,Build,Mindhive,Not Started,Build,,,,,,,,,,,,,
+6,Build Credit Note PDF,,Build,Mindhive,Not Started,Build,,,,,,,,,,,,,
+7,GST sign-off on all PDF layouts,All 6 document types reviewed and approved by GST before UAT. Acceptance metric #14.,UAT,GST,Not Started,UAT,,,,,,,,,,,,,
+ DATA MIGRATION,,,,,,,,,,,,,,,,,,,
+1,Extract and load customer master from SAP → MAIA,One-time historical load at go-live. Validate count and key fields.,Data,Mindhive,Not Started,Build,,,,,,,,,,,,,
+2,Extract and load item master from SAP → MAIA,"Include all enrichment fields needed for cRFQ: category tags, UOM, shelf life, cold chain flags.",Data,Mindhive,Not Started,Build,,,,,,,,,,,,,
+3,Extract and load Blanket Agreements from SAP → MAIA,Active agreements only. Validate pricing against SAP spot-check.,Data,Mindhive,Not Started,Build,,,,,,,,,,,,,
+4,Extract and load open SOs and outstanding balances from SAP,Day-0 state must be accurate. Acceptance metric #15.,Data,Mindhive,Not Started,Build,,,,,,,,,,,,,
+5,Extract and load historical order data (6-12 months) for preference mining,Seeds customer preference embeddings. Confirm export format and volume with GST first.,Data,Mindhive,Not Started,Build,,,,,,,,,,,,,
+6,Reconcile historical data completeness against SAP,Verify loaded records match SAP export. Acceptance metric #15.,Data,Mindhive + GST,Not Started,UAT,,,,,,,,,,,,,
+ NOTIFICATIONS & TODO,,,,,,,,,,,,,,,,,,,
+1,Configure credit block notification → credit controller,Auto-fire on SO submission when credit blocked. Detail tier. Acceptance metric #9.,Build,Mindhive,Completed,Config,,,,,,,,,,,,,
+2,Configure stale SO alerts,SOs open past threshold with no progression. Summary tier. Controller + salesperson.,Build,Mindhive,Not Started,Config,,,,,,,,,,,,,
+3,Configure payment proof → finance ToDo,"On proof upload, route to finance queue. Auto-close on payment confirmation.",Build,Mindhive,Completed,Config,,,,,,,,,,,,,
+4,Configure pick list ready → warehouse notification,"On pick list generation, notify warehouse team leads for each section.",Build,Mindhive,Not Started,Config,,,,,,,,,,,,,
+5,Configure comment tagging notifications,@mention routing across all doctype workspaces.,Build,Mindhive,Completed,Config,,,,,,,,,,,,,
+ UAT / COMMERCIAL,,,,,,,,,,,,,,,,,,,
+1,Prepare UAT sample set for quotation testing,"Min 20 real QT scenarios from GST history. Cover: Blanket Agreement pricing, standard pricing, out-of-stock substitution, multi-branch.",UAT,Mindhive,Not Started,UAT,,,,,,,,,,,,,
+2,Run Phase 1 UAT against all 15 acceptance metrics,"Systematic test against acceptance framework. Document pass/fail per metric. Acceptance gate for RM20,000 milestone.",UAT,Mindhive + GST,Not Started,UAT,,,,,,,,,,,,,
+3,"Collect payment: Phase 1 milestone RM20,000",Trigger: Phase 1 UAT pass. Signed off by Goh Soo Chin.,Commercial,Mindhive,Not Started,Commercial,,,,,,,,,,,,,
+4,Monitor daily MAIA transaction counts post go-live,Silent adoption failure detection. Alert if transaction volume drops below expected baseline within 30 days.,Post Go-Live,Mindhive,Not Started,Monitoring,,,,,,,,,,,,,
+5,Define Phase 2 UAT criteria and scope before Phase 1 go-live,Lock Phase 2 scope and acceptance framework before Phase 1 closes. Prevents scope creep.,Commercial,Mindhive,Not Started,Planning,,,,,,,,,,,,,
