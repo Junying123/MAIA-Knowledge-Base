@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-04.md",
+                "file": "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "MAIA UAT Form - Fixguru - 2026-04"
+              "title": "[Template] MAIA UAT Form - [Client Name] - YYYY-MM"
             }
           },
           {
@@ -299,7 +299,7 @@
                     "name": "zsh 94"
                   }
                 ],
-                "activeId": 93,
+                "activeId": 94,
                 "nextId": 95
               },
               "icon": "terminal",
@@ -341,10 +341,11 @@
   },
   "active": "8c6b1a9e8e45a419",
   "lastOpenFiles": [
+    "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-04.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
     "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-04.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Guide] Channel & Infrastructure Setup Guide Copy.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
@@ -386,7 +387,6 @@
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/chats/chat1.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/README.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/Ming Medical/context/learnings.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/Ming Medical/Prep After Requirement Gathering/Requirement Gathering Output - Ming Medical - 2026-04.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "Untitled 2.canvas"

@@ -139,17 +139,16 @@ Format per line: `ID. Title [Mode]`
 - `1.6 Quotation Generation PDF [FE]`
 
 #### 2. Sales Order + Proforma Phase
-- `2.1 SO Create/Edit/Submit Role Flow + Admin Tag Notify [FE]`
-- `2.2 Credit Limit Block on SO Submission [FE]`
-- `2.3 Management Approval Override for Credit Limit [FE]`
-- `2.4 PROFORMA INV pdf generation`
+- `2.1 SO Create/Edit/Submit Role Flow + Admin Tag Notify [FE + Chatbot]`
+- `2.2 Credit Limit Block on SO Submission [FE + Chatbot]`
+- `2.3 Management Approval Override for Credit Limit [FE + Chatbot]`
+- `2.4 Proforma Invoice PDF Generation [FE]`
 
 #### 3. Delivery Phase
 - `3.1 Full Delivery Flow (SO→Picklist→DO→Invoice→Delivered) [FE]`
 - `3.2 Stock Reservation Entry Submit Flow [FE]`
 - `3.3 Delivery Delay Reminder [Chatbot/FE]`
-- `3.4 Stock Alerts (Out of Stock / Low Stock) [FE + Chatbot]
-- `2.4 PROFORMA INV pdf generation`
+- `3.4 Stock Alerts (Out of Stock / Low Stock) [FE + Chatbot]`
 
 #### 4. Invoice Phase
 - `4.1 Invoice Submit and Generate PDF (Finance Manager) [FE]`
@@ -175,7 +174,7 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### 1.1 — Send a Quotation via Text Message and Voice Note
+#### Test 1.1 — Send a Quotation via Text Message and Voice Note
 
 *Test the chatbot twice — once by typing, and once by sending a voice note. The chatbot will create a Quotation from what you send.*
 
@@ -222,32 +221,7 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### 1.4 — Pricing and Stock Check (Chatbot)
-
-*Continue from **Test 1.1** (text message quotation). This tests the chatbot's price and stock checks during quotation intake.*
-
-| Step | What to do                                                                                                                                 | What you should see                                                                                                                                                                                      |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | After the chatbot shows the quotation details, proceed to the pricing step.                                                                | Chatbot asks you to confirm or enter the price for each item.                                                                                                                                            |
-| 2    | Enter a price **above** the minimum selling price for one item.                                                                            | Price is accepted. No warning shown.                                                                                                                                                                     |
-| 3    | Enter a price **below** the minimum selling price for another item. For example, type `RM 1.00` for a product with a minimum of `RM 1.20`. | Chatbot rejects the price and says it is below the minimum selling price. It offers to set the price to the minimum allowed (e.g. `RM 1.20`) or lets you adjust the quantity or choose a different item. |
-| 4    | Reply to accept the minimum price suggested by the chatbot.                                                                                | Price is updated to the minimum. You can continue with the quotation.                                                                                                                                    |
-| 5    | Ask the chatbot for the available quantity of a product. For example, type *"What is the quantity of [Product]?"*                          | Chatbot replies with the available stock quantity for that product.                                                                                                                                      |
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### 1.2 Quotation — Custom Item via Calculator
+#### Test 1.2 — Quotation: Custom Item via Calculator
 
 *Who tests this section: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
 
@@ -356,7 +330,7 @@ Format per line: `ID. Title [Mode]`
 ---
 
 
-#### 1.3 Quotation — Item Historical Pricing (FE)
+#### Test 1.3 — Quotation: Item Historical Pricing (FE)
 
 *Who tests this section: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira) and **Marcus Lim** (Admin) for Test 1.3.1*
 
@@ -442,17 +416,11 @@ Format per line: `ID. Title [Mode]`
 ---
 
 
-#### 1.5 Quotation — Historical Pricing via Chatbot
-
-*Who tests this section: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
-
-*The MAIA chatbot can answer pricing questions about a customer's history. This group checks that the chatbot returns correct last price, average price, and quotation history when asked.*
-
----
-
 ##### Test 1.3.4 — Chatbot Returns Last Invoice Price for a Customer Item
 
 *Who tests this: **Xiao Ling** (Sales)*
+
+*The MAIA chatbot can answer pricing questions about a customer's history.*
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
@@ -496,28 +464,17 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-### 2. Sales Order + Proforma
+#### Test 1.4 — Pricing and Stock Check (Chatbot)
 
-💡 **Note:** Tests in this group can be done via the **web app** (https://maia-fe-fixguru.vercel.app/login) or the **chatbot** — both are supported.
+*Continue from **Test 1.1** (text message quotation). This tests the chatbot's price and stock checks during quotation intake.*
 
----
-
-#### Test 2.1 — Create and Manage Sales Orders on the Web App
-
-*Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
-
-**Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Once saved, they need to tag Admin so Admin can submit the document.
-
-| Step | Who | What to do | What you should see |
-| ---- | --- | ---------- | ------------------- |
-| 1 | **Hayati** (Sales) | Log in. Create a new Sales Order and save it. | Sales Order saved with status **Draft**. |
-| 2 | **Hayati** (Sales) | Try to **submit** the Sales Order. | 🚫 Submit button is not available — only Admin can submit Sales Orders. |
-| 3 | **Hayati** (Sales) | In the **sidebar comment**, tag **@Marcus Lim** (Admin) to notify him to submit. | Marcus Lim receives a notification that a Sales Order is ready for submission. |
-| 4 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
-| 5 | **Abishaah** (Finance Manager) | Log in. Create a new Sales Order and save it. | Sales Order saved with status **Draft**. Finance Manager can create. |
-| 6 | **Abishaah** (Finance Manager) | Try to **submit** the Sales Order. | 🚫 Submit button is not available — only Admin can submit Sales Orders. |
-| 7 | **Abishaah** (Finance Manager) | In the **sidebar comment**, tag **@Marcus Lim** (Admin) to notify him to submit. | Marcus Lim receives a notification that a Sales Order is ready for submission. |
-| 8 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
+| Step | What to do                                                                                                                                 | What you should see                                                                                                                                                                                      |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | After the chatbot shows the quotation details, proceed to the pricing step.                                                                | Chatbot asks you to confirm or enter the price for each item.                                                                                                                                            |
+| 2    | Enter a price **above** the minimum selling price for one item.                                                                            | Price is accepted. No warning shown.                                                                                                                                                                     |
+| 3    | Enter a price **below** the minimum selling price for another item. For example, type `RM 1.00` for a product with a minimum of `RM 1.20`. | Chatbot rejects the price and says it is below the minimum selling price. It offers to set the price to the minimum allowed (e.g. `RM 1.20`) or lets you adjust the quantity or choose a different item. |
+| 4    | Reply to accept the minimum price suggested by the chatbot.                                                                                | Price is updated to the minimum. You can continue with the quotation.                                                                                                                                    |
+| 5    | Ask the chatbot for the available quantity of a product. For example, type *"What is the quantity of [Product]?"*                          | Chatbot replies with the available stock quantity for that product.                                                                                                                                      |
 
 **Your result:**
 - [ ] Pass
@@ -532,7 +489,7 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 1.5.1 — Price Below Minimum Auto-Adjusts (Web App)
+#### Test 1.5 — Price Below Minimum Auto-Adjusts (Web App)
 
 *Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
@@ -559,40 +516,20 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 2.2/2.3 — Credit Limit Check on Sales Order Submission
+#### Test 1.6 — Generate Quotation PDF
 
-*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit; **Steven Gan** (Admin) to approve*
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
-*This tests two things: (A) the system blocks SO submission when a customer is near their credit limit, and (B) a manager can approve the SO to override the block.*
-
-⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** as the test customer — the credit limit has already been set to 80% usage for this account.
-
-**Part A — Credit Limit Block**
+*Checks that a submitted Quotation can be exported as a PDF with correct details.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Sales Order** for **ZARA BIOTECH SDN BHD**. Fill in the items and save. | Sales Order is saved in Draft. |
-| 2 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | The system checks the customer's credit usage. An error message appears — the customer has reached or exceeded their credit limit. Submission is blocked. |
-| 3 | **Marcus Lim** (Admin) | Note the error message shown. | Error message is clear and mentions the credit limit issue. |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a **Quotation** with at least one line item and save it. | Quotation saved with status **Draft**. |
+| 2 | **Marcus Lim** (Admin) | Open the Draft Quotation and click **Submit**. | Quotation status changes to **OPEN**. |
+| 3 | **Xiao Ling** (Sales) | Open the submitted Quotation. Click **Generate PDF**. Download the PDF. | A Quotation PDF is downloaded. It shows the correct customer name, line items, quantities, unit prices, and totals. |
+| 4 | **Xiao Ling** (Sales) | Check the PDF contents: customer name, item names, quantities, unit prices, and total amount. | All details match what was entered in the Quotation. No blank or incorrect fields. |
 
-**Part A result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Notes:**
-
----
-
-**Part B — Management Approval to Override**
-
-| Step | Who | What to do | What you should see |
-| ---- | --- | ---------- | ------------------- |
-| 4 | **Marcus Lim** (Admin) | After the block in Part A, look for an option to **request approval** or escalate the Sales Order for management review. | An approval request is sent or the SO enters a pending approval state. |
-| 5 | **Steven Gan** (Admin) | Log in. Check for a pending approval notification or approval queue. Open the flagged Sales Order. | The Sales Order is visible in the approval queue with a note about the credit limit. |
-| 6 | **Steven Gan** (Admin) | **Approve** the Sales Order. | Sales Order is approved and status changes to **TO BILL**. The credit limit override is recorded. |
-
-**Part B result:**
+**Your result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
@@ -605,25 +542,70 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 1.5.2 — Generate Documents (Quotation → Sales Order → Invoice)
+### 2. Sales Order + Proforma
 
-*Coordinate across roles — see who does each step.*
+💡 **Note:** Tests in this group can be done via the **web app** (https://maia-fe-fixguru.vercel.app/login) or the **chatbot** — both are supported.
 
-**Role note:** Sales and Finance can **create** but not **submit**. Only **Admin** submits Quotations and Sales Orders. **Finance Manager** or **Admin** submits Invoices.
+---
 
-**Proforma Invoice note:** Not a separate document — it's a PDF export from the Sales Order. Used for cash-in-advance customers only.
+#### Test 2.1 — Create and Manage Sales Orders (Web App + Chatbot)
 
-| Step | Who                                                     | What to do                                                                                                | What you should see                                                                                                  |
-| ---- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| 1    | **Xiao Ling** (Sales)                                   | Log in at https://maia-fe-fixguru.vercel.app/login. Create a **Quotation** and save it.                   | Quotation is created and saved. Status shows **Draft**.                                                              |
-| 2    | **Marcus Lim** (Admin)                                  | Log in as Admin. Open the Draft Quotation and click **Submit**.                                           | Quotation status changes to **OPEN**. Only Admin can submit Quotations.                                              |
-| 3    | **Xiao Ling** (Sales) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**.                                         | Quotation status changes to **ORDERED**. A new Sales Order is created with status **Draft**.                         |
-| 4    | **Marcus Lim** (Admin)                                  | Open the Draft Sales Order and click **Submit**.                                                          | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders.                                       |
-| 5    | **Abishaah** or **Wendy Wang** (Finance Manager)        | Open the submitted Sales Order. Click **Generate PDF** and select **Proforma Invoice**. Download the PDF. | A Proforma Invoice PDF is downloaded. It uses the Sales Order details — no separate record is created in the system. |
-| 6    |                                                         | From the Sales Order, generate the final **Invoice** and click **Submit**.                                | An Invoice is created and submitted. Status shows **UNPAID**.                                                        |
-| 7    | Any user                                                | Download the Quotation, Sales Order, and Invoice each as PDF.                                             | All three documents download successfully as PDFs.                                                                   |
+*Who tests this: **Hayati** (Sales), **Abishaah** (Finance Manager), **Zuha** (Sales via chatbot); **Marcus Lim** (Admin) for submission*
+
+*Sales Orders can be created via the web app (log in and fill in the form) or via the chatbot (send an order message to @maia_fixguru_bot). Either way, only Admin can submit. Test all three users using whichever channel they prefer.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Hayati** / **Abishaah** / **Zuha** | Create a new Sales Order — via the web app (log in, fill form, save) or via the chatbot (send order message, confirm details). | Sales Order saved with status **Draft**. Items, quantities, and customer are correct. |
+| 2 | **Hayati** / **Abishaah** / **Zuha** | Try to **submit** the Sales Order. | 🚫 Submit button not available — only Admin can submit Sales Orders. |
+| 3 | **Hayati** / **Abishaah** / **Zuha** | Tag **@Marcus Lim** in the sidebar comment to notify him. | Marcus Lim receives a notification. |
+| 4 | **Marcus Lim** (Admin) | Open each Draft Sales Order and click **Submit**. | Status changes to **TO BILL** for each order. |
 
 **Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 2.2/2.3 — Credit Limit Check on Sales Order Submission
+
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit; **Steven Gan** (Admin) to approve*
+
+*Tests two things: (1) system blocks SO submission when customer exceeds credit limit, (2) manager can approve to override. SO can be created via web app or chatbot.*
+
+⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** — credit limit already set to 80% usage for this test.
+
+**Test 2.2 — Credit Limit Block**
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Create a Sales Order for **ZARA BIOTECH SDN BHD** — via web app (log in, fill form, save) or via chatbot (send order message, confirm). | Sales Order saved in **Draft**. |
+| 2 | **Marcus Lim** (Admin) | Open the Sales Order and try to **submit** it. | Submission blocked. Error message appears — customer has reached credit limit. |
+
+**Test 2.2 result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Test 2.3 — Management Approval Override**
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Marcus Lim** (Admin) | From the blocked Sales Order, request approval or escalate for management review. | Approval request sent. SO enters pending approval state. |
+| 2 | **Steven Gan** (Admin) | Check approval queue. Open the flagged Sales Order and **Approve** it. | SO approved. Status changes to **TO BILL**. Override recorded. |
+
+**Test 2.3 result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue

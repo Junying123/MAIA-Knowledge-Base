@@ -3,7 +3,7 @@ granola_id: 5fa769cf-f919-4454-8f8b-d03c6e3b1aeb
 title: Fixguru <> Mindhive - UAT Brief & Historical Pricing Testing - Transcript
 type: transcript
 created: 2026-05-13T03:01:30.918Z
-updated: 2026-05-13T08:12:41.329Z
+updated: 2026-05-13T11:48:05.034Z
 attendees: []
 ---
 
