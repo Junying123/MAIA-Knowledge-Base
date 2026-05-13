@@ -204,12 +204,12 @@ Format per line: `ID. Title [Mode]`
 
 **Part B — Chatbot Text Message**
 
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | Open **@maia_fixguru_bot** in Telegram using the QR code provided. | The chatbot replies and is ready to receive your message. |
-| 2 | Type a quotation request like: *"Customer: [Customer Name]. Items: 10 units [Product A], 5 boxes [Product B]."* | Chatbot receives the message. |
-| 3 | Wait a moment. | The chatbot shows the details it picked up — customer name, products, and quantities — and prepares a Quotation. |
-| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. A Quotation is created. |
+| Step | What to do                                                                                                                                                            | What you should see                                                                                              |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| 1    | Open the chatbot in **Telegram** or **WhatsApp**. Use **Telegram** (`@maia_fixguru_bot`) during UAT, or use the WhatsApp number if it is already enabled for testing. | The chatbot replies and is ready to receive your message.                                                        |
+| 2    | Type a quotation request like: *"Customer: [Customer Name]. Items: 10 units [Product A], 5 boxes [Product B]."*                                                       | Chatbot receives the message.                                                                                    |
+| 3    | Wait a moment.                                                                                                                                                        | The chatbot shows the details it picked up — customer name, products, and quantities — and prepares a Quotation. |
+| 4    | Check that the details are correct.                                                                                                                                   | Customer name, product names, and quantities match what you typed. A Quotation is created.                       |
 
 **Part B result:**
 - [ ] Pass
@@ -222,11 +222,11 @@ Format per line: `ID. Title [Mode]`
 
 **Part C — Chatbot Voice Note**
 
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | In the same Telegram chat, record a voice note. Say something like: *"Quote for [Customer Name] — 10 units of [Product A] and 5 boxes of [Product B]."* | Voice note is sent to the chatbot. |
-| 2 | Wait a moment. | The chatbot transcribes your voice note and shows the details — customer name, products, and quantities — and prepares a Quotation. |
-| 3 | Check that the details are correct. | Details match what you said. A Quotation is created. |
+| Step | What to do                                                                                                                                     | What you should see                                                                                                                 |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | In the same **Telegram** or **WhatsApp** chat, record a voice note. Say something like: *"Quote for [Customer Name] — 10 units of [Product A] and 5 boxes of [Product B]."* | Voice note is sent to the chatbot. |
+| 2    | Wait a moment.                                                                                                                                 | The chatbot transcribes your voice note and shows the details — customer name, products, and quantities — and prepares a Quotation. |
+| 3    | Check that the details are correct.                                                                                                            | Details match what you said. A Quotation is created.                                                                                |
 
 **Part C result:**
 - [ ] Pass
@@ -511,7 +511,34 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 1.5 — Price Below Minimum Auto-Adjusts (Web App)
+#### Test 1.5 — Quotation Approval Flow
+
+*Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
+
+*This checks the Quotation approval/submission flow. Sales can create and edit the Quotation, but only Admin can submit it.*
+
+| Step | Who | What to do | What you should see |
+| ---- | --- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Create a new **Quotation** — via web app or chatbot — and save it as **Draft**. | Quotation is created successfully with status **Draft**. |
+| 2 | **Xiao Ling** (Sales) | Open the Draft Quotation and try to **submit** it. | 🚫 Submit button is not available to Sales users. |
+| 3 | **Xiao Ling** (Sales) | Tag or notify **Marcus Lim** to review the Draft Quotation. | Admin is notified to review the Quotation. |
+| 4 | **Marcus Lim** (Admin) | Open the Draft Quotation, review the details, and click **Submit**. | Quotation is submitted successfully. Status changes to **OPEN**. |
+| 5 | **Xiao Ling** (Sales) | Reopen the submitted Quotation and check the final details. | Submitted Quotation shows the correct customer, items, quantities, prices, and status. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 1.5.1 — Price Below Minimum Auto-Adjusts (Web App)
 
 *Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
@@ -578,7 +605,7 @@ Format per line: `ID. Title [Mode]`
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Hayati** / **Abishaah** / **Zuha** | Create a new Sales Order — via the web app (log in, fill form, save) or via the chatbot (send order message, confirm details). | Sales Order saved with status **Draft**. Items, quantities, and customer are correct. |
+| 1 | **Hayati** / **Abishaah** / **Zuha** | Create a new Sales Order — either create it directly via the web app, create it from an existing **Quotation**, or create it via the chatbot (send order message, confirm details). | Sales Order saved with status **Draft**. Items, quantities, and customer are correct. |
 | 2 | **Hayati** / **Abishaah** / **Zuha** | Try to **submit** the Sales Order. | 🚫 Submit button not available — only Admin can submit Sales Orders. |
 | 3 | **Hayati** / **Abishaah** / **Zuha** | Tag **@Marcus Lim** in the sidebar comment to notify him. | Marcus Lim receives a notification. |
 | 4 | **Marcus Lim** (Admin) | Open each Draft Sales Order and click **Submit**. | Status changes to **TO BILL** for each order. |
@@ -1229,6 +1256,7 @@ Format per line: `ID. Title [Mode]`
 | 1.3.4  | Chatbot: last invoice price retrieval                         | Chatbot        |                              |           |      |               |     |
 | 1.3.5  | Chatbot: average price + quotation history                    | Chatbot        |                              |           |      |               |     |
 | 1.4    | Price and stock check (chatbot)                               | Chatbot        |                              |           |      |               |     |
+| 1.5    | Quotation approval flow                                       | FE             |                              |           |      |               |     |
 | 1.5.1  | Price below minimum auto-adjust (web app)                     | FE             |                              |           |      |               |     |
 | 1.6    | Generate quotation PDF                                        | FE + Chatbot   |                              |           |      |               |     |
 | 2.1    | SO create/manage + Admin submit notify flow                   | FE + Chatbot   |                              |           |      |               |     |
@@ -1252,7 +1280,7 @@ Format per line: `ID. Title [Mode]`
 | 6.7    | Cross-doc role approval flow                                  | FE             |                              |           |      |               |     |
 | 7.1    | AutoCount customer and item sync (optional)                   | FE + AutoCount |                              |           |      |               |     |
 
-**Total: 32 E2E checkpoints**
+**Total: 33 E2E checkpoints**
 
 | Pass | Fail | Issue |
 |------|------|-------|
