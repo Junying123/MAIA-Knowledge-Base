@@ -33,11 +33,6 @@ Please respond with: Please send the files directly, or send screenshots if the 
 
 ## MAIA and SAP B1 Flow
 
-4. What we need to know: Which steps should happen in MAIA before information is sent into `SAP B1 10.0`?
-
-Why we need this: We need to clearly define what work happens in MAIA and what work stays in SAP.
-
-Please respond with: A step-by-step flow, for example `quotation in MAIA -> approval -> push to SAP`.
 
 5. What we need to know: Which records should sync between MAIA and SAP? For example: customer list, item list, stock, quotation, sales order, invoice, payment, or other records.
 
@@ -57,31 +52,13 @@ Why we need this: If approval rules change by situation, we need to capture thos
 
 Please respond with: Yes/no with details and examples, such as `orders above RM 50,000 need Director approval`.
 
-8. What we need to know: Please provide the role permission matrix for the users involved in sales, finance, warehouse, logistics, and management.
-
-Why we need this: We need to know who should be able to create, view, edit, approve, and access each type of document.
-
-Please respond with: A role list or matrix showing `role/job title -> what they can access or approve`.
-
 ## Pricing and Quotation
 
-9. What we need to know: How is the selling price decided today, and who gives the final price when a salesperson needs to prepare a quotation?
-
-Why we need this: We need to understand the real pricing process so MAIA can support it properly.
-
-Please respond with: A short description of the current pricing process. A screenshot or sample Excel file is also helpful.
-
-10. What we need to know: Where is pricing maintained today? For example, in SAP, Excel, or through direct confirmation from purchasing.
+10. What we need to know: Where is pricing maintained today for standard sales item? For example, in SAP, Excel?
 
 Why we need this: We need to know where the latest price comes from so salespeople are using the correct information.
 
 Please respond with: A short explanation of where prices are stored and who updates them.
-
-11. What we need to know: How often do prices change, and what usually causes the change?
-
-Why we need this: This helps us understand whether pricing is mostly stable or highly dynamic.
-
-Please respond with: A short answer such as `daily`, `weekly`, `ad hoc`, or `only when requested`, plus a short explanation.
 
 12. What we need to know: Does pricing change by customer, business area, order size, or any other reason?
 
