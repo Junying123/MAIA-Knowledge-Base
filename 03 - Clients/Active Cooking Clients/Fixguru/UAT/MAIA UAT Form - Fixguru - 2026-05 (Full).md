@@ -136,7 +136,7 @@ Format per line: `ID. Title [Mode]`
 - `1.4 Price and Stock Check [Chatbot]`
 - `1.5 Quotation Approval and Output [FE]`
 - `1.5.1 Price Below Minimum + Submit Gate [FE]`
-- `1.6 Quotation Generation PDF [FE + Chatbot]`
+- `1.5.2 Quotation Generation PDF [FE + Chatbot]`
 
 #### 2. Sales Order + Proforma Phase
 - `2.1 SO Create/Edit/Submit Role Flow + Admin Tag Notify [FE + Chatbot]`
@@ -565,7 +565,7 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 1.6 — Generate Quotation PDF
+#### Test 1.5.2 — Generate Quotation PDF
 
 *Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
@@ -681,8 +681,8 @@ Format per line: `ID. Title [Mode]`
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Abishaah** / **Wendy Wang** | Generate the Proforma Invoice PDF — via web app (open submitted SO, click **Generate PDF** → **Proforma Invoice**) or chatbot (request Proforma Invoice PDF for the SO). | Proforma Invoice PDF downloads. No new record created in the system. |
-| 2 | **Abishaah** / **Wendy Wang** | Check the PDF contents: customer name, items, quantities, unit prices, and total. | All details match the Sales Order. No blank or incorrect fields. |
+| 1 | **Abishaah** / **Wendy Wang** | Generate the Proforma Invoice PDF — via web app (open submitted SO, click **Generate PDF** → **Proforma Invoice**) or chatbot (request Proforma Invoice PDF for the SO). | Proforma Invoice PDF downloads using the configured **Proforma Invoice template**. No new record is created in the system. |
+| 2 | **Abishaah** / **Wendy Wang** | Check the PDF contents: customer name, items, quantities, unit prices, total, and document layout. | All details match the Sales Order. The PDF uses the client's configured Proforma Invoice template. No blank or incorrect fields. |
 
 **Your result:**
 - [ ] Pass
@@ -830,7 +830,7 @@ Format per line: `ID. Title [Mode]`
 | ---- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | 1    | **Abishaah** or **Wendy Wang** (Finance Manager) | Create an Invoice — from a submitted **Sales Order** (status **TO BILL**) or from a  **Delivery Order**. Save it.                | Invoice created with status **Draft**. Items, quantities, and customer match the source document. |
 | 2    | **Abishaah** or **Wendy Wang** (Finance Manager) | Click **Submit** on the Invoice.                                                                                                 | Invoice status changes to **UNPAID**.                                                             |
-| 3    | Any user                                         | Generate the Invoice PDF — via web app (open Invoice, click **Download PDF**) or chatbot (request Invoice PDF for the document). | Invoice PDF downloads. Details are correct.                                                       |
+| 3    | Any user                                         | Generate the Invoice PDF — via web app (open Invoice, click **Download PDF**) or chatbot (request Invoice PDF for the document). | Invoice PDF downloads using the configured **Invoice template**. Details are correct.            |
 
 **Your result:**
 - [ ] Pass
@@ -1258,7 +1258,7 @@ Format per line: `ID. Title [Mode]`
 | 1.4    | Price and stock check (chatbot)                               | Chatbot        |                              |           |      |               |     |
 | 1.5    | Quotation approval flow                                       | FE             |                              |           |      |               |     |
 | 1.5.1  | Price below minimum auto-adjust (web app)                     | FE             |                              |           |      |               |     |
-| 1.6    | Generate quotation PDF                                        | FE + Chatbot   |                              |           |      |               |     |
+| 1.5.2  | Generate quotation PDF                                        | FE + Chatbot   |                              |           |      |               |     |
 | 2.1    | SO create/manage + Admin submit notify flow                   | FE + Chatbot   |                              |           |      |               |     |
 | 2.2    | Credit limit block on SO submission                           | FE + Chatbot   |                              |           |      |               |     |
 | 2.3    | Management approval to override credit limit block            | FE + Chatbot   |                              |           |      |               |     |
