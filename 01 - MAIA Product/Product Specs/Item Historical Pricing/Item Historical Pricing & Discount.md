@@ -339,6 +339,8 @@ Line 2: [Metadata]        [vs current Standard: -10%]
 
 **Discount in dropdown = always vs CURRENT Standard Selling Price (GAP-2 resolution).**
 
+**Clarification for historical quotation rows:** `Last Price` / `Past Price` keeps the frozen historical quotation price from the source document. The system does **not** recompute that historical price when Standard Selling changes. What is derived dynamically is only the secondary discount comparison shown as `vs current Standard`.
+
 **Label logic:**
 
 ```Plain

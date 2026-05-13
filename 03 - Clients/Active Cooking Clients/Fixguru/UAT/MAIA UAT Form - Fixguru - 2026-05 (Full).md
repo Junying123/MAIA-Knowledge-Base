@@ -129,10 +129,10 @@ Format per line: `ID. Title [Mode]`
 - `1.2.3 Calculator Output Flows into Quotation and SO [FE]`
 - `1.3 Item Historical Pricing [FE]`
 - `1.3.1 Edit Customer Discount % and Price (Optional) [FE]`
-- `1.3.2 Auto-Derived Customer Price from Discount % (Optional) [FE]`
+- `1.3.2 Last Quotation Price Auto-Derived When Standard Price Changes (Optional) [FE]`
 - `1.3.3 Discount % in Unit Price Dropdown [FE]`
 - `1.3.4 Chatbot Last Quotation Price Retrieval [Chatbot]`
-- `1.3.5 Chatbot Average Price + Quotation History [Chatbot]`
+- `1.3.5 Chatbot Line Item Price + Discount from Quotation History [Chatbot]`
 - `1.4 Price and Stock Check [Chatbot]`
 - `1.5 Quotation Approval and Output [FE]`
 - `1.5.1 Price Below Minimum + Submit Gate [FE]`
@@ -387,16 +387,21 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-##### Test 1.3.2 — Customer Price Auto-Derived When Standard Price Changes (Optional)
+##### Test 1.3.2 — Last Quotation Price Auto-Derived When Standard Price Changes (Optional)
 
 *Who tests this: **Xiao Ling** (Sales)*
 
+*Scenario example:* Xiao Ling is preparing a new quotation for **ABC Packaging** for **Item A**. This customer has already received a few quotations before. In the most recent quotation, the line item was quoted at **RM12.40**. In an older quotation before that, the same item was quoted at **RM11.80**. Today, when Xiao Ling opens a fresh quotation for the same customer and item, the **current Standard Selling Price** in MAIA is **RM11.40**. Xiao Ling does not want to manually open old quotations and recalculate whether the previous quoted prices are still above or below today's standard. Instead, when she opens the unit price dropdown, the system should surface the **latest quotation price = RM12.40** and show the comparison against today's standard, for example **+8.8% vs current Standard**. If she opens the quotation history graph / tooltip, she should also be able to review the earlier quotation price **RM11.80** and see its corresponding discount / markup comparison there. This lets her quickly decide whether to reuse the latest quoted price, refer to an older price point, or adjust the new quotation based on the current market context.
+
+*User story:* As a salesperson, I want to see the customer's last quotation price together with its discount comparison against the current Standard Selling Price, so that I can reuse past pricing context without manually recalculating the discount.
+
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Log in to the web app. Create a new **Quotation** for a customer that has a stored discount % in their Customer Profile, or open a Draft Quotation for that customer created from the chatbot. Add an item. | Item is added to the Quotation. |
-| 2 | Click the **unit price field** for the item. | The dropdown opens and shows a **Customer Price** option at the top with the discount % — e.g. *"-10% vs current Standard"*. |
-| 3 | Check the Customer Price value. For example, if the customer's discount is 10% and the Standard Selling Price is RM 14.30, the Customer Price should show **RM 12.87**. | Price is correctly derived from the stored discount % and current Standard Selling Price. The team does not need to calculate this manually. |
-| 4 | Select the Customer Price option and save the Quotation. | Unit price is set to the derived price. |
+| 1 | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created from the chatbot, for a customer+item pair that already has prior quotation history. | Item is added to the Quotation. |
+| 2 | Ensure the item's current **Standard Selling Price** is different from the standard/market context used in the earlier quotation history. Then click the **unit price field** for the item. | The dropdown opens and shows a **Latest Quotation Price** / historical quotation price row for that customer and item. |
+| 3 | Check the historical quotation price row. | The quoted historical price is surfaced, and the secondary discount line is shown relative to the **current Standard Selling Price** — e.g. *"-X% vs current Standard"*. |
+| 4 | Cross-check the displayed historical price against the latest quotation record in MAIA. | The price itself matches the last quotation record. It is not replaced with a new derived price; only the discount comparison is derived against the current standard. |
+| 5 | Select the historical quotation price option and save the Quotation. | Unit price is set to the surfaced last quotation price, and the user can use it without manual calculation. |
 
 **Your result:**
 - [ ] Pass
@@ -411,21 +416,22 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-##### Test 1.3.3 — Discount % and Last Quotation Price Shown in Unit Price Dropdown
+##### Test 1.3.3 — Discount %, Last Quotation Price, and Graph Tooltip History Shown in Unit Price Dropdown
 
 *Who tests this: **Hayati** (Sales)*
 
-*This test checks two things in the web app unit price dropdown: the discount % display, and that the last quotation price is surfaced for the selected customer and item.*
+*This test checks three things in the web app unit price dropdown: the discount % display, that the last quotation price is surfaced for the selected customer and item, and that the graph tooltip shows the last few quotation prices and discounts when clicked.*
 
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created from the chatbot. Add an item. Click the **unit price field**. | The unit price dropdown opens showing available price options. |
-| 2 | Check the **Customer Price** row. | Shows the customer price and a secondary line *"-X% vs current Standard"* — discount % calculated against today's Standard Selling Price. Customer Price appears first in the dropdown. |
-| 3 | Check the **Latest Quotation Price** row for the same customer and item. | The last quotation price is surfaced in the dropdown. It shows the last quoted price for this customer and item, with a secondary line *"-X% vs Standard"*. |
-| 4 | Cross-check the **Latest Quotation Price** against the latest submitted/relevant Quotation for that customer and item. | The price shown in the dropdown matches the latest quotation record in MAIA. |
-| 5 | Check the **Avg Lifetime Quotation Price** row. | Shows the average price across past quotations. No discount % line shown. |
-| 6 | Check the **Maximum Selling Price** and other price list rows. | Price is shown. No discount % secondary line shown for these rows. |
-| 7 | Add an item that has **no Standard Selling Price** set. Click the unit price field. | No discount % secondary line appears for any option in the dropdown. |
+| Step | What to do                                                                                                                                          | What you should see                                                                                                                                                                     |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created from the chatbot. Add an item. Click the **unit price field**. | The unit price dropdown opens showing available price options.                                                                                                                          |
+| 2    | Check the **Customer Price** row.                                                                                                                   | Shows the customer price and a secondary line *"-X% vs current Standard"* — discount % calculated against today's Standard Selling Price. Customer Price appears first in the dropdown. |
+| 3    | Check the **Latest Quotation Price** row for the same customer and item.                                                                            | The last quotation price is surfaced in the dropdown. It shows the last quoted price for this customer and item, with a secondary line *"-X% vs Standard"*.                             |
+| 4    | Cross-check the **Latest Quotation Price** against the latest submitted/relevant Quotation for that customer and item.                              | The price shown in the dropdown matches the latest quotation record in MAIA.                                                                                                            |
+| 5    | Click the tooltip icon in the average price to open the quotation history chart.                                                                    | The graph opens and lets you view the last few quotation prices. The tooltip shows the quotation price and discount information for that point/date.                                    |
+| 6    | Check the **Avg Lifetime Quotation Price** row.                                                                                                     | Shows the average price across past quotations. No discount % line shown.                                                                                                               |
+| 7    | Check the **Maximum Selling Price** and other price list rows.                                                                                      | Price is shown. No discount % secondary line shown for these rows.                                                                                                                      |
+| 8    | Add an item that has **no Standard Selling Price** set. Click the unit price field.                                                                 | No discount % secondary line appears for any option in the dropdown.                                                                                                                    |
 
 **Your result:**
 - [ ] Pass
@@ -441,7 +447,7 @@ Format per line: `ID. Title [Mode]`
 ---
 
 
-##### Test 1.3.4 — Chatbot Returns Last Invoice Price for a Customer Item
+##### Test 1.3.4 — Chatbot Returns Last quotation Price for a Customer Item
 
 *Who tests this: **Xiao Ling** (Sales)*
 
@@ -466,15 +472,16 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-##### Test 1.3.5 — Chatbot Returns Average and Quotation History
+##### Test 1.3.5 — Chatbot Returns Line Item Price and Discount from Customer Quotation History
 
 *Who tests this: **Hayati** (Sales)*
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | In the MAIA chatbot, ask: *"What is the average price [Customer Y] has paid for [Item X]?"* (use a customer with multiple submitted Invoices). | Chatbot responds with an average price, the number of invoices counted, and the date range covered (e.g. "Average RM 8.75 / Box across 12 invoices, Jun 2025 – Mar 2026"). |
-| 2 | Ask: *"Have we quoted [Item X] to [Customer Y] recently?"* | Chatbot responds with the last Quotation price, quotation date, and document number — or confirms no recent quotation exists. |
-| 3 | Ask about a customer+item pair with **no history at all** (new customer or new item). | Chatbot responds that there is no prior history — does not return an error or a made-up value. |
+| 1 | In the MAIA chatbot, ask about a customer's quotation history for a specific item, for example: *"Show me the quotation history for [Customer Y] for [Item X]."* | Chatbot returns recent quotation line-item history for that customer and item. |
+| 2 | Check the response details. | Chatbot shows the last few quotation entries with line-item **price**, **discount** (or discount %), and quotation reference / date for each relevant record. |
+| 3 | Cross-check one or two returned entries against the actual Quotation records in MAIA. | The line-item prices, discounts, quotation dates, and quotation references match the quotation history in MAIA. |
+| 4 | Ask about a customer+item pair with **no quotation history**. | Chatbot responds that there is no prior quotation history for that customer and item — it does not return an error or made-up values. |
 
 **Your result:**
 - [ ] Pass
@@ -1254,10 +1261,10 @@ Format per line: `ID. Title [Mode]`
 | 1.2.2  | Diecut calculator full flow                             | FE             |                              |           |      |               |     |
 | 1.2.3  | Calculator price flows into quotation correctly         | FE             |                              |           |      |               |     |
 | 1.3.1  | Historical pricing: edit customer discount % and price (optional) | FE      |                              |           |      |               |     |
-| 1.3.2  | Historical pricing: auto-derived customer price (optional) | FE         |                              |           |      |               |     |
+| 1.3.2  | Historical pricing: last quotation price vs current standard (optional) | FE |                              |           |      |               |     |
 | 1.3.3  | Historical pricing: discount % in unit price dropdown   | FE             |                              |           |      |               |     |
 | 1.3.4  | Chatbot: last invoice price retrieval                   | Chatbot        |                              |           |      |               |     |
-| 1.3.5  | Chatbot: average price + quotation history              | Chatbot        |                              |           |      |               |     |
+| 1.3.5  | Chatbot: line item price + discount from quotation history | Chatbot     |                              |           |      |               |     |
 | 1.4    | Price and stock check (chatbot)                         | Chatbot        |                              |           |      |               |     |
 | 1.5    | Quotation approval flow                                 | FE             |                              |           |      |               |     |
 | 1.6    | Price below minimum auto-adjust (web app)               | FE             |                              |           |      |               |     |
