@@ -122,10 +122,10 @@ Use this as the high-level UAT content index (main section → subsection → su
 Format per line: `ID. Title [Mode]`
 
 #### 1. Quotation Phase
-- `1.1 Quotation Creation by Chat (Text + Voice) [Chatbot]`
-- `1.2 Quotation Creation — Custom Item via Calculator [Chatbot→FE]`
-- `1.2.1 RSC Calculator Full Flow [Chatbot→FE]`
-- `1.2.2 Diecut Calculator Full Flow [Chatbot→FE]`
+- `1.1 Quotation Creation via Web App / Chatbot (Text + Voice) [FE + Chatbot]`
+- `1.2 Quotation Creation — Custom Item via Calculator [FE]`
+- `1.2.1 RSC Calculator Full Flow [FE]`
+- `1.2.2 Diecut Calculator Full Flow [FE]`
 - `1.2.3 Calculator Output Flows into Quotation and SO [FE]`
 - `1.3 Item Historical Pricing [FE]`
 - `1.3.1 Edit Customer Discount % and Price [FE]`
@@ -136,7 +136,7 @@ Format per line: `ID. Title [Mode]`
 - `1.4 Price and Stock Check [Chatbot]`
 - `1.5 Quotation Approval and Output [FE]`
 - `1.5.1 Price Below Minimum + Submit Gate [FE]`
-- `1.6 Quotation Generation PDF [FE]`
+- `1.6 Quotation Generation PDF [FE + Chatbot]`
 
 #### 2. Sales Order + Proforma Phase
 - `2.1 SO Create/Edit/Submit Role Flow + Admin Tag Notify [FE + Chatbot]`
@@ -167,6 +167,9 @@ Format per line: `ID. Title [Mode]`
 - `6.6 Admin Access Check [FE]`
 - `6.7 Role Approval Chain (QT→SO→DO→PL→INV→RCT) [FE]`
 
+#### 7. AutoCount Sync Section
+- `7.1 AutoCount Customer and Item Sync (Optional) [FE + AutoCount]`
+
 ---
 
 ### 1. Quotation
@@ -175,20 +178,20 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-#### Test 1.1 — Send a Quotation via Text Message and Voice Note
+#### Test 1.1 — Create a Quotation via Web App / Chatbot (Text + Voice)
 
-*Test the chatbot twice — once by typing, and once by sending a voice note. The chatbot will create a Quotation from what you send.*
+*This test covers three ways to create a Quotation: directly in the web app, through a chatbot text message, and through a chatbot voice note.*
 
 ---
 
-**Part A — Text Message**
+**Part A — Web App**
 
-| Step | What to do                                                                                                      | What you should see                                                                                              |
-| ---- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| 1    | Open **@maia_fixguru_bot** in Telegram using the QR code provided.                                              | The chatbot replies and is ready to receive your message.                                                        |
-| 2    | Type a quotation request like: *"Customer: [Customer Name]. Items: 10 units [Product A], 5 boxes [Product B]."* | Chatbot receives the message.                                                                                    |
-| 3    | Wait a moment.                                                                                                  | The chatbot shows the details it picked up — customer name, products, and quantities — and prepares a Quotation. |
-| 4    | Check that the details are correct.                                                                             | Customer name, product names, and quantities match what you typed. A Quotation is created.                       |
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in to the MAIA **web app**. Open **Quotation** and click **Create**. | The Create Quotation form opens. |
+| 2 | Select a customer and add items manually, for example 10 units of **Product A** and 5 boxes of **Product B**. | Customer, items, and quantities can be entered successfully. |
+| 3 | Save the Quotation. | Quotation is created and saved in **Draft**. |
+| 4 | Check the saved Quotation details. | Customer name, product names, quantities, and prices match what you entered. |
 
 **Part A result:**
 - [ ] Pass
@@ -199,7 +202,25 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
-**Part B — Voice Note**
+**Part B — Chatbot Text Message**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open **@maia_fixguru_bot** in Telegram using the QR code provided. | The chatbot replies and is ready to receive your message. |
+| 2 | Type a quotation request like: *"Customer: [Customer Name]. Items: 10 units [Product A], 5 boxes [Product B]."* | Chatbot receives the message. |
+| 3 | Wait a moment. | The chatbot shows the details it picked up — customer name, products, and quantities — and prepares a Quotation. |
+| 4 | Check that the details are correct. | Customer name, product names, and quantities match what you typed. A Quotation is created. |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part C — Chatbot Voice Note**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
@@ -207,7 +228,7 @@ Format per line: `ID. Title [Mode]`
 | 2 | Wait a moment. | The chatbot transcribes your voice note and shows the details — customer name, products, and quantities — and prepares a Quotation. |
 | 3 | Check that the details are correct. | Details match what you said. A Quotation is created. |
 
-**Part B result:**
+**Part C result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
@@ -226,7 +247,7 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this section: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
 
-*The Custom Box Calculator appears inside the Quotation when adding items. It calculates box price based on dimensions and material using Fixguru's RSC and Diecut formulas.*
+*The Custom Box Calculator is used in the web app Quotation form when adding items. You can start from a new Quotation created directly in the web app, or open a Draft Quotation that was first created from the chatbot and continue editing it in the web app. It calculates box price based on dimensions and material using Fixguru's RSC and Diecut formulas.*
 
 ---
 
@@ -237,7 +258,7 @@ Format per line: `ID. Title [Mode]`
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
 | **— Step 1: Setup —** | | |
-| 1 | Log in. Create a new **Quotation**. In the item section, click **Calculate Custom Box**. | The Fixguru Calculator modal opens. The stepper shows 4 steps: Setup → Board Quality → Production → Quote. Step 1 (Setup) is active. |
+| 1 | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created earlier from the chatbot. In the item section, click **Calculate Custom Box**. | The Fixguru Calculator modal opens. The stepper shows 4 steps: Setup → Board Quality → Production → Quote. Step 1 (Setup) is active. |
 | 2 | Select **RSC** as the Calculator Type. | RSC tile is highlighted with an orange border. |
 | 3 | Select a **Board Quality** — e.g. **A-flute (AF)**. | Selected tile is highlighted. |
 | 4 | Enter **Length**, **Width**, and **Height** in mm (e.g. 200 / 500 / 100). | The **Ref Open Size (MM) (L × W)** field below auto-calculates and shows a value (e.g. "700 × 600"). The Continue button becomes active. |
@@ -273,7 +294,7 @@ Format per line: `ID. Title [Mode]`
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
 | **— Step 1: Setup —** | | |
-| 1 | Log in. Create a new **Quotation**. In the item section, click **Calculate Custom Box**. | The Fixguru Calculator modal opens. The stepper shows 4 steps: Setup → Board Quality → Production → Quote. Step 1 (Setup) is active. |
+| 1 | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created earlier from the chatbot. In the item section, click **Calculate Custom Box**. | The Fixguru Calculator modal opens. The stepper shows 4 steps: Setup → Board Quality → Production → Quote. Step 1 (Setup) is active. |
 | 2 | Select **Diecut** as the Calculator Type. | Diecut tile is highlighted with an orange border. |
 | 3 | Select a **Board Quality** — e.g. **B-flute (BF)**. | Selected tile is highlighted. |
 | 4 | Enter **Length**, **Width**, and **Height** in mm. | The **Ref Open Size (MM) (L × W)** field auto-calculates and shows a value. The Continue button becomes active. |
@@ -306,7 +327,7 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this: **Xiao Ling** (Sales) and **Marcus Lim** (Admin)*
 
-*This checks that clicking Add SKU correctly populates the Quotation line item, and that the price carries through to submission and Sales Order.*
+*This checks that clicking Add SKU correctly populates the Quotation line item, whether the Quotation started in the web app or was first created by chatbot, and that the price carries through to submission and Sales Order.*
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
@@ -335,7 +356,7 @@ Format per line: `ID. Title [Mode]`
 
 *Who tests this section: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira) and **Marcus Lim** (Admin) for Test 1.3.1*
 
-*Fixguru's standard prices change frequently. The team needs to see what discount % was given to each customer. When the standard price changes, the system suggests a new unit price based on the same discount — without manual calculation.*
+*Fixguru's standard prices change frequently. The team needs to see what discount % was given to each customer. After a Quotation is available in the web app, whether it was created directly there or first created through the chatbot, the system should suggest a new unit price based on the same discount — without manual calculation.*
 
 ---
 
@@ -351,7 +372,7 @@ Format per line: `ID. Title [Mode]`
 | 4 | Save the changes. | Customer Price is saved. The derived Discount % is shown in italic. |
 | 5 | Find a different item. Enter a **Discount %** that would produce a price **below the Min Price** (e.g. 90% discount on an item with Min Price RM 10.00). | System blocks the save and shows an error: *"Discount produces price outside allowed range. Adjust discount or update min/max."* |
 | 6 | Adjust the discount to a valid value and save. | Changes are saved successfully. |
-| 7 | Create a new **Quotation** for this customer and add the items edited above. Click the unit price field for each item. | The dropdown shows a **Customer Price** option reflecting the values set in the Customer Profile — either the entered price or the price derived from the stored discount %. |
+| 7 | Create a new **Quotation** for this customer in the web app, or open a Draft Quotation for this customer that was created from the chatbot. Add the items edited above and click the unit price field for each item. | The dropdown shows a **Customer Price** option reflecting the values set in the Customer Profile — either the entered price or the price derived from the stored discount %. |
 
 **Your result:**
 - [ ] Pass
@@ -372,7 +393,7 @@ Format per line: `ID. Title [Mode]`
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Log in. Create a new **Quotation** for a customer that has a stored discount % in their Customer Profile. Add an item. | Item is added to the Quotation. |
+| 1 | Log in to the web app. Create a new **Quotation** for a customer that has a stored discount % in their Customer Profile, or open a Draft Quotation for that customer created from the chatbot. Add an item. | Item is added to the Quotation. |
 | 2 | Click the **unit price field** for the item. | The dropdown opens and shows a **Customer Price** option at the top with the discount % — e.g. *"-10% vs current Standard"*. |
 | 3 | Check the Customer Price value. For example, if the customer's discount is 10% and the Standard Selling Price is RM 14.30, the Customer Price should show **RM 12.87**. | Price is correctly derived from the stored discount % and current Standard Selling Price. The team does not need to calculate this manually. |
 | 4 | Select the Customer Price option and save the Quotation. | Unit price is set to the derived price. |
@@ -396,7 +417,7 @@ Format per line: `ID. Title [Mode]`
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Log in. Create a new **Quotation**. Add an item. Click the **unit price field**. | The unit price dropdown opens showing available price options. |
+| 1 | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created from the chatbot. Add an item. Click the **unit price field**. | The unit price dropdown opens showing available price options. |
 | 2 | Check the **Customer Price** row. | Shows the price and a secondary line *"-X% vs current Standard"* — discount % calculated against today's Standard Selling Price. Customer Price appears first in the dropdown. |
 | 3 | Check the **Latest Quotation Price** row. | Shows the last quoted price for this customer and item, with a secondary line *"-X% vs Standard"*. |
 | 4 | Check the **Avg Lifetime Quotation Price** row. | Shows the average price across all past quotations. No discount % line shown. |
@@ -467,7 +488,7 @@ Format per line: `ID. Title [Mode]`
 
 #### Test 1.4 — Pricing and Stock Check (Chatbot)
 
-*Continue from **Test 1.1** (text message quotation). This tests the chatbot's price and stock checks during quotation intake.*
+*Continue from **Test 1.1 Part B or Part C**. This tests the chatbot's price and stock checks during chatbot quotation intake.*
 
 | Step | What to do                                                                                                                                 | What you should see                                                                                                                                                                                      |
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -498,7 +519,7 @@ Format per line: `ID. Title [Mode]`
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Log in. Create a new **Quotation**. Add a product and enter a price **below** the minimum selling price. | The system blocks the input immediately and shows: *"Unit Price set is too low, auto adjusting to the closest allowed price range."* The price is automatically adjusted to the minimum. |
+| 1 | **Xiao Ling** (Sales) | Log in to the web app. Create a new **Quotation**, or open a Draft Quotation created from the chatbot. Add a product and enter a price **below** the minimum selling price. | The system blocks the input immediately and shows: *"Unit Price set is too low, auto adjusting to the closest allowed price range."* The price is automatically adjusted to the minimum. |
 | 2 | **Xiao Ling** (Sales) | Check the price field after the auto-adjustment. | Price has been updated to the minimum allowed price. Save the Quotation. |
 | 3 | **Marcus Lim** (Admin) | Open the Quotation and submit it. | Quotation submits successfully. Status changes to **OPEN**. |
 | 4 | **Xiao Ling** (Sales) | Create a new **Sales Order**. Add a product and enter a price **below** the minimum. | The system blocks the input and shows: *"Unit Price set is too low, auto adjusting to the closest allowed price range."* Price is auto-adjusted to the minimum. |
@@ -525,7 +546,7 @@ Format per line: `ID. Title [Mode]`
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Xiao Ling** (Sales) | Create a Quotation — via web app (log in, fill form, save) or chatbot (send quotation message, confirm). | Quotation saved with status **Draft**. |
+| 1 | **Xiao Ling** (Sales) | Create a Quotation — via web app (log in, fill form, save) or chatbot (send quotation message by text or voice note, then confirm). | Quotation saved with status **Draft**. |
 | 2 | **Marcus Lim** (Admin) | Open the Draft Quotation and click **Submit**. | Quotation status changes to **OPEN**. |
 | 3 | **Xiao Ling** (Sales) | Generate the PDF — via web app (open Quotation, click **Generate PDF**) or chatbot (request PDF for the quotation). Download the PDF. | Quotation PDF downloads. Correct customer name, line items, quantities, unit prices, and totals. |
 | 4 | **Xiao Ling** (Sales) | Check the PDF contents. | All details match the Quotation. No blank or incorrect fields. |
@@ -1127,15 +1148,80 @@ Format per line: `ID. Title [Mode]`
 
 ---
 
+### 7. AutoCount Sync 
+
+*This section is optional. Run it only if AutoCount access is available during UAT.*
+
+#### Test 7.1 — AutoCount Customer and Item Sync (Optional)
+
+*Who tests this: **Marcus Lim** (Admin) together with a user who has AutoCount access*
+
+*This checks that newly created master data in AutoCount can be pulled into MAIA in two ways: manually via the **Sync** button in the Customer and Item modules, and automatically via the polling job that runs every **30 minutes**.*
+
+**Part A — Manual Customer Sync from AutoCount**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | In **AutoCount**, create a **new customer** using a unique customer name/code that does not already exist in MAIA. Save the customer record. | New customer is created successfully in AutoCount. |
+| 2 | In **MAIA**, log in as **Marcus Lim** (Admin). Open the **Customer** module and click the **Sync** button. | Sync starts successfully. No error is shown. |
+| 3 | Refresh or search the Customer list in MAIA for the newly created AutoCount customer. | The new customer appears in MAIA with the expected customer name/code pulled from AutoCount. |
+
+**Part A result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part B — Manual Item Sync from AutoCount**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | In **AutoCount**, create a **new item** using a unique item code/name that does not already exist in MAIA. Save the item record. | New item is created successfully in AutoCount. |
+| 2 | In **MAIA**, open the **Item** module and click the **Sync** button. | Sync starts successfully. No error is shown. |
+| 3 | Refresh or search the Item list in MAIA for the newly created AutoCount item. | The new item appears in MAIA with the expected item code/name pulled from AutoCount. |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part C — Automatic Polling Sync Every 30 Minutes**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | In **AutoCount**, create another **new customer** and another **new item** using unique code/name values that do not already exist in MAIA. Save both records. | The new customer and item are created successfully in AutoCount. |
+| 2 | In **MAIA**, do **not** click any Sync button. Note the current time and wait for the next polling cycle. | No manual sync is triggered in MAIA. |
+| 3 | After up to **30 minutes**, refresh the **Customer** and **Item** modules and search for the newly created records. | The new customer and new item appear in MAIA automatically, confirming the polling sync pulled the latest data from AutoCount. |
+
+**Part C result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
 ---
 
 ## Results Summary
 
 | E2E ID | What was tested                                               | Mode           | Result (Pass / Fail / Issue) | Tested by | Date | Blocker Owner | ETA |
 | ------ | ------------------------------------------------------------- | -------------- | ---------------------------- | --------- | ---- | ------------- | --- |
-| 1.1    | Quotation creation by chatbot (text + voice)                  | Chatbot        |                              |           |      |               |     |
-| 1.2.1  | RSC calculator full flow                                      | Chatbot→FE     |                              |           |      |               |     |
-| 1.2.2  | Diecut calculator full flow                                   | Chatbot→FE     |                              |           |      |               |     |
+| 1.1    | Quotation creation via web app / chatbot (text + voice)       | FE + Chatbot   |                              |           |      |               |     |
+| 1.2.1  | RSC calculator full flow                                      | FE             |                              |           |      |               |     |
+| 1.2.2  | Diecut calculator full flow                                   | FE             |                              |           |      |               |     |
 | 1.2.3  | Calculator price flows into quotation correctly               | FE             |                              |           |      |               |     |
 | 1.3.1  | Historical pricing: edit customer discount % and price        | FE             |                              |           |      |               |     |
 | 1.3.2  | Historical pricing: auto-derived customer price               | FE             |                              |           |      |               |     |
@@ -1154,7 +1240,8 @@ Format per line: `ID. Title [Mode]`
 | 3.3    | SO→DO delivery delay reminder                                 | Chatbot / FE   |                              |           |      |               |     |
 | 3.4    | Stock alerts (out-of-stock / low-stock)                       | FE + Chatbot   |                              |           |      |               |     |
 | 4.1    | Invoice submit and generate PDF                               | FE + Chatbot   |                              |           |      |               |     |
-| 4.2    | Create receipt / record payment                               | FE + Chatbot   |                              |           |      |               |     |
+| 4.2    | eInvoice / AutoCount sync                                     | FE             |                              |           |      |               |     |
+| 4.3    | Create receipt / record payment                               | FE + Chatbot   |                              |           |      |               |     |
 | 5.1    | Credit note and debit note flow                               | FE + Chatbot   |                              |           |      |               |     |
 | 6.1    | Login baseline for all users                                  | FE             |                              |           |      |               |     |
 | 6.2    | Sales access control check                                    | FE             |                              |           |      |               |     |
@@ -1163,8 +1250,9 @@ Format per line: `ID. Title [Mode]`
 | 6.5    | Finance Assistant access check                               | FE             |                              |           |      |               |     |
 | 6.6    | Admin access control check                                    | FE             |                              |           |      |               |     |
 | 6.7    | Cross-doc role approval flow                                  | FE             |                              |           |      |               |     |
+| 7.1    | AutoCount customer and item sync (optional)                   | FE + AutoCount |                              |           |      |               |     |
 
-**Total: 30 E2E checkpoints**
+**Total: 32 E2E checkpoints**
 
 | Pass | Fail | Issue |
 |------|------|-------|
