@@ -123,47 +123,47 @@ Format per line: `ID. Title [Mode]`
 
 #### 1. Quotation Phase
 - `1.1 Quotation Creation via Web App / Chatbot (Text + Voice) [FE + Chatbot]`
-- `1.2 Quotation Creation — Custom Item via Calculator [FE]`
+- `1.2 Quotation: Custom Item via Calculator [FE]`
 - `1.2.1 RSC Calculator Full Flow [FE]`
 - `1.2.2 Diecut Calculator Full Flow [FE]`
-- `1.2.3 Calculator Output Flows into Quotation and SO [FE]`
-- `1.3 Item Historical Pricing [FE]`
+- `1.2.3 Calculator Price Flows into Quotation Correctly [FE]`
+- `1.3 Quotation: Item Historical Pricing [FE]`
 - `1.3.1 Edit Customer Discount % and Price (Optional) [FE]`
 - `1.3.2 Unit Price Dropdown: Last Quotation Price, Discount %, and History Tooltip (Optional) [FE]`
 - `1.3.3 Chatbot Quotation History: Last Price + Line Item Discount [Chatbot]`
 - `1.4 Price and Stock Check [Chatbot]`
-- `1.5 Quotation Approval and Output [FE]`
-- `1.5.1 Price Below Minimum + Submit Gate [FE]`
-- `1.5.2 Quotation Generation PDF [FE + Chatbot]`
+- `1.5 Quotation Approval Flow [FE]`
+- `1.5.1 Price Below Minimum Auto-Adjusts [FE]`
+- `1.5.2 Generate Quotation PDF [FE + Chatbot]`
 
 #### 2. Sales Order + Proforma Phase
-- `2.1 SO Create/Edit/Submit Role Flow + Admin Tag Notify [FE + Chatbot]`
+- `2.1 Create and Manage Sales Orders [FE + Chatbot]`
 - `2.2 Credit Limit Block on SO Submission [FE + Chatbot]`
 - `2.3 Management Approval Override for Credit Limit [FE + Chatbot]`
 - `2.4 Proforma Invoice PDF Generation [FE + Chatbot]`
 
 #### 3. Delivery Phase
-- `3.1 Full Delivery Flow (SO→Picklist→DO→Invoice→Delivered) [FE + Chatbot]`
-- `3.2 Pick List Create and Submit Flow [FE]`
-- `3.3 Delivery Delay Reminder [Chatbot/FE]`
-- `3.4 Stock Alerts (Out of Stock / Low Stock) [FE + Chatbot]`
+- `3.1 Create Delivery Order and Mark as Delivered [FE + Chatbot]`
+- `3.4 Stock Alerts (Out of Stock and Low Stock) [FE + Chatbot]`
+- `3.3 Delivery Delay Reminder [Chatbot / FE]`
+- `3.2 Create and Submit a Pick List [FE]`
 
 #### 4. Invoice Phase
-- `4.1 Invoice Submit and Generate PDF (Finance Manager) [FE + Chatbot]`
+- `4.1 Submit Invoice and Generate PDF [FE + Chatbot]`
 - `4.2 eInvoice / AutoCount Sync [FE]`
 - `4.3 Receipt / Record Payment [FE + Chatbot]`
 
 #### 5. Post-Invoice Adjustment + Payment Phase
-- `5.1 Credit Note and Debit Note Flow [FE + Chatbot]`
+- `5.1 Create a Credit Note and Debit Note [FE + Chatbot]`
 
 #### 6. Cross-Workflow Control Layer
-- `6.1 Login Baseline (All Users) [FE]`
+- `6.1 All Users Can Log In [FE]`
 - `6.2 Sales Access Check [FE]`
 - `6.3 Warehousing Access Check [FE]`
 - `6.4 Finance Manager Access Check [FE]`
 - `6.5 Finance Assistant Access Check [FE]`
 - `6.6 Admin Access Check [FE]`
-- `6.7 Role Approval Chain (QT→SO→DO→PL→INV→RCT) [FE]`
+- `6.7 Role Approval Flow [FE]`
 
 #### 7. AutoCount Sync Section
 - `7.1 AutoCount Customer and Item Sync (Optional) [FE + AutoCount]`
