@@ -3,7 +3,7 @@ granola_id: 9d7b17cd-ff56-4d08-ab1a-d65547176ccc
 title: Fixguru <> Mindhive - UAT (On-site) - Transcript
 type: transcript
 created: 2026-05-14T02:59:28.122Z
-updated: 2026-05-14T05:04:26.331Z
+updated: 2026-05-14T06:45:52.071Z
 attendees: 
   - ghostsketon@gmail.com
   - amirulamran.dev@gmail.com
