@@ -781,13 +781,14 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 25 — Upload C1 Certificate via PDF
 
 *Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE + Chatbot***
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Certificates tab → Click **Upload** | Upload dialog opens |
-| 2 | Select a C1 certificate PDF file → Confirm type as C1 → Click **Submit** | System shows processing indicator |
+| 1 | **Either FE or chatbot:** FE path — Certificates tab → Click **Upload**. Chatbot path — open **[chatbot]** and upload a C1 certificate PDF with a message (e.g. *"attach C1 cert for [Customer Name]"*). | Upload dialog/chatbot intake is available |
+| 2 | Submit the C1 certificate PDF from the chosen channel (FE: confirm type as C1 → **Submit**; chatbot: send file + message). | System shows processing indicator |
 | 3 | Wait for processing to complete | Certificate appears in the listing; certificate type, tax registration number, and dates are populated from the PDF |
-| 4 | Click the certificate row to open the detail view | Detail view opens; reference item tables are empty (PDF-uploaded certificates store raw extracted data separately) |
+| 4 | **Either FE or chatbot:** FE path — click the certificate row to open detail view. Chatbot path — ask chatbot to check/show the certificate detail for the uploaded cert. | Certificate detail is returned (in FE detail page or chatbot response); parent fields are populated and reference item tables are empty (PDF-uploaded certificates store raw extracted data separately) |
 
 **Your result:**
 - [ ] Pass
@@ -803,29 +804,25 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 26 — Apply C1 Certificate on Sales Order — All Items Covered
 
 *Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
 
 **Part A — Get the Sales Order via Chatbot**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Open the **[chatbot]** → send an order message with items that are all covered by the C1 certificate (e.g. *"Customer: [Customer Name]. Order: [Item A] qty [X], [Item B] qty [Y]."*) | Chatbot confirms it received the order |
-| 2 | Log in to the web app → go to the CPO list → open the CPO just created | CPO is visible with correct customer, items, and quantities |
-| 3 | Convert the CPO to a **Sales Order** | Sales Order created; proceed to Part C |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the certificate. | Selected certificate is shown as applied to the order |
+| 3 | Add items that are covered by the selected certificate and assign quantity for each item. | Covered items are accepted with entered quantities |
+| 4 | Try to submit the order. | Submission succeeds; certificate remains linked and global tax is disabled |
 
 **Part B — Get the Sales Order via Web App**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
 | 1 | Log in to the web app → go to Sales Orders → create a new Sales Order | New SO form opens |
-| 2 | Select the customer → add items that are all listed in the C1 certificate | Items added to the order; proceed to Part C |
-
-**Part C — Apply C1 Certificate (both paths continue here)**
-
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | In the **Tax Reference** section → open the certificate dropdown → select the C1 certificate | Certificate details (title, tax registration number, dates, status) auto-filled |
-| 2 | Check each line item in the order | All items show tax exemption applied; Tax on Items field is locked and cannot be edited |
-| 3 | Check the global tax field on the order | Global tax field is cleared and disabled; cannot be re-applied while C1 is active |
+| 2 | Select customer → in the **Biller** section, select tax certificate from the certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Click the **View More** icon for the selected certificate. | Certificate details (title, tax registration number, dates, status) are shown |
+| 4 | Add items that are all listed in the selected certificate, assign quantity, then try submit. | Submission succeeds and global tax is disabled |
 
 **Your result:**
 - [ ] Pass
@@ -841,27 +838,25 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 27 — Apply C1 Certificate — Partial Coverage + Save
 
 *Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
 
 **Part A — Get the Sales Order via Chatbot**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Open the **[chatbot]** → send an order with a mix of items — some covered by the C1 certificate, at least one not covered (e.g. *"Customer: [Customer Name]. Order: [Covered Item] qty [X], [Non-Covered Item] qty [Y]."*) | Chatbot confirms it received the order |
-| 2 | Log in to the web app → open the CPO → convert to a **Sales Order** | Sales Order created; proceed to Part C |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the certificate. | Selected certificate is shown as applied to the order |
+| 3 | Add a mix of items — some covered by the selected certificate and at least one not covered — then assign quantity. | Covered items are accepted; uncovered item remains taxable |
+| 4 | For uncovered item, adjust manual tax in **Tax on Items** field, then try submit. | Order submits successfully; covered items use cert exemption and uncovered item keeps manual tax |
 
 **Part B — Get the Sales Order via Web App**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Log in to the web app → create a new Sales Order → add a mix of items (some in the C1 certificate, at least one not) | Items added; proceed to Part C |
-
-**Part C — Apply C1 Certificate (both paths continue here)**
-
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | Select the C1 certificate in the **Tax Reference** section | Covered items show tax exemption locked; uncovered item shows message: *"This item is not eligible for tax exemption"* with Tax on Items still editable |
-| 2 | On the uncovered item, manually set a standard tax in the Tax on Items field | Tax is applied to that line |
-| 3 | Click **Save** | Order saved successfully; covered items carry the C1 exemption reference; uncovered item carries standard tax; no global tax on the order |
+| 1 | Log in to the web app → create a new Sales Order → select customer. | New SO form opens for selected customer |
+| 2 | In the **Biller** section, select tax certificate from certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Add a mix of items (some covered by selected certificate, at least one not covered) and assign quantity. | Covered items show cert exemption; uncovered item remains editable for tax |
+| 4 | On uncovered item, manually set tax in **Tax on Items** field, then click **Save**. | Order saves successfully with cert-exempt covered items and manual tax on uncovered item |
 
 **Your result:**
 - [ ] Pass
@@ -899,13 +894,14 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 29 — Upload C3 Certificate via PDF
 
 *Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE + Chatbot***
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Certificates tab → Click **Upload** | Upload dialog opens |
-| 2 | Select a C3 certificate PDF → Click **Submit** | System processes the file; loading indicator shown |
+| 1 | **Either FE or chatbot:** FE path — Certificates tab → Click **Upload**. Chatbot path — open **[chatbot]** and upload a C3 certificate PDF with a message (e.g. *"attach C3 cert for [Customer Name]"*). | Upload dialog/chatbot intake is available |
+| 2 | Submit the C3 certificate PDF from the chosen channel (FE: **Submit**; chatbot: send file + message). | System processes the file; loading indicator shown |
 | 3 | Wait for processing | Certificate appears in listing with correct type and tax registration number from the PDF |
-| 4 | Click the certificate to open detail view | Parent fields (type, tax reg no, dates) populated; reference item tables are empty |
+| 4 | **Either FE or chatbot:** FE path — click the certificate to open detail view. Chatbot path — ask chatbot to check/show the certificate detail for the uploaded cert. | Certificate detail is returned (in FE detail page or chatbot response); parent fields (type, tax reg no, dates) populated; reference item tables are empty |
 
 **Your result:**
 - [ ] Pass
@@ -921,26 +917,25 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 30 — Apply C3 Certificate on Sales Order — All Items Covered
 
 *Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
 
 **Part A — Get the Sales Order via Chatbot**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Open the **[chatbot]** → send an order with items that are all listed in the C3 certificate (e.g. *"Customer: [Customer Name]. Order: [Item A] qty [X], [Item B] qty [Y]."*) | Chatbot confirms it received the order |
-| 2 | Log in to the web app → open the CPO → convert to a **Sales Order** | Sales Order created; proceed to Part C |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the active C3 certificate. | Selected C3 certificate is shown as applied to the order |
+| 3 | Add items that are all covered by the selected C3 certificate and assign quantity. | Covered items are accepted with entered quantities |
+| 4 | Try to submit the order. | Submission succeeds; certificate remains linked and global tax is disabled |
 
 **Part B — Get the Sales Order via Web App**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Log in to the web app → create a new Sales Order → add items that are all listed in the C3 certificate | Items added; proceed to Part C |
-
-**Part C — Apply C3 Certificate (both paths continue here)**
-
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | In the **Tax Reference** section → select the C3 certificate | Certificate details auto-filled; order-level exemption applied; no per-item locks (C3 covers the whole order, not per item) |
-| 2 | Click **Save** | Order saved; C3 certificate linked at the order level; global tax on the order is unchanged |
+| 1 | Log in to the web app → create a new Sales Order → select customer. | New SO form opens for selected customer |
+| 2 | In the **Biller** section, select the active C3 certificate from the certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Click the **View More** icon for the selected certificate. | Certificate details (title, tax registration number, dates, status) are shown |
+| 4 | Add items that are all covered by the selected C3 certificate, assign quantity, then click **Save**. | Order saves successfully; certificate stays linked and global tax is disabled |
 
 **Your result:**
 - [ ] Pass
@@ -956,27 +951,31 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 31 — C3 Certificate — Ineligible Items Removal Prompt
 
 *Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
 
 **Part A — Get the Sales Order via Chatbot**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Open the **[chatbot]** → send an order with a mix of items — some in the C3 certificate, some not (e.g. *"Customer: [Customer Name]. Order: [Covered Item] qty [X], [Non-Covered Item] qty [Y]."*) | Chatbot confirms it received the order |
-| 2 | Log in to the web app → open the CPO → convert to a **Sales Order** | Sales Order created with all items; proceed to Part C |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the active C3 certificate. | Selected C3 certificate is shown as applied to the order |
+| 3 | Add a mix of items — some covered by selected C3 certificate, at least one not covered — and assign quantity. | Mixed items are added; uncovered item is identified as not covered |
 
 **Part B — Get the Sales Order via Web App**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Log in to the web app → create a new Sales Order → add a mix of items (some in the C3 certificate, some not) | Items added; proceed to Part C |
+| 1 | Log in to the web app → create a new Sales Order → select customer. | New SO form opens for selected customer |
+| 2 | In the **Biller** section, select the active C3 certificate from certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Add a mix of items (some covered by selected C3 certificate, at least one not covered). | Mixed items are added; uncovered item remains not covered |
 
 **Part C — Apply C3 Certificate and Test Removal Prompt (both paths continue here)**
 
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | Select the C3 certificate in the **Tax Reference** section | A confirmation prompt appears listing items not covered by the certificate: *"The following items are not covered by this certificate and will be removed. Continue?"* |
-| 2 | Click **Confirm** | Ineligible items are removed from the order; C3 certificate is applied; remaining items are covered |
-| 3 | Repeat Parts A or B to create a new order with the same mix of items → select the C3 certificate again → this time click **Cancel** | Certificate selection is reverted; all original items remain on the order unchanged |
+| Step | What to do                                                                                                                                  | What you should see                                                                                                                                                    |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Confirm/select the C3 certificate from the **Biller** section certificate dropdown.                                                         | A confirmation prompt appears listing items not covered by the certificate: *"The following items are not covered by this certificate and will be removed. Continue?"* |
+| 2    | Try to submit the SO                                                                                                                        | Ineligible items are removed from the order; C3 certificate is applied; remaining items are covered Show the acknowledgement prompt                                    |
+| 3    | Repeat Parts A or B to create a new order with the same mix of items → select/confirm the C3 certificate again → this time click **Cancel** | Certificate selection is reverted; all original items remain on the order unchanged                                                                                    |
 
 **Your result:**
 - [ ] Pass
@@ -992,19 +991,20 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 32 — Link Certificate to CPO at Upload Time (C1 + C3)
 
 *Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE + Chatbot***
 
 **Part A — via Chatbot**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
 | 1 | Open the **[chatbot]** → upload a CPO PDF with a message that includes the certificate reference (e.g. *"CPO for [Customer Name], attach cert [Certificate ID]."*) | Chatbot confirms it received the CPO and the certificate reference |
-| 2 | Log in to the web app → open the CPO created by the chatbot | CPO is visible; Tax Reference section shows the linked certificate with type, tax registration number, and Active status |
+| 2 | Log in to the web app → open the CPO created by the chatbot | CPO is visible; in the **Biller** section, certificate field shows the linked certificate with type, tax registration number, and Active status |
 
 **Part B — via Web App**
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Log in to the web app → upload a new CPO → in the **Tax Reference** field, select a C3 certificate → Submit | CPO created; Tax Reference section shows the C3 certificate linked with full details |
+| 1 | Log in to the web app → upload a new CPO → in the **Biller** section certificate dropdown, select a C3 certificate → Submit | CPO created; Biller section shows the C3 certificate linked with full details |
 | 2 | Repeat with a C1 certificate | C1 certificate linked correctly; same detail display |
 
 **Your result:**
@@ -1021,14 +1021,15 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 33 — CPO with Certificate Converts to SO — Cert Carries Over
 
 *Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE only***
 
 *Continue from Test 32 — a CPO with a certificate already linked.*
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Open the CPO that has a certificate linked | CPO is visible with the certificate in the Tax Reference section |
+| 1 | Open the CPO that has a certificate linked | CPO is visible with the certificate in the **Biller** section certificate field |
 | 2 | Convert the CPO to a **Sales Order** | Sales Order is created |
-| 3 | Open the new Sales Order → check the Tax Reference section | The same certificate from the CPO is shown on the SO with the correct type, tax registration number, and dates; no need to re-select the certificate manually |
+| 3 | Open the new Sales Order → check the **Biller** section certificate field | The same certificate from the CPO is shown on the SO with the correct type, tax registration number, and dates; no need to re-select the certificate manually |
 
 **Your result:**
 - [ ] Pass
@@ -1044,10 +1045,11 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 34 — SO Submit Blocked — C3 Missing Required Attachments
 
 *Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Open a Sales Order with a C3 certificate selected | C3 certificate is shown in the Tax Reference section |
+| 1 | **Either FE or chatbot start:** create/get an order from chatbot or FE, then open the Sales Order in FE with a C3 certificate selected. | C3 certificate is shown in the Tax Reference section |
 | 2 | Do **not** upload the PO attachment or appointment letter → click **Save** | Save is blocked; an error appears indicating that PO attachment and appointment letter are required for C3 orders |
 | 3 | Upload the required attachments (PO attachment + appointment letter) → click **Save** again | Order saves successfully with all required documents attached |
 
@@ -1065,10 +1067,11 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 #### Test 35 — SO Submit Blocked — Item HS Code Not in Certificate
 
 *Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
-| 1 | Open a Sales Order with a C1 or C3 certificate selected | Certificate is shown in the Tax Reference section |
+| 1 | **Either FE or chatbot start:** create/get an order from chatbot or FE, then open the Sales Order in FE with a C1 or C3 certificate selected. | Certificate is shown in the Tax Reference section |
 | 2 | Add a line item whose HS code is **not** listed in the certificate's reference data → click **Save** | Save is blocked; error indicates the item's HS code is not covered by the certificate |
 | 3 | Remove the ineligible item (or switch to a certificate that covers it) → click **Save** | Order saves successfully |
 

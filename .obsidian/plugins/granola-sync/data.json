@@ -1,7 +1,7 @@
 {
   "latestSyncTime": 1775371185180,
   "isSyncEnabled": true,
-  "syncInterval": 1800,
+  "syncInterval": 120,
   "syncDaysBack": 7,
   "includeSharedNotes": true,
   "titleFilterMode": "disabled",
@@ -52,6 +52,9 @@
     "docFolders": {
       "bb577594-f1f7-41be-b898-0062c17ee9c0": [
         "C1 briefing"
+      ],
+      "01417e56-6f80-43e7-97ad-6143c9dedd1f": [
+        "Mindhive Daily Standup"
       ],
       "01ac6a8b-a769-48f3-9b91-99d8061be223": [
         "Mindhive Daily Standup"
@@ -133,8 +136,11 @@
       ],
       "3b948a57-de12-4412-9631-fc8bc6027225": [
         "Holsen"
+      ],
+      "c9dcacd3-72b6-43fb-9158-06089d9453f1": [
+        "Holsen"
       ]
     },
-    "lastUpdated": 1778763487007
+    "lastUpdated": 1778860421322
   }
 }

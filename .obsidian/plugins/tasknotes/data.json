@@ -316,7 +316,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.5.3",
+  "lastSeenVersion": "4.7.2",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -455,6 +455,6 @@
     "isRunning": false,
     "timeRemaining": 1500
   },
-  "lastPomodoroDate": "2026-05-03",
+  "lastPomodoroDate": "2026-05-13",
   "taskModalTabMovesFocus": true
 }

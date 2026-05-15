@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
+                "file": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "MAIA UAT Form - Fixguru - Phase 2 - Draft"
+              "title": "MAIA UAT Form - Holsen - 2026-03"
             }
           },
           {
@@ -102,8 +102,57 @@
               "icon": "lucide-file",
               "title": "SOW for MAIA GST Fine Foods"
             }
+          },
+          {
+            "id": "298120b1be274af0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Fixguru feedback sync-transcript"
+            }
+          },
+          {
+            "id": "f761ab5f2aaf1f0e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "conflict-files-obsidian-git"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -161,8 +210,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -289,10 +337,22 @@
                   {
                     "id": 92,
                     "name": "zsh 92"
+                  },
+                  {
+                    "id": 95,
+                    "name": "zsh 95"
+                  },
+                  {
+                    "id": 96,
+                    "name": "zsh 96"
+                  },
+                  {
+                    "id": 97,
+                    "name": "zsh 97"
                   }
                 ],
-                "activeId": 92,
-                "nextId": 95
+                "activeId": 97,
+                "nextId": 98
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -303,7 +363,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 764.5
+    "width": 797.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -325,60 +385,60 @@
       "tasknotes:Open calendar view": false,
       "tasknotes:Open tasks view": false,
       "tasknotes:Open agenda view": false,
-      "tasknotes:Open kanban board": false,
-      "tasknotes:Open pomodoro timer": false,
-      "tasknotes:Open pomodoro statistics": false,
-      "tasknotes:Create new task": false
+      "tasknotes:Create new task": false,
+      "tasknotes:Open Kanban board": false,
+      "tasknotes:Open Pomodoro timer": false,
+      "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "8c6b1a9e8e45a419",
+  "active": "f761ab5f2aaf1f0e",
   "lastOpenFiles": [
-    "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
-    "Granola/Transcripts/2026-05-14",
+    "conflict-files-obsidian-git.md",
+    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
+    "Granola/Transcripts/2026-05-15/Holsen _ _ Mindhive C1C3 UAT-transcript.md",
+    "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-05-07/HG GROUP scoping discussion-transcript-2026-05-07_17-03-10.md",
+    "Granola/Transcripts/2026-05-07/Fixguru Meta Setup Fixing-transcript-2026-05-07_10-59-20.md",
+    "Granola/Transcripts/2026-05-11/Mindhive  Daily Standup-transcript-2026-05-11_09-49-22.md",
+    "Granola/Transcripts/2026-05-11/Holsen __ Mindhive C1_C3 UAT briefing-transcript-2026-05-11_11-00-06.md",
+    "Granola/Transcripts/2026-05-11/MAIA - Weekly Product Sync-transcript-2026-05-11_15-19-57.md",
+    "Granola/Transcripts/2026-05-15/Holsen _ _ Mindhive C1C3 UAT-transcript-2026-05-15_13-57-24.md",
+    "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript-2026-05-12_09-45-50.md",
+    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript-2026-05-15_16-19-10.md",
+    "Granola/Transcripts/2026-05-12/C1_C3 Wrap up-transcript-2026-05-12_14-59-12.md",
+    "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript-2026-05-13_09-44-08.md",
+    "Granola/Transcripts/2026-05-13/Fixguru __ Mindhive - UAT Brief & Historical Pricing Testing-transcript-2026-05-13_11-01-30.md",
+    "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript-2026-05-14_10-59-28.md",
+    "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript-2026-05-15_09-44-58.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
     "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-04.md",
+    "Granola/Transcripts/2026-05-15",
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
-    "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Guide] Channel & Infrastructure Setup Guide Copy.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
-    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru business workflow.md",
-    "Granola/Transcripts/2026-05-13/Fixguru __ Mindhive - UAT Brief & Historical Pricing Testing-transcript.md",
-    "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript.md",
+    "03 - Clients/JY_Handle_Clients/Thermac/SOW/v1.0_13_Apr_2026_Thermac SOW.md",
+    "03 - Clients/JY_Handle_Clients/Thermac/SOW/SOW for Lean Giap SOW_signed.pdf",
+    "03 - Clients/JY_Handle_Clients/Thermac/SOW/20 Apr 2026 - Thermac SOW First Draft V1.md",
+    "03 - Clients/JY_Handle_Clients/Thermac/SOW/16 Apr 2026 Thermac SOW v2.md",
+    "03 - Clients/JY_Handle_Clients/Thermac/SOW/13 Apr 2026 Thermac SOW.md",
+    "03 - Clients/JY_Handle_Clients/Thermac/SOW",
+    "03 - Clients/JY_Handle_Clients/Thermac/Narrative",
+    "03 - Clients/JY_Handle_Clients/Thermac/Meeting Notes",
+    "03 - Clients/JY_Handle_Clients/SCC/Meeting Notes",
+    "Granola/Transcripts/2026-05-14",
     "Granola/Transcripts/2026-05-13",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Issue.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/HG Group/SOW for MAIA HG Group.md",
     "Excalidraw/Certificate Tax Reference E2E Workflow.excalidraw",
-    "codex.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/HG Group/HG Group - Gaps & Actions.md",
-    "Granola/Transcripts/2026-05-12/C1_C3 Wrap up-transcript.md",
-    "Granola/Transcripts/2026-05-07/HG GROUP scoping discussion-transcript.md",
-    "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-12",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Filled Draft] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
-    "03 - Clients/Active Cooking Clients/Thermac/Thermac_SOW.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/7May26 -  GST X MAIA Gaps - Sheet1.csv",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-delivery.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-customers.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/pasted-1776603199402-0.png",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/JDX Demo Slide Content.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3h.png",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3g.png",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3f.png",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots/slide3e.png",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/colors_and_type.css",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/screenshots",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/deck-stage.js",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/chats/chat1.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/README.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "Untitled 2.canvas"

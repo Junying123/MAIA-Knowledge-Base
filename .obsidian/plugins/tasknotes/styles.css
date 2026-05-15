@@ -1175,77 +1175,101 @@
    ================================================ */
 
 .tasknotes-plugin .tn-gap-0 {
-    gap: 0;
+    --tn-gap-row: 0;
+    --tn-gap-column: 0;
+    gap: var(--tn-gap-row) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-xs {
-    gap: var(--tn-spacing-xs);
+    --tn-gap-row: var(--tn-spacing-xs);
+    --tn-gap-column: var(--tn-spacing-xs);
+    gap: var(--tn-gap-row) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-sm {
-    gap: var(--tn-spacing-sm);
+    --tn-gap-row: var(--tn-spacing-sm);
+    --tn-gap-column: var(--tn-spacing-sm);
+    gap: var(--tn-gap-row) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-md {
-    gap: var(--tn-spacing-md);
+    --tn-gap-row: var(--tn-spacing-md);
+    --tn-gap-column: var(--tn-spacing-md);
+    gap: var(--tn-gap-row) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-lg {
-    gap: var(--tn-spacing-lg);
+    --tn-gap-row: var(--tn-spacing-lg);
+    --tn-gap-column: var(--tn-spacing-lg);
+    gap: var(--tn-gap-row) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-xl {
-    gap: var(--tn-spacing-xl);
+    --tn-gap-row: var(--tn-spacing-xl);
+    --tn-gap-column: var(--tn-spacing-xl);
+    gap: var(--tn-gap-row) var(--tn-gap-column);
 }
 
 /* Column Gap */
 .tasknotes-plugin .tn-gap-x-0 {
-    column-gap: 0;
+    --tn-gap-column: 0;
+    gap: var(--tn-gap-row, 0) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-x-xs {
-    column-gap: var(--tn-spacing-xs);
+    --tn-gap-column: var(--tn-spacing-xs);
+    gap: var(--tn-gap-row, 0) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-x-sm {
-    column-gap: var(--tn-spacing-sm);
+    --tn-gap-column: var(--tn-spacing-sm);
+    gap: var(--tn-gap-row, 0) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-x-md {
-    column-gap: var(--tn-spacing-md);
+    --tn-gap-column: var(--tn-spacing-md);
+    gap: var(--tn-gap-row, 0) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-x-lg {
-    column-gap: var(--tn-spacing-lg);
+    --tn-gap-column: var(--tn-spacing-lg);
+    gap: var(--tn-gap-row, 0) var(--tn-gap-column);
 }
 
 .tasknotes-plugin .tn-gap-x-xl {
-    column-gap: var(--tn-spacing-xl);
+    --tn-gap-column: var(--tn-spacing-xl);
+    gap: var(--tn-gap-row, 0) var(--tn-gap-column);
 }
 
 /* Row Gap */
 .tasknotes-plugin .tn-gap-y-0 {
-    row-gap: 0;
+    --tn-gap-row: 0;
+    gap: var(--tn-gap-row) var(--tn-gap-column, 0);
 }
 
 .tasknotes-plugin .tn-gap-y-xs {
-    row-gap: var(--tn-spacing-xs);
+    --tn-gap-row: var(--tn-spacing-xs);
+    gap: var(--tn-gap-row) var(--tn-gap-column, 0);
 }
 
 .tasknotes-plugin .tn-gap-y-sm {
-    row-gap: var(--tn-spacing-sm);
+    --tn-gap-row: var(--tn-spacing-sm);
+    gap: var(--tn-gap-row) var(--tn-gap-column, 0);
 }
 
 .tasknotes-plugin .tn-gap-y-md {
-    row-gap: var(--tn-spacing-md);
+    --tn-gap-row: var(--tn-spacing-md);
+    gap: var(--tn-gap-row) var(--tn-gap-column, 0);
 }
 
 .tasknotes-plugin .tn-gap-y-lg {
-    row-gap: var(--tn-spacing-lg);
+    --tn-gap-row: var(--tn-spacing-lg);
+    gap: var(--tn-gap-row) var(--tn-gap-column, 0);
 }
 
 .tasknotes-plugin .tn-gap-y-xl {
-    row-gap: var(--tn-spacing-xl);
+    --tn-gap-row: var(--tn-spacing-xl);
+    gap: var(--tn-gap-row) var(--tn-gap-column, 0);
 }
 
 /* ================================================
@@ -1265,7 +1289,7 @@
 }
 
 .tasknotes-plugin .tn-hidden {
-    display: none !important;
+    display: none;
 }
 
 .tasknotes-plugin .tn-table {
@@ -2436,7 +2460,7 @@
     .tasknotes-plugin .tn-transition-colors,
     .tasknotes-plugin .tn-transition-opacity,
     .tasknotes-plugin .tn-transition-transform {
-        transition: none !important;
+        transition: none;
     }
     
     .tasknotes-plugin .tn-animate-spin,
@@ -2444,11 +2468,11 @@
     .tasknotes-plugin .tn-animate-bounce,
     .tasknotes-plugin .tn-animate-fade-in,
     .tasknotes-plugin .tn-animate-slide-up {
-        animation: none !important;
+        animation: none;
     }
     
     .tasknotes-plugin .tn-hover-scale:hover {
-        transform: none !important;
+        transform: none;
     }
 }
 
@@ -2707,8 +2731,8 @@
 }
 
 /* Hide CodeMirror widgetBuffer image artifacts only */
-.cm-content > .cm-line:has(.cm-widget-cursor-fix) img.cm-widgetBuffer {
-    display: none !important;
+.cm-content .cm-widgetBuffer {
+    display: none;
 }
 
 
@@ -2718,9 +2742,9 @@
     .tasknotes-container *,
     .tasknotes-card *,
     .tasknotes-button * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
     }
 }
 
@@ -2829,8 +2853,7 @@
     background-color: var(--background-modifier-hover);
 }
 
-/* Prevent parent hover when hovering over subtasks or blocking tasks */
-.tasknotes-plugin .task-card:has(.task-card__subtasks:hover, .task-card__blocking:hover) {
+.tasknotes-plugin .task-card.task-card--nested-interactive-hover {
     background-color: transparent;
     box-shadow: none;
 }
@@ -2932,12 +2955,6 @@
     max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
-}
-
-.tasknotes-plugin .task-card__metadata-property:has(.tag),
-.tasknotes-plugin .task-card__metadata-value:has(.tag) {
-    flex-wrap: nowrap;
-    overflow: hidden;
 }
 
 .tasknotes-plugin .task-card__metadata-property .tag {
@@ -3102,6 +3119,7 @@
 
 .tasknotes-plugin .task-card[draggable="true"] {
     cursor: grab;
+    transition: all var(--tn-transition-fast);
 }
 
 .tasknotes-plugin .task-card[draggable="true"]:active,
@@ -3527,14 +3545,11 @@
 .tasknotes-plugin .task-card__context-menu:hover {
     color: var(--tn-text-normal);
     background: var(--tn-interactive-hover);
+    opacity: 1;
 }
 
 .tasknotes-plugin .task-card:hover .task-card__context-menu {
     opacity: 0.6;
-}
-
-.tasknotes-plugin .task-card__context-menu:hover {
-    opacity: 1 !important;
 }
 
 .tasknotes-plugin .task-card__context-menu svg {
@@ -3550,11 +3565,6 @@
 
 
 /* Enhanced priority dot hover for context menu */
-.tasknotes-plugin .task-card__priority-dot {
-    transition: all var(--tn-transition-fast);
-    box-shadow: none;
-}
-
 .tasknotes-plugin .task-card__priority-dot:hover {
     opacity: 0.8;
 }
@@ -3708,6 +3718,8 @@
 
 /* Priority indicators - Use user's priority settings */
 .tasknotes-plugin .task-card__priority-dot {
+    transition: all var(--tn-transition-fast);
+    box-shadow: none;
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -3806,10 +3818,10 @@
     .tasknotes-plugin .task-card *,
     .tasknotes-plugin .task-card::before,
     .tasknotes-plugin .task-card::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+        scroll-behavior: auto;
     }
 
     .tasknotes-plugin .task-card--dragging {
@@ -3820,17 +3832,16 @@
 /* Print styles */
 @media print {
     .tasknotes-plugin .task-card {
-        break-inside: avoid;
         page-break-inside: avoid;
-        background: white !important;
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
+        background: white;
+        box-shadow: none;
+        border: 1px solid #cccccc;
     }
 
     .tasknotes-plugin .task-card__quick-actions,
     .tasknotes-plugin .task-card__context-menu,
     .tasknotes-plugin .task-card__enhanced-info {
-        display: none !important;
+        display: none;
     }
 }
 
@@ -3856,11 +3867,6 @@
 /* =================================================================
    TASKCARD DRAG AND DROP STATES
    ================================================================= */
-
-/* Draggable task cards */
-.tasknotes-plugin .task-card[draggable="true"] {
-    transition: all var(--tn-transition-fast);
-}
 
 .tasknotes-plugin .task-card[draggable="true"]:hover {
     cursor: grab;
@@ -3953,7 +3959,7 @@
 /* Inline layout - single line, compact display for editor task links */
 .tasknotes-plugin .task-card--layout-inline {
     /* Use inline display to respect line boundaries */
-    display: inline !important;
+    display: inline;
 
     /* Minimal padding - no indentation needed in inline mode */
     padding: 2px 0;
@@ -3994,25 +4000,25 @@
 /* Remove chevron gutter padding in inline mode */
 .tasknotes-plugin .task-card--layout-inline,
 .tasknotes-plugin .task-card--layout-inline.task-card--chevron-left {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Main row in inline mode - horizontal layout */
 .tasknotes-plugin .task-card--layout-inline .task-card__main-row {
-    display: inline !important;
+    display: inline;
     vertical-align: baseline;
 }
 
 /* Content in inline mode - horizontal, truncated */
 .tasknotes-plugin .task-card--layout-inline .task-card__content {
-    display: inline !important;
+    display: inline;
     vertical-align: baseline;
 }
 
 /* Title in inline mode - truncate with ellipsis */
 .tasknotes-plugin .task-card--layout-inline .task-card__title {
-    display: inline !important;
+    display: inline;
     font-size: inherit; /* Use editor's font size */
     font-weight: 400;
     margin: 0;
@@ -4021,13 +4027,13 @@
 
 /* Title text in inline mode - ensure ellipsis works */
 .tasknotes-plugin .task-card--layout-inline .task-card__title-text {
-    display: inline !important;
+    display: inline;
     vertical-align: baseline;
 }
 
 /* Metadata in inline mode - stays on same line, scrolls if needed */
 .tasknotes-plugin .task-card--layout-inline .task-card__metadata {
-    display: inline-block !important;
+    display: inline-block;
     font-size: var(--tn-font-size-sm);
     margin: 0;
     padding: 0;
@@ -4077,7 +4083,7 @@
 }
 
 .tasknotes-plugin .task-card--layout-inline .task-card__metadata > *:last-child {
-    margin-right: 0 !important;
+    margin-right: 0;
 }
 
 /* Smaller status dot in inline mode */
@@ -4320,7 +4326,7 @@
 
 /* Wrapper for inline task link widgets - ensures proper inline display with bullets */
 .tasknotes-plugin.tasknotes-inline-widget {
-    display: inline !important;
+    display: inline;
     vertical-align: baseline;
     line-height: inherit;
     /* Prevent wrapper from causing line breaks */
@@ -4356,6 +4362,7 @@
     /* Ensure proper vertical alignment with text */
     vertical-align: baseline;
     line-height: 1.4;
+    animation: tn-fadeInTaskPreview 0.2s ease-out;
 }
 
 /* Hide when cursor is on the same line */
@@ -4559,7 +4566,7 @@
     /* Visual styling */
     background: transparent;
     color: var(--text-muted);
-    border: none !important;
+    border: none;
     box-shadow: none;
     border-radius: 3px;
     
@@ -4631,7 +4638,6 @@
     white-space: nowrap;
     color: var(--text-normal);
     font-weight: 500;
-    margin: 0;
     min-width: 0; /* Allow flex shrinking */
     max-width: min(600px, 80vw); /* Responsive max-width for longer titles */
     flex-shrink: 1; /* Allow shrinking if needed */
@@ -4716,11 +4722,6 @@
 /* =================================================================
    ANIMATIONS
    ================================================================= */
-
-/* Animation for appearance */
-.tasknotes-plugin .task-inline-preview {
-    animation: tn-fadeInTaskPreview 0.2s ease-out;
-}
 
 @keyframes tn-fadeInTaskPreview {
     from {
@@ -4895,9 +4896,9 @@
 .tasknotes-plugin .tn-card__title,
 .tasknotes-plugin .note-card--daily .note-card__title,
 .tasknotes-plugin .note-card--daily-note .note-card__title {
-    font-size: var(--tn-font-size-lg) !important;
-    font-weight: 400 !important;
-    line-height: 1.3 !important;
+    font-size: var(--tn-font-size-lg);
+    font-weight: 400;
+    line-height: 1.3;
 }
 
 /* Remove border radius for cleaner list appearance */
@@ -5203,11 +5204,6 @@
 }
 
 
-/* Filter toggle base (positioning for badge) */
-.tasknotes-plugin .filter-bar__filter-toggle {
-  position: relative; /* context for badge */
-}
-
 /* Active filter badge dot */
 .tasknotes-plugin .filter-bar__filter-toggle.has-active-filters::after {
   content: '';
@@ -5222,13 +5218,13 @@
 
 /* Icon + Text Button Styling */
 .tasknotes-plugin .filter-bar__top-controls .has-text-icon {
-  display: flex !important;
+  display: flex;
   align-items: center;
   gap: 3px;
-  padding: 2px 6px !important;
+  padding: 2px 6px;
   min-height: var(--input-height);
   border-radius: var(--radius-s);
-  width: auto !important; /* Override any fixed width */
+  width: auto; /* Override any fixed width */
 }
 
 .tasknotes-plugin .filter-bar__top-controls .has-text-icon .button-icon {
@@ -5253,8 +5249,8 @@
 
 /* Override button-specific hover states for consistent text+icon button behavior */
 .tasknotes-plugin .filter-bar__top-controls .has-text-icon:hover {
-  background: var(--interactive-hover) !important;
-  color: var(--text-normal) !important;
+  background: var(--interactive-hover);
+  color: var(--text-normal);
 }
 
 /* Clear all button in Filter section header */
@@ -5312,8 +5308,8 @@
   justify-content: center;
   vertical-align: top;
   /* Transparent background */
-  background: transparent !important;
-  border: none !important;
+  background: transparent;
+  border: none;
 }
 
 /* Ensure the close icon is properly centered */
@@ -5411,6 +5407,7 @@
 }
 
 .tasknotes-plugin .filter-bar__filter-toggle {
+    position: relative; /* context for badge */
     padding: var(--tn-spacing-xs);
     background: transparent;
     border: none;
@@ -5427,7 +5424,7 @@
 }
 
 .tasknotes-plugin .filter-bar__filter-toggle:hover {
-    background: var(--interactive-hover) !important;
+    background: var(--interactive-hover);
     color: var(--text-normal);
 }
 
@@ -5452,7 +5449,7 @@
 }
 
 .tasknotes-plugin .filter-bar__templates-button:hover {
-    background: var(--interactive-hover) !important;
+    background: var(--interactive-hover);
     color: var(--text-normal);
     transform: none;
     box-shadow: none;
@@ -5482,7 +5479,7 @@
     font-size: var(--font-ui-small);
     transition: all 0.2s ease;
     height: var(--tn-button-height-md); /* Consistent height */
-    min-width: 0 !important; /* Override any default min-width */
+    min-width: 0; /* Override any default min-width */
     width: auto; /* Allow natural width */
 }
 
@@ -5675,7 +5672,7 @@
     flex: 1;
     padding: var(--tn-spacing-sm) var(--tn-spacing-md);
     background: none;
-    border: none !important;
+    border: none;
     box-shadow: none;
     outline: none;
     color: var(--text-normal);
@@ -5828,7 +5825,7 @@
     border: none;
     border-radius: var(--radius-s);
     color: var(--text-muted);
-    cursor: pointer !important;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6008,7 +6005,7 @@
     border-radius: var(--radius-s);
     color: var(--text-normal);
     font-size: var(--font-ui-small);
-	width: auto;
+    width: 100%;
     height: 28px;
     transition: background-color 0.2s ease;
 }
@@ -6049,16 +6046,6 @@
     border-radius: var(--radius-s);
     padding: 0 var(--tn-spacing-xs);
     transition: all 0.2s ease;
-}
-
-.tasknotes-plugin .filter-bar__value-input {
-    border: none;
-    background: transparent;
-    padding: var(--tn-spacing-xs);
-    color: var(--text-normal);
-    font-size: var(--font-ui-small);
-    width: 100%;
-    height: 28px;
 }
 
 .tasknotes-plugin .filter-bar__value-input:focus {
@@ -6225,32 +6212,32 @@
 /* Hide button text on narrow panes (container width-based responsiveness) */
 @container (max-width: 500px) {
     .tasknotes-plugin .filter-bar__top-controls .has-text-icon .button-text {
-        display: none !important;
+        display: none;
     }
     
     .tasknotes-plugin .filter-bar__top-controls .has-text-icon {
-        padding: 2px 4px !important;
+        padding: 2px 4px;
         min-width: var(--input-height);
         justify-content: center;
     }
     
     /* Hide Views button text and show only chevron icon */
     .tasknotes-plugin .filter-bar__templates-button {
-        padding: 2px 4px !important;
+        padding: 2px 4px;
         min-width: var(--input-height);
         justify-content: center;
         width: var(--input-height);
-        font-size: 0 !important; /* Hide text */
+        font-size: 0; /* Hide text */
     }
     
     .tasknotes-plugin .filter-bar__templates-button .filter-bar__chevron-container {
-        display: flex !important;
+        display: flex;
     }
     
     /* Adjust search input to take more space when buttons are icon-only */
     .tasknotes-plugin .filter-bar__search-input {
         flex-grow: 2;
-        min-width: 0 !important; /* Force override any inherited min-width */
+        min-width: 0; /* Force override any inherited min-width */
         flex-basis: 0; /* Start from zero width and grow */
     }
 }
@@ -6258,32 +6245,32 @@
 /* Fallback for browsers without container query support */
 @media (max-width: 700px) {
     .tasknotes-plugin .filter-bar__top-controls .has-text-icon .button-text {
-        display: none !important;
+        display: none;
     }
     
     .tasknotes-plugin .filter-bar__top-controls .has-text-icon {
-        padding: 2px 4px !important;
+        padding: 2px 4px;
         min-width: var(--input-height);
         justify-content: center;
     }
     
     /* Hide Views button text and show only chevron icon */
     .tasknotes-plugin .filter-bar__templates-button {
-        padding: 2px 4px !important;
+        padding: 2px 4px;
         min-width: var(--input-height);
         justify-content: center;
         width: var(--input-height);
-        font-size: 0 !important; /* Hide text */
+        font-size: 0; /* Hide text */
     }
     
     .tasknotes-plugin .filter-bar__templates-button .filter-bar__chevron-container {
-        display: flex !important;
+        display: flex;
     }
     
     /* Adjust search input to take more space when buttons are icon-only */
     .tasknotes-plugin .filter-bar__search-input {
         flex-grow: 2;
-        min-width: 0 !important; /* Force override any inherited min-width */
+        min-width: 0; /* Force override any inherited min-width */
         flex-basis: 0; /* Start from zero width and grow */
     }
 }
@@ -6422,7 +6409,6 @@
     font-weight: bold;
     color: var(--color-accent);
 }
-
 
 
 /* ===== FILTER-HEADING.CSS ===== */
@@ -6997,7 +6983,7 @@
 }
 
 .tasknotes-plugin .modal-form__input--interval {
-    width: 80px !important;
+    width: 80px;
     min-width: 60px;
     flex-shrink: 0;
     text-align: center;
@@ -7779,20 +7765,20 @@
 
 /* Style the editor content */
 .details-markdown-editor .cm-content {
-    padding-left: var(--size-4-2) !important;
-    padding-right: var(--size-4-2) !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-left: var(--size-4-2);
+    padding-right: var(--size-4-2);
+    padding-top: 0;
+    padding-bottom: 0;
     font-family: var(--font-text);
     font-size: var(--font-ui-medium);
     line-height: var(--line-height-normal);
+    caret-color: var(--text-normal);
 }
 
-/* Ensure the editor line doesn't add extra padding */
-/* .details-markdown-editor .cm-line { */
-/*     padding-left: 0 !important; */
-/*     padding-right: 0 !important; */
-/* } */
+.details-markdown-editor .cm-cursor,
+.details-markdown-editor .cm-dropCursor {
+    border-left-color: var(--text-normal);
+}
 
 /* Placeholder styling */
 .details-markdown-editor .cm-placeholder {
@@ -7848,13 +7834,19 @@
 }
 
 .nl-markdown-editor .cm-content {
-    padding-left: var(--size-4-2) !important;
-    padding-right: var(--size-4-2) !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-left: var(--size-4-2);
+    padding-right: var(--size-4-2);
+    padding-top: 0;
+    padding-bottom: 0;
     font-family: var(--font-text);
     font-size: var(--font-ui-medium);
     line-height: 1.5;
+    caret-color: var(--text-normal);
+}
+
+.nl-markdown-editor .cm-cursor,
+.nl-markdown-editor .cm-dropCursor {
+    border-left-color: var(--text-normal);
 }
 
 
@@ -7951,6 +7943,10 @@
     /* Modal container adjustments */
 }
 
+.tasknotes-plugin .task-modal__field-group + .task-modal__field-group {
+    margin-top: var(--size-4-3);
+}
+
 /* Modal header with TaskNotes icon */
 .modal-header-container {
     display: flex;
@@ -7969,8 +7965,8 @@
 }
 
 .modal-header-icon svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 20px;
+    height: 20px;
     color: var(--color-accent);
 }
 
@@ -7979,13 +7975,6 @@
     margin-top: var(--size-4-4);
     border-top: 0.5px solid var(--background-modifier-border);
     padding-top: var(--size-4-3);
-}
-
-/* Section separator between field groups */
-.tasknotes-plugin .task-modal__section-separator {
-    border: none;
-    border-top: 0.5px solid var(--background-modifier-border);
-    margin: var(--size-4-3) 0;
 }
 
 .detail-label-section {
@@ -7998,14 +7987,14 @@
 }
 
 .modal-header-icon .svg-icon {
-    width: 20px !important;
-    height: 20px !important;
+    width: 20px;
+    height: 20px;
 }
 
 .modal-header-icon .tasknotes-simple {
-    width: 20px !important;
-    height: 20px !important;
-    color: var(--color-accent) !important;
+    width: 20px;
+    height: 20px;
+    color: var(--color-accent);
 }
 
 .modal-header-title {
@@ -8020,6 +8009,7 @@
     box-shadow: var(--shadow-l);
     min-width: 480px;
     max-width: 600px;
+    transition: all 0.3s ease;
 }
 
 .tasknotes-plugin .minimalist-modal-container {
@@ -8165,6 +8155,7 @@
     border-radius: var(--radius-s);
     background: transparent;
     color: var(--text-normal);
+    margin-bottom: var(--size-4-3);
     transition: all 0.2s ease;
 }
 
@@ -8293,10 +8284,6 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
    MODAL EXPANSION ANIMATION
    ===================================================================== */
 
-.tasknotes-plugin.minimalist-task-modal .modal-content {
-    transition: all 0.3s ease;
-}
-
 .tasknotes-plugin.minimalist-task-modal.expanded .modal-content {
     min-height: 400px;
     max-height: 85vh;
@@ -8327,7 +8314,6 @@ body:not(.is-mobile) .modal.mod-tasknotes .modal-button-container .mod-cta {
     flex-wrap: wrap;
     padding-top: var(--size-4-3);
     margin-top: var(--size-4-3);
-    border-top: 1px solid var(--background-modifier-border);
 }
 
 /* =====================================================================
@@ -8398,7 +8384,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     background: var(--modal-background);
     padding-top: var(--size-4-3);
     margin-top: var(--size-4-2);
-    border-top: 1px solid var(--background-modifier-border);
 }
 
 /* =====================================================================
@@ -8414,7 +8399,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Left column: contains title, action bar, and form fields */
 .tasknotes-plugin.minimalist-task-modal .modal-split-left {
-    display: contents;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Title input container - first item */
@@ -8479,42 +8465,44 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
     /* Split content wrapper - holds left and right columns side by side */
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content {
-        display: flex;
-        flex-direction: row;
+        display: block;
         flex: 1;
         min-height: 0;
         gap: 0;
         overflow: visible;
     }
 
-    /* Left column - reset display:contents and use flex column */
+    /* Left column - use grid so the details editor can sit beside the form without display: contents. */
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left {
-        flex: 0 0 380px;
         min-width: 0;
-        display: flex;
-        flex-direction: column;
-        padding-right: var(--size-4-4);
-        overflow-y: auto;
+        display: grid;
+        grid-template-columns: 380px minmax(0, 1fr);
+        gap: 0;
+        padding-right: 0;
+        overflow: visible;
         max-height: 70vh;
     }
 
-    /* Reset ordering for split layout - elements flow naturally in their DOM order */
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left .title-input-container,
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left .nl-markdown-editor,
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left .action-bar,
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left .details-container,
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left .completions-calendar-container,
-    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left .metadata-container,
-    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-right {
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left .metadata-container {
         order: unset;
+        grid-column: 1;
+        margin-right: var(--size-4-4);
     }
 
     /* Right column - details editor takes full height, edge to edge */
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-right {
-        flex: 1;
         min-width: 0;
+        min-height: 360px;
         display: flex;
         flex-direction: column;
+        grid-column: 2;
+        grid-row: 1 / span 20;
+        order: unset;
         border-left: 1px solid var(--background-modifier-border);
         margin: calc(-1 * var(--size-4-4)) 0;
         margin-right: calc(-1 * var(--size-4-4));
@@ -8529,10 +8517,20 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     }
 
     /* When right column is empty, left column takes full width */
-    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-right:empty ~ .modal-split-left,
-    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content:has(.modal-split-right:empty) .modal-split-left {
-        flex: 1;
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content--right-empty .modal-split-left {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
         padding-right: 0;
+    }
+
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content--right-empty .modal-split-left .title-input-container,
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content--right-empty .modal-split-left .nl-markdown-editor,
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content--right-empty .modal-split-left .action-bar,
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content--right-empty .modal-split-left .details-container,
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content--right-empty .modal-split-left .completions-calendar-container,
+    .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-content--right-empty .modal-split-left .metadata-container {
+        margin-right: 0;
     }
 
     /* Details label in right column */
@@ -8546,6 +8544,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-right .details-markdown-editor {
         flex: 1;
         min-height: 0;
+        height: 100%;
         max-height: none;
         display: flex;
         flex-direction: column;
@@ -8557,12 +8556,14 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-right .details-markdown-editor .cm-editor {
         flex: 1;
+        height: 100%;
         max-height: none;
         border-radius: 0;
-        min-height: 0;
+        min-height: 320px;
     }
 
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-right .details-markdown-editor .cm-scroller {
+        flex: 1;
         max-height: none;
         overflow-y: auto;
     }
@@ -8570,7 +8571,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-right .details-markdown-editor .task-details-editor {
         max-height: none;
         flex: 1;
-        min-height: 0;
+        min-height: 320px;
+        height: 100%;
         overflow: hidden;
     }
 
@@ -8593,7 +8595,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
     /* Left column gets more space on wider screens */
     .tasknotes-plugin.minimalist-task-modal.split-layout-enabled.expanded .modal-split-left {
-        flex: 0 0 480px;
+        grid-template-columns: 480px minmax(0, 1fr);
     }
 }
 
@@ -10280,14 +10282,14 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Remove task card hover/background styling - let suggestion item handle it */
 .task-selector-with-create-modal .task-card {
-    background: transparent !important;
-    box-shadow: none !important;
+    background: transparent;
+    box-shadow: none;
     padding: var(--tn-spacing-sm) 0;
     margin: 0;
 }
 
 .task-selector-with-create-modal .task-card:hover {
-    background: transparent !important;
+    background: transparent;
 }
 
 /* Hide context menu icon in modal suggestions */
@@ -11146,12 +11148,12 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 /* Description editor – Setting row must stack so the editor gets full width */
-.time-entry-editor-modal__time-container .setting-item:has(.time-entry-editor-modal__description-editor-container) {
+.time-entry-editor-modal__time-container .time-entry-editor-modal__description-setting {
     flex-direction: column;
     align-items: flex-start;
 }
 
-.time-entry-editor-modal__time-container .setting-item:has(.time-entry-editor-modal__description-editor-container) .setting-item-control {
+.time-entry-editor-modal__time-container .time-entry-editor-modal__description-setting .setting-item-control {
     width: 100%;
     justify-content: flex-start;
     text-align: left;
@@ -11187,10 +11189,10 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .time-entry-editor-modal__description-editor .cm-content {
-    padding-left: var(--size-4-2) !important;
-    padding-right: var(--size-4-2) !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-left: var(--size-4-2);
+    padding-right: var(--size-4-2);
+    padding-top: 0;
+    padding-bottom: 0;
     font-family: var(--font-text);
     font-size: var(--font-ui-medium);
     line-height: var(--line-height-normal);
@@ -11304,8 +11306,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
  */
 
 .tasknotes-relationships-widget {
-    display: block !important;
-    width: 100% !important;
+    display: block;
+    width: 100%;
     margin: 1.5em 0 2em 0;
     padding: 1em;
     border: 1px dashed var(--background-modifier-border-hover);
@@ -11314,7 +11316,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     z-index: 10; /* Higher z-index to allow dropdowns to appear above other content */
 
     /* Allow filter dropdowns to extend beyond widget boundaries */
-    overflow: visible !important;
+    overflow: visible;
 }
 
 .tasknotes-plugin .relationships__bases-container {
@@ -11366,7 +11368,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 .task-card-note-widget__card {
     /* Reset margins for the inner task card */
-    margin: 0 !important;
+    margin: 0;
 }
 
 
@@ -11506,8 +11508,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 
-/* Right side of group header: count + subgroup actions */
-.tasknotes-plugin .task-list-view__group-header { display:flex; align-items:center; }
 .tasknotes-plugin .task-group-right { margin-left:auto; display:flex; align-items:center; gap: var(--tn-spacing-xs); }
 
 /* Override count margin when inside right-side container */
@@ -11520,7 +11520,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .tasknotes-plugin .task-group-toggle svg,  .task-group-toggle .chevron path { stroke: currentColor; }
 .tasknotes-plugin .task-group.is-collapsed .task-group-toggle svg,
 .tasknotes-plugin .task-group.is-collapsed .task-group-toggle .chevron { transform: rotate(0deg); }
-.tasknotes-plugin .task-group-toggle { display: contents; align-items: center; justify-content: center; width: 20px; height: 20px; margin-right: var(--tn-spacing-xs); border: none; background: transparent; color: var(--tn-text-normal); font-size: 14px; line-height: 1; }
+.tasknotes-plugin .task-group-toggle { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; margin-right: var(--tn-spacing-xs); border: none; background: transparent; color: var(--tn-text-normal); font-size: 14px; line-height: 1; }
 .tasknotes-plugin .task-group-toggle .chevron { transition: transform var(--tn-transition-fast); }
 .tasknotes-plugin .task-group .task-group-toggle .chevron,
 .tasknotes-plugin .task-group .task-group-toggle svg { transform: rotate(90deg); }
@@ -11530,7 +11530,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .tasknotes-plugin .task-subgroups-container { margin-left: var(--tn-spacing-lg); }
 .tasknotes-plugin .task-subgroup-header { display:flex; align-items:center; gap: var(--tn-spacing-xs); cursor: pointer; padding: 2px 0; font-size: var(--tn-font-size-lg); font-weight: var(--tn-font-weight-medium); }
 .tasknotes-plugin .task-subgroup-header .agenda-view__item-count { margin-left: auto; }
-.tasknotes-plugin .task-subgroup-toggle { display: contents; align-items:center; justify-content:center; width:16px; height:16px; border:none; background:transparent; color: var(--tn-text-normal); font-size: 12px; line-height: 1; }
+.tasknotes-plugin .task-subgroup-toggle { display: inline-flex; align-items:center; justify-content:center; width:16px; height:16px; border:none; background:transparent; color: var(--tn-text-normal); font-size: 12px; line-height: 1; }
 .tasknotes-plugin .task-subgroup-toggle .chevron { transition: transform var(--tn-transition-fast); }
 .tasknotes-plugin .task-subgroup .task-subgroup-toggle .chevron,
 .tasknotes-plugin .task-subgroup .task-subgroup-toggle svg { transform: rotate(90deg); }
@@ -11992,7 +11992,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 /* Calendar Day - Today State */
 .tasknotes-plugin .calendar-view__day--today,
 .tasknotes-plugin .mini-calendar-view__day--today {
-    background: var(--tn-interactive-hover) !important;
+    background: var(--tn-interactive-hover);
     color: var(--tn-interactive-accent);
     font-weight: 600;
     box-shadow: none;
@@ -12114,6 +12114,10 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     bottom: 4px;
     left: 70%;
     transform: translateX(-50%);
+    background-color: var(--tn-color-daily-note);
+    width: 7px;
+    height: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 /* Hover effects for content indicators */
@@ -12173,15 +12177,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     width: 8px;
     height: 8px;
     opacity: 0.8;
-}
-
-/* Daily Note Indicator */
-.tasknotes-plugin .calendar-view__content-indicator--daily-note,
-.tasknotes-plugin .mini-calendar-view__content-indicator--daily-note {
-    background-color: var(--tn-color-daily-note);
-    width: 7px;
-    height: 7px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 /* Hover tooltip for indicators */
@@ -12439,6 +12434,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 .tasknotes-plugin .mini-calendar-view__grid-header {
     background: transparent;
+    grid-template-columns: 40px repeat(7, 1fr);
 }
 
 .tasknotes-plugin .mini-calendar-view__day-header {
@@ -12450,6 +12446,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 .tasknotes-plugin .mini-calendar-view__week {
     gap: 1px;
+    grid-template-columns: 40px repeat(7, 1fr);
 }
 
 .tasknotes-plugin .mini-calendar-view__day {
@@ -12465,7 +12462,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .mini-calendar-view__day--today {
-    background: none !important;
+    background: none;
     color: var(--tn-text-on-accent);
 }
 
@@ -12678,9 +12675,9 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Drag over state for mini calendar days */
 .tasknotes-plugin .mini-calendar-view__day--dragover {
-    background-color: var(--tn-interactive-accent-hover) !important;
-    border-color: var(--tn-interactive-accent) !important;
-    color: var(--tn-text-on-accent) !important;
+    background-color: var(--tn-interactive-accent-hover);
+    border-color: var(--tn-interactive-accent);
+    color: var(--tn-text-on-accent);
     transform: scale(1.1);
     box-shadow: var(--tn-shadow-light);
     z-index: 10;
@@ -12691,15 +12688,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 /* ================================================
    MINI CALENDAR WEEK NUMBERS & SELECTION
    ================================================ */
-
-/* Update grid layout to include week number column */
-.tasknotes-plugin .mini-calendar-view__grid-header {
-    grid-template-columns: 40px repeat(7, 1fr);
-}
-
-.tasknotes-plugin .mini-calendar-view__week {
-    grid-template-columns: 40px repeat(7, 1fr);
-}
 
 /* Week number header cell */
 .tasknotes-plugin .mini-calendar-view__week-header {
@@ -12801,19 +12789,19 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .mini-calendar-view__day--intensity-low {
-    background: color-mix(in srgb, var(--tn-interactive-accent) 25%, var(--tn-bg-primary)) !important;
+    background: color-mix(in srgb, var(--tn-interactive-accent) 25%, var(--tn-bg-primary));
 }
 
 .tasknotes-plugin .mini-calendar-view__day--intensity-medium {
-    background: color-mix(in srgb, var(--tn-interactive-accent) 40%, var(--tn-bg-primary)) !important;
+    background: color-mix(in srgb, var(--tn-interactive-accent) 40%, var(--tn-bg-primary));
 }
 
 .tasknotes-plugin .mini-calendar-view__day--intensity-high {
-    background: color-mix(in srgb, var(--tn-interactive-accent) 55%, var(--tn-bg-primary)) !important;
+    background: color-mix(in srgb, var(--tn-interactive-accent) 55%, var(--tn-bg-primary));
 }
 
 .tasknotes-plugin .mini-calendar-view__day--intensity-very-high {
-    background: color-mix(in srgb, var(--tn-interactive-accent) 70%, var(--tn-bg-primary)) !important;
+    background: color-mix(in srgb, var(--tn-interactive-accent) 70%, var(--tn-bg-primary));
     color: var(--tn-text-on-accent);
     font-weight: 600;
 }
@@ -12823,7 +12811,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .tasknotes-plugin .mini-calendar-view__day--intensity-medium:hover,
 .tasknotes-plugin .mini-calendar-view__day--intensity-high:hover,
 .tasknotes-plugin .mini-calendar-view__day--intensity-very-high:hover {
-    background: color-mix(in srgb, var(--tn-interactive-accent) 35%, var(--tn-interactive-hover)) !important;
+    background: color-mix(in srgb, var(--tn-interactive-accent) 35%, var(--tn-interactive-hover));
 }
 
 
@@ -12876,7 +12864,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .ics-context-menu-item:hover {
-    background-color: var(--background-modifier-hover) !important;
+    background-color: var(--background-modifier-hover);
 }
 
 /* Timeblock Help Text */
@@ -12897,8 +12885,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .fc-event[data-event-type="timeblock"] {
     opacity: 0.65;
     border-radius: 4px;
-    border-width: 1px !important;
-    border-style: solid !important;
+    border-width: 1px;
+    border-style: solid;
     transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -12913,28 +12901,28 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .fc-event[data-event-type="timeEntry"] {
     opacity: 0.9;
     border-radius: 4px;
-    border-width: 2px !important;
-    border-style: dashed !important; /* Dashed border to differentiate from solid timeblocks */
+    border-width: 2px;
+    border-style: dashed; /* Dashed border to differentiate from solid timeblocks */
     background: repeating-linear-gradient(
         45deg,
         rgba(16, 185, 129, 0.08),
         rgba(16, 185, 129, 0.08) 10px,
         rgba(16, 185, 129, 0.15) 10px,
         rgba(16, 185, 129, 0.15) 20px
-    ) !important; /* Subtle diagonal stripes in green */
-    border-color: #10b981 !important; /* Green to indicate "completed/recorded" time */
+    ); /* Subtle diagonal stripes in green */
+    border-color: #10b981; /* Green to indicate "completed/recorded" time */
 }
 
 .fc-event[data-event-type="timeEntry"] .fc-event-time,
 .fc-event[data-event-type="timeEntry"] .fc-event-title {
-    color: #059669 !important; /* Darker green for better readability */
+    color: #059669; /* Darker green for better readability */
     font-weight: 500;
 }
 
 .fc-event[data-event-type="timeEntry"]:hover {
     opacity: 1;
     box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
-    border-style: solid !important; /* Solid border on hover for clarity */
+    border-style: solid; /* Solid border on hover for clarity */
 }
 
 /* Dark mode adjustments for time entries */
@@ -12945,19 +12933,19 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
         rgba(52, 211, 153, 0.1) 10px,
         rgba(52, 211, 153, 0.18) 10px,
         rgba(52, 211, 153, 0.18) 20px
-    ) !important;
-    border-color: #34d399 !important; /* Lighter green for dark mode */
+    );
+    border-color: #34d399; /* Lighter green for dark mode */
 }
 
 .theme-dark .fc-event[data-event-type="timeEntry"] .fc-event-time,
 .theme-dark .fc-event[data-event-type="timeEntry"] .fc-event-title {
-    color: #6ee7b7 !important; /* Even lighter green for text in dark mode */
+    color: #6ee7b7; /* Even lighter green for text in dark mode */
 }
 
 /* Task Events */
 .fc-task-event {
     border-radius: 4px;
-    border-width: 1px !important;
+    border-width: 1px;
 }
 
 .fc-task-event:hover {
@@ -12968,8 +12956,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .fc-daygrid-event.fc-ics-event,
 .fc-timegrid-event.fc-ics-event {
     border-radius: 4px;
-    border-width: 2px !important;
-    border-style: solid !important;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .fc-daygrid-event.fc-ics-event:hover,
@@ -12979,7 +12967,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Recurring Events */
 .fc-recurring-event {
-    border-style: dashed !important;
+    border-style: dashed;
 }
 
 /* Completed Events */
@@ -13001,9 +12989,9 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .timeblock-time-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--size-4-3);
 }
 
 .timeblock-modal-buttons {
@@ -13051,7 +13039,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     background: var(--background-secondary);
     border-radius: 4px;
     border: 1px solid var(--background-modifier-border);
@@ -13126,10 +13114,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 .timeblock-attachments {
     margin-top: 0.5rem;
-}
-
-.timeblock-attachment-item {
-    margin-bottom: 0.25rem;
 }
 
 .timeblock-attachment-item .internal-link {
@@ -13231,13 +13215,13 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .ics-subscription-delete {
-    color: var(--text-error) !important;
-    border-color: var(--text-error) !important;
+    color: var(--text-error);
+    border-color: var(--text-error);
 }
 
 .ics-subscription-delete:hover {
-    background: var(--text-error) !important;
-    color: white !important;
+    background: var(--text-error);
+    color: white;
 }
 
 /* ICS Subscription Forms */
@@ -13422,6 +13406,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     height: 100%;
     width: 100%;
     font-family: var(--font-interface);
+    --fc-today-bg-color: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary));
 }
 
 /* Ensure calendar table expands to fill container width */
@@ -13430,11 +13415,11 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .advanced-calendar-view .fc-scrollgrid {
-    width: 100% !important;
+    width: 100%;
 }
 
 .advanced-calendar-view .fc-scrollgrid-sync-table {
-    width: 100% !important;
+    width: 100%;
 }
 
 /* Remove outer borders only */
@@ -13446,15 +13431,25 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .advanced-calendar-view .fc-col-header-cell {
     border-bottom: 1px solid var(--background-modifier-border);
     border-top: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.75rem;
+    /* text-transform: lowercase; */
+    letter-spacing: 0;
+    padding: 0.5rem 0.5rem;
 }
 
 .advanced-calendar-view .fc-daygrid-day {
     border-right: 1px solid var(--background-modifier-border-hover);
     border-bottom: 1px solid var(--background-modifier-border-hover);
+    background: var(--background-primary);
+    color: var(--text-normal);
 }
 
 .advanced-calendar-view .fc-timegrid-slot {
     border-bottom: 1px solid var(--background-modifier-border-hover);
+    height: 3rem;
 }
 
 .advanced-calendar-view .fc-timegrid-col {
@@ -13499,8 +13494,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .advanced-calendar-view .fc-timeGridWeek-button,
 .advanced-calendar-view .fc-timeGridDay-button,
 .advanced-calendar-view .fc-listWeek-button {
-    border: none !important;
-    box-shadow: none !important;
+    border: none;
+    box-shadow: none;
     background: transparent;
     color: var(--text-muted);
     font-size: 0.8rem;
@@ -13518,8 +13513,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .advanced-calendar-view .fc-next-button:hover:not(:disabled) {
     background: var(--tn-interactive-hover);
     color: var(--text-normal);
-    border: none !important;
-    box-shadow: none !important;
+    border: none;
+    box-shadow: none;
 }
 
 .advanced-calendar-view .fc-button-primary:disabled {
@@ -13531,10 +13526,10 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 /* Active state for FC buttons (currently selected view) */
 .advanced-calendar-view .fc-button-active,
 .advanced-calendar-view .fc-button.fc-button-active {
-    background: var(--interactive-accent) !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: var(--text-on-accent) !important;
+    background: var(--interactive-accent);
+    border: none;
+    box-shadow: none;
+    color: var(--text-on-accent);
 }
 
 /* Use consistent button system for today button */
@@ -13552,25 +13547,25 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Clean today styling */
 .advanced-calendar-view .fc-daygrid-day.fc-day-today {
-    background: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary)) !important;
+    background: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary));
     border: 2px solid var(--interactive-accent);
     position: relative;
 }
 
 .advanced-calendar-view .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
     font-weight: 600;
-    color: var(--interactive-accent) !important;
+    color: var(--interactive-accent);
 }
 
 /* Fix today styling specifically for multi-month (year) view */
 .advanced-calendar-view .fc-multimonth-daygrid .fc-daygrid-day.fc-day-today {
-    background: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary)) !important;
-    border: 2px solid var(--interactive-accent) !important;
+    background: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary));
+    border: 2px solid var(--interactive-accent);
 }
 
 .advanced-calendar-view .fc-multimonth-daygrid .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
     font-weight: 600;
-    color: var(--interactive-accent) !important;
+    color: var(--interactive-accent);
 }
 
 .advanced-calendar-view .fc-daygrid-day.fc-day-today::before {
@@ -13588,56 +13583,33 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 /* Timegrid (week/day view) today column - use subtle accent instead of FullCalendar default yellow */
 /* Must match FullCalendar's specificity: .fc .fc-timegrid-col.fc-day-today */
 .advanced-calendar-view .fc .fc-timegrid-col.fc-day-today {
-    background-color: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary)) !important;
-}
-
-/* Override FullCalendar's today background CSS variable for consistent theming */
-/* Scoped to .fc inside our view to ensure the variable is properly inherited */
-.advanced-calendar-view .fc {
-    --fc-today-bg-color: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary));
-}
-
-/* Header cells */
-.advanced-calendar-view .fc-col-header-cell {
-    background: var(--background-primary) !important;
-    color: var(--text-muted) !important;
-    font-weight: 400;
-    font-size: 0.75rem;
-    /* text-transform: lowercase; */
-    letter-spacing: 0;
-    padding: 0.5rem 0.5rem;
-}
-
-/* Day cells - ensure proper theme colors */
-.advanced-calendar-view .fc-daygrid-day {
-    background: var(--background-primary) !important;
-    color: var(--text-normal) !important;
+    background-color: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary));
 }
 
 /* Multi-month (year view) styling - minimalist */
 .advanced-calendar-view .fc-multimonth-daygrid .fc-daygrid-day {
-    background: var(--background-primary) !important;
-    color: var(--text-normal) !important;
+    background: var(--background-primary);
+    color: var(--text-normal);
 }
 
 /* Multi-month month headers */
 .advanced-calendar-view .fc-multimonth-header {
-    background: transparent !important;
-    color: var(--text-normal) !important;
+    background: transparent;
+    color: var(--text-normal);
     border-bottom: 1px solid var(--divider-color);
 }
 
 .advanced-calendar-view .fc-multimonth-title {
-    background: transparent !important;
-    color: var(--text-normal) !important;
+    background: transparent;
+    color: var(--text-normal);
     font-weight: 500;
     padding: 0.5rem;
 }
 
 /* Multi-month day headers (Mon, Tue, etc.) */
 .advanced-calendar-view .fc-multimonth .fc-col-header-cell {
-    background: transparent !important;
-    color: var(--text-muted) !important;
+    background: transparent;
+    color: var(--text-muted);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -13645,7 +13617,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Day numbers */
 .advanced-calendar-view .fc-daygrid-day-number {
-    color: var(--text-normal) !important;
+    color: var(--text-normal);
     font-weight: 400;
     font-size: 0.9rem;
     padding: 0.5rem;
@@ -13653,32 +13625,32 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* List view day headers - minimalist */
 .advanced-calendar-view .fc-list-day-cushion {
-    background: transparent !important;
-    color: var(--text-normal) !important;
+    background: transparent;
+    color: var(--text-normal);
     font-weight: 500;
     border-bottom: 1px solid var(--divider-color);
     padding: 0.5rem 0.25rem;
 }
 
 .advanced-calendar-view .fc-list-day {
-    background: transparent !important;
+    background: transparent;
 }
 
 /* Today highlight in list/agenda view */
 .advanced-calendar-view .fc-list-day.fc-day-today .fc-list-day-cushion {
-    color: var(--interactive-accent) !important;
+    color: var(--interactive-accent);
     font-weight: 600;
     border-bottom-color: var(--interactive-accent);
 }
 
 .hide-today-highlight .fc-list-day.fc-day-today .fc-list-day-cushion {
-    color: var(--text-normal) !important;
+    color: var(--text-normal);
     font-weight: 500;
     border-bottom-color: var(--divider-color);
 }
 
 .advanced-calendar-view .fc-list-table th {
-    background: var(--background-secondary-alt) !important;
+    background: var(--background-secondary-alt);
 }
 
 /* Clean event styling */
@@ -13702,11 +13674,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     font-weight: 500;
     line-height: 1.3;
 	text-decoration: inherit;
-}
-
-/* Time grid specific styles */
-.advanced-calendar-view .fc-timegrid-slot {
-    height: 3rem;
 }
 
 .advanced-calendar-view .fc-timegrid-slot-label {
@@ -13821,8 +13788,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .hide-today-highlight .fc-daygrid-day.fc-day-today {
-    background: inherit !important;
-    border: none !important;
+    background: inherit;
+    border: none;
 }
 
 .hide-today-highlight .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
@@ -13835,28 +13802,28 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .hide-today-highlight .fc .fc-timegrid-col.fc-day-today {
-    background: inherit !important;
-    border: none !important;
+    background: inherit;
+    border: none;
 }
 
 /* ICS Refresh Button - Match exact styling of other FullCalendar buttons */
 .advanced-calendar-view .fc-refreshICS-button {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: var(--text-muted) !important;
-    font-size: 0.8rem !important;
-    font-weight: 400 !important;
-    padding: 0.3rem 0.6rem !important;
-    border-radius: 4px !important;
-    transition: all 0.2s ease !important;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
 .advanced-calendar-view .fc-refreshICS-button .fc-icon,
 .advanced-calendar-view .fc-refreshICS-button .fc-button-label {
-    color: var(--text-muted) !important;
-    font-size: 0.8rem !important;
-    font-weight: 400 !important;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 400;
     line-height: 1.2;
     display: inline;
     visibility: visible;
@@ -13864,34 +13831,34 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Hover state - match other buttons exactly */
 .advanced-calendar-view .fc-refreshICS-button:hover:not(:disabled) {
-    background: var(--tn-interactive-hover) !important;
-    color: var(--text-normal) !important;
-    border: none !important;
-    box-shadow: none !important;
+    background: var(--tn-interactive-hover);
+    color: var(--text-normal);
+    border: none;
+    box-shadow: none;
 }
 
 .advanced-calendar-view .fc-refreshICS-button:hover:not(:disabled) .fc-icon,
 .advanced-calendar-view .fc-refreshICS-button:hover:not(:disabled) .fc-button-label {
-    color: var(--text-normal) !important;
+    color: var(--text-normal);
 }
 
 /* Active/Focus state - match other buttons */
 .advanced-calendar-view .fc-refreshICS-button:active,
 .advanced-calendar-view .fc-refreshICS-button:focus {
-    background: var(--tn-interactive-hover) !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    color: var(--text-normal) !important;
+    background: var(--tn-interactive-hover);
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: var(--text-normal);
 }
 
 /* Disabled state - match other buttons */
 .advanced-calendar-view .fc-refreshICS-button:disabled {
-    background: transparent !important;
-    color: var(--text-faint) !important;
-    opacity: 0.5 !important;
-    border: none !important;
-    box-shadow: none !important;
+    background: transparent;
+    color: var(--text-faint);
+    opacity: 0.5;
+    border: none;
+    box-shadow: none;
 }
 
 /* ===== CLEAN LIST VIEW STYLING - NO INHERITANCE ===== */
@@ -13899,42 +13866,42 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 /* Base styling for ALL list events - completely independent from calendar views */
 .fc-list-event {
     /* Reset any inherited styling from calendar views */
-    opacity: 1 !important;
-    border: none !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    opacity: 1;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
 }
 
 /* Consistent light hover background for ALL list events */
 .fc-list-event:hover {
-    background-color: var(--background-modifier-hover) !important;
+    background-color: var(--background-modifier-hover);
 }
 
 /* Fix time element color on hover in list view */
 .fc-list-event:hover .fc-list-event-time {
-    color: inherit !important;
-    background-color: transparent !important;
+    color: inherit;
+    background-color: transparent;
 }
 
 .fc-list-event .fc-list-event-time {
     /* Consistent time styling for all events */
-    font-size: inherit !important;
-    color: inherit !important;
-    font-weight: inherit !important;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
     vertical-align: top;
 }
 
 .fc-list-event .fc-list-event-title {
     /* Base title styling - clean and consistent */
     padding: 8px 12px;
-    border: none !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    font-size: inherit !important;
-    font-weight: inherit !important;
-    color: inherit !important;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
     display: table-cell;
     vertical-align: top;
 }
@@ -13942,8 +13909,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 .fc-list-event .fc-list-event-dot {
     /* Standard dot styling for all events */
-    border: inherit !important;
-    background: inherit !important;
+    border: inherit;
+    background: inherit;
 }
 
 /* ===== TASK-SPECIFIC ENHANCEMENTS ===== */
@@ -13951,9 +13918,9 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 /* Task events get ONLY functional enhancements - NO visual styling differences */
 .fc-list-event.fc-list-task-card .fc-list-event-title {
     /* Keep base styling identical to ICS events - no background, borders, or shadows */
-    background-color: transparent !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* Remove task-specific hover - now handled by base .fc-list-event:hover */
@@ -13973,7 +13940,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Prevent graphic column from getting hover background */
 .fc-list-event:hover .fc-list-event-graphic {
-    background-color: transparent !important;
+    background-color: transparent;
 }
 
 /* Task title row with indicators on same line */
@@ -13989,6 +13956,10 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 .fc-list-task-metadata > span {
     display: block;
     margin: 2px 0;
+    background-color: var(--background-secondary);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
 }
 
 /* Status and priority dots */
@@ -14004,9 +13975,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 .fc-list-task-priority-dot {
     cursor: var(--cursor, pointer);
-}
-
-.fc-list-task-priority-dot {
     background-color: var(--priority-color, currentColor);
 }
 
@@ -14015,8 +13983,9 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     width: 12px;
     height: 12px;
     flex-shrink: 0;
-    opacity: 0.7;
+    opacity: 0.8;
     cursor: var(--cursor, pointer);
+    font-size: 12px;
 }
 
 .fc-list-task-recurring-indicator:hover {
@@ -14027,18 +13996,11 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     border-color: var(--current-status-color, var(--text-muted));
 }
 
-/* Recurring indicator */
-.fc-list-task-recurring-indicator {
-    font-size: 12px;
-    opacity: 0.8;
-    flex-shrink: 0;
-}
-
 /* Task title */
 .fc-list-task-title {
-    font-weight: 500 !important;
-    color: var(--text-normal) !important;
-    font-size: 14px !important;
+    font-weight: 500;
+    color: var(--text-normal);
+    font-size: 14px;
     flex-grow: 1;
 }
 
@@ -14053,31 +14015,24 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     margin-top: 2px;
 }
 
-.fc-list-task-metadata > span {
-    background-color: var(--background-secondary);
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 11px;
-}
-
 .fc-list-task-projects {
-    background-color: rgba(var(--color-blue-rgb, 13 110 253), 0.1) !important;
-    color: var(--color-blue) !important;
+    background-color: rgba(var(--color-blue-rgb, 13 110 253), 0.1);
+    color: var(--color-blue);
 }
 
 .fc-list-task-contexts {
-    background-color: rgba(var(--color-green-rgb, 25 135 84), 0.1) !important;
-    color: var(--color-green) !important;
+    background-color: rgba(var(--color-green-rgb, 25 135 84), 0.1);
+    color: var(--color-green);
 }
 
 .fc-list-task-tags {
-    background-color: rgba(var(--color-purple-rgb, 102 16 242), 0.1) !important;
-    color: var(--color-purple) !important;
+    background-color: rgba(var(--color-purple-rgb, 102 16 242), 0.1);
+    color: var(--color-purple);
 }
 
 .fc-list-task-time-estimate {
-    background-color: rgba(var(--color-orange-rgb, 255 159 67), 0.1) !important;
-    color: var(--color-orange) !important;
+    background-color: rgba(var(--color-orange-rgb, 255 159 67), 0.1);
+    color: var(--color-orange);
 }
 
 .fc-list-task-metadata-separator {
@@ -14116,32 +14071,32 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Dark mode fixes for FullCalendar popover ("+more" popup) */
 .theme-dark .advanced-calendar-view .fc-popover {
-    background: var(--background-primary) !important;
-    border: 1px solid var(--background-modifier-border) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .theme-dark .advanced-calendar-view .fc-popover-header {
-    background: var(--background-secondary) !important;
-    border-bottom: 1px solid var(--background-modifier-border) !important;
+    background: var(--background-secondary);
+    border-bottom: 1px solid var(--background-modifier-border);
 }
 
 .theme-dark .advanced-calendar-view .fc-popover-title {
-    color: var(--text-normal) !important;
+    color: var(--text-normal);
 }
 
 .theme-dark .advanced-calendar-view .fc-popover-close {
-    color: var(--text-muted) !important;
+    color: var(--text-muted);
 }
 
 .theme-dark .advanced-calendar-view .fc-popover-close:hover {
-    color: var(--text-normal) !important;
-    background: var(--background-modifier-hover) !important;
+    color: var(--text-normal);
+    background: var(--background-modifier-hover);
 }
 
 .theme-dark .advanced-calendar-view .fc-popover-body {
-    background: var(--background-primary) !important;
-    color: var(--text-normal) !important;
+    background: var(--background-primary);
+    color: var(--text-normal);
 }
 
 /* Dark mode fixes for timeGrid more link (eventMaxStack) */
@@ -14962,7 +14917,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 /* Chevron/toggle styles for agenda day headers (consistent with TaskList view) */
 .tasknotes-plugin .agenda-view__day-header .task-group-toggle {
-    display: contents;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 20px;
@@ -15234,6 +15189,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     }
 }
 
+
 /* ===== POMODORO-VIEW.CSS ===== */
 /* ================================================
    POMODORO VIEW - BEM STRUCTURE
@@ -15316,7 +15272,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view__progress-circle--warning {
-    stroke: var(--tn-color-error) !important;
+    stroke: var(--tn-color-error);
     animation: tn-progress-pulse 1s infinite;
 }
 
@@ -15817,8 +15773,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--tiny .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 2rem !important;
-    font-weight: 700 !important;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .tasknotes-plugin .pomodoro-view--extra-narrow {
@@ -15827,8 +15783,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--extra-narrow .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 2.2rem !important;
-    font-weight: 650 !important;
+    font-size: 2.2rem;
+    font-weight: 650;
 }
 
 /* Very narrow view (≤ 300px) - Minimal layout */
@@ -15847,8 +15803,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--very-narrow .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 2.5rem !important;
-    font-weight: 600 !important;
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 
 .tasknotes-plugin .pomodoro-view--very-narrow .pomodoro-view__time-controls {
@@ -15906,8 +15862,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--narrow .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 3rem !important;
-    font-weight: 600 !important;
+    font-size: 3rem;
+    font-weight: 600;
 }
 
 .tasknotes-plugin .pomodoro-view--narrow .pomodoro-view__time-controls {
@@ -15942,8 +15898,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--small .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 3.2rem !important;
-    font-weight: 550 !important;
+    font-size: 3.2rem;
+    font-weight: 550;
 }
 
 .tasknotes-plugin .pomodoro-view--small .pomodoro-view__primary-controls {
@@ -15957,8 +15913,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--medium-small .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 3.6rem !important;
-    font-weight: 500 !important;
+    font-size: 3.6rem;
+    font-weight: 500;
 }
 
 /* Medium view (≤ 600px) - Standard responsive adjustments */
@@ -15968,8 +15924,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--medium .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 4rem !important;
-    font-weight: 500 !important;
+    font-size: 4rem;
+    font-weight: 500;
 }
 
 .tasknotes-plugin .pomodoro-view--medium .pomodoro-view__task-buttons {
@@ -15983,8 +15939,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-plugin .pomodoro-view.pomodoro-view--wide .pomodoro-view__timer-overlay .pomodoro-view__timer-display {
-    font-size: 4.5rem !important;
-    font-weight: 400 !important;
+    font-size: 4.5rem;
+    font-weight: 400;
 }
 
 /* Task card responsiveness */
@@ -16488,29 +16444,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     margin-top: var(--tn-spacing-sm);
 }
 
-/* Overview Card */
-.tasknotes-plugin .stats-view__overview-card {
-    background: var(--tn-background-secondary);
-    border: 1px solid var(--tn-border-color);
-    border-radius: var(--tn-border-radius-md);
-    padding: var(--tn-spacing-md);
-    text-align: center;
-    transition: border-color 0.15s ease-in-out;
-}
-
-.tasknotes-plugin .stats-view__overview-card:hover {
-    border-color: var(--tn-accent-color);
-}
-
-/* Overview Values */
-.tasknotes-plugin .stats-view__overview-value {
-    font-size: var(--tn-font-size-xxl);
-    font-weight: var(--tn-font-weight-bold);
-    color: var(--tn-accent-color);
-    margin-bottom: var(--tn-spacing-xs);
-    line-height: 1.2;
-}
-
 .tasknotes-plugin .stats-view__overview-label {
     font-size: var(--tn-font-size-sm);
     font-weight: var(--tn-font-weight-medium);
@@ -16571,19 +16504,6 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--tn-spacing-md);
     margin-top: var(--tn-spacing-sm);
-}
-
-/* Project Item */
-.tasknotes-plugin .stats-view__project-item {
-    background: var(--tn-background-secondary);
-    border: 1px solid var(--tn-border-color);
-    border-radius: var(--tn-border-radius-md);
-    padding: var(--tn-spacing-md);
-    transition: all 0.15s ease-in-out;
-}
-
-.tasknotes-plugin .stats-view__project-item:hover {
-    border-color: var(--tn-accent-color);
 }
 
 /* Project Header */
@@ -17404,6 +17324,7 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
     }
 }
 
+
 /* ===== SETTINGS-VIEW.CSS ===== */
 /* ================================================
    SETTINGS VIEW - MINIMAL CLEAN STRUCTURE
@@ -17460,8 +17381,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 
 .tasknotes-plugin .settings-view__tab-button--active,
 .tasknotes-plugin .settings-view__tab-button.is-active {
-    background: var(--interactive-accent) !important;
-    color: var(--text-on-accent) !important;
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
 }
 
 /* ================================================
@@ -17543,8 +17464,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal.expanded .modal-button-co
 }
 
 .tasknotes-settings__card-secondary-text {
-    font-size: 12px !important;
-    color: var(--text-muted) !important;
+    font-size: 12px;
+    color: var(--text-muted);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -17620,16 +17541,16 @@ select.tasknotes-settings__card-input {
 }
 
 .tasknotes-settings__card-input[type="checkbox"] {
-    width: 16px !important;
-    height: 16px !important;
-    min-width: 16px !important;
-    min-height: 16px !important;
-    max-width: 16px !important;
-    max-height: 16px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    flex-shrink: 0 !important;
-    align-self: center !important;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    align-self: center;
 }
 
 .tasknotes-settings__card-input[type="color"] {
@@ -17700,7 +17621,7 @@ select.tasknotes-settings__card-input {
 .tasknotes-settings__card-header-btn {
     width: 20px;
     height: 20px;
-    border: none !important;
+    border: none;
     background: transparent;
     color: var(--text-muted);
     cursor: var(--cursor, pointer);
@@ -17708,15 +17629,15 @@ select.tasknotes-settings__card-input {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: none !important;
-    outline: none !important;
+    box-shadow: none;
+    outline: none;
     padding: 0;
 }
 
 .tasknotes-settings__card-header-btn:focus {
-    box-shadow: none !important;
-    outline: none !important;
-    border: none !important;
+    box-shadow: none;
+    outline: none;
+    border: none;
 }
 
 .tasknotes-settings__card-header-btn:hover {
@@ -18698,12 +18619,13 @@ select.tasknotes-settings__card-input {
   border-radius: 8px;
   padding: 0;
   overflow: hidden;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease, transform 0.2s ease;
 }
 
 .tasknotes-webhook-card:hover {
   border-color: var(--interactive-accent);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
 }
 
 /* Webhook Header */
@@ -18755,16 +18677,15 @@ select.tasknotes-settings__card-input {
   border-radius: 16px;
   font-size: 0.8rem;
   font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .tasknotes-webhook-status-indicator.active {
-  background: var(--color-green-rgb);
   background: rgba(var(--color-green-rgb), 0.15);
   color: var(--color-green);
 }
 
 .tasknotes-webhook-status-indicator.inactive {
-  background: var(--color-red-rgb);
   background: rgba(var(--color-red-rgb), 0.15);
   color: var(--color-red);
 }
@@ -18945,17 +18866,15 @@ select.tasknotes-settings__card-input {
 
 /* Better styling for Settings in modal */
 .tasknotes-webhook-modal .setting-item {
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  background: var(--background-modifier-form-field);
-  border: 1px solid var(--background-modifier-border);
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  padding: var(--size-4-3) 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--background-modifier-border);
 }
 
 .tasknotes-webhook-modal .setting-item:hover {
-  border-color: var(--interactive-accent);
-  background: var(--background-modifier-hover);
+  background: transparent;
 }
 
 .tasknotes-webhook-modal .setting-item:last-child {
@@ -19035,11 +18954,11 @@ select.tasknotes-settings__card-input {
 
 /* Events List */
 .tasknotes-webhook-events-list {
-  margin-top: 1rem;
+  margin-top: 0;
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0;
 }
 
 
@@ -19222,18 +19141,6 @@ select.tasknotes-settings__card-input {
   outline-offset: 2px;
 }
 
-/* Animation for status changes */
-.tasknotes-webhook-status-indicator {
-  transition: all 0.3s ease;
-}
-
-.tasknotes-webhook-card {
-  transition: all 0.2s ease, transform 0.2s ease;
-}
-
-.tasknotes-webhook-card:hover {
-  transform: translateY(-1px);
-}
 
 /* ===== STATUS-BAR.CSS ===== */
 /* TaskNotes Status Bar Styles */
@@ -19383,12 +19290,12 @@ select.tasknotes-settings__card-input {
 .tn-bases-tasknotes-list .task-group .task-group-toggle svg {
     color: var(--tn-text-normal);
     transition: transform 0.2s ease;
-    transform: rotate(90deg) !important;
+    transform: rotate(90deg);
 }
 
 /* Collapsed state - chevron pointing right */
 .tn-bases-tasknotes-list .task-group.is-collapsed .task-group-toggle svg {
-    transform: rotate(0deg) !important;
+    transform: rotate(0deg);
 }
 
 /* Hide task cards when collapsed */
@@ -19755,5 +19662,533 @@ select.tasknotes-settings__card-input {
     .kanban-view__column-header-cell .kanban-view__column-title {
         font-size: var(--tn-font-size-sm);
     }
+}
+
+
+/* ===== STATIC-STYLE-UTILITIES.CSS ===== */
+/* Static utility classes migrated from literal inline styles. */
+/* Generated by lint cleanup; edit the source call sites and rebuild when changing these styles. */
+
+.tn-static-align-items-baseline-4b95b5c7 {
+	align-items: baseline;
+}
+
+.tn-static-align-items-center-7c619740 {
+	align-items: center;
+}
+
+.tn-static-align-items-flex-start-0486f781 {
+	align-items: flex-start;
+}
+
+.tn-static-background-color-var-background-mo-94b219f0 {
+	background-color: var(--background-modifier-border);
+}
+
+.tn-static-background-color-var-background-se-9087a23e {
+	background-color: var(--background-secondary);
+}
+
+.tn-static-background-color-var-color-base-40-ef5f175e {
+	background-color: var(--color-base-40);
+}
+
+.tn-static-background-color-var-color-red-134bc721 {
+	background-color: var(--color-red);
+}
+
+.tn-static-background-color-var-text-accent-a954c70f {
+	background-color: var(--text-accent);
+}
+
+.tn-static-border-1px-solid-var-background-mo-b65b5121 {
+	border: 1px solid var(--background-modifier-border);
+}
+
+.tn-static-border-none-2eda1daa {
+	border: none;
+}
+
+.tn-static-border-radius-4px-c290c56e {
+	border-radius: 4px;
+}
+
+.tn-static-border-radius-6px-0dc8408c {
+	border-radius: 6px;
+}
+
+.tn-static-border-style-dashed-12296c91 {
+	border-style: dashed;
+}
+
+.tn-static-border-style-solid-11080b69 {
+	border-style: solid;
+}
+
+.tn-static-border-top-1px-solid-var-backgroun-aab7c2ca {
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+.tn-static-border-width-2px-a1222254 {
+	border-width: 2px;
+}
+
+.tn-static-color-var-color-accent-d2cad743 {
+	color: var(--color-accent);
+}
+
+.tn-static-color-var-text-accent-65b47ee3 {
+	color: var(--text-accent);
+}
+
+.tn-static-color-var-text-muted-5872de20 {
+	color: var(--text-muted);
+}
+
+.tn-static-color-var-text-on-accent-f3e1679d {
+	color: var(--text-on-accent);
+}
+
+.tn-static-color-var-text-warning-783d5f03 {
+	color: var(--text-warning);
+}
+
+.tn-static-color-var-tn-text-muted-a90fb6f3 {
+	color: var(--tn-text-muted);
+}
+
+.tn-static-color-white-0a43e56a {
+	color: white;
+}
+
+.tn-static-cursor-grab-dad79857 {
+	cursor: grab;
+}
+
+.tn-static-cursor-pointer-2723efcc {
+	cursor: pointer;
+	color: #666666;
+	font-weight: bold;
+}
+
+.tn-static-cursor-pointer-3b6a3a65 {
+	cursor: pointer;
+}
+
+.tn-static-display-block-2a1b75c9 {
+	display: block;
+}
+
+.tn-static-display-flex-4d51fc62 {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.tn-static-display-flex-75816cae {
+	display: flex;
+}
+
+.tn-static-display-flex-8bb39979 {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+}
+
+.tn-static-display-inline-block-60e32dcb {
+	display: inline-block;
+}
+
+.tn-static-display-inline-cccfa456 {
+	display: inline;
+}
+
+.tn-static-display-inline-flex-f984c520 {
+	display: inline-flex;
+}
+
+.tn-static-display-none-6b99de8b {
+	display: none;
+}
+
+.tn-static-flex-1-14e3b769 {
+	flex: 1;
+	min-height: 700px;
+	overflow: auto;
+}
+
+.tn-static-flex-1-97445a8d {
+	flex: 1;
+}
+
+.tn-static-flex-direction-column-06c8b5ed {
+	flex-direction: column;
+}
+
+.tn-static-flex-shrink-0-6ee0661e {
+	flex-shrink: 0;
+}
+
+.tn-static-font-size-0-75em-948e16e5 {
+	font-size: 0.75em;
+}
+
+.tn-static-font-size-0-8em-19dc7c13 {
+	font-size: 0.8em;
+}
+
+.tn-static-font-size-0-9em-65025e95 {
+	font-size: 0.9em;
+}
+
+.tn-static-font-size-1-2em-3a352995 {
+	font-size: 1.2em;
+}
+
+.tn-static-font-size-12px-65574819 {
+	font-size: 12px;
+	color: #666666;
+	margin-bottom: 6px;
+	font-family: monospace;
+}
+
+.tn-static-font-size-12px-b0cc7e05 {
+	font-size: 12px;
+	margin-top: 8px;
+}
+
+.tn-static-font-size-var-tn-font-size-sm-0274a31d {
+	font-size: var(--tn-font-size-sm);
+}
+
+.tn-static-font-weight-500-02a2d333 {
+	font-weight: 500;
+}
+
+.tn-static-font-weight-600-eed0f8fb {
+	font-weight: 600;
+}
+
+.tn-static-font-weight-bold-0fe8c30d {
+	font-weight: bold;
+	margin-bottom: 4px;
+	color: #555555;
+}
+
+.tn-static-font-weight-bold-e0b452bd {
+	font-weight: bold;
+	margin-bottom: 8px;
+	color: #333333;
+}
+
+.tn-static-gap-0-5rem-ce2fca4d {
+	gap: 0.5rem;
+}
+
+.tn-static-gap-10px-f3d7ce77 {
+	gap: 10px;
+}
+
+.tn-static-gap-12px-ed7b3d87 {
+	gap: 12px;
+}
+
+.tn-static-gap-6px-f0abc1db {
+	gap: 6px;
+}
+
+.tn-static-gap-8px-33fcd4c3 {
+	gap: 8px;
+}
+
+.tn-static-height-0-7a31cef0 {
+	height: 0;
+}
+
+.tn-static-height-100-62264068 {
+	height: 100%;
+}
+
+.tn-static-height-12px-06c0747e {
+	height: 12px;
+}
+
+.tn-static-height-16px-30de4aee {
+	height: 16px;
+}
+
+.tn-static-height-24px-29a11d37 {
+	height: 24px;
+}
+
+.tn-static-justify-content-center-03c4bb6f {
+	justify-content: center;
+}
+
+.tn-static-justify-content-flex-end-455f8cca {
+	justify-content: flex-end;
+}
+
+.tn-static-justify-content-space-between-a562f4fd {
+	justify-content: space-between;
+}
+
+.tn-static-margin-0-11696618 {
+	margin: 0;
+}
+
+.tn-static-margin-0-auto-266e9b04 {
+	margin: 0 auto;
+}
+
+.tn-static-margin-0-db0d5f36 {
+	margin: 0;
+	padding-left: 16px;
+	list-style-type: disc;
+}
+
+.tn-static-margin-0-var-size-4-2-77f7dc08 {
+	margin: 0 var(--size-4-2);
+}
+
+.tn-static-margin-2px-0-edce9b14 {
+	margin: 2px 0;
+	color: #444444;
+}
+
+.tn-static-margin-8px-0-0-0-a2eb8382 {
+	margin: 8px 0 0 0;
+	padding: 8px;
+	background: #f8f8f8;
+	border-radius: 4px;
+	overflow-x: auto;
+	font-size: 10px;
+}
+
+.tn-static-margin-bottom-0-75rem-c05a3c6e {
+	margin-bottom: 0.75rem;
+}
+
+.tn-static-margin-bottom-20px-49f14f8f {
+	margin-bottom: 20px;
+}
+
+.tn-static-margin-bottom-8px-fdf33f23 {
+	margin-bottom: 8px;
+}
+
+.tn-static-margin-left-4px-46cec891 {
+	margin-left: 4px;
+}
+
+.tn-static-margin-right-4px-c6b76b85 {
+	margin-right: 4px;
+}
+
+.tn-static-margin-right-8px-539fa9a0 {
+	margin-right: 8px;
+}
+
+.tn-static-margin-top-0-5rem-3dc98b5e {
+	margin-top: 0.5rem;
+}
+
+.tn-static-margin-top-0-d462248a {
+	margin-top: 0;
+}
+
+.tn-static-margin-top-12px-91e0f558 {
+	margin-top: 12px;
+	flex: 1;
+	max-height: 100vh;
+	overflow-y: auto;
+	position: relative;
+}
+
+.tn-static-margin-top-16px-1b0f4999 {
+	margin-top: 16px;
+}
+
+.tn-static-margin-top-1rem-2239d6d5 {
+	margin-top: 1rem;
+}
+
+.tn-static-margin-top-20px-a26bda7d {
+	margin-top: 20px;
+}
+
+.tn-static-margin-top-30px-2fbbbcd4 {
+	margin-top: 30px;
+}
+
+.tn-static-margin-top-4px-96ad6099 {
+	margin-top: 4px;
+}
+
+.tn-static-margin-top-8px-8a77e5a3 {
+	margin-top: 8px;
+}
+
+.tn-static-margin-top-8px-f4f01e68 {
+	margin-top: 8px;
+	font-size: 11px;
+}
+
+.tn-static-max-height-400px-f0787633 {
+	max-height: 400px;
+}
+
+.tn-static-max-width-900px-1d34c094 {
+	max-width: 900px;
+}
+
+.tn-static-min-height-800px-997b4c8c {
+	min-height: 800px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.tn-static-min-width-0-3922d326 {
+	min-width: 0;
+}
+
+.tn-static-min-width-2px-709d7da0 {
+	min-width: 2px;
+}
+
+.tn-static-opacity-0-6-d95b59ac {
+	opacity: 0.6;
+}
+
+.tn-static-opacity-0-8d919cb5 {
+	opacity: 0;
+}
+
+.tn-static-opacity-1-c6e7979d {
+	opacity: 1;
+}
+
+.tn-static-overflow-hidden-69824400 {
+	overflow: hidden;
+}
+
+.tn-static-overflow-y-auto-03df744e {
+	overflow-y: auto;
+}
+
+.tn-static-overflow-y-clip-c5043043 {
+	overflow-y: clip;
+}
+
+.tn-static-padding-0-16px-16px-16px-f1aa998c {
+	padding: 0 16px 16px 16px;
+}
+
+.tn-static-padding-0-41d7d7e2 {
+	padding: 0;
+}
+
+.tn-static-padding-12px-43bef435 {
+	padding: 12px;
+	margin: 8px 0;
+	background: #ffffff;
+	border: 1px solid #dddddd;
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tn-static-padding-16px-287f770e {
+	padding: 16px;
+}
+
+.tn-static-padding-20px-769fed37 {
+	padding: 20px;
+}
+
+.tn-static-padding-20px-7a035d95 {
+	padding: 20px;
+	text-align: center;
+	color: #666666;
+}
+
+.tn-static-padding-20px-ebe8e48c {
+	padding: 20px;
+	color: #d73a49;
+	background: #ffeaea;
+	border-radius: 4px;
+	margin: 10px 0;
+}
+
+.tn-static-padding-2px-8px-c8eea84a {
+	padding: 2px 8px;
+}
+
+.tn-static-padding-2rem-42aa6d9c {
+	padding: 2rem;
+}
+
+.tn-static-padding-top-20px-49826953 {
+	padding-top: 20px;
+}
+
+.tn-static-position-relative-d461c96d {
+	position: relative;
+}
+
+.tn-static-text-align-center-91a87015 {
+	text-align: center;
+}
+
+.tn-static-text-decoration-line-through-7059a4e5 {
+	text-decoration: line-through;
+}
+
+.tn-static-text-decoration-none-80d654f9 {
+	text-decoration: none;
+}
+
+.tn-static-transform-translatey-0-1b976432 {
+	transform: translateY(0);
+}
+
+.tn-static-transform-translatey-10px-5b91bf02 {
+	transform: translateY(-10px);
+}
+
+.tn-static-transition-background-color-0-2s-8142f01e {
+	transition: background-color 0.2s;
+}
+
+.tn-static-vertical-align-baseline-657d9c46 {
+	vertical-align: baseline;
+}
+
+.tn-static-width-100-0466783d {
+	width: 100%;
+}
+
+.tn-static-width-12px-fbf353fb {
+	width: 12px;
+}
+
+.tn-static-width-16px-7375d50b {
+	width: 16px;
+}
+
+.tn-static-width-1px-aa77e27e {
+	width: 1px;
+}
+
+.tn-static-width-200px-2acaf3b5 {
+	width: 200px;
+}
+
+.tn-static-width-60px-bd09c419 {
+	width: 60px;
+}
+
+.tn-static-width-80px-8573bae3 {
+	width: 80px;
 }
 
