@@ -107,24 +107,12 @@
             "id": "298120b1be274af0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "file": "Excalidraw/Fixguru AutoCount SKU Sync.excalidraw"
               },
-              "icon": "lucide-file",
-              "title": "Fixguru feedback sync-transcript"
+              "icon": "excalidraw-icon",
+              "title": "Fixguru AutoCount SKU Sync"
             }
           }
         ],
@@ -339,7 +327,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 797.5
+    "width": 462.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -367,10 +355,10 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "298120b1be274af0",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
     "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
+    "conflict-files-obsidian-git.md",
     "Granola/Transcripts/2026-05-15/Holsen _ _ Mindhive C1C3 UAT-transcript.md",
     "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-07/HG GROUP scoping discussion-transcript-2026-05-07_17-03-10.md",
