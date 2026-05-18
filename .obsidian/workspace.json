@@ -303,7 +303,7 @@
                     "name": "zsh 98"
                   }
                 ],
-                "activeId": 98,
+                "activeId": 95,
                 "nextId": 99
               },
               "icon": "terminal",
@@ -315,7 +315,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 510.5
+    "width": 638.5
   },
   "left-ribbon": {
     "hiddenItems": {
