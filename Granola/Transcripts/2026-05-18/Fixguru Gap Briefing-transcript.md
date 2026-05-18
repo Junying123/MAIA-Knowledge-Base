@@ -3,13 +3,8 @@ granola_id: 4fecc796-2c96-41e9-bbe8-cc7bc9c5b3a2
 title: Fixguru Gap Briefing  - Transcript
 type: transcript
 created: 2026-05-18T04:19:53.348Z
-updated: 2026-05-18T04:59:44.871Z
-attendees: 
-  - bryantewyh@gmail.com
-  - ghostsketon@gmail.com
-  - amirulamran.dev@gmail.com
-  - azibiqbal01@gmail.com
-  - ivan.cyh1996@gmail.com
+updated: 2026-05-18T11:12:32.428Z
+attendees: []
 ---
 
 # Transcript for: Fixguru Gap Briefing 

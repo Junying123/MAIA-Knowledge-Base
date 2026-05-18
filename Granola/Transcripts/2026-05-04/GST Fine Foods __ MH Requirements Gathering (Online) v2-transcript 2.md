@@ -3,7 +3,7 @@ granola_id: fd3bbb08-973b-437c-b9f5-39388a326e33
 title: GST Fine Foods <> MH Requirements Gathering (Online) - Transcript
 type: transcript
 created: 2026-05-04T02:46:58.150Z
-updated: 2026-05-04T05:13:27.704Z
+updated: 2026-05-18T11:12:26.759Z
 attendees: 
   - brendan@mindhive.asia
   - ivan.cyh1996@gmail.com
@@ -15,1869 +15,1902 @@ attendees:
   - timwong@gstgroup.com.my
   - johnson@mindhive.asia
 ---
-Speaker 1: 00:00 
- 可以聽到嗎?
 
-Speaker 2: 00:57 
- 好,我们要等还有二十五分钟.
+# Transcript for: GST Fine Foods <> MH Requirements Gathering (Online)
 
-Speaker 3: 01:02 
- 等一直到了好再见再见就这样刚才你想什么?
+### You (2026-05-04T02:49:20.665Z)
 
-Speaker 1: 02:03 
- GS25是专注于提供冷凉食物给主要支持者不仅是冷凉食物冷凉食物冷凉食物也有冷凉.
+Hello.
 
-Speaker 3: 02:13 
- 食物但大多数都是冷凉食物大多数都是冷凉食物你好.
+### Guest (2026-05-04T02:49:41.894Z)
 
-Speaker 2: 02:26 
- 马上把你的名字也换成JessieJessie给她包屁股这样子呃有一个新来的她也不会.
+Okay. Hello? Hello? Doing? Fine. Hello? Okay. Okay. Right. Prima. Okay. Manager manager. Okay?
 
-Speaker 1: 02:36 
- 一样怎么还是等着一个人.
+### You (2026-05-04T02:52:50.235Z)
 
-Speaker 2: 02:48 
- 跑在网络上等啊你完全不知道她在讲什么拜託拜託聽到了.
+Oh,
 
-Speaker 3: 03:29 
- Cannotsteal.  Cannotsteal.
+### Guest (2026-05-04T02:52:55.634Z)
 
-Speaker 2: 03:30 
- Sendthisscreensharing.
+Mister Fuze
 
-Speaker 1: 03:31 
- Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.
+### You (2026-05-04T02:53:04.325Z)
 
-Speaker 3: 03:33 
- Sendthisscreensharing.
+the
 
-Speaker 2: 03:34 
- Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.
+### Guest (2026-05-04T02:53:16.794Z)
 
-Speaker 1: 03:36 
- Sendthisscreensharing.  Sendthisscreensharing.
+là. Okay. Brandon Hello. Hello.
 
-Speaker 4: 03:37 
- Sendthisscreensharing.
+### You (2026-05-04T02:53:27.385Z)
 
-Speaker 3: 03:38 
- Sendthisscreensharing.
+I would I
 
-Speaker 2: 03:38 
- Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.
+### Guest (2026-05-04T02:53:40.894Z)
 
-Speaker 1: 03:41 
- Sendthisscreensharing.  Sendthisscreensharing.
+Okay. Okay. I'll Brendan. Okay. Okay. I'll
 
-Speaker 2: 03:43 
- Sendthisscreensharing.
+### You (2026-05-04T02:53:47.615Z)
 
-Speaker 3: 03:44 
- Sendthisscreensharing.
+Oh.
 
-Speaker 4: 03:45 
- Sendthisscreensharing.  Sendthisscreensharing.
+### Guest (2026-05-04T02:53:48.334Z)
 
-Speaker 1: 03:47 
- Sendthisscreensharing.  Sendthisscreensharing.
+Okay. Okay.
 
-Speaker 3: 03:49 
- Sendthisscreensharing.
+### You (2026-05-04T02:53:51.225Z)
 
-Speaker 2: 03:50 
- Sendthisscreensharing.
+So, like,
 
-Speaker 3: 03:51 
- Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.
+### Guest (2026-05-04T02:54:17.914Z)
 
-Speaker 1: 03:53 
- Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreensharing.  Sendthisscreen散散心.
+Hey. So we'll put this question, but capital Ok. Y luego vamos intentar
 
-Speaker 2: 04:35 
- 没有没有我在VolvoServiceCenter.
+### You (2026-05-04T02:54:52.445Z)
 
-Speaker 5: 04:42 
- 我车在设计上.
+Bueno, bueno.
 
-Speaker 1: 05:12 
- 可以吗?
+### Guest (2026-05-04T02:55:00.214Z)
 
-Speaker 2: 05:25 
- 好,我们先介绍我GSTT分线。 我们这边在GSTT就有热银,我们通常叫它热银,然后KeyModeOptionManager,这里是Mode,Eventory,Taste。 可以听到我讲话吗?
+Donc testing, testing. Okay.
 
-Speaker 4: 05:46 
- 可以,可以听到。
+### You (2026-05-04T02:55:42.145Z)
 
-Speaker 2: 05:49 
- 然后就来到我平时的H2O这里,左边那个是MissLee,那是Finance,中间的是Zoe,然后Mr.  G,你是负责销售的,然后Jude,在右手边,最右手边是模组IT的ID。
+Okay. So I So
 
-Speaker 1: 06:09 
- IT。
+### Guest (2026-05-04T02:55:48.424Z)
 
-Speaker 2: 06:13 
- 聽不到你們的聲音沒有講話.
+Sure. Product and engineering. So yes, you're Brendan. Okay. Yeah. So it's commencing handler, requirements scheduling the k. Rang moment mine hive.
 
-Speaker 3: 06:18 
- 沒有沒有聽到嗎?
+### You (2026-05-04T02:56:07.765Z)
 
-Speaker 2: 06:19 
- 可以可以然後你們Brandon是哪一位啊?
+The
 
-Speaker 3: 06:31 
- Ivan哈囉哈囉這個是.
+### Guest (2026-05-04T02:56:11.654Z)
 
-Speaker 1: 06:33 
- Ivan我是IvanIvan我是BrandonBrandon.
+Detail understand So requirement gathering the session. 。 咁 咁
 
-Speaker 3: 06:39 
- 啊Alan啊.
+### You (2026-05-04T02:56:49.055Z)
 
-Speaker 1: 06:45 
- 我是Ivan,我们这边是Brandon,然后有一个Garen。 你们是implementerteam的是吗?
+So
 
-Speaker 2: 06:58 
- 我们是Mindhack的productteam。
+### Guest (2026-05-04T02:56:49.804Z)
 
-Speaker 1: 07:05 
- 我们是focusondelivery。 听不到。
+So...
 
-Speaker 3: 07:13 
- 拿住拿进来不用看我们.
+### You (2026-05-04T02:56:55.775Z)
 
-Speaker 1: 07:16 
- 的东西还是还是我们这个麦然后用我们的电脑的麦如果你看不到我Gathertheunmannednow.
+Okay. The
 
-Speaker 2: 07:42 
- OK.
+### Guest (2026-05-04T02:56:57.014Z)
 
-Speaker 3: 07:42 
- OK.
+So details understand GST fine foods, the business professor. So with so with Maya, we can understand, how we can apply directly to your business and when we help you set up and help you onboard onto Maya, it will be more natural and seamless because we already have a very in-depth of your business process. So that's the first objective. Second objective is that we can also identify some based on, you know, certain specifics in how you run your business or how you run your operations. We can see if on my side, there are certain things that we will need configure on our end to make sure that it can really fit and go seamlessly into the to to see find food processor. So this is the two main objective over here. And the third objective is
 
-Speaker 1: 07:42 
- OK.
+### You (2026-05-04T02:57:59.965Z)
 
-Speaker 2: 07:43 
- OK.  Testing.  Testing.  OK.
+And then
 
-Speaker 1: 08:16 
- OK吗?
+### Guest (2026-05-04T02:58:02.764Z)
 
-Speaker 2: 08:18 
- 听到吗?
+to identify areas for enhancements and also customizations. Because when
 
-Speaker 1: 08:25 
- 那边就是我们的工作室有没有要玩游戏?  那边跟Pinang的办公室可以试试看讲话一下吗?
+### You (2026-05-04T02:58:10.095Z)
 
-Speaker 2: 08:36 
- OK那边呢?  我可以很清楚。
+that
 
-Speaker 1: 08:44 
- 很清楚啊?
+### Guest (2026-05-04T02:58:10.674Z)
 
-Speaker 2: 08:45 
- 嗯,我也是第三天的CEO。
+built Maya from and and I think you guys also know that Maya is still a product in development in the first initial phase alpha launch now. I think you guys are considered our beta clients. Definitely, there will still be some gaps, when it generalizes to certain businesses.
 
-Speaker 1: 08:47 
- OK,nice。 所以来帮我们开始。 我们Mindhive这边先做一个自我介绍啦。 我是Ivan,是在Mindhive做ProductandEngineering。 然后,这边是Brandon,Gareth。 所以我们今天的requirementsscheduling的会议的目的是让我们Mindhive比较我们比较多是讲英文的所以我们是第一次用华语来做这个EquivalentGathering的Session所以可能.
+### You (2026-05-04T02:58:26.135Z)
 
-Speaker 3: 09:30 
- 会有一点尴尬他们比较会.
+So
 
-Speaker 2: 09:34 
- 讲英文比较不会用华语因为.
+### Guest (2026-05-04T02:58:27.644Z)
 
-Speaker 3: 09:41 
- 他们讲华语会比较他们比较不擅长讲华语所以他们讲华语会比较配合我们还是可以.
+We want to identify, what are stuff that are super customized one that is very important.
 
-Speaker 4: 09:49 
- 听的咯.
+### You (2026-05-04T02:58:33.275Z)
 
-Speaker 1: 10:02 
- 目的是比较detail可以understandgeniusdefinefoodisabusinessprocess然后我们可以更深的了解.
+He's fighting. 40
 
-Speaker 3: 10:16 
- 在Maya,我們可以了解如何.
+### Guest (2026-05-04T02:58:35.334Z)
 
-Speaker 1: 10:18 
- 直接應用在Maya,我們可以了解如何直接應用在Maya,我們可以了解如何直接應用在Maya,我們可以了解如何直接應用在Maya,我們可以了解如何直接應用在Maya,我們可以了解如何直接應用第二个目标是我们也能够认出一些缺陷根据您的专业经营或行业的特征我们可以看到Maya上有些东西需要在RAM上设置确保它能够符合和顺利进入GSCFindFood的过程这是两个主要的目标第三个目标是是为了设计更新和设计更新的区域。 因为当我们从开始建设Maya,我认为你们也知道Maya仍然是一种在发展中的产品。 在最初的一阶段,Alpha正在开发。 我认为你们已经是我们的Beta客户。 所以肯定會有些空隙,當它轉移到某些企業,我們想要辨識什麼是超級特殊化的東西,是非常重要的,如果不是的話,GSC會無法完全接納Maya,這些就是特殊化的部分,這就是三個目標。 今天我也想问问GSD的队伍,你们有没有看过Maya的示范?  或者你们有没有看过系统上的任何东西?  从你们之前和Jeremy和Johnson的谈话中?  我们没有看过示范。
+For GST finance to to have. If not, it wouldn't work.
 
-Speaker 2: 12:12 
- 对啦,在华山,然后Maya的那个interface我已经谈过。
+### You (2026-05-04T02:58:37.305Z)
 
-Speaker 1: 12:18 
- Isee,alright,ok,然后这样子我们可以直接gostraightintotherequirementsgatheringsession啦。 Sothefirstpartofthemainoneis...  可能SooChin或Tim先生,擔任行政總裁,可以帶領我們從開始到結束,如何經營這間公司,有多少個成員,什麼是主要的生意,雖然我們已經知道了,但我們想從您身上直接聽。 您認為,什麼是關鍵的關鍵點?  从你们的角度来看,你们目前正在面临的困难,先从高层的角度来说,在我们进入详细的问题之前,我们需要回复详细的评论。
+if not, know,
 
-Speaker 2: 13:06 
- 我先介绍一下这个公司的背景。 现在你看到的就是我们GSCFIFO。 GSCFIFO就是一个交易部门给GSC做的。 整个群组有很多分隔,从达达达达达达达达达达达达达达达达达达达达达达达达达达送到我们的顾客咯。 我们的顾客就是有hotel,restaurant跟hyper咯,supermarket。 然后我们mainly我们的businesscover是在Malaysia。 有一些是在新加坡啦,but9%都是在这边啦,在这个Malaysia。 然后你看到我们其实有3个brands,有Langkawi,KL跟B9。 但因為Langkawi是使用自動計算機所以我們就沒有優先把它放在這個項目裏面所以我們先掃入我們的SAP系統然後你看到這裏就是我們比較高級的HOD所以我們已經對我們的RiskTestProcess很熟悉然後對SAP也很熟悉然後所以就是主要是要解決幾個問題,有stock的,有sales的,有finance的還有一些好像orderingAI最主要那時候看到是我們也想要用AI去解決我們現有的businessprocess的問題這是最主要的問題要用這個AI的創作然後看一下Quartile的三百個然后第二个,让评审来回答吧。 如何让客户发送RFQ?  RFQ是什么?
+### Guest (2026-05-04T02:58:39.314Z)
 
-Speaker 1: 15:22 
- 我们先从高层来解释一下GST,FindFood,BusinessNature,BusinessOptions。
+Wouldn't, like, you know, full you you wouldn't be able to fully adopt Maya. So that's those are points of customization. So these are the three core object. These are And for today also, I would just like to ask the GST team guys seen a demo of Maya already?
 
-Speaker 4: 15:36 
- 一般我们一开始就是从WhatsApp或者是电邮接到客户的订单可以讲隐瞒性啦,每个客户都有不同的group,可能我们有customerA,B,C,D,E,所以我们会开customerA一个group,B一个group,C一个group,然后他们的order是based在那个网站那边的。 可是每个customerbase有不同的东西,可能customerA的sumper,他们有一个帮我们filet,他就写一个.
+### You (2026-05-04T02:58:50.585Z)
 
-Speaker 3: 16:09 
- Baramundifillet50到10我刚才讲所谓的baramundifillet50到10可是他不会写尺寸的为什么呢因为他有自己他已经有他我们谷歌看嘛他每次都50到10所以他就写baramundifillet罢了可是客户也是baramundifillet可是我们公司卖很多什么尺寸所以.
+have you
 
-Speaker 1: 16:30 
- 他会有一点preference他的customername.
+### Guest (2026-05-04T02:58:54.224Z)
 
-Speaker 4: 16:34 
- 他会写他的preference他就是习惯写一个就帮你复制可能一会写一个写再复制.
+Or have you seen the system anything
 
-Speaker 3: 16:39 
- 这样子好像日常很正常就是.
+### You (2026-05-04T02:58:55.435Z)
 
-Speaker 4: 16:41 
- 每一个人会写不同的东西.
+see.
 
-Speaker 3: 16:43 
- 可以这样讲先了解起先就是给.
+### Guest (2026-05-04T02:58:57.684Z)
 
-Speaker 4: 16:48 
- 你们大概一个知道先至于的话一般都会写那个email给我们可是他们有些还是会发信息给我们的.
+that you guys have seen so far? From your previous conversation with Jeremy and also Johnson? Can't Okay.
 
-Speaker 1: 16:59 
- OK,所以在这个WhatsApp群组他们会发那些PO啊,Email啊,全部的交流在WhatsApp群组吗?
+### You (2026-05-04T02:59:10.265Z)
 
-Speaker 4: 17:07 
- 对,PO啊,就是不同的网站有不同的PO给我们的.
+Iced
 
-Speaker 1: 17:10 
- 网站不同啦,可以这样讲啦。 OK,然后现在是不是我们可以讲啊,大部分的销售团队的工作是好像数据输入这样子咯,就是看了这个PO还是这个WhatsApp的页面,然后需要.
+### Guest (2026-05-04T02:59:13.514Z)
 
-Speaker 2: 17:27 
- 他就.
+See. Alright.
 
-Speaker 1: 17:27 
- 说我们的技术是空的.
+### You (2026-05-04T02:59:14.185Z)
 
-Speaker 2: 17:28 
- 现在哪一个是要startfrombeginning还是startfromhere两边都要一起开始的两边都要一起开始的两边.
+Alright. Okay.
 
-Speaker 3: 17:40 
- 一起开始还是一边开始如果没有.
+### Guest (2026-05-04T02:59:15.224Z)
 
-Speaker 2: 17:47 
- 错的话两边都一起开始因为我们用这个系统没问题你想在平时开始我不知道你能不能没有,因为是这样子的,我估计到KL他也要用WMS嘛,也要.
+Okay.
 
-Speaker 5: 18:03 
- 开始这个啦,所以他最喜欢.
+### You (2026-05-04T02:59:15.625Z)
 
-Speaker 2: 18:09 
- 是销售跟金融啊,所以冰晨可以优先先去主导这个计划,我的想法是这样子啦,可是他也要考虑到KL一局啊,因为你要知道要讲的是了解要从什么领导们的东西做起写才能知道情绪日文跟东西现在我们都要知道马亚在在这个马亚有个手上又在消失发现摆那个发现什么你牺牲的东西写之后才能当下的理论大家要做什么写然后最后一个question是他问question还是什么没有我们也讲一下我们要做些什么。 我们会cover到Spot这些东西去嘛。 可是我有跟你们讲过有Base1的话就是两个Department先嘛,两个方式最主要。 在它的Grouping的时候,就是SalesOrder它自动化这个SalesOrder来做Mapping啊,看这个AI的功能。 然后它这样解决,自动化进来放进去我们的SAP里面。 然后第二个就是关系到我们要想摆脱现在的这个manual的方式他变成用蚂蚁来做google去这个不然我们会遇到很多比较人生太枯燥了然后你心怀要自己拼命要拼命做啊然后用用whatsapp来来去control他也很难很难notify到啊这些都一个部门托一个部门一个部门托一个部门所以我们直接用一个platform用maya来完成这个动作就好了所以ok我们就对大家做妥协然后再来啊Facebook就关系到SalesmanCommit的Item、Stock这些的功能了然后包括在这个WhatsApp里面的RequestSOA也是在Facebook所以我们Facebook会有这些功能存在啊,所以请知道做什么写啊Ok好,现在就他们这样来了解我们的生命因为我最主要担心RansomWire是否能自动化进去其实我们是很担心这个问题好,那准备设定就继续了.
+I will do
 
-Speaker 1: 21:07 
- 因为刚才你在.
+### Guest (2026-05-04T02:59:18.304Z)
 
-Speaker 2: 21:09 
- 刚才你在讲什么东西?  阿鑫你讲什么?
+Into the requirements gathering session. So the first part of the main one is maybe mister or or miss can
 
-Speaker 1: 21:15 
- 所以现在我们要说.
+### You (2026-05-04T02:59:24.965Z)
 
-Speaker 3: 21:34 
- 要做什么?
+you know,
 
-Speaker 2: 21:35 
- 现在才要知道我们的process是什么东西。
+### Guest (2026-05-04T02:59:27.594Z)
 
-Speaker 4: 21:40 
- 然后下一步就是他要在那边就是create的东西是适合我们用的。
+or, actually, mister Ting who is the head of operations, could walk us through from start to end how the business run how many entities are there, what is the main business. Although we we do know really, but we wanna hear it directly from you. And what are the key pinpoints in terms of from your angle that is, you know, that you guys are struggling with at the moment. On a high level first as opening before we go into the more specific questions in the document we have prepared. Mhmm. Can you Okay. Well, we'll send send brief you the company back group division processing, trading partner. Okay? Trading 们 有 咁 ， 者 咁 嗰 的 喺 啲 ， combine own produce import the item purchase hotel, restaurant supermarket. Mainly business covers the domestic market. Malaysia 9999% Malaysia. Branch. So senior level you stop the, you sales the, finance the, financer the business processor software. Second question Second question Mhmm. How do customers send RFQ? RFQ is request. K. K.
 
-Speaker 2: 21:48 
- 所以他们一定要来了解我们的生意背景啊。 所以他做出来的solution才会解决到我们的问题嘛。 所以现在我们要继续执行执行执行.
+### You (2026-05-04T03:02:19.755Z)
 
-Speaker 3: 22:04 
- 执行执行执行执行执行执行执行.
+Yeah.
 
-Speaker 4: 22:27 
- 他最多我们打蛋,key那些.
+### Guest (2026-05-04T03:02:20.144Z)
 
-Speaker 1: 22:29 
- 东西就在里面了那个manpowerratio多少?  多少salespersonvssalescoordinator?  Salesperson大概有6个salescoordinator呢?
+We'll get we'll kinda get screens in that. Send the moments in from from high level up. Overall, for us to understand, GST find food, business nature and business ops Okay.
 
-Speaker 4: 22:43 
- Coordinator有6个哦,一对一差不多可以讲一个月差不多啦可是他action是这样子啦他可能.
+### You (2026-05-04T03:02:30.975Z)
 
-Speaker 3: 22:52 
- 有一个两个队online四个队.
+Okay.
 
-Speaker 1: 22:56 
- Online是因为有onlineproject这是anotherone我们.
+### Guest (2026-05-04T03:02:31.494Z)
 
-Speaker 4: 23:03 
- 的这个是所以我们是可以讲hotel的restaurant是有四个人这是KL啦然后有两个人是online的Lazadaonline啊.
+Okay.
 
-Speaker 1: 23:14 
- 手臂这样子啦ok明白是不是ok然后你们觉得ordertakingfromBtoB啦最难的就是最痛的painpoint是在哪里呢现在除了刚才你讲.
+### You (2026-05-04T03:02:43.665Z)
 
-Speaker 3: 23:32 
- 那个missout因为从那个order很多然后他可能会miss掉这个.
+So So
 
-Speaker 1: 23:40 
- Order拿到就是说一个BO里面有.
+### Guest (2026-05-04T03:02:48.784Z)
 
-Speaker 3: 23:44 
- 很多东西可能有两种一种是好像他没有BO的那种就是message的客户message这个人把那个order带进来一个群组那个群组就是接收所有的客户的order这个是一个地方我们在KL就叫KLdailyorder咯就是说这个是没有preorder的客户所以他不是定定每次给你order可是有order的时候他就会pass进来这个group那销售顾问就会把这个销售order拿到的orderkey进systemSSO啦所以他的challenging就是说当他order多的时候他可能被cancel就miss掉了一个可能十个order拿到八个buttons两个没有做到.
+E to group, c to group. Now I see. Okay. Okay.
 
-Speaker 4: 24:36 
- 就是这三个他们会是这样的写这是其中一个就是有十个人有十个不同的写法我可以跟你讲他一样的一个item可能有十个不同的sales他们有不同的写法哦啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊.
+### You (2026-05-04T03:03:12.515Z)
 
-Speaker 1: 24:57 
- 啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊它就是这样写的了这个KRDailyOrder的群组它是内部群组还是外部群组内部群组所以那个销售人和销售管理人会发信息进去.
+Hi.
 
-Speaker 4: 25:31 
- 哦嗯对一般是只是销售人是要发信息进去的然后销售管理人他从这里他就拿到那个order之后他就keyin在我们的系统里面.
+### Guest (2026-05-04T03:03:25.804Z)
 
-Speaker 1: 25:41 
- 我想问一个问题,因为我发现这里有一个短信,只有数量和货品,那货品的价格呢?  这个问题不在这里。
+Company see. Okay. I see. Okay.
 
-Speaker 3: 25:50 
- 它在系统里面。
+### You (2026-05-04T03:03:42.525Z)
 
-Speaker 1: 25:51 
- 哦,它在系统里面。
+See. Okay.
 
-Speaker 3: 25:52 
- 它可以捕捉最后的价格。 除非它有特殊要求。
+### Guest (2026-05-04T03:03:46.444Z)
 
-Speaker 1: 25:59 
- 因为系统可以捕捉到最后的价格。 那你们的销售团队每天要处理多少?
+Okay.
 
-Speaker 4: 26:12 
- 这些客户是酒店和餐厅.
+### You (2026-05-04T03:03:46.815Z)
 
-Speaker 1: 26:37 
- 然后会遇到新的客户吗?
+See you.
 
-Speaker 4: 26:41 
- 会有些客户他们有时候是有些是工作人员可以讲是比较少啦有时候有的时候比较少一般都是他们就是那个销售人员咯有时候他们是没有那个.
+### Guest (2026-05-04T03:03:53.634Z)
 
-Speaker 2: 26:56 
- 资助的我们冰城那边啊他的客户有进来的吗?  没有.
+Okay. So so WhatsApp group email communication WhatsApp group. Okay. Sales team data entry along. Okay?
 
-Speaker 1: 27:06 
- 没有了吗?
+### You (2026-05-04T03:05:01.345Z)
 
-Speaker 2: 27:06 
- 完全没有了吗?  没有了吗?  完全没有了吗?
+All.
 
-Speaker 4: 27:07 
- 完全没有了吗?
+### Guest (2026-05-04T03:05:11.904Z)
 
-Speaker 3: 27:08 
- 完全没有了吗?  完全没有了吗?
+The 但 啲 但 ， 。 但 係 有 有 。 。 但 不 到 게에 있지아 Okay. Questions function sales orders, mapping mislead the finance. Credit approval manual function. Notified So okay. Complete our phase one
 
-Speaker 2: 27:08 
- 完全没有了吗?  完全没有了吗?  完全没有了吗?
+### You (2026-05-04T03:07:23.025Z)
 
-Speaker 5: 27:11 
- 完全没有了吗?
+Absolutely. Okay.
 
-Speaker 2: 27:11 
- 完全没有了吗?  完全没有了吗?  完全没有了吗?  完全没有了吗?  完全没有了吗?  完全没有了吗?  完全没有了吗?  完全没有了吗?
+### Guest (2026-05-04T03:07:29.154Z)
 
-Speaker 5: 27:15 
- 完全没有了吗?
+Okay.
 
-Speaker 1: 27:17 
- 完全没有了吗?
+### You (2026-05-04T03:08:02.945Z)
 
-Speaker 2: 27:18 
- 完全没有了吗?
+Okay. So
 
-Speaker 1: 27:19 
- 完全没有了吗?
+### Guest (2026-05-04T03:08:41.614Z)
 
-Speaker 2: 27:19 
- 完全没有了吗?
+수다게 쓰가 쓰가 있어요. Business solution
 
-Speaker 5: 27:20 
- 完全没有了吗?
+### You (2026-05-04T03:08:50.715Z)
 
-Speaker 3: 27:21 
- 完全没有了吗?
+Mhmm.
 
-Speaker 4: 27:21 
- 完全没有了吗?  完全没有了吗?
+### Guest (2026-05-04T03:08:52.724Z)
 
-Speaker 2: 27:21 
- 完全没有了吗?  完全没有了吗?
+the audit auditing process. 킸의는 거어다. Salesperson versus sales coordinator. Online online Is it another one moment?
 
-Speaker 3: 27:22 
- 完全没有了吗?  完全没有了吗?
+### You (2026-05-04T03:10:01.595Z)
 
-Speaker 4: 27:23 
- 完全没有了吗?  完全没有了吗?
+It?
 
-Speaker 1: 27:26 
- 完全没有了吗?
+### Guest (2026-05-04T03:10:09.734Z)
 
-Speaker 4: 27:27 
- 完全没有了吗?  完全没有了吗?  完全没有了吗?
+Okay. Order taking from b to b pinpoint out. From the
 
-Speaker 1: 27:29 
- 完全没有了吗?
+### You (2026-05-04T03:10:46.785Z)
 
-Speaker 4: 27:30 
- 完全没有了吗?
+That's it.
 
-Speaker 3: 27:30 
- 完全没有了吗?
+### Guest (2026-05-04T03:10:50.794Z)
 
-Speaker 4: 27:31 
- 完全没有了吗?  完全没有了吗?
+follow-up. Customer message Okay. I see. Okay. Okay. Message
 
-Speaker 2: 27:31 
- 完全没有了吗?
+### You (2026-05-04T03:12:02.115Z)
 
-Speaker 1: 27:32 
- 完全没有了吗?  完全ok不一样的branch还是.
+Vega,
 
-Speaker 4: 27:37 
- 他是新hotel可是他不同.
+### Guest (2026-05-04T03:12:16.014Z)
 
-Speaker 1: 27:41 
- 的kitchen有可能他的level3.
+안. 하서도 다를 세마라. 쓰기 KL daily order를 group 하서 나서말서말서말서말서말서말서말서말서말서말서말서말서말서 internal group.
 
-Speaker 4: 27:43 
- 有一个kitchenlevel4有一个kitchenlevel5有一个kitchen这样子可是他是同一个hotel这样子可是你们在.
+### You (2026-05-04T03:12:35.755Z)
 
-Speaker 1: 27:55 
- 这个在SAP你们是requireaseparatelector还是一个lector一个lector罢了所以可能.
+I see.
 
-Speaker 4: 28:01 
- 讲我们assemble一个double3hotel我们可能.
+### Guest (2026-05-04T03:12:37.084Z)
 
-Speaker 1: 28:08 
- 可是inverse全部是去double3,可是shippingaddress不一样罢了?
+I see. Okay. Alright. Let's notice a message here. It's only item quantity. What about the pricings? The pricing is one here. Not here. Now. In the system now. In the last price. Yes. Special. See.
 
-Speaker 4: 28:12 
- 啊,address都一样。
+### You (2026-05-04T03:12:57.155Z)
 
-Speaker 1: 28:14 
- 啊,billingaddress一样,shippingaddress不一样?
+Yes. Can't even ask.
 
-Speaker 4: 28:16 
- 一样,也是一样。
+### Guest (2026-05-04T03:13:00.054Z)
 
-Speaker 1: 28:17 
- 也是一样,哦。
+Last present.
 
-Speaker 3: 28:17 
- 它是同一个library。 因为imagine你们去hotel,然后它有很多不同的restaurant。 啊,不一样的restaurant。 Japanese,Chinese,Western这样子的。 所以不同的那个restaurant它就给不同的view这样的。
+### You (2026-05-04T03:13:01.795Z)
 
-Speaker 4: 28:32 
- 嗯,可是它是同一个library。
+Handle. Wow. You said Okay.
 
-Speaker 1: 28:42 
- 然后因为我们也是听Johnson和Jeremy他们跟我们分享,他们有那种fishcutting的problem。 可以帮我们了解一点吗?
+### Guest (2026-05-04T03:13:48.634Z)
 
-Speaker 4: 28:54 
- 我们可能从一个HoleSummon,会分他的头啊,他的身体啊,他的尾啊,甚至他那些部位也是要分开。 这个叫ProductionDeluxe.
+You saw how Sir,
 
-Speaker 1: 29:07 
- 然后现在这个Process,你们在SAP怎么样Capture啊?  比如说一个summon,一个wholesummon,从importonewholesummon,你们会有一个goodsreceive,onewholesummon。 然后在SAP现在的businessprocess是怎样transformSKU变成finishgood呢?
+### You (2026-05-04T03:13:56.615Z)
 
-Speaker 3: 29:30 
- 我们有一个叫做stocktransformation,就是说如果这个鱼我们出给客户的时候,他只是出fillet罢了那我们就是进的话,进itemset的时候我们是进wholefish的嘛因为很理解就是说你买wholefish你就进wholefish的工具那你当你要process去客户是requestfillet的时候那我们就会经过一个process嘛就是我的是processingfillet所以他就会博外你reporting了然后我们就会从这个wholefish做去fillet然后如果它是Fillet跟头,那我们就用Fillet跟头,头我们一定会放一个价钱,这样子。 那个整个process我们叫做StopTransformation,当它做这个process的时候,出的code就是Fillet的。 对,ok。 所以它是你要出的东西都是会有一个itemcode,它不会说mixer出。 不过他有另外一个条件就是说我可能是holdfish我chargecustomer的时候也是chargeholdfish可是我provide一个service给他我们只是写一个processtofillet,potion,somethinglikethat可是我们chargecustomer还是holdfish所以我们只是deductholdfish的工金我们用回holdfish的code只是我们会有certainremarkfor给他这是processfillet,potion所以我们就会charge他很拼就是holdfish的.
+That's it.
 
-Speaker 1: 30:51 
- 这个情况所以有两个情况,一个是买鱿鱼,然后记录为处理处理第二个方法是直接购买?  是的,直接购买。
+### Guest (2026-05-04T03:14:04.994Z)
 
-Speaker 3: 31:03 
- 所以当他直接购买那个软件,我们就会做这个转换软件。 就会做这个过程,就会作为一个停止转换软件。 它就会移除掉这个所谓的出口掉这个整只鱼的我用多少公斤,然后我做去淘汰的时候是多少公斤。
+email email Email. Please. Okay. Okay.
 
-Speaker 1: 31:24 
- 现在这个过程在系统里面呢?  是谁做的?  Inventory。 所以Inventory的部门。 所以我们会有,我们说今天有20个订单。 所以今天我会计划我的剪裁过程,像是SOP在里面。 在你们的剪裁部门。
+### You (2026-05-04T03:14:13.285Z)
 
-Speaker 3: 31:47 
- 就是它根据选项吗?
+So
 
-Speaker 1: 31:50 
- 根据选项。 譬如说,我现在有一个订单,我要207条,你们的订单流程是怎样做的?
+### Guest (2026-05-04T03:14:14.034Z)
 
-Speaker 3: 32:09 
- 看那个东西,我们不要讲每个条,因为条它就是,它是20公斤的条,那它就要用后费,他们就有一个计算法,我们做的计算机会计算,所以他知道20公斤大概是要用30公斤的homefish,所以30公斤的homefish大概用,可能我们讲,一箱是20多公斤,他要用30公斤就要用10箱,那些20,15箱,这样子的,something这样子的。 12箱的鱼,它才能够处理一个30公斤的,20公斤的鱼。
+Ok. Oh. Okay. Okay. Collecting invoice double three shipping address Billing address Shipping address I see. Okay.
 
-Speaker 1: 32:46 
- 明白。 所以你们现在储存是储存在原型图的形状咯?  你不会储存在终构图咯?  比如这样子,我们把这个例子.
+### You (2026-05-04T03:15:36.525Z)
 
-Speaker 3: 32:56 
- 我们是储存原型图的那个东西来的时候,当它需要做处理的话,它就会去转换另外一个图案。
+Now,
 
-Speaker 1: 33:03 
- 对对对,所以ondemand啦,ondemand才有钱。
+### Guest (2026-05-04T03:15:37.314Z)
 
-Speaker 3: 33:07 
- 是啦,就或者是你那个东西是plan了啦,就是说这个customer他每个月都在拿这个cutfish,那我们就可以plan好,storage一个东西standby,你一定要拿这个rawfish做成这个cutfish,这样子做成东西,这个没有太大的问题啦。
+Okay.
 
-Speaker 1: 33:24 
- 然后现在刚才你讲他们有一个计算机,他们是用那种Excel的计算机来算吗?  就比较简单啦,计算机。 就这种人算罢了。 人算罢了,ok。 就这种人算罢了,人算罢了,ok。 就这种人算罢了,人算罢了,ok。
+### You (2026-05-04T03:15:38.575Z)
 
-Speaker 4: 33:33 
- 就这种人算罢了,人算罢了,ok。
+那 ホ
 
-Speaker 1: 33:33 
- 就这种人算罢了,人算罢了,人算罢了,ok。 就这种人算罢了,人算罢了,人算罢了,ok。
+### Guest (2026-05-04T03:15:40.574Z)
 
-Speaker 3: 33:35 
- 就这种人算罢了,人算罢了,人算罢了,ok。
+Now Ting Johnson and Jeremy fish cutting the problem. Process capture So so let's say if import the whole seven. So one full salmon. SAP sensei the business process transform to the SKU finish good band. Transformation. Okay. Whole fish. Whole fish. Service portion, something like that. Trust personal fish,. 你 好 fish,. So remark as process to fill it. Second scenario, by directly fill it. Yeah. I see. So
 
-Speaker 1: 33:36 
- 就这种人算罢了,人算罢了,人算罢了,ok。 就这种人算罢了,人算罢了,人算罢了.
+### You (2026-05-04T03:17:57.855Z)
 
-Speaker 3: 33:44 
- 这些都可以设定的因为.
+Yeah.
 
-Speaker 4: 33:46 
- 我们大概一个SUMMIT我们知道大概30KG大概是多少啦一个estimation.
+### Guest (2026-05-04T03:18:01.874Z)
 
-Speaker 1: 33:53 
- 啦对,因为应该你们的Salescoordination现在最偏怀啦是要checkstock咯就是因为那些有一个customer那些hotel他们order那些20公斤的SUMMITfillet所以需要跟Logistics去检查,现在我们够不够货币去付费这个东西。 然后Logistics可以去算我们的货币。 我们所谓的叫Logistics,我们叫Store的。 Storereceiving,会去算现在我们有30条E,就calculate回去,我们可以fulfill还是不可以,所以这个有一点delay咯。 因为现在你们在SAP里面也是store那个rawmap,Store你们的stockcountasrawmaterialas30fish.  也是那个销售员付回算回去嘛。
+So item code. Process it as it could stop transformer. Okay. Process system so inventory del del departamento. Ok. O
 
-Speaker 3: 34:55 
- 他主要最大的,我是在想啊,我们也是有在这个方面的,就是说我们是很manual的,要用人来做deduction。 就是说我一打好像PingCheng他们就做到很好虽然很manual不过他们还是control很好就是说他的summent一来的时候是30位那他每一个salesperson或者每一张Paypal就是说salespersonsendorder的话那salesperson就要call掉说他要付3位那就我30位就会有剩下297位这样子很manual的calculating就是说我一sendorder我就要自己做manual.
+### You (2026-05-04T03:18:31.805Z)
 
-Speaker 1: 35:34 
- 的deduction这样子所以你们在这SAP里面没有STOPRESOLUTION的功能.
+Okay. That's it.
 
-Speaker 3: 35:41 
- 我们40公斤嘛可是我们算我升多多少回的时候它很难estimation的.
+### Guest (2026-05-04T03:18:32.754Z)
 
-Speaker 4: 35:49 
- 因为我们有时候客户在要求一个厚或者客户.
+let's say order. Plan for the cutting process SOP processing on speaking with Okay. So let let's say for for example, order let's see. 100 salmon tail. Some reason. So order processing flows 뭐무가 자들을 회에면 이하주수무나. 뭐무자 있으 하 보시리하 뭐 지분. Something. Okay. Shape. Example. Storage original So on demand on demand, calculator Excel, the calculator, Okay. Sales sales order, Chief filter. Logistic person
 
-Speaker 3: 35:53 
- 没有规格就好像你讲的,这样我算得到我到底有够厚吗?
+### You (2026-05-04T03:21:18.675Z)
 
-Speaker 4: 35:58 
- 可是我们的机身在一公斤是算是一公斤的因为我们的轮胎比例相当,因为我们的.
+One
 
-Speaker 3: 36:04 
- 轮胎它是30到36公斤.
+### Guest (2026-05-04T03:21:26.704Z)
 
-Speaker 4: 36:06 
- 如果它是10个,10枪.
+Store receiving.
 
-Speaker 1: 36:08 
- 的话就不够厚了通常每.
+### You (2026-05-04T03:21:28.755Z)
 
-Speaker 4: 36:12 
- 一枪可能是3.5公斤啊,3.4公斤啊,3.8公斤啊看一个轮胎大一点.
+stop.
 
-Speaker 1: 36:17 
- 对,因为你们每一个7它们的conversionfactor不一样就是一条7是5kg,你算4kg,你算3kg问题是在那边但我们.
+### Guest (2026-05-04T03:21:39.574Z)
 
-Speaker 3: 36:30 
- 进来的时候我们是知道多少维的用的时候也是知道有多少维只是我们很难去estimate那个balance因为Order是一打一到底每时每刻都在进行除了SalesSupport你们Sales之外其实当然我们讲System是最Capture最快的嘛因为它一打完就Capture一打完就Capture了可是它就好像它Sales它有Commit它Commit到星期六的Order它有可是他好像明天就要出的,他就出掉他,他就没有关心。 就没有关心,他Focus到8月5,也没有人看到,因为那个.
+Alright. Alright. Store store stock count as raw material as 300 fish. Salesperson 서 쓰상 많 사면요.
 
-Speaker 4: 37:14 
- Azure的东西出了。 所以.
+### You (2026-05-04T03:22:37.805Z)
 
-Speaker 3: 37:19 
- 他临时就做手决定手决定就是说他一收到命令他就马上回答就是说他已经知道说他这个鱼他已经扣掉86他要出的鱼了所以我就剩下这边啦所以人家不会多扣他的鱼对.
+Because because
 
-Speaker 1: 37:35 
- 对对这样子所以你们会.
+### Guest (2026-05-04T03:23:16.514Z)
 
-Speaker 3: 37:37 
- 可是这一批他就很一直一直在这边一直很一直做不好因为他手决定他一直那个那个不够teamwork他就做不到这件事情,因为他必须每一个人都执行,因为我有order我就要理他,虽然他manual,不过每一个人都要执行这件事情的话,他才能够完整。 所以.
+Okay. Five kilo. This one is four kilo. This one three kilo. 실수 때에 실수 okay. 히 order order confirmation reserve to the stock. Seeing the salesperson okay, oversell. System system the block.
 
-Speaker 1: 38:01 
- 在这边这个点能够突破吗?  在系统里面可以控制,就是orderconfirmation,它会保留这个stock,所以新的销售员不可以oversell,就是是一个系统的block,这个我们Maya里面其实也是有的,然后,所以现在SAP没有这个feature吗?  他看不到,.
+### You (2026-05-04T03:25:15.515Z)
 
-Speaker 3: 38:29 
- 因为他百公斤,然后他们keyorder的时候,他key0.1,所以他capture不到。 哦,capture.
+Okay.
 
-Speaker 1: 38:38 
- 不到那条鱼是一条鱼咯,明白。 这个应该是你们的SAPconfiguration的。 因为如果我们了解这个这种事来,我们会configure在系统里面,一条鱼是basedonnumberoffishratherthanweight.  因为weight是manufacturing的metric,不是storage的metric,因为你们的source是一条一条的,所以它是一个setup的问题来的。 为什么你们会遇到这个问题,是因为你们的SAPsetup没有跟着你们的businessprocessing的setup,misalignment,所以就会有这个问题。 所以在Maya上,我们会根据这个问题的设置。 然后Johnson跟Jeremy也是有跟我们分享你们会有一些order你们需要preplanaheadoftime这样子的order比如说一个hotel给你们而且我们出去邀他然后这个hotel的老板还是hotelheadchef跟GST的salesperson这样然后下两个月我会ordertriple我的amount那些然后因为我们需要source嘛,leadtime比较长嘛,然后fulfill的leadtime比较短嘛,所以我们需要preorderwithoutconfirmPO,会有这.
+### Guest (2026-05-04T03:25:18.904Z)
 
-Speaker 4: 40:09 
- 样子的事情。 应该是这样子,有时customerA,signaspecificitem,可能他要order一个所谓的一个identity,这个identity是服务员有卖的,然后他那时候可能他prebook了,可能大概是一个50的customer,可是他们用了一半之后,这个customer他不会用了。 可能他50留到30万,剩下一个人在这里,然后我们有时候trade不到回那个.
+So whole so since I SAP So So the SAP configuration mismatch. Configure based on number of each rather than wait.
 
-Speaker 3: 40:46 
- Customer,是哪一个人place这个model。 就是说可能我们可以set一个timeframe,比如说一定一个星期或两个星期这个东西我们可以。 就比较快的去反应,比如说你收藏了这么多东西,你怎样去知道说,突然间他所有东西都没有,是不是也是一个漏洞的工作。 那如果我们可以把这个漏洞的工作变成是一个系统化,那他就不会是在追究,内耗那个追究责任啊,这个你承认了,为什么你又没有?  其实我们都很清楚说,东西多了,他很难去照顾到那么全方位,那系统有没有办法全自动化一点,让他有这个通知,这样他如果有这样子的自动化就不会一直在内耗着到底是谁的责任这些我觉得都没有必要那你如果一有了这个通知之后你没执行是你真的是你的问题没有任何人了因为我们可以做的已经是最好的去提供你这些通知不需要你在自己做或者是任何一个部门的人去做,我们就说我们已经设置好这个东西,我们马上就发那个信息出来说,这个东西没有做,你承认了没有跑,二十多天就没有跑。 那两个科技,他就是定定,你们也是要去看这个东西,没有看是真的很有问题。 因为每次内耗这个可能每次要等reply啊又有时间啊一个一个很manual很manual的一起一直去check回来我觉得很耗时间啊然后东西又变慢了又没有效率然后又内耗这些东西所以它是一个.
+### You (2026-05-04T03:25:52.625Z)
 
-Speaker 1: 42:34 
- Stop的问题啦就是那个stop没有movement然后因为你们有很多SKU很多.
+Bye.
 
-Speaker 4: 42:43 
- 所以最糟糕的地方.
+### Guest (2026-05-04T03:25:55.124Z)
 
-Speaker 3: 42:46 
- 就是消失了,或者是东西坏掉了,这样子的情况是最糟糕的。 然后再来它就是会升很多,升很多的时候就是要推货的时候。 那我们可不可以在提前就知道,那他可以去追客户,那客户会给他可能会给他知道是什么情况,或者他可以快去找其他或者找其他销售人士帮忙。 可是如果太迟了,人家人家的价格都换了,我就换三个月你才来跟我讲。
+Manufacturing the metric. Storage, the metric. So so with monument, we face this problem SAP business processing the setup. Not line misalignment. That's why I have this problem. On my side, we will set up accordingly to to mitigate this problem. The whole
 
-Speaker 2: 43:23 
- 它.
+### You (2026-05-04T03:26:24.915Z)
 
-Speaker 1: 43:23 
- 不是一个预订之前的问题.
+Yep.
 
-Speaker 3: 43:26 
- 啦这个是另外一个计算机计算机计算机的问题现在我们讲大概就有这样子了这是第二阶段我们想要增加的就是我讲要计算那个时间它根据接收时间然后或者是它然后过后它将它移动移动就是我们的交易最后从最后一个交易日计算起那时候我们自己方案十天或者是我讲两个星期两个星期后就发一个通知这个项目两个星期就走了所以就会有会比较是动画比较快那我们再来慢慢优化啦这个两个星期要怎样分类啊因为它一定有很多种类,很多是谁,它是归谁的这些item,那我才拿到那cpok它,我至少写notification这些item是没有错的,而且它是自动获的,不用说我还要自己去拿他们report啊,这个matching这个date啊什么什么什么,这么麻烦的。 OK,所以刚才那个.
+### Guest (2026-05-04T03:26:24.944Z)
 
-Speaker 1: 44:29 
- Userstory啦,oforderingbefore20还是orderingbeforeofficialconfirmation的usecase?  还是applicable,还是不太frequent?  刚才我给一个example是这个hotel的HR,pream我们两个,twomonthsinadvance,我会order,triple我的order,这样子的。
+and Johnson order preplanned ahead of time order. Hotel the order triple order That's it. The whole source lead time fulfill lead time So preorder without a confirmed PO. Customer specific item.
 
-Speaker 3: 44:57 
- 不会很frequent,通常都是salesperson他们会有confidence,要comein那些.
+### You (2026-05-04T03:27:24.875Z)
 
-Speaker 1: 45:02 
- 东西。 Isee.  所以你们没有一个trackerfortrackingnonconfirmedstopreservation吗?  不会吧?  就是没有地方可以没有地方track可以这样子讲Isee.
+Happy. Okay.
 
-Speaker 3: 45:20 
- 所以我们真的是根据自信,根据信任,你要听这个两百,我们就定了。 然后就再来的就是说,这个两百,就是我们刚才又再提过去,你讲的那个两百又没有跑,可是我又没有给他知道,他就是一直在那边逗留。 所以.
+### Guest (2026-05-04T03:27:28.444Z)
 
-Speaker 1: 45:40 
- 当创造销售订单的时候,因为有些顾客会出货,有些误会嘛,所以这个问题是在顾客没有出货的。
+Okay. Modifications.
 
-Speaker 4: 45:49 
- 应该是很多顾客都会出货。
+### You (2026-05-04T03:29:21.855Z)
 
-Speaker 3: 45:51 
- 酒店一定要出货的,不用更小的。 可是餐厅可能他承认了,违背他,就是说他违背会拿完。 这取决于你对这个顾客的,这个顾客他是什么水平什么的,就是说他可能是你的顾客。 那可能你就会有想要keep给他就是basedonsalesperson对着他什么的心情是很manual的是很就是feeling的然后又没有办法去解决的他很难吹水去啊尤其是他三个月没有走之后我们才发现然后我们是用WhatsApp这样子一直找回去那时候是随旁边的这样子很manual很manual这个.
+How
 
-Speaker 1: 46:43 
- 为什么你们不会用SAP来trace.
+### Guest (2026-05-04T03:29:29.264Z)
 
-Speaker 3: 46:51 
- 我们又要看回stock的,这个第一个layer是谁讲要order的,为什么跑跑一下没有跑,然后因为这个order它是open的,open就是说只要有item它们就可以卖的嘛,他看到刚好他的另外一个salesmanB,他看到这个item,有哦,他customer刚好有一个人,他们有出咯,可是真正真正那个东西它出不是因为好的,是因为里面有货,而不是出咯。 可是真正那个人commit的人,他没有卖完,剩下的balance给CSV看到,然后卖,你get到意思吗?  可是我们追究问题的时候,是要追究thefirstpersonorder嘛,不是要追究这个CSV来帮他clear货嘛。 可是因为东西太多了嘛,只要我的customer有要求,就是卖咯。 可是为什么会剩下Balance.
+How do you gonna stop? Just stop. SKU Okay. So ordering before handling. Here. So the m o v e 如 果 m o e ， 지성지. Notification. So that 그런 아게 네만 생나지만 지이 뭐. Before 哋 哋 佢 So user story of ordering before PO ordering before official confirmation, the, use case applicable mails frequent. Hotel the h f, m two two months in advance, ordered order order volume. I see. For tracking nonconfirmed stop reservation Okay? I see. Okay. So based on confident, based on I see. Somewhere like this house. I see. I see. So so so create sales order, this whole customer customer customer customer 수서 하텨나수 다아터 가수무. 你 Mhmm. O k 你 你 。 。 你 。 이시 하 사를이 무제주요. 맞사가상마요. 맞시요 맞사자자스주 있스자. 보게, 아죠 수서 시 같아니다, 생스. Okay. Okay. S a b like tracing. 你 다 다에 회들에 했에 o p e n
 
-Speaker 1: 47:44 
- 所以这个SAP里面没有那个StockReservation的Module来阻挡这个Stock?
+### You (2026-05-04T03:34:02.935Z)
 
-Speaker 3: 47:50 
- 它有一个的,可是它是要很专业的对付一个客户啦,它叫BlanketAgreement,.
+And then
 
-Speaker 1: 47:59 
- 那你要记本滴滴进去。 所以在AudioTagging的工作流程还有其他的变化,.
+### Guest (2026-05-04T03:34:48.844Z)
 
-Speaker 2: 48:09 
- 除了我们已经谈到的。 可能要听一下冰神定来吧那个order的定来的方式除了whatsapp和email之外还有什么.
+말 이금 들 가상마나. I see. Okay. So try order taking the workflow
 
-Speaker 4: 48:18 
- 其他的方式进来.
+### You (2026-05-04T03:34:57.205Z)
 
-Speaker 3: 48:24 
- 我们这边order.
+So
 
-Speaker 5: 48:25 
- 进来的一样是反丢他怎么一边反丢或者是他怎么会把那个order先去给salesperson如果他先去给salesperson他有几个方式一个是他会写在桌面上第二个就是他会写他的网页他写的是佛文吗?  对吗?  现在看到比较多是佛文所以是手写.
+### Guest (2026-05-04T03:35:00.334Z)
 
-Speaker 1: 49:02 
- 手写在纸上?  对,手写在纸上.
+pain point. Besides what we have already talked about. WhatsApp email Okay? Order by text. Writing handwriting and mandarin. Handwriting and mandarins. Mhmm. Voice. Mother, Okay. Voice message
 
-Speaker 5: 49:09 
- 然后他会直接在网上点读你的订单然后他会用声音去订单然后他会直接发.
+### You (2026-05-04T03:36:45.695Z)
 
-Speaker 2: 49:21 
- 电话给你他用声音的话是讲华语吗?  直接用声音.
+So then he So that
 
-Speaker 5: 49:28 
- 发电话给你吗?  不一定的如果用声音的话就看你是会用华语还是用英文或者是用马来语.
+### Guest (2026-05-04T03:36:48.434Z)
 
-Speaker 1: 49:36 
- 因为我们.
+sales order volume So I'll leave it there. So order volume. Sales order Okay. Sales agent, sales coordinator, headcount. Headcount and the IT as our booker. Salesperson. Salesperson. So So order option also will be to do b to c Ok. Okay. Okay. So I think I already taken anything else to ask on the of pricing? Pricing. Yeah. Pricing, man. Want to understand your how you guys price your because I noticed
 
-Speaker 5: 49:37 
- 的顾客也是会有,广东话暂时还没有一刀,国外也没有,.
+### You (2026-05-04T03:38:37.855Z)
 
-Speaker 1: 49:48 
- 也是比较少。 在槟城那边,你们的销售量是大概多少?  销售量.
+all you guys. Because I think
 
-Speaker 5: 49:55 
- 是多少?  销售量吗?  就是一天多少销售量?  一天?
+### Guest (2026-05-04T03:38:42.084Z)
 
-Speaker 2: 50:13 
- 三千多到三千.
+the different tiers of customers, hotel, supermarkets, restaurants. Is there any special price given to each of your customers? For example, hotel hotel for you. Example, a certain discount or a certain item. Or supermarket. Supermarket usually, you order a big box of it. So
 
-Speaker 5: 50:13 
- 四百到四千多张一个月三千多.
+### You (2026-05-04T03:38:57.995Z)
 
-Speaker 2: 50:15 
- 张一个月三千多张一个月三千多张.
+Okay.
 
-Speaker 5: 50:16 
- 一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多.
+### Guest (2026-05-04T03:39:02.124Z)
 
-Speaker 2: 50:18 
- 张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月.
+we have a special price for certain certain we have the different price, but we're not calling special price have the different segment customer. We are giving the different pricing. But we didn't do any special price and stated our invoice one. We are direct giving the price.
 
-Speaker 3: 50:25 
- 三千多.
+### You (2026-05-04T03:39:25.445Z)
 
-Speaker 5: 50:25 
- 张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张.
+No.
 
-Speaker 2: 50:31 
- 一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个月三千多张一个.
+### Guest (2026-05-04T03:39:26.704Z)
 
-Speaker 1: 50:37 
- 然后你们的销售人员和销售.
+Normally, our quotation prices for every customer. If we not do anything Any special special price stated in the report. Only if any rejection or any or is he so just open this yet?
 
-Speaker 2: 50:40 
- 顾问有多少个顾客?  顾客现在一二三,五个五个销售顾问五个销售顾问五个销售顾问销售顾问一二三四个.
+### You (2026-05-04T03:39:41.825Z)
 
-Speaker 1: 51:01 
- 四对五啦四对.
+I see.
 
-Speaker 2: 51:02 
- 五啦四对五啦四.
+### Guest (2026-05-04T03:39:42.384Z)
 
-Speaker 5: 51:02 
- 对五啦四对五啦.
+I see. So how many price tiers
 
-Speaker 2: 51:03 
- 四对五啦四对五啦四对五啦四对.
+### You (2026-05-04T03:39:44.025Z)
 
-Speaker 3: 51:04 
- 五啦四对五啦四.
+So how many?
 
-Speaker 1: 51:05 
- 对五啦四对五啦四对五啦四对五啦四对五啦四对五啦四对五啦四对五啦四对五啦.
+### Guest (2026-05-04T03:39:47.354Z)
 
-Speaker 2: 51:08 
- 四对五啦四对五啦四对五啦四对.
+how many price? What? Price tiers. I mean, yeah, different tiers for different customers. Right?
 
-Speaker 1: 51:12 
- 五啦四对.
+### You (2026-05-04T03:39:49.615Z)
 
-Speaker 5: 51:12 
- 五啦四对五啦四.
+Yeah.
 
-Speaker 2: 51:13 
- 对五啦四对五啦四对五啦四对五啦四对五啦四对.
+### Guest (2026-05-04T03:39:53.134Z)
 
-Speaker 1: 51:16 
- 五啦四对五啦四.
+So how many price tiers is there? Different price Ah, so that means the same like, retail price is the low section After that, you have wholesale price tier one, tier three, tier two. Four tiers. Four tiers. Tiers. Mhmm. So all of this is I see how in SAP. Or is it outside the system? Ausser No inside the SAP. No. If we send lock the price in the system, then they will follow basically, we are based on the salesperson. Oh, which issue? So so that means that different part of ISIS. So that means when the two is present, create order for a customer, the salesperson will decide which guys to give in it. No. No. Because, actually, we give give customer. Maybe it's the same item, but different customer we are giving the different price well. We put a customer's prices, can they agree with this price? Were killing all the price in the length of agreements based on the customers. When the invoicing key, the sales order, they will automatically detect pricing. Oh, from the Yeah. Yeah. Yeah. You get one, Minah? Yeah. K. But let's say what about customer that do not have this blanket agreement? Supposed to Because the invoicing the CS coordinator, they will remember the pricing. Suppose we need to create all the blanket agreement for every customer since they agree with the pricing. Understand every person. Except passives. I said taxes. Cash too. Yeah. I said taxes.
 
-Speaker 2: 51:16 
- 对五啦四对五啦四对五啦四对五啦四对五啦四对.
+### You (2026-05-04T03:41:59.765Z)
 
-Speaker 1: 51:19 
- 五啦四对五啦四.
+So
 
-Speaker 2: 51:22 
- 对五啦四对五啦四对五啦四对五啦四对五啦四对五啦.
+### Guest (2026-05-04T03:42:00.044Z)
 
-Speaker 1: 51:30 
- Ok明白然后对应该ordertakingokanythingelsetoaskintheordertakingflow?  我想了解一下你们的价格,因为我发现你们的客户层次不同,酒店,超市,餐馆,有没有特别的价格给你们的客户?  例如香格拉酒店,你们会给他们特别的折扣,例如某些食物,或者超市。 市场通常会订购一个大包装,所以你可能会给他们特定的价格,订购一定的价格。 我们有不同的价格,但是我们.
+This is my I I I wonder if he's applying to KL also. So I need to check and still whether this apply to KL or But for we are practicing this using like that we want to control the prices.
 
-Speaker 2: 52:09 
- 没有提供特定的价格。 我们有.
+### You (2026-05-04T03:42:15.925Z)
 
-Speaker 5: 52:12 
- 不同的客户,我们会提供不同的价格。 但是我们没有提供任何特定的价格,我们直接给他们价格。 哦,直接给他们价格。
+Okay.
 
-Speaker 2: 52:31 
- 我们通常会依据每个客户的价格我们不会做任何调整价格或价格只会.
+### Guest (2026-05-04T03:42:26.974Z)
 
-Speaker 1: 52:46 
- 依据价格或价格我明白了你们有几个价格阶段?  几个价格?  价格阶段就是我们有不同的阶段给不同的客户所以你们.
+Understand. So Blackburn Ivan, just now your question is that you are asking us the deal of
 
-Speaker 2: 52:58 
- 有几个价格阶段?  不同的售价啊啊,那就是我.
+### You (2026-05-04T03:42:32.515Z)
 
-Speaker 1: 53:04 
- 说的购物价格是最昂贵的啦然后你会有售后价格,然后你可能会有一级一级二级三级.
+So yeah. Yep.
 
-Speaker 2: 53:11 
- 四级四级四级啊?  好,所以所有.
+### Guest (2026-05-04T03:42:39.934Z)
 
-Speaker 1: 53:17 
- 这些现在都存在SAP啦?  还是在系统外面?  系统外面不,在.
+our pricing. We don't we don't do all this deal We don't fix the deal on this segment. Segment item on hotel
 
-Speaker 2: 53:26 
- SAP里面.
+### You (2026-05-04T03:43:02.715Z)
 
-Speaker 5: 53:30 
- 如果我们设定价格在系统上,它们会跟随,但基本上我们.
+Así If I can
 
-Speaker 1: 53:40 
- 是根据每个人的价格。 哦,根据每个人的价格。 所以这意味着我们有四种不同的价格,所以这意味着当销售员制作一份订单给顾客时,销售员会决定哪个价格要给,对吗?
+### Guest (2026-05-04T03:43:03.744Z)
 
-Speaker 5: 53:55 
- 因为我们会给予不同的客户不同的产品和价格。 SP有一个.
+I see. Spike. So so so formula for segment GP Okay. So case by case basis, the assessment
 
-Speaker 2: 54:05 
- 合约合约,当我们提供客户的.
+### You (2026-05-04T03:43:29.635Z)
 
-Speaker 5: 54:10 
- 价格,然后他们同意这个价格,他们会记录所有价格在合约合约中,根据客户的意见。 因此,当购买者记录售价时,他们会自动检查.
+Yeah.
 
-Speaker 2: 54:27 
- 价格。 哦,从盒盒合约,我明白.
+### Guest (2026-05-04T03:43:32.014Z)
 
-Speaker 5: 54:32 
- 但是我说什么对于客户,.
+the market rate. Use case item to price. Weekly single case Sorry? Yeah. By weekly prices Okay. Yeah.
 
-Speaker 1: 54:34 
- 他们没有这个盒盒合约呢?  应该.
+### You (2026-05-04T03:44:07.135Z)
 
-Speaker 5: 54:39 
- 有啦,因为,呃投资,销售委员会,他们不记得价格,应该是我们,我们需要创造所有盒盒合约给每个客户,因为他们同意价格。 明白了。 每个客户。 AzureCasio?  是的,AzureCasio。 它是应用于KL服务吗?  是的,所以我认为要检查是否应用于KL服务。 但是,我们正在练习使用RacketGoogle来支援这些设备。 KL服务是.
+Okay.
 
-Speaker 2: 55:22 
- 用于专业训练吗?  我没有听说过.
+### Guest (2026-05-04T03:44:08.844Z)
 
-Speaker 1: 55:25 
- KL服务。 Brenton,Ivan,你剛才的問題是你問我們價格的調整其實.
+It's by contract or weekly price daily price fluctuation. Okay. Item the cost increase increase customer Example example, the contract, our Sí. Ok. Va.
 
-Speaker 2: 55:29 
- 我們並沒有調整價格,我們並沒有調整.
+### You (2026-05-04T03:44:41.395Z)
 
-Speaker 1: 55:31 
- 價格.
+Okay.
 
-Speaker 2: 55:54 
- 比如说Hypermarket我们就一定要用这个价钱去给他我们是flexible的我们没准有时候一个单的一百item掉下来有一些比较slowmoving我们会比较高的价钱所以我们不会说setdeal了就是certainformulafor这个segment就是这样子的GP.
+### Guest (2026-05-04T03:44:43.454Z)
 
-Speaker 1: 56:16 
- 这样子的所以它是casebycasebasis.
+Ok. Manage customer the credit limit credit exposure. Okay. For credit index, this is based on credit application forms. Which come And then for credit credit credit
 
-Speaker 2: 56:20 
- 的assessment所以刚才Joey讲的就是这个了然后因为你们的.
+### You (2026-05-04T03:45:21.985Z)
 
-Speaker 1: 56:31 
- SKU是算好像那个价钱会change的嘛,basedonmarketrate所以你们有没有一些usecase是每天需要update这个item的price在系统里面?  每天.
+Okay.
 
-Speaker 2: 56:47 
- 啊,normally是weekly有多Sorry?  Sorry?  听不清楚Ok,soitsbycontractorweeklyprice?
+### Guest (2026-05-04T03:45:22.484Z)
 
-Speaker 1: 57:16 
- 不会有每天的价格波动吗?
+Okay. Okay? For thirty days, sixty days, days, sixty days, ninety days of travel to full days, three days,
 
-Speaker 5: 57:19 
- 或许我们有产品的价格增加我们就会增加客户的价格.
+### You (2026-05-04T03:45:31.765Z)
 
-Speaker 2: 57:29 
- 例如每一张产品的产品它是我们的合约我们可以立即上架这个产品我们就需要在每天使用明白.
+Okay.
 
-Speaker 1: 57:49 
- 那么你们怎样管理客户的信用限制和信用曝光?  好的,信用限制是从基础上来的。
+### Guest (2026-05-04T03:45:32.514Z)
 
-Speaker 3: 58:03 
- 然后.
+Okay. I see,
 
-Speaker 5: 58:03 
- 我们就会比喻在客户的资料中然后如果我们在信用卡里面有放30天的话我们会允许客户多一个10天就是说多么钱他们会把可以把去到40天30天,60天,90天的全部加4天,7天,3天的全部加3天。 所以我们会给顶级客户去准备这个计划,但是这个计划我们给客户的4天跟3天,那些客户就不知道了,因为在他们的SOA里面是他们的计划,所以是放着他们的费用,他们的账户账户账户账户账户账户。 对,给你们每天。 所以在SAP里面会有这个比较了啦。 啊,对,对,对,哦,ok,所以你们也是.  每一张卡就会出现咯,因为他们在发第1,第9年哦,它也是会popup了的,因为它是recognizebyamount,它不会recognizebyamountofthedate,对,它也是会popup.
+### You (2026-05-04T03:45:50.955Z)
 
-Speaker 1: 59:32 
- Isee,ok,所以你们的credit,limit,enforcement,SAP其实是settle了的啦?  啊,.
+I see. So
 
-Speaker 5: 59:40 
- 对,ok,只是在里面的BP的pastel那边全部自己没有做setting啦,.
+### Guest (2026-05-04T03:45:52.884Z)
 
-Speaker 1: 59:45 
- Isee,ok.  所以在ordertaking的时候,salesperson会在你们的ordertakingprocess,在ordertaking的时候,他们需要问finance,basedoncustomercreditstanding,然后dependingon他们的creditstanding,那个款式过去。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator.
+take payments or make once whatever hit down has could it limit hit down, Okay. So because I
 
-Speaker 2: 01:00:03 
- 知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator.
+### You (2026-05-04T03:46:26.715Z)
 
-Speaker 5: 01:00:08 
- 知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 Customercoordinator知道了。 C他就需要去看那个engine咯,看那个engine是不是他已经overdue了,然后他们需要fillin在我的那个creditapprovalform。
+Hi C.
 
-Speaker 1: 01:00:23 
- 哦,所以你们的creditapprovalprocess有一个form,所以internalsalesperson.
+### Guest (2026-05-04T03:46:27.134Z)
 
-Speaker 5: 01:00:28 
- 需要fillup吗?  对,需要fillup,然后放在whatsapp,然后getapprovalfromHKBusBureau,Managerfirst,thenafterthat他们才可以进去里面approve那个invoice.
+I see. Okay. So the credit limit enforcement, SAP
 
-Speaker 1: 01:00:46 
- 说那个Supedia会自己ICP去.
+### You (2026-05-04T03:46:32.775Z)
 
-Speaker 5: 01:00:49 
- Approve吗?  不是,他们是,就是说刚才Sijin讲就是他们用调用那个PDM调sign然后又再放回去WhatsApp然后他才可以做approval哦,是.
+Okay.
 
-Speaker 1: 01:01:01 
- 一个manual否则逃税方法吗?  对,就是说manual做approval然后这个creditapproval它是creditblock但是刚才有说.
+### Guest (2026-05-04T03:46:35.644Z)
 
-Speaker 5: 01:01:20 
- 你们有一个群组你也有一个群组.
+Okay.
 
-Speaker 1: 01:01:32 
- 所有的合同都在.
+### You (2026-05-04T03:46:39.775Z)
 
-Speaker 2: 01:01:34 
- 群组吗?  所有的合同都在.
+I see.
 
-Speaker 1: 01:01:34 
- 群组吗?  所有的合同都在群组吗?  所有的合同都在.
+### Guest (2026-05-04T03:46:40.214Z)
 
-Speaker 4: 01:01:36 
- 群组吗?  所有的合同都在群组吗?  所有的合同都在.
+I see. Okay.
 
-Speaker 1: 01:01:39 
- 群组吗?  所有的合同都在.
+### You (2026-05-04T03:46:41.105Z)
 
-Speaker 4: 01:01:40 
- 群组吗?  所有的合同都在群组吗?  所有的合同都在群组吗?  所有的合同都在群组吗?  所有的合同都在群组吗?  所有的合同都在群组吗?  所有的合同都在群组.
+So that
 
-Speaker 1: 01:01:49 
- 所有的合同都在群组吗?  所有的合同都在群组吗?  所有的合同都在群组吗?  所有的合同都在群组吗?  所有的合所以刚才你们也是有讲会有一些SOAStatementofaccountforcustomer嘛所以现在你们会有一个report给customer看他们的什么account.
+### Guest (2026-05-04T03:46:42.164Z)
 
-Speaker 5: 01:02:14 
- 还是怎样呢我们是会email给customer咯每个customer我们会email给customerthroughwhatsapp.
+So the credit standing. Also, the credit of people Then after that, invoice invoice
 
-Speaker 1: 01:02:24 
- 咯所以这个SOA是从SAPexport.
+### You (2026-05-04T03:47:54.685Z)
 
-Speaker 5: 01:02:27 
- 出来的对对对.
+Awesome. So, okay,
 
-Speaker 1: 01:02:32 
- 所以在这边从金融的角度来看在金融和销售会有什么变化吗?  根据你们目前的行业运营和SOP出的这些信用限制.
+### Guest (2026-05-04T03:48:03.394Z)
 
-Speaker 5: 01:02:47 
- 信用证券和信用批准你可以说得到那个SOP会一涨两涨的吗?  这些拿出来也.
+Okay. Okay. Credit approval invoicing sales manager is the pay
 
-Speaker 1: 01:02:55 
- 是一年好多吗?  那个SOP.
+### You (2026-05-04T03:48:12.825Z)
 
-Speaker 2: 01:02:58 
- 不要一涨两涨的我的意思.
+Okay.
 
-Speaker 5: 01:03:01 
- 讲我会用一张一张去send啦就是说就是你们会retrieve到全部的SOA我们已经有email在里面了然后可以autoemail了.
+### Guest (2026-05-04T03:48:38.854Z)
 
-Speaker 1: 01:03:12 
- OksoautoemailofSOAtocustomer对你们的现在的company的procedure是怎样每两个星期.
+time. Yeah. So you would delay the order order taking process. Yeah. The order manager miss out on the group. Okay.
 
-Speaker 5: 01:03:25 
- 每个月还是怎样这边走每个.
+### You (2026-05-04T03:48:54.335Z)
 
-Speaker 1: 01:03:30 
- 月三个月前吗?  每个月三个月前这些SOA是给客户的吗?  还是给所有的客户?  给所有的客户然后你们的einvoicing的SOP你们会分individual还是consolidatedbasedoncustomerpreference吗因为有一些公司他们是会declareinvoicedependingoncustomeragreement的就是有一些customer讲我不要你就是submit你的invoicebasedonindividualsoIpreferonlyconsolidated.
+So
 
-Speaker 5: 01:04:24 
- 这样子的businesscase吗,还是?  Trustyoursupplier,undertrust,其他有debate的,就是做法。 Ok,soeverythingelseisindividual,.
+### Guest (2026-05-04T03:48:54.894Z)
 
-Speaker 1: 01:04:38 
- Ok.  Ms.  Teo,刚才我们有跟BinChenBrunch讲到那个creditlimit的SOP。 然后也是价格嘛,所以在凌晨价格每个客户会有一个盒子在SAP的,所以在KL也是跟着一样的价格。 同样的价格吗?  同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样的.
+So SOA statement of account for 고에요. Report customer account SOA SAP Okay. Bye. So from finance, the endpoint
 
-Speaker 3: 01:05:03 
- 价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样.
+### You (2026-05-04T03:49:28.495Z)
 
-Speaker 1: 01:05:04 
- 的价格。 同样的价格。 同样的价格。 同样的价格。 同样的价格。 同样.
+So, So
 
-Speaker 3: 01:05:17 
- 因为我们在10年前就已经试图实施了,但是实验时间很长,所以我们就放弃了。
+### Guest (2026-05-04T03:49:31.834Z)
 
-Speaker 1: 01:05:36 
- 但是现在我们也没有试过,也担心要试试。 我想问的是因为你的信用卡,你通常是如何收到客户的信用卡或回报,所以我想知道信用卡的过程是怎样的。 根据他们发送的.
+finance sales, pinpoint based on even the current
 
-Speaker 3: 01:05:47 
- 邮件,哪些邮件呢?  哦,应该是.
+### You (2026-05-04T03:49:32.675Z)
 
-Speaker 1: 01:05:55 
- 邮件的回报ID。 通常是那个。
+That's it.
 
-Speaker 3: 01:06:01 
- 我明白了,好的。 您的意思是回归.
+### Guest (2026-05-04T03:49:38.874Z)
 
-Speaker 1: 01:06:05 
- 产品是怎么回归的?  对,回归产品,基本上到目前为止,我们一直在讨论推进,创造销售的意义。 通常回归.
+business operation and credit limit, credit check, and credit approval.
 
-Speaker 3: 01:06:15 
- 产品会在同一天发生吗?  或许是几天后,但我们也会知道,我们会问客户,哪一天我们发送.
+### You (2026-05-04T03:50:07.115Z)
 
-Speaker 4: 01:06:30 
- 货物,然后我们.
+Okay.
 
-Speaker 3: 01:06:33 
- 会根据那一天.
+### Guest (2026-05-04T03:50:08.064Z)
 
-Speaker 4: 01:06:36 
- 发送货物,从入口开始。 从入口开始。 我们.
+Okay.
 
-Speaker 1: 01:06:39 
- 是这样。 明白。 但有时候我们.
+### You (2026-05-04T03:50:09.485Z)
 
-Speaker 4: 01:06:41 
- 也会错过,我们.
+So
 
-Speaker 3: 01:06:42 
- 也可能会错过。 这不是正常的行为。 这不是.
+### Guest (2026-05-04T03:50:10.584Z)
 
-Speaker 1: 01:06:45 
- 正常的行为。 谁决定生产,是销售员发出邮件,还是来自金融部?  邮件,当我们确认了,.
+So auto email will be to customer. The company, the procedure Every month before the
 
-Speaker 3: 01:06:53 
- 我们就发出邮件。
+### You (2026-05-04T03:50:30.385Z)
 
-Speaker 1: 01:07:04 
- 前面的部分我们.
+Okay. So
 
-Speaker 3: 01:07:05 
- 需要批准,例如我们需要批准所有已经付款的信用卡,然后我们会通过。 我意思是,他们会否批准这些顾客使用这些信用卡。 在前端,然后在前端批准后,它会进行.
+### Guest (2026-05-04T03:50:33.064Z)
 
-Speaker 4: 01:07:35 
- 正常进行进行进行进行进行进行.
+So customer that have credit limit only. Right?
 
-Speaker 1: 01:07:37 
- 进行进行进行进行哦,好的,所以当你列出,所以这个是在SAP,那是一个EO的页面,当你按下去,它就会自动列出。
+### You (2026-05-04T03:50:36.865Z)
 
-Speaker 3: 01:08:03 
- 因为我们有SO,DO和WISE,SO是一个号码,DO是一个号码和EWISE是一个号码,但很多顾客抱怨很混乱,为什么有DO号码和EWISE号码呢?  他们有时候无法很仔细地列出。 当然,我们的提问是在下面。 其實它會提供哪一個帳戶會提供哪一個T0號碼然後客戶會覺得他們不喜歡,會覺得很混亂尤其是Hotel,所以最後我們改變了意思是S0和T0我們不給客戶我們給帳戶的T0號碼是同一個號碼帳戶的T0號碼是同一個號碼帳戶的Template改變了我意思是改變了TitleTitle改變了你所以它会是一样的,就是按一个按钮,它会把所有东西放在一起。 哦,我明白了。 这样它就不会给客户造成任何混乱。
+So
 
-Speaker 1: 01:09:05 
- 所以你目前的计划是什么样的?  就是说,我会先发送,所以先发送选择名单,然后发送给客户,然后发送给客户,或者是在货物到达.
+### Guest (2026-05-04T03:50:39.174Z)
 
-Speaker 4: 01:09:17 
- 的位置,或者是在合约的.
+Or is it for all customer? For all all customer accept taxes, All customer accept test shows. Okay. Okay. E invoicing the SOP individual consolidated based on customer preference. Declare invoice depending on customer the agreement. Customers submit invoice based on individuals, so I prefer only consolidated. Business case
 
-Speaker 1: 01:09:18 
- 位置,或者是在合约的合约,.
+### You (2026-05-04T03:51:27.225Z)
 
-Speaker 3: 01:09:19 
- 或者是在合约的合约,或者是在合约.
+Okay. Sorry.
 
-Speaker 1: 01:09:21 
- 的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的.
+### Guest (2026-05-04T03:51:27.504Z)
 
-Speaker 4: 01:09:32 
- 合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在合约的合约,或者是在.
+Okay. So everything else individual?
 
-Speaker 3: 01:09:37 
- 合约的合约,或者是在但这就算了。 所以现在在资金.
+### You (2026-05-04T03:51:33.185Z)
 
-Speaker 1: 01:09:40 
- 方面,在SAP也有手写申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请.
+Miss you,
 
-Speaker 3: 01:09:52 
- 申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请申请.
+### Guest (2026-05-04T03:51:34.384Z)
 
-Speaker 2: 01:10:01 
- 申请申请申请申请申请申请申请.
+Missed you. Branch credit limit SOP. So pricing. So
 
-Speaker 5: 01:10:02 
- 申请申请申请申请申请申请�.
+### You (2026-05-04T03:51:46.965Z)
 
-Speaker 1: 01:10:05 
- 自动啦,所以只要有资金人员。 除了资金人员,因为我们一旦发财,.
+price
 
-Speaker 3: 01:10:10 
- 我们也会自动转移到HTML。
+### Guest (2026-05-04T03:51:48.194Z)
 
-Speaker 1: 01:10:13 
- 所以,哦,好的。 OK,我认为总体来说,目前还不错。
+pricing, customer blanket agreement So SOP. Credit limit SAE. Yes. Yes. Ok. Okay. On the pass, right, for your inventory for your inventory, do we have chat by bad bad luck, your batch number? Batch number? Currently no. Currently no. Because of then we do try before the implement, I mean, ten years ago, for the practice is very slow. And then we keep other That time, we're not really matured because we also never try it. We also worry to try. First, on the of the let's say, credit notes now. So how do you usually receive your, like, credit your customer request for credit notes or returns and like that. So I wanna know how's the process for the training part. So Based on the invoice they send, which invoice from them? What do you send you with
 
-Speaker 3: 01:10:25 
- Salespersonwillalwaysrequestinvoicefortheircustomer.  SometimestheygotSOA,thencustomerwillsaythisinvoiceIdonthave,pleasesendtome.  Thentheywillrequestback.  SoanypossiblethatwecanaskMayasendbacktheinvoicetothem.  Thisiswhatwewant.  他们不需要任何人的支持,他们可以随时做这些事。 因为我们发现,有时候我们的货轮也会寄给销售团队。 所以它们总是会产生这种错误。 错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误,错误你非常有效率,更有效率的话,你会得到更快的付款。 但是有时候他们要求更多的东西,他们会很忙。 然后直到两天后,唯独销售员才会再次要求。 我建议如果我是顾客,也要检查你的付款。 所以任何时候我们都可以代表他们给.
+### You (2026-05-04T03:52:49.675Z)
 
-Speaker 1: 01:11:45 
- 客户,没有任何不好的支持。 我认为Maya会让服务员能够迅速地回应,因为他们可以看到客户.
+Yep.
 
-Speaker 3: 01:11:54 
- 的所有信息。 這個也需要和SAP的人一起.
+### Guest (2026-05-04T03:52:51.334Z)
 
-Speaker 1: 01:12:00 
- 討論嗎?對,因為主要的部分是你現在的業務資料都在SAP所以Myanair能夠把資料推進SAP並從SAP抽取資料我們需要處理SAPB1的組合部分而SAPB1的組合我們有幾種方式去做,但這次我們需要和IT企業商討論。 在SOA方面,這也是我們未來的產品,每個客戶都可以自行建立自己的SOA,你可以跟他們分享連結,他們就可以看到自己的SOA。 我看到有供应商也在做这些,所以我也想问,是否SOA已经包含了支付宝?
+for the invoice ID Normally, we do that that one. Ok. You mean when return put
 
-Speaker 3: 01:13:04 
- 然后邮件也能够寻求E邮件,一起寻求吗?  是的,类似这样,所以.
+### You (2026-05-04T03:52:58.245Z)
 
-Speaker 1: 01:13:09 
- 我们还在工作。 这是一个链接,.
+You need the
 
-Speaker 3: 01:13:10 
- 对吗?  是的,类似一个链接,.
+### Guest (2026-05-04T03:53:01.034Z)
 
-Speaker 1: 01:13:12 
- 他们会去到一个网站,然后他们会看到他们的邮件,然后.
+how how we when we go to Right? Yeah. Return good is the basically, now we so far talk about forward. Creating the sale billing, but a lot of the the the puts returns, it will be on the same day. Maybe few days later, but then we also we can no. We will ask back the customer. Wish wish which daily send the goods. Based on the daily send the goods. From the invoice. Of the invoice. We do invoice. Uh-huh. We we we are doing this way. Understand. Okay. And then this is not normal for invoice, right, who is the one that decide to join me? Is it the salesperson that issue the invoice or or come from finance team currently? Invoice, we when we do, got the picking list, got the wait, then we just doing the the old call it. Done by search for the call here. The the front front front part, we need to approve on it. Mean, like The s o credit credit limit or credit terms of all already Due. With high already due, then then we will pass then we they will approve or not approve this customer to to up the goods. That is depends on end. Front end. Then after front end, approve, it will proceed as a normal. Means, like, until the until the invoice So for the delivery note, when you set to schedule the order, it's done by the sales coordinator also. Yeah. The OMM is printed on the on on the same One way you click the screen, then it will do once again. Oh. Okay. So so when you print the so this one is in SAP. There is a page. When you press them, it's automatically because we have SOD or NYs. But that's the SO one number, the o one number, and the one one number. Right. But then many customer complain that they're very confused. My bot number and then got three more number. Okay. They sometime cannot do daily. Yeah. Of course, our remark is on bottom Actually, if we are refurbish the which invoice is refurbish the other number. When a customer feel like they don't like, like, they especially hot there also. At the end, we change. It means s o n d o did not give in to the customer. We give invoice. The invoice, the d o, this same number the the the old number is sent with invoice, the template. Changed on the I mean, we changed to the old title. It's a title. Title changed for me. So that it will be same. I mean, like, click one click, it will be all in one together. Oh, understand. Next, we will not create any confusion. To the customer. So your current business process is, like, after SO already, I will deliver first issue the picklist for internal topic, then after that, the all out to ship customer. After ship, the customer only invoice. Or at the point of shipping to the the invoice Okay. So after you invoice ready. Right? Invoice automatically submitted as invoice ready. So any credit note or debit note later on is also another another processor. Right? So there is some possibility there. One or two it. Okay. So right now, on finance side, in SAP, there is also a manual place to approve invoice and all this to go to LHDN. Right? Manual process or everything automated ready. I think majority is auto automatic. Yes. E invoice. Correct. Ah, yes.
 
-Speaker 3: 01:13:16 
- 从那里.  但是那里是安全的吗?
+### You (2026-05-04T03:57:00.175Z)
 
-Speaker 1: 01:13:19 
- 他们需要任何密码?  是的,它会是一个加密链接,并且只有一定的确认。 所以这意味着它并不总是开放,所以当他们要求时,我会寄给你这个链接,确认某一段时间,看看他们想要什么。 然后下一次,如果他们想要什么,因为我认为如果他们.
+Yes.
 
-Speaker 3: 01:13:34 
- 直接向其他人投诉,他们就会想要取消所有资金,对吗?  对,这也是我们需要考虑的问题,因为我们看到所有资金都被取消了。 对,这是我们需要考虑的问题,因为我们看到所有资金.
+### Guest (2026-05-04T03:57:06.594Z)
 
-Speaker 1: 01:13:42 
- 都被取消了。 对,这是我们需要考虑的问题,因为我们看到所有资金都被取消了。 对,这是我们需要考虑的问题,因为我们看到所有资金都被取消了。 对,这是我们需要考虑的问题,因为我们看到所有资金.
+We post to the once we auto sync to the Oh, we auto sync to ATC already. So okay. K. Think overall. So far, quite good. So one more thing is
 
-Speaker 3: 01:13:50 
- 都被取消了。 对,这是我们.
+### You (2026-05-04T03:57:18.835Z)
 
-Speaker 1: 01:13:51 
- 需要考虑的问题,因为我们看到所有资金都被取消了。 对,这是我们需要考虑的问题,因为我们看到所有资金都被取消了。 对,这是我们需要考虑的问题,因为我们看到所有资金都被取消了。 对我.
+Okay.
 
-Speaker 2: 01:14:03 
- 有问题,就好像forsalesmansales或者salesmanager他们有一个desktop可以看到说totalsales是多少的吗?  Uptodate啊,monthlyday啊,还有versusbudget有办法做到这个.
+### Guest (2026-05-04T03:57:20.694Z)
 
-Speaker 1: 01:14:19 
- Desktop吗?  这个desktop我们可以做可是我们要spec你们的design是要怎样做还有有什么data可是在Maya里面只有一个standard的desktop.
+we we want to, like, salesperson, they always request invoice. For your for their customer. Sometimes they thought SOA customer will say, Please send to me, then they will request that any possible that ask Maya, send back the invoice. Yeah. We can This is I mean, what you wanna I mean, they they can they no need anyone support. They can do this with any kind.
 
-Speaker 2: 01:14:34 
- 这个dashboard它是basic的function来的啊,就是我只要可以user,然后我user是backto,他可以看到这个dashboard,他就可以看到他要看的人递是.
+### You (2026-05-04T03:57:50.775Z)
 
-Speaker 1: 01:14:43 
- 不是不是,我们的dashboard是rolespecific的,就是每一个销售person啊,那些logisticpersonorfinancerperson,他们有自己的customizedashboard,basedonthemetricsthatareimportanttothebusinessfunction,这个是outofthebox的design,如果你们需要一些specializeddashboardofcertainmetricsthatareimportantforletssayGST,youaretrackingaparticularbusinessmetricforanybusinessreason,thenthatonewecanspecouttokindofunderstandhowtocreatethisdashboardforyou.
+Yeah.
 
-Speaker 2: 01:15:23 
- 比如说我的销售目标A它是ABC我有三个销售目标ABC然后它们是各自可以看到自己的目标的嘛所以它们就不用看到B的销售目标了对吗.
+### Guest (2026-05-04T03:57:51.394Z)
 
-Speaker 1: 01:15:35 
- 销售目标它自己的销售目标.
+Yes. Yeah. Because we file we file sometimes our back end also left out. Sent up to the sales team. It always create this this kind of Miss talks. Out. Miss out. Out. But then actually, what what you want the the objective is we want the salesperson faster go to send settle to the customer what they want. We just settle to them efficiency. Be very efficient. More efficient, then you will get more Yes. You will get faster the payment. But then sometimes they request morning that you they're busy. This up. Then until two days later, only the the salesperson come to request again. If find if I'm the customer also check your payment So I I mean, anytime we can request them to to the customer. Understood. Without any of the end. Support. Okay. Yes. I think with Maya, that that will will, like, really enable the salespeople to rest really faster. They can see all the information about the customer at their best. You see this one also need to talk with the SAP person here. Correct. Because, main part is a lot of your business data right now sitting on SAP
 
-Speaker 2: 01:15:38 
- 对对.
+### You (2026-05-04T03:58:59.765Z)
 
-Speaker 1: 01:15:43 
- 这个是不需要customdashboard啦,它是需要一些permission,是可以configure的,就是一些salesperson来say,这个是outdoorsalesperson,所以outdoorsalesperson他们不需要看其他的customer,他们自己manage自己的account罢了,所以我们可以configure,他可以看自己的customer.
+So
 
-Speaker 2: 01:16:02 
- 罢了。 OK,然后顶层再上去呢,经纪人他可以看到ABC的对.
+### Guest (2026-05-04T03:59:01.214Z)
 
-Speaker 1: 01:16:11 
- 对,经纪人通常可以看到所有的内容OK,OK好,可以OK,所以我认为我们可以开始通过那些问题的列表,但是我们要问一些具体的问题,你可以分享一下你的屏幕吗?  大家可以看到Gareth的屏幕吗?  Ok,soIthinkmostofthesequestionsareansweredalready.  StandardExcel.  Quotationintake.  Quotation,sorryPO,会不会有Excelcomment的吗?  还是大部分都是PDF?  Excel比较多。 Ok.  Normal的ordervolume,所以一个PO里面通常是10个产品,或者20个产品,或者10个产品?  不定,有时.
+So
 
-Speaker 4: 01:17:07 
- 一个也是有,可以讲1到15个左右啦,不过它是1到.
+### You (2026-05-04T03:59:01.695Z)
 
-Speaker 1: 01:17:15 
- 10个产品。 不会太大,2034个产品这样子。 Sofar没有。 Sofar没有,ok。 GST客户价格,ok,大约转一转时间,ok,这一个解决了。 AproductidentifiedinSAPIvan,我看到你其中一个question.
+I had a
 
-Speaker 2: 01:17:36 
- 是到了这个quotation现在我们的SAP也是有一个quotationfunction可是我们没有用它是因为它不能够放照片这些所以我们还是用着Excel去edit照片.
+### Guest (2026-05-04T03:59:02.244Z)
 
-Speaker 1: 01:17:53 
- 你会怎么样用到这个照片在.
+Maya to be able to push data inside SAP and to pull data from SAP, we actually need to
 
-Speaker 2: 01:17:56 
- 手机里面比如说我们要给supermarket看到那个包装这样子有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum.
+### You (2026-05-04T03:59:02.625Z)
 
-Speaker 1: 01:18:08 
- 然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有.
+I
 
-Speaker 2: 01:18:11 
- Vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后.
+### Guest (2026-05-04T03:59:07.194Z)
 
-Speaker 1: 01:18:13 
- 有vacuum然后有vacuum然后.
+sort out the integration part. Of for for SAP b one. And for SAP b one, I think based on our experience, we have a few ways of of of doing it. But this one, we will need to have a second meeting with the IT vendor to sort this out. Mhmm. Yeah. So
 
-Speaker 2: 01:18:14 
- 有vacuum然后有vacuum然后有vacuum然后有.
+### You (2026-05-04T03:59:22.935Z)
 
-Speaker 1: 01:18:14 
- Vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后有vacuum然后.
+So
 
-Speaker 4: 01:18:19 
- 我.
+### Guest (2026-05-04T03:59:24.794Z)
 
-Speaker 1: 01:18:19 
- 认为在会议之后,我们可以拿到一些样本来了解更多,看看我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,.
+in terms of the SOA one, it is also one of the features in our
 
-Speaker 2: 01:18:31 
- 我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,.
+### You (2026-05-04T03:59:25.865Z)
 
-Speaker 1: 01:18:38 
- 我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,我们可以如何使用这些样本来,.
+is
 
-Speaker 2: 01:18:46 
- 我们.
+### Guest (2026-05-04T03:59:29.764Z)
 
-Speaker 1: 01:18:48 
- 相比ICP有的standardERP系统是比较富有啦所以可以支援照片可以支援特殊材质因为这个item没有照片啦所以如果有照片它是好像窗壁这样子哦就是有carousel的所以这个是externalfacingitemlink所以如果有客户要求我需要这个item的资讯你可以分享这个link给他们咯他们会看到一个publicfacing的itemSPU.
+upcoming releases where each customer can self serve view their own SOA now. You can send share them, a link, and then they can see their own SOA already. It's similar like the the right now, think, have you currently have a practice where it's PDF type or SOA. Right? So when they see SOA, they They cannot see, like, like, cannot click the click the item. See well, I I got custom. I got supplier also doing this. That's why I also want to ask, is it the SOA already included the invoice? The invoice also can request the invoice, I mean, together or Yeah. Some someday so we are still working on the It's a link. Right? Yeah. It's something like a link. They go to a web and then they see the Way. And then from there is it safe? They need to any password? Yeah. It will be encrypted link, and it's only a certain validity one. That means it's not always open. So that means when they ask, I send you this link, tell it for a certain time to see what you want. Then next time, maybe you want again, then I Because I'm I'm thinking if let's say, they they just go to others see to get all everything already. Correct? Yeah. That's that's that's the part. We also need to figure out how to properly do it as well. Yeah. Yeah. Because yeah. Yeah.
 
-Speaker 2: 01:19:16 
- 资讯Portation通常是有企业页面,有四个页面或者是页面选择哪一个,现在WiFi是用Grid,对吗?  是用3OM?  对,你.
+### You (2026-05-04T04:00:47.685Z)
 
-Speaker 1: 01:19:32 
- 想要,对,打开一个PDF,不,不是PDF,是DirectPDF。 所以会generate这个PDF咯,这个是我们的standardformatting啦,所以如果你们SAP里面有那些PDFgenerator,我们会overwrite啦,就是那个,你们现在的SAPgeneratorformat会overwrite这个format,所以如果你们没有configure就会default这个format啦,或者我们也是可以compromise这个format,followGSE的format。 所以这个我们可以稍后再解释一下但我认为你所要求的功能是比如说这个第一个项目你想要固定这个项目的图像对吗?  所以现在你固定图像在这个描述中还是.
+Okay.
 
-Speaker 2: 01:20:32 
- 在另一个描述中?  在描述.
+### Guest (2026-05-04T04:00:47.984Z)
 
-Speaker 1: 01:20:35 
- 中所以这样你们的PDF会.
+Okay.
 
-Speaker 2: 01:20:37 
- 很长可是不是全部我们都会send照片啊通常我们只有10%法律可以吗如果平常通常我们也那个下已经知道是带个光了就不需要了只是pricingupdate啊或者是别的request我们才会send啊Retail新的SuperMarker他们的新的SKU我们才会放在照片上Ok,所以.
+### You (2026-05-04T04:00:48.235Z)
 
-Speaker 1: 01:21:11 
- 是根据个案来测试对对.
+Sorry.
 
-Speaker 2: 01:21:14 
- 然后然后这个确认过后看到你的那个interface你是可以让销售知道他有多少分是active这个然后多少是拿不到销售或者是stillfollowup的是吗啊.
+### Guest (2026-05-04T04:00:48.924Z)
 
-Speaker 1: 01:21:27 
- 对还有一些status啊所以在那个abovethelisting你可以看有一些quotation的lifecycle的signals就是在graph啊openapacheordergoldenbox所以这里可以比较容易filterquotation因为你们的ordervolume每一天有10张所以quotation应该doubleortriplethat.
+So I think in terms of the general business process flow walk through, I think we covered quite quite a bit really. Anything comes Hey. Ivan Ivan, I could I or you wouldn't be You for salesman, sales are sales up to date, Monday, day versus budget. Designs standard dashboard. Mhmm. Is basic function. This is what create user users dashboard dashboard role specific. Salesperson let's say, logistic person or customized dashboard based on the metrics that are important to the business function. So Okay. Out of the box, the dashboard design. Specialize the dashboard of certain metrics that are important for for, let's say, GST, you are tracking a particular business metric because for for any business reason, then that one, we can spec out kind of understand how to create this dashboard for you.
 
-Speaker 2: 01:21:54 
- 哦不一定的不一定的.
+### You (2026-05-04T04:02:17.335Z)
 
-Speaker 1: 01:21:55 
- 不一定的ok所以没有有这么多人ok所以你们的quotationvolume是比较比你们的order少啊所以这样比较好对对对所以quotation的volume是大概.
+Yep.
 
-Speaker 2: 01:22:08 
- 多少呢everymonthquotation啊我看不多吧不多吧多少张啊应该10张20张一个sales一个月.
+### Guest (2026-05-04T04:02:17.914Z)
 
-Speaker 1: 01:22:21 
- 10张20张吧有啊.
+Okay. How to do so? Well, since then they ABC. ABC. ABC. Target. Okay. So for This is I have see the sales Up to date. Day. Day. Day. Push out custom dashboard. Permission configure. Mhmm. Mhmm. Salesperson salesperson. So outdoor salesperson manage account So 嗰 你 啲 cussumer 你 啲 Okay. Manager a b c combined Manager usually is can see everything
 
-Speaker 2: 01:22:24 
- 有有有可以吗应该不多.
+### You (2026-05-04T04:03:06.465Z)
 
-Speaker 5: 01:22:28 
- 啦我觉得应该我每天都会因为平常有些人是基于那些餐厅的就是不需要这种位置所以多餐的位置是基于在topdown的地方他们.
+I had
 
-Speaker 2: 01:22:52 
- 比较多有时候他打电话下来.
+### Guest (2026-05-04T04:03:09.434Z)
 
-Speaker 1: 01:22:57 
- 这个.
+internally. Yeah.
 
-Speaker 2: 01:22:57 
- Size要大一点的是多少钱这样,所以我们用WhatsApp回复他,回去帮我留个一个准备,这个。 Ok,明白,所以只要WhatsApp那个.
+### You (2026-05-04T04:03:09.895Z)
 
-Speaker 1: 01:23:15 
- 销售员可以问Maya这个item的价格,Maya就会回复他,直接给那个客户就好了,是.
+I
 
-Speaker 5: 01:23:26 
- 可以这样子讲直接forward,如果他是可以create一个condition的话就是salesperson要review过,因为superior需要sign先,然后才over去给customer就是directovertocustomer需要gothroughthepriceeverything先,然后才salesperson才自己over.
+### Guest (2026-05-04T04:03:11.914Z)
 
-Speaker 3: 01:23:51 
- 去给customer.
+Okay. Okay. How?
 
-Speaker 1: 01:23:53 
- 我明白了,所以不是A,明白了,我认为这很不错,我们继续下一个问题,SKU1card,attributemandatory,对于数据库现在,我认为更加复杂的处理方法主要是鱼,有没有其他SKU有更复杂的处理方法,像鱼削成很多块,还有其他吗?  CRAB,SYNCHRONOUS,SQUIDWhatdoyoumeanyouwanttodothis,youwanttoknowthisbecauseof?  Becauseofthedifferent,becausethisonehasaspecialwaytohandleit,hasaspecialwaytoconfigureitinthesystemsoitworks.  Ok,letmesee,iflet.
+### You (2026-05-04T04:03:16.345Z)
 
-Speaker 2: 01:24:50 
- Ssay.  比如说我们也是有Scanner,我们Scanner进来是...  一个container然后一箱是10kg的话然后我们就会repackinto20gforretail咯然后restaurant可能他可以用一箱啦可是retail的话他需要familypack20gfamilypack这样有颜色感觉.
+Okay.
 
-Speaker 3: 01:25:10 
- 是这样子的所以我们也会做这样子的weputthecustomertomeetupnormallyweputthecustomeralready我们已经确认了这些物品是可以做到的这意味着从原材料我们想要去处理比如说我们要重新包装重新重新包装重新包装原材料是一公斤一百克然后我们想要重新包装到五百克变成两百克我们也在做这些到目前为止我们也在做这些到目前为止我们也在做这些到目前为止我们也在做这些到目前为止我们也在做这些到目前为止我们也在做这些到目前为止我们也在做这些到目前为止所以我们必须从原本一公斤的原材料重新包装到我们设计的空气塑料然后重新包装到20克一公斤这是其中一部分但如果不包装的话它可能不会是同样的原材料包装到20克一公斤我明白你必须做这些转换,否则你不会转换到这些.
+### Guest (2026-05-04T04:03:17.134Z)
 
-Speaker 5: 01:26:24 
- 项目。 因为现在是从A项目到.
+Okay.
 
-Speaker 3: 01:26:27 
- B项目。 所以你还在进行.
+### You (2026-05-04T04:03:18.565Z)
 
-Speaker 2: 01:26:30 
- 处理。 是的。 而且我们可以看到,有时候.
+So
 
-Speaker 1: 01:26:32 
- 我们会有一些交易。 交易的.
+### Guest (2026-05-04T04:03:19.284Z)
 
-Speaker 3: 01:26:35 
- 意思是,现在的价格,原本的价格,.
+So I think we can start going through that list of questions. But we ask specifics. You just share the screen, Can I please, Gareth, screen?
 
-Speaker 5: 01:26:47 
- 金水就是我们汉语的,这个.
+### You (2026-05-04T04:03:27.915Z)
 
-Speaker 3: 01:26:50 
- 叫什么?  我们我们受控啊多包庇多一层多一层水还看你人放在你的你让人放在水在哪上来是不是那个重量.
+Yeah.
 
-Speaker 1: 01:27:20 
- 变重了嗯嗯嗯嗯嗯.
+### Guest (2026-05-04T04:03:29.764Z)
 
-Speaker 3: 01:27:22 
- 嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯如果他們是10%我們也會做10%然後價錢我們也會做因為有時候我們不承認他們是10%然後他們說你的價錢太高了但我們也想知道為.
+Yeah. Okay.
 
-Speaker 1: 01:27:41 
- 什麼價錢太高?  是人們不好嗎?
+### You (2026-05-04T04:03:31.025Z)
 
-Speaker 3: 01:27:42 
- 然後我們才會找到這樣的東西這也是所謂的處理方法明白.
+Okay.
 
-Speaker 1: 01:28:04 
- 我们讨论更复杂的,例如鲨鱼切割,因为鲨鱼的尾部是从大到小的,所以你不可能切割20个尾部,但是5个尾部是这样的大小。 六片是另一个等级,因为是不同的尺寸,所以是不同的SKU,或者是一样的SKU,但是你如何捕捉这七片是20克,但是这七片是10克,所以我们不.
+### Guest (2026-05-04T04:03:31.724Z)
 
-Speaker 3: 01:28:38 
- 捕捉。 我们不会做到那么复杂,那么小的程度。 我们不会做到那么复杂,那么小的程度。 我们不会做到那么复杂,那么小的程度。 我们不会做到那么复杂,那么小的程度。 我们不需要做这些。 有时候我们去日本餐厅,他们会做腹部部分或其他部分。 但是我们不会做到很具体。 我们只要一大块肉。
+Okay.
 
-Speaker 1: 01:29:11 
- 因为我们用的是34公斤的鱿鱼,如果是34公斤的鱿鱼,我们会.
+### You (2026-05-04T04:03:31.835Z)
 
-Speaker 3: 01:29:15 
- 让顾客知道这是34公斤的鱿鱼,鱿鱼的重量大概是这样因为市场是这样的.
+Oh, I think it's absolutely
 
-Speaker 1: 01:29:50 
- 刚才我们谈到鱿鱼,因为现在在SAP的售价是一公斤,很难找到一只鱿鱼一公斤。 但在价格上,是基于重量吗?  是基于重量,而不是基于鱿鱼。 所以我已经说了,原本是这样的。 所以.
+### Guest (2026-05-04T04:03:32.574Z)
 
-Speaker 3: 01:30:08 
- 它也可以供客人买一公斤。 因为当我销售鼻子时,我会转换这些东西从肌肉到鼻子,当然我需要先了解鼻子的肌肉。 所以这不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创.
+So I think most of these questions are answered already.
 
-Speaker 1: 01:30:34 
- 的东西,也不像是我们原创.
+### You (2026-05-04T04:03:35.215Z)
 
-Speaker 3: 01:30:35 
- 的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东西,也不像是我们原创的东.
+the idea.
 
-Speaker 2: 01:30:50 
- 其实.
+### Guest (2026-05-04T04:03:36.884Z)
 
-Speaker 1: 01:30:50 
- Kilo的原因也是因为价格的原因。 我认为这个问题的唯一解决方法是使用价格或数据,因为这是解决价格和价格的混乱。 所以这就是考虑价格的问题。 但是要做这个转换会是一个质量的转换所以一公斤的鱼一般是一只鱼两公斤但是这次的差别是一只鱼不是一只鱼两公斤所以这就是缺点有一个台词有提到就是.
+Excel quotation
 
-Speaker 2: 01:32:12 
- Hotel有很多品牌,所以品牌進來的時候是有Excel和Pdf,通常是Excel所以他們裡面的額度會不同,有的Item,有的優惠額,有的價格額或是金額,管理額是多少,我們去填進去品牌的價錢就这种,这个的话CSM就要拿这个价钱然后match回我们的costing的file然后再放这个sellingprice,tosubmitattheend这一个我们希望他有一个function就是他能够automapping然后他就AI做了一次他就给sales去verify说他做的准不准因为他在他的item过来了.
+### You (2026-05-04T04:03:38.905Z)
 
-Speaker 1: 01:33:02 
- Ok,这个是在creatingsalesorder那一方面还是generate?
+Condition?
 
-Speaker 2: 01:33:12 
- 不是,它是在outofsalesorder,它是standard的时候standard就是它可能beforebusinessstart,它就invite我们去一台hotel然后就是放假前咯,这些ok对于Tender是否需要更多的设计?  哦,.
+### Guest (2026-05-04T04:03:40.074Z)
 
-Speaker 1: 01:33:36 
- 对于设计,我们在Facebook的时候在做购买,然后应该要看你的样本文件,然后看怎样要做出来这个图片。 因为我们今天是专注于核心的先,然后对于设计我们会有跟进的会议来进行深入研究。 Ok,soIthinkoverhere,customeruse,okthisone,yes,2A,2B,correct,2C,besidesubstitution,dimension,askingcustomer.  Ok,sothisoneIthinkalsofromJohnsonandJeremy,他们有跟我们share,如果有一些SKUoutofstock,inGSD是commonpracticetohaveasubstitute,所以我们想了解更多这些规则,通常会发生什么样的情况?  比如说,如果我们说我们要在夏天停止购买产品,然后在冬天召唤.
+is sorry. PO Excel format. PDF. 예어이 있어도하. 예. Okay? No. No. The order volume so so it could be it
 
-Speaker 3: 01:34:40 
- 203万人,那么我们会变成.
+### You (2026-05-04T04:03:52.155Z)
 
-Speaker 1: 01:34:42 
- 1503万人召唤吗?
+Number
 
-Speaker 3: 01:34:57 
- 我们有.
+### Guest (2026-05-04T04:03:56.784Z)
 
-Speaker 1: 01:34:57 
- 例子,我们有这个SlipperLobsterSlipperLobster平常比较.
+could be only men Normally, it's 10 item or, like, 20 item or a 100 item. Okay. Customer pricing around time. Okay. A product identified in SAP. Hey, Ivan, questions to talk about quotation. SAP quotation function. 你 比 如 说 ， 他 们 说 说说 So item I think this one, the meeting, we can get some samples to understand further and see how to when can support on, like, how to do it in a way that it can be usable. For prospect or lead. Reach 了 解 ， attributes so is external facing item link. Your customer request Oh, I want information about this item shared I don't know if they can't like the public facing the item SKU information. So this Quotation quotation usually your your company header pricing pricing Right. You wanna show yeah. Just open one of the PDF. Of the Mhmm. The PDF. No. Yeah. The standard formatting
 
-Speaker 2: 01:35:04 
- 好销量是20到230OK,然后它会断货,断货我们就建议客户能够拿小一点的嘛,小一点的尺寸这样子,所以我们从那我们会做一个交换的交换哦。 哦,我明白了。 对啊,也是一样这样子。 通常是货币有换,有不够,那我们就会换。 比如说今天的夏天这样子,我们有时候会有季节或者是供应商的货币不够过。 我们先有的货可能是中国的沙文,然后我们再评价.
+### You (2026-05-04T04:06:49.255Z)
 
-Speaker 1: 01:35:58 
- 中国的沙文。 我明白了。 让我重复一下。 所以交换是类似于货物,但是有不同的特征。 所以是不同的尺寸。 只是一层楼梯或一层楼梯。 明白了。
+Hace mil.
 
-Speaker 2: 01:36:18 
- 首先他也要跟顾客沟通。 客户能够接受吗?  或者客户要.
+### Guest (2026-05-04T04:06:50.574Z)
 
-Speaker 1: 01:36:27 
- 所以期望是Maya可以避免.
+SAP PDF generator
 
-Speaker 2: 01:36:31 
- 这些提议吗?  嗯有时候是brandA它已经换了所以它要用brandB罢了Ok,.
+### You (2026-05-04T04:06:54.065Z)
 
-Speaker 1: 01:36:41 
- 明白Ok,所以2DBombProcessing所以这个是processing和repackaging那里也有repackaging的部分新的SKU会很经常吗?  就是每个月我会订阅56个新的SKU.
+Bien.
 
-Speaker 3: 01:37:23 
- 他们没有关闭,我们通常不会这么快关闭。 明白,所以很常会有新的项目。 大约.
+### Guest (2026-05-04T04:06:54.164Z)
 
-Speaker 1: 01:37:30 
- 是什么速度?  5,6个月?  还是更多?  我认为有10.
+override the SAP generator format override ticket format. Configure default to format. Format to follow format. So to the yes. We we can we can figure this out a bit later on. Mhmm. I think the feature that you are specifically asking for is say this item number one, you want to attach the image of the item. Right? Mhmm. Yeah. So so right now, you attach the image inside the description there. Is it? Or is it in a separate description So, even the PDF pricing update retail, seeing the supermarket it's case by case basis. Sales Go back to above the listing, quotation to the life cycle, graph open up loss.
 
-Speaker 2: 01:37:32 
- 个月。 每个月有10个.
+### You (2026-05-04T04:08:35.905Z)
 
-Speaker 1: 01:37:32 
- 每个月有10个月。 每个月有10个月。 每个月有10个月。 每个月有10个月。 每个月有10个月。 每个月有10个月。
+Awesome.
 
-Speaker 3: 01:37:38 
- 每个月有10个月。 每个月有10个月。 每个月.
+### Guest (2026-05-04T04:08:37.404Z)
 
-Speaker 1: 01:37:41 
- 有10个月。 每个月有.
+Filter order volume So quotation double or
 
-Speaker 3: 01:37:43 
- 10个月。 每个月有10个月。 每个月有10个.
+### You (2026-05-04T04:08:46.485Z)
 
-Speaker 1: 01:37:45 
- 每个月有10个月。
+Me
 
-Speaker 3: 01:37:45 
- 每个月有10个月。 每个月有10个月。 每个月.
+### Guest (2026-05-04T04:08:47.424Z)
 
-Speaker 1: 01:37:49 
- 有10个月。 每个月有10个月。 每个月有10个月。 每个月有10个月。 每个月有10个月。 还.
+triple that? Quotation volumes order So quotation, the volumes
 
-Speaker 3: 01:37:52 
- 蛮常见的。 还蛮常见的。
+### You (2026-05-04T04:09:01.775Z)
 
-Speaker 1: 01:37:53 
- 也许超过10次。 也许超过10次。 那意味着在SAP你会有,基本上就像是一个工具,你也会设置,因为它是一个剪裁的产品。 你也会有,基本上就像是一个工具,你也会设置,因为它是一个剪裁的产品。 你也会有,基本上就像是一个工具,你也会设置,因为它是一个工具。 你也会.
+por
 
-Speaker 3: 01:38:12 
- 有,基本上就像是一个工具。 你也会有,基本上就像是一个工具。 你也会有,基本上就像是一个工具。 你也会有,基本上就像是一个工具。 你也会有,基本上就像是一个工具。 你也会有,基本上就像是一个工具。 你也会有,基本确保这些转换的产品保持价格,否则账户会非常苦惱,因为他们不知道,如果我们没有捕捉到这些产品的价格,账户会非常苦惱。 什么意思是保持价格?  假设我们说这.
+### Guest (2026-05-04T04:09:04.784Z)
 
-Speaker 1: 01:38:39 
- 只鱼的价格.
+every month. Quotation 이게 다시잖잖잖요. 이게 시으 official.
 
-Speaker 3: 01:38:39 
- 是10克,那是10元,所以价格是10元,然后我们想转换这个价格,因此,我们也需要确保这个数据是正确的。 否则,您的账户会问您在哪里找到这个数据。 假设您改变了这个数据,您决定自己要放10元,然后这个数据是10元,或者1元,假设你的沙盘10公斤可以拿到6公斤的沙盘,那10公斤的沙盘可以拿到60公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,那沙盘是1公斤的沙盘,一公斤的柠檬只值一元,所以柠檬只值一元。 然后支付宝是RM60,所以只有RM61,所以平均是RM29,非常非常好。 所以我们并没有将价格放在自己的身上。 我们确定价格,并保持RM10价格。 所以你们将将价格设定为RM10价格?  是.
+### You (2026-05-04T04:10:07.035Z)
 
-Speaker 1: 01:40:13 
- 的,所以他们不会.
+So that's now?
 
-Speaker 3: 01:40:17 
- 他们不能够加入这些数据,如果数据不保持价格。 我明白了。 总共价格是RM10,也就是说,数据必须是RM10。 他们不会考虑每一条线,但如果你锁定错误的数据,但他们也能够捕捉到总共价格相同的数据,然后有错误的数据,错误的错误,错误的错误,但它必須掌握輸出和輸出的相同價值否則它無法創造文件這意味著人類仍然需要.
+### Guest (2026-05-04T04:10:07.144Z)
 
-Speaker 1: 01:40:57 
- 說出輸出價值是多少但它們無法控制輸出輸出總是相同輸出是自動掌握自動掌握系統系統會自動掌握輸出價值的分配你必须像我们说的那样.
+So as long as to WhatsApp, your salesperson this item was a prize. What are you? I see. She'll go through the price and the things and the whole time.
 
-Speaker 3: 01:41:31 
- 像SALMONHEAD,我们如何推销呢?  我们先设定一个,因为如果说1对1是很简单的,但如果是1对2,我们如何设定价格呢?  但我们必须有一定的价格,像SALMONHEAD,我们设定3英镑一公斤,然后我们需要设定公斤乘以3英镑,然后是平均价格,Imeanthetotalvalueminusthesalmonvaluewillbethefilletingvalue.  Youmightinputthesalmonheadvaluefirst.  Itmeansthesalmonheadis3kg,3RM,thenitwillbe9RM.  那10RM9RM是91RM,所以91RM是一般的每公斤,那是唯一的价格。 我认为这个因为是设计的,.
+### You (2026-05-04T04:10:45.675Z)
 
-Speaker 1: 01:42:26 
- 可能一个好处就是可以用屏幕录音,这样我们就能够了解更详细,因为我认为这个不是一般的B1牌子,所以我认为这是一个好处。 所以现在所有的装备都已经有定期的终期日期了。 好,那我们怎么知道,因为刚才你提到,比如说这个版本进来,那它有6个月的生命,但很多的案例是我们想到,这些停止了很快就会结束。 所以现在没有办法去监控它。 没有办法监控它。 因为到目前为止,它停止了进来,我们没有监控任何东西。 SAE也很快就.
+Así.
 
-Speaker 4: 01:43:36 
- 会离开,因为不是根据版本.
+### Guest (2026-05-04T04:10:48.854Z)
 
-Speaker 3: 01:43:39 
- 的数字。 不要忘了分享给.
+I see. Okay. Understand.
 
-Speaker 4: 01:43:45 
- 你的朋友!  这就是为什么我们.
+### You (2026-05-04T04:10:51.515Z)
 
-Speaker 1: 01:43:54 
- 希望Maya可以给我们这样.
+Yeah. See.
 
-Speaker 4: 01:43:58 
- 的未来我觉得Maya如果.  我指的是新.
+### Guest (2026-05-04T04:10:54.804Z)
 
-Speaker 3: 01:44:00 
- 的,而不是现在的我认为.
+Okay. I think that's it. Let's go to the next question. So SKU one one card attribute mandatory I for the item database now, I think the more complex processing one is mostly the fish. Is there any other type of SKU that has complex processing like fish cut into many pieces? Anything else? Need processing one. Do you mean you want to do this? You you want me to this? Because of the different because this one has a special way to show you. And a special way to communicate in the system so Yep. Scalable my scalable thing we'll into for retail. Family bag vacuum pack with color practicing Yeah. We already want to confirm this item we can do grant. It means it's just, like, from raw material one to process to, let's say, repair either repair way to I I come in the wrong material is one kilo one. Then we want to repeat to five packet into 200 gram. We're also doing this this so so far with confirmation. It means, like, we want to sell in on this small So we need to the raw material in original packing, want to look and then we type to maybe our design plastic, and then we pack 200 gram per This is one one one of the when it went out the output in my it it will not be the same item code with the original. It must be $200 per Yeah. Value. Understand. Okay. Ready a water, and then they I mean, cook also. Is a market way. See. But we do need to see the market how they can do it. We we want to do, I mean, a conflict. K. If let's say they are 10%, then we also do 10%, then the price we we also can do I see. Because of the are nonblazing
 
-Speaker 1: 01:44:02 
- 他们可以做这些因为它也会依靠Batch它.
+### You (2026-05-04T04:14:40.915Z)
 
-Speaker 3: 01:44:06 
- 也会依靠Batch来围绕这些Batch所以我们可以做的就是这些这就依靠WFS,不可能他们能够.
+Yeah.
 
-Speaker 1: 01:44:15 
- 从这边捕捉到这么多人如果数据在SAP内,我们可以支持存储并供应通知,但如果SAP没有供应量,我们也不能供应供应供应的信号。 但是我们可以供应的是货币运动,因为我们可以供应货币的销售信号。 所以我认为现在我们应该谈谈价格所以一切都是基于盒子协议这个盒子协议也是一般的外壳功能,不是设计,是吗?  盒子协议?  系统的,原装的原装的吗?  是否有其他设计的地方是你们之前.
+### Guest (2026-05-04T04:14:41.134Z)
 
-Speaker 3: 01:44:55 
- 做过的?  除了货币转换哦,好.
+We are nonblazing. They are 10%. Then they say, hey. Your your price is so high. We we want to know why so high is people where then then we find out this this this something like that. So this also so called is a processing. Understand. Ok. For, like, let's say, I think we did talk about the more comp
 
-Speaker 1: 01:44:58 
- 的,好的,谢谢,谢谢.
+### You (2026-05-04T04:15:01.355Z)
 
-Speaker 3: 01:45:09 
- 我认为信用卡是根据我们的需求然后他们已经设置好系统然后另一个就是.
+Okay.
 
-Speaker 1: 01:45:17 
- 信用卡,然后没有其他这两个是主要的部分价格、价格、客户状况、信用卡、证券、睡眠所以SOA的生产和邮件现在的邮件是手写的我们需要手写一份一份的SOA所以那是一个自动的申请对,好的,所以是信用软件,对,客户存在,自动阻挡,然后批准需要有信用批准处理器,呃购物船,不,我认为这个是在SO。 在关于付款,呃付款收集,所以我们说客户已经做了付款,他们如何通知GST?  他们通知同一人,然后销售团队。 你会有另一个WhatsApp.
+### Guest (2026-05-04T04:15:03.054Z)
 
-Speaker 3: 01:46:17 
- 群组吗?  哦,是的,客户支付。 所以下一次,销售人员会直接.
+one, like, the summon cutting. Right? Because the summon say, talk about the tails from there's big to small, but then you will actually not have let's say, one thirty and twenty fillet is discrete. Six fillet is not a great because different sizing.
 
-Speaker 1: 01:46:22 
- 通知Maya,Maya就会在系统内,所以管理员想看到,他们会去系统检查。
+### You (2026-05-04T04:15:18.485Z)
 
-Speaker 4: 01:46:29 
- 就像这个,如果是另一个.
+Eight eight. So it's
 
-Speaker 3: 01:46:32 
- 团队,我们会怎么处理这个?  哪个.
+### Guest (2026-05-04T04:15:21.144Z)
 
-Speaker 1: 01:46:36 
- 顾客付费?  因为当他们转账时,Maya会问哪个顾客付费,然后他们会创建一个付费软件在系统内,然后你就可以转账,而不是总是要检查货币。 那如果我们说付费不是付费相同.
+So it's all different SKU or is same one SKU but
 
-Speaker 3: 01:46:50 
- 的价格?  不,付费软件是一块一,你可以选择哪个软件付费。
+### You (2026-05-04T04:15:23.695Z)
 
-Speaker 1: 01:47:05 
- 对,因为有时候他们会付10K,10个订单,之类的,所以我们必须确认订单在那边。 所以下一次,而不是有很多这些WhatsApp群组去追踪,一切都会有一个订单在这里。 有时候有太多.
+So
 
-Speaker 3: 01:47:18 
- 的销售人,他们的账号也会失败,有时候,我意思是有时候,但是如果说可以自动化,也很好。 但是当然,如果付款进来,他们肯定会没有,帐户会每天检查但如果可以有这些设备,也很好所以.
+### Guest (2026-05-04T04:15:25.304Z)
 
-Speaker 1: 01:47:35 
- 主要的,我认为,我们说你们接受了Maya,对吧?  主要的变化其实是离开了WhatsApp群组所以销售人员,销售顾问会寄给MayaMaya会在这里创造这些产品所以我们说,我们说到付款我们说这些付款,进口到这里它与,我们说客户喝的咖啡有关有某种原因,我们说他们买鱼然后他们可以在这里设置付款参考图。 所以我们说,这个人需要检查是否会被资助,因为销售不能轻易删除付款。 所以销售人员会创造图纸,然后他们完成后,我们可以打开右侧。 所以这里有一个工作空间。 首先,你可以看到这个活动图纸,例如谁创造了这个东西,什么时候创造的,什么时候剪辑的。 然后我们可以进入插件。 所以支付证会在这里,或者在这里也会有,或者任何其他与此相关的插件,例如,你可能有支付建议,你会有电子银行的屏幕图片,或者查证,或者任何其他类型的东西,这些都是一般的插件在这里,然后在评论.
+then do you capture the seven is, I don't know, $20, but this seven is seven. Right? We don't know we don't capture a lot of frustration. We we we not look so complicated. So small. Scale. Mean, we not do sashimi. Mhmm. So it won't happen, like, how many how many Okay. So far, we are not I don't need to this. Understood. Sometimes we go to Japanese restaurant, they call belly part or whatever normal part. But then we we not do so specific. Understood. We just, like, big pillar portion state. Stick. Uh-huh. Some So the size variants all don't really matter as well. Because you we are using like, we already mean, from from the original three, four, we we do fill it then. It will be four kilo filleting. I mean, they we we ask Then the is around this this way I see. Surrounding this week. Understand. So We we are known so far away Like, so far no personal complaint. We know it's not that it's like just now we were talking about the salmon. Right? The salmon right now because in SAP is stored as the UAM is up kilo one, then difficult to track one ish to kilo one. Right? Right number. But in terms of your pricing, it's based weight. Kilo. Is this a kilo or not based on fish? No. That's why I see the original this way. So it could be could to customer also. Let's say what my goal is, like, one would be 2.5, 2.6, 2.6 times 50.
 
-Speaker 3: 01:48:40 
- 所以.
+### You (2026-05-04T04:17:15.135Z)
 
-Speaker 1: 01:48:40 
- 这个会是一个有话题的地方,因为有时候资金需要解释某些东西,或者你输入了错误的数据,他们可以利用这个位置来联系这个人,来工作在这个文件上。 因为现在如果你使用WhatsApp群组,大多数人会回复这里,回复这里,然后你会跳到这里,跳到那里去检查,所以这就是会造成很多的混乱。 所以现在一切都会是一张票,你可以自己工作在文件上。 你会看到一些改变在工作.
+Because
 
-Speaker 3: 01:49:11 
- 流程上所以他们总是要检查评论或是.
+### Guest (2026-05-04T04:17:16.674Z)
 
-Speaker 1: 01:49:14 
- 有什么通知?  当有评论或通知,他们会收到通知说如果有人提到某些东西在这份文件上你可以去那里问问或者点击链接到网站去查看Maya会直接带他们.
+Because if, let's say, I am selling no say, I was the item from the kilo to notes Of course, I need to know the kilo kilo So it's not like It's also not falling. Not like not matching. It's on what we original come in also. Maybe the way we we want to we go into? Record this one? Sure. That's that's And so the SAP, capture in the key log, we capture the cost Yeah. Actually actually, the the reason in kilo is also because of the costing, the base is that think this one, the only way to overcome problem, right, is to either use the batch order to use the serial number only. That's the way to overcome the confusion between, you know, you earn backup later this stock, is like that. So that's the that will be the challenging part there. In terms of couple of finishing baseball. Can but the but the thing is the they do the conversion. It will be a static conversion. So that means one kilo fish usually is I'm sorry. One fish usually is two the difference is one fish not always two KG. Yeah. Yeah. That's that's why that's the Yeah. That's the part. Yeah. So that's why it's, like, serial number also the way that because if pricing based on kilo, then the way you use serial number is every fish has a particular serial number that capture the weight of the fish. So that would be the challenging part. But I think
 
-Speaker 3: 01:49:26 
- 进来这里吗?  或者在WhatsApp也可以谈谈.
+### You (2026-05-04T04:18:49.165Z)
 
-Speaker 1: 01:49:39 
- 好,我们继续问一些问题,创造图标,资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金资金.
+for
 
-Speaker 3: 01:50:00 
- 资金资金资金资金资金资金资金资金资金资金资金资金资金资金.
+### Guest (2026-05-04T04:18:50.214Z)
 
-Speaker 2: 01:50:07 
- 资金资金资金资金资金资金�SODOInvoice,我们不使用SAP编号,所以我不确定,但是任何与我们公司有关的信息,都会.
+the current application, you may not want to do until that level because too much work. Okay. Correct. K. Okay. Okay? Item by pricing costing the file selling price to submit function system
 
-Speaker 1: 01:50:20 
- 在CrystalReader。 哦,这是一个SAP信息,.
+### You (2026-05-04T04:19:58.235Z)
 
-Speaker 3: 01:50:27 
- 所以这是一个PDF档案吗?  是的,这是一个PDF档案。
+K.
 
-Speaker 2: 01:50:43 
- 选项也是.
+### Guest (2026-05-04T04:19:58.294Z)
 
-Speaker 1: 01:50:44 
- 这样的哦,是这样的,只是要跟随图标吗?  好的,明白了所以我认为这里的一个行动点其实就是要有这些文件的样本然后这些文件我们也会更多地认识当我们与IT企业谈话时来看看我们能不能重新使用SCPB1的PDF软件ok,所以谁能够设置新的CBRN数据,ok?  所以CBRN客户收购要求是什么?  请向前.
+see. Creating creating sales order tender before business start invite woman 但 ，
 
-Speaker 2: 01:51:26 
- 移动。 客户收购要求是什么?  刚才我们已经说过,这是客户向销售部发送CBRN来监视移动。
+### You (2026-05-04T04:20:22.955Z)
 
-Speaker 1: 01:51:43 
- 这叫CrystalReport吗?  或者你可以设置一个,比如你可以改变这个东西,然后文档就会改变。 CrystalReport.
+I see.
 
-Speaker 2: 01:51:54 
- 你不能自己做吗?  我们通常不会.
+### Guest (2026-05-04T04:20:24.004Z)
 
-Speaker 3: 01:51:56 
- 自己做。 我们会有工作人员帮.
+I see. Okay.
 
-Speaker 2: 01:51:58 
- 你做。 另一个是UDF,UserDefinedTool,这些都是简单的,但有限的功能。 通常我们会要求SAP的顾客把文件放在Crystal的.
+### You (2026-05-04T04:20:24.975Z)
 
-Speaker 1: 01:52:13 
- 报告中。 明白。 那这个是免费的订单,这个是...  对,苏星先生,你刚才说了一些关于这些,是我们之前谈到的一些事情,就是公开的预约。 但是我认为,根据Misthio和团队的分享,主要的部分是在确认预约上显示购物预约,以避免过销。 对,我认为是这样。 所以这条是有点,这条是约定的,因为在某些企业,他们会预先预约货币,甚至预先确认货币。 但我认为在GST的情况下,听完商务过程之后,其实不是那样的用途,但其实一旦订单确认,我们想要避免过多的销售,以便某些销售员可以销售订单,专业销售员A的订单,并且并没有满足。 然后是销售员之间的矛盾。 这个,这个,这个,这个所以实际上这个是什么,第八个D是有关于呃,订单不移动啊,所以这意味着这个订单,让我们说20块硬币,呃放置一个月前,但是并不满足,所以这意味着,让我们说50%满足,然后它并不被移动了,因此,在某种程度上,这是一个信号来显示,呃某种行动必须被取得,或者看看为什么这个订单并不满足,以便我们能够避免像我们刚才所提到的死亡的股票情况。 让我们说,顾客不想再使用股票的资源。 那么,谁还想收到这张卷子?  购买并提前购买。 转移到SO。 购买。 Ok,aging,whatdefinesagingnearexpiry?  Sothisoneoverherebecausewedonthavebatch.  Soyeah,sincethisoneisaphase2thing.  SothenthisneedstogohandinhandwithbatchandserialnumberusageinSAPtogetheralso.  Sothatwillbeaprerequisitefornumber9.  Excelreport.  所以这个是你们想要的,我觉得这个是与你所说的Mr.  Suchin在设计桌面或报告上的关系,是10号吗?  不,这个是,这个是,当我们在海外订货.
+Four tendon
 
-Speaker 2: 01:55:05 
- 时,我们需要提供购买报告,.
+### Guest (2026-05-04T04:20:26.344Z)
 
-Speaker 4: 01:55:24 
- 要.
+For customize the
 
-Speaker 2: 01:55:24 
- 知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費者需要知道消費老板会知道,只要他敢签名.
+### You (2026-05-04T04:20:28.475Z)
 
-Speaker 1: 01:55:58 
- 所以是要求信息帮助购买决定?  是的好的,所以要做购买决定,你需要有停止变老的报告,打开SO然后客户购买,实际上CPRN在这里并不合格。 客户AR。 CPRN也是。 呃,这一个就像是一个正式的购买订单,因为那一个也没有捕捉需求信号。 然后客户AR。 所以这意味着出色的订单啊,也需要。 是的。 然后购买图片。 哦,年龄,那个已经是年龄了。 所以其实所有这些.
+Oh,
 
-Speaker 3: 01:56:41 
- 东西。 为什么需要购买年龄数据?  我认为这是一个货架分析为什么需要货架分析?  为什么需要货架分析?  您想做什么?  像克里斯蒂娜一样吗?  我真的不明白您想做.
+### Guest (2026-05-04T04:20:30.284Z)
 
-Speaker 2: 01:57:03 
- 什么我认为这个更符合我们的运动计划这个更符合我们的报告这个问题是你提出的,对.
+Oh, under customization. Okay. Then this one,
 
-Speaker 3: 01:57:20 
- 你想要知道主要的内容是什么?  因为我有点混乱,我不太明白你想要什么。 请问,ExcelExportCompliment是哪些数据转移到Export?
+### You (2026-05-04T04:20:31.645Z)
 
-Speaker 1: 01:57:50 
- 我.
+thought
 
-Speaker 2: 01:57:50 
- 不是很确定,这个应该是回应我们的评价。 Sajit,.
+### Guest (2026-05-04T04:20:38.384Z)
 
-Speaker 4: 01:57:59 
- 这个是指停止快速移动还是.
+sample document feature. Okay. Think for focus on the call call Okay. Customization follow-up the meeting. In detail, deep dive Okay. Okay.
 
-Speaker 3: 01:58:02 
- 慢速移动?  我不懂。 那这个.
+### You (2026-05-04T04:20:56.285Z)
 
-Speaker 4: 01:58:06 
- 应该是停止快速移动还是慢速移动?  哪一个快速移动快一点,哪一个停止慢速移动?  这个.
+So Okay.
 
-Speaker 1: 01:58:26 
- 是不是讲是全面StockOverflow?  因为这个我认为是在回复SOW它也只是一条线就是ExcelExportSupportforPlanningOperationalReview所以我们想了解一下这是什么因为这个是一个设置要求其实.
+### Guest (2026-05-04T04:20:57.944Z)
 
-Speaker 3: 01:58:43 
- 我有漏掉因为你们的Conversion之前我是没有参与到所以我.
+I think over here, customer use this one, yes. To a, to b, correct. Two c. Substitution. Dimension, asking customer. Okay. So
 
-Speaker 2: 01:58:47 
- 只是删了这个这个是你的是吗?  你是有跟他们讲过这个有一个功能是要ExportExcel然后就是moretopurchase的东西了是我吗?  因为.
+### You (2026-05-04T04:21:13.445Z)
 
-Speaker 3: 01:59:01 
- 我完全很不明白他讲什么的所以我有一点这个就ok,accesssupport,planning就ok可是那个跟刚才讲的东西是.
+Okay.
 
-Speaker 1: 01:59:12 
- 不一样的哦那个是问题就是要clarify这个东西要来做什么Ok,soIthinkbusinessneedhereisGSTwantstoexportdataforreview,filteringandplanning.  Butthendashboardisnotenough,soyouneedtherawdata.  为什.
+### Guest (2026-05-04T04:21:13.484Z)
 
-Speaker 3: 01:59:38 
- 麽是这种设计?  那个是计划订单不一样的不一样,刚才我看到stopaging我又讲到export他讲的是excelexport,跟我们那个export我有点confusing为什么.
+this I think also from Johnson and Jeremy. Many you can share SKU out of snow. And GSE is a common practice to have a subsidy product. Right? So wanna understand a bit more what these rules are and usually what kind of scenario will this thing happen. I I I don't know. Substitution rule. So let's say say that I don't give him a score. Or someone two two hundred then we change it, like, one fifty to 300 sometimes. One who who
 
-Speaker 1: 01:59:58 
- 要export那个是我们的interpretation所以现在因为这个在SW里面是很简单的就是因为这边关于customizationtree它是说需要exportdata罢了所以我们要明白是要export什么data.
+### You (2026-05-04T04:21:50.205Z)
 
-Speaker 3: 02:00:19 
- 我们说如果你想策划一份订单,你需要什么数据?  你如果说年龄不等通,因为年龄是讲你的,你的数据是多少年龄了。 你没有可能计划订单要拿你的,跟你要拿那个数据多少年龄有关系吗?
+Theresa?
 
-Speaker 4: 02:00:41 
- 没有关系。 我觉得应该是写错的.
+### Guest (2026-05-04T04:21:52.664Z)
 
-Speaker 3: 02:00:46 
- 这样它不是应该是写错的没有啊这个东西是在讲这个planningorder对啊对啊对啊planningorder.
+raise someone, I also got confusing. This are we hear from? Johnson and Jeremy one where sometimes where? Number two c decide the substitution and how to like, how substitution happens. Sleeper lobster. Lobster hot selling substitution, the replace I see. Stop. You you you you you you you Friday late. Okay. I see. So the
 
-Speaker 4: 02:00:53 
- 那个就不同哎那个好像没有什么关系.
+### You (2026-05-04T04:22:55.835Z)
 
-Speaker 1: 02:00:55 
- 到啊应该是写错是吗不是.
+So we
 
-Speaker 3: 02:00:56 
- 那个是我们的interpretation还是anotherfunction.
+### Guest (2026-05-04T04:22:57.304Z)
 
-Speaker 1: 02:01:01 
- 不是不是那个是我们的interpretationof这个东西所以可能interpret错啦应该是interpret错啦所以现在.
+let me reiterate. So the substitution is similar
 
-Speaker 2: 02:01:09 
- 是.
+### You (2026-05-04T04:22:57.845Z)
 
-Speaker 3: 02:01:11 
- 他的challenge是因为我讲我们要planningorder我们必须要拉很多rawdata出来我才能够有办法去做一个planningorder我必须要拉我的production我必须要拉我的planningproduction的historical还有我必须要拉我的salesanalysis的historical然后我们会拉几个月来做一个预测一个计划计划是为了生产计划吗?  不是为了生产计划不是为了生产计划也是为了交易因为不是每个产品都需要生产计划但是我们也有交易产品进出但我们想确保我们的产品有足够的价格有时候我们说我们有10个产品但我們如何專注於如何計劃緊急的計劃?  我們必須保持狀態我們必須行動很隨意我做出計劃我經常要求他們先去看這項計劃然後再計劃但我們必須把很多數據intothisgoogletoexcelonlywecanabletoknowthisactionohyougotwhatimeanbecausethisactionismoremorevaluemayayaweneedtoknowthisitemneedorderornotahbutthenweneeddomanythingsonlywecancometothisstage.
+you should
 
-Speaker 1: 02:02:53 
- 明白,我认为我们需要一份核对图表,以便我们了解如何进行计算。 我明白的是,你们不使用安全货币来刺激货币订货,因为有时候不考虑货币的质量。 有时候.
+### Guest (2026-05-04T04:23:01.454Z)
 
-Speaker 4: 02:03:12 
- 我们也无法判断货币是哪.
+item but different specification. Different size, different Understand. Customer communicate whether customer accept
 
-Speaker 3: 02:03:15 
- 一种货币。 有一个更快的方法,这一个我没有足够的停止,但是更快的我明白了,好.
+### You (2026-05-04T04:23:17.005Z)
 
-Speaker 1: 02:03:24 
- 的,所以我认为我们可以检查和深入进入计划,我认为这是计划的Excel图表所以是什么类型的计算机,你们已经知道需要什么数据了好,那我们继续下一页然后是数据的第十个表格是的,这一项也已经提到,所以它应该是每月三日前,并自发发送到客户订阅邮件。 好吗?  所有B2B接受,所以第二个问题是所有B2B接受现金项目。 我认为这里的选择是,我认为第一个版本是SAPCrystal的SOA但后来也有一个网络网站的要求,让他们可以点击一个链接来查看哪个硬币的确认。 主要的部分是链接的安全。 现在Maya的使用者会是销售、金融、货物和管理。 用户需要网络访问,大多数的工作人员会说英语,马来西亚,还是中文?  这取决于工作人员的语言。 比如说KL是马来西亚人,.
+I see. Today.
 
-Speaker 3: 02:04:59 
- 我认为是马来西亚和英国。 因为我们有三个国家。 我们有马来西亚,中国和印度。 中国和中国。 中国和中国是中国。 中国和.
+### Guest (2026-05-04T04:23:22.744Z)
 
-Speaker 2: 02:05:11 
- 中国也用英语。 所以我们会用英语。 SAP的产品也在英语,所以字幕也在英语。 对,.
+So the expectation here is surface suggestion. Okay. Brand new one hero with a brand a brand brand brand
 
-Speaker 1: 02:05:33 
- 字幕也在英语。 SAPB1你知道版本号码吗?  10.。 登录屏幕在.
+### You (2026-05-04T04:23:36.725Z)
 
-Speaker 2: 02:05:41 
- 哪里?  我猜是10.
+Bye. K.
 
-Speaker 3: 02:06:01 
- 哎,.
+### Guest (2026-05-04T04:23:38.534Z)
 
-Speaker 2: 02:06:02 
- 阿春你知道吗?  嗯,差不多这样,差不多10多了。 10.2秒没错。
+k. So to the processing so this one is processing and repackaging. There's also a repackaging part here. Item master. Often new items are added or changed. SKU out of no longer selling items lifecycle management I could say. Month, maybe I will register five or six new new items. Always have. Then all items, no more selling, we will disable also. They were not disabled. Normally, we not not disabled so fast. I see. Okay.
 
-Speaker 3: 02:06:10 
- 还有一个问题是,你们知道,对不起。
+### You (2026-05-04T04:24:25.685Z)
 
-Speaker 1: 02:06:14 
- 你们知道这个帮助是在互联网上,还是在市场上?  10.0019110.  001910.1910.
+So I
 
-Speaker 3: 02:06:30 
- 191我认为剩余的问题我们.
+### Guest (2026-05-04T04:24:26.594Z)
 
-Speaker 1: 02:06:34 
- 可以与SAT企业商谈谈这个我们当你想与他们谈话时其實這個星期也可以,明天也可以我們可以直接聯絡他們,或者.
+So if you're going to have any other things,
 
-Speaker 3: 02:07:03 
- 我們可以組織一個群組,讓我們.
+### You (2026-05-04T04:24:26.695Z)
 
-Speaker 1: 02:07:04 
- 幾個人一起聊天,像WhatsApp群組也可以我想我們可以在這個星期舉辦一個會議對,在這個星期我們可以舉辦一個.
+last
 
-Speaker 2: 02:07:17 
- 會議.
+### Guest (2026-05-04T04:24:28.814Z)
 
-Speaker 1: 02:07:31 
- 在.
+what is the velocity? Five, six a month? Or more? Maybe different, we also think as a one SKU. One SKU. Correct. So quite frequently. K. Maybe more than More than 10. Okay.
 
-Speaker 2: 02:07:31 
- 网上聚会聚会聚会聚会.
+### You (2026-05-04T04:24:53.535Z)
 
-Speaker 4: 02:07:38 
- 所以我.
+K. So the
 
-Speaker 1: 02:07:38 
- 认为最后两个就是UAT所以在这里UAT通常会有一个专业训练会会是两三个小时的训练就像今天一样但是会有不同的功能在UAT这次我们完成了CoreMaya训练的设备我们会与重要的人员一起专业训练我认为在这个阶段,我们的目标是先做PinangBranch,因为大多数90%是B2B销售。 接下来,我们不仅会发送今天会议的会议时刻,我们还会提供问单给GST团队,这个问单包括一些业务相关的资讯,我们会设定什么样的样本资料我们需要,有时候你还可以包括屏幕录像,比如说你可以拍摄屏幕或录制屏幕,如何处理SAP订单,以便我们可以在内讨论,可以了解你如何做这些事情。 Andthenwhatelse?  SoIthinkthatsforsection14.  Okay,bye.  No,gobacktothepreviousone.  Thequestionnaire.3May.3May26th.  Yeah,thisquestionnaireisall.  Itsjustatemplate.  Laterwewillhaveafinalizedonethatiscateredtothissectionwheretheywanttosendtoyouguys.  Gotonumber15.  OK,andlastly因為SAP的組合會需要一些時間因為我們需要跟IT企業商討論然後進行組合但我們還可以設置一個測試環境在此之前,你可以先輸出一些數據然後我們可以開始測試你的用途從你目前的SAP可以輸出203個物品我们想做一个50个顾客,然后我们可以设置一个示范模式,然后我们可以设置一个示范模式,然后我们可以设置一个示范模式,然后我们可以设置一个示范模式,然后我们可以设置一个示范模式,然后.
+### Guest (2026-05-04T04:24:55.084Z)
 
-Speaker 2: 02:10:23 
- 我们可以.
+So that means in SAP, you have a main something like a bomb that you you will configure also. It's a cutting manufacturing item. We're not doing bomb. I know using bomb. Yeah. Using? For the store This transformation also is is so called customization. Why is so this why why is this so? Because we relate to make sure this item, we do this transformer must maintain the value or else that account will be very suffer because they don't know if, let's say, we not capture this item of value one, then it will be very for marketing for What do mean maintain the value? Okay. I say you say this speech someone is ten kilos. It's a 10 ringgit. So the value is 100 ringgit. Then we want to transform this to dealer.
 
-Speaker 1: 02:10:23 
- 设置一个示范模式,然后我们可以.
+### You (2026-05-04T04:25:44.595Z)
 
-Speaker 3: 02:10:26 
- 设置一个示范模式,我们可以.
+so we
 
-Speaker 1: 02:10:31 
- 给产品名单对,产品名单我们可以购买产品名单的价格名单因为我们不需要购买所有的东西,只需要数据然后配合产品名单的资讯例如这20个产品,这20个产品名单的价格名单可能有501个顾客然后还有什么?  用户,.
+### Guest (2026-05-04T04:25:45.494Z)
 
-Speaker 3: 02:10:53 
- 顾客,工作人员顾客.
+So we also need to measure this or or plus this salmon head must be maintaining this value correct amount. Because you cannot out of this value or else either your Yeah. Value. Your your account will ask where is this let's say you transform this, you you you decide yourself, want to put a Then this this is $1.01 10¢ 1 ringgit. Then the the balance value if let's say you're someone ten kilo can get six kilo, then $6.06 6 and
 
-Speaker 1: 02:10:54 
- 是顾客的名称顾客名称客户名称,因为我们也想试试信用限制和信用标准,所以有些客户有信用限制,有些没有。 所以我们可以测试,因为我们很重要的是我们要配合你的ID,因为SAP都是用客户口号,所以你应该有类似的经验。 我们有这些客户名称、地址、城市、国家地址、邮件、公司的名称等等所有这些信息都会给予我们这就是测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数我认为从我们的角度来看,我们已经获得了我们所需要的资讯。 我们在这次会议之前,有什么要说的吗?
+### You (2026-05-04T04:26:18.655Z)
 
-Speaker 2: 02:12:35 
- 谢谢苏杰.
+six
 
-Speaker 3: 02:12:36 
- 我们会开始给您列表,然后进行测试吗?  我们会设置,因为.
+### Guest (2026-05-04T04:26:22.044Z)
 
-Speaker 1: 02:12:44 
- 现在主要的阻挡者是SAP的连接所以我们通常会拿到一些样本数据,我们会先测试一个档案然后我们会设置一个档案与那个数据一起使用,以便GST团队可以开始试用Maya,以便您可以有最初的所以Pinnank和.
+maybe trying to get the 60 gigahertz ring, then the is one gigahertz will not consider four kilo one, maybe one kilo only. Where is the balance value 60, we say,
 
-Speaker 3: 02:13:06 
- KL需要分成两个组合吗?  我.
+### You (2026-05-04T04:26:34.385Z)
 
-Speaker 1: 02:13:09 
- 认为这里有一部分是错误的。 所以目前在SAP,是否Pinnank有自己的SAP,KL有自己的.
+say?
 
-Speaker 3: 02:13:16 
- SAP?  我意思是,我们可以在同一个系统上计算每个组合,它们.
+### Guest (2026-05-04T04:26:35.704Z)
 
-Speaker 1: 02:13:23 
- 在我们的内部。 哦,两个组合。 但是在同一公司。 同一公司。 哦,那么在同一个系统,其实两个软件都可以使用。 是的,我们可以在那里设置我们.
+total value is one kilo salmon cake, one one rated some one rated value. So one we get is one. The is one we get only. Then the spiller is 60 So 61 only So the balance 39, where where is we we not we not doing this, like, no they they putting their their cost personally. Will they must they they must be confirm this value must be maintain this 100 value. This one, you guys customize SAP for this or this So they will not they were not able to add this input if, let's say, the amount not maintain the value. I see. The total value is hundred hundred mean, the input must be 100 ringgit. They're not considered every single line. But then if let's say you're wrong wrong item cost, but then they also capture the total value state as the output. Then there's manual wrongly manual mistake. But then it must be capture input and output same value. Else they're not able to create the document. That means the the human still will need to say that this input value is this much, but they don't control the output. Output is always the same. And is captured on the system from Sun. So the system will man will will is there the the distribution of the value is even or different? So just now like I mentioned, one. The fillet is, let's say, ringgit. The system will also accumulate How how do Well, new must new must. Like we say that, like, how we going to sell them. We set up a one because
 
-Speaker 3: 02:13:35 
- 的客户我们有P30,KL是.
+### You (2026-05-04T04:28:18.355Z)
 
-Speaker 2: 02:13:37 
- K30哦,不同的客户我们的账户也一样我明白了我们的账户和支付都分开了,.
+So
 
-Speaker 3: 02:13:44 
- 很简单但你分开了客户密码是的所以这意味着我们.
+### Guest (2026-05-04T04:28:30.824Z)
 
-Speaker 1: 02:13:48 
- 说IvanIvan可以是Bineng的客户和KL的客户不,Bineng是Bineng,KL是KL所以如果Pinang想要从KL购买也可以吗?  但是是在Pinang的.
+if, let's say, one to one is very simple. But then if one to two how we're going to set up the cost. Correct? Yes. But then we must a fixed cost for certain items. Like, we fix at 3 Indian per kilo. Then we need to we need the kilo dance. The triggering gate then the balance value I mean, the total value minus the summon value will be the electing value. The summary hit. Right?
 
-Speaker 3: 02:14:05 
- 帐户下吗?  如果是KL的客户的话所以每个顾客都很独特,.
+### You (2026-05-04T04:29:06.265Z)
 
-Speaker 1: 02:14:17 
- 不会有购买顾客的帐户吗?  不会的。 那这个呢,要回答这个问题。 你必须做最终决定,哪个顾客需要购买。
+I mean,
 
-Speaker 3: 02:14:34 
- 要不然会很复杂。
+### Guest (2026-05-04T04:29:07.334Z)
 
-Speaker 1: 02:14:34 
- 所以在这个情况下,在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以.
+Means the is three kilo, 3 ringgit, then it will be 9 ringgit. Understand.
 
-Speaker 2: 02:14:50 
- 在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以在某个情况下,可以然后你只能建立文件处理器。 哦,就像.
+### You (2026-05-04T04:29:11.655Z)
 
-Speaker 1: 02:15:09 
- 这样。 这是DataOwnership。 明白了。 所以我们必须在SAP看到他们如何设置,因为他们可以设置两个不同的实体在同一个Database,然后使用这种限制。 但我认为,可能有一个行动点是,是否有一个方法让我们获得客户帐户来观看你的SAP设置?  像是客户帐户,所以这意味着帐户只能看到你,进入SAP现时的SAP来看它如何设置?  没有,没有任何客户帐户每个人都有生存账号生存账号?  UAT账号是有的,但是.  UAT账号?  你有UAT账号吗?  你有UAT账号吗?
+the
 
-Speaker 3: 02:15:52 
- 你有UAT账号吗?  你有.
+### Guest (2026-05-04T04:29:11.814Z)
 
-Speaker 1: 02:15:53 
- UAT账号吗?  你有UAT账号吗?  你有UAT账号吗?  你有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?
+The 100 minus 9 ringgit is 91.
 
-Speaker 3: 02:16:00 
- 有UAT账号吗?  有UAT账号.
+### You (2026-05-04T04:29:16.225Z)
 
-Speaker 1: 02:16:03 
- 有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  有UAT账号吗?  SSHTunneling?  是的,是的。 我认为这个,我认为这个我们可以分享一下如何设置,然后我们可以去你的SAP设置页查看如何已经设置好了,然后我们就可以很清楚地看这个设置的影响,因为我们需要模仿这个设置的方式。
+minus
 
-Speaker 3: 02:16:39 
- 嗯,那如果我们从这里,用.
+### Guest (2026-05-04T04:29:16.974Z)
 
-Speaker 1: 02:16:42 
- 我的帐号来看,我认为我们可以在这之后进行。
+So 91 will be the ability of average, the total kilo.
 
-Speaker 3: 02:16:50 
- 我可以转换到UAT帐号,让你来看吗?
+### You (2026-05-04T04:29:17.175Z)
 
-Speaker 1: 02:16:54 
- 我们可以转换到UAT帐号。 从Penang那边,.
+minus name
 
-Speaker 2: 02:17:01 
- 有没有其他问题?  Ok我认为我们已经几乎完成了我认为我们已经几乎完成了我还想.
+### Guest (2026-05-04T04:29:20.804Z)
 
-Speaker 1: 02:17:15 
- 问一个问题GST会使用任何Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?
+Then the unit price. Think for this one, because it's a customized one, maybe an action point is to get a recording so that can understand in detail. Because I think this one is not the standard b one feature. So okay. Let me send that to the point. People k. So a lot for the land between refreshers. Stock is shown to still. Person. Before confirming large order of salesperson on this call. Rash will help stop soft reserve. I think the sound can answer already. Soon. All based on expiry data. So currently, all the inventory has a set expiry date. To to to know when to trigger the notification. We have also. We don't have. We have. Okay. Then how do we know if because there's some invention, like, let's say dispatch come in. Then
 
-Speaker 3: 02:17:23 
- Meta项目吗?  Meta项目.
+### You (2026-05-04T04:30:18.285Z)
 
-Speaker 1: 02:17:25 
- Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项目吗?  Meta项因为我们主要是用WhatsApp所以在GST我们也需要设置一个Meta商务账号并设置WhatsApp商务账号所以这个我们已经有一个指示了但这只是一些行动点第四个就是创建一个AWS账号因为我们要如何安装Maya我们需要检查是否有商业性,但通常会由GST负责主管,以便你承担本货服务费用,我们不会签署任何服务费用。 因此,GST需要有AWS账号,并且它会通过AWS支付公司的信用卡。 因此,我们将安装在您的账号中,您将给予我们进入账号管理人,然后您将得到真正的AWS账号。
+let's say
 
-Speaker 2: 02:18:37 
- 所以.
+### Guest (2026-05-04T04:30:19.234Z)
 
-Speaker 1: 02:18:37 
- 这会是几个与基础设施有关的东西当然还有API的钥匙因为我们使用的是OpenAI对现在主要是OpenAI所以你需要有OpenAILLM的钥匙所以我们会有一个指导教你怎么做这些东西Gareth会有一个主要的PIC帮助你但在内部应该有一个项目主管所以这意味着我认为我们应该联系一位专业人士,因为你们是部门的领导人,所以你们应该联系一位专业人士,我们会专业地专业地专业地专业地专业地.
+let's say it has a six six month shelf life Right? A lot of the kid cases is that you figure out, hey. This stop. Coming to expiry soon. Right now, there's no way to capture the There's no way to capture now. In SAP or Source. For incoming, we can be capturing that. I see. So okay. Hope Amaya can do, like, this feature for us like that. I think the way that Maya if I mean, for the new one, not for the now, Because they think this what they can do. But Because you you will depend on the batch as well. It will depend to have the batch to tie it, and this batch will be They are in to no one. Yeah. So what we can do is depends on the That's not possible they can capture from from this way. Manually. Yeah.
 
-Speaker 2: 02:19:38 
- 所以Joey会是.
+### You (2026-05-04T04:31:12.955Z)
 
-Speaker 1: 02:19:41 
- 我们的互联网互联网互联网互联网互联网互联网互联网互联网.
+If
 
-Speaker 2: 02:20:05 
- 所以下一步就是讨论和SAP对不对?  是的,SAP的供应商。 然后我们也需要.
+### Guest (2026-05-04T04:31:13.894Z)
 
-Speaker 1: 02:20:09 
- 提供一个号码来.
+The data is inside SAP, we can also
 
-Speaker 2: 02:20:11 
- 订阅MetaBusiness吗?  对的,需要.
+### You (2026-05-04T04:31:14.095Z)
 
-Speaker 1: 02:20:15 
- 购买一个公司的号码,设置MetaBusiness的账号,然后设置WhatsApp业务。 然后是AWS帐号和AWSBilling,最后是OpenAI的APIKey。 这就是GST的六项。 好的。 不要担心,我们会有指导和Gareth帮助你通过整个过程。 我们会与Joey一起合作。 不不.
+If guys
 
-Speaker 5: 02:20:50 
- 不,不是你的个人号码,.
+### Guest (2026-05-04T04:31:17.124Z)
 
-Speaker 1: 02:20:53 
- 但是你需要买一个新的公司的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。
+storing and surface and notification. But then if SAP don't have the batch, quantity also, we also cannot surface the batch related signals. I think what we can surface is the stop movement. Based on that, we can we can track for sales the sales signals of the stock. K? Down at most.
 
-Speaker 2: 02:20:57 
- 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。
+### You (2026-05-04T04:31:36.135Z)
 
-Speaker 3: 02:21:00 
- 新的手机号码。 新的.
+I see.
 
-Speaker 2: 02:21:00 
- 手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的手机号码。 新的.
+### Guest (2026-05-04T04:31:38.054Z)
 
-Speaker 3: 02:21:15 
- 手机号码。 新的手机号码。
+Pricing discount So I think just now we also talk about the pricing. So everything is based on a blanket agreement inside SAP. Blanket agreement is also standard out of the box feature. It's not customization. Right? The blanket agreement. I just No. Step before one. Is there any other points of customization for SAP that you guys have done before? Besides the stop transformation?
 
-Speaker 2: 02:21:17 
- 新的手嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯嗯不是一個電話,不是國民的那個要一起用的嗎?  沒有,就是一個電話罷了,一個電話罷了我們不需要,這個瑪雅不需要兩個人撥號碼那今天不需要嗎?  因為真的啊,還沒拿那個啊然後最後,最後是一個罷了嗎?  還是另外一個?  對,選一個罷這瑪雅還在聊天,在聊天啊.
+### You (2026-05-04T04:31:59.595Z)
 
-Speaker 4: 02:22:15 
- 我们是.
+Okay.
 
-Speaker 3: 02:22:15 
- 需要验证的吗?  对啊,我们.
+### Guest (2026-05-04T04:32:01.414Z)
 
-Speaker 2: 02:22:16 
- 不用,就直接发信号,不用到网络,就直接发信号,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接.
+Okay. Okay. I'll get it here. In the credit block is based on our requirement, Trevor block. They already set set up in installments, and then another one is Only these two is the main part. K? Pricing discount, customer conditions, sleep.
 
-Speaker 5: 02:22:25 
- 发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用.
+### You (2026-05-04T04:32:20.365Z)
 
-Speaker 2: 02:22:29 
- 到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用到网络,就直接发信号,不用.
+So the
 
-Speaker 3: 02:22:44 
- 这种时候就是我讲的requestinvoice啊我每次都我每次就是很很很烦啊很劳心劳力啊你看星期天十点request一点放工十二点放工也是没有做然后今天request一点来啦当然他还没有做啦你就等我,我都等你哦他就觉得这是你的工,你是我的工就在里面的人没有人做,看完就算了然后我觉得很费力啊很烦心啊,可是那个东西还是要做啊然后他们不认为那个东西很重要我就觉得这样6个人他也很无奈,因为只有他们能够帮他做然后没有人可以帮他retrieve那个invoice他又在外面。 因为现在.
+### Guest (2026-05-04T04:32:21.814Z)
 
-Speaker 1: 02:23:37 
- Outdoorsales没有accesstoSAP是吗?  他们没有.
+So the SOA generation and email
 
-Speaker 3: 02:23:41 
- Access,他们eventoSAP他们用电话罢了嘛,然后我们要send去PDF是很麻烦,很难嘛,他不能一件就send去他的whatsapp嘛,所以他还是很,他用电话还是很难去做这件事情,就是他不要做了嘛,他不能做,除非他回来office,或者他必须要用电脑access。 那如果还在外面做销售,imagine你们是做销售的,你是不是觉得我做销售我还要去做这个backend的工作,那backend就觉得我给你拿order我还要跟你做这件事情,那永远都没完没了。 我觉得销售员怕你的无奈,那whynot,销售员他可以直接request啊,不用看你也不用看你的脸色,不需要给你讲一分。
+### You (2026-05-04T04:32:24.705Z)
 
-Speaker 2: 02:24:20 
- 对吧?  希望这个Maya是能够给消费者的工具来的,他要检查他的日程,他要检查他的交易项目,他要检查他的停止运作,然后信用控制都得在这边完成。 所以它是比较像一个消费者的工具。 然后又有AI的赋能,让他能够更快。 我不.
+I will.
 
-Speaker 3: 02:24:48 
- 想要靠那种人,我需要人靠人啦人靠系统就好了,系统就可以帮他们做这件事情.
+### Guest (2026-05-04T04:32:24.754Z)
 
-Speaker 2: 02:24:57 
- 了因为比方说修厂参与到的人很少很少所以这个系统能够帮修在这方面的就做多一点东西然后每天就要.
+the email is manual. Right? You have to manually email the the SOA one by one. So there was a request for automated one. Right. Okay. And approval a credit approval form. Warehouse ships. No. I think that this is on the s o. In terms of payment, payment collection, so let's say customer made a payment already. How do they inform GST? They inform the salesperson. And then sales connect that to a payment entry. For you to group also, then payment Okay. You have another WhatsApp group for Oh, yes. As of the payment.
 
-Speaker 3: 02:25:11 
- 监他们,这么你有做啊我们没有看到,missedout,没有做,没有时间,你刚才留下来一点,我哪有这样快做?
+### You (2026-05-04T04:33:09.625Z)
 
-Speaker 1: 02:25:19 
- 所以我觉得今天的会议很.
+Yep.
 
-Speaker 2: 02:25:20 
- 有意义,谢谢大家的时间。
+### Guest (2026-05-04T04:33:18.264Z)
 
-Speaker 1: 02:25:35 
- Wewillgetbackwiththedifferentactionpointsofthefollowupactionsfromthismeeting.  Nicetomeeteveryoneandwelookforwardtothenextone.
+See. So next time, the salesperson will just forward to Maya. Maya will be inside the system. So then if management want to see, they go to the system to chat. Who's live? And they all have happen. They're going For the different deals Because when they when they follow just for some forward, I ask which kind of pin this one. When when then you create if it's have to check the So let's say the the payment is not being flat. Same amount in the Right. No. The payment entry is a cross one. You can just switch invoice to knock off. Then you can distribute accordingly. 100 k in knock off.
+
+### You (2026-05-04T04:33:59.505Z)
+
+Pas ça.
+
+### Guest (2026-05-04T04:34:04.144Z)
+
+100 invoice, something like this, so then we handle the nation hub ops over there. Next time, instead of having a lot of this WhatsApp group to track, everything will be one item inside here already. No. Till ten day. Also will sometimes Yeah. Maybe. Sometimes but then if let's say automation Right? But then, of course, payment come in, they will definitely know the account will check daily. But then it can have this issue. So so the main one, I think, let's say, after you guys adopt Maya, right, the the main change is actually moving away from the WhatsApp group. So the salespeople, sales coordinator will forward to Maya. Maya will create those items here already, So then let's say we talk about payment now. Let's say this payment entry over here, it ties to let's say customer calls those coffee. For some reason, let's say, they buy fish. They can already allocate the payment reference here. So let's say the person need to check. Financed because sales cannot simply not off payment now.
+
+### You (2026-05-04T04:35:02.135Z)
+
+So
+
+### Guest (2026-05-04T04:35:03.124Z)
+
+So salesperson will just create then after they're done already, we open the right site.
+
+### You (2026-05-04T04:35:07.035Z)
+
+So that is
+
+### Guest (2026-05-04T04:35:08.294Z)
+
+So there is a working space over here. So firstly, you can see the DVD log radio. Who created this thing, when it was created, what was edited. Then you go to the attachment. So the the the payment proof will be somewhere here or in the here was
+
+### You (2026-05-04T04:35:20.295Z)
+
+こと。
+
+### Guest (2026-05-04T04:35:22.784Z)
+
+have or any other attachment related to this. For example, like, you got a payment advice. You have a screenshot for the bank or check. Any other sort of things. There's general attachment over here. And then in the comments,
+
+### You (2026-05-04T04:35:33.505Z)
+
+so this one
+
+### Guest (2026-05-04T04:35:35.004Z)
+
+So this one is a place for you to have conversation because sometimes finance need to clarify something or you're wrong data entry or whatever. They can use this base here to type the specific person to then on this particular document.
+
+### You (2026-05-04T04:35:47.915Z)
+
+Because right now,
+
+### Guest (2026-05-04T04:35:50.274Z)
+
+Right now, if you use a WhatsApp group,
+
+### You (2026-05-04T04:35:50.845Z)
+
+most
+
+### Guest (2026-05-04T04:35:52.384Z)
+
+most likely people reply here, reply here, then you need to jump here and then to check. Right? So that's the part that is causing a lot of confusion. So now everything will be a single ticket. You can work on the documents themselves. So so that will be the in a way, one change that we will see in the in the workflow. So they always need to check the comment or they drop off any notification. When there's comments or, like, notification, they tag them on. They will receive a notification and say, hey. You know, you attacked somebody, mentioned something on this document, then you can just go there and ask about it or take a link go to the website to see. About it. Yeah. Direct ring my other direct ring there. Or inside the inside the WhatsApp also, you we can we can talk about it. Yeah. K.
+
+### You (2026-05-04T04:36:34.645Z)
+
+So
+
+### Guest (2026-05-04T04:36:35.744Z)
+
+So let's go to the list of questions, credit limits, filings approval,
+
+### You (2026-05-04T04:36:39.325Z)
+
+Okay.
+
+### Guest (2026-05-04T04:36:40.514Z)
+
+Okay. Crystal report. Okay. So this one, I think we need some clarification here. Because, you know, mentioned that the documents have a requirement where we must follow a crystal report matching layout. We know what what what this is. It's the report. Somewhere Speaking list. Basically, speaking list. SO, DO invoice. We don't do SAP quotation. The not sure about but anything with our company, either you will all increase the report. Oh, it's a SAP, Chris. So it's a PDF format now. PDF format. Yes. Yeah. It's the PDF format. Speak English also.
+
+### You (2026-05-04T04:37:40.865Z)
+
+I see.
+
+### Guest (2026-05-04T04:37:43.354Z)
+
+I see. It's just to follow the format now. Okay. Understood.
+
+### You (2026-05-04T04:37:43.575Z)
+
+Just So I think one
+
+### Guest (2026-05-04T04:37:47.894Z)
+
+So I think one action point here is actually to have samples of these documents. And then this one also, we will see to identify further when we have the with the IT to see if we can reuse the the PDF generator that is inside the SAPP one already. Yeah. Who managers allocate me on the CVS? K. So CPR and customer purchase request node. Phase two, pull forward. Small purchase request no. This one, this this one, we already talked one. This one customer the sales, then sales put into this. CBRN to monitor the the movement You still conquers the record. It's Oh, you can configure one. Something like you can modify this thing and the format machine. Yeah. Okay. Crystal report, you cannot you you can't do ourselves. Normally, we're not doing ourselves. I have to help you with that. The another one are you UDF, user defined few. They are more simple one. The one we can do they want limited functional. Usually, our document we ask, SAP consultant to put in a crystal report. Understand. Okay. Then this one is the partial reservation one. This one is yeah. Mister yesterday, you were saying something about this. It's something we talked about before, which is the informal reservation I think on what miss you and team shared, the main part is to show the inventory reservation on confirm orders so that we don't oversell. Yeah. Yeah. Correct. That one but so that this one is actually a bit
+
+### You (2026-05-04T04:39:45.075Z)
+
+You said we
+
+### Guest (2026-05-04T04:39:47.394Z)
+
+this one, the informal reservation one means, like, in because in certain businesses, they reserve the stock. Beforehand in advance, even before the PO is confirmed. I think in GST skills, after hearing the the business process, actually, it's not that use case, but once the order confirm, they want to prevent overselling. That, you know, certain salespeople may sell stock that is reserved for let's say, salesperson is order that haven't fulfilled only. Yeah. Okay. Yeah.
+
+### You (2026-05-04T04:40:18.865Z)
+
+Then
+
+### Guest (2026-05-04T04:40:21.144Z)
+
+Conflict between sales people Yeah. This is exactly that.
+
+### You (2026-05-04T04:40:22.875Z)
+
+Yeah. It's okay. A it's deep
+
+### Guest (2026-05-04T04:40:28.814Z)
+
+Full and reminder. No stop consumption. So, actually, this one is something number eight b is something to do with
+
+### You (2026-05-04T04:40:37.635Z)
+
+I want it. Not
+
+### Guest (2026-05-04T04:40:38.794Z)
+
+the order not moving. So that means this order let's say 200 pieces of settlement. Placed one month ago, but then not fulfilled. So that means, let's say 50% fulfilled, and then it's not
+
+### You (2026-05-04T04:40:51.565Z)
+
+can we get
+
+### Guest (2026-05-04T04:40:51.754Z)
+
+being moved up. So in a way, that's a signal to show that certain action need to be taken or look into why this order not being fulfilled. So that we can prevent the dead stop scenario like we mentioned just now. Let's say customer does not want to consume the stock the inventory anymore.
+
+### You (2026-05-04T04:41:07.485Z)
+
+Okay.
+
+### Guest (2026-05-04T04:41:09.934Z)
+
+Okay. So who still wants this block? K. Purchasing an advance buying. Conversion to SO adjusting K. Iqing, What depends aging near expiry So this one over here, because we don't have batch
+
+### You (2026-05-04T04:41:32.015Z)
+
+So, yeah, But then
+
+### Guest (2026-05-04T04:41:33.104Z)
+
+So, yeah, since this one is a phase two thing, so then this needs to go hand in hand with batch serial number usage in SAP together also now. That will be a prerequisite for
+
+### You (2026-05-04T04:41:42.925Z)
+
+the nine.
+
+### Guest (2026-05-04T04:41:44.134Z)
+
+number nine Excel report. So this one is you guys want to I think this one is related to what
+
+### You (2026-05-04T04:41:50.515Z)
+
+Iced one.
+
+### Guest (2026-05-04T04:41:54.534Z)
+
+you said. Is it mister on the customized or reports? Is it under No. No. This one is this one is when we do when we do from overseas, we need to raise up what do you call that? Purchase purchase reputation form. Okay? So to complete this purchase form, order to order in the the boss need to know is the consumption of this. Like, this container this purchase, need how many months to clear this this this will link back to the sales. If the customer customer to really know the consumption movement or every month. Okay. Then the sourcing team only in insert the information into this this form. So that the the boss will no longer only can he there to sign The so it's to
+
+### You (2026-05-04T04:42:54.215Z)
+
+Is
+
+### Guest (2026-05-04T04:42:55.614Z)
+
+is demand signals to help purchasing decision. Yeah.
+
+### You (2026-05-04T04:43:01.995Z)
+
+Okay.
+
+### Guest (2026-05-04T04:43:03.314Z)
+
+Okay.
+
+### You (2026-05-04T04:43:03.935Z)
+
+So
+
+### Guest (2026-05-04T04:43:05.074Z)
+
+So
+
+### You (2026-05-04T04:43:05.275Z)
+
+to make
+
+### Guest (2026-05-04T04:43:06.404Z)
+
+to make the purchasing decision, you need to have a stock aging report OpenSOL. Then customer actually, CBRN is not valid here. CPRN. CPRN. This one, this one is an informal stock resolution. The one also capture demand signal. Then customer AR So that means outstanding invoice. Also require. Yeah. And then stop snapshot or aging. So, actually, all of these things Why need the stop summary?
+
+### You (2026-05-04T04:43:49.145Z)
+
+You you
+
+### Guest (2026-05-04T04:43:50.494Z)
+
+You you wanna do like Christina, is it? Really understand. This is more to I think this one is more to our purchase former. This one is referred to the the report. Monday one. This one is this this question is you raise up on
+
+### You (2026-05-04T04:44:14.485Z)
+
+this
+
+### Guest (2026-05-04T04:44:19.084Z)
+
+I put some on what is the main person you want to what what want to know? Because I also thought I I I not really understand what you want. Excel export for planning phase two. Which dataset need to export? I'm not sure that this one supposed to refer back to our Vas-y Yeah. Because it's not I think I'm referring back to the SOW. It's also just one line which is Excel export support for planning, operational review. So we want to clarify what this is because this one is a customization request. Functions, Excel, Excel,
+
+### You (2026-05-04T04:45:53.435Z)
+
+So you'll walk
+
+### Guest (2026-05-04T04:46:08.704Z)
+
+clarify
+
+### You (2026-05-04T04:46:09.565Z)
+
+Yeah. Okay. So
+
+### Guest (2026-05-04T04:46:16.004Z)
+
+Okay. So I think business need here is GST wants to export data. For review, future, and planning. But then
+
+### You (2026-05-04T04:46:25.255Z)
+
+Dashboard
+
+### Guest (2026-05-04T04:46:28.004Z)
+
+dashboard is not enough.
+
+### You (2026-05-04T04:46:28.725Z)
+
+So you need
+
+### Guest (2026-05-04T04:46:29.904Z)
+
+You need the raw data.
+
+### You (2026-05-04T04:46:30.515Z)
+
+So the so why is it
+
+### Guest (2026-05-04T04:46:32.034Z)
+
+Why is this customization? The point customization three export data
+
+### You (2026-05-04T04:47:33.815Z)
+
+Okay.
+
+### Guest (2026-05-04T04:47:49.784Z)
+
+interpretation. Another function. Another function. Because interpretation of So interpret So planning production, historical what the sales sales analytics Mhmm. Planning order. It's for production planning. Not production. Not orange. For for training also because not every item also could need production But then we got also training at the plugin and out. But then we want to make sure our our item is top bit top mean, enough stock Sometimes we are clear. Yeah. We when he say we 1,000 item,
+
+### You (2026-05-04T04:48:57.795Z)
+
+Yeah.
+
+### Guest (2026-05-04T04:49:02.524Z)
+
+but then how we going to focus on so, I mean, how to plan for the urgent I mean, for the those really need to keep You see, we we need to do the action very manual way. We need to I I I do the formula, and then we see always ask them, you go to see this one order first. And then you you plan. But then we need to many we mean to pull many data into into this purpose. So excel, only we can able to know this action Oh. You got what I mean? Because this asset is more value mark. Yeah. Yeah. We need to know this item need order or not But then we need to do and then we think only we can come to this stage. I think then the the action is maybe we need a sample of this so we can Yeah. Of this excel sheet so we can understand how you do the calculation. But then what I understand from this is
+
+### You (2026-05-04T04:49:59.615Z)
+
+Two.
+
+### Guest (2026-05-04T04:49:59.834Z)
+
+US don't use the safety stock. To trigger the stock ordering because sometimes it's not it's not Too many. Different thing when you Sometimes you also can't figure out which one for for which one also. Faster way. Oh, this one, not enough talk faster. I see. Okay. Pretty sure. Yeah. So so I think we have I think it's a planning Excel sheet on this. So something like that. Book calculator. You guys already figure out what data I need. Okay? Then on the units. Then number 10, single account. Yeah. This one also mentioned already. So it should be monthly before the third. And it auto sent to the customer registered email.
+
+### You (2026-05-04T04:50:54.195Z)
+
+Oh,
+
+### Guest (2026-05-04T04:50:55.274Z)
+
+All b to b accept the so question number two is all b to b accept cash customer. I think here, the preference is that I think the first version is the same
+
+### You (2026-05-04T04:51:04.125Z)
+
+I think the
+
+### Guest (2026-05-04T04:51:09.794Z)
+
+SOA as for the SAP crystal, but then there was also a request for, like, a web
+
+### You (2026-05-04T04:51:10.515Z)
+
+SOA
+
+### Guest (2026-05-04T04:51:14.764Z)
+
+sort of thing where they can click a link to see which invoices the
+
+### You (2026-05-04T04:51:19.095Z)
+
+And
+
+### Guest (2026-05-04T04:51:19.254Z)
+
+as well. And the main part here is also security of the link.
+
+### You (2026-05-04T04:51:22.925Z)
+
+And then, like,
+
+### Guest (2026-05-04T04:51:24.144Z)
+
+And then right now, users of Maya will be sales finance and also warehouse management currently. The different touch points that we have. User groups need that accessibly k. Majority of your employees speak English, Malay, or Chinese? Or it depends on the have because because we have all have a three we got money. We got Chinese, and also got Inclisir main main in Washington to communicate in English. Chinese and Chinese. Chinese and Chinese is
+
+### You (2026-05-04T04:52:13.745Z)
+
+cents,
+
+### Guest (2026-05-04T04:52:20.204Z)
+
+Okay. English. Okay. SAP, our item also in English better English.
+
+### You (2026-05-04T04:52:25.605Z)
+
+Yeah. I
+
+### Guest (2026-05-04T04:52:28.754Z)
+
+Yeah. In English. Okay.
+
+### You (2026-05-04T04:52:29.845Z)
+
+Four.
+
+### Guest (2026-05-04T04:52:30.804Z)
+
+For SAP b one, do you know the version number? Point zero? Point zero. The login screen Another question is, do you guys think that sorry? Do you guys know if this hosting is in the cloud or premise? On the cloud.
+
+### You (2026-05-04T04:53:26.985Z)
+
+And two.
+
+### Guest (2026-05-04T04:53:28.534Z)
+
+10. Yeah. 10. 10. One Ten point zero zero one. Zero dot one Not Ok. I think the rest of the questions, you'll talk with the SAP manager.
+
+### You (2026-05-04T04:53:45.555Z)
+
+Okay. Okay. This one?
+
+### Guest (2026-05-04T04:53:48.924Z)
+
+This one we When you all want to Actually, this week is okay now. We can directly reach out to them, or we can just create a group. For between a few of us to just have this conversation.
+
+### You (2026-05-04T04:54:05.965Z)
+
+Oh,
+
+### Guest (2026-05-04T04:54:09.304Z)
+
+Like, a WhatsApp group is again. But I think we set up think we
+
+### You (2026-05-04T04:54:13.195Z)
+
+Yeah.
+
+### Guest (2026-05-04T04:54:14.514Z)
+
+this week, one one meeting with them. Then Yeah. We can introduce to both results. Can yeah. Okay. Online online online meeting
+
+### You (2026-05-04T04:54:27.945Z)
+
+Hi.
+
+### Guest (2026-05-04T04:54:29.104Z)
+
+three party. Yeah. Within three parties k.
+
+### You (2026-05-04T04:54:33.905Z)
+
+The last.
+
+### Guest (2026-05-04T04:54:33.924Z)
+
+So then I think the last two is just the UAT.
+
+### You (2026-05-04T04:54:35.575Z)
+
+Last
+
+### Guest (2026-05-04T04:54:38.084Z)
+
+Over here,
+
+### You (2026-05-04T04:54:39.725Z)
+
+the...
+
+### Guest (2026-05-04T04:54:39.734Z)
+
+the UAT usually, we will have a physical session. It will be, like, a two, three hour session similar to today, but it's actually to the different features. And this one, once we complete the setup of the call for GST, then we will they will reach out to to schedule this session with the important people onboard. And I think for this particular phase, the goal is do for branch first. Right? Before because majority 90% is b to b sales over there. And then so for so for us to proceed to the next step is actually
+
+### You (2026-05-04T04:55:12.275Z)
+
+And And And
+
+### Guest (2026-05-04T04:55:16.604Z)
+
+after this, we will not just only send a meeting minutes of today's, meeting, but we will also have a questionnaire for GST team to fill up. The questionnaire includes sample documents. We will specify what kind of sample documents and that that we will need, and sometimes we may also require include screen recordings, like, you know, let's say, can you screenshot or screen record? How you process a SAP order so that we can you know, internally in can understand how you do these things in detail. And then what so
+
+### You (2026-05-04T04:56:02.475Z)
+
+so I do that
+
+### Guest (2026-05-04T04:56:03.784Z)
+
+so I think that's for section 14.
+
+### You (2026-05-04T04:56:09.775Z)
+
+No. That's it. Yeah. This this
+
+### Guest (2026-05-04T04:56:15.884Z)
+
+Yeah. This this question has all this Ok. La c
+
+### You (2026-05-04T04:56:31.715Z)
+
+because
+
+### Guest (2026-05-04T04:56:33.254Z)
+
+because the SAP integration here will take some I was I was at I presume that it will take some time because we need to talk with the IT vendor and then actually do the integration. But
+
+### You (2026-05-04T04:56:44.175Z)
+
+we can't
+
+### Guest (2026-05-04T04:56:45.264Z)
+
+we can also have a sample how to say it? A test environment set up already.
+
+### You (2026-05-04T04:56:51.125Z)
+
+what happened?
+
+### Guest (2026-05-04T04:56:51.484Z)
+
+So before that, you can actually export some data for us, and then we can start testing out use cases already. From your current SAP, you can export, let's say, two, 300 items, one, maybe 50 customers,
+
+### You (2026-05-04T04:57:03.925Z)
+
+15 cutter. And that
+
+### Guest (2026-05-04T04:57:06.784Z)
+
+and then the inventory one, then we can set up a demo instance before the integration so that you can also try to play with it and give us some feedback. What we can do. So that we let the integration blockers from from starting and trying out. Yeah. We want to how we we give the Yeah. Item list. Correct. The item list, we can export. Maybe a price list of these items because we don't need to export us everything. Just some. And then the pair, the information about it. So let's say this 200 item, this 200 item price is maybe 50 to 100 customers.
+
+### You (2026-05-04T04:57:41.275Z)
+
+And then
+
+### Guest (2026-05-04T04:57:43.194Z)
+
+And then what else? Users, customers, Well Customer is a customer. Yeah. Simple customer. Customer name and because we also want to try the credit limit and credit statement. So some customers with credit limit, some without. Yeah. And you can actually test Because what important on our side is we match your IDs. Using the item code. Customer code. Audio code that is similar to experience in my end. To reference this item masters. We have this customer list also in the customer names. And then the addresses. The city, the state, country code, everything. The company iPhone, so on that one. So all this information gaps. Then as we move towards the deployment, go live.
+
+### You (2026-05-04T04:58:57.085Z)
+
+So what
+
+### Guest (2026-05-04T04:58:58.444Z)
+
+So what else is that list? Of current process might be?
+
+### You (2026-05-04T04:59:01.015Z)
+
+I think it's a it's a
+
+### Guest (2026-05-04T04:59:03.644Z)
+
+I think it's on
+
+### You (2026-05-04T04:59:04.385Z)
+
+a
+
+### Guest (2026-05-04T04:59:04.804Z)
+
+based on the conversation today, we've already covered, and we will just generate those documents. From from the output of this meeting.
+
+### You (2026-05-04T04:59:11.765Z)
+
+I think
+
+### Guest (2026-05-04T04:59:13.254Z)
+
+I think on in terms of our on our end, the information that we needed, we have Anything else that we should talk about or cover in this meeting before close-up for the date? No. I'm fine. Okay. Mister Suu Kyi. We we are starting for for what you the the list, and then we do that testing. We will set up. Because right now, the main is the SAP one.
+
+### You (2026-05-04T04:59:40.555Z)
+
+So
+
+### Guest (2026-05-04T04:59:43.594Z)
+
+So what we usually do is we get some sample data. We spin up an first, and then we will set up an instance with that data so that the team in GST can start trying to use Maya ID so that we can have the initial but by the place Ah, so this can okay. Yeah. I think that's one part missing. So currently in the in SAP. Right? Is it have their own SAP, have their own SAP? What? I mean, the same system we can access each our interbranch. Oh, it's a under the same company. Or different company. One instance, actually, both Outlook can use Yeah. We we can set up in the video. In in in SAP, we are yes. In the same database on Yeah. SSM also same.
+
+### You (2026-05-04T05:00:38.415Z)
+
+I see.
+
+### Guest (2026-05-04T05:00:39.294Z)
+
+I see. Yeah. But you separate by customer quote. So then that means this let's say, Ivan can be customer of No. Okay. If, let's say, the one somehow want to buy from care one also can it's under the account. What you say? Normally, we we already it is a customer, it. Based on KL, then you are faster KL. Faster KL. Understood. Normally. So every customer is unique. There won't be duplicate customer account. No. Okay. And this one in in in to answer this question. Decision. Who which one need to do this customer? So then in this one in this case, in one instance, can both entity already because it's in it mimics how your SAP is adopting So sometimes yes. We can we can no. No. No. Design in this case work. Everything will be Yeah. In in SAP, right, when we generate news new new user, we need to tag. Whether this is tagged to KL or this is tagged to benign. So after after tagging, then you're only able to view the document in the branch. Yeah.
+
+### You (2026-05-04T05:02:01.965Z)
+
+Okay. I see.
+
+### Guest (2026-05-04T05:02:03.514Z)
+
+The data owner, Sheila. I see. Data ownership. Understand. So then this one we must see in SAP how they set because they may set up as two different entity inside one one database. To
+
+### You (2026-05-04T05:02:18.985Z)
+
+One
+
+### Guest (2026-05-04T05:02:19.394Z)
+
+then enable this sort of restriction
+
+### You (2026-05-04T05:02:21.735Z)
+
+That'll be you.
+
+### Guest (2026-05-04T05:02:23.114Z)
+
+Then maybe one action point is
+
+### You (2026-05-04T05:02:25.385Z)
+
+That
+
+### Guest (2026-05-04T05:02:25.554Z)
+
+is there a way for us to get a
+
+### You (2026-05-04T05:02:26.515Z)
+
+yes.
+
+### Guest (2026-05-04T05:02:27.934Z)
+
+guest account to view your SAP configuration? Like a guest account. So that means the account can only see you near. Into the current SAP to see how the it is set up. Don't have Don't have any yes. At home. Everyone is for is live live account. Live? Yeah. But the The IP account is UAT. Oh, yeah. For UAT here. Have a UAT oh, yeah. Probably, we can use that. Use the UAT But then also in in meet the ID to log in. Right? Yeah. You can just share those the UAT account credentials also. We log in. We can just see how it is configured, really. But your your SAP require VPN SSH tunneling? Yes.
+
+### You (2026-05-04T05:03:11.985Z)
+
+Yep.
+
+### Guest (2026-05-04T05:03:14.114Z)
+
+I think this one In in VPN. Yeah. I think this one you can share us a guide on how to
+
+### You (2026-05-04T05:03:18.865Z)
+
+Yeah. Said we can
+
+### Guest (2026-05-04T05:03:21.224Z)
+
+we can see how go to your SAP settings page to see how it is configured already. Then we can be quite clear on how this impact is because we need to mimic the same way that it is set up. How about you just say from here? New sign account to see this? I understand straight. Ken, I think we we we do it after this. Okay. From the link, any more questions for for you guys? Okay. I think we cover mostly all the audio Yeah. I think covered quite a bit already today. So then another question I wanna ask is to to Jesse use any meta meta business account. Meta Okay.
+
+### You (2026-05-04T05:04:22.385Z)
+
+one
+
+### Guest (2026-05-04T05:04:22.504Z)
+
+So, actually, one, like, action immediate action after this this call, it will be part of the that Gather will send over as well. Is that GST is like you will need to start acquiring a company phone number for Maya.
+
+### You (2026-05-04T05:04:35.625Z)
+
+And then
+
+### Guest (2026-05-04T05:04:37.444Z)
+
+And then you because we mainly will use WhatsApp So then GST, we also need to set up Waba sorry. Meta business account. Configure WhatsApp for business. So this one, we have a guide, really, for you, but this is just, some action points. The fourth one is also to create account. Because it because the way we deploy Maya, is we were deep okay. This I think we need to check the commercial. But normally,
+
+### You (2026-05-04T05:05:05.545Z)
+
+Wow.
+
+### Guest (2026-05-04T05:05:08.444Z)
+
+the hosting will be by GST one so that you ban the raw server cost. We don't mark up any server cost or So to do that, GST will need to have a AWS account. And it will be billing to the company credit card. Via AWS. So so we will deploy into your account. Give us access as a account manager, then you get through AWS. So this will be the few infrastructure related things And, of course, the API keys because we use open
+
+### You (2026-05-04T05:05:40.915Z)
+
+Sorry.
+
+### Guest (2026-05-04T05:05:41.154Z)
+
+sorry. OpenAI and
+
+### You (2026-05-04T05:05:42.445Z)
+
+Yeah. And
+
+### Guest (2026-05-04T05:05:45.044Z)
+
+Right now, mostly OpenAI, so you need to have OpenAI So we will have a guide on how to do these things and get a flow. Have a main PIC to help. Of it. But internally, there should be a project owner. So that means somebody that we most likely work very closely with move things forward. And I think it's someone a bit more on the junior side, I think, No. Because I think you guys are, like, heads of department. Right? So I'm not sure. Depends depends. So this one, guys need to to to assign somebody. Will work closely together with our own meeting. Yeah. Yo. Que yo Yo Yes. Oh, Joey. That's Okay. Yeah. Okay. So great. Joey, will be Yeah. Ok. Cool. Is everyone in the WhatsApp group waiting? The group that we have? Yes. Okay. So great.
+
+### You (2026-05-04T05:06:57.555Z)
+
+Okay.
+
+### Guest (2026-05-04T05:06:57.984Z)
+
+I think we're good. Okay. So the next one is set out a meeting with SAP. Alright?
+
+### You (2026-05-04T05:07:04.515Z)
+
+Yes.
+
+### Guest (2026-05-04T05:07:04.774Z)
+
+Yes. SAP vendor. Okay. And then also we need to provide a number to register the the meta
+
+### You (2026-05-04T05:07:12.345Z)
+
+Alright.
+
+### Guest (2026-05-04T05:07:12.784Z)
+
+business. Correct. Need to purchase a company number set up your meta business account, then configure what what's that for business. And then AWS account and AWS billing. And, also, lastly, the OpenAI API key. So these are the six things that are needed from, GST side. Okay. We don't worry. We have a guide and get off to help you the entire process. Probably, we'll work together with Joey for this new number. Service.
+
+### You (2026-05-04T05:08:01.075Z)
+
+Yeah.
+
+### Guest (2026-05-04T05:08:06.804Z)
+
+Hi. Und doch. Alina. Phone number. Uh-huh. Tout ça peut l'on appétit pour le mot si le Saturday request request Bye. 啲 ， outdoor sales mail access to even to SAP 果 又 就 啲 ， view stock moving, movement, credit control So more like, it just assumes the tools
+
+### You (2026-05-04T05:11:42.495Z)
+
+One moment. Este, Yeah. Okay.
+
+### Guest (2026-05-04T05:12:24.884Z)
+
+So I think today's meeting was quite and thank you everyone for your time. Who will get with the different action points of the follow-up. Actions from this meeting. Nice to meet everyone, and forward to the next one. Okay. Okay. Thank you. Thank you from Okay. Ivan
+
+### You (2026-05-04T05:12:40.125Z)
+
+Okay. So much.
+
+### Guest (2026-05-04T05:12:53.114Z)
+
+processing. Okay, Hal. Thank you. Thank you, everyone. K. Bye. Okay. Bye bye.
 

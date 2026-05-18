@@ -3,7 +3,7 @@ granola_id: fd3bbb08-973b-437c-b9f5-39388a326e33
 title: GST Fine Foods <> MH Requirements Gathering (Online) - Transcript
 type: transcript
 created: 2026-05-04T02:46:58.150Z
-updated: 2026-05-04T05:13:27.704Z
+updated: 2026-05-18T11:12:26.759Z
 attendees: 
   - brendan@mindhive.asia
   - ivan.cyh1996@gmail.com
