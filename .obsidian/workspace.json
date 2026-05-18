@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
+                "file": "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,7 +124,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire"
+              "title": "SOW for MAIA GST Fine Foods"
             }
           }
         ],
@@ -181,7 +181,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -296,10 +297,14 @@
                   {
                     "id": 97,
                     "name": "zsh 97"
+                  },
+                  {
+                    "id": 98,
+                    "name": "zsh 98"
                   }
                 ],
-                "activeId": 95,
-                "nextId": 98
+                "activeId": 98,
+                "nextId": 99
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -310,7 +315,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 609.5
+    "width": 510.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -338,11 +343,11 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "298120b1be274af0",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/Requirement Gathering Output - GST Fine Foods - 2026-05.md",
     "Granola/Transcripts/2026-05-04/GST Fine Foods __ MH Requirements Gathering (Online) v2-transcript 2.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
     "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md",
