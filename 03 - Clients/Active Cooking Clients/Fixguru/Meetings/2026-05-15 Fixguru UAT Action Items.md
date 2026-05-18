@@ -7,6 +7,29 @@ source_transcript: "[[Granola/Transcripts/2026-05-15/Fixguru feedback sync-trans
 
 # Fixguru UAT Action Items (2026-05-15 Feedback Sync)
 
+## Change Requests Summary ⚠️
+
+Items that deviate from original SOW or are new paid scope. All require retainer/SOW revision before dev starts.
+
+| #     | CR                                   | Type                                                                                                         | Chargeable?                               |
+| ----- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
+| CR-01 | Two-way AutoCount sync               | Scope deviation — original spec expected full MAIA migration                                                 | Yes — retainer revision needed            |
+| CR-02 | Credit limit formula change          | New formula + AutoCount data dependency                                                                      | Yes — depends on CR-01                    |
+| CR-03 | Historical pricing in chatbot        | New feature — surface last transaction price/discount per customer × item                                    | TBC                                       |
+| CR-04 | Calculator policy customisation      | Fixguru updated transformation ratios; custom rules needed                                                   | Yes — explicitly called out as chargeable |
+| CR-05 | Composition/BOM customisation        | If Fixguru wants custom composition calc                                                                     | Yes — only if they confirm they want it   |
+| CR-06 | PDF template                         | Fixguru prefers AutoCount PDF over MAIA V3                                                                   | TBC — scope needs explicit confirmation   |
+| CR-07 | Daily stock reconciliation           | New requirement; not in original spec                                                                        | TBC                                       |
+| CR-08 | Delivery method as SKU for e-invoice | Fixguru treats transport charges as SKU line item for e-invoice claiming; chatbot doesn't support this today | TBC                                       |
+| CR-09 | Minimum price guardrail              | New feature — block/warn if unit price goes below item minimum                                               | TBC                                       |
+| CR-10 | Unit toggle: cm / inches             | Calculator must support switching between cm and inches                                                      | TBC                                       |
+| CR-11 | Customer contact + branch sync from AutoCount | Sync HQ contact + branch records (multiple shipping addresses + branch contacts) from AutoCount into MAIA | TBC — needs spec |
+| CR-12 | Volumetric m3 on Delivery Note PDF | Show volumetric (m3) field on Delivery Note PDF. Reference: AutoCount Report Design Center → "IAM Delivery Order" + "IAM Delivery Order (Branch)" templates | TBC — needs spec |
+
+**Next step:** Prepare formal CR doc, align with Fixguru, then revise retainer.
+
+---
+
 ## Historical Pricing
 
 ### What Fixguru wants
@@ -75,18 +98,20 @@ Fixguru uses a dimensional calculator (linear meter / square meter) for pricing 
 ## PDF Template
 
 ### Context
-Fixguru's current workflow: SO draft → AutoCount PDF → send as pro-forma to customer → back-and-forth adjustments → confirm → proceed to next stage in MAIA. They **prefer AutoCount's PDF format** over MAIA's V3 PDF. Need to clarify scope.
+Client expects AutoCount PDF from **start to end** — including draft SO stage. MAIA pushes to AutoCount on submission (not approval). MAIA's stricter validation means: if it passes MAIA, data is clean when it lands in AutoCount.
+
+**Proposed solution (Wei Yon):** Pull the HTML from AutoCount's Report Design Center → mimic on MAIA side → this becomes the Fixguru "Ultimax PDF". Not a redesign from scratch.
 
 ### Action Items
 
-- [ ] **Clarify PDF scope with Fixguru** — confirm if MAIA PDF V3 customisation is in scope, or if they will use AutoCount's PDF for all customer-facing documents
-- [ ] **Fix item code on PDF** — currently shows MAIA internal ID; must show AutoCount's external item code
-- [ ] **Delivery note PDF — multiple warehouse checks** — Fixguru's delivery note requires more than one warehouse check field; current PDF only shows one
-- [ ] **Sync volumetric formula to PDF** — dimensional/volumetric calculation must appear on PDF output (SO and/or delivery note)
-- [ ] **Define SO draft → pro-forma workflow** — document the handoff: MAIA SO draft syncs to AutoCount → AutoCount PDF used as pro-forma → customer confirms → adjustments looped back → advance stage in MAIA
+- [ ] **Get HTML from AutoCount Report Design Center** — extract Fixguru's existing PDF template HTML. Use as reference to replicate on MAIA (Ultimax PDF).
+- [ ] **Push SO to AutoCount on submission (not approval)** — client needs AutoCount PDF available from draft/submission stage. Sync trigger = submission, not final approval.
+- [ ] **Fix item code on PDF** — show AutoCount external item code, not MAIA internal ID
+- [ ] **Delivery note PDF — multiple warehouse checks** — add multiple warehouse check fields; current PDF only has one
+- [ ] **Volumetric m3 on Delivery Note PDF (CR-12)** — show m3 field on Delivery Note PDF. Reference templates in AutoCount: Tools → Report Design Center → "IAM Delivery Order" + "IAM Delivery Order (Branch)". Use these as layout reference for MAIA PDF V3.
 
 ### Out of Scope (to confirm)
-- Full PDF template redesign to match AutoCount's layout — if confirmed out of scope, document and manage expectation with Fixguru
+- Building PDF template from scratch — solution is to mimic AutoCount HTML, not redesign
 
 ---
 
@@ -113,6 +138,23 @@ Credit Exposure = (SO amount − already invoiced) + outstanding unpaid invoices
 
 ---
 
+## Chatbot
+
+- [ ] **Language preference — store in DB** — user can set English or Malay response preference. Store in DB (not chatbot chain). Pending Amir's user context feature.
+- [ ] **Language handling policy (per SOW — set expectation with Fixguru)** — intake: any language including Mandarin. Response: English or Malay only (user preference). Mandarin response = not supported at this time. Must communicate this clearly to client.
+- [ ] **Ambiguity detector** — if classifier cannot classify intent, chatbot must ask for clarification. Do not guess. Critical — this solves most language edge cases too.
+- [ ] **Item display format** — chatbot must show `[item_code] [brand] [item_name]` + external SKU (AutoCount ID). Do not show MAIA internal ID.
+- [ ] **Item search keys** — chatbot must search by `item_code`, `customer_code`, `customer_name` as primary keys. Not internal ERPNext ID.
+- [ ] **HQ + branch contact sync** — some Fixguru customers have multiple branches. Chatbot must correctly assign branch when creating SO. Requires contact sync across HQ + branch.
+- [ ] **Delivery method as SKU** — Fixguru treats transport charges as SKU items for e-invoice claiming. Resolution (Wei Yon): user instructs chatbot to search and add delivery item by name (e.g. "3PL Lalamove") as a regular line item. Chatbot must support searching delivery-type items in item list, not force-route to delivery method field.
+
+
+### Out of Scope (confirmed)
+- Mandarin **response** — intake supported per SOW, but chatbot replies in English/Malay only. Risk: search/API translation errors if Mandarin input is ambiguous.
+- 3PL multi-channel — MAIA instance supports one channel account only; 3PL routing not in scope
+
+---
+
 ## AutoCount Sync
 
 - [ ] **Confirm cutoff date with Fixguru** — agree snapshot date (likely 2nd UAT). Before = no sync. After = full two-way sync on all docs (SO, Invoice, etc.)
@@ -120,8 +162,10 @@ Credit Exposure = (SO amount − already invoiced) + outstanding unpaid invoices
 - [ ] **Add cutoff date config field** — hard-coded param in sync config; anything before cutoff untouched
 - [ ] **Request snapshot file from Fixguru** at cutoff date — needs: (1) customer credit limits, (2) open invoice exposure per customer (statement of accounts). MAIA ingests to seed credit data.
 - [ ] **Scope daily stock reconciliation** — configurable time (e.g. 7AM), MAIA pulls stock snapshot from AutoCount daily. Define policy per instance.
-- [ ] **Resolve external ID mapping** — item created in MAIA → pushed to AutoCount → AutoCount generates different ID. MAIA must store + reference AutoCount's external ID.
+- [ ] **Fix item_code overwrite on sync** — MAIA currently syncs using its own item_code; must overwrite with AutoCount's item_code. Validate against AutoCount on push.
+- [ ] **Scope sync policy for existing Customer/Item records** — items and customers already in AutoCount pre-MAIA go-live need a defined match/conflict resolution policy (which ID wins, how to handle duplicates)
 - [ ] **Fix item code display in chatbot** — switch from MAIA internal ID to AutoCount external SKU
+- [ ] **Sync customer contacts + branches from AutoCount** — HQ contact maps to customer contact in MAIA; each branch maps to a shipping address with its own contact. Decision: spec out the sync mapping before dev. (CR-11)
 - [ ] **Update retainer/SOW** — two-way sync scope deviates from original spec; retainer revision needed
 - [ ] **Prepare in/out of scope doc** — full list of what MAIA will/won't do for AutoCount sync. Bring to next Fixguru sync.
 - **Out of scope:** Historical data migration (5–7 years) = chargeable separate service. Full 100k+ invoice backfill = not viable.
