@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md",
+                "file": "03 - Clients/Cooked by clients/Requirement Gathering/GST/Requirement Gathering Output - GST Fine Foods - 2026-05.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,7 +124,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-05-15 Fixguru UAT Action Items"
+              "title": "Requirement Gathering Output - GST Fine Foods - 2026-05"
             }
           }
         ],
@@ -147,7 +147,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "holsen uat",
+                "query": "GST",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -181,8 +181,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -295,15 +294,11 @@
                     "name": "zsh 95"
                   },
                   {
-                    "id": 96,
-                    "name": "zsh 96"
-                  },
-                  {
                     "id": 97,
                     "name": "zsh 97"
                   }
                 ],
-                "activeId": 96,
+                "activeId": 95,
                 "nextId": 98
               },
               "icon": "terminal",
@@ -345,11 +340,16 @@
   },
   "active": "298120b1be274af0",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-05-04/GST Fine Foods __ MH Requirements Gathering (Online) v2-transcript 2.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/Requirement Gathering Output - GST Fine Foods - 2026-05.md",
+    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
+    "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md",
     "Granola/Transcripts/2026-05-18/MAIA - Weekly Product Sync-transcript.md",
     "Granola/Transcripts/2026-05-18/Fixguru Gap Briefing-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md.tmp.21314.a3079f7c8e0b",
     "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 AutoCount Sync Action Items.md",
     "Granola/Transcripts/2026-05-18/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-18",
@@ -371,12 +371,7 @@
     "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript-2026-05-13_09-44-08.md",
     "Granola/Transcripts/2026-05-13/Fixguru __ Mindhive - UAT Brief & Historical Pricing Testing-transcript-2026-05-13_11-01-30.md",
     "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript-2026-05-14_10-59-28.md",
-    "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript-2026-05-15_09-44-58.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
-    "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
     "Granola/Transcripts/2026-05-15",
-    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
     "03 - Clients/JY_Handle_Clients/Thermac/SOW/SOW for Lean Giap SOW_signed.pdf",
     "03 - Clients/JY_Handle_Clients/Thermac/SOW",
     "03 - Clients/JY_Handle_Clients/Thermac/Narrative",
