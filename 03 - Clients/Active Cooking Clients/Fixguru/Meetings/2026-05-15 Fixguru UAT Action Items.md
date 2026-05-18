@@ -52,6 +52,26 @@ Which price to apply?
 
 ---
 
+## Calculator
+
+### Context
+Fixguru uses a dimensional calculator (linear meter / square meter) for pricing raw materials (e.g. packaging boxes). They updated their calculator policy — samples needed. Customisation = chargeable change request.
+
+### Action Items
+
+- [ ] **Remove SST from calculator display** — Fixguru does not show tax to customers. Tax is in item master but must not surface in calculator or document output. Config fix (not code change).
+- [ ] **Enforce length ≥ width validation** — physical constraint: if width > length, they cannot print the box. Calculator must validate and enforce `length >= width` before allowing submission.
+- [ ] **Confirm unit handling (linear meter)** — they measure in meters. Verify calculator correctly handles linear meter input and unit conversion edge cases.
+- [ ] **Sync volumetric formula to AutoCount** — volumetric/dimensional calculation must be passed to AutoCount on SO sync (for delivery note and driver reference).
+- [ ] **Gather updated calculator policy samples from Fixguru** — they updated transformation ratios and rules. Collect sample data, document all ratios (raw material per unit, composition breakdown).
+- [ ] **Scope composition/BOM customisation** — they have a composition-based stock calculation (not full manufacturing). Ask Fixguru: do they want to customise this? If yes → chargeable change request.
+- [ ] **UI/UX fixes on calculator** — Amir to review and fix calculator UI (flagged as enhancement, not a blocker).
+
+### Out of Scope (to confirm)
+- Full manufacturing BOM — not in scope; composition calc only
+
+---
+
 ## PDF Template
 
 ### Context
@@ -70,31 +90,41 @@ Fixguru's current workflow: SO draft → AutoCount PDF → send as pro-forma to 
 
 ---
 
+## Credit Limit ⚠️ Scope Change
+
+### What changed
+Original spec: MAIA tracks SO amount only for credit exposure.
+New requirement: full credit exposure = **unbilled SO amount + outstanding invoices**. Data must come from AutoCount via two-way sync to be accurate.
+
+### Formula
+```
+Credit Exposure = (SO amount − already invoiced) + outstanding unpaid invoices
+```
+- Exclude: draft docs, closed/paid invoices
+- Include: all open SO, SI, credit/debit notes (except draft)
+
+### Action Items
+
+- [ ] **Update credit exposure formula** — change from SO amount only to: unbilled SO amount + outstanding invoice amount
+- [ ] **Exclude draft documents** from credit exposure calculation
+- [ ] **Surface credit limit in chatbot** — when sales user creates new SO, chatbot must show: credit limit, current exposure, available balance. Block or warn if exceeded.
+- [ ] **Pull credit data from AutoCount** — accurate credit limit requires AutoCount data via two-way sync (MAIA alone cannot guarantee accuracy without it)
+- [ ] **Scope credit limit as scope change** — document deviation from original spec, flag to Fixguru, update SOW/retainer accordingly
+
+---
+
 ## AutoCount Sync
 
-## Architecture Decisions (need alignment)
-
-- [ ] **Confirm cutoff date approach with Fixguru** — agree on snapshot date (likely 2nd UAT date). Before that date: no sync. From that date forward: full two-way sync on all documents (SO, Invoice, etc.)
-- [ ] **Scope standalone invoice sync** — documents created in AutoCount during migration period sync as standalone invoices into MAIA (no historical SO required as parent)
-- [ ] **Define two-way sync config field** — hard-coded cutoff date param in sync config; anything before that date is untouched
-
-## Fixguru-specific Deliverables
-
-- [ ] **Request snapshot file from Fixguru** at cutoff date — needs: (1) customer credit limits, (2) open invoice exposure per customer (statement of accounts format). MAIA ingests this to seed credit data.
-- [ ] **Scope daily stock reconciliation** — at configurable time (e.g. 7AM), MAIA pulls stock snapshot from AutoCount to stay in sync. Define policy per instance (some factories run 24/7).
-- [ ] **Resolve external ID mapping** — when item created in MAIA pushes to AutoCount and AutoCount generates a different ID, MAIA must store + reference AutoCount's external ID (not internal MAIA ID)
-- [ ] **Fix item code display in chatbot** — chatbot currently shows MAIA internal ID; switch to show external SKU/item code from AutoCount
-- [ ] **Update retainer/SOW** — two-way sync scope deviates from original spec (expected full MAIA migration); retainer revision needed
-
-## Out of Scope (confirmed)
-
-- Historical data migration (5–7 years) — **chargeable separate service**, not included in current SOW
-- Full backfill of 100k+ invoices — not viable; snapshot approach only
-
-## Follow-up
-
-- [ ] **Prepare comprehensive written doc** — full list of what MAIA will do / won't do / out of scope for AutoCount sync. Bring to next sync with Fixguru.
-- [ ] **Sync with Amir** on item-level discount data availability — historical pricing feature depends on this being in the backend
+- [ ] **Confirm cutoff date with Fixguru** — agree snapshot date (likely 2nd UAT). Before = no sync. After = full two-way sync on all docs (SO, Invoice, etc.)
+- [ ] **Scope standalone invoice sync** — AutoCount docs during migration period sync as standalone invoices into MAIA (no historical SO parent needed)
+- [ ] **Add cutoff date config field** — hard-coded param in sync config; anything before cutoff untouched
+- [ ] **Request snapshot file from Fixguru** at cutoff date — needs: (1) customer credit limits, (2) open invoice exposure per customer (statement of accounts). MAIA ingests to seed credit data.
+- [ ] **Scope daily stock reconciliation** — configurable time (e.g. 7AM), MAIA pulls stock snapshot from AutoCount daily. Define policy per instance.
+- [ ] **Resolve external ID mapping** — item created in MAIA → pushed to AutoCount → AutoCount generates different ID. MAIA must store + reference AutoCount's external ID.
+- [ ] **Fix item code display in chatbot** — switch from MAIA internal ID to AutoCount external SKU
+- [ ] **Update retainer/SOW** — two-way sync scope deviates from original spec; retainer revision needed
+- [ ] **Prepare in/out of scope doc** — full list of what MAIA will/won't do for AutoCount sync. Bring to next Fixguru sync.
+- **Out of scope:** Historical data migration (5–7 years) = chargeable separate service. Full 100k+ invoice backfill = not viable.
 
 ## See Also
 
