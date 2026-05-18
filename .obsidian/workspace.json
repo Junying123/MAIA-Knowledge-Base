@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,7 +124,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fixguru feedback sync-transcript"
+              "title": "2026-05-15 Fixguru UAT Action Items"
             }
           }
         ],
@@ -315,7 +315,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 757.5
+    "width": 609.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -345,12 +345,14 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 AutoCount Sync Action Items.md",
     "Granola/Transcripts/2026-05-18/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-18",
     "Excalidraw/Fixguru AutoCount SKU Sync.excalidraw",
     "plugins/excalidraw-mcp",
     "plugins",
-    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
     "conflict-files-obsidian-git.md",
     "Granola/Transcripts/2026-05-15/Holsen _ _ Mindhive C1C3 UAT-transcript.md",
     "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript.md",
@@ -375,8 +377,6 @@
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
     "03 - Clients/JY_Handle_Clients/Thermac/SOW/v1.0_13_Apr_2026_Thermac SOW.md",
     "03 - Clients/JY_Handle_Clients/Thermac/SOW/SOW for Lean Giap SOW_signed.pdf",
-    "03 - Clients/JY_Handle_Clients/Thermac/SOW/20 Apr 2026 - Thermac SOW First Draft V1.md",
-    "03 - Clients/JY_Handle_Clients/Thermac/SOW/16 Apr 2026 Thermac SOW v2.md",
     "03 - Clients/JY_Handle_Clients/Thermac/SOW",
     "03 - Clients/JY_Handle_Clients/Thermac/Narrative",
     "03 - Clients/JY_Handle_Clients/Thermac/Meeting Notes",
