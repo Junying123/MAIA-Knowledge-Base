@@ -91,9 +91,8 @@ GST's order fulfilment flow: Sales Order → picking list → Delivery Order (DO
 - Invoice template used; DO has different layout/title but follows invoice numbering
 - Multiple DOs can be created under one Sales Order
 
-**Main Point 2 — Carbon copy count**
-- Current: 2 white copies + 1 carbon copy (3 total)
-- Upcoming: 1 white copy + 1 carbon copy (2 total)
+**Main Point 2 — Triple carbon copy**
+- DO printed as 3 copies: white copy + customer copy + carbon copy
 - DO and Invoice dispatched together with delivery
 - Returning DO = carbon copy (confirmation of receipt)
 
