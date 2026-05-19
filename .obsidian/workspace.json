@@ -301,10 +301,14 @@
                   {
                     "id": 98,
                     "name": "zsh 98"
+                  },
+                  {
+                    "id": 99,
+                    "name": "zsh 99"
                   }
                 ],
-                "activeId": 95,
-                "nextId": 99
+                "activeId": 99,
+                "nextId": 100
               },
               "icon": "terminal",
               "title": "Terminal"
