@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
+                "file": "03 - Clients/Active Cooking Clients/GST/GST SAP Vendor x Mindhive - Meeting Notes.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fixguru __ Mindhive - UAT (On-site)-transcript"
+              "title": "GST SAP Vendor x Mindhive - Meeting Notes"
             }
           }
         ],
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -291,7 +292,7 @@
                     "name": "zsh 101"
                   }
                 ],
-                "activeId": 101,
+                "activeId": 100,
                 "nextId": 102
               },
               "icon": "terminal",
@@ -331,10 +332,11 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "9fde83d8b4ce98f5",
   "lastOpenFiles": [
-    "Granola/Transcripts/2026-05-19/Custom Medz & Macro Food Customer Narrative-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
+    "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
+    "Granola/Transcripts/2026-05-19/Custom Medz & Macro Food Customer Narrative-transcript.md",
     "Granola/Transcripts/2026-05-19/Fixguru Scoping Sync-transcript.md",
     "03 - Clients/Active Cooking Clients/GST/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting-transcript.md",
@@ -364,7 +366,6 @@
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/Requirement Gathering Output - GST Fine Foods - 2026-05.md",
     "Granola/Transcripts/2026-05-04/GST Fine Foods __ MH Requirements Gathering (Online) v2-transcript 2.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md.tmp.21314.a3079f7c8e0b",
     "Granola/Transcripts/2026-05-18",
     "Excalidraw/Fixguru AutoCount SKU Sync.excalidraw",
