@@ -195,6 +195,7 @@ Integration testing cannot begin without a dedicated UAT environment. GST's IT t
 - [ ] Configure webhook triggers on middleware once base setup done
 
 **GST IT**
+- [ ] Provide VPN access for MAIA team to connect to client intranet
 - [ ] Provision SAP UAT instance access for MAIA team
 - [ ] Prepare and send full list of SAP custom/UDF fields
 - [ ] Build custom endpoints for fields not supported by standard service layer (after field mapping confirmed)
