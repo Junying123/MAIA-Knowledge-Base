@@ -281,10 +281,14 @@
                   {
                     "id": 99,
                     "name": "zsh 99"
+                  },
+                  {
+                    "id": 100,
+                    "name": "zsh 100"
                   }
                 ],
-                "activeId": 99,
-                "nextId": 100
+                "activeId": 100,
+                "nextId": 101
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -295,7 +299,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 517.5
+    "width": 612.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -323,7 +327,7 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "9fde83d8b4ce98f5",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting-transcript.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
