@@ -3,7 +3,7 @@ granola_id: 8306d124-e9ed-4a2a-8a44-a4b89efd1c93
 title: GST SAP Vendor <> Mindhive meeting - Transcript
 type: transcript
 created: 2026-05-19T03:59:08.355Z
-updated: 2026-05-19T04:23:10.766Z
+updated: 2026-05-19T04:40:27.322Z
 attendees: 
   - azibiqbal01@gmail.com
   - jermaine@mindhive.asia
@@ -437,5 +437,273 @@ In the process to talk like a hazard proof on delivery in the system.
 
 ### Guest (2026-05-19T04:23:29.790Z)
 
-Shown in many the process to talk like hazard proof of delivery in the cities and young. Copy the chalk sign.
+Shown in many the process to talk like hazard proof of delivery in the cities and young. Copy the chalk sign. Or chop juice or naked DOS.
+
+### You (2026-05-19T04:23:52.239Z)
+
+Your payment.
+
+### Guest (2026-05-19T04:23:53.390Z)
+
+Payment payments finance 9.
+
+### You (2026-05-19T04:23:54.959Z)
+
+Finances create. Like a payment entry.
+
+### Guest (2026-05-19T04:24:03.390Z)
+
+Payment entry. Financial.
+
+### You (2026-05-19T04:24:09.519Z)
+
+So.
+
+### Guest (2026-05-19T04:24:09.790Z)
+
+Common manual our check bank not open. Okay for multiple order sorry multiple invoice.
+
+### You (2026-05-19T04:24:22.479Z)
+
+Pick a payment for multiple.
+
+### Guest (2026-05-19T04:24:31.070Z)
+
+Oh yeah yeah invoice nothing manga so based on the statement the total and then how to make payment so tighter payment of those.
+
+### You (2026-05-19T04:24:55.519Z)
+
+Then what's the knockout capture?
+
+### Guest (2026-05-19T04:24:56.110Z)
+
+29 knockoff partial. Yes correctly okay okay so even demand the delivery so one-on-one P straightforward make it try to straightforward everyone have high foods.
+
+### You (2026-05-19T04:25:04.319Z)
+
+Okay. So one point that you put down straight for straightforward. Or invested sometimes just straight away to stores.
+
+### Guest (2026-05-19T04:25:28.430Z)
+
+Or message just straight away to choose to draw a sales order.
+
+### You (2026-05-19T04:25:31.199Z)
+
+On. Them.
+
+### Guest (2026-05-19T04:25:35.710Z)
+
+Sales order site sap remain hassle sales order you do invoice because of sales order numbering the whole you make a numbering and then invoice is so you get the numbering three of the segment so any day they say okay well you want to see the number then say okay number. Confused so woman whosoever print involves a so the invoice number itchy principle layout CDO so that they also follow invoice number number in right so it's a invoice itch who. Like you write then do and invoice is the same number so for hotel.
+
+### You (2026-05-19T04:26:26.639Z)
+
+The voice is the same number. So when so for example. Okay.
+
+### Guest (2026-05-19T04:26:39.150Z)
+
+All the reason.
+
+### You (2026-05-19T04:26:42.879Z)
+
+Sorry.
+
+### Guest (2026-05-19T04:26:43.550Z)
+
+Sorry. What the is this your sales order in the document or document here in March the document now woman search of so the AR invoice is okay customer that wants not for money system may print that system in money since internal valve the whole woman woman principle like the woman circle SAP remains the document invoice document for MoHive print layout invoice the layout they all together same with the invoice number so I had had a layout title but then numbering invoice so as a follow AI once the document DI tongue male pricing them up so invoice the template but yeah yeah correct okay n delivered zhou invoke.
+
+### You (2026-05-19T04:27:44.319Z)
+
+Male pricing. Amount. So dementia so they mentioned Partner hidden images come up as the Ola. F. Okay. What. Kind of.
+
+### Guest (2026-05-19T04:28:05.150Z)
+
+Oh thanks all menstruate the invoice itchi green have printed the main setting so it has a deorgan invoice it's true line along so customer trip like has a trip line. Your okay woman woman okay customer reply the old tons invoice Choose customer the invoice so it orders over your language Chuk customer customers and the original copy so that their deal is True ply so it is carbon copy central coming to fly back even the naked buyer customer so DO the by law then system generated the sales invoice of Susan.
+
+### You (2026-05-19T04:28:56.719Z)
+
+Is. So it is coming from. A. When clients. DO the by lock system generated so inverse of user.
+
+### Guest (2026-05-19T04:29:18.590Z)
+
+When you trip like because incoming for mobile funds and two fly paper but anyway to buy the building customer it tells you. The momentum I copy the momentos when you go out DO and invoice will go out together then when it comes back the DO got actually the carbon copy.
+
+### You (2026-05-19T04:29:37.999Z)
+
+At least when you go out. D. O and inverse will go up together. Then when it comes back the DO could actually turn the carbon copy.
+
+### Guest (2026-05-19T04:29:51.390Z)
+
+Okay so okay hotel case hot will try to jiangsu need another process so when hotel can even think the show higher credit socin then create the sales invoice.
+
+### You (2026-05-19T04:29:52.159Z)
+
+So take PU fall out. Hotel will try to jump through the kind of process. So when hopped up and maintain a show element, so high search and create your create serving voice. Okay.
+
+### Guest (2026-05-19T04:30:10.510Z)
+
+Wait a moment create s away is it because even as ocean may have deducted stock committed stock only then ham and point from next sales order January picking list juices and good so I consolidate then moment back thing.
+
+### You (2026-05-19T04:30:34.159Z)
+
+So.
+
+### Guest (2026-05-19T04:30:34.990Z)
+
+So the dark stock. Choose a confirm or one thing packing up chooses job posting. Okay this they take down the weight.
+
+### You (2026-05-19T04:30:54.079Z)
+
+The picking list they take down a bit. From so they generate the people where they pack you in the way.
+
+### Guest (2026-05-19T04:31:01.950Z)
+
+From as well they generate picking list then the picking list the the warehouse people when they pack their key in the weight.
+
+### You (2026-05-19T04:31:08.159Z)
+
+Can only send.
+
+### Guest (2026-05-19T04:31:08.990Z)
+
+Then only send out the DO when the DO when it's a DOE then that will be the quantity that they actually deduct from the inventory yeah correct so okay so.
+
+### You (2026-05-19T04:31:09.679Z)
+
+Below when the quantity that they actually deduct from. Yeah. So okay same Direction.
+
+### Guest (2026-05-19T04:31:30.990Z)
+
+PO from say. Customer.
+
+### You (2026-05-19T04:31:34.799Z)
+
+Mail.
+
+### Guest (2026-05-19T04:31:35.550Z)
+
+Mail. Yo yo yo woman now this is proceed to as older so order intake your your land so far your ECF business have survey or customer email hiker POs and or Tawway WhatsApp makeup bills in the case mail money caser customer who can even yell some more straight away.
+
+### You (2026-05-19T04:31:47.999Z)
+
+To Power your ECF business or customer email hiker bills and or tell me what's up interviewers here. But in MetaCaser customer who can Yelp some more. Straight away just to create SO.
+
+### Guest (2026-05-19T04:32:09.310Z)
+
+Okay this woman puts a True customer hotel fighting so it's fulfilled ordering rate for the one let's say taco runs in south color when the but then the next day we still need to follow the PO because without the PO they will they will be have the payment issue so then my hotel woman follow up nagar pill and in normal unusual by P.
+
+### You (2026-05-19T04:32:09.519Z)
+
+P. EL MADEN. T. The next day we still need to roll out the PO because without the POV neutral. So then I suffer. So.
+
+### Guest (2026-05-19T04:33:24.430Z)
+
+So this is more of like in relationship that whole like sound like a psych may not.
+
+### You (2026-05-19T04:33:28.799Z)
+
+The shift in Parthian that the whole typho like to some type of POTU may not. Okay.
+
+### Guest (2026-05-19T04:33:36.270Z)
+
+Okay you send the case I think this one is quite normal versus.
+
+### You (2026-05-19T04:33:39.439Z)
+
+This one is quite normal versus.
+
+### Guest (2026-05-19T04:33:49.550Z)
+
+Two months.
+
+### You (2026-05-19T04:33:53.119Z)
+
+Mind. A. Then.
+
+### Guest (2026-05-19T04:33:56.990Z)
+
+Then after that what else I'm sure they also have a custom feature in SA gear transformation oh yeah imminent when the stock transformation one to one target value by quite a thing choke still still still still maintain by coin because that one if let's say because.
+
+### You (2026-05-19T04:33:59.759Z)
+
+You also have SAP. The stock transformation. Oh yeah one to one that you use and. Maybe still still still still that day simply by fire. Because that one if I see because I was.
+
+### Guest (2026-05-19T04:34:32.430Z)
+
+Customization so nothing can use customized detail you think about like my momento pencil finished group but we need to also have the full fish.
+
+### You (2026-05-19T04:34:42.959Z)
+
+Looking back like but we need to also have the full fish first.
+
+### Guest (2026-05-19T04:34:56.670Z)
+
+Of 40% sap the so good customer okay.
+
+### You (2026-05-19T04:35:11.119Z)
+
+That was.
+
+### Guest (2026-05-19T04:35:14.510Z)
+
+But what should be customer think they should cut the tahui or taman you which is so tam by weight the material without even a great weight so you can range them up.
+
+### You (2026-05-19T04:35:17.919Z)
+
+Particle 7. Tahu is just so common. By weight the maturity of doing something else but you know.
+
+### Guest (2026-05-19T04:35:37.390Z)
+
+Using but try to understand okay so when customer request to buy your products your ECSO tahui jiangsu finish good the mysterious well toss up pn or then root also yeah your cases are well who were warrior whole fish the moment cheated the process.
+
+### You (2026-05-19T04:35:42.959Z)
+
+Your product. Ion. Stabilize the kid. Or something. Yeah.
+
+### Guest (2026-05-19T04:36:03.630Z)
+
+You'll finish good. Or try to lead it take the question okay below example salmon highline associate system official so fish for monkey mine hormone process turns eager so the end product okay choose a whole fish watching whole fish or two whole juicer trading item of take a whole fish or charge the whole fish the weight my network process to fill it as per request service hello fastener okay choose your mindset now you know which is again now what you has customers to gain the minus. Fillet the continuing halfway your wastage training who are tell to like okay well test time will will turn down a weight of sick a whole fish kayak my turn as customer request will be titan of zero production which is colonized now okay it's a cost now delay choose a the total be the cost in their water let's say constant water fill waste their costing to swan free l.
+
+### You (2026-05-19T04:37:30.879Z)
+
+3. Up. Here.
+
+### Guest (2026-05-19T04:38:32.030Z)
+
+Partner tell me just as old.
+
+### You (2026-05-19T04:38:32.079Z)
+
+Tell me to go out for open fill.
+
+### Guest (2026-05-19T04:38:39.550Z)
+
+Customers consider internal warm city life domen city like absorb now immensity life so calcina also process chip fillet and sofish so it's sometimes the constitutional sense so actually the inventory team so eventually sales and coordinator.
+
+### You (2026-05-19T04:38:39.679Z)
+
+Ers. So.
+
+### Guest (2026-05-19T04:39:24.190Z)
+
+Comments my customer I see goodbye.
+
+### You (2026-05-19T04:39:25.599Z)
+
+I see.
+
+### Guest (2026-05-19T04:39:29.630Z)
+
+Two for sales person now look what process through lighter so how you say the partner not before her conform to the order so it's in outside internal remain gold more than the mind okay woman time will symptoms of sales.
+
+### You (2026-05-19T04:39:39.519Z)
+
+The. P.
+
+### Guest (2026-05-19T04:39:53.710Z)
+
+By the misu that means on the at the s own nematodes when he finished good like swana but in terms of okay.
+
+### You (2026-05-19T04:39:55.119Z)
+
+1.
 
