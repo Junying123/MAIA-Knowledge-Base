@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
+                "file": "03 - Clients/Active Cooking Clients/GST/GST SAP Vendor x Mindhive - Meeting Notes.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "GST SAP Vendor __ Mindhive meeting transcript v2"
+              "title": "GST SAP Vendor x Mindhive - Meeting Notes"
             }
           }
         ],
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -329,9 +330,10 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
-    "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting-transcript.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
+    "03 - Clients/Active Cooking Clients/GST/GST SAP Vendor x Mindhive - Meeting Notes.md",
+    "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
     "03 - Clients/Active Cooking Clients/GST/SOW for MAIA GST Fine Foods.md",
     "Granola/Transcripts/2026-05-19/Mindhive  Daily Standup-transcript.md",
@@ -360,7 +362,6 @@
     "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md",
     "Granola/Transcripts/2026-05-18/MAIA - Weekly Product Sync-transcript.md",
-    "Granola/Transcripts/2026-05-18/Fixguru Gap Briefing-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md.tmp.21314.a3079f7c8e0b",
     "Granola/Transcripts/2026-05-18",
     "Excalidraw/Fixguru AutoCount SKU Sync.excalidraw",

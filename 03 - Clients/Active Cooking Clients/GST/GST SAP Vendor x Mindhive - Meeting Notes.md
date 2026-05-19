@@ -91,8 +91,9 @@ GST's order fulfilment flow: Sales Order → picking list → Delivery Order (DO
 - Invoice template used; DO has different layout/title but follows invoice numbering
 - Multiple DOs can be created under one Sales Order
 
-**Main Point 2 — Triple carbon copy**
-- DO printed as 3 copies: white copy (company), customer copy, carbon copy
+**Main Point 2 — Carbon copy count**
+- Current: 2 white copies + 1 carbon copy (3 total)
+- Upcoming: 1 white copy + 1 carbon copy (2 total)
 - DO and Invoice dispatched together with delivery
 - Returning DO = carbon copy (confirmation of receipt)
 
@@ -195,7 +196,7 @@ Not meeting-critical but flagged during session. Production outage occurred whil
 | 1 | Define and document MAIA custom fields required for GST integration | MAIA team | Requirements gathering session |
 | 2 | GST IT to provision SAP UAT instance access for MAIA | GST IT | IT security approval |
 | 3 | MAIA set up dev server mirroring GST production data | MAIA dev | UAT access granted |
-| 4 | Collect full list of GST SAP custom/UDF fields | MAIA + GST | Requirements session |
+| 4 | Collect full list of GST SAP custom/UDF fields — **GST must prepare and send list; Gareth to follow up** | MAIA + GST | Requirements session |
 | 5 | Map standard service layer coverage vs custom endpoint gaps | MAIA dev | Field list collected |
 | 6 | Document stock transformation rules and item mappings | MAIA + GST | Requirements session |
 
