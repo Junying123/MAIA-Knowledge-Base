@@ -292,7 +292,7 @@
                     "name": "zsh 101"
                   }
                 ],
-                "activeId": 100,
+                "activeId": 101,
                 "nextId": 102
               },
               "icon": "terminal",
@@ -332,7 +332,7 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "9fde83d8b4ce98f5",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
     "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
