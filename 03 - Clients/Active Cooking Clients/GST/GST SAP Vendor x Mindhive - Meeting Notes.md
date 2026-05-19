@@ -170,24 +170,6 @@ Integration testing cannot begin without a dedicated UAT environment. GST's IT t
 
 ---
 
-## Key Point H: Production Outage (Side Incident)
-
-**Production server went down mid-meeting — AWS connectivity issue**
-
-Not meeting-critical but flagged during session. Production outage occurred while meeting was in progress; AWS log access was blocked. Resolved separately.
-
-**Main Point 1 — Incident summary**
-- Production server went down during meeting
-- AWS log access denied despite valid IAM account
-- Impacted operational departments (production, shipping)
-
-**Main Point 2 — Response**
-- Stakeholders notified via direct communication channels
-- SAP integration discussion continued in parallel
-- Server investigation and resolution deferred until after meeting
-
----
-
 ## Next Steps
 
 | # | Action | Owner | Dependency |
@@ -198,6 +180,24 @@ Not meeting-critical but flagged during session. Production outage occurred whil
 | 4 | Collect full list of GST SAP custom/UDF fields — **GST must prepare and send list; Gareth to follow up** | MAIA + GST | Requirements session |
 | 5 | Map standard service layer coverage vs custom endpoint gaps | MAIA dev | Field list collected |
 | 6 | Document stock transformation rules and item mappings | MAIA + GST | Requirements session |
+
+---
+
+## Next Action Items
+
+**Gareth (Product)**
+- [ ] Follow up with GST — request full list of SAP custom/UDF fields
+- [ ] Schedule requirements gathering session (custom fields, stock transformation rules, document numbering conventions)
+
+**MAIA Dev (Jermaine & Azib)**
+- [ ] Set up dev server mirroring GST production data (after UAT access granted)
+- [ ] Map SAP B1 standard service layer coverage vs custom endpoint gaps (after field list received)
+- [ ] Configure webhook triggers on middleware once base setup done
+
+**GST IT**
+- [ ] Provision SAP UAT instance access for MAIA team
+- [ ] Prepare and send full list of SAP custom/UDF fields
+- [ ] Build custom endpoints for fields not supported by standard service layer (after field mapping confirmed)
 
 ---
 
