@@ -299,7 +299,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 612.5
+    "width": 679.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -329,6 +329,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting-transcript.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
@@ -361,7 +362,6 @@
     "Granola/Transcripts/2026-05-18/MAIA - Weekly Product Sync-transcript.md",
     "Granola/Transcripts/2026-05-18/Fixguru Gap Briefing-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md.tmp.21314.a3079f7c8e0b",
-    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
     "Granola/Transcripts/2026-05-18",
     "Excalidraw/Fixguru AutoCount SKU Sync.excalidraw",
     "plugins/excalidraw-mcp",
