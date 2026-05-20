@@ -93,10 +93,10 @@ GST to provide **PDF samples** of gold-standard Crystal outputs per document typ
 
 #### SAP Business One Integration
 
-| Direction | Frequency | Data Objects |
-|---|---|---|
+| Direction            | Frequency                                                                    | Data Objects                                                                        |
+| -------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | SAP B1 → MAIA (pull) | Configurable (near-real-time for item/BOM changes; daily for stock snapshot) | Customers, Item Master, Price Lists, Credit Limits, Credit Terms, Inventory / Stock |
-| MAIA → SAP B1 (push) | On confirmation | Sales Orders, Invoices, Receipts, Credit Notes |
+| MAIA → SAP B1 (push) | On confirmation                                                              | Sales Orders, Invoices, Receipts, Credit Notes                                      |
 
 **Integration method:** API preferred via SAP B1 Service Layer. File-based (CSV/XML via SFTP) as fallback — to be confirmed with GST's SAP vendor.
 

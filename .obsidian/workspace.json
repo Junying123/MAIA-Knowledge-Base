@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+                "file": "03 - Clients/Active Cooking Clients/GST/SOW for MAIA GST Fine Foods.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "MAIA UAT Form - Holsen - 2026-03"
+              "title": "SOW for MAIA GST Fine Foods"
             }
           },
           {
@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[Template] MAIA UAT Form - [Client Name] - YYYY-MM"
+              "title": "CR Scoping — Fixguru"
             }
           },
           {
@@ -104,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -162,8 +162,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -290,10 +289,18 @@
                   {
                     "id": 101,
                     "name": "zsh 101"
+                  },
+                  {
+                    "id": 102,
+                    "name": "zsh 102"
+                  },
+                  {
+                    "id": 103,
+                    "name": "zsh 103"
                   }
                 ],
-                "activeId": 101,
-                "nextId": 102
+                "activeId": 103,
+                "nextId": 104
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -304,7 +311,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 702.5
+    "width": 720.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -334,13 +341,16 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/SOW/CR-05 VO — BOM Back-Calculation.md",
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
+    "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
+    "03 - Clients/Active Cooking Clients/GST/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-20/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-20",
-    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
     "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
     "Granola/Transcripts/2026-05-19/Custom Medz & Macro Food Customer Narrative-transcript.md",
     "Granola/Transcripts/2026-05-19/Fixguru Scoping Sync-transcript.md",
-    "03 - Clients/Active Cooking Clients/GST/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting-transcript.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
@@ -362,11 +372,8 @@
     "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — GTM Brief Context and Unclear Items.md",
     "03 - Clients/Active Cooking Clients/GST/GST Fine Foods × MAIA Proposal v2 [SIGNED].md",
     "03 - Clients/Active Cooking Clients/GST/GST Fine Foods Customer Narrative.md",
-    "03 - Clients/Active Cooking Clients/GST/CLAUDE.md",
     "03 - Clients/Active Cooking Clients/GST/7May26 -  GST X MAIA Gaps - Sheet1.csv",
     "03 - Clients/Active Cooking Clients/GST",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/Requirement Gathering Output - GST Fine Foods - 2026-05.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md.tmp.21314.a3079f7c8e0b",
     "Granola/Transcripts/2026-05-18",
     "Excalidraw/Fixguru AutoCount SKU Sync.excalidraw",

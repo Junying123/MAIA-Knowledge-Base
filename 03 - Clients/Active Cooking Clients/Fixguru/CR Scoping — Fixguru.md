@@ -77,29 +77,35 @@ Change requests raised by Fixguru that fall outside the signed SOW scope. Each C
 
 ## CR-05 — Back-Calculate Stock Availability from Raw Material
 
-**Request:** If Fixguru wants a custom composition calculator — back-calculate how many finished goods can be produced based on available raw material stock.
+**Request:** Back-calculate how many finished goods can be produced based on available raw material stock.
 
-**Dependencies:**
-- Requires syncing **BOM (Bill of Materials) / product bundle data** from AutoCount into MAIA
-- If AutoCount does not have BOM configured: requires a consultation session to help Fixguru set it up first
+**AutoCount BOM Context (Confirmed):**
+Fixguru uses AutoCount's three-layer BOM flow:
+1. **Stock Maintenance** — item master for raw materials (RM) and finished goods (FG) with stock quantities
+2. **Item BOM Maintenance** — recipe linking each FG to its RM components and quantities per unit
+3. **Stock Assembly** — production transaction that consumes RM and adds FG stock (MAIA will not touch this)
 
-**SOW Position:** Inventory management in SOW validates stock at SKU level only. BOM-based back-calculation is **not in scope**.
+BOM is confirmed as configured and in active use. No consultation pre-step required.
 
-**Nature:** New module / calculator feature with an AutoCount data dependency.
+**SOW Position:** Current AutoCount EOD sync covers Invoices, Credit Notes, Receipts, Payment Vouchers, Customer Records, Product Master. BOM data (Item BOM Maintenance) and raw material stock sync for back-calculation are **not in scope**.
+
+**Nature:** AutoCount sync extension (BOM data pull) + new back-calculator feature in MAIA workspace.
 
 **Scoping Approach:**
-- Gate on Fixguru confirmation that they want this feature
-- Pre-condition: Fixguru must confirm BOM exists in AutoCount (or agree to set it up)
-- If BOM exists: scope sync mechanism + back-calc logic
-- If BOM does not exist: scope a separate consultation engagement first, then the feature
-- Estimate as a standalone VO
+- Extend AutoCount EOD sync to pull: FG item list with active BOMs, BOM component lines (RM items + qty per unit), and RM on-hand stock levels
+- Build read-only back-calculator in MAIA: user selects FG → MAIA shows BOM breakdown, current RM stock, max producible qty, and bottleneck component
+- Single-level BOM only in scope; multi-level nested assembly requires separate assessment
+- Retainer revision to be assessed if BOM sync adds meaningful ongoing overhead
 
-**Commercial Flag:** Yes — chargeable, only if Fixguru confirms they want to proceed
+**Commercial Flag:** Yes — chargeable (pending Fixguru go-ahead confirmation)
+
+**Detailed VO Scope:** See [[SOW/CR-05 VO — BOM Back-Calculation]]
 
 **Next Steps:**
-- [ ] Gareth to confirm with Fixguru: do they want this feature? (gate before any scoping work)
-- [ ] If yes: confirm BOM status in AutoCount
-- [ ] Proceed to scoping only after both confirmed
+- [ ] Gareth to confirm with Fixguru: do they want this feature?
+- [ ] Fixguru to confirm BOM is single-level only (or provide multi-level sample)
+- [ ] Fixguru to provide BOM export / Item BOM Maintenance screenshots
+- [ ] Mindhive to confirm AutoCount endpoint supports BOM data pull
 
 ---
 
@@ -135,7 +141,7 @@ Change requests raised by Fixguru that fall outside the signed SOW scope. Each C
 |---|---|---|---|---|
 | CR-01 | Two-way AutoCount sync (historical) | Yes — one-off + retainer revision | Fixguru provides data export | Needs scoping |
 | CR-04 + CR-10 | Calculator customization & unit toggle | Yes | Fixguru provides updated Excel models; dev unit toggle assessment | Needs VO quote |
-| CR-05 | Back-calculate stock from raw material | Yes — if confirmed | Fixguru confirms intent + BOM status | Gated on confirmation |
+| CR-05 | Back-calculate stock from raw material | Yes — if confirmed | Fixguru confirms intent; BOM confirmed active; VO drafted | Gated on go-ahead |
 | CR-12 | Volumetric m³ on Delivery Note PDF | TBD — needs scoping | AutoCount template + field clarification | Needs scoping |
 
 ---
