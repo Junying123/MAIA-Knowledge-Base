@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-05-19
+last_reviewed: 2026-05-20
 ---
 
 # CR Scoping — Fixguru (IAM Worldwide Sdn Bhd)
@@ -10,139 +10,128 @@ Change requests raised by Fixguru that fall outside the signed SOW scope. Each C
 
 ---
 
-## SOW Baseline Reference
+## 1. Two-Way AutoCount Sync (Historical Records)
 
-| Item | SOW Coverage |
-|---|---|
-| AutoCount integration | EOD sync (push/pull) — Invoices, Credit Notes, Receipts, Payment Vouchers, Customer Records, Product Master |
-| Custom Box Quotation Module | RSC Sheet + Diecut Sheet (calculation logic provided by IAM) |
-| Document generation | Quotation, SO, Invoice, Credit Note, Receipt, Delivery Note, Picking List, Delivery Checklist |
-| One-off dev cost | RM 48,000 (covers chatbot, dashboard, approval flow, payment/credit check, Lalamove API, storage) |
-| Monthly retainer | ~RM 1,200 (OpenAI + platform + server costs) |
+Fixguru wants documents created in AutoCount before the MAIA cut-off date brought into MAIA as historical records. The signed SOW covers ongoing EOD sync from go-live date onward only. Pre-cutoff data is not addressed in the baseline scope, making this a one-off data migration engagement rather than a product feature.
 
----
+### 1.1 Historical Document Migration
 
-## CR-01 — Two-Way AutoCount Sync (Historical Records)
-
-**Request:** Sync documents created in AutoCount **before the MAIA cut-off date** into MAIA as historical records.
-
-**SOW Position:** SOW covers ongoing EOD sync from go-live date onward. Pre-cutoff historical data migration is **not in scope**.
-
-**Nature:** One-off data migration exercise. Not a recurring system feature.
-
-**Scoping Approach:**
-- Classify as historical record migration (data migration project), not a product feature CR
-- Scope as one-off fixed-price engagement
-- Retainer revision required if ongoing reconciliation or reverse-sync of historical records becomes a maintenance item
-- Requires Fixguru to provide clean data export from AutoCount (agreed data format TBD)
-
-**Commercial Flag:** Yes — one-off cost + potential retainer revision
-
-**Next Steps:**
-- [ ] Confirm which document types need backfilling (Invoices only? Credit Notes? Receipts?)
-- [ ] Confirm cut-off date
-- [ ] Fixguru to provide AutoCount data sample for scoping
-- [ ] Gareth to follow up with Fixguru on data readiness
+- **Platform:** AutoCount integration layer + MAIA data store
+- **Features:**
+    - **Historical Document Import:** Ingest pre-cutoff documents from AutoCount into MAIA as read-only historical records. Document types subject to confirmation (Invoices, Credit Notes, Receipts — scope TBC).
+    - **Cut-Off Date Mapping:** Records imported with their original AutoCount dates and document numbers to preserve chronological integrity.
+    - **One-Off Migration Run:** Migration executed once at an agreed point. Not a recurring sync.
+- **Notes:**
+    - Document types for backfill must be confirmed before scoping is completed.
+    - Fixguru must provide a clean AutoCount data export in an agreed format before migration work begins.
+    - If ongoing reconciliation or reverse-sync of historical records is required after initial migration, a retainer revision will be assessed.
+    - Data accuracy of historical records is Fixguru's responsibility. Mindhive will not reconcile or clean source data.
 
 ---
 
-## CR-04 + CR-10 — Calculator Policy Customization & Unit Toggle
+## 2. Calculator Policy Customisation & Unit Toggle
 
-**Requests:**
-- CR-04: Fixguru has updated transformation ratios. Custom calculator rules needed. Total: **5 new calculators** required; **2 existing calculators** outdated and need revision.
-- CR-10: Calculator must support switching units between centimetres (cm) and inches.
+Fixguru has updated their box transformation ratios and requires corresponding updates to the Custom Box Quotation Module calculators built under the signed SOW. Calculators must also support switching between centimetres (cm) and inches. The SOW covered the original IAM-provided logic only; updated ratios, new calculator builds, and unit system toggling are new configuration scope.
 
-**SOW Position:** SOW covers Custom Box Quotation Module with original IAM-provided logic. Updated ratios, additional calculators, and unit toggle are **new configuration scope** — not covered by baseline.
+### 2.1 Calculator Revision
 
-**Nature:** Single variation order (VO) on the Custom Box Quotation Module — covers logic revision, new calculator builds, and unit system toggle.
+- **Platform:** MAIA Web Workspace — Custom Box Quotation Module
+- **Features:**
+    - **Existing Calculator Update:** Revise 2 outdated calculators with Fixguru's updated transformation ratio logic per the new Excel models provided.
+- **Notes:**
+    - Fixguru must supply updated Excel models for the 2 calculators before development begins. Models are the source of truth for logic.
 
-**Scoping Approach:**
-- Treat as one VO with three work items:
-  1. **Revision** of 2 outdated calculators (updated transformation ratio logic)
-  2. **New build** of 5 calculators (new logic, new UI config)
-  3. **Unit toggle** (cm ↔ inches) — assess if universal multiplier or per-formula adjustment
-     - Universal multiplier: bundle at minimal incremental cost
-     - Per-formula rewrites: scope as separate line item within this VO
-- Fixguru must provide updated Excel models for all 7 calculators before dev begins
-- Estimate by complexity per calculator
+### 2.2 New Calculator Build
 
-**Commercial Flag:** Yes — explicitly chargeable
+- **Platform:** MAIA Web Workspace — Custom Box Quotation Module
+- **Features:**
+    - **New Calculator Build:** Build 5 new calculators with new logic and UI configuration per Fixguru's updated Excel models.
+- **Notes:**
+    - Each calculator is estimated by complexity. Final quote issued after dev review of all 5 models.
+    - Fixguru must supply Excel models for all 5 new calculators before development begins.
 
-**Next Steps:**
-- [ ] Fixguru to provide updated Excel models for all 7 calculators (2 revised + 5 new)
-- [ ] Confirm with dev: is unit toggle a single multiplier or per-formula change?
-- [ ] Mindhive to assess complexity per calculator and produce VO quote
+### 2.3 Unit Toggle (cm ↔ inches)
 
----
-
-## CR-05 — Back-Calculate Stock Availability from Raw Material
-
-**Request:** Back-calculate how many finished goods can be produced based on available raw material stock.
-
-**AutoCount BOM Context (Confirmed):**
-Fixguru uses AutoCount's three-layer BOM flow:
-1. **Stock Maintenance** — item master for raw materials (RM) and finished goods (FG) with stock quantities
-2. **Item BOM Maintenance** — recipe linking each FG to its RM components and quantities per unit
-3. **Stock Assembly** — production transaction that consumes RM and adds FG stock (MAIA will not touch this)
-
-BOM is confirmed as configured and in active use. No consultation pre-step required.
-
-**SOW Position:** Current AutoCount EOD sync covers Invoices, Credit Notes, Receipts, Payment Vouchers, Customer Records, Product Master. BOM data (Item BOM Maintenance) and raw material stock sync for back-calculation are **not in scope**.
-
-**Nature:** AutoCount sync extension (BOM data pull) + new back-calculator feature in MAIA workspace.
-
-**Scoping Approach:**
-- Extend AutoCount EOD sync to pull: FG item list with active BOMs, BOM component lines (RM items + qty per unit), and RM on-hand stock levels
-- Build read-only back-calculator in MAIA: user selects FG → MAIA shows BOM breakdown, current RM stock, max producible qty, and bottleneck component
-- Single-level BOM only in scope; multi-level nested assembly requires separate assessment
-- Retainer revision to be assessed if BOM sync adds meaningful ongoing overhead
-
-**Commercial Flag:** Yes — chargeable (pending Fixguru go-ahead confirmation)
-
-**Detailed VO Scope:** See [[SOW/CR-05 VO — BOM Back-Calculation]]
-
-**Next Steps:**
-- [ ] Gareth to confirm with Fixguru: do they want this feature?
-- [ ] Fixguru to confirm BOM is single-level only (or provide multi-level sample)
-- [ ] Fixguru to provide BOM export / Item BOM Maintenance screenshots
-- [ ] Mindhive to confirm AutoCount endpoint supports BOM data pull
+- **Platform:** MAIA Web Workspace — Custom Box Quotation Module
+- **Features:**
+    - **Unit System Toggle:** Add a toggle to the calculator interface allowing users to switch input units between centimetres and inches.
+- **Notes:**
+    - Implementation approach — universal multiplier or per-formula adjustment — to be confirmed with dev before scoping is finalised.
+    - If per-formula rewrites are required, this will be scoped as a separate line item within the same VO.
+    - cm/inches toggle has zero coverage in the current SOW.
 
 ---
 
-## CR-12 — Volumetric (m³) Field on Delivery Note PDF
+## 3. Back-Calculate Stock Availability from Raw Material
 
-**Request:** Show volumetric weight (m³) field on the Delivery Note PDF.
+Fixguru manages production in AutoCount using a three-layer BOM flow: Stock Maintenance (item master for raw materials and finished goods), Item BOM Maintenance (recipe defining RM components and quantities per finished good unit), and Stock Assembly (production transaction that consumes RM and adds FG stock). BOM is confirmed as configured and in active use. The signed SOW covers AutoCount EOD sync at document and SKU level only; BOM data and production back-calculation are not covered.
 
-**Reference:** AutoCount Report Design Center → "IAM Delivery Order" and "IAM Delivery Order (Branch)" templates.
+### 3.1 AutoCount BOM Data Sync Extension
 
-**SOW Position:** SOW covers document generation including Delivery Note. Document customization is mentioned as configurable (layout, fields, branding). However, adding a **calculated volumetric field** (not just a display field) may require data input/formula logic.
+- **Platform:** AutoCount integration layer (extending the existing EOD sync)
+- **Features:**
+    - **Finished Good Item Sync:** Pull the list of finished good items that have an active BOM record in AutoCount Item BOM Maintenance.
+    - **BOM Component Line Sync:** Pull BOM component lines for each active finished good — raw material item codes and the quantity of each RM required per unit of finished good.
+    - **Raw Material Stock Level Sync:** Pull current on-hand stock quantities per RM item from AutoCount Stock Item Maintenance.
+- **Notes:**
+    - BOM data is semi-static and changes infrequently. RM stock levels are transactional and change daily with production and purchases.
+    - Synced on the existing EOD schedule unless a more frequent sync is agreed.
+    - Single-level BOM only in scope. Multi-level nested assemblies require separate assessment.
+    - Fixguru is responsible for ensuring BOM records in AutoCount are accurate and active.
 
-**Nature:** PDF template enhancement + potentially a new data field on the Delivery Note record.
+### 3.2 Production Quantity Back-Calculator
 
-**Scoping Approach:**
-- Clarify: is volumetric m³ a **stored field** (entered manually per order) or a **calculated field** (auto-computed from dimensions)?
-  - If stored/manual: lower complexity — PDF template update only
-  - If calculated: requires dimension fields on line items + formula logic
-- Reference the AutoCount "IAM Delivery Order" template to understand the existing field structure
-- Scope as a PDF customization VO
+- **Platform:** MAIA Web Workspace — Logistics or Management workspace (location TBC)
+- **Features:**
+    - **Finished Good Selection:** User selects a finished good from the list of items with an active BOM in AutoCount.
+    - **BOM Component Display:** MAIA displays the BOM composition — each raw material component and its required quantity per finished good unit.
+    - **Current Stock Display:** Alongside each BOM component, MAIA shows the on-hand RM stock quantity as of the last AutoCount sync.
+    - **Back-Calculation:** MAIA calculates the maximum producible quantity using the formula: `min( floor( RM_on_hand ÷ RM_qty_per_unit ) )` across all BOM components.
+    - **Bottleneck Identification:** MAIA highlights the limiting raw material — the component that produces the lowest producible quantity result.
+    - **Last Sync Timestamp:** MAIA displays when AutoCount data was last synced so users understand data freshness.
+- **Notes:**
+    - This feature is read-only. MAIA will not trigger Stock Assembly or write to AutoCount.
+    - Back-calculation does not account for RM already committed to other open production runs unless AutoCount exposes reservation data — to be confirmed.
+    - Decimal rounding behaviour (floor vs. round) to be confirmed with Fixguru.
+    - Inaccurate BOM records or stock levels in AutoCount will produce incorrect results in MAIA. Fixguru is responsible for data hygiene.
 
-**Commercial Flag:** TBD — needs scoping; likely a smaller VO
+---
 
-**Next Steps:**
-- [ ] Obtain AutoCount "IAM Delivery Order" template spec or screenshot from Fixguru
-- [ ] Clarify: manual entry or calculated from dimensions?
-- [ ] Scope PDF template update + any backend field additions
+## 4. Volumetric (m³) Field on Delivery Note PDF
+
+Fixguru wants the volumetric weight (m³) field to appear on the Delivery Note PDF. Based on the UAT on-site session (2026-05-14), this is not a hardcoded value. Fixguru stores item weight and volume as master data per SKU in AutoCount under the stock item record. The existing AutoCount DN template ("IAM Delivery Order" in the Report Design Center) uses formula fields to calculate `qty × item volume` per line and sum the result at the footer. The intent is to replicate this same logic in the MAIA-generated Delivery Note PDF.
+
+### 4.1 AutoCount Weight and Volume Sync Extension
+
+- **Platform:** AutoCount integration layer (extending the existing item master sync)
+- **Features:**
+    - **Weight and Volume Field Sync:** Extend the AutoCount item master sync to include the weight and volume fields stored per SKU in Stock Item Maintenance.
+- **Notes:**
+    - Fixguru confirmed these fields are already populated in AutoCount. Sync extension reads existing data — no new AutoCount configuration required.
+    - If weight/volume data is missing for any SKU, the volumetric field for that line will be blank or zero. Fixguru is responsible for data completeness.
+
+### 4.2 Delivery Note PDF Update
+
+- **Platform:** MAIA Web Workspace — Delivery Note PDF template
+- **Features:**
+    - **Volumetric Line Column:** Display `qty × item volume` per Delivery Note line item, mirroring the AutoCount "IAM Delivery Order" formula field logic.
+    - **Volumetric Footer Total:** Aggregate line-level volumetric values into a footer total on the Delivery Note PDF, matching the AutoCount template layout.
+    - **PDF Template Update:** Update the MAIA Delivery Note PDF template to include the volumetric column and footer.
+- **Notes:**
+    - MAIA replicates the AutoCount formula. No separate manual data entry field is introduced on the DN.
+    - "IAM Delivery Order (Branch)" template variant also referenced — confirm if branch variant requires the same update.
+    - AutoCount "IAM Delivery Order" template layout to be obtained from Fixguru to confirm exact column positioning and footer structure before development.
 
 ---
 
 ## Summary Table
 
-| CR | Title | Chargeable? | Prerequisite | Status |
-|---|---|---|---|---|
-| CR-01 | Two-way AutoCount sync (historical) | Yes — one-off + retainer revision | Fixguru provides data export | Needs scoping |
-| CR-04 + CR-10 | Calculator customization & unit toggle | Yes | Fixguru provides updated Excel models; dev unit toggle assessment | Needs VO quote |
-| CR-05 | Back-calculate stock from raw material | Yes — if confirmed | Fixguru confirms intent; BOM confirmed active; VO drafted | Gated on go-ahead |
-| CR-12 | Volumetric m³ on Delivery Note PDF | TBD — needs scoping | AutoCount template + field clarification | Needs scoping |
+| # | Title | Chargeable? | Status |
+|---|---|---|---|
+| 1 | Two-way AutoCount sync (historical) | Yes — one-off + retainer revision | Needs scoping |
+| 2 | Calculator customisation & unit toggle | Yes | Needs VO quote |
+| 3 | Back-calculate stock from raw material | Yes — if confirmed | Gated on go-ahead |
+| 4 | Volumetric m³ on Delivery Note PDF | TBD — needs scoping | Needs VO quote |
 
 ---
 

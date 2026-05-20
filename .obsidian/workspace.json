@@ -104,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -311,7 +312,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 720.5
+    "width": 633.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -341,6 +342,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/GST/SOW for MAIA GST Fine Foods.md",
     "03 - Clients/Active Cooking Clients/Fixguru/SOW/CR-05 VO — BOM Back-Calculation.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
@@ -355,7 +357,6 @@
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
-    "03 - Clients/Active Cooking Clients/GST/SOW for MAIA GST Fine Foods.md",
     "Granola/Transcripts/2026-05-19/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-19",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
