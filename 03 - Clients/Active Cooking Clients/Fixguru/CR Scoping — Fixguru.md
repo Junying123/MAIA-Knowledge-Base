@@ -67,10 +67,11 @@ Fixguru purchases raw materials (e.g. sheetboard) from suppliers and converts th
 - **Platform:** Logistics Workspace — Stock Conversion Module
 - **Features:**
     - **Dual Stock View:** MAIA displays current on-hand stock for both the raw material and the corresponding finished good side by side, so the team can assess total fulfillable quantity at a glance.
+    - **Multi-Box Raw Material Visibility:** A single raw material purchase may be size-matched and allocated across multiple finished good box types. MAIA surfaces which finished goods each raw material stock can support, allowing the team to plan allocation across box types before committing to orders.
     - **Producible Quantity Calculation:** From the remaining raw material stock and the BOM transformation ratio, MAIA calculates how many additional finished good units can be produced, supporting order commitment decisions.
     - **Conversion Entry:** Operator records the raw material quantity consumed and the actual finished good quantity produced for a production run.
     - **Expected Output Calculation:** MAIA calculates the BOM-implied expected output from the consumed raw material quantity and the transformation ratio.
-    - **Yield Variance Display:** MAIA surfaces the variance between expected and actual output — unit loss is shown explicitly against the BOM-implied result.
+    - **Yield Variance Display:** MAIA surfaces the variance between expected and actual output — unit loss is shown explicitly against the BOM-implied result, enabling the team to decide whether to adjust the Delivery Order quantity to actual, give FOC units, or initiate a re-order based on the size of the shortfall.
     - **Last Sync Timestamp:** MAIA displays the last data sync timestamp so users understand the data freshness.
 
 ---
