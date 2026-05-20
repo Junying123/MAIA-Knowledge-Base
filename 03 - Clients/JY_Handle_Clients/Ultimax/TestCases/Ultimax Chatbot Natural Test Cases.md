@@ -10,7 +10,7 @@ tags: [draft, client, qa, testing]
 
 This UAT note adapts [[MAIA Chatbot — Compound Multistep Query Examples]] for Ultimax Supply Sdn Bhd. The examples use Ultimax working customers, item bundles, item codes, and the Ultimax workflow rule: Quotation, Sales Order, and Sales Invoice use the parent selling bundle only, while Delivery Note and Return Note can use operational instrument or screw bundles.
 
-The user messages are intentionally natural and slightly messy. The example chatbot replies are in English.
+The user messages are intentionally natural and slightly messy, with Malaysian English, Bahasa Malaysia fragments, shorthand, occasional typos, and slang such as `aiyah`, `wah lao`, `jap`, `liao`, `skrg`, `takde`, `boleh`, and `hold dulu`. The example chatbot replies are in English.
 
 ## Working Data
 
@@ -71,6 +71,17 @@ The user messages are intentionally natural and slightly messy. The example chat
 | `F-DEPENDENCY` | Amending QT/SO after DN, RN, SI, or payment exists |
 | `F-IMAGE` | Payment screenshot unreadable or sender mismatch |
 
+## Malaysian Chat Style To Preserve
+
+| Pattern | Example In This Note | Bot Expectation |
+|---|---|---|
+| Emotional filler | `aiyah`, `wah lao`, `haiya` | Strip filler, continue parsing |
+| Urgency shorthand | `skrg`, `fast fast`, `cepat sikit` | Treat as urgency, but do not skip confirmation |
+| Typos | `qoutation`, `invois`, `delivred`, `ammend` | Normalize intent |
+| Mixed language | `dah approve`, `takde stock`, `hold dulu` | Parse as normal Malaysian user input |
+| Past-tense slang | `done liao`, `settle d` | Treat as completed action/status signal |
+| Vague references | `that Sunway case`, `the KCS one` | Ask one blocking clarification only |
+
 ## 1. Sales User
 
 Sales users work across hospital RFQ, Quotation, Sales Order, Delivery readiness, and Sales Invoice. Ultimax sales messages often mention operation date, surgeon, hospital branch, and the commercial parent bundle.
@@ -80,7 +91,7 @@ Sales users work across hospital RFQ, Quotation, Sales Order, Delivery readiness
 **User message:**
 
 ```text
-Adventist asked for quote, Dr Tan hip fracture tomorrow. Use Proximal Femoral Nail Short, one set. Can prepare QT first and keep delivery before 8am?
+wei Adventist just ask quote for Dr Tan hip fracture case tmr. use short PFN one set ya, can prep qoutation first and note delivery before 8am?
 ```
 
 **Happy path:**
@@ -112,7 +123,7 @@ What is the operation date for Dr Tan's case?
 **User message:**
 
 ```text
-Sunway Ipoh need tibial nail for Thursday case. Check T0003 and T0007 availability first, if either one available then quote them.
+Sunway Ipoh ask tibial nail for Thu case. jap check T0003 or T0007 got stock anot, if got then quote them terus.
 ```
 
 **Happy path:**
@@ -145,7 +156,7 @@ Do you want me to hold the quotation until warehouse confirms availability, or c
 **User message:**
 
 ```text
-USAINS approved QT-1042 for VA Distal Tibial LCP. Convert to SO and book it, operation date 18 May. SO only show parent bundle ya.
+USAINS already approve QT-1042 for distal tibia plate. convert to SO can ah, op date 18 May. SO show parent bundle only ya, dont put tray items.
 ```
 
 **Happy path:**
@@ -177,7 +188,7 @@ I cannot convert it again. Do you want me to update SO-0221 with the operation d
 **User message:**
 
 ```text
-Zentava wants 7.3mm cannulated screw for tomorrow. Prepare QT and if they confirm later make SO, but remind me COD before release.
+Zentava want 7.3 cannulated screw tmr. do quote first la. if later they confirm make SO, but pls remind me COD before release ah.
 ```
 
 **Happy path:**
@@ -208,7 +219,7 @@ Do you still want to create the SO now and keep delivery on hold?
 **User message:**
 
 ```text
-USAINS QT-1050 change item. Doctor wants VA Proximal Femoral LCP 4.5/5.0 instead of Proximal Femoral Nail Long. Update before they approve.
+haiya USAINS QT-1050 need change item. doc dont want PFN long d, wants VA proximal femoral LCP 4.5/5.0. update before procurement approve can?
 ```
 
 **Happy path:**
@@ -240,7 +251,7 @@ To change the implant, I need to cancel or amend the downstream documents first.
 **User message:**
 
 ```text
-Sunway Ipoh also ask add Bone Graft to the quote. Put one unit first.
+Sunway Ipoh also say add bone graft in quote. put 1 unit first can la, not sure which size tho.
 ```
 
 **Happy path:**
@@ -277,7 +288,7 @@ Logistics users work across SO, DN, delivery timing, returned sets, and operatio
 **User message:**
 
 ```text
-SO-221 for Sunway Damansara confirmed. Create DN for tomorrow morning. Add Neogen AR instrument set and Neogen AR screws also, then submit.
+SO-221 Sunway Damansara confirm liao. create DN for tmr morning, add Neogen AR instrument tray and AR screws also. if ok submit terus.
 ```
 
 **Happy path:**
@@ -311,7 +322,7 @@ Do you want me to update DN-0339 with I0006 and S0006, or create a separate Deli
 **User message:**
 
 ```text
-Sunway Ipoh moved case earlier. DN-0402 with VA 2.7/3.5 instruments must reach by 7.30am tomorrow, not afternoon. Update and tell driver.
+aiyah Sunway Ipoh move case earlier. DN-0402 with VA 2.7/3.5 tray must reach 7.30am tmr, not afternoon. update and tell driver fast fast.
 ```
 
 **Happy path:**
@@ -343,7 +354,7 @@ I can message the driver now and add an internal note on DN-0402. Proceed?
 **User message:**
 
 ```text
-done liao DN 401, 402, 402, 405-408 for Sunway cases. mark delivered and create return reminder for tomorrow.
+done liao DN401, 402, 402, 405-408 all Sunway case. mark delivred and remind us collect return tmr can?
 ```
 
 **Parsing:**
@@ -380,7 +391,7 @@ Proceed with the 4 valid DNs and skip DN-402 and DN-407?
 **User message:**
 
 ```text
-DN-0341 from Sunway Damansara came back. Used AR Blade 10.3 x 85 and two Neogen Locking Screws 5.0 x 40. Create RN, explode screw bundle only, unused all return.
+Sunway Damansara DN-0341 set come back d. surgeon used AR blade 10.3 x 85 and 2 pcs Neogen locking screw 5.0 x 40. create RN, explode screw bundle only, others unused return.
 ```
 
 **Happy path:**
@@ -416,7 +427,7 @@ Which Neogen Locking Screw size was used?
 **User message:**
 
 ```text
-For Adventist DN-0338 return, Depth Gauge for Locking Screws not back. Other Neogen ILN instruments ok. Flag Jocelyn and don't close RN yet.
+Adventist DN-0338 return check, depth gauge for locking screw tak balik la. other Neogen ILN instrument ok. flag Jocelyn and dont close RN first.
 ```
 
 **Happy path:**
@@ -452,7 +463,7 @@ Finance users need invoices and payments to stay aligned with the parent selling
 **User message:**
 
 ```text
-SO-221 return settled already? If yes invoice Sunway Damansara. Invoice should show T0004 only, not the Neogen AR tray details.
+SO-221 return settle already ah? if yes pls invois Sunway Damansara. invoice show T0004 only ok, dont show all Neogen AR tray details.
 ```
 
 **Happy path:**
@@ -483,7 +494,7 @@ Do you want me to hold the invoice until warehouse submits the Return Note?
 **User message:**
 
 ```text
-Sunway Damansara paid for SO-221 and SO-225, screenshot attached. If amount tally then receipt send back to procurement.
+Sunway Damansara paid d, for SO221 and SO225. screenshot attached. if amount ngam then create receipt and send back procurement.
 ```
 
 **Happy path:**
@@ -523,7 +534,7 @@ Please confirm this payment belongs to Sunway Medical Centre Damansara for SO-22
 **User message:**
 
 ```text
-Zentava confirm but COD, don't release until payment screenshot. If got any SO for them today put hold first.
+Zentava confirm but COD ah. dont release until payment screenshot come in. any SO today for them, hold dulu pls.
 ```
 
 **Happy path:**
@@ -558,7 +569,7 @@ Warehouse users may type short, typo-heavy messages from the floor. The bot shou
 **User message:**
 
 ```text
-PL-0088 for Adventist 7.3 kcs all picked. confirm pick and create dn, add I0010 also.
+PL-0088 Adventist 7.3 KCS all picked d. confirm pick and create DN, add I0010 also ya.
 ```
 
 **Happy path:**
@@ -589,7 +600,7 @@ Were all quantities picked, or was there any short pick?
 **User message:**
 
 ```text
-time pick Sunway Ipoh DN-0402, cannulated drill bit 3.0mm rosak. cannot send. update and inform Lisa.
+wah lao during pick Sunway Ipoh DN-0402, cannulated drill bit 3.0mm rosak. cannot send like this. update and tell Lisa cepat.
 ```
 
 **Happy path:**
@@ -623,7 +634,7 @@ I cannot change the picked item now. I can notify Lisa Khor and the driver immed
 **User message:**
 
 ```text
-Quick one: Adventist approved QT-1061, make SO. Sunway Ipoh still pending, remind Lisa tomorrow. Zentava confirm but COD, don't release until payment screenshot.
+quick one ah: Adventist approve QT1061 already, make SO. Sunway Ipoh still pending, remind Lisa tmr. Zentava confirm but COD, dont release till payment screenshot ya.
 ```
 
 **Happy path:**
@@ -658,7 +669,7 @@ Do you want to continue that task or cancel it first?
 **User message:**
 
 ```text
-Where are we for Adventist 7.3 KCS case ah? Quote approved already or still waiting? Need tell warehouse whether to prep I0010.
+where we at for Adventist 7.3 KCS case ah? quote approve already or still waiting? need tell warehouse prep I0010 or hold dulu.
 ```
 
 **Happy path:**
