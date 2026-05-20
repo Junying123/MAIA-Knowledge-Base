@@ -304,7 +304,7 @@
                     "name": "zsh 104"
                   }
                 ],
-                "activeId": 101,
+                "activeId": 103,
                 "nextId": 105
               },
               "icon": "terminal",
@@ -316,7 +316,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 716.5
+    "width": 735.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -344,7 +344,7 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "510f61fc23589b61",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
