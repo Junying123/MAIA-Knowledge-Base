@@ -51,26 +51,26 @@ Fixguru has updated their box transformation ratios and requires corresponding u
 
 ## 3. Back-Calculate Stock Availability from Raw Material
 
-Fixguru manages production in AutoCount using a three-layer BOM flow: Stock Maintenance (item master for raw materials and finished goods), Item BOM Maintenance (recipe defining RM components and quantities per finished good unit), and Stock Assembly (production transaction that consumes RM and adds FG stock). BOM is confirmed as configured and in active use. The signed SOW covers AutoCount EOD sync at document and SKU level only; BOM data and production back-calculation are not covered.
+Fixguru manages production in AutoCount using a three-layer BOM flow: Stock Maintenance records the item master for raw materials and finished goods, Item BOM Maintenance defines the recipe that links each finished good to its component raw materials and quantities per unit, and Stock Assembly records the production transaction. BOM is confirmed as configured and in active use. The signed SOW covers AutoCount sync at document and stock item level only; BOM data and production back-calculation are not covered.
 
 ### 3.1 AutoCount BOM Data Sync Extension
 
-- **Platform:** AutoCount integration layer (extending the existing EOD sync)
+- **Platform:** AutoCount integration layer (extending the existing sync)
 - **Features:**
-    - **Finished Good Item Sync:** Pull the list of finished good items that have an active BOM record in AutoCount Item BOM Maintenance.
-    - **BOM Component Line Sync:** Pull BOM component lines for each active finished good — raw material item codes and the quantity of each RM required per unit of finished good.
-    - **Raw Material Stock Level Sync:** Pull current on-hand stock quantities per RM item from AutoCount Stock Item Maintenance, synced on the existing EOD schedule.
+    - **Finished Good Item Sync:** Pull the list of finished good items with an active BOM record from AutoCount.
+    - **BOM Component Line Sync:** Pull the BOM composition for each finished good — component raw material items and the quantity required per unit of finished good.
+    - **Raw Material Stock Level Sync:** Pull the current on-hand stock quantity per raw material item from AutoCount, synced on the existing daily schedule.
 
 ### 3.2 Production Quantity Back-Calculator
 
 - **Platform:** MAIA Web Workspace — Logistics or Management workspace
 - **Features:**
-    - **Finished Good Selection:** User selects a finished good from the list of items with an active BOM in AutoCount.
-    - **BOM Component Display:** MAIA displays the BOM composition — each raw material component and its required quantity per finished good unit.
-    - **Current Stock Display:** Alongside each BOM component, MAIA shows the on-hand RM stock quantity as of the last AutoCount sync.
-    - **Back-Calculation:** MAIA calculates the maximum producible quantity using the formula: `min( floor( RM_on_hand ÷ RM_qty_per_unit ) )` across all BOM components.
-    - **Bottleneck Identification:** MAIA highlights the limiting raw material — the component that produces the lowest producible quantity result.
-    - **Last Sync Timestamp:** MAIA displays when AutoCount data was last synced so users understand data freshness.
+    - **Finished Good Selection:** User selects a finished good to run the back-calculation against.
+    - **BOM Component Display:** MAIA displays the BOM composition — each component raw material and its required quantity per finished good unit.
+    - **Current Stock Display:** MAIA shows the current on-hand stock quantity per component raw material.
+    - **Back-Calculation:** MAIA calculates the maximum producible quantity using the formula: `min( floor( stock_on_hand ÷ qty_per_unit ) )` across all BOM components.
+    - **Bottleneck Identification:** MAIA highlights the limiting component — the raw material that produces the lowest producible quantity result.
+    - **Last Sync Timestamp:** MAIA displays the last data sync timestamp so users understand the data freshness.
 
 ---
 
@@ -82,15 +82,15 @@ Fixguru wants the volumetric weight (m³) field to appear on the Delivery Note P
 
 - **Platform:** AutoCount integration layer (extending the existing item master sync)
 - **Features:**
-    - **Weight and Volume Field Sync:** Extend the AutoCount item master sync to include the weight and volume fields stored per SKU in Stock Item.
+    - **Weight and Volume Field Sync:** Extend the AutoCount item master sync to include weight, volume, volume UOM, and volume per unit fields stored per SKU in Stock Item.
 
-### 4.2 Delivery Note PDF Update
+### 4.2 Delivery Note Volumetric Update
 
-- **Platform:** MAIA Web Workspace — Delivery Note PDF template
+- **Document:** Delivery Note (document and PDF output)
 - **Features:**
     - **Volumetric Line Column:** Display `qty × item volume` per Delivery Note line item, mirroring the AutoCount "IAM Delivery Order" formula field logic.
-    - **Volumetric Footer Total:** Aggregate line-level volumetric values into a footer total on the Delivery Note PDF, matching the AutoCount template layout.
-    - **PDF Template Update:** Update the MAIA Delivery Note PDF template to include the volumetric column and footer across both "IAM Delivery Order" and "IAM Delivery Order (Branch)" template variants.
+    - **Volumetric Total:** Aggregate line-level volumetric values into a total on the Delivery Note.
+    - **PDF Output:** Volumetric fields, including volume and volume UOM, are surfaced on the Delivery Note PDF. Output is rendered via IAM's AutoCount PDF template.
 
 ---
 
