@@ -12,18 +12,22 @@ Change requests raised by Fixguru that fall outside the signed SOW scope. Each C
 
 ## 1. Two-Way AutoCount Sync (Historical Records)
 
-Fixguru wants documents created in AutoCount before the MAIA cut-off date brought into MAIA as historical records. The signed SOW covers ongoing EOD sync from go-live date onward only. Pre-cutoff data is not addressed in the baseline scope, making this a one-off data migration engagement rather than a product feature.
+Fixguru wants documents created in AutoCount before the MAIA go-live date brought into MAIA as historical records. The signed SOW covers ongoing EOD sync from go-live date onward only. Pre-cutoff data is not in baseline scope, making this a one-off data migration engagement separate from the standard AutoCount integration. Migration will be executed when MAIA goes into production — it does not block UAT but must be planned and confirmed before go-live so it can be scheduled immediately after production launch.
 
 ### 1.1 Historical Document Migration
 
 - **Platform:** AutoCount integration layer + MAIA data store
 - **Features:**
-    - **Historical Document Import:** Ingest pre-cutoff documents from AutoCount into MAIA as read-only historical records. Document types subject to confirmation (Invoices, Credit Notes, Receipts — scope TBC).
-    - **Cut-Off Date Mapping:** Records imported with their original AutoCount dates and document numbers to preserve chronological integrity.
-    - **One-Off Migration Run:** Migration executed once at an agreed point. Not a recurring sync.
+    - **Historical Document Import:** Ingest all pre-cutoff AutoCount documents into MAIA as read-only historical records. Document types subject to confirmation (Invoices, Credit Notes, Receipts — scope TBC with Fixguru).
+    - **Cut-Off Date Mapping:** Records imported with their original AutoCount dates and document numbers to preserve chronological order and document reference integrity.
+    - **One-Off Migration Run:** Migration executed once at production go-live. Not a recurring sync. After migration, all new documents flow through the standard EOD sync covered in the SOW.
+    - **Post-Migration Sanitization:** After import, Mindhive performs a sanitization check — row counts and duplicate verification — to confirm data integrity before handover.
 - **Notes:**
+    - Cut-off date = MAIA production go-live date. All documents dated before go-live are historical; all documents from go-live onward are covered by standard EOD sync.
+    - Migration cost is volume-based — assessed by number of records, document types, and date range Fixguru wants migrated. No flat fee; quote issued after Fixguru confirms scope.
     - Document types for backfill must be confirmed before scoping is completed.
     - Fixguru must provide a clean AutoCount data export in an agreed format before migration work begins.
+    - Mindhive will communicate the exact migration cut-off date to Fixguru explicitly — no ambiguity on the scope boundary.
     - If ongoing reconciliation or reverse-sync of historical records is required after initial migration, a retainer revision will be assessed.
     - Data accuracy of historical records is Fixguru's responsibility. Mindhive will not reconcile or clean source data.
 

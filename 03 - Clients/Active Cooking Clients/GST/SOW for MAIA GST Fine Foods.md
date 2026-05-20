@@ -1,83 +1,125 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-05-03
+last_reviewed: 2026-05-20
+client: GST Fine Foods
 lark_url:
 ---
 
 # SOW — MAIA for GST Fine Foods
 
-**Effective Date:** [TBC — confirm with GST before sending]
+The Services Agreement is made effective as of [TBC — confirm with GST before sending].
 
-**Between:** Mindhive Sdn Bhd ("Mindhive") — 7, Jln Penyajak U1/45A, Hicom-glenmarie Industrial Park, 40150 Shah Alam, Selangor
-
-**And:** GST Fine Foods Sdn Bhd ("GST") — [Client address TBC]
+| BETWEEN | The Vendor | **Mindhive Sdn Bhd** ("Mindhive"), with its office located at 7, Jln Penyajak U1/45A, Hicom-glenmarie Industrial Park, 40150 Shah Alam, Selangor. |
+|---|---|---|
+| AND | The Client | **GST Fine Foods Sdn Bhd** ("GST"), with its office located at [Client address TBC]. |
 
 ---
 
-## 1. Executive Summary
+# 1. Executive Summary
 
 GST Fine Foods is a Malaysian frozen seafood supplier and B2B distributor — barramundi, tiger prawns, whole fish, salmon, squid, shellfish, and related frozen categories — with operations across Penang, Langkawi, and KL. Today, quotation handling, order preparation, payment verification, and stock coordination are managed through SAP Business One combined with heavy manual effort in Excel, WhatsApp, and phone coordination.
 
 **Current tools:** SAP Business One · Excel RFQ files · WhatsApp · Crystal Reports documents · manual stock spreadsheets
 
-This SOW defines a phased implementation of MAIA that delivers:
+This SOW defines a phased implementation of MAIA that introduces:
+
 - Structured RFQ intake and product matching, replacing manual Excel interpretation
 - Standard Sales Order creation with automated business rule checks (stock, credit, pricing)
 - Finance approval routing for payment slips and credit-limit exceptions
 - CPRN commitment tracking to manage blanket reservations and stock earmarks
 - SAP Business One integration with Crystal Reports-aligned document output
 
-**Current investment: RM 27,500** (Phase 1 + Phase 2 customization bundle, payable post-UAT)
+The current documented implementation investment is **RM 27,500** (Phase 1 + Phase 2 customisation bundle, payable post-UAT), subject to final commercial confirmation, payment terms, and dependency validation.
+
+## 1.1 Enterprise Baseline Modules
+
+The following sections outline the baseline modules included in the MAIA implementation for GST:
+
+- Internal Chatbots
+- User Workspaces
+- GST Document Lifecycle
+- Integration and Data Sync with SAP Business One
 
 ---
 
-## 2. Phased Delivery
+# 2. Product Specifications (Phase One)
 
-### Phase 1 — Core B2B Sales Agent + SAP Integration
+GST Fine Foods' B2B seafood distribution workflow is supported through baseline MAIA modules. Phase One focuses on GST's core sales order flow, where the current process follows: RFQ receipt → product matching → quotation → sales order → payment verification → invoice → delivery.
 
-Phase 1 establishes the core operational layer: standard order creation, business rule enforcement, payment and credit approval handling, backend visibility, and SAP sync. This is the foundation GST must have working before Phase 2 customizations build on top.
+## 2.1 Internal Chatbots
 
----
+### 2.1.1 Sales Agent Assistant
 
-#### Internal Chatbot — Sales Agent Assistant
+The Sales Agent Assistant serves as an internal operational layer to help GST's sales team capture customer RFQs, match products, create standard sales orders, enforce business rules, and route approval exceptions — operating primarily through WhatsApp.
 
-- **Platform:** WhatsApp (internal staff-facing)
-- **Intelligent Document Processing (IDP):** reads Excel RFQ files, extracts line items, structures quotation content for review
-- **Product matching support:** maps customer wording against GST's internal SAP item master — surfaces likely matches for staff confirmation
-- **Sales Order creation:** standard order flow initiated via WhatsApp or workspace
-- **Pre-order business rule checks:**
-  - Stock availability (against agreed inventory source — SAP live or daily extract, to be confirmed)
-  - Customer pricing reference (SAP price list)
-  - Credit limit check and credit block handling
-  - Customer-specific conditions where configured
-- **Approval routing:**
-  - Payment slip forwarded to finance for review before close-out
-  - Credit limit breach → escalation to finance / management
-- **Document generation:** all documents generated in Crystal Reports-aligned layout (see Document section below)
-- **Daily digests:** unclosed SOs, outstanding payment slips, flagged stock items
+- **Platform:**
+  - WhatsApp (internal staff-facing)
 
----
+- **Features:**
+  - **Intelligent Document Processing (IDP):** Reads Excel RFQ files, extracts line items, structures quotation content for review.
+  - **Product Matching Support:** Maps customer wording against GST's internal SAP item master — surfaces likely matches for staff confirmation.
+  - **Sales Order Creation:** Standard order flow initiated via WhatsApp or workspace.
+  - **Pre-Order Business Rule Checks:**
+    - Stock availability (against agreed inventory source — SAP live or daily extract, to be confirmed)
+    - Customer pricing reference (SAP price list)
+    - Credit limit check and credit block handling
+    - Customer-specific conditions where configured
+  - **Approval Routing:**
+    - Payment slip forwarded to finance for review before close-out
+    - Credit limit breach → escalation to finance / management
+  - **Document Generation:** All documents generated in Crystal Reports-aligned layout (see Section 2.3).
+  - **Daily Digests:** Unclosed SOs, outstanding payment slips, flagged stock items.
 
-#### Internal Chatbot — Logistics Reference
+Notes:
+
+- Stock availability source (SAP live vs daily extract vs hybrid) must be confirmed by GST before Phase 1 build starts.
+- Product matching support in Phase 1 covers basic item lookup. Deeper quotation matching logic is Phase 2 Customisation 1.
+
+### 2.1.2 Logistics Reference
 
 Phase 1 includes basic delivery-related document visibility as a reference output. Full logistics workflow is not in Phase 1 scope unless pulled forward.
 
----
+Notes:
 
-#### User Workspaces
+- Logistics workspace and delivery order management are reference-only in Phase 1.
 
-| Workspace | Key Features |
-|---|---|
-| **Sales Agent** | Quotation draft review, SO lifecycle, product match confirmation, customer history reference, stock query |
-| **Finance** | Payment slip queue and review, credit limit visibility, approval trail, exception log |
-| **Management / Backend Dashboard** | Operational overview, SO status, exceptions outstanding, payment and credit flags, activity trail |
+## 2.2 User Workspaces
 
----
+Desktop web interfaces where users can log in and interact with the system based on their role and permissions.
 
-#### Document Generation
+### 2.2.1 Sales Agent Workspace
 
-All documents must match GST's existing **SAP Crystal Reports layouts** — same formulas, same structure, same "premium" format. This is a non-negotiable quality bar for GST and will be validated during UAT.
+- **Features:**
+  - **Quotation Management:** Draft review, SO lifecycle, product match confirmation.
+  - **Customer History Reference:** View customer records, pricing, and historical transaction context.
+  - **Stock Query:** Surface stock-related queries against the agreed inventory source.
+  - **Output Document Management:** View and download generated documents.
+
+### 2.2.2 Finance Workspace
+
+- **Features:**
+  - **Payment Slip Queue and Review:** Receive and review payment slips forwarded by sales staff.
+  - **Credit Limit Visibility:** View customer credit status and flag exceptions.
+  - **Approval Trail:** Record who reviewed and approved payment and credit exceptions.
+  - **Exception Log:** Visible audit trail of all flagged and resolved exceptions.
+
+### 2.2.3 Management / Backend Dashboard
+
+- **Features:**
+  - **Operational Overview:** SO status, outstanding exceptions, payment and credit flags, activity trail.
+  - **Exception Visibility:** Review all pending and resolved approval cases.
+  - **Role-Based Oversight:** View cross-functional records according to approved management access rights.
+
+## 2.3 GST Document Lifecycle
+
+GST Fine Foods' sales document flow is supported through baseline MAIA modules. All documents must match GST's existing **SAP Crystal Reports layouts** — same formulas, same structure, same "premium" format. This is a non-negotiable quality bar for GST and will be validated during UAT.
+
+**Standard Document Flow:**
+
+`Quotation → Sales Order → Invoice → Delivery Note → Credit Note (if needed)`
+
+**Documents included in Phase 1:**
 
 | Document | Phase |
 |---|---|
@@ -87,26 +129,41 @@ All documents must match GST's existing **SAP Crystal Reports layouts** — same
 | Credit Note reference output | Phase 1 |
 | Delivery reference output | Phase 1 |
 
-GST to provide **PDF samples** of gold-standard Crystal outputs per document type before build begins.
+Notes:
 
----
+- GST must provide **PDF samples** of gold-standard Crystal outputs per document type before build begins.
+- Without samples, Mindhive will use best-effort layout. Crystal alignment cannot be validated without samples.
 
-#### SAP Business One Integration
+## 2.4 Integration and Data Sync with SAP Business One
 
-| Direction            | Frequency                                                                    | Data Objects                                                                        |
-| -------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+To push and synchronise data with SAP Business One, the following connectivity is required. Final method is subject to confirmation with GST's SAP vendor or IT team.
+
+- **Integration Method:**
+  - Preferred: API via SAP B1 Service Layer, subject to vendor confirmation.
+  - Alternate: Secure file-based import/export via CSV or XML via SFTP if API access is restricted.
+
+- **Core Touchpoints:**
+
+| Direction | Frequency | Data Objects |
+|---|---|---|
 | SAP B1 → MAIA (pull) | Configurable (near-real-time for item/BOM changes; daily for stock snapshot) | Customers, Item Master, Price Lists, Credit Limits, Credit Terms, Inventory / Stock |
-| MAIA → SAP B1 (push) | On confirmation                                                              | Sales Orders, Invoices, Receipts, Credit Notes                                      |
+| MAIA → SAP B1 (push) | On confirmation | Sales Orders, Invoices, Receipts, Credit Notes |
 
-**Integration method:** API preferred via SAP B1 Service Layer. File-based (CSV/XML via SFTP) as fallback — to be confirmed with GST's SAP vendor.
+- **Dependencies:**
+  - SAP B1 hosting type, network accessibility, and vendor contact for API or file specifications.
+  - Sample data exports to verify field mapping.
+  - Client-side permission and access approval.
 
-**Critical sync requirement:** When a product is processed from whole fish to a cut (e.g. whole → fish head), SAP's item/BOM update must sync to MAIA **without delay**. Stale SKUs in MAIA while SAP reflects the new cut will cause document mismatch. Cron interval to be agreed with GST — configurable as per operational need.
+Notes:
 
----
+- SAP Business One is expected to remain the accounting system of record unless otherwise agreed.
+- Mindhive will not guarantee API integration until access and technical feasibility are confirmed.
+- **Critical sync requirement:** When a product is processed from whole fish to a cut (e.g. whole → fish head), SAP's item/BOM update must sync to MAIA without delay. Stale SKUs in MAIA while SAP reflects the new cut will cause document mismatch. Cron interval to be agreed with GST — configurable as per operational need.
 
-#### Phase 1 Go-Live Deliverables
+**Phase 1 Go-Live Deliverables**
 
 At the end of Phase 1, GST will have:
+
 - A working internal WhatsApp workflow for sales staff to handle standard order creation, product matching, and approval exceptions
 - Finance and management workspace with live visibility across SOs, payment slips, and credit flags
 - All agreed Phase 1 documents generating in Crystal-aligned format
@@ -116,181 +173,211 @@ At the end of Phase 1, GST will have:
 
 ---
 
-### Phase 2 — Customization Bundle
+# 3. Customisation & Extensions (Phase Two Onwards)
 
-Phase 2 builds five client-specific modules on top of the Phase 1 foundation. Each is scoped below with enough detail to set UAT expectations clearly.
+MAIA provides a baseline suite of standard features out of the box. However, GST's frozen seafood distribution workflow requires customisation because RFQ matching logic, stock aging rules, CPRN commitment tracking, and statement of account generation are distinct from the standard product-sales flow. These customisations will be scoped, estimated, refined, and mutually agreed before execution.
 
----
+## 3.1 Customisations (Phase Two)
 
-#### Customization 1 — RFQ Intake and Product Matching (Quotation Workflow)
+### 3.1.1 RFQ Intake and Product Matching (Quotation Workflow)
 
-**What it does:**
-A hotel or B2B buyer sends an Excel RFQ. A GST coordinator forwards the file into MAIA. MAIA reads each line, interprets the customer's wording (species, cut, weight, origin, pack), and surfaces the most likely internal item matches for staff review. Staff confirm, adjust price, and export their own quotation output.
+- **Platform:** WhatsApp (internal) and MAIA Web Application
 
-**Key scope:**
-- Multi-column Excel RFQ ingestion (varying formats — GST to provide sample files)
-- Matching logic across substitution dimensions: species/origin, cut (fillet/tail/head/portion), weight band, pack format
-- Match output as structured text/workspace view — MAIA does not auto-fill the customer's Excel
-- Staff review screen (Ming Medical-style): see all matches, adjust, fill or confirm price
-- Optional: recommended price from SAP price list (Phase 2 direction, not assumed standard)
+- **Core Features:**
+  - **Multi-Column Excel RFQ Ingestion:** Reads varying RFQ formats — GST to provide sample files.
+  - **Matching Logic:** Matches across substitution dimensions: species/origin, cut (fillet/tail/head/portion), weight band, pack format.
+  - **Match Output:** Structured text/workspace view — MAIA does not auto-fill the customer's Excel.
+  - **Staff Review Screen:** See all matches, adjust, fill or confirm price.
+  - **Optional Recommended Pricing:** From SAP price list, subject to Phase 2 direction.
 
-**Why it's customization:** Matching customer natural-language seafood descriptions to internal SAP SKUs requires client-specific item reference setup, substitution logic configuration, and matching rule validation that goes beyond standard item lookup.
+Notes:
 
----
+- Matching customer natural-language seafood descriptions to internal SAP SKUs requires client-specific item reference setup, substitution logic configuration, and matching rule validation beyond standard item lookup.
+- GST must provide 3–5 anonymised sample RFQ Excel files before Phase 2 build begins.
 
-#### Customization 2 — Aging and Clearance Reminder Logic
+### 3.1.2 Aging and Clearance Reminder Logic
 
-**What it does:**
-Frozen product has expiry dates and batch ages. MAIA surfaces stock that is aging, slow-moving, or nearing expiry and pushes reminders to the relevant sales staff so they can prioritise clearance.
+- **Platform:** WhatsApp (internal) and MAIA Web Application
 
-**Key scope:**
-- Aging thresholds configurable by item category (exact rules to be defined in RG)
-- Batch-level visibility sourced from SAP (batch no., expiry date, qty)
-- Reminder via WhatsApp digest and/or workspace flag to relevant salesperson
-- Management visibility: aging stock summary view
+- **Core Features:**
+  - **Configurable Aging Thresholds:** By item category — exact rules to be defined in RG.
+  - **Batch-Level Visibility:** Sourced from SAP (batch no., expiry date, qty).
+  - **Reminders:** Via WhatsApp digest and/or workspace flag to relevant salesperson.
+  - **Management Visibility:** Aging stock summary view.
 
-**Why it's customization:** Threshold rules, item-category logic, and reminder routing are GST-specific and cannot be assumed from standard MAIA behaviour.
+Notes:
 
----
+- Threshold rules, item-category logic, and reminder routing are GST-specific and cannot be assumed from standard MAIA behaviour.
 
-#### Customization 3 — Excel Export for Planning and Operational Review
+### 3.1.3 Excel Export for Planning and Operational Review
 
-**What it does:**
-Allows users to pull agreed operational datasets — stock aging summary, open SO list, CPRN outstanding, customer AR buckets — into a structured Excel file for downstream planning.
+- **Platform:** MAIA Web Application
 
-**Key scope:**
-- Agreed dataset list to be confirmed during RG
-- Standard column layout — GST to advise if mandatory templates exist
-- Available via workspace export trigger
+- **Core Features:**
+  - **Agreed Dataset Export:** Stock aging summary, open SO list, CPRN outstanding, customer AR buckets — dataset list to be confirmed during RG.
+  - **Standard Column Layout:** GST to advise if mandatory templates exist.
+  - **Export Trigger:** Available via workspace export action.
 
-**Why it's customization:** Custom export structures and planning-oriented layouts are client-specific.
+Notes:
 
----
+- Custom export structures and planning-oriented layouts are client-specific.
 
-#### Customization 4 — Customer Purchase Request Note (CPRN) Tracking
+### 3.1.4 Customer Purchase Request Note (CPRN) Tracking
 
-**What it does:**
-Some GST customers (hotels, large restaurants) make large verbal commitments — "I'll need 10,000 units over the next few months" — without issuing a PO. GST needs to track this as a structured earmark: ring-fence stock, track consumption as small releases happen, prevent other salespeople from double-selling the same pool, and trigger release when the commitment lapses or is fulfilled.
+- **Platform:** WhatsApp (internal) and MAIA Web Application
 
-**Key scope:**
+- **Core Features:**
+  - **CPRN Creation:** Sales staff raise a CPRN via WhatsApp or workspace: customer, item, total committed qty, expected timeline, owning salesperson. CPRN creates a soft stock earmark — reduces available-to-sell qty for other staff.
+  - **Consumption Tracking:** Each release against the CPRN reduces the remaining balance. Running balance visible in workspace. Each release links to the corresponding SO.
+  - **Conflict Resolution:** When stock is earmarked under a CPRN, other salespeople see it as unavailable. If another salesperson attempts to sell earmarked stock, the system routes a release request to the CPRN owner or manager. Approval model to be confirmed by GST: (a) CPRN owner releases, (b) manager approves, or (c) purchasing controls.
+  - **Hold Expiry:** CPRN holds with no consumption for a configurable period trigger a reminder. Manual or approval-triggered release clears the earmark back to available pool. Audit trail of who released, when, and why.
+  - **Purchasing Visibility:** CPRN summary visible to purchasing so advance buying decisions can reference committed demand.
+  - **Conversion to SO:** CPRN can be fully or partially converted to a confirmed SO. Converted SO references original CPRN number for traceability. SAP push on conversion (mechanics to be confirmed in RG).
 
-*CPRN creation:*
-- Sales staff raise a CPRN via WhatsApp or workspace: customer, item, total committed qty, expected timeline, owning salesperson
-- CPRN creates a soft stock earmark — reduces available-to-sell qty for other staff
+Notes:
 
-*Consumption tracking (usage proper):*
-- Each release against the CPRN reduces the remaining balance (e.g. 10,000 → release 10 → 9,990 remaining)
-- Running balance visible in workspace
-- Each release links to the corresponding SO
+- CPRN is a new document type specific to GST. Requires custom reservation logic, conflict routing, approval graph, and lifecycle management not in standard MAIA.
+- **Phase 2 CPRN build cannot begin until GST confirms the approval model** — this is a blocking decision.
 
-*Conflict resolution (salesperson conflict):*
-- When stock is earmarked under a CPRN, other salespeople see it as unavailable (hard block or warning — to be decided in RG)
-- If another salesperson attempts to sell earmarked stock, the system routes a release request to the CPRN owner or manager
-- Approval model to be confirmed by GST: (a) CPRN owner releases, (b) manager approves, or (c) purchasing controls
+### 3.1.5 Statement of Account Generation
 
-*Choke / expiry of hold:*
-- CPRN holds that see no consumption for a configurable period trigger a reminder: "Still want this block?"
-- Manual or approval-triggered release clears the earmark back to available pool
-- Audit trail of who released, when, and why
+- **Platform:** MAIA Web Application
 
-*Purchasing visibility:*
-- CPRN summary visible to purchasing so advance buying decisions can reference committed demand
+- **Core Features:**
+  - **Customer AR Summary:** Open invoices, outstanding amounts, payment history.
+  - **Format Matching:** Matches SAP SOA layout.
+  - **Multi-Branch AR:** Consolidated or per-entity view (to be confirmed).
+  - **Trigger:** On-demand via workspace.
 
-*Conversion to standard SO:*
-- CPRN can be fully or partially converted to a confirmed SO
-- Converted SO references original CPRN number for traceability
-- SAP push on conversion (mechanics to be confirmed in RG)
+Notes:
 
-**Why it's customization:** CPRN is a new document type specific to GST. It requires custom reservation logic, conflict routing, approval graph, and lifecycle management that does not exist in standard MAIA.
+- This customisation depends on SAP B1 access to AR-level data and the agreed integration approach. Final scope will be confirmed after technical validation.
+- If not feasible in Phase 2, it moves to a subsequent phase and cost will be revised before that milestone is charged.
 
 ---
 
-#### Customization 5 — Statement of Account Generation
+# 4. Estimated Timelines - Two Phase Delivery
 
-**What it does:**
-Generates a customer statement of account for internal review or customer follow-up.
+**Phase 1: Core MAIA System (per Section 2: Product Specifications)**
 
-**Key scope:**
-- Customer-level AR summary (open invoices, outstanding amounts, payment history)
-- Format to match SAP SOA layout
-- Multi-branch AR: consolidated or per-entity view (to be confirmed)
-- Trigger: on-demand via workspace
+Deliver and go-live with the baseline MAIA features outlined in Section 2.
 
-**Feasibility note:** This customization depends on SAP B1 access to AR-level data and the agreed integration approach. Final scope will be confirmed after technical validation. If not feasible in Phase 2, it moves to a subsequent phase.
+| Item | Indicative Time Taken |
+|---|---:|
+| Onboarding & Setup | 1–2 weeks |
+| SAP B1 Integration | ~2 weeks (dependent on vendor access) |
+| Configuration & Build | ~2–4 weeks |
+| User Training & UAT | 1–2 weeks |
+| Go-Live & Hypercare | 1–2 weeks |
+
+**Phase 2: Customisation & Extensions (per Section 3.1)**
+
+After Phase 1 go-live, Mindhive will design, build, and release the agreed customisations listed in Section 3.1. Timelines are confirmed via detailed scoping per item.
+
+| Item | Indicative Time Taken |
+|---|---:|
+| Design & Detailed Scoping | 1–2 weeks |
+| Build & Integration | TBC — scoped after Phase 1 UAT |
+| User Training & UAT | 1–2 weeks |
+| Go-Live & Hypercare | 1–2 weeks |
+
+Notes: All durations are indicative and depend on scope complexity, SAP B1 vendor access and API readiness, sample document readiness (RFQ files, Crystal PDF samples, item master), CPRN approval model decision, and client responsiveness. Approvals and clarifications are typically expected within 2–3 working days as outlined in Client Commitments.
 
 ---
 
-## 3. Estimated Timelines
+# 5. Commercial Structure
 
-| Phase | Scope | Build & Integration | Expected Go-Live |
-|---|---|---|---|
-| Phase 1 | Core SO flow, business rules, payment/credit approvals, SAP integration, backend dashboard | ~3–4 weeks from kickoff | [TBC — confirm after kickoff date agreed] |
-| Phase 2 | RFQ matching, CPRN tracking, aging reminders, Excel export, SOA | TBC — scoped after Phase 1 UAT | [TBC] |
+- **Pricing Model:** One-off implementation investment with monthly recurring subscription covering platform access, hosting, maintenance, and agreed support.
+- **Customisation Fees:** Current documented investment is RM 27,500 (Phase 1 + Phase 2 bundle). Any additional scope outside this SOW will be quoted separately on a fixed-price or time-and-materials basis.
+- **Payment Terms:** Post-UAT — no upfront payment required. Monthly billing begins only after Phase 1 goes live.
+- **Renewal & Escalation:** TBC.
 
-**Timeline dependencies:**
-- SAP B1 vendor access and API readiness
-- GST providing sample RFQ files, item master excerpt, Crystal PDF samples, and product matching rules
-- Speed of internal review and feedback during UAT
-- CPRN approval model decision (blocks Phase 2 build start)
-
----
-
-## 4. Commercial Structure
-
-### One-off Development Cost
+## 5.1 One-Off Development Cost
 
 | Item | Price |
-|---|---|
-| Phase 1 — Core B2B Sales Agent + SAP Integration | ~~RM 48,000~~ **RM 20,000** |
-| Phase 2 — Customization Bundle (all 5 modules) | **RM 7,500** |
+|---|---:|
+| **Phase One — Core B2B Sales Agent + SAP Integration**<br>- Internal Sales Agent Chatbot (WhatsApp)<br>- User Workspaces (Sales, Finance, Management)<br>- Business Rule Checks (stock, credit, pricing)<br>- Approval Routing (payment slips, credit limit exceptions)<br>- Crystal Reports-aligned Document Generation<br>- SAP Business One Integration<br>- Training and Go-Live Support | ~~RM 48,000~~ **RM 20,000** |
+| **Phase Two — Customisation Bundle**<br>- RFQ Intake and Product Matching<br>- Aging and Clearance Reminder Logic<br>- Excel Export for Planning<br>- CPRN Tracking<br>- Statement of Account Generation (subject to SAP-side validation) | **RM 7,500** |
 | **Grand Total** | **RM 27,500** |
 
-### Payment Terms
+## 5.2 Payment Terms
 
 | Milestone | Amount | Payment Trigger |
-|---|---|---|
-| Phase 1 UAT Completion | RM 20,000 | Payable only after Phase 1 UAT is passed and signed off by GST |
-| Phase 2 UAT Completion | RM 7,500 | Payable only after Phase 2 UAT is passed and signed off by GST |
+|---|---:|---|
+| Milestone 1 — Phase 1 UAT Completion | RM 20,000 | Payable only after Phase 1 UAT is passed and signed off by GST |
+| Milestone 2 — Phase 2 UAT Completion | RM 7,500 | Payable only after Phase 2 UAT is passed and signed off by GST |
 
-No upfront payment is required. Monthly billing begins only after Phase 1 goes live.
+## 5.3 Monthly Maintenance and Third-Party Costs
 
-### Monthly Subscription
-
-| Branch | Estimated Volume | Monthly Fee |
-|---|---|---|
-| KL Branch (Phase 1 go-live) | ~4,000 orders/month | RM 2,500 |
-| Penang Branch (add-on) | ~4,000 orders/month | +RM 2,000 (+ RM 10,000 one-off implementation) |
-| Langkawi Branch (add-on) | ~2,000 orders/month | +RM 1,000 (+ RM 10,000 one-off implementation) |
-
-| Branch Coverage | Monthly Total |
-|---|---|
+| Branch Coverage | Monthly Fee |
+|---|---:|
 | KL only | RM 2,500 |
 | KL + Penang | RM 4,500 |
 | KL + Penang + Langkawi | RM 5,500 |
 
+**Branch top-up pricing:**
+
+| Branch | Estimated Volume | Monthly Add-On | One-Off Implementation |
+|---|---|---:|---:|
+| Penang | ~4,000 orders/month | +RM 2,000 | RM 10,000 |
+| Langkawi | ~2,000 orders/month | +RM 1,000 | RM 10,000 |
+
 Monthly breakdown (indicative — to be confirmed):
 
 | Item | Estimated |
-|---|---|
+|---|---:|
 | Platform access and maintenance | TBC |
 | Hosting and infrastructure | TBC |
 | AI / LLM usage costs | TBC |
 | WhatsApp Business API | TBC |
 | **Monthly Total (KL)** | **RM 2,500** |
 
-### Commercial Notes
+Notes:
 
-- All monthly fees billed monthly from Phase 1 go-live date
-- Each additional branch requires a one-off RM 10,000 implementation fee
-- Phase 2 customization bundle (RM 7,500) covers all five modules listed in Section 2; additional customizations not listed require a separate change request
-- SOA generation (Customization 5) remains subject to SAP-side technical validation; if not feasible in Phase 2, a revised scope will be agreed before that milestone is charged
-- Third-party costs (SAP vendor API access, WhatsApp Business account fees) are GST's responsibility unless otherwise agreed
+- All monthly fees billed monthly from Phase 1 go-live date.
+- Each additional branch requires a one-off RM 10,000 implementation fee.
+- Phase 2 customisation bundle (RM 7,500) covers all five modules listed in Section 3; additional customisations not listed require a separate change request.
+- SOA generation (Section 3.1.5) remains subject to SAP-side technical validation; if not feasible in Phase 2, a revised scope will be agreed before that milestone is charged.
+- Third-party costs (SAP vendor API access, WhatsApp Business account fees) are GST's responsibility unless otherwise agreed.
 
 ---
 
-## 5. Responsibilities
+# 6. Caveats & Exclusions
 
-### Mindhive will:
+- **SAP Vendor Dependency:** Mindhive's integration timeline depends on GST's SAP B1 vendor providing timely API access and a test environment. Delays on the vendor side are outside Mindhive's control.
+- **Crystal Reports Scope:** Document layout matching is validated against PDF samples provided by GST. If no samples are provided, Mindhive will use best-effort layout. GST must provide samples before Phase 1 UAT.
+- **CPRN Approval Model:** Phase 2 CPRN build cannot begin until GST confirms the approval model (CPRN owner / manager / purchasing). This is a blocking decision.
+- **Stock Source of Truth:** Phase 1 stock checks will be built against whichever source GST confirms as authoritative (SAP live, daily extract, or hybrid). This must be decided before Phase 1 build starts.
+- **SOA Feasibility:** Customisation 5 (Statement of Account) is subject to SAP-side AR data access. If technically blocked, scope and cost will be revised before that milestone is triggered.
+- **Third-Party Dependencies:** Mindhive is not liable for downtime, access restrictions, API limitations, data errors, or performance issues caused by SAP Business One, WhatsApp, email providers, or other external platforms.
+- **Connectivity:** GST is responsible for internet, devices, internal network readiness, and user access readiness.
+- **Data Accuracy:** Mindhive is not liable for errors arising from incorrect or incomplete data provided by GST (item master, price lists, customer records).
+- **Client-Side Integrations:** Unsupported third-party integrations outside the approved scope are excluded and require change request approval.
+- **Manual Decisions:** MAIA does not auto-confirm orders, auto-progress document status, or automate collections in the current scope.
+- **UAT Linkage:** Phase 1 and Phase 2 fees are payable only after the relevant phase achieves agreed pass thresholds on the jointly defined UAT sample set. UAT sample set must be jointly defined before testing begins. See Appendix 8.7 for target thresholds.
+- **Future Scope:** Full ERP replacement or SAP B1 restructuring, hardware procurement, advanced approval matrices beyond what is scoped in Phase 1/2, Penang and Langkawi branch rollout (available as paid add-ons), customer-facing WhatsApp bot, training beyond the initial agreed program for named users, and any Phase 2 customisation not listed in Section 3 are explicitly excluded unless separately agreed and priced.
+
+---
+
+# 7. Service Level Agreements (SLAs)
+
+## 7.1 Mindhive Commitments
+
+**System Availability:** 99.5% uptime excluding scheduled maintenance, subject to final hosting and support package confirmation.
+
+**Support Response Times:**
+
+- **Critical (P1):** Within 2 hours
+- **High (P2):** Within 8 hours
+- **Normal (P3):** Within 2 business days
+
+**Maintenance Windows:** Pre-communicated, typically scheduled during weekends or off-peak hours where practical.
+
+**Data Protection:** Regular backups and reasonable disaster recovery practices to safeguard client data, subject to final deployment model.
+
+**Lifetime Upgrades & Support:** GST continues to receive ongoing product upgrades, security enhancements, and support for the lifetime of the active subscription or support arrangement.
+
+**Mindhive will:**
 
 - Confirm agreed workflow design and configuration logic with GST before build
 - Configure MAIA business rules for stock, pricing, credit, and approval routing
@@ -301,7 +388,21 @@ Monthly breakdown (indicative — to be confirmed):
 - Conduct training for agreed named users
 - Support go-live and hypercare period (1–2 weeks post Phase 1 live)
 
-### GST Fine Foods will:
+## 7.2 Client Commitments
+
+**User Access & Permissions:** GST will designate system administrators and confirm internal user roles, permissions, and access boundaries.
+
+**Data Provisioning:** GST will provide accurate, complete, and timely data uploads, sample documents, and workflow inputs required for onboarding and implementation.
+
+**Timely Feedback:** GST will provide approvals, clarifications, and input during configuration, customisation, implementation, and UAT to avoid project delays.
+
+**Compliance:** GST will adhere to licensing terms, security practices, and applicable operational regulations.
+
+**Point of Contact:** GST will designate a primary point of contact for Mindhive communications (Joey Pong confirmed as coordination PIC). GST commits to responding to vendor queries, requests, or approvals within 2–3 working days.
+
+**Payments:** GST will ensure timely settlement of agreed milestone fees according to the payment terms in Section 5.2.
+
+**GST Fine Foods will:**
 
 - Provide SAP B1 access and coordinate with SAP vendor for API/integration access
 - Provide item master excerpt, customer list, price lists, and product matching reference data
@@ -310,15 +411,44 @@ Monthly breakdown (indicative — to be confirmed):
 - Provide org chart and RACI for approvals (payment slip, credit limit, CPRN release)
 - Clarify CPRN approval model (owner / manager / purchasing) before Phase 2 build starts
 - Confirm stock source of truth (SAP live vs daily extract vs hybrid) before Phase 1 build
-- Designate named PICs: sales coordination, finance, SAP/IT (Joey Pong confirmed as coordination PIC)
+- Designate named PICs: sales coordination, finance, SAP/IT
 - Provide UAT users and structured feedback within 2–3 working days during test cycles
 - Sign off Phase 1 and Phase 2 UAT when pass thresholds are met
 
 ---
 
-## 6. UAT Acceptance Criteria
+# 8. Appendix
 
-UAT must be jointly defined before testing begins. The following pass thresholds are agreed targets based on the proposal:
+## 8.1 Delivery Model
+
+MAIA is expected to be delivered as a cloud-hosted platform sitting on top of GST's existing SAP Business One environment. Final deployment setup, hosting, support package, and environment details remain subject to technical and commercial confirmation.
+
+## 8.2 System Interfaces
+
+- **Web Application:** Browser-based access for Sales Agent, Finance, and Management users.
+- **Mobile-Responsive Access:** Subject to final user workflow needs and supported screens.
+- **WhatsApp:** Used for internal staff-facing order intake, approval routing, and daily digests.
+- **Integration Interfaces:** SAP Business One touchpoints are subject to vendor access, data samples, and technical validation. API preferred via SAP B1 Service Layer; file-based fallback if API is restricted.
+
+## 8.3 Core System Capabilities
+
+MAIA provides a unified business foundation for sales documents, customer records, role-based access, document generation, workflow visibility, and operational traceability. For GST, this specifically includes frozen seafood product matching support, Crystal Reports-aligned document output, and SAP Business One two-way data sync.
+
+## 8.4 Security & Compliance
+
+MAIA access will be configured based on user roles and approved permission rules. Final authentication, data isolation, encryption, backup, and compliance commitments depend on the agreed deployment and support package.
+
+## 8.5 Availability & Performance
+
+MAIA is designed for high availability and scalable performance. Final uptime, monitoring, and support commitments are governed by the agreed support arrangement.
+
+## 8.6 Customisation & Extensibility
+
+Future workflow changes, new integrations, additional document formats, additional branch rollouts (Penang, Langkawi), or additional modules will be handled through separate scoping and change request approval. Phase 3 items and any scope not listed in Section 3 require separate discovery, pricing, and timeline confirmation.
+
+## 8.7 UAT Acceptance Targets
+
+Phase 1 and Phase 2 fees are payable only after the relevant phase achieves agreed pass thresholds on the jointly defined UAT sample set.
 
 | Metric | Target |
 |---|---|
@@ -333,82 +463,23 @@ UAT must be jointly defined before testing begins. The following pass thresholds
 | Downstream document generation success rate | 100% |
 | Crystal Reports layout match | 100% (human review) |
 
-Phase 1 and Phase 2 fees are payable only after the relevant phase achieves agreed pass thresholds on the jointly defined UAT sample set.
-
 ---
 
-## 7. SLAs
+# 9. Acknowledgement & Agreement
 
-### Mindhive Commitments
-
-- **System Availability:** 99.5% uptime (excluding scheduled maintenance windows)
-- **Critical (P1):** Response within 2 hours
-- **High (P2):** Response within 8 hours
-- **Normal (P3):** Response within 2 business days
-- **Maintenance Windows:** Pre-communicated; typically weekends or off-peak hours
-- **Data Protection:** Regular backups and disaster recovery in place
-- **Lifetime Upgrades and Support** for agreed in-scope modules
-
-### GST Commitments
-
-- Designate system administrators and enforce internal user access policies
-- Provide accurate and complete master data before onboarding
-- Respond to clarification requests and provide approvals within 2–3 working days
-- Designate a primary point of contact (Joey Pong confirmed as coordination PIC)
-- Adhere to licensing terms and agreed security practices
-- Settle payment per agreed milestone triggers
-
----
-
-## 8. Caveats and Exclusions
-
-- **SAP Vendor Dependency:** Mindhive's integration timeline depends on GST's SAP B1 vendor providing timely API access and a test environment. Delays on the vendor side are outside Mindhive's control.
-- **Crystal Reports Scope:** Document layout matching is validated against PDF samples provided by GST. If no samples are provided, Mindhive will use best-effort layout. GST must provide samples before Phase 1 UAT.
-- **CPRN Approval Model:** Phase 2 CPRN build cannot begin until GST confirms the approval model (CPRN owner / manager / purchasing). This is a blocking decision.
-- **Stock Source of Truth:** Phase 1 stock checks will be built against whichever source GST confirms as authoritative (SAP live, daily extract, or hybrid). This must be decided before Phase 1 build starts.
-- **SOA Feasibility:** Customization 5 (Statement of Account) is subject to SAP-side AR data access. If technically blocked, scope and cost will be revised before that milestone is triggered.
-- **Third-Party Fees:** WhatsApp Business API fees, SAP B1 API licence costs, or any external vendor charges are GST's responsibility and are not included in Mindhive's quoted fees.
-- **Data Accuracy:** Mindhive is not liable for errors arising from incorrect or incomplete data provided by GST (item master, price lists, customer records).
-- **Connectivity:** GST is responsible for providing reliable internet access and compatible devices for all named users.
-
----
-
-## 9. Out of Scope
-
-The following are explicitly not included unless separately agreed and priced:
-
-- Full ERP replacement or restructuring of SAP Business One
-- Hardware procurement or on-premise infrastructure
-- Advanced approval matrices or custom RACI beyond what is scoped in Phase 1/2
-- Any Phase 2 customization not listed in Section 2 of this SOW
-- Penang and Langkawi branch rollout (available as paid add-ons — see Commercial section)
-- Customer-facing WhatsApp bot or external-facing order capture (Phase 1 is internal staff-facing only)
-- Training beyond the initial agreed program for named users
-- Ongoing management of third-party accounts (WhatsApp Business, SAP vendor)
-
----
-
-## 10. Signatures
+This document serves as a baseline specification and framework for MAIA's implementation and usage. By signing below, both parties agree to the commitments, responsibilities, and exclusions set out herein.
 
 **For Mindhive Sdn Bhd:**
 
-____________________________
-Signature
-
-Name:
-Position:
-Date:
-
----
+| Signature |
+|---|
+| Name: TBC<br>Position: TBC<br>Date: TBC |
 
 **For GST Fine Foods Sdn Bhd:**
 
-____________________________
-Signature
-
-Name:
-Position:
-Date:
+| Signature |
+|---|
+| Name: TBC<br>Position: TBC<br>Date: TBC |
 
 ---
 
@@ -438,7 +509,7 @@ The SOW draft is complete but the following need resolution before this document
    What I need: Decide whether to show the line-item breakdown or just the monthly total.
 
 4. **Phase 2 — CPRN approval model decision**
-   Why it matters: Section 2 / Customization 4 flags this as unresolved. It directly blocks Phase 2 build scoping.
+   Why it matters: Section 3.1.4 flags this as unresolved. It directly blocks Phase 2 build scoping.
    What I need: GST must decide: (a) CPRN owner releases, (b) manager approves, or (c) purchasing controls. Add to RG agenda.
 
 5. **Phase 1 — Stock source of truth**
@@ -451,4 +522,4 @@ The SOW draft is complete but the following need resolution before this document
 
 7. **Timeline — Kickoff date**
    Why it matters: Phase 1 go-live date cannot be filled without a confirmed kickoff date.
-   What I need: Confirm kickoff date and update Section 3 accordingly.
+   What I need: Confirm kickoff date and update Section 4 accordingly.
