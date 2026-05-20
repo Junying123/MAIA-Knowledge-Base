@@ -49,27 +49,28 @@ Fixguru has updated their box transformation ratios and requires corresponding u
 
 ---
 
-## 3. Back-Calculate Stock Availability from Raw Material
+## 3. Raw-to-Finished Conversion with Stock Visibility and Yield Variance
 
-Fixguru manages production in AutoCount using a three-layer BOM flow: Stock Maintenance records the item master for raw materials and finished goods, Item BOM Maintenance defines the recipe that links each finished good to its component raw materials and quantities per unit, and Stock Assembly records the production transaction. BOM is confirmed as configured and in active use. The signed SOW covers AutoCount sync at document and stock item level only; BOM data and production back-calculation are not covered.
+Fixguru purchases raw materials (e.g. sheetboard) from suppliers and converts them into finished custom box units through a Stock Assembly process governed by BOM transformation ratios. Both raw material stock and finished goods stock must be tracked independently — when a new customer order arrives, the sales team needs to know the current ready stock of finished boxes and the remaining raw material stock so they can calculate how many additional units can be produced and decide whether to commit to the order. Actual production yield may differ from the BOM-implied output (e.g. 2000 sheetboard pieces yield 3900 boxes instead of the expected 4000 due to defects); this variance must be visible so the team can adjust the Delivery Order and invoice to the actual quantity delivered and decide whether to re-order, give FOC units, or absorb the loss. The signed SOW covers AutoCount sync at document and stock item level only; BOM composition data, conversion yield tracking, and dual-stock visibility are not covered.
 
-### 3.1 AutoCount BOM Data Sync Extension
+### 3.1 AutoCount BOM and Stock Data Sync Extension
 
 - **Platform:** AutoCount integration layer (extending the existing sync)
 - **Features:**
     - **Finished Good Item Sync:** Pull the list of finished good items with an active BOM record from AutoCount.
-    - **BOM Component Line Sync:** Pull the BOM composition for each finished good — component raw material items and the quantity required per unit of finished good.
+    - **BOM Transformation Ratio Sync:** Pull the BOM composition for each finished good — raw material components and the quantity of raw material required per unit of finished good produced.
     - **Raw Material Stock Level Sync:** Pull the current on-hand stock quantity per raw material item from AutoCount, synced on the existing daily schedule.
+    - **Finished Good Stock Level Sync:** Pull the current on-hand stock quantity per finished good item from AutoCount, synced on the existing daily schedule.
 
-### 3.2 Production Quantity Back-Calculator
+### 3.2 Stock Visibility and Conversion Planner
 
-- **Platform:** MAIA Web Workspace — Logistics or Management workspace
+- **Platform:** Logistics Workspace — Stock Conversion Module
 - **Features:**
-    - **Finished Good Selection:** User selects a finished good to run the back-calculation against.
-    - **BOM Component Display:** MAIA displays the BOM composition — each component raw material and its required quantity per finished good unit.
-    - **Current Stock Display:** MAIA shows the current on-hand stock quantity per component raw material.
-    - **Back-Calculation:** MAIA calculates the maximum producible quantity using the formula: `min( floor( stock_on_hand ÷ qty_per_unit ) )` across all BOM components.
-    - **Bottleneck Identification:** MAIA highlights the limiting component — the raw material that produces the lowest producible quantity result.
+    - **Dual Stock View:** MAIA displays current on-hand stock for both the raw material and the corresponding finished good side by side, so the team can assess total fulfillable quantity at a glance.
+    - **Producible Quantity Calculation:** From the remaining raw material stock and the BOM transformation ratio, MAIA calculates how many additional finished good units can be produced, supporting order commitment decisions.
+    - **Conversion Entry:** Operator records the raw material quantity consumed and the actual finished good quantity produced for a production run.
+    - **Expected Output Calculation:** MAIA calculates the BOM-implied expected output from the consumed raw material quantity and the transformation ratio.
+    - **Yield Variance Display:** MAIA surfaces the variance between expected and actual output — unit loss is shown explicitly against the BOM-implied result.
     - **Last Sync Timestamp:** MAIA displays the last data sync timestamp so users understand the data freshness.
 
 ---
