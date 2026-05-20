@@ -12,7 +12,7 @@ Change requests raised by Fixguru that fall outside the signed SOW scope. Each C
 
 ## 1. Two-Way AutoCount Sync (Historical Records)
 
-Fixguru wants documents created in AutoCount before the MAIA go-live date brought into MAIA as historical records. The signed SOW covers ongoing EOD sync from go-live date onward only. Pre-cutoff data is not in baseline scope, making this a one-off data migration engagement separate from the standard AutoCount integration. Migration will be executed when MAIA goes into production — it does not block UAT but must be planned and confirmed before go-live so it can be scheduled immediately after production launch.
+Pre-cutoff AutoCount documents to be brought into MAIA as historical records. SOW covers EOD sync from go-live onward only. This is a one-off migration executed at production launch — does not block UAT.
 
 ### 1.1 Historical Document Migration
 
@@ -27,7 +27,7 @@ Fixguru wants documents created in AutoCount before the MAIA go-live date brough
 
 ## 2. Calculator Policy Customisation & Unit Toggle
 
-Fixguru has updated their box transformation ratios and requires corresponding updates to the Custom Box Quotation Module calculators built under the signed SOW. Calculators must also support switching between centimetres (cm) and inches. The SOW covered the original IAM-provided logic only; updated ratios, new calculator builds, and unit system toggling are new configuration scope.
+Updated transformation ratios and unit toggle (cm ↔ inches) required on the Custom Box Quotation Module. SOW covered original IAM-provided logic only — updated ratios, new builds, and unit toggling are new scope.
 
 ### 2.1 Calculator Revision
 
@@ -51,7 +51,7 @@ Fixguru has updated their box transformation ratios and requires corresponding u
 
 ## 3. Raw-to-Finished Conversion with Stock Visibility and Yield Variance
 
-Fixguru purchases raw materials (e.g. sheetboard) from suppliers and converts them into finished custom box units through a Stock Assembly process governed by BOM transformation ratios. Both raw material stock and finished goods stock must be tracked independently — when a new customer order arrives, the sales team needs to know the current ready stock of finished boxes and the remaining raw material stock so they can calculate how many additional units can be produced and decide whether to commit to the order. Actual production yield may differ from the BOM-implied output (e.g. 2000 sheetboard pieces yield 3900 boxes instead of the expected 4000 due to defects); this variance must be visible so the team can adjust the Delivery Order and invoice to the actual quantity delivered and decide whether to re-order, give FOC units, or absorb the loss. The signed SOW covers AutoCount sync at document and stock item level only; BOM composition data, conversion yield tracking, and dual-stock visibility are not covered.
+Raw materials (e.g. sheetboard) are converted into finished custom box units via Stock Assembly. Both stock types must be tracked independently. Sales team uses remaining raw material stock to calculate producible quantity and decide order commitment. Actual yield may differ from BOM output (e.g. 3900 vs 4000 expected) — shortfall must be visible to decide whether to adjust the Delivery Order, give FOC units, or re-order. SOW covers document and stock item sync only; BOM data, yield tracking, and dual-stock visibility are new scope.
 
 ### 3.1 AutoCount BOM and Stock Data Sync Extension
 
@@ -78,7 +78,7 @@ Fixguru purchases raw materials (e.g. sheetboard) from suppliers and converts th
 
 ## 4. Volumetric (m³) Field on Delivery Note PDF
 
-Fixguru wants the volumetric weight (m³) field to appear on the Delivery Note PDF. Fixguru stores item weight and volume as master data per SKU in AutoCount under the stock item record. The existing AutoCount DN template ("IAM Delivery Order" in the Report Design Center) uses formula fields to calculate `qty × item volume` per line and sum the result at the footer. MAIA will replicate this same logic in pdf template
+Volumetric (m³) field required on the Delivery Note. Item weight and volume stored as master data per SKU in AutoCount. MAIA syncs these fields and surfaces volumetric calculations on the Delivery Note and its PDF output.
 
 ### 4.1 AutoCount Weight and Volume Sync Extension
 

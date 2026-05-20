@@ -298,10 +298,6 @@
                   {
                     "id": 103,
                     "name": "zsh 103"
-                  },
-                  {
-                    "id": 104,
-                    "name": "zsh 104"
                   }
                 ],
                 "activeId": 103,
@@ -316,7 +312,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 735.5
+    "width": 746.5
   },
   "left-ribbon": {
     "hiddenItems": {
