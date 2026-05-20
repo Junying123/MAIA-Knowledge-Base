@@ -80,6 +80,30 @@
             }
           },
           {
+            "id": "628deccba19f635d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "2026-05-20 Data Migration — Standup Notes"
+            }
+          },
+          {
             "id": "9fde83d8b4ce98f5",
             "type": "leaf",
             "state": {
@@ -104,7 +128,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -123,7 +147,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "GST",
+                "query": "migration",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -157,8 +181,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -298,10 +321,14 @@
                   {
                     "id": 103,
                     "name": "zsh 103"
+                  },
+                  {
+                    "id": 105,
+                    "name": "zsh 105"
                   }
                 ],
                 "activeId": 103,
-                "nextId": 105
+                "nextId": 106
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -342,10 +369,10 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
-    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
-    "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
+    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
+    "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
     "03 - Clients/Active Cooking Clients/GST/SOW for MAIA GST Fine Foods.md",
     "03 - Clients/Active Cooking Clients/Fixguru/SOW/CR-05 VO — BOM Back-Calculation.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
