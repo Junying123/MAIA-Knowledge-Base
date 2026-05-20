@@ -298,10 +298,14 @@
                   {
                     "id": 103,
                     "name": "zsh 103"
+                  },
+                  {
+                    "id": 104,
+                    "name": "zsh 104"
                   }
                 ],
-                "activeId": 103,
-                "nextId": 104
+                "activeId": 104,
+                "nextId": 105
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -312,7 +316,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 633.5
+    "width": 716.5
   },
   "left-ribbon": {
     "hiddenItems": {
