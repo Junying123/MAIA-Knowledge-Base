@@ -3,7 +3,7 @@ granola_id: a5b8badb-1b31-4570-9aef-48b30088d5d8
 title: Holsen C1/C3 Testing - Transcript
 type: transcript
 created: 2026-05-22T03:11:31.242Z
-updated: 2026-05-22T04:01:29.726Z
+updated: 2026-05-22T04:46:17.643Z
 attendees: 
   - holsenlab@gmail.com
 ---
@@ -1128,5 +1128,669 @@ Okay.
 
 ### Guest (2026-05-22T04:02:07.443Z)
 
-Okay. Okay. So for check it out. Latest. Inventory list water is sang uploads and also ingest. Like. Batch number. So if your life the best number. Three.
+Okay. Okay. So for check it out. Latest. Inventory list water is sang uploads and also ingest. Like. Batch number. So if your life the best number. Three. Was dollar. Your system expired means started using now one highlight. So product using now to highlight. Moments or this is key in another new batch. No point honey. From table. Okay. Batch number the sales. Support to down.
+
+### You (2026-05-22T04:04:06.994Z)
+
+They have.
+
+### Guest (2026-05-22T04:04:08.003Z)
+
+Water your control multiple step. Okay just share. S. Logistics handle.
+
+### You (2026-05-22T04:04:31.874Z)
+
+Okay.
+
+### Guest (2026-05-22T04:04:34.243Z)
+
+Okay so took. For my site.
+
+### You (2026-05-22T04:04:50.194Z)
+
+So C1 OKL. E C3.
+
+### Guest (2026-05-22T04:04:56.963Z)
+
+C3 one to counter when you. Move. What is your upload? The PDF also for. The moment. Permission shampoo fixed tail.
+
+### You (2026-05-22T04:05:29.554Z)
+
+7. 3 example you can try upload.
+
+### Guest (2026-05-22T04:05:41.283Z)
+
+P. Ane.
+
+### You (2026-05-22T04:05:43.794Z)
+
+Knuckles heater.
+
+### Guest (2026-05-22T04:05:50.563Z)
+
+L but using expire.
+
+### You (2026-05-22T04:05:56.114Z)
+
+S it may expire. Your legal validation.
+
+### Guest (2026-05-22T04:06:17.203Z)
+
+S.
+
+### You (2026-05-22T04:06:37.154Z)
+
+Male. Can certainly.
+
+### Guest (2026-05-22T04:06:48.083Z)
+
+And see how we can. See invoice.
+
+### You (2026-05-22T04:07:43.074Z)
+
+Upload.
+
+### Guest (2026-05-22T04:07:48.083Z)
+
+What's the outcreate certificate.
+
+### You (2026-05-22T04:07:51.874Z)
+
+Even the upload p openinia bio processor.
+
+### Guest (2026-05-22T04:07:58.563Z)
+
+So. Rry.
+
+### You (2026-05-22T04:08:06.434Z)
+
+Okay.
+
+### Guest (2026-05-22T04:08:14.723Z)
+
+Customer ID. Another. So we have notified. But.
+
+### You (2026-05-22T04:08:40.754Z)
+
+Supposedly.
+
+### Guest (2026-05-22T04:08:42.963Z)
+
+Type C1. I guess C3. 3 so like the third can see once.
+
+### You (2026-05-22T04:08:56.114Z)
+
+On.
+
+### Guest (2026-05-22T04:08:56.163Z)
+
+So they actually. Tour. Three but they okay edit.
+
+### You (2026-05-22T04:09:13.154Z)
+
+That chatbot update.
+
+### Guest (2026-05-22T04:09:17.763Z)
+
+Was a y. Map the lamb. So Holger case for. Mr. Chinkan. Was high school. Program.
+
+### You (2026-05-22T04:10:04.354Z)
+
+Wait some more.
+
+### Guest (2026-05-22T04:10:05.123Z)
+
+This is a t light as a push admin tee daughter. I'm a way to. Get.
+
+### You (2026-05-22T04:10:16.034Z)
+
+So this is a minor.
+
+### Guest (2026-05-22T04:10:19.363Z)
+
+To Yahoo admin around by chatbot checker case water. In water case for it's a digital. Get I mean to check. Well.
+
+### You (2026-05-22T04:10:33.794Z)
+
+Good you can jump until we get uploading juju career.
+
+### Guest (2026-05-22T04:10:43.763Z)
+
+Extract so get me a junk coin.
+
+### You (2026-05-22T04:10:48.274Z)
+
+Adds a strap of thumb meal maps among.
+
+### Guest (2026-05-22T04:10:52.723Z)
+
+ISO draft status I turn to.
+
+### You (2026-05-22T04:10:55.634Z)
+
+Two chatbot details. Check detail.
+
+### Guest (2026-05-22T04:11:20.723Z)
+
+Your pcl. Then just I can't lose. The term.
+
+### You (2026-05-22T04:11:35.394Z)
+
+Ing. Near.
+
+### Guest (2026-05-22T04:11:37.763Z)
+
+No item no eligible items okay.
+
+### You (2026-05-22T04:11:39.474Z)
+
+Extract out T3.
+
+### Guest (2026-05-22T04:11:41.923Z)
+
+Okay.
+
+### You (2026-05-22T04:11:43.394Z)
+
+So you have coyote.
+
+### Guest (2026-05-22T04:11:45.763Z)
+
+So. Create so that's extract.
+
+### You (2026-05-22T04:11:52.834Z)
+
+One.
+
+### Guest (2026-05-22T04:11:56.963Z)
+
+Update like safe.
+
+### You (2026-05-22T04:11:58.914Z)
+
+Is okay.
+
+### Guest (2026-05-22T04:12:00.483Z)
+
+Okay.
+
+### You (2026-05-22T04:12:01.154Z)
+
+For the header backline. Certificate type or the text number. Kinase. Upload them. To guide them. Myanmi and zhang meuka item.
+
+### Guest (2026-05-22T04:13:10.003Z)
+
+Oh it's always more. Screen screenshot right now. And my. Tailla.
+
+### You (2026-05-22T04:13:41.074Z)
+
+The upload the mail no.
+
+### Guest (2026-05-22T04:13:44.403Z)
+
+Nothing working so separate. Okay okay. Enter two types. Of yes. Item category again even me on another category category. Okay.
+
+### You (2026-05-22T04:14:26.674Z)
+
+To configure the header. Item the ID item as I want to pay assignability as code changing. Yeah maybe triang cheetah. Focal.
+
+### Guest (2026-05-22T04:14:48.643Z)
+
+So means not the item.
+
+### You (2026-05-22T04:14:53.634Z)
+
+Product bundle.
+
+### Guest (2026-05-22T04:14:57.043Z)
+
+This is. Okay. Product.
+
+### You (2026-05-22T04:15:15.794Z)
+
+Hard brackets.
+
+### Guest (2026-05-22T04:15:25.923Z)
+
+Case. Code. Somehow.
+
+### You (2026-05-22T04:15:54.114Z)
+
+Okay I'll go save.
+
+### Guest (2026-05-22T04:16:00.083Z)
+
+Okay so in circle case. For. Try again.
+
+### You (2026-05-22T04:16:31.314Z)
+
+As a c3.
+
+### Guest (2026-05-22T04:16:33.603Z)
+
+To be a warning okay everything was at the end. Of the manual. Getting what I did it.
+
+### You (2026-05-22T04:16:58.914Z)
+
+1 triangle. Customer. Maybe try fuku what's the third and then chatsun in the.
+
+### Guest (2026-05-22T04:17:22.563Z)
+
+Okay to bend you. So in turkeys we have create C3. So it generates their watch okay proceed from the banner. So they'll double check negative the details. How module.
+
+### You (2026-05-22T04:18:34.274Z)
+
+Pintang create a soldier type this legal document. Topic in draft. How in draft will go check out our long education submit.
+
+### Guest (2026-05-22T04:18:47.443Z)
+
+Submit.
+
+### You (2026-05-22T04:18:48.194Z)
+
+Hyuki okay how to active.
+
+### Guest (2026-05-22T04:18:48.403Z)
+
+To.
+
+### You (2026-05-22T04:18:50.434Z)
+
+Doing.
+
+### Guest (2026-05-22T04:18:51.683Z)
+
+The active layout of the whole order. Do you tie your ego P oh so. For p owner.
+
+### You (2026-05-22T04:19:06.914Z)
+
+Upload here.
+
+### Guest (2026-05-22T04:19:14.243Z)
+
+So. One immediate wall for you because. I did so now. Give it to him something that can give it away to some of his. Otherwise I I have key the details for this time so which means I'm applying chocolate. Now. Okay. So. Upload a customer the third. C3 and C1 C1 using upload one copy. Signal nothing. Sign that as normal. Has certificate. So water upload second number.
+
+### You (2026-05-22T04:22:08.994Z)
+
+Okay.
+
+### Guest (2026-05-22T04:22:09.363Z)
+
+Three one three. That you'll see one high a or C3.
+
+### You (2026-05-22T04:22:15.554Z)
+
+Letters for c1.
+
+### Guest (2026-05-22T04:22:20.083Z)
+
+What is the rug customer. C1 C3 and upload then.
+
+### You (2026-05-22T04:22:27.474Z)
+
+Good yag.
+
+### Guest (2026-05-22T04:22:27.763Z)
+
+No.
+
+### You (2026-05-22T04:22:28.194Z)
+
+I.
+
+### Guest (2026-05-22T04:22:29.763Z)
+
+Suggestions when test Gran order.
+
+### You (2026-05-22T04:22:35.074Z)
+
+Item number other item you will type in system email.
+
+### Guest (2026-05-22T04:22:41.283Z)
+
+Yeah.
+
+### You (2026-05-22T04:22:54.754Z)
+
+Format test.
+
+### Guest (2026-05-22T04:22:58.403Z)
+
+We'll proceed the whole. Screenshot versus the videos that we do video. But tap over the screenshot 2010.
+
+### You (2026-05-22T04:23:08.914Z)
+
+Your welcome to our team brief fix.
+
+### Guest (2026-05-22T04:23:14.403Z)
+
+So what I want by one go through lakhan chamber.
+
+### You (2026-05-22T04:23:17.554Z)
+
+He updated the format.
+
+### Guest (2026-05-22T04:23:20.243Z)
+
+Three. Okay. Stock check. Warning the alert stock alert I mean.
+
+### You (2026-05-22T04:23:41.554Z)
+
+You saw the add item so how are we gonna check. Yeah how are we gonna.
+
+### Guest (2026-05-22T04:23:49.043Z)
+
+Chatbot at item. Model account super stock entry so what item. May over there.
+
+### You (2026-05-22T04:23:58.434Z)
+
+But technique create us all need to add light item more. Tier item a item b item b how to stock an inventory. How we can our stone. Okay.
+
+### Guest (2026-05-22T04:24:18.323Z)
+
+Okay does it will try lock another item close to zero.
+
+### You (2026-05-22T04:24:22.754Z)
+
+Consider. For for front end ones I'll consider my issue or mail towel.
+
+### Guest (2026-05-22T04:24:30.163Z)
+
+And then take a low stock and out of stock I mean. Low stock. Negative. Front end of views from example warning.
+
+### You (2026-05-22T04:24:57.634Z)
+
+I could go out test naga warning. I mean. Okay.
+
+### Guest (2026-05-22T04:25:01.363Z)
+
+Okay and then. Okay your best number.
+
+### You (2026-05-22T04:25:06.034Z)
+
+Yo.
+
+### Guest (2026-05-22T04:25:06.083Z)
+
+But check a default setting the meal the mask is a. Drag the muscle. Sort by. Now the bracket.
+
+### You (2026-05-22T04:25:25.234Z)
+
+Ng column n.
+
+### Guest (2026-05-22T04:25:28.243Z)
+
+In water case was sort eating by. Change the sorting.
+
+### You (2026-05-22T04:25:42.434Z)
+
+Adika.
+
+### Guest (2026-05-22T04:25:50.803Z)
+
+Default and.
+
+### You (2026-05-22T04:25:54.674Z)
+
+Yoha then quiet.
+
+### Guest (2026-05-22T04:26:06.403Z)
+
+Ux. In more money cases for B2B to c was equal to dialog.
+
+### You (2026-05-22T04:26:12.594Z)
+
+Pso. Uri chatbot.
+
+### Guest (2026-05-22T04:26:25.763Z)
+
+As a canal chair about. Hol in forefront and the moment that I mean staff. Watch you can wear another quantity well.
+
+### You (2026-05-22T04:26:39.554Z)
+
+Your visibility.
+
+### Guest (2026-05-22T04:26:43.843Z)
+
+For now. They kind of took it 500. Chandigal tax default just 10. So update inventory row attacking is.
+
+### You (2026-05-22T04:27:21.474Z)
+
+C1 synagogue.
+
+### Guest (2026-05-22T04:27:28.643Z)
+
+Upload together.
+
+### You (2026-05-22T04:27:30.594Z)
+
+Okay. Okay.
+
+### Guest (2026-05-22T04:27:34.083Z)
+
+Okay. Okay okay. Okay.
+
+### You (2026-05-22T04:27:56.034Z)
+
+We also testing a badger. The. End okay assigning a batch size the admin the whole try convert the ng pick this.
+
+### Guest (2026-05-22T04:27:58.723Z)
+
+Okay. In terms of inventory.
+
+### You (2026-05-22T04:28:12.914Z)
+
+Inventory having the dharma based on.
+
+### Guest (2026-05-22T04:28:17.683Z)
+
+So. Okay. In but anyway.
+
+### You (2026-05-22T04:28:27.794Z)
+
+Batch. On. Quantity your male. You be.
+
+### Guest (2026-05-22T04:28:45.123Z)
+
+Okay we update the another can two licenses. Boil. Okay.
+
+### You (2026-05-22T04:28:59.234Z)
+
+Okay like.
+
+### Guest (2026-05-22T04:29:03.603Z)
+
+What thousand Trend. Touching her inventory bash for each individual product if. Multiple best. Role or eating sock by bash other inventory. Link show up.
+
+### You (2026-05-22T04:29:37.154Z)
+
+Show up.
+
+### Guest (2026-05-22T04:29:42.083Z)
+
+Any kind of water copy. Versus young. Chisel.
+
+### You (2026-05-22T04:30:03.794Z)
+
+Chisel.
+
+### Guest (2026-05-22T04:30:07.843Z)
+
+S current stock. Running kind of water maker batch number. Water band cancer by bench number so at the moment was you so in the moment you stop well.
+
+### You (2026-05-22T04:30:26.354Z)
+
+Okay. What I did and why it also.
+
+### Guest (2026-05-22T04:30:46.323Z)
+
+Done by me and I got opportunity who was answer.
+
+### You (2026-05-22T04:30:56.034Z)
+
+Happened milk. So this entire.
+
+### Guest (2026-05-22T04:31:06.816Z)
+
+Shit.
+
+### You (2026-05-22T04:31:07.954Z)
+
+Visibility law okay shade mana soma batch.
+
+### Guest (2026-05-22T04:31:08.176Z)
+
+Yep.
+
+### You (2026-05-22T04:31:15.154Z)
+
+Your block may unblock.
+
+### Guest (2026-05-22T04:31:19.106Z)
+
+Block.
+
+### You (2026-05-22T04:31:24.194Z)
+
+But yeah.
+
+### Guest (2026-05-22T04:31:29.016Z)
+
+Even
+
+### You (2026-05-22T04:31:30.194Z)
+
+The tian sanke.
+
+### Guest (2026-05-22T04:31:33.176Z)
+
+they would two hours of blocking, you block the what? Sorry?
+
+### You (2026-05-22T04:31:38.194Z)
+
+R thing you need request y allocation. How overlap.
+
+### Guest (2026-05-22T04:31:43.286Z)
+
+Automatically, it's all allocation.
+
+### You (2026-05-22T04:31:48.754Z)
+
+And don't go anywhere.
+
+### Guest (2026-05-22T04:31:49.596Z)
+
+Automatic allocation. Automatic
+
+### You (2026-05-22T04:31:58.994Z)
+
+Look.
+
+### Guest (2026-05-22T04:32:08.956Z)
+
+first in, first out. So case. Where you you're gonna where you're batch number, but two. So in the the
+
+### You (2026-05-22T04:32:35.874Z)
+
+Beautiful.
+
+### Guest (2026-05-22T04:32:38.746Z)
+
+product. Pack number c 3, so woman, she also instead of the. But system system up open assigned out of the batch number as c 3. Yeah.
+
+### You (2026-05-22T04:33:01.714Z)
+
+My back end three to another validation.
+
+### Guest (2026-05-22T04:33:03.806Z)
+
+3.
+
+### You (2026-05-22T04:33:04.914Z)
+
+Didn't need batchi maya kayak.
+
+### Guest (2026-05-22T04:33:19.016Z)
+
+C 3 were available to cut. Can has an ticket.
+
+### You (2026-05-22T04:33:24.114Z)
+
+Okay.
+
+### Guest (2026-05-22T04:33:25.116Z)
+
+So Rahul mentioned
+
+### You (2026-05-22T04:33:33.794Z)
+
+Kind of compass. Ive for c3 young.
+
+### Guest (2026-05-22T04:33:37.156Z)
+
+3.
+
+### You (2026-05-22T04:33:38.594Z)
+
+Or.
+
+### Guest (2026-05-22T04:33:41.046Z)
+
+Instead of But
+
+### You (2026-05-22T04:33:48.434Z)
+
+Put outside.
+
+### Guest (2026-05-22T04:33:48.756Z)
+
+so decision
+
+### You (2026-05-22T04:34:01.394Z)
+
+Knock down.
+
+### Guest (2026-05-22T04:34:03.746Z)
+
+As in while you're lingual was C3, while you fund multiple date, entry. Early on in Singapore.
+
+### You (2026-05-22T04:34:17.554Z)
+
+Oh.
+
+### Guest (2026-05-22T04:34:20.256Z)
+
+Record deal. Blocking.
+
+### You (2026-05-22T04:34:25.554Z)
+
+Okay.
+
+### Guest (2026-05-22T04:34:28.676Z)
+
+So but anyway refine us over the home and eating every fine, like, process.
+
+### You (2026-05-22T04:34:39.074Z)
+
+This is an alcohol.
+
+### Guest (2026-05-22T04:34:39.926Z)
+
+Okay. Kayla. So for now, two jang powders in What?
+
+### You (2026-05-22T04:34:51.794Z)
+
+Form the only two. Down.
+
+### Guest (2026-05-22T04:34:54.506Z)
+
+Okay. K. Okay. Okay. K.
+
+### You (2026-05-22T04:35:01.234Z)
+
+Okay thank you Mr.
+
+### Guest (2026-05-22T04:35:01.986Z)
+
+Okay. Alright.
 
