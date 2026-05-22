@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
+                "file": "Granola/Transcripts/2026-05-22/Credit limit exposure-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood"
+              "title": "Credit limit exposure-transcript"
             }
           },
           {
@@ -317,10 +317,14 @@
                   {
                     "id": 105,
                     "name": "zsh 105"
+                  },
+                  {
+                    "id": 107,
+                    "name": "zsh 107"
                   }
                 ],
-                "activeId": 105,
-                "nextId": 107
+                "activeId": 107,
+                "nextId": 108
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -359,11 +363,13 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
+    "Granola/Transcripts/2026-05-06/MacroFood sales proposal and rough requirement gathering.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "Granola/Transcripts/2026-05-22/Credit limit exposure-transcript.md",
     "02 - PM Playbook/Templates/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding",
     "03 - Clients/Active Cooking Clients/Macrofood/Customer Narrative - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
@@ -395,8 +401,6 @@
     "Granola/Transcripts/2026-05-19/Fixguru Scoping Sync-transcript.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting-transcript.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
-    "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
-    "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
