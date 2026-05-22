@@ -67,12 +67,18 @@ Layer 0 = SUM(outstanding_amount on submitted SI
 > What the customer formally owes right now. The number that enforces credit limits.
 
 ```
-Layer 1 = SUM(outstanding_amount on submitted SI, all unpaid/partly paid)
-         - SUM(unallocated_amount on submitted PE, payment_type=Receive)
+Layer 1 = max(0,
+    SUM(SI.outstanding_amount   on submitted SI, outstanding_amount > 0)
+  - SUM(PE.unallocated_amount   on submitted PE, payment_type = Receive)
+  - SUM(CN.outstanding_amount   on submitted Credit Notes, outstanding > 0)
+  + SUM(PV.unallocated_amount   on submitted Payment Vouchers, unallocated > 0)
+)
 ```
 
-- All submitted Sales Invoices with outstanding_amount > 0, regardless of due date
-- Deducts payments received but not yet matched to a specific invoice (unallocated PE)
+- Use `SI.outstanding_amount` (not `grand_total`) — outstanding_amount already reflects allocated payments; this avoids double-counting reconciled entries
+- Deducts unallocated Payment Entries (floating received cash not yet matched to an invoice)
+- Deducts outstanding Credit Notes not yet applied to an invoice
+- Adds unallocated Payment Vouchers (committed outgoing value not yet applied)
 - **This is the number used for credit limit enforcement at SO submission**
 - Layer 0 (overdue) is a subset of this number — it does not add to it
 
@@ -92,14 +98,15 @@ Layer 2 = SUM(grand_total x (1 - per_billed / 100)
               WHERE status NOT IN ('Completed', 'Cancelled', 'Closed'))
 ```
 
-- Represents the unbilled portion of all open Sales Orders
-- Includes SOs where fulfilment has not started yet (goods not shipped, service not started)
-- Includes SOs where partial billing has occurred (per_billed between 0 and 100)
+- **Do not use `per_billed %` field** — compute directly from linked submitted SIs per SO to get exact unbilled amount; the percentage field may be stale or miscalculated
+- Represents the unbilled portion of all open submitted Sales Orders
+- Includes SOs where partial billing has occurred (some invoices raised, remainder unbilled)
+- Excludes draft (docstatus=0) and cancelled SOs
 - **Counts toward credit limit enforcement by default** — unbilled SO value is real committed exposure, not theoretical
 - Whether Layer 2 blocks or routes to approval is governed by the per-customer `bypass_credit_limit_check` flag on the Customer Credit Limit child table (see Part B.1 — Credit Control Settings)
 - A customer whose orders are consistently fulfilled before billing carries real exposure that Layer 1 alone understates
 
-Whiteboard example: SO total = 30k, SI raised = 12k, Layer 2 = 18k.
+Whiteboard example: SO grand_total = 30k, one linked SI for 8k (submitted) → Layer 2 = 22k.
 
 ---
 
@@ -765,16 +772,47 @@ def get_credit_exposure(customer, company):
           AND unallocated_amount > 0
     """, {"customer": customer, "company": company})[0][0] or 0
 
-    layer1 = max(layer1_si - layer1_pe, 0)
-
-    # Layer 2: unbilled SO value
-    layer2 = frappe.db.sql("""
-        SELECT SUM(grand_total * (1 - IFNULL(per_billed, 0) / 100))
-        FROM `tabSales Order`
+    # Outstanding credit notes not yet applied
+    layer1_cn = frappe.db.sql("""
+        SELECT SUM(outstanding_amount)
+        FROM `tabSales Invoice`
         WHERE customer = %(customer)s
           AND company = %(company)s
           AND docstatus = 1
-          AND status NOT IN ('Completed', 'Cancelled', 'Closed')
+          AND is_return = 1
+          AND outstanding_amount < 0
+    """, {"customer": customer, "company": company})[0][0] or 0
+
+    # Unallocated payment vouchers
+    layer1_pv = frappe.db.sql("""
+        SELECT SUM(unallocated_amount)
+        FROM `tabPayment Entry`
+        WHERE party = %(customer)s
+          AND company = %(company)s
+          AND party_type = 'Customer'
+          AND payment_type = 'Pay'
+          AND docstatus = 1
+          AND unallocated_amount > 0
+    """, {"customer": customer, "company": company})[0][0] or 0
+
+    # layer1_cn is negative (credit notes reduce what customer owes), so subtract its absolute value
+    layer1 = max(layer1_si - layer1_pe + layer1_cn + layer1_pv, 0)
+
+    # Layer 2: unbilled SO value — computed directly from linked submitted SIs, not per_billed %
+    layer2 = frappe.db.sql("""
+        SELECT SUM(so.grand_total - IFNULL(billed.invoiced, 0))
+        FROM `tabSales Order` so
+        LEFT JOIN (
+            SELECT soi.sales_order, SUM(si.grand_total) AS invoiced
+            FROM `tabSales Invoice Item` soi
+            JOIN `tabSales Invoice` si ON si.name = soi.parent
+            WHERE si.docstatus = 1
+            GROUP BY soi.sales_order
+        ) billed ON billed.sales_order = so.name
+        WHERE so.customer = %(customer)s
+          AND so.company = %(company)s
+          AND so.docstatus = 1
+          AND so.status NOT IN ('Completed', 'Cancelled', 'Closed')
     """, {"customer": customer, "company": company})[0][0] or 0
 
     # Layer 3: draft SOs + active QTs
@@ -854,9 +892,9 @@ Each criterion maps to a specific layer, surface, or behaviour defined in this s
 |---|---|---|
 |AC-EXP-01|Layer 0 correctly identifies overdue invoices|SUM of SI.outstanding_amount where SI.due_date < today matches Layer 0 value on customer record|
 |AC-EXP-02|Layer 0 oldest overdue age is correct|oldest_overdue_days = DATEDIFF(today, MIN(due_date)) across all overdue SI for the customer|
-|AC-EXP-03|Layer 1 equals SI outstanding net of unallocated PE|(SUM SI.outstanding_amount) - (SUM PE.unallocated_amount where payment_type=Receive) = Layer 1; floor at 0|
+|AC-EXP-03|Layer 1 formula correct|Layer 1 = max(0, SUM(SI.outstanding_amount) - SUM(PE.unallocated_amount, payment_type=Receive) - SUM(CN.outstanding_amount, is_return=1) + SUM(PV.unallocated_amount, payment_type=Pay)); floor at 0|
 |AC-EXP-04|Layer 1 does not double-count overdue invoices|A SI that is both overdue and unpaid appears in Layer 1 total once — Layer 0 is a subset display, not an additive value|
-|AC-EXP-05|Layer 2 reflects unbilled SO value correctly|SUM(SO.grand_total * (1 - per_billed/100)) for all open submitted SOs matches Layer 2|
+|AC-EXP-05|Layer 2 reflects unbilled SO value correctly|SUM(SO.grand_total - invoiced_amount_per_so) for all open submitted SOs matches Layer 2; invoiced_amount_per_so computed from linked submitted SI grand_totals, not per_billed % field|
 |AC-EXP-06|Layer 2 excludes Completed, Cancelled, Closed SOs|Re-running exposure after SO is closed reduces Layer 2 by that SO's unbilled value|
 |AC-EXP-07|Layer 3 includes draft SOs (docstatus=0)|Saving a draft SO for a customer increases that customer's Layer 3 by the SO grand_total|
 |AC-EXP-08|Layer 3 includes active submitted QTs|A submitted QT not in Lost/Cancelled/Ordered status contributes its grand_total to Layer 3|
@@ -1553,6 +1591,7 @@ SLA window is configurable per client (`credit_approval_sla_hours`, default 4).
 |v0.3|Added Layer 0 (overdue) with ageing buckets. Confirmed utilisation % = Layer 1 / limit only. Full FE render spec. Full chatbot surface spec. Notification trigger table.|
 |v0.4|Added Part J (acceptance criteria, 40 criteria across 7 functional areas). Added Part K (backend action spec: 13 actions including hooks, scheduled job, override endpoints, Credit Override Log doctype). Added Part L (full notification spec for credit block event: Credit Controller WhatsApp/in-app/ToDo, Sales User confirmation, outcome notifications, 4-hour SLA escalation). Credit Controller established as the override role.|
 |v0.5|Resolved FQ1 (PE reduces Layer 1 always), FQ2 (Layer 2 blocks by default), FQ3 (overdue blocks by default). Added Part B.1 — per-customer Credit Control Settings with block_credit_limit and block_on_overdue flags on Customer Credit Limit child table. Added credit_breach_reason field on SO. Updated K.3 enforcement logic to use per-customer flags and two-condition breach evaluation. Added K.14 (customer flag reader). Updated SO form spec — credit bar visible on customer selection, not deferred to submit. Replaced created_by with so_doc.owner throughout. Removed WhatsApp deeplink (not built); ToDo links to SO document as primary action path. Added outcome notifications to Sales Manager. Added J.8 (flag ACs) and J.9 (SO creation surface ACs). Removed global tier2_counts_toward_hard_limit and block mode configs — replaced by per-customer flags.|
+|v0.8|L1 formula corrected: added Outstanding Credit Notes deduction and Unallocated Payment Vouchers addition. L2 formula changed from per_billed % to direct SI-join query per whiteboard + transcript review 2026-05-22. AC-EXP-03 and AC-EXP-05 updated accordingly. G.3 Python skeleton updated for both layers.|
 |v0.7|Compact credit bar redesigned as a single one-liner. Detail (Layer breakdown, bar visual, overdue ageing, projection) moved to a hover popover. One-liner shows: status dot + label, utilisation %, RM figures, and an overdue token when relevant. Breach state flips the full one-liner red with ⛔. Popover shows full breakdown including projection row on SO form. Added ACs AC-FE-17 through AC-FE-20 for popover behaviour. Updated existing FE ACs to match one-liner model.|
 |v0.6|Confirmed bypass_credit_limit_check as the native ERPNext field on Customer Credit Limit child table (fieldname confirmed from ERPNext v15 source). Removed custom block_credit_limit field — repurposed native bypass_credit_limit_check instead (inverted logic: unchecked = MAIA enforces). MAIA fully replaces native check_credit_limit(); native check disabled. Compact credit bar redesigned: two-row structure (status row + exposure bar row) with conditional overdue row and projection row on SO form. Removed all "Pending Credit Approval" workflow state references — SO workflow layer not yet built; breached SO submits with credit_limit_breach=1 flag only; Credit Controller actions via ToDo linking to SO document. K.11 approve clears flag instead of transitioning state; K.12 reject returns to docstatus=0. Noted fulfilment gap (no workflow gate until SO workflow layer ships).|
 
