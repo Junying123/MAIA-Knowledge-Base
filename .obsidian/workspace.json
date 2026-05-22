@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Customer Narrative - Macrofood.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-05-20 Data Migration — Standup Notes"
+              "title": "Customer Narrative - Macrofood"
             }
           },
           {
@@ -147,7 +147,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "migration",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -181,12 +181,12 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -295,16 +295,8 @@
                     "name": "zsh 95"
                   },
                   {
-                    "id": 97,
-                    "name": "zsh 97"
-                  },
-                  {
                     "id": 98,
                     "name": "zsh 98"
-                  },
-                  {
-                    "id": 99,
-                    "name": "zsh 99"
                   },
                   {
                     "id": 100,
@@ -325,13 +317,9 @@
                   {
                     "id": 105,
                     "name": "zsh 105"
-                  },
-                  {
-                    "id": 106,
-                    "name": "zsh 106"
                   }
                 ],
-                "activeId": 106,
+                "activeId": 105,
                 "nextId": 107
               },
               "icon": "terminal",
@@ -371,14 +359,27 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Customer Narrative - Macrofood.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/CLAUDE.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Client Overview.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Client Overview.md.tmp.76291.2774e3d6175e",
+    "03 - Clients/Active Cooking Clients/Macrofood/context",
+    "03 - Clients/Active Cooking Clients/Macrofood/UAT",
+    "03 - Clients/Active Cooking Clients/Macrofood/Timeline",
+    "03 - Clients/Active Cooking Clients/Macrofood/Product",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings",
+    "03 - Clients/Active Cooking Clients/Macrofood/Master Data",
+    "03 - Clients/Active Cooking Clients/Macrofood/Feature Requests",
+    "03 - Clients/Active Cooking Clients/Macrofood",
     "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
     "Granola/Transcripts/2026-05-22/Holsen C1_C3 Testing-transcript.md",
     "Granola/Transcripts/2026-05-22/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-22",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
     "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
     "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
     "03 - Clients/Active Cooking Clients/GST/SOW for MAIA GST Fine Foods.md",
@@ -387,7 +388,6 @@
     "02 - PM Playbook/Templates/[Template] MAIA UAT Form - [Client Name] - YYYY-MM.md",
     "03 - Clients/Active Cooking Clients/GST/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-20/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-20",
     "Granola/Transcripts/2026-05-19/Custom Medz & Macro Food Customer Narrative-transcript.md",
     "Granola/Transcripts/2026-05-19/Fixguru Scoping Sync-transcript.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting-transcript.md",
@@ -395,20 +395,8 @@
     "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
     "Granola/Transcripts/2026-05-19/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-19",
     "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
     "03 - Clients/Active Cooking Clients/GST/context/learnings.md",
-    "03 - Clients/Active Cooking Clients/GST/context/memory",
-    "03 - Clients/Active Cooking Clients/GST/context",
-    "03 - Clients/Active Cooking Clients/GST/brand_context",
-    "03 - Clients/Active Cooking Clients/GST/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
-    "03 - Clients/Active Cooking Clients/GST/[Guide] Channel & Infrastructure Setup Guide Copy.md",
-    "03 - Clients/Active Cooking Clients/GST/[Filled Draft] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
-    "03 - Clients/Active Cooking Clients/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
-    "03 - Clients/Active Cooking Clients/GST/7May26 -  GST X MAIA Gaps - Sheet1.csv",
-    "03 - Clients/Active Cooking Clients/GST",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items.md.tmp.21314.a3079f7c8e0b",
-    "Granola/Transcripts/2026-05-18",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
