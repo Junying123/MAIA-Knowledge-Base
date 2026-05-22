@@ -317,13 +317,9 @@
                   {
                     "id": 105,
                     "name": "zsh 105"
-                  },
-                  {
-                    "id": 107,
-                    "name": "zsh 107"
                   }
                 ],
-                "activeId": 107,
+                "activeId": 105,
                 "nextId": 108
               },
               "icon": "terminal",
@@ -335,7 +331,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 746.5
+    "width": 776.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -363,7 +359,7 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-05-06/MacroFood sales proposal and rough requirement gathering.md",
     "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
