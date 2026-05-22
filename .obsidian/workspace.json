@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Customer Narrative - Macrofood.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Customer Narrative - Macrofood"
+              "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood"
             }
           },
           {
@@ -186,7 +186,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -361,8 +362,11 @@
   },
   "active": "628deccba19f635d",
   "lastOpenFiles": [
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
+    "02 - PM Playbook/Templates/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding",
     "03 - Clients/Active Cooking Clients/Macrofood/Customer Narrative - Macrofood.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
     "03 - Clients/Active Cooking Clients/Macrofood/CLAUDE.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Client Overview.md",
@@ -378,7 +382,6 @@
     "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
     "Granola/Transcripts/2026-05-22/Holsen C1_C3 Testing-transcript.md",
     "Granola/Transcripts/2026-05-22/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-22",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping — Fixguru.md",
     "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
     "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
@@ -395,8 +398,6 @@
     "Granola/Transcripts/2026-05-19/GST SAP Vendor x Mindhive - Meeting Notes.md",
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
     "Granola/Transcripts/2026-05-19/Mindhive  Daily Standup-transcript.md",
-    "03 - Clients/Cooked by clients/Requirement Gathering/GST/SOW for MAIA GST Fine Foods.md",
-    "03 - Clients/Active Cooking Clients/GST/context/learnings.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
