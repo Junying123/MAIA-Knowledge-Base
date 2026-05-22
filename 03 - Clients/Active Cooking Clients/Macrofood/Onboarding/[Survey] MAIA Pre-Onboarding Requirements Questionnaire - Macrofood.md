@@ -5,27 +5,26 @@ last_reviewed: 2026-05-20
 client: Macrofood
 ---
 
-_To be completed by client before the first deep-dive meeting_
+_Pre-filled by AutorunBiz PLT based on the GTM handover document (proposal signed 2026-05-20). Please review, correct, and complete any item marked **[Client to confirm]** or **[Not covered in GTM handover]**._
 
 ---
 
 **Client Name:** Macro Frozen / Macro Food
-**Completed By:** ___________________________________ (Name / Role)
+**Completed By:** AutorunBiz PLT (draft based on GTM handover)
 **Date:** 2026-05-20
-**Account Manager (Mindhive):** Jeremy
+**Account Manager:** Jeremy
 
 ---
 
 ## How to Use This Document
 
-This questionnaire collects factual information about your business so we can prepare for a focused and productive first meeting. The meeting itself will focus on _how_ your workflows actually run and _where_ they break — not on collecting this baseline data.
+This draft is pre-filled from our sales discussion so your team only needs to:
 
-**Guidelines:**
+- confirm what is already captured
+- correct anything inaccurate
+- fill in the remaining blanks marked **[Client to confirm]** or **[Not covered in GTM handover]**
 
-- Answer as completely as you can. Partial answers are fine — write "unsure" or "to discuss" for anything unclear, rather than leaving it blank.
-- For tables, add or remove rows as needed.
-- If a question doesn't apply to your business, write "N/A."
-- Please return this document within **5 business days** of receipt. Your meeting will be scheduled once this is received.
+If a question does not apply, please write `N/A`.
 
 ---
 
@@ -36,55 +35,50 @@ This questionnaire collects factual information about your business so we can pr
 | Entity / Company Name | Business Type | In Scope for MAIA? |
 |---|---|---|
 | Macro Frozen / Macro Food | Food distribution / frozen food / meat distribution | Yes |
-| [To confirm at kickoff] | | |
+| **[Client to confirm if there are other related entities]** | | |
 
 **1.2** Do all entities share the same ERP / accounting system instance, or does each have its own?
-
-SQL / AutoCount-related system — to confirm at kickoff whether shared or separate.
+SQL / AutoCount-related system was referenced in our discussion. **[Client to confirm exact system and whether all entities share the same instance]**
 
 **1.3** Do the entities share the same customer database and item database, or are they separate?
-
-To confirm at kickoff.
+**[Client to confirm]**
 
 **1.4** How many branches, warehouses, or office locations operate across the in-scope entities?
 
-| Location Name | Type | Entity It Belongs To |
+| Location Name | Type (office / warehouse / both) | Entity It Belongs To |
 |---|---|---|
-| [To fill at kickoff] | Warehouse / Office | Macro Frozen |
+| **[Client to confirm]** | | Macro Frozen |
 
 **1.5** Do you operate in multiple currencies?
-
-To confirm at kickoff. Likely MYR only.
+Main business appears to be Malaysia-based. **[Client to confirm whether multi-currency applies]**
 
 ---
 
 ## Section 2 — Team & Roles
 
 **2.1** How many people in your company will use MAIA day-to-day?
+**[Client to confirm total user count by role]**
 
-To confirm at kickoff.
-
-**2.2** What roles or departments will use the system?
+**2.2** What roles or departments will use the system, and roughly how many people per role?
 
 | Role / Department | Number of People | Key Responsibilities |
 |---|---|---|
-| Sales / Admin | [TBC] | Order intake from WhatsApp, SO creation |
-| Finance / AR | [TBC] | Payment slip processing, bank statement matching |
-| Warehouse | [TBC] | Stock entry, GRN processing |
-| Outdoor Sales | [TBC] | Customer queries, order checks on the go |
-| Management | [TBC] | Approval controls, dashboard visibility |
+| Sales / Admin | **[Client to confirm]** | Order intake from WhatsApp, Sales Order creation |
+| Finance / AR | **[Client to confirm]** | Payment slip processing, bank statement matching, AR reconciliation |
+| Warehouse | **[Client to confirm]** | Stock entry, GRN photo processing |
+| Outdoor Sales | **[Client to confirm]** | Customer queries, outstanding balance checks on the go |
+| Management | **[Client to confirm]** | Approval controls, dashboard visibility |
 
-**2.3** What are your standard operating hours?
+**Note:** Roles above were identified from the GTM handover. Please confirm headcount per role and whether any roles or departments are missing.
 
-To confirm at kickoff. Food distribution may include early morning or weekend operations.
+**2.3** What are your standard operating hours? Do you operate on weekends or public holidays?
+**[Not covered in GTM handover]**
 
-**2.4** Do any staff work in the field?
+**2.4** Do any of your staff work in the field?
+Yes — outdoor salespeople were specifically mentioned as needing to query customer info and outstanding balances while away from office.
 
-Yes — outdoor salespeople need to query customer info and outstanding balances on the go.
-
-**2.5** Do field staff currently have access to your ERP / accounting system?
-
-Likely no — ERP access is typically office-only. Outdoor staff rely on calling office or WhatsApp to check info. To confirm at kickoff.
+**2.5** Do field staff currently have access to your ERP / accounting system? If not, why not?
+Outdoor salespeople currently rely on calling the office or WhatsApp to check customer and outstanding information. ERP access on the go is not available in practice. **[Client to confirm]**
 
 ---
 
@@ -94,28 +88,26 @@ Likely no — ERP access is typically office-only. Outdoor staff rely on calling
 
 | | Your Answer |
 |---|---|
-| System name | SQL Accounting / AutoCount — to confirm exact system at kickoff |
-| Version number | To confirm |
-| Hosting | On-premise (likely) — to confirm |
-| Managed by | Internal / Outsourced vendor — to confirm |
-| Vendor company name | To confirm |
-| Vendor contact person | To confirm |
+| System name | SQL Accounting or AutoCount — **[Client to confirm exact system]** |
+| Version number | **[Client to confirm]** |
+| Hosting | **[Client to confirm — on-premise or cloud]** |
+| Managed by | **[Client to confirm — internal IT or outsourced vendor]** |
+| Vendor company name | **[Client to confirm]** |
+| Vendor contact person | **[Client to confirm]** |
+
+**Note:** We may need to coordinate with your system vendor for integration. Please provide vendor contact details so we can include them in the technical scoping discussion.
 
 **3.2** Have you ever done any integration project with your ERP before?
-
-To confirm at kickoff.
+**[Not covered in GTM handover]**
 
 **3.3** Are there any customizations in your ERP that are not standard out-of-the-box?
-
-To confirm at kickoff. Fresh weight / weight-based billing may require custom fields.
+The GTM handover referenced a weight-based / fresh weight billing workflow where the final quantity and price are only confirmed after warehouse preparation. This may require custom fields or non-standard document flows. **[Client to confirm what is standard vs customized in your current setup]**
 
 **3.4** Do multiple users share a single ERP login, or does each user have their own account?
+**[Client to confirm]**
 
-To confirm at kickoff.
-
-**3.5** Does your ERP have a test/UAT environment?
-
-To confirm at kickoff.
+**3.5** Does your ERP have a test/UAT environment separate from the live system?
+**[Client to confirm]**
 
 **3.6** What other systems or tools do you use alongside the ERP?
 
@@ -124,19 +116,17 @@ To confirm at kickoff.
 | Order intake | WhatsApp | Internal |
 | Customer communication | WhatsApp | Internal |
 | Internal team communication | WhatsApp | Internal |
-| Inventory / stock management | SQL / AutoCount (likely) | Internal / Vendor |
-| Document storage / filing | [To confirm] | |
-| Reporting / dashboards | Manual / ERP built-in (likely) | |
-| Pricing management | Excel / ERP (likely) | |
-| Product catalogue | Manual image / WhatsApp (likely) | |
+| Inventory / stock management | SQL / AutoCount | Internal / Vendor |
+| Document storage / filing | **[Not covered in GTM handover]** | **[Client to confirm]** |
+| Reporting / dashboards | **[Not covered in GTM handover]** | **[Client to confirm]** |
+| Pricing management | Excel / ERP (referenced in discussion) | **[Client to confirm]** |
+| Product catalogue | Manual image via WhatsApp (referenced in discussion) | Internal |
 
 **3.7** Which of these systems would you want MAIA to connect to?
-
-SQL / AutoCount — for customers, items, pricing, stock, SO, DO, invoice, payment records, outstanding balances.
+SQL / AutoCount is the primary required integration — for customers, items, pricing, stock, Sales Orders, Delivery Orders, invoices, payment records, and outstanding balances. **[Client to confirm and add any other systems]**
 
 **3.8** Are there any systems you plan to replace or stop using once MAIA is live?
-
-MAIA is an operational assistant layer on top of existing system. Client is not replacing their ERP.
+MAIA will operate as an assistant layer on top of your existing system. Your accounting/order system will remain in use. **[Client to confirm if any tools or manual processes will be retired]**
 
 ---
 
@@ -145,65 +135,61 @@ MAIA is an operational assistant layer on top of existing system. Client is not 
 ### Products & Inventory
 
 **4.1** Approximately how many products / items (SKUs) do you carry?
-
-To confirm at kickoff.
+**[Not covered in GTM handover — please provide approximate SKU count]**
 
 **4.2** How often are new items added?
-
-To confirm at kickoff. Food distribution likely has moderate frequency updates.
+**[Client to confirm frequency]**
 
 **4.3** Do you use product categories, brands, or groupings?
-
-To confirm. Likely by product type (frozen, fresh, meat, poultry, etc.).
+**[Not covered in GTM handover]** — Please describe how items are grouped or categorised (e.g., by product type, species, cut, packaging).
 
 **4.4** Do you manage stock across multiple warehouses or locations?
-
-To confirm at kickoff.
+**[Client to confirm — include all warehouse/storage locations]**
 
 **4.5** Which of the following apply to your products?
 
-- [ ] Expiry dates / shelf life — **likely yes** (frozen food)
-- [ ] Batch numbers — to confirm
-- [ ] Serial numbers — N/A
-- [x] Multiple units of measure — **yes** (weight-based products; ordered by piece/carton but may be billed by kg)
-- [ ] Bundle / kit products — to confirm
-- [ ] Product variants — to confirm
-- [x] Product images are important — **yes** (product catalogue/image output is in scope)
+- [ ] Expiry dates / shelf life
+- [ ] Batch numbers
+- [ ] Serial numbers
+- [x] Multiple units of measure — yes (weight-based products; orders may be placed by piece or carton but billed by actual kg after weighing)
+- [ ] Bundle / kit products
+- [ ] Product variants (e.g., size, cut, packaging)
+- [x] Product images are important — yes (product catalogue/image output is in scope)
 
-**4.6** Do you do any processing, cutting, repackaging, or transformation?
+**Please confirm or adjust the above, and check any additional items that apply.**
 
-Yes — frozen food / meat products are cut, weighed, packed before fulfillment. Final weight only known after warehouse preparation. This is a key workflow driver.
+**4.6** Do you do any processing, cutting, repackaging, or transformation of raw materials?
+Yes — frozen food and meat products are cut, weighed, and packed before fulfillment. The final weight is only confirmed after warehouse preparation. This is a key workflow driver and affects when the final invoice amount is known.
 
-**4.7** Do salespeople ever "reserve" stock for specific customers before confirmed order?
-
-To confirm at kickoff.
+**4.7** Do salespeople ever "reserve" stock for specific customers before a confirmed order is placed?
+**[Not covered in GTM handover]**
 
 ### Pricing
 
 **4.8** How do you manage pricing?
 
-- [ ] One standard price list — unlikely; food distribution typically has customer-specific pricing
-- [x] Customer-specific pricing — **likely yes**
-- [x] Price varies based on sourcing / import cost at time of order — **likely yes** (commodity food pricing)
-- [ ] Other: Price Update Assistant required — boss wants structured bulk price update process
+- [ ] One standard price list for all customers
+- [x] Customer-specific pricing (negotiated per customer)
+- [ ] Multiple price lists / tiers for different customer segments
+- [ ] Volume-based or quantity-based discounts
+- [x] Price varies based on sourcing / import cost at time of order
+- [ ] Other: **[Client to confirm if there are additional pricing methods]**
 
-**4.9** How many price lists or tiers?
-
-To confirm at kickoff.
+**4.9** If you have multiple price lists or tiers, how many are there? What defines each tier?
+**[Client to confirm pricing structure and number of tiers]**
 
 **4.10** Where is pricing data maintained today?
 
-- [x] Inside the ERP system — likely
-- [x] In a separate spreadsheet / Excel file — likely (Price Update Assistant implies Excel-based updates)
-- [x] In the salesperson's memory / experience — likely for customer-specific deals
+- [x] Inside the ERP system
+- [x] In a separate spreadsheet / Excel file (referenced in Price Update Assistant discussion)
+- [ ] In the salesperson's memory / experience
+- [ ] Other: **[Client to confirm]**
 
-**4.11** How frequently do costs or selling prices change?
-
-Frequent — food / frozen food commodity pricing can change regularly. Price Update Assistant is in scope specifically to manage this.
+**4.11** How frequently do your costs or selling prices change?
+Price changes were described as frequent due to commodity/fresh food sourcing. A Price Update Assistant is in scope specifically to manage bulk price updates. **[Client to confirm typical frequency — e.g., weekly, daily for certain items]**
 
 **4.12** Is there a person or role responsible for setting or updating prices?
-
-To confirm at kickoff. Likely management/boss controls pricing approval.
+**[Not covered in GTM handover — please confirm who controls pricing]**
 
 ---
 
@@ -211,52 +197,48 @@ To confirm at kickoff. Likely management/boss controls pricing approval.
 
 **5.1** How do customer orders / enquiries typically arrive?
 
-- [x] WhatsApp (text, voice message, or image) — **primary channel**
+- [x] WhatsApp (text, voice message, or image) — primary channel
 - [ ] Email
 - [ ] Phone call
 - [ ] Walk-in / counter
 - [ ] Customer portal / website
-- [ ] Marketplace
-- [ ] Purchase Order document
+- [ ] Marketplace (Shopee, Lazada, etc.)
+- [ ] Purchase Order document (PDF, Excel, or other)
+- [ ] Other: **[Client to confirm if any other channels are used]**
 
-**5.2** Approximately how many sales orders processed per day?
-
-~700 orders/month → approximately 23–25 orders/day.
+**5.2** Approximately how many sales orders are processed per day?
+Approximately 700 orders/month, which is roughly 23–25 orders per day. **[Client to confirm actual daily volume]**
 
 **5.3** How many line items does a typical order contain?
-
-To confirm at kickoff.
+**[Not covered in GTM handover]**
 
 **5.4** Who creates quotations? Who approves them?
-
-To confirm. Product team to verify whether Macro Frozen uses quotations or goes directly to SO/Invoice/Proforma Invoice.
+**[Not covered in GTM handover]** — Please confirm whether your team uses quotations regularly, or whether the workflow goes directly to Sales Order or Proforma Invoice.
 
 **5.5** Who creates or confirms sales orders? Is there an approval process?
-
-Sales / admin creates SOs. Approval flows are in scope for exceptions (credit exceeded, special pricing, non-standard orders).
+Sales / admin staff create Sales Orders. Approval flows are in scope for exception cases. **[Client to confirm who approves and under what conditions]**
 
 **5.6** Are there situations where a quotation or order needs special approval?
-
-Yes — approval controls are in scope. Scenarios include credit limit exceeded, special pricing, business exceptions.
+Yes — approval controls were discussed. Examples include credit limit exceeded, special pricing, non-standard orders. **[Client to confirm all approval trigger scenarios]**
 
 **5.7** Do you handle any of the following?
 
-- [ ] Customer returns / exchanges — to confirm
-- [x] Credit notes — **yes** (in scope)
-- [ ] Debit notes — to confirm
-- [ ] Advance payments or deposits — to confirm
-- [x] Partial deliveries — **likely** (weight-based fulfillment may result in partial quantities)
-- [ ] Back orders — to confirm
-- [ ] Consignment stock — to confirm
-- [ ] Item substitution — to confirm
+- [ ] Customer returns / exchanges
+- [x] Credit notes — yes (in scope)
+- [ ] Debit notes
+- [ ] Advance payments or deposits before delivery
+- [x] Partial deliveries — yes (weight-based fulfillment may result in partial quantities)
+- [ ] Back orders
+- [ ] Consignment stock at customer sites
+- [ ] Item substitution
 
-**5.8** Most common reasons for credit notes?
+**Please confirm or adjust the above.**
 
-To confirm at kickoff. Likely weight discrepancy (final weight differs from ordered), pricing error, or returns.
+**5.8** What are the most common reasons your team issues credit notes?
+**[Not covered in GTM handover]** — Likely weight discrepancy (final weight differs from ordered quantity) or pricing correction. **[Client to confirm]**
 
-**5.9** Can salespeople create credit notes, or is that restricted to finance?
-
-To confirm at kickoff. Recommend restricting to finance/management in Phase 1.
+**5.9** Can salespeople currently create credit notes, or is that restricted to finance?
+**[Not covered in GTM handover]**
 
 ---
 
@@ -264,77 +246,68 @@ To confirm at kickoff. Recommend restricting to finance/management in Phase 1.
 
 **6.1** How do you deliver goods to customers?
 
-- [x] Own fleet / in-house drivers — likely (food distribution)
-- [ ] Freelance / contract drivers — to confirm
-- [ ] Third-party courier — to confirm
-- [ ] Customer self-pickup — to confirm
+- [x] Own fleet / in-house drivers — referenced in discussion
+- [ ] Freelance / contract drivers
+- [ ] Third-party courier / logistics company
+- [ ] Customer self-pickup
+- [ ] Other: **[Client to confirm delivery method]**
 
-**6.2** Do you plan delivery routes or trips?
+**6.2** Do you plan delivery routes or trips? If yes, how is this done today?
+**[Not covered in GTM handover]**
 
-To confirm at kickoff. Delivery Order is in scope; route planning is not.
+**6.3** Do drivers currently capture proof of delivery (signature, photo)?
+**[Not covered in GTM handover]**
 
-**6.3** Do drivers currently capture proof of delivery?
-
-To confirm at kickoff.
-
-**6.4** Do you handle cash-on-delivery (COD)?
-
-To confirm at kickoff.
+**6.4** Do you handle cash-on-delivery (COD)? If yes, how is COD reconciled with finance?
+**[Not covered in GTM handover]**
 
 **6.5** Is the delivery order and invoice issued at the same time, or separately?
-
-Likely separately — final weight/price confirmed after warehouse prep, so DO may precede final invoice. To confirm at kickoff.
+Likely separately — the final weight and price are only confirmed after warehouse preparation, so the Delivery Order may be issued before the final invoice amount is known. **[Client to confirm actual process]**
 
 ---
 
 ## Section 7 — Finance, Payments & Credit
 
-**7.1** What payment methods do customers use?
+**7.1** What payment methods do your customers use?
 
-- [x] Bank transfer — likely primary
-- [ ] Cheque — to confirm
-- [x] Cash — possible for smaller customers
-- [x] Cash on delivery — possible
-- [x] Credit terms — yes (credit/outstanding visibility is in scope)
-- [ ] Online payment gateway — to confirm
+- [x] Bank transfer — primary method referenced
+- [ ] Cheque
+- [ ] Cash
+- [ ] Cash on delivery (COD)
+- [x] Credit terms — yes (credit/outstanding visibility is a key use case)
+- [ ] Online payment gateway
+- [ ] Other: **[Client to confirm]**
 
-**7.2** Do you extend credit terms?
+**7.2** Do you extend credit terms to customers? If yes, what are your standard terms?
+Yes — credit and outstanding balance visibility is a key workflow requirement for outdoor sales and approval flows. **[Client to confirm standard credit terms, e.g., 30 / 60 / 90 days]**
 
-Yes — credit/outstanding visibility is a key use case for outdoor sales and approval flows.
+**7.3** Do you set credit limits per customer? If yes, what happens when a customer exceeds their limit?
+**[Client to confirm — whether blocked, flagged for approval, or warning only]**
 
-**7.3** Do you set credit limits per customer?
-
-To confirm. Credit limit checking and flagging for approval is in scope.
-
-**7.4** Is credit limit enforcement managed inside the ERP or tracked manually?
-
-Likely ERP where available; some manual tracking. To confirm at kickoff.
+**7.4** Is your credit limit enforcement managed inside the ERP, or tracked manually?
+**[Client to confirm]**
 
 **7.5** How do customers notify you when they've made a payment?
+Customers send payment slips via WhatsApp to the salesperson or admin team. This is a core pain point — AR support workflow is in scope to process these payment slips and match them to invoices.
 
-WhatsApp payment slip to salesperson or admin — this is a core pain point addressed by AR support workflow.
-
-**7.6** Do you send Statements of Account (SOA) to customers?
-
-To confirm at kickoff.
+**7.6** Do you send Statements of Account (SOA) to customers? If yes, how often and how?
+**[Not covered in GTM handover]**
 
 **7.7** What is your e-invoicing status?
 
-- [ ] Already compliant and automated
+- [ ] Already compliant and automated (auto-sync to LHDN)
 - [ ] Compliant but manual submission
 - [ ] In progress
 - [ ] Not started
 - [ ] Not applicable
 
-_To confirm at kickoff._
+**[Not covered in GTM handover — please tick the applicable option]**
 
-**7.8** Do customers prefer individual invoices per delivery or consolidated monthly invoices?
+**7.8** Do customers prefer individual invoices per delivery, or consolidated monthly invoices?
+**[Not covered in GTM handover]**
 
-To confirm at kickoff.
-
-**7.9** Are there any tax exemption scenarios?
-
-To confirm at kickoff. Food products may have specific tax treatment.
+**7.9** Are there any tax exemption scenarios relevant to your business?
+**[Not covered in GTM handover]**
 
 ---
 
@@ -342,82 +315,74 @@ To confirm at kickoff. Food products may have specific tax treatment.
 
 **8.1** What documents do you currently generate for customers?
 
-- [ ] Quotation — to confirm if used regularly
-- [x] Proforma invoice — likely for some customers
-- [x] Sales order confirmation — yes (in scope)
-- [x] Invoice — yes (in scope)
-- [x] Delivery order / delivery note — yes (in scope)
-- [ ] Pick list (internal) — to confirm
-- [x] Credit note — yes (in scope)
-- [ ] Debit note — to confirm
-- [ ] Payment receipt — to confirm
-- [ ] Statement of Account (SOA) — to confirm
+- [ ] Quotation — **[Client to confirm if quotations are used regularly]**
+- [x] Proforma invoice — likely used in some cases
+- [x] Sales order confirmation
+- [x] Invoice
+- [x] Delivery order / delivery note
+- [ ] Pick list (internal)
+- [x] Credit note
+- [ ] Debit note
+- [ ] Payment receipt
+- [ ] Statement of Account (SOA) — **[Client to confirm]**
+- [ ] Other: **[Client to confirm]**
 
-**8.2** Are document templates generated by ERP built-in report engine?
+**Please confirm or adjust the above, and bring sample PDFs to the first meeting.**
 
-Likely yes (SQL / AutoCount typically uses built-in report templates). To confirm at kickoff.
+**8.2** Are your document templates generated by the ERP's built-in report engine? If yes, which documents?
+**[Client to confirm — e.g., whether SQL / AutoCount built-in templates are used and whether any are custom]**
 
-**8.3** Are there specific fields or formatting requirements on documents?
-
-To confirm at kickoff. Clients to bring sample documents to first meeting.
+**8.3** Are there specific fields, references, or formatting on your documents that your customers or regulators require?
+**[Client to confirm — please bring sample documents to the first meeting]**
 
 **8.4** What reports do you look at regularly?
+**[Not covered in GTM handover]** — Please confirm the key reports used daily or weekly (e.g., daily order summary, AR aging, stock movement).
 
-To confirm at kickoff. Likely: daily order summary, AR aging / outstanding, stock movement.
-
-**8.5** Are there reports built manually in Excel that should be automated?
-
-To confirm. Price update management and AR reconciliation likely candidates.
+**8.5** Are there any reports you currently build manually in Excel that you wish were automated?
+Price update management and AR reconciliation were referenced as manual processes. **[Client to confirm full list]**
 
 ---
 
 ## Section 9 — Communication & Channels
 
-**9.1** Do you have a WhatsApp Business account?
+**9.1** Do you have a WhatsApp Business account? Is it a regular WhatsApp Business app or WhatsApp Business API (WABA)?
+One WhatsApp number is used by the entire team. All staff forward or input messages through this single number. **[Client to confirm whether it is WhatsApp Business App or WABA, and whether the number is already registered]**
 
-Yes — one WhatsApp number used by entire team. All staff forward/input messages through this single number. To confirm whether it is WhatsApp Business App or WABA at kickoff.
+**9.2** Would you want MAIA to communicate with your customers via WhatsApp?
+Phase 1 is internal-facing. MAIA generates the product catalogue output, but your team reviews and forwards it to customers manually. Automated customer-facing messaging is not in Phase 1 scope. **[Client to confirm if customer-facing WhatsApp is a future priority]**
 
-**9.2** Would you want MAIA to communicate with customers via WhatsApp?
+**9.3** Would you want MAIA to help your internal team via WhatsApp?
+Yes — this is the core interaction model. Staff input orders, payment slips, and GRN photos through WhatsApp; MAIA processes and presents summaries for confirmation before any record is created.
 
-Not in Phase 1 scope — MAIA is internal-facing first. Catalogue output is generated by MAIA but forwarded manually by team.
+**9.4** What primary languages does your team use in daily operations?
+Mandarin is the primary language. Mixed Mandarin-English-Malay is expected in daily usage. Requirements gathering and training may need to be conducted partially in Chinese. **[Client to confirm preferred language for system training and communication]**
 
-**9.3** Would you want MAIA to help internal team via WhatsApp?
-
-Yes — this is the core interaction model: staff input orders, payment slips, GRN photos via WhatsApp; MAIA processes and presents for confirmation.
-
-**9.4** What primary languages does your team use?
-
-Mandarin (primary) / mixed Mandarin-English-Malay. Chinese language support needed for requirements gathering and training.
-
-**9.5** What primary languages do customers communicate in?
-
-Mandarin, mixed Chinese dialects (Cantonese, Hokkien), some Malay/English in informal messages. Voice notes may include dialect terms.
+**9.5** What primary languages do your customers communicate in?
+Mandarin and mixed Chinese dialects (Cantonese, Hokkien) are expected. Voice messages may include dialect-style wording. **[Client to confirm]**
 
 ---
 
 ## Section 10 — Pain Points & Priorities
 
-**10.1** Top 3 problems you want MAIA to solve:
+**10.1** What are the top 3 problems you want MAIA to solve?
 
-1. **Manual WhatsApp order processing** — orders come via WhatsApp; staff manually interprets and keys into ERP. Error-prone and slow.
-2. **Fresh weight adjustment** — final weight and price only known after warehouse prep; current process requires manual update before invoicing.
-3. **AR / payment slip processing** — customers send payment slips via WhatsApp; finance manually matches to invoices. Slow, error-prone, and hard to track.
+1. **Manual WhatsApp order processing** — orders arrive via WhatsApp and staff manually interprets and keys them into the accounting system. Error-prone and time-consuming.
+2. **Fresh weight adjustment** — the final weight and invoice amount are only known after warehouse preparation. The current process requires staff to manually update the order before final document generation.
+3. **AR / payment slip processing** — customers send payment slips via WhatsApp; finance manually matches them to invoices. Slow, error-prone, and hard to track.
 
-**10.2** What currently takes the most time in daily operations?
+**Please confirm or add your own priority items.**
 
-Order intake from WhatsApp → manual ERP keying. Fresh weight update before final documents. Payment slip matching.
+**10.2** What currently takes the most time in your daily operations that you wish was faster or easier?
+Order intake from WhatsApp → manual ERP keying. Fresh weight update before final documents. Payment slip matching and AR reconciliation. **[Client to confirm or add]**
 
 **10.3** Is there anything that currently "falls through the cracks"?
+**[Client to confirm]** — Possibly: payment slips received but not matched in time; stock not updated causing blocked order entry; price changes not communicated consistently to all sales staff.
 
-Likely: payment slips received via WhatsApp but not matched in time; stock not updated causing blocked order entry; price changes not communicated consistently to all sales staff.
+**10.4** If MAIA could only do one thing for your business, what would it be?
+**[Client to confirm]**
 
-**10.4** If MAIA could only do one thing, what would it be?
-
-Extract WhatsApp orders and create draft Sales Orders in the system automatically.
-
-**10.5** Is there anything done outside the ERP today that should be in a system?
-
-Yes — WhatsApp order intake, payment slip matching, price update broadcasting, product catalogue generation, outdoor sales customer/outstanding queries.
+**10.5** Is there anything your team currently does outside the ERP system (WhatsApp, spreadsheets, paper, memory) that should be in a system?
+Yes — WhatsApp order intake, payment slip matching, price update distribution, product catalogue generation, and outdoor sales customer/outstanding queries are all currently handled outside the system. **[Client to confirm or add]**
 
 ---
 
@@ -425,89 +390,69 @@ Yes — WhatsApp order intake, payment slip matching, price update broadcasting,
 
 **11.1** Can you provide the following in Excel or CSV format?
 
-- [x] Customer list — yes (required for MAIA to match customer from order messages)
-- [x] Product / item list — yes (required for item matching)
-- [x] Price list(s) — yes (required; multiple price tiers likely)
-- [x] Current stock balances — yes (required for order blocking logic)
-- [ ] Supplier list — to confirm if needed for GRN/stock entry
+- [x] Customer list (company name, code, contact person, phone, email, address, credit terms, credit limit)
+- [x] Product / item list (SKU/code, name, description, unit of measure, category, active/inactive)
+- [x] Price list(s) — standard and/or customer-specific
+- [x] Current stock balances (item, warehouse, quantity)
+- [ ] Supplier list — **[Client to confirm if relevant for GRN/stock entry workflow]**
 
-**11.2** Who will prepare this data?
+**11.2** For each item checked above, who in your team will prepare this data?
 
 | Data Item | Person Responsible | Estimated Ready By |
 |---|---|---|
-| Customer list | [TBC at kickoff] | [TBC] |
-| Product / item list | [TBC at kickoff] | [TBC] |
-| Price list(s) | [TBC at kickoff] | [TBC] |
-| Current stock balances | [TBC at kickoff] | [TBC] |
+| Customer list | **[Client to confirm]** | **[Client to confirm]** |
+| Product / item list | **[Client to confirm]** | **[Client to confirm]** |
+| Price list(s) | **[Client to confirm]** | **[Client to confirm]** |
+| Current stock balances | **[Client to confirm]** | **[Client to confirm]** |
 
-**11.3** Please provide 3–5 sample transaction documents:
+**11.3** Please provide 3–5 sample transaction documents.
+Requested for the first meeting:
+- A recent Sales Order
+- A Delivery Order
+- An Invoice
+- A sample payment slip (can be anonymised)
+- A sample WhatsApp order message from a customer
 
-Required: sample Sales Order, Delivery Order, Invoice, payment slip format, and a sample WhatsApp order message. Bring to first meeting.
+**11.4** Do you want historical transaction data available inside MAIA, or are you comfortable starting fresh?
 
-**11.4** Do you want historical transaction data available in MAIA?
-
-- [x] Forward-only (new transactions from go-live onwards) — **recommended**
-- [ ] Want historical data migrated
+- [x] Forward-only (new transactions from go-live onwards) — recommended for Phase 1
+- [ ] Want historical data migrated — Approximate date range: **[Client to confirm if applicable]**
 - [ ] Unsure — to discuss
 
-_Note: Historical data migration is separate scope. Recommend forward-only for Phase 1._
+_Note: Historical data migration is a separate scope item. We will assess feasibility and cost based on volume and data quality._
 
 ---
 
 ## Section 12 — Timeline & Project Ownership
 
-**12.1** When do you need MAIA to be operational?
+**12.1** When do you need MAIA to be operational? Is there a hard deadline?
+**[Not covered in GTM handover]**
 
-To confirm at kickoff.
+**12.2** Who from your team will be the internal project owner — the day-to-day contact during onboarding?
 
-**12.2** Who from your team will be the internal project owner?
-
-| Name | Role | Contact |
+| Name | Role | Contact (phone / email) |
 |---|---|---|
-| [To confirm at kickoff] | | |
+| **[Client to confirm]** | **[Client to confirm]** | **[Client to confirm]** |
 
-**12.3** Who will be the decision-maker for approvals during setup?
+**12.3** Who will be the decision-maker if we need approvals during setup?
 
-| Name | Role | Contact |
+| Name | Role | Contact (phone / email) |
 |---|---|---|
-| Boss / Owner | Decision-maker (pricing, scope, approval flows) | [To confirm] |
+| Boss / Owner | Decision-maker — pricing, scope, approval flows (referenced in GTM handover) | **[Client to confirm]** |
 
-**12.4** Are there any upcoming events that might affect availability during onboarding?
-
-To confirm at kickoff. Food distribution has peak periods around festive seasons.
+**12.4** Are there any upcoming events that might affect your availability during onboarding?
+**[Not covered in GTM handover]** — Please flag any festive seasons, audits, or peak periods that may affect scheduling.
 
 ---
 
 ## What Happens Next
 
-Once you return this questionnaire and sample data, we will:
+Please review this draft and:
 
-1. Review responses and prepare focused agenda for the deep-dive meeting
-2. Schedule **Meeting 1** (business workflow deep-dive) — 1.5 to 2.5 hours
-3. If ERP integration is needed, schedule **Meeting 2** (IT/integration scoping) — may include SQL/AutoCount vendor
-
-**Please return this document to:** [Product team contact]
-**Questions about any item?** Reply to this message.
+1. confirm or correct the pre-filled answers
+2. complete all items marked **[Client to confirm]** or **[Not covered in GTM handover]**
+3. return the questionnaire together with sample documents where available
 
 ---
 
-## ⚠️ Items to Confirm at Kickoff
-
-The following are marked "to confirm" and should be resolved in the first meeting:
-
-- [ ] Exact ERP system name and version (SQL Accounting or AutoCount — which one?)
-- [ ] Whether ERP is cloud or on-premise
-- [ ] ERP vendor name and contact person
-- [ ] Number of MAIA users by role
-- [ ] Number of warehouses / locations
-- [ ] Whether quotations are used or team goes directly to SO/Proforma
-- [ ] Whether COD is in use
-- [ ] E-invoicing compliance status
-- [ ] Who is the internal project owner (day-to-day contact)
-- [ ] Target go-live date
-- [ ] Sample documents: WhatsApp order message, SO, DO, Invoice, payment slip
-- [ ] Language of ERP UI and whether Chinese language support needed
-
----
-
-_MAIA by Mindhive — Client Onboarding Questionnaire v2.0 | Pre-filled from GTM handover — Macro Frozen_
+_MAIA by AutorunBiz PLT — Pre-Onboarding Requirements Questionnaire (Macro Frozen pre-fill draft based on GTM handover)_
