@@ -42,30 +42,6 @@
             }
           },
           {
-            "id": "510f61fc23589b61",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-26 CR Scoping Presentation — Fixguru.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "2026-05-26 CR Scoping Presentation — Fixguru"
-            }
-          },
-          {
             "id": "628deccba19f635d",
             "type": "leaf",
             "state": {
@@ -283,8 +259,14 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "510f61fc23589b61",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.283608fe2905",
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.05c75df774ad",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-26 CR Scoping Presentation — Fixguru.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/CR Scoping — Fixguru.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping",
     "themes",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
@@ -309,25 +291,19 @@
     "Granola/Transcripts/2026-05-15/Holsen _ _ Mindhive C1C3 UAT-transcript.md",
     "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
-    "Granola/Transcripts/2026-05-15",
     "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
     "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)- stock backward visibility transcript.md",
-    "Granola/Transcripts/2026-05-14",
     "Granola/Transcripts/2026-05-13/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-12/C1_C3 Wrap up-transcript.md",
     "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-12/C1_C3 Wrap up-transcript-2026-05-12_14-59-12.md",
     "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript-2026-05-12_09-45-50.md",
-    "Granola/Transcripts/2026-05-12",
     "Granola/Transcripts/2026-05-11/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-11/Mindhive  Daily Standup-transcript-2026-05-11_09-49-22.md",
     "Granola/Transcripts/2026-05-11/MAIA - Weekly Product Sync-transcript.md",
     "Granola/Transcripts/2026-05-11/MAIA - Weekly Product Sync-transcript-2026-05-11_15-19-57.md",
     "Granola/Transcripts/2026-05-11/Holsen __ Mindhive C1_C3 UAT briefing-transcript.md",
     "Granola/Transcripts/2026-05-11/Holsen __ Mindhive C1_C3 UAT briefing-transcript-2026-05-11_11-00-06.md",
-    "Granola/Transcripts/2026-05-08/c1_c3 final showcase-transcript.md",
-    "Granola/Transcripts/2026-05-08/MAIA Demo — JYMangoes (JYan)-transcript.md",
-    "Granola/Transcripts/2026-05-07/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
