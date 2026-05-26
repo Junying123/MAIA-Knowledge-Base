@@ -3,7 +3,7 @@ granola_id: 4b85f5cb-fdaa-4951-890f-38cf5d19332d
 title: Dalson Requirements gathering - Transcript
 type: transcript
 created: 2026-05-22T05:53:37.858Z
-updated: 2026-05-22T06:53:12.470Z
+updated: 2026-05-25T07:13:27.008Z
 attendees: 
   - jeremy@mindhive.asia
   - natalie@mindhive.asia

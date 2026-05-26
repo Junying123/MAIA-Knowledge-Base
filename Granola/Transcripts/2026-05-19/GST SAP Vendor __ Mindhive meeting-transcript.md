@@ -3,7 +3,7 @@ granola_id: 8306d124-e9ed-4a2a-8a44-a4b89efd1c93
 title: GST SAP Vendor <> Mindhive meeting - Transcript
 type: transcript
 created: 2026-05-19T03:59:08.355Z
-updated: 2026-05-19T05:07:43.833Z
+updated: 2026-05-19T08:46:27.493Z
 attendees: 
   - azibiqbal01@gmail.com
   - jermaine@mindhive.asia

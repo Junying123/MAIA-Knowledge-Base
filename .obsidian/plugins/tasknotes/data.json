@@ -19,10 +19,14 @@
     "defaultTags": "",
     "defaultProjects": "",
     "useParentNoteAsProject": false,
+    "useParentHeaderAsProject": false,
+    "inheritParentTaskProperties": false,
     "defaultTimeEstimate": 0,
     "defaultRecurrence": "none",
     "defaultDueDate": "none",
+    "defaultDueTime": "none",
     "defaultScheduledDate": "today",
+    "defaultScheduledTime": "none",
     "bodyTemplate": "",
     "useBodyTemplate": false,
     "defaultReminders": []
@@ -245,6 +249,10 @@
     "autoExportPath": "tasknotes-calendar.ics",
     "autoExportInterval": 60,
     "useDurationForExport": false,
+    "excludeArchivedFromExport": false,
+    "excludeCompletedFromExport": false,
+    "requireDueDateForExport": false,
+    "requireScheduledDateForExport": false,
     "useICSEndAsDue": false
   },
   "savedViews": [],
@@ -284,6 +292,7 @@
     "open-tasks-view": "TaskNotes/Views/tasks-default.base",
     "open-advanced-calendar-view": "TaskNotes/Views/calendar-default.base",
     "open-agenda-view": "TaskNotes/Views/agenda-default.base",
+    "pomodoro-stats-base": "TaskNotes/Views/pomodoro-stats.base",
     "relationships": "TaskNotes/Views/relationships.base"
   },
   "maintainDueDateOffsetInRecurring": false,
@@ -316,7 +325,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.7.2",
+  "lastSeenVersion": "4.9.0",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -455,6 +464,15 @@
     "isRunning": false,
     "timeRemaining": 1500
   },
-  "lastPomodoroDate": "2026-05-13",
-  "taskModalTabMovesFocus": true
+  "lastPomodoroDate": "2026-05-25",
+  "taskModalTabMovesFocus": true,
+  "hideIdentifyingTagsMode": "all",
+  "openTaskAfterCreation": "none",
+  "showPomodoroInStatusBar": true,
+  "preserveCheckboxOnConvert": false,
+  "showCompletedTaskStrikethrough": true,
+  "expandSubtasksByDefault": false,
+  "notificationSoundEnabled": false,
+  "notificationSoundVolume": 50,
+  "disableCalendarOnMobile": false
 }

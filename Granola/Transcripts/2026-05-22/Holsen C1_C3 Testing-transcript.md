@@ -3,7 +3,7 @@ granola_id: a5b8badb-1b31-4570-9aef-48b30088d5d8
 title: Holsen C1/C3 Testing - Transcript
 type: transcript
 created: 2026-05-22T03:11:31.242Z
-updated: 2026-05-22T04:46:17.643Z
+updated: 2026-05-25T06:33:03.124Z
 attendees: 
   - holsenlab@gmail.com
 ---

@@ -3,7 +3,7 @@ granola_id: d39670fb-b73b-4dd9-bce7-344be6f41df9
 title: Credit limit exposure - Transcript
 type: transcript
 created: 2026-05-22T07:57:07.356Z
-updated: 2026-05-22T08:54:49.866Z
+updated: 2026-05-22T10:33:41.928Z
 attendees: []
 ---
 

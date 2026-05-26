@@ -3,7 +3,7 @@ granola_id: 6cf7ddd8-c1e4-4a75-897c-4348718b1a3d
 title: GST - WABA Account Setup - Transcript
 type: transcript
 created: 2026-05-19T03:15:00.012Z
-updated: 2026-05-19T03:35:38.747Z
+updated: 2026-05-19T03:59:08.172Z
 attendees: []
 ---
 
