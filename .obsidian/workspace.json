@@ -45,10 +45,24 @@
             "id": "628deccba19f635d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "2026-05-26 CR Scoping Presentation — Fixguru"
             }
           }
         ],
@@ -261,11 +275,11 @@
   },
   "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/CR Scoping — Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.283608fe2905",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.05c75df774ad",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-26 CR Scoping Presentation — Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/CR Scoping — Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping",
     "themes",
     "slides/getting-started/assets/zeabur.svg",
@@ -287,7 +301,6 @@
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
     "Granola/Transcripts/2026-05-18/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-18",
     "Granola/Transcripts/2026-05-15/Holsen _ _ Mindhive C1C3 UAT-transcript.md",
     "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
