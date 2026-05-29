@@ -334,21 +334,22 @@ uat_round: 1
 
 ---
 
-#### Test 10 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 10 — Export Sales Order / Sales Invoice / Delivery Note as CSV
 
 *Who tests this: **Miss Wong** (Finance)*
 
-Finance exports these documents from MAIA as CSV files. The exported data is used to create eInvoice records in UBS.
+Finance exports these document types from MAIA as CSV files for downstream processing and checking.
 
-| Step | What to do                                              | What you should see                                                       |
-| ---- | ------------------------------------------------------- | ------------------------------------------------------------------------- |
-| 1    | Log into web app. Open the **Invoice** page.            | Invoice listing is visible.                                               |
-| 2    | Click the export or download button and select **CSV**. | A CSV file is downloaded to your computer.                                |
-| 3    | Open the CSV. Check the contents.                       | File contains invoice details — customer, line items, quantities, prices. |
-| 4    | Open a **Credit Note** and repeat the export.           | CSV downloaded. File contains credit note details.                        |
-| 5    | Open a **Debit Note** and repeat the export.            | CSV downloaded. File contains debit note details.                         |
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log into the web app. Open the **Sales Order** page. Export a Sales Order as **CSV**. | A CSV file is downloaded successfully. |
+| 2 | Open the exported Sales Order CSV and check the contents. | File contains the Sales Order details, such as customer, line items, quantities, and prices. |
+| 3 | Open the **Sales Invoice** page. Export a Sales Invoice as **CSV**. | A CSV file is downloaded successfully. |
+| 4 | Open the exported Sales Invoice CSV and check the contents. | File contains the Sales Invoice details, such as customer, line items, quantities, and prices. |
+| 5 | Open the **Delivery Note** page. Export a Delivery Note as **CSV**. | A CSV file is downloaded successfully. |
+| 6 | Open the exported Delivery Note CSV and check the contents. | File contains the Delivery Note details, such as customer, line items, quantities, and delivery information. |
 
-⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in UBS. eInvoices are not generated inside MAIA.
+⚠️ **Note:** This test is to confirm that the required document types can be exported correctly as CSV from MAIA.
 
 **Your result:**
 - [ ] Pass
@@ -377,6 +378,58 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 2 | Create a **Delivery Order (DO)** from the Invoice. Submit it. | Delivery Order is created and submitted. It shows the customer's delivery address, products, quantities, and a DO reference number. |
 | 3 | From the Delivery Order, generate a **Picking List**. Submit it. | Picking List is created and submitted. It shows all items to pick from the warehouse with quantities. |
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 11A — Delivery Note Batch Number Carries Over to Pick List
+
+*Who tests this: **Noor Aili** (Logistics)*
+
+| Step | What to do | What you should see |
+|------|-----------|---------------------|
+| 1 | Log in to the web app as **Noor Aili**. Open a submitted Invoice and create a new **Delivery Order (DO)**. | Delivery Order opens successfully. |
+| 2 | Add or review a batch-tracked item line, for example **ACETIC ACID**. In the **Batch Number** field, select a specific batch number such as **DUMMY-ACA030-01**. | The selected batch number is shown on the Delivery Order line item. |
+| 3 | Submit the Delivery Order. | Delivery Order is submitted successfully and keeps the selected batch number. |
+| 4 | From the same Delivery Order, generate a **Picking List**. | Picking List is created successfully from the Delivery Order. |
+| 5 | Open the Picking List item section and check the batch number for the same item. | The same batch number selected on the Delivery Order is automatically carried over to the Picking List line item. |
+| 6 | Submit the Picking List and reopen it if needed. | The Picking List remains saved correctly and the batch number still matches the Delivery Order. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 11B — Exact Selected Batch Number Stays Correct and Visible in Pick List
+
+*Who tests this: **Noor Aili** (Logistics)*
+
+| Step | What to do | What you should see |
+|------|-----------|---------------------|
+| 1 | Create a new **Delivery Order** for a batch-tracked product that has more than 1 available batch number, for example **DUMMY-ACA030-01** and **300445**. | Delivery Order opens and item can be added or reviewed. |
+| 2 | In the Delivery Order line item, select the second batch option instead of the first one. | The exact selected batch number is shown on the Delivery Order line item. |
+| 3 | Generate a **Picking List** from that Delivery Order. | Picking List is created successfully. |
+| 4 | Review the batch number shown on the Picking List line item. | The Picking List shows the exact same batch number selected on the Delivery Order, not another available batch. |
+| 5 | Check whether the batch number is clearly visible for warehouse picking verification. | The batch number is visible and readable on the Picking List line item. |
+| 6 | Compare the Picking List against the original Delivery Order. | Both records show the same batch number for the same item. |
 
 **Your result:**
 - [ ] Pass
@@ -1121,8 +1174,10 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | Test 7 | Create Credit Note and Debit Note (Finance) | | | |
 | Test 8 | Duplicate order is blocked | | | |
 | Test 9 | Manage Sales Orders on web app (Logistics/Finance create; Sales Manager view only) | | | |
-| Test 10 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | | | |
+| Test 10 | Export Sales Order / Sales Invoice / Delivery Note as CSV (Finance) | | | |
 | Test 11 | Create Delivery Order and Picking List | | | |
+| Test 11A | Delivery Order batch number carries over to Pick List | | | |
+| Test 11B | Exact selected batch number stays correct and visible in Pick List | | | |
 | Test 12 | Stock alerts (Out of Stock / Low Stock) | | | |
 | Test 13 | Delivery delay reminder | | | |
 | Test 14 | All users can log in | | | |

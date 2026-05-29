@@ -53,10 +53,10 @@ client: Holsen
 
 ---
 
-## Test Case 2 — Correct Batch Is Carried When Multiple Batch Options Exist
+## Test Case 2 — Exact Selected Batch Is Carried Over and Visible in Pick List
 
 **Test Case ID:** HOL-LOG-DN-PL-002  
-**Scenario Type:** Selection Accuracy
+**Scenario Type:** Selection Accuracy and Visibility
 
 ### Prerequisites
 
@@ -70,38 +70,13 @@ client: Holsen
 | 2 | Explicitly select the second batch option instead of the first one. | The chosen batch number is displayed on the DN line item. |
 | 3 | Convert the DN to a Pick List. | Pick List is created successfully. |
 | 4 | Review the Pick List line item batch number. | The Pick List shows the exact same batch selected on the DN, not a different default batch. |
+| 5 | Check the Pick List item details that warehouse staff will use for picking. | The batch number is clearly visible and readable on the Pick List line item. |
+| 6 | Compare the Pick List batch number against the original DN. | Both records show the same batch number for the same item. |
 
 **Expected result:**
 - The system preserves the exact selected batch number from DN to Pick List
 - The Pick List does not auto-swap to another available batch
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**  
-**Date:**  
-**Notes:**
-
----
-
-## Test Case 3 — Batch Number Is Visible for Picking Verification
-
-**Test Case ID:** HOL-LOG-DN-PL-003  
-**Scenario Type:** Usability Check
-
-### Test Steps
-
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | Open a Pick List created from a DN with a batch number assigned. | Pick List opens successfully. |
-| 2 | Review the item line details used by warehouse staff for picking. | The batch number is visible and readable on the Pick List line item. |
-| 3 | Compare the Pick List batch number against the originating DN. | Both records show the same batch number for the same item. |
-
-**Expected result:**
-- Warehouse user can clearly see which batch to pick
-- Batch number on Pick List matches the originating DN exactly
+- The batch number is visible on the Pick List for warehouse verification during picking
 
 **Your result:**
 - [ ] Pass
