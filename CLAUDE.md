@@ -52,12 +52,13 @@ This file contains rules and conventions for AI assistants (like Claude Code) wo
 📁 09 - Intake & Triage/           → Request intake, triage SOP
 ```
 
-**Root-level files:**
+**Root-level files & special folders:**
 - `CLAUDE.md` — AI assistant instructions for Claude Code (this file)
 - `AGENTS.md` — AI assistant instructions for Codex
 - `COMPANY.md` — Company context for all AI agents (MAIA product description)
 - `codex.md` — Codex-specific AI config
 - `Excalidraw/` — Diagram source files (.excalidraw.md)
+- `Granola/Transcripts/YYYY-MM-DD/` — Raw auto-synced meeting transcripts from Granola app; not canonical — when processing, copy to the relevant client `Meetings/` folder; prompt user to delete originals manually
 
 **Naming Conventions:**
 - Folders: `NN - Descriptive Name` (numbers for ordering)
@@ -277,16 +278,17 @@ When working in this KB:
 
 1. **Start with brain/** — Read `North Star.md` and `Memories.md` at session start
 2. **Preserve structure** — Don't reorganize folders without approval
-3. **Use templates** — Always copy templates, don't invent new formats
-4. **Maintain frontmatter** — All pages need YAML metadata
-5. **Use wikilinks** — `[[Page Name]]` not relative paths
-6. **Update indexes** — When creating ADRs, update Decision Log
-7. **Check glossary** — Use canonical terms from Glossary
-8. **Don't invent MAIA features** — Document what exists, not what could be
-9. **Link liberally** — Add "See Also" sections to connect related content
-10. **End with wrap-up** — Update `brain/Memories.md` and commit at session end
-11. **Read Product Specs first** — Before working on any doctype (Quotation, SO, Invoice, etc.), read `01 - MAIA Product/Product Specs/[Doctype] Spec.md` for full capability context
-12. **Maintain spec structure** — Product Specs use a 4-layer format (capability list → feature spec → user story → AC); preserve this when adding content; mark gaps as `[TO FILL]`
+3. **Never delete files or folders** — Never delete any file or folder without explicit user permission. If a file looks redundant or should be cleaned up, prompt the user: "You can delete this manually if you want to clean up." Do not delete originals after copying, moving, or archiving.
+4. **Use templates** — Always copy templates, don't invent new formats
+5. **Maintain frontmatter** — All pages need YAML metadata
+6. **Use wikilinks** — `[[Page Name]]` not relative paths
+7. **Update indexes** — When creating ADRs, update Decision Log
+8. **Check glossary** — Use canonical terms from Glossary
+9. **Don't invent MAIA features** — Document what exists, not what could be
+10. **Link liberally** — Add "See Also" sections to connect related content
+11. **End with wrap-up** — Update `brain/Memories.md` and commit at session end
+12. **Read Product Specs first** — Before working on any doctype (Quotation, SO, Invoice, etc.), read `01 - MAIA Product/Product Specs/[Doctype] Spec.md` for full capability context
+13. **Maintain spec structure** — Product Specs use a 4-layer format (capability list → feature spec → user story → AC); preserve this when adding content; mark gaps as `[TO FILL]`
 
 ## External References
 
