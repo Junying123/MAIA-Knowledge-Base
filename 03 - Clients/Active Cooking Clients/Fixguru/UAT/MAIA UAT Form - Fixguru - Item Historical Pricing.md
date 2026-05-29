@@ -47,24 +47,35 @@ From the Fixguru meeting notes, the main feedback and product-ready requirements
 
 ## Intended Chatbot E2E Flow
 
-- Create / continue quotation
-- Identify customer
-- Identify item
-- Fetch customer x item last transaction history
-- Surface last transaction net price + last discount % + current list / std price benchmark
-- Let user compare pricing options
-- User picks last price / list price / custom price
-- Chatbot applies chosen price to draft
-- If below minimum price, trigger guardrail / approval flow
-- Continue quotation
+```mermaid
+flowchart TD
+    A[Create or continue quotation] --> B[Identify customer]
+    B --> C[Identify item]
+    C --> D[Fetch customer item history]
+    D --> E[Show last price last discount and current list price]
+    E --> F[User compares pricing options]
+    F --> G[User picks last price list price or custom price]
+    G --> H[Chatbot applies chosen price to draft]
+    H --> I{Below minimum price}
+    I -->|Yes| J[Trigger guardrail or approval flow]
+    I -->|No| K[Continue quotation]
+    J --> K
+```
 
 ## When Current List / Std Price Should Surface
 
-- After customer is identified
-- After item is identified
-- After historical pricing is retrieved
-- Surface current list / std price together with last transaction price and last discount context
-- User should choose the price only after seeing both the benchmark and the history
+```mermaid
+flowchart LR
+    A[Customer identified]
+    B[Item identified]
+    C[Historical pricing retrieved]
+    D["Surface current list / std price
+    together with last transaction price
+    and last discount context"]
+    E[User chooses price]
+
+    A --> B --> C --> D --> E
+```
 
 ## Test Cases
 
