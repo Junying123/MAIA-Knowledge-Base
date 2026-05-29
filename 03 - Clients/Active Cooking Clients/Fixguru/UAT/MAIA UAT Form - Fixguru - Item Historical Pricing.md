@@ -91,7 +91,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | In the MAIA chatbot, ask: *"What is the last price for [Customer] for [Item]?"* | Chatbot returns the latest historical price for that customer-item pair. |
+| 1 | In the MAIA chatbot, ask for the latest price for a known customer-item pair. Example query: *"What is the last price for Milkyway Ventures Sdn Bhd for A10?"* | Chatbot returns the latest historical price for that customer-item pair. |
 | 2 | Check the details returned. | Response includes at least the source document reference, unit price, and date. |
 | 3 | Cross-check against the latest real record in MAIA. | The chatbot answer matches the latest record. |
 | 4 | Check the interpreted customer and item in the reply. | Chatbot has matched the correct customer and the correct item. It does not confuse the customer name as the item name or vice versa. |
@@ -106,7 +106,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | In the MAIA chatbot, ask: *"Show me the price history for [Customer] for [Item]."* | Chatbot returns recent history for the same customer-item pair. |
+| 1 | In the MAIA chatbot, ask for recent history for a known customer-item pair. Example query: *"Show me the price history for Milkyway Ventures Sdn Bhd for A10."* | Chatbot returns recent history for the same customer-item pair. |
 | 2 | Inspect the returned entries. | Each relevant entry shows document reference, qty, unit price, and discount % or equivalent discount context vs current list price where supported. |
 | 3 | Cross-check one or two entries against the actual records in MAIA. | Returned history matches the real records. |
 
@@ -120,7 +120,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | Ask the chatbot for history for a customer-item pair where the previous transaction had a discount applied. | Chatbot returns the relevant history. |
+| 1 | Ask the chatbot for history for a customer-item pair where the previous transaction had a discount applied. Example query: *"For Milkyway Ventures Sdn Bhd, show me the last discounted price for A10."* | Chatbot returns the relevant history. |
 | 2 | Read the pricing explanation in the reply. | The reply makes it clear what the last net price was and what discount / discount % was previously given. |
 | 3 | Check that the wording is understandable for a sales user. | The response is readable in business terms and not just raw backend fields or IDs. |
 
@@ -134,7 +134,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | Ask the chatbot for price history for a customer-item pair where the latest historical price differs from the current list price. | Chatbot returns history with benchmark context. |
+| 1 | Ask the chatbot for price history for a customer-item pair where the latest historical price differs from the current list price. Example query: *"Compare the last price for Milkyway Ventures Sdn Bhd A10 against the current list price."* | Chatbot returns history with benchmark context. |
 | 2 | Inspect the reply. | Current list price is shown or clearly referenced as the benchmark for comparison. |
 | 3 | Recalculate one comparison manually if needed. | The quoted discount / markup context vs current list price is correct. |
 
@@ -148,7 +148,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | In the MAIA chatbot, create or add an item for a customer-item pair that already has prior history. | Chatbot surfaces historical pricing context for that same customer-item pair. |
+| 1 | In the MAIA chatbot, create or add an item for a customer-item pair that already has prior history. Example query: *"Create quotation for Milkyway Ventures Sdn Bhd. Add A10 20 units."* | Chatbot surfaces historical pricing context for that same customer-item pair. |
 | 2 | Inspect the reply after the item is recognized. | Reply shows recent history in a usable business format and presents clear next pricing choices such as last transaction price, current list price, or custom price. |
 | 3 | Choose the historical price option. | Chatbot applies the selected historical price correctly to the draft quotation / sales document line. |
 
@@ -162,7 +162,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | Add an item through chatbot and surface the historical pricing options first. | Historical pricing context is shown. |
+| 1 | Add an item through chatbot and surface the historical pricing options first. Example query: *"Create quotation for Milkyway Ventures Sdn Bhd. Add A10 20 units."* | Historical pricing context is shown. |
 | 2 | Instead of choosing the historical price, reply with a different custom unit price. | Chatbot updates the draft line with the new price. |
 | 3 | Ask again for the item's history or amend the same line. | The original historical reference remains intact and is not overwritten by the newly entered custom price. |
 
@@ -176,7 +176,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | Ask the chatbot for item history for a customer-item pair with no prior records. | Chatbot does not invent history. |
+| 1 | Ask the chatbot for item history for a customer-item pair with no prior records. Example query: *"Show me the price history for Test Customer for NEW-SKU-001."* | Chatbot does not invent history. |
 | 2 | Check the response wording. | Chatbot clearly says there is no prior history for that customer-item pair and does not return an error. |
 | 3 | Continue the pricing flow. | Chatbot falls back cleanly to current list price or custom price options. |
 
@@ -190,7 +190,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | In the chatbot, create a new quotation for a known customer and add an item with existing history. | Chatbot identifies the customer-item pair and surfaces relevant historical pricing context during the flow. |
+| 1 | In the chatbot, create a new quotation for a known customer and add an item with existing history. Example query: *"Create quotation for Milkyway Ventures Sdn Bhd. Add A10 20 units."* | Chatbot identifies the customer-item pair and surfaces relevant historical pricing context during the flow. |
 | 2 | Choose one of the suggested pricing options. | The chosen price is applied to the quotation line correctly. |
 | 3 | Let the chatbot create the draft quotation. | The draft quotation reflects the selected price and remains consistent with the history surfaced earlier. |
 
@@ -282,7 +282,7 @@ flowchart LR
 
 | Step | What to do | What you should see |
 |------|------------|---------------------|
-| 1 | In the chatbot, ask for history using a customer and item where names may be similar to other customers or items. | Chatbot attempts to resolve the correct customer-item pair safely. |
+| 1 | In the chatbot, ask for history using a customer and item where names may be similar to other customers or items. Example query: *"Show me the last price for Milkyway for A1."* | Chatbot attempts to resolve the correct customer-item pair safely. |
 | 2 | Check the response behavior. | If the match is unclear, chatbot asks a clarifying question instead of returning the wrong history. |
 | 3 | Confirm the correct option and continue. | History returned after clarification matches the intended customer-item pair. |
 
