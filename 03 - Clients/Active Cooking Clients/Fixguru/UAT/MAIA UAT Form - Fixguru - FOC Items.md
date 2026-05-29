@@ -25,7 +25,7 @@ FOC items must:
 
 ## Test Cases
 
-**Total: 19 test cases**
+**Total: 20 test cases**
 
 ---
 
@@ -206,7 +206,7 @@ FOC items must:
 
 ---
 
-### Section 4 — PDF Output (2 cases)
+### Section 4 — PDF Output (3 cases)
 
 ---
 
@@ -227,6 +227,19 @@ FOC items must:
 | Step | What to do | What you should see |
 |------|------------|---------------------|
 | 1 | Generate PDF from a submitted DO with FOC items. | DO PDF shows both sold qty and FOC qty per item. FOC items labelled clearly so warehouse knows to include them. |
+
+**Result:** ☐ Pass ☐ Fail ☐ Issue  
+**Tested by:** **Date:**
+
+---
+
+#### FOC-4.3 — Charged item appears before matching FOC item
+
+| Step | What to do | What you should see |
+|------|------------|---------------------|
+| 1 | Create or open a Quotation / DO / Invoice that has at least 1 paid item with a matching FOC item for the same SKU. Generate the document view or PDF. | Document renders successfully. |
+| 2 | Check the item ordering for each paid + FOC pair. | The charged item is listed first, and the matching FOC item appears directly below it. |
+| 3 | Check that FOC items are not grouped separately or sorted above the charged items. | FOC items do not float to another section or appear before their related charged items. The ordering is consistent and easy for users to read. |
 
 **Result:** ☐ Pass ☐ Fail ☐ Issue  
 **Tested by:** **Date:**
@@ -309,16 +322,17 @@ FOC items must:
 | FOC-3.2 | SO → DO FOC carry-through | Carry-through | FE | | | |
 | FOC-4.1 | Quotation PDF — FOC lines correct | PDF | FE | | | |
 | FOC-4.2 | DO PDF — FOC lines for picking | PDF | FE | | | |
+| FOC-4.3 | Charged item appears before matching FOC item | PDF | FE | | | |
 | FOC-5.1 | Stock deducted by sold + FOC qty | Inventory | FE | | | |
 | FOC-6.1 | Invoice total excludes FOC | Invoice | FE | | | |
 | FOC-6.2 | Invoice PDF shows FOC at RM 0.00 | Invoice | FE | | | |
 | FOC-6.3 | AutoCount: FOC uses correct account code | AutoCount | FE + AC | | | |
 
-**Total: 19 test cases**
+**Total: 20 test cases**
 
 | Pass | Fail | Issue | Blocked (not built) |
 |------|------|-------|---------------------|
-| | | | 19 |
+| | | | 20 |
 
 ---
 
