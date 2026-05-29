@@ -45,6 +45,27 @@ From the Fixguru meeting notes, the main feedback and product-ready requirements
 - Secondary acceptance: FE history display should support validation and fallback checking
 - Product-ready bar: chatbot must retrieve the correct customer-item history, show usable pricing context, allow safe price selection, and preserve guardrails
 
+## Intended Chatbot E2E Flow
+
+- Create / continue quotation
+- Identify customer
+- Identify item
+- Fetch customer x item last transaction history
+- Surface last transaction net price + last discount % + current list / std price benchmark
+- Let user compare pricing options
+- User picks last price / list price / custom price
+- Chatbot applies chosen price to draft
+- If below minimum price, trigger guardrail / approval flow
+- Continue quotation
+
+## When Current List / Std Price Should Surface
+
+- After customer is identified
+- After item is identified
+- After historical pricing is retrieved
+- Surface current list / std price together with last transaction price and last discount context
+- User should choose the price only after seeing both the benchmark and the history
+
 ## Test Cases
 
 **Total: 14 test cases**
