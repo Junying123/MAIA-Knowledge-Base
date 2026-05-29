@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-05-06/MacroFood sales proposal and rough requirement gathering.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "MacroFood sales proposal and rough requirement gathering"
+              "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood"
             }
           }
         ],
@@ -221,10 +221,14 @@
                   {
                     "id": 95,
                     "name": "zsh 95"
+                  },
+                  {
+                    "id": 108,
+                    "name": "zsh 108"
                   }
                 ],
                 "activeId": 95,
-                "nextId": 108
+                "nextId": 109
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -263,8 +267,10 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/MacroFood sales proposal and rough requirement gathering.md",
+    "Granola/Transcripts/2026-05-06/MacroFood sales proposal and rough requirement gathering.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "Granola/Transcripts/2026-05-28/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-28",
@@ -306,8 +312,6 @@
     "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-12/C1_C3 Wrap up-transcript-2026-05-12_14-59-12.md",
     "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript-2026-05-12_09-45-50.md",
-    "Granola/Transcripts/2026-05-11/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-11/Mindhive  Daily Standup-transcript-2026-05-11_09-49-22.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",

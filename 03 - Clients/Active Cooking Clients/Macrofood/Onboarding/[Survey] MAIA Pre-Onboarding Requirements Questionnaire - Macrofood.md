@@ -5,6 +5,14 @@ last_reviewed: 2026-05-20
 client: Macrofood
 ---
 
+# MAIA Pre-Onboarding Requirements Questionnaire — Macro Frozen
+
+## What Is This Document?
+
+This document helps us understand your business before our first working session. We've pre-filled everything we already know from our sales discussion — your team only needs to review, correct, and complete the items marked **[Client to confirm]**. The more complete this is before we meet, the faster we can move from discovery into setup.
+
+---
+
 _Pre-filled by AutorunBiz PLT based on our sales discussion. Please review, correct, and complete any item marked **[Client to confirm]**._
 
 ---
