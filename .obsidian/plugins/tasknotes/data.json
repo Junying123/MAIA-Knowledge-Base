@@ -153,6 +153,9 @@
     "icsEventId": "icsEventId",
     "icsEventTag": "ics_event",
     "googleCalendarEventId": "googleCalendarEventId",
+    "googleCalendarExceptionEventId": "googleCalendarExceptionEventId",
+    "googleCalendarExceptionOriginalScheduled": "googleCalendarExceptionOriginalScheduled",
+    "googleCalendarMovedOriginalDates": "googleCalendarMovedOriginalDates",
     "reminders": "reminders",
     "sortOrder": "tasknotes_manual_order"
   },
@@ -325,7 +328,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.9.0",
+  "lastSeenVersion": "4.9.1",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -464,7 +467,7 @@
     "isRunning": false,
     "timeRemaining": 1500
   },
-  "lastPomodoroDate": "2026-05-25",
+  "lastPomodoroDate": "2026-05-28",
   "taskModalTabMovesFocus": true,
   "hideIdentifyingTagsMode": "all",
   "openTaskAfterCreation": "none",

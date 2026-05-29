@@ -4035,6 +4035,16 @@ body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.
     box-sizing: border-box;
 }
 
+body.is-mobile .tasknotes-plugin .task-card.task-card--chevron-left:not(.task-card--layout-inline):not(.task-card--layout-compact) {
+    margin-left: calc(var(--tn-mobile-task-card-menu-size) + var(--tn-spacing-lg));
+}
+
+body.is-mobile .tasknotes-plugin .task-card.task-card--chevron-left:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__badges {
+    order: 0;
+    flex: 0 0 auto;
+    padding-left: 0;
+}
+
 body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline) .task-card__metadata-property--projects {
     flex-wrap: wrap;
     overflow-wrap: anywhere;
@@ -8279,6 +8289,30 @@ body.is-mobile .tasknotes-plugin .task-card--layout-inline .task-card__context-m
     flex: 1 1 auto;
 }
 
+.tn-task-modal__markdown-editor--details .details-editor-fallback {
+    display: block;
+    width: 100%;
+    min-height: inherit;
+    height: 100%;
+    max-height: 400px;
+    box-sizing: border-box;
+    padding: var(--size-4-2);
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-normal);
+    font-family: var(--font-text);
+    font-size: var(--font-ui-medium);
+    line-height: var(--line-height-normal);
+    resize: none;
+    overflow-y: auto;
+}
+
+.tn-task-modal__markdown-editor--details .details-editor-fallback:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 /* Style the editor content */
 .tn-task-modal__markdown-editor--details .cm-content {
     padding-left: var(--size-4-2);
@@ -8977,7 +9011,8 @@ body.is-mobile .tasknotes-plugin.minimalist-task-modal .modal-split-right {
 
 body.is-mobile .tasknotes-plugin .tn-task-modal__markdown-editor--details,
 body.is-mobile .tasknotes-plugin .tn-task-modal__markdown-editor--details .task-details-editor,
-body.is-mobile .tasknotes-plugin .tn-task-modal__markdown-editor--details .cm-editor {
+body.is-mobile .tasknotes-plugin .tn-task-modal__markdown-editor--details .cm-editor,
+body.is-mobile .tasknotes-plugin .tn-task-modal__markdown-editor--details .details-editor-fallback {
     min-height: 140px;
     max-height: 32vh;
 }
@@ -9523,6 +9558,7 @@ body.is-mobile .tasknotes-plugin .task-project-item--task-card .task-project-rem
 
 .tasknotes-plugin .nl-preview-container.nl-preview-container--visible {
     display: block;
+    visibility: visible;
 }
 
 .tasknotes-plugin .nl-preview-item {
@@ -15961,7 +15997,7 @@ body.is-mobile .tasknotes-plugin .kanban-view__board {
 body.is-mobile .tasknotes-plugin .kanban-view__column {
     min-width: min(78vw, 320px);
     max-width: min(78vw, 320px);
-    max-height: none;
+    max-height: 100%;
     scroll-snap-align: start;
 }
 
@@ -21153,8 +21189,8 @@ body.is-mobile .tasknotes-plugin .tasknotes-settings__card-action-btn {
 
 body.is-mobile .tn-tasknotesTaskList .tn-bases-items-container,
 body.is-mobile .tn-bases-tasknotes-list {
-    padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
-    scroll-padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px));
 }
 
 /* Sidebar and popout note embeds already have a constrained note scroller. Let

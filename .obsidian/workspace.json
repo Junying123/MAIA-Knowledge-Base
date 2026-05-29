@@ -32,22 +32,12 @@
             }
           },
           {
-            "id": "eba5f50d9f1e51f0",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
-            }
-          },
-          {
             "id": "628deccba19f635d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md",
+                "file": "Granola/Transcripts/2026-05-06/MacroFood sales proposal and rough requirement gathering.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -62,11 +52,11 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-05-26 CR Scoping Presentation — Fixguru"
+              "title": "MacroFood sales proposal and rough requirement gathering"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -273,8 +263,13 @@
       "tasknotes:Open Pomodoro statistics": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
+    "Granola/Transcripts/2026-05-28/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-05-28",
+    "Granola/Transcripts/2026-05-29/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-05-29",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - FOC Items - Sortable.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Calculator Test Cases - Layerpad PizzaBox Five Panel - 2026-05.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/CR Scoping — Fixguru.md",
@@ -297,8 +292,6 @@
     "slides/2026-05-18/Fixguru Gap Briefing-transcript.md",
     "slides/getting-started",
     "slides/2026-05-18",
-    "slides",
-    "TaskNotes/Views/pomodoro-stats.base",
     "README.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
@@ -315,9 +308,6 @@
     "Granola/Transcripts/2026-05-12/Mindhive  Daily Standup-transcript-2026-05-12_09-45-50.md",
     "Granola/Transcripts/2026-05-11/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-11/Mindhive  Daily Standup-transcript-2026-05-11_09-49-22.md",
-    "Granola/Transcripts/2026-05-11/MAIA - Weekly Product Sync-transcript.md",
-    "Granola/Transcripts/2026-05-11/MAIA - Weekly Product Sync-transcript-2026-05-11_15-19-57.md",
-    "Granola/Transcripts/2026-05-11/Holsen __ Mindhive C1_C3 UAT briefing-transcript.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
