@@ -41,7 +41,7 @@ If a question does not apply, please write `N/A`.
 Our discussion confirmed the system is SQL Accounting. **[Client to confirm whether all entities share the same SQL instance or each has its own]**
 
 **1.3** Do the entities share the same customer database and item database, or are they separate?
-**[Client to confirm]**
+**[Client to confirm | State whether customer database is shared or separate by entity | State whether item database is shared or separate by entity]**
 
 **1.4** How many branches, warehouses, or office locations operate across the in-scope entities?
 
@@ -50,7 +50,7 @@ Our discussion confirmed the system is SQL Accounting. **[Client to confirm whet
 | **[Client to confirm]** | **[Client to confirm]** | Macro Frozen |
 
 **1.5** Do you operate in multiple currencies? If yes, which currencies and for which entities?
-**[Client to confirm]**
+**[Client to confirm | State whether multiple currencies are used | List currencies used | State which entity uses each currency]**
 
 ---
 
@@ -74,13 +74,13 @@ Our discussion confirmed the system is SQL Accounting. **[Client to confirm whet
 **Please confirm headcount per role and add any missing roles.**
 
 **2.3** What are your standard operating hours? Do you operate on weekends or public holidays?
-**[Client to confirm]**
+**[Client to confirm | State normal operating hours | State whether you operate on weekends | State whether you operate on public holidays]**
 
 **2.4** Do any of your staff work in the field? If yes, which roles?
 Yes — outdoor salespeople need to query customer info and outstanding balances while away from the office.
 
 **2.5** Do field staff currently have access to your ERP / accounting system? If not, why not?
-Currently, outdoor salespeople rely on calling the office or WhatsApp to check customer and outstanding information. ERP access on the go is not available. **[Client to confirm]**
+Currently, outdoor salespeople rely on calling the office or WhatsApp to check customer and outstanding information. ERP access on the go is not available. **[Client to confirm | State whether this is still accurate | Explain any current mobile or remote ERP access method if available]**
 
 ---
 
@@ -100,16 +100,16 @@ Currently, outdoor salespeople rely on calling the office or WhatsApp to check c
 **Note:** We may need to coordinate with your SQL vendor for integration. Please provide vendor contact details so we can include them in the technical scoping discussion.
 
 **3.2** Have you ever done any integration project with your ERP before?
-**[Client to confirm]**
+**[Client to confirm | State whether you have done ERP integrations before | List the systems involved | Briefly describe the integration if yes]**
 
 **3.3** Are there any customizations in your ERP that are not standard out-of-the-box?
 Our discussion referenced a fresh weight billing workflow where final quantity and price are only confirmed after warehouse preparation — this may require non-standard document flows. **[Client to confirm what is standard vs customised in your current SQL setup]**
 
 **3.4** Do multiple users share a single ERP login, or does each user have their own account?
-**[Client to confirm]**
+**[Client to confirm | State whether users share logins or have individual accounts | Add any role-based access limitations if relevant]**
 
 **3.5** Does your ERP have a test/UAT environment separate from the live system?
-**[Client to confirm]**
+**[Client to confirm | State whether a separate test or UAT environment exists | State whether testing must be done in the live environment if no]**
 
 **3.6** What other systems or tools do you use alongside the ERP?
 
@@ -125,10 +125,10 @@ Our discussion referenced a fresh weight billing workflow where final quantity a
 | Product catalogue | Manual image shared via WhatsApp (confirmed in our discussion) | Internal |
 
 **3.7** Which of these systems would you want MAIA to connect to?
-SQL Accounting is the primary integration required — for customers, items, pricing, stock, Sales Orders, Delivery Orders, invoices, payment records, and outstanding balances. **[Client to confirm and add any other systems]**
+SQL Accounting is the primary integration required — for customers, items, pricing, stock, Sales Orders, Delivery Orders, invoices, payment records, and outstanding balances. **[Client to confirm | Confirm SQL Accounting is the main integration system | List any other systems MAIA should connect to]**
 
 **3.8** Are there any systems you plan to replace or stop using once MAIA is live?
-MAIA will operate as an assistant layer on top of your existing SQL system. Your accounting system will remain in use. **[Client to confirm if any tools or manual processes will be retired]**
+MAIA will operate as an assistant layer on top of your existing SQL system. Your accounting system will remain in use. **[Client to confirm | List any tools that will be replaced | List any manual processes that should stop once MAIA is live]**
 
 ---
 
@@ -137,16 +137,16 @@ MAIA will operate as an assistant layer on top of your existing SQL system. Your
 ### Products & Inventory
 
 **4.1** Approximately how many products / items (SKUs) do you carry?
-**[Client to confirm — please provide approximate SKU count]**
+**[Client to confirm | Provide approximate SKU count]**
 
 **4.2** How often are new items added?
-**[Client to confirm frequency]**
+**[Client to confirm | State how often new items are added]**
 
 **4.3** Do you use product categories, brands, or groupings?
 Yes — our discussion confirmed products are categorised by meat type: pork, chicken, duck, beef, and lamb. **[Client to confirm full category list and whether sub-categories by cut or packaging exist]**
 
 **4.4** Do you manage stock across multiple warehouses or locations?
-**[Client to confirm — please list all warehouse and storage locations]**
+**[Client to confirm | List all warehouse and storage locations]**
 
 **4.5** Which of the following apply to your products?
 
@@ -164,7 +164,7 @@ Yes — our discussion confirmed products are categorised by meat type: pork, ch
 Yes — meat products are cut, weighed, and packed before fulfillment. Final weight is only confirmed after warehouse preparation. This directly affects when the final invoice amount can be issued.
 
 **4.7** Do salespeople ever "reserve" stock for specific customers before a confirmed order is placed?
-**[Client to confirm]**
+**[Client to confirm | State whether stock is reserved before confirmed order | Describe how the reservation is tracked today if yes]**
 
 ### Pricing
 
@@ -178,7 +178,7 @@ Yes — meat products are cut, weighed, and packed before fulfillment. Final wei
 - [ ] Other: **[Client to confirm if there are additional pricing methods]**
 
 **4.9** If you have multiple price lists or tiers, how many are there? What defines each tier?
-**[Client to confirm pricing structure and number of tiers]**
+**[Client to confirm | Describe pricing structure | State number of price tiers or lists if applicable]**
 
 **4.10** Where is pricing data maintained today?
 
@@ -191,7 +191,7 @@ Yes — meat products are cut, weighed, and packed before fulfillment. Final wei
 Prices change frequently due to commodity sourcing and import costs. A Price Update Assistant is in scope to manage bulk price updates. **[Client to confirm typical update frequency — e.g., weekly, daily for certain items]**
 
 **4.12** Is there a person or role responsible for setting or updating prices?
-**[Client to confirm who controls pricing decisions]**
+**[Client to confirm | State who controls pricing decisions | State who updates prices in the system]**
 
 ---
 
@@ -209,19 +209,19 @@ Prices change frequently due to commodity sourcing and import costs. A Price Upd
 - [ ] Other: **[Client to confirm if any other channels are used]**
 
 **5.2** Approximately how many sales orders are processed per day?
-700 orders/month confirmed in our discussion. Wholesale customers order approximately once per week; retail customers approximately 1–2 times per week. All 700 orders are currently keyed by 1 person. **[Client to confirm if volume has changed]**
+700 orders/month confirmed in our discussion. Wholesale customers order approximately once per week; retail customers approximately 1–2 times per week. All 700 orders are currently keyed by 1 person. **[Client to confirm | State whether current order volume is still accurate | Provide updated daily or monthly volume if changed]**
 
 **5.3** How many line items does a typical order contain?
-**[Client to confirm]**
+**[Client to confirm | Provide typical number of line items per order | Provide a usual range if it varies]**
 
 **5.4** Who creates quotations? Who approves them?
-**[Client to confirm whether your team uses quotations regularly, or whether the workflow goes directly to Sales Order or Proforma Invoice]**
+**[Client to confirm | State whether quotations are used regularly | State whether workflow goes directly to Sales Order or Proforma Invoice instead]**
 
 **5.5** Who creates or confirms sales orders? Is there an approval process?
-1 admin person currently keys all orders from WhatsApp into SQL and generates Delivery Orders and invoices — confirmed in our discussion. **[Client to confirm who approves exception cases, e.g., customers with overdue balances or special pricing]**
+1 admin person currently keys all orders from WhatsApp into SQL and generates Delivery Orders and invoices — confirmed in our discussion. **[Client to confirm | State who approves exception cases | List examples such as overdue balances or special pricing]**
 
 **5.6** Are there situations where a quotation or order needs special approval?
-Yes — discussed in our meeting. Scenarios include customers with overdue balances, special pricing requests, or non-standard orders. **[Client to confirm all approval trigger scenarios]**
+Yes — discussed in our meeting. Scenarios include customers with overdue balances, special pricing requests, or non-standard orders. **[Client to confirm | List all approval trigger scenarios]**
 
 **5.7** Do you handle any of the following?
 
@@ -237,10 +237,10 @@ Yes — discussed in our meeting. Scenarios include customers with overdue balan
 **Please confirm or adjust the above.**
 
 **5.8** What are the most common reasons your team issues credit notes?
-**[Client to confirm — e.g., weight discrepancy, pricing correction, returns]**
+**[Client to confirm | List the most common credit note reasons | Examples: weight discrepancy, pricing correction, returns]**
 
 **5.9** Can salespeople currently create credit notes, or is that restricted to finance?
-**[Client to confirm]**
+**[Client to confirm | State whether salespeople can create credit notes | State whether finance approval or finance-only access is required]**
 
 ---
 
@@ -255,16 +255,16 @@ Yes — discussed in our meeting. Scenarios include customers with overdue balan
 - [ ] Other: **[Client to confirm]**
 
 **6.2** Do you plan delivery routes or trips? If yes, how is this done today?
-Currently done manually. Our discussion confirmed interest in grouping orders by delivery area (e.g., all orders in one area per trip) so drivers can be assigned by zone. **[Client to confirm current routing process and number of delivery zones]**
+Currently done manually. Our discussion confirmed interest in grouping orders by delivery area (e.g., all orders in one area per trip) so drivers can be assigned by zone. **[Client to confirm | Describe current routing process | State number of delivery zones or areas]**
 
 **6.3** Do drivers currently capture proof of delivery (signature, photo)?
-Currently drivers collect a signature on the Delivery Order. Our discussion confirmed interest in having drivers send a photo of the signed DO so it can be stored against the Sales Order as proof of delivery. **[Client to confirm current process and whether photo capture is practical for your drivers]**
+Currently drivers collect a signature on the Delivery Order. Our discussion confirmed interest in having drivers send a photo of the signed DO so it can be stored against the Sales Order as proof of delivery. **[Client to confirm | Describe current proof-of-delivery process | State whether photo capture is practical for drivers]**
 
 **6.4** Do you handle cash-on-delivery (COD)? If yes, how is COD reconciled with finance?
-Yes — confirmed in our discussion. Smaller customers pay COD. Some customers have requested bank transfer instead and delayed payment. **[Client to confirm COD reconciliation process]**
+Yes — confirmed in our discussion. Smaller customers pay COD. Some customers have requested bank transfer instead and delayed payment. **[Client to confirm | Describe COD reconciliation process | State who is responsible for reconciliation]**
 
 **6.5** Is the delivery order and invoice issued at the same time, or separately?
-Separately — confirmed in our discussion. Final weight is only known the morning after goods are collected and weighed. The Delivery Order is prepared first; the final invoice is issued after weight confirmation. **[Client to confirm the exact document sequence used today]**
+Separately — confirmed in our discussion. Final weight is only known the morning after goods are collected and weighed. The Delivery Order is prepared first; the final invoice is issued after weight confirmation. **[Client to confirm | Describe the exact document sequence used today]**
 
 ---
 
@@ -281,19 +281,19 @@ Separately — confirmed in our discussion. Final weight is only known the morni
 - [ ] Other: **[Client to confirm]**
 
 **7.2** Do you extend credit terms to customers? If yes, what are your standard terms?
-Yes — credit and outstanding visibility is a key workflow requirement. **[Client to confirm standard credit terms, e.g., 30 / 60 / 90 days]**
+Yes — credit and outstanding visibility is a key workflow requirement. **[Client to confirm | State standard credit terms | Examples: 30 / 60 / 90 days]**
 
 **7.3** Do you set credit limits per customer? If yes, what happens when a customer exceeds their limit?
-Our discussion referenced a bad debt case where a customer owed a significant overdue amount and was unable to pay. Outstanding tracking is done in SQL. **[Client to confirm whether formal credit limits are set in SQL, and what happens when a customer exceeds their limit — blocked, flagged for approval, or warning only]**
+Our discussion referenced a bad debt case where a customer owed a significant overdue amount and was unable to pay. Outstanding tracking is done in SQL. **[Client to confirm | State whether formal credit limits are set in SQL | State what happens when a customer exceeds the limit | Examples: blocked, flagged for approval, warning only]**
 
 **7.4** Is your credit limit enforcement managed inside the ERP, or tracked manually?
-Outstanding tracking is in SQL but collection escalation is handled manually. **[Client to confirm whether SQL enforces credit blocks or only reports]**
+Outstanding tracking is in SQL but collection escalation is handled manually. **[Client to confirm | State whether SQL enforces credit blocks | State whether SQL only reports outstanding balances]**
 
 **7.5** How do customers notify you when they've made a payment?
 Customers send payment slips via WhatsApp to the salesperson or admin team. This is a key pain point — an AR support workflow is in scope to process payment slips and match them to invoices.
 
 **7.6** Do you send Statements of Account (SOA) to customers? If yes, how often and how?
-**[Client to confirm]**
+**[Client to confirm | State whether you send Statements of Account | State how often they are sent | State how they are sent]**
 
 **7.7** What is your e-invoicing status?
 
@@ -303,13 +303,13 @@ Customers send payment slips via WhatsApp to the salesperson or admin team. This
 - [ ] Not started
 - [ ] Not applicable
 
-**[Client to confirm — please tick the applicable option]**
+**[Client to confirm | Tick the applicable e-invoicing status option]**
 
 **7.8** Do customers prefer individual invoices per delivery, or consolidated monthly invoices?
-**[Client to confirm]**
+**[Client to confirm | State whether customers prefer individual invoices per delivery or consolidated monthly invoices]**
 
 **7.9** Are there any tax exemption scenarios relevant to your business?
-**[Client to confirm]**
+**[Client to confirm | List any tax exemption scenarios relevant to your business]**
 
 ---
 
@@ -332,35 +332,35 @@ Customers send payment slips via WhatsApp to the salesperson or admin team. This
 **Please confirm or adjust the above, and bring sample PDFs to the first meeting.**
 
 **8.2** Are your document templates generated by the SQL built-in report engine? If yes, which documents?
-**[Client to confirm — and whether any templates are custom-designed]**
+**[Client to confirm | State which SQL-generated document templates are in use | State whether any templates are custom-designed]**
 
 **8.3** Are there specific fields, references, or formatting your customers or regulators require on documents?
-**[Client to confirm — please bring sample documents to the first meeting]**
+**[Client to confirm | List any required document fields, references, or formatting | Bring sample documents to the first meeting]**
 
 **8.4** What reports do you look at regularly?
-**[Client to confirm — e.g., daily order summary, AR aging, outstanding balances, stock movement]**
+**[Client to confirm | List the reports you review regularly | Examples: daily order summary, AR aging, outstanding balances, stock movement]**
 
 **8.5** Are there any reports you currently build manually in Excel that you wish were automated?
-Price update management and AR reconciliation were referenced as manual processes in our discussion. **[Client to confirm full list]**
+Price update management and AR reconciliation were referenced as manual processes in our discussion. **[Client to confirm | List all reports or analyses currently built manually in Excel that should be automated]**
 
 ---
 
 ## Section 9 — Communication & Channels
 
 **9.1** Do you have a WhatsApp Business account? Is it a regular WhatsApp Business app or WhatsApp Business API (WABA)?
-One sales WhatsApp number is used as the main contact for all customers — confirmed in our discussion. Customers message this number directly (1-to-1). **[Client to confirm whether it is WhatsApp Business App or WABA, and who manages the account]**
+One sales WhatsApp number is used as the main contact for all customers — confirmed in our discussion. Customers message this number directly (1-to-1). **[Client to confirm | State whether this is WhatsApp Business App or WABA | State who manages the account]**
 
 **9.2** Would you want MAIA to communicate with your customers via WhatsApp?
-Our discussion confirmed interest in a customer-facing chatbot on the sales number to handle enquiries and product updates. A weekly price catalogue blast via WhatsApp was also discussed. **[Client to confirm which customer-facing features are a priority for Phase 1 vs later phases]**
+Our discussion confirmed interest in a customer-facing chatbot on the sales number to handle enquiries and product updates. A weekly price catalogue blast via WhatsApp was also discussed. **[Client to confirm | List customer-facing features needed in Phase 1 | List features that can wait until later phases]**
 
 **9.3** Would you want MAIA to help your internal team via WhatsApp?
 Yes — this is the core interaction model. Staff input orders, payment slips, and GRN photos through WhatsApp; MAIA processes and presents summaries for staff confirmation before any record is created.
 
 **9.4** What primary languages does your team use in daily operations?
-Mandarin is the primary language. Mixed usage of Mandarin, English, and Malay is expected day-to-day. **[Client to confirm preferred language for system training and onboarding communication]**
+Mandarin is the primary language. Mixed usage of Mandarin, English, and Malay is expected day-to-day. **[Client to confirm | State preferred language for system training | State preferred language for onboarding communication]**
 
 **9.5** What primary languages do your customers communicate in?
-Mandarin and mixed Chinese dialects are expected. Voice messages may include informal dialect terms. **[Client to confirm]**
+Mandarin and mixed Chinese dialects are expected. Voice messages may include informal dialect terms. **[Client to confirm | State the main languages or dialects your customers use]**
 
 ---
 
@@ -375,13 +375,13 @@ Mandarin and mixed Chinese dialects are expected. Voice messages may include inf
 **Please confirm or add your own priority items.**
 
 **10.2** What currently takes the most time in your daily operations that you wish was faster or easier?
-Manual order keying into SQL. Fresh weight update before Delivery Order and invoice. Chasing overdue payments. **[Client to confirm or add]**
+Manual order keying into SQL. Fresh weight update before Delivery Order and invoice. Chasing overdue payments. **[Client to confirm | Confirm whether these are still the main time-consuming tasks | Add any others]**
 
 **10.3** Is there anything that currently "falls through the cracks"?
-Our discussion confirmed that sales leads are shared into a WhatsApp group but there is no system to track whether sales staff follow up with each lead. **[Client to confirm other scenarios]**
+Our discussion confirmed that sales leads are shared into a WhatsApp group but there is no system to track whether sales staff follow up with each lead. **[Client to confirm | List other things that currently fall through the cracks]**
 
 **10.4** If MAIA could only do one thing for your business, what would it be?
-Based on our discussion, the top stated priority was: Sales Orders going directly from WhatsApp into SQL without manual re-entry. **[Client to confirm if this is still the single top priority]**
+Based on our discussion, the top stated priority was: Sales Orders going directly from WhatsApp into SQL without manual re-entry. **[Client to confirm | State whether this is still the single top priority]**
 
 **10.5** Is there anything your team currently does outside the ERP system (WhatsApp, spreadsheets, paper, memory) that should be in a system?
 Yes — confirmed in our discussion:
@@ -392,7 +392,7 @@ Yes — confirmed in our discussion:
 - Delivery route planning by area
 - Proof of delivery capture by drivers
 
-**[Client to confirm or add any additional items]**
+**[Client to confirm | Confirm the listed outside-ERP activities | Add any additional items that should be in a system]**
 
 ---
 
@@ -436,7 +436,7 @@ _Note: Historical data migration is a separate scope item. We will assess feasib
 ## Section 12 — Timeline & Project Ownership
 
 **12.1** When do you need MAIA to be operational? Is there a hard deadline?
-**[Client to confirm]**
+**[Client to confirm | State target go-live timing | State whether there is a hard deadline]**
 
 **12.2** Who from your team will be the internal project owner — the day-to-day contact during onboarding?
 
@@ -451,7 +451,7 @@ _Note: Historical data migration is a separate scope item. We will assess feasib
 | Owner / Boss | Decision-maker — pricing, scope, approval flows | **[Client to confirm name and contact]** |
 
 **12.4** Are there any upcoming events that might affect your availability during onboarding?
-**[Client to confirm — e.g., festive seasons, audits, or peak sales periods]**
+**[Client to confirm | List any upcoming events that may affect onboarding availability | Examples: festive seasons, audits, peak sales periods]**
 
 ---
 
