@@ -2873,6 +2873,7 @@ body.is-mobile .tasknotes-plugin {
     /* Interactions & Accessibility - Smooth transitions */
     transition: background-color var(--tn-transition-fast), box-shadow var(--tn-transition-fast), border-color var(--tn-transition-fast);
     outline: none;
+    container: tn-task-card / inline-size;
 }
 
 .tasknotes-plugin .task-card:hover {
@@ -3499,7 +3500,7 @@ body.is-mobile .tasknotes-plugin .task-card__chevron svg {
 }
 
 body.is-mobile .tasknotes-plugin .task-card.task-card--chevron-left .task-card__chevron {
-    left: calc(-1 * var(--tn-spacing-lg) - 16px);
+    left: var(--tn-spacing-xs);
     width: 32px;
     height: 32px;
 }
@@ -3898,6 +3899,10 @@ body.is-mobile .tasknotes-plugin .task-card__context-menu svg {
     justify-content: center;
 }
 
+.tasknotes-plugin .task-card[data-priority] > .task-card__main-row .task-card__priority-dot--icon {
+    background-color: transparent;
+}
+
 .tasknotes-plugin .task-card--priority-high > .task-card__main-row .task-card__priority-dot--icon,
 .tasknotes-plugin .task-card--priority-medium > .task-card__main-row .task-card__priority-dot--icon,
 .tasknotes-plugin .task-card--priority-normal > .task-card__main-row .task-card__priority-dot--icon,
@@ -3979,20 +3984,33 @@ body.is-mobile .tasknotes-plugin .task-card__context-menu svg {
     }
 }
 
-/* Obsidian mobile cards need compact controls; secondary badges wrap below so
-   narrow cards keep enough room for the task title and metadata. */
+/* Obsidian mobile cards need compact controls while still preserving the
+   user's configured reading size for task text. */
 body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) {
     padding: var(--tn-spacing-sm) var(--tn-spacing-md);
 }
 
 body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__main-row {
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: var(--tn-spacing-xs);
 }
 
 body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__content {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: min(13rem, calc(100% - var(--tn-mobile-task-card-indicator-size) - var(--tn-mobile-task-card-indicator-size) - var(--tn-spacing-xs) - var(--tn-spacing-xs)));
     padding-top: 0;
+}
+
+body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__title {
+    font-size: var(--tn-font-size-base);
+    line-height: 1.35;
+}
+
+body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__metadata {
+    font-size: max(var(--tn-font-size-lg), var(--font-ui-small, 13px));
+    line-height: 1.35;
 }
 
 body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__status-dot {
@@ -4028,21 +4046,53 @@ body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.
 }
 
 body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__badges {
-    order: 2;
-    flex: 1 0 100%;
+    order: 0;
+    flex: 0 0 auto;
     gap: 2px;
-    padding-left: calc(var(--tn-mobile-task-card-indicator-size) + var(--tn-spacing-xs));
+    margin-left: auto;
+    padding-left: 0;
     box-sizing: border-box;
 }
 
 body.is-mobile .tasknotes-plugin .task-card.task-card--chevron-left:not(.task-card--layout-inline):not(.task-card--layout-compact) {
-    margin-left: calc(var(--tn-mobile-task-card-menu-size) + var(--tn-spacing-lg));
+    padding-left: calc(var(--tn-mobile-task-card-menu-size) + var(--tn-spacing-sm));
 }
 
 body.is-mobile .tasknotes-plugin .task-card.task-card--chevron-left:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__badges {
     order: 0;
     flex: 0 0 auto;
     padding-left: 0;
+}
+
+@container tn-task-card (max-width: 300px) {
+    body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__main-row {
+        align-items: flex-start;
+    }
+
+    body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__badges {
+        order: 2;
+        flex: 1 0 100%;
+        justify-content: flex-end;
+        padding-left: calc(var(--tn-mobile-task-card-indicator-size) + var(--tn-mobile-task-card-indicator-size) + var(--tn-spacing-sm));
+    }
+
+    body.is-mobile .tasknotes-plugin .task-card.task-card--chevron-left:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__badges {
+        order: 2;
+        flex: 1 0 100%;
+        padding-left: 0;
+    }
+
+    body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__metadata {
+        row-gap: 4px;
+    }
+
+    body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__metadata-property {
+        flex: 1 1 100%;
+    }
+
+    body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.task-card--layout-compact) .task-card__metadata-value {
+        flex: 1 1 0;
+    }
 }
 
 body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline) .task-card__metadata-property--projects {
@@ -16752,7 +16802,7 @@ body.is-mobile .tasknotes-plugin .kanban-view__swimlane-column {
     min-width: 0;
     min-height: 0;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background: var(--tn-bg-primary);
 
 	button {
@@ -17236,6 +17286,16 @@ body.is-mobile .tasknotes-plugin .kanban-view__swimlane-column {
     max-width: 300px;
     margin: 0 auto;
     box-sizing: border-box;
+}
+
+/* Center the timer group only when there is spare height. Auto margins collapse
+   when the pane is shorter than the content, keeping the top scrollable. */
+.tasknotes-plugin.pomodoro-view > .pomodoro-view__timer-section {
+    margin-top: auto;
+}
+
+.tasknotes-plugin.pomodoro-view > .pomodoro-view__stats-section {
+    margin-bottom: auto;
 }
 
 /* Statistics Grid */
@@ -21109,6 +21169,18 @@ body.is-mobile .tasknotes-plugin .tasknotes-settings__card-action-btn {
 .tn-bases-tasknotes-list .task-group-header .agenda-view__item-count {
     margin-left: auto;
     margin-right: 0;
+}
+
+.tn-tasknotesTaskList .tn-search-container {
+	display: flex;
+	align-items: center;
+	gap: var(--tn-spacing-sm);
+	min-width: 0;
+}
+
+.tn-tasknotesTaskList .tn-search-box {
+	flex: 1;
+	min-width: 0;
 }
 
 /* Toggle button for groups */

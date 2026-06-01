@@ -1,0 +1,22 @@
+{
+  "tabManagerState": {
+    "openTabs": [
+      {
+        "draftModel": "gpt-5.5",
+        "tabId": "tab-1780302801227-eb6t1qu",
+        "conversationId": null
+      },
+      {
+        "draftModel": "sonnet",
+        "tabId": "tab-1780303017916-ynhwniy",
+        "conversationId": null
+      },
+      {
+        "draftModel": "sonnet",
+        "tabId": "tab-1780303718211-t28456t",
+        "conversationId": null
+      }
+    ],
+    "activeTabId": "tab-1780302801227-eb6t1qu"
+  }
+}

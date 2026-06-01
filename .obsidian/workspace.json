@@ -54,9 +54,43 @@
               "icon": "lucide-file",
               "title": "MAIA UAT Form - Holsen - 2026-03"
             }
+          },
+          {
+            "id": "126c2f08efc17852",
+            "type": "leaf",
+            "state": {
+              "type": "tasknotes-release-notes",
+              "state": {},
+              "icon": "book-open",
+              "title": "What's new in TaskNotes 4.9.2"
+            }
+          },
+          {
+            "id": "956971c9cf8e778c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "MAIA UAT Form - Holsen - 2026-03"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -114,8 +148,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -234,9 +267,19 @@
               "icon": "terminal",
               "title": "Terminal"
             }
+          },
+          {
+            "id": "ce36b26a973dd155",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -265,11 +308,18 @@
       "tasknotes:Create new task": false,
       "tasknotes:Open Kanban board": false,
       "tasknotes:Open Pomodoro timer": false,
-      "tasknotes:Open Pomodoro statistics": false
+      "tasknotes:Open Pomodoro statistics": false,
+      "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ce36b26a973dd155",
   "lastOpenFiles": [
+    "02 - PM Playbook/Templates/[Template] GRAI Retrospective.md",
+    "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",
+    "02 - PM Playbook/Templates/[Template] Account Ownership Dashboard.md",
+    "02 - PM Playbook/Templates/[Template] Weekly Operating Review.md",
+    "02 - PM Playbook/Templates/[Template] Daily Operating Plan.md",
+    "02 - PM Playbook/Processes/PM Personal Operating System.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Client Sales Handover TLDR Brief - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru feedback sync - Transcript.md",
@@ -307,12 +357,6 @@
     "slides/2026-05-18",
     "README.md",
     "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
-    "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
-    "Granola/Transcripts/2026-05-18/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-15/Holsen _ _ Mindhive C1C3 UAT-transcript.md",
-    "Granola/Transcripts/2026-05-15/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-15/Fixguru feedback sync-transcript.md",
-    "Granola/Transcripts/2026-05-14/Fixguru __ Mindhive - UAT (On-site)-transcript.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",

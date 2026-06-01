@@ -13,7 +13,7 @@
   "taskOrgFiltersCollapsed": false,
   "taskFilenameFormat": "zettel",
   "storeTitleInFilename": true,
-  "customFilenameTemplate": "{title}",
+  "customFilenameTemplate": "{{title}}",
   "taskCreationDefaults": {
     "defaultContexts": "",
     "defaultTags": "",
@@ -328,7 +328,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.9.1",
+  "lastSeenVersion": "4.9.2",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -467,7 +467,7 @@
     "isRunning": false,
     "timeRemaining": 1500
   },
-  "lastPomodoroDate": "2026-05-28",
+  "lastPomodoroDate": "2026-05-31",
   "taskModalTabMovesFocus": true,
   "hideIdentifyingTagsMode": "all",
   "openTaskAfterCreation": "none",
