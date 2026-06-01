@@ -14,6 +14,7 @@ Use this system to:
 - communicate better across dev, management, and clients
 - use AI to stress-test thinking before others do it for you
 - improve through structured daily, weekly, and major retros
+- integrate AI into planning, prioritisation, communication, and review without giving away judgment
 
 ## Quick Start
 
@@ -185,6 +186,25 @@ Principle:
 
 Use AI as a strict thinking partner, not a validation tool.
 
+### AI integration model
+
+Use AI inside the workflow at four points:
+- `Clarify`: turn vague work into a clearer outcome, scope, success condition, and next step
+- `Challenge`: attack weak logic, bad prioritisation, missing assumptions, and hidden risks
+- `Draft`: create a first-pass brief, update, or summary that you will still own and refine
+- `Review`: critique your message, plan, or retro before it goes out or gets locked in
+
+Use AI by workflow stage:
+- `Before work starts`: clarify outcome, success condition, dependencies, and what is still fuzzy
+- `Before prioritising`: challenge whether this is truly high value or just loud
+- `Before sending updates`: review the message for the target audience
+- `When blocked`: generate options, escalation framing, likely stakeholder concerns, and the most likely failure mode
+- `During retros`: run KISS or GRAI with stronger challenge and sharper takeaways
+
+Hard rule:
+- AI can help frame, challenge, draft, and review
+- AI does not replace judgment, stakeholder alignment, or final ownership
+
 Use AI when:
 - the message is high-stakes
 - the priority is unclear
@@ -194,13 +214,74 @@ Use AI when:
 - the dev brief may still be ambiguous
 - you feel emotionally rushed, frustrated, or too attached to one view
 
+Use AI less or not at all when:
+- the decision is already clear and low-stakes
+- the work is simple enough that prompting would create overhead
+- a direct stakeholder conversation is the real next step
+
 ### Standard prompts
+
+For daily planning:
+
+```text
+Help me turn this into a sharp operating plan.
+Define:
+1. the outcome
+2. success condition
+3. dependencies
+4. major risks
+5. next concrete action
+6. what is still unclear
+If this is too vague or poorly framed, say so directly.
+```
 
 For prioritisation:
 
 ```text
 Act like a startup operator with no patience for low-value work.
 Tell me if this is actually important, what should be deprioritised, and what creates the most real movement.
+```
+
+For dev briefing:
+
+```text
+Review this like an impatient tech lead.
+Tell me:
+1. what is ambiguous
+2. what context is missing
+3. what assumptions dev would have to guess
+4. what questions will come back immediately
+Rewrite it in a clearer execution-ready format.
+```
+
+For management updates:
+
+```text
+Review this like a senior leader with limited time.
+Tell me if this is too vague, too long, missing ownership, missing recommendation, or unclear on next step.
+Rewrite it so the outcome, risk, recommendation, and next step are obvious.
+```
+
+For client communication:
+
+```text
+Review this from the client's perspective.
+Tell me where this is confusing, too internal, or weak on expectation-setting.
+Rewrite it so the update, impact, next step, and timing are clear.
+```
+
+For escalation:
+
+```text
+Help me escalate this properly.
+List:
+1. the issue
+2. why it matters
+3. what I checked already
+4. realistic options
+5. my recommended path
+6. the next decision needed
+If my escalation is weak or premature, say so.
 ```
 
 For perspective-checking:
@@ -220,6 +301,54 @@ For failure risk:
 If this fucks up, why will it fuck up?
 List the most likely failure points, unclear assumptions, dependency risks, and wasted-effort traps.
 ```
+
+For KISS retros:
+
+```text
+Use KISS to review this day or week.
+Be direct.
+Tell me:
+1. what to keep
+2. what to improve
+3. what to stop before I add more work
+4. what to start next
+Focus on prioritisation, stakeholder handling, and wasted effort.
+```
+
+For GRAI retros:
+
+```text
+Use GRAI to review this project or incident.
+Challenge whether:
+1. the original goal was weak or not SMART
+2. the result gap is clear
+3. my analysis is superficial
+4. the root cause is real
+5. the insight is actually reusable
+Do not let me hide behind generic lessons.
+```
+
+### AI decision rule
+
+Use AI by default for:
+- high-stakes work
+- ambiguous work
+- multi-dependency work
+- politically sensitive work
+- repeated patterns where you want sharper learning
+
+Do not default to AI for:
+- simple obvious tasks
+- decisions that only a real conversation can resolve
+- low-value wording polish on low-value work
+
+### AI misuse guardrails
+
+- do not use AI to launder weak decisions into better wording
+- do not ask AI to decide political tradeoffs for you
+- do not send AI-generated drafts without review
+- do not let AI create extra work that was not priority in the first place
+- if stakes are high, record what you accepted from AI and what you rejected
 
 ## Retrospective System
 
@@ -285,6 +414,9 @@ Track weekly:
 - number of low-value tasks that consumed meaningful time
 - number of important updates sent with clear outcome, risk, and next step
 - number of times AI caught a real issue before others did
+- number of high-stakes tasks reviewed by AI before execution
+- number of times AI improved a brief, update, or escalation
+- number of times AI use created noise or overthinking
 - number of tasks completed that materially moved an outcome
 - number of KISS retros completed
 - number of GRAI retros completed when warranted

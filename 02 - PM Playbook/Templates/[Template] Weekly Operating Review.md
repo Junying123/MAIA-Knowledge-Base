@@ -49,6 +49,10 @@ last_reviewed: 2026-06-01
 - Where I reacted too late:
 - Where I escalated early:
 - Where AI caught something I missed:
+- Where AI saved me time:
+- Where I overused AI or used it badly:
+- What pattern AI helped me notice:
+- One prompt or workflow to reuse next week:
 
 ## Metrics
 
@@ -59,6 +63,9 @@ last_reviewed: 2026-06-01
 - Low-value tasks that consumed meaningful time:
 - Important updates sent with clear outcome, risk, and next step:
 - Times AI caught a real issue before others did:
+- High-stakes tasks reviewed by AI before execution:
+- Times AI improved a brief, update, or escalation:
+- Times AI use created noise or overthinking:
 - Tasks completed that materially moved an outcome:
 - KISS retros completed:
 - GRAI retros completed:

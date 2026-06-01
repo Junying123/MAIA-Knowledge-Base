@@ -19,8 +19,10 @@ last_reviewed: 2026-06-01
 - Success condition:
 - Next action:
 - Blocker or risk:
+- If this fails, likely reason:
 - Who I need to follow up with:
 - Deadline or timing:
+- AI mode used:
 - Priority score:
   - Client risk:
   - Delivery dependency:
@@ -34,8 +36,10 @@ last_reviewed: 2026-06-01
 - Success condition:
 - Next action:
 - Blocker or risk:
+- If this fails, likely reason:
 - Who I need to follow up with:
 - Deadline or timing:
+- AI mode used:
 - Priority score:
   - Client risk:
   - Delivery dependency:
@@ -49,8 +53,10 @@ last_reviewed: 2026-06-01
 - Success condition:
 - Next action:
 - Blocker or risk:
+- If this fails, likely reason:
 - Who I need to follow up with:
 - Deadline or timing:
+- AI mode used:
 - Priority score:
   - Client risk:
   - Delivery dependency:
@@ -69,9 +75,19 @@ last_reviewed: 2026-06-01
 ## AI Critique
 
 - What I am stress-testing:
+- AI mode:
 - Prompt used:
 - Main challenge from AI:
 - What I changed after critique:
+- What I accepted from AI:
+- What I rejected from AI:
+
+## Message Review Needed Today
+
+- Audience:
+- Draft to review:
+- What AI flagged:
+- Final change made:
 
 ## Focus Guardrails
 
@@ -86,6 +102,7 @@ last_reviewed: 2026-06-01
 - What changed?
 - What do I need to re-rank?
 - What needs escalation now?
+- Do I need AI help for a blocker, tradeoff, or escalation?
 
 ## End-of-Day Close
 
@@ -103,3 +120,4 @@ last_reviewed: 2026-06-01
 - Improve:
 - Stop:
 - Start:
+- What AI noticed that I missed:

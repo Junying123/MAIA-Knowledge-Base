@@ -40,6 +40,14 @@ What new action, experiment, or behavior should begin next?
 
 -
 
+## AI-Assisted Critique
+
+- Prompt used:
+- What AI said to stop before I start more work:
+- What AI challenged in my prioritisation or stakeholder handling:
+- What I accepted:
+- What I rejected:
+
 ## Output
 
 - Main lesson:

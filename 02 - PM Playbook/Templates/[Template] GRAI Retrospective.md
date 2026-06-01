@@ -47,6 +47,16 @@ Use for project closeouts, quarterly reviews, major misses, major wins, or repea
 - What I will do differently next time:
 - What system or process should change:
 
+## AI-Assisted Critique
+
+- Prompt used:
+- Did AI challenge the original goal itself:
+- Did AI challenge the result framing:
+- Did AI challenge the root cause:
+- What insight did AI sharpen:
+- What I accepted:
+- What I rejected:
+
 ## Follow-through
 
 - Immediate action:
