@@ -2,7 +2,7 @@
 owner: Gareth
 status: draft
 doctype: Pick List
-last_reviewed: 2026-05-29
+last_reviewed: 2026-06-03
 ---
 
 # Pick List PDF — Product Spec
@@ -109,15 +109,18 @@ This audit is based on current MAIA specs and implementation notes already avail
 **Confirmed issue**
 
 - Pick List is currently grouped inside the standard commercial document layout.
+- Against the latest DN PDF implementation, Pick List also uses the wrong non-item layout: Pick List renders a compact top strip plus two large boxes, while DN uses one clean 3-column information band.
 
 **Why this is wrong**
 
 - Pick List is a warehouse document, not a commercial/customer document.
 - Reusing a commercial structure risks bringing the wrong page sections and priorities into Pick List.
+- The DN implementation already gives the cleaner document pattern to follow: document details, warehouse information, and order/shipping information should sit in one aligned row.
 
 **Rework direction**
 
 - Give Pick List its own warehouse-first structure instead of inheriting the generic commercial layout unchanged.
+- For this rework pass, align the non-item sections to the latest DN PDF layout and ignore item-table redesign until the item table work is ready.
 
 ### Data
 
@@ -161,16 +164,21 @@ This audit is based on current MAIA specs and implementation notes already avail
 **Confirmed issue**
 
 - The shared structure gives Pick List the same general block family as commercial documents, including `Info Block`, `Remarks`, `Terms & Conditions`, and `Summary`.
+- Current Pick List puts Remarks, Picker Acknowledgement, and Exception Handling as stacked full-width blocks. Latest DN uses a 50/50 row for Remarks and Summary; Pick List should adapt that row as Remarks and Picker Acknowledgement.
 
 **Why this is wrong**
 
 - Even with Payment Terms hidden, the page can still feel like a commercial document instead of a picking document.
 - Too much page weight can shift away from item rows and warehouse/location.
+- Stacking Remarks and Picker Acknowledgement makes the page taller than needed and does not follow the latest DN document rhythm.
 
 **Rework direction**
 
 - Reduce or remove non-operational lower-page sections for Pick List.
 - Make the item table visually dominant.
+- Render Remarks on the left and Picker Acknowledgement on the right, each 50% width.
+- Render Exception Handling as one full-width section below that 50/50 row.
+- Remove Terms & Conditions entirely for Pick List.
 
 ### Hierarchy
 
@@ -200,6 +208,7 @@ The following issues are directly confirmed from `/Users/garethng/Downloads/1415
 - `Terms & Conditions` still renders as a section heading even though Pick List should not behave like a commercial document and the section is empty.
 - Warehouse and order information are split into large framed boxes with many empty subfields, creating a customer-form structure rather than a lean warehouse document structure.
 - The document includes both a dedicated `WAREHOUSE` column and an extra `WAREHOUSE:` line inside the description cell, causing structural duplication inside the item row.
+- Compared with the latest DN implementation, Pick List is missing the 3-column information band: `Document Details`, `Warehouse Information`, and `Order Information`.
 
 #### Data
 
@@ -222,6 +231,8 @@ The following issues are directly confirmed from `/Users/garethng/Downloads/1415
 - The remarks, picker acknowledgement, exception handling, and empty `Terms & Conditions` area together consume a large portion of the page even when the operational item content is minimal.
 - The table uses a dedicated `WAREHOUSE` column but still wraps warehouse text in a way that consumes extra row height; the same information also appears in the description cell.
 - The page balance still feels like a form template with empty fields rather than a compact picking document optimized for row scanning.
+- Remarks and Picker Acknowledgement are not displayed as a 50/50 row, unlike the latest DN pattern.
+- Exception Handling is full-width, which is directionally correct, but its spacing should be tightened after the Remarks/Acknowledgement row is fixed.
 
 #### Hierarchy
 
@@ -246,10 +257,12 @@ The following issues are directly confirmed from `/Users/garethng/Downloads/1415
 Rahim should treat Pick List as a warehouse-first document with this minimum structure:
 
 1. Title
-2. Operational references
+2. 3-column information band
 3. Item table as primary visual block
-4. Optional remarks
-5. No financial sections
+4. 50/50 row: Remarks left, Picker Acknowledgement right
+5. Full-width Exception Handling
+6. No Terms & Conditions
+7. No financial sections
 
 ### Minimum row structure target
 
@@ -270,17 +283,44 @@ Rahim should treat Pick List as a warehouse-first document with this minimum str
 
 ### Top-section target
 
-Keep:
+Follow the latest DN PDF implementation and render one 3-column band:
+
+Column 1: Document Details
 
 - Pick List ID
 - Pick List date
 - Sales Order / Quotation / PO references where relevant
-- company identity
 
-Customer / shipping information:
+Column 2: Warehouse Information
 
-- keep only if it helps picking or dispatch execution
-- otherwise reduce or de-emphasize
+- Warehouse
+- Warehouse address
+- Contact / PIC
+- Phone
+- Email
+
+Column 3: Order Information
+
+- Purpose
+- Sales Order reference
+- Customer
+- Customer address
+- Customer phone
+- Customer email
+
+Visibility rule:
+
+- Hide any empty field row cleanly. Do not show blank labels or `None`.
+
+### Non-item section target
+
+For this rework pass, ignore the item table because it is still being updated. Fix the surrounding document layout first:
+
+- Remarks: left side, 50% width
+- Picker Acknowledgement: right side, 50% width
+- Exception Handling: full-width section below the 50/50 row
+- Terms & Conditions: remove entirely
+- Internal warehouse notice: keep, low visual weight
 
 ### Field visibility matrix
 
@@ -294,8 +334,11 @@ Use this as the working render contract unless a later product decision override
 | Sales Order reference | Show when available | Allowed reference for Pick List |
 | Quotation reference | Show when available | Allowed reference for Pick List |
 | PO Number | Show when available | Allowed reference for Pick List |
-| Customer block | Reduce / de-emphasize | Keep only if operationally useful |
-| Shipping block | Reduce / de-emphasize | Keep only if operationally useful |
+| Document Details block | Show | First column of the 3-column band |
+| Warehouse Information block | Show | Second column of the 3-column band |
+| Order Information block | Show | Third column of the 3-column band |
+| Customer block | Fold into Order Information | Keep only operationally useful fields |
+| Shipping block | Fold into Order Information | Keep only operationally useful fields |
 | Item Code | Show | Primary row identifier |
 | HS Code | Optional, default-hide | Secondary metadata only |
 | Item Name | Show | Primary description content |
@@ -306,8 +349,10 @@ Use this as the working render contract unless a later product decision override
 | Warehouse / Location | Show by default | Operationally critical |
 | Qty | Show | Operationally critical |
 | UOM | Show | Operationally critical |
-| Remarks | Keep if useful | Acceptable low-priority block |
-| Terms & Conditions | Open question | Preferred direction is remove or strongly de-emphasize |
+| Remarks | Show | Left side of 50/50 row below item table |
+| Picker Acknowledgement | Show | Right side of 50/50 row beside Remarks |
+| Exception Handling | Show | Full-width section below Remarks/Acknowledgement row |
+| Terms & Conditions | Hide | Remove entirely for Pick List PDF |
 | Rate | Hide | Must not render |
 | Tax | Hide | Must not render |
 | Total | Hide | Must not render |
@@ -412,82 +457,72 @@ Target-state rules shown in this ASCII shape:
 - no literal `None`
 - customer/shipping context is compact and operational only
 
-#### Expected correct Pick List PDF (document-generation aligned)
+#### Expected correct Pick List PDF (DN-aligned non-item layout)
 
-This is the preferred final shape Rahim should implement. It follows the `DOCUMENT_GENERATION_SPECS.md` PDF output style:
+This is the preferred final shape Rahim should implement for the non-item sections. It follows the latest DN PDF implementation and the `DOCUMENT_GENERATION_SPECS.md` output style:
 
 - full-width header with logo zone and company block
 - centered doctype label
-- structured info block below header
+- one 3-column information band below the label
 - full-width items table
-- remarks / operational summary row
+- 50/50 row for Remarks and Picker Acknowledgement
+- full-width Exception Handling section
 - MAIA footer
 
-It intentionally adapts the logistics item-table pattern for Pick List and removes commercial/financial sections that conflict with Pick List business rules.
+Item-table redesign is intentionally out of scope for this immediate pass because the item table is still being updated separately.
 
 ```text
-┌────────────────────────────────────────────────────────────────────────────┐
-│ HEADER                                                                     │
-│ ┌──────────┐  Holsen Interchem Sdn Bhd                                      │
-│ │          │  No.16, Jalan Anggerik Mokara 31/44, Kota Kemuning, Seksyen 31 │
-│ │   LOGO   │  Shah Alam, Selangor, 40460                                    │
-│ │          │  Phone: +60351225751 | Email: holsen@holseninterchem.com       │
-│ └──────────┘                                                               │
-│                                                                            │
-│                                ┌───────────┐                               │
-│                                │ PICK LIST │                               │
-│                                └───────────┘                               │
-├────────────────────────────────────────────────────────────────────────────┤
-│ DOCTYPE INFO               │ CUSTOMER INFO           │ PICK / SHIP INFO     │
-│ Pick List ID: PL-2026-00087│ DAYA SAINGAN SDN BHD    │ Purpose: Delivery    │
-│ Pick Date: 29/05/2026      │ <contact>*              │ Warehouse: WH-00624  │
-│ SO Ref: [hide if empty]    │ <billing_address>*      │ <warehouse_name>     │
-│ QT Ref: [hide if empty]    │                         │ <warehouse_address>* │
-│ PO No: [hide if empty]     │                         │                      │
-├────────────────────────────────────────────────────────────────────────────┤
-│ ITEMS TO PICK                                                              │
-│                                                                            │
-│ Num. │ ITEM CODE │ DESCRIPTION            │ LOCATION        │ QTY  │ PICKED │
-│ 1.   │ DMP500    │ D-Mannitol - 500g      │ WH-00624        │ 5.00 │ ______ │
-│      │ <hs_code>*│ <additional_remarks>*  │ Main Warehouse  │      │        │
-│      │           │ Batch: <batch_no>*     │ Ready Stock     │      │        │
-│      │           │ S/N: <serial_no>*      │ <wh_addr>*      │      │        │
-│      │           │ [Poison / Handling]*   │                 │      │        │
-│ ...  │ ...       │ ...                    │ ...             │ ...  │ ...    │
-├──────────────────────────────────────┬─────────────────────────────────────┤
-│ REMARKS                              │ PICK SUMMARY                        │
-│ No remarks                           │ Total Items: 1                      │
-│                                      │ Total Qty: 5.00                     │
-│                                      │ Picked Qty: manual / blank until set │
-├──────────────────────────────────────┴─────────────────────────────────────┤
-│ PICKER ACKNOWLEDGEMENT                                                     │
-│ Picked By: ____________________  Pick Time: __________  Signature: _______  │
-├────────────────────────────────────────────────────────────────────────────┤
-│ EXCEPTION NOTES                                                            │
-│ ________________________________________________________________________   │
-├────────────────────────────────────────────────────────────────────────────┤
-│ FOR INTERNAL WAREHOUSE USE ONLY                                            │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Powered by MAIA · Generated on 29/05/2026 22:15:22 (GMT+8)    Page 1 of 1  │
-└────────────────────────────────────────────────────────────────────────────┘
++----------------------------------------------------------------------------+
+| HEADER                                                                     |
+| +--------+  Holsen Interchem Sdn Bhd                                        |
+| | LOGO   |  No.16, Jalan Anggerik Mokara 31/44, Kota Kemuning, Seksyen 31   |
+| |        |  Shah Alam, Selangor, 40460                                      |
+| |        |  Phone: +60351225751 | Email: holsen@holseninterchem.com         |
+| +--------+                                                                 |
+|                                                                            |
+|                                [ PICK LIST ]                                |
++----------------------------------------------------------------------------+
+| DOCUMENT DETAILS          | WAREHOUSE INFORMATION   | ORDER INFORMATION     |
+| Pick List ID: PL-2026-00087| Warehouse: WH-00624     | Purpose: Delivery     |
+| Pick Date: 29/05/2026      | Warehouse Address: *    | Sales Order: *        |
+| SO Ref: [hide if empty]    | Contact / PIC: *        | Customer: DAYA...     |
+| QT Ref: [hide if empty]    | Phone: *                | Customer Address: *   |
+| PO No: [hide if empty]     | Email: *                | Customer Phone: *     |
+|                            |                         | Customer Email: *     |
++----------------------------------------------------------------------------+
+| ITEMS TO PICK                                                              |
+| [Item table layout is still being updated separately. Keep current table    |
+|  for now, but do not add financial columns or duplicate warehouse text.]    |
++--------------------------------------+-------------------------------------+
+| REMARKS                              | PICKER ACKNOWLEDGEMENT              |
+| No remarks                           | Picked By: ____________________     |
+|                                      | Pick Time: ____________________     |
+|                                      | Signature: ____________________     |
++--------------------------------------+-------------------------------------+
+| EXCEPTION HANDLING                                                         |
+| Note any short picks, damages, or issues below:                            |
+| ________________________________________________________________________   |
++----------------------------------------------------------------------------+
+| FOR INTERNAL WAREHOUSE USE ONLY                                            |
++----------------------------------------------------------------------------+
+| Powered by MAIA - Generated on 29/05/2026 22:15:22 (GMT+8)    Page 1 of 1  |
++----------------------------------------------------------------------------+
 ```
 
 Expected correct-version rules:
 
-- follow the document-generation spec header, label, info-block, items-table, and footer pattern
-- use the logistics item-table pattern rather than the commercial item-table pattern
+- follow the document-generation spec header, label, table, and footer style
+- align the information band to the latest DN implementation: `Document Details`, `Warehouse Information`, `Order Information`
 - hide empty Sales Order / Quotation / PO fields instead of showing blanks or `None`
-- make `ITEMS TO PICK` the main visual section
-- show warehouse/location once in the `LOCATION` column, not again inside description
-- keep quantity fixed to 2dp, matching global number-format rules
-- use `PICK SUMMARY` instead of financial `SUMMARY`
-- keep picker acknowledgement and exception notes below the operational table
-- remove `Terms & Conditions` from Pick List PDF unless product explicitly re-approves it
+- keep `ITEMS TO PICK` in place but ignore deeper item-table redesign for this pass
+- render Remarks left and Picker Acknowledgement right in a 50/50 row
+- render Exception Handling as one full-width section below the 50/50 row
+- remove `Terms & Conditions`
 - never render financial fields or financial summaries
 
-### Likely live defects to check first when sample arrives
+### Regression checks for future samples
 
-When the current Pick List PDF sample becomes available, review these first because they are the highest-risk carryovers from the shared commercial structure:
+For future Pick List PDF samples, review these first because they are the highest-risk carryovers from the shared commercial structure:
 
 1. `Rate`, `Tax`, or `Total` still visible in item rows
 2. subtotal / grand total / tax summary still visible
@@ -640,8 +675,8 @@ Rahim should be able to answer these directly:
 
 ### Open questions
 
-- Should `Terms & Conditions` be fully removed from Pick List, or only reduced/de-emphasized?
-- How much customer/shipping detail is actually operationally necessary on Pick List?
+- Which item-table fields should be finalized once the item table update is ready?
+- How much customer/shipping detail is actually operationally necessary inside the Order Information column?
 
 ### Open evidence gap
 
