@@ -397,7 +397,7 @@ Use these ASCII blocks to compare current vs target PDF structure. The current-s
 | No remarks                                                               |
 +--------------------------------------------------------------------------+
 | Picker Acknowledgement                                                   |
-| Picked By: __________  Pick Time: __________  Signature: ______________  |
+| Picked By:             Pick Time:             Signature:                 |
 +--------------------------------------------------------------------------+
 | Exception Handling                                                       |
 | Note any short picks, damages, or issues below:                          |
@@ -440,9 +440,9 @@ Current-state defects visible in this ASCII shape:
 +--------------------------------------------------------------------------+
 | Remarks: No remarks                                                      |
 +--------------------------------------------------------------------------+
-| Picker acknowledgement: Picked By ______ Pick Time ______ Signature _____ |
+| Picker acknowledgement: Picked By   Pick Time   Signature                |
 +--------------------------------------------------------------------------+
-| Exception notes: ______________________________________________________  |
+| Exception notes:                                                         |
 +--------------------------------------------------------------------------+
 | FOR INTERNAL WAREHOUSE USE ONLY                                          |
 +--------------------------------------------------------------------------+
@@ -496,13 +496,13 @@ Item-table redesign is intentionally out of scope for this immediate pass becaus
 |  for now, but do not add financial columns or duplicate warehouse text.]    |
 +--------------------------------------+-------------------------------------+
 | REMARKS                              | PICKER ACKNOWLEDGEMENT              |
-| No remarks                           | Picked By: ____________________     |
-|                                      | Pick Time: ____________________     |
-|                                      | Signature: ____________________     |
+| No remarks                           | Picked By:                          |
+|                                      | Pick Time:                          |
+|                                      | Signature:                          |
 +--------------------------------------+-------------------------------------+
 | EXCEPTION HANDLING                                                         |
 | Note any short picks, damages, or issues below:                            |
-| ________________________________________________________________________   |
+|                                                                            |
 +----------------------------------------------------------------------------+
 | FOR INTERNAL WAREHOUSE USE ONLY                                            |
 +----------------------------------------------------------------------------+
@@ -520,6 +520,57 @@ Expected correct-version rules:
 - render Exception Handling as one full-width section below the 50/50 row
 - remove `Terms & Conditions`
 - never render financial fields or financial summaries
+
+#### ASCII stress render: long content behavior
+
+Use this to validate overflow, wrapping, and page-flow behavior. The PDF must not let long text break borders, overlap fields, push the footer over content, or make the picking rows unreadable.
+
+```text
++----------------------------------------------------------------------------+
+| DOCUMENT DETAILS          | WAREHOUSE INFORMATION   | ORDER INFORMATION     |
+| Pick List ID: PL-2026-... | Warehouse: WH-LONG-001  | Purpose: Delivery     |
+| Pick Date: 03/06/2026     | Address: Lot 123, Very  | Customer: Very Long   |
+| SO Ref: SO-2026-000123    | Long Industrial Park,   | Customer Name Sdn...  |
+| PO No: PO-LONG-REF-...    | Jalan Something...      | Address: Unit 12...   |
+|                            | Contact: Ahmad          | Phone: +60...         |
++----------------------------------------------------------------------------+
+| ITEMS TO PICK                                                              |
++----+----------+-----------------------------+----------------+------+-----+
+| No | Item     | Description                 | Warehouse      | Qty  | UOM |
++----+----------+-----------------------------+----------------+------+-----+
+| 1  | LONGSKU  | Very long item name wraps   | WH-LONG-001    | 12.0 | CTN |
+|    |          | to max allowed lines...     | Zone A / Rack  |      |     |
+|    |          | Batch: BATCH-LONG-2026...   | 04 / Shelf 2   |      |     |
+|    |          | Handling: Keep upright...   |                |      |     |
++----+----------+-----------------------------+----------------+------+-----+
+| 2  | NEXTSKU  | Next row must remain clear  | WH-002         |  3.0 | PCS |
++----+----------+-----------------------------+----------------+------+-----+
+| Continued on next page if table cannot fit cleanly                         |
++--------------------------------------+-------------------------------------+
+| REMARKS                              | PICKER ACKNOWLEDGEMENT              |
+| Long remarks should wrap to a        | Picked By:                          |
+| controlled height. If too long,      | Pick Time:                          |
+| continue on the next page or move    | Signature:                          |
+| overflow into Exception Handling.    |                                     |
++--------------------------------------+-------------------------------------+
+| EXCEPTION HANDLING                                                         |
+| Long exception notes may expand and continue onto a new page. They must not |
+| overlap the footer or acknowledgement area.                                |
++----------------------------------------------------------------------------+
+```
+
+Content stress rules:
+
+- 3-column information band: each column may wrap to multiple lines, but the whole band should stay compact; if one address is very long, cap it to a controlled height and continue with ellipsis or a secondary line, not an oversized column.
+- Warehouse address: show enough to identify the pick location; prefer warehouse code/name + zone/bin over full postal address when space is tight.
+- Customer/order address: keep operationally useful only; do not let customer address dominate warehouse and item information.
+- Item description: wrap to a controlled number of lines; if still too long, truncate with ellipsis and keep batch/location/qty visible.
+- Batch/serial/handling lines: do not drop these behind long item names; traceability lines are higher priority than decorative description text.
+- Remarks: cap the visible area in the 50/50 row; if remarks are too long, continue onto a follow-up remarks page/section or move operational issue text into Exception Handling.
+- Picker Acknowledgement: must remain visible and writable; long remarks must not squeeze or push it off-page.
+- Exception Handling: may expand more than Remarks, but must page-break cleanly before the footer.
+- Footer and watermark: never overlap table rows, remarks, acknowledgement, or exception text.
+- Page break rule: never split a single item row in a way that separates item identity from warehouse/location/qty; move the full row to the next page if needed.
 
 ### Regression checks for future samples
 
@@ -704,6 +755,11 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 5. Exception Handling has long text: allow enough space or page flow without clipping.
 6. Picker Acknowledgement on multi-page output: keep acknowledgement near the final page, not repeated in a confusing way.
 7. Watermark, footer, and internal-use notice: must not overlap item rows or acknowledgement fields.
+8. Long warehouse address: cap/wrap without making the 3-column information band taller than the item table.
+9. Long customer/order address: shorten to operationally useful content so it does not dominate the warehouse document.
+10. Long remarks: cap visible height beside Picker Acknowledgement and continue cleanly if needed.
+11. Very long batch, serial, or handling text: keep traceability visible and avoid pushing qty/UOM out of alignment.
+12. Page break inside item row: avoid separating item code/name from warehouse/location/qty.
 
 ### Endpoint and template edge cases
 
@@ -739,6 +795,8 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 - [ ] Optional metadata such as HS code remains visually secondary unless enabled
 - [ ] The final document reads as a warehouse/logistics document rather than a commercial customer document
 - [ ] Multi-page Pick Lists repeat table headers and keep footer page numbering correct
+- [ ] Long warehouse address, customer address, item description, remarks, handling, batch, and serial values wrap or truncate without overlap
+- [ ] Remarks cannot push Picker Acknowledgement off-page or make the 50/50 row unusable
 - [ ] Same item across multiple warehouses, locations, or batches remains unambiguous
 - [ ] Missing warehouse/location or missing required batch value is surfaced as an exception
 - [ ] Assigned picker, pick sequence, bin/zone, reserved stock, substitute item, and backorder cases are either handled or explicitly marked out of scope
