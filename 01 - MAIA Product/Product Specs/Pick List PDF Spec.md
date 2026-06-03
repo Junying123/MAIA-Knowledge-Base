@@ -523,7 +523,7 @@ Expected correct-version rules:
 
 #### ASCII stress render: long content behavior
 
-Use this to validate overflow, wrapping, and page-flow behavior. The PDF must not let long text break borders, overlap fields, push the footer over content, or make the picking rows unreadable.
+Use this to validate overflow, truncation, summarisation, and page-flow behavior. The PDF should not wrap long content into large blocks by default because warehouse users need clear, useful information at a glance. Long content must not break borders, overlap fields, push the footer over content, or make the picking rows unreadable.
 
 ```text
 +----------------------------------------------------------------------------+
@@ -538,8 +538,8 @@ Use this to validate overflow, wrapping, and page-flow behavior. The PDF must no
 +----+----------+-----------------------------+----------------+------+-----+
 | No | Item     | Description                 | Warehouse      | Qty  | UOM |
 +----+----------+-----------------------------+----------------+------+-----+
-| 1  | LONGSKU  | Very long item name wraps   | WH-LONG-001    | 12.0 | CTN |
-|    |          | to max allowed lines...     | Zone A / Rack  |      |     |
+| 1  | LONGSKU  | Very long item name...      | WH-LONG-001    | 12.0 | CTN |
+|    |          | Key spec / variant only     | Zone A / Rack  |      |     |
 |    |          | Batch: BATCH-LONG-2026...   | 04 / Shelf 2   |      |     |
 |    |          | S/N: SN001, SN002, +18 more |                |      |     |
 |    |          | Handling: Keep upright...   |                |      |     |
@@ -549,35 +549,36 @@ Use this to validate overflow, wrapping, and page-flow behavior. The PDF must no
 | Continued on next page if table cannot fit cleanly                         |
 +--------------------------------------+-------------------------------------+
 | REMARKS                              | PICKER ACKNOWLEDGEMENT              |
-| Long remarks should wrap to a        | Picked By:                          |
-| controlled height. If too long,      | Pick Time:                          |
-| continue on the next page or move    | Signature:                          |
-| overflow into Exception Handling.    |                                     |
+| Long remarks show the first useful   | Picked By:                          |
+| line only, then: See exception notes | Pick Time:                          |
+| or +N more lines                     | Signature:                          |
+|                                      |                                     |
 +--------------------------------------+-------------------------------------+
 | EXCEPTION HANDLING                                                         |
-| Long exception notes may expand and continue onto a new page. They must not |
-| overlap the footer or acknowledgement area.                                |
+| Long exception notes show key issue first, then continue only if needed.    |
+| They must not overlap the footer or acknowledgement area.                   |
 +----------------------------------------------------------------------------+
 ```
 
 Content stress rules:
 
-- 3-column information band: each column may wrap to multiple lines, but the whole band should stay compact; if one address is very long, cap it to a controlled height and continue with ellipsis or a secondary line, not an oversized column.
-- Long document/reference numbers: wrap or truncate with ellipsis while preserving the prefix and final unique digits where possible.
+- Default rule: do not wrap long content into tall blocks. Prefer clear priority text, ellipsis, `+N more`, or a controlled overflow/exception note.
+- 3-column information band: each column should stay compact; if one address is very long, cap it and use ellipsis or `+N more`, not an oversized wrapped column.
+- Long document/reference numbers: truncate with ellipsis while preserving the prefix and final unique digits where possible.
 - Many references: if SO / QT / PO / DN references exceed the available space, show the most important reference first and summarize the rest as `+N more`.
 - Warehouse address: show enough to identify the pick location; prefer warehouse code/name + zone/bin over full postal address when space is tight.
 - Customer/order address: keep operationally useful only; do not let customer address dominate warehouse and item information.
 - Long contact names, phone numbers, and emails: truncate emails safely and keep phone numbers readable; do not allow contact fields to widen the column.
-- Item description: wrap to a controlled number of lines; if still too long, truncate with ellipsis and keep batch/location/qty visible.
+- Item description: show item name plus the most useful variant/spec line only; if still too long, truncate with ellipsis and keep batch/location/qty visible.
 - Batch/serial/handling lines: do not drop these behind long item names; traceability lines are higher priority than decorative description text.
-- Many serial numbers: show the first few serials and summarize the remainder as `+N more`, or continue in a controlled overflow section if every serial is legally required.
+- Many serial numbers: show the first few serials and summarize the remainder as `+N more`; only continue in a controlled overflow section if every serial is legally required.
 - Multiple batches for one item: each batch must stay tied to its own quantity; do not combine batch values into a single unreadable paragraph.
-- Unbroken strings: long SKUs, batch numbers, serials, emails, and URLs must hard-wrap or truncate; they must not break table borders.
+- Unbroken strings: long SKUs, batch numbers, serials, emails, and URLs must truncate with ellipsis where possible; they must not hard-wrap into tall rows or break table borders.
 - Huge numeric values: large quantities and decimals must not overflow the Qty column; use fixed formatting and right alignment.
-- Mixed-language content: Malay/English/Chinese text should wrap safely and must not clip because of font fallback.
-- Remarks: cap the visible area in the 50/50 row; if remarks are too long, continue onto a follow-up remarks page/section or move operational issue text into Exception Handling.
+- Mixed-language content: Malay/English/Chinese text must not clip because of font fallback; keep text short and use ellipsis rather than uncontrolled wrapping.
+- Remarks: show the first useful line or short summary in the 50/50 row; if remarks are too long, show `+N more` or move operational issue text into Exception Handling.
 - Picker Acknowledgement: must remain visible and writable; long remarks must not squeeze or push it off-page.
-- Exception Handling: may expand more than Remarks, but must page-break cleanly before the footer.
+- Exception Handling: may expand more than Remarks, but should still start with the key issue first and page-break cleanly before the footer.
 - Repeated line breaks / pasted text: collapse excessive blank lines in remarks and exception text so the section does not create empty pages.
 - Footer and watermark: never overlap table rows, remarks, acknowledgement, or exception text.
 - Long generated timestamp / page count: footer must still fit when page count reaches double digits, e.g. `Page 10 of 12`.
@@ -761,20 +762,20 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 
 1. Dense one-page Pick List: the item table should still be the visual center.
 2. Multi-page Pick List: repeat table header on new pages and keep footer page numbering correct.
-3. Long item names / remarks / handling notes: wrap without overlapping row borders or footer.
+3. Long item names / remarks / handling notes: summarize or truncate without overlapping row borders or footer.
 4. Remarks empty and Exception Handling empty: sections should still be usable but not consume excessive height.
 5. Exception Handling has long text: allow enough space or page flow without clipping.
 6. Picker Acknowledgement on multi-page output: keep acknowledgement near the final page, not repeated in a confusing way.
 7. Watermark, footer, and internal-use notice: must not overlap item rows or acknowledgement fields.
-8. Long warehouse address: cap/wrap without making the 3-column information band taller than the item table.
+8. Long warehouse address: cap/truncate without making the 3-column information band taller than the item table.
 9. Long customer/order address: shorten to operationally useful content so it does not dominate the warehouse document.
 10. Long remarks: cap visible height beside Picker Acknowledgement and continue cleanly if needed.
 11. Very long batch, serial, or handling text: keep traceability visible and avoid pushing qty/UOM out of alignment.
 12. Page break inside item row: avoid separating item code/name from warehouse/location/qty.
-13. Long document IDs, PO numbers, emails, and unbroken strings: hard-wrap or truncate without breaking borders.
+13. Long document IDs, PO numbers, emails, and unbroken strings: truncate or summarize without breaking borders or creating tall wrapped rows.
 14. Many SO/QT/PO/DN references: show priority reference and summarize overflow as `+N more`.
 15. Many serial numbers or batches: keep traceability tied to quantity and avoid an unreadable paragraph.
-16. Mixed-language or special-character text: render without clipping or fallback-font layout breakage.
+16. Mixed-language or special-character text: render without clipping or fallback-font layout breakage; avoid uncontrolled wrapping.
 17. Huge quantities / decimal precision: keep Qty and UOM aligned and readable.
 18. Pasted remarks with many line breaks: collapse excessive blank space and avoid blank pages.
 
@@ -812,7 +813,7 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 - [ ] Optional metadata such as HS code remains visually secondary unless enabled
 - [ ] The final document reads as a warehouse/logistics document rather than a commercial customer document
 - [ ] Multi-page Pick Lists repeat table headers and keep footer page numbering correct
-- [ ] Long warehouse address, customer address, item description, remarks, handling, batch, and serial values wrap or truncate without overlap
+- [ ] Long warehouse address, customer address, item description, remarks, handling, batch, and serial values truncate or summarize without overlap
 - [ ] Remarks cannot push Picker Acknowledgement off-page or make the 50/50 row unusable
 - [ ] Same item across multiple warehouses, locations, or batches remains unambiguous
 - [ ] Missing warehouse/location or missing required batch value is surfaced as an exception
