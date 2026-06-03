@@ -13,6 +13,28 @@ last_reviewed: 2026-06-01
 - Biggest lesson:
 - One behavior to improve next week:
 
+## Goal Alignment
+
+- Which monthly focus am I advancing:
+- 90-day goals moved this week:
+  - Goal:
+  - Evidence:
+  - Goal:
+  - Evidence:
+  - Goal:
+  - Evidence:
+- 90-day goals not moved this week and why:
+  - Goal:
+  - Why it did not move:
+  - Goal:
+  - Why it did not move:
+- Which yearly operating goals strengthened this week:
+  - Goal:
+  - Evidence:
+  - Goal:
+  - Evidence:
+- Which yearly operating goal still feels weakest:
+
 ## Account and Workstream Review
 
 ### Account or Workstream 1
@@ -87,3 +109,13 @@ last_reviewed: 2026-06-01
 - What I should protect time for:
 - What I should say no or not now to:
 - What I need clarity on before Monday:
+
+## Monthly Checkpoint
+
+Use this section on the last weekly review of the month.
+
+- Did the monthly focus actually move:
+- What proof points were met:
+- What proof points were missed:
+- What should carry into next month:
+- What monthly focus should come next:

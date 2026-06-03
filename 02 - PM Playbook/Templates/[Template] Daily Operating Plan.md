@@ -12,9 +12,21 @@ last_reviewed: 2026-06-01
 2. 
 3. 
 
+## Day-Level Goal Alignment
+
+- Main weekly goal for today:
+- Main 90-day goal for today:
+- Main yearly operating goal for today:
+- What behavior am I building today:
+
 ## Outcome Breakdown
 
 ### Outcome 1
+- Goal alignment:
+  - Weekly goal supported:
+  - 90-day goal supported:
+  - Yearly operating goal supported:
+  - Why this outcome matters to that goal:
 - Why this matters:
 - Success condition:
 - Next action:
@@ -32,6 +44,11 @@ last_reviewed: 2026-06-01
   - Total:
 
 ### Outcome 2
+- Goal alignment:
+  - Weekly goal supported:
+  - 90-day goal supported:
+  - Yearly operating goal supported:
+  - Why this outcome matters to that goal:
 - Why this matters:
 - Success condition:
 - Next action:
@@ -49,6 +66,11 @@ last_reviewed: 2026-06-01
   - Total:
 
 ### Outcome 3
+- Goal alignment:
+  - Weekly goal supported:
+  - 90-day goal supported:
+  - Yearly operating goal supported:
+  - Why this outcome matters to that goal:
 - Why this matters:
 - Success condition:
 - Next action:

@@ -10,6 +10,12 @@ Use one section per account or workstream. Duplicate as needed.
 
 ## Account or Workstream — [Name]
 
+- Goal alignment:
+  - Yearly operating goal supported:
+  - 90-day goal supported:
+  - Work type: Strategic | Operational | Maintenance
+  - Why this account or workstream matters:
+  - What happens if this slips:
 - Stage:
 - Top priority:
 - Current status:
@@ -44,4 +50,3 @@ Use one section per account or workstream. Duplicate as needed.
 | Date | Decision or Update | Owner | Next Step | Due |
 |------|--------------------|-------|-----------|-----|
 | YYYY-MM-DD | | | | |
-

@@ -61,8 +61,8 @@
             "state": {
               "type": "tasknotes-release-notes",
               "state": {},
-              "icon": "book-open",
-              "title": "What's new in TaskNotes 4.9.2"
+              "icon": "lucide-ghost",
+              "title": "tasknotes-release-notes"
             }
           },
           {

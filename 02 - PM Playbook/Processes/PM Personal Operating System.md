@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-06-01
+last_reviewed: 2026-06-02
 ---
 
 # PM Personal Operating System
@@ -19,6 +19,7 @@ Use this system to:
 ## Quick Start
 
 Use these templates:
+- Goals ladder: [[02 - PM Playbook/Processes/PM Goals Ladder]]
 - Daily plan: [[02 - PM Playbook/Templates/[Template] Daily Operating Plan]]
 - Weekly review: [[02 - PM Playbook/Templates/[Template] Weekly Operating Review]]
 - Account tracker: [[02 - PM Playbook/Templates/[Template] Account Ownership Dashboard]]
@@ -78,6 +79,33 @@ For any meaningful work, run this loop:
 5. What could go wrong?
 6. What is the next step?
 7. If this fails, why will it fail?
+
+## Account Ownership Standard
+
+**What counts as an account:** Any active client or workstream you are responsible for delivering.
+
+**Minimum viable ownership** — for every account you own, you must be able to answer these without checking:
+- What is the current status?
+- What is the next milestone and deadline?
+- What is the biggest risk right now?
+- Who is the next follow-up with, and when?
+- What is blocking delivery?
+
+**How to maintain it:** Use the Account Ownership Dashboard template. Review every account in your weekly routine. If you cannot answer all 5 questions above for an account, it is not owned — it is only watched.
+
+## Discovery and Requirements Phase
+
+Use this when entering discovery for a new client or feature request:
+
+1. Define the business problem, not just the feature request
+2. Identify who is affected and what they currently do
+3. Map the core workflow: current state → pain point → desired state
+4. Surface constraints: tech, timeline, budget, compliance
+5. Write success conditions before writing requirements
+6. Use AI to challenge whether the problem is real and the scope is right
+7. Hand over to dev only when scope, success condition, and constraints are agreed
+
+See also: [[02 - PM Playbook/Processes/PM E2E Workflow]]
 
 ## Daily and Weekly Cadence
 
@@ -178,9 +206,37 @@ Use:
 - Next step
 - Timeline
 
+### Async (WhatsApp, Lark)
+
+Use for: status nudges, quick risk flags, brief updates that don't need discussion.
+
+Format: one clear sentence → what changed or what's needed → deadline or next step.
+
+Don't use async for: ambiguous issues, sensitive escalations, multi-part decisions.
+
+Rule: if your message requires more than 3 back-and-forth replies to resolve, move to a call.
+
 Principle:
 - do not pass raw confusion
 - translate issues into clear options, risks, and next steps
+
+## Meeting Hygiene
+
+**Pre-meeting (15 min before):**
+- Define the outcome you need from the meeting
+- Prepare context — what dev, client, or management needs to know upfront
+- Send agenda or pre-read if meeting is longer than 30 minutes
+
+**During:**
+- Take action items in real-time
+- Clarify owner and deadline for every decision made
+- Don't leave ambiguity in the room
+
+**Post-meeting (same day):**
+- Send a recap with: decisions made, actions + owners + deadlines, open items
+- For client meetings: use the client communication format
+
+**Rule:** No meeting without a defined outcome. If the outcome is unclear, make it a Lark message instead.
 
 ## AI Critique Layer
 
@@ -431,6 +487,8 @@ Track weekly:
 - run daily KISS and weekly KISS
 - begin weekly tracking of success metrics
 
+**Phase 1 done when:** Daily template used ≥ 4 days/week, all accounts in dashboard, KISS retros happening weekly, AI used on ≥ 1 high-stakes task per week.
+
 ### Days 31-60
 - improve prioritisation using the scoring rule
 - escalate earlier using the escalation triggers
@@ -438,6 +496,8 @@ Track weekly:
 - reduce time spent on low-value work
 - review failures using the recovery loop
 - run GRAI on one significant project, incident, or workstream
+
+**Phase 2 done when:** Prioritisation score improves vs Phase 1, escalations happen before blockers hit, at least 1 GRAI completed.
 
 ### Days 61-90
 - make the system feel automatic
@@ -447,18 +507,25 @@ Track weekly:
 - review quarterly themes and tighten weak areas
 - use GRAI for larger strategic review, not only when problems happen
 
+**Phase 3 done when:** System feels automatic, no prompting needed to run daily/weekly routines, GRAI runs on wins not just failures.
+
 ## Use This Weekly Scorecard
 
-- Priority judgment
-- Backward planning
-- Execution discipline
-- Communication clarity
-- Risk anticipation
-- Account ownership
-- AI challenge quality
+Score each dimension 1–5. Target: ≥ 3 on all. Flag any dimension scoring 1 as next week's focus area.
+
+| Dimension | 1 — Needs work | 3 — Solid | 5 — Strong |
+|---|---|---|---|
+| Priority judgment | Worked on loud tasks over important ones | Mostly top-priority work | Top 3 always protected |
+| Backward planning | No clear milestones set | Some milestones defined | All work has clear endpoints |
+| Execution discipline | Multiple tasks slipped with no flag | Slips flagged, some recovered | All slips caught and escalated early |
+| Communication clarity | Vague updates sent | Right format, sometimes missing next step | Audience-appropriate, always has next step |
+| Risk anticipation | Issues surfaced after damage | Some risks raised early | Risks raised before becoming blockers |
+| Account ownership | Reacting to requests | Proactively tracking status | Full picture at all times without prompting |
+| AI challenge quality | Used AI for validation only | Used AI to challenge one decision | AI caught a real issue before others did |
 
 ## See Also
 
+- [[02 - PM Playbook/Processes/PM Goals Ladder]]
 - [[02 - PM Playbook/Processes/PM E2E Workflow]]
 - [[02 - PM Playbook/Templates/[Template] Daily Operating Plan]]
 - [[02 - PM Playbook/Templates/[Template] Weekly Operating Review]]
