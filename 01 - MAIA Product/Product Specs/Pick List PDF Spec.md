@@ -50,6 +50,7 @@ last_reviewed: 2026-06-03
   - warehouse / location
   - quantity
   - UOM
+  - batch / lot visibility
   - handling / traceability
   - source references
 - Pick List must not prioritize:
@@ -277,7 +278,7 @@ Rahim should treat Pick List as a warehouse-first document with this minimum str
 
 - item name
 - additional remarks
-- batch when present
+- batch / lot number when present or when the item is batch-tracked
 - serial when present
 - handling when present
 
@@ -584,6 +585,7 @@ If customer/commercial blocks dominate the item rows, the layout is still wrong.
 ### Step 5: Apply default field behavior correctly
 
 - warehouse/location: show by default
+- batch / lot number: show when present or when the item is batch-tracked; never render an empty `Batch` label
 - handling: show when present
 - HS code: optional, default-hide, visually secondary
 - empty labels: hide cleanly
@@ -599,6 +601,7 @@ He must verify:
 - Payment Terms hidden
 - warehouse/location clear
 - handling correct
+- batch / lot number visible for batch-tracked picking
 - references correct
 - batch/serial behavior correct
 - page reads like warehouse document
@@ -649,7 +652,8 @@ He must verify:
 - [ ] No financial summary block renders
 - [ ] Payment Terms do not render
 - [ ] Warehouse/location is clearly visible by default
-- [ ] Item rows support item name, additional remarks, batch when present, serial when present, and handling when present
+- [ ] Item rows support item name, additional remarks, batch / lot number when present or batch-tracked, serial when present, and handling when present
+- [ ] Batch / lot visibility does not depend on opening another document or checking the system UI
 - [ ] Sales Order / Quotation / PO references render correctly when available
 - [ ] Empty optional labels do not leave broken placeholders
 - [ ] Address-like fields do not show duplicate commas or malformed spacing
@@ -665,9 +669,10 @@ Rahim should be able to answer these directly:
 2. Did I remove the financial summary behavior from Pick List?
 3. Is warehouse/location visible without the reviewer hunting for it?
 4. Does the PDF still make sense if a warehouse user ignores the customer block entirely?
-5. Do batch, serial, and handling appear only when useful?
-6. Did I make Pick List look operational rather than commercial?
-7. If a field was unavailable, did I document the gap instead of faking it?
+5. Is batch / lot number visible for batch-tracked items?
+6. Do serial and handling appear only when useful?
+7. Did I make Pick List look operational rather than commercial?
+8. If a field was unavailable, did I document the gap instead of faking it?
 
 ---
 
