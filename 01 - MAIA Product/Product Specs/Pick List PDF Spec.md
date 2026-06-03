@@ -344,7 +344,7 @@ Use this as the working render contract unless a later product decision override
 | HS Code | Optional, default-hide | Secondary metadata only |
 | Item Name | Show | Primary description content |
 | Additional Remarks | Show when present | Keep in description cell |
-| Batch No | Show when present | Hide label cleanly when absent |
+| Batch No | Show when present or batch-tracked | If batch-tracked but value is missing, surface the missing batch as an exception instead of silently hiding it |
 | Serial No | Show when present | Hide label cleanly when absent |
 | Handling | Show when present | Default-show behavior for PL |
 | Warehouse / Location | Show by default | Operationally critical |
@@ -645,7 +645,85 @@ He must verify:
 
 ---
 
-## 10. Acceptance Checklist
+## 10. Edge Case Scenarios to Cover
+
+Rahim should validate these scenarios before handoff because they are where a Pick List PDF is most likely to look correct visually but fail warehouse execution.
+
+### Data and reference edge cases
+
+1. Pick List created from Sales Order: show SO reference correctly and hide blank DN-only references.
+2. Pick List created from Delivery Note: show the DN/SO context available from the source and do not render `None`.
+3. Pick List with no Sales Order / Quotation / PO value: hide the field row cleanly.
+4. Pick List with customer or shipping details missing: keep the Order Information column compact and do not show empty labels.
+5. Draft, Submitted, Completed, and Cancelled Pick Lists: status should not break layout; if status is rendered, it must be low-weight and operational.
+
+### Item and warehouse edge cases
+
+1. Multi-item Pick List: table rows remain scannable and do not let header/lower sections dominate the page.
+2. Same item split across multiple warehouses or locations: render as distinct picking rows or clearly distinct location lines; do not merge into one ambiguous row.
+3. Same item split across multiple batches: each batch must be visible and tied to the correct quantity.
+4. Warehouse ID, warehouse name, and warehouse address all present: avoid duplicating warehouse text in both Location and Description cells.
+5. Very long warehouse names or addresses: wrap or truncate consistently without hiding the actual pick location.
+6. Missing warehouse/location: surface as an exception; do not leave a blank warehouse cell.
+
+### Batch, serial, and traceability edge cases
+
+1. Batch-tracked item with batch number present: show batch / lot number in the item row.
+2. Batch-tracked item with batch number missing: show a traceability exception; do not silently hide the batch requirement.
+3. Non-batch item with no batch value: hide the batch label cleanly.
+4. Serial-tracked item with one serial number: show serial number clearly.
+5. Serial-tracked item with many serial numbers: wrap in a readable way or show a controlled continuation; do not let serials destroy row height.
+6. Item with batch and serial both present: show both without confusing which quantity they belong to.
+7. Batch expiry available: mark as optional pending product decision; do not invent expiry if source is absent.
+
+### Quantity and picking edge cases
+
+1. Picked Qty blank before picking: display a clear blank or fill-in state, not a misleading `0` summary.
+2. Partially picked item: show ordered qty and picked qty clearly enough that picker/admin can see the short pick.
+3. Over-picked item: surface as an exception instead of making the PDF look normal.
+4. Zero quantity row: do not render as a normal pick instruction unless the source document intentionally includes it.
+5. UOM conversion case: if sales UOM and stock/picking UOM differ, show the picking UOM clearly and avoid ambiguous quantity labels.
+
+### Picking workflow edge cases
+
+1. Assigned picker exists: show `Assigned Picker` or `Picked By` consistently; do not duplicate two different picker concepts.
+2. No assigned picker yet: keep the acknowledgement fill-in area usable without showing an empty assigned-picker label.
+3. Pick sequence exists: show pick sequence in a way that helps walking the warehouse route, not as hidden metadata.
+4. Bin, zone, aisle, rack, or shelf exists: show the most specific pick location available without crowding the Warehouse column.
+5. Stock reservation / allocation exists: if the Pick List is tied to reserved stock, avoid implying any equivalent stock can be picked.
+6. Out-of-stock or insufficient stock row: surface as an exception and do not make it look like a normal pickable row.
+7. Substitute item used: show both original requested item and substitute picked item, with clear labelling.
+8. Backorder / remaining quantity exists: show remaining quantity or exception note so the PDF does not imply full fulfilment.
+
+### Layout and pagination edge cases
+
+1. Dense one-page Pick List: the item table should still be the visual center.
+2. Multi-page Pick List: repeat table header on new pages and keep footer page numbering correct.
+3. Long item names / remarks / handling notes: wrap without overlapping row borders or footer.
+4. Remarks empty and Exception Handling empty: sections should still be usable but not consume excessive height.
+5. Exception Handling has long text: allow enough space or page flow without clipping.
+6. Picker Acknowledgement on multi-page output: keep acknowledgement near the final page, not repeated in a confusing way.
+7. Watermark, footer, and internal-use notice: must not overlap item rows or acknowledgement fields.
+
+### Endpoint and template edge cases
+
+1. Dedicated Pick List PDF endpoint and generic logistics PDF endpoint should produce the same Pick List layout rules.
+2. Company logo missing: use the approved document-generator empty-state, not literal `Company Logo`.
+3. Company address/phone/email missing: hide empty parts and avoid broken punctuation.
+4. Attachment append mode: confirm whether Pick List should append attachments; if allowed, appended pages must not change the main Pick List layout.
+
+### Document control edge cases
+
+1. Cancelled Pick List PDF: if printable, render a clear low-opacity `CANCELLED` watermark or status so it cannot be used for live picking by mistake.
+2. Amended or regenerated Pick List PDF: show generated timestamp clearly and avoid users confusing old printouts with the latest version.
+3. Reprint after partial pick or completion: PDF should reflect current picked state and not look identical to the original blank pick sheet.
+4. Print copy vs downloaded PDF: layout should survive A4 print margins and not depend on browser zoom.
+5. QR code / barcode requirement: if warehouse scanning is supported, decide whether to show document-level PL barcode/QR and item-level barcode/QR; otherwise mark as out of scope.
+6. Timezone and date edge case: generated timestamp uses `GMT+8`; Pick List date must remain business date and not shift due to timezone.
+
+---
+
+## 11. Acceptance Checklist
 
 - [ ] Title renders as `PICK LIST`
 - [ ] No item-row monetary columns render
@@ -660,6 +738,12 @@ He must verify:
 - [ ] Operational information is visually stronger than customer/commercial information
 - [ ] Optional metadata such as HS code remains visually secondary unless enabled
 - [ ] The final document reads as a warehouse/logistics document rather than a commercial customer document
+- [ ] Multi-page Pick Lists repeat table headers and keep footer page numbering correct
+- [ ] Same item across multiple warehouses, locations, or batches remains unambiguous
+- [ ] Missing warehouse/location or missing required batch value is surfaced as an exception
+- [ ] Assigned picker, pick sequence, bin/zone, reserved stock, substitute item, and backorder cases are either handled or explicitly marked out of scope
+- [ ] Cancelled, amended, regenerated, and reprinted Pick List PDFs cannot be mistaken for the original active pick sheet
+- [ ] If barcode/QR support is required, document-level and item-level barcode/QR placement is specified
 
 ### Reviewer questions before handoff
 
@@ -673,10 +757,13 @@ Rahim should be able to answer these directly:
 6. Do serial and handling appear only when useful?
 7. Did I make Pick List look operational rather than commercial?
 8. If a field was unavailable, did I document the gap instead of faking it?
+9. Does the PDF still work for multi-page, multi-warehouse, partial-pick, and batch/serial-heavy cases?
+10. Can warehouse users tell whether this printout is active, cancelled, amended, regenerated, or already partially picked?
+11. Are pick sequence, bin/zone, reserved stock, substitute, and backorder behaviours decided?
 
 ---
 
-## 11. Open Questions and Evidence Gap
+## 12. Open Questions and Evidence Gap
 
 ### Open questions
 
@@ -687,12 +774,15 @@ Rahim should be able to answer these directly:
 
 One current Pick List PDF sample has now been audited, but broader verification is still limited to that sample.
 
-Because of that, the following remain unverified until one real sample is attached:
+Because of that, the following remain unverified until additional real samples are attached:
 
 - whether the same issues repeat consistently across other Pick List records / statuses / clients
 - whether handling, batch, and serial fields behave correctly when present in live data
 - whether warehouse/location layout behaves well on multi-row Pick Lists
 - whether line wrapping and spacing remain usable on dense multi-item documents
+- whether partial-pick, over-pick, multi-warehouse, and batch-heavy Pick Lists render correctly
+- whether picker assignment, pick sequence, bin/zone, reserved stock, substitute item, and backorder data exist in the current payload
+- whether barcode/QR is expected for Pick List scanning
 
 **Next step to close this gap:**
 
@@ -700,11 +790,16 @@ Audit at least 2–3 additional Pick List PDFs with different data shapes:
 
 - multi-item Pick List
 - Pick List with batch / serial values
+- Pick List with same SKU split by warehouse/location or batch
+- Pick List with partial picked quantity / short pick
+- Pick List with assigned picker / pick sequence / bin-zone data if available
+- Pick List that is cancelled, completed, or regenerated after picking
+- Pick List with substitute / backorder / insufficient stock scenario if available
 - Pick List with populated shipping/customer detail if available
 
 ---
 
-## 12. Source Reference Map
+## 13. Source Reference Map
 
 | Topic | Source | Why it matters |
 |---|---|---|
@@ -721,7 +816,7 @@ Audit at least 2–3 additional Pick List PDFs with different data shapes:
 
 ---
 
-## 13. See Also
+## 14. See Also
 
 - [[Sales Order Spec]]
 - [[Delivery Note Spec]]
