@@ -18,6 +18,7 @@ This folder contains formatted daily updates for the MAIA PM team. Raw notes are
 
 | Date | File | Status |
 |------|------|--------|
+| 2026-06-03 | [[02 - PM Playbook/Daily Updates/Daily Update - 03-06-2026]] | draft |
 | _(updates will appear here as they are created)_ | | |
 
 ## See Also
