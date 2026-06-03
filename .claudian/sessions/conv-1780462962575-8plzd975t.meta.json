@@ -1,0 +1,23 @@
+{
+  "id": "conv-1780462962575-8plzd975t",
+  "providerId": "claude",
+  "title": "do u have the markitdown mcp",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1780462962576,
+  "updatedAt": 1780466645316,
+  "lastResponseAt": 1780463087169,
+  "sessionId": "d5d378fc-8756-496e-a563-0af0a27b341c",
+  "providerState": {
+    "providerSessionId": "d5d378fc-8756-496e-a563-0af0a27b341c"
+  },
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 271,
+    "cacheReadInputTokens": 26770,
+    "contextWindow": 200000,
+    "contextTokens": 27044,
+    "percentage": 14,
+    "contextWindowIsAuthoritative": true
+  }
+}
