@@ -56,16 +56,6 @@
             }
           },
           {
-            "id": "126c2f08efc17852",
-            "type": "leaf",
-            "state": {
-              "type": "tasknotes-release-notes",
-              "state": {},
-              "icon": "lucide-ghost",
-              "title": "tasknotes-release-notes"
-            }
-          },
-          {
             "id": "956971c9cf8e778c",
             "type": "leaf",
             "state": {
@@ -90,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -283,7 +273,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 776.5
+    "width": 563.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -312,7 +302,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ce36b26a973dd155",
+  "active": "956971c9cf8e778c",
   "lastOpenFiles": [
     "02 - PM Playbook/Templates/[Template] GRAI Retrospective.md",
     "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",

@@ -3376,6 +3376,17 @@ body.is-mobile .tasknotes-plugin .task-card.task-card--drag-handle-only .task-ca
     opacity: 0.7;
 }
 
+.tasknotes-plugin .task-card__metadata-pill--occurrence {
+    background: color-mix(in srgb, var(--interactive-accent) 10%, transparent);
+    color: var(--text-accent);
+    border-color: color-mix(in srgb, var(--interactive-accent) 35%, var(--background-modifier-border));
+}
+
+.tasknotes-plugin .task-card__metadata-pill--occurrence svg {
+    width: 12px;
+    height: 12px;
+}
+
 /* Reminder indicator */
 .tasknotes-plugin .task-card__reminder-indicator {
     width: 14px;
@@ -4293,6 +4304,10 @@ body.is-mobile .tasknotes-plugin .task-card:not(.task-card--layout-inline):not(.
 .tasknotes-plugin .task-card--layout-inline {
     /* Use inline display to respect line boundaries */
     display: inline;
+
+    /* Inline overlays size from their content; card container queries are for block cards. */
+    container-type: normal;
+    container-name: none;
 
     /* Minimal padding - no indentation needed in inline mode */
     padding: 2px 0;
@@ -19021,6 +19036,14 @@ body.is-mobile .tasknotes-plugin .kanban-view__swimlane-column {
     .tasknotes-plugin .stats-view__filter-button {
         flex: 1;
     }
+}
+
+
+/* ===== RELEASE-NOTES-VIEW.CSS ===== */
+.tasknotes-release-notes-view .release-notes-version-content {
+    font-family: var(--font-text);
+    font-size: var(--font-text-size);
+    line-height: var(--line-height-normal);
 }
 
 

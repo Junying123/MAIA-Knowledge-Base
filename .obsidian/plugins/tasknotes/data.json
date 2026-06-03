@@ -144,6 +144,13 @@
     "dateModified": "dateModified",
     "recurrence": "recurrence",
     "recurrenceAnchor": "recurrence_anchor",
+    "recurrenceParent": "recurrence_parent",
+    "occurrenceDate": "occurrence_date",
+    "occurrenceMaterialization": "occurrence_materialization",
+    "occurrenceNextTrigger": "occurrence_next_trigger",
+    "occurrenceTemplate": "occurrence_template",
+    "occurrencePastHorizon": "occurrence_past_horizon",
+    "occurrenceFutureHorizon": "occurrence_future_horizon",
     "archiveTag": "archived",
     "timeEntries": "timeEntries",
     "completeInstances": "complete_instances",
@@ -328,7 +335,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.9.2",
+  "lastSeenVersion": "4.10.0",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -467,7 +474,7 @@
     "isRunning": false,
     "timeRemaining": 1500
   },
-  "lastPomodoroDate": "2026-05-31",
+  "lastPomodoroDate": "2026-06-02",
   "taskModalTabMovesFocus": true,
   "hideIdentifyingTagsMode": "all",
   "openTaskAfterCreation": "none",
