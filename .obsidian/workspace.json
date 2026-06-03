@@ -79,8 +79,7 @@
               "title": "MAIA UAT Form - Holsen - 2026-03"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -302,8 +301,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "956971c9cf8e778c",
+  "active": "8c6b1a9e8e45a419",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
     "02 - PM Playbook/Templates/[Template] GRAI Retrospective.md",
     "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",
     "02 - PM Playbook/Templates/[Template] Account Ownership Dashboard.md",
@@ -346,7 +346,6 @@
     "slides/getting-started",
     "slides/2026-05-18",
     "README.md",
-    "Granola/Transcripts/2026-05-19/GST SAP Vendor __ Mindhive meeting transcript v2.md",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
