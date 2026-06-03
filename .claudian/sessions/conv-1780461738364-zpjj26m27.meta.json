@@ -1,0 +1,23 @@
+{
+  "id": "conv-1780461738364-zpjj26m27",
+  "providerId": "claude",
+  "title": "can u check on the fixguru uat meeting transcript ...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1780461738364,
+  "updatedAt": 1780461768402,
+  "lastResponseAt": 1780461767666,
+  "sessionId": "8c59a865-d7f3-4828-8433-83b89b545e39",
+  "providerState": {
+    "providerSessionId": "8c59a865-d7f3-4828-8433-83b89b545e39"
+  },
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 40763,
+    "cacheReadInputTokens": 27170,
+    "contextWindow": 200000,
+    "contextTokens": 67934,
+    "percentage": 34,
+    "contextWindowIsAuthoritative": true
+  }
+}
