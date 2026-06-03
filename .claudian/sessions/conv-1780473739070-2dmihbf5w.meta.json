@@ -1,0 +1,23 @@
+{
+  "id": "conv-1780473739070-2dmihbf5w",
+  "providerId": "claude",
+  "title": "@03 - Clients/Active Cooking Clients/Macrofood/Mee...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1780473739070,
+  "updatedAt": 1780474272191,
+  "lastResponseAt": 1780474272191,
+  "sessionId": "61f9bd37-f9e8-4cb3-b3da-0d2bd762f8af",
+  "providerState": {
+    "providerSessionId": "61f9bd37-f9e8-4cb3-b3da-0d2bd762f8af"
+  },
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 123,
+    "cacheReadInputTokens": 77856,
+    "contextWindow": 200000,
+    "contextTokens": 77980,
+    "percentage": 39,
+    "contextWindowIsAuthoritative": true
+  }
+}

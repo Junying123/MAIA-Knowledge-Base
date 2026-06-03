@@ -771,5 +771,5 @@ Email: david012123@gmail.com
 
 ## See Also
 
-- [[03 - Clients/Active Cooking Clients/Macro Frozen/Client Overview]]
-- [[03 - Clients/Active Cooking Clients/Macro Frozen/Onboarding Status]]
+- [[03 - Clients/Active Cooking Clients/Macrofood/Client Overview]]
+- [[03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status]]
