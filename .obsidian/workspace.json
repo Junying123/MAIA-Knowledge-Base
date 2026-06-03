@@ -137,7 +137,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -272,7 +273,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 563.5
+    "width": 597.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -301,8 +302,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "8c6b1a9e8e45a419",
+  "active": "ce36b26a973dd155",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macro Frozen/Ordermaia x MacroFrozen.md",
+    "03 - Clients/Active Cooking Clients/Macro Frozen",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/MacroFood sales proposal and rough requirement gathering.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
     "02 - PM Playbook/Daily Updates/Daily Update - 03-06-2026.md",
@@ -343,9 +346,7 @@
     "slides/getting-started/assets/claude.svg",
     "slides/getting-started/index.tsx",
     "slides/getting-started/assets",
-    "slides/2026-05-18/MAIA - Weekly Product Sync-transcript.md",
     "slides/getting-started",
-    "slides/2026-05-18",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",

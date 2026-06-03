@@ -1,6 +1,6 @@
 {
   "userName": "Gareth",
-  "permissionMode": "plan",
+  "permissionMode": "yolo",
   "model": "sonnet",
   "thinkingBudget": "off",
   "effortLevel": "medium",
@@ -94,7 +94,7 @@
     "pi": "off"
   },
   "savedProviderPermissionMode": {
-    "claude": "plan",
+    "claude": "yolo",
     "codex": "normal",
     "pi": "yolo"
   },

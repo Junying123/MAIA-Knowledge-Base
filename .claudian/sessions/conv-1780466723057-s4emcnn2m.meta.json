@@ -4,6 +4,20 @@
   "title": "Ordermaia x MacroFrozen, can u access this pdf the...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780466723057,
-  "updatedAt": 1780466754044,
-  "sessionId": null
+  "updatedAt": 1780467231791,
+  "lastResponseAt": 1780467231791,
+  "sessionId": "340cbdf9-a342-4c85-9a9e-ad231e4684f4",
+  "providerState": {
+    "providerSessionId": "340cbdf9-a342-4c85-9a9e-ad231e4684f4"
+  },
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 7949,
+    "cacheReadInputTokens": 70427,
+    "contextWindow": 200000,
+    "contextTokens": 78377,
+    "percentage": 39,
+    "contextWindowIsAuthoritative": true
+  }
 }
