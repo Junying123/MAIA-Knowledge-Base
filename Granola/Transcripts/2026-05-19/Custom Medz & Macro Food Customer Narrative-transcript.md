@@ -3,7 +3,7 @@ granola_id: 1cf89306-dee0-4c3e-8eb8-2412dd2d4bd6
 title: Custom Medz & Macro Food Customer Narrative - Transcript
 type: transcript
 created: 2026-05-19T09:34:11.037Z
-updated: 2026-06-04T05:59:48.151Z
+updated: 2026-06-04T07:17:53.589Z
 attendees: 
   - jeremy@mindhive.asia
   - ivan@mindhive.asia
