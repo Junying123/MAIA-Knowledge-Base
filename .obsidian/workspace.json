@@ -37,6 +37,30 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Ordermaia x Macrofood Proposal"
+            }
+          },
+          {
+            "id": "628deccba19f635d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
                 "mode": "source",
                 "source": false,
@@ -53,30 +77,6 @@
               },
               "icon": "lucide-file",
               "title": "Fixguru Retesting Feedback"
-            }
-          },
-          {
-            "id": "628deccba19f635d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "MAIA UAT Form - Holsen - 2026-03"
             }
           },
           {
@@ -104,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -331,11 +331,13 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
     "Granola/Transcripts/2026-06-04/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-04",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Retesting Feedback - Fixguru - Item Historical Pricing.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
@@ -348,10 +350,8 @@
     "03 - Clients/Active Cooking Clients/Macro Frozen",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Macro Frozen/Ordermaia x MacroFrozen.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
     "02 - PM Playbook/Daily Updates/Daily Update - 03-06-2026.md",
-    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
     "02 - PM Playbook/Templates/[Template] GRAI Retrospective.md",
     "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",
     "02 - PM Playbook/Templates/[Template] Account Ownership Dashboard.md",

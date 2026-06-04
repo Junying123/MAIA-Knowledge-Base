@@ -2,7 +2,7 @@
 owner: Gareth
 status: draft
 doctype: Pick List
-last_reviewed: 2026-06-03
+last_reviewed: 2026-06-04
 ---
 
 # Pick List PDF — Product Spec
@@ -13,14 +13,14 @@ last_reviewed: 2026-06-03
 
 | Attribute | Detail |
 |---|---|
-| What it is | Internal warehouse document that tells staff what to pick, where to pick it from, and how much to pick |
-| Primary user | Warehouse / Logistics Team |
+| What it is | Client-generated internal warehouse document that tells staff what to pick, where to pick it from, and how much to pick |
+| Primary user | Client warehouse / logistics team |
 | Workspace | Logistics |
 | Flow position | `Sales Order -> Pick List -> Delivery Note` |
 | Purpose of this spec | Give Rahim a decision-complete brief to rework Pick List PDF correctly |
 | Current evidence status | Spec-backed audit complete; one live Pick List PDF sample audited (`PL-2026-00087`) |
 
-**Important:** Pick List is not a customer-facing commercial document. It is an operational warehouse document.
+**Important:** Pick List is generated for the client to use with their own internal team. It is not a customer-facing commercial document; it is an operational warehouse document.
 
 ---
 
@@ -44,7 +44,7 @@ last_reviewed: 2026-06-03
 ## 3. Core Business Rules
 
 - Pick List is internal-only.
-- Pick List exists to support warehouse execution, not customer communication.
+- Pick List exists to support the client's warehouse execution, not end-customer communication.
 - Pick List must emphasize:
   - item identity
   - warehouse / location
@@ -59,6 +59,7 @@ last_reviewed: 2026-06-03
   - financial totals
 - Payment Terms must not render on Pick List.
 - When generic commercial PDF rules conflict with Pick List business logic, Pick List business logic wins.
+- Some empty-looking areas are intentional handwriting fields. Do not treat Picker Acknowledgement or Exception Handling blanks as missing data defects.
 
 ---
 
@@ -531,8 +532,7 @@ Use this to validate overflow, prioritisation, continuation, and page-flow behav
 | Pick List ID: PL-2026-00087| Warehouse: WH-LONG-001  | Purpose: Delivery     |
 | Pick Date: 03/06/2026     | Address: Lot 123, Very  | Customer: Very Long   |
 | SO Ref: SO-2026-000123    | Long Industrial Park    | Customer: See notes   |
-| PO No: See reference notes| Area: Shah Alam         | Address: See notes    |
-| Ref Details: See notes     | Contact: Ahmad          | Email: See notes       |
+| PO No: [hide if not useful]| Area: Shah Alam         | Email: See notes       |
 +----------------------------------------------------------------------------+
 | ITEMS TO PICK                                                              |
 +----+----------+-----------------------------+----------------+------+-----+
@@ -564,8 +564,8 @@ Content stress rules:
 
 - Default rule: do not wrap long content into tall blocks, and do not hide useful content behind vague shortened markers. Show the exact useful field, or move the full detail into a dedicated continuation/exception section.
 - 3-column information band: each column should stay compact; if one address is very long, show only the operationally useful location part in the band and put full address detail in continuation notes if needed.
-- Long document/reference numbers: show exact primary reference when it is operationally needed; if multiple long references exist, move secondary references to `Reference Notes`.
-- Many references: if SO / QT / PO / DN references exceed the available space, show the primary source reference in the band and list the remaining exact references in `Reference Notes`.
+- Document/reference numbers: show only the exact reference that helps warehouse picking or reconciliation; hide secondary references that do not help the picking task.
+- Many references: do not create a separate reference-notes section just to preserve all refs. Keep the Pick List operational and show only the reference warehouse users need.
 - Warehouse address: show enough to identify the pick location; prefer warehouse code/name + zone/bin over full postal address when space is tight.
 - Customer/order address: keep operationally useful only; do not let customer address dominate warehouse and item information.
 - Long contact names, phone numbers, and emails: show only the contact field needed for picking or coordination; move the full contact detail to notes if needed.
@@ -773,7 +773,7 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 11. Very long batch, serial, or handling text: keep traceability visible and avoid pushing qty/UOM out of alignment.
 12. Page break inside item row: avoid separating item code/name from warehouse/location/qty.
 13. Long document IDs, PO numbers, emails, and unbroken strings: keep exact operational identifiers visible or move full value to notes without breaking borders.
-14. Many SO/QT/PO/DN references: show the primary reference in the band and list remaining exact references in Reference Notes.
+14. Many SO/QT/PO/DN references: show only the operationally useful reference; hide secondary references that do not help picking.
 15. Many serial numbers or batches: keep traceability tied to quantity and avoid an unreadable paragraph.
 16. Mixed-language or special-character text: render without clipping or fallback-font layout breakage; avoid uncontrolled wrapping.
 17. Huge quantities / decimal precision: keep Qty and UOM aligned and readable.

@@ -198,7 +198,7 @@ meeting_date: 2026-06-04
 
 ## See Also
 
-- [[Ordermaia x Macrofood]] — signed proposal (RM40,000)
+- [[Ordermaia x Macrofood Proposal]] — signed proposal (RM40,000)
 - [[Meetings/MacroFood sales proposal and rough requirement gathering]] — sales transcript
 - [[Meetings/Client Sales Handover TLDR Brief - Macrofood]] — handover brief from Jeremy
 - [[Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood]] — pre-onboarding survey (basic facts already collected)
