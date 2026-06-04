@@ -4,20 +4,20 @@
   "title": "@03 - Clients/Active Cooking Clients/Macrofood/Mee...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780473739070,
-  "updatedAt": 1780535219907,
-  "lastResponseAt": 1780535219907,
+  "updatedAt": 1780537272388,
+  "lastResponseAt": 1780537272387,
   "sessionId": "61f9bd37-f9e8-4cb3-b3da-0d2bd762f8af",
   "providerState": {
     "providerSessionId": "61f9bd37-f9e8-4cb3-b3da-0d2bd762f8af"
   },
   "usage": {
-    "model": "sonnet",
-    "inputTokens": 1,
-    "cacheCreationInputTokens": 400,
-    "cacheReadInputTokens": 101273,
-    "contextWindow": 200000,
-    "contextTokens": 101674,
-    "percentage": 51,
+    "model": "opus",
+    "inputTokens": 2,
+    "cacheCreationInputTokens": 309,
+    "cacheReadInputTokens": 130707,
+    "contextWindow": 1000000,
+    "contextTokens": 131018,
+    "percentage": 13,
     "contextWindowIsAuthoritative": true
   }
 }
