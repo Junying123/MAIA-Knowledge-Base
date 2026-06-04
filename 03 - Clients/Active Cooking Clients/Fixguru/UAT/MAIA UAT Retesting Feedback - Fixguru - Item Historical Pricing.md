@@ -4,15 +4,15 @@ status: draft
 last_reviewed: 2026-06-04
 client: Fixguru
 uat_round: retest
-feature: Item Historical Pricing (Chatbot)
+feature: Item Historical Pricing (Chatbot + FE + BE)
 ---
 
-# UAT Retesting Feedback — Fixguru — Item Historical Pricing (Chatbot)
+# UAT Retesting Feedback — Fixguru — Item Historical Pricing
 
 **Date:** 2026-06-04
-**Feature Under Test:** Item Historical Pricing — Chatbot (Discount % & Markup %)
+**Feature Under Test:** Item Historical Pricing — Chatbot, FE & BE (Discount % & Markup %)
 **Tester:** Gareth
-**Scope:** Chatbot historical pricing display, QTN amendment via chatbot, customer pricing enforcement
+**Scope:** Chatbot historical pricing display, QTN amendment (chatbot + FE + BE), customer pricing enforcement and query directions
 
 ---
 
@@ -45,23 +45,26 @@ feature: Item Historical Pricing (Chatbot)
 
 ---
 
-## QTN Amendment via Chatbot
+## QTN Amendment — Full Stack Gap (Chatbot + FE + BE)
 
 ### Scenario: SO from QTN
 
 - Tested creating SO from an existing QTN via chatbot
 
-### Issue: Missing QTN Amendment API
+### Issue: Missing QTN Amendment — Affects All Layers
 
-- **Problem:** QTN amendment via chatbot is not supported — API for amending a submitted QTN does not exist (unlike SO which has amendment support)
-- **Impact:** Users cannot amend a submitted quotation through the chatbot
-- **Workaround:** None currently available via chatbot
-- **Classification:** Upcoming dev feature — relates to QTN → SO workflow; flag to dev team as next feature request
-- **Action:** Raise as feature gap; not a blocker for current UAT round
+- **Problem:** QTN amendment is not supported at any layer — no API, no FE UI, no chatbot flow — unlike SO which has full amendment support across all surfaces
+- **Impact:**
+  - **Chatbot:** Users cannot amend a submitted quotation through the chatbot
+  - **FE (Web App):** No amendment action available on a submitted QTN in the web interface
+  - **BE (API):** No amendment endpoint exists for QTN (parity gap vs SO amendment API)
+- **Workaround:** None — users must cancel and recreate the QTN
+- **Classification:** Upcoming feature — spans BE API, FE action, and chatbot flow; flag to dev as a unified feature request, not three separate tickets
+- **Action:** Raise as cross-layer feature gap; not a blocker for current UAT round but needed before go-live for sales workflow parity
 
 ---
 
-## Customer Pricing Enforcement — Chatbot
+## Customer Pricing Enforcement & Query Capabilities
 
 ### Test Case
 
@@ -92,14 +95,44 @@ feature: Item Historical Pricing (Chatbot)
 
 ---
 
+## Customer Pricing Query Requirements
+
+Currently the system supports querying a specific item's customer price for a known customer. Two additional query directions are needed:
+
+### Query Direction 1 — All Items With Customer Pricing for a Given Customer
+
+- **Use case:** "What special prices does TPS Fashion have?" → return all items where CUST000478 has a customer-specific price
+- **Direction:** Customer → Items (one customer, many items)
+- **Required in:** Chatbot, FE (customer profile view), BE (API endpoint: GET /customer-pricing?customer=CUST000478)
+
+### Query Direction 2 — All Customers With Customer Pricing for a Given Item
+
+- **Use case:** "Which customers have a special price for FROZEN-001?" → return all customers who have a customer-specific price set for that item
+- **Direction:** Item → Customers (one item, many customers)
+- **Required in:** Chatbot, FE (item profile view), BE (API endpoint: GET /customer-pricing?item=FROZEN-001)
+
+### Query Matrix Summary
+
+| Query | Input | Output | Status |
+|---|---|---|---|
+| Item price for a specific customer | Customer + Item | Price / discount | ✅ Exists |
+| All items with pricing for a customer | Customer | List of items + prices | ❌ Missing |
+| All customers with pricing for an item | Item | List of customers + prices | ❌ Missing |
+
+Both missing query directions require BE API support + FE surface + chatbot intent handling.
+
+---
+
 ## Summary of Actions
 
 | # | Action | Owner | Priority |
 |---|---|---|---|
 | 1 | Fix chatbot to enforce customer pricing from customer/item profile before document creation prompt | Dev | High |
 | 2 | Investigate "last record" logic — should not override customer pricing spec | Dev | High |
-| 3 | Add graph/image rendering for historical pricing trend in chatbot | Dev | Medium |
-| 4 | Raise QTN amendment API as upcoming feature for dev roadmap | PM | Low |
+| 3 | Build BE API + FE + chatbot: query all items with customer pricing for a given customer | Dev | High |
+| 4 | Build BE API + FE + chatbot: query all customers with customer pricing for a given item | Dev | High |
+| 5 | Add graph/image rendering for historical pricing trend in chatbot | Dev | Medium |
+| 6 | Raise QTN amendment (BE API + FE + chatbot) as unified cross-layer feature for dev roadmap | PM | Medium |
 
 ---
 
