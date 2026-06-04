@@ -3,7 +3,7 @@ granola_id: c5675cc5-e932-45ae-8050-da5916788ce6
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-06-04T01:44:22.737Z
-updated: 2026-06-04T02:22:05.685Z
+updated: 2026-06-04T05:59:41.157Z
 attendees: 
   - afiqaqill261203@gmail.com
   - ghostsketon@gmail.com
@@ -273,5 +273,9 @@ All right.
 
 ### You (2026-06-04T02:20:48.551Z)
 
-So because like on the front end, Punia visual queue, you know the current order Grand total. And then you. Know. The. What is this? The payload from the. What is this? The existing credit limit. And then from there you can compute whether this order is blocked or not. So that's how it will be visible. Backend API can pass the current SO or something value. Then it will just compute. Yeah. You recall. Recall that API. Okay. I think that's it from. Is there anything else from anyone?
+So because like on the front end, Punia visual queue, you know the current order Grand total. And then you. Know. The. What is this? The payload from the. What is this? The existing credit limit. And then from there you can compute whether this order is blocked or not. So that's how it will be visible. Backend API can pass the current SO or something value. Then it will just compute. Yeah. You recall. Recall that API. Okay. I think that's it from. Is there anything else from anyone? Okay. If nothing, then we close up for today. Thanks, guys.
+
+### Guest (2026-06-04T02:21:40.389Z)
+
+Thank you.
 
