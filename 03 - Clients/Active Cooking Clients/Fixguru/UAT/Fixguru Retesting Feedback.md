@@ -132,6 +132,38 @@ Want me to create a QTN or SO?
 
 ---
 
+## 5. UOM Split — Chatbot vs FE Output Mismatch
+
+**Issue — Chatbot Response Does Not Match FE Actual Output**
+
+- **Test:** Asked chatbot to split A5 and A4 into different UOM lines (1×8PCS + 5×1PCS each)
+- **Chatbot said:** Lines consolidated as `6×8PCS @ RM 1.81` and `6×8PCS @ RM 1.52` — claimed system consolidates units into stored UOM; added pick/pack remark as workaround
+- **FE actual (screenshot QT-2026-05448):**
+  - A5 → 2 separate lines: `1 Pcs @ RM 1.81` + `5 Pcs @ RM 1.81`
+  - A4 → split lines visible, UOM shown as `Pcs` not `8PCS`
+  - Additional Notes on each line: `SPLIT-8PCS - DO NOT CONSOLIDATE` / `SPLIT-1PCS - DO NOT CONSOLIDATE`
+- **Discrepancy:**
+  1. Chatbot described output as consolidated `6×8PCS` — FE shows split lines in `Pcs`
+  2. Chatbot UOM label `8PCS` does not match FE UOM `Pcs`
+  3. Chatbot summary totals do not reflect the actual line structure on FE
+- **Severity:** High — chatbot misrepresents what was actually saved; user cannot trust chatbot confirmation as source of truth
+- **Action:** Fix chatbot response to accurately reflect the actual lines and UOM created in the system; chatbot output must match FE state
+
+---
+
+## 6. Shelf / Item Attributes (Chatbot)
+
+**Issue — Chatbot Cannot Retrieve Shelf from Item Attributes**
+
+- **Test:** Asked chatbot for shelf location of item H4 — "show where the shelf from", "h4 shelf", "search H4 item shelf", "search from its item attributes"
+- **Observed:** Chatbot searched warehouses (bin/shelf locations) and returned no results. When prompted to check item attributes, returned item master fields (item group, UOM, price, qty) but reported "no shelf/bin field on its item record"
+- **Root Cause:** Shelf is stored as an item attribute field, not as a warehouse bin/shelf location. Chatbot is querying the wrong data source (warehouse stock ledger) instead of item attributes
+- **Expected:** Chatbot should surface the shelf value directly from item attributes when asked
+- **Severity:** Medium — shelf lookup is a real sales/ops workflow; incorrect data source means it always returns nothing
+- **Action:** Map chatbot shelf query to item attributes field, not warehouse bin/stock location
+
+---
+
 ## See Also
 
 - [[UAT/MAIA UAT Form - Fixguru - 2026-05 (Full)]]
