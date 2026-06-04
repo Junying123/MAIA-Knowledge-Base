@@ -9,221 +9,190 @@ meeting_date: 2026-06-04
 
 # Macrofood — Requirement Gathering Questionnaire
 
-**Client:** Macro Frozen Sdn. Bhd. (operating as Macrofood)
+**Client:** Macro Frozen Sdn. Bhd. (Macrofood)
 **PIC:** Choy Kien Yang (David), MD
 **Meeting:** 4 June 2026, 3pm, Face-to-Face
 **Prepared by:** Gareth
 
-> **IMPORTANT — Brand:** Present as **AutorunBiz PLT** at all times. Do not mention Mindhive. Do not wear Mindhive-branded clothing.
+> **BRAND REMINDER:** Present as **AutorunBiz PLT** at all times. Never mention Mindhive. No Mindhive clothing.
 
-Use this questionnaire in the RG session to confirm workflow details, configuration inputs, and data requirements before implementation begins.
+**Purpose:** This is a workflow deep-dive guide for the face-to-face session. Basic facts (SQL version, headcount, order volume, payment methods, go-live date) were collected in the pre-onboarding survey — do not repeat them. Every question here is designed to surface workflow steps, edge cases, MAIA configuration decisions, or information that can only be gotten through conversation.
 
----
-
-## Pre-Meeting Checklist
-
-- [ ] Pre-onboarding questionnaire returned? (Sent 2026-05-22 via Lark — check if received)
-- [ ] NDA signed? (Status unknown — confirm at meeting)
-- [ ] SQL vendor contact received? (David Chong shared a contact on 2026-05-24 via Ivan Chiang — verify it is current)
-- [ ] Sample documents requested at handover: Sales Order, DO, Invoice, payment slip, WhatsApp order message
+**Pre-meeting:** Check whether the pre-onboarding survey was returned before walking in. If not returned, park basic-fact questions for after the meeting. NDA status — confirm at start.
 
 ---
 
-## Section 1: Current Order Flow
+## Section 1: Order Intake & Daily Flow
 
-1. Walk us through today's exact order flow — from customer sending an order all the way to delivery and payment collection. What touchpoints and what channels?
-2. Other than WhatsApp, do orders also come in by phone, email, or walk-in? How often?
-3. How many WhatsApp numbers or groups does Macrofood use for receiving orders? Which number is the main one?
-4. Do customers send voice messages to place orders? How common is it? Which languages or dialects? (Mandarin, Cantonese, Hokkien, Malay, mixed?)
-5. Who receives the WhatsApp orders? Is it the same person who keys into SQL, or two different people?
-6. What time do most orders come in? When are they keyed into SQL? (e.g., orders at night, keyed next morning before warehouse preps?)
-7. What happens if an order comes in after working hours — who handles it, or does it wait?
-8. How does the warehouse know what to prepare each day? Do they receive a list from admin via WhatsApp, printed paper, or something else?
+*Goal: Understand the end-to-end daily operational rhythm so MAIA can be configured to match it exactly.*
 
----
-
-## Section 2: SQL Integration
-
-9. Which version of SQL Accounting is Macrofood using? (e.g., 2022, 2023, 2024)
-10. Is SQL hosted on-premise (office PC/server) or cloud?
-11. What SQL modules are active? (Sales, AR, Inventory, others?)
-12. What is the SQL vendor's company name and contact person? *(We understand a contact was shared — confirm it is current and the vendor is aware we may reach out.)*
-13. Has Macrofood done any SQL integration or API project before?
-14. Are there any SQL customizations or non-standard plugins that might affect how data can be accessed?
-15. Who is the internal person who can coordinate with the SQL vendor on our behalf?
+1. Walk us through a typical working day — from when the first order arrives to when the last document is issued. What happens, in what order, and who does each step?
+2. When orders come in via WhatsApp, how does the admin know which message is an order versus a general inquiry? Is there a pattern, a dedicated group, or does it require judgement every time?
+3. How does the warehouse team find out what to prepare each day — does admin send a list to them via WhatsApp, a printed sheet, or something else? What time does this happen?
+4. When a customer sends a voice message to order, who listens to it and how is the order captured from it?
+5. What happens when an order comes in after working hours — is it processed first thing the next morning, or does someone handle it the same night?
+6. If a customer modifies their order after it has already been keyed into SQL (e.g., changes quantity or adds an item), who can make that change? What is the process and is there a cutoff time?
+7. Are there ever urgent or skip-the-queue orders — e.g., a loyal customer requests something last minute? How is that handled without disrupting the normal flow?
+8. **MAIA fit:** When MAIA processes an incoming WhatsApp order and prepares a draft Sales Order, who should review and confirm it before it goes into SQL — the same admin, or can a salesperson also confirm?
 
 ---
 
-## Section 3: Fresh Weight Adjustment Workflow
+## Section 2: Fresh Weight Workflow
 
-16. Walk us through the exact fresh weight workflow — when does the customer place the order, when does the warehouse weigh the goods, and when is the final invoice issued?
-17. Who physically weighs the goods? Is it always warehouse staff?
-18. After weighing, how is the final weight communicated internally today? (WhatsApp to admin? Verbal? Printed slip?)
-19. Can the price per kg change between when the order is placed and when the weight is finalized? (e.g., a pricing update happens overnight?)
-20. What is the acceptable rounding unit for fresh weight? (e.g., per 0.1 kg, per 100 g)
-21. Who has authority to finalize and confirm the actual weight before the invoice is issued? Admin only, or can warehouse staff confirm?
-22. Are there products that are always sold by fixed quantity (not by weight)? Which ones?
-23. What does the timeline look like — order comes in day 1, warehouse preps when, final weight confirmed when, invoice issued when?
+*Goal: Map the exact sequence and timing so MAIA can support the workflow without creating duplicate steps.*
 
----
-
-## Section 4: Customer Master Data & Consignment
-
-24. How many active customers does Macrofood have in total?
-25. What customer groups or tiers currently exist? (e.g., Wholesale, Retail, Hawker, F&B, Corporate — and how many customers per group?)
-26. Are all customers already in SQL? Can Macrofood export the customer list with codes, names, contacts, and group assignments?
-27. How are customers commonly identified in WhatsApp orders — by business name, owner name, nickname, or phone number?
-28. Are there customer nicknames or aliases that MAIA needs to know? (e.g., "Ah Kow" = Restoran XYZ)
-29. Which customers are on consignment arrangements? How does consignment work for them — do they settle at end of month? How is consignment stock tracked today?
-30. What are standard credit terms per customer segment? (e.g., Wholesale = 30 days, Retail = COD) Is this tracked in SQL or informally?
-31. What is the threshold at which a customer's outstanding balance triggers a flag or blocks new orders?
+9. Give us the exact day and time flow for a typical fresh weight order: what time does the customer place the order, when does warehouse prep begin, when is the weight confirmed, and when is the final invoice issued?
+10. After the warehouse weighs and confirms the final weight, how is that weight communicated to admin today — WhatsApp message, a printed slip, verbal, or something else?
+11. Can the price per kg shift between when the order is placed and when the weight is finalized? (e.g., if supplier pricing changes overnight, does it affect this order?)
+12. Who has authority to confirm the final weight as correct before the invoice is issued — warehouse staff self-confirm, or does admin or management sign off?
+13. What is the acceptable rounding unit for weight? (e.g., per 0.1 kg, per 100 g, to the nearest gram?)
+14. Which products are always sold by fixed quantity and never by weight — list them. Which are always weight-based?
+15. What happens if the actual weight is significantly different from what the customer ordered — e.g., customer ordered 10 kg but warehouse can only provide 7 kg? Who decides whether to proceed, substitute, or cancel?
+16. **MAIA fit:** Once the final weight is confirmed and keyed into MAIA, should MAIA automatically generate the Delivery Order and Invoice for review, or wait for an explicit "confirm and generate" command from admin?
 
 ---
 
-## Section 5: Product & Pricing
+## Section 3: Pricing & Customer Groups
 
-32. How many active SKUs are in SQL?
-33. What is the SKU naming convention? (We understand it is Item + Country + Brand, e.g., P0710R = Rewar Sale — confirm and provide examples)
-34. Can Macrofood export the full item/product list with codes, descriptions, and unit of measure?
-35. How often do item prices change? Daily for some items? Weekly? Irregular?
-36. Who updates prices — one person, or multiple staff? Who has final authority on pricing decisions?
-37. How is markup per customer group applied — fixed RM amount over base price, or a percentage?
-38. Are there customers with individual special pricing outside the standard group markup? How many approximately?
-39. How does Macrofood want to structure the price update flow — upload a template to MAIA, or update in SQL and let MAIA sync?
-40. Do any customers have specific product preferences stored per order — e.g., cut thickness in mm, specific packaging weight? How is this tracked today?
+*Goal: Understand the exact pricing logic so MAIA can apply the right price to the right customer without manual checks.*
 
----
-
-## Section 6: Payment Collection
-
-41. What payment methods does Macrofood accept? (Cash, bank transfer, cheque, TNG, others)
-42. How many bank accounts receive payments?
-43. How do customers send payment proof — WhatsApp screenshot, email, hand delivery?
-44. Who currently does payment matching and updating in SQL? Is it one person?
-45. How often does the payer name on a bank transfer differ from the customer name in SQL? (e.g., owner pays under personal name, related company pays)
-46. How are partial payments handled today? Is it tracked in SQL?
-47. Can Macrofood share a sample bank statement format? (Redact any sensitive data)
-48. Does Macrofood send Statements of Account (SOA) to customers? How often and how?
-49. What is Macrofood's current e-invoicing status — compliant and automated, compliant but manual, in progress, or not started?
+17. Walk us through how you price an order for a specific customer. What do you check — their customer group, their individual price list, the current market rate, or all three?
+18. Is the group markup applied as a fixed RM amount over the base price, or as a percentage? Is it the same for all product categories or different per category?
+19. For customers with individual special pricing, where is that price stored today — SQL, Excel, or in someone's head? Who maintains it?
+20. When a price changes (e.g., pork belly goes up today), what is the exact process — who decides the new price, who updates it in SQL, and how long does the update take?
+21. For a bulk price change (e.g., all imported beef up 5% this week), how is this done today — manual entry per item in SQL, an Excel upload, or something else?
+22. Which customers are on consignment? For each: what is the settlement cycle (weekly, monthly end?), how is the consignment stock tracked today (SQL, separate spreadsheet, manual count?), and who reconciles it?
+23. What credit terms apply to each customer segment? (e.g., Wholesale = 30 days, Retail = COD, Consignment = end of month — confirm and fill in.)
+24. At what outstanding balance level does Macrofood flag or block a customer — is there a formal RM threshold, or is it a judgment call by the boss or manager?
+25. Does Macrofood ever give ad hoc discounts or markdowns to customers? Who approves the discount, and how is it applied in SQL?
+26. When a new customer is onboarded, how is their pricing decided — assigned to a group, individually negotiated, or starts at standard and adjusted later? Who enters it into SQL?
+27. **MAIA fit:** When MAIA prepares a draft Sales Order, it will reference the customer's assigned price list. Should MAIA flag an alert if the price it is about to use is older than X days? If yes, what is the acceptable age for a price before it should be flagged as potentially stale?
 
 ---
 
-## Section 7: Documents
+## Section 4: Payment & AR
 
-50. What documents does Macrofood currently issue per order? (Sales Order, DO, Invoice, Proforma, others?)
-51. Please share samples of the current Delivery Order and Invoice formats.
-52. What is the document numbering convention? Does it reset yearly? Is there a prefix? (e.g., INV-2026-0001)
-53. Are documents sent to customers digitally (WhatsApp/email) or printed and handed physically?
-54. Does the DO need to be signed by the customer on delivery? How is that confirmation captured today?
-55. Do customers prefer individual invoices per delivery, or consolidated monthly invoices? Does this differ by customer segment?
+*Goal: Understand how payments arrive, how they are matched, and what exceptions MAIA needs to handle.*
 
----
-
-## Section 8: Outdoor Sales Support
-
-56. How many outdoor salespeople does Macrofood have?
-57. What information do outdoor salespeople currently need to ask admin for while outside? (prices, customer outstanding, stock availability?)
-58. Do outdoor salespeople ever take orders on behalf of customers while in the field?
-59. Are outdoor salespeople using the company WhatsApp number or their personal numbers?
-60. Do outdoor salespeople ever need to generate documents (e.g., Proforma Invoice) on the spot for customers?
+28. Walk us through what happens from the moment a customer sends a payment slip to the moment it is updated in SQL. Who does what, and how long does it typically take?
+29. Payment slips arrive via WhatsApp — what formats do they come in? (Bank app screenshot, photo of physical receipt, PDF, handwritten slip, other?)
+30. How often does the name on the bank transfer differ from the customer name in SQL? (e.g., restaurant owner pays under personal name, a related company pays.) Give examples of the types of mismatches you see.
+31. When there is a payer name mismatch, how does admin currently decide which customer the payment belongs to? Is there a reference number, a matching amount, or is it purely by familiarity?
+32. How are partial payments handled — if a customer owes RM5,000 and pays RM2,000, how is this tracked in SQL? Which invoice does it go against?
+33. When a customer's outstanding balance grows beyond the acceptable level, who contacts them — admin, the salesperson, or the MD directly? What is the sequence of escalation steps (WhatsApp, phone, formal letter, third-party collection)?
+34. Walk us through how you currently prepare and send a Statement of Account to a customer — is it generated from SQL, exported to Excel, or built manually? How long does it take?
+35. **MAIA fit:** When MAIA finds a payment slip it cannot match with high confidence, it will flag it for manual review instead of auto-posting. Should the flag go to admin only, or also notify the relevant salesperson for that customer?
 
 ---
 
-## Section 9: Product Catalogue & Weekly Price Blast
+## Section 5: Documents & Delivery
 
-> *(Sales identified this as a deal-closer. Confirm scope and workflow.)*
+*Goal: Confirm the document sequence, format requirements, and delivery confirmation flow.*
 
-61. Today, who creates the weekly product/price catalogue image that gets blasted to customers?
-62. How often is the blast sent — weekly? When there is a price change? Ad hoc?
-63. Which WhatsApp groups or contacts does the blast go to? Is it sent from the main sales number or a separate number?
-64. What information does the catalogue image typically include? (Products, prices, photos, availability, carton size?)
-65. How does Macrofood want MAIA to help here — generate a ready-to-forward message on request, or is automated broadcasting needed? *(Note: automated blasting has WhatsApp API restrictions — we will advise on options.)*
-66. Is the Product Update Assistant (optional add-on, RM8,000) confirmed as in-scope or still pending?
-
----
-
-## Section 10: Sales Lead Assignment & Follow-Up
-
-> *(Raised explicitly in sales session — leads shared in WhatsApp groups but no tracking of whether sales staff followed up.)*
-
-67. How do new sales leads currently arrive? (Facebook ads, referrals, events, walk-ins, other?)
-68. Who assigns leads to salespeople today? Is this done in WhatsApp, or is there another process?
-69. How does the boss/owner currently check if a lead was followed up?
-70. How many new leads come in per week or month on average?
-71. What does Macrofood consider a "converted" lead — is it when an order is placed, or earlier?
-72. Should lead tracking and assignment be a Phase 1 scope item, or can it wait for Phase 2? *(We want to be clear on this at the meeting to avoid scope creep.)*
+36. What is the exact document sequence for a standard order — is it Sales Order first, then Delivery Order, then Invoice? Or does it differ by customer type?
+37. Are documents sent to customers digitally (via WhatsApp or email) or printed and handed physically? Does this differ by customer segment?
+38. What is the document numbering format today — give an example of a real SO number, DO number, and invoice number. Does the sequence reset yearly?
+39. When a driver delivers goods, how is the delivery confirmed today — customer signs the DO, driver takes a photo, driver sends a WhatsApp, or something else?
+40. Walk us through a real credit note scenario — e.g., customer returns goods or the weight is wrong. What triggers the credit note, who issues it, and how does the customer receive it?
+41. Do any customers request a different invoice format or layout from the standard SQL template — e.g., a specific field, a company stamp, or a different language? Which customers, and what do they need?
+42. Is there a scenario where a Proforma Invoice is issued before the Sales Order is confirmed — e.g., for a new customer or a high-value order?
+43. **MAIA fit:** MAIA can generate documents and send them to a customer's WhatsApp directly from the conversation. Should documents be sent automatically once confirmed, or should admin always preview and manually send?
 
 ---
 
-## Section 11: Approval Flows
+## Section 6: Outdoor Sales
 
-73. What business scenarios should require approval before proceeding? (e.g., high-value orders, special pricing, overdue balance exceptions)
-74. What is the threshold for a "high-value" order that triggers approval? (RM amount)
-75. Who are the approvers? Is it the MD only, or are there department-level approvers for different scenarios?
-76. How should approval notifications reach the approver — WhatsApp message, backend dashboard, or both?
-77. How quickly must an approval be acted on before it blocks the order?
+*Goal: Define what field staff need from MAIA so the outdoor assistant workflow can be configured correctly.*
 
----
-
-## Section 12: Users & Access Roles
-
-78. List all staff who will use MAIA, by role and department:
-
-| Name | Department | Role in MAIA | Notes |
-|------|-----------|--------------|-------|
-| | Order Admin | Day-to-day order processing | |
-| | Sales | Outdoor / in-office | |
-| | Finance | Payment matching | |
-| | Warehouse | Weight confirmation, GRN | |
-| | Driver | Proof of delivery | |
-| | Management | Dashboard visibility | |
-
-79. Who is the main implementation PIC from Macrofood's side? (Day-to-day contact during onboarding)
-80. Who will participate in UAT testing?
-81. Is there an internal IT person, or will all SQL vendor coordination go through MAIA team directly?
+44. When an outdoor salesperson is with a customer, what are the top 3–5 things they currently need to call or WhatsApp the office to find out? (e.g., "What is our current price for belly pork for this customer?", "Does this customer have any overdue invoices?")
+45. Do outdoor salespeople ever take orders directly on behalf of customers while in the field, or do they just build the relationship and the customer places the order separately via WhatsApp?
+46. Are outdoor salespeople using the company's main WhatsApp number to interact with customers, or their personal numbers?
+47. When an outdoor salesperson meets a new potential customer, what information do they collect on the spot? Is there a form, or is it all done from memory and keyed in later?
+48. **MAIA fit:** If an outdoor salesperson uses MAIA via WhatsApp to query customer pricing or outstanding balance, should MAIA respond only with the data, or also include a suggested action (e.g., "This customer has RM3,200 overdue — consider collecting before taking a new order")?
 
 ---
 
-## Section 13: Go-Live Preferences
+## Section 7: Product Catalogue & Weekly Price Blast
 
-82. What is Macrofood's target go-live date or earliest preferred go-live month?
-83. Are there blackout periods or busy seasons to avoid? (e.g., CNY, Raya, year-end audit)
-84. Preferred training format — in-person at office, online call, or recorded video?
-85. How many staff need to be trained, and in which language? (Mandarin, BM, English)
-86. Is there a hard deadline driving the go-live — e.g., tied to a new customer, a business expansion, or an operational bottleneck that is urgent?
+*Goal: Understand the current catalogue process so MAIA's Product Update Assistant can be configured correctly.*
 
----
-
-## Section 14: Admin & Agreements
-
-87. Has an NDA been signed? If not, does Macrofood require one before we share system access?
-88. Are there other related business entities that should be in scope now or in Phase 2? (e.g., the planned fresh market or B2C expansion mentioned in the sales discussion)
-89. Is there anything not covered in the signed proposal that the boss/owner expects to be in scope? *(Ask this directly to catch scope creep early and park Phase 2 items explicitly.)*
+49. Who currently creates the weekly product/price catalogue image — admin, a salesperson, or the boss?
+50. Is the blast sent on a fixed day each week, or whenever there is a price change? Who decides when to send it?
+51. Walk us through how the catalogue image is made today — is it typed in a chat, built in Canva, exported from SQL, or created in a different way?
+52. What information goes into the catalogue — item names, prices, photos, available stock, carton/box weight, origin country? Is the format always the same or does it vary?
+53. Which WhatsApp groups or contacts receive the blast? Is it sent from the same number customers use to order, or a separate broadcast number?
+54. **MAIA fit:** The Product Update Assistant can generate a ready-to-forward message using the latest uploaded prices. Should it format the message as a plain text list, a structured table, or does the team want to define the template during setup?
+55. Is the Product Update Assistant (RM8,000 optional add-on) confirmed as in-scope, or still to be decided?
 
 ---
 
-## Sample Data & Documents to Collect
+## Section 8: Sales Lead Management
 
-Please collect the following during or after the RG session:
+*Goal: Understand the lead flow so MAIA's CRM component can be correctly scoped and configured.*
 
-- [ ] 5–10 sample WhatsApp order messages (real or representative — any format/dialect)
-- [ ] 1–2 examples of what a voice message order sounds like (describe or share recording if possible)
-- [ ] Sample payment slip from a bank transfer customer
-- [ ] Sample bank statement (can redact sensitive rows)
-- [ ] Sample Delivery Order (current format from SQL)
-- [ ] Sample Invoice (current format from SQL)
-- [ ] Sample weekly product/price catalogue image (current format)
-- [ ] Customer master list export from SQL (or confirm who will prepare it)
-- [ ] Product/SKU master list export from SQL
-- [ ] Existing pricing reference (Excel or SQL export)
-- [ ] Customer group definitions and markup rules (even informal notes)
-- [ ] Approval threshold and approver names in writing
+56. Where do new sales leads typically come from — Facebook ads, referrals from existing customers, events, cold calls, walk-ins, other?
+57. When the boss or a salesperson gets a new lead, what happens next — who does the lead go to, and how is the handoff done (WhatsApp message, group, verbal)?
+58. Is there currently any record of what happened with each lead after it was passed — even an informal WhatsApp history or a note somewhere?
+59. What does "followed up" mean to you — a call was made, a WhatsApp message was sent, a meeting happened, or a quote was prepared?
+60. What does "converted" mean — an order is placed, a contract is signed, or something else?
+61. **MAIA fit:** If MAIA tracks lead assignment and follow-up, the boss would be able to see which salesperson has each lead and whether they have contacted the customer. Is visibility for the boss the main requirement, or does the salesperson also need reminders and prompts from MAIA?
+
+---
+
+## Section 9: Approval Flows
+
+*Goal: Define all approval triggers, approver roles, and response expectations so MAIA can route correctly.*
+
+62. List every scenario where you would want an order or action to require approval before proceeding. Be specific — e.g., "Any order over RM X," "Any order for a customer with outstanding > RM Y," "Any price lower than the standard group rate."
+63. For each scenario above: who is the approver — the MD only, the Sales Manager, Finance, or different people depending on the scenario?
+64. How quickly must an approval be responded to — if the approver does not respond within X minutes/hours, what should happen? (Block the order? Auto-reject? Escalate to the next person?)
+65. When an approval is rejected, what happens to the order — cancelled, sent back to the salesperson for revision, or escalated to the MD?
+66. Should approval requests reach the approver via WhatsApp message, a notification in the backend dashboard, or both?
+67. Is there a scenario where the approver needs to be able to approve with a condition — e.g., "Approve, but collect RM1,000 outstanding first"? How would this be handled today?
+
+---
+
+## Section 10: Users, Training & Admin
+
+*Goal: Confirm the implementation roster, SQL coordination path, NDA status, and scope boundaries.*
+
+68. List all staff who will use MAIA on Day 1, by name, department, and what they will use MAIA for:
+
+| Name | Department | What They Will Use MAIA For |
+|------|-----------|----------------------------|
+| | Order Admin | |
+| | Sales | |
+| | Finance / AR | |
+| | Warehouse | |
+| | Driver | |
+| | Management | |
+
+69. Who from Macrofood is the internal project owner — the day-to-day contact during onboarding who can make decisions without needing to escalate to the boss for every small item?
+70. Who will participate in UAT testing — same as daily users, or a smaller subset?
+71. For SQL vendor coordination: will Macrofood designate one internal contact to relay requests to the vendor, or should the MAIA team reach out to the SQL vendor directly?
+72. Has an NDA been signed between Macrofood and AutorunBiz PLT? If not, does Macrofood require one before we proceed with system access?
+73. The sales discussion mentioned a future fresh market and B2C expansion. Are these separate business entities that should be planned for in Phase 1 architecture, or are they purely future Phase 2 items with no impact on current scope?
+74. Is there anything not listed in the signed proposal that the boss or team expects MAIA to cover? *(Ask this directly to surface any scope misalignment before implementation begins — park anything extra as a Phase 2 item.)*
+
+---
+
+## Samples to Collect at This Meeting
+
+- [ ] 5–10 real WhatsApp order messages (screenshots or forwarded messages)
+- [ ] 1–2 descriptions of what a typical voice order sounds like and the language/dialect used
+- [ ] Sample payment slip (bank transfer screenshot — can redact amount if needed)
+- [ ] Sample bank statement row (to understand format for payment matching)
+- [ ] Current Delivery Order format (printed copy or PDF)
+- [ ] Current Invoice format (printed copy or PDF)
+- [ ] Current weekly product catalogue image (any recent example)
+- [ ] Customer group definitions and markup rules — even a rough note or existing Excel
+- [ ] Approval threshold examples — even a rough verbal description written down
 
 ---
 
 ## Notes from Session
 
-> *Use this section to capture answers, observations, and follow-up items during the RG meeting.*
+> *Capture workflow details, answers, decisions, and follow-up items here during the meeting.*
 
 ---
 
@@ -232,4 +201,4 @@ Please collect the following during or after the RG session:
 - [[Ordermaia x Macrofood]] — signed proposal (RM40,000)
 - [[Meetings/MacroFood sales proposal and rough requirement gathering]] — sales transcript
 - [[Meetings/Client Sales Handover TLDR Brief - Macrofood]] — handover brief from Jeremy
-- [[Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood]] — client-facing pre-onboarding survey
+- [[Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood]] — pre-onboarding survey (basic facts already collected)

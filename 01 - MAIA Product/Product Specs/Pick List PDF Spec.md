@@ -389,7 +389,7 @@ Use these ASCII blocks to compare current vs target PDF structure. The current-s
 | No | SKU    | Name                  | SO Ref      | Qty | Picked   | Whs |
 +----+--------+-----------------------+-------------+-----+----------+-----+
 | 1  | DMP500 | D-Mannitol - 500g     | None        | 5.0 |          | Main|
-|    |        | WAREHOUSE: Main ...   |             |     |          | ... |
+|    |        | WAREHOUSE: Main WH    |             |     |          | Main|
 +----+--------+-----------------------+-------------+-----+----------+-----+
 |                                 Total Items: 1 | Picked Qty Summary: 0    |
 +--------------------------------------------------------------------------+
@@ -486,7 +486,7 @@ Item-table redesign is intentionally out of scope for this immediate pass becaus
 | DOCUMENT DETAILS          | WAREHOUSE INFORMATION   | ORDER INFORMATION     |
 | Pick List ID: PL-2026-00087| Warehouse: WH-00624     | Purpose: Delivery     |
 | Pick Date: 29/05/2026      | Warehouse Address: *    | Sales Order: *        |
-| SO Ref: [hide if empty]    | Contact / PIC: *        | Customer: DAYA...     |
+| SO Ref: [hide if empty]    | Contact / PIC: *        | Customer: DAYA SAINGAN|
 | QT Ref: [hide if empty]    | Phone: *                | Customer Address: *   |
 | PO No: [hide if empty]     | Email: *                | Customer Phone: *     |
 |                            |                         | Customer Email: *     |
@@ -523,60 +523,60 @@ Expected correct-version rules:
 
 #### ASCII stress render: long content behavior
 
-Use this to validate overflow, truncation, summarisation, and page-flow behavior. The PDF should not wrap long content into large blocks by default because warehouse users need clear, useful information at a glance. Long content must not break borders, overlap fields, push the footer over content, or make the picking rows unreadable.
+Use this to validate overflow, prioritisation, continuation, and page-flow behavior. The PDF should not wrap long content into large blocks by default because warehouse users need clear, useful information at a glance. It also should not hide useful content behind vague shortened markers. Long content must not break borders, overlap fields, push the footer over content, or make the picking rows unreadable.
 
 ```text
 +----------------------------------------------------------------------------+
 | DOCUMENT DETAILS          | WAREHOUSE INFORMATION   | ORDER INFORMATION     |
-| Pick List ID: PL-2026-... | Warehouse: WH-LONG-001  | Purpose: Delivery     |
+| Pick List ID: PL-2026-00087| Warehouse: WH-LONG-001  | Purpose: Delivery     |
 | Pick Date: 03/06/2026     | Address: Lot 123, Very  | Customer: Very Long   |
-| SO Ref: SO-2026-000123    | Long Industrial Park,   | Customer Name Sdn...  |
-| PO No: PO-LONG-REF-...    | Jalan Something...      | Address: Unit 12...   |
-| Extra Refs: +2 more        | Contact: Ahmad          | Email: ops-team@...    |
+| SO Ref: SO-2026-000123    | Long Industrial Park    | Customer: See notes   |
+| PO No: See reference notes| Area: Shah Alam         | Address: See notes    |
+| Ref Details: See notes     | Contact: Ahmad          | Email: See notes       |
 +----------------------------------------------------------------------------+
 | ITEMS TO PICK                                                              |
 +----+----------+-----------------------------+----------------+------+-----+
 | No | Item     | Description                 | Warehouse      | Qty  | UOM |
 +----+----------+-----------------------------+----------------+------+-----+
-| 1  | LONGSKU  | Very long item name...      | WH-LONG-001    | 12.0 | CTN |
+| 1  | LONGSKU  | Item name + key spec        | WH-LONG-001    | 12.0 | CTN |
 |    |          | Key spec / variant only     | Zone A / Rack  |      |     |
-|    |          | Batch: BATCH-LONG-2026...   | 04 / Shelf 2   |      |     |
-|    |          | S/N: SN001, SN002, +18 more |                |      |     |
-|    |          | Handling: Keep upright...   |                |      |     |
+|    |          | Batch: BATCH-LONG-2026-01   | 04 / Shelf 2   |      |     |
+|    |          | S/N: See serial list        |                |      |     |
+|    |          | Handling: Keep upright      |                |      |     |
 +----+----------+-----------------------------+----------------+------+-----+
 | 2  | NEXTSKU  | Next row must remain clear  | WH-002         |  3.0 | PCS |
 +----+----------+-----------------------------+----------------+------+-----+
 | Continued on next page if table cannot fit cleanly                         |
 +--------------------------------------+-------------------------------------+
 | REMARKS                              | PICKER ACKNOWLEDGEMENT              |
-| Long remarks show the first useful   | Picked By:                          |
-| line only, then: See exception notes | Pick Time:                          |
-| or +N more lines                     | Signature:                          |
+| Long remarks show action summary     | Picked By:                          |
+| only. Full remarks continue in       | Pick Time:                          |
+| continuation notes if required.      | Signature:                          |
 |                                      |                                     |
 +--------------------------------------+-------------------------------------+
 | EXCEPTION HANDLING                                                         |
-| Long exception notes show key issue first, then continue only if needed.    |
+| Long exception notes show key issue first, then continue in notes if needed.|
 | They must not overlap the footer or acknowledgement area.                   |
 +----------------------------------------------------------------------------+
 ```
 
 Content stress rules:
 
-- Default rule: do not wrap long content into tall blocks. Prefer clear priority text, ellipsis, `+N more`, or a controlled overflow/exception note.
-- 3-column information band: each column should stay compact; if one address is very long, cap it and use ellipsis or `+N more`, not an oversized wrapped column.
-- Long document/reference numbers: truncate with ellipsis while preserving the prefix and final unique digits where possible.
-- Many references: if SO / QT / PO / DN references exceed the available space, show the most important reference first and summarize the rest as `+N more`.
+- Default rule: do not wrap long content into tall blocks, and do not hide useful content behind vague shortened markers. Show the exact useful field, or move the full detail into a dedicated continuation/exception section.
+- 3-column information band: each column should stay compact; if one address is very long, show only the operationally useful location part in the band and put full address detail in continuation notes if needed.
+- Long document/reference numbers: show exact primary reference when it is operationally needed; if multiple long references exist, move secondary references to `Reference Notes`.
+- Many references: if SO / QT / PO / DN references exceed the available space, show the primary source reference in the band and list the remaining exact references in `Reference Notes`.
 - Warehouse address: show enough to identify the pick location; prefer warehouse code/name + zone/bin over full postal address when space is tight.
 - Customer/order address: keep operationally useful only; do not let customer address dominate warehouse and item information.
-- Long contact names, phone numbers, and emails: truncate emails safely and keep phone numbers readable; do not allow contact fields to widen the column.
-- Item description: show item name plus the most useful variant/spec line only; if still too long, truncate with ellipsis and keep batch/location/qty visible.
+- Long contact names, phone numbers, and emails: show only the contact field needed for picking or coordination; move the full contact detail to notes if needed.
+- Item description: show item name plus the most useful variant/spec line only; if still too long, move the non-critical detail to notes and keep batch/location/qty visible.
 - Batch/serial/handling lines: do not drop these behind long item names; traceability lines are higher priority than decorative description text.
-- Many serial numbers: show the first few serials and summarize the remainder as `+N more`; only continue in a controlled overflow section if every serial is legally required.
+- Many serial numbers: if every serial is required, render a dedicated serial list section/table; do not replace required serials with count-only summaries.
 - Multiple batches for one item: each batch must stay tied to its own quantity; do not combine batch values into a single unreadable paragraph.
-- Unbroken strings: long SKUs, batch numbers, serials, emails, and URLs must truncate with ellipsis where possible; they must not hard-wrap into tall rows or break table borders.
+- Unbroken strings: long SKUs, batch numbers, serials, emails, and URLs must not break table borders; show exact operational identifiers where required, otherwise move full strings to notes.
 - Huge numeric values: large quantities and decimals must not overflow the Qty column; use fixed formatting and right alignment.
-- Mixed-language content: Malay/English/Chinese text must not clip because of font fallback; keep text short and use ellipsis rather than uncontrolled wrapping.
-- Remarks: show the first useful line or short summary in the 50/50 row; if remarks are too long, show `+N more` or move operational issue text into Exception Handling.
+- Mixed-language content: Malay/English/Chinese text must not clip because of font fallback; keep the visible content short and move full long text to notes when required.
+- Remarks: show the action summary in the 50/50 row; if remarks are too long, move full remarks into continuation notes or operational issue text into Exception Handling.
 - Picker Acknowledgement: must remain visible and writable; long remarks must not squeeze or push it off-page.
 - Exception Handling: may expand more than Remarks, but should still start with the key issue first and page-break cleanly before the footer.
 - Repeated line breaks / pasted text: collapse excessive blank lines in remarks and exception text so the section does not create empty pages.
@@ -726,7 +726,7 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 2. Same item split across multiple warehouses or locations: render as distinct picking rows or clearly distinct location lines; do not merge into one ambiguous row.
 3. Same item split across multiple batches: each batch must be visible and tied to the correct quantity.
 4. Warehouse ID, warehouse name, and warehouse address all present: avoid duplicating warehouse text in both Location and Description cells.
-5. Very long warehouse names or addresses: wrap or truncate consistently without hiding the actual pick location.
+5. Very long warehouse names or addresses: show the exact pick location first; move non-picking postal details to notes if needed.
 6. Missing warehouse/location: surface as an exception; do not leave a blank warehouse cell.
 
 ### Batch, serial, and traceability edge cases
@@ -735,7 +735,7 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 2. Batch-tracked item with batch number missing: show a traceability exception; do not silently hide the batch requirement.
 3. Non-batch item with no batch value: hide the batch label cleanly.
 4. Serial-tracked item with one serial number: show serial number clearly.
-5. Serial-tracked item with many serial numbers: wrap in a readable way or show a controlled continuation; do not let serials destroy row height.
+5. Serial-tracked item with many serial numbers: use a controlled serial-list continuation section when every serial must be printed; do not let serials destroy row height.
 6. Item with batch and serial both present: show both without confusing which quantity they belong to.
 7. Batch expiry available: mark as optional pending product decision; do not invent expiry if source is absent.
 
@@ -762,18 +762,18 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 
 1. Dense one-page Pick List: the item table should still be the visual center.
 2. Multi-page Pick List: repeat table header on new pages and keep footer page numbering correct.
-3. Long item names / remarks / handling notes: summarize or truncate without overlapping row borders or footer.
+3. Long item names / remarks / handling notes: show the exact operationally useful part in the main row and move full long text to notes if needed.
 4. Remarks empty and Exception Handling empty: sections should still be usable but not consume excessive height.
 5. Exception Handling has long text: allow enough space or page flow without clipping.
 6. Picker Acknowledgement on multi-page output: keep acknowledgement near the final page, not repeated in a confusing way.
 7. Watermark, footer, and internal-use notice: must not overlap item rows or acknowledgement fields.
-8. Long warehouse address: cap/truncate without making the 3-column information band taller than the item table.
+8. Long warehouse address: show exact warehouse code/name/location first and move full postal address to notes if needed.
 9. Long customer/order address: shorten to operationally useful content so it does not dominate the warehouse document.
 10. Long remarks: cap visible height beside Picker Acknowledgement and continue cleanly if needed.
 11. Very long batch, serial, or handling text: keep traceability visible and avoid pushing qty/UOM out of alignment.
 12. Page break inside item row: avoid separating item code/name from warehouse/location/qty.
-13. Long document IDs, PO numbers, emails, and unbroken strings: truncate or summarize without breaking borders or creating tall wrapped rows.
-14. Many SO/QT/PO/DN references: show priority reference and summarize overflow as `+N more`.
+13. Long document IDs, PO numbers, emails, and unbroken strings: keep exact operational identifiers visible or move full value to notes without breaking borders.
+14. Many SO/QT/PO/DN references: show the primary reference in the band and list remaining exact references in Reference Notes.
 15. Many serial numbers or batches: keep traceability tied to quantity and avoid an unreadable paragraph.
 16. Mixed-language or special-character text: render without clipping or fallback-font layout breakage; avoid uncontrolled wrapping.
 17. Huge quantities / decimal precision: keep Qty and UOM aligned and readable.
@@ -813,7 +813,7 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 - [ ] Optional metadata such as HS code remains visually secondary unless enabled
 - [ ] The final document reads as a warehouse/logistics document rather than a commercial customer document
 - [ ] Multi-page Pick Lists repeat table headers and keep footer page numbering correct
-- [ ] Long warehouse address, customer address, item description, remarks, handling, batch, and serial values truncate or summarize without overlap
+- [ ] Long warehouse address, customer address, item description, remarks, handling, batch, and serial values show exact useful content or continue in notes without overlap
 - [ ] Remarks cannot push Picker Acknowledgement off-page or make the 50/50 row unusable
 - [ ] Same item across multiple warehouses, locations, or batches remains unambiguous
 - [ ] Missing warehouse/location or missing required batch value is surfaced as an exception
@@ -855,7 +855,7 @@ Because of that, the following remain unverified until additional real samples a
 - whether the same issues repeat consistently across other Pick List records / statuses / clients
 - whether handling, batch, and serial fields behave correctly when present in live data
 - whether warehouse/location layout behaves well on multi-row Pick Lists
-- whether line wrapping and spacing remain usable on dense multi-item documents
+- whether continuation notes and spacing remain usable on dense multi-item documents
 - whether partial-pick, over-pick, multi-warehouse, and batch-heavy Pick Lists render correctly
 - whether picker assignment, pick sequence, bin/zone, reserved stock, substitute item, and backorder data exist in the current payload
 - whether barcode/QR is expected for Pick List scanning
