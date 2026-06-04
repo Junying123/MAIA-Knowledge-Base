@@ -313,6 +313,7 @@ Column 3: Order Information
 Visibility rule:
 
 - Hide any empty field row cleanly. Do not show blank labels or `None`.
+- Exception: handwriting fields are intentionally blank and must still render. This applies to Picker Acknowledgement and Exception Handling.
 
 ### Non-item section target
 
@@ -323,6 +324,7 @@ For this rework pass, ignore the item table because it is still being updated. F
 - Exception Handling: full-width section below the 50/50 row
 - Terms & Conditions: remove entirely
 - Internal warehouse notice: keep, low visual weight
+- Picker Acknowledgement and Exception Handling are write-in areas for the client's internal warehouse team; keep them visible even when there is no system value.
 
 ### Field visibility matrix
 
@@ -352,8 +354,8 @@ Use this as the working render contract unless a later product decision override
 | Qty | Show | Operationally critical |
 | UOM | Show | Operationally critical |
 | Remarks | Show | Left side of 50/50 row below item table |
-| Picker Acknowledgement | Show | Right side of 50/50 row beside Remarks |
-| Exception Handling | Show | Full-width section below Remarks/Acknowledgement row |
+| Picker Acknowledgement | Show | Right side of 50/50 row beside Remarks; intentional handwriting field |
+| Exception Handling | Show | Full-width section below Remarks/Acknowledgement row; intentional handwriting field for short pick / damage / issue notes |
 | Terms & Conditions | Hide | Remove entirely for Pick List PDF |
 | Rate | Hide | Must not render |
 | Tax | Hide | Must not render |
@@ -652,6 +654,7 @@ If customer/commercial blocks dominate the item rows, the layout is still wrong.
 - handling: show when present
 - HS code: optional, default-hide, visually secondary
 - empty labels: hide cleanly
+- handwriting fields: keep visible even when blank; this is not the same as rendering broken empty labels
 
 ### Step 6: Validate against the checklist, not just appearance
 
@@ -680,7 +683,8 @@ He must verify:
 - make item rows the main visual payload
 - use existing `Pick List Item` and `Location` data shape
 - preserve optional operational metadata only when it helps execution
-- hide empty labels and broken placeholders
+- hide empty data labels and broken placeholders
+- preserve intentional write-in areas for pen writing, especially Picker Acknowledgement and Exception Handling
 
 ### Do Not Do
 
@@ -689,6 +693,7 @@ He must verify:
 - do not let summary blocks survive just because the shared template has them
 - do not over-expand customer-facing sections that distract from picking
 - do not invent data if the field source is unclear; document the gap instead
+- do not remove write-in areas just because they have no system value
 
 ---
 
@@ -719,6 +724,8 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 3. Pick List with no Sales Order / Quotation / PO value: hide the field row cleanly.
 4. Pick List with customer or shipping details missing: keep the Order Information column compact and do not show empty labels.
 5. Draft, Submitted, Completed, and Cancelled Pick Lists: status should not break layout; if status is rendered, it must be low-weight and operational.
+6. Intentional blank handwriting fields: Picker Acknowledgement and Exception Handling must still render even when no system value exists.
+7. Data blank vs write-in blank: blank source data should be hidden, but blank write-in areas should remain available for pen writing.
 
 ### Item and warehouse edge cases
 
@@ -749,14 +756,15 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 
 ### Picking workflow edge cases
 
-1. Assigned picker exists: show `Assigned Picker` or `Picked By` consistently; do not duplicate two different picker concepts.
-2. No assigned picker yet: keep the acknowledgement fill-in area usable without showing an empty assigned-picker label.
+1. Assigned picker exists in system data: decide whether to print it as prefilled `Picked By` or leave `Picked By` open for handwriting; do not duplicate both concepts.
+2. No assigned picker yet: keep the acknowledgement write-in area usable and do not show a broken empty assigned-picker data label.
 3. Pick sequence exists: show pick sequence in a way that helps walking the warehouse route, not as hidden metadata.
 4. Bin, zone, aisle, rack, or shelf exists: show the most specific pick location available without crowding the Warehouse column.
 5. Stock reservation / allocation exists: if the Pick List is tied to reserved stock, avoid implying any equivalent stock can be picked.
 6. Out-of-stock or insufficient stock row: surface as an exception and do not make it look like a normal pickable row.
 7. Substitute item used: show both original requested item and substitute picked item, with clear labelling.
 8. Backorder / remaining quantity exists: show remaining quantity or exception note so the PDF does not imply full fulfilment.
+9. Pen-written picked quantity or initials: if the client expects manual marking per row, provide a clear write-in area without confusing it with system-generated picked qty.
 
 ### Layout and pagination edge cases
 
@@ -778,6 +786,8 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 16. Mixed-language or special-character text: render without clipping or fallback-font layout breakage; avoid uncontrolled wrapping.
 17. Huge quantities / decimal precision: keep Qty and UOM aligned and readable.
 18. Pasted remarks with many line breaks: collapse excessive blank space and avoid blank pages.
+19. Handwriting usability: write-in fields must have enough white space for pen writing after printing, even without underline placeholders.
+20. Print legibility: font size and spacing must stay readable on printed A4, not only on screen PDF preview.
 
 ### Endpoint and template edge cases
 
@@ -808,6 +818,7 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 - [ ] Batch / lot visibility does not depend on opening another document or checking the system UI
 - [ ] Sales Order / Quotation / PO references render correctly when available
 - [ ] Empty optional labels do not leave broken placeholders
+- [ ] Intentional write-in fields remain visible even when blank
 - [ ] Address-like fields do not show duplicate commas or malformed spacing
 - [ ] Operational information is visually stronger than customer/commercial information
 - [ ] Optional metadata such as HS code remains visually secondary unless enabled
@@ -815,9 +826,10 @@ Rahim should validate these scenarios before handoff because they are where a Pi
 - [ ] Multi-page Pick Lists repeat table headers and keep footer page numbering correct
 - [ ] Long warehouse address, customer address, item description, remarks, handling, batch, and serial values show exact useful content or continue in notes without overlap
 - [ ] Remarks cannot push Picker Acknowledgement off-page or make the 50/50 row unusable
+- [ ] Picker Acknowledgement and Exception Handling leave enough print space for pen writing
 - [ ] Same item across multiple warehouses, locations, or batches remains unambiguous
 - [ ] Missing warehouse/location or missing required batch value is surfaced as an exception
-- [ ] Assigned picker, pick sequence, bin/zone, reserved stock, substitute item, and backorder cases are either handled or explicitly marked out of scope
+- [ ] Assigned picker, manual picker acknowledgement, pick sequence, bin/zone, reserved stock, substitute item, and backorder cases are either handled or explicitly marked out of scope
 - [ ] Cancelled, amended, regenerated, and reprinted Pick List PDFs cannot be mistaken for the original active pick sheet
 - [ ] If barcode/QR support is required, document-level and item-level barcode/QR placement is specified
 
@@ -836,6 +848,7 @@ Rahim should be able to answer these directly:
 9. Does the PDF still work for multi-page, multi-warehouse, partial-pick, and batch/serial-heavy cases?
 10. Can warehouse users tell whether this printout is active, cancelled, amended, regenerated, or already partially picked?
 11. Are pick sequence, bin/zone, reserved stock, substitute, and backorder behaviours decided?
+12. Did I preserve intentional handwriting areas instead of hiding them as empty fields?
 
 ---
 
