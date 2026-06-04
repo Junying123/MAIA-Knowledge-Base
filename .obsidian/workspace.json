@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Requirement Gathering Questionnaire.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Requirement Gathering Questionnaire"
+              "title": "Fixguru Retesting Feedback"
             }
           },
           {
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -273,10 +274,14 @@
                   {
                     "id": 108,
                     "name": "zsh 108"
+                  },
+                  {
+                    "id": 109,
+                    "name": "zsh 109"
                   }
                 ],
-                "activeId": 108,
-                "nextId": 109
+                "activeId": 109,
+                "nextId": 110
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -328,14 +333,19 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Retesting Feedback - Fixguru - Item Historical Pricing.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood RG Questionnaire 2026-06-04.docx",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Requirement Gathering Questionnaire.md",
+    "03 - Clients/Active Cooking Clients/Macro Frozen/Meetings/Requirement Gathering Questionnaire.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Requirement Gathering Questionnaire.md.tmp.1079.49928d3debdd",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/MacroFood sales proposal and rough requirement gathering.md",
-    "03 - Clients/Active Cooking Clients/Macro Frozen/Meetings/Requirement Gathering Questionnaire.md",
     "03 - Clients/Active Cooking Clients/Macro Frozen/Meetings",
     "03 - Clients/Active Cooking Clients/Macro Frozen",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Macro Frozen/Ordermaia x MacroFrozen.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Requirement Gathering Questionnaire.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
     "02 - PM Playbook/Daily Updates/Daily Update - 03-06-2026.md",
@@ -349,15 +359,12 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Client Sales Handover TLDR Brief - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru feedback sync - Transcript.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
     "02 - PM Playbook/Templates/[Template] Client Sales Handover TLDR Brief.md",
     "03 - Clients/Active Cooking Clients/Macrofood/context/memory.md",
     "Granola/Transcripts/2026-05-06/MacroFood sales proposal and rough requirement gathering.md",
     "Granola/Transcripts/2026-05-28/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-28",
-    "Granola/Transcripts/2026-05-29/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-05-29",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - FOC Items - Sortable.md",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.283608fe2905",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.05c75df774ad",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping",
@@ -369,8 +376,6 @@
     "slides/getting-started/assets/gemini.svg",
     "slides/getting-started/assets/cloudflare.svg",
     "slides/getting-started/assets/claude.svg",
-    "slides/getting-started/index.tsx",
-    "slides/getting-started/assets",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
     "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
