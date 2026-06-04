@@ -56,6 +56,16 @@
             }
           },
           {
+            "id": "368d805a87dc880b",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
             "id": "628deccba19f635d",
             "type": "leaf",
             "state": {
@@ -104,7 +114,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -298,7 +308,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -331,11 +341,12 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "368d805a87dc880b",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood Customization Clarification Questionnaire 2026-06-04.docx",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
     "Granola/Transcripts/2026-06-04/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-04",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
@@ -363,12 +374,10 @@
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru feedback sync - Transcript.md",
     "02 - PM Playbook/Templates/[Template] Client Sales Handover TLDR Brief.md",
     "03 - Clients/Active Cooking Clients/Macrofood/context/memory.md",
-    "Granola/Transcripts/2026-05-06/MacroFood sales proposal and rough requirement gathering.md",
     "Granola/Transcripts/2026-05-28",
     "Granola/Transcripts/2026-05-29",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.283608fe2905",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.05c75df774ad",
-    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
     "slides/getting-started/assets/vercel.svg",
