@@ -4,8 +4,8 @@
   "title": "based on this transcript, to provide me the high l...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780652860238,
-  "updatedAt": 1780652913037,
-  "lastResponseAt": 1780652913037,
+  "updatedAt": 1780654036834,
+  "lastResponseAt": 1780654036834,
   "sessionId": "9890bb51-2f7b-42f9-9a07-f163b6a293f9",
   "providerState": {
     "providerSessionId": "9890bb51-2f7b-42f9-9a07-f163b6a293f9"
@@ -13,11 +13,11 @@
   "currentNote": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
   "usage": {
     "model": "opus",
-    "inputTokens": 2697,
-    "cacheCreationInputTokens": 13464,
-    "cacheReadInputTokens": 62358,
+    "inputTokens": 76,
+    "cacheCreationInputTokens": 5576,
+    "cacheReadInputTokens": 75822,
     "contextWindow": 1000000,
-    "contextTokens": 78519,
+    "contextTokens": 81474,
     "percentage": 8,
     "contextWindowIsAuthoritative": true
   }
