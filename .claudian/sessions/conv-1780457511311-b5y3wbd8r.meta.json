@@ -4,20 +4,20 @@
   "title": "can u check on the macrofood side , do they using ...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780457511332,
-  "updatedAt": 1780457625878,
-  "lastResponseAt": 1780457625878,
+  "updatedAt": 1780644531487,
+  "lastResponseAt": 1780644531487,
   "sessionId": "38ea619d-bb8e-4f3f-83d3-983a642446aa",
   "providerState": {
     "providerSessionId": "38ea619d-bb8e-4f3f-83d3-983a642446aa"
   },
   "usage": {
-    "model": "sonnet",
-    "inputTokens": 1,
-    "cacheCreationInputTokens": 7068,
-    "cacheReadInputTokens": 61082,
-    "contextWindow": 200000,
-    "contextTokens": 68151,
-    "percentage": 34,
+    "model": "opus",
+    "inputTokens": 601,
+    "cacheCreationInputTokens": 80915,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 1000000,
+    "contextTokens": 81516,
+    "percentage": 8,
     "contextWindowIsAuthoritative": true
   }
 }
