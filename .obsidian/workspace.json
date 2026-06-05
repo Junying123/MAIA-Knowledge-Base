@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
+                "file": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood"
+              "title": "[F2F] Macrofood Requirements Gathering-transcript v2"
             }
           },
           {
@@ -332,11 +332,12 @@
   },
   "active": "ceef9d86007d72d6",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
     "Granola/Transcripts/2026-06-05/Credit Limit FE briefing - FE__Product-transcript.md",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
-    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
     "Granola/Transcripts/2026-06-05/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-05",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood Customization Clarification Questionnaire 2026-06-04.docx",
@@ -354,7 +355,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/MacroFood sales proposal and rough requirement gathering.md",
     "03 - Clients/Active Cooking Clients/Macro Frozen/Meetings",
     "03 - Clients/Active Cooking Clients/Macro Frozen",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Macro Frozen/Ordermaia x MacroFrozen.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
     "02 - PM Playbook/Daily Updates/Daily Update - 03-06-2026.md",
