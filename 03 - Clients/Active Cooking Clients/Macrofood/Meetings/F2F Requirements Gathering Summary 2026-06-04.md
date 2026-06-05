@@ -9,17 +9,17 @@ lark_url:
 
 **Date:** 4 June 2026
 **Type:** Face-to-Face
-**Attendees:** David (Macrofood), CJ (Macrofood), Finance/Account rep (Macrofood), Jack, Gareth, Jeremy (MAIA)
+**Attendees:** David (Macrofood), CJ (Macrofood), Finance/Account rep (Macrofood), Jack, Gareth, Ivan (MAIA)
 
 ---
 
 ## Agreed Core Workflow (End-to-End)
 
 1. **Customer places order** via WhatsApp to Macrofood
-2. **Sales creates the order internally** and runs Macrofood's own pick list
-3. **Warehouse picks the goods** and confirms actual weight, quantity and price
-4. **Confirmed pick list uploaded to MAIA** — MAIA receives final, confirmed figures only
-5. **MAIA generates documents** — Sales Order → Delivery Order → Invoice (at confirmed weight) → pushes into SQL
+2. **Sales creates a draft Sales Order internally** (outside MAIA) and generates their own pick list
+3. **Warehouse picks the goods** and confirms actual weight, quantity and price on the physical pick list
+4. **Confirmed pick list uploaded to MAIA** — MAIA receives final confirmed figures only; creates SO → Delivery Order → Invoice
+5. **Documents pushed to SQL**
 6. **Customer receives goods** → driver collects signed DO
 7. **Customer sends payment slip** → Finance does AR reconciliation in MAIA (bank statement + payment slip + invoice matching) → knock off in SQL
 
@@ -46,7 +46,7 @@ lark_url:
 - Price currently not managed in SQL — will migrate to MAIA
 
 ### Product Catalog
-- Image-based (not PDF) — customers scared to open PDF
+- Image-based (not PDF) 
 - Contains current prices + product photos
 - Two customer groups: wholesale and retail
 - Used for inactive customers and new prospects
@@ -69,51 +69,34 @@ lark_url:
 
 ---
 
-## Users on MAIA (Confirmed)
-
-| Role | Count |
-|---|---|
-| Sales | 3 |
-| David (owner/coordinator) | 1 |
-| Finance / Account | 1 |
-| Warehouse | 1 |
-| **Total** | **~6** |
-
-- Each salesperson sees only their own customers
-- David has credit controller access
-
----
-
-## Onboarding Prerequisites (Macrofood to prepare)
-
-- [ ] New SIM card for MAIA WhatsApp number
-- [ ] Meta / WhatsApp Business account
-- [ ] OpenAI account + API key (share with MAIA)
-- [ ] AWS account (company email) + grant MAIA access
-- [ ] Share current product catalog samples
-- [ ] Provide SQL vendor contact for integration setup
-
----
-
 ## Action Items
 
 ### MAIA
 - [ ] Contact Macrofood's SQL vendor to set up integration
 - [ ] Send onboarding checklist with step-by-step guide
-- [ ] Schedule follow-up call (~14 June) to confirm SQL setup and system readiness
+- [ ] Schedule follow-up call to confirm SQL setup
 - [ ] Deploy core system first; customizations separately
 - [ ] Clarify pick list entry point question with David
 
 ### Macrofood
-- [ ] Complete 4 onboarding prerequisites (SIM, Meta, OpenAI, AWS)
-- [ ] Share product catalog samples
-- [ ] Provide SQL vendor contact
+- [ ] New SIM card for MAIA WhatsApp number
+- [ ] Meta / WhatsApp Business account
+- [ ] OpenAI account + API key (share with MAIA)
+- [ ] AWS account (company email) + grant MAIA access
+- [ ] Share current product catalog samples
+- [ ] Finalize the pick-list workflow
+- [ ] Send doc samples : invoice/CN, DO, picklist
 
 ---
 
-## Target Go-Live
+## Timeline
 
-**End of June 2026** — Sales module first
+| Milestone | Target Date |
+|---|---|
+| Training session | ~14–15 Jun 2026 |
+| Sales module go-live | End of June 2026 |
+
+> Customizations (AR reconciliation, bulk price update, product catalog) to be deployed separately after core go-live.
 
 ---
 
