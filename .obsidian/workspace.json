@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v1.md",
+                "file": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[F2F] Macrofood Requirements Gathering-transcript v1"
+              "title": "[F2F] Macrofood Requirements Gathering-transcript v2"
             }
           },
           {
@@ -162,8 +162,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -333,10 +332,11 @@
   },
   "active": "ce36b26a973dd155",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v1.md",
+    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
     "Granola/Transcripts/2026-06-05/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-05",
     "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
-    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v1.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood Customization Clarification Questionnaire 2026-06-04.docx",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
@@ -365,7 +365,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Client Sales Handover TLDR Brief - Macrofood.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru feedback sync - Transcript.md",
-    "02 - PM Playbook/Templates/[Template] Client Sales Handover TLDR Brief.md",
     "Granola/Transcripts/2026-05-28",
     "Granola/Transcripts/2026-05-29",
     "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.283608fe2905",
