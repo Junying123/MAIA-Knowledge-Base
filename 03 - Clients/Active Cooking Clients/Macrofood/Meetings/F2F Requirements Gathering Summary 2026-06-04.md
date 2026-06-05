@@ -52,6 +52,13 @@ lark_url:
 - Used for inactive customers and new prospects
 - Follow-up needed: David to share current catalog samples before MAIA designs format
 
+### Stock Entry / GRN Matching
+- Pain point: supplier invoices one quantity (e.g. 1000kg) but actual goods received is different (e.g. 998kg) — GRN and supplier invoice don't match
+- Current process: warehouse takes physical GRN → admin manually keys into SQL → converts to purchase invoice; bottleneck as only one warehouse person
+- MAIA proposed approach: warehouse uploads GRN document (photo/PDF) → MAIA extracts and pre-populates fields → human verifies actual received quantity → creates purchase invoice
+- AI handles item code mapping and UOM conversion mismatches between supplier and Macrofood system; learns from user overrides
+- **Status: Purchasing module not yet in MAIA — flagged as future phase**
+
 ### Credit Limit Control
 - MAIA blocks order when customer hits credit limit
 - David receives notification and approves override (credit controller role)
@@ -72,9 +79,8 @@ lark_url:
 ## Action Items
 
 ### MAIA
-- [ ] Contact Macrofood's SQL vendor to set up integration
-- [ ] Send onboarding checklist with step-by-step guide
-- [ ] Schedule follow-up call to confirm SQL setup
+- [ ] Send onboarding and sample data checklist
+- [ ] Follow-up call with SQL vendor to confirm SQL setup
 - [ ] Deploy core system first; customizations separately
 - [ ] Clarify pick list entry point question with David
 
