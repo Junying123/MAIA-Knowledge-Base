@@ -4,8 +4,8 @@
   "title": "based on this transcript, to provide me the high l...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780652860238,
-  "updatedAt": 1780654036834,
-  "lastResponseAt": 1780654036834,
+  "updatedAt": 1780656437574,
+  "lastResponseAt": 1780656437574,
   "sessionId": "9890bb51-2f7b-42f9-9a07-f163b6a293f9",
   "providerState": {
     "providerSessionId": "9890bb51-2f7b-42f9-9a07-f163b6a293f9"
@@ -14,11 +14,11 @@
   "usage": {
     "model": "opus",
     "inputTokens": 76,
-    "cacheCreationInputTokens": 5576,
-    "cacheReadInputTokens": 75822,
+    "cacheCreationInputTokens": 11908,
+    "cacheReadInputTokens": 82235,
     "contextWindow": 1000000,
-    "contextTokens": 81474,
-    "percentage": 8,
+    "contextTokens": 94219,
+    "percentage": 9,
     "contextWindowIsAuthoritative": true
   }
 }
