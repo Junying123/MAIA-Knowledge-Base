@@ -4,8 +4,8 @@
   "title": "@Granola/Transcripts/2026-06-04/[F2F] Macrofood Re...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780616212416,
-  "updatedAt": 1780622037690,
-  "lastResponseAt": 1780622037690,
+  "updatedAt": 1780623756858,
+  "lastResponseAt": 1780623756858,
   "sessionId": "bd167df9-7cae-40cb-b5f1-dd881ad4083a",
   "providerState": {
     "providerSessionId": "bd167df9-7cae-40cb-b5f1-dd881ad4083a"
@@ -14,10 +14,10 @@
   "usage": {
     "model": "opus",
     "inputTokens": 76,
-    "cacheCreationInputTokens": 1533,
-    "cacheReadInputTokens": 66520,
+    "cacheCreationInputTokens": 1150,
+    "cacheReadInputTokens": 69299,
     "contextWindow": 1000000,
-    "contextTokens": 68129,
+    "contextTokens": 70525,
     "percentage": 7,
     "contextWindowIsAuthoritative": true
   }
