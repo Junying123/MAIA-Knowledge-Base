@@ -279,7 +279,7 @@
                     "name": "zsh 109"
                   }
                 ],
-                "activeId": 109,
+                "activeId": 95,
                 "nextId": 110
               },
               "icon": "terminal",
@@ -297,11 +297,11 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
-    "width": 401.5
+    "width": 624.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -330,7 +330,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ce36b26a973dd155",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v1.md",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
