@@ -3,7 +3,7 @@ granola_id: 5fcb541f-9f16-4631-a0d3-b13df5dd44b4
 title: Credit Limit FE briefing - FE<>Product - Transcript
 type: transcript
 created: 2026-06-05T07:31:41.385Z
-updated: 2026-06-05T08:27:38.928Z
+updated: 2026-06-05T16:45:49.258Z
 attendees: 
   - lim.junyan@gmail.com
   - brendan@mindhive.asia

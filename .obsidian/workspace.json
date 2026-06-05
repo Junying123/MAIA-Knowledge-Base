@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[F2F] Macrofood Requirements Gathering-transcript v2"
+              "title": "[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04"
             }
           },
           {
@@ -285,10 +285,14 @@
                   {
                     "id": 111,
                     "name": "zsh 111"
+                  },
+                  {
+                    "id": 112,
+                    "name": "zsh 112"
                   }
                 ],
-                "activeId": 111,
-                "nextId": 112
+                "activeId": 112,
+                "nextId": 113
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -338,11 +342,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.1f15fe1f0edb",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
