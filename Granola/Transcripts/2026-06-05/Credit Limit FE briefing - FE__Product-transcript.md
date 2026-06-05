@@ -3,7 +3,7 @@ granola_id: 5fcb541f-9f16-4631-a0d3-b13df5dd44b4
 title: Credit Limit FE briefing - FE<>Product - Transcript
 type: transcript
 created: 2026-06-05T07:31:41.385Z
-updated: 2026-06-05T08:04:16.140Z
+updated: 2026-06-05T08:27:38.928Z
 attendees: 
   - lim.junyan@gmail.com
   - brendan@mindhive.asia
@@ -1272,4 +1272,1636 @@ That's the goal of what I'm trying to show.
 ### You (2026-06-05T08:04:52.022Z)
 
 What I'm trying to show. Because right now it's only.
+
+### Guest (2026-06-05T08:04:54.182Z)
+
+Because right now it's only 0.9 0.8 something percent.
+
+### You (2026-06-05T08:04:55.942Z)
+
+8 something.
+
+### Guest (2026-06-05T08:05:00.822Z)
+
+This one. Okay. Then I create invoice. Okay, then I submit.
+
+### You (2026-06-05T08:05:21.702Z)
+
+Now this is a bug that.
+
+### Guest (2026-06-05T08:05:22.102Z)
+
+Okay, now this is a bug that I'm aware of.
+
+### You (2026-06-05T08:05:22.742Z)
+
+I'm aware of. Is that when you submit this thing is automatically not updated, it's still data.
+
+### Guest (2026-06-05T08:05:24.502Z)
+
+Is that when you submit, this thing is automatically not updated. It's stale data.
+
+### You (2026-06-05T08:05:29.142Z)
+
+So.
+
+### Guest (2026-06-05T08:05:29.622Z)
+
+So I have to actually refresh the.
+
+### You (2026-06-05T08:05:31.222Z)
+
+Actually.
+
+### Guest (2026-06-05T08:05:34.342Z)
+
+Cat. Yeah, it's a cash. So basically what I have to do is that once you submit invoice, I have to recall the.
+
+### You (2026-06-05T08:05:40.902Z)
+
+The exposure.
+
+### Guest (2026-06-05T08:05:40.982Z)
+
+Yeah, the exposure API.
+
+### You (2026-06-05T08:05:43.062Z)
+
+The only way.
+
+### Guest (2026-06-05T08:05:43.462Z)
+
+That one I'm aware of.
+
+### You (2026-06-05T08:05:44.902Z)
+
+So now you can see.
+
+### Guest (2026-06-05T08:05:45.462Z)
+
+So now you would see. The. This.
+
+### You (2026-06-05T08:05:50.742Z)
+
+So you see how now.
+
+### Guest (2026-06-05T08:05:51.142Z)
+
+So you see how now it's.
+
+### You (2026-06-05T08:05:55.382Z)
+
+That is how.
+
+### Guest (2026-06-05T08:05:55.702Z)
+
+That is how the break.
+
+### You (2026-06-05T08:05:59.142Z)
+
+We can update.
+
+### Guest (2026-06-05T08:05:59.782Z)
+
+Er update.
+
+### You (2026-06-05T08:06:04.342Z)
+
+What is showing negative?
+
+### Guest (2026-06-05T08:06:12.742Z)
+
+What's the negative? Negative means you don't have any available credit left.
+
+### You (2026-06-05T08:06:14.422Z)
+
+Means you don't have. To meet any future.
+
+### Guest (2026-06-05T08:06:19.302Z)
+
+So that means any future sales order or anything will be blocked unless you have the bypass credit limit.
+
+### You (2026-06-05T08:06:22.502Z)
+
+I ask you have the. Negative. 0. If you are saying.
+
+### Guest (2026-06-05T08:06:28.822Z)
+
+Ation. It should be like rm0.
+
+### You (2026-06-05T08:06:31.302Z)
+
+Negative.
+
+### Guest (2026-06-05T08:06:32.742Z)
+
+The amount. Yeah, I think this is just from the spec that I provided. It should be negative. So I think I'm gonna rewind.
+
+### You (2026-06-05T08:06:39.462Z)
+
+Ly bypass any, how do we know this bypass? You can when you so long as.
+
+### Guest (2026-06-05T08:06:45.462Z)
+
+You the submit. So long as the.
+
+### You (2026-06-05T08:06:50.262Z)
+
+If you enable.
+
+### Guest (2026-06-05T08:06:50.422Z)
+
+So if you enable bypass credit limit from the setting.
+
+### You (2026-06-05T08:06:52.662Z)
+
+From the sending, right, it's two ways for you to verify the.
+
+### Guest (2026-06-05T08:06:54.022Z)
+
+Right, there's two ways for you to verify is that it works.
+
+### You (2026-06-05T08:06:56.982Z)
+
+One so long as.
+
+### Guest (2026-06-05T08:06:57.542Z)
+
+Once so long as if the customer does not have the block on Ou setting is set to false. They can immediately create any document despite the available amount is zero.
+
+### You (2026-06-05T08:07:00.982Z)
+
+You. Are. Setting it false, you can immediately create. The people. Around. It. Because this one is based on.
+
+### Guest (2026-06-05T08:07:11.462Z)
+
+Because this one is based on the credit limit.
+
+### You (2026-06-05T08:07:14.342Z)
+
+You can just like.
+
+### Guest (2026-06-05T08:07:14.582Z)
+
+So you can just like create a sales order with 40K despite available money.
+
+### You (2026-06-05T08:07:17.702Z)
+
+Despite a bit more because that means you're already bypassing already. So we made even a variable showing this.
+
+### Guest (2026-06-05T08:07:19.382Z)
+
+To zero. Because that means you're already bypassing the credit limit already. Or whatever is showing this. They still can submit. Yeah, you can still submit SO. You can submit invoices and stuff like that.
+
+### You (2026-06-05T08:07:27.062Z)
+
+Yeah, you can still submit. Okay, so that one.
+
+### Guest (2026-06-05T08:07:32.822Z)
+
+Okay, so that one. Thank you for bringing up. Yeah, this. This kind of stuff is what I'm very annoyed with. Like, I would never catch this, like, because there's a lot of.
+
+### You (2026-06-05T08:07:36.022Z)
+
+Kind of stuff is what I would never catch this. Because there's a lot of. Things to.
+
+### Guest (2026-06-05T08:07:44.742Z)
+
+Things to add to, like, cases. 0%
+
+### You (2026-06-05T08:07:52.662Z)
+
+Say.
+
+### Guest (2026-06-05T08:07:53.862Z)
+
+Limit.
+
+### You (2026-06-05T08:07:57.862Z)
+
+I don't think so because.
+
+### Guest (2026-06-05T08:07:58.422Z)
+
+Oh, I don't think so. Because the thing is.
+
+### You (2026-06-05T08:08:03.942Z)
+
+The percentage. Okay, so how the percentage work is based.
+
+### Guest (2026-06-05T08:08:04.582Z)
+
+The percentage goes. Okay, so how the percentage work is that this one is based on the limit. So this one is over the. It's 45.
+
+### You (2026-06-05T08:08:15.862Z)
+
+On An 50k? 150.
+
+### Guest (2026-06-05T08:08:18.182Z)
+
+45. Okay.
+
+### You (2026-06-05T08:08:23.382Z)
+
+K.
+
+### Guest (2026-06-05T08:08:29.702Z)
+
+Okay. Okay. It's 0. 344. Okay, so technically. So this one is technically not wrong then. Right. It's not wrong, but it can be quite confused because the amount is too small. Okay. This one, I think for now, I won't touch it unless there are more. When you guys test, there are multiple cases where it can be very misleading. So right now, I think if right now you're longing it to the owner. Yeah. Because, like, I think I don't want to put zero point.
+
+### You (2026-06-05T08:08:34.102Z)
+
+So it's technically. So this one is standing on rock. And it's not wrong but it can be quite one. Of the one I think there are more when you can test there are multiple cases where it can be very misquotable. So right now I think if right now if you're rounding into like a photo alright yeah.
+
+### Guest (2026-06-05T08:09:07.302Z)
+
+For this. Point three. For, by the way. This is deployed on chatbot. Oh, wait. Also, I spot another Gap in the projection.
+
+### You (2026-06-05T08:09:14.342Z)
+
+By the way this is deployed on chatbot. Another gap. When I was doing.
+
+### Guest (2026-06-05T08:09:25.302Z)
+
+When I was doing the testing, I was like, wait, this doesn't seem correct.
+
+### You (2026-06-05T08:09:27.542Z)
+
+All. Right. I'll show you the.
+
+### Guest (2026-06-05T08:09:29.142Z)
+
+I'll show you the Gap. We are going back now. Okay, then I'll show you quickly show you the backend.
+
+### You (2026-06-05T08:09:31.382Z)
+
+And I'll show you. Quickly. The gap is on the.
+
+### Guest (2026-06-05T08:09:37.462Z)
+
+The Gap is on the back end side. But then because the back end needs to change the front end and back end chatbot has to change as well. So the gap MS will tell you because I think you encounter this when you do your testing as well.
+
+### You (2026-06-05T08:09:38.022Z)
+
+Brackets. To change. The frontend backend. Change as well. So to get. This. So let's just see.
+
+### Guest (2026-06-05T08:09:49.782Z)
+
+So let's just say.
+
+### You (2026-06-05T08:09:52.742Z)
+
+Is there another customer?
+
+### Guest (2026-06-05T08:09:53.142Z)
+
+Is there another customer with a issue? Is that you should. Yeah. I mean, for now, let me walk through with fire harvest, because if I flag it as a gas, it's gonna choke me.
+
+### You (2026-06-05T08:10:06.022Z)
+
+Let me just use my c.
+
+### Guest (2026-06-05T08:10:06.502Z)
+
+Let me just use my question. I think I have a customer that I can use.
+
+### You (2026-06-05T08:10:07.782Z)
+
+At. Limiting.
+
+### Guest (2026-06-05T08:10:13.542Z)
+
+Test limiting. Oh, no. Sorry. Current implementation. Do you show? Do I. He was already aware of it. The. He's aware of it of Danny already. And then he provided a start for me to just refine the already current implementation. So he. He knows the generating.
+
+### You (2026-06-05T08:10:24.582Z)
+
+Already. So he knows. Because this is.
+
+### Guest (2026-06-05T08:10:32.262Z)
+
+Because this is his. Because I have to do based on his back. Great. We said quickly. I'll show you the thing quickly. So right now. Right. So this is. You know how credit utilization is based off.
+
+### You (2026-06-05T08:10:37.702Z)
+
+Right now right. You know how utilization. Is based off.
+
+### Guest (2026-06-05T08:10:45.062Z)
+
+Invoice. Right. Okay.
+
+### You (2026-06-05T08:10:46.262Z)
+
+So that's just the.
+
+### Guest (2026-06-05T08:10:46.742Z)
+
+So let's just say in. If you create a standalone invoice.
+
+### You (2026-06-05T08:10:50.182Z)
+
+Okay and then you put.
+
+### Guest (2026-06-05T08:10:50.742Z)
+
+Okay. And then you put maybe.
+
+### You (2026-06-05T08:10:54.342Z)
+
+Anything that's.
+
+### Guest (2026-06-05T08:10:54.662Z)
+
+Is there anything that's very expensive?
+
+### You (2026-06-05T08:10:55.382Z)
+
+Very all right Miro.
+
+### Guest (2026-06-05T08:10:56.662Z)
+
+Bye, Miro.
+
+### You (2026-06-05T08:10:57.702Z)
+
+Okay.
+
+### Guest (2026-06-05T08:10:58.102Z)
+
+Okay, this one. Okay. This one is 50k.
+
+### You (2026-06-05T08:11:03.702Z)
+
+I'm trying to make.
+
+### Guest (2026-06-05T08:11:04.022Z)
+
+I'm trying to make it as expensive as possible.
+
+### You (2026-06-05T08:11:07.222Z)
+
+Okay. Whatever.
+
+### Guest (2026-06-05T08:11:07.622Z)
+
+Okay, whatever.
+
+### You (2026-06-05T08:11:09.622Z)
+
+Okay.
+
+### Guest (2026-06-05T08:11:09.782Z)
+
+Okay.
+
+### You (2026-06-05T08:11:10.822Z)
+
+This one right.
+
+### Guest (2026-06-05T08:11:11.062Z)
+
+Like this one. Right. So realistically speaking, this one should.
+
+### You (2026-06-05T08:11:15.862Z)
+
+Now this one is not really.
+
+### Guest (2026-06-05T08:11:16.662Z)
+
+This one is not really important for. For QA because I don't think you'll be looking at this a lot of times.
+
+### You (2026-06-05T08:11:23.382Z)
+
+So here.
+
+### Guest (2026-06-05T08:11:23.942Z)
+
+So here.
+
+### You (2026-06-05T08:11:26.262Z)
+
+Your invoice.
+
+### Guest (2026-06-05T08:11:26.742Z)
+
+Your invoice is 4500. 45. 0. So in the projection.
+
+### You (2026-06-05T08:11:31.142Z)
+
+So in the project. Ion this one should.
+
+### Guest (2026-06-05T08:11:33.702Z)
+
+This one should tell you that this one would bridge the credit limit. Right.
+
+### You (2026-06-05T08:11:35.862Z)
+
+Be. Limited.
+
+### Guest (2026-06-05T08:11:38.662Z)
+
+It's not, you know, credit. Credit limit breach is false.
+
+### You (2026-06-05T08:11:38.902Z)
+
+No credit credit. Oh. Okay.
+
+### Guest (2026-06-05T08:11:43.942Z)
+
+Oh,
+
+### You (2026-06-05T08:11:44.102Z)
+
+So basically what.
+
+### Guest (2026-06-05T08:11:44.102Z)
+
+Okay. So basically what I mean by backend has to fix this. If that means backend has to track.
+
+### You (2026-06-05T08:11:48.262Z)
+
+Brackend has. Your dot type.
+
+### Guest (2026-06-05T08:11:50.422Z)
+
+The dot type that we're sending. So we have to send the dot type most likely to.
+
+### You (2026-06-05T08:11:51.062Z)
+
+That send it. Off. Yeah.
+
+### Guest (2026-06-05T08:11:55.382Z)
+
+The. Yeah, I thought whenever we're. We're sending a projection, she's using that value to calculate this priority. No, I don't think she's calculating the dog type.
+
+### You (2026-06-05T08:11:57.942Z)
+
+Projections. Bad value. S. I think she's just cutting.
+
+### Guest (2026-06-05T08:12:05.702Z)
+
+I think she's just calculating the. Things. All right, so that means if we issue like.
+
+### You (2026-06-05T08:12:10.342Z)
+
+Up.
+
+### Guest (2026-06-05T08:12:13.222Z)
+
+A. Like a credit note, it should decrease the height. Right? Yes. Yeah. Yeah. It should decrease.
+
+### You (2026-06-05T08:12:13.302Z)
+
+Like. Right. Yeah.
+
+### Guest (2026-06-05T08:12:21.462Z)
+
+Same. I think that's the credit. I think it's the only thing I didn't test, but this is something I think I'll inform for. Her regarding this.
+
+### You (2026-06-05T08:12:28.902Z)
+
+So that's.
+
+### Guest (2026-06-05T08:12:29.142Z)
+
+Okay, so that's one.
+
+### You (2026-06-05T08:12:30.342Z)
+
+One see everyone.
+
+### Guest (2026-06-05T08:12:31.702Z)
+
+See, we on.
+
+### You (2026-06-05T08:12:33.942Z)
+
+Yeah so when you.
+
+### Guest (2026-06-05T08:12:34.102Z)
+
+Okay. Yeah. So when you try to create the thing, it will just create it, like, happily create that thing.
+
+### You (2026-06-05T08:12:36.582Z)
+
+Just create it.
+
+### Guest (2026-06-05T08:12:40.582Z)
+
+Oh, hold on.
+
+### You (2026-06-05T08:12:47.222Z)
+
+Okay.
+
+### Guest (2026-06-05T08:12:47.782Z)
+
+Oh, okay. Okay. Okay. Oh, right. You know, I thought. I thought we solved this issue already.
+
+### You (2026-06-05T08:13:00.022Z)
+
+Like apparently you cannot.
+
+### Guest (2026-06-05T08:13:00.502Z)
+
+Like, apparently you cannot have, like, two. Yeah, same dates.
+
+### You (2026-06-05T08:13:02.422Z)
+
+Same date. I thought we solved this issue.
+
+### Guest (2026-06-05T08:13:04.982Z)
+
+I thought we solved this issue.
+
+### You (2026-06-05T08:13:08.022Z)
+
+Anyway yeah.
+
+### Guest (2026-06-05T08:13:08.502Z)
+
+Anyway. Yeah. So see how we're able to create.
+
+### You (2026-06-05T08:13:09.302Z)
+
+So how were. Just like that and then you guess.
+
+### Guest (2026-06-05T08:13:12.502Z)
+
+Just like that. And then you can submit.
+
+### You (2026-06-05T08:13:15.782Z)
+
+Why do you stand.
+
+### Guest (2026-06-05T08:13:16.422Z)
+
+Are you freestanding? It will. Add to the invoice. Yeah, it will always add because it's part of the thing already.
+
+### You (2026-06-05T08:13:30.342Z)
+
+Over you.
+
+### Guest (2026-06-05T08:13:31.782Z)
+
+Invoice.
+
+### You (2026-06-05T08:13:32.902Z)
+
+And. Build.
+
+### Guest (2026-06-05T08:13:34.422Z)
+
+Order and draft SO and active rotations.
+
+### You (2026-06-05T08:13:36.982Z)
+
+So this one also.
+
+### Guest (2026-06-05T08:13:37.382Z)
+
+So this one also.
+
+### You (2026-06-05T08:13:40.102Z)
+
+Add. To. Yeah.
+
+### Guest (2026-06-05T08:13:42.582Z)
+
+Yeah. So this one will immediately add to unpaid invoice. S. So.
+
+### You (2026-06-05T08:13:54.262Z)
+
+Let's connect.
+
+### Guest (2026-06-05T08:13:54.902Z)
+
+Let's technically, because you. I've already informed you regarding the block, each decorative block.
+
+### You (2026-06-05T08:13:55.542Z)
+
+The. Correct. How they think.
+
+### Guest (2026-06-05T08:14:02.902Z)
+
+How that thing works, the projection.
+
+### You (2026-06-05T08:14:03.542Z)
+
+Works and projection.
+
+### Guest (2026-06-05T08:14:06.422Z)
+
+For the projection works.
+
+### You (2026-06-05T08:14:06.502Z)
+
+Works. And then the current.
+
+### Guest (2026-06-05T08:14:08.022Z)
+
+And then the current gaps. Oh, there is one gap that I have to tell you.
+
+### You (2026-06-05T08:14:11.702Z)
+
+Then this one might be.
+
+### Guest (2026-06-05T08:14:12.262Z)
+
+Yeah, this one might be confusing.
+
+### You (2026-06-05T08:14:14.662Z)
+
+Hold on let me cancel.
+
+### Guest (2026-06-05T08:14:14.982Z)
+
+Oh, wait, hold on. Let me cancel this. So.
+
+### You (2026-06-05T08:14:15.702Z)
+
+This.
+
+### Guest (2026-06-05T08:14:19.462Z)
+
+The bridge.
+
+### You (2026-06-05T08:14:23.702Z)
+
+Show.
+
+### Guest (2026-06-05T08:14:26.182Z)
+
+The one that I told patient.
+
+### You (2026-06-05T08:14:28.742Z)
+
+Okay so.
+
+### Guest (2026-06-05T08:14:28.982Z)
+
+Oh, okay. So there we.
+
+### You (2026-06-05T08:14:34.502Z)
+
+The issue.
+
+### Guest (2026-06-05T08:14:35.062Z)
+
+Issue. We're back in right now. Is that. Okay, so when I issue this invoice.
+
+### You (2026-06-05T08:14:36.902Z)
+
+I issued.
+
+### Guest (2026-06-05T08:14:38.902Z)
+
+Right, this.
+
+### You (2026-06-05T08:14:39.222Z)
+
+This yeah.
+
+### Guest (2026-06-05T08:14:41.222Z)
+
+Yeah, the standalone, obviously just in the invoice domain, the invoice module. So your credit limit is 30k.
+
+### You (2026-06-05T08:14:44.022Z)
+
+The input. So your credit. But this invoice.
+
+### Guest (2026-06-05T08:14:48.662Z)
+
+But this invoice is 450k.
+
+### You (2026-06-05T08:14:50.662Z)
+
+400. So when I.
+
+### Guest (2026-06-05T08:14:54.742Z)
+
+So when I issue the. When I. When you want to create the invoice, realistically, I should show you the credit warning dialogue. Right. Saying, hey, what you're about to do is going to, like, breach the credit limit.
+
+### You (2026-06-05T08:14:59.542Z)
+
+Realistically I. Take. What you're about. To get. Like. Oh and this one.
+
+### Guest (2026-06-05T08:15:07.862Z)
+
+And this one will actually count into breaching the credit limit because it's an invoice, not a sales order.
+
+### You (2026-06-05T08:15:08.502Z)
+
+Works. It. S not. Sales order you can.
+
+### Guest (2026-06-05T08:15:12.822Z)
+
+Sales audit. You can create as many as you want and you won't count your credit utilization.
+
+### You (2026-06-05T08:15:16.662Z)
+
+By creating an.
+
+### Guest (2026-06-05T08:15:17.142Z)
+
+But creating an invoice and because to project the thing.
+
+### You (2026-06-05T08:15:22.102Z)
+
+If you submit already.
+
+### Guest (2026-06-05T08:15:23.062Z)
+
+If you submit the so it will count to your credit. If you submit the SI invoice, it will come to your utilization already. So I should show you the credit limit warning.
+
+### You (2026-06-05T08:15:26.982Z)
+
+Still continue. So I should show you. But the reason.
+
+### Guest (2026-06-05T08:15:31.942Z)
+
+But the reason why I'm not showing this right now is because right now front backend is considered that.
+
+### You (2026-06-05T08:15:33.382Z)
+
+Is because right now. It's not breaching.
+
+### Guest (2026-06-05T08:15:37.222Z)
+
+It's not breaching the credit limit.
+
+### You (2026-06-05T08:15:39.222Z)
+
+It treats all.
+
+### Guest (2026-06-05T08:15:39.782Z)
+
+It treats all the dot types as the same.
+
+### You (2026-06-05T08:15:40.902Z)
+
+The. Same. Even though you.
+
+### Guest (2026-06-05T08:15:44.502Z)
+
+Even though you already.
+
+### You (2026-06-05T08:15:47.062Z)
+
+When you.
+
+### Guest (2026-06-05T08:15:47.462Z)
+
+When you're about to. Not when you already. When you're about to.
+
+### You (2026-06-05T08:15:52.422Z)
+
+Re about to get more than you're about to.
+
+### Guest (2026-06-05T08:15:52.742Z)
+
+When you're about to. It should show you in the invoice that you're about to preach the credit limit.
+
+### You (2026-06-05T08:15:54.982Z)
+
+Reach the money oh I think.
+
+### Guest (2026-06-05T08:16:01.142Z)
+
+In SO. I know it's. Like in SO quotation. It's fine. Only invoice. I mean, you can do it from S O to invoice invoice as well.
+
+### You (2026-06-05T08:16:05.382Z)
+
+You can do it. But it's more prominent.
+
+### Guest (2026-06-05T08:16:09.382Z)
+
+But it's more prominent in standalone invoice.
+
+### You (2026-06-05T08:16:13.462Z)
+
+Okay so.
+
+### Guest (2026-06-05T08:16:14.102Z)
+
+Okay. So that's the thing. So you know how it's 150.
+
+### You (2026-06-05T08:16:15.382Z)
+
+That's the date so. If you can.
+
+### Guest (2026-06-05T08:16:18.022Z)
+
+So if you cancel the value would reset.
+
+### You (2026-06-05T08:16:21.542Z)
+
+See if I cancel.
+
+### Guest (2026-06-05T08:16:21.942Z)
+
+So if I cancel the thing, your data. Yeah, it will, like, basically invalidate whatever you did.
+
+### You (2026-06-05T08:16:25.542Z)
+
+Whatever. Okay.
+
+### Guest (2026-06-05T08:16:33.622Z)
+
+Hold on. It's like. I hope no one's deploying. So from 150 000 just now, it will. It goes back to zero. At the moment, you cancel the credit. No. Okay.
+
+### You (2026-06-05T08:16:54.262Z)
+
+So.
+
+### Guest (2026-06-05T08:16:54.982Z)
+
+So.
+
+### You (2026-06-05T08:16:55.142Z)
+
+I think.
+
+### Guest (2026-06-05T08:16:55.702Z)
+
+I think the number of rounds. Up 99.
+
+### You (2026-06-05T08:16:59.542Z)
+
+Now. You.
+
+### Guest (2026-06-05T08:17:00.662Z)
+
+Point nine five and above your rounds up. So it's saying 100. Oh, okay. Okay. There's no. Okay. I think that you find is that you know how this is. Like one percent decimal. Yeah. This one is showing.
+
+### You (2026-06-05T08:17:18.262Z)
+
+Re showing. Two.
+
+### Guest (2026-06-05T08:17:19.622Z)
+
+Two.
+
+### You (2026-06-05T08:17:21.142Z)
+
+Like the decimal.
+
+### Guest (2026-06-05T08:17:21.382Z)
+
+It's like the decimal places here is two. But this is one.
+
+### You (2026-06-05T08:17:23.222Z)
+
+But this is one. I'll.
+
+### Guest (2026-06-05T08:17:25.462Z)
+
+So I'll, like, fix this to include two.
+
+### You (2026-06-05T08:17:25.542Z)
+
+Like fix this.
+
+### Guest (2026-06-05T08:17:28.022Z)
+
+Yeah.
+
+### You (2026-06-05T08:17:29.382Z)
+
+Yeah.
+
+### Guest (2026-06-05T08:17:32.342Z)
+
+There is one Gap that this one depends. I want it for your heart to be in the call because that is the one thing I feel like.
+
+### You (2026-06-05T08:17:34.822Z)
+
+This one depends. It's quite important because.
+
+### Guest (2026-06-05T08:17:42.022Z)
+
+Is quite important. Because if you guys look at it, you guys will be like, what the is this?
+
+### You (2026-06-05T08:17:43.862Z)
+
+You guys will be. So.
+
+### Guest (2026-06-05T08:17:47.382Z)
+
+So we. It's about the overdue invoice.
+
+### You (2026-06-05T08:17:56.902Z)
+
+Okay.
+
+### Guest (2026-06-05T08:17:57.222Z)
+
+Okay.
+
+### You (2026-06-05T08:17:58.662Z)
+
+I'll just go.
+
+### Guest (2026-06-05T08:17:58.822Z)
+
+I think I'll just go here.
+
+### You (2026-06-05T08:17:59.062Z)
+
+Here. I'll show you an example.
+
+### Guest (2026-06-05T08:18:02.662Z)
+
+I'll show you an example and then I'll ask you guys to ask you guys if you guys understand.
+
+### You (2026-06-05T08:18:08.982Z)
+
+So just now we have.
+
+### Guest (2026-06-05T08:18:09.542Z)
+
+So just now we have.
+
+### You (2026-06-05T08:18:12.342Z)
+
+You guys understand what.
+
+### Guest (2026-06-05T08:18:12.902Z)
+
+You guys understand what this is?
+
+### You (2026-06-05T08:18:13.462Z)
+
+Is.
+
+### Guest (2026-06-05T08:18:19.382Z)
+
+You guys understand where this is coming from?
+
+### You (2026-06-05T08:18:20.022Z)
+
+It.
+
+### Guest (2026-06-05T08:18:26.182Z)
+
+Like I said, I have 50k credit limit. I already use 25k. I can define more allocator. Oh, no. No, the. The 25k is basically the available credit limit you have.
+
+### You (2026-06-05T08:18:35.622Z)
+
+Yeah.
+
+### Guest (2026-06-05T08:18:40.102Z)
+
+This one. Is coming from the payment entry.
+
+### You (2026-06-05T08:18:43.702Z)
+
+You know how.
+
+### Guest (2026-06-05T08:18:44.102Z)
+
+You know how in the payment receipt? You can pay. You can pay for invoices. More than what do you think. So, for example, like for the invoice, you own. The amount is 100, but you go and pay 100K. You can pay for that. So now you have an extra, like 990.
+
+### You (2026-06-05T08:18:51.462Z)
+
+It. For the import.
+
+### Guest (2026-06-05T08:19:07.142Z)
+
+Plans at 900 kit. 900 000. 900 ringgit. Left. So that is basically what unallocated credit is. It's a floating amount.
+
+### You (2026-06-05T08:19:11.942Z)
+
+It's basically what. I.
+
+### Guest (2026-06-05T08:19:19.302Z)
+
+But right now the amount is just there. Right. We cannot use it. That's the thing I was going to tell you about. Because when I look at it in the first time, I was like, what is this? It's so confusing.
+
+### You (2026-06-05T08:19:19.382Z)
+
+Know. Does. The thing.
+
+### Guest (2026-06-05T08:19:29.222Z)
+
+I mean, I added it because I think it's the easiest way for me to explain.
+
+### You (2026-06-05T08:19:29.222Z)
+
+I edit it.
+
+### Guest (2026-06-05T08:19:34.342Z)
+
+But without me editing it, you would find it very confusing.
+
+### You (2026-06-05T08:19:36.502Z)
+
+Very. Confident.
+
+### Guest (2026-06-05T08:19:37.702Z)
+
+So in this case, you don't see the unallocated amount.
+
+### You (2026-06-05T08:19:38.022Z)
+
+In this case.
+
+### Guest (2026-06-05T08:19:41.782Z)
+
+Right. So how front end is doing if they underlocate the credit is zero. We're not showing it.
+
+### You (2026-06-05T08:19:42.102Z)
+
+How front end is. There we're not sure.
+
+### Guest (2026-06-05T08:19:46.822Z)
+
+Because the user doesn't have it. So why? Why should we.
+
+### You (2026-06-05T08:19:47.142Z)
+
+That's heavy. So when you show.
+
+### Guest (2026-06-05T08:19:50.342Z)
+
+So anyway, so you only show unlocated credit when it's presented amount is more educated.
+
+### You (2026-06-05T08:20:00.022Z)
+
+Yes but it's.
+
+### Guest (2026-06-05T08:20:00.582Z)
+
+Yes. The customer pay or basically when the amount is more than zero.
+
+### You (2026-06-05T08:20:02.982Z)
+
+Present. Maybe. How it works.
+
+### Guest (2026-06-05T08:20:12.342Z)
+
+Basically how it works is that if you pay more than anything, then.
+
+### You (2026-06-05T08:20:17.542Z)
+
+It depends.
+
+### Guest (2026-06-05T08:20:17.862Z)
+
+But it depends on the thing. So how it works is.
+
+### You (2026-06-05T08:20:19.542Z)
+
+How it. Works. For the unallocated.
+
+### Guest (2026-06-05T08:20:21.382Z)
+
+For the unallocated amount to appear.
+
+### You (2026-06-05T08:20:24.662Z)
+
+It is.
+
+### Guest (2026-06-05T08:20:25.062Z)
+
+It is basically.
+
+### You (2026-06-05T08:20:27.942Z)
+
+You have to.
+
+### Guest (2026-06-05T08:20:28.582Z)
+
+You have to total.
+
+### You (2026-06-05T08:20:31.542Z)
+
+Invoke.
+
+### Guest (2026-06-05T08:20:31.702Z)
+
+Invoice.
+
+### You (2026-06-05T08:20:33.142Z)
+
+Minus.
+
+### Guest (2026-06-05T08:20:33.462Z)
+
+Minus total amount.
+
+### You (2026-06-05T08:20:34.422Z)
+
+Command a.
+
+### Guest (2026-06-05T08:20:35.702Z)
+
+Paid. Amount. Okay.
+
+### You (2026-06-05T08:20:38.422Z)
+
+So whatever remaining.
+
+### Guest (2026-06-05T08:20:38.902Z)
+
+So whatever remaining is the located. If it's plus.
+
+### You (2026-06-05T08:20:42.342Z)
+
+Is plus.
+
+### Guest (2026-06-05T08:20:45.462Z)
+
+It's.
+
+### You (2026-06-05T08:20:45.542Z)
+
+It. S no no no if it's like.
+
+### Guest (2026-06-05T08:20:47.462Z)
+
+No, no, no. If it's negative. If it's negative.
+
+### You (2026-06-05T08:20:56.582Z)
+
+Minus.
+
+### Guest (2026-06-05T08:20:57.142Z)
+
+Minus invoice. Total invoice. This is in payment entry. This is just for your contacts.
+
+### You (2026-06-05T08:21:00.102Z)
+
+This is main payment. For your. Content.
+
+### Guest (2026-06-05T08:21:05.542Z)
+
+So any plus amount is unallocated.
+
+### You (2026-06-05T08:21:11.702Z)
+
+Okay now.
+
+### Guest (2026-06-05T08:21:12.182Z)
+
+Okay, now the reason. Okay, now why am I showing you this? Because remember the overview breakdown that I showed you?
+
+### You (2026-06-05T08:21:14.582Z)
+
+Why showing. Remember the overdue. Like who has.
+
+### Guest (2026-06-05T08:21:23.062Z)
+
+Like, who has it?
+
+### You (2026-06-05T08:21:23.462Z)
+
+It. Met true metro.
+
+### Guest (2026-06-05T08:21:25.462Z)
+
+Metro. Metro. Metro. Metro.
+
+### You (2026-06-05T08:21:28.262Z)
+
+Supp. Lies.
+
+### Guest (2026-06-05T08:21:28.582Z)
+
+Tetris. Please.
+
+### You (2026-06-05T08:21:30.822Z)
+
+Okay like you see how.
+
+### Guest (2026-06-05T08:21:32.502Z)
+
+Like you see how.
+
+### You (2026-06-05T08:21:34.502Z)
+
+The total in.
+
+### Guest (2026-06-05T08:21:35.142Z)
+
+The total in the total overview is always.
+
+### You (2026-06-05T08:21:35.542Z)
+
+The.
+
+### Guest (2026-06-05T08:21:38.822Z)
+
+I hate this. As always the same as the aging breakdown.
+
+### You (2026-06-05T08:21:39.222Z)
+
+Heat. Is for was. Te.
+
+### Guest (2026-06-05T08:21:43.062Z)
+
+Right. Okay.
+
+### You (2026-06-05T08:21:44.502Z)
+
+I want to show you.
+
+### Guest (2026-06-05T08:21:44.582Z)
+
+Now, if I were to show you evergreen.
+
+### You (2026-06-05T08:21:46.742Z)
+
+Now this is the edge.
+
+### Guest (2026-06-05T08:21:47.222Z)
+
+Now, this is the edge case that I was talking about. Because I already bought this as a bug already.
+
+### You (2026-06-05T08:21:53.542Z)
+
+Do you see any.
+
+### Guest (2026-06-05T08:21:53.622Z)
+
+You see anything that's off? Small? Yeah. This is lesser than this. Oh, because it's taking the unallocated amount. Minusing that. Yeah. So the remaining overdue is done. Yeah.
+
+### You (2026-06-05T08:22:17.382Z)
+
+But the thing is.
+
+### Guest (2026-06-05T08:22:17.782Z)
+
+But the thing is, you only know that after I told you about the use of the underlying this guy have the unallocated mark here then. No, because it's already deducted, so there's no. It's zero already. So I think if you want to look at the back end response, this is how it looks like.
+
+### You (2026-06-05T08:22:18.902Z)
+
+Only. No. Because it's already. So.
+
+### Guest (2026-06-05T08:22:34.662Z)
+
+But. But right now there's no way to use that allocator now. Right. If I create a new payment entry, there's no. I've only input a new amount.
+
+### You (2026-06-05T08:22:44.822Z)
+
+Yeah.
+
+### Guest (2026-06-05T08:22:45.142Z)
+
+Yeah.
+
+### You (2026-06-05T08:22:48.022Z)
+
+When I. Do.
+
+### Guest (2026-06-05T08:22:49.062Z)
+
+I think. I don't want like because payment entry is out of the scope for now.
+
+### You (2026-06-05T08:22:55.462Z)
+
+I. Just wanted to.
+
+### Guest (2026-06-05T08:22:55.942Z)
+
+I just wanted to show you the thing.
+
+### You (2026-06-05T08:22:57.462Z)
+
+So you see how like.
+
+### Guest (2026-06-05T08:22:58.022Z)
+
+So you see how like they're unallocated amount is actually.
+
+### You (2026-06-05T08:22:59.382Z)
+
+Looking.
+
+### Guest (2026-06-05T08:23:02.102Z)
+
+One. Is this even the right customer?
+
+### You (2026-06-05T08:23:02.102Z)
+
+Is this even.
+
+### Guest (2026-06-05T08:23:04.182Z)
+
+Who the is this? Oh, this is evergreen. What? Why is it?
+
+### You (2026-06-05T08:23:10.662Z)
+
+Oh wait wrong.
+
+### Guest (2026-06-05T08:23:11.062Z)
+
+Oh, wait. Wrong one. Wrong one wrong. I looked at the wrong one. Okay, so payment entry is. This is the analogy amount. 1972.
+
+### You (2026-06-05T08:23:13.702Z)
+
+Okay. So payment ent. Ry this is. So.
+
+### Guest (2026-06-05T08:23:22.262Z)
+
+So.
+
+### You (2026-06-05T08:23:23.862Z)
+
+Why does it.
+
+### Guest (2026-06-05T08:23:24.182Z)
+
+What it does, it takes this.
+
+### You (2026-06-05T08:23:24.742Z)
+
+Take. This and minus.
+
+### Guest (2026-06-05T08:23:26.422Z)
+
+And minus it this amount.
+
+### You (2026-06-05T08:23:26.742Z)
+
+It this amount. So you get 170.
+
+### Guest (2026-06-05T08:23:28.982Z)
+
+So you get 1173.17.
+
+### You (2026-06-05T08:23:33.542Z)
+
+So that's how you get.
+
+### Guest (2026-06-05T08:23:33.942Z)
+
+So that's how you get.
+
+### You (2026-06-05T08:23:35.222Z)
+
+This value.
+
+### Guest (2026-06-05T08:23:36.582Z)
+
+This value.
+
+### You (2026-06-05T08:23:39.622Z)
+
+That's the thing because if.
+
+### Guest (2026-06-05T08:23:40.102Z)
+
+That's the thing. Because if you don't understand the contact, if you don't have the contacts of the unallocated amount, you would wonder why these two are different.
+
+### You (2026-06-05T08:23:42.742Z)
+
+You don't have the contact. You. Want to buy. Would be surprising.
+
+### Guest (2026-06-05T08:23:47.862Z)
+
+Yeah, I wouldn't be surprised. If we forget and we analyze it. Yeah.
+
+### You (2026-06-05T08:23:51.702Z)
+
+So that's how.
+
+### Guest (2026-06-05T08:23:52.182Z)
+
+So that's why I already reported this issue to fariha regarding the.
+
+### You (2026-06-05T08:23:56.502Z)
+
+You. Regarding this already.
+
+### Guest (2026-06-05T08:24:01.942Z)
+
+Regarding this already.
+
+### You (2026-06-05T08:24:04.102Z)
+
+So. Yeah I think.
+
+### Guest (2026-06-05T08:24:05.702Z)
+
+So with that, I think you guys can think. Oh, no, he went back. I mean, I was gonna ask him to deploy.
+
+### You (2026-06-05T08:24:12.742Z)
+
+Because I was like oh you guys.
+
+### Guest (2026-06-05T08:24:13.222Z)
+
+Because I was like, oh, you guys can start testing the thing.
+
+### You (2026-06-05T08:24:19.302Z)
+
+So.
+
+### Guest (2026-06-05T08:24:19.942Z)
+
+So.
+
+### You (2026-06-05T08:24:20.902Z)
+
+That's basically it can start testing the.
+
+### Guest (2026-06-05T08:24:21.462Z)
+
+That's basically it. I think you guys can start testing the credit limit.
+
+### You (2026-06-05T08:24:26.502Z)
+
+So the thing that.
+
+### Guest (2026-06-05T08:24:27.062Z)
+
+So the thing that when.
+
+### You (2026-06-05T08:24:30.342Z)
+
+I need help.
+
+### Guest (2026-06-05T08:24:30.582Z)
+
+I need help, of course, I'm still doing the testing as well, is to make sure that the numbers shown.
+
+### You (2026-06-05T08:24:32.422Z)
+
+As well. Is to make sure that there are. Whatever like the number.
+
+### Guest (2026-06-05T08:24:37.222Z)
+
+Whatever, like the numbers shown in, like, the breakdowns and all.
+
+### You (2026-06-05T08:24:41.702Z)
+
+Yeah it's correct.
+
+### Guest (2026-06-05T08:24:42.182Z)
+
+Yeah, it's correct. And you know how when we did the calculation just now, then 0.2 check the percentage. Yeah, something like that is preferable.
+
+### You (2026-06-05T08:24:46.182Z)
+
+The percentage yeah. I'm scared that.
+
+### Guest (2026-06-05T08:24:49.382Z)
+
+Because I'm scared that although, because I'm. Most of these values are showing coming from backend. There might be instances or edge cases like this.
+
+### You (2026-06-05T08:24:51.702Z)
+
+I'm most of these value. Come back in there might be instances like. This. Where just doesn't make sense.
+
+### Guest (2026-06-05T08:24:59.062Z)
+
+Where it just doesn't make sense when you look at it in the first glance.
+
+### You (2026-06-05T08:25:03.622Z)
+
+Because it was a.
+
+### Guest (2026-06-05T08:25:04.422Z)
+
+Because it was a feedback during my showcase upstairs. Even if the UI UX is a bit chattered, it's fine. But the numbers should be correct because you're handling your customer's data, right? Yeah. Number one. Yeah.
+
+### You (2026-06-05T08:25:09.382Z)
+
+UI. But the numbers should. Because you're handling. Yeah. So that.
+
+### Guest (2026-06-05T08:25:19.062Z)
+
+So that's the. So that's basically it. So.
+
+### You (2026-06-05T08:25:21.622Z)
+
+S oh.
+
+### Guest (2026-06-05T08:25:22.662Z)
+
+Oh.
+
+### You (2026-06-05T08:25:23.302Z)
+
+Another thing you can see.
+
+### Guest (2026-06-05T08:25:23.542Z)
+
+Another thing you can see from the unallocated amount is in this case.
+
+### You (2026-06-05T08:25:27.142Z)
+
+How like when.
+
+### Guest (2026-06-05T08:25:27.142Z)
+
+So you know how, like, when we test, we. I always use our zip.
+
+### You (2026-06-05T08:25:29.142Z)
+
+You start.
+
+### Guest (2026-06-05T08:25:30.342Z)
+
+Right?
+
+### You (2026-06-05T08:25:31.462Z)
+
+So as you don't see a single box or.
+
+### Guest (2026-06-05T08:25:31.542Z)
+
+So our zips1, you don't see a single unpaid invoice or overdue.
+
+### You (2026-06-05T08:25:37.622Z)
+
+Not a single.
+
+### Guest (2026-06-05T08:25:38.182Z)
+
+Not a single overdue audience. But if you. And then you look at the analocate the credit, it's like 1 million something. So if you look at the overview, he has like 150, 60 overdues.
+
+### You (2026-06-05T08:25:41.382Z)
+
+And then you look at the unlock. Ing credit is not. Quite something. Over here.
+
+### Guest (2026-06-05T08:25:54.102Z)
+
+156. Invoices and 158.
+
+### You (2026-06-05T08:25:58.742Z)
+
+Yeah but the value is.
+
+### Guest (2026-06-05T08:25:59.302Z)
+
+Yeah, but you see the value is zero.
+
+### You (2026-06-05T08:26:01.622Z)
+
+Because what is doing is.
+
+### Guest (2026-06-05T08:26:01.942Z)
+
+It's because what foreign is doing is that she's taking the unallocated credit and deducting all in the invoices first.
+
+### You (2026-06-05T08:26:03.942Z)
+
+Making the credit and nothing more in trading forces. Like storing. Mind you have a story.
+
+### Guest (2026-06-05T08:26:14.022Z)
+
+Well, I knew it was not. I just didn't know where it was going to be used, but, yeah. So it's being used in this way.
+
+### You (2026-06-05T08:26:14.662Z)
+
+Right? But yeah.
+
+### Guest (2026-06-05T08:26:23.702Z)
+
+Too much. It doesn't. I don't know where. Yeah, it's like a floating valley. So that's why this. So it will clear off the overdue and thing that will show you that it. It can be cleared off. But what the user or the finance user has to do is that the user has to issue a receipt.
+
+### You (2026-06-05T08:26:30.422Z)
+
+We'll clear. You. Can be cleared off. The user. Yeah to clear.
+
+### Guest (2026-06-05T08:26:44.182Z)
+
+Yeah. To clear off the invoice because. On the receipt, you still have to pull in the mark. Yeah, you have to put in the mount.
+
+### You (2026-06-05T08:26:50.182Z)
+
+Yeah you have to put.
+
+### Guest (2026-06-05T08:26:52.822Z)
+
+Wouldn't that just cancel off?
+
+### You (2026-06-05T08:26:55.542Z)
+
+Yeah we just can.
+
+### Guest (2026-06-05T08:26:56.182Z)
+
+Yeah, we just cancel off the amount.
+
+### You (2026-06-05T08:26:58.902Z)
+
+Okay I'm not sure.
+
+### Guest (2026-06-05T08:26:59.302Z)
+
+Okay, I'm not sure how she's calculating because for me, it's just a key, but she's probably. Oh, I forgot to end there.
+
+### You (2026-06-05T08:27:03.382Z)
+
+She's probably. But what she.
+
+### Guest (2026-06-05T08:27:08.182Z)
+
+But what she's doing, I'm not sure how.
+
+### You (2026-06-05T08:27:09.542Z)
+
+I'm not sure. Keeping track let's just say I.
 
