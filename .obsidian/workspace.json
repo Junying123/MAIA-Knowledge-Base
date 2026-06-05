@@ -281,10 +281,14 @@
                   {
                     "id": 110,
                     "name": "zsh 110"
+                  },
+                  {
+                    "id": 111,
+                    "name": "zsh 111"
                   }
                 ],
-                "activeId": 110,
-                "nextId": 111
+                "activeId": 111,
+                "nextId": 112
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -301,7 +305,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -334,7 +338,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ce36b26a973dd155",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.1f15fe1f0edb",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",

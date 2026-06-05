@@ -1,0 +1,23 @@
+{
+  "id": "conv-1780674637677-hnayvviqx",
+  "providerId": "claude",
+  "title": "draft whatsapp message to holsen client, when they...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1780674637679,
+  "updatedAt": 1780674792772,
+  "lastResponseAt": 1780674792772,
+  "sessionId": "852ff0c0-cd6a-47fd-a977-a6fe6590f573",
+  "providerState": {
+    "providerSessionId": "852ff0c0-cd6a-47fd-a977-a6fe6590f573"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 2676,
+    "cacheCreationInputTokens": 16519,
+    "cacheReadInputTokens": 20454,
+    "contextWindow": 1000000,
+    "contextTokens": 39649,
+    "percentage": 4,
+    "contextWindowIsAuthoritative": true
+  }
+}
