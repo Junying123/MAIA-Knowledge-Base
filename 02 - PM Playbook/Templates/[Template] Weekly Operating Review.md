@@ -1,0 +1,121 @@
+---
+owner: Gareth
+status: approved
+last_reviewed: 2026-06-01
+---
+
+# Weekly Operating Review — Week of YYYY-MM-DD
+
+## Weekly Summary
+
+- Main outcomes achieved:
+- Main misses or delays:
+- Biggest lesson:
+- One behavior to improve next week:
+
+## Goal Alignment
+
+- Which monthly focus am I advancing:
+- 90-day goals moved this week:
+  - Goal:
+  - Evidence:
+  - Goal:
+  - Evidence:
+  - Goal:
+  - Evidence:
+- 90-day goals not moved this week and why:
+  - Goal:
+  - Why it did not move:
+  - Goal:
+  - Why it did not move:
+- Which yearly operating goals strengthened this week:
+  - Goal:
+  - Evidence:
+  - Goal:
+  - Evidence:
+- Which yearly operating goal still feels weakest:
+
+## Account and Workstream Review
+
+### Account or Workstream 1
+- Top priority:
+- Current status:
+- Biggest risk:
+- Next milestone:
+- Next follow-up:
+- Owner or dependency:
+- Escalation needed:
+
+### Account or Workstream 2
+- Top priority:
+- Current status:
+- Biggest risk:
+- Next milestone:
+- Next follow-up:
+- Owner or dependency:
+- Escalation needed:
+
+### Account or Workstream 3
+- Top priority:
+- Current status:
+- Biggest risk:
+- Next milestone:
+- Next follow-up:
+- Owner or dependency:
+- Escalation needed:
+
+## Priority and Time Check
+
+- What created the most meaningful movement:
+- What consumed time without enough value:
+- Where I reacted too late:
+- Where I escalated early:
+- Where AI caught something I missed:
+- Where AI saved me time:
+- Where I overused AI or used it badly:
+- What pattern AI helped me notice:
+- One prompt or workflow to reuse next week:
+
+## Metrics
+
+- Missed follow-ups:
+- Blockers raised early:
+- Blockers raised late:
+- Estimated time spent on top 3 priorities:
+- Low-value tasks that consumed meaningful time:
+- Important updates sent with clear outcome, risk, and next step:
+- Times AI caught a real issue before others did:
+- High-stakes tasks reviewed by AI before execution:
+- Times AI improved a brief, update, or escalation:
+- Times AI use created noise or overthinking:
+- Tasks completed that materially moved an outcome:
+- KISS retros completed:
+- GRAI retros completed:
+
+## Weekly KISS
+
+- Keep:
+- Improve:
+- Stop:
+- Start:
+
+## Next Week Setup
+
+- Top 3 priorities next week:
+1. 
+2. 
+3. 
+
+- What I should protect time for:
+- What I should say no or not now to:
+- What I need clarity on before Monday:
+
+## Monthly Checkpoint
+
+Use this section on the last weekly review of the month.
+
+- Did the monthly focus actually move:
+- What proof points were met:
+- What proof points were missed:
+- What should carry into next month:
+- What monthly focus should come next:

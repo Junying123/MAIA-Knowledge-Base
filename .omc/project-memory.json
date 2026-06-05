@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776677215667,
+  "lastScanned": 1777660393257,
   "projectRoot": "/Users/garethng/Documents/MAIA Knowledge Base",
   "techStack": {
     "languages": [],
@@ -36,7 +36,7 @@
       "path": "00 - Home",
       "purpose": null,
       "fileCount": 8,
-      "lastAccessed": 1776677215591,
+      "lastAccessed": 1777660393236,
       "keyFiles": [
         "COMPANY.md",
         "Changelog.md",
@@ -49,21 +49,21 @@
       "path": "01 - MAIA Product",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776677215591,
+      "lastAccessed": 1777660393240,
       "keyFiles": []
     },
     "02 - PM Playbook": {
       "path": "02 - PM Playbook",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776677215592,
+      "lastAccessed": 1777660393241,
       "keyFiles": []
     },
     "03 - Clients": {
       "path": "03 - Clients",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1776677215609,
+      "lastAccessed": 1777660393242,
       "keyFiles": [
         "README.md"
       ]
@@ -72,7 +72,7 @@
       "path": "04 - QA & Known Issues",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1776677215654,
+      "lastAccessed": 1777660393242,
       "keyFiles": [
         "Feature Gap Tracker.md",
         "Known Bugs & Limitations.md",
@@ -84,7 +84,7 @@
       "path": "05 - Releases & Updates",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776677215655,
+      "lastAccessed": 1777660393242,
       "keyFiles": [
         "Feature Changelog.md",
         "Release Notes.md",
@@ -95,7 +95,7 @@
       "path": "06 - Glossary & Taxonomy",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1776677215655,
+      "lastAccessed": 1777660393242,
       "keyFiles": [
         "Glossary.md",
         "Tag Dictionary.md"
@@ -105,7 +105,7 @@
       "path": "07 - Decisions",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1776677215656,
+      "lastAccessed": 1777660393242,
       "keyFiles": [
         "ADR Template.md",
         "Decision Log.md"
@@ -115,7 +115,7 @@
       "path": "08 - Configuration & Integrations",
       "purpose": null,
       "fileCount": 5,
-      "lastAccessed": 1776677215656,
+      "lastAccessed": 1777660393242,
       "keyFiles": [
         "Client Configuration Overlay Template.md",
         "Configuration Index.md",
@@ -128,7 +128,7 @@
       "path": "09 - Intake & Triage",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1776677215656,
+      "lastAccessed": 1777660393242,
       "keyFiles": [
         "Request Intake Inbox.md",
         "Triage Decision Record Template.md",
@@ -139,14 +139,14 @@
       "path": "10 - Outputs",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776677215657,
+      "lastAccessed": 1777660393246,
       "keyFiles": []
     },
     "Clippings": {
       "path": "Clippings",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776677215657,
+      "lastAccessed": 1777660393248,
       "keyFiles": [
         "Industrial Supplies Narrative MAIA.md"
       ]
@@ -154,35 +154,32 @@
     "Excalidraw": {
       "path": "Excalidraw",
       "purpose": null,
-      "fileCount": 5,
-      "lastAccessed": 1776677215657,
+      "fileCount": 2,
+      "lastAccessed": 1777660393253,
       "keyFiles": [
-        "Drawing 2026-02-22 17.59.46.excalidraw.md",
-        "Drawing 2026-02-22 18.13.08.excalidraw.md",
-        "Drawing 2026-02-26 18.59.22.excalidraw.md",
-        "Drawing 2026-02-26 18.59.34.excalidraw.md",
-        "Drawing 2026-02-26 18.59.35.excalidraw.md"
+        "Drawing 2026-04-29 11.26.08.excalidraw.md",
+        "JDX B2B B2C Order Flow.excalidraw.md"
       ]
     },
     "Granola": {
       "path": "Granola",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1776677215658,
+      "lastAccessed": 1777660393253,
       "keyFiles": []
     },
     "TaskNotes": {
       "path": "TaskNotes",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1776677215658,
+      "lastAccessed": 1777660393254,
       "keyFiles": []
     },
     "brain": {
       "path": "brain",
       "purpose": null,
       "fileCount": 6,
-      "lastAccessed": 1776677215658,
+      "lastAccessed": 1777660393254,
       "keyFiles": [
         "Gotchas.md",
         "Key Decisions.md",
@@ -191,11 +188,18 @@
         "Patterns.md"
       ]
     },
+    "~": {
+      "path": "~",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1777660393254,
+      "keyFiles": []
+    },
     "TaskNotes/Views": {
       "path": "TaskNotes/Views",
       "purpose": "View templates",
       "fileCount": 6,
-      "lastAccessed": 1776677215666,
+      "lastAccessed": 1777660393257,
       "keyFiles": [
         "agenda-default.base",
         "calendar-default.base",
@@ -205,135 +209,147 @@
   },
   "hotPaths": [
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck Enhanced.html",
-      "accessCount": 36,
-      "lastAccessed": 1776738603114,
-      "type": "file"
-    },
-    {
       "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/SOW for MAIA JDX.md",
-      "accessCount": 21,
-      "lastAccessed": 1776745354961,
+      "accessCount": 34,
+      "lastAccessed": 1777543923822,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Script.md",
-      "accessCount": 8,
-      "lastAccessed": 1776757550514,
+      "path": "04 - QA & Known Issues/Test Cases/Certificate Tax Reference Test Cases.md",
+      "accessCount": 26,
+      "lastAccessed": 1777510729255,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck-1.html",
-      "accessCount": 5,
-      "lastAccessed": 1776744123122,
+      "path": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+      "accessCount": 14,
+      "lastAccessed": 1777510763348,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/JDX Demo Slide Content.md",
-      "accessCount": 5,
-      "lastAccessed": 1776757542403,
+      "path": "Excalidraw/JDX B2B B2C Order Flow.excalidraw.md",
+      "accessCount": 9,
+      "lastAccessed": 1777703426829,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Context Background.md",
+      "path": "04 - QA & Known Issues/Test Cases/Item Historical Pricing & Discount - User Stories & Test Cases.md",
       "accessCount": 4,
-      "lastAccessed": 1776742286622,
+      "lastAccessed": 1777425365312,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/JDX Demo Deck.html",
-      "accessCount": 3,
-      "lastAccessed": 1776744120457,
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Job Work Order Module Proposal.md",
+      "accessCount": 4,
+      "lastAccessed": 1777701204761,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/uploads/JDX Demo Slide Content.md",
+      "path": "Granola/Transcripts/2026-04-21/JDX __ Mindhive Demo-transcript.md",
       "accessCount": 2,
-      "lastAccessed": 1776744118970,
+      "lastAccessed": 1777436389240,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Customer Narrative - JDX.md",
-      "accessCount": 1,
-      "lastAccessed": 1776735090101,
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Customer Profile.md",
+      "accessCount": 2,
+      "lastAccessed": 1777701591081,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/JDX - Customer Profile.md",
-      "accessCount": 1,
-      "lastAccessed": 1776735407629,
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/Customer Narrative - HG Group.md",
+      "accessCount": 2,
+      "lastAccessed": 1777701592145,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/2026-03-27-JDX-Requirements-Gathering.md",
-      "accessCount": 1,
-      "lastAccessed": 1776735717668,
+      "path": "Excalidraw/HG Group E2E Business Flow.excalidraw",
+      "accessCount": 2,
+      "lastAccessed": 1777704491527,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Prep After Requirement Gathering/Requirement Gathering Output - JDX - 2026-03.md",
+      "path": "01 - MAIA Product/Product Specs/Certificate Tax Reference Spec.md",
       "accessCount": 1,
-      "lastAccessed": 1776735718214,
+      "lastAccessed": 1777307297077,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/JDX Discovery Call - YYYY-MM-DD.md",
+      "path": "01 - MAIA Product/Product Specs/Item Historical Pricing & Discount.md",
       "accessCount": 1,
-      "lastAccessed": 1776735723402,
+      "lastAccessed": 1777339235357,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX/Meeting Notes/JDX Meeting Transcript - YYYY-MM-DD.md",
+      "path": "01 - MAIA Product/Product Specs/Cert-Exemption-Reference/cpo-tax-reference-brief.md",
       "accessCount": 1,
-      "lastAccessed": 1776735723586,
+      "lastAccessed": 1777352568871,
       "type": "file"
     },
     {
-      "path": "",
+      "path": "01 - MAIA Product/Product Specs/Cert-Exemption-Reference/sales-order-tax-reference-brief.md",
       "accessCount": 1,
-      "lastAccessed": 1776743011416,
-      "type": "directory"
-    },
-    {
-      "path": "01 - MAIA Product/Product Specs/Sales Order Spec.md",
-      "accessCount": 1,
-      "lastAccessed": 1776743348159,
+      "lastAccessed": 1777352569244,
       "type": "file"
     },
     {
-      "path": "01 - MAIA Product/Product Specs/Delivery Note Spec.md",
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Completion Report Module Proposal (Open Questions).md",
       "accessCount": 1,
-      "lastAccessed": 1776743348324,
+      "lastAccessed": 1777421590546,
       "type": "file"
     },
     {
-      "path": "01 - MAIA Product/Product Specs/Blanket Order Spec.md",
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - CRM & Enquiry Intake Proposal.md",
       "accessCount": 1,
-      "lastAccessed": 1776743349006,
+      "lastAccessed": 1777421595479,
       "type": "file"
     },
     {
-      "path": "01 - MAIA Product/Product Specs/Invoice Spec.md",
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Invoice Module Proposal.md",
       "accessCount": 1,
-      "lastAccessed": 1776743349322,
+      "lastAccessed": 1777421596414,
       "type": "file"
     },
     {
-      "path": "01 - MAIA Product/Product Specs/Receipt Spec.md",
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/HG Group - Quotation Module Proposal.md",
       "accessCount": 1,
-      "lastAccessed": 1776743349624,
+      "lastAccessed": 1777421596725,
       "type": "file"
     },
     {
-      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/JDX",
+      "path": "03 - Clients/We're cooked discovery/Requirement Gathering/HG Group/SOW for MAIA HG Group.md",
       "accessCount": 1,
-      "lastAccessed": 1776744079903,
-      "type": "directory"
+      "lastAccessed": 1777425208935,
+      "type": "file"
     },
     {
-      "path": "01 - MAIA Product/Product Specs/Item Historical Pricing & Discount - User Stories & Test Cases.md",
+      "path": "04 - QA & Known Issues/Test Cases/Tagging Test Cases.md",
       "accessCount": 1,
-      "lastAccessed": 1776759561853,
+      "lastAccessed": 1777425441414,
+      "type": "file"
+    },
+    {
+      "path": "Granola/Transcripts/2026-04-28/JDX Customised features clarification - Stock report.md",
+      "accessCount": 1,
+      "lastAccessed": 1777431550176,
+      "type": "file"
+    },
+    {
+      "path": "Excalidraw/Drawing 2026-02-22 17.59.46.excalidraw.md",
+      "accessCount": 1,
+      "lastAccessed": 1777432837527,
+      "type": "file"
+    },
+    {
+      "path": "Granola/Transcripts/2026-04-23/HG Services Detailed Requirements Gathering-transcript.md",
+      "accessCount": 1,
+      "lastAccessed": 1777661791357,
+      "type": "file"
+    },
+    {
+      "path": "Granola/Transcripts/2026-04-23/HG Services Requirement Gathering fireflies transcript - source 2.md",
+      "accessCount": 1,
+      "lastAccessed": 1777661792012,
       "type": "file"
     }
   ],

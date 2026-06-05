@@ -1,0 +1,21 @@
+---
+granola_id: 5fa769cf-f919-4454-8f8b-d03c6e3b1aeb
+title: Fixguru <> Mindhive - UAT Brief & Historical Pricing Testing - Transcript
+type: transcript
+created: 2026-05-13T03:01:30.918Z
+updated: 2026-05-14T02:59:28.283Z
+attendees: 
+  - ghostsketon@gmail.com
+  - amirulamran.dev@gmail.com
+  - azibiqbal01@gmail.com
+  - bryantewyh@gmail.com
+  - harunazib@gmail.com
+  - imanbinamran@gmail.com
+---
+
+# Transcript for: Fixguru <> Mindhive - UAT Brief & Historical Pricing Testing
+
+### You (2026-05-13T03:03:04.456Z)
+
+Sí. So, Open your WhatsApp. This works out. Ok. It's only next. Thank you. Swiggy managers को दिशाई सी. Yeah. Because I miss in the beginning. Right? Applebee. Each is one. Yeah. So 50 should it should suggest a hundred twenty twenty two. Right. Mhmm. No one. This one is bueno. No. In this one, you can set. Yeah. Yeah. Think we need this now. So Wait. Wait. So that's why we need to we need to we Yeah. This one we have the pieces. It's one only up to you. Finish and No. No. Yeah. So I think I I think there should be more 24. When Yeah. To reset. Not the first one. Everything here will show Once they choose something, that has to follow. It's all like Yeah. I mean, if I click here, address will change this one. The first time when you come to this ratio, so Yeah. But if I if you choose here or you choose here, then it will work. Yep. Recognition restriction if you're not And combination restriction. Because you even printing, you can have a zero square h Es bueno, y se recomende even the the when this thing it affects the text Yeah. There is. Yeah. This way is always set. Okay. Can change. It's it should not be a it should be something should be It should be box type. And also damage it. That means Yeah. This was from dimensions. Oh, yeah. I think we don't need that. We always we just need to listen. Okay? Can you keep So here, just now I'm saying that we should have a total where they can don't need to be stripping. By any question to them. Think that we should just have for example. If we're certain, all we show off is When's quickly reset? K. Let Ok. Eso es, dice, 2.6. You choose for connects now. You choose for connects. Self finish is four eight seven three. This is I think this is the Right? I don't know. You need to show the polish, please. Because the tonnage effect So is 61.41. Yeah. Two one four five. I know. This one is huge. Y Zip code reproduction. Zero for 5¢, selling price. SST zero for white practice go up. Zero Okay. Breathing block. Sí. लिखता है. Sí. I can't So, What do you mean? Yeah. So no. Right. Right. Need to eject here. Oh, yeah. Someone's so sad. Seeking to start. Yeah. Repetition. Yeah. Yeah. But this one is a button to click, and this one is the button to Try k. You create this You you open your menu group. You create your group. Open new tab. So each Right? One, So doing And then you click click to the person and the person. Oh, the first customer. Okay. So save action on it. I can do I if you end my tenth, it's just one. Yeah. K. It's just because yeah. So you update the question. It will create it will create new case. Still it's still a new case. Okay. It's one question. So one patient is actually Settle. I can't You you can get that. Cien. I'll see the Yeah. I see. Yep. Yep. Aquí, pieces. So I'm gonna speak there. Yeah. So esa es símbolo de la Mhmm. K-four is a especially, you can see that how that's the No. Game. Yeah. The the can't see it. So Yeah. Sí. For this por mi correo. So बहुत उसने Yeah. I I already took the two chatties. Want see So you want to live in, find it as well? But you need to tell them This one This one That's right. Yeah. Yeah. A decision. Start. This. So so Okay. So so okay. Yeah. Yeah. Yeah. Actually, they can put something Oh, yeah. A ver. Yes. Can be
+

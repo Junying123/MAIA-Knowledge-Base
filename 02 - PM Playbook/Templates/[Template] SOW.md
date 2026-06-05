@@ -1,406 +1,369 @@
 ---
 owner: Gareth
 status: approved
-last_reviewed: 2026-04-15
+last_reviewed: 2026-05-12
 template_type: SOW
-reference_clients: Fixguru, Holsen
+reference_clients: Thermac, Fixguru, Holsen
 ---
 
-# MAIA — Statement of Work (SOW) / Baseline Product Specification
+# SOW — MAIA for [Client Name]
 
 > **How to use this template:**
-> Copy this file. Replace all `[PLACEHOLDERS]` with client-specific values. Delete sections that don't apply. Add custom modules in Section 5. Never edit this template directly.
+> Copy this file. Replace all `[PLACEHOLDERS]` with client-specific values. Delete sections that don't apply. Add custom modules in Section 3. Never edit this template directly.
+>
+> **Skill reference:** Use the `sow-writer` skill for guided drafting.
 
----
+The Services Agreement is made effective as of `[DD Month YYYY / TBC]`.
 
-The Services Agreement is made effective as of `[DATE]`
-
-|   |   |   |
+| BETWEEN | The Vendor | **Mindhive Sdn Bhd** ("Mindhive"), with its office located at 7, Jln Penyajak U1/45A, Hicom-glenmarie Industrial Park, 40150 Shah Alam, Selangor. |
 |---|---|---|
-|**BETWEEN**|The Vendor|**Mindhive Sdn Bhd** ("Mindhive"), with its office located at 7, Jln Penyajak U1/45A, Hicom-glenmarie Industrial Park, 40150 Shah Alam, Selangor.|
-|**AND**|The Client|**[CLIENT LEGAL NAME]** ("[CLIENT SHORT NAME]"), with its office located at [CLIENT ADDRESS].|
+| AND | The Client | **[CLIENT LEGAL NAME]** ("[CLIENT SHORT NAME]"), with its office located at [CLIENT ADDRESS]. |
 
 ---
 
-## 1. Introduction
+# 1. Executive Summary
 
-### About MAIA
+[CLIENT SHORT NAME] `[brief: what the client does, how they operate, scale/volume]`.
 
-MAIA is a next-generation business platform that unifies sales, fulfillment, communications, logistics, and finance into a single ecosystem.
+`[Para 2: Current workflow — what tools they use today (WhatsApp, Excel, ERP name), where the pain is, what breaks down.]`
 
-It is designed as a **modular, cloud-based solution** where each module can function independently yet integrates seamlessly into the wider MAIA environment. This ensures flexibility for smaller businesses while delivering enterprise-level scalability and control.
+`[Para 3 (optional): Secondary business motion that also needs MAIA — e.g. service ops, kiosk, consignment billing.]`
 
-Our vision is to help organizations manage their entire sales and operational lifecycle from a single, intelligent system — increasing efficiency, improving customer engagement, and enabling growth.
+This SOW defines a phased implementation of MAIA that introduces:
 
-### Purpose of Document
+- `[specific deliverable 1 — name the feature and the outcome it fixes]`
+- `[specific deliverable 2]`
+- `[specific deliverable 3]`
+- `[specific deliverable 4]`
 
-To establish the baseline specifications, service level commitments, and commercial framework for the deployment and ongoing use of MAIA between the Vendor and the Client.
+The current documented implementation investment is **RM [AMOUNT]**, subject to final commercial confirmation, payment terms, and dependency validation.
 
-### Mutual Commitment
+## 1.1 Enterprise Baseline Modules
 
-This document sets out the expectations and obligations of both parties to ensure a successful business engagement.
+The following sections outline the baseline modules included in the MAIA implementation for [CLIENT SHORT NAME]:
 
----
-
-## 2. Product Specifications
-
-MAIA is delivered as a **modular, cloud-based business platform** designed for enterprises and SMEs. Each module can function independently while also integrating seamlessly into the wider MAIA ecosystem.
-
-### 2.1 Delivery Model
-
-**Cloud-Hosted Platform:** MAIA is delivered securely from the cloud, ensuring continuous availability and ease of access without the need for local installations.
-
-**Client Tier:** `[Freemium / Pro / Enterprise]`
-
-**Flexible Tiers:**
-- **Freemium:** Entry-level access with shared hosting and essential features.
-- **Pro:** Dedicated environment per company with advanced features.
-- **Enterprise:** Fully isolated environment with dedicated infrastructure, compliance support, and custom options.
-
-### 2.2 System Interfaces
-
-**Web Application:**
-- Accessible via all modern browsers.
-- Role-based views for managers, finance teams, operations, and administrators.
-- Real-time updates for transactions, approvals, and customer interactions.
-
-**Mobile-Responsive Access:**
-- Optimized for smartphones and tablets.
-- Designed for sales teams, delivery agents, and field users.
-
-**Specialized Workspaces:**
-- **Sales Workspace:** Quotations, orders, and customer interactions.
-- **Operations & Delivery Workspace:** Delivery status and proof-of-delivery capture.
-- **Managerial Dashboards:** Visibility into performance, revenue, and outstanding actions.
-
-### 2.3 Security & Compliance
-
-- **Authentication:** Role-based access with standard authentication.
-- **Data Isolation:** Company-level isolation; Enterprise clients get fully isolated database instances.
-- **Encryption:** TLS 1.2/1.3 in transit, AES-256 at rest.
-
-### 2.4 Availability & Performance
-
-- **Uptime Commitment:** 99.9% uptime SLA for Pro and Enterprise clients.
-- **High Availability:** Built-in redundancy and automated failover.
-- **Scalability:** Infrastructure expands automatically to handle peak loads.
+- `[Module 1 — e.g. Internal Chatbot (Sales and Order Intake)]`
+- `[Module 2 — e.g. User Workspaces]`
+- `[Module 3 — e.g. Product Sales Document Lifecycle]`
+- `[Module 4 — e.g. Integration and Data Sync with AutoCount]`
 
 ---
 
-## 3. Delivery Phases
+# 2. Product Specifications (Phase One)
 
-> **Choose the appropriate framing:** Use Option A for a linear rollout (like Fixguru), or Option B for a phased delivery (like Holsen). Delete the unused option.
+`[One sentence: who the client is and their primary sales or operational flow.]`
 
-### Option A — Linear Rollout
+Phase One focuses on `[CLIENT SHORT NAME]`'s `[primary business motion]`, where the current workflow follows: `[e.g. enquiry → quotation → purchase order → sales order → invoice → delivery note]`.
 
-All modules are delivered together in a single implementation. See Section 4 for the full module list.
+## 2.1 Internal Chatbot (Sales and Order Intake)
 
-### Option B — Phased Delivery
+### 2.1.1 Sales Agent Assistant
 
-MAIA is delivered in phases to ensure clarity, predictable rollout, and controlled risk.
+The Sales Agent Assistant serves as an assistant to help [CLIENT SHORT NAME]'s sales team capture customer enquiries, process purchase orders, prepare sales records, and reduce repetitive manual order entry.
 
-| Phase | Name | Description |
-|-------|------|-------------|
-| **A1** | Core MAIA | Baseline order → delivery note flow. Core chatbots, workspaces, document generation, and data sync. |
-| **A3** | Enhancements | Within the core flow, but requires deeper tailoring or additional logic. |
-| **[PHASE]** | [NAME] | [DESCRIPTION] |
+- **Platform:**
+  - WhatsApp
+  - `[Email intake / MAIA web workspace — adjust per client]`
 
----
+- **Features:**
+  - **Intelligent Document Processing (IDP):** MAIA parses customer purchase orders received through supported document formats and extracts key order information for user review.
+  - **PO-to-Sales Order Conversion:** MAIA creates a draft record from the customer PO. The user reviews, edits, and confirms before MAIA creates the sales order.
+  - **Human Review Before Confirmation:** MAIA does not auto-confirm customer orders. Users remain responsible for validating extracted items, quantities, descriptions, and pricing.
+  - **Sales Order Creation:** Users create or confirm sales orders after quotation acceptance or official purchase order receipt.
+  - **Output Document Generation:** To generate output documents. List of output documents supported:
+    - Quotation
+    - Sales Order
+    - Invoice
+    - Delivery Note
+    - Credit Note
+    - `[Add or remove per client scope]`
 
-## 4. Module Specifications
+Notes:
 
-### 4.1 Business Process Flow
+- `[State any limitations, dependencies, or confirmations needed.]`
 
-MAIA supports a unified business process flow designed to streamline multi-channel sales, order management, and fulfillment operations.
+## 2.2 User Workspaces
+
+Desktop Web interfaces where users can log in and interact with the system based on their role and permissions.
+
+### 2.2.1 Sales Agent Workspace
+
+- **Features:**
+  - **Quotation Management:** Create, review, revise, and track quotations.
+  - **Sales Order Management:** Create, modify, and track sales orders after customer confirmation.
+  - **Customer Management:** View customer records, payment terms, and historical transactions.
+  - **Output Document Management:** View and download generated documents such as quotations, sales orders, invoices, delivery notes, and credit notes.
+
+### 2.2.2 Finance Workspace
+
+- **Features:**
+  - **Invoice Visibility:** View invoice records and customer payment status.
+  - **Statement of Account View:** Display open invoices, overdue invoices, and outstanding balances per customer.
+  - **Overdue Flagging:** Flag overdue accounts based on invoice due date plus a configured grace period.
+
+### 2.2.3 Logistics Workspace
+
+- **Features:**
+  - **Inventory Reference Access:** View product and stock-related operational information.
+  - **Role-Based Access:** Storekeeper or logistics users can access operational functions without requiring full financial access.
+  - **Delivery Support:** View relevant order and delivery records required for fulfilment coordination.
+
+### 2.2.4 Management Workspace
+
+- **Features:**
+  - **Operational Visibility:** View sales, quotation, customer, and finance summaries where configured.
+  - **Role-Based Oversight:** View cross-functional records according to approved management access rights.
+
+## 2.3 [CLIENT SHORT NAME] Document Lifecycle
+
+[CLIENT SHORT NAME]'s `[sales / service / product]` workflow is supported through baseline MAIA modules.
 
 **Standard Document Flow:**
 
-`Quotation → Sales Order (SO) → Proforma Invoice → Delivery Note (DN/DO) → Invoice → Credit Note (if needed) → Receipt`
+`Quotation → Sales Order → Invoice → Delivery Note → Credit Note (if needed)`
 
-> Adjust the flow above to match the client's actual agreed process. For example, Fixguru omits the CPO step.
+> Adjust the flow above to match the client's actual agreed process.
 
-**Order-Centric Record Grouping:** The Sales Order is the central record. All related documents are linked to the SO.
+**Baseline MAIA Coverage:**
 
-**Documents under 1 Sales Order:**
+- Quotation creation
+- Sales order creation
+- Invoice generation
+- Delivery note generation
+- Credit note support
+- Customer record visibility
+- Role-based access
+- Document download and retrieval
 
-| Document Type | Included |
+## 2.4 Integration and Data Sync with [ACCOUNTING SYSTEM]
+
+To push and synchronise data with [ACCOUNTING SYSTEM], the following connectivity is required. Final method is subject to confirmation with [CLIENT SHORT NAME]'s [ACCOUNTING SYSTEM] vendor or IT team.
+
+- **Integration Method:**
+  - Preferred: API, service connector, or supported [ACCOUNTING SYSTEM] integration endpoint, subject to vendor confirmation.
+  - Alternate: Secure file-based import/export via CSV, Excel, XML, or agreed file transfer method if API access is restricted.
+
+- **Core Touchpoints:**
+  - Master Data (Read): Customers, items, pricing references, credit terms, and available inventory references where accessible.
+  - Transactions (Write): Sales orders, invoices, delivery notes, credit notes, or other agreed document records from MAIA to [ACCOUNTING SYSTEM].
+  - Status / Documents (Read/Write as applicable): Invoice status, document numbers, delivery status, and related accounting references.
+
+- **Dependencies:**
+  - [ACCOUNTING SYSTEM] hosting type, network accessibility, and vendor contact for API or file specifications.
+  - Sample data exports to verify field mapping.
+  - Client-side permission and access approval.
+
+Notes:
+
+- [ACCOUNTING SYSTEM] is expected to remain the accounting system of record unless otherwise agreed.
+- Mindhive will not guarantee API integration until access and technical feasibility are confirmed.
+
+---
+
+# 3. Customisation & Extensions (Phase Two Onwards)
+
+MAIA provides a baseline suite of standard features out of the box. However, [CLIENT SHORT NAME]'s `[specific workflow]` requires customisation because `[reason — what makes it distinct from the standard flow]`. These customisations will be scoped, refined, and mutually agreed before execution.
+
+## 3.1 Customisations (Phase Two)
+
+### 3.1.1 [Custom Feature Name]
+
+- **Platform:** MAIA Web Application `[/ WhatsApp]`
+
+- **Core Features:**
+  - **[Feature Name]:** [What it does — specific to this client.]
+  - **[Feature Name]:** [What it does.]
+
+Notes:
+
+- `[Limitation or dependency.]`
+
+### 3.1.2 [Custom Feature Name]
+
+- **Platform:** MAIA Web Application
+
+- **Core Features:**
+  - **[Feature Name]:** [What it does.]
+
+Notes:
+
+- `[Limitation or dependency.]`
+
+## 3.2 Customisations (Phase Three)
+
+> Only include if Phase Three is in scope. Delete this subsection otherwise.
+
+### 3.2.1 Future Extensions Subject to Separate Validation
+
+- **Platform:** MAIA Web Application and related integrations, subject to future scoping.
+
+- **Potential Future Features:**
+  - **[Feature]:** [Description.]
+
+Notes:
+
+- Phase Three items are not included in the current confirmed scope unless separately agreed.
+- These items require separate discovery, pricing, timeline confirmation, and change request approval.
+
+---
+
+# 4. Estimated Timelines - Two Phase Delivery
+
+> Change title to "Three Phase Delivery" if Phase Three exists.
+
+**Phase 1: Core MAIA System (per Section 2: Product Specifications)**
+
+Deliver and go-live with the baseline MAIA features outlined in Section 2.
+
+| Item | Indicative Time Taken |
 |---|---|
-| Quotation | ✓ / ✗ |
-| Sales Order | ✓ |
-| Proforma Invoice | ✓ / ✗ |
-| Delivery Note (DO) | ✓ / ✗ |
-| Picking List | ✓ / ✗ |
-| Invoice | ✓ / ✗ |
-| Credit Note | ✓ / ✗ |
-| Debit Note | ✓ / ✗ |
-| Receipt | ✓ / ✗ |
-| Payment Voucher | ✓ / ✗ |
-
----
-
-### 4.2 Internal Chatbot Assistants
-
-#### 4.2.1 Sales Agent Assistant
-
-The Sales Agent Assistant enables the client's Sales team to generate quotations, receive customer POs, and convert them into Sales Orders via WhatsApp or email.
-
-**Platforms:** `[WhatsApp / Email / Other]`
-
-**Features:**
-- Omni-channel input (text, images, PDFs)
-- Data extraction: Customer Name, SKUs, Quantities, Delivery Date
-- Dynamic pricing, quotation & SO generation
-- Stock availability display
-- Sales Order creation (natural language — no rigid keywords required)
-- Daily digest: unclosed Sales Orders, pending actions
-
-**Output Documents:**
-- Quotation, Sales Order, Invoice, Credit Note, Receipt *(adjust per client)*
-
----
-
-#### 4.2.2 Logistics / Supply Chain Agent Assistant
-
-The Logistics Assistant helps operations teams manage order fulfillment.
-
-**Platform:** `[WhatsApp]`
-
-**Features:**
-- Delivery Note (DO) creation via natural language
-- Daily digest: delivery delays, expiring items
-- Stock alert notifications (Out of Stock, Low Stock)
-
-**Output Documents:**
-- Delivery Order (DO), Picking List
-
----
-
-### 4.3 User Workspaces
-
-All workspaces are Desktop Web — users log in via browser.
-
-#### 4.3.1 Sales Agent Workspace
-
-| Feature | Description |
-|---|---|
-| Sales Order Management | Create, modify, and track SOs across full lifecycle |
-| Order Lifecycle Overview | View order statuses end-to-end |
-| Output Documents Management | View and download invoices, DOs, receipts |
-| Customer Management | Credit terms, limits, and customer details |
-
-#### 4.3.2 Supply Chain / Logistics Workspace
-
-| Feature | Description |
-|---|---|
-| Fulfillment Management | Create, modify, and track Delivery Notes |
-| Order Lifecycle Overview | Draft → Scheduled → Out for Delivery → Delivered |
-| Output Documents | Pick List and Delivery Note (DO) |
-| Inventory Management | View and manage product details |
-
-#### 4.3.3 Management Dashboard
-
-| Feature | Description |
-|---|---|
-| KPI Overview | Pipeline conversion, outstanding invoices, fulfillment SLAs |
-| Approval Actions | Approve/reject escalations |
-| Finance Visibility | Outstanding payments, credit term tracking |
-
----
-
-### 4.4 Document Generation & Exports
-
-All documents are automatically generated based on user actions within the ERP or chatbot interface.
-
-**Document Customization:**
-- Layout: Configurable headers, footers, tables, sections
-- Document naming conventions (prefixes, outlet codes, timestamps)
-- Visual identity: custom colors, fonts, company logos
-- Mandatory company information: Registered Name, Address, SSM No., TIN, Contact
-
----
-
-### 4.5 System Administration & Integrations
-
-| System | Direction | Frequency | Data Objects | Notes |
-|---|---|---|---|---|
-| MAIA ⇆ `[Accounting System]` | Push/Pull | `[EOD / Real-time]` | Quotes, Customers, Products, Invoices, Credit Notes, Receipts, Payment Vouchers | Master data lives in `[Accounting System]` |
-| Chatbot → MAIA | Push | Real-time | Sales Orders, DO, Delivery Trip, Invoice status, Quotation | Full order creation via bot |
-| `[Other Integration]` | `[Direction]` | `[Frequency]` | `[Data Objects]` | `[Notes]` |
-
----
-
-### 4.6 User & Role Management
-
-| Role | Access |
-|---|---|
-| Management | Full system visibility, reporting dashboards, administrative controls |
-| Sales Agent | Customer records, order creation, invoices, payment handling |
-| Logistics | Delivery orders, trips, warehouse operations |
-| Driver | Delivery trip management, proof-of-delivery uploads |
-
----
-
-## 5. Customizations & Extensions
-
-> List all client-specific custom features here. Each item should have a clear name and brief description. These are the features that differentiate this SOW from a generic baseline.
-
-### 5.1 Custom Modules
-
-| # | Feature | Description |
-|---|---|---|
-| 1 | `[Feature Name]` | `[Brief description of what it does and why]` |
-| 2 | `[Feature Name]` | `[Brief description]` |
-
-### 5.2 Approval Workflows
-
-Approval triggers configured for `[CLIENT NAME]`:
-
-| Trigger | Rule |
-|---|---|
-| `[e.g., Selling price below minimum]` | `[Approval required from Manager]` |
-| `[e.g., Customer near credit limit]` | `[Management approval required before SO]` |
-| `[e.g., DO differs from SO]` | `[DO approval required]` |
-
-### 5.3 Custom Notifications
-
-| Notification | Trigger | Sent To |
-|---|---|---|
-| `[e.g., Low stock]` | `[When item at minimum threshold]` | `[Logistics Rep, Sales Rep]` |
-| `[e.g., Inactive customer]` | `[No orders in 60 days]` | `[Sales Representative]` |
-| `[e.g., Outstanding payment]` | `[Near credit term deadline]` | `[Sales Agent]` |
-
-### 5.4 API & System Integrations
-
-- `[e.g., AutoCount — EOD sync for invoices, receipts, credit notes]`
-- `[e.g., Lalamove API — logistics dispatch integration]`
-- `[Other integration]`
-
----
-
-## 6. Service Level Agreements (SLAs)
-
-### 6.1 Mindhive Commitments
-
-**System Availability:** 99.5% uptime (excluding scheduled maintenance).
-
-**Support Response Times:**
-
-| Priority | Response Time |
-|---|---|
-| **Critical (P1)** | Within 2 hours |
-| **High (P2)** | Within 8 hours |
-| **Normal (P3)** | Within 2 business days |
-
-**Maintenance Windows:** Pre-communicated, typically scheduled during weekends or off-peak hours.
-
-**Data Protection:** Regular backups and defined disaster recovery commitments.
-
-**Lifetime Upgrades & Support:** Clients will continue to receive ongoing product upgrades, security enhancements, and support for the lifetime of their subscription.
-
-### 6.2 Client Commitments
-
-- **User Access & Permissions:** Client to designate system administrators and enforce internal user policies.
-- **Data Provisioning:** Provide accurate, complete, and timely data uploads.
-- **Timely Feedback:** Provide approvals and clarifications during customization and implementation phases.
-- **Compliance:** Adhere to licensing terms, security practices, and applicable regulations.
-- **Point of Contact:** Designate a primary POC. Commit to responding to vendor queries within **2–3 working days**.
-- **Payments:** Ensure timely settlement of subscription fees and any approved change request costs.
-
----
-
-## 7. Estimated Timeline (Indicative)
-
-| Phase | Duration |
-|---|---|
-| Onboarding & Setup | 2–4 weeks |
-| Configuration & Customisation | 4–8 weeks *(depending on scope)* |
-| User Training & UAT | 2 weeks |
+| Onboarding & Setup | 1–2 weeks |
+| Configuration & Build | 1–2 weeks |
+| User Training & UAT | 1–2 weeks |
 | Go-Live & Hypercare | 1–2 weeks |
 
-> These are indicative durations. Actual timelines depend on client responsiveness, scope, and complexity.
+**Phase 2: Customisation & Extensions (per Section 3.1)**
+
+After Phase 1 go-live, Mindhive will design, build, and release the agreed customisations listed in Section 3.1. Timelines are confirmed via detailed scoping per item.
+
+| Item | Indicative Time Taken |
+|---|---|
+| Design & Detailed Scoping | 1–2 weeks |
+| Build & Integration | 4–8 weeks |
+| User Training & UAT | 1–2 weeks |
+| Go-Live & Hypercare | 1–2 weeks |
+
+Notes: All durations are indicative and depend on scope complexity, sample document readiness, integration feasibility, vendor responsiveness, and client responsiveness. Approvals and clarifications are typically expected within 2–3 working days as outlined in Client Commitments.
 
 ---
 
-## 8. Commercial Structure
+# 5. Commercial Structure
 
-### 8.1 One-Off Development Cost
+- **Pricing Model:** One-off upfront implementation investment plus a yearly recurring fee covering hosting, database support, server support, and ongoing platform access within the agreed usage cap.
+- **Customisation Fees:** Current documented investment is RM [AMOUNT]. Any additional scope outside this SOW will be quoted separately on a fixed-price or time-and-materials basis.
+- **Usage Cap:** `[e.g. The included hosting and server arrangement is capped at 500 quotations generated and 200 orders created per month.]`
+- **Hosting Model:** Mindhive will host the database and servers on shared infrastructure together with a small number of other clients. [CLIENT SHORT NAME]'s access will remain restricted to [CLIENT SHORT NAME]'s own data only.
+
+## 5.1 One-Off Development Cost
 
 | Item | Price |
 |---|---|
-| `[e.g., MAIA Internal Chatbot]` | |
-| `[Custom Module 1]` | |
-| `[Custom Module 2]` | |
-| Periodic System and Feature Updates | |
-| Storage, Model Training, Ingestion | |
-| **Total** | **RM [AMOUNT]** |
+| **Core**<br>- Baseline Enterprise MAIA System<br>- `[Module 1]`<br>- `[Module 2]`<br>- Periodic System and Feature Updates<br>- Storage, Model Training, Ingestion | Included in total |
+| **Customisations**<br>- `[Custom Module 1]`<br>- `[Custom Module 2]` | Included in total |
+| **Grand Total** | **RM [AMOUNT]** |
 
-### 8.2 Monthly Maintenance
-
-| Item | Estimated |
-|---|---|
-| OpenAI / LLM Costs | ~ RM `[AMOUNT]` *(depending on usage)* |
-| Platform Costs | ~ RM `[AMOUNT]` |
-| Server Costs | RM `[AMOUNT]` |
-
-### 8.3 Payment Milestones
+## 5.2 Payment Terms
 
 | Milestone | Percentage | Price |
 |---|---|---|
-| Milestone 1 — Project Confirmation | 50% | RM `[AMOUNT]` |
-| Milestone 2 — UAT Completion | 50% | RM `[AMOUNT]` |
+| Milestone 1 — Phase One Initiation | 50% | RM [AMOUNT] |
+| Milestone 2 — Final UAT Sign-Off after completion of agreed Phase One and Phase Two scope | 50% | RM [AMOUNT] |
 
-> Adjust milestones and percentages as negotiated.
+## 5.3 Yearly Maintenance and Third-Party Costs
 
----
-
-## 9. Caveats & Exclusions
-
-- **Third-Party Dependencies:** Mindhive not liable for downtime or issues in external platforms (Shopee, Lazada, payment gateways, etc.).
-- **Connectivity:** Client is responsible for internet connectivity and device readiness.
-- **Client-Side Integrations:** Any unsupported third-party integrations outside the approved scope require a separate change request.
-- **Data Accuracy:** Responsibility lies with the Client for correctness of all provided data.
+| Item | Estimated |
+|---|---|
+| Yearly platform maintenance | RM [AMOUNT] / year |
+| Hosting or infrastructure | TBC |
+| External vendor or integration fees | TBC |
 
 ---
 
-## 10. Out of Scope
+# 6. Caveats & Exclusions
 
-- Hardware procurement or on-premise infrastructure
-- Business process re-engineering outside agreed workflows
-- Training beyond the agreed initial program
-- Ongoing management of third-party accounts unless explicitly contracted
-- `[Any client-specific exclusions]`
+- **Third-Party Dependencies:** Mindhive is not liable for downtime, access restrictions, API limitations, data errors, or performance issues caused by [ACCOUNTING SYSTEM], WhatsApp, email providers, or other external platforms.
+- **Connectivity:** [CLIENT SHORT NAME] is responsible for internet, devices, internal network readiness, and user access readiness.
+- **Client-Side Integrations:** Unsupported third-party integrations outside the approved scope are excluded and require change request approval.
+- **Data Accuracy:** [CLIENT SHORT NAME] is responsible for the correctness, completeness, and timeliness of provided data, including customer lists, product catalogues, historical transactions, pricing files, and sample documents.
+- **[ACCOUNTING SYSTEM] Integration:** Integration method is subject to confirmation with [CLIENT SHORT NAME]'s [ACCOUNTING SYSTEM] vendor or IT team. Mindhive will not guarantee API integration until access and technical feasibility are confirmed.
+- `[Add client-specific caveats here]`
 
 ---
 
-## 11. Acknowledgement & Agreement
+# 7. Service Level Agreements (SLAs)
+
+## 7.1 Mindhive Commitments
+
+**System Availability:** 99.5% uptime excluding scheduled maintenance, subject to final hosting and support package confirmation.
+
+**Support Response Times:**
+
+- **Critical (P1):** Within 2 hours
+- **High (P2):** Within 8 hours
+- **Normal (P3):** Within 2 business days
+
+**Maintenance Windows:** Pre-communicated, typically scheduled during weekends or off-peak hours where practical.
+
+**Data Protection:** Regular backups and reasonable disaster recovery practices to safeguard client data, subject to final deployment model.
+
+**Lifetime Upgrades & Support:** [CLIENT SHORT NAME] continues to receive ongoing product upgrades, security enhancements, and support for the lifetime of the active subscription or support arrangement.
+
+## 7.2 Client Commitments
+
+**User Access & Permissions:** [CLIENT SHORT NAME] will designate system administrators and confirm internal user roles, permissions, and access boundaries.
+
+**Data Provisioning:** [CLIENT SHORT NAME] will provide accurate, complete, and timely data uploads, sample documents, templates, and workflow inputs required for onboarding and implementation.
+
+**Timely Feedback:** [CLIENT SHORT NAME] will provide approvals, clarifications, and input during configuration, customisation, implementation, and UAT to avoid project delays.
+
+**Compliance:** [CLIENT SHORT NAME] will adhere to licensing terms, security practices, and applicable operational regulations.
+
+**Point of Contact:** [CLIENT SHORT NAME] will designate a primary point of contact for Mindhive communications. [CLIENT SHORT NAME] commits to responding to vendor queries, requests, or approvals within 2–3 working days.
+
+**Payments:** [CLIENT SHORT NAME] will ensure timely settlement of subscription fees, invoices, and approved change request costs according to agreed commercial terms.
+
+---
+
+# 8. Appendix
+
+## 8.1 Delivery Model
+
+MAIA is expected to be delivered as a cloud-hosted platform. Final deployment setup, hosting, support package, and environment details remain subject to technical and commercial confirmation.
+
+## 8.2 System Interfaces
+
+- **Web Application:** Browser-based access for `[list user roles]` users.
+- **Mobile-Responsive Access:** Subject to final user workflow needs and supported screens.
+- **WhatsApp and Email:** Used for customer communication, order intake context, and PO document handling where applicable.
+- **Integration Interfaces:** [ACCOUNTING SYSTEM] and other touchpoints are subject to vendor access, file samples, and technical validation.
+
+## 8.3 Core System Capabilities
+
+MAIA provides a unified business foundation for sales documents, customer records, service context, role-based access, document generation, workflow visibility, and operational traceability.
+
+## 8.4 Security & Compliance
+
+MAIA access will be configured based on user roles and approved permission rules. Final authentication, data isolation, encryption, backup, and compliance commitments depend on the agreed deployment and support package.
+
+## 8.5 Availability & Performance
+
+MAIA is designed for high availability and scalable performance. Final uptime, monitoring, and support commitments are governed by the agreed support arrangement.
+
+## 8.6 Customisation & Extensibility
+
+Future workflow changes, new integrations, additional document formats, or additional modules will be handled through separate scoping and change request approval.
+
+---
+
+# 9. Acknowledgement & Agreement
 
 This document serves as a baseline specification and framework for MAIA's implementation and usage. By signing below, both parties agree to the commitments, responsibilities, and exclusions set out herein.
 
 **For Mindhive Sdn Bhd:**
 
-|   |
+| Signature |
 |---|
-|____________________________ |
-|Signature|
-|Name:|
-|Position:|
-|Date:|
+| Name: TBC<br>Position: TBC<br>Date: TBC |
 
 **For [CLIENT LEGAL NAME]:**
 
-|   |
+| Signature |
 |---|
-|____________________________ |
-|Signature|
-|Name:|
-|Position:|
-|Date:|
+| Name: TBC<br>Position: TBC<br>Date: TBC |
 
 ---
 
 ## See Also
 
-- [[02 - PM Playbook/Templates/[Template] PRD]]
-- [[02 - PM Playbook/Processes/Dev Handover SOP]]
-- [[03 - Clients/Active Cooking Clients/Fixguru/SOW/Fixguru SOW]]
-- [[03 - Clients/Active Cooking Clients/Holsen/Product/SOW for MAIA Holsen]]
+- [[02 - PM Playbook/Templates/[Template] SOW Writing Guide]]
+- [[03 - Clients/Active Cooking Clients/Thermac/Thermac_SOW]] — canonical reference

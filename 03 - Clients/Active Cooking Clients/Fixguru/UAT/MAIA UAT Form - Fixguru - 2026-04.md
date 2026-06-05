@@ -7,7 +7,7 @@ uat_round: 1
 ---
 
 # MAIA User Acceptance Test (UAT) — Fixguru
-## April 2026 · Round 1
+## April 2026 · Full UAT
 
 ---
 
@@ -28,7 +28,7 @@ uat_round: 1
 | 15–16 Apr | Product ready confirmation                   | MAIA team    |
 | 16 Apr    | **Phase 1 Sign Off & Go-Live**               | All          |
 
-**Scope note:** This UAT covers Phase 1 core MAIA — chatbot order intake, document flow (QT → SO → Invoice → Payment), approval flows (min price, credit limit), delivery, inventory alerts, and role permissions. E-invoice integration and the Custom Box Calculator are covered separately in a later phase.
+**Scope note:** This UAT covers all MAIA features for Fixguru — chatbot order intake, document flow (QT → SO → Invoice → Payment), approval flows (min price, credit limit), delivery, inventory alerts, role permissions, Custom Box Calculator (RSC & Diecut), eInvoice / AutoCount sync, and Historical Pricing & Discount % (web app and chatbot).
 
 **Web App:** https://maia-fe-fixguru.vercel.app/login
 **Chatbot (during UAT):** Telegram — @maia_fixguru_bot *(scan the QR code provided)*
@@ -60,7 +60,7 @@ uat_round: 1
 
 ## Role Permission Summary
 
-Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Manager.
+Quick reference for Group 3 tests. Fixguru has no Sales Manager or Logistics Manager.
 
 | Document / Feature      | Sales User | Warehousing (Logistics User) | Finance Manager | Finance Asst (Finance User) | Admin       |
 | ----------------------- | ---------- | ---------------------------- | --------------- | --------------------------- | ----------- |
@@ -116,17 +116,21 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-### Group 1 — Chatbot: Sending a Quotation
+### Group 1 — End-to-End Workflow
 
-*Who tests this group: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
+*Work through tests in order — data created in earlier tests is used in later ones.*
+
+---
+
+#### Quotation
 
 ---
 
-#### Test 1 — Send a Quotation via Text Message and Voice Note
+##### Test 1 — Send a Quotation via Chatbot (Text Message and Voice Note)
 
-*Test the chatbot twice — once by typing, and once by sending a voice note. The chatbot will create a Quotation from what you send.*
+*Who tests this: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
 
----
+*Test the chatbot twice — once by typing, once by voice note.*
 
 **Part A — Text Message**
 
@@ -159,27 +163,25 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 - [ ] Fail
 - [ ] Issue
 
-**Notes:**
-
----
-
 **Tested by:**
 **Date:**
 
+**Notes:**
+
 
 ---
 
-#### Test 2 — Pricing and Stock Check (Chatbot)
+##### Test 2 — Pricing and Stock Check (Chatbot)
 
-*Continue from **Test 1** (text message quotation). This tests the chatbot's price and stock checks during quotation intake.*
+*Continue from Test 1. Tests chatbot price and stock validation during quotation intake.*
 
-| Step | What to do                                                                | What you should see                                                  |
-| ---- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1    | After the chatbot shows the extracted quotation details, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item. |
-| 2    | Enter a price **above** the minimum selling price for one item.           | Price is accepted. No warning shown.                                 |
-| 3    | Enter a price **below** the minimum selling price for another item. For example, type `RM 1.00` for a product with a minimum of `RM 1.20`. | Chatbot rejects the price and says it is below the minimum selling price. It offers to set the price to the minimum allowed (e.g. `RM 1.20`) or lets you adjust the quantity or choose a different item. |
-| 4    | Reply to accept the minimum price suggested by the chatbot.               | Price is updated to the minimum. You can continue with the quotation. |
-| 5    | Ask the chatbot for the available quantity of a product. For example, type *"What is the quantity of [Product]?"* | Chatbot replies with the available stock quantity for that product. |
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | After the chatbot shows the quotation details, proceed to the pricing step. | Chatbot asks you to confirm or enter the price for each item. |
+| 2 | Enter a price **above** the minimum selling price for one item. | Price is accepted. No warning shown. |
+| 3 | Enter a price **below** the minimum selling price for another item. For example, type `RM 1.00` for a product with a minimum of `RM 1.20`. | Chatbot rejects the price and says it is below the minimum selling price. It offers to set the price to the minimum allowed (e.g. `RM 1.20`) or lets you adjust the quantity or choose a different item. |
+| 4 | Reply to accept the minimum price suggested by the chatbot. | Price is updated to the minimum. You can continue with the quotation. |
+| 5 | Ask the chatbot for the available quantity of a product. For example, type *"What is the quantity of [Product]?"* | Chatbot replies with the available stock quantity for that product. |
 
 **Your result:**
 - [ ] Pass
@@ -194,17 +196,11 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-### Group 2 — Web App: Managing Orders
-
-💡 **Note:** Tests in this group can be done via the **web app** (https://maia-fe-fixguru.vercel.app/login) or the **chatbot** — both are supported.
-
----
-
-#### Test 3 — Price Below Minimum Auto-Adjusts (Web App)
+##### Test 3 — Price Below Minimum Auto-Adjusts (Web App)
 
 *Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit*
 
-*Test 2 checks the chatbot blocks a low price during intake. This test checks the same rule on the web app — when a price below the minimum is entered on a Quotation or Sales Order, the system immediately blocks the input and auto-adjusts the price to the minimum allowed.*
+*Checks the min price guard on the web app — system blocks below-min input and auto-adjusts on both Quotation and SO.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
@@ -227,13 +223,262 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 4 — Credit Limit Check on Sales Order Submission
+##### 1.2 Quotation — Custom Item via Calculator
+
+*Who tests this: **Xiao Ling** (Sales) and **Hayati** (Sales)*
+
+*The Custom Box Calculator appears inside the Quotation when adding items. It calculates box price based on dimensions and material using Fixguru's RSC and Diecut formulas.*
+
+---
+
+###### Test 19 — RSC Sheet Calculator
+
+*Who tests this: **Xiao Ling** (Sales)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| **— Step 1: Setup —** | | |
+| 1 | Log in. Create a new **Quotation**. In the item section, click **Calculate Custom Box**. | The Fixguru Calculator modal opens. The stepper shows 4 steps: Setup → Board Quality → Production → Quote. Step 1 (Setup) is active. |
+| 2 | Select **RSC** as the Calculator Type. | RSC tile is highlighted with an orange border. |
+| 3 | Select a **Board Quality** — e.g. **A-flute (AF)**. | Selected tile is highlighted. |
+| 4 | Enter **Length**, **Width**, and **Height** in mm (e.g. 200 / 500 / 100). | The **Ref Open Size (MM) (L × W)** field below auto-calculates and shows a value (e.g. "700 × 600"). The Continue button becomes active. |
+| 5 | Click **Continue**. | Step 1 gets a checkmark. Step 2 (Board Quality) becomes active. |
+| **— Step 2: Board Quality —** | | |
+| 6 | Review the **Board Recipe**: set Outer Liner material + GSM, Medium material + GSM, Inner Liner material + GSM using the dropdowns and number inputs. | All three rows (Outer Liner, Medium, Inner Liner) show selected material and GSM. The system auto-calculates and shows **Board price (RM/m²)**, **LM guide**, and **Recommended qty (~pcs)** at the bottom of the section. |
+| 7 | Click **Continue**. | Step 2 gets a checkmark. Step 3 (Production) becomes active. |
+| **— Step 3: Production —** | | |
+| 8 | Set the **Order quantity** using the +/- buttons or by typing directly (e.g. 150 PCS). | The progress bar updates. If quantity meets the LM guide, the bar turns green and shows *"Above board guide (X LM ≥ Y LM)"*. The live unit price (excl. SST) is shown at the bottom with an LM status pill. |
+| 9 | Leave **Printing** and **Transport** toggles off. (Or enable them and verify the unit price updates accordingly.) | Toggles respond correctly. Unit price updates if toggles are changed. |
+| 10 | Click **Continue**. | Step 3 gets a checkmark. Step 4 (Quote) becomes active. |
+| **— Step 4: Quote —** | | |
+| 11 | Review the **SKU** section: Model name is auto-generated (e.g. "RSC 200 x 500 x 100 AF"), Customer is pre-filled, Quote date shows today. Edit the Model name if needed. | Auto-generated model name matches the type, dimensions, and board quality selected. Customer name and date are correct. |
+| 12 | Review the **Pricing**, **Impact**, and **Costs** sections: check Recommended price (toggle No SST / With SST), Gross Margin %, Gross Profit, and Costs breakdown. Then click **Add SKU**. | Item is added to the Quotation with the calculated price. The calculator modal closes. The new line item appears in the Quotation items list. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+###### Test 20 — Diecut Sheet Calculator
+
+*Who tests this: **Hayati** (Sales)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| **— Step 1: Setup —** | | |
+| 1 | Log in. Create a new **Quotation**. In the item section, click **Calculate Custom Box**. | The Fixguru Calculator modal opens. The stepper shows 4 steps: Setup → Board Quality → Production → Quote. Step 1 (Setup) is active. |
+| 2 | Select **Diecut** as the Calculator Type. | Diecut tile is highlighted with an orange border. |
+| 3 | Select a **Board Quality** — e.g. **B-flute (BF)**. | Selected tile is highlighted. |
+| 4 | Enter **Length**, **Width**, and **Height** in mm. | The **Ref Open Size (MM) (L × W)** field auto-calculates and shows a value. The Continue button becomes active. |
+| 5 | Click **Continue**. | Step 1 gets a checkmark. Step 2 (Board Quality) becomes active. |
+| **— Step 2: Board Quality —** | | |
+| 6 | Review the **Board Recipe**: set Outer Liner material + GSM, Medium material + GSM, Inner Liner material + GSM using the dropdowns and number inputs. | All three rows show selected material and GSM. The system shows **Board price (RM/m²)**, **LM guide**, and **Recommended qty (~pcs)** at the bottom of the section. |
+| 7 | Click **Continue**. | Step 2 gets a checkmark. Step 3 (Production) becomes active. |
+| **— Step 3: Production —** | | |
+| 8 | Set the **Order quantity** (e.g. 150 PCS). | Progress bar updates. If quantity meets the LM guide, the bar turns green and shows *"Above board guide (X LM ≥ Y LM)"*. Live unit price (excl. SST) shown at the bottom. |
+| 9 | Leave **Printing** and **Transport** toggles off. (Or enable them and verify the unit price updates.) | Toggles respond correctly. Unit price updates if toggles are changed. |
+| 10 | Click **Continue**. | Step 3 gets a checkmark. Step 4 (Quote) becomes active. |
+| **— Step 4: Quote —** | | |
+| 11 | Review the **SKU** section: Model name is auto-generated (e.g. "Diecut 300 x 400 x 200 BF"), Customer is pre-filled, Quote date shows today. Edit the Model name if needed. | Auto-generated model name matches the type, dimensions, and board quality selected. Customer name and date are correct. |
+| 12 | Review the **Pricing**, **Impact**, and **Costs** sections: check Recommended price (toggle No SST / With SST), Gross Margin %, Gross Profit, and Costs breakdown. Then click **Add SKU**. | Item is added to the Quotation with the calculated price. The calculator modal closes. The new line item appears in the Quotation items list. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+###### Test 21 — Calculator Price Flows into Quotation Correctly
+
+*Who tests this: **Xiao Ling** (Sales) and **Marcus Lim** (Admin)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Complete the calculator for an RSC or Diecut box (all 4 steps). On Step 4 (Quote), click **Add SKU**. | The calculator modal closes. A new line item is added to the Quotation with: **Item name** (matching the model name from Step 4), **Quantity** (matching the order quantity from Step 3), **Unit price** (matching the recommended price from Step 4), and **Description** populated with the box spec details (type, board quality, dimensions, board recipe). |
+| 2 | Check the line item description field. | Spec details are present — e.g. box type (RSC/Diecut), board quality (AF/BF/DW), dimensions (L × W × H mm), Outer/Medium/Inner liner material and GSM. |
+| 3 | Repeat Step 1 for a second item using different dimensions or type. | A second line item is added with its own item name, quantity, price, and description. Both items show independently correct data. |
+| 4 | Save the Quotation. | Quotation saved in Draft. Item name, quantity, unit price, and description are all retained correctly for both line items. |
+| 5 | **Marcus Lim** (Admin) submits the Quotation. | Quotation submitted. Status changes to **OPEN**. All line item data is unchanged. |
+| 6 | Convert the Quotation to a **Sales Order**. | Sales Order created. Item name, quantity, unit price, and description carry over correctly from the Quotation. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+##### 1.3 Quotation — Item Historical Pricing (FE)
+
+*Who tests this: **Marcus Lim** (Admin) for Test 23; any **Sales** user for Tests 24 & 25*
+
+*Fixguru's standard prices change frequently. The team needs to see what discount % was given to each customer. When the standard price changes, the system suggests a new unit price based on the same discount — without manual calculation.*
+
+---
+
+###### Test 23 — Edit Customer Discount % and Price in Customer Profile
+
+*Who tests this: **Marcus Lim** (Admin)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in. Go to a **Customer Profile** and open the **Price List** tab. | A table shows all items with columns: SKU, Item Name, Standard Price, Discount %, Customer Price, Min Price, Max Price, UOM. Standard Price, Min Price, Max Price, and UOM are read-only. |
+| 2 | Find an item. Enter a value in the **Discount %** column (e.g. 10%). | The Customer Price column automatically shows the derived price in italic — e.g. Standard RM 10.00 at 10% = **RM 9.00**. |
+| 3 | Now enter a value in the **Customer Price** column for the same item. | The Discount % field clears your entered value and instead shows the derived discount % in italic. Only one field is stored at a time. |
+| 4 | Save the changes. | Customer Price is saved. The derived Discount % is shown in italic. |
+| 5 | Find a different item. Enter a **Discount %** that would produce a price **below the Min Price** (e.g. 90% discount on an item with Min Price RM 10.00). | System blocks the save and shows an error: *"Discount produces price outside allowed range. Adjust discount or update min/max."* |
+| 6 | Adjust the discount to a valid value and save. | Changes are saved successfully. |
+| 7 | Create a new **Quotation** for this customer and add the items edited above. Click the unit price field for each item. | The dropdown shows a **Customer Price** option reflecting the values set in the Customer Profile — either the entered price or the price derived from the stored discount %. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+###### Test 24 — Customer Price Auto-Derived When Standard Price Changes
+
+*Who tests this: **Xiao Ling** (Sales)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in. Create a new **Quotation** for a customer that has a stored discount % in their Customer Profile. Add an item. | Item is added to the Quotation. |
+| 2 | Click the **unit price field** for the item. | The dropdown opens and shows a **Customer Price** option at the top with the discount % — e.g. *"-10% vs current Standard"*. |
+| 3 | Check the Customer Price value. For example, if the customer's discount is 10% and the Standard Selling Price is RM 14.30, the Customer Price should show **RM 12.87**. | Price is correctly derived from the stored discount % and current Standard Selling Price. The team does not need to calculate this manually. |
+| 4 | Select the Customer Price option and save the Quotation. | Unit price is set to the derived price. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+###### Test 25 — Discount % Shown in Unit Price Dropdown
+
+*Who tests this: **Hayati** (Sales)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in. Create a new **Quotation**. Add an item. Click the **unit price field**. | The unit price dropdown opens showing available price options. |
+| 2 | Check the **Customer Price** row. | Shows the price and a secondary line *"-X% vs current Standard"* — discount % calculated against today's Standard Selling Price. Customer Price appears first in the dropdown. |
+| 3 | Check the **Latest Quotation Price** row. | Shows the last quoted price for this customer and item, with a secondary line *"-X% vs Standard"*. |
+| 4 | Check the **Avg Lifetime Quotation Price** row. | Shows the average price across all past quotations. No discount % line shown. |
+| 5 | Check the **Maximum Selling Price** and other price list rows. | Price is shown. No discount % secondary line shown for these rows. |
+| 6 | Add an item that has **no Standard Selling Price** set. Click the unit price field. | No discount % secondary line appears for any option in the dropdown. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+##### 1.3.4 Quotation — Historical Pricing via Chatbot
+
+*Who tests this: any **Sales** user (Xiao Ling, Hayati, Zuha, or Syahira)*
+
+*The MAIA chatbot can answer pricing questions about a customer's history. This group checks that the chatbot returns correct last price, average price, and quotation history when asked.*
+
+---
+
+###### Test 26 — Chatbot Returns Last Invoice Price for a Customer Item
+
+*Who tests this: **Xiao Ling** (Sales)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | In the MAIA chatbot, ask: *"What was the last price we sold [Item X] to [Customer Y]?"* (use a real item and customer that has at least one submitted Invoice). | Chatbot responds with a unit price (e.g. RM 9.00 / Box), the invoice date, and the invoice number. |
+| 2 | Cross-check the price against the actual Invoice in MAIA for that customer and item. | Price, date, and document number match the most recent submitted Invoice. |
+| 3 | Ask the same question for a customer that has **no invoice history** for that item. | Chatbot responds that there is no prior invoice history for this customer and item — it does not return an error or a made-up price. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+###### Test 27 — Chatbot Returns Average and Quotation History
+
+*Who tests this: **Hayati** (Sales)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | In the MAIA chatbot, ask: *"What is the average price [Customer Y] has paid for [Item X]?"* (use a customer with multiple submitted Invoices). | Chatbot responds with an average price, the number of invoices counted, and the date range covered (e.g. "Average RM 8.75 / Box across 12 invoices, Jun 2025 – Mar 2026"). |
+| 2 | Ask: *"Have we quoted [Item X] to [Customer Y] recently?"* | Chatbot responds with the last Quotation price, quotation date, and document number — or confirms no recent quotation exists. |
+| 3 | Ask about a customer+item pair with **no history at all** (new customer or new item). | Chatbot responds that there is no prior history — does not return an error or a made-up value. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Sales Order + Proforma
+
+---
+
+##### Test 4 — Credit Limit Check on Sales Order Submission
 
 *Who tests this: **Xiao Ling** (Sales) to create; **Marcus Lim** (Admin) to submit; **Steven Gan** (Admin) to approve*
 
-*This tests two things: (A) the system blocks SO submission when a customer is near their credit limit, and (B) a manager can approve the SO to override the block.*
+*Tests (A) system blocks SO submission at credit limit and (B) Admin can approve to override.*
 
-⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** as the test customer — the credit limit has already been set to 80% usage for this account.
+⚠️ **Note:** Use **ZARA BIOTECH SDN BHD** — credit limit pre-set to 80% usage for this account.
 
 **Part A — Credit Limit Block**
 
@@ -273,67 +518,11 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 5 — Generate Documents (Quotation → Sales Order → Invoice)
-
-*Coordinate across roles — see who does each step.*
-
-**Role note:** Sales and Finance can **create** but not **submit**. Only **Admin** submits Quotations and Sales Orders. **Finance Manager** or **Admin** submits Invoices.
-
-**Proforma Invoice note:** Not a separate document — it's a PDF export from the Sales Order. Used for cash-in-advance customers only.
-
-| Step | Who                                                     | What to do                                                                                                | What you should see                                                                                                  |
-| ---- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| 1    | **Xiao Ling** (Sales)                                   | Log in at https://maia-fe-fixguru.vercel.app/login. Create a **Quotation** and save it.                   | Quotation is created and saved. Status shows **Draft**.                                                              |
-| 2    | **Marcus Lim** (Admin)                                  | Log in as Admin. Open the Draft Quotation and click **Submit**.                                           | Quotation status changes to **OPEN**. Only Admin can submit Quotations.                                              |
-| 3    | **Xiao Ling** (Sales) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**.                                         | Quotation status changes to **ORDERED**. A new Sales Order is created with status **Draft**.                         |
-| 4    | **Marcus Lim** (Admin)                                  | Open the Draft Sales Order and click **Submit**.                                                          | Sales Order status changes to **TO BILL**. Only Admin can submit Sales Orders.                                       |
-| 5    | **Abishaah** or **Wendy Wang** (Finance Manager)        | Open the submitted Sales Order. Click **Generate PDF** and select **Proforma Invoice**. Download the PDF. | A Proforma Invoice PDF is downloaded. It uses the Sales Order details — no separate record is created in the system. |
-| 6    |                                                         | From the Sales Order, generate the final **Invoice** and click **Submit**.                                | An Invoice is created and submitted. Status shows **UNPAID**.                                                        |
-| 7    | Any user                                                | Download the Quotation, Sales Order, and Invoice each as PDF.                                             | All three documents download successfully as PDFs.                                                                   |
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### Test 6 — Create a Credit Note and Debit Note
-
-*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
-
-| Step | What to do                                                                                         | What you should see                                                                                    |
-| ---- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| 1    | Open an existing submitted **Invoice**.                                                            | Invoice record is visible.                                                                             |
-| 2    | Look for the option to create a **Credit Note** and click it.                                      | Credit Note creation screen appears.                                                                   |
-| 3    | Fill in the amount, adjust the items, then confirm and submit.                                     | Credit Note is created and submitted. It references the original Invoice and shows the credited amount. |
-| 4    | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears.                                                                    |
-| 5    | Fill in the amount & adjust the items, then confirm.                                               | Debit Note is created and saved. It references the original Invoice and shows the debited amount.      |
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### Test 7 — Create and Manage Sales Orders on the Web App
+##### Test 7 — Create and Manage Sales Orders on the Web App
 
 *Who tests this: **Hayati** (Sales) and **Abishaah** (Finance Manager) for creation; **Marcus Lim** (Admin) for submission*
 
-**Note:** Sales and Finance can create and edit Sales Orders but **cannot submit** them. Once saved, they need to tag Admin so Admin can submit the document.
+*Checks that Sales and Finance can create SOs but must tag Admin to submit.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
@@ -359,23 +548,26 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 8 — Full Delivery Flow (SO → Picklist → DO → Invoice → Mark as Delivered)
+#### Delivery
+
+---
+
+##### Test 8 — Full Delivery Flow (SO → Picklist → DO → Mark as Delivered)
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** (Admin) for submissions and marking delivery*
 
-**Note:** Only **Admin** can submit Picking Lists and Delivery Orders at Fixguru. The flow starts from a submitted Sales Order or Proforma Invoice.
+*Only Admin can submit Picking Lists and Delivery Orders at Fixguru.*
 
 | Step | Who | What to do | What you should see |
 | ---- | --- | ---------- | ------------------- |
-| 1 | **Marcus Lim** (Admin) | Open a submitted **Sales Order** (or Proforma Invoice). | Sales Order is visible with status **TO BILL**. |
+| 1 | **Marcus Lim** (Admin) | Open a submitted **Sales Order**. | Sales Order is visible with status **TO BILL**. |
 | 2 | **Asrul** (Warehousing) | From the Sales Order, create a **Picking List** and save it. | Picking List is created and saved in Draft. Shows all items and quantities to pick. |
 | 3 | **Marcus Lim** (Admin) | Open the Draft Picking List and click **Submit**. | Picking List is submitted. |
 | 4 | **Asrul** (Warehousing) | From the Sales Order, create a **Delivery Order (DO)** and save it. | Delivery Order is created and saved in Draft. Shows customer address, products, quantities, and a DO reference. |
 | 5 | **Asrul** (Warehousing) | Try to **submit** the Delivery Order. | 🚫 Submit button is not available — only Admin can submit Delivery Orders. |
 | 6 | **Marcus Lim** (Admin) | Open the Draft Delivery Order and click **Submit**. | Delivery Order status changes to **To Schedule**. |
-| 7 | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the **Invoice** and submit it. | Invoice is created and submitted. Status shows **UNPAID**. |
-| 8 | **Marcus Lim** (Admin) | On the submitted Delivery Order, click **Actions → Mark as Delivered**. | Delivery Order status changes to **Delivered**. Delivery is recorded as completed. |
-| 9 | Any user | Download the Picking List and Delivery Order as PDFs. | Both documents download successfully as PDFs. |
+| 7 | **Marcus Lim** (Admin) | On the submitted Delivery Order, click **Actions → Mark as Delivered**. | Delivery Order status changes to **Delivered**. Delivery is recorded as completed. |
+| 8 | Any user | Download the Picking List and Delivery Order as PDFs. | Both documents download successfully as PDFs. |
 
 **Your result:**
 - [ ] Pass
@@ -390,50 +582,11 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 9 — Stock Alerts (Out of Stock and Low Stock)
-
-*Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
-
-**Part A — Out of Stock Alert**
-
-⚠️ **Setup:** Use a product that has exactly 100 units available. Create a Sales Order that uses all 100 units. Once the order is submitted, the stock hits zero and should trigger the out-of-stock notification.
-
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | Create and submit a Sales Order that uses up all available stock of a product (e.g. 100 units for a product with 100 units available). | Sales Order is submitted successfully. |
-| 2 | Log in as **Asrul** (Warehousing). Check the notification area. | An Out-of-Stock alert is shown for that product — stock is now at zero. |
-| 3 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Out-of-Stock alert is visible to Sales users as well. |
-
-**Part B — Low Stock Alert**
-
-⚠️ **Setup:** Go to the **Item module** and set a safety quantity for a product (e.g. set safety quantity to 50). Then make sure the available quantity for that product drops below 50. This will trigger the low stock notification.
-
-| Step | What to do | What you should see |
-| ---- | ---------- | ------------------- |
-| 1 | Log in as **Asrul** (Warehousing). Go to the **Item module**. Find a product and set its **safety quantity** (e.g. 50 units). | Safety quantity is saved for that product. |
-| 2 | Ensure the available quantity for that product is below the safety quantity you just set. | Available quantity is lower than the safety quantity. |
-| 3 | Check the notification area. | A Low-Stock alert is shown for that product — remaining quantity is below the safety level. |
-| 4 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Low-Stock alert is visible to Sales users as well. |
-
-**Your result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-
-**Tested by:**
-**Date:**
-
-**Notes:**
-
-
----
-
-#### Test 10 — Delivery Delay Reminder
+##### Test 10 — Delivery Delay Reminder
 
 *Who tests this: **Asrul** (Warehousing)*
 
-*The system sends a notification when a Sales Order has been submitted but no Delivery Order has been created within 5 hours.*
-
+*System sends a notification when an SO has been submitted but no DO created within 5 hours.*
 
 | Step | What to do | What you should see |
 | ---- | ---------- | ------------------- |
@@ -453,7 +606,161 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-#### Test 11 — Create and Submit a Stock Reservation Entry
+#### Invoice + eInvoice
+
+---
+
+##### Test 5 — Generate Documents (Quotation → Sales Order → Proforma → Invoice)
+
+*Coordinate across roles — see who does each step.*
+
+**Role note:** Sales and Finance can **create** but not **submit**. Only **Admin** submits Quotations and Sales Orders. **Finance Manager** or **Admin** submits Invoices.
+
+**Proforma Invoice note:** Not a separate document — it's a PDF export from the Sales Order. Used for cash-in-advance customers only.
+
+| Step | Who | What to do | What you should see |
+| ---- | ---- | ---------- | ------------------- |
+| 1 | **Xiao Ling** (Sales) | Log in. Create a **Quotation** and save it. | Quotation is created and saved. Status shows **Draft**. |
+| 2 | **Marcus Lim** (Admin) | Open the Draft Quotation and click **Submit**. | Quotation status changes to **OPEN**. |
+| 3 | **Xiao Ling** (Sales) or **Abishaah** (Finance Manager) | Open the submitted Quotation and convert it to a **Sales Order**. | Quotation status changes to **ORDERED**. New Sales Order created with status **Draft**. |
+| 4 | **Marcus Lim** (Admin) | Open the Draft Sales Order and click **Submit**. | Sales Order status changes to **TO BILL**. |
+| 5 | **Abishaah** or **Wendy Wang** (Finance Manager) | Open the submitted Sales Order. Click **Generate PDF** and select **Proforma Invoice**. Download the PDF. | A Proforma Invoice PDF is downloaded. No separate record is created in the system. |
+| 6 | **Abishaah** or **Wendy Wang** (Finance Manager) | From the Sales Order, generate the final **Invoice** and click **Submit**. | An Invoice is created and submitted. Status shows **UNPAID**. |
+| 7 | Any user | Download the Quotation, Sales Order, and Invoice each as PDF. | All three documents download successfully as PDFs. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+##### eInvoice — AutoCount Push
+
+*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
+
+*MAIA determines the e-invoice mode and pushes to AutoCount. MAIA's scope ends at the push — AutoCount's submission to MyInvois/LHDN is not tested here.*
+
+---
+
+###### Test 22 — eInvoice Push to AutoCount
+
+*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
+
+**Part A — Individual e-Invoice (invoice above RM 10,000)**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in as Finance Manager. Open a submitted Sales Order with a total above **RM 10,000**. Generate an Invoice from it and submit. | Invoice is submitted. Status shows **UNPAID**. |
+| 2 | Open the submitted Invoice. Look for the **e-Invoice** section or status field. | `E-Invoice Mode` shows **Individual**. `E-Invoice Status` shows **Queued** — this confirms MAIA has pushed the invoice to AutoCount. |
+
+**Part A result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Notes:**
+
+---
+
+**Part B — Consolidated e-Invoice (invoice below RM 10,000)**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open a submitted Sales Order with a total **below RM 10,000**. Generate an Invoice and submit. | Invoice is submitted. Status shows **UNPAID**. |
+| 2 | Open the submitted Invoice. Check the e-Invoice status field. | `E-Invoice Mode` shows **Consolidated**. `E-Invoice Status` shows **Queued** — MAIA has pushed to AutoCount with the consolidated flag. |
+
+**Part B result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Post Invoice
+
+---
+
+##### Test 6 — Create a Credit Note and Debit Note
+
+*Who tests this: **Abishaah** or **Wendy Wang** (Finance Manager)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open an existing submitted **Invoice**. | Invoice record is visible. |
+| 2 | Look for the option to create a **Credit Note** and click it. | Credit Note creation screen appears. |
+| 3 | Fill in the amount, adjust the items, then confirm and submit. | Credit Note is created and submitted. It references the original Invoice and shows the credited amount. |
+| 4 | Open the same or a different Invoice. Look for the option to create a **Debit Note** and click it. | Debit Note creation screen appears. |
+| 5 | Fill in the amount & adjust the items, then confirm. | Debit Note is created and saved. It references the original Invoice and shows the debited amount. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Cross Workflow
+
+---
+
+##### Test 9 — Stock Alerts (Out of Stock and Low Stock)
+
+*Who tests this: **Asrul** (Warehousing) and **Xiao Ling** (Sales) — both should see the alerts*
+
+**Part A — Out of Stock Alert**
+
+⚠️ **Setup:** Use a product with exactly 100 units available. Submit a Sales Order that uses all 100 — stock hits zero and triggers the out-of-stock notification.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Create and submit a Sales Order that uses up all available stock of a product (e.g. 100 units). | Sales Order is submitted successfully. |
+| 2 | Log in as **Asrul** (Warehousing). Check the notification area. | An Out-of-Stock alert is shown for that product — stock is now at zero. |
+| 3 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Out-of-Stock alert is visible to Sales users as well. |
+
+**Part B — Low Stock Alert**
+
+⚠️ **Setup:** In the Item module, set a safety quantity (e.g. 50). Ensure available quantity drops below it.
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in as **Asrul** (Warehousing). Go to the **Item module**. Find a product and set its **safety quantity** (e.g. 50 units). | Safety quantity is saved for that product. |
+| 2 | Ensure the available quantity for that product is below the safety quantity. | Available quantity is lower than the safety quantity. |
+| 3 | Check the notification area. | A Low-Stock alert is shown for that product. |
+| 4 | Log out. Log in as **Xiao Ling** (Sales). Check the notification area. | The same Low-Stock alert is visible to Sales users as well. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+##### Test 11 — Create and Submit a Stock Reservation Entry
 
 *Who tests this: **Asrul** (Warehousing) for creation; **Marcus Lim** or **Abishaah** (Admin or Finance Manager) for submission*
 
@@ -477,7 +784,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-### Group 4 — Logging In
+### Group 2 — Logging In
 
 ---
 
@@ -503,7 +810,7 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ---
 
-### Group 5 — What Each Person Can and Cannot Do
+### Group 3 — What Each Person Can and Cannot Do
 
 *Each person tests their own account. Check that you can do the things listed, and that you are blocked from things outside your role.*
 
@@ -716,30 +1023,39 @@ Quick reference for Group 5 tests. Fixguru has no Sales Manager or Logistics Man
 
 ## Results Summary
 
-| Test # | What was tested                                                       | Result (Pass / Fail / Issue) | Tested by | Date |
-| ------ | --------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
-| Test 1  | Send quotation by text message and voice note                        |                              |           |      |
-| Test 2  | Pricing and stock check (chatbot)                                    |                              |           |      |
-| Test 3  | Price below minimum auto-adjusts (web app)                           |                              |           |      |
-| Test 4A | Credit limit block on Sales Order submission                         |                              |           |      |
-| Test 4B | Management approval to override credit limit block                   |                              |           |      |
-| Test 4  | Generate documents (Quotation → SO → Invoice; Proforma as PDF export) |                              |           |      |
-| Test 5  | Create Credit Note and Debit Note (Finance Manager)                  |                              |           |      |
-| Test 6  | Create and manage Sales Orders (Sales/Finance create; Admin submits) |                              |           |      |
-| Test 7  | Export Invoice / Credit Note / Debit Note as CSV (Finance)           |                              |           |      |
-| Test 8  | Full delivery flow (SO → Picklist → DO → Invoice → Mark as Delivered) |                              |           |      |
-| Test 9  | Stock alerts (Out of Stock / Low Stock)                              |                              |           |      |
-| Test 10 | Delivery delay reminder                                              |                              |           |      |
-| Test 11 | Create and submit Stock Reservation Entry                            |                              |           |      |
-| Test 12 | All users can log in                                                 |                              |           |      |
-| Test 13 | Sales (Zuha / Syahira) — access check                                |                              |           |      |
-| Test 14 | Warehousing (Fadzil / Azizah) — access check                         |                              |           |      |
-| Test 15 | Finance Manager (Wendy Wang) — access check                          |                              |           |      |
-| Test 16 | Finance Assistant / Nisa — access check                              |                              |           |      |
-| Test 17 | Admin (Steven Gan / Yvonne Choo) — access check                      |                              |           |      |
-| Test 18 | Role approval flow (QT → SO → DO → PL → INV → RCT)                  |                              |           |      |
+| Test # | What was tested                                                           | Result (Pass / Fail / Issue) | Tested by | Date |
+| ------ | ------------------------------------------------------------------------- | ---------------------------- | --------- | ---- |
+| Test 1   | Send quotation by text message and voice note                            |                              |           |      |
+| Test 2   | Pricing and stock check (chatbot)                                        |                              |           |      |
+| Test 3   | Price below minimum auto-adjusts (web app)                               |                              |           |      |
+| Test 4A  | Credit limit block on Sales Order submission                             |                              |           |      |
+| Test 4B  | Management approval to override credit limit block                       |                              |           |      |
+| Test 5   | Generate documents (Quotation → SO → Invoice; Proforma as PDF export)    |                              |           |      |
+| Test 6   | Create Credit Note and Debit Note (Finance Manager)                      |                              |           |      |
+| Test 7   | Create and manage Sales Orders (Sales/Finance create; Admin submits)     |                              |           |      |
+| Test 8   | Full delivery flow (SO → Picklist → DO → Invoice → Mark as Delivered)    |                              |           |      |
+| Test 9   | Stock alerts (Out of Stock / Low Stock)                                  |                              |           |      |
+| Test 10  | Delivery delay reminder                                                  |                              |           |      |
+| Test 11  | Create and submit Stock Reservation Entry                                |                              |           |      |
+| Test 12  | All users can log in                                                     |                              |           |      |
+| Test 13  | Sales (Zuha / Syahira) — access check                                    |                              |           |      |
+| Test 14  | Warehousing (Fadzil / Azizah) — access check                             |                              |           |      |
+| Test 15  | Finance Manager (Wendy Wang) — access check                              |                              |           |      |
+| Test 16  | Finance Assistant / Nisa — access check                                  |                              |           |      |
+| Test 17  | Admin (Steven Gan / Yvonne Choo) — access check                          |                              |           |      |
+| Test 18  | Role approval flow (QT → SO → DO → PL → INV → RCT)                      |                              |           |      |
+| Test 19  | RSC Sheet Calculator — full 4-step flow                                  |                              |           |      |
+| Test 20  | Diecut Sheet Calculator — full 4-step flow                               |                              |           |      |
+| Test 21  | Calculator price flows into Quotation and SO correctly                   |                              |           |      |
+| Test 22A | eInvoice push to AutoCount — individual mode (> RM 10,000)              |                              |           |      |
+| Test 22B | eInvoice push to AutoCount — consolidated mode (< RM 10,000)            |                              |           |      |
+| Test 23  | Edit customer discount % and price in Customer Profile                   |                              |           |      |
+| Test 24  | Customer price auto-derived from discount % when standard price changes  |                              |           |      |
+| Test 25  | Discount % shown in unit price dropdown                                  |                              |           |      |
+| Test 26  | Chatbot — last invoice price for a customer item                         |                              |           |      |
+| Test 27  | Chatbot — average price and quotation history                            |                              |           |      |
 
-**Total: 19 tests (20 parts)**
+**Total: 27 tests (29 parts)**
 
 | Pass | Fail | Issue |
 |------|------|-------|
@@ -781,6 +1097,7 @@ By signing below, the Fixguru team confirms that UAT has been completed and the 
 
 ## See Also
 
+- [[03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft]] — Phase 2 source draft
 - [[03 - Clients/Active Cooking Clients/Fixguru/Client Overview]]
 - [[Fixguru Timeline]]
 - [How to Record and Share Issues with Jam](https://eg69120xnei.sg.larksuite.com/wiki/TeDLwCfCFiYmKSkAn40lHYFrg5c)

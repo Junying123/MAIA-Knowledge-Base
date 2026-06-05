@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-03-31
+last_reviewed: 2026-04-28
 client: Holsen
 uat_round: 1
 ---
@@ -334,21 +334,22 @@ uat_round: 1
 
 ---
 
-#### Test 10 — Export Invoice / Credit Note / Debit Note as CSV
+#### Test 10 — Export Sales Order / Sales Invoice / Delivery Note as CSV
 
 *Who tests this: **Miss Wong** (Finance)*
 
-Finance exports these documents from MAIA as CSV files. The exported data is used to create eInvoice records in UBS.
+Finance exports these document types from MAIA as CSV files for downstream processing and checking.
 
-| Step | What to do                                              | What you should see                                                       |
-| ---- | ------------------------------------------------------- | ------------------------------------------------------------------------- |
-| 1    | Log into web app. Open the **Invoice** page.            | Invoice listing is visible.                                               |
-| 2    | Click the export or download button and select **CSV**. | A CSV file is downloaded to your computer.                                |
-| 3    | Open the CSV. Check the contents.                       | File contains invoice details — customer, line items, quantities, prices. |
-| 4    | Open a **Credit Note** and repeat the export.           | CSV downloaded. File contains credit note details.                        |
-| 5    | Open a **Debit Note** and repeat the export.            | CSV downloaded. File contains debit note details.                         |
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log into the web app. Open the **Sales Order** page. Export a Sales Order as **CSV**. | A CSV file is downloaded successfully. |
+| 2 | Open the exported Sales Order CSV and check the contents. | File contains the Sales Order details, such as customer, line items, quantities, and prices. |
+| 3 | Open the **Sales Invoice** page. Export a Sales Invoice as **CSV**. | A CSV file is downloaded successfully. |
+| 4 | Open the exported Sales Invoice CSV and check the contents. | File contains the Sales Invoice details, such as customer, line items, quantities, and prices. |
+| 5 | Open the **Delivery Note** page. Export a Delivery Note as **CSV**. | A CSV file is downloaded successfully. |
+| 6 | Open the exported Delivery Note CSV and check the contents. | File contains the Delivery Note details, such as customer, line items, quantities, and delivery information. |
 
-⚠️ **Note:** This CSV is used by the Finance team to create eInvoice records in UBS. eInvoices are not generated inside MAIA.
+⚠️ **Note:** This test is to confirm that the required document types can be exported correctly as CSV from MAIA.
 
 **Your result:**
 - [ ] Pass
@@ -377,6 +378,58 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | 2 | Create a **Delivery Order (DO)** from the Invoice. Submit it. | Delivery Order is created and submitted. It shows the customer's delivery address, products, quantities, and a DO reference number. |
 | 3 | From the Delivery Order, generate a **Picking List**. Submit it. | Picking List is created and submitted. It shows all items to pick from the warehouse with quantities. |
 | 4 | Download both the DO and the Picking List. | Both documents download successfully as PDFs. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 11A — Delivery Note Batch Number Carries Over to Pick List
+
+*Who tests this: **Noor Aili** (Logistics)*
+
+| Step | What to do | What you should see |
+|------|-----------|---------------------|
+| 1 | Log in to the web app as **Noor Aili**. Open a submitted Invoice and create a new **Delivery Order (DO)**. | Delivery Order opens successfully. |
+| 2 | Add or review a batch-tracked item line, for example **ACETIC ACID**. In the **Batch Number** field, select a specific batch number such as **DUMMY-ACA030-01**. | The selected batch number is shown on the Delivery Order line item. |
+| 3 | Submit the Delivery Order. | Delivery Order is submitted successfully and keeps the selected batch number. |
+| 4 | From the same Delivery Order, generate a **Picking List**. | Picking List is created successfully from the Delivery Order. |
+| 5 | Open the Picking List item section and check the batch number for the same item. | The same batch number selected on the Delivery Order is automatically carried over to the Picking List line item. |
+| 6 | Submit the Picking List and reopen it if needed. | The Picking List remains saved correctly and the batch number still matches the Delivery Order. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+
+**Notes:**
+
+
+---
+
+#### Test 11B — Exact Selected Batch Number Stays Correct and Visible in Pick List
+
+*Who tests this: **Noor Aili** (Logistics)*
+
+| Step | What to do | What you should see |
+|------|-----------|---------------------|
+| 1 | Create a new **Delivery Order** for a batch-tracked product that has more than 1 available batch number, for example **DUMMY-ACA030-01** and **300445**. | Delivery Order opens and item can be added or reviewed. |
+| 2 | In the Delivery Order line item, select the second batch option instead of the first one. | The exact selected batch number is shown on the Delivery Order line item. |
+| 3 | Generate a **Picking List** from that Delivery Order. | Picking List is created successfully. |
+| 4 | Review the batch number shown on the Picking List line item. | The Picking List shows the exact same batch number selected on the Delivery Order, not another available batch. |
+| 5 | Check whether the batch number is clearly visible for warehouse picking verification. | The batch number is visible and readable on the Picking List line item. |
+| 6 | Compare the Picking List against the original Delivery Order. | Both records show the same batch number for the same item. |
 
 **Your result:**
 - [ ] Pass
@@ -752,6 +805,362 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 
 ---
 
+## 7. Tax Reference / Certificate (C1 & C3)
+
+---
+
+#### Test 24 — Create C1 Certificate Manually
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Go to Customer Details → Certificates tab → Click **Create** | Create button is visible; form opens |
+| 2 | Select Type: **C1** → Fill in: Certificate Title, Tax Registration Number, Status, Customer Address, Customer Contact | All fields accept input; C1 shows 5 item category sections (Raw Materials, Components, Packaging Materials, Manufacturing Aids, Cleanroom Equipment) |
+| 3 | Add at least one item row — enter HS Code and Description | Row is added to the table |
+| 4 | Click **Submit** | Certificate saved; appears in the listing with type C1; detail view shows all entered fields including HS Code, Description, Classification columns |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 25 — Upload C1 Certificate via PDF
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE + Chatbot***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | **Either FE or chatbot:** FE path — Certificates tab → Click **Upload**. Chatbot path — open **[chatbot]** and upload a C1 certificate PDF with a message (e.g. *"attach C1 cert for [Customer Name]"*). | Upload dialog/chatbot intake is available |
+| 2 | Submit the C1 certificate PDF from the chosen channel (FE: confirm type as C1 → **Submit**; chatbot: send file + message). | System shows processing indicator |
+| 3 | Wait for processing to complete | Certificate appears in the listing; certificate type, tax registration number, and dates are populated from the PDF |
+| 4 | **Either FE or chatbot:** FE path — click the certificate row to open detail view. Chatbot path — ask chatbot to check/show the certificate detail for the uploaded cert. | Certificate detail is returned (in FE detail page or chatbot response); parent fields are populated and reference item tables are empty (PDF-uploaded certificates store raw extracted data separately) |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 26 — Apply C1 Certificate on Sales Order — All Items Covered
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
+
+**Part A — Get the Sales Order via Chatbot**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the certificate. | Selected certificate is shown as applied to the order |
+| 3 | Add items that are covered by the selected certificate and assign quantity for each item. | Covered items are accepted with entered quantities |
+| 4 | Try to submit the order. | Submission succeeds; certificate remains linked and global tax is disabled |
+
+**Part B — Get the Sales Order via Web App**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in to the web app → go to Sales Orders → create a new Sales Order | New SO form opens |
+| 2 | Select customer → in the **Biller** section, select tax certificate from the certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Click the **View More** icon for the selected certificate. | Certificate details (title, tax registration number, dates, status) are shown |
+| 4 | Add items that are all listed in the selected certificate, assign quantity, then try submit. | Submission succeeds and global tax is disabled |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 27 — Apply C1 Certificate — Partial Coverage + Save
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
+
+**Part A — Get the Sales Order via Chatbot**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the certificate. | Selected certificate is shown as applied to the order |
+| 3 | Add a mix of items — some covered by the selected certificate and at least one not covered — then assign quantity. | Covered items are accepted; uncovered item remains taxable |
+| 4 | For uncovered item, adjust manual tax in **Tax on Items** field, then try submit. | Order submits successfully; covered items use cert exemption and uncovered item keeps manual tax |
+
+**Part B — Get the Sales Order via Web App**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in to the web app → create a new Sales Order → select customer. | New SO form opens for selected customer |
+| 2 | In the **Biller** section, select tax certificate from certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Add a mix of items (some covered by selected certificate, at least one not covered) and assign quantity. | Covered items show cert exemption; uncovered item remains editable for tax |
+| 4 | On uncovered item, manually set tax in **Tax on Items** field, then click **Save**. | Order saves successfully with cert-exempt covered items and manual tax on uncovered item |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 28 — Create C3 Certificate Manually
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Go to Customer Details → Certificates tab → Click **Create** | Form opens |
+| 2 | Select Type: **C3** → Fill in: Certificate Title, Tax Registration Number, Status, Eligible Customer, Company Address, Customer Contact, Customer Address | C3-specific fields are visible; 5 item category sections shown |
+| 3 | Add at least one item row with HS Code and Description | Row saved in table |
+| 4 | Click **Submit** | C3 certificate saved; detail view shows eligible customer, company address, and 5 item category sections with HS Code, Description, Classification, Effective Date columns |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 29 — Upload C3 Certificate via PDF
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE + Chatbot***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | **Either FE or chatbot:** FE path — Certificates tab → Click **Upload**. Chatbot path — open **[chatbot]** and upload a C3 certificate PDF with a message (e.g. *"attach C3 cert for [Customer Name]"*). | Upload dialog/chatbot intake is available |
+| 2 | Submit the C3 certificate PDF from the chosen channel (FE: **Submit**; chatbot: send file + message). | System processes the file; loading indicator shown |
+| 3 | Wait for processing | Certificate appears in listing with correct type and tax registration number from the PDF |
+| 4 | **Either FE or chatbot:** FE path — click the certificate to open detail view. Chatbot path — ask chatbot to check/show the certificate detail for the uploaded cert. | Certificate detail is returned (in FE detail page or chatbot response); parent fields (type, tax reg no, dates) populated; reference item tables are empty |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 30 — Apply C3 Certificate on Sales Order — All Items Covered
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
+
+**Part A — Get the Sales Order via Chatbot**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the active C3 certificate. | Selected C3 certificate is shown as applied to the order |
+| 3 | Add items that are all covered by the selected C3 certificate and assign quantity. | Covered items are accepted with entered quantities |
+| 4 | Try to submit the order. | Submission succeeds; certificate remains linked and global tax is disabled |
+
+**Part B — Get the Sales Order via Web App**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in to the web app → create a new Sales Order → select customer. | New SO form opens for selected customer |
+| 2 | In the **Biller** section, select the active C3 certificate from the certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Click the **View More** icon for the selected certificate. | Certificate details (title, tax registration number, dates, status) are shown |
+| 4 | Add items that are all covered by the selected C3 certificate, assign quantity, then click **Save**. | Order saves successfully; certificate stays linked and global tax is disabled |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 31 — C3 Certificate — Ineligible Items Removal Prompt
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
+
+**Part A — Get the Sales Order via Chatbot**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open the **[chatbot]** → create a new **Sales Order** for the customer. | Chatbot confirms the Sales Order flow is started for the selected customer |
+| 2 | Check the customer's available certificate in chatbot → select/apply the active C3 certificate. | Selected C3 certificate is shown as applied to the order |
+| 3 | Add a mix of items — some covered by selected C3 certificate, at least one not covered — and assign quantity. | Mixed items are added; uncovered item is identified as not covered |
+
+**Part B — Get the Sales Order via Web App**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in to the web app → create a new Sales Order → select customer. | New SO form opens for selected customer |
+| 2 | In the **Biller** section, select the active C3 certificate from certificate dropdown (no Tax Reference section). | Certificate is applied from Biller section |
+| 3 | Add a mix of items (some covered by selected C3 certificate, at least one not covered). | Mixed items are added; uncovered item remains not covered |
+
+**Part C — Apply C3 Certificate and Test Removal Prompt (both paths continue here)**
+
+| Step | What to do                                                                                                                                  | What you should see                                                                                                                                                    |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Confirm/select the C3 certificate from the **Biller** section certificate dropdown.                                                         | A confirmation prompt appears listing items not covered by the certificate: *"The following items are not covered by this certificate and will be removed. Continue?"* |
+| 2    | Try to submit the SO                                                                                                                        | Ineligible items are removed from the order; C3 certificate is applied; remaining items are covered Show the acknowledgement prompt                                    |
+| 3    | Repeat Parts A or B to create a new order with the same mix of items → select/confirm the C3 certificate again → this time click **Cancel** | Certificate selection is reverted; all original items remain on the order unchanged                                                                                    |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 32 — Link Certificate to CPO at Upload Time (C1 + C3)
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE + Chatbot***
+
+**Part A — via Chatbot**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open the **[chatbot]** → upload a CPO PDF with a message that includes the certificate reference (e.g. *"CPO for [Customer Name], attach cert [Certificate ID]."*) | Chatbot confirms it received the CPO and the certificate reference |
+| 2 | Log in to the web app → open the CPO created by the chatbot | CPO is visible; in the **Biller** section, certificate field shows the linked certificate with type, tax registration number, and Active status |
+
+**Part B — via Web App**
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Log in to the web app → upload a new CPO → in the **Biller** section certificate dropdown, select a C3 certificate → Submit | CPO created; Biller section shows the C3 certificate linked with full details |
+| 2 | Repeat with a C1 certificate | C1 certificate linked correctly; same detail display |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 33 — CPO with Certificate Converts to SO — Cert Carries Over
+
+*Who tests this: **[Admin]** or **[Sales Manager]***
+*Channel: **FE only***
+
+*Continue from Test 32 — a CPO with a certificate already linked.*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open the CPO that has a certificate linked | CPO is visible with the certificate in the **Biller** section certificate field |
+| 2 | Convert the CPO to a **Sales Order** | Sales Order is created |
+| 3 | Open the new Sales Order → check the **Biller** section certificate field | The same certificate from the CPO is shown on the SO with the correct type, tax registration number, and dates; no need to re-select the certificate manually |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 34 — SO Submit Blocked — C3 Missing Required Attachments
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | **Either FE or chatbot start:** create/get an order from chatbot or FE, then open the Sales Order in FE with a C3 certificate selected. | C3 certificate is shown in the Tax Reference section |
+| 2 | Do **not** upload the PO attachment or appointment letter → click **Save** | Save is blocked; an error appears indicating that PO attachment and appointment letter are required for C3 orders |
+| 3 | Upload the required attachments (PO attachment + appointment letter) → click **Save** again | Order saves successfully with all required documents attached |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 35 — SO Submit Blocked — Item HS Code Not in Certificate
+
+*Who tests this: **[Sales Manager]** or **[Finance / Logistics]***
+*Channel: **FE + Chatbot***
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | **Either FE or chatbot start:** create/get an order from chatbot or FE, then open the Sales Order in FE with a C1 or C3 certificate selected. | Certificate is shown in the Tax Reference section |
+| 2 | Add a line item whose HS code is **not** listed in the certificate's reference data → click **Save** | Save is blocked; error indicates the item's HS code is not covered by the certificate |
+| 3 | Remove the ineligible item (or switch to a certificate that covers it) → click **Save** | Order saves successfully |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
+#### Test 36 — Tagging and Trading Item Price Prompt Alert
+
+*Who tests this: **Ng Tze Chien** or **Tam Ze Xin** (Sales Manager)*
+
+| Step | What to do | What you should see |
+| ---- | ---------- | ------------------- |
+| 1 | Open any SO, SI, or Item record → click the **right comment sidebar** → under **Tags**, click **Manage** → type a new tag name in the input field → click the **Add** (`+`) button. | New tag is created and available in the system. |
+| 2 | On the same document, apply a tag at the **doctype level**: in the Tags panel, search for the tag → click `+` to apply it. | The tag appears **below the doctype ID** (e.g., below the SO number) on the document. Repeat with up to 4 tags — a maximum of 4 doctype-level tags can be applied. |
+| 3 | Open a Sales Order → add a line item that has the **Trading** attribute tag. | Under the SKU cell for that line item, the **Trading** tag is displayed. |
+| 4 | Observe the page after adding the Trading item. | A **toast message** appears, alerting the user to manually input the unit price — the unit price defaults to **RM 0** for Trading items. |
+
+**Your result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+
+**Tested by:**
+**Date:**
+**Notes:**
+
+---
+
 ## Results Summary
 
 | Test # | What was tested | Result (Pass / Fail / Issue) | Tested by | Date |
@@ -765,8 +1174,10 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | Test 7 | Create Credit Note and Debit Note (Finance) | | | |
 | Test 8 | Duplicate order is blocked | | | |
 | Test 9 | Manage Sales Orders on web app (Logistics/Finance create; Sales Manager view only) | | | |
-| Test 10 | Export Invoice / Credit Note / Debit Note as CSV (Finance) | | | |
+| Test 10 | Export Sales Order / Sales Invoice / Delivery Note as CSV (Finance) | | | |
 | Test 11 | Create Delivery Order and Picking List | | | |
+| Test 11A | Delivery Order batch number carries over to Pick List | | | |
+| Test 11B | Exact selected batch number stays correct and visible in Pick List | | | |
 | Test 12 | Stock alerts (Out of Stock / Low Stock) | | | |
 | Test 13 | Delivery delay reminder | | | |
 | Test 14 | All users can log in | | | |
@@ -779,8 +1190,21 @@ Finance exports these documents from MAIA as CSV files. The exported data is use
 | Test 21 | System Admin / Chin Zhao Heng — access check | | | |
 | Test 22 | Role approval flow (QT → PO → SO → DO → PL → INV → RCT) | | | |
 | Test 23 | Poison Signed Order (PSO) — full test | | | |
+| Test 24 | Create C1 certificate manually | | | |
+| Test 25 | Upload C1 certificate via PDF | | | |
+| Test 26 | Apply C1 certificate on Sales Order — all items covered | | | |
+| Test 27 | Apply C1 certificate — partial coverage + save | | | |
+| Test 28 | Create C3 certificate manually | | | |
+| Test 29 | Upload C3 certificate via PDF | | | |
+| Test 30 | Apply C3 certificate on Sales Order — all items covered | | | |
+| Test 31 | C3 certificate — ineligible items removal prompt | | | |
+| Test 32 | Link certificate to CPO at upload time (C1 + C3) | | | |
+| Test 33 | CPO with certificate converts to SO — cert carries over | | | |
+| Test 34 | SO submit blocked — C3 missing required attachments | | | |
+| Test 35 | SO submit blocked — item HS code not in certificate | | | |
+| Test 36 | Tagging and trading item price prompt alert | | | |
 
-**Total: 24 tests**
+**Total: 36 tests**
 
 | Pass | Fail | Issue |
 |------|------|-------|

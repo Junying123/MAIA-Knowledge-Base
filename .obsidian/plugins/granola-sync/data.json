@@ -1,0 +1,149 @@
+{
+  "latestSyncTime": 1775371185180,
+  "isSyncEnabled": true,
+  "syncInterval": 120,
+  "syncDaysBack": 7,
+  "includeSharedNotes": true,
+  "titleFilterMode": "disabled",
+  "titleFilterKeyword": "",
+  "syncNotes": false,
+  "includePrivateNotes": false,
+  "saveAsIndividualFiles": false,
+  "baseFolderType": "custom",
+  "customBaseFolder": "Granola",
+  "subfolderPattern": "none",
+  "filenamePattern": "{title}",
+  "linkFromDailyNotes": false,
+  "dailyNoteLinkHeading": "# Meetings",
+  "dailyNoteSectionHeading": "# Granola Notes",
+  "syncTranscripts": true,
+  "transcriptHandling": "custom-location",
+  "customTranscriptBaseFolder": "Granola/Transcripts",
+  "transcriptSubfolderPattern": "day",
+  "transcriptFilenamePattern": "{title}-transcript",
+  "enableDebugLogging": false,
+  "_folderMapCache": {
+    "folders": {
+      "42ea94b7-b7e9-4a94-9dbf-5304573d2be6": {
+        "title": "C1 briefing",
+        "parentId": null
+      },
+      "f177fd46-aade-42ad-8bc3-68c786aa4d71": {
+        "title": "Mindhive Daily Standup",
+        "parentId": null
+      },
+      "4128f6f7-1f0d-4246-aeee-31df9330c2ab": {
+        "title": "Requirement Gathering",
+        "parentId": null
+      },
+      "361e77bb-6fa1-4e19-8122-a5c899aac714": {
+        "title": "Xeersoft",
+        "parentId": null
+      },
+      "a5de6cde-b659-4f76-8288-e5361863b4ba": {
+        "title": "Holsen",
+        "parentId": null
+      },
+      "eee7daf9-6823-4141-af83-21768937561b": {
+        "title": "Shared",
+        "parentId": null
+      }
+    },
+    "docFolders": {
+      "bb577594-f1f7-41be-b898-0062c17ee9c0": [
+        "C1 briefing"
+      ],
+      "01417e56-6f80-43e7-97ad-6143c9dedd1f": [
+        "Mindhive Daily Standup"
+      ],
+      "01ac6a8b-a769-48f3-9b91-99d8061be223": [
+        "Mindhive Daily Standup"
+      ],
+      "110faf98-459e-4003-9393-e27ab6bd7df4": [
+        "Mindhive Daily Standup"
+      ],
+      "121e0806-3a9d-47ca-8cdf-ea5209edf7d5": [
+        "Mindhive Daily Standup"
+      ],
+      "2f97edfc-c01c-49d7-9d08-d579554d8ee3": [
+        "Mindhive Daily Standup"
+      ],
+      "41a0f6eb-9bf7-4add-a6ff-51eb75a850e0": [
+        "Mindhive Daily Standup"
+      ],
+      "4365a95e-b854-4e82-bbe8-ef4adb0de797": [
+        "Mindhive Daily Standup"
+      ],
+      "53457a79-54ff-4437-ae26-c3d7952a51b7": [
+        "Mindhive Daily Standup"
+      ],
+      "568a32e6-ea8a-4007-826d-a58c034d15c4": [
+        "Mindhive Daily Standup"
+      ],
+      "63343425-2215-491e-acba-e9edccd685ce": [
+        "Mindhive Daily Standup"
+      ],
+      "70dee67b-74c2-4d1a-babc-ce326c51b619": [
+        "Mindhive Daily Standup"
+      ],
+      "727451a9-cc3d-4812-9793-dee712ca93c4": [
+        "Mindhive Daily Standup"
+      ],
+      "9a1d6a67-3049-4d3e-8137-771ff76e667d": [
+        "Mindhive Daily Standup"
+      ],
+      "a0a68382-5e09-4d98-9dfb-375068a53146": [
+        "Mindhive Daily Standup"
+      ],
+      "a3b5b4c6-40f3-441c-9926-6ff056ab93e8": [
+        "Mindhive Daily Standup"
+      ],
+      "b2729aeb-63c0-4db5-ac3c-ed08373fb601": [
+        "Mindhive Daily Standup"
+      ],
+      "b4b95e48-873b-4b54-9a3e-11792daf273e": [
+        "Mindhive Daily Standup"
+      ],
+      "b8471a6e-9b9a-48ff-9902-0a861311b1ab": [
+        "Mindhive Daily Standup"
+      ],
+      "bbd8aad8-f1b5-402c-a01a-de89134df87e": [
+        "Mindhive Daily Standup"
+      ],
+      "bd1a4b8e-d243-469e-ad5f-a5f715e940ed": [
+        "Mindhive Daily Standup"
+      ],
+      "d67079a6-2390-46b1-b390-82d4ce507e4e": [
+        "Mindhive Daily Standup"
+      ],
+      "dcbbba74-712d-49be-967b-2f1032e517c3": [
+        "Mindhive Daily Standup"
+      ],
+      "de47afd6-11ce-4021-b28a-7ff6be357180": [
+        "Mindhive Daily Standup"
+      ],
+      "e55ece89-9b54-450a-830a-270d38a03a3b": [
+        "Mindhive Daily Standup"
+      ],
+      "f8353cb8-960c-40ab-bdc7-2b83af75feb1": [
+        "Mindhive Daily Standup"
+      ],
+      "5c4397d4-514e-4a5a-8187-f205ceaaa601": [
+        "Requirement Gathering"
+      ],
+      "280e5194-a08d-4a4d-b0fb-6d6d2c722ec8": [
+        "Xeersoft"
+      ],
+      "042dc59d-c2fb-4bc8-abc3-5f50cceba31e": [
+        "Holsen"
+      ],
+      "3b948a57-de12-4412-9631-fc8bc6027225": [
+        "Holsen"
+      ],
+      "c9dcacd3-72b6-43fb-9158-06089d9453f1": [
+        "Holsen"
+      ]
+    },
+    "lastUpdated": 1780630226261
+  }
+}

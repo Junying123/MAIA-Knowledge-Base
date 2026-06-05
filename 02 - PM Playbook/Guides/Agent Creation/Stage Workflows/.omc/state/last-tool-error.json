@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"head -10 \\\"/Users/garethng/Documents/MAIA Knowledge Base/02 - PM Playbook/Guides/Agent Creation/Stage Workflows/Stage1/Stage 1 - GTM Proposal - Orchestrator.md\\\" | cat -A\",\"description\":\"S...",
+  "error": "Exit code 1\ncat: illegal option -- A\nusage: cat [-belnstuv] [file ...]",
+  "timestamp": "2026-04-26T08:47:34.791Z",
+  "retry_count": 1
+}

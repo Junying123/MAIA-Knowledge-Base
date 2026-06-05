@@ -1,0 +1,385 @@
+{
+  "main": {
+    "id": "80a2cd5b6c32a274",
+    "type": "split",
+    "children": [
+      {
+        "id": "258d7a54c6be4141",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8c6b1a9e8e45a419",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood"
+            }
+          },
+          {
+            "id": "ceef9d86007d72d6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Ordermaia x Macrofood Proposal"
+            }
+          },
+          {
+            "id": "628deccba19f635d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "[F2F] Macrofood Requirements Gathering-transcript v2"
+            }
+          },
+          {
+            "id": "956971c9cf8e778c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "MAIA UAT Form - Holsen - 2026-03"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9cb2e88015672f0a",
+    "type": "split",
+    "children": [
+      {
+        "id": "af358b857ba1eca1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7599767bb9a0f5b8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "byModifiedTime"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "785c6f8d67308809",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "334971eca25715a2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 265.5
+  },
+  "right": {
+    "id": "4643902206108d97",
+    "type": "split",
+    "children": [
+      {
+        "id": "f027f6516dcea1aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "480f399428b3488a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "03 - Clients/We're cooked discovery/Requirement Gathering/Thermac/Customer Narrative - Thermac.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Customer Narrative - Thermac"
+            }
+          },
+          {
+            "id": "ed43382ba778243a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "03 - Clients/We're cooked discovery/Requirement Gathering/Thermac/Customer Narrative - Thermac.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Customer Narrative - Thermac"
+            }
+          },
+          {
+            "id": "29ebdc60007920f2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "703c04ae6e45342c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "7d81c135eb01870b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "03 - Clients/We're cooked discovery/Requirement Gathering/Thermac/Customer Narrative - Thermac.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Customer Narrative - Thermac"
+            }
+          },
+          {
+            "id": "e0e65b9d7ae31534",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "2abe2995e1e24dad",
+            "type": "leaf",
+            "state": {
+              "type": "vin-terminal-view",
+              "state": {
+                "sessions": [
+                  {
+                    "id": 95,
+                    "name": "zsh 95"
+                  },
+                  {
+                    "id": 108,
+                    "name": "zsh 108"
+                  },
+                  {
+                    "id": 109,
+                    "name": "zsh 109"
+                  }
+                ],
+                "activeId": 109,
+                "nextId": 110
+              },
+              "icon": "terminal",
+              "title": "Terminal"
+            }
+          },
+          {
+            "id": "ce36b26a973dd155",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
+          }
+        ],
+        "currentTab": 7
+      }
+    ],
+    "direction": "horizontal",
+    "width": 401.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "terminal:Open terminal": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian42-brat:BRAT": false,
+      "internetvin-terminal:Open Terminal": false,
+      "whisper:Open recording controls": false,
+      "agentfiles:Agentfiles": false,
+      "tasknotes:Open mini calendar view": false,
+      "tasknotes:Open calendar view": false,
+      "tasknotes:Open tasks view": false,
+      "tasknotes:Open agenda view": false,
+      "tasknotes:Create new task": false,
+      "tasknotes:Open Kanban board": false,
+      "tasknotes:Open Pomodoro timer": false,
+      "tasknotes:Open Pomodoro statistics": false,
+      "realclaudian:Open Claudian": false
+    }
+  },
+  "active": "ce36b26a973dd155",
+  "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v1.md",
+    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
+    "Granola/Transcripts/2026-06-05/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-06-05",
+    "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood Customization Clarification Questionnaire 2026-06-04.docx",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md",
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+    "Granola/Transcripts/2026-06-04/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-06-04",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Retesting Feedback - Fixguru - Item Historical Pricing.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Phase 2 - Draft.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood RG Questionnaire 2026-06-04.docx",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Requirement Gathering Questionnaire.md",
+    "03 - Clients/Active Cooking Clients/Macro Frozen/Meetings/Requirement Gathering Questionnaire.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Requirement Gathering Questionnaire.md.tmp.1079.49928d3debdd",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/MacroFood sales proposal and rough requirement gathering.md",
+    "03 - Clients/Active Cooking Clients/Macro Frozen/Meetings",
+    "03 - Clients/Active Cooking Clients/Macro Frozen",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
+    "03 - Clients/Active Cooking Clients/Macro Frozen/Ordermaia x MacroFrozen.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - 2026-05 (Full).md",
+    "02 - PM Playbook/Daily Updates/Daily Update - 03-06-2026.md",
+    "02 - PM Playbook/Templates/[Template] GRAI Retrospective.md",
+    "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",
+    "02 - PM Playbook/Templates/[Template] Account Ownership Dashboard.md",
+    "02 - PM Playbook/Templates/[Template] Weekly Operating Review.md",
+    "02 - PM Playbook/Templates/[Template] Daily Operating Plan.md",
+    "02 - PM Playbook/Processes/PM Personal Operating System.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Client Sales Handover TLDR Brief - Macrofood.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru feedback sync - Transcript.md",
+    "Granola/Transcripts/2026-05-28",
+    "Granola/Transcripts/2026-05-29",
+    "03 - Clients/Active Cooking Clients/Fixguru/CR Scoping/2026-05-26 CR Scoping Presentation — Fixguru.md.tmp.30742.283608fe2905",
+    "slides/getting-started/assets/zeabur.svg",
+    "slides/getting-started/assets/openai.svg",
+    "slides/getting-started/assets/vercel.svg",
+    "slides/getting-started/assets/opencode.svg",
+    "slides/getting-started/assets/gemini.svg",
+    "slides/getting-started/assets/cloudflare.svg",
+    "slides/getting-started/assets/claude.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-sales-orders.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-receipts.svg",
+    "03 - Clients/Cooked by clients/Requirement Gathering/JDX/JDX Demo Deck/jdx-maia-demo/project/assets/icons/icon-invoices.svg",
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "Untitled 2.canvas"
+  ]
+}

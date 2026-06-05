@@ -3,7 +3,7 @@ granola_id: e783d452-9dde-45d0-bbc5-ea3a871244b0
 title: C1, C3 tax exemption quick showcase - Transcript
 type: transcript
 created: 2026-04-16T04:00:36.791Z
-updated: 2026-04-16T04:39:49.640Z
+updated: 2026-04-28T10:27:05.750Z
 attendees: 
   - jermaine@mindhive.asia
   - ivan.cyh1996@gmail.com

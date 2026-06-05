@@ -1,7 +1,7 @@
 ---
 owner: Gareth
-status: review
-last_reviewed: 2026-04-13
+status: approved
+last_reviewed: 2026-05-12
 ---
 
 # Scope of Work (SOW) Writing Guide
@@ -21,18 +21,19 @@ This format is lighter than a deep process-by-process implementation SOW. It is 
 
 ## 2. Default SOW Structure
 
-Use this structure when writing SOWs based on the Lean Giap signed format.
+Use this structure for all MAIA SOWs. Canonical reference: `Active Cooking Clients/Thermac/Thermac_SOW.md`.
 
-1. Agreement Opening
-2. Introduction
-3. Product Specifications (Phase One)
-4. Customisation & Extensions (Phase Two Onwards)
-5. Estimated Timelines - Three Phase Delivery
-6. Commercial Structure
-7. Caveats & Exclusions
-8. Service Level Agreements (SLAs)
-9. Appendix
-10. Acknowledgement & Agreement
+**Preamble:** Effective date line + parties table (not a numbered section)
+
+1. Executive Summary (client narrative + 1.1 Enterprise Baseline Modules list)
+2. Product Specifications (Phase One) — chatbots, workspaces, document lifecycle, integration
+3. Customisation & Extensions (Phase Two Onwards) — custom modules per phase
+4. Estimated Timelines — bold phase headers + tables
+5. Commercial Structure — pricing model bullets + 5.1/5.2/5.3 subsections
+6. Caveats & Exclusions — single bullet list, no subsections
+7. Service Level Agreements (SLAs) — 7.1 Mindhive + 7.2 Client
+8. Appendix — platform context (delivery model, interfaces, security, availability)
+9. Acknowledgement & Agreement — signature tables
 
 The SOW should be written as a client-facing commercial document. Keep the scope specific, but avoid turning it into a full technical specification.
 
@@ -52,49 +53,35 @@ The Services Agreement is made effective as of [Date].
 
 Use the `Vendor` and `Client` middle column if following the signed Lean Giap style exactly.
 
-## 4. Introduction
+## 4. Executive Summary (Section 1)
 
-The Introduction should set up the agreement without going too deep into client operations.
+Section 1 is a **client narrative** — not an "About MAIA" intro. Write it entirely from the client's perspective: who they are, how their business works today, what is broken, and what MAIA will fix.
 
-Recommended sub-sections:
+Do NOT write generic MAIA boilerplate. Every sentence must be specific to this client.
 
-- About MAIA
-- Purpose of Document
-- Mutual Commitment
-- Enterprise Baseline Modules
+Structure:
 
-### About MAIA
+- Para 1: Who the client is — business description, what they sell, how they operate, volume/scale
+- Para 2: Current workflow — what tools they use today, where the pain is, what breaks down
+- Para 3 (optional): Secondary business motion that also needs MAIA
+- Bullet list: "This SOW defines a phased implementation of MAIA that introduces:" — concrete deliverables tied to real pain points
+- Bold line: The investment figure
 
-Describe MAIA as a modular, cloud-based business platform that unifies sales, fulfilment, communications, logistics, and finance into one ecosystem.
+### Enterprise Baseline Modules (1.1)
 
-Keep this paragraph general and product-facing.
-
-### Purpose of Document
-
-State that the SOW establishes:
-
-- baseline specifications
-- service level commitments
-- commercial framework
-- deployment and ongoing-use expectations
-
-### Mutual Commitment
-
-State that both parties are aligning on expectations and obligations for a successful business engagement.
-
-### Enterprise Baseline Modules
-
-List the baseline module categories that the client receives.
+List the baseline module categories as bullet points. Items in 1.1 must correspond to the `## 2.x` subsections in Section 2.
 
 Example:
 
 ```markdown
 ## 1.1 Enterprise Baseline Modules
 
-The following sections outline the baseline modules included in MAIA Enterprise:
+The following sections outline the baseline modules included in the MAIA implementation for [Client]:
 
-1. Internal Chatbots
-2. User Workspaces
+- Internal Chatbot (Sales and Order Intake)
+- User Workspaces
+- [Client] Document Lifecycle
+- Integration and Data Sync with AutoCount
 ```
 
 ## 5. Product Specifications (Phase One)
@@ -493,26 +480,30 @@ The Services Agreement is made effective as of [Date].
 |---|---|---|
 | AND | The Client | **[Client Legal Name]** ("[Client Short Name]"), with its office located at [Client Address]. |
 
-# 1. Introduction
+# 1. Executive Summary
 
-- **About MAIA**
+[Para 1: Who the client is — business description, what they sell, how they operate, volume/scale.]
 
-[General MAIA product description.]
+[Para 2: Current workflow — what tools they use today, where the pain is, what breaks down.]
 
-- **Purpose of Document**
+[Para 3 (optional): Any secondary business motion that also needs MAIA.]
 
-To establish the baseline specifications, service level commitments, and commercial framework for the deployment and ongoing use of MAIA between the Vendor and the Client.
+This SOW defines a phased implementation of MAIA that introduces:
 
-- **Mutual Commitment**
+- [specific deliverable 1 — name the feature and the outcome it fixes]
+- [specific deliverable 2]
+- [specific deliverable 3]
 
-This document sets out the expectations and obligations of both parties to ensure a successful business engagement.
+The current documented implementation investment is **RM [AMOUNT]**, subject to final commercial confirmation, payment terms, and dependency validation.
 
 ## 1.1 Enterprise Baseline Modules
 
-The following sections outline the baseline modules included in MAIA Enterprise:
+The following sections outline the baseline modules included in the MAIA implementation for [Client]:
 
-1. Internal Chatbots
-2. User Workspaces
+- Internal Chatbot (Sales and Order Intake)
+- User Workspaces
+- [Client] Document Lifecycle
+- Integration and Data Sync with [ACCOUNTING SYSTEM]
 
 # 2. Product Specifications (Phase One)
 
@@ -743,17 +734,16 @@ Use this prompt when generating a new SOW in the Lean Giap style.
 Create a professional client-facing MAIA Scope of Work in the Lean Giap signed SOW style.
 
 Use this structure:
-1. Agreement opening with title, effective date, Vendor, and Client table
-2. Introduction
-3. Enterprise Baseline Modules
-4. Product Specifications (Phase One)
-5. Customisation & Extensions (Phase Two Onwards)
-6. Estimated Timelines - Three Phase Delivery
-7. Commercial Structure
-8. Caveats & Exclusions
-9. Service Level Agreements (SLAs)
-10. Appendix
-11. Acknowledgement & Agreement
+Preamble: Effective date line + parties table
+1. Executive Summary (client narrative + 1.1 Enterprise Baseline Modules)
+2. Product Specifications (Phase One)
+3. Customisation & Extensions (Phase Two Onwards)
+4. Estimated Timelines
+5. Commercial Structure
+6. Caveats & Exclusions
+7. Service Level Agreements (SLAs)
+8. Appendix
+9. Acknowledgement & Agreement
 
 Rules:
 - Keep Phase One focused on baseline MAIA modules.
@@ -778,8 +768,9 @@ Use this checklist before sending the SOW for review.
 - [ ] Agreement date is correct.
 - [ ] Vendor and Client legal names are correct.
 - [ ] Client address is correct.
-- [ ] Introduction uses general MAIA positioning, not unsupported feature promises.
-- [ ] Enterprise Baseline Modules are listed.
+- [ ] Section 1 Executive Summary describes the CLIENT — not generic MAIA boilerplate.
+- [ ] Section 1.1 Enterprise Baseline Modules listed as bullets (not numbered list).
+- [ ] Items in 1.1 match the `## 2.x` subsections in Section 2.
 - [ ] Phase One contains only baseline product specifications.
 - [ ] Phase Two/Three customisations are separated from baseline scope.
 - [ ] Each chatbot/module has a platform and feature list.

@@ -1,0 +1,34 @@
+{
+  "pluginList": [
+    "callumalpass/tasknotes",
+    "RAIT-09/obsidian-agent-client",
+    "internetvin/internetvin-terminal"
+  ],
+  "pluginSubListFrozenVersion": [
+    {
+      "repo": "callumalpass/tasknotes",
+      "version": ""
+    },
+    {
+      "repo": "RAIT-09/obsidian-agent-client",
+      "version": ""
+    },
+    {
+      "repo": "internetvin/internetvin-terminal",
+      "version": "latest"
+    }
+  ],
+  "themesList": [],
+  "updateAtStartup": true,
+  "updateThemesAtStartup": true,
+  "enableAfterInstall": true,
+  "loggingEnabled": false,
+  "loggingPath": "BRAT-log",
+  "loggingVerboseEnabled": false,
+  "debuggingMode": false,
+  "notificationsEnabled": true,
+  "globalTokenName": "",
+  "personalAccessToken": "",
+  "selectLatestPluginVersionByDefault": false,
+  "allowIncompatiblePlugins": false
+}
