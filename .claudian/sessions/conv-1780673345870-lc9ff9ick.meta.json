@@ -1,0 +1,24 @@
+{
+  "id": "conv-1780673345870-lc9ff9ick",
+  "providerId": "claude",
+  "title": "pls make the format correctly want to send this to...",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1780673345870,
+  "updatedAt": 1780674088501,
+  "lastResponseAt": 1780673362664,
+  "sessionId": "c8ac4382-3d58-4a8a-a921-428f38645794",
+  "providerState": {
+    "providerSessionId": "c8ac4382-3d58-4a8a-a921-428f38645794"
+  },
+  "currentNote": "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 16477,
+    "cacheCreationInputTokens": 21433,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 1000000,
+    "contextTokens": 37910,
+    "percentage": 4,
+    "contextWindowIsAuthoritative": true
+  }
+}
