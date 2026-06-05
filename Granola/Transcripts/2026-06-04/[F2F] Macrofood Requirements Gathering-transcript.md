@@ -3,7 +3,7 @@ granola_id: 84f0fab2-ec37-46d0-b12b-a0f0afef54e4
 title: "[F2F] Macrofood Requirements Gathering - Transcript"
 type: transcript
 created: 2026-06-04T07:23:15.275Z
-updated: 2026-06-04T09:49:21.117Z
+updated: 2026-06-05T04:25:43.126Z
 attendees: 
   - jeremy@mindhive.asia
   - ivan@mindhive.asia
