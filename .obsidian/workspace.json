@@ -277,10 +277,14 @@
                   {
                     "id": 109,
                     "name": "zsh 109"
+                  },
+                  {
+                    "id": 110,
+                    "name": "zsh 110"
                   }
                 ],
-                "activeId": 95,
-                "nextId": 110
+                "activeId": 110,
+                "nextId": 111
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -330,7 +334,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "ce36b26a973dd155",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
