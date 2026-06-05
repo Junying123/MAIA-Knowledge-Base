@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -301,7 +302,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 628.5
+    "width": 682.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -330,7 +331,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "ce36b26a973dd155",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
