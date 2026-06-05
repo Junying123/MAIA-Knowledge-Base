@@ -4,20 +4,20 @@
   "title": "@Granola/Transcripts/2026-06-04/[F2F] Macrofood Re...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780616212416,
-  "updatedAt": 1780621510377,
-  "lastResponseAt": 1780621510377,
+  "updatedAt": 1780622037690,
+  "lastResponseAt": 1780622037690,
   "sessionId": "bd167df9-7cae-40cb-b5f1-dd881ad4083a",
   "providerState": {
     "providerSessionId": "bd167df9-7cae-40cb-b5f1-dd881ad4083a"
   },
-  "currentNote": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
+  "currentNote": "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v1.md",
   "usage": {
     "model": "opus",
     "inputTokens": 76,
-    "cacheCreationInputTokens": 12282,
-    "cacheReadInputTokens": 52762,
+    "cacheCreationInputTokens": 1533,
+    "cacheReadInputTokens": 66520,
     "contextWindow": 1000000,
-    "contextTokens": 65120,
+    "contextTokens": 68129,
     "percentage": 7,
     "contextWindowIsAuthoritative": true
   }
