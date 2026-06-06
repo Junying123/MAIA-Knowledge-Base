@@ -289,10 +289,14 @@
                   {
                     "id": 112,
                     "name": "zsh 112"
+                  },
+                  {
+                    "id": 113,
+                    "name": "zsh 113"
                   }
                 ],
                 "activeId": 112,
-                "nextId": 113
+                "nextId": 114
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -344,6 +348,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Readiness Checklist.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md.tmp.23896.149f2d432304",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
@@ -377,9 +383,7 @@
     "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",
     "02 - PM Playbook/Templates/[Template] Account Ownership Dashboard.md",
     "02 - PM Playbook/Templates/[Template] Weekly Operating Review.md",
-    "02 - PM Playbook/Templates/[Template] Daily Operating Plan.md",
     "Granola/Transcripts/2026-05-28",
-    "Granola/Transcripts/2026-05-29",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
     "slides/getting-started/assets/vercel.svg",

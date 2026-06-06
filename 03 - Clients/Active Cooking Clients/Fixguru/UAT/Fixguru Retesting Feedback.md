@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-06-04
+last_reviewed: 2026-06-06
 client: Fixguru
 uat_round: retest
 feature: Item Historical Pricing (Chatbot)
@@ -161,6 +161,38 @@ Want me to create a QTN or SO?
 - **Expected:** Chatbot should surface the shelf value directly from item attributes when asked
 - **Severity:** Medium — shelf lookup is a real sales/ops workflow; incorrect data source means it always returns nothing
 - **Action:** Map chatbot shelf query to item attributes field, not warehouse bin/stock location
+
+---
+
+---
+
+## 7. PDF Issues
+
+**Source:** Lark retesting doc (2026-06-06)
+
+**Issue 1 — QTN PDF shows internal ID instead of external ID**
+- PDF should display QTN external ID (AutoCount reference), not MAIA internal ID
+- **Action:** Update PDF template to surface QTN external ID field
+
+**Issue 2 — Item code on PDF shows wrong code**
+- PDF currently renders MAIA internal item code
+- Expected: AutoCount external SKU code
+- **Action:** Fix PDF item code field to use AutoCount external SKU — consistent with chatbot item display fix (§ Chatbot action items)
+
+---
+
+## 8. FOC Items — Submit Blocked When Unit Price = 0
+
+**Source:** Lark retesting doc (2026-06-06)
+
+**Issue — Free items cannot be submitted**
+- When unit price is set to 0 (free/FOC item), system blocks order submission
+- **Severity:** High — FOC items are a real Fixguru workflow; blocking submit means sales cannot proceed
+- **Root cause:** Submit validation rejects zero-price lines without FOC flag check
+- **Note:** MAIA supports FOC items but format differs from AutoCount (AutoCount uses child lines; MAIA uses two separate lines). Client communication needed alongside fix.
+- **Action (Dev):** Check `is_free_item` flag on submit — if flag set, allow zero unit price through validation
+- **Action (Chatbot):** When unit price set to 0, chatbot asks "Is this a free item?" → if yes, set `is_free_item` flag before sending to BE
+- **Action (PM — Gareth):** Communicate to Fixguru that MAIA FOC format = two separate lines (not AutoCount child-line format)
 
 ---
 
