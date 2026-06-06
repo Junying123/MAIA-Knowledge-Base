@@ -319,7 +319,7 @@
                     "name": "zsh 113"
                   }
                 ],
-                "activeId": 111,
+                "activeId": 113,
                 "nextId": 114
               },
               "icon": "terminal",
@@ -370,7 +370,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "9f10082cb2b2e615",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
