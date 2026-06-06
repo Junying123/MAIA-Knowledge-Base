@@ -24,7 +24,9 @@ lark_url:
 
 Current state: customers place orders via WhatsApp → salesperson manually interprets and creates order in SQL → warehouse picks goods and updates actual weight → invoice generated → customer sends payment slip → finance reconciles against bank statement.
 
-MAIA proposed approach was walkthrough live. Agreed flow: sales team creates their own pick list outside MAIA first, then uploads the confirmed pick list to MAIA with final weights and quantities. MAIA then creates SO → Delivery Order → Invoice and pushes all documents to SQL.
+**Agreed target workflow (end state):** WhatsApp order → MAIA draft SO → warehouse picks → update actual weight → submit SO → DO / Invoice → push to SQL.
+
+**Phasing:** Phase 1 deploys core MAIA first. The picking-list flow inside MAIA (draft SO → pick → confirm weight) is **Phase 2** — needs to be sorted out before adopting. For Phase 1 / early go-live, Macrofood may continue pick list outside MAIA as interim.
 
 
 ### 2. AR Reconciliation
@@ -47,13 +49,13 @@ David currently generates image-based catalog (not PDF) using ChatGPT — produc
 
 MAIA to design catalog generation feature. Follow-up needed: David to share current catalog samples before format is finalised.
 
-### 5. Stock Entry / GRN Matching
+### 5. Stock Entry (Warehouse) — Root Cause Clarified
 
-Pain point: supplier delivers slightly different quantity than invoiced (e.g. 1000 kg ordered, 998 kg received). Admin currently manually keys GRN into SQL then converts to purchase invoice. Only one warehouse person — bottleneck.
+Original customization request was framed as a stock-entry / GRN problem. On discussion, the real pain point is **human error in weighing, data entry and checking** — e.g. order says 33.9 kg, picker takes 32, checker misses it; or wrong cut picked (belly vs outer belly). GRN is generated *after* details are keyed in, so the error occurs at key-in. Extracting/pre-populating from a GRN document does **not** solve this — it's a process/data issue, not a system extraction issue.
 
-MAIA proposed: warehouse uploads GRN document (photo/PDF) → MAIA extracts and pre-populates fields → human verifies actual quantity → creates purchase invoice. AI handles item code and UOM mapping mismatches; learns from user overrides.
+**Conclusion: no direct MAIA feature solves this.** Accuracy improves only by making the process more rigid (SOP discipline). True automation (WMS / barcode scanning) is high cost (RM1M+) and out of scope. MAIA acknowledged the problem; no Phase 1 feature.
 
-**Decision: Purchasing module not in Phase 1.** Flagged for later phase.
+> Note: GRN/supplier-invoice matching (AI item-code and UOM mapping) was demoed but belongs to the **purchasing module — not in Phase 1.**
 
 ### 6. Credit Limit Control
 
@@ -93,10 +95,13 @@ Four items needed from Macrofood before MAIA can be deployed:
 3. OpenAI account + API key
 4. AWS account (company email) + grant MAIA access
 
-### 11. Future / Parking Lot
+### 11. Inventory Aging / Expiry Alerts (Agreed)
 
-- Inventory aging / expiry notifications — David wants alerts for slow-moving or near-expiry stock; not in Phase 1
-- Batch tracking — not currently practiced; possible future if Macrofood adopts
+Agreed feature: MAIA to alert when product is near expiry or aging is high (slow-moving stock), so David can decide to discount/offer or clear. Example raised: a 78-ton container where only 4 tons sold in 6 months. Currently David prints aging manually from SQL; wants proactive notification instead.
+
+### 12. Future / Parking Lot
+
+- Batch tracking — not currently practiced; possible future if Macrofood adopts (would enable batch-level aging/damage tracking)
 - Damage stock reporting — MAIA issue ticket feature can serve as workaround
 - Warehouse barcode / QR scanning (WMS) — high cost (RM1M+ enterprise scale), separate future discussion
 - AP reconciliation (supplier payments) — later phase
@@ -106,9 +111,11 @@ Four items needed from Macrofood before MAIA can be deployed:
 
 ## Decisions Made
 
-1. **Confirmed workflow:** Internal team creates pick list outside MAIA → once confirmed (final weight/qty/price) → upload to MAIA → MAIA creates SO → DO → Invoice → pushes to SQL. (No draft-in-MAIA-first step — order enters MAIA only after pick list confirmed.)
+1. **Agreed target workflow:** WhatsApp order → MAIA draft SO → pick → update actual weight → submit SO → DO / Invoice → push to SQL. **Picking-list flow inside MAIA = Phase 2** (must be sorted before adoption); Phase 1 ships core MAIA first, pick list may stay outside MAIA as interim.
 2. **SQL = master** for customer list and item list; pricing managed and enforced inside MAIA.
-3. **Core system deployed first;** customizations (AR reconciliation, bulk price update, product catalog) deployed separately after go-live.
+3. **Core system deployed first (Phase 1);** customizations (AR reconciliation, bulk price update, product catalog) and picking-list flow deployed separately after.
+3a. **Stock-entry pain = human weighing/data-entry error, not a system gap.** No direct MAIA feature; GRN extraction doesn't solve it. Addressed only via process/SOP rigidity or future WMS (out of scope).
+3b. **Inventory aging / expiry alert = agreed feature** — MAIA notifies on near-expiry or high-aging stock.
 4. **David is credit controller** — sole approver for order overrides when credit limit is exceeded.
 5. **Credit limit block triggers on either** credit amount limit OR payment terms exceeded (either/or, not both required).
 6. **Product catalog** = image-based, not PDF; two groups: wholesale and retail; final format TBD pending sample from David.
