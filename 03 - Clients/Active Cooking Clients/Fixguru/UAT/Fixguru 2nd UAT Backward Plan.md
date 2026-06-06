@@ -29,14 +29,16 @@ Jun 6      Jun 9            Jun 10–12        Jun 12           Jun 13          
 |---|---|
 | QTN amendment API | ✅ **Defer** — API doesn't exist |
 | Catalogue-scan chatbot (Issues 3,4,5) | ✅ **Defer** — BE endpoints not built |
+| eInvoice / AutoCount push | ✅ **Remove** — not testing this round |
+| Volumetric fields BE | ✅ **BE done** — FE + chatbot can proceed |
 | Price-lock enforcement | **Field-level** (read-only) — lock icon already signals it |
 | FOC items | **In scope** — dev complete; verify AutoCount sync only |
 | UOM split + shelf + 2-warehouse chatbot | **In scope** — retest required |
 | Item historical pricing | **In scope** — retest required |
 | Pricing enforcement FE + chatbot | **In scope** — retest required |
 | Calculator (RSC + Diecut) | **In scope** — retest required |
-| Volumetric fields | **In scope** — first test: FE + chatbot + DN PDF |
-| Credit limit exposure | **In scope** — first test: FE + chatbot |
+| Volumetric fields FE + chatbot + DN PDF | **In scope** — first test; BE already done |
+| Credit limit exposure | **In scope** — PM can test now; ready |
 | HQ + branch contact | **In scope** — first test |
 | Delivery method as SKU | **In scope** — first test |
 | PDF — Fixguru custom draft template | **In scope** — first test |
@@ -57,29 +59,25 @@ Jun 6      Jun 9            Jun 10–12        Jun 12           Jun 13          
 
 ## M2 — Dev Sprint (Tue Jun 10 – Thu Jun 12)
 
-> **Volumetric dependency chain:** Azib (BE) must complete data sync first → Amirul (FE) surfaces fields → Afiq (Chatbot) retrieves. Azib unblocks the other two.
-
-### Azib (BE) — must complete early to unblock FE + Chatbot
+### Azib (BE)
 
 - [ ] FOC items BE — zero-price submit allowed when `is_free_item` = true; verify AutoCount sync writes correct FOC quantity column
 - [ ] External doc ID — surface on PDF
-- [ ] eInvoice AutoCount push — individual mode (>RM10k) + consolidated mode (<RM10k)
-- [ ] **Volumetric data sync** — BE pushes volumetric fields to AutoCount + DN PDF *(unblocks Amirul + Afiq)*
 - [ ] Credit limit BE — exposure formula: unbilled SO + outstanding invoices (exclude drafts)
 - [ ] HQ + branch contact sync — contact model supports HQ + branch assignment
 
-### Amirul (FE) — blocked on Azib for volumetric
+### Amirul (FE)
 
 - [ ] RSC Calculator — fix + retest ready
 - [ ] Diecut Calculator — fix + retest ready
 - [ ] Price-lock → read-only at field level, consistent across QTN + SO
 - [ ] Item level discount — auto-compute fix (unit price > std price)
 - [ ] Historical pricing web app — discount %, auto-derive, dropdown (Tests 5–7)
-- [ ] **Volumetric fields** — surface in item profile FE *(blocked until Azib BE done)*
+- [ ] Volumetric fields — surface in item profile FE (BE already done)
 - [ ] Credit limit exposure — surface in FE (limit, exposure, available balance)
 - [ ] PDF — Fixguru custom draft PDF template (external doc ID, AutoCount SKU on items)
 
-### Afiq (Chatbot) — blocked on Azib for volumetric
+### Afiq (Chatbot)
 
 - [ ] Historical pricing chatbot — fix first-call reliability (Issue 1)
 - [ ] Decouple customer pricing from historical pricing (Issue 2)
@@ -88,7 +86,7 @@ Jun 6      Jun 9            Jun 10–12        Jun 12           Jun 13          
 - [ ] 2-warehouse — chatbot warehouse handling retest
 - [ ] FOC items — confirm `is_free_item` flag flows through; verify AutoCount doctype FOC quantity column syncs
 - [ ] Pricing enforcement chatbot — retest with locked customer price
-- [ ] **Volumetric fields** — chatbot retrieves + surfaces volumetric data *(blocked until Azib BE done)*
+- [ ] Volumetric fields — chatbot retrieves + surfaces volumetric data (BE already done)
 - [ ] Credit limit exposure — chatbot shows limit, exposure, available balance when creating SO
 - [ ] HQ + branch contact — chatbot assigns correct branch when creating SO
 - [ ] Delivery method as SKU — chatbot searches and adds delivery-type items (e.g. "3PL Lalamove") as regular line item
@@ -96,41 +94,38 @@ Jun 6      Jun 9            Jun 10–12        Jun 12           Jun 13          
 
 ### PM — Gareth (during sprint)
 
+- [ ] **Test credit limit now** — BE ready, PM can verify independently before M3
 - [ ] Follow up with dev daily — align ETA per item, flag slips early
-- [ ] Finalise Phase 2 UAT form — remove 🚧 draft flags, fill eInvoice Group 2 steps, add new test groups (volumetric, credit limit, HQ+branch, delivery SKU, PDF)
+- [ ] Finalise Phase 2 UAT form — remove 🚧 draft flags, add test groups (volumetric, credit limit, HQ+branch, delivery SKU, PDF); remove eInvoice group
 - [ ] Communicate FOC format to Fixguru (MAIA = 2 separate lines, not AutoCount child-line)
-- [ ] Seed test data: customers with discount %, 10+ invoice history, SO >RM10k + <RM10k, HQ+branch customers, delivery-type items
+- [ ] Seed test data: customers with discount %, 10+ invoice history, HQ+branch customers, delivery-type items
 
 ---
 
 ## M3 — Internal Testing Session (Thu Jun 12)
 
 **Who:** PM + Dev (Gareth + Azib / Amir / Afiq)
-**What:** PM-led internal run-through of all Fixguru gaps and remaining items — this is the team's own QA before client UAT, not a client session.
-**Format:** PM runs each test scenario live on Fixguru env; dev on standby to explain or fast-fix
+**What:** PM-led internal run-through of all Fixguru gaps — team QA before client UAT, not a client session.
+**Format:** PM runs each scenario live on Fixguru env; dev on standby to explain or fast-fix
 
 - [ ] Walk through every item in scope — test what dev marked as fixed
 - [ ] Confirm each fix against expected behaviour (not just "dev says done")
 - [ ] Log anything still broken → fast-fix same day or explicit defer with note
-- [ ] Align on any ETA slips — decide cut or slip UAT date now
-- [ ] Gate: all items pass or are explicitly deferred before client is notified
+- [ ] Align on ETA slips — decide cut or slip UAT date now
+- [ ] Gate: all items pass or explicitly deferred before client notified
 
-**Go/No-Go gate — all must pass before client notified:**
+**Go/No-Go checklist:**
 
 **Calculator**
-- [ ] Test 1: RSC calculator end-to-end
-- [ ] Test 2: Diecut calculator end-to-end
-- [ ] Test 3: Calculator price flows into QTN + SO
-
-**eInvoice**
-- [ ] Test 4A: eInvoice push — individual mode (>RM10k)
-- [ ] Test 4B: eInvoice push — consolidated mode (<RM10k)
+- [ ] RSC calculator end-to-end
+- [ ] Diecut calculator end-to-end
+- [ ] Calculator price flows into QTN + SO
 
 **Historical Pricing — Web**
-- [ ] Tests 5–7: Discount %, auto-derive, dropdown
+- [ ] Discount %, auto-derive, dropdown (Tests 5–7)
 
 **Historical Pricing — Chatbot**
-- [ ] Tests 8–9: Last invoice price, avg price + QTN history
+- [ ] Last invoice price, avg price + QTN history (Tests 8–9)
 
 **Retested items**
 - [ ] FOC items — submit works; AutoCount FOC qty column syncs correctly
@@ -138,7 +133,6 @@ Jun 6      Jun 9            Jun 10–12        Jun 12           Jun 13          
 - [ ] Item shelf — chatbot returns value from item attributes (not warehouse)
 - [ ] 2-warehouse — chatbot handles correctly
 - [ ] Pricing enforcement — FE blocks at field level; chatbot enforces locked price
-- [ ] Price-lock read-only at field
 
 **First-time tests**
 - [ ] Volumetric fields — visible in item profile FE, surfaced in chatbot, shown on DN PDF
@@ -179,6 +173,7 @@ Internal testing done (M3). PM finalises and hands off to Fixguru.
 
 | Item | Reason | Next Step |
 |---|---|---|
+| eInvoice / AutoCount push | Not testing this round | Schedule separately |
 | QTN amendment API | API doesn't exist | Phase 3 feature |
 | Catalogue-scan chatbot (Issues 3,4,5) | BE endpoints not built | Phase 3 feature request |
 | Calculator policy customisation (CR-04) | Chargeable CR | Formal CR doc needed |
