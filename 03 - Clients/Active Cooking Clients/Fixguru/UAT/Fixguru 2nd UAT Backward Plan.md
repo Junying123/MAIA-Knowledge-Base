@@ -25,23 +25,23 @@ Jun 6      Jun 9            Jun 10–12        Jun 12           Jun 13          
 
 ## M0 — PM Decisions (TODAY — unblocks everything)
 
-| Decision | Resolution |
-|---|---|
-| QTN amendment API | ✅ **Defer** — API doesn't exist |
-| Catalogue-scan chatbot (Issues 3,4,5) | ✅ **Defer** — BE endpoints not built |
-| eInvoice / AutoCount push | ✅ **Remove** — not testing this round |
-| Volumetric fields BE | ✅ **BE done** — FE + chatbot can proceed |
-| Price-lock enforcement | **Field-level** (read-only) — lock icon already signals it |
-| FOC items | **In scope** — dev complete; verify AutoCount sync only |
-| UOM split + shelf + 2-warehouse chatbot | **In scope** — retest required |
-| Item historical pricing | **In scope** — retest required |
-| Pricing enforcement FE + chatbot | **In scope** — retest required |
-| Calculator (RSC + Diecut) | **In scope** — retest required |
-| Volumetric fields FE + chatbot + DN PDF | **In scope** — first test; BE already done |
-| Credit limit exposure | **In scope** — PM can test now; ready |
-| HQ + branch contact | **In scope** — first test |
-| Delivery method as SKU | **In scope** — first test |
-| PDF — Fixguru custom draft template | **In scope** — first test |
+| Decision                                | Resolution                                                 |
+| --------------------------------------- | ---------------------------------------------------------- |
+| QTN amendment API                       | ✅ **Defer** — API doesn't exist                            |
+| Catalogue-scan chatbot (Issues 3,4,5)   | ✅ **Defer** — BE endpoints not built                       |
+| eInvoice / AutoCount push               | ✅ **Remove** — not testing this round                      |
+| Volumetric fields BE                    | ✅ **BE done** — FE + chatbot can proceed                   |
+| Price-lock enforcement                  | **Field-level** (read-only) — lock icon already signals it |
+| FOC items                               | **In scope** — dev complete; verify AutoCount sync only    |
+| UOM split + shelf + 2-warehouse chatbot | **In scope** — retest required                             |
+| Item historical pricing                 | **In scope** — retest required                             |
+| Pricing enforcement FE + chatbot        | **In scope** — retest required                             |
+| Calculator (RSC + Diecut)               | **In scope** — retest required                             |
+| Volumetric fields FE + chatbot + DN PDF | **In scope** — first test; BE already done                 |
+| Credit limit exposure                   | **In scope** — PM can test now; ready                      |
+| HQ + branch contact                     | **In scope** — first test                                  |
+| Delivery method as SKU                  | **In scope** — first test                                  |
+| PDF — Fixguru custom draft template     | **In scope** — first test                                  |
 
 ---
 
