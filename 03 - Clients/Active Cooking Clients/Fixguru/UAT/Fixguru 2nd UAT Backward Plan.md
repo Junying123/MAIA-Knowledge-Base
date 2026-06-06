@@ -87,7 +87,6 @@ Jun 6      Jun 9            Jun 10–12        Jun 12           Jun 13          
 
 - [ ] FOC items BE — confirm zero-price submit allowed when `is_free_item` = true; verify AutoCount sync writes correct FOC quantity column
 - [ ] External doc ID — surface on PDF
-- [ ] eInvoice AutoCount push — individual mode (>RM10k) + consolidated mode (<RM10k)
 - [ ] Volumetric data sync — BE pushes volumetric fields to AutoCount + DN PDF
 - [ ] Credit limit BE — exposure formula: unbilled SO + outstanding invoices (exclude drafts)
 - [ ] HQ + branch contact sync — contact model supports HQ + branch assignment
