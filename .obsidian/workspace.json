@@ -186,7 +186,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -370,7 +371,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
