@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04"
+              "title": "Fixguru 2nd UAT Backward Plan"
             }
           },
           {
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -348,11 +349,12 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Readiness Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md.tmp.23896.149f2d432304",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.1f15fe1f0edb",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
@@ -382,7 +384,6 @@
     "02 - PM Playbook/Templates/[Template] GRAI Retrospective.md",
     "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",
     "02 - PM Playbook/Templates/[Template] Account Ownership Dashboard.md",
-    "02 - PM Playbook/Templates/[Template] Weekly Operating Review.md",
     "Granola/Transcripts/2026-05-28",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
