@@ -308,10 +308,6 @@
                     "name": "zsh 110"
                   },
                   {
-                    "id": 111,
-                    "name": "zsh 111"
-                  },
-                  {
                     "id": 112,
                     "name": "zsh 112"
                   },
@@ -320,7 +316,7 @@
                     "name": "zsh 113"
                   }
                 ],
-                "activeId": 112,
+                "activeId": 95,
                 "nextId": 114
               },
               "icon": "terminal",
