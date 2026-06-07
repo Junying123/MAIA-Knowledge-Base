@@ -4,6 +4,7 @@ status: draft
 last_reviewed: 2026-06-07
 client: Fixguru
 uat_round: 2
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Ows7wvRR7i3uwFkTDJXlqCtHgQd
 ---
 
 # Fixguru 2nd UAT — Backward Plan
@@ -16,18 +17,17 @@ uat_round: 2
 ## Milestone Map
 
 ```
-NOW → M1 Brief + Dev Fix → M2 Internal Test + Live Fix → M3 Stable → M4 Schedule UAT → M5 2nd UAT
-Sat        Mon                   Tue (2hr session)              Wed        Wed              TBD
-Jun 7      Jun 9                 Jun 10                         Jun 11     Jun 11           Jun 16–17
+NOW → M1 Brief + Dev Fix → M2 Internal Test + Live Fix → M3 Stable + Schedule → M4 On-the-spot UAT
+Sat        Mon                   Tue (2hr session)              Wed                     Mon–Tue
+Jun 7      Jun 9                 Jun 10                         Jun 11                  Jun 16–17
 ```
 
 | Phase | Who | Goal |
 |---|---|---|
 | M1 Brief + Dev Fix | PM + Amirul + Bryan + Azib (+ team) | Walk all remaining items; dev fixes same day |
 | M2 Internal Test + Live Fix | Gareth + Amirul + Bryan + Azib | 2hr session — test every item on spot; fix on spot |
-| M3 Stable + Client Brief | PM | Fixguru FE + chatbot stable; UAT form ready |
-| M4 Schedule UAT with Client | PM | Inform client internal testing done; align gaps from last UAT; lock UAT date |
-| M5 2nd UAT | PM + Fixguru testers | Client tests → sign-off |
+| M3 Stable + Schedule | PM | Fixguru stable; UAT form ready; ask client if Jun 16–17 works |
+| M4 On-the-spot UAT | PM + Fixguru testers | Brief client on gaps, run UAT on the spot → sign-off |
 
 ---
 
@@ -83,18 +83,18 @@ Jun 7      Jun 9                 Jun 10                         Jun 11     Jun 1
 | eInvoice / AutoCount push               |                                                             |
 | Volumetric fields BE                    | ✅ **BE done** — FE + chatbot can proceed                    |
 | Price-lock enforcement                  | **Field-level** (read-only) — lock icon already signals it  |
-| FOC items                               | **In scope** — dev instance fixed; Fixguru env bug pending  |
+| FOC items                               | Done                                                        |
 | UOM split + shelf + 2-warehouse chatbot | **In scope** — retest required; single UOM works            |
 | Item historical pricing                 | **In scope** — retest required                              |
-| Pricing enforcement FE + chatbot        | **In scope** — fixing in progress                           |
-| Calculator (RSC + Diecut)               | **In scope** — dev in progress; follow up Amirul            |
+| Pricing enforcement FE + chatbot        | FE done , chatbot fixing                                    |
+| Calculator (RSC + Diecut)               | Done                                                        |
 | Volumetric fields FE + chatbot + DN PDF | **In scope** — dev in progress                              |
-| Credit limit exposure                   | **In scope** — blocker; dev fixing                          |
+| Credit limit exposure                   | **In scope** — ready to test                                |
 | HQ + branch contact                     | **In scope** — blocker; dev fixing                          |
 | Delivery method as SKU                  | **In scope** — blocker; dev fixing                          |
 | PDF — Fixguru custom draft template     | **In scope** — dev in progress                              |
 | Item shelf in chatbot                   | **Scoped:** populate shelf no. in additional note (DN only) |
-| External SKU item code                  | **In scope** — new item added                               |
+| External SKU item code                  | Done                                                        |
 | Language preference                     | **In scope** — dev in progress                              |
 | 2-way sync                              | **In scope** — dev in progress                              |
 
@@ -184,7 +184,7 @@ Jun 7      Jun 9                 Jun 10                         Jun 11     Jun 1
 
 ---
 
-## M3 — Stability Check (Wed Jun 11)
+## M3 — Stability Check + Schedule UAT (Wed Jun 11)
 
 **Who:** PM (Gareth)
 
@@ -192,29 +192,20 @@ Jun 7      Jun 9                 Jun 10                         Jun 11     Jun 1
 - [ ] Verify Fixguru chatbot stable — quick smoke on key flows
 - [ ] UAT form finalised — all test groups clean, no draft markers
 - [ ] Seed/verify test data intact
+- [ ] Contact Fixguru — inform internal testing done; propose Jun 16–17 for UAT; confirm date
+- [ ] Brief client on gaps addressed from last UAT + what's new in scope
 
 ---
 
-## M4 — Schedule UAT with Client (Wed Jun 11)
+## M4 — On-the-spot UAT (Mon–Tue Jun 16–17)
 
-**Who:** PM (Gareth)
+**Who:** PM + Fixguru testers (Xiao Ling, Hayati, Zuha, Abishaah/Wendy, Marcus)
+**Format:** PM brief on fixes → testers run UAT on the spot same session
 
-- [ ] Inform Fixguru: internal testing completed
-- [ ] Walk through gaps addressed from last UAT — what was fixed, what's new
-- [ ] Lock UAT date + format (on-site)
-- [ ] Confirm tester assignments (Xiao Ling, Hayati, Zuha, Abishaah/Wendy, Marcus)
-- [ ] Send UAT brief
-
----
-
-## M5 — 2nd UAT (TBD — targeting Jun 16–17)
-
-**Who:** PM + Fixguru testers
-
-- [ ] Kickoff briefing (30 min) — walk form, explain Jam for bug recording
-- [ ] Testers run all tests by group
-- [ ] PM on standby for blockers
-- [ ] Collect results + triage same day
+- [ ] Brief: what was fixed vs last UAT, what's new in scope
+- [ ] Run UAT on the spot — testers test live with PM on standby
+- [ ] Use Jam to log any bugs found
+- [ ] Collect results + triage same session
 - [ ] Sign-off or conditional sign-off with punch list
 
 ---
