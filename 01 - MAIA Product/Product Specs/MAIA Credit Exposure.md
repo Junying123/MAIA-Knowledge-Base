@@ -1582,6 +1582,7 @@ SLA window is configurable per client (`credit_approval_sla_hours`, default 4).
 
 ---
 
+![[Pasted image 20260608002056.png]]
 ## Part M — Changelog
 
 |Version|Change|
