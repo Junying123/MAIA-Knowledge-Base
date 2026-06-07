@@ -1581,7 +1581,7 @@ The credit controller has not yet acted. Please follow up.
 SLA window is configurable per client (`credit_approval_sla_hours`, default 4).
 
 ---
-
+![[Pasted image 20260608003523.png]]
 ![[Pasted image 20260608002056.png]]
 ## Part M — Changelog
 
