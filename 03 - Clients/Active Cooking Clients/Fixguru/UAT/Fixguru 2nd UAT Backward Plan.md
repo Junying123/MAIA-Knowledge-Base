@@ -16,18 +16,18 @@ uat_round: 2
 ## Milestone Map
 
 ```
-NOW → M1 Scope Lock → M2 PM Testing + Dev Bug Fix → M3 Internal Testing → M4 2nd UAT
-Sat        Mon              Tue–Wed                      Thu                  Mon–Tue
-Jun 7      Jun 9            Jun 10–11                    Jun 12               Jun 16–17
-                                                         (Amirul, Bryan, Azib)
+NOW → M1 Brief + Dev Fix → M2 Internal Test + Live Fix → M3 Stable → M4 Schedule UAT → M5 2nd UAT
+Sat        Mon                   Tue (2hr session)              Wed        Wed              TBD
+Jun 7      Jun 9                 Jun 10                         Jun 11     Jun 11           Jun 16–17
 ```
 
 | Phase | Who | Goal |
 |---|---|---|
-| M1 Scope Lock | PM + Dev leads | Lock in/out items; confirm owners + ETA |
-| M2 PM Testing + Dev Bug Fix | Gareth + Amirul + Bryan + Azib | PM tests ready items; dev fixes remaining blockers |
-| M3 Internal Testing | Gareth + Amirul + Bryan + Azib | Full run-through of all scope items before client; catch late bugs |
-| M4 2nd UAT | PM + Fixguru testers | Client tests → sign-off |
+| M1 Brief + Dev Fix | PM + Amirul + Bryan + Azib (+ team) | Walk all remaining items; dev fixes same day |
+| M2 Internal Test + Live Fix | Gareth + Amirul + Bryan + Azib | 2hr session — test every item on spot; fix on spot |
+| M3 Stable + Client Brief | PM | Fixguru FE + chatbot stable; UAT form ready |
+| M4 Schedule UAT with Client | PM | Inform client internal testing done; align gaps from last UAT; lock UAT date |
+| M5 2nd UAT | PM + Fixguru testers | Client tests → sign-off |
 
 ---
 
@@ -100,156 +100,117 @@ Jun 7      Jun 9            Jun 10–11                    Jun 12               
 
 ---
 
-## M1 — Scope Lock Meeting (Mon Jun 9)
+## M1 — Brief + Dev Fix Day (Mon Jun 9)
 
-**Who:** PM + Amirul + Bryan + Azib
-**Duration:** 60 min
-**Hard deadline:** All fixes ship by **Thu Jun 12** (M3 internal testing starts Thu)
+**Who:** PM + Amirul + Bryan + Azib (+ Fariha, Haiqal, Rahim, WeiShen as needed)
+**Format:** Morning brief → dev fixes for the rest of the day
 
-- [ ] Walk full scope list — confirm in/out per item
-- [ ] Get ETA from each dev for every assigned item — days remaining until ship
-- [ ] Flag anything that cannot land by Thu Jun 12 — cut or slip UAT date now, not later
-- [ ] Assign owners (see M2)
+### Morning Brief
+- [ ] Walk all remaining items (use ETA table below) — PM explains expected behaviour per item
+- [ ] Confirm each item's owner
+- [ ] Flag anything unrealistic to land by Tue — cut scope now or slip UAT
 
-**ETAs to collect (Jun 9):**
+### ETAs to confirm (Jun 9 brief)
 
-| Item                                 | Owner        | ETA |
-| ------------------------------------ | ------------ | --- |
-| External doc ID on PDF/doctype       | Azib         |     |
-| Credit limit BE formula              | Fariha       |     |
-| HQ + branch contact sync             | Azib         |     |
-| External SKU item code               | Azib         |     |
-| 2-way sync                           | Azib         |     |
-| Auto-populate shipping method SKU    | Azib         |     |
-| Language preference BE               | Azib         |     |
-| Item level discount auto-compute fix | Amirul       |     |
-| Volumetric fields FE + PDF display   | Amirul/Rahim |     |
-| Credit limit exposure FE             | Haiqal       |     |
-| Draft Fixguru custom PDF template    | Rahim        |     |
-| Apply Discount chatbot fix           | Bryan        |     |
-| Item historical pricing chatbot fix  | Bryan        |     |
-| Customer pricing enforcement chatbot | Bryan        |     |
-| UOM conversion (multi-item) chatbot  | Bryan        |     |
-| Item shelf — additional note         | Bryan        |     |
-| 2-warehouse chatbot fix              | Bryan        |     |
-| Volume fields chatbot                | Bryan        |     |
-| Credit limit exposure chatbot        | WeiShen      |     |
-| HQ + branch chatbot                  | Bryan        |     |
-| Language preference chatbot          | Bryan        |     |
+| Item                                 | Owner        | Can ship Tue? |
+| ------------------------------------ | ------------ | ------------- |
+| External doc ID on PDF               | Azib         |               |
+| Credit limit BE formula              | Fariha       |               |
+| HQ + branch contact sync             | Azib         |               |
+| 2-way sync                           | Azib         |               |
+| Auto-populate shipping method SKU    | Azib         |               |
+| Language preference BE               | Azib         |               |
+| Item level discount auto-compute fix | Amirul       |               |
+| Volumetric fields FE + PDF display   | Amirul/Rahim |               |
+| Credit limit exposure FE             | Haiqal       |               |
+| Draft Fixguru custom PDF template    | Rahim        |               |
+| Apply Discount chatbot fix           | Bryan        |               |
+| Item historical pricing chatbot fix  | Bryan        |               |
+| Customer pricing enforcement chatbot | Bryan        |               |
+| UOM conversion (multi-item) chatbot  | Bryan        |               |
+| Item shelf — additional note (DN)    | Bryan        |               |
+| 2-warehouse chatbot fix              | Bryan        |               |
+| Volume fields chatbot                | Bryan        |               |
+| Credit limit exposure chatbot        | WeiShen      |               |
+| HQ + branch chatbot                  | Bryan        |               |
+| Language preference chatbot          | Bryan        |               |
 
----
-
-## M2 — PM Testing + Dev Bug Fix (Tue Jun 10 – Wed Jun 11)
-
-### Azib (BE)
-
-- [ ] FOC items — fix bug on Fixguru instance (dev instance already clean)
-- [ ] External doc ID — surface on PDF
-- [ ] Credit limit BE — exposure formula: unbilled SO + outstanding invoices (exclude drafts)
-- [ ] HQ + branch contact sync — contact model supports HQ + branch assignment
-- [ ] External SKU item code — surface/sync correctly
-
-### Amirul (FE)
-
-- [ ] Price-lock → read-only at field level, consistent across QTN + SO
-- [ ] Item level discount — auto-compute fix when unit price > std price
-- [ ] Historical pricing web app — discount %, auto-derive, dropdown (Tests 5–7)
-- [ ] Volumetric fields — surface in item profile FE; sync + PDF display *(in progress)*
-- [ ] Credit limit exposure — surface in FE (limit, exposure, available balance)
-- [ ] PDF — Fixguru custom draft PDF template (external doc ID, AutoCount SKU on items) *(in progress)*
-- [ ] Language preference — FE side *(in progress)*
-
-### Bryan (Chatbot)
-
-- [ ] Historical pricing chatbot — fix first-call reliability (Issue 1)
-- [ ] Decouple customer pricing from historical pricing (Issue 2)
-- [ ] Customer pricing enforcement — retest with locked customer price *(fixing)*
-- [ ] UOM conversion — multi-item different-UOM fix (single UOM already works) *(fixing)*
-- [ ] Item shelf — chatbot: populate shelf no. in **additional note field** (DN context only)
-- [ ] 2-warehouse — chatbot warehouse handling retest *(blocker)*
-- [ ] Volumetric fields — chatbot retrieves + surfaces data; pending FE completion *(blocker)*
-- [ ] Credit limit exposure — chatbot shows limit, exposure, available balance *(blocker)*
-- [ ] HQ + branch contact — chatbot assigns correct branch when creating SO *(blocker)*
-- [ ] Delivery method as SKU — auto-populate shipping method SKU as line item *(blocker)*
-- [ ] Tests 8+9 — last invoice price, avg price + QTN history
-- [ ] Language preference — chatbot side *(in progress)*
-- [ ] 2-way sync *(in progress)*
-
-### PM — Gareth (during sprint)
-
-- [x] **Follow up Amirul on RSC/Diecut Calculator** — confirm ETA; these are blocking M3
-- [ ] Follow up dev daily — align ETA per item, flag slips early
-- [ ] Finalise Phase 2 UAT form — remove 🚧 draft flags, add test groups (volumetric, credit limit, HQ+branch, delivery SKU, PDF, external SKU, language pref); remove eInvoice group
-- [ ] Communicate FOC format to Fixguru (MAIA = 2 separate lines, not AutoCount child-line)
-- [ ] Seed test data: customers with discount %, 10+ invoice history, HQ+branch customers, delivery-type items
-- [ ] Test "pick shipping method" and "search customer by phone" flows — already ready, verify on Fixguru env
+### Dev Fix (Mon afternoon — after brief)
+- Dev team fixes assigned items before Tue session
+- PM available for questions; no formal check-in needed
 
 ---
 
-## M3 — Internal Testing with Dev Team (Thu Jun 12 – Fri Jun 13)
+## M2 — Internal Testing + Live Bug Fix Session (Tue Jun 10)
 
 **Who:** Gareth + Amirul + Bryan + Azib
-**What:** Full internal run-through of all scope items on Fixguru env — gate before client UAT.
-**Format:** PM runs each scenario live; dev on standby to explain or fast-fix same day
+**Duration:** 2 hours
+**Format:** PM tests every item live on Fixguru env; dev fixes on the spot if broken
 
-- [ ] Walk through every item in scope — test what dev marked as fixed
-- [ ] Confirm each fix against expected behaviour (not just "dev says done")
-- [ ] Log anything still broken → fast-fix same day or explicit defer with note
-- [ ] Align on ETA slips — decide cut or slip UAT date now
-- [ ] Gate: all items pass or explicitly deferred before client notified
+- [ ] Run all items in scope — doesn't matter what was "fixed" beforehand, test live
+- [ ] Dev fixes any failures on the spot during session
+- [ ] Log anything that can't be fixed in session → explicit defer decision
+- [ ] End of session: agree on what's green, what's deferred
 
-**Go/No-Go checklist:**
+**Test checklist (run in session):**
 
-**Ready-for-UAT items (confirm still works)**
+**Already passing — smoke check only**
 - [ ] Pick shipping method
 - [ ] Search customer by phone number
+- [ ] Calculator (RSC + Diecut) — price flows into QTN + SO
+- [ ] FOC items — submit works, correct lines
+- [ ] External SKU item code
 
-**Calculator**
-- [ ] RSC calculator end-to-end
-- [ ] Diecut calculator end-to-end
-- [ ] Calculator price flows into QTN + SO
-
-**Historical Pricing — Web**
-- [ ] Discount %, auto-derive, dropdown (Tests 5–7)
-
-**Historical Pricing — Chatbot**
-- [ ] Last invoice price, avg price + QTN history (Tests 8–9)
-
-**Retested items**
-- [ ] FOC items — Fixguru instance bug fixed; AutoCount FOC qty column syncs correctly
-- [ ] UOM conversion — multi-item with different UOM chatbot output matches FE (single UOM already passes)
+**Retest**
+- [ ] Apply Discount — chatbot
+- [ ] Item historical pricing — chatbot (last invoice, avg price, QTN history)
+- [ ] Customer pricing enforcement — chatbot enforces locked price
+- [ ] UOM conversion — multi-item different UOM chatbot vs FE
 - [ ] Item shelf — chatbot populates shelf no. in additional note (DN only)
 - [ ] 2-warehouse — chatbot handles correctly
-- [ ] Customer pricing enforcement — FE blocks at field level; chatbot enforces locked price
-- [ ] Item level discount — auto-compute works when unit price > std price
 
 **First-time tests**
-- [ ] Volumetric fields — visible in item profile FE, surfaced in chatbot, shown on DN PDF
-- [ ] Credit limit exposure — FE + chatbot shows limit / exposure / available balance
-- [ ] HQ + branch contact — chatbot assigns correct branch on SO creation
-- [ ] Delivery method as SKU (auto-populate) — chatbot adds shipping method SKU as line item
-- [ ] External doc ID — appears on PDF
-- [ ] External SKU item code — surfaces correctly
-- [ ] PDF — Fixguru custom draft template renders external doc ID + AutoCount SKU
+- [ ] Credit limit exposure — FE shows limit / exposure / available balance
+- [ ] Credit limit exposure — chatbot (WeiShen)
+- [ ] External doc ID — visible on PDF
+- [ ] Auto-populate shipping method SKU — chatbot adds as line item
+- [ ] Volume fields — visible in item profile FE + chatbot
+- [ ] Draft Fixguru custom PDF template — renders correctly
 - [ ] Language preference — FE + chatbot
+- [ ] HQ + branch contact — chatbot assigns correct branch on SO
 - [ ] 2-way sync
-
-**If any gate fails:** slip UAT 1–2 days, no client notification yet.
+- [ ] Historical pricing web — discount %, auto-derive, dropdown (Tests 5–7)
+- [ ] Item level discount — auto-compute when unit price > std price
 
 ---
 
-## M4 — 2nd UAT (Mon–Tue Jun 16–17)
+## M3 — Stability Check (Wed Jun 11)
+
+**Who:** PM (Gareth)
+
+- [ ] Verify Fixguru FE instance stable — no regressions from Tue fixes
+- [ ] Verify Fixguru chatbot stable — quick smoke on key flows
+- [ ] UAT form finalised — all test groups clean, no draft markers
+- [ ] Seed/verify test data intact
+
+---
+
+## M4 — Schedule UAT with Client (Wed Jun 11)
+
+**Who:** PM (Gareth)
+
+- [ ] Inform Fixguru: internal testing completed
+- [ ] Walk through gaps addressed from last UAT — what was fixed, what's new
+- [ ] Lock UAT date + format (on-site)
+- [ ] Confirm tester assignments (Xiao Ling, Hayati, Zuha, Abishaah/Wendy, Marcus)
+- [ ] Send UAT brief
+
+---
+
+## M5 — 2nd UAT (TBD — targeting Jun 16–17)
 
 **Who:** PM + Fixguru testers
 
-**Pre-UAT prep (end of M3 / weekend):**
-- [ ] Verify test data intact after internal session
-- [ ] UAT form clean — no draft markers, all test groups complete
-- [ ] Last fast-fixes from M3 deployed and spot-checked
-- [ ] Send UAT brief + form to Fixguru testers (Xiao Ling, Hayati, Zuha, Abishaah/Wendy, Marcus)
-- [ ] Confirm UAT date + logistics (on-site or remote, duration, who tests what group)
-
-**UAT Day:**
 - [ ] Kickoff briefing (30 min) — walk form, explain Jam for bug recording
 - [ ] Testers run all tests by group
 - [ ] PM on standby for blockers
