@@ -292,14 +292,6 @@
               "state": {
                 "sessions": [
                   {
-                    "id": 95,
-                    "name": "zsh 95"
-                  },
-                  {
-                    "id": 108,
-                    "name": "zsh 108"
-                  },
-                  {
                     "id": 109,
                     "name": "zsh 109"
                   },
@@ -314,10 +306,14 @@
                   {
                     "id": 113,
                     "name": "zsh 113"
+                  },
+                  {
+                    "id": 114,
+                    "name": "zsh 114"
                   }
                 ],
-                "activeId": 95,
-                "nextId": 114
+                "activeId": 114,
+                "nextId": 115
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -369,6 +365,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md.tmp.31047.5457d0121cf9",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Readiness Checklist.md",
@@ -403,7 +400,6 @@
     "02 - PM Playbook/Daily Updates/Daily Update - 03-06-2026.md",
     "02 - PM Playbook/Templates/[Template] GRAI Retrospective.md",
     "02 - PM Playbook/Templates/[Template] KISS Retrospective.md",
-    "02 - PM Playbook/Templates/[Template] Account Ownership Dashboard.md",
     "Granola/Transcripts/2026-05-28",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
