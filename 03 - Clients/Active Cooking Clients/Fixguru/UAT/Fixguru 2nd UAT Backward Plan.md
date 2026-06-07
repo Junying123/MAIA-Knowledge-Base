@@ -9,7 +9,7 @@ uat_round: 2
 # Fixguru 2nd UAT — Backward Plan
 
 **End goal:** Client conducts 2nd UAT → sign-off
-**Created:** 2026-06-06 | **Updated:** 2026-06-07
+**Created:** 2026-06-06 | **Updated:** 2026-06-07 (status refresh)
 
 ---
 
@@ -17,8 +17,8 @@ uat_round: 2
 
 ```
 NOW → M1 Scope Lock → M2 PM Testing + Dev Bug Fix → M3 Internal Testing → M4 2nd UAT
-Sat        Mon              Tue–Wed                      Thu–Fri              Mon–Tue
-Jun 7      Jun 9            Jun 10–11                    Jun 12–13            Jun 16–17
+Sat        Mon              Tue–Wed                      Thu                  Mon–Tue
+Jun 7      Jun 9            Jun 10–11                    Jun 12               Jun 16–17
                                                          (Amirul, Bryan, Azib)
 ```
 
@@ -33,76 +33,109 @@ Jun 7      Jun 9            Jun 10–11                    Jun 12–13          
 
 ## Status Snapshot — Jun 7
 
-### Ready for UAT (no dev needed)
-- Pick shipping method — ✅ ready
-- Search customer by phone number — ✅ ready
+### Ready for UAT ✅
+| Item | Notes |
+|---|---|
+| Pick shipping method | — |
+| Search customer by phone number | — |
+| Calculator (RSC + Diecut) | Tested, complete |
+| FOC items | Done |
+| External SKU item code | Done |
 
-### Testing in Progress
-| Item                         | FE                     | Chatbot                    | Notes                                                          |
-| ---------------------------- | ---------------------- | -------------------------- | -------------------------------------------------------------- |
-| FOC items                    | ✅ Fixed (dev instance) | 🐛 Bug on Fixguru instance | Need Fixguru env fix                                           |
-| Item historical pricing      | 🔁 Retest needed       | 🔁 Retest needed           | Markup price = general feature, not Fixguru-specific           |
-| Item level discount          | 🔧 Fix needed          | —                          | FE auto-compute broken when unit price > std price             |
-| Customer pricing enforcement | 🔧 Fixing              | 🔧 Fixing                  | —                                                              |
-| UOM conversion               | ✅ Single item works    | 🔧 Multi-UOM fixing        | Multiple items with different UOM still broken                 |
-| Item shelf                   | —                      | 🔧 Fix scoped              | Chatbot: populate shelf no. in additional note field (DN only) |
-| External SKU item code       | 🔧 In scope            | 🔧 In scope                | New item                                                       |
+### Retest Required 🔁
+| Item | FE | Chatbot | Notes |
+|---|---|---|---|
+| Apply Discount | — | 🔧 Chatbot issue | Need retest after chatbot fix |
+| Item historical pricing | — | 🔧 Chatbot fixing | Retest when chatbot fix done |
 
-### Pending Blockers (Fixing — Need to Test)
-- External doc ID
-- HQ + branch contact
-- 2-warehouse handling
-- Auto-populate shipping method SKU as line item
-- Shelf unit in chatbot
-- Credit limit exposure — chatbot + FE
-- Volume fields in item profile — pending FE + Chatbot
+### Partial — FE Done, Chatbot Pending 🔧
+| Item | FE | Chatbot | Notes |
+|---|---|---|---|
+| Customer pricing enforcement | ✅ Done | 🔧 Pending | — |
 
-### Dev In Progress
-| Item | Owner | Status |
+### First-Time Test Needed (Pending Dev) 🔲
+| Item | Blocker | Priority |
 |---|---|---|
-| RSC & Diecut Calculator | Amirul | 🔧 In progress — follow up needed |
-| Draft PDF (external) | — | 🔧 In progress |
-| Volumetric data sync + PDF display | — | 🔧 In progress |
-| Language preference | — | 🔧 In progress |
-| 2-way sync | — | 🔧 In progress |
+| Credit limit exposure | Ready to test — no blocker | 🔴 High — Gareth to test first |
+| External doc ID | Pending BE | — |
+| 2-way sync | Pending BE | — |
+| Auto-populate shipping method SKU as line item | Pending BE | — |
+| Volume fields in item profile | Pending FE + Chatbot | — |
+| Draft Fixguru custom PDF template | Pending PDF/BE | — |
+| Language preference | Pending BE | — |
+| HQ + branch contact | Pending BE + Chatbot | — |
+
+### Chatbot Fix In Progress 🔧
+| Item                        | Issue                                                    | Notes            |
+| --------------------------- | -------------------------------------------------------- | ---------------- |
+| 2-warehouse ↔ items         | Chatbot bug                                              |                  |
+| UOM conversion (multi-item) | Multi-UOM chatbot broken                                 | Single UOM works |
+| Item shelf                  | Chatbot: populate shelf no. in additional note (DN only) | Scoped fix       |
 
 ---
 
 ## M0 — PM Decisions (DONE)
 
-| Decision                                | Resolution                                                 |
-| --------------------------------------- | ---------------------------------------------------------- |
-| QTN amendment API                       | ✅ **Defer** — API doesn't exist                            |
-| Catalogue-scan chatbot (Issues 3,4,5)   | ✅ **Defer** — BE endpoints not built                       |
-| eInvoice / AutoCount push               | ✅ **Remove** — not testing this round                      |
-| Volumetric fields BE                    | ✅ **BE done** — FE + chatbot can proceed                   |
-| Price-lock enforcement                  | **Field-level** (read-only) — lock icon already signals it |
-| FOC items                               | **In scope** — dev instance fixed; Fixguru env bug pending |
-| UOM split + shelf + 2-warehouse chatbot | **In scope** — retest required; single UOM works           |
-| Item historical pricing                 | **In scope** — retest required                             |
-| Pricing enforcement FE + chatbot        | **In scope** — fixing in progress                          |
-| Calculator (RSC + Diecut)               | **In scope** — dev in progress; follow up Amirul           |
-| Volumetric fields FE + chatbot + DN PDF | **In scope** — dev in progress                             |
-| Credit limit exposure                   | **In scope** — blocker; dev fixing                         |
-| HQ + branch contact                     | **In scope** — blocker; dev fixing                         |
-| Delivery method as SKU                  | **In scope** — blocker; dev fixing                         |
-| PDF — Fixguru custom draft template     | **In scope** — dev in progress                             |
-| Item shelf in chatbot                   | **Scoped:** populate shelf no. in additional note (DN only)|
-| External SKU item code                  | **In scope** — new item added                              |
-| Language preference                     | **In scope** — dev in progress                             |
-| 2-way sync                              | **In scope** — dev in progress                             |
+| Decision                                | Resolution                                                  |
+| --------------------------------------- | ----------------------------------------------------------- |
+| QTN amendment API                       | ✅ **Defer** — API doesn't exist                             |
+| Catalogue-scan chatbot (Issues 3,4,5)   | ✅ **Defer** — BE endpoints not built                        |
+| eInvoice / AutoCount push               |                                                             |
+| Volumetric fields BE                    | ✅ **BE done** — FE + chatbot can proceed                    |
+| Price-lock enforcement                  | **Field-level** (read-only) — lock icon already signals it  |
+| FOC items                               | **In scope** — dev instance fixed; Fixguru env bug pending  |
+| UOM split + shelf + 2-warehouse chatbot | **In scope** — retest required; single UOM works            |
+| Item historical pricing                 | **In scope** — retest required                              |
+| Pricing enforcement FE + chatbot        | **In scope** — fixing in progress                           |
+| Calculator (RSC + Diecut)               | **In scope** — dev in progress; follow up Amirul            |
+| Volumetric fields FE + chatbot + DN PDF | **In scope** — dev in progress                              |
+| Credit limit exposure                   | **In scope** — blocker; dev fixing                          |
+| HQ + branch contact                     | **In scope** — blocker; dev fixing                          |
+| Delivery method as SKU                  | **In scope** — blocker; dev fixing                          |
+| PDF — Fixguru custom draft template     | **In scope** — dev in progress                              |
+| Item shelf in chatbot                   | **Scoped:** populate shelf no. in additional note (DN only) |
+| External SKU item code                  | **In scope** — new item added                               |
+| Language preference                     | **In scope** — dev in progress                              |
+| 2-way sync                              | **In scope** — dev in progress                              |
 
 ---
 
 ## M1 — Scope Lock Meeting (Mon Jun 9)
 
-**Who:** PM + Dev lead (Azib / Amir / Afiq)
+**Who:** PM + Amirul + Bryan + Azib
 **Duration:** 60 min
+**Hard deadline:** All fixes ship by **Thu Jun 12** (M3 internal testing starts Thu)
 
 - [ ] Walk full scope list — confirm in/out per item
-- [ ] Dev confirms each item has clear owner + can ship by Thu Jun 12
-- [ ] Flag any scope that needs another day; decide cut or slip now
+- [ ] Get ETA from each dev for every assigned item — days remaining until ship
+- [ ] Flag anything that cannot land by Thu Jun 12 — cut or slip UAT date now, not later
 - [ ] Assign owners (see M2)
+
+**ETAs to collect (Jun 9):**
+
+| Item                                 | Owner        | ETA |
+| ------------------------------------ | ------------ | --- |
+| External doc ID on PDF/doctype       | Azib         |     |
+| Credit limit BE formula              | Fariha       |     |
+| HQ + branch contact sync             | Azib         |     |
+| External SKU item code               | Azib         |     |
+| 2-way sync                           | Azib         |     |
+| Auto-populate shipping method SKU    | Azib         |     |
+| Language preference BE               | Azib         |     |
+| Item level discount auto-compute fix | Amirul       |     |
+| Volumetric fields FE + PDF display   | Amirul/Rahim |     |
+| Credit limit exposure FE             | Haiqal       |     |
+| Draft Fixguru custom PDF template    | Rahim        |     |
+| Apply Discount chatbot fix           | Bryan        |     |
+| Item historical pricing chatbot fix  | Bryan        |     |
+| Customer pricing enforcement chatbot | Bryan        |     |
+| UOM conversion (multi-item) chatbot  | Bryan        |     |
+| Item shelf — additional note         | Bryan        |     |
+| 2-warehouse chatbot fix              | Bryan        |     |
+| Volume fields chatbot                | Bryan        |     |
+| Credit limit exposure chatbot        | WeiShen      |     |
+| HQ + branch chatbot                  | Bryan        |     |
+| Language preference chatbot          | Bryan        |     |
 
 ---
 
@@ -118,8 +151,6 @@ Jun 7      Jun 9            Jun 10–11                    Jun 12–13          
 
 ### Amirul (FE)
 
-- [ ] RSC Calculator — fix + retest ready *(follow up required — in progress)*
-- [ ] Diecut Calculator — fix + retest ready *(follow up required — in progress)*
 - [ ] Price-lock → read-only at field level, consistent across QTN + SO
 - [ ] Item level discount — auto-compute fix when unit price > std price
 - [ ] Historical pricing web app — discount %, auto-derive, dropdown (Tests 5–7)
@@ -136,7 +167,6 @@ Jun 7      Jun 9            Jun 10–11                    Jun 12–13          
 - [ ] UOM conversion — multi-item different-UOM fix (single UOM already works) *(fixing)*
 - [ ] Item shelf — chatbot: populate shelf no. in **additional note field** (DN context only)
 - [ ] 2-warehouse — chatbot warehouse handling retest *(blocker)*
-- [ ] FOC items — fix Fixguru instance bug; confirm `is_free_item` flag flows through
 - [ ] Volumetric fields — chatbot retrieves + surfaces data; pending FE completion *(blocker)*
 - [ ] Credit limit exposure — chatbot shows limit, exposure, available balance *(blocker)*
 - [ ] HQ + branch contact — chatbot assigns correct branch when creating SO *(blocker)*
@@ -147,7 +177,7 @@ Jun 7      Jun 9            Jun 10–11                    Jun 12–13          
 
 ### PM — Gareth (during sprint)
 
-- [ ] **Follow up Amirul on RSC/Diecut Calculator** — confirm ETA; these are blocking M3
+- [x] **Follow up Amirul on RSC/Diecut Calculator** — confirm ETA; these are blocking M3
 - [ ] Follow up dev daily — align ETA per item, flag slips early
 - [ ] Finalise Phase 2 UAT form — remove 🚧 draft flags, add test groups (volumetric, credit limit, HQ+branch, delivery SKU, PDF, external SKU, language pref); remove eInvoice group
 - [ ] Communicate FOC format to Fixguru (MAIA = 2 separate lines, not AutoCount child-line)
