@@ -335,7 +335,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.10.0",
+  "lastSeenVersion": "4.10.2",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -474,7 +474,7 @@
     "isRunning": false,
     "timeRemaining": 1500
   },
-  "lastPomodoroDate": "2026-06-02",
+  "lastPomodoroDate": "2026-06-07",
   "taskModalTabMovesFocus": true,
   "hideIdentifyingTagsMode": "all",
   "openTaskAfterCreation": "none",
@@ -484,5 +484,6 @@
   "expandSubtasksByDefault": false,
   "notificationSoundEnabled": false,
   "notificationSoundVolume": 50,
-  "disableCalendarOnMobile": false
+  "disableCalendarOnMobile": false,
+  "checkForUpdatesOnStartup": true
 }

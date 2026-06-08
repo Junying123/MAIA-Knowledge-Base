@@ -22,6 +22,7 @@
   "transcriptSubfolderPattern": "day",
   "transcriptFilenamePattern": "{title}-transcript",
   "enableDebugLogging": false,
+  "showSyncNotifications": true,
   "_folderMapCache": {
     "folders": {
       "42ea94b7-b7e9-4a94-9dbf-5304573d2be6": {
@@ -144,6 +145,6 @@
         "Holsen"
       ]
     },
-    "lastUpdated": 1780880765055
+    "lastUpdated": 1780881971295
   }
 }
