@@ -15,17 +15,21 @@ lark_url:
 
 ## Agreed Core Workflow (End-to-End)
 
+### Phase 1 (Go-live end of June)
 1. **Customer places order** via WhatsApp to Macrofood
-2. **Sales creates a draft Sales Order internally** (outside MAIA) and generates their own pick list
-3. **Warehouse picks the goods** and confirms actual weight, quantity and price on the physical pick list
-4. **Confirmed pick list uploaded to MAIA** — MAIA receives final confirmed figures only; creates SO → Delivery Order → Invoice
+2. **Sales creates draft SO internally** (own process, outside MAIA) and runs own pick list
+3. **Warehouse picks goods**, confirms actual weight, quantity and price on physical pick list
+4. **Confirmed pick list uploaded to MAIA** — MAIA receives final confirmed figures; creates SO → Delivery Order → Invoice
 5. **Documents pushed to SQL**
 6. **Customer receives goods** → driver collects signed DO
 7. **Customer sends payment slip** → Finance does AR reconciliation in MAIA (bank statement + payment slip + invoice matching) → knock off in SQL
 
 > **Key principle:** SQL stays master for customer list and item list. Pricing managed and enforced inside MAIA.
 
-> **Open question:** Confirm with David — does the order enter MAIA first as a draft (then warehouse picks and confirms weight), or is the pick list fully done before uploading to MAIA? Both were discussed; needs one final confirmation.
+### Phase 2 (Order intake via MAIA — to be sorted)
+WhatsApp order → MAIA creates draft SO → warehouse picks → updates actual weight in MAIA → submits SO → DO + Invoice generated
+
+> Pick list workflow needs to be finalised before Phase 2 can proceed.
 
 ---
 
@@ -52,12 +56,12 @@ lark_url:
 - Used for inactive customers and new prospects
 - Follow-up needed: David to share current catalog samples before MAIA designs format
 
-### Stock Entry / GRN Matching
-- Pain point: supplier invoices one quantity (e.g. 1000kg) but actual goods received is different (e.g. 998kg) — GRN and supplier invoice don't match
-- Current process: warehouse takes physical GRN → admin manually keys into SQL → converts to purchase invoice; bottleneck as only one warehouse person
-- MAIA proposed approach: warehouse uploads GRN document (photo/PDF) → MAIA extracts and pre-populates fields → human verifies actual received quantity → creates purchase invoice
-- AI handles item code mapping and UOM conversion mismatches between supplier and Macrofood system; learns from user overrides
-- **Status: Purchasing module not yet in MAIA — flagged as future phase**
+### Stock Entry / Inventory Management
+- Pain point: human error in weighing and data entry — picker picks wrong weight, checker misses it, quantity recorded in SQL is wrong
+- GRN extraction does not solve this (GRN is generated after manual keying; the error is in the keying itself)
+- What was discussed: MAIA to send alerts when stock is near expiry or aging is high (slow-moving stock sitting too long)
+- Example use case: stock imported in a container, only 4 tons sellable within 6 months — alert when approaching expiry or when stock has not moved for an extended period
+- **Status: Inventory alert feature to be explored — not in Phase 1 scope**
 
 ### Credit Limit Control
 - MAIA blocks order when customer hits credit limit

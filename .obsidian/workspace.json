@@ -120,16 +120,6 @@
             }
           },
           {
-            "id": "1d2bb78460190c64",
-            "type": "leaf",
-            "state": {
-              "type": "tasknotes-release-notes",
-              "state": {},
-              "icon": "book-open",
-              "title": "What's new in TaskNotes 4.10.2"
-            }
-          },
-          {
             "id": "628deccba19f635d",
             "type": "leaf",
             "state": {
@@ -365,7 +355,7 @@
                     "name": "zsh 117"
                   }
                 ],
-                "activeId": 112,
+                "activeId": 110,
                 "nextId": 118
               },
               "icon": "terminal",
@@ -378,8 +368,8 @@
             "state": {
               "type": "claudian-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "claudian-view"
+              "icon": "bot",
+              "title": "Claudian"
             }
           }
         ],
@@ -413,11 +403,13 @@
       "tasknotes:Open Kanban board": false,
       "tasknotes:Open Pomodoro timer": false,
       "tasknotes:Open Pomodoro statistics": false,
-      "realclaudian:Open Claudian": false
+      "realclaudian:Open Claudian": false,
+      "agent-client:Open agent client": false
     }
   },
-  "active": "1d2bb78460190c64",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.a7734c67f96f",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru yvonne call.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript.md",
@@ -449,7 +441,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.1f15fe1f0edb",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Ordermaia x Macrofood Proposal.md",
     "Granola/Transcripts/2026-06-05",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood Customization Clarification Questionnaire 2026-06-04.docx",
     "Granola/Transcripts/2026-06-04",

@@ -4,8 +4,8 @@
   "title": "draft whatsapp message to holsen client, when they...",
   "titleGenerationStatus": "failed",
   "createdAt": 1780674637679,
-  "updatedAt": 1780881727938,
-  "lastResponseAt": 1780718008077,
+  "updatedAt": 1780882663579,
+  "lastResponseAt": 1780882663579,
   "sessionId": "852ff0c0-cd6a-47fd-a977-a6fe6590f573",
   "providerState": {
     "providerSessionId": "852ff0c0-cd6a-47fd-a977-a6fe6590f573"
@@ -13,11 +13,11 @@
   "usage": {
     "model": "sonnet",
     "inputTokens": 3,
-    "cacheCreationInputTokens": 36573,
-    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 1960,
+    "cacheReadInputTokens": 39781,
     "contextWindow": 200000,
-    "contextTokens": 36576,
-    "percentage": 18,
+    "contextTokens": 41744,
+    "percentage": 21,
     "contextWindowIsAuthoritative": true
   }
 }
