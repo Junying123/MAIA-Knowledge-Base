@@ -3,7 +3,7 @@ granola_id: 89ce1c5e-bd33-4c49-a472-c3206f8448af
 title: MAIA - Weekly Product Sync - Transcript
 type: transcript
 created: 2026-06-08T07:14:50.525Z
-updated: 2026-06-08T08:54:18.221Z
+updated: 2026-06-08T08:57:15.698Z
 attendees: []
 ---
 
