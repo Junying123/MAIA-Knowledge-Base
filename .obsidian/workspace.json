@@ -226,7 +226,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -361,10 +362,14 @@
                   {
                     "id": 119,
                     "name": "zsh 119"
+                  },
+                  {
+                    "id": 120,
+                    "name": "zsh 120"
                   }
                 ],
-                "activeId": 119,
-                "nextId": 120
+                "activeId": 120,
+                "nextId": 121
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -417,6 +422,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-08/MAIA - Weekly Product Sync-transcript.md",
+    "Granola/Transcripts/2026-06-08",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.a7734c67f96f",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru yvonne call.md",
@@ -449,13 +456,11 @@
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.1f15fe1f0edb",
     "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "Granola/Transcripts/2026-06-05",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood Customization Clarification Questionnaire 2026-06-04.docx",
     "Granola/Transcripts/2026-06-04",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Macrofood RG Questionnaire 2026-06-04.docx",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/Requirement Gathering Questionnaire.md.tmp.1079.49928d3debdd",
-    "03 - Clients/Active Cooking Clients/Macro Frozen/Meetings",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
     "slides/getting-started/assets/vercel.svg",
