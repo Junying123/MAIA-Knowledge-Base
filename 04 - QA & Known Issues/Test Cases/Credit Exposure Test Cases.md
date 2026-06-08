@@ -7,7 +7,7 @@ lark_url:
 
 # Credit Exposure Test Cases
 
-**Total Test Cases:** 37 (FE: 22 · Chatbot: 15)
+**Total Test Cases:** 46 (FE: 27 · Chatbot: 19)
 **Feature:** Credit Exposure — Customer Profile Panel, Compact One-liner Bar, Hover Popover, Chatbot Messages
 **Spec Ref:** [[01 - MAIA Product/Product Specs/MAIA Credit Exposure]]
 
@@ -33,6 +33,17 @@ lark_url:
 | 12 | Long-standing trusted client with no credit limit set | 0 | 140k | 60k | 40k | — | No credit limit |
 
 **Threshold rule (spec default):** Within Limit < 70% · Near Limit 70–89% · Approaching Limit 90–99% · Over Limit ≥ 100%
+
+### Per-Customer Enforcement Flags (Credit Limit child table)
+
+| Field | Default | Behaviour when default | Behaviour when changed |
+|---|---|---|---|
+| `bypass_credit_limit_check` | **Unchecked** (MAIA enforces) | Credit limit breach routes SO to Credit Controller | Checked = credit limit advisory only — warning shown, no block or approval routing |
+| `block_on_overdue` | **Checked** (MAIA blocks) | Any overdue invoice (L0 > 0) routes SO to Credit Controller | Unchecked = overdue shown as ⚠ informational token only, no routing |
+
+**Combined enforcement logic:** `block_triggered = (credit_breach AND NOT bypass_credit_limit_check) OR (overdue_breach AND block_on_overdue)`
+
+Both flags are independent — either can trigger a block on its own. All existing TCs in Parts 1 and 2 assume default flag state (bypass unchecked, block_on_overdue checked) unless stated otherwise. Part 3 tests non-default flag combinations.
 
 ---
 
@@ -77,6 +88,15 @@ lark_url:
 | 35 | TC-CE-CB-13 | 12 | Chatbot | Medium |
 | 36 | TC-CE-CB-14 | 5 | Chatbot | High |
 | 37 | TC-CE-CB-15 | 8 | Chatbot | High |
+| 38 | TC-CE-FE-23 | 6 | FE One-liner · bypass flag | **Critical** |
+| 39 | TC-CE-FE-24 | 7 | FE One-liner · bypass flag | **Critical** |
+| 40 | TC-CE-FE-25 | 3 | FE One-liner · overdue flag | **Critical** |
+| 41 | TC-CE-FE-26 | 3 | FE One-liner · overdue flag | High |
+| 42 | TC-CE-FE-27 | 6+3 | FE One-liner · both flags | High |
+| 43 | TC-CE-CB-16 | 6 | Chatbot · bypass flag | **Critical** |
+| 44 | TC-CE-CB-17 | 7 | Chatbot · bypass flag | **Critical** |
+| 45 | TC-CE-CB-18 | 3 | Chatbot · overdue flag | **Critical** |
+| 46 | TC-CE-CB-19 | 6+3 | Chatbot · both flags | High |
 
 ---
 
@@ -517,6 +537,137 @@ lark_url:
 
 ---
 
+## Part 3 — Enforcement Flag Test Cases
+
+> All TCs in this section explicitly set one or both flags to a **non-default** state. The flag state under test is called out at the top of each TC. Verify flag state in the Customer Credit Limit child table before running.
+
+---
+
+### TC-CE-FE-23 · State 6 · **Critical**
+**Bypass Credit Limit ON — over-limit customer: bar still shows red but no ⛔ block state**
+
+> **Scenario:** Finance has decided that a key account customer (already over their credit limit) should not be blocked — their orders are pre-approved by management. The Credit Controller checked `bypass_credit_limit_check` on this customer. The credit bar should still honestly display the over-limit status in red (visibility preserved), but the ⛔ "Credit approval required" badge must NOT appear — the SO should submit freely.
+
+- **Flag state:** `bypass_credit_limit_check = True` (checked). `block_on_overdue = True` (default).
+- **Setup:** L1 = RM 560k, limit = RM 500k, L0 = 0
+- **Location:** SO form one-liner
+- **Steps:** Select customer on SO form. Add any line item.
+- **Expected:** One-liner shows `● Over Limit  112%  RM560k / RM500k`. No ⛔ symbol. Submit button available without credit hold.
+- **Pass:** Over Limit colour and badge render. ⛔ block state does NOT fire. SO submits to docstatus=1 without approval routing.
+- **Fail:** ⛔ appears and SO is held for approval despite bypass being enabled. OR bar shows no red / wrong colour.
+
+---
+
+### TC-CE-FE-24 · State 7 · **Critical**
+**Bypass Credit Limit ON — adding items that would breach: one-liner stays informational, never flips to ⛔**
+
+> **Scenario:** Same bypass-enabled customer. Sales rep is building a large SO. As they add items, the running total crosses the credit limit. The one-liner should update the colour and percentage live (as normal), but it must never flip to the ⛔ "Credit approval required" state — that state is credit-limit enforcement, which is bypassed for this customer.
+
+- **Flag state:** `bypass_credit_limit_check = True`. `block_on_overdue = True` (default, but L0 = 0 so irrelevant).
+- **Setup:** L1 = RM 300k, limit = RM 500k, no L2, L0 = 0
+- **Location:** SO form one-liner
+- **Steps:** Add line items progressively until grand_total exceeds RM 200k (would breach at 300+200 = 500)
+- **Expected:** One-liner colour transitions green → amber → red as utilisation climbs. At breach point shows `● Over Limit  100%+`. No ⛔ badge at any point.
+- **Pass:** Colour updates correctly. ⛔ never appears. SO remains submittable throughout.
+- **Fail:** ⛔ flips on when total exceeds limit. Bypass flag is being ignored.
+
+---
+
+### TC-CE-FE-25 · State 3 · **Critical**
+**Overdue Block ON (default) + within-limit customer with overdue — one-liner shows block indicator alongside ⚠**
+
+> **Scenario:** A customer has RM 80k in overdue invoices and is still within their credit limit. With `block_on_overdue = True` (the default), even though the credit limit is fine, this customer's new SO will be routed to Credit Controller because of the overdue balance. The one-liner must communicate this — the ⚠ overdue token alone is not enough; the tester should verify an additional block/routing indicator is shown so the rep knows submission will trigger approval flow.
+
+- **Flag state:** `block_on_overdue = True` (default). `bypass_credit_limit_check = False` (default).
+- **Setup:** L0 = RM 80k, L1 = RM 200k, limit = RM 500k
+- **Location:** SO form one-liner
+- **Expected:** One-liner shows `● Within Limit  40%  RM200k / RM500k  ⚠ RM80k overdue`. On SO submit: routed to Credit Controller. Form shows post-submit banner indicating awaiting credit approval.
+- **Pass:** SO submits to docstatus=1 with `credit_limit_breach = 1` and `credit_breach_reason = "overdue"`. Approval routing fires.
+- **Fail:** SO submits cleanly as if no issue. Overdue block not enforced.
+
+---
+
+### TC-CE-FE-26 · State 3 · High
+**Overdue Block OFF — overdue token is advisory only, SO submits without routing**
+
+> **Scenario:** Credit Controller has explicitly unchecked `block_on_overdue` for a customer who has some late invoices — perhaps the account team has a payment arrangement in place. The ⚠ overdue token should still appear (Finance still needs visibility), but the SO must submit without any credit approval routing triggered by the overdue balance.
+
+- **Flag state:** `block_on_overdue = False` (unchecked). `bypass_credit_limit_check = False` (default, enforce).
+- **Setup:** L0 = RM 80k, L1 = RM 200k, limit = RM 500k
+- **Location:** SO form one-liner
+- **Expected:** One-liner shows `● Within Limit  40%  RM200k / RM500k  ⚠ RM80k overdue`. SO submits cleanly — no approval routing, no breach flag stamped for overdue reason.
+- **Pass:** SO submits to docstatus=1. `credit_limit_breach = 0`. No Credit Controller notification for overdue.
+- **Fail:** SO still routes to approval. `block_on_overdue = False` is being ignored.
+
+---
+
+### TC-CE-FE-27 · State 6+3 · High
+**Bypass Credit Limit ON + Overdue Block ON — overdue block still fires independently**
+
+> **Scenario:** A customer has bypass_credit_limit_check enabled (credit limit advisory only), but block_on_overdue is still checked. The customer is both over their credit limit AND has overdue invoices. Credit limit enforcement is bypassed — but the overdue block is independent and must still fire. The SO should be routed to Credit Controller due to the overdue, not the limit breach. The `credit_breach_reason` stamp should reflect this.
+
+- **Flag state:** `bypass_credit_limit_check = True`. `block_on_overdue = True`.
+- **Setup:** L0 = RM 120k, L1 = RM 560k, limit = RM 500k
+- **Location:** SO form
+- **Steps:** Select customer, add any line item, submit
+- **Expected:** One-liner shows Over Limit (red) but no ⛔ from credit limit. On submit: routed to Credit Controller. `credit_limit_breach = 1`, `credit_breach_reason = "overdue"` (not "credit_limit" or "credit_limit_and_overdue" — bypass means limit did not trigger).
+- **Pass:** Routing fires. Breach reason is `"overdue"` only.
+- **Fail:** SO submits cleanly (overdue block ignored). OR breach reason includes "credit_limit" despite bypass being on.
+
+---
+
+### TC-CE-CB-16 · State 6 · **Critical**
+**Bypass Credit Limit ON — chatbot warns about over-limit exposure but submits without approval routing**
+
+> **Scenario:** Sales rep creates an SO via chatbot for a customer with bypass enabled who is over their credit limit. The chatbot should be transparent — it should tell the rep the customer is over their limit (so the rep is informed) — but it must NOT trigger the approval routing flow. The order should confirm directly. Silently skipping the mention would hide important account information from the rep.
+
+- **Flag state:** `bypass_credit_limit_check = True`. `block_on_overdue = False`.
+- **Setup:** L1 = RM 560k, limit = RM 500k, L0 = 0. Creating SO via chatbot.
+- **Expected:** Chatbot surfaces credit status: *"Note: [Customer] is currently over their credit limit (RM 560k of RM 500k). Their account is set to advisory mode — this order won't require credit approval. Continuing. [Add line items / Cancel]"* On submit: SO confirms directly. No Credit Controller notification.
+- **Pass:** Over-limit exposure mentioned. No approval routing. SO confirms.
+- **Fail:** Chatbot fires full breach warning + approval routing despite bypass. OR chatbot shows no mention of over-limit exposure at all.
+
+---
+
+### TC-CE-CB-17 · State 7 · **Critical**
+**Bypass Credit Limit ON — breach threshold crossed mid-SO: chatbot does not route to approval**
+
+> **Scenario:** Sales rep builds an SO via chatbot that would breach the credit limit. Normally this triggers approval routing (TC-CE-CB-07). With bypass enabled, the chatbot should inform the rep about the projected over-limit exposure but must submit the order directly — no "Submit for approval?" prompt, no Credit Controller notification for the limit breach.
+
+- **Flag state:** `bypass_credit_limit_check = True`. `block_on_overdue = False`.
+- **Setup:** L1 = RM 300k, no L2, new SO = RM 220k, limit = RM 500k, L0 = 0.
+- **Expected:** Chatbot notes exposure: *"This order will bring [Customer]'s total to RM 520k (104% of RM 500k limit). Their account is set to advisory mode — submitting now. [Confirm / Cancel]"* On confirm: SO submits without approval routing.
+- **Pass:** Advisory note shown. Confirm goes straight to submit. No approval flow triggered.
+- **Fail:** Full breach warning fires with "Submit for approval?" prompt. Bypass is ignored.
+
+---
+
+### TC-CE-CB-18 · State 3 · **Critical**
+**Overdue Block ON (default) — within-limit customer with overdue: chatbot routes SO to approval**
+
+> **Scenario:** A customer is comfortably within their credit limit (40% utilisation) but has RM 80k in overdue invoices. `block_on_overdue` is checked (default). Sales rep creates a new SO via chatbot. Even though the credit limit is fine, the overdue block must fire — the chatbot should surface the overdue balance and route the order to credit approval before confirming.
+
+- **Flag state:** `block_on_overdue = True` (default). `bypass_credit_limit_check = False` (default).
+- **Setup:** L0 = RM 80k, L1 = RM 200k, limit = RM 500k. Creating SO via chatbot.
+- **Expected:** Before or at submit, chatbot surfaces: *"[Customer] has RM 80k in overdue invoices. Submitting this order will route it for Finance approval. Submit for approval? [Yes] [Save as draft]"* On yes: SO submits with `credit_limit_breach = 1`, `credit_breach_reason = "overdue"`. Credit Controller notified.
+- **Pass:** Approval routing fires for overdue reason. Not for credit limit (utilisation is 40%, no limit breach). `credit_breach_reason = "overdue"`.
+- **Fail:** Chatbot submits SO cleanly (overdue block not enforced). OR routes for wrong reason.
+
+---
+
+### TC-CE-CB-19 · State 6+3 · High
+**Bypass Credit Limit ON + Overdue Block ON — chatbot routes for overdue only, not credit limit**
+
+> **Scenario:** A customer has bypass enabled (credit limit advisory) but overdue block is still active. They are both over their limit and have overdue invoices. The chatbot must route the SO to Credit Controller — but for the overdue reason, not the credit limit breach. The language used in the chatbot message should reflect the correct reason so the Credit Controller knows what they're approving.
+
+- **Flag state:** `bypass_credit_limit_check = True`. `block_on_overdue = True`.
+- **Setup:** L0 = RM 120k, L1 = RM 560k, limit = RM 500k. New SO = RM 100k.
+- **Expected:** Chatbot message references overdue block as the routing trigger: *"[Customer] has RM 120k in overdue invoices. Submitting will route this order for Finance approval. Note: their credit limit is set to advisory mode. Submit for approval? [Yes] [Save as draft]"* On yes: `credit_breach_reason = "overdue"`.
+- **Pass:** Routing fires. `credit_breach_reason = "overdue"` (not "credit_limit_and_overdue"). Chatbot message cites overdue, not limit breach.
+- **Fail:** `credit_breach_reason = "credit_limit_and_overdue"` (bypass not respected in reason stamping). OR no routing at all.
+
+---
+
 ## See Also
 
-- [[01 - MAIA Product/Product Specs/MAIA Credit Exposure]] — full spec (Part D chatbot, Part J ACs, Part K backend)
+- [[01 - MAIA Product/Product Specs/MAIA Credit Exposure]] — full spec (Part D chatbot, Part J ACs, Part J.8 flag ACs, Part K backend)
