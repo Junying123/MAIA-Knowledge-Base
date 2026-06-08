@@ -17,20 +17,20 @@ lark_url:
 
 ## 12 Canonical States (Test Data Reference)
 
-| State | Name | L0 | L1 | L2 | L3 | Limit | Expected Status Badge |
+| State | Scenario Name | L0 | L1 | L2 | L3 | Limit | Expected Status Badge |
 |---|---|---|---|---|---|---|---|
-| 1 | Zero exposure | 0 | 0 | 0 | 0 | 300k | Within Limit |
-| 2 | Healthy, no overdue | 0 | 150k | 60k | 40k | 500k | Within Limit |
-| 3 | Overdue present, headroom exists | 80k | 200k | 60k | 40k | 500k | Within Limit + ⚠ |
-| 4 | Near limit (≥ 70%), no overdue | 0 | 390k | 30k | 20k | 500k | Near Limit (amber) |
-| 5 | At limit exactly | 0 | 500k | 0 | 0 | 500k | Over Limit (red) |
-| 6 | Over limit | 120k | 560k | 0 | 0 | 500k | Over Limit (red) |
-| 7 | New SO would breach | 0 | 300k | 0 | 0 | 500k | Breach on SO |
-| 8 | Overdue only, nothing current | 95k | 95k | 0 | 0 | 400k | Within Limit + ⚠ |
-| 9 | Pipeline only | 0 | 0 | 0 | 180k | 500k | Within Limit |
-| 10 | Unbilled SO only | 0 | 0 | 210k | 0 | 500k | Within Limit |
-| 11 | All buckets populated | 100k | 350k | 80k | 120k | 500k | Near Limit + ⚠ |
-| 12 | No credit limit | 0 | 140k | 60k | 40k | — | No credit limit |
+| 1 | Brand new customer, no transactions | 0 | 0 | 0 | 0 | 300k | Within Limit |
+| 2 | Regular customer, healthy account | 0 | 150k | 60k | 40k | 500k | Within Limit |
+| 3 | Customer with some overdue but still within limit | 80k | 200k | 60k | 40k | 500k | Within Limit + ⚠ |
+| 4 | Busy season — customer approaching limit | 0 | 390k | 30k | 20k | 500k | Near Limit (amber) |
+| 5 | Customer has fully used up their credit line | 0 | 500k | 0 | 0 | 500k | Over Limit (red) |
+| 6 | Customer has exceeded their credit limit | 120k | 560k | 0 | 0 | 500k | Over Limit (red) |
+| 7 | Sales rep adding large order that would push customer over limit | 0 | 300k | 0 | 0 | 500k | Breach on SO |
+| 8 | Customer stopped buying but still has unpaid invoices | 95k | 95k | 0 | 0 | 400k | Within Limit + ⚠ |
+| 9 | Customer has only draft quotations, nothing confirmed | 0 | 0 | 0 | 180k | 500k | Within Limit |
+| 10 | Customer has confirmed orders not yet invoiced | 0 | 0 | 210k | 0 | 500k | Within Limit |
+| 11 | High-volume customer with all types of exposure | 100k | 350k | 80k | 120k | 500k | Near Limit + ⚠ |
+| 12 | Long-standing trusted client with no credit limit set | 0 | 140k | 60k | 40k | — | No credit limit |
 
 **Threshold rule (spec default):** Within Limit < 70% · Near Limit 70–89% · Approaching Limit 90–99% · Over Limit ≥ 100%
 
@@ -83,7 +83,9 @@ lark_url:
 ## Part 1 — FE Test Cases
 
 ### TC-CE-FE-01 · State 1 · High
-**Zero Exposure: Available = Full Limit**
+**Brand new customer opens their first SO — credit bar should show clean slate**
+
+> **Scenario:** A new customer was just onboarded last week. No invoices, no orders, no quotations on record. Sales rep selects this customer on the SO form. The credit bar should reflect zero usage against their assigned limit.
 
 - **Setup:** Customer with zero invoices, orders, QTs. Limit = RM 300k.
 - **Location:** SO form sidebar (customer selected)
@@ -93,7 +95,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-02 · State 2 · High
-**Healthy: Utilisation = L1 / Limit Only**
+**Active customer paying on time — utilisation shows billed outstanding only**
+
+> **Scenario:** A regular mid-sized customer who pays invoices reliably. They currently have RM 150k in billed outstanding (current invoices) and RM 60k in orders not yet invoiced. Sales rep opens a new SO to check their credit standing. Only billed outstanding (L1) should count toward utilisation — unbilled orders do not.
 
 - **Setup:** L1 = RM 150k, L2 = RM 60k, limit = RM 500k
 - **Location:** SO form sidebar
@@ -104,7 +108,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-03 · State 3 · High
-**Overdue Token Appended to One-liner**
+**Customer with overdue invoices — warning token appears but account is not blocked**
+
+> **Scenario:** A customer has some invoices past due (oldest 35 days ago) but their overall credit usage is still healthy. Sales rep is creating a new order — they should see the overdue flag so Finance can follow up, but the order should not be blocked.
 
 - **Setup:** L0 = RM 80k (oldest 35 days), L1 = RM 200k, limit = RM 500k
 - **Location:** SO form sidebar
@@ -115,7 +121,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-04 · State 4 · **Critical**
-**Near Limit Fires at 70%, Not 80%**
+**Customer hitting 70% usage — amber warning should trigger at this exact threshold**
+
+> **Scenario:** End of a strong sales quarter — a distributor customer has been buying heavily and has now reached exactly 70% of their credit limit. The one-liner should flip to amber at this point, not wait until 80%. This is critical because sales managers use this to decide whether to offer further credit.
 
 - **Setup:** L1 = RM 350k (exactly 70%), limit = RM 500k, L0 = 0
 - **Location:** Customer profile + SO form sidebar
@@ -126,7 +134,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-05 · State 5 · High
-**At Limit: Available = RM 0 (Not Negative)**
+**Customer has fully drawn their entire credit line — available should show RM 0, not negative**
+
+> **Scenario:** A high-volume wholesale customer has invoiced exactly up to their credit ceiling this month. They have no headroom left. The available credit should display as RM 0 — not blank, not a negative value.
 
 - **Setup:** L1 = RM 500k = limit exactly
 - **Location:** Customer profile
@@ -136,7 +146,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-06 · State 6 · High
-**Over Limit: Negative Available**
+**Customer has exceeded their credit limit — negative available displayed correctly**
+
+> **Scenario:** A customer has been given additional orders approved by Finance on a case-by-case basis, pushing them RM 60k over their limit. The credit bar should clearly show the overage amount with a negative available figure and an overflow indicator.
 
 - **Setup:** L1 = RM 560k, limit = RM 500k
 - **Location:** Customer profile
@@ -146,7 +158,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-07 · State 7 · **Critical**
-**Breach Uses L1 + L2 + newSO (Not L1 + newSO)**
+**Large order would breach limit — breach check must include existing unconfirmed orders (L2)**
+
+> **Scenario:** Sales rep is building an order for a customer who has RM 150k in billed invoices and RM 60k in confirmed but unbilled orders. They're adding a new line worth RM 295k. Even though billed + new order looks fine (RM 445k < RM 500k limit), the existing unconfirmed orders push the total to RM 505k — a breach. The system must account for all outstanding commitments, not just billed invoices.
 
 - **Setup:** L1 = RM 150k, L2 = RM 60k, limit = RM 500k
 - **Location:** SO form, add line item
@@ -157,7 +171,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-08 · State 7 · **Critical**
-**Breach Flip Happens in Real Time**
+**Credit bar updates in real time as line items are added — no save required**
+
+> **Scenario:** Sales rep is adding items to a large order. As they add each item, the credit bar should update live. The moment the running total pushes the customer over their limit, the one-liner must instantly flip to a breach warning — without the rep needing to save or submit the form first.
 
 - **Setup:** L1 = RM 300k, limit = RM 500k, no existing L2
 - **Location:** SO form
@@ -168,7 +184,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-09 · State 7 · High
-**Removing Line Item Reverts Breach State**
+**Removing an item that caused a breach should revert the warning**
+
+> **Scenario:** Sales rep accidentally added an expensive item that triggered a credit breach. They remove that item. The credit bar should revert back to a clean state immediately — the breach warning should not persist after the item is gone.
 
 - **Setup:** SO in `⛔` breach state
 - **Steps:** Remove the line item causing breach
@@ -177,7 +195,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-10 · State 7 · High
-**Draft Save Preserves Breach State**
+**Breached SO saved as draft — breach state should persist on reopen**
+
+> **Scenario:** Sales rep hits a credit breach, decides to save the SO as a draft and revisit later. When they (or a manager) reopens the draft, the breach warning should still be visible — it should not silently reset to a clean state.
 
 - **Setup:** Breached SO saved as draft
 - **Steps:** Close and reopen SO
@@ -186,7 +206,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-11 · State 8 · High
-**Overdue Only: Within Limit + Overdue Token**
+**Dormant customer with only overdue invoices — still Within Limit but overdue token shows**
+
+> **Scenario:** A customer hasn't placed any new orders in months, but still has unpaid invoices from previous orders. There's no current billed activity — just the overdue balance. The credit utilisation is below the amber threshold, so the status badge should be Within Limit, but the overdue flag must still appear.
 
 - **Setup:** L0 = RM 95k (all overdue, no current billed), limit = RM 400k
 - **Location:** SO form sidebar
@@ -196,7 +218,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-12 · State 9 · Medium
-**Pipeline Only: 0% Utilisation, Full Available**
+**Customer with only draft quotations — pipeline value should not affect credit utilisation**
+
+> **Scenario:** A customer has several draft quotations in progress but nothing confirmed yet. Quotations are not credit commitments — they should appear in the Pipeline column for visibility, but they must not reduce the available credit or inflate the utilisation percentage.
 
 - **Setup:** L3 = RM 180k (QTs only), L1 = 0, L2 = 0, limit = RM 500k
 - **Location:** Customer profile
@@ -206,7 +230,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-13 · State 10 · High
-**Unbilled SO Only: L2 Shown But Available = Full Limit**
+**Customer with confirmed but unbilled orders — available credit reflects billed outstanding only**
+
+> **Scenario:** A customer placed a large order last week — it's confirmed and in fulfilment, but no invoice has been raised yet. This unbilled order (L2) should appear in the bar for visibility, but it does not reduce the customer's available credit in the one-liner. Note: it still factors into breach checks when a new SO is submitted.
 
 - **Setup:** L2 = RM 210k, L1 = 0, limit = RM 500k
 - **Location:** Customer profile
@@ -216,7 +242,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-14 · State 12 · High
-**No Credit Limit: Grey Dot, Overdue Token Still Shows**
+**Trusted client with no credit limit — bar shows grey dot, overdue still flagged**
+
+> **Scenario:** A long-standing enterprise client operates without a formal credit limit — Finance agreed to this arrangement. Sales reps should be able to submit any SO freely without a credit block, but the system should still flag any overdue invoices so Finance can follow up.
 
 - **Setup:** credit_limit = 0, L0 = RM 40k
 - **Location:** SO form sidebar
@@ -226,7 +254,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-15 · State 3 · High
-**Hover Popover: Overdue Bucket Breakdown**
+**Hover popover shows overdue invoice breakdown by age bucket**
+
+> **Scenario:** Finance manager hovers over the credit bar for a customer with overdue invoices. They need to see how the overdue is split across age buckets (e.g., what's 1–30 days vs 31–60 days) to prioritise collections. The popover should show only buckets with balances — empty buckets are not shown.
 
 - **Setup:** L0 = RM 80k (RM 30k at 25d, RM 50k at 45d)
 - **Location:** Hover popover
@@ -235,7 +265,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-16 · State 7 · **Critical**
-**Hover Popover: Projection Row on SO with Items**
+**Hover popover on SO with line items shows projected exposure after submission**
+
+> **Scenario:** Sales rep building a large order hovers over the credit bar to get more detail. They need to see not just current exposure, but what happens if they submit this order — total projected outstanding, percentage of limit used, and whether the order will be blocked. This projection row only appears once there's an order value to project.
 
 - **Setup:** SO form, L1 = RM 300k, limit = RM 500k, line item RM 220k present
 - **Location:** Hover popover on SO form
@@ -245,7 +277,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-17 · State 2 · High
-**Hover Popover: No Projection Row on QT Form**
+**Hover popover on a Quotation — no projection row, even with line items present**
+
+> **Scenario:** Sales rep is building a quotation with several items and hovers over the credit bar. Quotations do not commit credit, so there should be no "After submission" projection row — just a clean view of the customer's current exposure.
 
 - **Setup:** QT form, customer with L1 = RM 300k, line items present
 - **Location:** Hover popover on QT form
@@ -254,7 +288,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-18 · State 2 · High
-**Hover Popover: No Projection Row on SO Before Items**
+**Hover popover on an SO before any line items are added — no projection row yet**
+
+> **Scenario:** Sales rep just selected a customer on an SO form but hasn't added any items yet. The credit popover should show current account status only. The projection row should not appear until there's an order value to calculate from.
 
 - **Setup:** SO form, customer selected, no line items yet
 - **Location:** Hover popover
@@ -263,7 +299,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-19 · State 6 · High
-**Customer Profile: Overflow Indicator**
+**Over-limit customer's profile bar shows overflow nub past the bar edge**
+
+> **Scenario:** Finance manager reviews the customer profile for a customer already over their limit. The stacked bar should be fully filled, with an additional overflow nub visually extending past the bar's right edge — labelled with the exact overage amount.
 
 - **Setup:** L1+L2 = RM 560k > limit RM 500k
 - **Location:** Customer profile stacked bar
@@ -272,7 +310,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-20 · State 11 · High
-**Customer Profile: All Four Segments Render**
+**High-activity customer with all four exposure types — all bar segments render correctly**
+
+> **Scenario:** Finance manager reviews the profile of a high-volume customer who has overdue invoices, current billed outstanding, confirmed but unbilled orders, and draft quotations all at the same time. The bar should display all four distinct visual segments, and the data columns below should match each bucket.
 
 - **Setup:** L0 = RM 100k, L1 = RM 350k, L2 = RM 80k, L3 = RM 120k, limit = RM 500k
 - **Location:** Customer profile
@@ -281,7 +321,9 @@ lark_url:
 ---
 
 ### TC-CE-FE-21 · State 5 · Medium
-**Customer Profile: Status Summary Row**
+**Customer profile status row reflects Over Limit when fully drawn**
+
+> **Scenario:** Finance manager is reviewing a customer who has fully exhausted their credit line. The status summary row at the bottom of the profile panel should clearly say "Over Limit" with 100% utilisation.
 
 - **Setup:** L1 = RM 500k = limit
 - **Location:** Customer profile status row (bottom of panel)
@@ -290,9 +332,10 @@ lark_url:
 ---
 
 ### TC-CE-FE-22 · State 4 · **Critical**
-**Colour Band Boundaries**
+**Colour band switches at the correct thresholds — verify each boundary precisely**
 
-- **Setup:** Test at four boundary values
+> **Scenario:** Sales ops lead is reviewing the credit bar across different customers to confirm the colour coding is consistent and accurate. Each colour band (green → amber → orange → red) must switch at the exact configured threshold, not before or after. This test steps through six boundary values to catch any off-by-one implementation errors.
+
 - **Steps + Expected:**
 
 | L1 | Limit | Utilisation | Expected Colour | Expected Badge |
@@ -309,7 +352,9 @@ lark_url:
 ## Part 2 — Chatbot Test Cases
 
 ### TC-CE-CB-01 · State 1 · **Critical**
-**Silent on Zero Exposure Customer (QT)**
+**Clean new customer — chatbot should not mention credit at all during QT creation**
+
+> **Scenario:** Sales rep is creating a quotation for a brand new customer with no transaction history and zero credit usage. The chatbot should silently proceed to line items — no credit notices, no warnings, no prompts about credit standing. Any credit-related text at this stage would confuse the rep and erode trust in the system.
 
 - **Setup:** State 1 customer. Creating QT via chatbot.
 - **Expected:** Chatbot proceeds to line items with no credit mention at any point.
@@ -318,7 +363,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-02 · State 2 · **Critical**
-**Silent on Healthy Customer (SO)**
+**Healthy customer creating an SO — chatbot proceeds without any credit interruption**
+
+> **Scenario:** A regular customer at 30% credit utilisation, no overdue invoices. Sales rep creates a new SO via chatbot. The chatbot should confirm the order and move forward — no credit warning, no near-limit message. False positives here would train reps to ignore warnings.
 
 - **Setup:** State 2 (30% utilisation, no overdue). Creating SO via chatbot.
 - **Expected:** Chatbot confirms SO and proceeds. No credit warning at any step.
@@ -327,7 +374,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-03 · State 3 · **Critical**
-**Overdue Notice in QT Flow — No Block**
+**Customer with overdue invoices — chatbot flags it before QT but does not block the order**
+
+> **Scenario:** A customer has RM 80k in overdue invoices but is still within their credit limit. Sales rep creates a new quotation via chatbot. The chatbot should surface the overdue balance proactively — Finance needs to know — but should NOT block the quotation. The rep can acknowledge and continue.
 
 - **Setup:** State 3 (L0 = RM 80k, within limit). Creating QT.
 - **Expected:** Before line items: *"Before we build the quotation — [Customer] has RM 80k in overdue invoices (oldest: X days). They're within their credit limit so this won't block the order, but you may want Finance to follow up. Ready to add line items?"*
@@ -336,7 +385,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-04 · State 4 · **Critical**
-**Near-Limit Notice at 78% (QT Flow)**
+**Customer nearing credit limit — chatbot warns before drafting QT, explains approval flow**
+
+> **Scenario:** A distributor customer has been buying heavily this quarter and is now at 78% of their credit limit. Sales rep tries to create a new quotation. The chatbot should give a heads-up that any resulting order will go through credit approval — but the quotation itself can still be drafted now. This sets expectations early before the rep invests time in building the order.
 
 - **Setup:** L1 = RM 390k (78%), limit = RM 500k, L0 = 0. Creating QT.
 - **Expected:** *"Heads up — [Customer] is at 78% of their credit limit (RM 390k of RM 500k billed and outstanding). The quotation can still be drafted. If it converts to an order, it will be routed for credit approval before confirmation. Continue? [Yes] [Check their account first]"*
@@ -344,7 +395,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-05 · State 4 · **Critical**
-**Near-Limit Threshold is 70%, Not 80%**
+**Near-limit chatbot warning fires at 70%, not 80% — threshold must match spec**
+
+> **Scenario:** Same near-limit scenario as above, but tested at exactly 70% (the configured threshold). This verifies the chatbot is using the correct threshold from spec, not a hardcoded 80% that a developer may have assumed. Critical because getting this wrong means customers sail past the warning zone silently.
 
 - **Setup:** L1 = RM 350k (exactly 70%), limit = RM 500k, L0 = 0. Creating QT.
 - **Expected:** Near-limit notice fires.
@@ -354,7 +407,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-06 · State 6 · High
-**Over-Limit Warning in QT Flow**
+**Customer already over their limit — chatbot warns but still allows quotation to be drafted**
+
+> **Scenario:** A customer has outstanding invoices exceeding their credit ceiling, plus overdue balances. Sales rep wants to draft a new quotation. The chatbot should clearly state the over-limit situation and the overdue amount, while still allowing the quotation — enforcement happens at SO submission, not at quotation stage.
 
 - **Setup:** L1 = RM 560k, limit = RM 500k, L0 = RM 120k. Creating QT.
 - **Expected:** *"[!] [Customer] is currently over their credit limit — RM 560k outstanding against a RM 500k limit. Overdue: RM 120k. You can still draft the quotation, but any order will require Finance approval. Continue drafting? [Yes] [No, hold for now]"*
@@ -362,7 +417,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-07 · State 7 · **Critical**
-**Breach Warning Before SO Submit**
+**New SO would push customer over limit — chatbot shows full breakdown before submit**
+
+> **Scenario:** Sales rep has built an SO worth RM 220k for a customer with RM 300k already outstanding. Submitting would push the customer to 104% of their limit. Before the rep submits, the chatbot must show exactly what will happen: current exposure, the addition from this order, projected total, and that Finance approval is required. The rep needs full context to decide.
 
 - **Setup:** L1 = RM 300k, no L2, new SO = RM 220k, limit = RM 500k.
 - **Expected:** *"This order would bring [Customer] over their credit limit. Current exposure: RM 300k. This order: +RM 220k. Total after: RM 520k (104% of RM 500k limit). Submitting will route this order for Finance approval. It won't be confirmed until approved. Submit for approval? [Yes] [Save as draft] [Cancel]"*
@@ -370,7 +427,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-08 · State 7 variant · **Critical**
-**Breach Check Includes L2 in Projected Total**
+**Breach calculation includes existing unconfirmed orders (L2) — not just billed outstanding**
+
+> **Scenario:** A customer has RM 200k in billed invoices AND RM 200k in confirmed but unbilled orders. Sales rep adds a new SO worth RM 150k. If the system only checks billed + new order, it shows RM 350k (fine). But including the unbilled orders, the real total is RM 550k — a breach. The chatbot must catch this. Missing L2 is a critical calculation gap.
 
 - **Setup:** L1 = RM 200k, L2 = RM 200k, new SO = RM 150k, limit = RM 500k.
 - **Expected:** Breach fires (200+200+150 = 550 > 500). Chatbot breach warning shows projected total = RM 550k (110%).
@@ -379,7 +438,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-09 · State 9 · High
-**L3 Pipeline NOT Included in Breach Check**
+**Draft quotations (pipeline) should NOT trigger a breach — they are not credit commitments**
+
+> **Scenario:** A customer has RM 400k worth of draft quotations being worked on, but nothing confirmed yet. Sales rep submits a new SO worth RM 100k. With RM 200k billed outstanding + RM 100k new order, the total is RM 300k — well within the RM 500k limit. The chatbot should not include pipeline quotations in the breach check and should allow the SO through without a warning.
 
 - **Setup:** L1 = RM 200k, L3 = RM 400k (QTs only, no submitted SO), new SO = RM 100k, limit = RM 500k.
 - **Expected:** No breach (200+0+100 = 300 < 500). Chatbot proceeds to submit without warning.
@@ -388,7 +449,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-10 · State 6 · High
-**De Minimis: Condensed Copy for Small SO on Over-Limit Customer**
+**Small order on already over-limit customer — chatbot uses short copy, not full breakdown**
+
+> **Scenario:** A customer is already over their limit. Sales rep places a tiny order (RM 400 worth of spare parts). Since the customer is already flagged for Finance review, the chatbot doesn't need to repeat the full over-limit breakdown for this trivial amount — a condensed single-line notice is enough. De minimis threshold = RM 500.
 
 - **Setup:** State 6 (already over limit). New SO = RM 400 (below de minimis default RM 500).
 - **Expected:** Short copy only: *"[Customer] is over their credit limit. This order will be submitted for Finance approval as usual. Submit? [Yes] [Cancel]"*
@@ -397,7 +460,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-11 · State 3 · High
-**Overdue Callout in SO Pre-Submit Confirmation**
+**Customer with overdue invoices submitting an SO — chatbot includes overdue callout in pre-submit confirmation**
+
+> **Scenario:** Sales rep has built an SO for a customer who has both current billed outstanding and overdue invoices. When the rep is about to submit, the chatbot should remind them of the overdue balance and show what the total outstanding will look like after this SO is added — so they can make an informed decision to submit or save as draft.
 
 - **Setup:** State 3 (L0 = RM 80k, within limit). SO built, ready to submit.
 - **Expected:** Pre-submit message includes overdue amount and total outstanding after submission: *"One thing to note: [Customer] has RM 80k in overdue invoices. Submitting will bring total outstanding to RM[X] (Y% of limit). Submit now? [Yes, submit] [Save as draft]"*
@@ -405,7 +470,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-12 · Any · High
-**Direct Credit Query Returns Full 4-Layer Summary**
+**User directly asks about a customer's credit standing — chatbot returns full 4-layer summary with action offer**
+
+> **Scenario:** Finance manager or sales lead asks the chatbot about a customer's credit status mid-conversation. They want the full picture: all four exposure layers (billed, unbilled, overdue detail, pipeline), the overall utilisation, and a next action they can take immediately. The chatbot should not just report — it should end with an actionable offer.
 
 - **Setup:** State 11 customer. User message: *"What's [Customer]'s credit standing?"*
 - **Expected response includes:**
@@ -421,7 +488,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-13 · State 12 · Medium
-**No Credit Limit: Advisory-Only Chatbot Copy**
+**Customer with no credit limit — chatbot is advisory only, no enforcement language**
+
+> **Scenario:** A long-standing enterprise client has no credit limit configured. Sales rep submits an SO via chatbot. The SO should go through without any block or credit approval routing. If the rep asks about credit, the chatbot shows the account amounts as context but does not use enforcement language (no "approval required", no "over limit" framing).
 
 - **Setup:** credit_limit = 0. Creating SO via chatbot.
 - **Expected:** SO submits without credit block. If user queries credit: *"No credit limit configured for this customer."* Shows layer amounts as context only, no enforcement language.
@@ -429,7 +498,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-14 · State 5 · High
-**At-Limit: Any New SO Routed to Approval**
+**Customer fully at their credit ceiling — any new SO, regardless of size, routes to approval**
+
+> **Scenario:** A customer's outstanding balance equals their credit limit exactly — every cent of their credit line is used. Sales rep tries to place any new order, even a small one. Because the existing exposure is already at 100%, any addition causes a breach. The chatbot must warn and route to Finance approval, confirming once submitted.
 
 - **Setup:** L1 = RM 500k = limit exactly. Creating SO for any value.
 - **Expected:** Breach fires immediately (500+0+any > 500). Chatbot breach warning shown. On submit: *"This order has been submitted and is awaiting credit approval."*
@@ -437,7 +508,9 @@ lark_url:
 ---
 
 ### TC-CE-CB-15 · State 8 · High
-**Overdue-Only Customer: Overdue Block on New SO**
+**Customer with only overdue invoices — chatbot flags overdue and routes new SO to approval**
+
+> **Scenario:** A customer hasn't placed new orders recently, but has RM 95k in unpaid invoices all past due. Sales rep creates a new SO. With `block_on_overdue = true`, any new order for this customer should be routed to credit approval regardless of the credit utilisation level. The chatbot should surface the overdue situation and confirm the approval routing once submitted.
 
 - **Setup:** L0 = RM 95k (all overdue), L1_current = 0, limit = RM 400k.
 - **Expected:** Chatbot surfaces overdue callout before submit. On submit with `block_on_overdue = true`: SO routes to credit approval. Chatbot confirms: *"This order has been submitted and is awaiting credit approval. The credit controller has been notified."*
