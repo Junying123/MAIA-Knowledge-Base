@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru yvonne call.md",
+                "file": "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fixguru yvonne call"
+              "title": "Credit Exposure Test Cases"
             }
           },
           {
@@ -168,7 +168,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -336,10 +336,6 @@
                     "name": "zsh 109"
                   },
                   {
-                    "id": 110,
-                    "name": "zsh 110"
-                  },
-                  {
                     "id": 112,
                     "name": "zsh 112"
                   },
@@ -366,10 +362,14 @@
                   {
                     "id": 120,
                     "name": "zsh 120"
+                  },
+                  {
+                    "id": 121,
+                    "name": "zsh 121"
                   }
                 ],
-                "activeId": 120,
-                "nextId": 121
+                "activeId": 121,
+                "nextId": 122
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -422,12 +422,14 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru yvonne call.md",
+    "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "Granola/Transcripts/2026-06-08/Macrofrozen MAIA setup-transcript.md",
     "Granola/Transcripts/2026-06-08/MAIA - Weekly Product Sync-transcript.md",
     "Granola/Transcripts/2026-06-08",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.a7734c67f96f",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru yvonne call.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru feedback sync - Transcript.md",
@@ -442,13 +444,11 @@
     "Granola/Transcripts/2026-05-19/GST - WABA Account Setup-transcript.md",
     "Granola/Transcripts/2026-05-19/Fixguru Scoping Sync-transcript.md",
     "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
-    "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
     "Pasted image 20260608003523.png",
     "Pasted image 20260608003117.png",
     "Pasted image 20260608002056.png",
     "Granola/Transcripts/2026-05-04/GST Fine Foods __ MH Requirements Gathering (Online) v2-transcript 2.md",
     "Granola/Transcripts/2026-05-18/Mindhive  Daily Standup-transcript.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/[F2F] Macrofood Requirements Gathering — Meeting Minutes 2026-06-04.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md.tmp.31047.5457d0121cf9",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Readiness Checklist.md",
