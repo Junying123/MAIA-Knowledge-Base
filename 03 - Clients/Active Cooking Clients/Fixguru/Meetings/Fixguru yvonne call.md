@@ -1,3 +1,98 @@
+---
+owner: Gareth
+status: draft
+last_reviewed: 2026-06-09
+---
+
+# Fixguru — Yvonne Call Notes
+
+**Participants:** Yvonne (Fixguru), Gareth, Brandon (mentioned)
+**Language:** Mandarin/English mixed
+**Context:** UAT feedback + requirements clarification
+
+---
+
+## Credit Limit Request
+
+Yvonne's core ask: **block Sales Order creation if customer has not paid / has overdue invoices.**
+
+Fixguru's current internal flow:
+> Proforma Invoice → Customer pays → Release stock (delivery)
+
+They do not ship without collecting payment first. They explicitly asked Brandon about this ("Can we knock off at sales order?") before the project started.
+
+### Two distinct needs (don't conflate)
+
+| Need | Description | Covered? |
+|---|---|---|
+| Block SO if overdue | No new SO if invoices unpaid | Yes — `block_on_overdue` |
+| Block SO if over limit | No new SO if L1+L2+newSO > limit | Yes — breach check at submit |
+| Prepayment gate on delivery | Hold DO until receipt posted | No — separate mechanism needed |
+
+### Gap: Approval override (FQ5)
+No approval chain built yet. If SO is blocked by credit check, sales has no way to request override with audit trail. FQ5 in credit exposure spec is open — raise priority for Fixguru.
+
+---
+
+## UAT Quality Feedback
+
+Yvonne frustrated — previous UAT session wasted 1+ hour, normal flow wasn't working.
+
+Her standard:
+> "Fix the flow → internal SIT → THEN come to me. Don't call me to test broken things."
+
+Business dev person should do SIT before Yvonne's UAT sessions. She will not do exploratory testing.
+
+---
+
+## Other Requirements from This Call
+
+### Itemised Discounts
+Order-level discount = wrong. Fixguru discounts line by line.
+> "Everything have to go by itemiser. You don't discount a whole order 10%."
+
+### Historical Pricing
+When staff on leave, covering staff has no transaction history. Need: last transaction price per customer per item to surface automatically when creating quotation/SO.
+
+### Customer Search by Phone Number
+AI should find customer by phone number — reduces friction, that's the point of AI.
+
+### Box Dimension Calculator (Scoped in SOW)
+Fixguru has Excel-based calculators for box dimensions/packaging. Multiple versions, all Excel. Scoped as 2 calculators in SOW. Jennifer developed them.
+- Action: Fixguru to send latest Excel files → MAIA to build in-app calculator
+- Currently missing from system; was scoped but not delivered
+
+### AutoCount Integration
+> "Auto car doesn't integrate properly" — raised as blocker. Fix required before UAT resumes.
+
+---
+
+## Action Items
+
+- [ ] Fix itemised discount (order-level discount = wrong behaviour)
+- [ ] Build historical last-transaction price per customer/item on QT/SO creation
+- [ ] Fix AutoCount integration issue
+- [ ] Get latest Excel calculators from Fixguru (Jennifer to send)
+- [ ] Raise FQ5 (approval chain for credit override) — Fixguru use case is strong
+- [ ] Clarify delivery hold mechanism — does MAIA need to block DO until receipt posted?
+- [ ] Internal SIT checklist before next Yvonne UAT session
+
+---
+
+## See Also
+
+- [[01 - MAIA Product/Product Specs/MAIA Credit Exposure]] — credit exposure spec, FQ5 open gap
+- [[03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes]]
+- [[03 - Clients/Active Cooking Clients/Fixguru/SOW/Fixguru SOW]]
+
+---
+
+## Raw Transcript
+
+<details>
+<summary>Full SRT transcript (Mandarin/English)</summary>
+
+```
 00:00:00,000 --> 00:00:28,000
 啊 是哦 OK 明白OK
 
@@ -84,4 +179,6 @@ I mean search the customer using their phone numberohoh
 
 00:12:55,000 --> 00:13:03,000
 啊可以没有问题没有问题好 thank youok thank you everyone bye bye
+```
 
+</details>
