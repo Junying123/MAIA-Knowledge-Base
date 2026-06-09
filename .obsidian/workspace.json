@@ -168,7 +168,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -226,7 +226,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -423,10 +424,10 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "9aae4ffc8f497136",
   "lastOpenFiles": [
-    "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
+    "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
     "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
     "Granola/Transcripts/2026-06-09/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-09",
