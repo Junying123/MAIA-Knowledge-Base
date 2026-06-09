@@ -16,10 +16,11 @@ What Credit Exposure DOES help with
 
 What Credit Exposure does NOT cover
 
-| Gap | Why |
-| --- | --- |
+| Gap                                                              | Why                                                                              |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | Force proforma invoice -> collect payment -> THEN allow delivery | Different flow entirely - needs a "payment received" gate on DO/shipment, not SO |
-| Approve SO bypass when credit blocked | FQ5 - approval chain still an open gap in spec, not built yet |
+| Approve SO bypass when credit blocked                            | FQ5 - approval chain still an open gap in spec, not built yet                    |
+|                                                                  |                                                                                  |
 
 ---
 
