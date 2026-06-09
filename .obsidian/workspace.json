@@ -368,7 +368,7 @@
                     "name": "zsh 121"
                   }
                 ],
-                "activeId": 113,
+                "activeId": 116,
                 "nextId": 122
               },
               "icon": "terminal",
@@ -390,7 +390,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 743.5
+    "width": 794.5
   },
   "left-ribbon": {
     "hiddenItems": {
