@@ -402,7 +402,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 701.5
+    "width": 776.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -432,7 +432,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "e54e88e8cc6156e5",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
