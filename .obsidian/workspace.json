@@ -226,8 +226,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -366,10 +365,14 @@
                   {
                     "id": 121,
                     "name": "zsh 121"
+                  },
+                  {
+                    "id": 122,
+                    "name": "zsh 122"
                   }
                 ],
-                "activeId": 116,
-                "nextId": 122
+                "activeId": 122,
+                "nextId": 123
               },
               "icon": "terminal",
               "title": "Terminal"
