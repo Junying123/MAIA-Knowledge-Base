@@ -3,8 +3,17 @@ granola_id: 89ce1c5e-bd33-4c49-a472-c3206f8448af
 title: MAIA - Weekly Product Sync - Transcript
 type: transcript
 created: 2026-06-08T07:14:50.525Z
-updated: 2026-06-08T08:57:15.698Z
-attendees: []
+updated: 2026-06-09T01:51:34.010Z
+attendees: 
+  - jeremy@mindhive.asia
+  - jermaine@mindhive.asia
+  - ghostsketon@gmail.com
+  - brendan@mindhive.asia
+  - ivan.cyh1996@gmail.com
+  - lim.junyan@gmail.com
+  - johnson@mindhive.asia
+  - ashleighlim28@gmail.com
+  - wansin@mindhive.asia
 ---
 
 # Transcript for: MAIA - Weekly Product Sync
