@@ -368,7 +368,7 @@
                     "name": "zsh 121"
                   }
                 ],
-                "activeId": 116,
+                "activeId": 113,
                 "nextId": 122
               },
               "icon": "terminal",
@@ -420,7 +420,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ed25b829c30e5f11",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",

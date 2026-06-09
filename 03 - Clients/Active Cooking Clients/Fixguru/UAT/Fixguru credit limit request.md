@@ -1,5 +1,5 @@
 Yvonne's Issue: "Collect money before sending stock"
-
+pl
 Her actual flow: Proforma Invoice -> Customer pays -> Then release stock
 
 That's prepayment enforcement - different from credit exposure. Credit exposure tracks what's owed, not whether payment was received before delivery.
