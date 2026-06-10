@@ -152,12 +152,12 @@
             }
           },
           {
-            "id": "956971c9cf8e778c",
+            "id": "8f6b2967136f5a09",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
+                "file": "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -172,11 +172,11 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "MAIA UAT Form - Holsen - 2026-03"
+              "title": "Credit Exposure Test Cases"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -401,7 +401,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 910.5
+    "width": 552.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -431,15 +431,16 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "8f6b2967136f5a09",
   "lastOpenFiles": [
-    "Granola/Transcripts/2026-06-10/Mindhive  Daily Standup-transcript.md",
+    "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
     "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
+    "Granola/Transcripts/2026-06-10/Mindhive  Daily Standup-transcript.md",
     "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
     "Granola/Transcripts/2026-06-10",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
-    "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
     "Granola/Transcripts/2026-06-09/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-09",
     "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md.tmp.56545.005916371577",
@@ -466,7 +467,6 @@
     "Pasted image 20260608003117.png",
     "Pasted image 20260608002056.png",
     "Granola/Transcripts/2026-05-04/GST Fine Foods __ MH Requirements Gathering (Online) v2-transcript 2.md",
-    "Granola/Transcripts/2026-05-18/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md.tmp.31047.5457d0121cf9",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md.tmp.23896.149f2d432304",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.1f15fe1f0edb",
