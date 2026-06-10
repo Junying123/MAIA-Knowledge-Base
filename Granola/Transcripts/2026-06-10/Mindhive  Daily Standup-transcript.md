@@ -3,7 +3,7 @@ granola_id: c1021025-4277-4dbb-be54-637583f55b1f
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-06-10T01:48:02.371Z
-updated: 2026-06-10T02:38:36.722Z
+updated: 2026-06-10T07:21:17.224Z
 attendees: 
   - afiqaqill261203@gmail.com
   - ghostsketon@gmail.com
