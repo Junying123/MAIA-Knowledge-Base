@@ -234,7 +234,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -401,7 +402,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 552.5
+    "width": 718.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -431,7 +432,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "8f6b2967136f5a09",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-06-11/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-11",
