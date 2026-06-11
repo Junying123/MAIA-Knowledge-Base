@@ -343,32 +343,12 @@
                     "name": "zsh 109"
                   },
                   {
-                    "id": 112,
-                    "name": "zsh 112"
-                  },
-                  {
                     "id": 113,
                     "name": "zsh 113"
                   },
                   {
                     "id": 116,
                     "name": "zsh 116"
-                  },
-                  {
-                    "id": 117,
-                    "name": "zsh 117"
-                  },
-                  {
-                    "id": 118,
-                    "name": "zsh 118"
-                  },
-                  {
-                    "id": 119,
-                    "name": "zsh 119"
-                  },
-                  {
-                    "id": 120,
-                    "name": "zsh 120"
                   },
                   {
                     "id": 121,
@@ -383,7 +363,7 @@
                     "name": "zsh 124"
                   }
                 ],
-                "activeId": 123,
+                "activeId": 124,
                 "nextId": 125
               },
               "icon": "terminal",
