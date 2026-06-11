@@ -3,7 +3,7 @@ granola_id: 49b50d39-6628-440a-bdd3-e439ae72fd1d
 title: Custommedz meeting note - Transcript
 type: transcript
 created: 2026-06-11T02:53:22.907Z
-updated: 2026-06-11T06:10:17.840Z
+updated: 2026-06-11T06:10:19.316Z
 attendees: []
 ---
 

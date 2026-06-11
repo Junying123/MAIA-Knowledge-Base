@@ -383,7 +383,7 @@
                     "name": "zsh 124"
                   }
                 ],
-                "activeId": 124,
+                "activeId": 123,
                 "nextId": 125
               },
               "icon": "terminal",
@@ -405,7 +405,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 613.5
+    "width": 730.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -435,7 +435,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "8f6b2967136f5a09",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",

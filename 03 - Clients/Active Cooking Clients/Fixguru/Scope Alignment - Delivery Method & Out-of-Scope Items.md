@@ -144,11 +144,11 @@ What this means: shelf assignments will need to be re-mapped to MAIA's warehouse
 **3. Branch contact**
 In AutoCount, each branch under a customer is managed as its own separate contact. MAIA won't manage branch-level contacts that way — when we sync from AutoCount, a branch comes across only as an **address under the main customer**, not as its own branch contact record.
 
-What this means: branch **details (address, etc.) are kept**, but you won't have separate per-branch contact management inside MAIA.
+What this means: branch **details (address, etc.) are kept**, but you won't have separate per-branch contact management inside MAIA for now.
 
 ---
 
-Let me know if you have questions on any of these. We'll make sure the team is trained on the new workflows before UAT.
+Let me know if you have any questions on these before UAT.
 
 ---
 
