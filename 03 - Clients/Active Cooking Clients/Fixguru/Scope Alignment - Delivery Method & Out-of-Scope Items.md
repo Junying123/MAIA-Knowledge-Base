@@ -49,7 +49,21 @@ Two things to verify on the demo bot first:
 ## 2. Shelf Information Tied to UoM
 
 ### What Fixguru does in AutoCount
-Shelf location is tied to the **UoM**, not the item. One SKU has many UoMs (e.g. 1 piece, 22 pieces); the 22-piece UoM carries its own shelf. Implemented via a **user-defined field on the UoM** that auto-populates the shelf into the DN.
+Fixguru customised shelf location in AutoCount by binding it **under the item's UoM** — not against the item, and not as a warehouse location.
+
+How it works (raised by Azeep, explained by Ivan):
+- One SKU carries **many UoMs** (e.g. 1 piece, 22 pieces). The 22-piece UoM is the bigger pack — likely a box — so it physically sits on a different shelf.
+- They added a **new user-defined field for "shelf" on the UoM** in AutoCount.
+- When an item is added to a document, **whichever UoM is selected pulls its shelf, and the shelf auto-populates** into the DN (or whatever document).
+- So the shelf travels with the UoM, not the item.
+
+**Why it's a hack:** the correct way is to model shelves as **sub-warehouses** inside the warehouse. Fixguru did not do this — they encoded shelf as a UoM-level custom field instead. It works for them but is non-standard and only meaningful to their setup.
+
+### Source of truth — verbatim (v2 standup, 2026-06-10)
+- **L236 (Ivan):** "when we pull this shelf information from auto count, how it's configured, it's **tied to the UoM**. So basically in one SKU they will have a lot of random UoMs. Like... is pieces one but they will have another which is 22 pieces... When these 22 pieces is selected, the **shelf is tied to this thing**."
+- **L239:** "different shelves because **it might be in the box**."
+- **L254:** "the way that they are supposed to do it is **use these shelves as a sub warehouse** inside their warehouse, **which they did not do**."
+- **L260:** "in the UoM they create a **new user defined field for shelf**... When this item is added... the shelf **auto populate** into the DN... So it's a **hack**."
 
 ### Decision — OUT OF SCOPE (default), pending final clarity
 - This is a **non-standard AutoCount hack**, specific to Fixguru. Default stance: **not** supported in MAIA.
