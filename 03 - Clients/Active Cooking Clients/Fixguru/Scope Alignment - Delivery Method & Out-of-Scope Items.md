@@ -32,17 +32,15 @@ MAIA has **three** places "Lalamove" could route to:
 
 Tested 2026-06-09 (Bryan, Iman): bare "Lalamove" is treated as **fulfillment method**, not item. To get it in as a SKU the user must specify item name **+ quantity 1 + price**.
 
-### Decision
-- **Out of scope** to auto-route. Client will **manually add Lalamove as an item** with qty + price — same as their AutoCount practice (Frozen Meat).
-- **Client education point (Gareth):** instruct Fixguru users to phrase it as *"add Lalamove item, qty 1, price RMxx"* so the bot books it as a line item, not a fulfillment method or charge.
+### Decision — OUT OF SCOPE to auto-add; user states it explicitly in the query
+- MAIA will **not** auto-add the delivery method as a line item the way AutoCount does ("delivery method automatically adding" = out of scope, per Ivan 6-11).
+- **What the user does:** include both parts in the create-order query — **set the fulfillment method = Lalamove AND state the delivery charge** in the same instruction, e.g.:
+  > *"Create order... fulfillment method is Lalamove, delivery charge for this is RM10."*
+- Stating the charge amount explicitly (qty/price) is what makes the bot book it correctly instead of just setting a bare fulfillment method. Bryan/Iman confirmed 6-09: bare "Lalamove" only sets the fulfillment method — the price must be specified.
+- **Client education point (Gareth):** train Fixguru users on this combined phrasing so it routes cleanly.
 
-### Open product test (Ivan — before locking scope)
-Two things to verify on the demo bot first:
-1. Test the natural query: `fulfillment = Lalamove, delivery charge 10rm` — does it mis-route?
-2. Test **not seeding the charge-type table** for the Fixguru instance (per-instance config) — does removing the charges section kill the confusion so users can talk free-flow?
-   - Note (Bryan): clearing charges may *not* help, because the bot routes the bare phrase to **fulfillment method**, not charge. Confirm which path actually fires.
-
-**Principle:** don't force users into rigid prompting (unreliable). Shift control to our config side.
+### Background / superseded (v2, 2026-06-10)
+Ivan also floated a config workaround — **not seeding the charge-type table** per instance to reduce mis-routing — but Bryan noted clearing charges wouldn't help since the bare phrase routes to **fulfillment method**, not charge. Not pursued; the agreed path is the explicit user query above.
 
 ---
 

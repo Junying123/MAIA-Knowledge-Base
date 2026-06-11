@@ -157,7 +157,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -172,7 +172,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Mindhive Daily Standup transcript v2"
+              "title": "Scope Alignment - Delivery Method & Out-of-Scope Items"
             }
           }
         ],
@@ -234,7 +234,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -437,6 +438,7 @@
   },
   "active": "8f6b2967136f5a09",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md.tmp.90969.be327c9f0025",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
@@ -449,7 +451,6 @@
     "01 - MAIA Product/Product Specs/MAIA Credit Exposure.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
-    "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
     "Granola/Transcripts/2026-06-10/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-10",
