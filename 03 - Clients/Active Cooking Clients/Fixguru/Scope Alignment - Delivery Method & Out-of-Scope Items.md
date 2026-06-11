@@ -83,6 +83,10 @@ AutoCount has a **native branch** concept. Customer contacts in AutoCount can ca
 - This is more relevant for **AutoCount integration broadly** (Azeep's side) than for Fixguru. Approach (the "line on how to get this done") is already agreed.
 - **Communicate to Fixguru:** branch **details captured via address**; branch **contacts not managed separately** the AutoCount way.
 
+### Client Message Draft
+
+See full group message draft in [[#Client Group Message Draft]] section below.
+
 ---
 
 ## 4. Volumetric
@@ -114,6 +118,37 @@ AutoCount has a **native branch** concept. Customer contacts in AutoCount can ca
 - [ ] Confirm UAT date (next Tuesday) — Yvonne skipped prior message
 - [ ] Pivot Fixguru to test on **sandbox AutoCount**, not production AutoCount, during UAT
 - [ ] Watch Azeep's 2-way sync video to learn how to test it
+
+---
+
+## Client Group Message Draft
+
+> Draft for Ivan review before sending to Fixguru (Yvonne). Covers all 3 out-of-scope items.
+
+---
+
+Hi Yvonne, wanted to align on a few things ahead of UAT next week — some differences between how AutoCount works and how MAIA handles these:
+
+**1. Delivery method (Lalamove)**
+In AutoCount, the delivery method gets added as a line item automatically. In MAIA, this won't happen automatically — your team will need to state it explicitly when creating the order. The way to do it:
+
+> *"Create order... fulfillment method is Lalamove, delivery charge for this is RM10."*
+
+Including the charge amount in the same instruction ensures it books correctly. We'll cover this during training so the team is comfortable with the phrasing.
+
+**2. Shelf information**
+In AutoCount, shelf is tied to the UoM level (a custom field). MAIA follows standard warehouse modelling — shelves are managed as sub-locations within the warehouse, not as UoM-level fields. The shelf-per-UoM setup from AutoCount won't carry over into MAIA.
+
+What this means: shelf assignments will need to be re-mapped to MAIA's warehouse structure. Happy to walk through this together if useful.
+
+**3. Branch contact**
+In AutoCount, each branch under a customer is managed as its own separate contact. MAIA won't manage branch-level contacts that way — when we sync from AutoCount, a branch comes across only as an **address under the main customer**, not as its own branch contact record.
+
+What this means: branch **details (address, etc.) are kept**, but you won't have separate per-branch contact management inside MAIA.
+
+---
+
+Let me know if you have questions on any of these. We'll make sure the team is trained on the new workflows before UAT.
 
 ---
 
