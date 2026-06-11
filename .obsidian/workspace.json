@@ -157,7 +157,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
+                "file": "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -172,7 +172,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Scope Alignment - Delivery Method & Out-of-Scope Items"
+              "title": "Mindhive Daily Standup transcript v2"
             }
           }
         ],
@@ -365,10 +365,14 @@
                   {
                     "id": 125,
                     "name": "zsh 125"
+                  },
+                  {
+                    "id": 126,
+                    "name": "zsh 126"
                   }
                 ],
-                "activeId": 125,
-                "nextId": 126
+                "activeId": 126,
+                "nextId": 127
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -389,7 +393,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 730.5
+    "width": 780.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -421,10 +425,12 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-10/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-06-04/[F2F] Macrofood Requirements Gathering-transcript v2.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
     "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md.tmp.90969.be327c9f0025",
-    "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md.tmp.90969.f0041042aef1",
     "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
     "03 - Clients/Active Cooking Clients/Dalson",
@@ -435,7 +441,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/MAIA UAT Form - Holsen - 2026-03.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
-    "Granola/Transcripts/2026-06-10/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-10",
     "Granola/Transcripts/2026-06-09/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-09",
