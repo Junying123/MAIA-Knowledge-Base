@@ -157,7 +157,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
+                "file": "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -172,7 +172,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Dalson MAIA autocount integration"
+              "title": "Mindhive Daily Standup transcript v2"
             }
           }
         ],
@@ -383,7 +383,7 @@
                     "name": "zsh 124"
                   }
                 ],
-                "activeId": 124,
+                "activeId": 123,
                 "nextId": 125
               },
               "icon": "terminal",
@@ -435,10 +435,13 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "8f6b2967136f5a09",
   "lastOpenFiles": [
-    "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md.tmp.90969.be327c9f0025",
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md.tmp.90969.f0041042aef1",
+    "04 - QA & Known Issues/Test Cases/Credit Exposure Test Cases.md",
     "03 - Clients/Active Cooking Clients/Dalson",
     "Granola/Transcripts/2026-06-11/Custommedz meeting note-transcript.md",
     "Granola/Transcripts/2026-06-11/Mindhive  Daily Standup-transcript.md",
@@ -468,14 +471,10 @@
     "Granola/Transcripts/2026-05-13/Fixguru __ Mindhive - UAT Brief & Historical Pricing Testing-transcript.md",
     "Granola/Transcripts/2026-05-22/Holsen C1_C3 Testing-transcript.md",
     "Granola/Transcripts/2026-05-22/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
-    "Granola/Transcripts/2026-05-22/Credit limit exposure-transcript.md",
     "Pasted image 20260608003523.png",
     "Pasted image 20260608003117.png",
     "Pasted image 20260608002056.png",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md.tmp.31047.5457d0121cf9",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Retesting Feedback.md.tmp.23896.149f2d432304",
-    "03 - Clients/Active Cooking Clients/Macrofood/Meetings/F2F Requirements Gathering Summary 2026-06-04.md.tmp.755.1f15fe1f0edb",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
     "slides/getting-started/assets/vercel.svg",
