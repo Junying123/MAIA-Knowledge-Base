@@ -365,13 +365,9 @@
                   {
                     "id": 125,
                     "name": "zsh 125"
-                  },
-                  {
-                    "id": 126,
-                    "name": "zsh 126"
                   }
                 ],
-                "activeId": 125,
+                "activeId": 123,
                 "nextId": 127
               },
               "icon": "terminal",
