@@ -360,10 +360,6 @@
                     "name": "zsh 123"
                   },
                   {
-                    "id": 124,
-                    "name": "zsh 124"
-                  },
-                  {
                     "id": 125,
                     "name": "zsh 125"
                   },
@@ -372,7 +368,7 @@
                     "name": "zsh 127"
                   }
                 ],
-                "activeId": 127,
+                "activeId": 113,
                 "nextId": 128
               },
               "icon": "terminal",
