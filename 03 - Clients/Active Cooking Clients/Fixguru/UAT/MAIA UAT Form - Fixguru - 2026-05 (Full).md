@@ -4,7 +4,7 @@ status: draft
 last_reviewed: 2026-06-14
 client: Fixguru
 uat_round: 2
-scope: Chatbot + AutoCount sandbox sync
+scope: Chatbot + AutoCount sync in setup sandbox
 source_refs:
   - "[[03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript]]"
   - "[[03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-15 Fixguru UAT Action Items]]"
@@ -12,572 +12,851 @@ source_refs:
   - "[[03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan]]"
 ---
 
-# MAIA UAT Form - Fixguru - Chatbot + AutoCount Sandbox Sync
+# MAIA User Acceptance Test (UAT) - Fixguru
+## Round 2 - Chatbot + AutoCount Sync
 
-## UAT Purpose
+---
 
-This UAT round focuses only on:
+## Before You Start
 
-- MAIA chatbot flows used by Fixguru sales/admin users
-- AutoCount sandbox sync into / out of the MAIA setup sandbox
-- Retesting issues found during the last Fixguru UAT and retesting sessions
+**UAT Scope:** Chatbot flows + AutoCount sync in setup sandbox only  
+**Environment:** setup sandbox only  
+**Production Rule:** Do not push test documents to Fixguru production or production AutoCount.
 
-This is not a full web-app UAT. The MAIA web app can be used by Gareth to verify records created by the chatbot, but Fixguru's test path is chatbot-first.
+### UAT Flow
 
-## Testing Roles
-
-| Role | Person | Responsibility |
+| Phase | Who | What happens |
 | --- | --- | --- |
-| PM run-through owner | Gareth | Run every updated test case first, record issue notes, confirm sandbox data is ready before client testing. |
-| Client tester | Fixguru team | Retest the same cases based on Gareth's run-through notes. |
-| Dev support | MAIA team | Fix issues found during Gareth run-through or Fixguru retest. |
+| 1. Gareth run-through | Gareth | Run each test case first, record pass/fail/issues, and confirm sandbox data is ready. |
+| 2. Dev fix / clarification | MAIA team | Fix or clarify issues found during Gareth's run-through. |
+| 3. Fixguru retest | Fixguru team | Retest the same test cases using Gareth's run-through notes. |
+| 4. Sign-off / punch list | Gareth + Fixguru | Confirm pass items, open issues, deferred items, and next owner. |
 
-## Environment Rules
+**Scope note:** This round is not a full FE role-permission UAT. Fixguru will mainly test chatbot behavior and AutoCount sync behavior. Gareth may still use the MAIA web app to verify records created by chatbot or synced from AutoCount.
 
-| Rule | Requirement |
-| --- | --- |
-| MAIA environment | Use MAIA setup sandbox only. Do not test against Fixguru production. |
-| AutoCount environment | Use AutoCount sandbox/test company only. Do not push test documents to production AutoCount. |
-| Chatbot channel | Use the Fixguru test chatbot channel confirmed by MAIA team before UAT. |
-| Web app use | Gareth may open MAIA sandbox to verify records created by chatbot or sync. Fixguru does not need to run FE test cases. |
-| Test data | Use seeded sandbox customers, items, prices, stock, branches, and credit data. Do not use live production data unless explicitly copied into sandbox. |
+**Chatbot:** Fixguru test chatbot channel to be confirmed before UAT  
+**Web App:** setup sandbox, verification only  
+**AutoCount Sync:** Use the same setup sandbox integration only
 
-## How To Fill This Form
+## Your Login / Access Details
 
-For each test case:
+| System | Access | Notes |
+| --- | --- | --- |
+| Setup sandbox | Gareth / MAIA team / Fixguru if available | Used to verify chatbot-created documents, AutoCount sync records, customer, item, SO, invoice, stock, credit, and branch data. |
+| Fixguru test chatbot | Fixguru testers + Gareth | Main UAT channel for this round. |
 
-1. Gareth runs the test first and fills **Gareth run-through result**.
-2. If there is an issue, Gareth fills **Issue / observation** with exact chatbot wording, document ID, customer, item, and expected behavior.
-3. Dev fixes if needed.
-4. Fixguru repeats the test and fills **Fixguru retest result**.
-5. Mark final status only after Fixguru confirms the behavior in sandbox.
+---
 
-**Result options:** Pass / Fail / Issue / Deferred
+## How to Use This Document
 
-## Sandbox Readiness Checklist
+1. Gareth runs each test first.
+2. For each test, Gareth fills **Gareth run-through result**, **issue notes**, **tested by**, and **date**.
+3. If the test fails, record the exact chatbot wording, document ID, customer, item, AutoCount reference, and expected behavior.
+4. After fixes or clarification, Fixguru repeats the same test case.
+5. Fixguru fills **Fixguru retest result** and notes.
+6. Mark final status only after Fixguru confirms the behavior in sandbox.
 
-| ID | Check | Expected | Gareth result | Notes |
+**Result options:**
+- **Pass** - Worked as expected
+- **Fail** - Did not work as expected
+- **Issue** - Could not complete or needs clarification
+- **Deferred** - Valid item, but not ready / out of current UAT scope
+
+**Reporting issues:** Record the issue directly in this form. If the issue is visual or hard to explain, attach a Jam recording or screenshot.
+
+---
+
+## Setup Checklist *(For MAIA team / Gareth before Fixguru retest)*
+
+| ID | Check | Expected | Result | Notes |
 | --- | --- | --- | --- | --- |
-| SETUP-01 | MAIA setup sandbox accessible | Gareth can log in and inspect chatbot-created documents. |  |  |
-| SETUP-02 | AutoCount sandbox connected | Test customer/item/SO/invoice sync does not touch production AutoCount. |  |  |
-| SETUP-03 | Cutoff/snapshot policy confirmed | Documents before cutoff are not synced unless explicitly in test scope. |  |  |
-| SETUP-04 | Test customers seeded | At least one HQ customer, one branch customer, and one customer with credit exposure data are available. |  |  |
-| SETUP-05 | Test items seeded | Items include external SKU, brand, stock, UOM, shelf attribute, minimum price, and FOC-capable item. |  |  |
-| SETUP-06 | Historical pricing records seeded | Customer x item history exists across quotation/SO/invoice where needed. |  |  |
-| SETUP-07 | AutoCount item/customer IDs mapped | MAIA can show AutoCount external IDs instead of MAIA internal IDs. |  |  |
+| SETUP-01 | setup sandbox accessible | Gareth can inspect chatbot-created documents. |  |  |
+| SETUP-02 | AutoCount sync connected in setup sandbox | Test sync does not touch production AutoCount. |  |  |
+| SETUP-03 | Cutoff / snapshot policy confirmed | Pre-cutoff docs do not sync unless explicitly included. |  |  |
+| SETUP-04 | Test customers seeded | Includes HQ customer, branch customer, and customer with credit exposure data. |  |  |
+| SETUP-05 | Test items seeded | Includes external SKU, brand, stock, UOM, shelf attribute, minimum price, FOC item, and delivery SKU. |  |  |
+| SETUP-06 | Historical pricing records seeded | Customer x item history exists across quotation / SO / invoice where needed. |  |  |
+| SETUP-07 | AutoCount external IDs mapped | MAIA and chatbot can show AutoCount-facing IDs instead of internal IDs. |  |  |
+
+---
 
 ## Retest Coverage From Previous UAT
 
-| Previous issue / action | Covered by |
+| Previous issue / action | Retest case |
 | --- | --- |
-| Chatbot must show historical price, last discount %, net price, and current list price for customer x item. | CHAT-03, CHAT-04 |
-| Chatbot confused customer name and item name in historical pricing lookup. | CHAT-03 |
-| Item-level discount was missing or calculated incorrectly. | CHAT-04 |
-| Chatbot could not reliably edit the same quotation / SO draft and created extra documents. | CHAT-02 |
-| Sales order should stay draft until final confirmation; only then sync/advance. | CHAT-01, CHAT-02, AC-03 |
-| Fixguru wants AutoCount-style pro-forma flow from SO draft / AutoCount PDF. | AC-03, AC-04 |
-| Chatbot item display should use AutoCount external SKU and brand, not MAIA internal ID. | CHAT-01, AC-01, AC-02 |
-| FOC item with zero price was blocked unless free-item flag is set. | CHAT-06 |
-| MAIA FOC format is separate lines, not AutoCount child lines. | CHAT-06, AC-03 |
-| UOM split chatbot response did not match saved MAIA document. | CHAT-07 |
-| Shelf lookup queried warehouse/bin instead of item attributes. | CHAT-08 |
-| Delivery method should be added as SKU item line when requested. | CHAT-10 |
-| Credit exposure requires AutoCount outstanding invoices + unbilled SO amount. | CHAT-11, AC-07 |
-| HQ + branch contact must sync and assign correct branch on SO. | CHAT-12, AC-08 |
-| AutoCount external ID mapping must be stored back in MAIA after push. | AC-01, AC-02, AC-03 |
+| Historical price, last discount %, net price, and current list price must show for customer x item. | Test 1.3, Test 1.4 |
+| Chatbot confused customer name and item name in historical pricing lookup. | Test 1.3 |
+| Item-level discount was missing or calculated incorrectly. | Test 1.4 |
+| Chatbot could not reliably edit the same draft and created extra documents. | Test 1.2 |
+| SO should stay draft until final confirmation, then sync / advance. | Test 1.1, Test 1.2, Test 2.3 |
+| Fixguru wants AutoCount-style pro-forma flow from SO draft / AutoCount PDF. | Test 2.3, Test 2.4 |
+| Chatbot item display should use AutoCount external SKU and brand, not MAIA internal ID. | Test 1.1, Test 2.1, Test 2.2 |
+| FOC item with zero price was blocked unless free-item flag is set. | Test 1.6 |
+| MAIA FOC format is separate lines, not AutoCount child lines. | Test 1.6, Test 2.3 |
+| UOM split chatbot response did not match saved MAIA document. | Test 1.7 |
+| Shelf lookup queried warehouse/bin instead of item attributes. | Test 1.8 |
+| Delivery method should be added as SKU item line. | Test 1.10 |
+| Credit exposure requires AutoCount outstanding invoices + unbilled SO amount. | Test 1.11, Test 2.7 |
+| HQ + branch contact must sync and assign correct branch on SO. | Test 1.12, Test 2.8 |
+| AutoCount external ID mapping must be stored back in MAIA after push. | Test 2.1, Test 2.2, Test 2.3 |
 
 ---
 
-# Test Cases
+## Tests
 
-## A. Chatbot Order And Pricing Retest
+---
 
-### CHAT-01 - Create SO Draft By Chatbot, External SKU Display
+### E2E Workflow Index (Use This Sequence During Session)
 
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm chatbot can create a sales order draft using customer and item names/SKUs, and displays Fixguru-facing item identity. |
-| Example prompt | "Create a sales order for [Customer]. Add 10 units of [AutoCount SKU or item name]. Keep it as draft." |
-| Expected | Chatbot identifies the correct customer and item, shows AutoCount external SKU + brand + item name where available, creates a MAIA SO draft, and does not submit/sync until confirmation. |
+#### 1. Chatbot Order And Pricing Retest
+- `1.1 Create SO Draft By Chatbot, External SKU Display [Chatbot + setup sandbox]`
+- `1.2 Edit Same Draft Without Creating Extra Documents [Chatbot + setup sandbox]`
+- `1.3 Historical Pricing For Correct Customer x Item [Chatbot]`
+- `1.4 Apply Historical Price Or Discount To Draft Line [Chatbot + setup sandbox]`
+- `1.5 Minimum Price Guardrail [Chatbot]`
+- `1.6 FOC Item Through Chatbot [Chatbot + setup sandbox]`
+- `1.7 UOM Split And Chatbot Summary Matches Saved Document [Chatbot + setup sandbox]`
+- `1.8 Shelf / Item Attribute Lookup [Chatbot]`
+- `1.9 Two-Warehouse Item Handling [Chatbot + setup sandbox]`
+- `1.10 Delivery Method As SKU Line Item [Chatbot + setup sandbox]`
+- `1.11 Credit Exposure From AutoCount Snapshot [Chatbot + setup sandbox]`
+- `1.12 HQ And Branch Contact Selection [Chatbot + setup sandbox]`
+- `1.13 Language Preference And Ambiguity Handling [Chatbot]`
 
-| Step | What Gareth should do | Expected result |
+#### 2. AutoCount Sync Retest
+- `2.1 Customer And Item Master Sync Uses External IDs [setup sandbox + Chatbot]`
+- `2.2 MAIA-Created Item Pushes To AutoCount And Stores Assigned Code [setup sandbox]`
+- `2.3 SO Draft Final Confirmation Syncs In Setup Sandbox [Chatbot + setup sandbox]`
+- `2.4 AutoCount Pro-Forma / PDF Handoff [setup sandbox]`
+- `2.5 Invoice / Standalone Invoice Sync To Setup Sandbox [setup sandbox]`
+- `2.6 Stock Snapshot / Daily Reconciliation [setup sandbox + Chatbot]`
+- `2.7 Credit Limit Snapshot / Exposure Sync [setup sandbox + Chatbot]`
+- `2.8 HQ + Branch Contact Sync [setup sandbox + Chatbot]`
+
+---
+
+### 1. Chatbot Order And Pricing Retest
+
+*Who tests this section: Gareth first, then Fixguru testers.*
+
+---
+
+#### Test 1.1 - Create SO Draft By Chatbot, External SKU Display
+
+*This test confirms chatbot can create a sales order draft using customer and item names/SKUs, and display Fixguru-facing item identity.*
+
+| Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Send the example prompt to the Fixguru test chatbot. | Chatbot confirms customer, item, quantity, UOM, price, and draft intent. |
+| 1 | Send: "Create a sales order for [Customer]. Add 10 units of [AutoCount SKU or item name]. Keep it as draft." | Chatbot confirms customer, item, quantity, UOM, price, and draft intent. |
 | 2 | Ask chatbot for the created document reference. | Chatbot returns MAIA SO draft reference and current status. |
-| 3 | Verify the draft in MAIA sandbox. | SO exists in Draft. Item code shown to user is external SKU, not MAIA internal ID. |
+| 3 | Gareth verifies the draft in setup sandbox. | SO exists in Draft. Item code shown to user is AutoCount external SKU, not MAIA internal ID. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### CHAT-02 - Edit Same Draft Without Creating Extra Documents
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Retest the previous UAT issue where chatbot could not reliably edit the same draft and might create extra quotations/SOs. |
-| Example prompt | "For the same SO, change item 1 to 20 units, remove item 2, then add delivery item 3PL Lalamove." |
-| Expected | Chatbot edits the existing draft only. It does not create a new SO unless user explicitly asks for a new document. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.2 - Edit Same Draft Without Creating Extra Documents
+
+*This retests the previous issue where chatbot could not reliably edit the same draft and might create extra quotations/SOs.*
+
+| Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Continue from CHAT-01 and ask to change quantity on the same draft. | Same SO reference is updated. |
+| 1 | Continue from Test 1.1 and ask: "For the same SO, change item 1 to 20 units." | Same SO reference is updated. |
 | 2 | Ask to remove one line or change one line price. | Same SO reference is updated. |
-| 3 | Ask chatbot "show me the current SO summary". | Summary matches the latest draft state. |
-| 4 | Check MAIA sandbox document count. | No duplicate SO/QTN was created accidentally. |
+| 3 | Ask chatbot: "Show me the current SO summary." | Summary matches the latest draft state. |
+| 4 | Gareth checks setup sandbox document count. | No duplicate SO/QTN was created accidentally. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### CHAT-03 - Historical Pricing For Correct Customer x Item
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm chatbot retrieves historical price for the exact customer x item pair and does not confuse customer name with item name. |
-| Example prompt | "For [Customer], what was the last price and discount for [Item/SKU]?" |
-| Expected | Chatbot returns latest relevant transaction for the same customer x item, including source doc, qty, unit price, discount %, net price, date, and current list price benchmark. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.3 - Historical Pricing For Correct Customer x Item
+
+*This confirms chatbot retrieves historical price for the exact customer x item pair and does not confuse customer name with item name.*
+
+| Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Ask for last price for seeded customer x item. | Chatbot identifies customer and item correctly. |
-| 2 | Ask for recent history for same customer x item. | Chatbot shows recent transactions with doc ref, qty, unit price, discount %, and current list price. |
-| 3 | Cross-check one result in MAIA sandbox. | Chatbot result matches MAIA historical record. |
-| 4 | Ask a similar prompt with customer/item order reversed. | Chatbot still maps customer and item correctly or asks clarification if ambiguous. |
+| 1 | Ask: "For [Customer], what was the last price and discount for [Item/SKU]?" | Chatbot identifies the customer and item correctly. |
+| 2 | Ask: "Show recent history for the same customer and item." | Chatbot shows source doc, qty, unit price, discount %, net price, date, and current list price. |
+| 3 | Gareth cross-checks one result in setup sandbox. | Chatbot result matches the historical record. |
+| 4 | Ask a similar prompt with customer/item order reversed. | Chatbot still maps customer and item correctly, or asks clarification if ambiguous. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### CHAT-04 - Apply Historical Price Or Discount To Draft Line
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Retest item-level discount behavior and the expected historical pricing decision flow. |
-| Example prompt | "Use the last transaction discount for this item on the current SO." |
-| Expected | Chatbot asks which line/item if ambiguous, applies price or discount to the correct line, derives unit price/discount correctly, and keeps the historical reference visible. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.4 - Apply Historical Price Or Discount To Draft Line
+
+*This retests item-level discount behavior and the historical pricing decision flow.*
+
+| Step | What to do | What you should see |
 | --- | --- | --- |
 | 1 | Create or use an SO draft with at least two items. | Draft has multiple lines. |
-| 2 | Ask chatbot to apply the last transaction discount to one item. | Chatbot confirms exact line before applying. |
-| 3 | Verify calculation. | Discount % and net unit price are mathematically correct vs current list price. |
-| 4 | Ask chatbot for updated SO summary. | Summary shows the chosen price/discount on the correct line only. |
+| 2 | Ask: "Use the last transaction discount for this item on the current SO." | Chatbot asks which line/item if ambiguous and confirms exact line before applying. |
+| 3 | Gareth verifies calculation. | Discount % and net unit price are mathematically correct vs current list price. |
+| 4 | Ask chatbot for updated SO summary. | Summary shows chosen price/discount on the correct line only. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### CHAT-05 - Minimum Price Guardrail
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm chatbot blocks or warns when user applies a price below item minimum price. |
-| Example prompt | "Set [Item/SKU] price to RM [below minimum] for this SO." |
-| Expected | Chatbot detects below-minimum pricing and does not silently apply unsafe price. It should block, warn, or route to approval based on current configured behavior. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Use an item with configured minimum price. | Test item minimum price is known. |
-| 2 | Ask chatbot to set price below minimum. | Chatbot flags the issue before finalizing. |
-| 3 | Confirm what happens after warning. | Behavior matches configured approval/blocking policy. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-06 - FOC Item Through Chatbot
-
-| Field | Details |
-| --- | --- |
-| Purpose | Retest zero-price FOC handling from previous feedback. |
-| Example prompt | "Add 100 units of [Item/SKU] and 10 FOC units to this SO." |
-| Expected | Chatbot separates paid qty and FOC qty, asks/sets free-item flag when unit price is zero, keeps document total based only on paid qty, and allows submit/sync if FOC flag is set. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Add paid qty + FOC qty by chatbot. | Chatbot confirms sold qty and FOC qty separately. |
-| 2 | Ask chatbot to create/update the draft. | MAIA sandbox stores FOC as separate line or agreed MAIA format. |
-| 3 | Try final confirmation/submission in sandbox flow. | Zero-price FOC line is not blocked if `is_free_item` is set. |
-| 4 | Verify AutoCount sync behavior if available. | AutoCount sandbox receives correct FOC representation or known mapped format. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-07 - UOM Split And Chatbot Summary Matches Saved Document
-
-| Field | Details |
-| --- | --- |
-| Purpose | Retest prior mismatch where chatbot summary said consolidated UOM but MAIA saved split lines. |
-| Example prompt | "Add [Item A] as 1 x 8PCS and 5 x 1PCS, and [Item B] as 1 x 8PCS and 5 x 1PCS." |
-| Expected | Chatbot response matches actual saved MAIA lines, UOM labels, quantities, and additional notes. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Send multi-item, multi-UOM prompt. | Chatbot confirms split line structure. |
-| 2 | Ask chatbot for saved document summary. | Summary shows same line structure as MAIA sandbox. |
-| 3 | Verify in MAIA sandbox. | Saved lines, UOM, qty, and notes match chatbot output. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-08 - Shelf / Item Attribute Lookup
-
-| Field | Details |
-| --- | --- |
-| Purpose | Retest shelf lookup using item attributes, not warehouse/bin lookup. |
-| Example prompt | "Where is [Item/SKU] kept? Show me the shelf." |
-| Expected | Chatbot retrieves shelf from item attributes and does not incorrectly report no shelf because warehouse bin is empty. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Ask for shelf location of seeded item. | Chatbot returns item attribute shelf value. |
-| 2 | Ask to add shelf note to Delivery Note if in flow. | Shelf appears in agreed additional note field where scoped. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-09 - Two-Warehouse Item Handling
-
-| Field | Details |
-| --- | --- |
-| Purpose | Retest chatbot handling for items split across two warehouses. |
-| Example prompt | "Create SO for [Customer] with [Item/SKU]. Use stock from [Warehouse A] and [Warehouse B] if needed." |
-| Expected | Chatbot handles stock/source warehouse correctly or asks clarification instead of silently choosing wrong warehouse. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Ask chatbot to add item with two-warehouse stock context. | Chatbot shows available stock by warehouse or asks which warehouse to use. |
-| 2 | Confirm selected warehouse logic. | Saved draft reflects selected warehouse/allocation behavior. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-10 - Delivery Method As SKU Line Item
-
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm chatbot can add transport/delivery charge as an item line for e-invoice claiming. |
-| Example prompt | "Add 3PL Lalamove delivery charge as an item line." |
-| Expected | Chatbot searches delivery-type item/SKU and adds it as a normal line item, not only as delivery method metadata. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Ask chatbot to add delivery item by name. | Chatbot finds delivery SKU/item. |
-| 2 | Confirm adding to draft. | Delivery charge appears as item line in MAIA sandbox. |
-| 3 | Confirm sync payload if available. | AutoCount sandbox receives delivery charge as item line. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-11 - Credit Exposure From AutoCount Snapshot
-
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm chatbot can show credit limit, exposure, and available balance using AutoCount-backed data. |
-| Example prompt | "Can this customer place a new SO for RM [amount]? Show credit limit and exposure." |
-| Expected | Chatbot shows credit limit, current exposure, available balance, and warns/blocks if new SO would exceed limit. Exposure should include unbilled SO amount plus outstanding unpaid invoices where synced. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Ask chatbot for customer credit standing. | Chatbot returns credit limit, exposure, and available balance. |
-| 2 | Ask to create SO that stays within limit. | Chatbot allows draft and shows remaining balance. |
-| 3 | Ask to create SO that exceeds limit. | Chatbot warns/blocks according to configured policy. |
-| 4 | Cross-check with AutoCount sandbox snapshot/source data. | Figures match seeded sandbox credit data. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-12 - HQ And Branch Contact Selection
-
-| Field | Details |
-| --- | --- |
-| Purpose | Retest branch assignment when Fixguru customer has HQ and branch contacts. |
-| Example prompt | "Create SO for [Customer branch name/address]." |
-| Expected | Chatbot identifies the correct branch/contact, asks clarification when multiple branches match, and saves the correct branch on SO. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Ask chatbot to create SO for customer with multiple branches. | Chatbot selects correct branch or asks which branch. |
-| 2 | Confirm branch. | SO draft stores correct branch/contact/address. |
-| 3 | Verify in MAIA sandbox and AutoCount sandbox if synced. | Branch mapping remains correct after sync. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### CHAT-13 - Language Preference And Ambiguity Handling
-
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm chatbot uses the user's response language preference and asks clarification when intent is unclear. |
-| Example prompt | "Set my reply language to Malay." / ambiguous mixed-language order prompt |
-| Expected | Chatbot stores language preference in DB/context and replies in allowed language. For unclear intent, chatbot asks clarification instead of guessing. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Set language preference. | Chatbot confirms preference. |
-| 2 | Send normal order prompt. | Chatbot replies in preferred supported language. |
-| 3 | Send ambiguous prompt with unclear customer/item. | Chatbot asks clarification before creating document. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
 
 ---
 
-## B. AutoCount Sandbox Sync Retest
+#### Test 1.5 - Minimum Price Guardrail
 
-### AC-01 - Customer And Item Master Sync Uses External IDs
+*This confirms chatbot blocks or warns when a user applies a price below item minimum price.*
 
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm MAIA stores and displays AutoCount external customer/item IDs after sync. |
-| Expected | Chatbot and MAIA sandbox show AutoCount external SKU/customer code where user-facing code is required. MAIA internal IDs should not appear in chatbot/PDF-facing output. |
-
-| Step | What Gareth should do | Expected result |
+| Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Sync or inspect seeded customer and item from AutoCount sandbox. | MAIA has external customer/item ID mapping. |
-| 2 | Ask chatbot to search item/customer by external code and name. | Chatbot finds correct record. |
-| 3 | Ask chatbot to show item details. | Output includes external SKU + brand + item name. |
+| 1 | Use an item with configured minimum price. | Test item minimum price is known. |
+| 2 | Ask chatbot to set the item price below minimum. | Chatbot flags the issue before finalizing. |
+| 3 | Confirm what happens after warning. | Behavior matches configured approval/blocking policy. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### AC-02 - MAIA-Created Item Pushes To AutoCount And Stores Assigned Code
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Retest item code override rule: if MAIA creates item with code that AutoCount changes, MAIA must store AutoCount assigned code. |
-| Expected | If MAIA sends item code D10 but AutoCount assigns D11, MAIA updates/stores D11 as external SKU and chatbot uses D11 going forward. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.6 - FOC Item Through Chatbot
+
+*This retests zero-price FOC handling from previous feedback.*
+
+| Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Create or trigger test item push from MAIA sandbox to AutoCount sandbox. | AutoCount creates item and returns assigned item code. |
-| 2 | Inspect MAIA sandbox item mapping. | AutoCount assigned code is stored. |
+| 1 | Send: "Add 100 units of [Item/SKU] and 10 FOC units to this SO." | Chatbot confirms sold qty and FOC qty separately. |
+| 2 | Ask chatbot to create/update the draft. | setup sandbox stores FOC as separate line or agreed MAIA format. |
+| 3 | Try final confirmation/submission in sandbox flow. | Zero-price FOC line is not blocked if `is_free_item` is set. |
+| 4 | Verify setup sandbox sync if available. | setup sandbox receives correct FOC representation or known mapped format. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.7 - UOM Split And Chatbot Summary Matches Saved Document
+
+*This retests the mismatch where chatbot described consolidated UOM but MAIA saved split lines.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Send: "Add [Item A] as 1 x 8PCS and 5 x 1PCS, and [Item B] as 1 x 8PCS and 5 x 1PCS." | Chatbot confirms split line structure. |
+| 2 | Ask chatbot for saved document summary. | Summary shows the same line structure as setup sandbox. |
+| 3 | Gareth verifies in setup sandbox. | Saved lines, UOM, qty, and notes match chatbot output. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.8 - Shelf / Item Attribute Lookup
+
+*This retests shelf lookup using item attributes, not warehouse/bin lookup.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Ask: "Where is [Item/SKU] kept? Show me the shelf." | Chatbot returns item attribute shelf value. |
+| 2 | If in delivery flow, ask chatbot to add shelf note to Delivery Note. | Shelf appears in the agreed additional note field where scoped. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.9 - Two-Warehouse Item Handling
+
+*This retests chatbot handling for items split across two warehouses.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Ask chatbot to add an item with two-warehouse stock context. | Chatbot shows available stock by warehouse or asks which warehouse to use. |
+| 2 | Confirm selected warehouse logic. | Saved draft reflects selected warehouse/allocation behavior. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.10 - Delivery Method As SKU Line Item
+
+*This confirms chatbot can add transport/delivery charge as an item line for e-invoice claiming.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Ask: "Add 3PL Lalamove delivery charge as an item line." | Chatbot finds the delivery SKU/item. |
+| 2 | Confirm adding to draft. | Delivery charge appears as item line in setup sandbox. |
+| 3 | Confirm sync payload if available. | setup sandbox receives delivery charge as item line. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.11 - Credit Exposure From AutoCount Snapshot
+
+*This confirms chatbot can show credit limit, exposure, and available balance using AutoCount-backed data.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Ask chatbot for a customer's credit standing. | Chatbot returns credit limit, current exposure, and available balance. |
+| 2 | Ask to create SO that stays within limit. | Chatbot allows draft and shows remaining balance. |
+| 3 | Ask to create SO that exceeds limit. | Chatbot warns/blocks according to configured policy. |
+| 4 | Gareth cross-checks with setup sandbox snapshot/source data. | Figures match seeded sandbox credit data. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.12 - HQ And Branch Contact Selection
+
+*This retests branch assignment when Fixguru customer has HQ and branch contacts.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Ask chatbot to create SO for a customer with multiple branches. | Chatbot selects correct branch or asks which branch. |
+| 2 | Confirm branch. | SO draft stores correct branch/contact/address. |
+| 3 | Gareth verifies in setup sandbox and setup sandbox if synced. | Branch mapping remains correct after sync. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 1.13 - Language Preference And Ambiguity Handling
+
+*This confirms chatbot uses the user's response language preference and asks clarification when intent is unclear.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Ask chatbot to set reply language preference to English or Malay. | Chatbot confirms the preference. |
+| 2 | Send a normal order prompt. | Chatbot replies in the preferred supported language. |
+| 3 | Send an ambiguous prompt with unclear customer/item. | Chatbot asks clarification before creating any document. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+### 2. AutoCount Sync Retest
+
+*Who tests this section: Gareth first, then Fixguru testers if they have sandbox access.*
+
+---
+
+#### Test 2.1 - Customer And Item Master Sync Uses External IDs
+
+*This confirms MAIA stores and displays AutoCount external customer/item IDs after sync.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Sync or inspect seeded customer and item from setup sandbox. | MAIA has external customer/item ID mapping. |
+| 2 | Ask chatbot to search item/customer by external code and name. | Chatbot finds the correct record. |
+| 3 | Ask chatbot to show item details. | Output includes external SKU + brand + item name, not MAIA internal ID. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 2.2 - MAIA-Created Item Pushes To AutoCount And Stores Assigned Code
+
+*This retests item code override rule: if MAIA creates item with a code that AutoCount changes, MAIA must store the AutoCount assigned code.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Create or trigger test item push from setup sandbox to setup sandbox. | AutoCount creates item and returns assigned item code. |
+| 2 | Inspect setup sandbox item mapping. | AutoCount assigned code is stored. |
 | 3 | Ask chatbot to search/display the item. | Chatbot uses AutoCount assigned code, not stale MAIA-entered code. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### AC-03 - SO Draft Final Confirmation Syncs To AutoCount Sandbox
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm chatbot-created SO stays draft until final confirmation, then syncs to AutoCount sandbox only. |
-| Expected | Draft can be edited before confirmation. After final confirmation, SO syncs to AutoCount sandbox, AutoCount external doc ID is stored back in MAIA, and no production AutoCount document is created. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 2.3 - SO Draft Final Confirmation Syncs In Setup Sandbox
+
+*This confirms chatbot-created SO stays draft until final confirmation, then syncs to setup sandbox only.*
+
+| Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Use chatbot to create SO draft. | SO remains draft in MAIA sandbox. |
+| 1 | Use chatbot to create SO draft. | SO remains draft in setup sandbox. |
 | 2 | Edit draft using chatbot. | Same SO reference updates. |
-| 3 | Tell chatbot "confirm this SO and sync to AutoCount sandbox". | SO is finalized according to configured flow and sync starts. |
-| 4 | Check AutoCount sandbox. | Matching SO appears in AutoCount sandbox only. |
-| 5 | Check MAIA sandbox. | AutoCount external doc ID is stored and visible where required. |
+| 3 | Tell chatbot: "Confirm this SO and sync in setup sandbox." | SO is finalized according to configured flow and sync starts. |
+| 4 | Check the setup sandbox. | Matching SO appears in setup sandbox only. |
+| 5 | Check the setup sandbox. | AutoCount external doc ID is stored and visible where required. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### AC-04 - AutoCount Pro-Forma / PDF Handoff
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm Fixguru can use AutoCount sandbox output as pro-forma after MAIA chatbot SO flow. |
-| Expected | AutoCount sandbox contains synced SO/pro-forma source with correct customer, items, discounts, delivery SKU, FOC representation, and external IDs. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 2.4 - AutoCount Pro-Forma / PDF Handoff
+
+*This confirms Fixguru can use setup sandbox output as pro-forma after MAIA chatbot SO flow.*
+
+| Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Continue from AC-03. | Synced SO exists in AutoCount sandbox. |
+| 1 | Continue from Test 2.3. | Synced SO exists in setup sandbox. |
 | 2 | Generate or inspect AutoCount pro-forma/PDF output if available. | Output reflects expected Fixguru-facing format/data. |
 | 3 | Compare against chatbot SO summary. | Customer, branch, item lines, discounts, FOC, and delivery item match. |
 
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-### AC-05 - Invoice / Standalone Invoice Sync To MAIA Sandbox
+**Issue notes / observation:**
 
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm AutoCount sandbox invoice sync behavior after cutoff, including standalone invoices from migration/testing period. |
-| Expected | Eligible AutoCount sandbox invoices after cutoff sync to MAIA sandbox. Pre-cutoff docs stay untouched unless explicitly included. |
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
 
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Confirm cutoff date used in sandbox config. | Cutoff is documented in notes. |
-| 2 | Create or inspect post-cutoff AutoCount sandbox invoice. | Invoice is eligible for sync. |
-| 3 | Trigger/wait for sync to MAIA sandbox. | MAIA receives invoice with correct customer, item, amount, and external ID. |
-| 4 | Check pre-cutoff control document. | It does not sync unexpectedly. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### AC-06 - Stock Snapshot / Daily Reconciliation
-
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm AutoCount sandbox stock snapshot can update MAIA sandbox stock used by chatbot. |
-| Expected | MAIA sandbox stock reflects AutoCount sandbox snapshot after sync/reconciliation. Chatbot uses updated stock when answering availability questions. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Confirm stock value in AutoCount sandbox for test item. | Source stock is known. |
-| 2 | Run or wait for stock sync. | MAIA sandbox stock updates. |
-| 3 | Ask chatbot for item availability. | Chatbot returns stock based on MAIA/AutoCount sandbox sync, not stale value. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### AC-07 - Credit Limit Snapshot / Exposure Sync
-
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm credit exposure uses AutoCount sandbox credit limit and open invoice data. |
-| Expected | MAIA sandbox imports customer credit limit and outstanding exposure from AutoCount snapshot. Chatbot credit response matches imported values. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Confirm AutoCount sandbox customer credit limit and outstanding invoice amount. | Source values are recorded. |
-| 2 | Trigger/import credit snapshot to MAIA sandbox. | MAIA stores credit limit and open exposure. |
-| 3 | Ask chatbot for customer's credit standing. | Chatbot matches MAIA/AutoCount sandbox credit data. |
-| 4 | Ask chatbot to create SO that exceeds available balance. | Chatbot warns/blocks according to configured rule. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
-
-### AC-08 - HQ + Branch Contact Sync
-
-| Field | Details |
-| --- | --- |
-| Purpose | Confirm AutoCount/MAIA sandbox contact sync supports HQ and branch selection in chatbot SO flow. |
-| Expected | MAIA has branch contact/address mappings, chatbot selects correct branch, and synced AutoCount sandbox document keeps correct branch/customer contact. |
-
-| Step | What Gareth should do | Expected result |
-| --- | --- | --- |
-| 1 | Inspect seeded HQ + branch customer in MAIA sandbox. | Branch/contact data exists. |
-| 2 | Create SO by chatbot for branch-specific customer/address. | Chatbot asks clarification if needed and saves correct branch. |
-| 3 | Sync to AutoCount sandbox. | AutoCount sandbox document uses correct branch/contact mapping. |
-
-| Result field | Fill in |
-| --- | --- |
-| Gareth run-through result |  |
-| Issue / observation |  |
-| Fixguru retest result |  |
-| Final status |  |
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
 
 ---
 
-## Result Summary
+#### Test 2.5 - Invoice / Standalone Invoice Sync To setup sandbox
 
-| Test ID | Area | Gareth result | Fixguru result | Final status | Issue owner | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| SETUP-01 to SETUP-07 | Sandbox readiness |  |  |  |  |  |
-| CHAT-01 | Create SO draft / external SKU |  |  |  |  |  |
-| CHAT-02 | Edit same draft |  |  |  |  |  |
-| CHAT-03 | Historical pricing lookup |  |  |  |  |  |
-| CHAT-04 | Apply historical price/discount |  |  |  |  |  |
-| CHAT-05 | Minimum price guardrail |  |  |  |  |  |
-| CHAT-06 | FOC item |  |  |  |  |  |
-| CHAT-07 | UOM split |  |  |  |  |  |
-| CHAT-08 | Shelf/item attributes |  |  |  |  |  |
-| CHAT-09 | Two-warehouse handling |  |  |  |  |  |
-| CHAT-10 | Delivery method as SKU |  |  |  |  |  |
-| CHAT-11 | Credit exposure chatbot |  |  |  |  |  |
-| CHAT-12 | HQ + branch contact |  |  |  |  |  |
-| CHAT-13 | Language / ambiguity |  |  |  |  |  |
-| AC-01 | External IDs master sync |  |  |  |  |  |
-| AC-02 | MAIA item -> AutoCount code override |  |  |  |  |  |
-| AC-03 | SO sync to AutoCount sandbox |  |  |  |  |  |
-| AC-04 | AutoCount pro-forma/PDF handoff |  |  |  |  |  |
-| AC-05 | Invoice sync after cutoff |  |  |  |  |  |
-| AC-06 | Stock snapshot sync |  |  |  |  |  |
-| AC-07 | Credit limit/exposure sync |  |  |  |  |  |
-| AC-08 | HQ + branch contact sync |  |  |  |  |  |
+*This confirms setup sandbox invoice sync behavior after cutoff, including standalone invoices from migration/testing period.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Confirm cutoff date used in sandbox config. | Cutoff is documented in notes. |
+| 2 | Create or inspect post-cutoff setup sandbox invoice. | Invoice is eligible for sync. |
+| 3 | Trigger or wait for sync in setup sandbox. | MAIA receives invoice with correct customer, item, amount, and external ID. |
+| 4 | Check pre-cutoff control document. | It does not sync unexpectedly. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 2.6 - Stock Snapshot / Daily Reconciliation
+
+*This confirms setup sandbox stock snapshot can update setup sandbox stock used by chatbot.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Confirm stock value in setup sandbox for test item. | Source stock is known. |
+| 2 | Run or wait for stock sync. | setup sandbox stock updates. |
+| 3 | Ask chatbot for item availability. | Chatbot returns stock based on setup sandbox sync, not stale value. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 2.7 - Credit Limit Snapshot / Exposure Sync
+
+*This confirms credit exposure uses setup sandbox credit limit and open invoice data.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Confirm setup sandbox customer credit limit and outstanding invoice amount. | Source values are recorded. |
+| 2 | Trigger/import credit snapshot to setup sandbox. | MAIA stores credit limit and open exposure. |
+| 3 | Ask chatbot for customer's credit standing. | Chatbot matches setup sandbox credit data. |
+| 4 | Ask chatbot to create SO that exceeds available balance. | Chatbot warns/blocks according to configured rule. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 2.8 - HQ + Branch Contact Sync
+
+*This confirms AutoCount sync contact sync supports HQ and branch selection in chatbot SO flow.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Inspect seeded HQ + branch customer in setup sandbox. | Branch/contact data exists. |
+| 2 | Create SO by chatbot for branch-specific customer/address. | Chatbot asks clarification if needed and saves correct branch. |
+| 3 | Sync to setup sandbox. | setup sandbox document uses correct branch/contact mapping. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+## Results Summary
+
+| Test ID | What was tested | Mode | Gareth result | Fixguru result | Final status | Blocker owner | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| SETUP-01 to SETUP-07 | Sandbox readiness | setup sandbox |  |  |  |  |  |
+| 1.1 | Create SO draft / external SKU | Chatbot |  |  |  |  |  |
+| 1.2 | Edit same draft | Chatbot |  |  |  |  |  |
+| 1.3 | Historical pricing lookup | Chatbot |  |  |  |  |  |
+| 1.4 | Apply historical price / discount | Chatbot |  |  |  |  |  |
+| 1.5 | Minimum price guardrail | Chatbot |  |  |  |  |  |
+| 1.6 | FOC item | Chatbot + setup sandbox |  |  |  |  |  |
+| 1.7 | UOM split | Chatbot |  |  |  |  |  |
+| 1.8 | Shelf / item attributes | Chatbot |  |  |  |  |  |
+| 1.9 | Two-warehouse handling | Chatbot |  |  |  |  |  |
+| 1.10 | Delivery method as SKU | Chatbot + setup sandbox |  |  |  |  |  |
+| 1.11 | Credit exposure chatbot | Chatbot + setup sandbox |  |  |  |  |  |
+| 1.12 | HQ + branch contact | Chatbot + setup sandbox |  |  |  |  |  |
+| 1.13 | Language / ambiguity | Chatbot |  |  |  |  |  |
+| 2.1 | External IDs master sync | setup sandbox |  |  |  |  |  |
+| 2.2 | MAIA item -> AutoCount code override | setup sandbox |  |  |  |  |  |
+| 2.3 | SO sync in setup sandbox | Chatbot + setup sandbox |  |  |  |  |  |
+| 2.4 | AutoCount pro-forma / PDF handoff | AutoCount |  |  |  |  |  |
+| 2.5 | Invoice sync after cutoff | setup sandbox |  |  |  |  |  |
+| 2.6 | Stock snapshot sync | Chatbot + setup sandbox |  |  |  |  |  |
+| 2.7 | Credit limit / exposure sync | Chatbot + setup sandbox |  |  |  |  |  |
+| 2.8 | HQ + branch contact sync | Chatbot + setup sandbox |  |  |  |  |  |
+
+| Pass | Fail | Issue | Deferred |
+| --- | --- | --- | --- |
+|  |  |  |  |
+
+---
 
 ## Issue Log
 
-| Issue ID | Test ID | Found by | Environment | Document/customer/item | What happened | Expected behavior | Owner | Status | Retest notes |
+| Issue ID | Test ID | Found by | Environment | Document / customer / item | What happened | Expected behavior | Owner | Status | Retest notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  | Gareth / Fixguru | MAIA sandbox / AutoCount sandbox |  |  |  |  |  |  |
+|  |  | Gareth / Fixguru | setup sandbox |  |  |  |  |  |  |
+
+---
+
+## Overall Feedback
+
+**What worked well:**
+
+
+**Main issues found:**
+
+
+**Items to defer / confirm later:**
+
+
+---
 
 ## Sign-Off
 
-| Name | Role | Sign-off status | Date | Notes |
+By signing below, the Fixguru team confirms that the chatbot + setup sandbox UAT has been completed and the results above are accurate.
+
+| Name | Role | Signature / Status | Date | Notes |
 | --- | --- | --- | --- | --- |
 | Gareth | PM run-through owner |  |  |  |
 | Fixguru representative | Client tester |  |  |  |
 | MAIA dev/support | Issue owner acknowledgement |  |  |  |
+
+**Overall outcome:**
+- [ ] Approved - Ready to proceed
+- [ ] Conditional - Proceed with the following items to fix first
+- [ ] Not approved - Further fixes required before sign-off
+
+**Conditions / punch list:**
+
+
+---
 
 ## See Also
 
