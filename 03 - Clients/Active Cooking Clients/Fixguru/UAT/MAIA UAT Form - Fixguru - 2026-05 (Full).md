@@ -87,18 +87,14 @@ source_refs:
 | Historical price, last discount %, net price, and current list price must show for customer x item. | Test 1.3, Test 1.4 |
 | Chatbot confused customer name and item name in historical pricing lookup. | Test 1.3 |
 | Item-level discount was missing or calculated incorrectly. | Test 1.4 |
-| Chatbot could not reliably edit the same draft and created extra documents. | Test 1.2 |
-| SO should stay draft until final confirmation, then sync / advance. | Test 1.1, Test 1.2, Test 2.3 |
+| QTN and SO should stay draft until final confirmation, then sync / advance when submitted. | Test 1.1, Test 2.3 |
 | Fixguru wants AutoCount-style pro-forma flow from SO draft / AutoCount PDF. | Test 2.3, Test 2.4 |
-| Chatbot item display should use AutoCount external SKU and brand, not MAIA internal ID. | Test 1.1, Test 2.1, Test 2.2 |
+| Chatbot item display should use AutoCount external SKU and brand, not MAIA internal ID. | Test 1.1, Test 2.3 |
 | FOC item with zero price was blocked unless free-item flag is set. | Test 1.6 |
 | MAIA FOC format is separate lines, not AutoCount child lines. | Test 1.6, Test 2.3 |
-| UOM split chatbot response did not match saved MAIA document. | Test 1.7 |
-| Shelf lookup queried warehouse/bin instead of item attributes. | Test 1.8 |
 | Delivery method should be added as SKU item line. | Test 1.10 |
 | Credit exposure requires AutoCount outstanding invoices + unbilled SO amount. | Test 1.11, Test 2.7 |
-| HQ + branch contact must sync and assign correct branch on SO. | Test 1.12, Test 2.8 |
-| AutoCount external ID mapping must be stored back in MAIA after push. | Test 2.1, Test 2.2, Test 2.3 |
+| AutoCount external ID mapping must be stored back in MAIA after submitted doctype sync. | Test 2.3 |
 
 ---
 
@@ -108,48 +104,56 @@ source_refs:
 
 ### E2E Workflow Index (Use This Sequence During Session)
 
-#### 1. Chatbot Order And Pricing Retest
-- `1.1 Create SO Draft By Chatbot, External SKU Display [Chatbot + setup sandbox]`
-- `1.2 Edit Same Draft Without Creating Extra Documents [Chatbot + setup sandbox]`
+#### 1. Quotation / Sales Order Creation And Pricing
+- `1.1 Create Quotation / Sales Order via Chatbot [Chatbot + setup sandbox]`
+- `1.2.1 RSC Calculator Full Flow [Web App + setup sandbox]`
+- `1.2.2 Diecut Calculator Full Flow [Web App + setup sandbox]`
 - `1.3 Historical Pricing For Correct Customer x Item [Chatbot]`
 - `1.4 Apply Historical Price Or Discount To Draft Line [Chatbot + setup sandbox]`
 - `1.5 Minimum Price Guardrail [Chatbot]`
 - `1.6 FOC Item Through Chatbot [Chatbot + setup sandbox]`
-- `1.7 UOM Split And Chatbot Summary Matches Saved Document [Chatbot + setup sandbox]`
-- `1.8 Shelf / Item Attribute Lookup [Chatbot]`
-- `1.9 Two-Warehouse Item Handling [Chatbot + setup sandbox]`
 - `1.10 Delivery Method As SKU Line Item [Chatbot + setup sandbox]`
 - `1.11 Credit Exposure From AutoCount Snapshot [Chatbot + setup sandbox]`
-- `1.12 HQ And Branch Contact Selection [Chatbot + setup sandbox]`
 - `1.13 Language Preference And Ambiguity Handling [Chatbot]`
 
-#### 2. AutoCount Sync Retest
-- `2.1 Customer And Item Master Sync Uses External IDs [setup sandbox + Chatbot]`
-- `2.2 MAIA-Created Item Pushes To AutoCount And Stores Assigned Code [setup sandbox]`
-- `2.3 SO Draft Final Confirmation Syncs In Setup Sandbox [Chatbot + setup sandbox]`
-- `2.4 AutoCount Pro-Forma / PDF Handoff [setup sandbox]`
-- `2.5 Invoice / Standalone Invoice Sync To Setup Sandbox [setup sandbox]`
-- `2.6 Stock Snapshot / Daily Reconciliation [setup sandbox + Chatbot]`
-- `2.7 Credit Limit Snapshot / Exposure Sync [setup sandbox + Chatbot]`
-- `2.8 HQ + Branch Contact Sync [setup sandbox + Chatbot]`
+#### 2. Sales Order / Proforma / AutoCount Sync
+- `2.2 Credit Limit Block on SO Submission [Chatbot + setup sandbox]`
+- `2.3 Submitted Doctype Sync: QTN, SO/PI, SI, DN, CN, Item, Customer 2-Way Sync [setup sandbox]`
+- `2.4 PDF Handoff: QTN, SO/PI, SI, DN, CN, Payment Receipt [setup sandbox]`
+- `2.7 Credit Limit / Exposure Sync [Chatbot + setup sandbox]`
+
+#### 3. Delivery
+- `3.1 Create Delivery Order and Mark as Delivered [Chatbot + setup sandbox]`
+- `3.3 Delivery Delay Reminder [Chatbot + setup sandbox]`
+- `3.4 Stock Alerts - Out of Stock and Low Stock [Chatbot + setup sandbox]`
+
+#### 6. Access And Role Permission Checks
+- `6.2 Sales Access Check [setup sandbox]`
+- `6.3 Warehousing Access Check [setup sandbox]`
+- `6.4 Finance Manager Access Check [setup sandbox]`
+- `6.5 Finance Assistant Access Check [setup sandbox]`
+- `6.6 Admin Access Check [setup sandbox]`
+- `6.7 Role Approval Flow [setup sandbox]`
 
 ---
 
-### 1. Chatbot Order And Pricing Retest
+### 1. Quotation / Sales Order Creation And Pricing
 
 *Who tests this section: Gareth first, then Fixguru testers.*
 
 ---
 
-#### Test 1.1 - Create SO Draft By Chatbot, External SKU Display
+#### Test 1.1 - Create Quotation / Sales Order via Chatbot
 
-*This test confirms chatbot can create a sales order draft using customer and item names/SKUs, and display Fixguru-facing item identity.*
+*This test confirms chatbot can create both Quotation and Sales Order drafts, use customer/item names or external SKUs, and display Fixguru-facing item identity.*
 
 | Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Send: "Create a sales order for [Customer]. Add 10 units of [AutoCount SKU or item name]. Keep it as draft." | Chatbot confirms customer, item, quantity, UOM, price, and draft intent. |
-| 2 | Ask chatbot for the created document reference. | Chatbot returns MAIA SO draft reference and current status. |
-| 3 | Gareth verifies the draft in setup sandbox. | SO exists in Draft. Item code shown to user is AutoCount external SKU, not MAIA internal ID. |
+| 1 | Send: "Create a quotation for [Customer]. Add 10 units of [AutoCount SKU or item name]. Keep it as draft." | Chatbot confirms customer, item, quantity, UOM, price, and draft intent. |
+| 2 | Ask chatbot for the created quotation reference. | Chatbot returns QTN draft reference and current status. |
+| 3 | Send: "Create a sales order for [Customer]. Add 10 units of [AutoCount SKU or item name]. Keep it as draft." | Chatbot confirms the SO details and keeps the SO in Draft. |
+| 4 | Ask chatbot for the created SO reference. | Chatbot returns SO draft reference and current status. |
+| 5 | Gareth verifies both documents in setup sandbox. | QTN and SO exist in Draft. Item code shown to user is AutoCount external SKU, not MAIA internal ID. |
 
 **Gareth run-through result:**
 - [ ] Pass
@@ -171,16 +175,47 @@ source_refs:
 
 ---
 
-#### Test 1.2 - Edit Same Draft Without Creating Extra Documents
+##### Test 1.2.1 - RSC Calculator Full Flow
 
-*This retests the previous issue where chatbot could not reliably edit the same draft and might create extra quotations/SOs.*
+*This brings back the previous RSC calculator UAT case. Use setup sandbox only.*
 
 | Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Continue from Test 1.1 and ask: "For the same SO, change item 1 to 20 units." | Same SO reference is updated. |
-| 2 | Ask to remove one line or change one line price. | Same SO reference is updated. |
-| 3 | Ask chatbot: "Show me the current SO summary." | Summary matches the latest draft state. |
-| 4 | Gareth checks setup sandbox document count. | No duplicate SO/QTN was created accidentally. |
+| 1 | Open a draft Quotation or Sales Order in setup sandbox and open the custom box calculator. | Calculator modal opens. |
+| 2 | Select RSC and enter valid dimensions, board quality, quantity, printing/transport settings if needed. | Calculator accepts inputs and produces pricing. |
+| 3 | Add the calculated SKU/item to the draft document. | Item line is added with calculated price and expected SKU/model details. |
+| 4 | Save the draft document. | Draft retains calculated item, price, qty, and any calculator details required for sync/PDF. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+##### Test 1.2.2 - Diecut Calculator Full Flow
+
+*This brings back the previous Diecut calculator UAT case. Use setup sandbox only.*
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Open a draft Quotation or Sales Order in setup sandbox and open the custom box calculator. | Calculator modal opens. |
+| 2 | Select Diecut and enter valid dimensions, board quality, quantity, printing/transport settings if needed. | Calculator accepts inputs and produces pricing. |
+| 3 | Add the calculated SKU/item to the draft document. | Item line is added with calculated price and expected SKU/model details. |
+| 4 | Save the draft document. | Draft retains calculated item, price, qty, and any calculator details required for sync/PDF. |
 
 **Gareth run-through result:**
 - [ ] Pass
@@ -239,10 +274,10 @@ source_refs:
 
 | Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Create or use an SO draft with at least two items. | Draft has multiple lines. |
-| 2 | Ask: "Use the last transaction discount for this item on the current SO." | Chatbot asks which line/item if ambiguous and confirms exact line before applying. |
+| 1 | Create or use a QTN/SO draft with at least two items. | Draft has multiple lines. |
+| 2 | Ask: "Use the last transaction discount for this item on the current QTN/SO." | Chatbot asks which line/item if ambiguous and confirms exact line before applying. |
 | 3 | Gareth verifies calculation. | Discount % and net unit price are mathematically correct vs current list price. |
-| 4 | Ask chatbot for updated SO summary. | Summary shows chosen price/discount on the correct line only. |
+| 4 | Ask chatbot for updated document summary. | Summary shows chosen price/discount on the correct line only. |
 
 **Gareth run-through result:**
 - [ ] Pass
@@ -325,94 +360,6 @@ source_refs:
 
 ---
 
-#### Test 1.7 - UOM Split And Chatbot Summary Matches Saved Document
-
-*This retests the mismatch where chatbot described consolidated UOM but MAIA saved split lines.*
-
-| Step | What to do | What you should see |
-| --- | --- | --- |
-| 1 | Send: "Add [Item A] as 1 x 8PCS and 5 x 1PCS, and [Item B] as 1 x 8PCS and 5 x 1PCS." | Chatbot confirms split line structure. |
-| 2 | Ask chatbot for saved document summary. | Summary shows the same line structure as setup sandbox. |
-| 3 | Gareth verifies in setup sandbox. | Saved lines, UOM, qty, and notes match chatbot output. |
-
-**Gareth run-through result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Tested by:**  
-**Date:**  
-**Fixguru notes:**
-
----
-
-#### Test 1.8 - Shelf / Item Attribute Lookup
-
-*This retests shelf lookup using item attributes, not warehouse/bin lookup.*
-
-| Step | What to do | What you should see |
-| --- | --- | --- |
-| 1 | Ask: "Where is [Item/SKU] kept? Show me the shelf." | Chatbot returns item attribute shelf value. |
-| 2 | If in delivery flow, ask chatbot to add shelf note to Delivery Note. | Shelf appears in the agreed additional note field where scoped. |
-
-**Gareth run-through result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Tested by:**  
-**Date:**  
-**Fixguru notes:**
-
----
-
-#### Test 1.9 - Two-Warehouse Item Handling
-
-*This retests chatbot handling for items split across two warehouses.*
-
-| Step | What to do | What you should see |
-| --- | --- | --- |
-| 1 | Ask chatbot to add an item with two-warehouse stock context. | Chatbot shows available stock by warehouse or asks which warehouse to use. |
-| 2 | Confirm selected warehouse logic. | Saved draft reflects selected warehouse/allocation behavior. |
-
-**Gareth run-through result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Tested by:**  
-**Date:**  
-**Fixguru notes:**
-
----
-
 #### Test 1.10 - Delivery Method As SKU Line Item
 
 *This confirms chatbot can add transport/delivery charge as an item line for e-invoice claiming.*
@@ -472,38 +419,6 @@ source_refs:
 **Date:**  
 **Fixguru notes:**
 
----
-
-#### Test 1.12 - HQ And Branch Contact Selection
-
-*This retests branch assignment when Fixguru customer has HQ and branch contacts.*
-
-| Step | What to do | What you should see |
-| --- | --- | --- |
-| 1 | Ask chatbot to create SO for a customer with multiple branches. | Chatbot selects correct branch or asks which branch. |
-| 2 | Confirm branch. | SO draft stores correct branch/contact/address. |
-| 3 | Gareth verifies in setup sandbox and setup sandbox if synced. | Branch mapping remains correct after sync. |
-
-**Gareth run-through result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Tested by:**  
-**Date:**  
-**Fixguru notes:**
-
----
-
 #### Test 1.13 - Language Preference And Ambiguity Handling
 
 *This confirms chatbot uses the user's response language preference and asks clarification when intent is unclear.*
@@ -534,21 +449,22 @@ source_refs:
 
 ---
 
-### 2. AutoCount Sync Retest
+### 2. Sales Order / Proforma / AutoCount Sync
 
 *Who tests this section: Gareth first, then Fixguru testers if they have sandbox access.*
 
 ---
 
-#### Test 2.1 - Customer And Item Master Sync Uses External IDs
+#### Test 2.2 - Credit Limit Block on SO Submission
 
-*This confirms MAIA stores and displays AutoCount external customer/item IDs after sync.*
+*This brings back the previous SO credit-limit block test and connects it with chatbot credit exposure.*
 
 | Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Sync or inspect seeded customer and item from setup sandbox. | MAIA has external customer/item ID mapping. |
-| 2 | Ask chatbot to search item/customer by external code and name. | Chatbot finds the correct record. |
-| 3 | Ask chatbot to show item details. | Output includes external SKU + brand + item name, not MAIA internal ID. |
+| 1 | Use a customer with known credit limit / exposure in setup sandbox. | Credit data is available before testing. |
+| 2 | Ask chatbot to create an SO that would exceed the available credit balance. | Chatbot warns/blocks according to configured policy. |
+| 3 | If an SO draft is created, try to submit it. | Submission is blocked or routed according to credit policy. |
+| 4 | Record message shown to user. | Message is understandable and explains credit limit/exposure reason. |
 
 **Gareth run-through result:**
 - [ ] Pass
@@ -570,15 +486,19 @@ source_refs:
 
 ---
 
-#### Test 2.2 - MAIA-Created Item Pushes To AutoCount And Stores Assigned Code
+#### Test 2.3 - Submitted Doctype Sync: QTN, SO/PI, SI, DN, CN, Item, Customer 2-Way Sync
 
-*This retests item code override rule: if MAIA creates item with a code that AutoCount changes, MAIA must store the AutoCount assigned code.*
+*This is the main submitted-doctype sync test for setup sandbox. Test only submitted/confirmed records, not draft-only records.*
 
-| Step | What to do | What you should see |
+| Doctype | What to test | What you should see |
 | --- | --- | --- |
-| 1 | Create or trigger test item push from setup sandbox to setup sandbox. | AutoCount creates item and returns assigned item code. |
-| 2 | Inspect setup sandbox item mapping. | AutoCount assigned code is stored. |
-| 3 | Ask chatbot to search/display the item. | Chatbot uses AutoCount assigned code, not stale MAIA-entered code. |
+| QTN | Submit/confirm a quotation created from chatbot or setup sandbox. | Submitted QTN is synced / represented correctly in setup sandbox integration. |
+| SO / PI | Submit/confirm SO and check proforma path. | SO/PI keeps correct customer, branch, item lines, discounts, FOC, delivery SKU, and external doc ID. |
+| SI | Submit invoice from the flow. | SI sync has correct customer, items, totals, tax, and external reference. |
+| DN | Submit delivery note. | DN sync has correct customer, item, qty, warehouse/delivery data where applicable. |
+| CN | Submit credit note linked to invoice. | CN sync keeps correct original invoice reference and credited amount/items. |
+| Item | Create/update item and sync both ways where supported. | Item external SKU/code mapping is correct and chatbot shows AutoCount-facing code. |
+| Customer | Create/update customer and sync both ways where supported. | Customer external ID, branch/contact, and address mapping remain correct. |
 
 **Gareth run-through result:**
 - [ ] Pass
@@ -600,108 +520,18 @@ source_refs:
 
 ---
 
-#### Test 2.3 - SO Draft Final Confirmation Syncs In Setup Sandbox
+#### Test 2.4 - PDF Handoff: QTN, SO/PI, SI, DN, CN, Payment Receipt
 
-*This confirms chatbot-created SO stays draft until final confirmation, then syncs to setup sandbox only.*
+*This checks that the generated / handed-off PDF for each business document is usable for Fixguru's workflow.*
 
-| Step | What to do | What you should see |
+| Document | What to test | What you should see |
 | --- | --- | --- |
-| 1 | Use chatbot to create SO draft. | SO remains draft in setup sandbox. |
-| 2 | Edit draft using chatbot. | Same SO reference updates. |
-| 3 | Tell chatbot: "Confirm this SO and sync in setup sandbox." | SO is finalized according to configured flow and sync starts. |
-| 4 | Check the setup sandbox. | Matching SO appears in setup sandbox only. |
-| 5 | Check the setup sandbox. | AutoCount external doc ID is stored and visible where required. |
-
-**Gareth run-through result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Tested by:**  
-**Date:**  
-**Fixguru notes:**
-
----
-
-#### Test 2.4 - AutoCount Pro-Forma / PDF Handoff
-
-*This confirms Fixguru can use setup sandbox output as pro-forma after MAIA chatbot SO flow.*
-
-| Step | What to do | What you should see |
-| --- | --- | --- |
-| 1 | Continue from Test 2.3. | Synced SO exists in setup sandbox. |
-| 2 | Generate or inspect AutoCount pro-forma/PDF output if available. | Output reflects expected Fixguru-facing format/data. |
-| 3 | Compare against chatbot SO summary. | Customer, branch, item lines, discounts, FOC, and delivery item match. |
-
-**Gareth run-through result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Tested by:**  
-**Date:**  
-**Fixguru notes:**
-
----
-
-#### Test 2.5 - Invoice / Standalone Invoice Sync To setup sandbox
-
-*This confirms setup sandbox invoice sync behavior after cutoff, including standalone invoices from migration/testing period.*
-
-| Step | What to do | What you should see |
-| --- | --- | --- |
-| 1 | Confirm cutoff date used in sandbox config. | Cutoff is documented in notes. |
-| 2 | Create or inspect post-cutoff setup sandbox invoice. | Invoice is eligible for sync. |
-| 3 | Trigger or wait for sync in setup sandbox. | MAIA receives invoice with correct customer, item, amount, and external ID. |
-| 4 | Check pre-cutoff control document. | It does not sync unexpectedly. |
-
-**Gareth run-through result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
-
-**Tested by:**  
-**Date:**  
-**Fixguru notes:**
-
----
-
-#### Test 2.6 - Stock Snapshot / Daily Reconciliation
-
-*This confirms setup sandbox stock snapshot can update setup sandbox stock used by chatbot.*
-
-| Step | What to do | What you should see |
-| --- | --- | --- |
-| 1 | Confirm stock value in setup sandbox for test item. | Source stock is known. |
-| 2 | Run or wait for stock sync. | setup sandbox stock updates. |
-| 3 | Ask chatbot for item availability. | Chatbot returns stock based on setup sandbox sync, not stale value. |
+| QTN | Generate/check quotation PDF handoff. | Customer, item code, item name, qty, price, discount, and totals match the document. |
+| SO / PI | Generate/check SO or proforma PDF handoff. | Format/data is usable as Fixguru proforma; customer, branch, items, discounts, FOC, delivery SKU match. |
+| SI | Generate/check sales invoice PDF handoff. | Invoice PDF matches submitted SI and sync data. |
+| DN | Generate/check delivery note PDF handoff. | DN PDF has correct customer, delivery details, item qty, and any scoped warehouse/shelf details. |
+| CN | Generate/check credit note PDF handoff. | CN PDF references original invoice and shows credited amount/items correctly. |
+| Payment Receipt | Generate/check payment receipt PDF handoff. | Receipt PDF matches payment amount, customer, invoice reference, and receipt date. |
 
 **Gareth run-through result:**
 - [ ] Pass
@@ -754,15 +584,249 @@ source_refs:
 
 ---
 
-#### Test 2.8 - HQ + Branch Contact Sync
+### 3. Delivery
 
-*This confirms AutoCount sync contact sync supports HQ and branch selection in chatbot SO flow.*
+*Who tests this section: Gareth first, then Fixguru testers.*
+
+---
+
+#### Test 3.1 - Create Delivery Order and Mark as Delivered
 
 | Step | What to do | What you should see |
 | --- | --- | --- |
-| 1 | Inspect seeded HQ + branch customer in setup sandbox. | Branch/contact data exists. |
-| 2 | Create SO by chatbot for branch-specific customer/address. | Chatbot asks clarification if needed and saves correct branch. |
-| 3 | Sync to setup sandbox. | setup sandbox document uses correct branch/contact mapping. |
+| 1 | Continue from a submitted SO with deliverable items. | SO is available for delivery flow. |
+| 2 | Create Delivery Note / Delivery Order in setup sandbox. | DN is created with correct customer, branch/address, item, qty, and delivery details. |
+| 3 | Submit or mark delivered according to current flow. | Delivery status updates correctly and is visible in setup sandbox. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 3.3 - Delivery Delay Reminder
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Use an order/delivery that meets the delay reminder condition. | Test data is eligible for reminder. |
+| 2 | Ask chatbot or check reminder trigger. | Reminder appears or chatbot explains delayed delivery status. |
+| 3 | Confirm reminder content. | Reminder references correct customer, document, delivery date/status, and next action. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 3.4 - Stock Alerts - Out of Stock and Low Stock
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Ask chatbot to add an out-of-stock item to QTN/SO. | Chatbot warns that item is out of stock. |
+| 2 | Ask chatbot to add a low-stock item to QTN/SO. | Chatbot warns that stock is low and shows available qty where supported. |
+| 3 | Cross-check stock in setup sandbox. | Chatbot stock warning matches setup sandbox stock data. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+### 6. Access And Role Permission Checks
+
+*These are selected from the earlier UAT form. Run only the role checks below.*
+
+---
+
+#### Test 6.2 - Sales Access Check
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Log in / act as Sales User in setup sandbox. | Sales user can access sales workflows needed for QTN/SO creation. |
+| 2 | Try to create/edit QTN or SO draft. | User can create/edit draft where permitted. |
+| 3 | Try a restricted submit/management action if applicable. | Restricted action is blocked or unavailable. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 6.3 - Warehousing Access Check
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Log in / act as Warehousing user in setup sandbox. | User can access delivery / warehouse workflows assigned to warehousing. |
+| 2 | Try to create or process delivery-related records. | Permitted delivery actions are available. |
+| 3 | Try a restricted finance/admin action. | Restricted action is blocked or unavailable. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 6.4 - Finance Manager Access Check
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Log in / act as Finance Manager in setup sandbox. | User can access invoice, receipt/payment, credit note, and finance workflows. |
+| 2 | Try to submit finance documents where permitted. | Submit action is available for finance manager scope. |
+| 3 | Check restricted sales/warehouse/admin-only actions. | Restricted actions are blocked or unavailable. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 6.5 - Finance Assistant Access Check
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Log in / act as Finance Assistant in setup sandbox. | User can access assigned finance records. |
+| 2 | Try to create/edit finance records where permitted. | Permitted create/edit actions work. |
+| 3 | Try to submit a restricted finance document if applicable. | Restricted submit action is blocked or unavailable. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 6.6 - Admin Access Check
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Log in / act as Admin in setup sandbox. | Admin can access required sales, delivery, finance, and configuration workflows for UAT. |
+| 2 | Try to submit documents that Admin should own in Fixguru flow. | Submit actions are available where expected. |
+| 3 | Confirm no unexpected restriction blocks the UAT flow. | Admin can complete the expected end-to-end workflow. |
+
+**Gareth run-through result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Fixguru retest result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 6.7 - Role Approval Flow
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Trigger a workflow that requires role-based approval or higher-role action. | System routes/blocks according to role permission rules. |
+| 2 | Approver/Admin completes the action where configured. | Approval or override is recorded and document proceeds. |
+| 3 | Check audit/status trail. | Status, owner/action, and document state are clear. |
 
 **Gareth run-through result:**
 - [ ] Pass
@@ -789,27 +853,29 @@ source_refs:
 | Test ID | What was tested | Mode | Gareth result | Fixguru result | Final status | Blocker owner | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | SETUP-01 to SETUP-07 | Sandbox readiness | setup sandbox |  |  |  |  |  |
-| 1.1 | Create SO draft / external SKU | Chatbot |  |  |  |  |  |
-| 1.2 | Edit same draft | Chatbot |  |  |  |  |  |
+| 1.1 | Create QTN/SO by chatbot / external SKU | Chatbot |  |  |  |  |  |
+| 1.2.1 | RSC calculator full flow | Web App |  |  |  |  |  |
+| 1.2.2 | Diecut calculator full flow | Web App |  |  |  |  |  |
 | 1.3 | Historical pricing lookup | Chatbot |  |  |  |  |  |
 | 1.4 | Apply historical price / discount | Chatbot |  |  |  |  |  |
 | 1.5 | Minimum price guardrail | Chatbot |  |  |  |  |  |
 | 1.6 | FOC item | Chatbot + setup sandbox |  |  |  |  |  |
-| 1.7 | UOM split | Chatbot |  |  |  |  |  |
-| 1.8 | Shelf / item attributes | Chatbot |  |  |  |  |  |
-| 1.9 | Two-warehouse handling | Chatbot |  |  |  |  |  |
 | 1.10 | Delivery method as SKU | Chatbot + setup sandbox |  |  |  |  |  |
 | 1.11 | Credit exposure chatbot | Chatbot + setup sandbox |  |  |  |  |  |
-| 1.12 | HQ + branch contact | Chatbot + setup sandbox |  |  |  |  |  |
 | 1.13 | Language / ambiguity | Chatbot |  |  |  |  |  |
-| 2.1 | External IDs master sync | setup sandbox |  |  |  |  |  |
-| 2.2 | MAIA item -> AutoCount code override | setup sandbox |  |  |  |  |  |
-| 2.3 | SO sync in setup sandbox | Chatbot + setup sandbox |  |  |  |  |  |
-| 2.4 | AutoCount pro-forma / PDF handoff | AutoCount |  |  |  |  |  |
-| 2.5 | Invoice sync after cutoff | setup sandbox |  |  |  |  |  |
-| 2.6 | Stock snapshot sync | Chatbot + setup sandbox |  |  |  |  |  |
+| 2.2 | Credit limit block on SO submission | Chatbot + setup sandbox |  |  |  |  |  |
+| 2.3 | Submitted doctype sync: QTN, SO/PI, SI, DN, CN, Item, Customer 2-way | setup sandbox |  |  |  |  |  |
+| 2.4 | PDF handoff: QTN, SO/PI, SI, DN, CN, Payment Receipt | setup sandbox |  |  |  |  |  |
 | 2.7 | Credit limit / exposure sync | Chatbot + setup sandbox |  |  |  |  |  |
-| 2.8 | HQ + branch contact sync | Chatbot + setup sandbox |  |  |  |  |  |
+| 3.1 | Create Delivery Order and mark delivered | Chatbot + setup sandbox |  |  |  |  |  |
+| 3.3 | Delivery delay reminder | Chatbot + setup sandbox |  |  |  |  |  |
+| 3.4 | Stock alerts - out of stock / low stock | Chatbot + setup sandbox |  |  |  |  |  |
+| 6.2 | Sales access check | setup sandbox |  |  |  |  |  |
+| 6.3 | Warehousing access check | setup sandbox |  |  |  |  |  |
+| 6.4 | Finance Manager access check | setup sandbox |  |  |  |  |  |
+| 6.5 | Finance Assistant access check | setup sandbox |  |  |  |  |  |
+| 6.6 | Admin access check | setup sandbox |  |  |  |  |  |
+| 6.7 | Role approval flow | setup sandbox |  |  |  |  |  |
 
 | Pass | Fail | Issue | Deferred |
 | --- | --- | --- | --- |
