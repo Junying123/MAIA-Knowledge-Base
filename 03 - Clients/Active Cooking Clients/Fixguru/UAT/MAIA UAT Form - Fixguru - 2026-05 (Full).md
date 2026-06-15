@@ -50,10 +50,9 @@ source_refs:
 ## How to Use This Document
 
 1. Gareth runs each test first.
-2. For each test, Gareth fills **Gareth run-through result**, **issue notes**, **tested by**, and **date**.
+2. For each test, fill **Result**, **issue notes**, **tested by**, and **date**.
 3. If the test fails, record the exact chatbot wording, document ID, customer, item, AutoCount reference, and expected behavior.
 4. After fixes or clarification, Fixguru repeats the same test case.
-5. Fixguru fills **Fixguru retest result** and notes.
 6. Mark final status only after Fixguru confirms the behavior in sandbox.
 
 **Result options:**
@@ -155,19 +154,13 @@ source_refs:
 | 4 | Ask chatbot for the created SO reference. | Chatbot returns SO draft reference and current status. |
 | 5 | Gareth verifies both documents in setup sandbox. | QTN and SO exist in Draft. Item code shown to user is AutoCount external SKU, not MAIA internal ID. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -186,19 +179,13 @@ source_refs:
 | 3 | Add the calculated SKU/item to the draft document. | Item line is added with calculated price and expected SKU/model details. |
 | 4 | Save the draft document. | Draft retains calculated item, price, qty, and any calculator details required for sync/PDF. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -217,19 +204,13 @@ source_refs:
 | 3 | Add the calculated SKU/item to the draft document. | Item line is added with calculated price and expected SKU/model details. |
 | 4 | Save the draft document. | Draft retains calculated item, price, qty, and any calculator details required for sync/PDF. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -248,19 +229,13 @@ source_refs:
 | 3 | Gareth cross-checks one result in setup sandbox. | Chatbot result matches the historical record. |
 | 4 | Ask a similar prompt with customer/item order reversed. | Chatbot still maps customer and item correctly, or asks clarification if ambiguous. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -279,19 +254,13 @@ source_refs:
 | 3 | Gareth verifies calculation. | Discount % and net unit price are mathematically correct vs current list price. |
 | 4 | Ask chatbot for updated document summary. | Summary shows chosen price/discount on the correct line only. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -309,19 +278,13 @@ source_refs:
 | 2 | Ask chatbot to set the item price below minimum. | Chatbot flags the issue before finalizing. |
 | 3 | Confirm what happens after warning. | Behavior matches configured approval/blocking policy. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -340,19 +303,13 @@ source_refs:
 | 3 | Try final confirmation/submission in sandbox flow. | Zero-price FOC line is not blocked if `is_free_item` is set. |
 | 4 | Verify setup sandbox sync if available. | setup sandbox receives correct FOC representation or known mapped format. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -370,19 +327,13 @@ source_refs:
 | 2 | Confirm adding to draft. | Delivery charge appears as item line in setup sandbox. |
 | 3 | Confirm sync payload if available. | setup sandbox receives delivery charge as item line. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -401,19 +352,13 @@ source_refs:
 | 3 | Ask to create SO that exceeds limit. | Chatbot warns/blocks according to configured policy. |
 | 4 | Gareth cross-checks with setup sandbox snapshot/source data. | Figures match seeded sandbox credit data. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -429,19 +374,13 @@ source_refs:
 | 2 | Send a normal order prompt. | Chatbot replies in the preferred supported language. |
 | 3 | Send an ambiguous prompt with unclear customer/item. | Chatbot asks clarification before creating any document. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -466,19 +405,13 @@ source_refs:
 | 3 | If an SO draft is created, try to submit it. | Submission is blocked or routed according to credit policy. |
 | 4 | Record message shown to user. | Message is understandable and explains credit limit/exposure reason. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -500,19 +433,13 @@ source_refs:
 | Item | Create/update item and sync both ways where supported. | Item external SKU/code mapping is correct and chatbot shows AutoCount-facing code. |
 | Customer | Create/update customer and sync both ways where supported. | Customer external ID, branch/contact, and address mapping remain correct. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -533,19 +460,13 @@ source_refs:
 | CN | Generate/check credit note PDF handoff. | CN PDF references original invoice and shows credited amount/items correctly. |
 | Payment Receipt | Generate/check payment receipt PDF handoff. | Receipt PDF matches payment amount, customer, invoice reference, and receipt date. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -564,19 +485,13 @@ source_refs:
 | 3 | Ask chatbot for customer's credit standing. | Chatbot matches setup sandbox credit data. |
 | 4 | Ask chatbot to create SO that exceeds available balance. | Chatbot warns/blocks according to configured rule. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -598,19 +513,13 @@ source_refs:
 | 2 | Create Delivery Note / Delivery Order in setup sandbox. | DN is created with correct customer, branch/address, item, qty, and delivery details. |
 | 3 | Submit or mark delivered according to current flow. | Delivery status updates correctly and is visible in setup sandbox. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -626,19 +535,13 @@ source_refs:
 | 2 | Ask chatbot or check reminder trigger. | Reminder appears or chatbot explains delayed delivery status. |
 | 3 | Confirm reminder content. | Reminder references correct customer, document, delivery date/status, and next action. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -654,19 +557,13 @@ source_refs:
 | 2 | Ask chatbot to add a low-stock item to QTN/SO. | Chatbot warns that stock is low and shows available qty where supported. |
 | 3 | Cross-check stock in setup sandbox. | Chatbot stock warning matches setup sandbox stock data. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -688,19 +585,13 @@ source_refs:
 | 2 | Try to create/edit QTN or SO draft. | User can create/edit draft where permitted. |
 | 3 | Try a restricted submit/management action if applicable. | Restricted action is blocked or unavailable. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -716,19 +607,13 @@ source_refs:
 | 2 | Try to create or process delivery-related records. | Permitted delivery actions are available. |
 | 3 | Try a restricted finance/admin action. | Restricted action is blocked or unavailable. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -744,19 +629,13 @@ source_refs:
 | 2 | Try to submit finance documents where permitted. | Submit action is available for finance manager scope. |
 | 3 | Check restricted sales/warehouse/admin-only actions. | Restricted actions are blocked or unavailable. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -772,19 +651,13 @@ source_refs:
 | 2 | Try to create/edit finance records where permitted. | Permitted create/edit actions work. |
 | 3 | Try to submit a restricted finance document if applicable. | Restricted submit action is blocked or unavailable. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -800,19 +673,13 @@ source_refs:
 | 2 | Try to submit documents that Admin should own in Fixguru flow. | Submit actions are available where expected. |
 | 3 | Confirm no unexpected restriction blocks the UAT flow. | Admin can complete the expected end-to-end workflow. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -828,19 +695,13 @@ source_refs:
 | 2 | Approver/Admin completes the action where configured. | Approval or override is recorded and document proceeds. |
 | 3 | Check audit/status trail. | Status, owner/action, and document state are clear. |
 
-**Gareth run-through result:**
+**Result:**
 - [ ] Pass
 - [ ] Fail
 - [ ] Issue
 - [ ] Deferred
 
 **Issue notes / observation:**
-
-**Fixguru retest result:**
-- [ ] Pass
-- [ ] Fail
-- [ ] Issue
-- [ ] Deferred
 
 **Tested by:**  
 **Date:**  
@@ -850,32 +711,32 @@ source_refs:
 
 ## Results Summary
 
-| Test ID | What was tested | Mode | Gareth result | Fixguru result | Final status | Blocker owner | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| SETUP-01 to SETUP-07 | Sandbox readiness | setup sandbox |  |  |  |  |  |
-| 1.1 | Create QTN/SO by chatbot / external SKU | Chatbot |  |  |  |  |  |
-| 1.2.1 | RSC calculator full flow | Web App |  |  |  |  |  |
-| 1.2.2 | Diecut calculator full flow | Web App |  |  |  |  |  |
-| 1.3 | Historical pricing lookup | Chatbot |  |  |  |  |  |
-| 1.4 | Apply historical price / discount | Chatbot |  |  |  |  |  |
-| 1.5 | Minimum price guardrail | Chatbot |  |  |  |  |  |
-| 1.6 | FOC item | Chatbot + setup sandbox |  |  |  |  |  |
-| 1.10 | Delivery method as SKU | Chatbot + setup sandbox |  |  |  |  |  |
-| 1.11 | Credit exposure chatbot | Chatbot + setup sandbox |  |  |  |  |  |
-| 1.13 | Language / ambiguity | Chatbot |  |  |  |  |  |
-| 2.2 | Credit limit block on SO submission | Chatbot + setup sandbox |  |  |  |  |  |
-| 2.3 | Submitted doctype sync: QTN, SO/PI, SI, DN, CN, Item, Customer 2-way | setup sandbox |  |  |  |  |  |
-| 2.4 | PDF handoff: QTN, SO/PI, SI, DN, CN, Payment Receipt | setup sandbox |  |  |  |  |  |
-| 2.7 | Credit limit / exposure sync | Chatbot + setup sandbox |  |  |  |  |  |
-| 3.1 | Create Delivery Order and mark delivered | Chatbot + setup sandbox |  |  |  |  |  |
-| 3.3 | Delivery delay reminder | Chatbot + setup sandbox |  |  |  |  |  |
-| 3.4 | Stock alerts - out of stock / low stock | Chatbot + setup sandbox |  |  |  |  |  |
-| 6.2 | Sales access check | setup sandbox |  |  |  |  |  |
-| 6.3 | Warehousing access check | setup sandbox |  |  |  |  |  |
-| 6.4 | Finance Manager access check | setup sandbox |  |  |  |  |  |
-| 6.5 | Finance Assistant access check | setup sandbox |  |  |  |  |  |
-| 6.6 | Admin access check | setup sandbox |  |  |  |  |  |
-| 6.7 | Role approval flow | setup sandbox |  |  |  |  |  |
+| Test ID | What was tested | Mode | Result | Final status | Blocker owner | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| SETUP-01 to SETUP-07 | Sandbox readiness | setup sandbox |  |  |  |
+| 1.1 | Create QTN/SO by chatbot / external SKU | Chatbot |  |  |  |
+| 1.2.1 | RSC calculator full flow | Web App |  |  |  |
+| 1.2.2 | Diecut calculator full flow | Web App |  |  |  |
+| 1.3 | Historical pricing lookup | Chatbot |  |  |  |
+| 1.4 | Apply historical price / discount | Chatbot |  |  |  |
+| 1.5 | Minimum price guardrail | Chatbot |  |  |  |
+| 1.6 | FOC item | Chatbot + setup sandbox |  |  |  |
+| 1.10 | Delivery method as SKU | Chatbot + setup sandbox |  |  |  |
+| 1.11 | Credit exposure chatbot | Chatbot + setup sandbox |  |  |  |
+| 1.13 | Language / ambiguity | Chatbot |  |  |  |
+| 2.2 | Credit limit block on SO submission | Chatbot + setup sandbox |  |  |  |
+| 2.3 | Submitted doctype sync: QTN, SO/PI, SI, DN, CN, Item, Customer 2-way | setup sandbox |  |  |  |
+| 2.4 | PDF handoff: QTN, SO/PI, SI, DN, CN, Payment Receipt | setup sandbox |  |  |  |
+| 2.7 | Credit limit / exposure sync | Chatbot + setup sandbox |  |  |  |
+| 3.1 | Create Delivery Order and mark delivered | Chatbot + setup sandbox |  |  |  |
+| 3.3 | Delivery delay reminder | Chatbot + setup sandbox |  |  |  |
+| 3.4 | Stock alerts - out of stock / low stock | Chatbot + setup sandbox |  |  |  |
+| 6.2 | Sales access check | setup sandbox |  |  |  |
+| 6.3 | Warehousing access check | setup sandbox |  |  |  |
+| 6.4 | Finance Manager access check | setup sandbox |  |  |  |
+| 6.5 | Finance Assistant access check | setup sandbox |  |  |  |
+| 6.6 | Admin access check | setup sandbox |  |  |  |
+| 6.7 | Role approval flow | setup sandbox |  |  |  |
 
 | Pass | Fail | Issue | Deferred |
 | --- | --- | --- | --- |
@@ -886,7 +747,7 @@ source_refs:
 ## Issue Log
 
 | Issue ID | Test ID | Found by | Environment | Document / customer / item | What happened | Expected behavior | Owner | Status | Retest notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  | Gareth / Fixguru | setup sandbox |  |  |  |  |  |  |
 
 ---
