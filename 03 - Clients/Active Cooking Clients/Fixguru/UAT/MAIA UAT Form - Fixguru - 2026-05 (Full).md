@@ -53,7 +53,7 @@ source_refs:
 2. For each test, fill **Result**, **issue notes**, **tested by**, and **date**.
 3. If the test fails, record the exact chatbot wording, document ID, customer, item, AutoCount reference, and expected behavior.
 4. After fixes or clarification, Fixguru repeats the same test case.
-6. Mark final status only after Fixguru confirms the behavior in sandbox.
+5. Mark final status only after Fixguru confirms the behavior in sandbox.
 
 **Result options:**
 - **Pass** - Worked as expected
@@ -125,6 +125,10 @@ source_refs:
 - `3.1 Create Delivery Order and Mark as Delivered [Chatbot + setup sandbox]`
 - `3.3 Delivery Delay Reminder [Chatbot + setup sandbox]`
 - `3.4 Stock Alerts - Out of Stock and Low Stock [Chatbot + setup sandbox]`
+
+#### 4. Invoice And Payment
+- `4.1 Create / Submit Invoice and Generate PDF [Chatbot + setup sandbox]`
+- `4.3 Create Payment Receipt / Record Payment [Chatbot + setup sandbox]`
 
 #### 6. Access And Role Permission Checks
 - `6.2 Sales Access Check [setup sandbox]`
@@ -571,6 +575,58 @@ source_refs:
 
 ---
 
+### 4. Invoice And Payment
+
+*Who tests this section: Gareth first, then Fixguru testers.*
+
+---
+
+#### Test 4.1 - Create / Submit Invoice and Generate PDF
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Continue from a submitted SO / delivered order where invoice creation is allowed. | Source document is ready for invoice creation. |
+| 2 | Ask chatbot to create an invoice, or create the invoice in setup sandbox if chatbot does not support that step yet. | Invoice is created with the correct customer, branch/address, item lines, qty, price, discount, FOC handling, delivery SKU, and totals. |
+| 3 | Submit the invoice according to current role/approval flow. | Invoice status becomes submitted and any AutoCount sync reference is stored where supported. |
+| 4 | Generate/check invoice PDF handoff. | Invoice PDF matches submitted invoice data and uses customer-facing item codes/details. |
+
+**Result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
+#### Test 4.3 - Create Payment Receipt / Record Payment
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Continue from a submitted invoice with outstanding amount. | Invoice is available for payment / receipt. |
+| 2 | Ask chatbot to record payment, or create the payment receipt in setup sandbox if chatbot does not support that step yet. | Payment receipt is created with correct customer, invoice reference, amount, payment date, and payment method where required. |
+| 3 | Submit/save the receipt according to current flow. | Invoice outstanding amount updates correctly and receipt status/reference is visible. |
+| 4 | Generate/check payment receipt PDF handoff. | Receipt PDF matches payment amount, customer, invoice reference, and receipt date. |
+
+**Result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
 ### 6. Access And Role Permission Checks
 
 *These are selected from the earlier UAT form. Run only the role checks below.*
@@ -713,30 +769,32 @@ source_refs:
 
 | Test ID | What was tested | Mode | Result | Final status | Blocker owner | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| SETUP-01 to SETUP-07 | Sandbox readiness | setup sandbox |  |  |  |
-| 1.1 | Create QTN/SO by chatbot / external SKU | Chatbot |  |  |  |
-| 1.2.1 | RSC calculator full flow | Web App |  |  |  |
-| 1.2.2 | Diecut calculator full flow | Web App |  |  |  |
-| 1.3 | Historical pricing lookup | Chatbot |  |  |  |
-| 1.4 | Apply historical price / discount | Chatbot |  |  |  |
-| 1.5 | Minimum price guardrail | Chatbot |  |  |  |
-| 1.6 | FOC item | Chatbot + setup sandbox |  |  |  |
-| 1.10 | Delivery method as SKU | Chatbot + setup sandbox |  |  |  |
-| 1.11 | Credit exposure chatbot | Chatbot + setup sandbox |  |  |  |
-| 1.13 | Language / ambiguity | Chatbot |  |  |  |
-| 2.2 | Credit limit block on SO submission | Chatbot + setup sandbox |  |  |  |
-| 2.3 | Submitted doctype sync: QTN, SO/PI, SI, DN, CN, Item, Customer 2-way | setup sandbox |  |  |  |
-| 2.4 | PDF handoff: QTN, SO/PI, SI, DN, CN, Payment Receipt | setup sandbox |  |  |  |
-| 2.7 | Credit limit / exposure sync | Chatbot + setup sandbox |  |  |  |
-| 3.1 | Create Delivery Order and mark delivered | Chatbot + setup sandbox |  |  |  |
-| 3.3 | Delivery delay reminder | Chatbot + setup sandbox |  |  |  |
-| 3.4 | Stock alerts - out of stock / low stock | Chatbot + setup sandbox |  |  |  |
-| 6.2 | Sales access check | setup sandbox |  |  |  |
-| 6.3 | Warehousing access check | setup sandbox |  |  |  |
-| 6.4 | Finance Manager access check | setup sandbox |  |  |  |
-| 6.5 | Finance Assistant access check | setup sandbox |  |  |  |
-| 6.6 | Admin access check | setup sandbox |  |  |  |
-| 6.7 | Role approval flow | setup sandbox |  |  |  |
+| SETUP-01 to SETUP-07 | Sandbox readiness | setup sandbox |  |  |  |  |
+| 1.1 | Create QTN/SO by chatbot / external SKU | Chatbot |  |  |  |  |
+| 1.2.1 | RSC calculator full flow | Web App |  |  |  |  |
+| 1.2.2 | Diecut calculator full flow | Web App |  |  |  |  |
+| 1.3 | Historical pricing lookup | Chatbot |  |  |  |  |
+| 1.4 | Apply historical price / discount | Chatbot |  |  |  |  |
+| 1.5 | Minimum price guardrail | Chatbot |  |  |  |  |
+| 1.6 | FOC item | Chatbot + setup sandbox |  |  |  |  |
+| 1.10 | Delivery method as SKU | Chatbot + setup sandbox |  |  |  |  |
+| 1.11 | Credit exposure chatbot | Chatbot + setup sandbox |  |  |  |  |
+| 1.13 | Language / ambiguity | Chatbot |  |  |  |  |
+| 2.2 | Credit limit block on SO submission | Chatbot + setup sandbox |  |  |  |  |
+| 2.3 | Submitted doctype sync: QTN, SO/PI, SI, DN, CN, Item, Customer 2-way | setup sandbox |  |  |  |  |
+| 2.4 | PDF handoff: QTN, SO/PI, SI, DN, CN, Payment Receipt | setup sandbox |  |  |  |  |
+| 2.7 | Credit limit / exposure sync | Chatbot + setup sandbox |  |  |  |  |
+| 3.1 | Create Delivery Order and mark delivered | Chatbot + setup sandbox |  |  |  |  |
+| 3.3 | Delivery delay reminder | Chatbot + setup sandbox |  |  |  |  |
+| 3.4 | Stock alerts - out of stock / low stock | Chatbot + setup sandbox |  |  |  |  |
+| 4.1 | Create / submit invoice and generate PDF | Chatbot + setup sandbox |  |  |  |  |
+| 4.3 | Create payment receipt / record payment | Chatbot + setup sandbox |  |  |  |  |
+| 6.2 | Sales access check | setup sandbox |  |  |  |  |
+| 6.3 | Warehousing access check | setup sandbox |  |  |  |  |
+| 6.4 | Finance Manager access check | setup sandbox |  |  |  |  |
+| 6.5 | Finance Assistant access check | setup sandbox |  |  |  |  |
+| 6.6 | Admin access check | setup sandbox |  |  |  |  |
+| 6.7 | Role approval flow | setup sandbox |  |  |  |  |
 
 | Pass | Fail | Issue | Deferred |
 | --- | --- | --- | --- |
