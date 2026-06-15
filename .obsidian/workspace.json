@@ -378,10 +378,14 @@
                   {
                     "id": 130,
                     "name": "zsh 130"
+                  },
+                  {
+                    "id": 131,
+                    "name": "zsh 131"
                   }
                 ],
-                "activeId": 129,
-                "nextId": 131
+                "activeId": 131,
+                "nextId": 132
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -402,7 +406,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 904.5
+    "width": 926.5
   },
   "left-ribbon": {
     "hiddenItems": {
