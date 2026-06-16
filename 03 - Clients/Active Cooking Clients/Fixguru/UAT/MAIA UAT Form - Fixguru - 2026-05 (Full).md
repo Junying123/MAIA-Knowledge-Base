@@ -130,6 +130,9 @@ source_refs:
 - `4.1 Create / Submit Invoice and Generate PDF [Chatbot + setup sandbox]`
 - `4.3 Create Payment Receipt / Record Payment [Chatbot + setup sandbox]`
 
+#### 5. Post-Invoice Adjustment
+- `5.1 Create Credit Note and Debit Note [Chatbot + setup sandbox]`
+
 #### 6. Access And Role Permission Checks
 - `6.2 Sales Access Check [setup sandbox]`
 - `6.3 Warehousing Access Check [setup sandbox]`
@@ -627,6 +630,37 @@ source_refs:
 
 ---
 
+### 5. Post-Invoice Adjustment
+
+*Who tests this section: Gareth first, then Fixguru testers.*
+
+---
+
+#### Test 5.1 - Create Credit Note and Debit Note
+
+| Step | What to do | What you should see |
+| --- | --- | --- |
+| 1 | Continue from a submitted invoice that can be adjusted. | Invoice is available as the source document for adjustment. |
+| 2 | Ask chatbot to create a Credit Note for the invoice, or create it in setup sandbox if chatbot does not support that step yet. | Credit Note is created with correct customer, original invoice reference, credited item/amount, reason, and totals. |
+| 3 | Submit the Credit Note according to current role/approval flow. | Credit Note status becomes submitted and sync/PDF references are available where supported. |
+| 4 | Ask chatbot to create a Debit Note for the invoice/customer, or create it in setup sandbox if chatbot does not support that step yet. | Debit Note is created with correct customer, reference, debit item/amount, reason, and totals. |
+| 5 | Submit the Debit Note according to current role/approval flow. | Debit Note status becomes submitted and sync/PDF references are available where supported. |
+| 6 | Check invoice/customer balance impact. | Credit/debit adjustments affect the related invoice/customer balance correctly. |
+
+**Result:**
+- [ ] Pass
+- [ ] Fail
+- [ ] Issue
+- [ ] Deferred
+
+**Issue notes / observation:**
+
+**Tested by:**  
+**Date:**  
+**Fixguru notes:**
+
+---
+
 ### 6. Access And Role Permission Checks
 
 *These are selected from the earlier UAT form. Run only the role checks below.*
@@ -789,6 +823,7 @@ source_refs:
 | 3.4 | Stock alerts - out of stock / low stock | Chatbot + setup sandbox |  |  |  |  |
 | 4.1 | Create / submit invoice and generate PDF | Chatbot + setup sandbox |  |  |  |  |
 | 4.3 | Create payment receipt / record payment | Chatbot + setup sandbox |  |  |  |  |
+| 5.1 | Create Credit Note and Debit Note | Chatbot + setup sandbox |  |  |  |  |
 | 6.2 | Sales access check | setup sandbox |  |  |  |  |
 | 6.3 | Warehousing access check | setup sandbox |  |  |  |  |
 | 6.4 | Finance Manager access check | setup sandbox |  |  |  |  |
