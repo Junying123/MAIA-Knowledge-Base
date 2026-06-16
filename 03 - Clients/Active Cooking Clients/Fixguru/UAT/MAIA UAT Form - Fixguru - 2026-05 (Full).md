@@ -840,7 +840,7 @@ source_refs:
 ## Issue Log
 
 | Issue ID | Test ID | Found by | Environment | Document / customer / item | What happened | Expected behavior | Owner | Status | Retest notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  | Gareth / Fixguru | setup sandbox |  |  |  |  |  |  |
 
 ---
