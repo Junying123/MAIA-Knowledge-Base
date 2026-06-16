@@ -3,7 +3,7 @@ granola_id: 1a8eb388-bb37-4ec9-8716-140ddae4cb1c
 title: Product Delivery Pre-Lock - Transcript
 type: transcript
 created: 2026-06-15T05:53:59.615Z
-updated: 2026-06-15T09:38:53.668Z
+updated: 2026-06-16T01:46:10.130Z
 attendees: 
   - ivan@mindhive.asia
   - wansin@mindhive.asia
