@@ -18,6 +18,7 @@
     "defaultContexts": "",
     "defaultTags": "",
     "defaultProjects": "",
+    "useParentNoteForTaskCreation": false,
     "useParentNoteAsProject": false,
     "useParentHeaderAsProject": false,
     "inheritParentTaskProperties": false,
@@ -29,6 +30,8 @@
     "defaultScheduledTime": "none",
     "bodyTemplate": "",
     "useBodyTemplate": false,
+    "occurrenceBodyTemplate": "",
+    "useOccurrenceBodyTemplate": false,
     "defaultReminders": []
   },
   "calendarViewSettings": {
@@ -263,7 +266,8 @@
     "excludeCompletedFromExport": false,
     "requireDueDateForExport": false,
     "requireScheduledDateForExport": false,
-    "useICSEndAsDue": false
+    "useICSEndAsDue": false,
+    "recurringEventRelatedNotesMode": "series"
   },
   "savedViews": [],
   "enableNotifications": true,
@@ -335,7 +339,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.10.2",
+  "lastSeenVersion": "4.11.0",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -486,5 +490,6 @@
   "notificationSoundVolume": 50,
   "disableCalendarOnMobile": false,
   "checkForUpdatesOnStartup": true,
-  "lastNotifiedReleaseVersion": "4.11.0"
+  "lastNotifiedReleaseVersion": "4.11.0",
+  "starterNoteCreated": false
 }
