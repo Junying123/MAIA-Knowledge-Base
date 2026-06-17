@@ -352,10 +352,6 @@
                     "name": "zsh 116"
                   },
                   {
-                    "id": 121,
-                    "name": "zsh 121"
-                  },
-                  {
                     "id": 123,
                     "name": "zsh 123"
                   },
@@ -428,8 +424,7 @@
       "tasknotes:Open Kanban board": false,
       "tasknotes:Open Pomodoro timer": false,
       "tasknotes:Open Pomodoro statistics": false,
-      "realclaudian:Open Claudian": false,
-      "agent-client:Open agent client": false
+      "realclaudian:Open Claudian": false
     }
   },
   "active": "2abe2995e1e24dad",

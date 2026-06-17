@@ -485,5 +485,6 @@
   "notificationSoundEnabled": false,
   "notificationSoundVolume": 50,
   "disableCalendarOnMobile": false,
-  "checkForUpdatesOnStartup": true
+  "checkForUpdatesOnStartup": true,
+  "lastNotifiedReleaseVersion": "4.11.0"
 }
