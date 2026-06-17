@@ -1,0 +1,11 @@
+1. Quotation (QT): Create and submit SO using the parent selling bundle only. 
+2. Sales Order (SO): Create from QT, using the parent selling bundle only. 
+3. Delivery Note (DN): Create DN from SO, 
+  1. Add non-selling bundles
+  2. Submit. 
+  3. Mark DN as delivered 
+4. Return Note (RN): Create RN from DN, 
+  1. Explode only the bundles that contain used items 
+  2. Update unused quantities
+  3. Submit. 
+5. Sales Invoice (SI): Create and submit SI from SO, parent selling bundle only. 
