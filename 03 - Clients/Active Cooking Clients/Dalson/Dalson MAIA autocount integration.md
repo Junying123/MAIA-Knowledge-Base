@@ -45,10 +45,10 @@ So we can reach you directly when technical questions come up during integration
 |   |   |
 |---|---|
 |Field|Your response|
-|Full name||
-|Role||
-|Phone / WhatsApp||
-|Email||
+|Full name|Ms Tan|
+|Role|AutoCount Software Support|
+|Phone / WhatsApp|60192392686|
+|Email|easysoftprosolution@gmail.com|
 |Escalation contact (if different)||
 
 ---
@@ -62,7 +62,7 @@ We already know Dalson is on AutoCount version 2.2 (cloud). Please confirm or co
 |---|---|---|
 |Item|Known / Status|Please provide|
 |System name|AutoCount|Confirm|
-|Version / build number|2.2|Please confirm exact build if available|
+|Version / build number|2.2|2.2.90|
 |Hosting type|Cloud (your server)|Confirm URL or access endpoint|
 |Installed modules|Debtor maintenance, inventory, invoicing, e-invoice|Please list all active modules|
 |API documentation|Not yet received|Please share if available|
@@ -101,6 +101,17 @@ Since Dalson's AutoCount is cloud-hosted on your server, we may need remote acce
     
 
 > If the integration is fully API-based and no server-side deployment is needed, this section may not apply — we will confirm once we review the API documentation.
+
+**Access provided:**
+
+| Credential | Value |
+|---|---|
+| UltraViewer ID | 100 763 541 |
+| UltraViewer password | 03935 |
+| AutoCount ID | admin |
+| AutoCount password | admin |
+| Windows ID | MAYA |
+| Windows password | MAYA |
 
 ---
 
