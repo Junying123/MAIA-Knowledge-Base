@@ -15,20 +15,18 @@ client: Macrofood
 
 ## Milestones
 
-| # | Milestone | Target | Status |
+Milestones map to the M0–M5 phases in [[Macrofood Phase 1 Timeline]].
+
+| Phase | Milestone | Target | Status |
 |---|-----------|--------|--------|
-| 1 | Proposal signed | 2026-05-20 | ✅ Done |
-| 2 | Requirements gathering (F2F) | 2026-06-04 | ✅ Done |
-| 3 | Send SQL form to vendor | 2026-06-18 | ✅ Sent |
-| 4 | Client delivers AWS access + OpenAI API key | 2026-06-19 | ⬜ Pending |
-| 5 | MAIA instance deployed (client AWS) | 2026-06-19 → 20 | ⬜ Pending |
-| 6 | Vendor returns API credentials + test DB (critical path) | 2026-06-22 | ⬜ Pending |
-| 7 | Chatbot setup (confirm channel) | 2026-06-22 | ⬜ Pending |
-| 8 | Seed users + customer/item master data | 2026-06-23 | ⬜ Pending |
-| 9 | SQL sync built + verified (SO/DO/Invoice write) | 2026-06-23 → 24 | ⬜ Pending |
-| 10 | Internal test + live dev-fix session | 2026-06-24 | ⬜ Pending |
-| 11 | Stability check + UAT form + training prep | 2026-06-25 | ⬜ Pending |
-| 12 | Client training + on-the-spot UAT + Go-live | 2026-06-26 | ⬜ Pending |
+| — | Proposal signed | 2026-05-20 | ✅ Done |
+| — | Requirements gathering (F2F) | 2026-06-04 | ✅ Done |
+| M0 | Deps + Kickoff — vendor form sent, chase client deps | 2026-06-18 → 19 | 🟡 In progress |
+| M1 | Instance + Chatbot setup (client AWS; Telegram fallback) | 2026-06-19 → 22 | ⬜ Pending |
+| M2 | SQL sync + data seed (vendor credentials → SO/DN write; PDF config) | 2026-06-22 → 24 | ⬜ Pending |
+| M3 | Internal test + live dev-fix session | 2026-06-24 | ⬜ Pending |
+| M4 | Stability + UAT prep (UAT form, training, client brief) | 2026-06-25 | ⬜ Pending |
+| M5 | Training + on-the-spot UAT + Go-live | 2026-06-26 | ⬜ Pending |
 
 ## Open Items
 
