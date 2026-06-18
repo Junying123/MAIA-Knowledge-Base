@@ -29,7 +29,7 @@ If the vendor slips past **Mon 22 Jun**, 26 Jun is at risk — escalate immediat
 
 | # | Milestone | Target | Owner | Depends on | Status |
 |---|-----------|--------|-------|-----------|--------|
-| 0 | Send SQL integration form to vendor (Mr. Chua) + client dependency checklist | Thu 18 Jun (today) | Gareth | — | ⬜ |
+| 0 | Send SQL integration form to vendor (Mr. Chua) | Thu 18 Jun | Gareth | — | ✅ Sent |
 | 1 | Client delivers AWS access + OpenAI API key | Fri 19 Jun | **Macrofood** | #0 | ⬜ |
 | 2 | MAIA instance deployed (on client AWS) | Fri 19–Sat 20 Jun | Dev | #1 | ⬜ |
 | 3 | Vendor returns form + API credentials + test/cloned DB | **Mon 22 Jun (hard target)** | **Vendor** | #0 | ⬜ |
@@ -69,7 +69,7 @@ Phase 1 core flow per [[F2F Requirements Gathering Summary 2026-06-04]]: **confi
 |---|---|---|---|
 | AWS account + grant MAIA access | Macrofood | Instance deploy (#2) | ⬜ |
 | OpenAI account + API key | Macrofood | Chatbot (#4) | ⬜ |
-| SQL API credentials + cloned test DB | Vendor (Mr. Chua) | SQL sync (#6) — critical path | ⬜ |
+| SQL API credentials + cloned test DB | Vendor (Mr. Chua) | SQL sync (#6) — critical path | 🟡 Form sent 18 Jun, awaiting return |
 | **Pick-list workflow finalized** | Macrofood | Core flow (#3, #4) | ⬜ |
 | Customer + item master data scope confirmed | Macrofood | Master seed (#5) | ⬜ |
 | Doc samples (invoice/CN, DO, pick list) | Macrofood | PDF config (#7) | ⬜ |

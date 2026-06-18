@@ -19,7 +19,7 @@ client: Macrofood
 |---|-----------|--------|--------|
 | 1 | Proposal signed | 2026-05-20 | ✅ Done |
 | 2 | Requirements gathering (F2F) | 2026-06-04 | ✅ Done |
-| 3 | Send SQL form to vendor + client dependency checklist | 2026-06-18 | ⬜ Pending |
+| 3 | Send SQL form to vendor | 2026-06-18 | ✅ Sent |
 | 4 | Client delivers AWS access + OpenAI API key | 2026-06-19 | ⬜ Pending |
 | 5 | MAIA instance deployed (client AWS) | 2026-06-19 → 20 | ⬜ Pending |
 | 6 | Vendor returns API credentials + test DB (critical path) | 2026-06-22 | ⬜ Pending |
@@ -32,7 +32,7 @@ client: Macrofood
 
 ## Open Items
 
-- [ ] Send SQL integration form to vendor (Mr. Chua) — **today, critical path**
+- [x] Send SQL integration form to vendor (Mr. Chua) — sent 18 Jun; awaiting credentials + test DB by Mon 22 Jun
 - [ ] Chase client deps: AWS access, OpenAI key, pick-list workflow, doc samples, user list
 - [ ] **Confirm chatbot channel — Telegram vs WhatsApp** (WhatsApp needs Meta + SIM)
 - [ ] Confirm customer/item master data scope
