@@ -200,7 +200,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -388,7 +388,7 @@
                     "name": "zsh 132"
                   }
                 ],
-                "activeId": 130,
+                "activeId": 132,
                 "nextId": 133
               },
               "icon": "terminal",
@@ -441,9 +441,9 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
     "wiki_move_qr.png",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood MAIA SQL integration.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
     "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
     "Granola/Transcripts/2026-06-18/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-18",
@@ -486,7 +486,6 @@
     "slides/getting-started/assets/opencode.svg",
     "slides/getting-started/assets/gemini.svg",
     "slides/getting-started/assets/cloudflare.svg",
-    "slides/getting-started/assets/claude.svg",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "Untitled 2.canvas"
