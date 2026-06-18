@@ -157,40 +157,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Mindhive Daily Standup transcript v2"
-            }
-          },
-          {
-            "id": "f062c21519f97cdd",
-            "type": "leaf",
-            "state": {
-              "type": "tasknotes-release-notes",
-              "state": {},
-              "icon": "book-open",
-              "title": "What's new in TaskNotes 4.11.0"
-            }
-          },
-          {
-            "id": "040d1ccb88d0064c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
                 "mode": "source",
                 "source": false,
@@ -208,9 +174,33 @@
               "icon": "lucide-file",
               "title": "Dalson MAIA autocount integration"
             }
+          },
+          {
+            "id": "040d1ccb88d0064c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Macrofood MAIA SQL integration.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Macrofood MAIA SQL integration"
+            }
           }
         ],
-        "currentTab": 8
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -268,7 +258,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -419,7 +410,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 938.5
+    "width": 789.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -448,12 +439,13 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "785c6f8d67308809",
+  "active": "8f6b2967136f5a09",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood MAIA SQL integration.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
+    "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
     "Granola/Transcripts/2026-06-18/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-18",
-    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood MAIA SQL integration.md",
-    "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
     "03 - Clients/JY_Handle_Clients/setup/Compiled Channel & Infrastructure Setup Guide.md",
     "03 - Clients/JY_Handle_Clients/setup",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Data/customers.csv",
@@ -485,7 +477,6 @@
     "03 - Clients/JY_Handle_Clients/Custom Medz/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
     "03 - Clients/JY_Handle_Clients/Custom Medz/Customer Narrative/Custom Medz Customer Narrative.md",
     "03 - Clients/JY_Handle_Clients/CK Auto/requirements gathering/Breakdown of requirements gathering.md",
-    "03 - Clients/JY_Handle_Clients/CK Auto/Proposal/13 May 2026 - Proposal for CK Auto Parts.md",
     "Pasted image 20260608003523.png",
     "Pasted image 20260608003117.png",
     "Pasted image 20260608002056.png",

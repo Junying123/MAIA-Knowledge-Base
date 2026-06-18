@@ -32,7 +32,6 @@ MAIA will connect to SQL to:
     
 - Push confirmed sales orders and invoices into SQL
     
-- Trigger e-invoice (LHDN) generation via SQL
     
 - Reference pricing and stock data during order creation
     
