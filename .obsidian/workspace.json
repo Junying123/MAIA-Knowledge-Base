@@ -386,10 +386,14 @@
                   {
                     "id": 132,
                     "name": "zsh 132"
+                  },
+                  {
+                    "id": 133,
+                    "name": "zsh 133"
                   }
                 ],
-                "activeId": 130,
-                "nextId": 133
+                "activeId": 133,
+                "nextId": 134
               },
               "icon": "terminal",
               "title": "Terminal"
