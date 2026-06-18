@@ -34,7 +34,7 @@ client: Macrofood
 
 - [x] Send SQL integration form to vendor (Mr. Chua) — sent 18 Jun; awaiting credentials + test DB by Mon 22 Jun
 - [ ] Chase client deps: AWS access, OpenAI key, pick-list workflow, doc samples, user list
-- [ ] **Confirm chatbot channel — Telegram vs WhatsApp** (WhatsApp needs Meta + SIM)
+- [ ] Channel: WhatsApp preferred — **Telegram fallback if WhatsApp not ready by 26 Jun**
 - [ ] Confirm customer/item master data scope
 - [ ] Build Macrofood UAT form (none exists yet)
 - [ ] Confirm PM owner
