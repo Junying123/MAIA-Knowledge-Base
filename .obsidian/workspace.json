@@ -388,7 +388,7 @@
                     "name": "zsh 132"
                   }
                 ],
-                "activeId": 131,
+                "activeId": 132,
                 "nextId": 133
               },
               "icon": "terminal",
@@ -439,7 +439,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status.md.tmp.87276.e53036957697",
