@@ -350,22 +350,6 @@
               "state": {
                 "sessions": [
                   {
-                    "id": 109,
-                    "name": "zsh 109"
-                  },
-                  {
-                    "id": 113,
-                    "name": "zsh 113"
-                  },
-                  {
-                    "id": 116,
-                    "name": "zsh 116"
-                  },
-                  {
-                    "id": 123,
-                    "name": "zsh 123"
-                  },
-                  {
                     "id": 125,
                     "name": "zsh 125"
                   },
@@ -437,7 +421,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "f062c21519f97cdd",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/JY_Handle_Clients/setup/Compiled Channel & Infrastructure Setup Guide.md",
     "03 - Clients/JY_Handle_Clients/setup",
