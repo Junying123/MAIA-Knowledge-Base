@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
+                "file": "Granola/Transcripts/2026-03-16/Get started with Granola-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofood Phase 1 Timeline"
+              "title": "Get started with Granola-transcript"
             }
           },
           {
@@ -442,15 +442,15 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "skills-lock.json",
     "Granola/Transcripts/2026-06-19/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-19",
     "02 - PM Playbook/Daily Updates/Daily Update - 18-06-2026.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macro Frozen SQL Integration.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status.md.tmp.87276.e53036957697",
-    "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md.tmp.87276.dd00c3e58299",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson MAIA autocount integration.md",
     "wiki_move_qr.png",
@@ -466,7 +466,6 @@
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/remixed-779193a7.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Workflow",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/MAIA Chatbot — Compound Multistep Query Examples.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Data",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Context - Ultimax Supply Sdn Bhd.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/V1_Ultimax Core Flow Client Validation Test Cases.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/Ultimax Core Flow Client Validation Test Cases - 2026-05-18.md",
