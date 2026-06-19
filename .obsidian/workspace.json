@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -392,7 +391,7 @@
                     "name": "zsh 133"
                   }
                 ],
-                "activeId": 133,
+                "activeId": 125,
                 "nextId": 134
               },
               "icon": "terminal",
@@ -445,6 +444,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "skills-lock.json",
     "Granola/Transcripts/2026-06-19/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-19",
     "02 - PM Playbook/Daily Updates/Daily Update - 18-06-2026.md",
@@ -481,7 +481,6 @@
     "03 - Clients/JY_Handle_Clients/SCC/Requirements Gathering/[Survey] MAIA Pre-Onboarding Requirements Questionnaire.md",
     "03 - Clients/JY_Handle_Clients/SCC/Requirements Gathering/SCC - Consolidated Follow-up Questionnaire - 2026-05-07.md",
     "03 - Clients/JY_Handle_Clients/SCC/Requirements Gathering/7thMay_SCC Questions.md",
-    "03 - Clients/JY_Handle_Clients/SCC/Narrative/7May26 - Implementation Plan.md",
     "Pasted image 20260608003523.png",
     "Pasted image 20260608003117.png",
     "Pasted image 20260608002056.png",
