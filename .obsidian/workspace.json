@@ -131,24 +131,10 @@
             "id": "628deccba19f635d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Granola/Transcripts/2026-03-16/Get started with Granola-transcript.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Get started with Granola-transcript"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           },
           {
@@ -444,6 +430,7 @@
   },
   "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-03-16/Get started with Granola-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "skills-lock.json",
     "Granola/Transcripts/2026-06-19/Mindhive  Daily Standup-transcript.md",
