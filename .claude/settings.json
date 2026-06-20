@@ -9,6 +9,15 @@
     "playwright@claude-plugins-official": true,
     "andrej-karpathy-skills@karpathy-skills": true,
     "claude-mem@thedotmack": true,
-    "frontend-design@claude-plugins-official": true
+    "frontend-design@claude-plugins-official": true,
+    "agent-skills@addy-agent-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "addy-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/agent-skills"
+      }
+    }
   }
 }
