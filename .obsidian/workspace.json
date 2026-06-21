@@ -377,7 +377,7 @@
                     "name": "zsh 133"
                   }
                 ],
-                "activeId": 125,
+                "activeId": 127,
                 "nextId": 134
               },
               "icon": "terminal",
@@ -428,7 +428,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-03-16/Get started with Granola-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
