@@ -104,11 +104,53 @@ Go-live is gated on two things landing in order:
 
 ---
 
+## M4 — Refresher Training (July — date TBC)
+
+**Who:** PM + Holsen Sales/Logistics users
+**Format:** Refresher session — last training was Training v3 (5 Mar 2026), ~3 months before go-live. Re-orient live users on current flows now that they're on production. Date to be confirmed with Holsen.
+
+### Agenda
+
+1. **Recap since last training (5 Mar)** — what changed, what's now live
+2. **Sales flow** — SO creation via WhatsApp (natural language), duplicate-order prevention, customer-based pricing auto-retrieval
+3. **Approval flow** — SO draft → submit → approve; Amend / Request Clarification actions
+4. **Logistics flow** — DO + Picking List generation, fulfillment method declaration
+5. **SKU attribute cues** — Trading / Manufacturing / Poison / Commodity tags and what each signals
+6. **Daily digests** — unclosed SOs, delivery delays, low/out-of-stock alerts
+7. **Live Q&A** — users raise real issues hit during first weeks of go-live
+8. **Confirm next steps** — flag any post-go-live feature needs (PSO, C1/C3, batch/COA) for backlog
+
+### Prep checklist
+
+- [ ] Confirm refresher date with Holsen (July)
+- [ ] Confirm attendees — Sales, Logistics, Finance, Admin users
+- [ ] Prep training slides (refresh from Training v3 deck)
+- [ ] Demo/training instance ready with sample data
+- [ ] Collect go-live-week pain points to address in session
+
+---
+
+## Commercial — Payment Terms Adjustment
+
+Batch enforcement (Phase A3) delayed as promised → Phase 1 closure payment revised downward.
+
+|                              | Original                                      | Revised                               |
+| ---------------------------- | --------------------------------------------- | ------------------------------------- |
+| Remaining balance at closure | 50%                                           | 30%                                   |
+| Reason                       | Batch/COA/compliance not delivered in Phase 1 | Deferred to later phase per agreement |
+
+> Holsen pays **30%** (not 50%) at Phase 1 sign-off. Remaining balance owed when batch enforcement phase ships.
+
+- [ ] Confirm revised payment terms with Holsen before go-live
+- [ ] Update SOW / commercial record accordingly
+
+---
+
 ## NOT in this go-live scope (post-go-live)
 
 Do not let these creep into 25 Jun:
 - **C3 compliance enforcement** (FR-01 to FR-05) — Phase A3
-- **Advanced batch intake, COA handling, K1 traceability** — Phase A3
+- **Advanced batch intake, COA handling, K1 traceability** — Phase A3 (payment balance held here)
 - A57 tax exemption enforcement
 - SQL/AutoCount direct integration (coming August)
 - Analytics/dashboard FRs (FR-08, FR-09), sticker labels (FR-07), DO bundling (FR-06)
