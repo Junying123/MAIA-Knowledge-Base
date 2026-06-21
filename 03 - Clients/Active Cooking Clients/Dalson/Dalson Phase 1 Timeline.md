@@ -63,12 +63,15 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 **Goal:** Confirm every input that M1 and M2 depend on. Nothing downstream moves until these land.
 
 ### Already Done ✅
-- [x] AWS account set up
+- [x] AWS onboarding setup complete (MAIA config ready)
 - [x] OpenAI API key set up
 - [x] AutoCount vendor identified (Ms Tan — contact details above)
 - [x] UltraViewer + AutoCount admin credentials received
 - [x] **AutoCount integration credentials received** — Azib to proceed with build
 - [x] Telegram confirmed as go-live channel (comms with client)
+
+### Pending — Not Yet Done
+- [ ] **AWS deployment on Dalson's AWS** — pending Wei Yon; gates M1
 
 ### Chase by Mon 23 Jun
 
@@ -85,10 +88,10 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 
 ## M1 — AWS Deploy + Telegram Chatbot (Mon 23 – Wed 25 Jun)
 
-**Who:** Dev
-**Goal:** MAIA instance live; Telegram chatbot connected and responding. MAIA-controlled — runs in parallel with AutoCount vendor chase.
+**Who:** Wei Yon (Dev)
+**Goal:** MAIA instance live on Dalson's AWS; Telegram chatbot connected and responding.
 
-- [ ] Deploy MAIA instance on AWS
+- [ ] **Wei Yon: deploy MAIA instance on Dalson's AWS** — onboarding setup already done; pending deployment
 - [ ] Set up Telegram chatbot — primary go-live channel
 - [ ] Connect chatbot to MAIA instance
 - [ ] Smoke-test basic message flow: send message → MAIA responds
