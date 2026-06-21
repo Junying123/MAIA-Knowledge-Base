@@ -4,6 +4,7 @@ status: draft
 last_reviewed: 2026-06-21
 client: Holsen
 phase: 1
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/ToDUwwlA0iuIBFkkiEElx3JwgRg
 ---
 
 # Holsen Phase 1 — Backward Plan to Go-Live

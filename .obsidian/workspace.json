@@ -364,24 +364,12 @@
               "state": {
                 "sessions": [
                   {
-                    "id": 125,
-                    "name": "zsh 125"
-                  },
-                  {
                     "id": 127,
                     "name": "zsh 127"
                   },
                   {
-                    "id": 129,
-                    "name": "zsh 129"
-                  },
-                  {
                     "id": 130,
                     "name": "zsh 130"
-                  },
-                  {
-                    "id": 131,
-                    "name": "zsh 131"
                   },
                   {
                     "id": 132,
@@ -443,7 +431,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Holsen/Timeline/Holsen Phase 1 Timeline.md",
     "03 - Clients/Active Cooking Clients/Holsen/Timeline/Holsen Phase 1 Closure Backward Plan.md",
