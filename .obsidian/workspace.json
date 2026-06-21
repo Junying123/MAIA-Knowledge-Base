@@ -364,10 +364,6 @@
               "state": {
                 "sessions": [
                   {
-                    "id": 127,
-                    "name": "zsh 127"
-                  },
-                  {
                     "id": 130,
                     "name": "zsh 130"
                   },
@@ -378,10 +374,14 @@
                   {
                     "id": 133,
                     "name": "zsh 133"
+                  },
+                  {
+                    "id": 134,
+                    "name": "zsh 134"
                   }
                 ],
-                "activeId": 127,
-                "nextId": 134
+                "activeId": 134,
+                "nextId": 135
               },
               "icon": "terminal",
               "title": "Terminal"
