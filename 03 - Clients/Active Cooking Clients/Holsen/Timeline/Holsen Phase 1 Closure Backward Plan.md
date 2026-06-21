@@ -18,8 +18,8 @@ phase: 1
 ## Milestone Map
 
 ```
-NOW ── M1 Close UAT + Sign-off ── M2 Client Data Prep + Ingest ── M3 Go-Live
-Sat        Mon                        Tue–Wed                       Thu
+NOW ── M1 Close UAT + Sign-off ── M2 Client Data Prep + Ingest ── M3 Go-Live ── M4 Refresher Training
+Sat        Mon                        Tue–Wed                       Thu          July (date TBC)
 Jun 21     Jun 22                     Jun 23–24                     Jun 25
 ```
 
@@ -28,6 +28,7 @@ Jun 21     Jun 22                     Jun 23–24                     Jun 25
 | M1 Close UAT + Sign-off | Mon 22 Jun | Gareth + Dev + Holsen testers | Clear remaining UAT items live; sign-off |
 | M2 Client Data Prep + Ingest | Tue–Wed 23–24 Jun | Holsen + PM | Client prepares + ingests live master data |
 | M3 Go-Live | Thu 25 Jun | PM + Holsen | Cutover to production; live ops begin |
+| M4 Refresher Training | July (date TBC) | PM + Holsen users | Re-train live users post go-live (last session was 3 months ago) |
 
 ---
 
@@ -48,11 +49,11 @@ Go-live is gated on two things landing in order:
 
 ### Remaining UAT items (run live)
 
-| # | Item | FE | Chatbot | Owner | Status |
-|---|------|----|---------|-------|--------|
-| 1 | [TO FILL — remaining open UAT item] | ☐ | ☐ | [TO FILL] | ⬜ |
-| 2 | [TO FILL] | ☐ | ☐ | [TO FILL] | ⬜ |
-| 3 | [TO FILL] | ☐ | ☐ | [TO FILL] | ⬜ |
+| #   | Item                                | FE  | Chatbot | Owner     | Status |
+| --- | ----------------------------------- | --- | ------- | --------- | ------ |
+| 1   | [TO FILL — remaining open UAT item] | ☐   | ☐       | [TO FILL] | ⬜      |
+| 2   | [TO FILL]                           | ☐   | ☐       | [TO FILL] | ⬜      |
+| 3   | [TO FILL]                           | ☐   | ☐       | [TO FILL] | ⬜      |
 
 > Populate from [[MAIA UAT Form - Holsen - 2026-03]] + [[Holsen SOW Feature Checklist]] — list only items still open as of Jun 21.
 
@@ -61,7 +62,6 @@ Go-live is gated on two things landing in order:
 - [ ] SO creation via WhatsApp (natural language)
 - [ ] Duplicate order prevention (Customer + PO match → blocked)
 - [ ] DO + Picking List generation
-- [ ] UBS CSV export (Invoice / CN / DN)
 - [ ] Role-based approval flow (SO draft → submit → approve)
 
 ### Sign-off
@@ -107,20 +107,10 @@ Go-live is gated on two things landing in order:
 ## NOT in this go-live scope (post-go-live)
 
 Do not let these creep into 25 Jun:
-- **PSO (Poison Signed Order)** compliance — separate phase
-- **C1/C3 compliance enforcement** (FR-01 to FR-05) — Phase A3
+- **C3 compliance enforcement** (FR-01 to FR-05) — Phase A3
 - **Advanced batch intake, COA handling, K1 traceability** — Phase A3
 - A57 tax exemption enforcement
-- SQL/AutoCount direct integration (UBS CSV export remains the go-live path)
+- SQL/AutoCount direct integration (coming August)
 - Analytics/dashboard FRs (FR-08, FR-09), sticker labels (FR-07), DO bundling (FR-06)
 
 ---
-
-## See Also
-
-- [[Holsen Phase 1 Timeline]]
-- [[Onboarding Status]]
-- [[MAIA UAT Form - Holsen - 2026-03]]
-- [[Holsen SOW Feature Checklist]]
-- [[Fixguru 2nd UAT Backward Plan]]
-- [[Macrofood Phase 1 Timeline]]
