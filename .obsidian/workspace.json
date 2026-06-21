@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Holsen/Timeline/Holsen Phase 1 Closure Backward Plan.md",
+                "file": "03 - Clients/Active Cooking Clients/Dalson/Dalson Industrial Supplies Customer Narrative Document.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Holsen Phase 1 Closure Backward Plan"
+              "title": "Dalson Industrial Supplies Customer Narrative Document"
             }
           },
           {
@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -433,9 +432,10 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md",
+    "03 - Clients/Active Cooking Clients/Holsen/Timeline/Holsen Phase 1 Closure Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Industrial Supplies Customer Narrative Document.md",
     "03 - Clients/Active Cooking Clients/Holsen/Timeline/Holsen Phase 1 Timeline.md",
-    "03 - Clients/Active Cooking Clients/Holsen/Timeline/Holsen Phase 1 Closure Backward Plan.md",
     "Granola/Transcripts/2026-03-16/Get started with Granola-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "skills-lock.json",
@@ -469,7 +469,6 @@
     "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/21May26 - Ultimax Core Flow Test Cases Results.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/20May26 - Ultimax Core Flow Test Cases Results.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/18May26 - Ultimax Core Flow Test Cases Results.md",
-    "03 - Clients/JY_Handle_Clients/SJY Sports/SJY Sports MAIA Pre-Onboarding Requirements Questionnaire.md",
     "Pasted image 20260608003523.png",
     "Pasted image 20260608003117.png",
     "Pasted image 20260608002056.png",
