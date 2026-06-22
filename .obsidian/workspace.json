@@ -384,7 +384,7 @@
                     "name": "zsh 135"
                   }
                 ],
-                "activeId": 135,
+                "activeId": 134,
                 "nextId": 136
               },
               "icon": "terminal",
@@ -406,7 +406,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 789.5
+    "width": 798.5
   },
   "left-ribbon": {
     "hiddenItems": {
