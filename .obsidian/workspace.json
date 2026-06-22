@@ -258,7 +258,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -450,7 +451,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Accounts Visibility/high level summary of accts.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
