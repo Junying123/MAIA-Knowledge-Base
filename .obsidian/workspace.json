@@ -378,10 +378,14 @@
                   {
                     "id": 134,
                     "name": "zsh 134"
+                  },
+                  {
+                    "id": 135,
+                    "name": "zsh 135"
                   }
                 ],
-                "activeId": 134,
-                "nextId": 135
+                "activeId": 135,
+                "nextId": 136
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -433,6 +437,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-22/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-06-22",
     "lark-auth-qr.png",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.32973.ac7b34a7d7ca",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Industrial Supplies Customer Narrative Document.md",
@@ -458,7 +464,6 @@
     "03 - Clients/JY_Handle_Clients/setup/Compiled Channel & Infrastructure Setup Guide.md",
     "03 - Clients/JY_Handle_Clients/setup",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Data/customers.csv",
-    "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Data/Ultimax Inventory - Implant & instrument list MAIA (4).csv",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/remixed-779193a7.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/MAIA Chatbot — Compound Multistep Query Examples.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Context - Ultimax Supply Sdn Bhd.md",
@@ -478,7 +483,6 @@
     "slides/getting-started/assets/vercel.svg",
     "slides/getting-started/assets/opencode.svg",
     "slides/getting-started/assets/gemini.svg",
-    "slides/getting-started/assets/cloudflare.svg",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "Untitled 2.canvas"
