@@ -400,7 +400,7 @@
                     "name": "zsh 139"
                   }
                 ],
-                "activeId": 138,
+                "activeId": 139,
                 "nextId": 140
               },
               "icon": "terminal",
@@ -422,7 +422,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 866.5
+    "width": 863.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -453,6 +453,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
+    "03 - Clients/Active Cooking Clients/GST/Timeline",
     "accounts/high level summary of accts.md",
     "accounts",
     "03 - Clients/Active Cooking Clients/GST/Meetings/README.md",
@@ -484,11 +486,9 @@
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/3May26 - Requirement Gathering Meeting.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW DRAFT.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW SIGNED.md",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy/[Guide] Channel & Infrastructure Setup Guide Copy.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/4May26 - Ivan Req Gat Complete notes",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki",
     "lark-auth-qr.png",
     "wiki_move_qr.png",
     "Pasted image 20260608003523.png",
