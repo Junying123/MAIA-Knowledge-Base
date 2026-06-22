@@ -4,6 +4,7 @@ status: draft
 last_reviewed: 2026-06-21
 client: Dalson
 phase: 1
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/WlrVwm24PilISckXZdDl0lyzgde
 ---
 
 # Dalson Phase 1 — Backward Plan to Go-Live
