@@ -386,10 +386,14 @@
                   {
                     "id": 136,
                     "name": "zsh 136"
+                  },
+                  {
+                    "id": 137,
+                    "name": "zsh 137"
                   }
                 ],
-                "activeId": 136,
-                "nextId": 137
+                "activeId": 137,
+                "nextId": 138
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -410,7 +414,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 798.5
+    "width": 817.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -441,6 +445,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Dalson/Meetings",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.32973.86fcae37a7fe",
     "Granola/Transcripts/2026-06-22/Product & Client Planning Q3 and Ahead-transcript.md",
     "Granola/Transcripts/2026-06-22/Mindhive  Daily Standup-transcript.md",
@@ -469,7 +474,6 @@
     "Granola/Transcripts/2026-06-18",
     "03 - Clients/JY_Handle_Clients/setup/Compiled Channel & Infrastructure Setup Guide.md",
     "03 - Clients/JY_Handle_Clients/setup",
-    "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Data/customers.csv",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/remixed-779193a7.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/MAIA Chatbot — Compound Multistep Query Examples.md",
     "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Context - Ultimax Supply Sdn Bhd.md",
