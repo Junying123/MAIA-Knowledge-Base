@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAIA External Cost Breakdown</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --paper: #f9f6f0;
+    --accent: #2d6a4f;
+    --accent-light: #d8f3dc;
+    --accent-mid: #74c69d;
+    --rule: #ddd8ce;
+    --muted: #7a7670;
+    --warn-bg: #fff8e6;
+    --warn-border: #f0c040;
+    --total-bg: #2d6a4f;
+    --total-text: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    padding: 48px 24px 80px;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .doc-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    line-height: 1.15;
+    margin-top: 10px;
+    color: var(--ink);
+  }
+
+  .doc-meta {
+    text-align: right;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .doc-meta strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── Intro ── */
+  .intro {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 48px;
+    font-size: 14.5px;
+    color: #1a3d2b;
+    line-height: 1.7;
+  }
+
+  .intro strong { font-weight: 600; }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 52px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    width: 34px;
+    height: 34px;
+    background: var(--ink);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--ink);
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── Explainer box ── */
+  .explainer {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: white;
+    line-height: 1.65;
+  }
+
+  .explainer strong { color: var(--ink); font-weight: 500; }
+
+  /* ── Cost table ── */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .cost-table thead tr {
+    background: var(--ink);
+    color: white;
+  }
+
+  .cost-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .cost-table thead th:last-child,
+  .cost-table thead th:nth-last-child(2) {
+    text-align: right;
+  }
+
+  .cost-table tbody tr {
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.15s;
+  }
+
+  .cost-table tbody tr:hover { background: #f0ece4; }
+
+  .cost-table tbody td {
+    padding: 13px 16px;
+    vertical-align: top;
+  }
+
+  .cost-table tbody td:last-child,
+  .cost-table tbody td:nth-last-child(2) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .cost-table .row-label {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .cost-table .row-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  .cost-table .subtotal-row td {
+    background: var(--accent-light);
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-mid);
+    font-size: 13.5px;
+  }
+
+  .free-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+  }
+
+  /* ── Total block ── */
+  .grand-total {
+    background: var(--total-bg);
+    color: var(--total-text);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 48px;
+    margin-bottom: 36px;
+  }
+
+  .grand-total-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 6px;
+  }
+
+  .grand-total-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    margin-bottom: 24px;
+    opacity: 0.95;
+  }
+
+  .total-row-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 32px;
+    font-size: 14.5px;
+    align-items: baseline;
+  }
+
+  .total-row-grid .tl { opacity: 0.85; }
+  .total-row-grid .tv {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+
+  .total-divider {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 10px 0;
+  }
+
+  .total-final-label {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .total-final-value {
+    font-size: 22px;
+    font-family: 'DM Serif Display', serif;
+  }
+
+  /* ── Notes ── */
+  .notes-section {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .notes-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .note-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .note-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .note-item strong { color: var(--ink); font-weight: 500; }
+
+  /* ── Warning box ── */
+  .warn-box {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    color: #5a4500;
+    margin-top: 32px;
+    line-height: 1.65;
+  }
+
+  .warn-box strong { font-weight: 600; }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media print {
+    body { padding: 24px; }
+    .cost-table tbody tr:hover { background: none; }
+  }
+
+  @media (max-width: 600px) {
+    .doc-title { font-size: 26px; }
+    .header-meta { flex-direction: column; }
+    .doc-meta { text-align: left; }
+    .grand-total { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-meta">
+      <div>
+        <div class="brand">MAIA by Mindhive</div>
+        <h1 class="doc-title">External Cost<br>Breakdown</h1>
+      </div>
+      <div class="doc-meta">
+        <div><strong>Prepared for</strong><br>Client Company</div>
+        <div style="margin-top:10px"><strong>Prepared by</strong><br>Mindhive Asia</div>
+        <div style="margin-top:10px"><strong>Date</strong><br>May 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro">
+    This document explains the <strong>three external costs</strong> associated with running MAIA for your business. These are third-party provider charges billed directly to your company by Meta, OpenAI, and AWS. They are not charged, marked up, or collected by Mindhive or MAIA. The estimates below use a sample baseline of <strong>600 orders per month</strong> to help you understand the likely monthly budget required. One "order" means one complete order process from intake through to invoice generation.
+  </div>
+
+
+  <!-- ── SECTION 1: WABA ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">WhatsApp Business API (WABA)</div>
+        <div class="section-subtitle">Charged by Meta — pay per message sent outside a conversation window</div>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <strong>How WABA charging works:</strong> When a customer messages your MAIA number first, Meta opens a free 24-hour service window. All replies and messages within that window — including MAIA's responses and document notifications — are <strong>free of charge</strong>. You are only charged when MAIA sends a message to a customer <em>outside</em> that 24-hour window, or sends a marketing message. For businesses where most orders are customer-initiated and processed promptly, the majority of conversations usually fall within the free window.
+    </div>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th style="width:38%">Message Type</th>
+          <th>When It Applies</th>
+          <th>Rate</th>
+          <th>Est. Monthly Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="row-label">Customer-initiated chats</div>
+            <div class="row-desc">Customer messages MAIA first (e.g. sending an order)</div>
+          </td>
+          <td>All inbound orders, enquiries</td>
+          <td style="text-align:right"><span class="free-badge">FREE</span></td>
+          <td>RM 0</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">MAIA replies (within 24h window)</div>
+            <div class="row-desc">Order confirmation, draft review, clarification prompts</div>
+          </td>
+          <td>All standard order flow replies</td>
+          <td style="text-align:right"><span class="free-badge">FREE</span></td>
+          <td>RM 0</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">Utility notifications (outside window)</div>
+            <div class="row-desc">Delivery updates or invoice notifications sent later</div>
+          </td>
+          <td>If sent after 24h window closes</td>
+          <td style="text-align:right">RM 0.06 / msg</td>
+          <td>~RM 90 – 150</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">Marketing messages</div>
+            <div class="row-desc">Promotions, re-engagement — not used in Phase 1</div>
+          </td>
+          <td>Not in Phase 1 scope</td>
+          <td style="text-align:right">RM 0.38 / msg</td>
+          <td>RM 0</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td colspan="3">Estimated WABA cost — sample 600 orders/month baseline</td>
+          <td>RM 90 – 150 / month</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="explainer" style="margin-top:14px; margin-bottom:0">
+      💡 <strong>Practical note:</strong> When most orders arrive via WhatsApp, the customer initiates the conversation and the 24-hour free window applies. Chargeable messages are mainly delivery notifications or follow-ups sent after the window closes. For a 600 orders/month baseline, WABA costs are expected to stay low.
+    </div>
+  </div>
+
+
+  <!-- ── SECTION 2: OpenAI ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">OpenAI — AI Token Usage</div>
+        <div class="section-subtitle">Charged by OpenAI — pay per AI task performed</div>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <strong>What are tokens?</strong> Every time MAIA reads a message, extracts order details, matches SKUs, or prepares a document, it uses AI — and AI usage is measured in "tokens" (think of them as small units of text processed). You purchase a credit balance with OpenAI, and each action deducts a small amount. For reference, one complete order process from WhatsApp message to invoice generation costs approximately <strong>RM 0.16 – RM 0.39</strong> in tokens, depending on complexity.
+    </div>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th style="width:38%">AI Task</th>
+          <th>What It Does</th>
+          <th>Cost Per Order</th>
+          <th>Sample Monthly Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="row-label">Order classification</div>
+            <div class="row-desc">Identifies if message is an order, enquiry, or other</div>
+          </td>
+          <td>Runs on every incoming message</td>
+          <td style="text-align:right">~RM 0.001</td>
+          <td>~RM 0.60</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">Header + item extraction</div>
+            <div class="row-desc">Pulls customer name, items, quantities, prices from WhatsApp or PO</div>
+          </td>
+          <td>Core order reading step</td>
+          <td style="text-align:right">~RM 0.10</td>
+          <td>~RM 60</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">SKU matching &amp; confirmation</div>
+            <div class="row-desc">Searches your product list to match customer descriptions to your SKU codes</div>
+          </td>
+          <td>Runs per line item (~5 per order)</td>
+          <td style="text-align:right">~RM 0.07</td>
+          <td>~RM 42</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">Sales Order + DO + Invoice creation</div>
+            <div class="row-desc">Prepares and confirms all three documents through MAIA</div>
+          </td>
+          <td>3 steps per completed order</td>
+          <td style="text-align:right">~RM 0.01</td>
+          <td>~RM 6</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td colspan="3">Estimated OpenAI token cost — sample 600 orders/month baseline</td>
+          <td>RM 100 – 150 / month</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="explainer" style="margin-top:14px; margin-bottom:0">
+      💡 <strong>How to top up:</strong> You create an OpenAI account and add a credit balance (e.g. USD $30–50 to start). OpenAI deducts usage from this balance as MAIA processes messages, orders, and documents. Mindhive can provide a step-by-step setup guide so your team can create and manage the account directly.
+    </div>
+  </div>
+
+
+  <!-- ── SECTION 3: AWS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">AWS — Server &amp; Data Hosting</div>
+        <div class="section-subtitle">Charged by Amazon Web Services — your data lives here</div>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <strong>What is AWS for?</strong> Amazon Web Services (AWS) is where MAIA's data is hosted — your orders, documents, customer records, and inventory data are all stored and processed here. It also handles the connection between MAIA and your SQL Accounting system. Think of it as the secure server room that keeps MAIA running. The cost is shared across all infrastructure components that support your account.
+    </div>
+
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th style="width:38%">AWS Component</th>
+          <th>What It Does</th>
+          <th colspan="2">Monthly Cost (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="row-label">Chatbot &amp; Middleware Server</div>
+            <div class="row-desc">Runs MAIA's WhatsApp processing and SQL sync logic</div>
+          </td>
+          <td>EC2 t4g.medium instance</td>
+          <td style="text-align:right" colspan="2">USD 27.89</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">ERP / Backend Server</div>
+            <div class="row-desc">Hosts the MAIA backend workspace and order management layer</div>
+          </td>
+          <td>EC2 t4g.medium instance</td>
+          <td style="text-align:right" colspan="2">USD 13.58</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">Database — Orders &amp; Accounting</div>
+            <div class="row-desc">Stores all order, invoice, and SQL-synced data securely</div>
+          </td>
+          <td>RDS MySQL + PostgreSQL</td>
+          <td style="text-align:right" colspan="2">USD 50.00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">Cache &amp; Performance Layer</div>
+            <div class="row-desc">Speeds up responses and real-time data queries</div>
+          </td>
+          <td>ElastiCache Redis</td>
+          <td style="text-align:right" colspan="2">USD 25.48</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="row-label">Serverless Functions</div>
+            <div class="row-desc">Handles automated triggers and event-based tasks</div>
+          </td>
+          <td>AWS Lambda</td>
+          <td style="text-align:right" colspan="2">USD 1.50</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td colspan="3">Estimated AWS Server Hosting — sample 600 orders/month baseline</td>
+          <td>~ RM 650 / month</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="explainer" style="margin-top:14px; margin-bottom:0">
+      💡 <strong>Important context:</strong> This is <strong>your own dedicated AWS account</strong> — all data and infrastructure belongs entirely to your company. AWS bills your company directly for the resources used. Mindhive can assist with the technical configuration inside your account, but the AWS account, billing method, and provider invoices remain under your company's control.
+    </div>
+  </div>
+
+
+  <!-- ── Grand Total ── -->
+  <div class="grand-total">
+    <div class="grand-total-label">Summary</div>
+    <div class="grand-total-title">Estimated Total External Costs — Sample 600 Orders / Month</div>
+
+    <div class="total-row-grid">
+      <div class="tl">① WhatsApp Business API (WABA)</div>
+      <div class="tv">RM 90 – 150 / month</div>
+
+      <div class="tl">② OpenAI Token Usage</div>
+      <div class="tv">RM 100 – 150 / month</div>
+
+      <div class="tl">③ AWS Server Hosting</div>
+      <div class="tv">~ RM 650 / month</div>
+
+      <div class="total-divider"></div>
+
+      <div class="tl total-final-label">Estimated Total External Costs</div>
+      <div class="tv total-final-value">RM 840 – 950 / month</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    ⚠️ <strong>Please note:</strong> These are <em>estimates</em> based on a sample 600 orders/month baseline and typical usage patterns. Actual costs may vary depending on order complexity, message volume, and whether notifications are sent outside the 24-hour WhatsApp window. OpenAI token costs in particular scale with usage — more orders or more complex messages will cost more. Your first 1–2 months of provider bills will establish the actual monthly baseline.
+  </div>
+
+  <!-- ── Notes ── -->
+  <div class="notes-section">
+    <div class="notes-title">Additional Notes</div>
+
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div><strong>These are external third-party provider costs only.</strong> They should be budgeted separately from any Mindhive service fees because they are billed directly by Meta, OpenAI, and AWS to your company.</div>
+    </div>
+
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div><strong>All three accounts are registered in your company's name,</strong> billed directly to your credit card. Mindhive does not mark up or resell these services — you pay the third-party providers directly at their published rates.</div>
+    </div>
+
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div><strong>WABA charges are in MYR</strong> via Meta Business payment methods. <strong>OpenAI and AWS charges are in USD</strong> — a company credit card with international payment capability is required for both.</div>
+    </div>
+
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div><strong>Mindhive can provide step-by-step setup guides and videos</strong> for OpenAI and AWS account creation. Your company remains the account owner and pays the providers directly.</div>
+    </div>
+
+    <div class="note-item">
+      <div class="note-dot"></div>
+      <div><strong>AWS costs are based on the sample usage profile of 600 orders/month.</strong> If your data volume or usage grows significantly, server costs may need to be reviewed and adjusted accordingly.</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>MAIA by Mindhive Asia &nbsp;·&nbsp; Confidential client-facing estimate</div>
+    <div>May 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+30/04/2026, 10:53 - Natalie @mindhive created group "Mindhive <> Ladang YS (MAIA Lite)"
+19/05/2026, 13:14 - Natalie @mindhive: Done! Thank you Mei 🙏🏻 
+I’ve emailed the invoice. I’ve also added my colleague Brendan here @⁨Brendan@mindhive⁩ <This message was edited>
+19/05/2026, 13:16 - +60 16-238 9378: @⁨+60 12-685 4377⁩ @⁨~Safi Huwairah⁩  we are implementing ai function. mindhive team will request some infomation. pls assist. tq
+19/05/2026, 13:16 - +60 16-238 9378: <Media omitted>
+19/05/2026, 13:23 - +60 16-238 9378: <Media omitted>
+19/05/2026, 13:24 - +60 16-238 9378: @⁨+60 12-685 4377⁩  help me settle payment tq
+19/05/2026, 16:49 - +60 12-685 4377: Hi, this Maia will help company issue OR auto?
+20/05/2026, 09:44 - Natalie @mindhive: Hi Karen, do you mind sharing a bit more about what you mean by OR?
+20/05/2026, 09:45 - +60 12-685 4377: received payment from customer thru online, will help company issue Official Receipt ?
+20/05/2026, 09:45 - +60 12-685 4377: <Media omitted>
+20/05/2026, 09:46 - +60 12-685 4377: now we have issue where payment received but dunno from which customer
+20/05/2026, 09:50 - Johnson Goh@Mindhive: right now does the customer share payment proof to salespeople?
+20/05/2026, 09:50 - Johnson Goh@Mindhive: because not always the buyer name and the bank account name is the same
+20/05/2026, 09:50 - Johnson Goh@Mindhive: if it is the same, then possible for us to match
+20/05/2026, 09:51 - +60 12-685 4377: sometimes customer NOT share payment proof to salespeople, finance issue OR base on daily inflow transaction show at bank statement
+20/05/2026, 09:53 - +60 12-685 4377: credit term may be yes, cash term maybe no
+20/05/2026, 09:54 - +60 12-685 4377: SQL Accounting access or vendor coordination - wat i need to furnish for this part
+20/05/2026, 10:04 - Johnson Goh@Mindhive: so for the current setup.. this is not within the scope of our project yet ya.. but this can be a custom module that we can build later. 
+
+basically how i think the system can work is:
+1. ingest bank account
+2. ⁠match against MAIA sales order listing
+3. auto-⁠match those transactions that can match by transferer name and amount and/or has payment slip 
+4. highlight transaction that can match amount, but payer don’t match (highlight yellow so finance team can action)
+5. ⁠highlight transactions that are totally don’t match (highlight red for finance team action)
+6. ⁠Finalize
+7. ⁠Once finalize by finance team, then can auto send OR to salespeople to send out to customers in batches.
+20/05/2026, 10:04 - Johnson Goh@Mindhive: @⁨Natalie @mindhive⁩ take note of this for future discussions
+20/05/2026, 10:05 - Natalie @mindhive: Got it 👌🏼
+20/05/2026, 14:28 - +60 12-685 4377: SQL Accounting access or vendor coordination - wat i need to furnish for this part ? @⁨Johnson Goh@Mindhive⁩ @⁨Natalie @mindhive⁩
+20/05/2026, 14:54 - Johnson Goh@Mindhive: @⁨Brendan@mindhive⁩ can guide Karen pls
+20/05/2026, 16:44 - +60 12-685 4377: <Media omitted>
+20/05/2026, 16:54 - Natalie @mindhive: Thank you! My colleague Brendan @⁨Brendan@mindhive⁩ will be scheduling a time to proceed with the next step
+20/05/2026, 16:58 - Brendan@mindhive: Hey @⁨+60 12-685 4377⁩, nice to meet you. Brendan here
+
+For this part, we would require the contact details of your SQL vendor (phone number and/or email address). This is so our team can communicate directly with them regarding the integration part of MAIA, where orders will flow into your SQL system.
+20/05/2026, 17:06 - +60 12-685 4377: wisoftsolution@gmail.com
+20/05/2026, 17:06 - +60 12-685 4377: Mr Chng SQL .vcf (file attached)
+20/05/2026, 17:07 - +60 12-685 4377: Mr Chng is our my SQL agent
+20/05/2026, 17:39 - Brendan@mindhive added you
+20/05/2026, 17:39 - Brendan@mindhive: 
+20/05/2026, 17:39 - Brendan@mindhive: 
+20/05/2026, 17:45 - Brendan@mindhive: Thanks for sending over the contact details 😊
+
+Allow my team some time to prepare a questionnaire for you to fill up before our kickoff meeting.
+
+In the meantime, I would also like to schedule the kickoff meeting. Below are the available time slots for next week:
+
+Monday, 25 May 2026
+- 11:00 AM – 1:00 PM
+
+Tuesday, 26 May 2026
+- 2:00 PM – 4:00 PM
+
+Agenda for the Kickoff Meeting
+> Questionnaire walkthrough
+> MAIA setup discussion
+
+Do let me know which time slot works best for your team, and I’ll arrange it accordingly. Thanks!
+20/05/2026, 17:46 - +60 16-238 9378: physical?
+20/05/2026, 17:49 - Brendan@mindhive: Yeap, this will be a Physical meeting
+20/05/2026, 17:50 - +60 16-238 9378: monday in kemuning
+20/05/2026, 17:59 - Brendan@mindhive: Noted, Could I have the email addresses of the people involved in the meeting? I’ll send out the calendar invites accordingly. Thank you
+20/05/2026, 18:05 - +60 12-685 4377: Karen: karentow@amverton.com
+Chloe : chloeng@amverton.com
+Cheong: mscheong@amverton.com
+20/05/2026, 18:06 - Brendan@mindhive: Thank you
+20/05/2026, 18:06 - +60 12-685 4377: Sales team
+Safi : lyshalal00@gmail.com
+20/05/2026, 18:07 - +60 12-685 4377: we from finance
+20/05/2026, 18:08 - +60 12-685 4377: Boss (Ms Mei) email : careyspremiumcoconuts@gmail.com
+20/05/2026, 18:10 - +60 12-685 4377: Hi, reschedule to Tuesday as PIC not working on Monday
+20/05/2026, 18:12 - Brendan@mindhive: Noted will reschedule to 
+Tuesday (26 May 2026) 
+- 2pm - 4pm
+20/05/2026, 18:13 - +60 12-685 4377: @⁨~Mei⁩
+20/05/2026, 18:13 - +60 16-238 9378: ok go ahead
+21/05/2026, 15:12 - +60 12-685 4377: morning, currently our team link with ai can use this 
+https://wiki.sql.com.my/wiki/Restful_API
+21/05/2026, 16:58 - Brendan@mindhive: Hey all,
+
+Below is the prepared questionnaire that will need to be filled up prior to our Kickoff Meeting on *Tuesday (26 May 2026)*.
+
+You may drag and drop files directly into the document where required. For any questions that you are unsure about, feel free to leave the answer as “Unsure” or “To Discuss”, and we can go through them together during the meeting.
+
+https://eg69120xnei.sg.larksuite.com/wiki/LBLXwzptzi78lykvhL3lKwJ5gyf?from=from_copylink
+
+Thank you, and do get back to us once you’re done filling it up 😊
+26/05/2026, 10:18 - +60 16-238 9378: pls set up hq meeting room later.
+26/05/2026, 10:19 - +60 16-238 9378: need projector?
+26/05/2026, 10:19 - Brendan@mindhive: Yup we would need a projector
+26/05/2026, 10:19 - +60 10-806 6599: Morning, we have interative whiteboard
+26/05/2026, 10:19 - Brendan@mindhive: Thanks 🙏🏻
+26/05/2026, 12:59 - Brendan@mindhive: <Media omitted>
+26/05/2026, 13:06 - +60 10-806 6599: yes, beside guard house for condo is our office entrance <This message was edited>
+26/05/2026, 13:37 - Brendan@mindhive: <Media omitted>
+26/05/2026, 13:40 - +60 12-685 4377: ok.
+26/05/2026, 14:00 - +60 16-238 9378: where is everyone
+26/05/2026, 14:36 - +60 10-806 6599: <Media omitted>
+26/05/2026, 14:38 - +60 16-238 9378: delivery date : 25--2026
+company : Kedai Makanan Loong Kee Sdn Bhd
+pic :  ah chan
+contact : 03-61001149
+address: No.35, 36&37, Jalan Jati 1, Taman Gohtong Jaya, 69000 Genting Highlands, Pahang 
+qty : 140tc+3@4.6
+26/05/2026, 14:39 - +60 13-634 4590: Shiang Sze Lou 25+3
+26/05/2026, 14:41 - +60 13-634 4590: <Media omitted>
+26/05/2026, 14:41 - +60 13-634 4590: <Media omitted>
+26/05/2026, 14:41 - +60 16-238 9378: 30/5 sin tian kee 745 jelly
+03/06/2026, 18:21 - Jun Yan: Hey all. Sharing two links below for the document samples and setup.
+
+The first link is for gathering sample documents such as price lists, sample POs, and other relevant files. This will help us better understand your actual workflow and document formats. You may drag and drop the files directly into the shared drive linked in the document.  
+
+https://eg69120xnei.sg.larksuite.com/wiki/V16awhum3ijrmbkIHz2ltZYpgub
+
+The second link is the onboarding setup checklist that was brought up during the meeting for the required account and system setup.
+
+https://eg69120xnei.sg.larksuite.com/wiki/ASxNwK2SqigrAykP24GlMyIVgzc
+
+For anything that is unclear or unsure, feel free to let us know and we’ll help clarify. 😊
+08/06/2026, 18:34 - +60 16-238 9378: hi, may i get the latest price
+08/06/2026, 18:39 - Jeremy Chan@MindHive: @⁨Natalie @mindhive⁩ did you send the price breakdown we presented the other day?
+08/06/2026, 19:14 - Natalie @mindhive: sorry missed out let me send it now
+08/06/2026, 19:14 - Natalie @mindhive: <Media omitted>
+08/06/2026, 19:18 - +60 16-238 9378: just make sure no more any hidden cost
+08/06/2026, 19:18 - +60 16-238 9378: i need to budget from my wnd too
+09/06/2026, 22:44 - Natalie @mindhive: Hi Mei, sorry for the late reply. We totally understand. Based on the current scope we’ve discussed, there shouldn’t be any hidden costs from our side.
+
+For budgeting purposes, the current costs are:
+• Monthly subscription: RM1,000/month (up to 600 orders/month)
+• Third-party charges: as per the breakdown shared
+
+If there’s anything you’re unsure about in the cost breakdown, feel free to ask and I’ll clarify.
+10/06/2026, 08:40 - +60 16-238 9378: pls proceed
+21/06/2026, 22:14 - +60 16-238 9378: hi, pls update whats the status ?
+22/06/2026, 09:04 - Jun Yan: To move forward with the integration, we will need the following from Ladang:
+1. Approval for the SQL vendor to prepare a duplicated test database (sandbox environment) containing representative Ladang data.
+2. Confirmation on where the integration middleware will be installed:
+* Existing SQL server; or
+* A separate laptop, mini PC, virtual machine, or server provided by Ladang.
+3. Approval for secure VPN access for Mindhive.
+4. Confirmation that the middleware device will have stable internet access.
+5. Approval for the SQL vendor to create a dedicated SQL integration account.
+
+Once the above items are confirmed, the SQL vendor will need to:
+1. Prepare the test database.
+2. Enable the required SQL SDK/API access.
+3. Provide the relevant documentation, credentials, and connection details.
+4. Assist with VPN, server, firewall, and network configuration.
+5. Create the dedicated SQL integration account.
+
+Mindhive will then proceed with the middleware installation, integration development, testing, and issue resolution once the required environment and access are ready.
+
+Attached the detailed technical requirements document for reference.
+https://eg69120xnei.sg.larksuite.com/wiki/WaEawZDHniEWcjkkVkzlT0xMgih
+22/06/2026, 09:05 - +60 16-238 9378: @⁨+60 12-685 4377⁩  pls assist
