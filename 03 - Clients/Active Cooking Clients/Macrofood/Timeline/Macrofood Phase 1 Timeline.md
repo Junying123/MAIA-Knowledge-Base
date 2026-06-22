@@ -155,6 +155,22 @@ Do not let these creep into 26 Jun:
 
 ---
 
+## Milestone Dates
+
+| # | Milestone | Date |
+|---|---|---|
+| 1 | Signed Date | 2026-05-15 |
+| 2 | Payment Date (50% upfront) | 2026-05-20 |
+| 3 | Kickoff Date | 2026-06-18 |
+| 4 | Requirements Lock Date | 2026-06-04 |
+| 5 | Go-Live Ready Date | 2026-06-25 |
+| 6 | UAT Date | 2026-06-26 |
+| 7 | Go-Live Date | 2026-06-26 |
+| 8 | Training Date | 2026-06-26 |
+| 9 | Customisations Date | 2026-06-24 |
+
+---
+
 ## See Also
 
 - [[Onboarding Status]]

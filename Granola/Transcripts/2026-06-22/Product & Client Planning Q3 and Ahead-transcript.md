@@ -3,7 +3,7 @@ granola_id: 0ae13239-3514-4926-8950-7c456701e678
 title: Product & Client Planning Q3 and Ahead - Transcript
 type: transcript
 created: 2026-06-22T02:37:10.729Z
-updated: 2026-06-22T05:47:29.966Z
+updated: 2026-06-22T06:31:52.656Z
 attendees: 
   - ivan@mindhive.asia
   - lim.junyan@gmail.com

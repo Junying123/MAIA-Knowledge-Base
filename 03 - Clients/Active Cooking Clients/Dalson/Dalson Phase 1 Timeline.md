@@ -257,6 +257,22 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 
 ---
 
+## Milestone Dates
+
+| # | Milestone | Date |
+|---|---|---|
+| 1 | Signed Date | TBC |
+| 2 | Payment Date (30% upfront) | TBC |
+| 3 | Kickoff Date | 2026-06-21 |
+| 4 | Requirements Lock Date | 2026-06-23 |
+| 5 | Go-Live Ready Date | 2026-06-30 |
+| 6 | UAT Date | 2026-07-01 |
+| 7 | Go-Live Date | 2026-07-03 |
+| 8 | Training Date | 2026-07-07 |
+| 9 | Customisations Date | 2026-06-28 |
+
+---
+
 ## See Also
 
 - [[Dalson MAIA autocount integration]]

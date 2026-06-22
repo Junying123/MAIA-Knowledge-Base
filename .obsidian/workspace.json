@@ -393,10 +393,14 @@
                   {
                     "id": 138,
                     "name": "zsh 138"
+                  },
+                  {
+                    "id": 139,
+                    "name": "zsh 139"
                   }
                 ],
-                "activeId": 138,
-                "nextId": 139
+                "activeId": 139,
+                "nextId": 140
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -446,8 +450,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "785c6f8d67308809",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
+    "03 - Clients/Active Cooking Clients/GST/GST Meeting Transcripts.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/GST Meeting Transcripts.md",
     "03 - Clients/Active Cooking Clients/GST/Meetings/README.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md",
@@ -476,8 +482,6 @@
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy/[Guide] Channel & Infrastructure Setup Guide Copy.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy/WhatsApp Channel Setup Guide for Chatwoot Copy.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW v1..n.md",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/4May26 - Ivan Req Gat Complete notes/4May26 - Ivan Req Gat Complete notes.md",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/4May26 - Ivan Req Gat Complete notes/4May26 - Ivan Notes.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/4May26 - Ivan Req Gat Complete notes",

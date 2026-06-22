@@ -147,6 +147,22 @@ Batch enforcement (Phase A3) delayed as promised → Phase 1 closure payment rev
 
 ---
 
+## Milestone Dates
+
+| # | Milestone | Date |
+|---|---|---|
+| 1 | Signed Date | TBC |
+| 2 | Payment Date (upfront) | TBC |
+| 3 | Kickoff Date | 2026-02-10 |
+| 4 | Requirements Lock Date | 2026-03-05 |
+| 5 | Go-Live Ready Date | 2026-06-24 |
+| 6 | UAT Date | 2026-06-22 |
+| 7 | Go-Live Date | 2026-06-25 |
+| 8 | Training Date | TBC (July refresher) |
+| 9 | Customisations Date | Post go-live (C1/C3 TBD) |
+
+---
+
 ## NOT in this go-live scope (post-go-live)
 
 Do not let these creep into 25 Jun:
