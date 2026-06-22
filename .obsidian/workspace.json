@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Accounts Visibility/high level summary of accts.md",
+                "file": "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "high level summary of accts"
+              "title": "GST Phase 1 Backward Plan"
             }
           },
           {
@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -400,7 +399,7 @@
                     "name": "zsh 139"
                   }
                 ],
-                "activeId": 139,
+                "activeId": 138,
                 "nextId": 140
               },
               "icon": "terminal",
@@ -422,7 +421,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 863.5
+    "width": 890.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -451,14 +450,14 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Accounts Visibility/high level summary of accts.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline",
     "accounts/high level summary of accts.md",
     "accounts",
     "03 - Clients/Active Cooking Clients/GST/Meetings/README.md",
-    "03 - Clients/Accounts Visibility/high level summary of accts.md",
     "03 - Clients/Accounts Visibility",
     "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
     "03 - Clients/Active Cooking Clients/GST/GST Meeting Transcripts.md",

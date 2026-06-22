@@ -52,17 +52,17 @@ last_reviewed: 2026-06-22
 
 ## GST Fine Foods
 
-- Signed Date: —
-- Payment Date: —
-- Kickoff Date: —
-- Requirements Lock Date: —
-- Go-Live Ready Date: —
-- UAT Date: —
-- Go-Live Date: —
-- Training Date: —
-- Customisations Date: —
+- Signed Date: 2026-03-12
+- Payment Date: No upfront — RM20,000 payable after Phase 1 UAT only
+- Kickoff Date: 2026-04-27
+- Requirements Lock Date: 2026-05-04
+- Go-Live Ready Date: TBC
+- UAT Date: TBC
+- Go-Live Date: TBC
+- Training Date: TBC
+- Customisations Date: TBC
 
-> Backward plan pending — Gareth to fill dates once ready.
+> All go-live dates gated on SAP UAT license — expected from vendor Wed 25 Jun 2026.
 
 ---
 
