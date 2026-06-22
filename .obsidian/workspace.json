@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -390,10 +389,14 @@
                   {
                     "id": 137,
                     "name": "zsh 137"
+                  },
+                  {
+                    "id": 138,
+                    "name": "zsh 138"
                   }
                 ],
-                "activeId": 137,
-                "nextId": 138
+                "activeId": 138,
+                "nextId": 139
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -414,7 +417,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 817.5
+    "width": 831.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -445,6 +448,19 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/GST/Meetings/README.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/4May26 - Ivan Notes.md",
+    "03 - Clients/Active Cooking Clients/GST/WhatsApp Channel Setup Guide for Chatwoot Copy.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/3May26 - Requirement Gathering Meeting.md",
+    "03 - Clients/Active Cooking Clients/GST/DDMMMYY - Sample Data Checklist.md",
+    "03 - Clients/Active Cooking Clients/GST/12May26 - Pre-Onboarding Requirements Questionnaire.md",
+    "03 - Clients/Active Cooking Clients/GST/27Apr2026 - GST Sales Narrative.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/2026-05-19 GST SAP Vendor x Mindhive Transcript v2.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/2026-05-19 GST SAP Vendor x Mindhive Transcript.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/2026-05-19 GST — WABA Account Setup Transcript.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/2026-05-04 GST Fine Foods — Requirements Gathering Transcript.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/2026-04-27 GST Fine Foods — GTM Brief Transcript.md",
+    "03 - Clients/Active Cooking Clients/GST/Meetings",
     "03 - Clients/Active Cooking Clients/Dalson/Meetings",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.32973.86fcae37a7fe",
     "Granola/Transcripts/2026-06-22/Product & Client Planning Q3 and Ahead-transcript.md",
@@ -470,19 +486,6 @@
     "wiki_move_qr.png",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood MAIA SQL integration.md",
     "Granola/Transcripts/2026-06-10/Mindhive Daily Standup transcript v2.md",
-    "Granola/Transcripts/2026-06-18/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-06-18",
-    "03 - Clients/JY_Handle_Clients/setup/Compiled Channel & Infrastructure Setup Guide.md",
-    "03 - Clients/JY_Handle_Clients/setup",
-    "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/remixed-779193a7.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/MAIA Chatbot — Compound Multistep Query Examples.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/Ultimax Context/Company Context - Ultimax Supply Sdn Bhd.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/V1_Ultimax Core Flow Client Validation Test Cases.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/Ultimax Core Flow Client Validation Test Cases - 2026-05-18.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/Ultimax Chatbot Natural Test Cases.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/28May26 - Ultimax Core Flow Test Cases Results.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/26May26 - Ultimax Core Flow Test Cases Results.md",
-    "03 - Clients/JY_Handle_Clients/Ultimax/TestCases/22May26 - Ultimax Core Flow Test Cases Results.md",
     "Pasted image 20260608003523.png",
     "Pasted image 20260608003117.png",
     "Pasted image 20260608002056.png",
