@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/GST/Meetings/README.md",
+                "file": "03 - Clients/Accounts Visibility/high level summary of accts.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "high level summary of accts"
             }
           },
           {
@@ -258,7 +258,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -399,7 +400,7 @@
                     "name": "zsh 139"
                   }
                 ],
-                "activeId": 139,
+                "activeId": 138,
                 "nextId": 140
               },
               "icon": "terminal",
@@ -421,7 +422,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 822.5
+    "width": 866.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -452,10 +453,14 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "accounts/high level summary of accts.md",
+    "accounts",
+    "03 - Clients/Active Cooking Clients/GST/Meetings/README.md",
+    "03 - Clients/Accounts Visibility/high level summary of accts.md",
+    "03 - Clients/Accounts Visibility",
     "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
     "03 - Clients/Active Cooking Clients/GST/GST Meeting Transcripts.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/GST Meeting Transcripts.md",
-    "03 - Clients/Active Cooking Clients/GST/Meetings/README.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy/[Guide] Channel & Infrastructure Setup Guide Copy.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy/WhatsApp Channel Setup Guide for Chatwoot Copy.md",
@@ -480,14 +485,10 @@
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW DRAFT.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW SIGNED.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy/[Guide] Channel & Infrastructure Setup Guide Copy.md",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy/WhatsApp Channel Setup Guide for Chatwoot Copy.md",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW v1..n.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/4May26 - Ivan Req Gat Complete notes",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki",
-    "03 - Clients/Active Cooking Clients/GST/Meetings",
-    "03 - Clients/Active Cooking Clients/Dalson/Meetings",
     "lark-auth-qr.png",
     "wiki_move_qr.png",
     "Pasted image 20260608003523.png",
