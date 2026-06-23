@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "GST Phase 1 Backward Plan"
+              "title": "Scope Alignment - Delivery Method & Out-of-Scope Items"
             }
           },
           {
@@ -451,15 +451,15 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
     "Granola/Transcripts/2026-06-23/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-23",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
     "02 - PM Playbook/Guides/Lark CLI + AI Agent Integration Guide.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline/_gst_plan_upload.md",
     "03 - Clients/Accounts Visibility/high level summary of accts.md",
-    "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline",
     "accounts/high level summary of accts.md",
     "accounts",
