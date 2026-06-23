@@ -384,14 +384,6 @@
                     "name": "zsh 135"
                   },
                   {
-                    "id": 136,
-                    "name": "zsh 136"
-                  },
-                  {
-                    "id": 137,
-                    "name": "zsh 137"
-                  },
-                  {
                     "id": 138,
                     "name": "zsh 138"
                   },
@@ -408,7 +400,7 @@
                     "name": "zsh 142"
                   }
                 ],
-                "activeId": 141,
+                "activeId": 135,
                 "nextId": 143
               },
               "icon": "terminal",
@@ -430,7 +422,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 923.5
+    "width": 944.5
   },
   "left-ribbon": {
     "hiddenItems": {
