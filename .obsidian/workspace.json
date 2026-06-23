@@ -398,10 +398,14 @@
                   {
                     "id": 142,
                     "name": "zsh 142"
+                  },
+                  {
+                    "id": 143,
+                    "name": "zsh 143"
                   }
                 ],
-                "activeId": 135,
-                "nextId": 143
+                "activeId": 143,
+                "nextId": 144
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -451,7 +455,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-20 Data Migration — Standup Notes.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru yvonne call.md",
