@@ -5,6 +5,7 @@ last_reviewed: 2026-06-23
 client: Fixguru
 document_type: client-facing
 version: v1
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/YT3mwO5XKiKdlZkK5r9lvQwzgkh
 ---
 
 # MAIA × Fixguru — Scope Lock v1

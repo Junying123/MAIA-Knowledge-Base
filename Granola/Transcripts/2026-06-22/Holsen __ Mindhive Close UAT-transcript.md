@@ -3,7 +3,7 @@ granola_id: dd6a7c37-5616-4501-95d0-2f3446d7be6f
 title: Holsen <> Mindhive Close UAT - Transcript
 type: transcript
 created: 2026-06-22T06:31:52.705Z
-updated: 2026-06-22T08:22:09.657Z
+updated: 2026-06-23T01:45:12.290Z
 attendees: 
   - holsenlab@gmail.com
 ---

@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -457,6 +456,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-23/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-06-23",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
     "02 - PM Playbook/Guides/Lark CLI + AI Agent Integration Guide.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline/_gst_plan_upload.md",
@@ -489,10 +490,8 @@
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/19May26 - GST SAP Vendor.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/12May26 - Pre-Onboarding Requirements Questionnaire.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/19May26 - GST SAP Vendor.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/4May26 - Ivan Req Gat Complete notes",
     "lark-auth-qr.png",
     "wiki_move_qr.png",
     "Pasted image 20260608003523.png",
