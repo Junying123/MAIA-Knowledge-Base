@@ -396,16 +396,16 @@
                     "name": "zsh 138"
                   },
                   {
-                    "id": 139,
-                    "name": "zsh 139"
-                  },
-                  {
                     "id": 140,
                     "name": "zsh 140"
+                  },
+                  {
+                    "id": 141,
+                    "name": "zsh 141"
                   }
                 ],
-                "activeId": 140,
-                "nextId": 141
+                "activeId": 141,
+                "nextId": 142
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -457,6 +457,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
     "02 - PM Playbook/Guides/Lark CLI + AI Agent Integration Guide.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline/_gst_plan_upload.md",
     "03 - Clients/Accounts Visibility/high level summary of accts.md",
@@ -489,7 +490,6 @@
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/12May26 - Pre-Onboarding Requirements Questionnaire.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/19May26 - GST SAP Vendor.md",
-    "03 - Clients/Active Cooking Clients/GST/Lark Wiki/3May26 - Requirement Gathering Meeting.md",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/DDMMMYY - SOW v1..n",
     "03 - Clients/Active Cooking Clients/GST/Lark Wiki/4May26 - Ivan Req Gat Complete notes",
