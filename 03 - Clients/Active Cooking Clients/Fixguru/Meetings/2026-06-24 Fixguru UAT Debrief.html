@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-06-24 Fixguru UAT Debrief</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e4e4dc;
+    --accent: #b54708;
+    --accent-bg: #fef3c7;
+    --danger: #b42318;
+    --danger-bg: #fee4e2;
+    --ok: #027a48;
+    --ok-bg: #d1fadf;
+    --info: #1849a9;
+    --info-bg: #d1e9ff;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 24px 72px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header.page {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .crumbs { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .meta { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--muted); }
+  .meta b { color: var(--ink); font-weight: 600; }
+  section { margin-bottom: 36px; }
+  h2 { font-size: 19px; margin: 0 0 14px; letter-spacing: -0.005em; border-left: 3px solid var(--ink); padding-left: 10px; }
+  h3 { font-size: 16px; margin: 22px 0 8px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+  }
+  .verdict { border-left: 4px solid var(--danger); }
+  .verdict .lead { font-size: 16px; margin: 0 0 12px; }
+  .pull {
+    background: #f4f3ee;
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    font-style: italic;
+    color: #3a3a3a;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 4px;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th { background: #f7f6f1; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #444; }
+  tr:last-child td { border-bottom: none; }
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .pill.danger { background: var(--danger-bg); color: var(--danger); }
+  .pill.warn { background: var(--accent-bg); color: var(--accent); }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); }
+  .pill.info { background: var(--info-bg); color: var(--info); }
+  ul, ol { margin: 6px 0 6px 22px; padding: 0; }
+  li { margin: 4px 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+  .checklist li { list-style: none; margin-left: -22px; padding-left: 26px; position: relative; }
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 4px;
+    width: 14px; height: 14px;
+    border: 1.5px solid #888;
+    border-radius: 3px;
+  }
+  .kbd {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: #f1efe8;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  .ai-head {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 14px 0 6px;
+  }
+  .num {
+    display: inline-block;
+    min-width: 26px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .footer a { color: var(--info); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="page">
+  <div class="crumbs">Fixguru › Meetings › UAT Debrief</div>
+  <h1>2026-06-24 Fixguru UAT Debrief</h1>
+  <div class="meta">
+    <span><b>Date:</b> 2026-06-24</span>
+    <span><b>Owner:</b> Gareth</span>
+    <span><b>Status:</b> <span class="pill warn">draft</span></span>
+    <span><b>Attendees:</b> Gareth, Marcus, Yvonne (Fixguru); Bryan, Ivan (Mindhive)</span>
+  </div>
+</header>
+
+<section>
+  <div class="card verdict">
+    <h2 style="border:none; padding:0; margin:0 0 10px;">Headline Verdict</h2>
+    <p class="lead">Showcase did not meet requirements. Step-1 blocker — surface historical pricing per item and let sales confirm a discount in one glance — was raised <b>7 Apr</b>, failed <b>14 May</b>, retested <b>16 Jun</b>, still not delivered.</p>
+    <p>Every downstream item (delivery method, credit, picking, e-invoice) is blocked behind step 1.</p>
+    <div class="pull">"I speak many times the same… I don't know how to tell you." — Gareth (Fixguru)</div>
+    <p><b>Client sentiment:</b> patient but eroding. Mindhive acknowledged the root gap openly (dev view vs. real blue-collar user). That candour is good; it does not reset the clock.</p>
+    <p><b>Commercial stake:</b> Milestone-2 (<b>RM24,000</b>) is contractually tied to UAT completion. Four UATs in, no signed acceptance on step 1.</p>
+  </div>
+</section>
+
+<section>
+  <h2>UAT History — Step-1 Status</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>UAT Touchpoint</th><th>Step-1 Status</th></tr></thead>
+      <tbody>
+        <tr><td>7 Apr</td><td><span class="pill warn">Raised</span> Raised as cannot-sign-off condition</td></tr>
+        <tr><td>14 May (on-site)</td><td><span class="pill danger">Failed</span> "wasting time"; AutoCount faster</td></tr>
+        <tr><td>16 Jun (retest)</td><td><span class="pill warn">Still testing</span></td></tr>
+        <tr><td>24 Jun (this meeting)</td><td><span class="pill danger">Not delivered</span> "same as last meeting"</td></tr>
+      </tbody>
+    </table>
+    <h3>Root cause</h3>
+    <p>Team keeps demoing the standard chatbot flow and patching at the prompt level. Client needs (a) a purpose-built historical-pricing surface sourced from invoices, and (b) a radically shorter confirmation path. Prompt-level patching has hit its ceiling.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Understanding Fixguru — What We Must Build For</h2>
+  <div class="card">
+    <h3>1. The real competitor is AutoCount, not "no system"</h3>
+    <p>We are not replacing nothing — we are replacing a tool that already works and is faster for them today. The bar is: <b>MAIA beats AutoCount at the daily quoting bench.</b> The moment MAIA is slower or more confusing, the user reverts. Every design decision is measured against AutoCount, not a blank slate.</p>
+
+    <h3>2. Design for the lowest-literacy person in the chain</h3>
+    <p>Sales users are blue-collar; they don't like reading and want quick action. If a head of department needs five minutes to digest a screen, the team needs far longer. MAIA must be super direct — single message, one-glance, yes/no. Anything that asks them to read, parse, or hunt across numbers gets abandoned. <b>One-glance simplicity is an acceptance condition, not polish.</b></p>
+
+    <h3>3. What they are actually buying is one decision, made fast</h3>
+    <p>Strip away features — the job-to-be-done is: <i>"For this customer, this item, this volume — what discount do I give, and let me confirm it in seconds."</i> Pricing is customer-specific, volume-based, and drifts over time. History (past invoice price, discount %, qty, date) is the only way to make that decision well.</p>
+
+    <h3>Priority Map</h3>
+    <table>
+      <thead><tr><th>Priority</th><th>What they care about</th><th>What it means for MAIA</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill danger">1</span></td><td>Discount decision fast, history visible</td><td>Invoice-sourced historical table, one glance, per item</td></tr>
+        <tr><td><span class="pill warn">2</span></td><td>Speed &amp; simplicity over completeness</td><td>Single message, yes/no, no grand-total noise</td></tr>
+        <tr><td><span class="pill warn">3</span></td><td>Reach customer record by phone</td><td>Phone-first retrieval; customers are WhatsApp numbers, often nameless</td></tr>
+        <tr><td><span class="pill info">4</span></td><td>Keep money moving</td><td>Don't block orders early; approve credit on bank-in slip</td></tr>
+        <tr><td><span class="pill info">5</span></td><td>Operational fidelity</td><td>Delivery-method history, FOC, custom items, AutoCount parity</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Step-1 Acceptance Bar (Lock Before Next Build)</h2>
+  <div class="card">
+    <p><b>Target flow to get signed off:</b></p>
+    <ol>
+      <li>User pastes order + phone number, e.g. <span class="kbd">011-xxxx — G3 100, G1 300, PM72 500</span></li>
+      <li>MAIA retrieves customer by <b>phone number</b> (mobile/landline), not name</li>
+      <li>Per item, MAIA returns a one-glance historical table sourced from <b>invoices</b> (not orders):</li>
+    </ol>
+    <table>
+      <thead><tr><th>Date</th><th>Std unit price</th><th>Discount %</th><th>Net price</th><th>Qty</th></tr></thead>
+      <tbody>
+        <tr><td>06/2026</td><td>RM0.10</td><td>3%</td><td>0.097</td><td>100</td></tr>
+        <tr><td>05/2026</td><td>RM0.10</td><td>10%</td><td>0.090</td><td>1000</td></tr>
+        <tr><td>01/2025</td><td>RM0.05</td><td>5%</td><td>0.0475</td><td>500</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Minimum <b>5 confirmed rows</b> per item (3 is too few)</li>
+      <li>Date matters — signals price drift vs. current standard price</li>
+    </ul>
+    <ol start="4">
+      <li>MAIA asks one question: <i>"Which price should I proceed with?"</i></li>
+      <li>User replies per item (G3 3%, G1 5%, PM72 none) → MAIA generates SO/quotation → PDF</li>
+    </ol>
+
+    <h3>Hard UX constraints (non-negotiable)</h3>
+    <ul>
+      <li>Single message, readable in one glance. No grand-total noise (total lives in the PDF)</li>
+      <li>Columns shown: standard price, discount %, net price. Nothing else</li>
+      <li>Yes/no interactions only — too many words = abandonment → AutoCount</li>
+      <li>"Not found = not found." No over-enrichment of prior records</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>What's New / Sharpened This Meeting</h2>
+  <div class="card">
+    <ul>
+      <li><b>Dual-interface proposal (Bryan):</b> chat for input + rich web front-end (≈70/30 "co-work" view) for tabular data chat can't hold (20–100 line items). Genuine new direction — needs a deliberate decision before it becomes the next shiny object.</li>
+      <li><b>Phone-number-first retrieval:</b> customers WhatsApp in, often with no name/company; search by phone (mobile + landline columns).</li>
+      <li><b>Historical delivery-method surfacing:</b> show last 5 confirmed delivery methods (courier / Lalamove / self-pickup).</li>
+      <li><b>Customer context bank:</b> min 5 confirmed documents per customer, evaluated every turn.</li>
+      <li><b>Credit/approval logic (whiteboard):</b> block at DN level, not order level. Two blocks only: minimum price + credit limit. AR-negative = prepaid → approve on bank-in slip; credit-limit-exceeded → approve case-by-case on bank-in slip.</li>
+      <li><b>Minimum price per item:</b> e.g. G1 std 0.33, floor 0.27 — below floor needs approval but quotation still generated pending approval. No maximum price.</li>
+      <li><b>FOC rule:</b> production overage free (order 1000, produce 1050 → free 50); bill billable qty, deduct billable + FOC from stock.</li>
+      <li><b>Custom-item handling:</b> base item (e.g. G5) spawns <span class="kbd">{Customer Name} G5</span> variants — affects item retrieval and matching.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Action Items</h2>
+
+  <div class="ai-head">Client (Ivan to chase)</div>
+  <div class="card">
+    <table>
+      <thead><tr><th>#</th><th>Item</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td><span class="num">C1</span></td><td>Real WhatsApp order-intake message samples (format reference for parser)</td><td>Yvonne</td></tr>
+        <tr><td><span class="num">C2</span></td><td>AutoCount screenshot of two blocks (min price + credit limit) + bypass roles</td><td>Azib</td></tr>
+        <tr><td><span class="num">C3</span></td><td>Minimum price floor per item (std + floor, e.g. G1 0.33 / 0.27)</td><td>Gareth</td></tr>
+        <tr><td><span class="num">C4</span></td><td>Standard price list (global, fluctuating) — share in group</td><td>Gareth</td></tr>
+        <tr><td><span class="num">C5</span></td><td>Updated RSC/Diecut formulas + volume metrics (carryover from prior UAT)</td><td>Fixguru</td></tr>
+        <tr><td><span class="num">C6</span></td><td>Confirm UAT sign-off authority (is Gareth the signatory?)</td><td>Ivan ↔ Fixguru</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ai-head">Product (Ivan / product team)</div>
+  <div class="card">
+    <table>
+      <thead><tr><th>#</th><th>Item</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td><span class="num">P1</span></td><td>Lock &amp; socialize the step-1 acceptance bar before any further build</td><td><span class="pill danger">Highest leverage</span></td></tr>
+        <tr><td><span class="num">P2</span></td><td>Decide rendering mechanism — chat vs. image/label vs. dual web interface — and converge</td><td>Team must pick one</td></tr>
+        <tr><td><span class="num">P3</span></td><td>Spec customer context bank: min 5 confirmed docs, evaluated each turn</td><td>Shared dependency</td></tr>
+        <tr><td><span class="num">P4</span></td><td>Spec phone-first customer retrieval (mobile + landline) + fallback for "looks new"</td><td>High client value</td></tr>
+        <tr><td><span class="num">P5</span></td><td>Write the block-level rule: DN, not order</td><td>Direct client instruction</td></tr>
+        <tr><td><span class="num">P6</span></td><td>Define approval workflow: below-floor OR credit-exceed → generate pending approval → route to Ivan</td><td>Must not hard-stop mid-flow</td></tr>
+        <tr><td><span class="num">P7</span></td><td>Conciseness/UX rules as product policy: one-glance, single language, "not found = not found", no enrichment</td><td>Acceptance conditions</td></tr>
+        <tr><td><span class="num">P8</span></td><td>FOC rule spec: order 1000, produce 1050 → free 50; deduct billable + FOC from stock</td><td>Operationally important</td></tr>
+        <tr><td><span class="num">P9</span></td><td>Custom-item handling: base item spawns customer-named variants</td><td>Item retrieval &amp; matching</td></tr>
+        <tr><td><span class="num">P10</span></td><td>Item-retrieval fallback: on no exact match, return customer's historically ordered items</td><td>Reduces dead-ends</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ai-head">Tech (Jermaine + leads)</div>
+  <div class="card">
+    <table>
+      <thead><tr><th>#</th><th>Item</th><th>Lead</th></tr></thead>
+      <tbody>
+        <tr><td><span class="num">T1</span></td><td>Build historical pricing as first-class module from invoices (stop prompt-patching)</td><td>Afiq / Wei Yon</td></tr>
+        <tr><td><span class="num">T2</span></td><td>Investigate WhatsApp latency vs. Telegram (observed slower on WhatsApp)</td><td>Wei Yon</td></tr>
+        <tr><td><span class="num">T3</span></td><td>Fix language bug: quick replies switching to Malay mid-English conversation</td><td>Afiq</td></tr>
+        <tr><td><span class="num">T4</span></td><td>Timeboxed feasibility spike on dual interface (70/30 co-work view) — must not delay step-1</td><td>Jermaine / Amirul</td></tr>
+        <tr><td><span class="num">T5</span></td><td>Warehouse/shelf config: sub-warehouse tree, branch-level picking — identify correct AutoCount module</td><td>Wei Yon</td></tr>
+        <tr><td><span class="num">T6</span></td><td>Credit/AR logic: AR-negative → bank-in approval; credit-limit block at DN; two-block model</td><td>Wei Yon</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="grid2">
+  <div>
+    <h2>Open Decisions</h2>
+    <div class="card">
+      <ul class="checklist">
+        <li>Rendering mechanism — chat single-message vs. image/label vs. dual web interface</li>
+        <li>Block level — order vs. DN (client leans DN; confirm and lock)</li>
+        <li>UAT sign-off authority — confirm in writing</li>
+        <li>Dual interface scope — Phase-1 inclusion or costed CR</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h2>Load-bearing Assumptions</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Assumption</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>AutoCount exposes clean per-customer + SKU historical price/discount/qty from invoices via API</td><td><span class="pill warn">Unverified</span></td></tr>
+          <tr><td>5-row × N-item table renders legibly in a single WhatsApp message</td><td><span class="pill warn">Unverified</span></td></tr>
+          <tr><td>Gareth is the UAT sign-off authority</td><td><span class="pill warn">Unverified</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Risks / Pre-mortem — How this account fails</h2>
+  <div class="card">
+    <ol>
+      <li><b>"Dual interface" becomes the new shiny object</b> and step-1 slips a fifth time. Chat + disciplined single-message formatting already achieves the client's bar — web front-end is enhancement, not prerequisite.</li>
+      <li><b>Team keeps prompt-patching pricing display</b> instead of building the invoice-sourced module. Same ceiling, fifth meeting.</li>
+      <li><b>No signed acceptance bar</b> → "done" stays subjective → demo-fail loop repeats → Milestone-2 RM24k unpaid → account becomes a reference liability.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="footer">
+  <b>See also:</b>
+  UAT/MAIA UAT Form - Fixguru - Item Historical Pricing ·
+  UAT/Fixguru Retesting Feedback ·
+  Meetings/2026-05-15 Fixguru UAT Action Items ·
+  context/learnings
+</div>
+
+</div>
+</body>
+</html>

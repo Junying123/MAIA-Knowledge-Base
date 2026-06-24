@@ -400,12 +400,12 @@
                     "name": "zsh 142"
                   },
                   {
-                    "id": 143,
-                    "name": "zsh 143"
+                    "id": 144,
+                    "name": "zsh 144"
                   }
                 ],
-                "activeId": 143,
-                "nextId": 144
+                "activeId": 144,
+                "nextId": 145
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -457,6 +457,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.html",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.md",
     "Granola/Transcripts/2026-06-24/MAIA __ Fixguru UAT (Onsite)-transcript.md",
     "Granola/Transcripts/2026-06-24/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-24",
@@ -486,9 +488,7 @@
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW SIGNED.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/DDMMMYY - SOW v1..n/DDMMMYY - SOW DRAFT.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/4May26 - Ivan Req Gat Complete notes/4May26 - Ivan Req Gat Complete notes.md",
-    "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/4May26 - Ivan Req Gat Complete notes/4May26 - Ivan Notes.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy",
-    "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/GST WhatsApp Group.md",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/DDMMMYY - SOW v1..n",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/4May26 - Ivan Req Gat Complete notes",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki",
