@@ -258,7 +258,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -407,7 +408,7 @@
                     "name": "zsh 145"
                   }
                 ],
-                "activeId": 145,
+                "activeId": 144,
                 "nextId": 146
               },
               "icon": "terminal",
@@ -429,7 +430,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 944.5
+    "width": 877.5
   },
   "left-ribbon": {
     "hiddenItems": {

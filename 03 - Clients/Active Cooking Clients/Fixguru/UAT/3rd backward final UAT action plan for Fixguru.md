@@ -1,126 +1,148 @@
-Below is the **lead-review action plan** based on the **24 June 2026 Fireflies transcript** and cross-checked against existing Fixguru UAT gaps / scope documents.
+---
+owner: Gareth
+status: draft
+last_reviewed: 2026-06-24
+uat_round: 3
+sources: "[[Meetings/2026-06-24 Fixguru UAT Debrief]] · [[context/learnings]] · Fireflies transcript 01KVVSWST9…"
+---
 
-## Source truth summary
+# Fixguru Action Plan — 3rd UAT Backward Plan
 
-Main conclusion from 24 June UAT: **client still cannot proceed confidently because the first sales-order pricing step is not solved.** The blocker is not only “data correctness”; it is **how MAIA presents historical price, discount, net price, and next action in a way sales users can understand in one glance.**
+Based on the **24 June 2026 UAT session** (Fireflies transcript + [[Meetings/2026-06-24 Fixguru UAT Debrief]] + [[context/learnings]]).
 
-This repeats earlier UAT gaps: Fixguru needs historical pricing + discount %, item-level discount, AutoCount-style document/ID alignment, correct customer/branch/contact sync, delivery method as item/SKU, credit limit exposure, and simpler chatbot actions. The 2nd UAT plan also already marked item historical pricing, customer pricing enforcement, credit limit exposure, language preference, HQ + branch contact, delivery method SKU, and PDF template as in-scope items needing retest/fix. The functional requirement baseline also supports credit-limit approval, minimum price approval, order-to-DO flow, stock reminders, and WhatsApp/internal workflow as core requirements.
+**Core conclusion:** Client still cannot proceed confidently because the first sales-order pricing step is unsolved. The blocker is not only data correctness — it is how MAIA presents historical price, discount %, net price, and next action in a way sales users can understand **in one glance.** This repeats 7 Apr, 14 May, and 16 Jun. Prompt-level patching has hit its ceiling; a first-class invoice-sourced module is required.
 
 ---
 
-# Fixguru Action Plan — Product Side
+## Open Decisions (Resolve Before Next Demo Date)
 
-|Priority|Product action|Why it matters|Output for tech|
+- [ ] **Rendering mechanism** — chat single-message vs. image/label vs. dual web interface (70/30 co-work view)
+- [ ] **Block level** — order vs. DN (client leans DN; must be confirmed and locked in writing)
+- [ ] **UAT sign-off authority** — confirm Gareth is the signatory (no valid acceptance without this)
+- [ ] **Dual interface scope** — Phase-1 inclusion or costed CR
+
+---
+
+## Client Blockers Needed (Ivan to Chase)
+
+| # | Item | From | Why blocking |
 |---|---|---|---|
-|P0|**Redesign pricing decision flow**|Client said users abandon when too much text / unclear pricing. First step must be fixed before next flow.|Final UX spec for “Historical Pricing Review before QTN/SO creation”.|
-|P0|**Define exact historical pricing table fields**|Client wants quick comparison, not long chatbot text.|Table columns: Date, Item Code, Qty, Standard Unit Price, Discount %, Net Price, Source Doc / Invoice ID.|
-|P0|**Clarify source of historical pricing**|Client confirmed historical price should come from actual invoice / transacted history, not only order draft.|Rule: pull last 5 invoice transactions per customer + item where possible.|
-|P0|**Simplify chatbot copywriting**|Client users “don’t like reading”; chatbot must work one step at a time.|Rewrite chatbot prompts into short action format: “Review price → choose discount → generate QTN/SO”.|
-|P0|**Decide hybrid UX pattern**|Chat alone cannot show rich tables well. 24 June discussion suggested chat + web/table view.|Product decision: WhatsApp for command/input, web view or image/table card for pricing review.|
-|P1|**Define delivery method recommendation UX**|Client wants last 3–5 delivery methods to help decide courier / Lalamove / pickup.|Add “Historical Delivery Method” section: last 5 orders with delivery method and charge item.|
-|P1|**Define customer search behaviour**|Client often only has WhatsApp/phone number, not exact customer name.|Search priority: phone/mobile → customer match → branch/contact match → show confirmation.|
-|P1|**Define approval UX**|Credit and minimum-price approval cannot block too early; quotation can be prepared, but SO/DO confirmation needs control.|Approval states: Draft allowed, Submit/Convert blocked if price below minimum or credit breached.|
-|P1|**Confirm scope vs CR**|Avoid another UAT mismatch.|Mark as: must-fix in current scope vs future CR. Especially calculator versioning, extra calculators, raw material planning.|
-|P2|**Create retest script based on real Fixguru flow**|Previous test was too feature-by-feature, not user-flow-based.|One golden test script: WhatsApp order → historical price review → discount select → QTN PDF → delivery method → SO approval check.|
+| C1 | Real WhatsApp order-intake message samples (format reference for parser) | Yvonne | Defines the intake string MAIA must parse |
+| C2 | AutoCount screenshot of two blocks (min price + credit limit) + which roles can bypass | Azib | Credit/approval logic can't be built without this |
+| C3 | Minimum price floor per item (std + floor, e.g. G1 0.33 / 0.27) | Gareth | Approval threshold rule requires floors |
+| C4 | Standard price list (global, fluctuating) — share in group | Gareth | Needed to compute discount % vs. current standard |
+| C5 | Updated RSC/Diecut formulas + volume metrics (carryover from prior UAT) | Fixguru | Calculator accuracy still unresolved |
+| C6 | Confirm UAT sign-off authority (is Gareth the signatory?) | Ivan ↔ Fixguru | No signed acceptance = Milestone-2 RM24k unpaid |
 
 ---
 
-# Fixguru Action Plan — Tech Side
+## Product Action Plan
 
-|Priority|Tech action|Expected fix|Acceptance criteria|
+| Priority | Product action | Why it matters | Output for tech |
 |---|---|---|---|
-|P0|**Historical pricing API/data fix**|Return last 5 invoice-level transactions by customer + item.|For each ordered item, MAIA shows date, qty, standard price, discount %, net price, source doc ID.|
-|P0|**Discount calculation fix**|Discount must be treated as percentage when user gives %, not wrongly as RM amount.|3%, 5%, 10% discounts calculate correctly against standard unit price / price list rate.|
-|P0|**Item-level discount support**|Different items can have different discount %.|Same order can hold item A 3%, item B 10%, item C no discount.|
-|P0|**Chatbot response formatter**|Replace long paragraph responses with short structured table/card.|User can understand all item pricing info in one glance without scrolling through long text.|
-|P0|**Order creation flow guardrail**|Bot should not proceed too early before price confirmation.|Bot asks: “Use which discount/net price?” before generating QTN/SO.|
-|P0|**Hybrid table/web view feasibility**|Render pricing table in web UI or image/card if WhatsApp table is poor.|Product + tech agree one implementation path within current timeline.|
-|P1|**Customer search by phone/mobile**|Match customer using WhatsApp number / phone / mobile.|User can paste phone number and MAIA finds correct customer and branches.|
-|P1|**Branch/contact sync check**|Correct branch delivery address and contact person must populate.|SO/DO uses selected branch contact, not HQ contact by default.|
-|P1|**Delivery method as SKU/item**|Lalamove / courier charge must be added as charge item, not only delivery method label.|Delivery charge appears as item line with correct item code/accounting treatment.|
-|P1|**Historical delivery method retrieval**|Surface last 5 delivery methods by customer.|Bot/table shows previous delivery method and delivery charge item where available.|
-|P1|**Credit limit / AR exposure calculation**|Show AR, current pending DO/SO amount, credit limit, available balance, and whether approval is needed.|Approver can see enough info to approve/reject without opening AutoCount.|
-|P1|**Minimum price approval block**|Below-minimum item price requires approval before final submit.|Quotation draft allowed; final SO/DO submit blocked until approval.|
-|P1|**AutoCount external ID consistency**|Use Fixguru’s running number / external doc ID after push.|Submitted doc displays AutoCount ID, not only MAIA internal ID.|
-|P2|**Warehouse / shelf configuration review**|Confirm AutoCount warehouse/shelf model and map correctly.|Picking list / DN can show shelf/warehouse info correctly.|
-|P2|**Performance test on real usage**|Sales team handles many active orders and 30 invoices/day.|Chatbot/web response remains usable under concurrent order scenarios.|
+| P0 | **Redesign pricing decision flow** | Users abandon when too much text / unclear pricing. First step must be fixed before next flow. | Final UX spec for "Historical Pricing Review before QTN/SO creation" |
+| P0 | **Define exact historical pricing table fields** | Client wants quick comparison, not long chatbot text. Min 5 rows per item (3 is explicitly too few); date matters — signals price drift vs. current standard. | Table columns: Date, Item Code, Qty, Standard Unit Price, Discount %, Net Price, Source Invoice ID |
+| P0 | **Clarify source of historical pricing** | Client confirmed: source must be actual invoices, not draft orders. | Rule: pull last 5 invoice transactions per customer + item |
+| P0 | **Simplify chatbot copywriting** | Users "don't like reading"; single message, yes/no, no grand-total noise (total lives in PDF). | Rewrite chatbot prompts: "Review price → choose discount → generate QTN/SO". No enrichment beyond what's asked. "Not found = not found." |
+| P0 | **Decide hybrid UX pattern** | Chat alone cannot show rich tables for 20–100 line items. 24 June discussion raised dual interface (70/30 co-work view) — must be an explicit decision, not improvisation. | Product decision: WhatsApp for input, web view or image/table card for pricing review. Do not let this delay step-1. |
+| P1 | **Define delivery method recommendation UX** | Client wants last 5 confirmed delivery methods (courier / Lalamove / self-pickup) to recap with customer. | Add "Historical Delivery Method" section: last 5 with delivery method and charge item |
+| P1 | **Define customer search behaviour** | Customers WhatsApp in with phone only, often no name/company; existing customers can look new. | Search priority: phone/mobile → landline → customer match → branch/contact → show confirmation |
+| P1 | **Define approval UX — block at DN level, not order level** | Client explicit instruction: blocking the order too early loses the chance to collect money/invoice. Two blocks only: minimum price + credit limit. | Approval states: Draft allowed; DN submit blocked if below-floor price OR credit limit exceeded. Quotation still generated pending approval — no hard-stop mid-flow. |
+| P1 | **Credit approval paths (two distinct flows)** | AR-negative means customer is prepaid — approve on bank-in slip. Credit-limit-exceeded is a separate path — approve case-by-case on bank-in slip. | Route to Ivan for approval in both cases; approver sees AR, pending SO/DN amount, credit limit, available balance. |
+| P1 | **FOC rule** | Production overage is free: order 1000, produce 1050 → 50 units are FOC. | Bill billable qty; deduct billable + FOC from stock. FOC line appears on DO. |
+| P1 | **Custom item handling** | Base item (e.g. G5) spawns `{Customer Name} G5` variants. | Item retrieval and matching must handle customer-named variants of base items |
+| P1 | **Item-retrieval fallback** | On no exact item match, return the customer's historically ordered items to reduce dead-ends in the flow. | Fallback: show items previously invoiced to that customer |
+| P1 | **Confirm scope vs CR** | Avoid another UAT mismatch. | Mark: must-fix in current scope vs future CR. Especially calculator versioning, extra calculators, raw material planning. |
+| P2 | **Create retest script based on real Fixguru flow** | Previous test was feature-by-feature, not user-flow-based. | One golden script: WhatsApp order → historical price review → discount select → QTN PDF → delivery method → SO/DN approval check |
 
 ---
 
-# Immediate execution plan
+## Tech Action Plan
 
-## Day 1 — Alignment lock
+| Priority | Tech action | Lead | Acceptance criteria |
+|---|---|---|---|
+| P0 | **Historical pricing API/data fix** | Afiq / Wei Yon | For each ordered item: date, qty, std price, discount %, net price, invoice ID. Min 5 rows. Source = invoices only. |
+| P0 | **Discount calculation fix** | Afiq | 3%, 5%, 10% discounts calculate correctly against standard unit price |
+| P0 | **Item-level discount support** | Afiq | Same order: item A 3%, item B 10%, item C no discount |
+| P0 | **Chatbot response formatter** | Afiq | User understands all item pricing in one glance; no scrolling through long text |
+| P0 | **Order creation flow guardrail** | Afiq | Bot asks "Use which discount/net price?" before generating QTN/SO |
+| P0 | **Language bug fix** | Afiq | Quick replies stay in English throughout an English conversation; no mid-flow switch to Malay |
+| P0 | **Hybrid table/web view feasibility** | Jermaine / Amirul | Product + tech agree one implementation path; timeboxed spike, must not delay step-1 |
+| P1 | **Customer search by phone/mobile + landline** | Wei Yon | User pastes phone number; MAIA finds correct customer and branches across both mobile and landline fields |
+| P1 | **Branch/contact sync check** | Wei Yon | SO/DN uses selected branch contact, not HQ default |
+| P1 | **Delivery method as SKU/item** | Wei Yon | Delivery charge appears as item line with correct item code/accounting treatment |
+| P1 | **Historical delivery method retrieval** | Wei Yon | Bot/table shows last 5 confirmed delivery methods per customer |
+| P1 | **Credit limit / AR exposure — block at DN level** | Wei Yon | DN submit blocked when below-floor price OR credit limit exceeded; order creation is not blocked. Shows AR, pending SO/DN, credit limit, available balance. |
+| P1 | **AR-negative approval path** | Wei Yon | AR-negative (prepaid) customer → approve on bank-in slip receipt. Credit-limit-exceeded → separate case-by-case bank-in approval. Both route to Ivan. |
+| P1 | **Minimum price approval block** | Wei Yon | Quotation draft allowed; DN/SO submit blocked until approval when price below floor |
+| P1 | **Custom item variant support** | Wei Yon | Item lookup handles `{Customer Name} G5`-style naming; matched against base item and customer history |
+| P1 | **WhatsApp latency investigation** | Wei Yon | Identify why WhatsApp response is slower than Telegram; remediation or escalation |
+| P1 | **AutoCount external ID consistency** | Wei Yon | Submitted doc displays AutoCount ID, not only MAIA internal ID |
+| P2 | **Warehouse / shelf configuration review** | Wei Yon | Picking list / DN shows shelf/warehouse info correctly |
+| P2 | **Performance test on real usage** | Jermaine | Chatbot/web response remains usable under concurrent order scenarios (30 invoices/day) |
 
-**Product lead + tech lead + PM align on one critical outcome:**
+---
 
-Fix the **pricing decision step** first. Do not spread effort across all remaining features until this is usable.
+## Immediate Execution Plan
+
+### Day 1 — Alignment Lock
+
+Product lead + tech lead + PM align on one critical outcome: **fix the pricing decision step first.** Do not spread effort across all remaining features until this is usable.
 
 Product to deliver:
-
-- Final pricing table mockup.
-    
-- Final chatbot prompt wording.
-    
-- Exact happy-path flow.
-    
-- Scope classification: must-fix / defer / CR.
-    
+- Final pricing table mockup
+- Final chatbot prompt wording
+- Exact happy-path flow
+- Scope classification: must-fix / defer / CR
 
 Tech to confirm:
+- Where historical invoice data comes from
+- Whether discount %, net price, standard price are available reliably
+- Whether WhatsApp can display the table cleanly, or whether web/image table is needed
 
-- Where historical invoice data comes from.
-    
-- Whether discount %, net price, standard price are available reliably.
-    
-- Whether WhatsApp can display the table cleanly, or whether web/image table is needed.
-    
-
-## Day 2–3 — Build P0 fixes
+### Day 2–3 — Build P0 Fixes
 
 Tech focuses only on:
-
-1. Historical pricing API.
-    
-2. Discount calculation.
-    
-3. Item-level discount.
-    
-4. Short chatbot response/table formatter.
-    
-5. Stop premature QTN/SO generation before price confirmation.
-    
+1. Historical pricing API (invoices, min 5 rows)
+2. Discount calculation
+3. Item-level discount
+4. Short chatbot response/table formatter
+5. Language bug fix
+6. Stop premature QTN/SO generation before price confirmation
 
 Product supports with live examples and expected output.
 
-## Day 4 — Internal retest
+### Day 4 — Internal Retest
 
-Run one full Fixguru scenario:
+Run one full Fixguru scenario end-to-end:
 
-Customer sends WhatsApp order → MAIA identifies customer → shows last 5 historical prices per item → user chooses discount → MAIA generates QTN/SO → PDF/checkpoint → delivery method selected → approval check if needed.
+> Customer sends WhatsApp order → MAIA identifies customer by phone → shows last 5 historical invoice prices per item → user chooses discount per item → MAIA generates QTN/SO → PDF → delivery method selected → approval check if needed.
 
-Pass criteria: **user should not need to open AutoCount for pricing decision.**
+**Pass criteria: user should not need to open AutoCount for the pricing decision.**
 
-## Day 5 — Client retest
+### Day 5 — Client Retest
 
-Show Fixguru only the corrected flow first. Do not demo all features. The goal is to prove that the main blocker is fixed before moving to delivery, credit, PDF, and warehouse flows.
+Show Fixguru only the corrected pricing flow first. Do not demo all features. Goal: prove the main blocker is fixed before moving to delivery, credit, PDF, and warehouse flows.
 
 ---
 
-# Lead-review recommendation
+## Lead-Review Recommendation (P0 Recovery Scope)
 
-For product and tech leads, I would treat this as the current **P0 recovery scope**:
+1. Historical pricing + discount decision UX (invoice-sourced, min 5 rows, one glance)
+2. Correct item-level discount calculation
+3. One-glance chatbot/table output + language bug
+4. Phone/customer search (mobile + landline)
+5. Delivery method as item/SKU
+6. Credit/minimum price approval visibility (block at DN, not order; two paths)
 
-1. Historical pricing + discount decision UX.
-    
-2. Correct item-level discount calculation.
-    
-3. One-glance chatbot/table output.
-    
-4. Phone/customer search.
-    
-5. Delivery method as item/SKU.
-    
-6. Credit/minimum price approval visibility.
-    
+Everything else is secondary until Fixguru confirms the first sales pricing flow is finally usable.
 
-Everything else should be secondary until Fixguru confirms the first sales pricing flow is finally usable.
+---
+
+## See Also
+
+- [[Meetings/2026-06-24 Fixguru UAT Debrief]] — full session record, client sentiment, risk/pre-mortem
+- [[context/learnings]] — running learnings log
+- [[UAT/MAIA UAT Form - Fixguru - Item Historical Pricing]]
+- [[UAT/Fixguru Retesting Feedback]]
+- [[UAT/Fixguru 2nd UAT Backward Plan]]
