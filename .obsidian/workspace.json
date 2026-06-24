@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT plan for Fixguru.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "3rd backward final UAT plan for Fixguru"
+              "title": "3rd backward final UAT action plan for Fixguru"
             }
           },
           {
@@ -401,10 +401,14 @@
                   {
                     "id": 144,
                     "name": "zsh 144"
+                  },
+                  {
+                    "id": 145,
+                    "name": "zsh 145"
                   }
                 ],
-                "activeId": 144,
-                "nextId": 145
+                "activeId": 145,
+                "nextId": 146
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -456,8 +460,10 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "lark-base-auth-qrcode.png",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Key Learnings from UAT.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT plan for Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Readiness Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Issue.md",
@@ -483,9 +489,7 @@
     "Granola/Transcripts/2026-06-23",
     "02 - PM Playbook/Guides/Lark CLI + AI Agent Integration Guide.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline/_gst_plan_upload.md",
-    "03 - Clients/Accounts Visibility/high level summary of accts.md",
     "03 - Clients/Active Cooking Clients/GST/Timeline",
-    "accounts/high level summary of accts.md",
     "accounts",
     "03 - Clients/Accounts Visibility",
     "03 - Clients/Active Cooking Clients/GST/GST Lark Wiki/[Guide] Channel & Infrastructure Setup Guide Copy",
