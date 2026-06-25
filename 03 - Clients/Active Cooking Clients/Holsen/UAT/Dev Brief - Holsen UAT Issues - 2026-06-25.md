@@ -37,10 +37,13 @@ Understanding the actual user flows is critical — some "bugs" are only bugs in
 
 | Field | Holsen setup |
 |-------|-------------|
-| Standard price | **RM0 by default** for ALL items (trading + manufacturing) — no standard price used |
-| Minimum price | Set **manually** by management per product — acts as floor |
-| Customer pricing | **Not auto-populated** — sales staff enter price manually on each SO |
+| Standard price | **RM0 by default** for ALL items (trading + manufacturing) — not used |
+| Minimum price | Set **manually** by management per product — guideline floor |
+| Customer pricing | **Not auto-populated** — sales staff enter price manually per SO as instructed by boss |
 | Historical pricing | Reference only — staff look up previous order prices themselves |
+| Who decides price | **Boss/management** — based on customer profile, payment terms, credit usage. Pricing negotiated verbally or via boss approval before SO is created. |
+
+**Source:** Fireflies 2026-06-25: *"Payment terms. Credit usage. Determined by management. So minimum price as guideline."*
 
 ### Stock / Batch Model (Go-Live)
 
@@ -154,33 +157,36 @@ Some Holsen items are "No Tax" at item level. System/customer default is 10%. It
 
 ---
 
-## B6 — Minimum Price Not Blocking SO When Price Below Floor [P1 — MEDIUM]
+## B6 — Minimum Price Enforcement: Behaviour Needs Clarification [P2 — CLARIFY BEFORE BUILD]
 
 **Source:** Granola B (2026-06-25 Go Live) + Fireflies (same session)
 
 **Evidence from Granola B:**
-> *"Standard price link but the have minimum price — stop order from going through."* (expected behaviour)
-> *"So that trigger."*
-> *"Minimum price formatting, but more vendor case your strictly enforced… nothing."* (current state: enforcing nothing)
+> *"Standard price link but the have minimum price — stop order from going through."*
+> *"Minimum price formatting, but more vendor case your strictly enforced… nothing."*
+> *"Minimum price a guideline or or minimum price. Be a workout. So We'll find the minimum prices, like, it's our guideline."*
 
-**Evidence from Fireflies action items:**
-> *"Gareth: Confirm enforcement rules for minimum price and implement controls preventing orders below minimum price thresholds (45:07)"*
+**Evidence from Fireflies:**
+> *"Payment terms. Credit usage. Determined by management. So minimum price as guideline."*
+> *"Gareth: Confirm enforcement rules for minimum price and implement controls preventing orders below minimum price thresholds (45:07)"* (action item)
 
-**Pricing model context (critical):**
-- Standard price = **RM0** for all Holsen items (by design — not used)
-- Minimum price = **manually configured** per product by Holsen management
-- Customer pricing = **not auto-populated** — sales staff enter price manually per SO
-- Minimum price must act as floor: if sales staff enters price < min price on SO → block submission
+**What the transcript actually says:**
+Pricing at Holsen is **decided by the boss** based on customer profile, credit usage, and payment terms — negotiated before the SO is created. Minimum price is described as a **guideline**, not necessarily a hard block. Mr. Tam himself used the words "guideline" and "workout" in the same breath as "strictly enforced."
 
-**What must happen:**
-- SO submit: `entered_unit_price >= minimum_price` per line item → if fails, block with message
-- **Exception:** if a customer-specific price is agreed and manually entered below minimum, management approves — the block or override mechanism for this case needs to be confirmed with Gareth
+**Two possible interpretations — Gareth to confirm which:**
 
-**Two parts needed:**
-1. (Config) Gareth loads minimum prices per product — his action item, not dev
-2. (Code) Verify enforcement block fires on SO submit. If logic doesn't exist, build it.
+| Behaviour | What it means for dev |
+|-----------|----------------------|
+| **Hard block** — SO cannot submit if price < min price | Add pre-submit check: `entered_price >= min_price`. Block with error message. |
+| **Soft warning** — flag to management but allow submission | Show warning on SO form when price < min price. SO proceeds to Finance approval step where boss reviews. |
 
-**Ask:** Does enforcement block currently exist in code? If minimum_price field is configured on a product, does SO submit check against it?
+Given that boss already approves pricing verbally and the SO goes through Finance approval anyway, **soft warning** may be more appropriate. But this must be confirmed with Gareth before dev builds anything.
+
+**Two parts either way:**
+1. (Config) Gareth loads minimum prices per product — prerequisite, not dev
+2. (Code) Implement hard block OR soft warning on SO — pending Gareth's confirmation
+
+**Do not build this until Gareth confirms hard block vs. soft warning.**
 
 ---
 
