@@ -3,7 +3,7 @@ granola_id: fb1d9ea9-365a-4837-a267-24f6d009b1ec
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-06-25T01:44:25.899Z
-updated: 2026-06-25T01:59:50.056Z
+updated: 2026-06-25T02:00:08.239Z
 attendees: 
   - afiqaqill261203@gmail.com
   - ghostsketon@gmail.com
@@ -233,5 +233,5 @@ Alright. Thank you.
 
 ### You (2026-06-25T01:58:32.777Z)
 
-Thanks. About a minute. This tour. Make a order s o a. It's what I need to confirm Okay. How is it? Mister the endpoint that Farahar provide that you you need to implement on Eva. I already Okay. Cool. Think once you test it out, okay, then you probably need to pass it to who is the one that does it as OA for productivity? Cool. Anything else? Anything? Bye bye. Check it. Check it. Oh, same thing. The holiday meeting Yeah. For treatment. Okay.
+Thanks. About a minute. This tour. Make a order s o a. It's what I need to confirm Okay. How is it? Mister the endpoint that Farahar provide that you you need to implement on Eva. I already Okay. Cool. Think once you test it out, okay, then you probably need to pass it to who is the one that does it as OA for productivity? Cool. Anything else? Anything? Bye bye. Check it. Check it. Oh, same thing. The holiday meeting Yeah. For treatment. Okay. I think that's all for today. Right. Thank you, guys.
 
