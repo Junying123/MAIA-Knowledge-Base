@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
+                "file": "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "3rd backward final UAT action plan for Fixguru"
+              "title": "Holsen __ Mindhive Close UAT-transcript"
             }
           },
           {
@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -384,10 +383,6 @@
                     "name": "zsh 135"
                   },
                   {
-                    "id": 138,
-                    "name": "zsh 138"
-                  },
-                  {
                     "id": 140,
                     "name": "zsh 140"
                   },
@@ -406,10 +401,14 @@
                   {
                     "id": 145,
                     "name": "zsh 145"
+                  },
+                  {
+                    "id": 146,
+                    "name": "zsh 146"
                   }
                 ],
-                "activeId": 144,
-                "nextId": 146
+                "activeId": 146,
+                "nextId": 147
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -430,7 +429,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 877.5
+    "width": 722.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -461,12 +460,12 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
     "Granola/Transcripts/2026-06-25/Holsen Go Live-transcript.md",
     "Granola/Transcripts/2026-06-25/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-25",
     "lark-base-auth-qrcode.png",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Key Learnings from UAT.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Readiness Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
