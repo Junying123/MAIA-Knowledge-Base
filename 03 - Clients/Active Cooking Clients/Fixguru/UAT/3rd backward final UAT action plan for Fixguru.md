@@ -85,7 +85,7 @@ Based on the **24 June 2026 UAT session** (Fireflies transcript + [[Meetings/202
 
 ## Immediate Execution Plan
 
-### Day 1 — Alignment Lock
+### Day 1 (Wed 25 Jun) — Alignment Lock
 
 Product lead + tech lead + PM align on one critical outcome: **fix the pricing decision step first.** Do not spread effort across all remaining features until this is usable.
 
@@ -100,7 +100,7 @@ Tech to confirm:
 - Whether discount %, net price, standard price are available reliably
 - Whether WhatsApp can display the table cleanly, or whether web/image table is needed
 
-### Day 2–3 — Build P0 Fixes
+### Day 2–3 (Thu 26 Jun – Fri 27 Jun) — Build P0 Fixes
 
 Tech focuses only on:
 1. Historical pricing API (invoices, min 5 rows)
@@ -112,7 +112,7 @@ Tech focuses only on:
 
 Product supports with live examples and expected output.
 
-### Day 4 — Internal Retest
+### Day 4 (Mon 30 Jun) — Internal Retest
 
 Run one full Fixguru scenario end-to-end:
 
@@ -120,7 +120,7 @@ Run one full Fixguru scenario end-to-end:
 
 **Pass criteria: user should not need to open AutoCount for the pricing decision.**
 
-### Day 5 — Client Retest
+### Day 5 (Tue 1 Jul) — Client Retest
 
 Show Fixguru only the corrected pricing flow first. Do not demo all features. Goal: prove the main blocker is fixed before moving to delivery, credit, PDF, and warehouse flows.
 

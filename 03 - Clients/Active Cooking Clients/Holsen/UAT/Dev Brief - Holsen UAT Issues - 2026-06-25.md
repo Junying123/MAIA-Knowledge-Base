@@ -12,196 +12,201 @@ client: Holsen
 **Date:** 25 June 2026
 **Environment:** https://maia-fe-holsen.vercel.app
 
-Two source sessions:
-- **Close UAT** — 2026-06-22, Gareth + Mr. Tam (Holsen Lab), ~2 hrs live system testing
-- **Go-Live Check-in** — 2026-06-25, Full Mindhive team + Mr. Tam, data prep and pricing alignment
+---
 
-> **Note on transcript quality:** Both sessions were auto-transcribed. Quotes below are lightly cleaned fragments used as evidence anchors — actual phrasing in the meeting may differ. Issues marked (CONFIRMED) were observed live and unambiguous. Issues marked (VERIFY) need a dev-side check to confirm behaviour.
+## Sources of Truth
+
+Every issue below is attributed to a specific source. Transcripts were auto-generated and garbled — quote fragments are evidence anchors, not verbatim.
+
+| Source | Date | Session | What it covers |
+|--------|------|---------|----------------|
+| **Granola A** | 2026-06-22 | Close UAT (Gareth + Mr. Tam, ~2 hrs live system testing) | B1, B2, B3, B4, B7 |
+| **Granola B** | 2026-06-25 | Go Live prep (Gareth + Mr. Tam, ~1 hr data prep) | B6 |
+| **Fireflies** | 2026-06-25 | Same meeting as Granola B (auto-summary + action items) | B6 (corroborates) |
+| **KB UAT folder** | Pre-existing | `DN to Pick List - Batch Number Test Cases.md` | B5 |
 
 ---
 
-## Summary
+## Issue Summary
 
-| ID | Issue | Priority | Source | Status |
-|----|-------|----------|--------|--------|
-| B1 | Delivery Note defaults to wrong warehouse → triggers negative stock error | P1 Blocker | Close UAT 06-22 | Open |
-| B2 | No pre-submit stock check on DN — error fires after submit, not before | P1 Blocker | Close UAT 06-22 | Open |
-| B3 | Payment due date calculates from delivery date, not invoice creation date | P1 Blocker | Close UAT 06-22 | Open |
-| B4 | Tax override: item-level "no tax" vs system default 10% — hierarchy needs verification | P2 | Close UAT 06-22 | Verify |
-| B5 | Batch number selected on DN not carrying through to Pick List | P1 Blocker | Existing test cases | Unrun |
-| B6 | Minimum price not blocking SO submission when price is below floor | P1 Blocker | Go-Live 06-25 | Open |
+| ID | Issue | Priority | Source | Confidence |
+|----|-------|----------|--------|-----------|
+| B1 | Delivery Note defaults to wrong warehouse → negative stock error | P1 Blocker | Granola A | High — observed live |
+| B2 | No pre-submit stock check on DN — error fires post-submit | P1 Blocker | Granola A | High — observed live |
+| B3 | Payment due date uses delivery date not invoice creation date | P1 Blocker | Granola A | High — Mr. Tam flagged directly |
+| B4 | Tax: item-level "no tax" vs system 10% — override hierarchy unverified | P2 | Granola A | Medium — discussed but not confirmed broken |
+| B5 | Batch number not carrying from DN to Pick List | P1 Blocker | KB test cases | Unknown — test cases exist, unrun |
+| B6 | Minimum price not blocking SO when price is below floor | P1 Blocker | Granola B + Fireflies | Medium — implied by "strictly enforced… nothing" |
+| B7 | PDF/document showing discount % — Holsen requires no discount shown | P1 Blocker | Granola A + B | High — explicit in both sessions |
 
 ---
 
-## B1 — Delivery Note Defaults to Wrong Warehouse [P1 BLOCKER — CONFIRMED]
+## B1 — Delivery Note Defaults to Wrong Warehouse [P1 — HIGH CONFIDENCE]
 
-**Source:** Close UAT 2026-06-22
+**Source:** Granola A (2026-06-22 Close UAT)
 
-**Evidence from transcript:**
+**Evidence:**
 > *"Negative stock quantity in Warehouse 0042 — this is the ABC component warehouse."*
 > *"Would your phone to go warehouse or main warehouse?"*
 > *"To go main warehouse. So all [stock is] reserve[d] there."*
 
 **What happened:**
-Mr. Tam created a Delivery Note from an approved Sales Order. The DN pre-selected **Warehouse 0042 (ABC Component Warehouse)** — a manufacturing input warehouse — instead of **Main Warehouse** where all trading stock sits. When Mr. Tam hit Submit, the system threw a negative stock error because Warehouse 0042 has zero stock for trading items.
+DN created from approved SO pre-selected **Warehouse 0042 (ABC Component)** instead of **Main Warehouse**. Zero trading stock in 0042 → negative stock error on submit. Mr. Tam manually switched to Main Warehouse → DN submitted successfully.
 
-After switching to Main Warehouse manually, the DN submitted successfully.
+**Root cause:** DN not reading item's `default_warehouse` field, or that field is not set correctly.
 
-**Root cause:** DN creation is reading the wrong warehouse as default — likely not pulling from the item's `default_warehouse` field, or that field is not set/is set incorrectly.
-
-**Expected:** DN pre-populates warehouse from item's configured default warehouse (Main Warehouse for all Holsen trading items).
-
-**Actual:** DN defaults to Warehouse 0042 (ABC Component) regardless of item config.
-
-**Fix direction:** DN creation should read `item.default_warehouse` and pre-populate accordingly. Confirm what field is currently being used.
+**Fix:** DN creation reads `item.default_warehouse` and pre-populates accordingly. For Holsen, all trading items → Main Warehouse.
 
 ---
 
-## B2 — No Pre-Submit Stock Validation on Delivery Note [P1 BLOCKER — CONFIRMED]
+## B2 — No Pre-Submit Stock Check on DN [P1 — HIGH CONFIDENCE]
 
-**Source:** Close UAT 2026-06-22
+**Source:** Granola A (2026-06-22 Close UAT)
 
-**Evidence from transcript:**
-> *"Negative stock quantity in Warehouse 0042."* [fires after Submit button clicked]
-> *"Okay let's try something."* [after error; had to change warehouse and retry]
+**Evidence:**
+> *"Negative stock quantity in Warehouse 0042."* [fires after submit]
+> *"Okay let's try something."* [user had to cancel and retry after error]
 
 **What happened:**
-System allowed Mr. Tam to fill in the DN form and click Submit with an invalid warehouse and zero stock. The negative stock error only appeared post-submit. No warning or validation prevented the attempt.
+System allowed DN submit with invalid warehouse/zero stock. Error only returned post-submit after write attempt. No client-side or pre-commit validation.
 
-**Expected:** Before DN submits, system checks each line item's requested quantity against available stock in the selected warehouse. If any line fails the check → block submit and show: *"Insufficient stock: [Item] — [X] kg available in [Warehouse], [Y] kg required."*
+**Fix:** Pre-submit check on DN: for each line item, `available_qty_in_selected_warehouse >= requested_qty`. If check fails → block submit with clear message: *"Insufficient stock: [Item] — [X] kg available, [Y] kg required."*
 
-**Actual:** Submit proceeds, stock check fires server-side post-commit, error returned after failed write.
-
-**Fix direction:** Add client-side or server-side pre-submit validation on DN: for each line item, `available_qty_in_warehouse >= requested_qty` before allowing submit.
-
-**Note:** This bug is directly caused by B1 (wrong warehouse default), but both should be fixed independently — even with correct warehouse default, a user could manually select an understocked warehouse.
+**Note:** B1 causes B2 in practice (wrong warehouse default → zero stock). Fix both independently.
 
 ---
 
-## B3 — Payment Due Date Calculates from Delivery Date, Not Invoice Creation Date [P1 BLOCKER — CONFIRMED]
+## B3 — Payment Due Date From Delivery Date, Not Invoice Creation Date [P1 — HIGH CONFIDENCE]
 
-**Source:** Close UAT 2026-06-22
+**Source:** Granola A (2026-06-22 Close UAT)
 
-**Evidence from transcript:**
-> *"Type of payment is not issue from another date right — instead of delivery date."* (Mr. Tam flagging the issue)
-> *"By write, system default integrates [due date as] July — 30 days from delivery."* (observing the bug)
-> *"Creation date. So commute default now as it was."* (expected behaviour)
-> *"View and reference it cannot be after. Okay creation date okay."* (confirming invoice creation date is correct)
+**Evidence:**
+> *"Type of payment is not issue from another date right — instead of delivery date."* (Mr. Tam flagging)
+> *"By write, system default [calculates] 30 days from delivery."* (observing current behaviour)
+> *"Creation date. So commute default now as it was."* (correct behaviour)
+> *"View and reference it cannot be after. Okay creation date okay."* (confirming)
 
 **What happened:**
-When creating an Invoice from a Delivery Note, the system auto-fills the payment due date as **delivery date + 30 days** (Net 30). Holsen's terms are **Net 30 from invoice creation date**, not delivery date.
+Invoice due date auto-calculates as `delivery_date + 30 days`. Holsen's terms = **Net 30 from invoice creation date**.
 
-This matters most when delivery date is in the future. Example:
-- Invoice created: 22 June 2026
-- Delivery date: 1 August 2026
-- **Buggy due date:** 1 September 2026
-- **Correct due date:** 22 July 2026
+Example where this matters: SO with delivery date 1 Aug 2026, invoice created 22 Jun 2026 → system gives 1 Sep due date, correct is 22 Jul.
 
-**Fix direction:** Payment due date calculation should use `invoice.creation_date + payment_terms_days`. Not `delivery_note.delivery_date + payment_terms_days`.
-
-Confirm which field is currently used as the base date in the due date formula and update accordingly.
+**Fix:** Due date = `invoice.creation_date + payment_terms_days`. Not `delivery_note.delivery_date + payment_terms_days`.
 
 ---
 
-## B4 — Tax Override Hierarchy: Item "No Tax" vs System Default 10% [P2 — VERIFY]
+## B4 — Tax Override: Item "No Tax" vs System Default 10% [P2 — VERIFY]
 
-**Source:** Close UAT 2026-06-22
+**Source:** Granola A (2026-06-22 Close UAT)
 
-**Evidence from transcript:**
-> *"No tax overact 10%"* / *"No text override 10%"* (transcription variants of same statement)
+**Evidence:**
+> *"No tax override 10%"* / *"No text overact 10%"* (transcription variants)
 > *"Override."* (Mr. Tam confirming expected behaviour)
-> *"Negative 10 overwrite the no tax versus the no tax override 10%"*
+> *"No need to show any discount. There's no no need to show discount."* (adjacent context)
 
-**Context:**
-Holsen has a system/customer default tax of 10%. Some specific items are tagged "No Tax" at the item master level. The discussion confirmed that item-level "No Tax" should override the 10% default — the invoice line should show 0% tax for those items regardless of customer or system tax settings.
+**Context:** Holsen's system/customer default tax is 10%. Some items tagged "No Tax" at item master level. Discussion confirmed: item-level "No Tax" should override 10% → invoice shows 0%.
 
-**The question:** Does this override currently work correctly in all cases?
-
-In the UAT session, one test appeared to work. But the following scenarios were not exhaustively tested:
-1. Customer has explicit 10% tax setting AND item is "No Tax"
-2. System default 10% AND item is "No Tax" (no customer-level tax set)
+**Status:** One test case appeared to work during UAT. Not tested exhaustively. Three scenarios to verify:
+1. Customer has explicit 10% setting + item is "No Tax"
+2. System default 10% + item is "No Tax" (no customer-level tax)
 3. Tax set at SO line-item level vs. inherited from item master
 
-**Ask:** Can dev confirm the tax override hierarchy is: **Item > Customer > System default**? And that "No Tax" at item level produces 0% on the invoice line in all three scenarios above? If any scenario is broken, flag — Mr. Tam's product list includes both taxable and exempt chemicals.
+**Ask:** Confirm tax hierarchy is **Item > Customer > System**. If any scenario shows 10% where 0% expected, flag.
 
 ---
 
-## B5 — Batch Number Not Carrying from Delivery Note to Pick List [P1 BLOCKER — UNRUN]
+## B5 — Batch Number Not Carrying from DN to Pick List [P1 — UNVERIFIED]
 
-**Source:** Existing UAT test cases (pre-dating this session)
+**Source:** `UAT/DN to Pick List - Batch Number Test Cases.md` (pre-existing KB doc)
 
-**Test cases:** [[UAT/DN to Pick List - Batch Number Test Cases]] — HOL-LOG-DN-PL-001 and HOL-LOG-DN-PL-002
+**Test cases:** HOL-LOG-DN-PL-001 and HOL-LOG-DN-PL-002 — steps written, results blank.
 
-These test cases exist and specify the exact reproduction steps. Results columns are blank — tests have not been executed.
+**Issue definition:** Batch number selected on DN line item must appear on the generated Pick List. Without it, warehouse staff can't identify which physical batch to pull — critical for chemical and hazardous goods.
 
-**Issue definition:** When logistics selects a batch number on a DN line item, the generated Pick List should show the batch number so warehouse staff know exactly which physical batch to pull. If batch number is blank on the Pick List, warehouse staff have no way to identify the correct batch — critical for chemical/poison goods.
-
-**Ask:** Run HOL-LOG-DN-PL-001 and HOL-LOG-DN-PL-002 and record results. If batch number is not appearing on the Pick List, trace where the batch field is dropped in the DN → Pick List generation flow.
+**Ask:** Run HOL-LOG-DN-PL-001 and HOL-LOG-DN-PL-002. Record results. If batch field is missing from Pick List, trace the DN → Pick List generation flow and identify where it's dropped.
 
 ---
 
-## B6 — Minimum Price Not Blocking SO Submission [P1 BLOCKER — OPEN]
+## B6 — Minimum Price Not Blocking SO Submission [P1 — MEDIUM CONFIDENCE]
 
-**Source:** Go-Live Check-in 2026-06-25 (Fireflies session with full Mindhive + Mr. Tam)
+**Source:** Granola B (2026-06-25 Go Live) + Fireflies summary (same session)
 
-**Evidence from transcript:**
-> *"Standard price but minimum price — stop [order] from going through."* (Mr. Tam describing expected behaviour)
-> *"So the trigger."* (discussing that it should trigger a block)
-> *"Price minimum price formatting. Strictly enforce — just nothing."* (Mr. Tam noting it's currently not enforcing)
+**Evidence from Granola B:**
+> *"Standard price link but the have minimum price — stop order from going through."* (Mr. Tam: expected behaviour)
+> *"So that trigger."* (minimum price should trigger a block)
+> *"Minimum price formatting, but more vendor case your strictly enforced… nothing."* (Mr. Tam noting current state)
 
-**From Fireflies summary action items:**
+**Evidence from Fireflies action items:**
 > *"Gareth: Confirm enforcement rules for minimum price and implement controls preventing orders below minimum price thresholds (45:07)"*
 
-**Context:**
-Holsen uses minimum prices per product as a margin floor. When a Sales Agent creates an SO, if the entered unit price is below the configured minimum price for that item, the system should block submission (or flag for manager approval). Minimum prices are set at product level and vary per item.
+**How minimum price should work (from both sessions):**
+- Each product has a configured minimum price (Gareth's config action)
+- SO submit: if entered unit price < minimum price → block (or warn for manager approval)
+- **Exception:** if a customer-specific price is set for that customer+item, it overrides the minimum price floor. Customer pricing CAN go below minimum by design.
+- Mr. Tam's final characterisation: minimum price is a "guideline" — but the trigger/block should still fire for orders with no customer-specific price set
 
-**What Mr. Tam described:**
-- Minimum price = hard floor, blocks order if price entered is below it
-- Individual customer pricing CAN be set below minimum price for that specific customer (this is by design — customer-specific pricing overrides the floor for that customer)
-- For orders where no customer-specific price exists, minimum price enforcement applies
+**Note for dev team:** Two things may be needed:
+1. Gareth loads minimum prices per product in system (config — his action item)
+2. System enforces block on SO submit when `entered_price < minimum_price` AND no customer-specific override exists for that customer+item (code)
 
-**Current behaviour (reported):** System is NOT blocking orders below minimum price threshold.
-
-**Note for dev team:** Gareth has a parallel action item to configure minimum prices per product in the system. Two things may be needed:
-1. (Config) Gareth loads minimum price per product — needed first
-2. (Code) System enforces the block on SO submit when entered price < minimum price AND no customer-specific price override exists
-
-Please confirm with Gareth whether the enforcement logic exists in code already (just needs prices configured) or whether the enforcement block needs to be built.
+Please confirm with Gareth whether enforcement logic exists (needs prices configured to activate) or needs to be built.
 
 ---
 
-## Holsen Setup Context (for reference)
+## B7 — PDF Documents Showing Discount % — Holsen Requires No Discount Display [P1 — HIGH CONFIDENCE]
+
+**Source:** Granola A (2026-06-22) + Granola B (2026-06-25)
+
+**Evidence from Granola A (2026-06-22):**
+> *"We don't need to show any discount. That's there's no no need to show discount."* (Mr. Tam explicitly)
+
+**Evidence from Granola B (2026-06-25):**
+> *"Try generating a pdf… different discount."* (Gareth generating a test PDF)
+> *"So it has a discount."* (discount visible on PDF)
+> *"You show 49% of the… 49% offer."* (49% discount shown on document)
+> *"oh, shit."* (Gareth reaction — unexpected)
+
+**What happened:**
+When Gareth generated a PDF during the go-live session, it showed a 49% discount on the document. Mr. Tam had already said in the 06-22 session that no discount should appear on any Holsen customer-facing document. The "49%" appears to be because the system is comparing the standard/list price to the customer-negotiated price and displaying the difference as a discount column/line.
+
+**Expected:** No discount column, discount %, or discount amount on any PDF output (Quotation, SO, Invoice, Delivery Note) for Holsen.
+
+**Actual:** PDF shows discount % (observed as 49% in go-live session).
+
+**Fix:** Holsen PDF template — hide/remove discount field/column from all document outputs. If this is a template setting, toggle it off for Holsen's instance. If hardcoded, suppress for this tenant.
+
+---
+
+## Holsen Context (for reference)
 
 | Item | Value |
 |------|-------|
 | Environment | https://maia-fe-holsen.vercel.app |
-| Main trading warehouse | **Main Warehouse** (all trading items stored here) |
-| Manufacturing warehouse | **Warehouse 0042 — ABC Component** (NOT for trading fulfillment) |
+| Main trading warehouse | **Main Warehouse** — all trading items |
+| Manufacturing/component warehouse | **Warehouse 0042 / ABC Component** — NOT for trading fulfillment |
 | Payment terms | **Net 30 from invoice creation date** |
-| Tax default | 10% — some items exempt (item-level "No Tax") |
-| Expected daily volume | 70–90 POs/day at full capacity |
-| Product types | Trading + Manufacturing + Poison/Hazardous (e.g., Sodium Cyanide) |
-| Go-live date | 25 June 2026 (today) |
+| Tax default | 10%; some items exempt (item-level "No Tax") |
+| Document preference | **No discount shown** on any customer-facing PDF |
+| Volume (target) | 70–90 POs/day |
+| Product types | Trading + Manufacturing + Poison/Hazardous chemicals |
 
 ---
 
-## What's Out of Scope for This Brief
+## Out of Scope (Not Dev Bugs)
 
-These were raised in UAT but are **not dev bugs** — tracked separately in [[UAT/Holsen Go-Live Action Plan - 2026-06-25]]:
-
-| Item | Type | Status |
-|------|------|--------|
-| WhatsApp/Telegram notification when Pick List is generated | Feature request (F1) | Post go-live backlog |
-| C3 compliance cert generation for poison goods | Phase A3 scope | Deferred per SOW |
-| AutoCount / UBS integration | Phase A1 CSV workaround in place | Full integration August 2026 |
-| Customer-specific pricing data not loaded | Config gap (C2) | Gareth action item |
-| Batch numbers for existing stock not created | Config gap (C6) | Holsen Lab action item |
+| Item | Type | Tracked in |
+|------|------|-----------|
+| WhatsApp/Telegram notification when Pick List generated | Feature request | Go-Live Action Plan F1 |
+| C3 compliance cert / K1 traceability | Phase A3 deferred | SOW |
+| Customer-specific pricing data not loaded | Config gap | Go-Live Action Plan C2 |
+| Batch numbers for existing stock not created | Holsen Lab action | Go-Live Action Plan C6 |
+| Excel formula errors in Mr. Tam's migration files | Data prep (Holsen side) | Not MAIA system |
 
 ---
 
 ## See Also
 
-- [[UAT/Holsen Go-Live Action Plan - 2026-06-25]] — full action plan with all config gaps + gates
-- [[UAT/DN to Pick List - Batch Number Test Cases]] — test cases for B5
-- [[Holsen MAIA User Guide - Mr Tam Team]] — handover guide for Holsen's team
-- [[Product/SOW for MAIA Holsen]] — Phase A1/A3 scope boundary
+- [[UAT/Holsen Go-Live Action Plan - 2026-06-25]] — full action plan, config gaps, gates
+- [[UAT/DN to Pick List - Batch Number Test Cases]] — B5 test cases
+- [[Holsen MAIA User Guide - Mr Tam Team]] — handover guide
+- [[Product/SOW for MAIA Holsen]] — Phase A1/A3 scope
