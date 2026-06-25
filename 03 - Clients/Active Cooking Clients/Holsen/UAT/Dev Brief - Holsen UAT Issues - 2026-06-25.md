@@ -14,34 +14,71 @@ client: Holsen
 
 ---
 
+## Holsen Operational Context (Read First)
+
+Understanding the actual user flows is critical — some "bugs" are only bugs in the context of how Holsen's team will operate.
+
+### User Flows
+
+**Sales Staff + Warehouse Staff → Chatbot (WhatsApp)**
+1. Customer sends PO → Sales staff uploads PO or sends message to MAIA chatbot
+2. Chatbot extracts order → creates SO
+3. After logistics assigns batch and DN is submitted, pick list is generated
+4. **Chatbot must notify warehouse staff** and share the **pick list URL**
+5. Warehouse staff clicks URL → reviews items → updates actual picked qty → marks pick list complete
+
+**Logistics Staff → Frontend (Web App)**
+1. Opens submitted SO → converts to Delivery Note (DN)
+2. Assigns batch numbers to each line item
+3. Submits DN → triggers pick list generation
+4. Pick list PDF is optional (warehouse uses the URL link, not necessarily PDF)
+
+### Pricing Model (Important — affects B6)
+
+| Field | Holsen setup |
+|-------|-------------|
+| Standard price | **RM0 by default** for ALL items (trading + manufacturing) — no standard price used |
+| Minimum price | Set **manually** by management per product — acts as floor |
+| Customer pricing | **Not auto-populated** — sales staff enter price manually on each SO |
+| Historical pricing | Reference only — staff look up previous order prices themselves |
+
+### Stock / Batch Model (Go-Live)
+
+- Full stock ledger to be ingested at go-live: batch number, qty in, qty out, current balance
+- Items can have **multiple batches per customer** (e.g., C3-restricted batches locked to specific customer)
+- Batch assignment on DN → carries to pick list so warehouse knows exactly which batch to pull
+
+---
+
 ## Sources of Truth
 
-Every issue below is attributed to a specific source. Transcripts were auto-generated and garbled — quote fragments are evidence anchors, not verbatim.
-
-| Source | Date | Session | What it covers |
-|--------|------|---------|----------------|
-| **Granola A** | 2026-06-22 | Close UAT (Gareth + Mr. Tam, ~2 hrs live system testing) | B1, B2, B3, B4, B7 |
-| **Granola B** | 2026-06-25 | Go Live prep (Gareth + Mr. Tam, ~1 hr data prep) | B6 |
-| **Fireflies** | 2026-06-25 | Same meeting as Granola B (auto-summary + action items) | B6 (corroborates) |
+| Source | Date | Session | Issues |
+|--------|------|---------|--------|
+| **Granola A** | 2026-06-22 | Close UAT — live system testing (~2 hrs, Gareth + Mr. Tam) | B1, B2, B3, B4, B7 |
+| **Granola B** | 2026-06-25 | Go Live prep (~1 hr, Gareth + Mr. Tam) | B6, B8 |
+| **Fireflies** | 2026-06-25 | Same meeting as Granola B (AI summary + action items) | B6 (corroborates) |
 | **KB UAT folder** | Pre-existing | `DN to Pick List - Batch Number Test Cases.md` | B5 |
+
+Transcripts are auto-generated and garbled. Quote fragments below are evidence anchors, not verbatim.
 
 ---
 
 ## Issue Summary
 
-| ID | Issue | Priority | Source | Confidence |
-|----|-------|----------|--------|-----------|
-| B1 | Delivery Note defaults to wrong warehouse → negative stock error | P1 Blocker | Granola A | High — observed live |
-| B2 | No pre-submit stock check on DN — error fires post-submit | P1 Blocker | Granola A | High — observed live |
-| B3 | Payment due date uses delivery date not invoice creation date | P1 Blocker | Granola A | High — Mr. Tam flagged directly |
-| B4 | Tax: item-level "no tax" vs system 10% — override hierarchy unverified | P2 | Granola A | Medium — discussed but not confirmed broken |
-| B5 | Batch number not carrying from DN to Pick List | P1 Blocker | KB test cases | Unknown — test cases exist, unrun |
-| B6 | Minimum price not blocking SO when price is below floor | P1 Blocker | Granola B + Fireflies | Medium — implied by "strictly enforced… nothing" |
-| B7 | PDF/document showing discount % — Holsen requires no discount shown | P1 Blocker | Granola A + B | High — explicit in both sessions |
+| ID | Issue | Priority | Confidence |
+|----|-------|----------|-----------|
+| B1 | DN defaults to wrong warehouse → negative stock error on submit | P1 Blocker | High |
+| B2 | No pre-submit stock check on DN — error fires post-submit | P1 Blocker | High |
+| B3 | Payment due date uses delivery date not invoice creation date | P1 Blocker | High |
+| B4 | Tax: item-level "no tax" vs system 10% — override unverified | P2 Verify | Medium |
+| B5 | Batch number not carrying from DN to Pick List | P1 Blocker | Unknown — test cases unrun |
+| B6 | Minimum price not blocking SO when price below floor | P1 Blocker | Medium |
+| B7 | PDF showing discount % — Holsen requires zero discount display | P1 Blocker | High |
+| B8 | Chatbot not sending pick list URL to warehouse after pick list created | P1 Blocker | High |
 
 ---
 
-## B1 — Delivery Note Defaults to Wrong Warehouse [P1 — HIGH CONFIDENCE]
+## B1 — Delivery Note Defaults to Wrong Warehouse [P1 — HIGH]
 
 **Source:** Granola A (2026-06-22 Close UAT)
 
@@ -53,43 +90,36 @@ Every issue below is attributed to a specific source. Transcripts were auto-gene
 **What happened:**
 DN created from approved SO pre-selected **Warehouse 0042 (ABC Component)** instead of **Main Warehouse**. Zero trading stock in 0042 → negative stock error on submit. Mr. Tam manually switched to Main Warehouse → DN submitted successfully.
 
-**Root cause:** DN not reading item's `default_warehouse` field, or that field is not set correctly.
-
-**Fix:** DN creation reads `item.default_warehouse` and pre-populates accordingly. For Holsen, all trading items → Main Warehouse.
+**Fix:** DN creation reads `item.default_warehouse` and pre-populates. For Holsen, all trading items → Main Warehouse.
 
 ---
 
-## B2 — No Pre-Submit Stock Check on DN [P1 — HIGH CONFIDENCE]
+## B2 — No Pre-Submit Stock Check on DN [P1 — HIGH]
 
 **Source:** Granola A (2026-06-22 Close UAT)
 
 **Evidence:**
-> *"Negative stock quantity in Warehouse 0042."* [fires after submit]
-> *"Okay let's try something."* [user had to cancel and retry after error]
+> *"Negative stock quantity in Warehouse 0042."* [fires after submit, not before]
+> *"Okay let's try something."* [user had to cancel, switch warehouse, retry]
 
 **What happened:**
-System allowed DN submit with invalid warehouse/zero stock. Error only returned post-submit after write attempt. No client-side or pre-commit validation.
+Submit went through with invalid warehouse/zero stock. Error only returned after failed write. No pre-submit validation.
 
-**Fix:** Pre-submit check on DN: for each line item, `available_qty_in_selected_warehouse >= requested_qty`. If check fails → block submit with clear message: *"Insufficient stock: [Item] — [X] kg available, [Y] kg required."*
+**Fix:** Pre-submit check: for each DN line item, `available_qty_in_selected_warehouse >= requested_qty`. Block submit on failure. Message: *"Insufficient stock: [Item] — [X] kg available, [Y] kg required."*
 
-**Note:** B1 causes B2 in practice (wrong warehouse default → zero stock). Fix both independently.
+Note: B1 causes B2 in practice. Fix both independently.
 
 ---
 
-## B3 — Payment Due Date From Delivery Date, Not Invoice Creation Date [P1 — HIGH CONFIDENCE]
+## B3 — Payment Due Date Uses Delivery Date Not Invoice Creation Date [P1 — HIGH]
 
 **Source:** Granola A (2026-06-22 Close UAT)
 
 **Evidence:**
 > *"Type of payment is not issue from another date right — instead of delivery date."* (Mr. Tam flagging)
-> *"By write, system default [calculates] 30 days from delivery."* (observing current behaviour)
+> *"By write, system default [calculates] 30 days from delivery."* (current behaviour)
 > *"Creation date. So commute default now as it was."* (correct behaviour)
-> *"View and reference it cannot be after. Okay creation date okay."* (confirming)
-
-**What happened:**
-Invoice due date auto-calculates as `delivery_date + 30 days`. Holsen's terms = **Net 30 from invoice creation date**.
-
-Example where this matters: SO with delivery date 1 Aug 2026, invoice created 22 Jun 2026 → system gives 1 Sep due date, correct is 22 Jul.
+> *"View and reference it cannot be after. Okay creation date okay."* (Mr. Tam confirming)
 
 **Fix:** Due date = `invoice.creation_date + payment_terms_days`. Not `delivery_note.delivery_date + payment_terms_days`.
 
@@ -100,113 +130,143 @@ Example where this matters: SO with delivery date 1 Aug 2026, invoice created 22
 **Source:** Granola A (2026-06-22 Close UAT)
 
 **Evidence:**
-> *"No tax override 10%"* / *"No text overact 10%"* (transcription variants)
-> *"Override."* (Mr. Tam confirming expected behaviour)
-> *"No need to show any discount. There's no no need to show discount."* (adjacent context)
+> *"No tax override 10%"* / *"No text overact 10%"*
+> *"Override."* (confirming expected behaviour)
 
-**Context:** Holsen's system/customer default tax is 10%. Some items tagged "No Tax" at item master level. Discussion confirmed: item-level "No Tax" should override 10% → invoice shows 0%.
+Some Holsen items are "No Tax" at item level. System/customer default is 10%. Item-level "No Tax" must override 10% → invoice line shows 0%.
 
-**Status:** One test case appeared to work during UAT. Not tested exhaustively. Three scenarios to verify:
-1. Customer has explicit 10% setting + item is "No Tax"
-2. System default 10% + item is "No Tax" (no customer-level tax)
-3. Tax set at SO line-item level vs. inherited from item master
-
-**Ask:** Confirm tax hierarchy is **Item > Customer > System**. If any scenario shows 10% where 0% expected, flag.
+**Ask:** Confirm tax hierarchy = **Item > Customer > System**. Test all three scenarios:
+1. Customer has 10% setting + item is "No Tax"
+2. System default 10% + item is "No Tax" (no customer-level setting)
+3. Tax set at SO line-item level vs inherited from item master
 
 ---
 
 ## B5 — Batch Number Not Carrying from DN to Pick List [P1 — UNVERIFIED]
 
-**Source:** `UAT/DN to Pick List - Batch Number Test Cases.md` (pre-existing KB doc)
+**Source:** `UAT/DN to Pick List - Batch Number Test Cases.md`
 
 **Test cases:** HOL-LOG-DN-PL-001 and HOL-LOG-DN-PL-002 — steps written, results blank.
 
-**Issue definition:** Batch number selected on DN line item must appear on the generated Pick List. Without it, warehouse staff can't identify which physical batch to pull — critical for chemical and hazardous goods.
+**Why critical:** Logistics staff assign batch on DN → warehouse staff receive pick list URL (via chatbot, see B8) → they need to see which batch to pull. If batch is missing from pick list, warehouse can't fulfill correctly — especially for chemical/hazardous items with multiple batches per customer.
 
-**Ask:** Run HOL-LOG-DN-PL-001 and HOL-LOG-DN-PL-002. Record results. If batch field is missing from Pick List, trace the DN → Pick List generation flow and identify where it's dropped.
+**Ask:** Run HOL-LOG-DN-PL-001 and HOL-LOG-DN-PL-002. Record results. If batch missing, trace DN → pick list generation flow.
 
 ---
 
-## B6 — Minimum Price Not Blocking SO Submission [P1 — MEDIUM CONFIDENCE]
+## B6 — Minimum Price Not Blocking SO When Price Below Floor [P1 — MEDIUM]
 
-**Source:** Granola B (2026-06-25 Go Live) + Fireflies summary (same session)
+**Source:** Granola B (2026-06-25 Go Live) + Fireflies (same session)
 
 **Evidence from Granola B:**
-> *"Standard price link but the have minimum price — stop order from going through."* (Mr. Tam: expected behaviour)
-> *"So that trigger."* (minimum price should trigger a block)
-> *"Minimum price formatting, but more vendor case your strictly enforced… nothing."* (Mr. Tam noting current state)
+> *"Standard price link but the have minimum price — stop order from going through."* (expected behaviour)
+> *"So that trigger."*
+> *"Minimum price formatting, but more vendor case your strictly enforced… nothing."* (current state: enforcing nothing)
 
 **Evidence from Fireflies action items:**
 > *"Gareth: Confirm enforcement rules for minimum price and implement controls preventing orders below minimum price thresholds (45:07)"*
 
-**How minimum price should work (from both sessions):**
-- Each product has a configured minimum price (Gareth's config action)
-- SO submit: if entered unit price < minimum price → block (or warn for manager approval)
-- **Exception:** if a customer-specific price is set for that customer+item, it overrides the minimum price floor. Customer pricing CAN go below minimum by design.
-- Mr. Tam's final characterisation: minimum price is a "guideline" — but the trigger/block should still fire for orders with no customer-specific price set
+**Pricing model context (critical):**
+- Standard price = **RM0** for all Holsen items (by design — not used)
+- Minimum price = **manually configured** per product by Holsen management
+- Customer pricing = **not auto-populated** — sales staff enter price manually per SO
+- Minimum price must act as floor: if sales staff enters price < min price on SO → block submission
 
-**Note for dev team:** Two things may be needed:
-1. Gareth loads minimum prices per product in system (config — his action item)
-2. System enforces block on SO submit when `entered_price < minimum_price` AND no customer-specific override exists for that customer+item (code)
+**What must happen:**
+- SO submit: `entered_unit_price >= minimum_price` per line item → if fails, block with message
+- **Exception:** if a customer-specific price is agreed and manually entered below minimum, management approves — the block or override mechanism for this case needs to be confirmed with Gareth
 
-Please confirm with Gareth whether enforcement logic exists (needs prices configured to activate) or needs to be built.
+**Two parts needed:**
+1. (Config) Gareth loads minimum prices per product — his action item, not dev
+2. (Code) Verify enforcement block fires on SO submit. If logic doesn't exist, build it.
+
+**Ask:** Does enforcement block currently exist in code? If minimum_price field is configured on a product, does SO submit check against it?
 
 ---
 
-## B7 — PDF Documents Showing Discount % — Holsen Requires No Discount Display [P1 — HIGH CONFIDENCE]
+## B7 — PDF Documents Showing Discount % [P1 — HIGH]
 
 **Source:** Granola A (2026-06-22) + Granola B (2026-06-25)
 
-**Evidence from Granola A (2026-06-22):**
-> *"We don't need to show any discount. That's there's no no need to show discount."* (Mr. Tam explicitly)
+**Evidence from Granola A (2026-06-22 Close UAT):**
+> *"We don't need to show any discount. There's no no need to show discount."* (Mr. Tam — explicit requirement)
 
-**Evidence from Granola B (2026-06-25):**
-> *"Try generating a pdf… different discount."* (Gareth generating a test PDF)
-> *"So it has a discount."* (discount visible on PDF)
-> *"You show 49% of the… 49% offer."* (49% discount shown on document)
-> *"oh, shit."* (Gareth reaction — unexpected)
+**Evidence from Granola B (2026-06-25 Go Live):**
+> *"Try generating a pdf… different discount."* (Gareth generating test PDF)
+> *"So it has a discount."*
+> *"You show 49% of the… 49% offer."* (49% discount displayed on document)
+> *"oh, shit."* (Gareth — unexpected)
 
-**What happened:**
-When Gareth generated a PDF during the go-live session, it showed a 49% discount on the document. Mr. Tam had already said in the 06-22 session that no discount should appear on any Holsen customer-facing document. The "49%" appears to be because the system is comparing the standard/list price to the customer-negotiated price and displaying the difference as a discount column/line.
+**Context:** Standard price = RM0 for Holsen. If system calculates discount as `(standard_price - entered_price) / standard_price`, result would be undefined/100% when standard = 0. The 49% figure suggests standard price may have been set to a non-zero value during testing, causing a visible discount column to appear.
 
-**Expected:** No discount column, discount %, or discount amount on any PDF output (Quotation, SO, Invoice, Delivery Note) for Holsen.
+**Requirement:** **No discount column, discount %, or discount amount on any customer-facing PDF** for Holsen — Quotation, SO, Invoice, Delivery Note.
 
-**Actual:** PDF shows discount % (observed as 49% in go-live session).
-
-**Fix:** Holsen PDF template — hide/remove discount field/column from all document outputs. If this is a template setting, toggle it off for Holsen's instance. If hardcoded, suppress for this tenant.
+**Fix:** Suppress/hide discount field on all PDF templates for Holsen's tenant/instance. If template setting exists → toggle off. If hardcoded → suppress for this client.
 
 ---
 
-## Holsen Context (for reference)
+## B8 — Chatbot Not Sending Pick List URL to Warehouse [P1 — HIGH]
 
-| Item | Value |
-|------|-------|
-| Environment | https://maia-fe-holsen.vercel.app |
-| Main trading warehouse | **Main Warehouse** — all trading items |
-| Manufacturing/component warehouse | **Warehouse 0042 / ABC Component** — NOT for trading fulfillment |
-| Payment terms | **Net 30 from invoice creation date** |
-| Tax default | 10%; some items exempt (item-level "No Tax") |
-| Document preference | **No discount shown** on any customer-facing PDF |
-| Volume (target) | 70–90 POs/day |
-| Product types | Trading + Manufacturing + Poison/Hazardous chemicals |
+**Source:** Granola A (2026-06-22 Close UAT)
+
+**Evidence:**
+> *"Before another pick list complete. So for checkup pick list. Third party app. As in. Generate down the pick list — relevant or just a WhatsApp to notify. Like employee based upon generator PDF."*
+> *"WhatsApp / Telegram inform [them] that you [have a] pick list."*
+> *"Notify to open the big list. You know expect. Number quantity… [notification] well didn't ha."* ("notification didn't happen")
+
+**Expected flow (confirmed by Gareth):**
+1. Logistics staff submits DN (frontend) → pick list generated
+2. **Chatbot automatically sends pick list URL to warehouse staff** (WhatsApp/Telegram)
+3. Warehouse staff clicks URL → sees items + batch numbers → updates actual picked qty → marks pick list complete
+4. Pick list PDF is optional — the URL-based flow is the primary workflow
+
+**What happened in UAT:**
+Pick list was generated but chatbot **did not send notification** to warehouse staff. Warehouse staff had no way to know a pick list was ready without manually checking the web app.
+
+**This is not a feature request — it is required for Holsen's go-live workflow.** Warehouse staff do not use the frontend; the chatbot URL is their only touchpoint.
+
+**Fix:** After pick list is generated from DN submit → trigger chatbot message to configured warehouse WhatsApp/Telegram number with pick list URL. Confirm:
+- Which number/group receives the notification (Gareth to confirm with Mr. Tam)
+- Whether URL requires authentication or is shareable as a direct link
+- Whether warehouse staff can update qty + mark complete from the URL without a login
 
 ---
 
-## Out of Scope (Not Dev Bugs)
+## Go-Live Stock Ingestion (Context for Dev)
 
-| Item | Type | Tracked in |
-|------|------|-----------|
-| WhatsApp/Telegram notification when Pick List generated | Feature request | Go-Live Action Plan F1 |
-| C3 compliance cert / K1 traceability | Phase A3 deferred | SOW |
-| Customer-specific pricing data not loaded | Config gap | Go-Live Action Plan C2 |
-| Batch numbers for existing stock not created | Holsen Lab action | Go-Live Action Plan C6 |
-| Excel formula errors in Mr. Tam's migration files | Data prep (Holsen side) | Not MAIA system |
+At go-live, Holsen's full stock ledger must be ingested into MAIA before any live orders:
+
+| Data | Detail |
+|------|--------|
+| Batch numbers | Each physical batch has a unique batch number |
+| Stock qty in | Received quantity per batch |
+| Stock qty out | Shipped/consumed quantity per batch |
+| Current balance | Derived from in − out |
+| Batch-customer lock | Some batches are customer-specific (C3 restricted) — only visible/available to that customer |
+
+**Multiple batches per item:** An item like Sodium Cyanide may have 3 active batches — one locked to Customer A, one to Customer B, one free stock. The DN batch assignment must respect this.
+
+Gareth is coordinating data ingestion with Mr. Tam. Dev team should verify:
+- Stock entry supports qty-in / qty-out history per batch (not just current balance)
+- Batch-customer lock (C3 restriction) prevents wrong customer from seeing/ordering that batch
+
+---
+
+## Out of Scope for This Brief
+
+| Item | Type | Note |
+|------|------|------|
+| C3 compliance certificate generation | Phase A3 deferred | SOW scope |
+| COA document generation | Phase A3 deferred | SOW scope |
+| AutoCount/UBS integration | Phase A1 CSV workaround in place | Full integration August 2026 |
+| Excel formula errors in Mr. Tam's migration files | Data prep — Holsen side | Not MAIA system |
+| Minimum price data entry (per product) | Config — Gareth action | Prerequisite for B6 to be testable |
 
 ---
 
 ## See Also
 
-- [[UAT/Holsen Go-Live Action Plan - 2026-06-25]] — full action plan, config gaps, gates
+- [[UAT/Holsen Go-Live Action Plan - 2026-06-25]] — full gates + config gaps
 - [[UAT/DN to Pick List - Batch Number Test Cases]] — B5 test cases
 - [[Holsen MAIA User Guide - Mr Tam Team]] — handover guide
 - [[Product/SOW for MAIA Holsen]] — Phase A1/A3 scope
