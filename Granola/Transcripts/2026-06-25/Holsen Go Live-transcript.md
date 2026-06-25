@@ -3,7 +3,7 @@ granola_id: e6be48ce-1e15-4d49-8bb2-6c2a1f4e0c0a
 title: Holsen Go Live  - Transcript
 type: transcript
 created: 2026-06-25T03:01:07.329Z
-updated: 2026-06-25T03:05:35.570Z
+updated: 2026-06-25T04:02:43.700Z
 attendees: []
 ---
 
@@ -967,7 +967,7 @@ Okay, Peggy.
 
 ### Guest (2026-06-25T03:51:52.911Z)
 
-because Okay. The means voicing. Step down, another product, and minimum consent price. Discount and minimum consent price. Discount.
+because Okay. The means voicing. Step down, another product, and minimum consent price. Discount. and minimum consent price. Discount
 
 ### You (2026-06-25T03:52:10.395Z)
 
@@ -1023,5 +1023,397 @@ As I may
 
 ### Guest (2026-06-25T03:53:29.977Z)
 
-that. Anyway, the job ingest another data forward. Was anywhere else
+that. Anyway, the job ingest another data forward. Was anywhere else can proceed with for analysis process.
+
+### You (2026-06-25T03:53:44.335Z)
+
+Hasn't you
+
+### Guest (2026-06-25T03:53:45.997Z)
+
+Thing. I guess Next
+
+### You (2026-06-25T03:53:50.565Z)
+
+Price.
+
+### Guest (2026-06-25T03:53:51.997Z)
+
+be a one to eat. EKK check now.
+
+### You (2026-06-25T03:53:58.095Z)
+
+Item historical pricing. That one then. I'll indicate check.
+
+### Guest (2026-06-25T03:54:03.134Z)
+
+I
+
+### You (2026-06-25T03:54:04.015Z)
+
+I draft title.
+
+### Guest (2026-06-25T03:54:05.971Z)
+
+item
+
+### You (2026-06-25T03:54:11.315Z)
+
+She s o
+
+### Guest (2026-06-25T03:54:11.881Z)
+
+Graph. Let's see. Graph. Let's see.
+
+### You (2026-06-25T03:54:12.725Z)
+
+g q dong
+
+### Guest (2026-06-25T03:54:15.387Z)
+
+S o k.
+
+### You (2026-06-25T03:54:21.795Z)
+
+Can we Maybe he can't come fuku or fuku. Only picked
+
+### Guest (2026-06-25T03:54:28.157Z)
+
+Drop. Okay.
+
+### You (2026-06-25T03:54:30.175Z)
+
+Only 15, like, a unit price.
+
+### Guest (2026-06-25T03:54:32.557Z)
+
+Yeah.
+
+### You (2026-06-25T03:54:36.545Z)
+
+None.
+
+### Guest (2026-06-25T03:54:38.184Z)
+
+Need price. K.
+
+### You (2026-06-25T03:54:42.835Z)
+
+They took out the gun. Last Sears order price.
+
+### Guest (2026-06-25T03:54:46.841Z)
+
+Oh,
+
+### You (2026-06-25T03:54:47.005Z)
+
+13
+
+### Guest (2026-06-25T03:54:48.531Z)
+
+the Okay. Okay. Okay.
+
+### You (2026-06-25T03:54:52.505Z)
+
+last bill order till back to four, five order.
+
+### Guest (2026-06-25T03:54:59.197Z)
+
+Back to four, five orders.
+
+### You (2026-06-25T03:54:59.905Z)
+
+This to your equal above
+
+### Guest (2026-06-25T03:55:05.694Z)
+
+Oh,
+
+### You (2026-06-25T03:55:06.355Z)
+
+has a base on item
+
+### Guest (2026-06-25T03:55:09.651Z)
+
+Okay. Okay. Yeah. One Bye. Item there. Can I mail previously is three Oh, yo yo yo? They are load.
+
+### You (2026-06-25T03:55:25.045Z)
+
+I'm very sure. Icon, I mean, you've been you've been icon. Yeah.
+
+### Guest (2026-06-25T03:55:35.037Z)
+
+Okay. Is
+
+### You (2026-06-25T03:55:35.245Z)
+
+Yeah.
+
+### Guest (2026-06-25T03:55:36.967Z)
+
+real. Okay.
+
+### You (2026-06-25T03:55:46.845Z)
+
+No. The two times You mentioned that I need a price Yeah. Check Sorry. That's good. Too good.
+
+### Guest (2026-06-25T03:55:57.224Z)
+
+So
+
+### You (2026-06-25T03:56:01.405Z)
+
+Muscle game
+
+### Guest (2026-06-25T03:56:03.517Z)
+
+Hi, benign sensitive, b to b may have just sensitive But as long as previous sale price me when t But, yes, how are you today?
+
+### You (2026-06-25T03:56:35.635Z)
+
+Oh, Home. Also, in months in year price,
+
+### Guest (2026-06-25T03:56:47.031Z)
+
+To increase
+
+### You (2026-06-25T03:56:50.365Z)
+
+based on based
+
+### Guest (2026-06-25T03:57:00.904Z)
+
+decision if male further instruction, just to cancel price.
+
+### You (2026-06-25T03:57:07.925Z)
+
+Oh,
+
+### Guest (2026-06-25T03:57:13.577Z)
+
+Come So he's So you go history is a how. Thank you. Rahul, for multiple customer, multiple customer, multiple history, multiple price order. Row, you'll also determine new price task based on better
+
+### You (2026-06-25T03:57:37.265Z)
+
+There's that for me to
+
+### Guest (2026-06-25T03:57:37.811Z)
+
+equivalent than
+
+### You (2026-06-25T03:57:38.815Z)
+
+So it's over there.
+
+### Guest (2026-06-25T03:57:40.621Z)
+
+Okay. For today, product, what make a sugar customer customer base on price of date. Depends on customer to profile. I might
+
+### You (2026-06-25T03:58:03.475Z)
+
+Oh,
+
+### Guest (2026-06-25T03:58:05.971Z)
+
+So jang, Jan, Ward, customer what in
+
+### You (2026-06-25T03:58:14.445Z)
+
+Uh-huh.
+
+### Guest (2026-06-25T03:58:15.784Z)
+
+two fifty kilo gram. Decide two fifty kilogram normally forecast or mice system
+
+### You (2026-06-25T03:58:32.635Z)
+
+Customer customer. To my my dose of quantity
+
+### Guest (2026-06-25T03:58:36.607Z)
+
+Right. Payment terms, then. Title when moment credit
+
+### You (2026-06-25T03:58:49.355Z)
+
+Or then deciding
+
+### Guest (2026-06-25T03:58:50.057Z)
+
+usage.
+
+### You (2026-06-25T03:58:52.405Z)
+
+They all touch handles are wow.
+
+### Guest (2026-06-25T03:58:56.211Z)
+
+So By Okay. A lot of
+
+### You (2026-06-25T03:59:02.195Z)
+
+Ming pai ming pai.
+
+### Guest (2026-06-25T03:59:04.211Z)
+
+minimum price a guideline or or minimum price. Be a workout. So We'll find the minimum prices, like, it's our guideline where We'll find the minimum price guideline.
+
+### You (2026-06-25T03:59:21.525Z)
+
+Okay. So yeah, Hariang is a time when go like
+
+### Guest (2026-06-25T03:59:33.874Z)
+
+Right.
+
+### You (2026-06-25T03:59:37.905Z)
+
+basically, as
+
+### Guest (2026-06-25T03:59:40.457Z)
+
+Right.
+
+### You (2026-06-25T03:59:40.565Z)
+
+assist
+
+### Guest (2026-06-25T03:59:43.251Z)
+
+Your query that you
+
+### You (2026-06-25T03:59:47.475Z)
+
+very color.
+
+### Guest (2026-06-25T03:59:48.371Z)
+
+okay. Think that in just one tomorrow, what I test this whole? At the same time, another colleague. Team. I start keying in, let's say, sales As in, you might actually generate another document.
+
+### You (2026-06-25T04:00:20.515Z)
+
+I pay what?
+
+### Guest (2026-06-25T04:00:27.944Z)
+
+so better than use the better idea was at the same time, So we brief hard to mention and we'll wait to base a I use it.
+
+### You (2026-06-25T04:00:36.035Z)
+
+K. I mean, back.
+
+### Guest (2026-06-25T04:00:36.371Z)
+
+Basic
+
+### You (2026-06-25T04:00:38.095Z)
+
+K.
+
+### Guest (2026-06-25T04:00:38.717Z)
+
+thing, I'll one complex then you all refresh
+
+### You (2026-06-25T04:00:43.125Z)
+
+Ah, they they talk here.
+
+### Guest (2026-06-25T04:00:45.974Z)
+
+Right.
+
+### You (2026-06-25T04:00:46.545Z)
+
+So
+
+### Guest (2026-06-25T04:00:47.677Z)
+
+Whole have to go where start in Yahoo. Update.
+
+### You (2026-06-25T04:00:52.245Z)
+
+Okay. Our our warehouse
+
+### Guest (2026-06-25T04:00:59.894Z)
+
+Another radio stop. Yeah. In Shanghai, will they
+
+### You (2026-06-25T04:01:05.985Z)
+
+Yes. Okay. Okay, ma.
+
+### Guest (2026-06-25T04:01:10.931Z)
+
+k. K k. K.
+
+### You (2026-06-25T04:01:21.595Z)
+
+So you need me.
+
+### Guest (2026-06-25T04:01:22.451Z)
+
+Means, I push
+
+### You (2026-06-25T04:01:23.585Z)
+
+K. Okay.
+
+### Guest (2026-06-25T04:01:25.831Z)
+
+through. So consolidate Okay. Hey. Update
+
+### You (2026-06-25T04:01:41.645Z)
+
+I think audio can program.
+
+### Guest (2026-06-25T04:01:45.811Z)
+
+to to the the technical
+
+### You (2026-06-25T04:01:50.095Z)
+
+Say
+
+### Guest (2026-06-25T04:01:50.397Z)
+
+publish
+
+### You (2026-06-25T04:01:50.645Z)
+
+confirm to your Okay. So, like, early early, you can
+
+### Guest (2026-06-25T04:01:58.561Z)
+
+Thank you.
+
+### You (2026-06-25T04:01:59.475Z)
+
+Okay.
+
+### Guest (2026-06-25T04:01:59.997Z)
+
+Customer for Okay.
+
+### You (2026-06-25T04:02:05.195Z)
+
+Okay. That's better.
+
+### Guest (2026-06-25T04:02:07.197Z)
+
+Okay. Okay.
+
+### You (2026-06-25T04:02:09.665Z)
+
+You, mister Dan. Ride. Okay. Thank you.
+
+### Guest (2026-06-25T04:02:12.807Z)
+
+Okay.
+
+### You (2026-06-25T04:02:14.615Z)
+
+Bye.
+
+### Guest (2026-06-25T04:02:15.784Z)
+
+Anyway.
 
