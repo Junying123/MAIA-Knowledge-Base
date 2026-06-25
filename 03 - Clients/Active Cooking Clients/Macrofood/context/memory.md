@@ -34,6 +34,11 @@ Team is primarily Chinese-speaking. Keep all client-facing messages short and si
 
 David Chong shared SQL vendor contact on 2026-05-24. Ivan Chiang (Mindhive) initiated conversation.
 
+**SQL Hosting: SQL Cloud (confirmed by client)**
+- API setup guides shared by vendor (~Uck) via "MACRO SQL API" WhatsApp group
+- Steps: (1) create new user in SQL Acc, (2) generate API key via SQL Account API setup config
+- Links are for Macrofood's live SQL Cloud account — not a demo environment
+
 ## Open Items
 
 - [ ] Macrofood team to complete pre-onboarding questionnaire before June 4

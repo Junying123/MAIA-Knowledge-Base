@@ -95,7 +95,7 @@ _Note: Sales implied all of the above are in scope. Some (route planning, churn 
 
 | Function | Current Tool | Notes |
 |---|---|---|
-| ERP / Accounting | SQL Accounting | Main system; version and hosting [To confirm] |
+| ERP / Accounting | SQL Accounting | Main system; **SQL Cloud** (confirmed by client) |
 | Order intake | WhatsApp (1 shared number) | Text, voice messages, images |
 | Customer communication | WhatsApp | Same number as order intake |
 | Internal team comms | WhatsApp | Same number used internally too |
@@ -108,7 +108,7 @@ _Note: Sales implied all of the above are in scope. Some (route planning, churn 
 
 ## 9. Integration Requirements (Known or Suspected)
 
-SQL Accounting is the primary integration target — customers, items, pricing, stock levels, Sales Orders, Delivery Orders, invoices, payment records, and outstanding balances all need to sync. SQL vendor contact was shared by David Chong on 2026-05-24; Ivan Chiang initiated the vendor conversation. SQL version, hosting type (on-premise vs cloud), and vendor cooperation level are still unknown. No other system integrations discussed.
+SQL Accounting is the primary integration target — customers, items, pricing, stock levels, Sales Orders, Delivery Orders, invoices, payment records, and outstanding balances all need to sync. SQL vendor contact was shared by David Chong on 2026-05-24; Ivan Chiang initiated the vendor conversation. **Hosting confirmed: SQL Cloud.** API setup guides shared by vendor via WhatsApp group — next step is Macrofood completing user creation and API key generation. No other system integrations discussed.
 
 ---
 
@@ -126,7 +126,7 @@ SQL Accounting is the primary integration target — customers, items, pricing, 
 
 ## 11. Open Questions Sales Could Not Answer
 
-- SQL version number, hosting type (on-premise vs cloud), and vendor company name / contact
+- SQL version number and vendor company name / contact ~~hosting type~~ ✅ **SQL Cloud confirmed**
 - Full team headcount: how many in Finance, Warehouse, Drivers?
 - Standard credit terms by customer segment (payment days)
 - Target go-live date — is there a hard deadline?
