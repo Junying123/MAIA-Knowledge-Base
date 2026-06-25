@@ -27,11 +27,12 @@ Understanding the actual user flows is critical — some "bugs" are only bugs in
 4. **Chatbot must notify warehouse staff** and share the **pick list URL**
 5. Warehouse staff clicks URL → reviews items → updates actual picked qty → marks pick list complete
 
-**Logistics Staff → Frontend (Web App)**
-1. Opens submitted SO → converts to Delivery Note (DN)
-2. Assigns batch numbers to each line item
-3. Submits DN → triggers pick list generation
-4. Pick list PDF is optional (warehouse uses the URL link, not necessarily PDF)
+**Logistics Manager → Frontend (Web App)**
+1. Reviews SO created by chatbot → **submits SO**
+2. Converts SO to Delivery Note (DN)
+3. Assigns batch numbers to each line item
+4. Submits DN → triggers pick list generation
+5. Pick list PDF is optional (warehouse uses URL link, not PDF)
 
 ### Pricing Model (Important — affects B6)
 
@@ -75,7 +76,7 @@ Transcripts are auto-generated and garbled. Quote fragments below are evidence a
 | B3 | Payment due date uses delivery date not invoice creation date | P1 Blocker | High |
 | B4 | Tax: item-level "no tax" vs system 10% — override unverified | P2 Verify | Medium |
 | B5 | Batch number not carrying from DN to Pick List | P1 Blocker | Unknown — test cases unrun |
-| B6 | Minimum price not blocking SO when price below floor | P1 Blocker | Medium |
+| B6 | Minimum price not hard-blocking SO submit when price below floor | P1 Blocker | Confirmed |
 | B7 | PDF showing discount % — Holsen requires zero discount display | P1 Blocker | High |
 | B8 | Chatbot not sending pick list URL to warehouse after pick list created | P1 Blocker | High |
 
@@ -157,36 +158,29 @@ Some Holsen items are "No Tax" at item level. System/customer default is 10%. It
 
 ---
 
-## B6 — Minimum Price Enforcement: Behaviour Needs Clarification [P2 — CLARIFY BEFORE BUILD]
+## B6 — Minimum Price Not Hard-Blocking SO Submission [P1 — CONFIRMED]
 
 **Source:** Granola B (2026-06-25 Go Live) + Fireflies (same session)
 
-**Evidence from Granola B:**
+**Evidence:**
 > *"Standard price link but the have minimum price — stop order from going through."*
-> *"Minimum price formatting, but more vendor case your strictly enforced… nothing."*
-> *"Minimum price a guideline or or minimum price. Be a workout. So We'll find the minimum prices, like, it's our guideline."*
+> *"Minimum price formatting, but more vendor case your strictly enforced… nothing."* (current: not enforcing)
+> *"Gareth: Confirm enforcement rules for minimum price and implement controls preventing orders below minimum price thresholds (45:07)"* (Fireflies action item)
 
-**Evidence from Fireflies:**
-> *"Payment terms. Credit usage. Determined by management. So minimum price as guideline."*
-> *"Gareth: Confirm enforcement rules for minimum price and implement controls preventing orders below minimum price thresholds (45:07)"* (action item)
+**Confirmed behaviour (Gareth):** **Hard block.** SO cannot be submitted if any line item price is below that item's configured minimum price. No override, no soft warning — submission is blocked.
 
-**What the transcript actually says:**
-Pricing at Holsen is **decided by the boss** based on customer profile, credit usage, and payment terms — negotiated before the SO is created. Minimum price is described as a **guideline**, not necessarily a hard block. Mr. Tam himself used the words "guideline" and "workout" in the same breath as "strictly enforced."
+**Who submits SO:** Logistics manager (via frontend). Boss decides pricing verbally before the order is keyed in. If logistics manager enters a price below minimum, system blocks them at submit — they must go back to boss to reconfirm before proceeding.
 
-**Two possible interpretations — Gareth to confirm which:**
+**What must happen:**
+- On SO submit: for each line item, `entered_unit_price >= item.minimum_price`
+- If any line fails → block submit, show: *"Price below minimum for [Item]: entered RM[X], minimum RM[Y]."*
+- No override path at submission — logistics manager must correct price or escalate to boss
 
-| Behaviour | What it means for dev |
-|-----------|----------------------|
-| **Hard block** — SO cannot submit if price < min price | Add pre-submit check: `entered_price >= min_price`. Block with error message. |
-| **Soft warning** — flag to management but allow submission | Show warning on SO form when price < min price. SO proceeds to Finance approval step where boss reviews. |
+**Two parts:**
+1. (Config) Gareth loads minimum prices per product — prerequisite, not dev work
+2. (Code) Pre-submit check on SO: enforce `entered_price >= min_price` per line. If logic doesn't exist, build it.
 
-Given that boss already approves pricing verbally and the SO goes through Finance approval anyway, **soft warning** may be more appropriate. But this must be confirmed with Gareth before dev builds anything.
-
-**Two parts either way:**
-1. (Config) Gareth loads minimum prices per product — prerequisite, not dev
-2. (Code) Implement hard block OR soft warning on SO — pending Gareth's confirmation
-
-**Do not build this until Gareth confirms hard block vs. soft warning.**
+**Ask:** Does this enforcement check exist in code already? If yes, it just needs min prices configured to activate. If no, build it.
 
 ---
 
