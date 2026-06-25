@@ -3,7 +3,7 @@ granola_id: b3793463-ec7e-45b4-a805-58a0b13dcf74
 title: MAIA <> Fixguru UAT (Onsite) - Transcript
 type: transcript
 created: 2026-06-24T03:17:42.898Z
-updated: 2026-06-24T06:47:17.462Z
+updated: 2026-06-25T01:44:24.156Z
 attendees: 
   - azibiqbal01@gmail.com
   - brendan@mindhive.asia
