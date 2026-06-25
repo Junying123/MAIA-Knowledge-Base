@@ -402,10 +402,14 @@
                   {
                     "id": 146,
                     "name": "zsh 146"
+                  },
+                  {
+                    "id": 147,
+                    "name": "zsh 147"
                   }
                 ],
-                "activeId": 146,
-                "nextId": 147
+                "activeId": 147,
+                "nextId": 148
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -426,7 +430,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 731.5
+    "width": 1176
   },
   "left-ribbon": {
     "hiddenItems": {
