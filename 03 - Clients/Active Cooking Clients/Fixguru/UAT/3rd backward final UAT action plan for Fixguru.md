@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-06-24
+last_reviewed: 2026-06-26
 uat_round: 3
 sources: "[[Meetings/2026-06-24 Fixguru UAT Debrief]] · [[context/learnings]] · Fireflies transcript 01KVVSWST9…"
 ---
@@ -52,7 +52,12 @@ Based on the **24 June 2026 UAT session** (Fireflies transcript + [[Meetings/202
 | P1 | **FOC rule** | Production overage is free: order 1000, produce 1050 → 50 units are FOC. | Bill billable qty; deduct billable + FOC from stock. FOC line appears on DO. |
 | P1 | **Custom item handling** | Base item (e.g. G5) spawns `{Customer Name} G5` variants. | Item retrieval and matching must handle customer-named variants of base items |
 | P1 | **Item-retrieval fallback** | On no exact item match, return the customer's historically ordered items to reduce dead-ends in the flow. | Fallback: show items previously invoiced to that customer |
+| P1 | **Delivery address history** | Customer may want to reuse a previous delivery address; surfacing history removes manual lookup. | Show last 5 confirmed delivery addresses per customer from SO history; user selects or enters new |
+| P1 | **Default to historical price on line item add** | When user adds an item, MAIA should pre-fill with last invoiced price (not standard price) to reduce back-and-forth. | On item add: fetch last invoiced price for that customer + item; pre-fill as default; user can override |
+| P1 | **Cash / credit term confirmation** | After delivery address is set, payment term must be captured before SO is created. | Bot asks: "Cash or credit term?" after delivery address step; term applied to SO |
 | P1 | **Confirm scope vs CR** | Avoid another UAT mismatch. | Mark: must-fix in current scope vs future CR. Especially calculator versioning, extra calculators, raw material planning. |
+| P2 | **Role-aware information density** | Sales users want yes/no flow to get things done; managers/approvers need full context. | Define two response modes: sales (minimal, action-only) vs manager (full AR, pricing, credit, history) |
+| P2 | **Lead/prospect creation when customer not found** | Sales users often only have phone or WhatsApp number — no name. If not found, must not dead-end. | If no customer match by phone: offer "Create as lead/prospect" requiring phone/WhatsApp only; do not block order intake |
 | P2 | **Create retest script based on real Fixguru flow** | Previous test was feature-by-feature, not user-flow-based. | One golden script: WhatsApp order → historical price review → discount select → QTN PDF → delivery method → SO/DN approval check |
 
 ---
@@ -72,11 +77,14 @@ Based on the **24 June 2026 UAT session** (Fireflies transcript + [[Meetings/202
 | P1 | **Branch/contact sync check** | Wei Yon | SO/DN uses selected branch contact, not HQ default |
 | P1 | **Delivery method as SKU/item** | Wei Yon | Delivery charge appears as item line with correct item code/accounting treatment |
 | P1 | **Historical delivery method retrieval** | Wei Yon | Bot/table shows last 5 confirmed delivery methods per customer |
-| P1 | **Credit limit / AR exposure — block at DN level** | Wei Yon | DN submit blocked when below-floor price OR credit limit exceeded; order creation is not blocked. Shows AR, pending SO/DN, credit limit, available balance. |
+| P1 | **Credit limit / AR exposure — block at DN level** | Wei Yon | DN submit blocked when DO value exceeds credit limit OR below-floor price; order creation is not blocked. Block is DO-value-triggered (not just outstanding balance flag). Shows AR, pending SO/DN, credit limit, available balance. |
 | P1 | **AR-negative approval path** | Wei Yon | AR-negative (prepaid) customer → approve on bank-in slip receipt. Credit-limit-exceeded → separate case-by-case bank-in approval. Both route to Ivan. |
 | P1 | **Minimum price approval block** | Wei Yon | Quotation draft allowed; DN/SO submit blocked until approval when price below floor |
 | P1 | **Custom item variant support** | Wei Yon | Item lookup handles `{Customer Name} G5`-style naming; matched against base item and customer history |
 | P1 | **WhatsApp latency investigation** | Wei Yon | Identify why WhatsApp response is slower than Telegram; remediation or escalation |
+| P1 | **Delivery address history retrieval** | Wei Yon | Fetch last 5 confirmed delivery addresses per customer from SO history; surface in bot after delivery method step |
+| P1 | **Line item price defaulting** | Afiq | When item added to order: fetch last invoiced price for that customer+item; pre-fill as default net price; user can override |
+| P1 | **Payment term capture** | Wei Yon | After delivery address step, bot asks cash/credit term; term applied to SO before creation |
 | P1 | **AutoCount external ID consistency** | Wei Yon | Submitted doc displays AutoCount ID, not only MAIA internal ID |
 | P2 | **Warehouse / shelf configuration review** | Wei Yon | Picking list / DN shows shelf/warehouse info correctly |
 | P2 | **Performance test on real usage** | Jermaine | Chatbot/web response remains usable under concurrent order scenarios (30 invoices/day) |
