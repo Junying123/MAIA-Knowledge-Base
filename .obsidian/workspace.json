@@ -430,7 +430,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 643.5
+    "width": 895.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -459,7 +459,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-06-26/Fixguru Debrief-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 UAT Acceptance Criteria.md",
