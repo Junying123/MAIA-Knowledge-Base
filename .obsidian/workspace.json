@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Holsen/Onboarding Status.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/Untitled.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Onboarding Status"
+              "title": "Untitled"
             }
           },
           {
@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -430,7 +429,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 951.5
+    "width": 643.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -459,19 +458,23 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Untitled.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 UAT Acceptance Criteria.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Feature Requests & Gaps.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru business workflow.md",
+    "03 - Clients/Active Cooking Clients/Holsen/Onboarding Status.md",
     "03 - Clients/Active Cooking Clients/Holsen/Holsen MAIA User Guide - Mr Tam Team.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Handover Brief - Holsen 2026 Stock Ingest - 2026-06-26.md",
     "Granola/Transcripts/2026-06-26/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-26",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md.tmp.77361.d4148da8bb03",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 UAT Acceptance Criteria.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md",
     "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
     "Granola/Transcripts/2026-06-25/Holsen Go Live-transcript.md",
-    "03 - Clients/Active Cooking Clients/Holsen/Onboarding Status.md",
     "03 - Clients/Active Cooking Clients/Holsen/Holsen v2 Prep work for Product & Dev  (1).pdf",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md.tmp.77361.62c2af39a71b",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
@@ -479,7 +482,6 @@
     "Granola/Transcripts/2026-06-25",
     "lark-base-auth-qrcode.png",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Key Learnings from UAT.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Readiness Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Issue.md",
@@ -490,10 +492,7 @@
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-05-14 Fixguru UAT On-site - Transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru yvonne call.md",
     "Fixguru-UAT-with-Gareth-and-Bryan-24-June-26-87bd4c42-b458.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/Fixguru-UAT-with-Gareth-and-Bryan-24-June-26-87bd4c42-b458.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.html",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.md",
-    "Granola/Transcripts/2026-06-24/MAIA __ Fixguru UAT (Onsite)-transcript.md",
     "Granola/Transcripts/2026-06-24",
     "Granola/Transcripts/2026-06-23",
     "03 - Clients/Active Cooking Clients/GST/Timeline",
