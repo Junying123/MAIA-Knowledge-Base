@@ -408,7 +408,7 @@
                     "name": "zsh 147"
                   }
                 ],
-                "activeId": 147,
+                "activeId": 146,
                 "nextId": 148
               },
               "icon": "terminal",
@@ -430,7 +430,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 1176
+    "width": 951.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -459,7 +459,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md.tmp.77361.d4148da8bb03",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 UAT Acceptance Criteria.md",
