@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md",
+                "file": "03 - Clients/Active Cooking Clients/Holsen/Onboarding Status.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Dev Brief - Holsen UAT Issues - 2026-06-25"
+              "title": "Onboarding Status"
             }
           },
           {
@@ -408,7 +408,7 @@
                     "name": "zsh 147"
                   }
                 ],
-                "activeId": 147,
+                "activeId": 146,
                 "nextId": 148
               },
               "icon": "terminal",
@@ -459,16 +459,16 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Holsen/Holsen MAIA User Guide - Mr Tam Team.md",
+    "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Handover Brief - Holsen 2026 Stock Ingest - 2026-06-26.md",
     "Granola/Transcripts/2026-06-26/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-26",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md.tmp.77361.d4148da8bb03",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 UAT Acceptance Criteria.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md",
-    "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md",
-    "03 - Clients/Active Cooking Clients/Holsen/Holsen MAIA User Guide - Mr Tam Team.md",
     "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
     "Granola/Transcripts/2026-06-25/Holsen Go Live-transcript.md",
     "03 - Clients/Active Cooking Clients/Holsen/Onboarding Status.md",
