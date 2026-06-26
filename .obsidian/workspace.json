@@ -408,7 +408,7 @@
                     "name": "zsh 147"
                   }
                 ],
-                "activeId": 146,
+                "activeId": 147,
                 "nextId": 148
               },
               "icon": "terminal",
@@ -459,7 +459,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-06-26/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-26",
