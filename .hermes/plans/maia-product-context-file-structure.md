@@ -313,6 +313,124 @@ agent-ops/runbooks/lark-to-repo-sync.md
 - product delivery-health automation
 - CODEX handoff automation
 
+## MAIA Delivery Workflow Stages
+The repo should align to the team's current product/account workflow:
+
+```text
+00 Sales → Product Handover
+01 Kickoff Meeting
+02 Requirements & Scope Lock
+03 Core Data Ready
+04 Core Environment Ready
+05 Core Configuration Ready
+06 Core Internal QA
+07 UAT
+08 Core UAT
+09 Core Go Live
+10 Client Training
+11 Final Invoice / Subscription Start
+12 Customisations 1..n
+```
+
+## Workflow Stage Folder Model
+Do not create a totally separate top-level folder for every stage. That will become bloated.
+Instead, each client should have a `workflow/` folder with stage-specific artifacts:
+
+```text
+clients/<client-slug>/
+├── workflow/
+│   ├── 00-sales-product-handover/
+│   │   ├── handover-brief.md
+│   │   └── source-evidence.md
+│   ├── 01-kickoff-meeting/
+│   │   ├── kickoff-summary.md
+│   │   └── action-items.md
+│   ├── 02-requirements-scope-lock/
+│   │   ├── requirements-summary.md
+│   │   ├── scope-lock.md
+│   │   └── open-questions.md
+│   ├── 03-core-data-ready/
+│   │   ├── data-readiness-checklist.md
+│   │   └── data-issues.md
+│   ├── 04-core-environment-ready/
+│   │   ├── environment-readiness-checklist.md
+│   │   └── access-setup.md
+│   ├── 05-core-configuration-ready/
+│   │   ├── configuration-summary.md
+│   │   └── configuration-checklist.md
+│   ├── 06-core-internal-qa/
+│   │   ├── internal-qa-plan.md
+│   │   └── internal-qa-results.md
+│   ├── 07-uat/
+│   │   ├── uat-plan.md
+│   │   ├── uat-scenarios.md
+│   │   └── uat-issues.md
+│   ├── 08-core-uat/
+│   │   ├── core-uat-signoff.md
+│   │   └── core-uat-open-items.md
+│   ├── 09-core-go-live/
+│   │   ├── go-live-plan.md
+│   │   └── go-live-checklist.md
+│   ├── 10-client-training/
+│   │   ├── training-plan.md
+│   │   └── training-notes.md
+│   ├── 11-final-invoice-subscription-start/
+│   │   ├── commercial-readiness.md
+│   │   └── subscription-start-confirmation.md
+│   └── 12-customisations/
+│       ├── customisation-register.md
+│       └── customisation-<n>/
+│           ├── scope.md
+│           ├── codex-handoff.md
+│           └── status.md
+```
+
+## Updated Client Folder Contract
+The client contract should include both stable context and workflow-stage artifacts:
+
+```text
+clients/<client-slug>/
+├── README.md
+├── source-map.md
+├── context/
+│   ├── client-context.md
+│   ├── business-workflow.md
+│   └── stakeholders.md
+├── narrative/
+│   └── current-client-narrative.md
+├── account-plan/
+│   └── current-account-plan.md
+├── workflow/
+│   ├── 00-sales-product-handover/
+│   ├── 01-kickoff-meeting/
+│   ├── 02-requirements-scope-lock/
+│   ├── 03-core-data-ready/
+│   ├── 04-core-environment-ready/
+│   ├── 05-core-configuration-ready/
+│   ├── 06-core-internal-qa/
+│   ├── 07-uat/
+│   ├── 08-core-uat/
+│   ├── 09-core-go-live/
+│   ├── 10-client-training/
+│   ├── 11-final-invoice-subscription-start/
+│   └── 12-customisations/
+├── meetings/
+│   └── YYYY-MM-DD-meeting-synthesis.md
+├── risks-decisions/
+│   ├── decision-log.md
+│   └── risk-register.md
+└── published-links.md
+```
+
+## Stage Gate Model
+Each workflow stage should answer:
+- What source docs from Lark were used?
+- What artifact did product generate?
+- What is the readiness / signoff condition?
+- What blockers remain?
+- What needs to update in Lark Base?
+- Does this trigger a MAIA CODEX handoff?
+
 ## Recommended Pilot
 Use one pilot client only:
 - Holsen if you want post-go-live/UAT context
@@ -322,11 +440,13 @@ Pilot goal:
 1. fetch source docs from Lark
 2. generate client narrative locally
 3. generate account plan locally
-4. validate docs
-5. publish one doc back to Lark
+4. map current workflow stage artifacts
+5. validate docs
+6. publish one doc back to Lark
 
 ## Decision Needed
 Before creating the repo, decide:
 1. Repo name: recommended `maia-product-context`
 2. Pilot client: Holsen or Fixguru
 3. Whether first version includes actual Lark scripts or only runbook + manual lark-cli commands
+4. Whether to create all workflow stage folders upfront or only create them as the client reaches each stage
