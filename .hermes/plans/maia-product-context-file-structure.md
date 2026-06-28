@@ -45,11 +45,19 @@ maia-product-context/
 │       │   └── current-client-narrative.md
 │       ├── scope/
 │       │   ├── current-scope-summary.md
-│       │   └── scope-lock.md
+│       │   ├── scope-lock.md
+│       │   ├── requirements-log.md
+│       │   └── feature-requests-gaps.md
 │       ├── account-plan/
 │       │   └── current-account-plan.md
 │       ├── meetings/
-│       │   └── YYYY-MM-DD-meeting-synthesis.md
+│       │   ├── YYYY-MM-DD-meeting-synthesis.md
+│       │   └── transcripts/
+│       ├── timeline/
+│       │   └── current-timeline.md
+│       ├── memory/
+│       │   ├── learnings.md
+│       │   └── reusable-context.md
 │       ├── risks-decisions/
 │       │   ├── decision-log.md
 │       │   └── risk-register.md
@@ -196,6 +204,32 @@ Initial scripts can be thin wrappers around `lark-cli`:
 - fetch Base rows
 - build context pack for one client
 
+## Observed Patterns From Current MAIA KB Client Folders
+Scan findings from `03 - Clients`:
+
+### Recurring folders
+- `context/` appears across most active/client folders.
+- `brand_context/` appears frequently and should be normalized into `context/brand-context.md` or `context/brand/`.
+- `memory/` / `learnings.md` appears frequently and should become a first-class `memory/` folder.
+- `Meetings/` / `Meeting Notes/` appears frequently and should normalize to `meetings/`.
+- `Timeline/` appears in active clients and should normalize to `timeline/`.
+- `UAT/` appears for active delivery clients and maps to `workflow/07-core-uat/`.
+- `SOW/`, `Onboarding/`, `Master Data/`, `Product/`, `Feature Requests/`, `Role Permission/`, `Integration/` appear for some clients and should map into workflow/product-specific folders rather than stay as loose top-level folders.
+
+### Recurring files
+- `CLAUDE.md` — current agent instructions/context; in new repo this should be replaced by repo-level `AGENTS.md` plus client-level `README.md` / `source-map.md`.
+- `Client Overview.md` — maps to `README.md` or `context/client-context.md`.
+- `Customer Narrative*.md` / `Final Narrative.md` — maps to `narrative/current-client-narrative.md`.
+- `Scope Lock*.md` / `Scope Alignment*.md` — maps to `workflow/02-requirements-scope-lock/scope-lock.md`.
+- `Requirements Log.md` — maps to `scope/requirements-log.md` or the requirements stage folder.
+- `Feature Requests & Gaps.md` — maps to `scope/feature-requests-gaps.md` or `product/feature-context/`.
+- `Config Overlay.md` — maps to `workflow/05-core-configuration-ready/configuration-summary.md`.
+- `Onboarding Status.md` — maps to `README.md` current status plus `workflow/01-kickoff-meeting/` or onboarding notes if needed.
+- `*Timeline*.md` / backward plans — maps to `timeline/current-timeline.md`.
+- `*UAT Form*`, `*UAT Readiness Checklist*`, `*UAT Issues*`, `*Test Cases*` — maps to `workflow/07-core-uat/`.
+- `SOW*.md`, proposal docs — maps to `workflow/02-requirements-scope-lock/` or `commercial/` if team later wants a commercial section.
+- `integration` docs — maps to `workflow/04-core-environment-ready/` or `workflow/05-core-configuration-ready/` depending on whether it is setup/access or configuration.
+
 ## Client Folder Contract
 Every client folder should follow this contract:
 
@@ -206,16 +240,25 @@ clients/<client-slug>/
 ├── context/
 │   ├── client-context.md
 │   ├── business-workflow.md
-│   └── stakeholders.md
+│   ├── stakeholders.md
+│   └── brand-context.md
 ├── narrative/
 │   └── current-client-narrative.md
 ├── scope/
 │   ├── current-scope-summary.md
-│   └── scope-lock.md
+│   ├── scope-lock.md
+│   ├── requirements-log.md
+│   └── feature-requests-gaps.md
 ├── account-plan/
 │   └── current-account-plan.md
 ├── meetings/
-│   └── YYYY-MM-DD-meeting-synthesis.md
+│   ├── YYYY-MM-DD-meeting-synthesis.md
+│   └── transcripts/
+├── timeline/
+│   └── current-timeline.md
+├── memory/
+│   ├── learnings.md
+│   └── reusable-context.md
 ├── risks-decisions/
 │   ├── decision-log.md
 │   └── risk-register.md
@@ -324,12 +367,11 @@ The repo should align to the team's current product/account workflow:
 04 Core Environment Ready
 05 Core Configuration Ready
 06 Core Internal QA
-07 UAT
-08 Core UAT
-09 Core Go Live
-10 Client Training
-11 Final Invoice / Subscription Start
-12 Customisations 1..n
+07 Core UAT
+08 Core Go Live
+09 Client Training
+10 Final Invoice / Subscription Start
+11 Customisations 1..n
 ```
 
 ## Workflow Stage Folder Model
@@ -361,23 +403,22 @@ clients/<client-slug>/
 │   ├── 06-core-internal-qa/
 │   │   ├── internal-qa-plan.md
 │   │   └── internal-qa-results.md
-│   ├── 07-uat/
+│   ├── 07-core-uat/
 │   │   ├── uat-plan.md
 │   │   ├── uat-scenarios.md
-│   │   └── uat-issues.md
-│   ├── 08-core-uat/
+│   │   ├── uat-issues.md
 │   │   ├── core-uat-signoff.md
 │   │   └── core-uat-open-items.md
-│   ├── 09-core-go-live/
+│   ├── 08-core-go-live/
 │   │   ├── go-live-plan.md
 │   │   └── go-live-checklist.md
-│   ├── 10-client-training/
+│   ├── 09-client-training/
 │   │   ├── training-plan.md
 │   │   └── training-notes.md
-│   ├── 11-final-invoice-subscription-start/
+│   ├── 10-final-invoice-subscription-start/
 │   │   ├── commercial-readiness.md
 │   │   └── subscription-start-confirmation.md
-│   └── 12-customisations/
+│   └── 11-customisations/
 │       ├── customisation-register.md
 │       └── customisation-<n>/
 │           ├── scope.md
@@ -408,12 +449,11 @@ clients/<client-slug>/
 │   ├── 04-core-environment-ready/
 │   ├── 05-core-configuration-ready/
 │   ├── 06-core-internal-qa/
-│   ├── 07-uat/
-│   ├── 08-core-uat/
-│   ├── 09-core-go-live/
-│   ├── 10-client-training/
-│   ├── 11-final-invoice-subscription-start/
-│   └── 12-customisations/
+│   ├── 07-core-uat/
+│   ├── 08-core-go-live/
+│   ├── 09-client-training/
+│   ├── 10-final-invoice-subscription-start/
+│   └── 11-customisations/
 ├── meetings/
 │   └── YYYY-MM-DD-meeting-synthesis.md
 ├── risks-decisions/
