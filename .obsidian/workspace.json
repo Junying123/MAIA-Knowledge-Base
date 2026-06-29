@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 Tech Brief.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fixguru Round 3 Tech Brief"
+              "title": "Scope Lock v1 — Fixguru"
             }
           },
           {
@@ -458,15 +458,15 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 Tech Brief.md",
     "Granola/Transcripts/2026-06-29/Macrofrozen-setup-7f91696d-f866.md",
     "Macrofrozen-setup-7f91696d-f866.md",
     "Granola/Transcripts/2026-06-29/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-29",
     "Granola/Transcripts/2026-06-26/Fixguru Debrief-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 UAT Acceptance Criteria.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 Tech Brief.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Debrief — 24 June 2026.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
