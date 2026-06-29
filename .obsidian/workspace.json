@@ -405,10 +405,14 @@
                   {
                     "id": 147,
                     "name": "zsh 147"
+                  },
+                  {
+                    "id": 148,
+                    "name": "zsh 148"
                   }
                 ],
                 "activeId": 147,
-                "nextId": 148
+                "nextId": 149
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -458,8 +462,9 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "628deccba19f635d",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "lark_auth_qr.png",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 Tech Brief.md",
     "Granola/Transcripts/2026-06-29/Macrofrozen-setup-7f91696d-f866.md",
     "Macrofrozen-setup-7f91696d-f866.md",
@@ -492,7 +497,6 @@
     "lark-base-auth-qrcode.png",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Key Learnings from UAT.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Issue.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.html",
     "Granola/Transcripts/2026-06-24",
     "Granola/Transcripts/2026-06-23",
