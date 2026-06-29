@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
+                "file": "Granola/Transcripts/2026-06-26/Fixguru Debrief-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "3rd backward final UAT action plan for Fixguru"
+              "title": "Fixguru Debrief-transcript"
             }
           },
           {
@@ -258,8 +258,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -465,6 +464,9 @@
   },
   "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "codex.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
     "02 - PM Playbook/Internal Sessions/Weekly Product Sync - 29-06-2026.md",
@@ -492,11 +494,8 @@
     "03 - Clients/Active Cooking Clients/Holsen/Holsen MAIA User Guide - Mr Tam Team.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Handover Brief - Holsen 2026 Stock Ingest - 2026-06-26.md",
-    "Granola/Transcripts/2026-06-26/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-26",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md.tmp.77361.d4148da8bb03",
-    "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md",
-    "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
     "03 - Clients/Active Cooking Clients/Holsen/Holsen v2 Prep work for Product & Dev  (1).pdf",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md.tmp.77361.62c2af39a71b",
     "Granola/Transcripts/2026-06-25",
