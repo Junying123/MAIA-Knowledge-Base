@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
+                "file": "02 - PM Playbook/Internal Sessions/Weekly Product Sync - 29-06-2026.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Scope Lock v1 — Fixguru"
+              "title": "Weekly Product Sync - 29-06-2026"
             }
           },
           {
@@ -258,7 +258,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -464,6 +465,9 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-06-29/GTM × Product × Tech Delivery Review-transcript.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
+    "02 - PM Playbook/Internal Sessions/Weekly Product Sync - 29-06-2026.md",
     "02 - PM Playbook/Daily Updates/Account Snapshot - 29-06-2026.md",
     "02 - PM Playbook/Daily Updates/Account Snapshot - 29-06-2026.md.tmp.51815.b36fdcf71a32",
     "lark_auth_qr2.png",
@@ -495,11 +499,8 @@
     "Granola/Transcripts/2026-06-25/Holsen Go Live-transcript.md",
     "03 - Clients/Active Cooking Clients/Holsen/Holsen v2 Prep work for Product & Dev  (1).pdf",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md.tmp.77361.62c2af39a71b",
-    "Granola/Transcripts/2026-06-25/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-25",
     "lark-base-auth-qrcode.png",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Key Learnings from UAT.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/MAIA UAT Form - Fixguru - Item Historical Pricing.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.html",
     "Granola/Transcripts/2026-06-24",
     "Granola/Transcripts/2026-06-23",
