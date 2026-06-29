@@ -228,7 +228,11 @@ Is this correct? Yes / No
 
 The table is always scoped to **this customer + this item**. It shows what price Fixguru actually invoiced this specific customer for this specific item in the past — not global pricing, not other customers.
 
-For each item, bot sends ONE message:
+**Two rendering paths depending on order size:**
+
+**Path A — Small order (≤ 3 items): table inline in WhatsApp**
+
+Bot sends one message per item directly in chat:
 
 ```
 [Customer Name] × G3 — Past Invoices
@@ -244,7 +248,24 @@ Date     | Std Price | Disc % | Net Price | Qty
 Apply last discount (3%, RM 0.097)? [Yes] [Custom]
 ```
 
-**How the quick reply works:**
+**Path B — Large order (> 3 items): chatbot sends FE link**
+
+WhatsApp chat alone cannot hold 5+ item tables without becoming a wall of text. Bot sends a link to the MAIA web frontend where the full pricing table is displayed cleanly for all items side by side:
+
+```
+[Customer Name] — 5 items to price.
+View pricing history here: [link]
+Confirm discounts in the app, then reply "Done" to generate QTN.
+```
+
+User opens the link → sees full table per item in the FE → confirms discounts → replies "Done" in WhatsApp → bot generates QTN/SO.
+
+**Why this split (from 24 Jun debrief):**
+Bryan proposed the dual interface (70/30 co-work view) specifically because WhatsApp cannot display 20–100 line item tables legibly. The FE link path is not a workaround — it is the intended design for larger orders. Decision: chat for input and short responses, FE for rich tabular data.
+
+**Threshold to lock before Internal QA:** Is the cutoff 3 items or 5 items? Must be confirmed with tech (WeyShen) before Fri 4 Jul.
+
+**How the quick reply works (Path A):**
 Bot reads the most recent invoice row for this customer × item, extracts the discount % and net price, and offers to apply *that specific deal* again. User answers yes or enters a different figure. No abstract % buckets — the offer is always grounded in actual history with this customer.
 
 **Non-negotiable format rules (from 24 Jun debrief):**
