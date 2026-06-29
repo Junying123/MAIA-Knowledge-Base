@@ -192,62 +192,133 @@ Key conclusion: same blocker since Apr 7 — historical pricing UX is broken. Pr
 
 ---
 
-## AC-UX — Internal Test Acceptance Criteria (Fri 4 Jul)
+## AC-UX — Chatbot Expected Output & Acceptance Criteria (Internal QA Gate)
 
-**Scope: Historical Pricing UX only. Not testing data volume or backend correctness — testing whether a sales user can make a pricing decision in one glance.**
+> **Scope:** Historical pricing UX only. Pass = a blue-collar sales user can make the discount decision in one glance, without opening AutoCount. Fail = anything that makes them read, hunt, or wait.
 
-Source constraints (already agreed):
-- Source = confirmed invoices only — never draft SOs
-- Min 5 rows per item; if fewer exist, show all available + note count
+> **Why this matters (client's exact words, 24 Jun 2026):**
+> *"People who use MAIA are very simple minded. If head of departments need 5 minutes to digest, their team will take much longer. MAIA must be super direct."* — Ivan
+> *"I speak many times the same… I don't know how to tell you."* — Gareth (Fixguru)
+> *"AutoCount is the benchmark — MAIA must be faster and simpler at daily quoting."*
 
-### UX-01 — Table Format (Not Prose)
+---
 
-| Check | Pass condition |
-|---|---|
-| Output format | Chatbot returns a **table**, not paragraphs or bullet text |
-| Columns present | Date \| Qty \| Std Unit Price \| Discount % \| Net Price \| Invoice ID — all six |
-| Sort order | Most recent first |
-| Row count | Min 5 rows per item |
-| Grand total | **Not shown** in chatbot message — total is PDF-only |
-| Single message | All rows for one item fit in **one message** — no follow-up scrolling |
+### Expected Chatbot Output — Step by Step
 
-**Fail examples (from prior UAT):**
-- Long paragraph describing each transaction line by line
-- Only 2–3 rows
-- Grand total embedded in chatbot reply
-- Rows split across multiple messages
+This is the exact interaction the chatbot must produce. Any deviation from this sequence or format is a fail.
 
-### UX-02 — One Action Per Turn
+**Step 1 — User sends order**
 
-| Check | Pass condition |
-|---|---|
-| Bot asks one question | After displaying pricing table, bot sends exactly one follow-up: "Which discount? 3% / 5% / 10% / custom" |
-| Quick reply buttons | Discount options appear as tappable quick replies — not typed options buried in text |
-| No multi-question message | Bot never asks two things in the same message |
-| No premature doc creation | QTN/SO only generated **after** user responds with discount choice |
+User input (WhatsApp):
+```
+011-XXXX XXXX — G3 100, G1 300, PM72 500
+```
 
-### UX-03 — "Not Found" is One Line
+Bot response:
+```
+Customer: [Customer Name], [Branch]
+Is this correct? Yes / No
+```
+- Phone-number-first lookup: search mobile AND landline fields
+- Confirmation shown before proceeding — no silent auto-match
 
-| Check | Pass condition |
-|---|---|
-| Item not in history | Bot returns exactly: "No pricing history for [item]. Proceed with standard price?" — nothing more |
-| No enrichment | Bot does not explain why, list alternatives, or add caveats |
+---
 
-### UX-04 — Language Consistency
+**Step 2 — Bot returns historical pricing per item (customer-specific)**
 
-| Check | Pass condition |
-|---|---|
-| English conversation | Zero Malay in any message or quick reply throughout |
-| Quick replies | Labels match conversation language set at start of session |
+The table is always scoped to **this customer + this item**. It shows what price Fixguru actually invoiced this specific customer for this specific item in the past — not global pricing, not other customers.
 
-### UX-05 — Speed Perception (Subjective)
+For each item, bot sends ONE message:
 
-| Check | Pass condition |
-|---|---|
-| Response feel | Gareth's gut: "this is faster than opening AutoCount" |
-| Time to decision | From order intake to price confirmed: under 3 bot turns per item |
+```
+[Customer Name] × G3 — Past Invoices
 
-**Internal test verdict options:** Pass / Fail / Conditional (note specific line that fails)
+Date     | Std Price | Disc % | Net Price | Qty
+---------|-----------|--------|-----------|-----
+06/2026  | RM 0.10   | 3%     | RM 0.097  | 100
+05/2026  | RM 0.10   | 10%    | RM 0.090  | 1000
+03/2026  | RM 0.09   | 5%     | RM 0.0855 | 300
+01/2026  | RM 0.10   | 0%     | RM 0.100  | 200
+10/2025  | RM 0.05   | 5%     | RM 0.0475 | 500
+
+Apply last discount (3%, RM 0.097)? [Yes] [Custom]
+```
+
+**How the quick reply works:**
+Bot reads the most recent invoice row for this customer × item, extracts the discount % and net price, and offers to apply *that specific deal* again. User answers yes or enters a different figure. No abstract % buckets — the offer is always grounded in actual history with this customer.
+
+**Non-negotiable format rules (from 24 Jun debrief):**
+
+| Rule | Requirement | Source |
+|---|---|---|
+| Columns | Date, Std Price, Disc %, Net Price, Qty — exactly these five | Ivan 24 Jun |
+| Row count | Min 5 rows per item — "3 is too few" | Ivan 24 Jun |
+| Sort | Most recent first | Implied — date signals price drift |
+| Source | Confirmed invoices only — never draft SOs | Ivan 24 Jun |
+| Grand total | NOT shown in chatbot — total is PDF-only | Ivan 24 Jun |
+| Format | Table, not paragraphs, not bullet points | Ivan 24 Jun |
+| Per-item message | Each item = its own message block — never combine two items in one wall of text | UX principle |
+| Quick replies | Discount options as tappable buttons: [3%] [5%] [10%] [Custom] | One-glance requirement |
+
+---
+
+**Step 3 — User picks discount per item**
+
+User taps: `3%`
+
+Bot response (single line, no enrichment):
+```
+G3: RM 0.097 × 100 = RM 9.70 ✓
+```
+
+Repeat Steps 2–3 for each item. After all items confirmed:
+
+---
+
+**Step 4 — Bot generates document**
+
+```
+Quotation created: QTN-XXXX
+Customer: [Name]
+Items: G3 × 100, G1 × 300, PM72 × 500
+[View PDF]
+```
+
+No additional commentary. No summary of discounts. No totals in chatbot.
+
+---
+
+**Step 5 — "Not Found" response (if item has no invoice history)**
+
+```
+No pricing history for [item]. Use standard price RM X.XX?
+Yes / No
+```
+
+One line. No explanation. No alternatives listed unprompted. *"Not found = not found."* — Ivan
+
+---
+
+### Acceptance Criteria Checklist (Internal QA, Fri 4 Jul)
+
+| # | Check | Pass condition | Fail example |
+|---|---|---|---|
+| UX-01 | Output format | Table, not prose or bullets | Long paragraph per item |
+| UX-02 | Columns present | Date, Std Price, Disc %, Net Price, Qty — all five | Missing Date or Net Price |
+| UX-03 | Row count | Min 5 invoice-sourced rows | Only 2–3 rows shown |
+| UX-04 | Source | Confirmed invoices only | Draft SO rows included |
+| UX-05 | Grand total | Not shown in chatbot | Total embedded in message |
+| UX-06 | Single message per item | All rows for one item in one message | Rows split across messages |
+| UX-07 | Quick replies | Discount options as tappable buttons | User must type discount manually |
+| UX-08 | One question per turn | Bot asks ONE thing after table | Bot asks discount + delivery in same message |
+| UX-09 | No premature doc | QTN/SO only after user confirms price | QTN generated before discount chosen |
+| UX-10 | Not found = one line | Single-line response, no enrichment | Multi-line explanation when item missing |
+| UX-11 | Language | Zero Malay in English session, including quick replies | Quick reply labels switch to Malay |
+| UX-12 | Speed feel | Gareth: "faster than opening AutoCount" | Feels slower or more effort than AutoCount |
+
+**Verdict options per check:** Pass / Fail / Conditional *(note exact message that failed)*
+
+**Overall gate:** All 12 must pass before proceeding to Showcase. Any Fail = fix and retest before Tue 8 Jul.
 
 ---
 

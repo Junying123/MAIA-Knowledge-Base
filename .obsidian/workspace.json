@@ -133,7 +133,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - PM Playbook/Internal Sessions/Weekly Product Sync - 29-06-2026.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -148,7 +148,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Weekly Product Sync - 29-06-2026"
+              "title": "3rd backward final UAT action plan for Fixguru"
             }
           },
           {
@@ -219,7 +219,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "credit exposure",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -253,11 +253,13 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -461,11 +463,13 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "7599767bb9a0f5b8",
+  "active": "628deccba19f635d",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-06-24 Fixguru UAT Debrief.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
+    "02 - PM Playbook/Internal Sessions/Weekly Product Sync - 29-06-2026.md",
     "Granola/Transcripts/2026-06-29/GTM × Product × Tech Delivery Review-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
-    "02 - PM Playbook/Internal Sessions/Weekly Product Sync - 29-06-2026.md",
     "02 - PM Playbook/Daily Updates/Account Snapshot - 29-06-2026.md",
     "02 - PM Playbook/Daily Updates/Account Snapshot - 29-06-2026.md.tmp.51815.b36fdcf71a32",
     "lark_auth_qr2.png",
@@ -477,7 +481,6 @@
     "Granola/Transcripts/2026-06-29",
     "Granola/Transcripts/2026-06-26/Fixguru Debrief-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Round 3 UAT Acceptance Criteria.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/3rd backward final UAT action plan for Fixguru.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru UAT Debrief — 24 June 2026.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru Calculator Test Cases - Layerpad PizzaBox Five Panel - 2026-05.md",
@@ -494,7 +497,6 @@
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Dev Brief - Holsen UAT Issues - 2026-06-25.md.tmp.77361.d4148da8bb03",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md",
     "Granola/Transcripts/2026-06-22/Holsen __ Mindhive Close UAT-transcript.md",
-    "Granola/Transcripts/2026-06-25/Holsen Go Live-transcript.md",
     "03 - Clients/Active Cooking Clients/Holsen/Holsen v2 Prep work for Product & Dev  (1).pdf",
     "03 - Clients/Active Cooking Clients/Holsen/UAT/Holsen Go-Live Action Plan - 2026-06-25.md.tmp.77361.62c2af39a71b",
     "Granola/Transcripts/2026-06-25",
