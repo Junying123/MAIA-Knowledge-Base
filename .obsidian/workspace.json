@@ -253,13 +253,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -463,7 +461,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "7599767bb9a0f5b8",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-06-29/GTM × Product × Tech Delivery Review-transcript.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",

@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-06-26
+last_reviewed: 2026-06-29
 uat_round: 3
 sources: "[[Meetings/2026-06-24 Fixguru UAT Debrief]] · [[context/learnings]] · Fireflies transcript 01KVVSWST9…"
 ---
@@ -91,46 +91,163 @@ Based on the **24 June 2026 UAT session** (Fireflies transcript + [[Meetings/202
 
 ---
 
-## Immediate Execution Plan
+## Milestone Chain (Backward from 3rd UAT)
 
-### Day 1 (Wed 25 Jun) — Alignment Lock
+```
+[DONE]        Fixguru 2nd UAT Debrief (24 Jun 2026)
+      ↓
+[IN PROGRESS] UX Bug Fix Sprint
+      ↓
+[UPCOMING]    Internal QA
+      ↓
+[UPCOMING]    Showcase (go/no-go gate)
+      ↓
+[LOCKED OUT]  3rd UAT with Fixguru  ← only scheduled after Showcase passes
+```
 
-Product lead + tech lead + PM align on one critical outcome: **fix the pricing decision step first.** Do not spread effort across all remaining features until this is usable.
+---
 
-Product to deliver:
-- Final pricing table mockup
-- Final chatbot prompt wording
-- Exact happy-path flow
-- Scope classification: must-fix / defer / CR
+### Milestone 1 — Fixguru 2nd UAT Debrief `DONE`
 
-Tech to confirm:
-- Where historical invoice data comes from
-- Whether discount %, net price, standard price are available reliably
-- Whether WhatsApp can display the table cleanly, or whether web/image table is needed
+**Date:** 24 Jun 2026
 
-### Day 2–3 (Thu 26 Jun – Fri 27 Jun) — Build P0 Fixes
+Key conclusion: same blocker since Apr 7 — historical pricing UX is broken. Prompt patching exhausted. Four rounds of same feedback. See [[Meetings/2026-06-24 Fixguru UAT Debrief]] and [[context/learnings]].
 
-Tech focuses only on:
-1. Historical pricing API (invoices, min 5 rows)
-2. Discount calculation
-3. Item-level discount
-4. Short chatbot response/table formatter
-5. Language bug fix
-6. Stop premature QTN/SO generation before price confirmation
+---
 
-Product supports with live examples and expected output.
+### Milestone 2 — UX Bug Fix Sprint `IN PROGRESS`
 
-### Day 4 (Mon 30 Jun) — Internal Retest
+**Target done by:** Wed 2 Jul
 
-Run one full Fixguru scenario end-to-end:
+**Scope:** UX of chatbot response only. Not a full feature rebuild — fixing how WeyShen's chatbot surfaces the historical pricing output to the user.
 
-> Customer sends WhatsApp order → MAIA identifies customer by phone → shows last 5 historical invoice prices per item → user chooses discount per item → MAIA generates QTN/SO → PDF → delivery method selected → approval check if needed.
+**What is being fixed:**
+1. Historical pricing formatter — structured table output (not inline text walls)
+2. Discount calculation — price list rate as base, not item price
+3. Item-level discount support — different % per item in same order
+4. Order flow gate — no QTN/SO generated before user confirms price
+5. Language bug — quick replies match session language throughout
 
-**Pass criteria: user should not need to open AutoCount for the pricing decision.**
+**Definition of done for this milestone:**
+- WeyShen confirms chatbot returns table format with all 6 columns per item
+- Discount % computes correctly against price list rate
+- No Malay quick replies in an English session
+- Gareth has signed off on the chatbot prompt wording and happy-path flow spec
 
-### Day 5 (Tue 1 Jul) — Client Retest
+**Product deliverables to support tech:**
+- [ ] Pricing table mockup (exact column layout, sort order, row count rule)
+- [ ] Chatbot prompt rewrites (per-step wording, one action per turn)
+- [ ] Happy-path flow spec (each step = one bot message + expected user response + transition)
+- [ ] "Not found" rule: single line, no enrichment
 
-Show Fixguru only the corrected pricing flow first. Do not demo all features. Goal: prove the main blocker is fixed before moving to delivery, credit, PDF, and warehouse flows.
+---
+
+### Milestone 3 — Internal QA `UPCOMING`
+
+**Target date:** Fri 4 Jul
+
+**Who:** Product (Gareth) + Tech (WeyShen / Afiq) run the scenario together.
+
+**What happens:**
+- Gareth runs full Fixguru golden scenario end-to-end on the fixed build
+- Tech observes — any gap or bug logged immediately
+- Not a formal sign-off — a joint discovery pass before Showcase
+
+**Golden scenario:**
+> Customer sends WhatsApp order → MAIA identifies customer by phone → shows last 5 historical invoice prices per item as clean table → user picks discount per item → MAIA generates QTN/SO → PDF preview shown.
+
+**Pass gate to proceed to Showcase:**
+- Gareth completes pricing decision without opening AutoCount
+- No issue from AC-UX checklist (see below) — all five UX checks pass
+- Any remaining bugs logged, triaged, and either fixed or explicitly deferred
+
+---
+
+### Milestone 4 — Showcase `UPCOMING`
+
+**Target date:** Tue 8 Jul
+
+**Who:** Product demos to high-level stakeholders (internal leadership + optionally Ivan).
+
+**Purpose:** Align delivery — confirm the fixed historical pricing flow meets the definition of done before scheduling 3rd UAT with client. This is the go/no-go gate.
+
+**What is demoed:** Historical pricing flow only. No delivery, credit, PDF template, or warehouse. One flow, proven clean.
+
+**Definition of done — Showcase pass criteria:**
+- High-level stakeholders confirm: "this is what we promised Fixguru"
+- Flow matches the Scope Lock v1 capability: historical pricing lookup, discount selection, QTN/SO generation
+- No open P0 items from Internal QA still outstanding
+
+**If Showcase fails:** bug fix sprint continues. 3rd UAT is not scheduled until Showcase passes.
+
+---
+
+### Milestone 5 — 3rd UAT with Fixguru `LOCKED — schedule after Showcase passes`
+
+**Not scheduled until Milestone 4 passes.**
+
+**Scope for 3rd UAT:** Historical pricing flow first. If that passes, proceed to remaining ACs (AC-02 through AC-06). Do not present all features at once — sequence by dependency.
+
+**Sign-off authority:** Gareth (pending C6 confirmation — see Open Decisions above).
+
+---
+
+## AC-UX — Internal Test Acceptance Criteria (Fri 4 Jul)
+
+**Scope: Historical Pricing UX only. Not testing data volume or backend correctness — testing whether a sales user can make a pricing decision in one glance.**
+
+Source constraints (already agreed):
+- Source = confirmed invoices only — never draft SOs
+- Min 5 rows per item; if fewer exist, show all available + note count
+
+### UX-01 — Table Format (Not Prose)
+
+| Check | Pass condition |
+|---|---|
+| Output format | Chatbot returns a **table**, not paragraphs or bullet text |
+| Columns present | Date \| Qty \| Std Unit Price \| Discount % \| Net Price \| Invoice ID — all six |
+| Sort order | Most recent first |
+| Row count | Min 5 rows per item |
+| Grand total | **Not shown** in chatbot message — total is PDF-only |
+| Single message | All rows for one item fit in **one message** — no follow-up scrolling |
+
+**Fail examples (from prior UAT):**
+- Long paragraph describing each transaction line by line
+- Only 2–3 rows
+- Grand total embedded in chatbot reply
+- Rows split across multiple messages
+
+### UX-02 — One Action Per Turn
+
+| Check | Pass condition |
+|---|---|
+| Bot asks one question | After displaying pricing table, bot sends exactly one follow-up: "Which discount? 3% / 5% / 10% / custom" |
+| Quick reply buttons | Discount options appear as tappable quick replies — not typed options buried in text |
+| No multi-question message | Bot never asks two things in the same message |
+| No premature doc creation | QTN/SO only generated **after** user responds with discount choice |
+
+### UX-03 — "Not Found" is One Line
+
+| Check | Pass condition |
+|---|---|
+| Item not in history | Bot returns exactly: "No pricing history for [item]. Proceed with standard price?" — nothing more |
+| No enrichment | Bot does not explain why, list alternatives, or add caveats |
+
+### UX-04 — Language Consistency
+
+| Check | Pass condition |
+|---|---|
+| English conversation | Zero Malay in any message or quick reply throughout |
+| Quick replies | Labels match conversation language set at start of session |
+
+### UX-05 — Speed Perception (Subjective)
+
+| Check | Pass condition |
+|---|---|
+| Response feel | Gareth's gut: "this is faster than opening AutoCount" |
+| Time to decision | From order intake to price confirmed: under 3 bot turns per item |
+
+**Internal test verdict options:** Pass / Fail / Conditional (note specific line that fails)
 
 ---
 
