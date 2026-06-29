@@ -404,16 +404,16 @@
                     "name": "zsh 146"
                   },
                   {
-                    "id": 147,
-                    "name": "zsh 147"
-                  },
-                  {
                     "id": 148,
                     "name": "zsh 148"
+                  },
+                  {
+                    "id": 149,
+                    "name": "zsh 149"
                   }
                 ],
-                "activeId": 147,
-                "nextId": 149
+                "activeId": 149,
+                "nextId": 150
               },
               "icon": "terminal",
               "title": "Terminal"
