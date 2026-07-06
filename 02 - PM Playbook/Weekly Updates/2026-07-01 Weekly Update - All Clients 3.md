@@ -80,31 +80,13 @@ Let us know if anything needs adjusting! 🙌
 
 ## Macrofood
 
-### PM Review Notes (Internal)
+**Current Status:** Client instance + Telegram chatbot deployed, testing in progress. Company profile (users) set up. CPO tested — customer extracted but not matching. WhatsApp still pending client's Meta Business verification (Telegram live as interim channel).
 
-- ⚠ Training rescheduled from Friday to next Tuesday (7 Jul) — confirm reason if client asks.
-- ⚠ No completed items last week.
+**Next Action:** Training agenda + slides aligned w/ Ivan; customised features confirmed before session. Training session — Tuesday, 7 July.
 
-### Client Weekly Update (WhatsApp)
+**Internal:** Tech team fixing CN/RN billing gap — client's SQL does combined Credit Note (billing + stock return), MAIA/ERPNext splits into separate CN + RN, risk of negative stock if unresolved. Also fixing customer match issue from CPO test. Customisation timeline (bulk price update, slow-moving/near-expiry stock alert, AR) — QA/internal showcase/UAT dates all TBC; target go-live end of July / early Aug.
 
-```
-Hi team, here's this week's progress update: 👋
-
-*🔧 This Week*
-
-1. MAIA deployment and integration with your SQL system.
-2. Internal testing of your MAIA instance.
-
-*📅 Next Week*
-
-1. Training Session — rescheduled to Tuesday, 7 July.
-
-*📋 Action required from your team*
-
-1. Check the Meta Business verification status on the Meta Business account we set up earlier, and update us.
-
-We will continue to keep everyone updated on the project progress. Thank you! 🙌
-```
+**Blockers:** CN/RN billing model mismatch — tech team actively fixing, affects stock balance. Not yet resolved.
 
 ---
 
