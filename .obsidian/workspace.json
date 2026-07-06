@@ -321,10 +321,14 @@
                   {
                     "id": 164,
                     "name": "zsh 164"
+                  },
+                  {
+                    "id": 165,
+                    "name": "zsh 165"
                   }
                 ],
-                "activeId": 161,
-                "nextId": 165
+                "activeId": 165,
+                "nextId": 166
               },
               "icon": "terminal",
               "title": "Terminal"
