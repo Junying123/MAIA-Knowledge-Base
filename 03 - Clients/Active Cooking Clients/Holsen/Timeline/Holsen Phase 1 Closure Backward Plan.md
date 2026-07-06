@@ -105,10 +105,12 @@ Go-live is gated on two things landing in order:
 
 ---
 
-## M4 — Refresher Training (July — date TBC)
+## M4 — Refresher Training (July — date pending client confirm)
 
 **Who:** PM + Holsen Sales/Logistics users
-**Format:** Refresher session — last training was Training v3 (5 Mar 2026), ~3 months before go-live. Re-orient live users on current flows now that they're on production. Date to be confirmed with Holsen.
+**Format:** Refresher session — last training was Training v3 (5 Mar 2026), ~3 months before go-live. Re-orient live users on current flows now that they're on production.
+
+**Status (2026-07-06):** Stock ingest handover brief sent to client (see [[UAT/Handover Brief - Holsen 2026 Stock Ingest - 2026-06-26]]). Pending client to confirm + lock refresher training date. **Needs follow-up.**
 
 ### Agenda
 
