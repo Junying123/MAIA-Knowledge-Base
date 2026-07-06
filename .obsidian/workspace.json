@@ -186,7 +186,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -349,7 +350,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 827.5
+    "width": 863.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -381,6 +382,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+    "02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist.md",
     "01 - MAIA Product/Client Training/[Template] MAIA Training Slides v1.pptx",
     "[Template] MAIA Training Slides v1.pptx",
     "Granola/Transcripts/2026-07-06/GTM × Product × Tech Delivery Review-transcript.md",
@@ -412,11 +415,9 @@
     "Granola/Transcripts/2026-07-01/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-01",
     "Granola/Transcripts/2026-06-30/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-06-30",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/2026-07-04 SOA Portal Issue Report.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
