@@ -67,6 +67,7 @@ Using [[02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist]]
 - [ ] Participant credentials/access confirmed
 - [ ] Environment link confirmed reachable
 - [ ] Exercises checked against actual instance state
+- [ ] Venue/AV check: confirm monitor/screen count at Macrofrozen's site vs number of trainees — if only 1 monitor, decide format ahead of time (small-group rotation / screen-share to own devices / hands-on-first per-desk access)
 
 ### Go/No-Go
 - [ ] Not signed off — do not lock new date yet

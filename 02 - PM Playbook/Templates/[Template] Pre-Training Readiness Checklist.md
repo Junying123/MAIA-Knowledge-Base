@@ -37,6 +37,7 @@ Gate doc — run through before locking any client training date. If any box in 
 - [ ] Participant credentials/access confirmed working
 - [ ] Environment link confirmed reachable (client instance, not demo, unless demo intentional)
 - [ ] Exercises checked against actual instance state — no exercise references untested features
+- [ ] Venue/AV check: screen/monitor count confirmed vs trainee count — if only 1 monitor, decide format now (small-group rotation, screen-share to own devices, hands-on-first per-desk access) — don't discover this day-of
 
 ## Go/No-Go Sign-Off
 
