@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -124,7 +124,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Dalson Requirements gathering-transcript"
+              "title": "Macrofood Phase 1 Timeline"
             }
           }
         ],
@@ -186,7 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 215.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -371,8 +371,10 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "e54e88e8cc6156e5",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status.md.tmp.48329.036f074dc3d3",
     "Granola/Transcripts/2026-07-02/Mindhive  Daily Standup-transcript 2.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/2026-07-04 SOA Portal Issue Report 2.md",
     "Granola/Transcripts/2026-07-03/Mindhive  Daily Standup-transcript 2.md",
@@ -403,12 +405,10 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.docx",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/2026-07-04 SOA Portal Issue Report.md",
     "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 2.md",
     "02 - PM Playbook/Templates/[Template] Weekly PM Update.md",
     "02 - PM Playbook/Internal Sessions/Self-Assessment - Gareth Ng - H1 2026.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",

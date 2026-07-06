@@ -1,17 +1,27 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-06-18
+last_reviewed: 2026-07-06
 client: Macrofood
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Tm7SwwBs3ieWPLkWB9glwVMFgKg
 ---
 
 # Macrofood Phase 1 — Backward Timeline to Go-Live
 
-**End goal:** Sales module live + client trained on **Fri 26 Jun 2026**
-**Created:** 2026-06-18 | **Updated:** 2026-06-18
+**End goal:** Sales module live + client trained — **originally Fri 26 Jun, slipped twice, now Tue 7 Jul 2026**
+**Created:** 2026-06-18 | **Updated:** 2026-07-06
 **Scope:** Sales module only — **confirmed pick list → SO → DN → push to SQL**. Invoice/CN, AR recon, credit control deferred (see end).
 **Model:** Structured on the [[Fixguru 2nd UAT Backward Plan]] — internal-test-with-live-dev-fix before the client sees it, then on-the-spot UAT during training.
+
+## ⚠️ Slip Log
+
+| Date | Change |
+|---|---|
+| 2026-06-18 | Original plan: go-live 26 Jun |
+| ~2026-06-26 | Training pushed off Friday (per 2026-07-01 weekly update) |
+| 2026-07-01 | Training rescheduled to Tue 7 Jul |
+
+Per [[Weekly Update — Week of 2026-07-01]]: deployment + SQL integration done, internal testing done. Open client action: confirm Meta Business verification status (WhatsApp channel) — Telegram fallback still available if not resolved by training.
 
 ---
 
@@ -50,24 +60,24 @@ If vendor slips past **Mon 22 Jun**, 26 Jun is at risk — escalate immediately.
 **Format:** Send vendor form (done) + chase every client deliverable; nothing downstream moves until these land.
 
 - [x] SQL integration form sent to vendor (Mr. Chua) — 18 Jun
-- [ ] Client grants **AWS account access** (instance runs on their AWS)
-- [ ] Client shares **OpenAI account + API key**
-- [ ] Client **finalizes pick-list workflow** (F2F: still open — blocks core flow)
-- [ ] Client sends **doc samples** (SO, DN) for PDF templates
+- [x] Client grants **AWS account access** (instance runs on their AWS)
+- [x] Client shares **OpenAI account + API key**
+- [x] Client **finalizes pick-list workflow** (F2F: still open — blocks core flow)
+- [x] Client sends **doc samples** (SO, DN) for PDF templates
 - [ ] Client sends **company user list**
-- [ ] Confirm **customer + item master data scope**
+- [x] Confirm **customer + item master data scope**
 
 ### Client deliverables (owner: Macrofood — none MAIA-controlled)
 
-| Dependency | Blocks | Status |
-|---|---|---|
-| AWS access | Instance deploy (M1) | ⬜ |
-| OpenAI API key | Chatbot (M1) | ⬜ |
-| SQL credentials + cloned test DB | SQL sync (M2) — critical path | 🟡 Form sent 18 Jun, awaiting return |
-| Pick-list workflow finalized | Core flow (M2/M3) | ⬜ |
-| SO / DN doc samples | PDF config (M2) | ⬜ |
-| Company user list | User seed (M2) | ⬜ |
-| WhatsApp Business + Meta + SIM | Channel — **Telegram fallback if not ready** | ⬜ |
+| Dependency                       | Blocks                                       | Status                               |
+| -------------------------------- | -------------------------------------------- | ------------------------------------ |
+| AWS access                       | Instance deploy (M1)                         | ⬜                                    |
+| OpenAI API key                   | Chatbot (M1)                                 | ⬜                                    |
+| SQL credentials + cloned test DB | SQL sync (M2) — critical path                | 🟡 Form sent 18 Jun, awaiting return |
+| Pick-list workflow finalized     | Core flow (M2/M3)                            | ⬜                                    |
+| SO / DN doc samples              | PDF config (M2)                              | ⬜                                    |
+| Company user list                | User seed (M2)                               | ⬜                                    |
+| WhatsApp Business + Meta + SIM   | Channel — **Telegram fallback if not ready** | ⬜                                    |
 
 ---
 
@@ -132,11 +142,12 @@ If vendor slips past **Mon 22 Jun**, 26 Jun is at risk — escalate immediately.
 
 ---
 
-## M5 — Training + On-the-spot UAT + Go-live (Fri 26 Jun)
+## M5 — Training + On-the-spot UAT + Go-live (rescheduled → Tue 7 Jul)
 
 **Who:** PM + Macrofood testers
 **Format:** PM briefs scope → testers run UAT on the spot same session → triage → sign-off + go-live.
 
+- [ ] Confirm Meta Business verification status with client before session — decides WhatsApp vs Telegram channel
 - [ ] Brief: what's in scope (pick list → SO → DN → SQL)
 - [ ] Run UAT on the spot — testers test live, PM on standby
 - [ ] Training Slide prep
