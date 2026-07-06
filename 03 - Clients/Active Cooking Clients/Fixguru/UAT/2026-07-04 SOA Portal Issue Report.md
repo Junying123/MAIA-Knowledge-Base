@@ -9,10 +9,10 @@ Reference spec: MAIA External SOA Portal - Secure Shareable Statement of Account
 
 The current SOA feature is a useful balance viewer, but it is not yet a complete customer-ready Statement of Account. The latest tracker review covers portal, Customer Profile SOA tab, activity log, public-link security, mobile baseline, PDF download behavior, and generated SOA PDF.
 
-There are 11 consolidated issues:
+There are 12 consolidated issues:
 
 - 2 Critical must-fix issue records: expired-link enforcement and portal/PDF balance mismatch, including PDF internal reconciliation mismatch.
-- 7 High must-fix or near-MVP issues: statement/as-of timestamp, ledger status/due-date context, reconciliation totals, mobile baseline, activity log audit quality, PDF download URL exposure, and PDF customer-facing layout/content.
+- 8 High must-fix or near-MVP issues: statement/as-of timestamp, ledger status/due-date context, reconciliation totals, mobile baseline, activity log audit quality, PDF download URL exposure, PDF customer-facing layout/content, and Customer Profile SOA permission UX.
 - 2 Medium Phase 2/customer-experience issues: supplier contact details and payment/next-action guidance.
 
 The highest-risk theme is financial trust: customer-facing values must reconcile across portal summary, aging, ledger rows, PDF summary, and PDF closing balance. The second highest-risk theme is link security: expired/revoked/invalid links must not expose password prompts, customer identity, token state, balances, or document rows.
@@ -34,6 +34,7 @@ These affect security, correctness, customer trust, or whether the SOA can be re
 | P1 | Download SOA PDF action exposes signed URL | Button should download/open the PDF, not render a long pre-signed S3 URL inside the customer profile. |
 | P1 | SOA PDF customer-facing layout/content cleanup | PDF must not show placeholder logo or internal account labels, and should include enough invoice context for collections. |
 | P0 | Portal/PDF balance mismatch and PDF internal reconciliation mismatch | Customer-facing outstanding amount must not differ between portal, PDF summary, aging, and ledger closing balance. |
+| P1 | Customer Profile SOA permission UX | Users without SOA permissions need a clear frontend access-denied state instead of raw API error handling. |
 
 ## Consolidated Issue Register
 
@@ -50,6 +51,7 @@ These affect security, correctness, customer trust, or whether the SOA can be re
 | 9 | High | Customer Profile PDF action | Download SOA PDF renders pre-signed S3 URL inside page | `SOA-PDF-01`, `SOA-PDF-02`, `PDF-DOC-02` | Must fix |
 | 10 | High | Generated SOA PDF | PDF layout/content is not fully customer-ready | `SOA-PDF-01`, `SOA-PDF-03`, `SOA-PDF-05`, `BRAND-03` | Must fix placeholder/internal fields |
 | 11 | Critical | Portal/PDF data | Portal total outstanding and PDF closing balance do not match | `SOA-PDF-05`, `SOA-PDF-06` | Must fix |
+| 12 | High | Customer Profile permissions | No frontend interface for SOA share/revoke/view permission denial | `SHARE-01`, `REV-01`, `ACT-01`, `ACT-02` | Must fix UX around permission denial |
 
 ## Tracker Notes Added
 
@@ -88,6 +90,7 @@ These improve the customer experience, but they are not blockers for a minimal u
 7. Download SOA PDF opens/downloads the PDF without displaying the signed storage URL.
 8. SOA PDF does not show placeholder/internal fields and remains customer-ready.
 9. Portal total outstanding, PDF closing balance, PDF aging, and PDF ledger totals all reconcile to the same amount.
+10. Users without SOA permissions see a clear access-denied UI state for share/revoke/view actions.
 ```
 
 ---
@@ -821,6 +824,83 @@ Spec reference: `FR-013`, `FR-018`, `FR-023`
 
 ---
 
+## Issue 12: Customer Profile SOA permission error needs a frontend access-denied interface
+
+Category: Functional / UI/UX / Authorization
+Severity: High
+Status: Open
+Surface: Customer Profile / SOA Permissions
+MVP classification: Must fix
+Linked Scenario: A1 / A4 / D1 - SOA sharing, revocation, and activity visibility
+Linked Test Case: SHARE-01 / REV-01 / ACT-01 / ACT-02
+Owner: Frontend / Backend / Admin Roles
+
+### Steps to reproduce
+
+1. Log in as a user without the configured SOA share-link permission.
+2. Open a customer profile.
+3. Attempt to view SOA share links, share SOA, or revoke SOA links.
+4. Observe the error state returned by the system.
+
+### Expected result
+
+The frontend should show a clear permission/access-denied state in the Customer Profile SOA area.
+
+```text
++--------------------------------------------------------------+
+| Statement of Account                                         |
++--------------------------------------------------------------+
+| You do not have permission to manage SOA share links.         |
+|                                                              |
+| This action is restricted to specific roles configured by     |
+| your Administrator.                                          |
+|                                                              |
+| Please contact your Administrator if you need access.         |
+|                                                              |
+| [View role requirements] [Contact admin]                      |
++--------------------------------------------------------------+
+```
+
+Behavior rules:
+
+```text
+Do not show raw JSON error payloads to normal users.
+Disable or hide Share SOA / Revoke all actions when user lacks permission.
+Show why the action is unavailable and who can grant access.
+Do not expose share links, token details, customer financial data, or link management actions beyond the user's role.
+```
+
+### Actual result
+
+The system returns this permission error:
+
+```json
+{
+  "message": {
+    "error": "Forbidden",
+    "message": "You don't have permission to share, revoke, or view SOA share links. This action is restricted to specific roles configured by your Administrator. Contact them if you need access."
+  }
+}
+```
+
+The frontend needs a proper interface to handle this state when checking or managing Customer Profile SOA access.
+
+### Notes / evidence
+
+This is good backend authorization behavior, but the FE still needs to convert it into a user-friendly access-denied state. It should apply consistently to:
+
+```text
+Share SOA
+View active SOA share links
+View SOA share activity if restricted by role
+Revoke all / revoke individual SOA links
+Download or generate SOA PDF if controlled by the same permission
+```
+
+Spec reference: `FR-001`, `FR-007`, `FR-027`, role/access-control expectations
+
+---
+
 ## Recommended Display Additions
 
 Add this block near the customer name:
@@ -918,8 +998,9 @@ PDF download action with customer-friendly filename
 5. Add reconciliation totals.
 6. Fix mobile baseline usability so customer name, totals, ledger rows, and PDF actions are readable/reachable.
 7. Remove raw token values from Customer Profile SOA activity logs and show audit-safe event details.
-8. Fix Download SOA PDF so it downloads/opens the PDF without rendering a signed S3 URL.
-9. Fix SOA PDF placeholder/internal fields: logo placeholder, A/C No value, and customer-facing copy.
-10. Defer full mobile card redesign if the MVP mobile table remains usable.
-11. Defer supplier/company contact details unless the SOA is sent without a reply channel.
-12. Defer payment instructions unless payment guidance is absent from both the invoice PDF and sending message.
+8. Add frontend permission/access-denied state for Customer Profile SOA share/revoke/view restrictions.
+9. Fix Download SOA PDF so it downloads/opens the PDF without rendering a signed S3 URL.
+10. Fix SOA PDF placeholder/internal fields: logo placeholder, A/C No value, and customer-facing copy.
+11. Defer full mobile card redesign if the MVP mobile table remains usable.
+12. Defer supplier/company contact details unless the SOA is sent without a reply channel.
+13. Defer payment instructions unless payment guidance is absent from both the invoice PDF and sending message.
