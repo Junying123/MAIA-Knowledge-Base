@@ -79,6 +79,33 @@ Using [[02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist]]
 3. Re-run checklist before proposing new date
 4. Once green, propose training date and lock
 
+## Draft Client Message (WhatsApp)
+
+No vendor/1st-delay mention — full ownership, keep it simple.
+
+> Hi [Name], morning!
+>
+> Sorry for the delay on the training session again — we know we already pushed it back once before, and we don't want to keep doing that to you.
+>
+> Quick update on what's happening:
+>
+> We found some issues while testing the system internally. Before we bring your team in for training, we want to fix these first. If we go ahead with training now and your team hits errors while learning, it'll be a bad experience and waste everyone's time. We rather get it right first.
+>
+> **What's next:**
+> 1. We fix the issues we found
+> 2. We test it again internally to make sure it's stable
+> 3. Then we do the training with your team
+> 4. After that, you can go live and start using it
+>
+> **Updated timeline:**
+> - Fix + internal testing: [DATE]
+> - Training session: [DATE]
+> - Go live: [DATE]
+>
+> We know this is later than end of June like we planned, and we're sorry about that. But once we train your team, we want it to be smooth and not have to redo it again due to system issues.
+>
+> Will update you once testing is done. Thanks for bearing with us!
+
 ## See Also
 
 - [[Macro Frozen SQL Integration]]
