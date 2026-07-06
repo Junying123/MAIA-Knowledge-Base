@@ -320,15 +320,11 @@
                     "name": "zsh 161"
                   },
                   {
-                    "id": 164,
-                    "name": "zsh 164"
-                  },
-                  {
                     "id": 165,
                     "name": "zsh 165"
                   }
                 ],
-                "activeId": 165,
+                "activeId": 161,
                 "nextId": 166
               },
               "icon": "terminal",
@@ -382,6 +378,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "05 - Releases & Updates/Weekly Updates/Weekly Update - 06-07-2026.md",
+    "05 - Releases & Updates/Weekly Updates",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood Sales User Setup.xlsx",
     "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status.md.tmp.48329.036f074dc3d3",
@@ -412,8 +410,6 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.docx",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.docx",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/2026-07-04 SOA Portal Issue Report.md",
     "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 2.md",

@@ -8,7 +8,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Tm7SwwBs3ieWPLkWB9glwVMFgKg
 
 # Macrofood Phase 1 — Backward Timeline to Go-Live
 
-**End goal:** Sales module live + client trained — **originally Fri 26 Jun, slipped twice, now Tue 7 Jul 2026**
+**End goal:** Sales module live + client trained — **originally Fri 26 Jun, slipped twice, now Tue 7 Jul 2026**. Core go-live target: **end of July / early August**.
 **Created:** 2026-06-18 | **Updated:** 2026-07-06
 **Scope:** Sales module only — **confirmed pick list → SO → DN → push to SQL**. Invoice/CN, AR recon, credit control deferred (see end).
 **Model:** Structured on the [[Fixguru 2nd UAT Backward Plan]] — internal-test-with-live-dev-fix before the client sees it, then on-the-spot UAT during training.
@@ -20,8 +20,10 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Tm7SwwBs3ieWPLkWB9glwVMFgKg
 | 2026-06-18 | Original plan: go-live 26 Jun |
 | ~2026-06-26 | Training pushed off Friday (per 2026-07-01 weekly update) |
 | 2026-07-01 | Training rescheduled to Tue 7 Jul |
+| 2026-07-02/03 | **M1 + M2 complete** — instance, Telegram chatbot, SQL sync all live |
+| 2026-07-06 | M3 in progress (this week, continue testing); M5 sequence flipped — **training first (7 Jul), UAT after** — UAT scope now mainly covers customised features (see Customisation Timeline below) |
 
-Per [[Weekly Update — Week of 2026-07-01]]: deployment + SQL integration done, internal testing done. Open client action: confirm Meta Business verification status (WhatsApp channel) — Telegram fallback still available if not resolved by training.
+Per [[Weekly Update — Week of 2026-07-01]]: deployment + SQL integration done, internal testing done. Open client action: confirm Meta Business verification status (WhatsApp channel) — Telegram fallback already deployed and live.
 
 ---
 
@@ -81,37 +83,36 @@ If vendor slips past **Mon 22 Jun**, 26 Jun is at risk — escalate immediately.
 
 ---
 
-## M1 — Instance + Chatbot Setup (Fri 19 – Mon 22 Jun)
+## M1 — Instance + Chatbot Setup — ✅ COMPLETE (2026-07-02/03)
 
 **Who:** Dev
-**Format:** MAIA-controlled once M0 client deps (AWS + OpenAI) land. Run in parallel — don't wait on vendor.
+**Status:** Done.
 
-- [ ] Deploy MAIA instance on **client's AWS**
-- [ ] Set up chatbot — **WhatsApp** preferred; **Telegram fallback** if WhatsApp not ready by 26 Jun
-- [ ] Connect chatbot to instance; smoke-test basic message flow
+- [x] Deploy MAIA instance on **client's AWS**
+- [x] Set up chatbot — **Telegram deployed and live**; **WhatsApp still pending** on client side (Meta Business verification)
+- [x] Connect chatbot to instance; smoke-test basic message flow
 
-> Channel: Telegram is a de-risk fallback, so channel is **not** a hard blocker for 26 Jun.
+> Channel: Telegram is live now, not just a fallback. WhatsApp switches over once client clears Meta Business verification.
 
 ---
 
-## M2 — SQL Integration + Data Seed (Mon 22 – Wed 24 Jun)
+## M2 — SQL Integration + Data Seed — ✅ COMPLETE (2026-07-02/03)
 
 **Who:** Dev + PM
-**Format:** Build against the cloned test DB once vendor delivers. Seed data + configure PDFs in parallel.
+**Status:** Done.
 
-- [ ] **Vendor returns API credentials + cloned test DB** — Mon 22 Jun (hard target)
-- [ ] Build + verify SQL sync — **customer/item master read**, **SO/DN write**
-- [ ] Test all write endpoints on **cloned test DB first** (real SQL transactions; default port **8016**; confirm firewall/IP whitelist with Macrofood IT)
-- [ ] Seed company users + **customer/item master data**
-- [ ] Configure **SO / DN PDF templates** from client samples
+- [x] Vendor returned API credentials + cloned test DB
+- [x] Build + verify SQL sync — **customer/item master read**, **SO/DN write**
+- [x] Test all write endpoints on cloned test DB (port 8016, firewall/IP whitelist confirmed)
+- [x] Seed company users + **customer/item master data**
+- [x] Configure **SO / DN PDF templates** from client samples
 
 ---
 
-## M3 — Internal Test + Live Dev-Fix Session (Wed 24 Jun)
+## M3 — Internal Test + Live Dev-Fix Session — 🟡 IN PROGRESS (this week)
 
 **Who:** Gareth + Dev
-**Duration:** ~2 hours
-**Format:** PM runs every scope item live on Macrofood env; dev fixes on the spot. Anything unfixable → explicit defer decision logged.
+**Status:** Testing continues this week, in parallel with M5 training (sequence flipped — training runs first, M3 fixes feed into post-training UAT).
 
 ### Go-live scope checklist (run live)
 
@@ -142,18 +143,36 @@ If vendor slips past **Mon 22 Jun**, 26 Jun is at risk — escalate immediately.
 
 ---
 
-## M5 — Training + On-the-spot UAT + Go-live (rescheduled → Tue 7 Jul)
+## M5 — Training (Tue 7 Jul) → UAT after (sequence flipped)
 
 **Who:** PM + Macrofood testers
-**Format:** PM briefs scope → testers run UAT on the spot same session → triage → sign-off + go-live.
+**Format:** Training runs first. UAT no longer same-session on-the-spot — it now sits **after** training and mainly covers the 3 customised features below (see Customisation Timeline). Core sales flow (pick list → SO → DN → SQL) already validated in M3.
 
-- [ ] Confirm Meta Business verification status with client before session — decides WhatsApp vs Telegram channel
+- [x] Channel for training: **Telegram** (live) — WhatsApp pending client's Meta Business verification
 - [ ] Brief: what's in scope (pick list → SO → DN → SQL)
-- [ ] Run UAT on the spot — testers test live, PM on standby
 - [ ] Training Slide prep
 - [ ] Demo instance setup ready
-- [ ] Collect results + triage same session
-- [ ] Sign-off (or conditional sign-off + punch list) → **go-live**
+- [ ] Run training session — 7 Jul
+- [ ] UAT (post-training) — mainly customised features, dates TBC below
+- [ ] Sign-off (or conditional sign-off + punch list) → **go-live** (target: end of July / early Aug)
+
+---
+
+## Customisation Timeline — 3 Features (dates TBC)
+
+Scope moved out of core Phase 1, now tracked separately. Sequence: A → B → C.
+
+| # | Feature | QA Date | Internal Showcase Date | UAT Date |
+|---|---|---|---|---|
+| A | Bulk Item Price Update | TBC | TBC | TBC |
+| B | Slow-moving / Near-expiry Stock Alert | TBC | TBC | TBC |
+| C | AR (Reconciliation) | TBC | TBC | TBC |
+
+- **QA Date** — tech ships to product team, product QA starts
+- **Internal Showcase Date** — product team demos feature internally before client sees it
+- **UAT Date** — client tests the feature live
+
+Target: all 3 features through UAT and go-live-ready by **end of July / early August**.
 
 ---
 
