@@ -9,10 +9,10 @@ Reference spec: MAIA External SOA Portal - Secure Shareable Statement of Account
 
 The current SOA feature is a useful balance viewer, but it is not yet a complete customer-ready Statement of Account. The latest tracker review covers portal, Customer Profile SOA tab, activity log, public-link security, mobile baseline, PDF download behavior, and generated SOA PDF.
 
-There are 12 consolidated issues:
+There are 13 consolidated issues:
 
 - 2 Critical must-fix issue records: expired-link enforcement and portal/PDF balance mismatch, including PDF internal reconciliation mismatch.
-- 8 High must-fix or near-MVP issues: statement/as-of timestamp, ledger status/due-date context, reconciliation totals, mobile baseline, activity log audit quality, PDF download URL exposure, PDF customer-facing layout/content, and Customer Profile SOA permission UX.
+- 9 High must-fix or near-MVP issues: statement/as-of timestamp, ledger status/due-date context, reconciliation totals, mobile baseline, activity log audit quality, PDF download URL exposure, PDF customer-facing layout/content, Customer Profile SOA permission UX, and customer-facing share URL naming.
 - 2 Medium Phase 2/customer-experience issues: supplier contact details and payment/next-action guidance.
 
 The highest-risk theme is financial trust: customer-facing values must reconcile across portal summary, aging, ledger rows, PDF summary, and PDF closing balance. The second highest-risk theme is link security: expired/revoked/invalid links must not expose password prompts, customer identity, token state, balances, or document rows.
@@ -35,6 +35,7 @@ These affect security, correctness, customer trust, or whether the SOA can be re
 | P1 | SOA PDF customer-facing layout/content cleanup | PDF must not show placeholder logo or internal account labels, and should include enough invoice context for collections. |
 | P0 | Portal/PDF balance mismatch and PDF internal reconciliation mismatch | Customer-facing outstanding amount must not differ between portal, PDF summary, aging, and ledger closing balance. |
 | P1 | Customer Profile SOA permission UX | Users without SOA permissions need a clear frontend access-denied state instead of raw API error handling. |
+| P1 | Customer-facing SOA URL naming/template handling | Shared link prompts must not expose unresolved placeholders or technical query labels to customers. |
 
 ## Consolidated Issue Register
 
@@ -52,6 +53,7 @@ These affect security, correctness, customer trust, or whether the SOA can be re
 | 10 | High | Generated SOA PDF | PDF layout/content is not fully customer-ready | `SOA-PDF-01`, `SOA-PDF-03`, `SOA-PDF-05`, `BRAND-03` | Must fix placeholder/internal fields |
 | 11 | Critical | Portal/PDF data | Portal total outstanding and PDF closing balance do not match | `SOA-PDF-05`, `SOA-PDF-06` | Must fix |
 | 12 | High | Customer Profile permissions | No frontend interface for SOA share/revoke/view permission denial | `SHARE-01`, `REV-01`, `ACT-01`, `ACT-02` | Must fix UX around permission denial |
+| 13 | High | Customer shared-link UX | Customer open-link prompt exposes unresolved URL placeholders and technical query parameters | `SHARE-01`, `SHARE-02`, `MSG-01`, `AUTH-01` | Must fix before customer sharing |
 
 ## Tracker Notes Added
 
@@ -91,6 +93,7 @@ These improve the customer experience, but they are not blockers for a minimal u
 8. SOA PDF does not show placeholder/internal fields and remains customer-ready.
 9. Portal total outstanding, PDF closing balance, PDF aging, and PDF ledger totals all reconcile to the same amount.
 10. Users without SOA permissions see a clear access-denied UI state for share/revoke/view actions.
+11. Customer-facing SOA link text does not expose unresolved placeholders or technical query parameter names.
 ```
 
 ---
@@ -901,6 +904,74 @@ Spec reference: `FR-001`, `FR-007`, `FR-027`, role/access-control expectations
 
 ---
 
+## Issue 13: Customer-facing SOA shared link exposes unresolved placeholders and technical query parameters
+
+Category: UI/UX / Messaging / Security
+Severity: High
+Status: Open
+Surface: Customer shared link / WhatsApp or browser open prompt
+MVP classification: Must fix before customer sharing
+Linked Scenario: A1 - Sales shares a customer SOA from Customer Profile
+Linked Test Case: SHARE-01 / SHARE-02 / MSG-01 / AUTH-01
+Owner: Frontend / Backend / Messaging
+
+### Steps to reproduce
+
+1. Generate an SOA share link.
+2. Send/open the link from a customer-facing surface such as WhatsApp, mobile browser, or Android open-link prompt.
+3. Review the URL shown to the customer before opening.
+
+### Expected result
+
+The customer should see a clean, safe, and understandable link prompt. Template placeholders must be fully resolved before sending.
+
+Acceptable MVP options:
+
+```text
+Option A - keep full URL but resolve and encode values:
+https://maia-oms-dev.vercel.app/share/soa?token=<opaque_token>&co=Fixguru&cu=AKIE%20GROUP&exp=2026-07-04T...
+
+Option B - preferred customer-facing message:
+Open your Statement of Account from Fixguru:
+https://maia-oms-dev.vercel.app/share/soa?token=<opaque_token>
+
+Expires: 04 Jul 2026, 2:30 PM
+Customer: AKIE GROUP
+```
+
+Customer-facing rule:
+
+```text
+Do not show `{company_name}`, `{customer_name}`, or `{expires_on}` placeholders.
+Do not expose raw template variable names in the final shared URL.
+Avoid unnecessary query parameters in customer-facing link text when the token can resolve company/customer/expiry server-side.
+If company/customer/expiry are included, URL-encode values and use short parameter names consistently.
+```
+
+### Actual result
+
+The open-link prompt shows unresolved placeholders in the URL:
+
+```text
+https://maia-oms-dev.vercel.app/share/soa?
+token=e1m6svhujl...&
+co={company_name}&
+cu={customer_name}&
+exp={expires_on}
+```
+
+This makes the link look broken and technical to the customer.
+
+### Notes / evidence
+
+Screenshot evidence: customer open-link prompt shows `{company_name}`, `{customer_name}`, and `{expires_on}` literally in the SOA URL.
+
+This should be fixed before customer UAT because it directly affects trust in the shared link and suggests the message/template generation did not complete correctly.
+
+Spec reference: `FR-001`, `FR-002`, `FR-003`, `FR-004`, WhatsApp/message template behavior
+
+---
+
 ## Recommended Display Additions
 
 Add this block near the customer name:
@@ -999,8 +1070,9 @@ PDF download action with customer-friendly filename
 6. Fix mobile baseline usability so customer name, totals, ledger rows, and PDF actions are readable/reachable.
 7. Remove raw token values from Customer Profile SOA activity logs and show audit-safe event details.
 8. Add frontend permission/access-denied state for Customer Profile SOA share/revoke/view restrictions.
-9. Fix Download SOA PDF so it downloads/opens the PDF without rendering a signed S3 URL.
-10. Fix SOA PDF placeholder/internal fields: logo placeholder, A/C No value, and customer-facing copy.
-11. Defer full mobile card redesign if the MVP mobile table remains usable.
-12. Defer supplier/company contact details unless the SOA is sent without a reply channel.
-13. Defer payment instructions unless payment guidance is absent from both the invoice PDF and sending message.
+9. Fix customer-facing SOA shared link naming/template placeholders before sending links externally.
+10. Fix Download SOA PDF so it downloads/opens the PDF without rendering a signed S3 URL.
+11. Fix SOA PDF placeholder/internal fields: logo placeholder, A/C No value, and customer-facing copy.
+12. Defer full mobile card redesign if the MVP mobile table remains usable.
+13. Defer supplier/company contact details unless the SOA is sent without a reply channel.
+14. Defer payment instructions unless payment guidance is absent from both the invoice PDF and sending message.
