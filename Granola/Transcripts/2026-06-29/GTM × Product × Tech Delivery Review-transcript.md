@@ -3,7 +3,7 @@ granola_id: 1367c950-d6d4-40db-94ff-4dee6cd8f9b0
 title: GTM × Product × Tech Delivery Review - Transcript
 type: transcript
 created: 2026-06-29T07:09:53.411Z
-updated: 2026-06-29T08:37:55.924Z
+updated: 2026-06-30T01:46:15.994Z
 attendees: 
   - jermaine@mindhive.asia
   - jeremy@mindhive.asia
