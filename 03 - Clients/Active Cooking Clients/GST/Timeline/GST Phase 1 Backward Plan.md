@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-06-22
+last_reviewed: 2026-07-06
 client: GST Fine Foods
 phase: 1
 lark_url:
@@ -21,19 +21,20 @@ lark_url:
 
 ```
 NOW ─── M0 Deps ─── M1 Deploy + Chatbot ─── M2 SAP Integration ─── M3 Internal Test ─── M4 UAT ─── M5 Go-Live ─── M6 Training
-Now       Now–TBC       TBC                      TBC                    TBC                 TBC       TBC             TBC
-Jun 22
+Jul 6      Jul 6–10       Jul 13–15                Jul 15–28               Jul 29–31          Aug 3–14   Aug 14–21       Aug 21
 ```
+
+**Target: UAT-ready by EOM July 2026. This is a target schedule, not a confirmed one — see Critical Path below for what must close this week to hold it.**
 
 | Phase | Date | Who | Goal |
 |---|---|---|---|
-| M0 Deps + Kickoff | Now — TBC | Gareth + GST | Lock all remaining deps; SAP UAT license; schedule AWS + OpenAI setup meeting |
-| M1 AWS Deploy + Telegram/WA | TBC | Dev | MAIA instance live on GST AWS; chatbot connected and smoke-tested |
-| M2 SAP B1 Integration + Data Seed | TBC | Dev + PM | SAP Service Layer sync working; master data seeded; Crystal Reports PDF config |
-| M3 Internal Test + Live Fix | TBC | Gareth + Dev | Full GST workflow run-through live; fix on spot; all scope items green |
-| M4 UAT | TBC | PM + GST | Client runs UAT on spot; PM triages same session |
-| M5 Go-Live | TBC | PM + GST | Punch list cleared; live confirmed; sign-off obtained |
-| M6 Training | TBC | PM + GST team | Full team trained on live system |
+| M0 Deps + Kickoff | Mon 6 Jul – Fri 10 Jul | Gareth + GST | Lock all remaining deps; payment; SAP UAT license; schedule AWS + OpenAI setup meeting |
+| M1 AWS Deploy + Telegram/WA | Mon 13 – Wed 15 Jul | Dev | MAIA instance live on GST AWS; chatbot connected and smoke-tested |
+| M2 SAP B1 Integration + Data Seed | Wed 15 – Tue 28 Jul | Dev + PM | SAP Service Layer sync working; master data seeded; Crystal Reports PDF config |
+| M3 Internal Test + Live Fix | Wed 29 – Fri 31 Jul | Gareth + Dev | Full GST workflow run-through live; fix on spot; all scope items green |
+| M4 UAT | Mon 3 – Fri 14 Aug | PM + GST | Client runs UAT on spot; PM triages same session |
+| M5 Go-Live | Fri 14 – Fri 21 Aug | PM + GST | Punch list cleared; live confirmed; sign-off obtained |
+| M6 Training | w/c 21 Aug | PM + GST team | Full team trained on live system |
 
 ---
 
@@ -48,11 +49,13 @@ SAP B1 integration via Service Layer API is a **hard go-live blocker**. Two gate
 
 If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — escalate immediately.
 
+**2026-07-06 update:** No confirmation SAP UAT license arrived. No kickoff, payment, or AWS/OpenAI setup meeting confirmed as of this date. Target schedule above assumes payment + SAP license + kickoff **all close by Fri 10 Jul** — if any slips past ~10–13 Jul, EOM UAT-ready target is not achievable (M2 alone needs ~2wk minimum once it starts). Escalate this week.
+
 **WABA / WhatsApp:** GST handles their own Meta + WABA account setup. MAIA provides the [[Guide] Channel & Infrastructure Setup Guide Copy] to GST. **Not a MAIA-controlled blocker.** Telegram is the fallback channel if WhatsApp is not ready at go-live.
 
 ---
 
-## M0 — Dependencies + Kickoff (Now — TBC)
+## M0 — Dependencies + Kickoff (Mon 6 Jul — Fri 10 Jul)
 
 **Who:** Gareth + GST
 **Goal:** Confirm every input M1 and M2 depend on. Nothing downstream moves until these land.
@@ -87,7 +90,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M1 — AWS Deploy + Chatbot Setup (TBC)
+## M1 — AWS Deploy + Chatbot Setup (Mon 13 — Wed 15 Jul)
 
 **Who:** Dev (pending M0 AWS + OpenAI setup meeting)
 **Goal:** MAIA instance live on GST's AWS; chatbot connected and responding.
@@ -103,7 +106,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M2 — SAP B1 Integration + Data Seed (TBC)
+## M2 — SAP B1 Integration + Data Seed (Wed 15 — Tue 28 Jul)
 
 **Who:** Dev + PM
 **Goal:** Full SAP Service Layer sync working. All read + write flows verified before internal test. Gates on SAP UAT license received.
@@ -130,7 +133,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M3 — Internal Test + Live Dev-Fix Session (TBC)
+## M3 — Internal Test + Live Dev-Fix Session (Wed 29 — Fri 31 Jul)
 
 **Who:** Gareth + Dev
 **Duration:** ~2–3 hours (one session)
@@ -166,7 +169,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M4 — UAT — Client Session (TBC)
+## M4 — UAT — Client Session (Mon 3 — Fri 14 Aug)
 
 **Who:** PM + GST UAT users (Joey Ong — Sales; Soo Chin — Operations; Tim — Operations Manager; Finance PIC)
 **Format:** PM briefs scope → GST team runs UAT on the spot → PM triages same session.
@@ -187,7 +190,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M5 — Go-Live (TBC)
+## M5 — Go-Live (Fri 14 — Fri 21 Aug)
 
 **Who:** PM + GST
 **Goal:** UAT punch list cleared → confirm live → sign-off.
@@ -203,7 +206,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M6 — Training (TBC)
+## M6 — Training (w/c 21 Aug)
 
 **Who:** PM + full GST team (sales coordinators, finance, logistics, management)
 **Format:** Full structured session; cover end-to-end live workflow.
@@ -268,17 +271,17 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 | # | Milestone | Date |
 |---|---|---|
 | 1 | Signed Date | TBC |
-| 2 | Payment Date (upfront) | TBC |
-| 3 | Kickoff Date | TBC |
-| 4 | Requirements Lock Date | TBC |
-| 5 | SAP UAT License Received | Expected Wed 25 Jun 2026 |
-| 6 | Instance Deploy Date | TBC |
-| 7 | SAP Integration Complete | TBC |
-| 8 | Internal Test Date | TBC |
-| 9 | UAT Date | TBC |
-| 10 | Go-Live Date | TBC |
-| 11 | Training Date | TBC |
-| 12 | Customisations Date | TBC |
+| 2 | Payment Date (upfront) | TBC — target: by Fri 10 Jul 2026 |
+| 3 | Kickoff Date | Target: by Fri 10 Jul 2026 |
+| 4 | Requirements Lock Date | Done — 4 May 2026 |
+| 5 | SAP UAT License Received | Expected Wed 25 Jun 2026 — unconfirmed as of 6 Jul; target: by Fri 10 Jul |
+| 6 | Instance Deploy Date | Target: Wed 15 Jul 2026 |
+| 7 | SAP Integration Complete | Target: Tue 28 Jul 2026 |
+| 8 | Internal Test Date | Target: Fri 31 Jul 2026 |
+| 9 | UAT Date | Target: Mon 3 – Fri 14 Aug 2026 |
+| 10 | Go-Live Date | Target: Fri 21 Aug 2026 |
+| 11 | Training Date | Target: w/c 21 Aug 2026 |
+| 12 | Customisations Date | TBC — Phase 2 |
 
 ---
 

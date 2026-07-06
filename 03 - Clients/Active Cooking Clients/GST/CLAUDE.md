@@ -3,14 +3,14 @@ client: GST Fine Foods
 status: active
 stage: Pre-onboarding — SAP integration pending
 owner: Gareth
-last_updated: 2026-06-22
+last_updated: 2026-07-06
 ---
 
 # GST Fine Foods — Client Context
 
-## Current Status (as of 2026-06-22)
+## Current Status (as of 2026-07-06)
 
-Active onboarding. Backward plan created. SAP UAT license is the critical path item — expected Wed 25 Jun 2026 from GST's SAP vendor.
+Stalled since kickoff — no payment received, no confirmation SAP UAT license (expected Wed 25 Jun) arrived, kickoff and AWS/OpenAI setup meeting still not done. **Target set: UAT-ready by EOM July 2026** (see backward plan) — requires payment + SAP license + kickoff to close by **Fri 10 Jul 2026**. If that slips, EOM target is not achievable and the whole plan shifts. Escalate this week.
 
 | Item | Status |
 |---|---|
