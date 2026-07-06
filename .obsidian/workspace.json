@@ -186,7 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 215.5
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -317,10 +317,18 @@
                   {
                     "id": 161,
                     "name": "zsh 161"
+                  },
+                  {
+                    "id": 162,
+                    "name": "zsh 162"
+                  },
+                  {
+                    "id": 163,
+                    "name": "zsh 163"
                   }
                 ],
-                "activeId": 161,
-                "nextId": 162
+                "activeId": 163,
+                "nextId": 164
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -371,8 +379,9 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "e54e88e8cc6156e5",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood Sales User Setup.xlsx",
     "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding Status.md.tmp.48329.036f074dc3d3",
     "Granola/Transcripts/2026-07-02/Mindhive  Daily Standup-transcript 2.md",
@@ -408,7 +417,6 @@
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/2026-07-04 SOA Portal Issue Report.md",
     "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 2.md",
     "02 - PM Playbook/Templates/[Template] Weekly PM Update.md",
-    "02 - PM Playbook/Internal Sessions/Self-Assessment - Gareth Ng - H1 2026.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
