@@ -186,8 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -322,10 +321,14 @@
                   {
                     "id": 165,
                     "name": "zsh 165"
+                  },
+                  {
+                    "id": 166,
+                    "name": "zsh 166"
                   }
                 ],
-                "activeId": 161,
-                "nextId": 166
+                "activeId": 166,
+                "nextId": 167
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -378,6 +381,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "01 - MAIA Product/Client Training/[Template] MAIA Training Slides v1.pptx",
+    "[Template] MAIA Training Slides v1.pptx",
     "Granola/Transcripts/2026-07-06/GTM × Product × Tech Delivery Review-transcript.md",
     "05 - Releases & Updates/Weekly Updates/Weekly Update - 06-07-2026.md",
     "05 - Releases & Updates/Weekly Updates",
@@ -410,10 +415,8 @@
     "Granola/Transcripts/2026-06-30",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.docx",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/2026-07-04 SOA Portal Issue Report.md",
-    "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 2.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
