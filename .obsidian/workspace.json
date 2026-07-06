@@ -350,7 +350,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 1042.5
+    "width": 1074.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -380,7 +380,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "e54e88e8cc6156e5",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist.md",
