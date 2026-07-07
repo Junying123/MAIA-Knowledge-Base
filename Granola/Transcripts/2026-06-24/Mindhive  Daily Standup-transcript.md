@@ -3,22 +3,8 @@ granola_id: c399c407-665b-4485-8b56-89627b823c16
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-06-24T01:45:07.500Z
-updated: 2026-06-24T03:18:10.374Z
-attendees: 
-  - afiqaqill261203@gmail.com
-  - ghostsketon@gmail.com
-  - jermaine@mindhive.asia
-  - johnson@mindhive.asia
-  - Mindhive Calendar
-  - brendan@mindhive.asia
-  - ivan@mindhive.asia
-  - abdulhaiqal119@gmail.com
-  - anis1901@gmail.com
-  - azibiqbal01@gmail.com
-  - lim.junyan@gmail.com
-  - rahim.r2026@gmail.com
-  - bryantewyh@gmail.com
-  - wansin@mindhive.asia
+updated: 2026-07-07T12:32:55.498Z
+attendees: []
 ---
 
 # Transcript for: Mindhive  Daily Standup
