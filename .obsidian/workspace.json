@@ -328,12 +328,12 @@
                     "name": "zsh 166"
                   },
                   {
-                    "id": 167,
-                    "name": "zsh 167"
+                    "id": 168,
+                    "name": "zsh 168"
                   }
                 ],
-                "activeId": 167,
-                "nextId": 168
+                "activeId": 168,
+                "nextId": 169
               },
               "icon": "terminal",
               "title": "Terminal"
