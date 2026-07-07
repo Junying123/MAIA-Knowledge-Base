@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
+                "file": "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofood Phase 1 Timeline"
+              "title": "GST Phase 1 Backward Plan"
             }
           },
           {
@@ -386,11 +386,12 @@
   },
   "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
     "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 3.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.89693.36b8701aa2d9",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.89693.4733bddb1ffd",
-    "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "Granola/Transcripts/2026-07-07/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-07",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
@@ -421,7 +422,6 @@
     "Granola/Transcripts/2026-07-02/Maxfresh Briefing-transcript.md",
     "Granola/Transcripts/2026-07-02/MAIA WABA Setup - Follow up-transcript.md",
     "Granola/Transcripts/2026-07-01/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-06-30/Mindhive  Daily Standup-transcript.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",

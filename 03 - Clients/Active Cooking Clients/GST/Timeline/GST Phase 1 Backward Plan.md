@@ -106,8 +106,8 @@ SAP B1 integration via Service Layer API is a **hard go-live blocker** — Core 
 **Who:** Dev + PM
 **Goal:** Core data pulled from SAP B1 via Service Layer. All read + write flows verified before internal test.
 
-- [ ] Confirm integration approach with Azib: SAP B1 Service Layer API (RESTful) — confirmed in vendor meeting
-- [ ] Confirm custom UDF fields from GST's SAP — need list of customized fields outside MAIA standard; Service Layer cannot support custom UDFs natively; new endpoints required
+- [x] Confirm integration approach with Azib: SAP B1 Service Layer API (RESTful) — confirmed in vendor meeting
+- [x] Confirm custom UDF fields from GST's SAP — need list of customized fields outside MAIA standard; Service Layer cannot support custom UDFs natively; new endpoints required
 - [ ] Build + verify **SAP READ:**
   - [ ] Item master sync (species, cut, weight, pack format, price list per customer)
   - [ ] Customer master sync

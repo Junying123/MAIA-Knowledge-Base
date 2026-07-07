@@ -22,7 +22,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Tm7SwwBs3ieWPLkWB9glwVMFgKg
 | 2026-07-01 | Training rescheduled to Tue 7 Jul |
 | 2026-07-02/03 | **M1 + M2 complete** — instance, Telegram chatbot, SQL sync all live |
 | 2026-07-06 | M3 in progress (this week, continue testing); M5 sequence flipped — **training first (7 Jul), UAT after** — UAT scope now mainly covers customised features (see Customisation Timeline below) |
-| 2026-07-07 | Training did not happen today — rescheduled to **16 Jul**, UAT same day; Go-Live now **17–21 Jul** |
+| 2026-07-07 | Training did not happen today — rescheduled to **16 Jul**, UAT same day; both cover **core MAIA features (pick list → SO → DN → SQL)**, not the customised features; Go-Live now **17–21 Jul** |
 
 Per [[Weekly Update — Week of 2026-07-01]]: deployment + SQL integration done, internal testing done. Open client action: confirm Meta Business verification status (WhatsApp channel) — Telegram fallback already deployed and live.
 
@@ -148,14 +148,14 @@ If vendor slips past **Mon 22 Jun**, 26 Jun is at risk — escalate immediately.
 ## M5 — Training + UAT (16 Jul) → Go-Live (17–21 Jul)
 
 **Who:** PM + Macrofood testers
-**Format:** Training and UAT now run same day, 16 Jul (slipped from 7 Jul). UAT mainly covers the 3 customised features below (see Customisation Timeline). Core sales flow (pick list → SO → DN → SQL) already validated in M3.
+**Format:** Training and UAT now run same day, 16 Jul (slipped from 7 Jul). Both cover **core MAIA features** — pick list → SO → DN → SQL — already validated internally in M3. The 3 customisations (see Customisation Timeline) are separate and follow later.
 
 - [x] Channel for training: **Telegram** (live) — WhatsApp pending client's Meta Business verification
 - [ ] Brief: what's in scope (pick list → SO → DN → SQL)
 - [ ] Training Slide prep
 - [ ] Demo instance setup ready
 - [ ] Run training session — 16 Jul
-- [ ] UAT — 16 Jul, mainly customised features
+- [ ] UAT — 16 Jul, core MAIA features (pick list → SO → DN → SQL)
 - [ ] Sign-off (or conditional sign-off + punch list) → **go-live: 17–21 Jul**
 - [ ] Final Invoice / Subscription Start — 29–30 Jul
 
@@ -168,14 +168,16 @@ Scope moved out of core Phase 1, now tracked separately. Sequence: A → B → C
 | # | Feature | QA Date | Internal Showcase Date | UAT Date |
 |---|---|---|---|---|
 | A | Bulk Item Price Update | TBC | TBC | TBC |
-| B | Slow-moving / Near-expiry Stock Alert | TBC | TBC | TBC |
+| B | Product Catalog Generation | TBC | TBC | TBC |
 | C | AR (Reconciliation) | TBC | TBC | TBC |
+
+> Note (2026-07-07): Feature B corrected to **Product Catalog Generation** per the original RG source ([[F2F Requirements Gathering Summary 2026-06-04]]: "Customizations (AR reconciliation, bulk price update, product catalog) to be deployed separately after core go-live"). The near-expiry/slow-moving stock alert was a separate idea raised in the same session but explicitly marked "not in Phase 1 scope" — it was never one of the 3 confirmed customisations.
 
 - **QA Date** — tech ships to product team, product QA starts
 - **Internal Showcase Date** — product team demos feature internally before client sees it
 - **UAT Date** — client tests the feature live
 
-Target: all 3 features through UAT and go-live-ready by **end of July / early August**.
+Dates TBC — Gareth to fill in once scoped.
 
 ---
 
@@ -196,11 +198,12 @@ Do not let these creep into 26 Jun:
 | 2 | Payment Date (50% upfront) | 2026-05-20 |
 | 3 | Kickoff Date | 2026-06-18 |
 | 4 | Requirements Lock Date | 2026-06-04 |
-| 5 | Go-Live Ready Date | 2026-06-25 |
-| 6 | UAT Date | 2026-06-26 |
-| 7 | Go-Live Date | 2026-06-26 |
-| 8 | Training Date | 2026-06-26 |
-| 9 | Customisations Date | 2026-06-24 |
+| 5 | Go-Live Ready Date | 2026-07-16 |
+| 6 | UAT Date | 2026-07-16 |
+| 7 | Go-Live Date | 2026-07-17 – 2026-07-21 |
+| 8 | Training Date | 2026-07-16 |
+| 9 | Final Invoice / Subscription Start | 2026-07-29 – 2026-07-30 |
+| 10 | Customisations Date | TBC — see Customisation Timeline |
 
 ---
 
