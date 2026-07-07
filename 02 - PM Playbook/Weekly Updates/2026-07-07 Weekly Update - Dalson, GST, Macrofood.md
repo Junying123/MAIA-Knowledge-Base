@@ -15,7 +15,8 @@ Clients covered this round: Dalson, GST, Macrofood. Drafted from updated backwar
 ### PM Review Notes (Internal)
 
 - Instance deployment done, environment is up — moved to Completed this week.
-- Focus this week: internal testing across full order flow; aiming for UAT next week (14–17 Jul).
+- Focus this week: internal testing across full order flow; aiming for UAT next week (20–22 Jul).
+- UAT and Training now combined into one session (20–22 Jul); Go-Live moved to 23 Jul.
 - Outstanding client action: Meta Business (WhatsApp) verification status — still not confirmed.
 - Will raise data-quality issues directly with Dalson during testing if found, not asking upfront.
 
@@ -38,9 +39,8 @@ Here's this week's update:
 
 *📅 Target Dates*
 • Testing: this week
-• UAT: targeting 14–17 Jul
-• Go-Live: 20–22 Jul
-• Training: 22–27 Jul
+• UAT + Training: targeting 20–22 Jul
+• Go-Live: 23 Jul
 
 *⚙️ Mindhive Actions*
 • Testing everything this week; we'll reach out directly if we spot anything unclear in your data
@@ -74,17 +74,21 @@ Here's this week's update:
 ---
 
 *✅ Completed*
-• Scope and requirements confirmed
-• Basic system setup done on our end (network and remote access received)
+• Basic system setup done on our end (network and remote access completed)
+• SOA (Statement of Account) feature built
 
 *🔧 Currently in Development*
 • Working on the SAP integration — expecting to pull your data into MAIA this week
+• Testing the SOA feature in MAIA
 
 *🔴 Current Blockers*
 • Pending GST completing the core setup on your side
 
+*📅 Target Dates*
+• MAIA deployed: this Friday, once integration and your setup are done
+
 *📋 GST Actions*
-• Complete the core setup on your end — this is what's blocking us from moving forward
+• Finish the setup on your side so we can move to the next step
 
 ---
 
@@ -99,7 +103,7 @@ Let us know if anything comes up or needs adjusting! 🙌
 
 - Training originally set for today (7 Jul) slipped — rescheduled to 16 Jul. UAT now same day, both cover core MAIA features (pick list → SO → DN → SQL), not the customisations.
 - Customisation Timeline (bulk price update, product catalog generation, AR reconciliation) stays separate with dates TBC — not raised in this week's client message.
-- Only outstanding item from client: staff list.
+- Only outstanding item from client: sales team info, via the Excel sheet already shared with them.
 
 ### Client Weekly Update (WhatsApp)
 
@@ -111,11 +115,11 @@ Here's this week's update:
 ---
 
 *✅ Completed*
-• System is live and connected to your chat app
+• MAIA instance is deployed and ready
 • Your data is connected and has been tested on our end
 
 *🔧 Currently in Development*
-• Finishing our internal checks before your training session
+• Finishing our internal test before your training session
 
 *📅 Target Dates*
 • Training + testing: 16 Jul
@@ -123,9 +127,10 @@ Here's this week's update:
 
 *⚙️ Mindhive Actions*
 • Preparing training materials for 16 Jul
+• Will reach out if we spot anything unclear in your data
 
 *📋 Macrofood Actions*
-• Send us your staff list — the only thing we're waiting on
+• Fill in your sales team info in the Excel sheet we shared earlier
 
 ---
 

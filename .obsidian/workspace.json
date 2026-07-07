@@ -330,7 +330,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 989.5
+    "width": 988.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -360,7 +360,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ed25b829c30e5f11",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
