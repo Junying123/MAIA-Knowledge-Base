@@ -6,7 +6,7 @@ last_reviewed: 2026-07-07
 
 # Weekly Update — Week of 2026-07-07
 
-Clients covered this round: Dalson, GST, Macrofood. Drafted from updated backward plans — see [[Dalson Phase 1 Timeline]], [[GST Phase 1 Backward Plan]], [[Macrofood Phase 1 Timeline]].
+Clients covered this round: Dalson, GST, Macrofood, Fixguru. Drafted from updated backward plans — see [[Dalson Phase 1 Timeline]], [[GST Phase 1 Backward Plan]], [[Macrofood Phase 1 Timeline]], [[3rd backward final UAT action plan for Fixguru]].
 
 ---
 
@@ -102,6 +102,7 @@ Let us know if anything comes up or needs adjusting! 🙌
 ### PM Review Notes (Internal)
 
 - Training originally set for today (7 Jul) slipped — rescheduled to 16 Jul. UAT now same day, both cover core MAIA features (pick list → SO → DN → SQL), not the customisations.
+- Training will start with the sales team's part first.
 - Customisation Timeline (bulk price update, product catalog generation, AR reconciliation) stays separate with dates TBC — not raised in this week's client message.
 - Only outstanding item from client: sales team info, via the Excel sheet already shared with them.
 
@@ -122,7 +123,7 @@ Here's this week's update:
 • Finishing our internal test before your training session
 
 *📅 Target Dates*
-• Training + testing: 16 Jul
+• Training + testing: 16 Jul — starting with your sales team first
 • Go-Live: 17–21 Jul
 
 *⚙️ Mindhive Actions*
@@ -135,6 +136,41 @@ Here's this week's update:
 ---
 
 Please confirm the dates above work on your end. Let us know if anything needs adjusting! 🙌
+```
+
+---
+
+## Fixguru
+
+### PM Review Notes (Internal)
+
+- Item historical pricing feature — implementation planned/in build.
+- Currently testing this feature internally.
+- Target: internal testing to finalise by Fri 10 Jul; if confirmed, aim to schedule 3rd UAT for 14–15 Jul.
+
+### Client Weekly Update (WhatsApp)
+
+```
+Hi Fixguru team! 👋
+
+Here's this week's update:
+
+---
+
+*✅ Completed*
+• Internally agreed on how the item historical pricing feature should work, based on your last UAT feedback
+
+*🔧 Currently in Development*
+• Building the feature so historical prices, discounts, and net price are laid out clearly, easy to scan at a glance
+• Our dev team is testing the implementation now
+
+*📅 Target Dates*
+• Internal testing wraps up and we confirm it's ready for UAT: Fri 10 Jul
+• If confirmed, we'll schedule the next UAT session with your team: 14–15 Jul
+
+---
+
+Let us know if anything comes up or needs adjusting! 🙌
 ```
 
 ---
