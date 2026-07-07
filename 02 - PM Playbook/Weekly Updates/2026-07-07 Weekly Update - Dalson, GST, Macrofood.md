@@ -166,7 +166,7 @@ Here's this week's update:
 
 *📅 Target Dates*
 • Internal testing wraps up and we confirm it's ready for UAT: Fri 10 Jul
-• If confirmed, we'll schedule the next UAT session with your team: 14–15 Jul
+• If confirmed, we'll schedule the next UAT session with your team: Tue–Wed, 14–15 Jul
 
 ---
 
