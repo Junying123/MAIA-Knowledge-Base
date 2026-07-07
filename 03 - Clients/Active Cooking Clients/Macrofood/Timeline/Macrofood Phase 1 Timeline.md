@@ -1,15 +1,15 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-06
+last_reviewed: 2026-07-07
 client: Macrofood
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Tm7SwwBs3ieWPLkWB9glwVMFgKg
 ---
 
 # Macrofood Phase 1 — Backward Timeline to Go-Live
 
-**End goal:** Sales module live + client trained — **originally Fri 26 Jun, slipped twice, now Tue 7 Jul 2026**. Core go-live target: **end of July / early August**.
-**Created:** 2026-06-18 | **Updated:** 2026-07-06
+**End goal:** Sales module live + client trained — **originally Fri 26 Jun, slipped three times, now training + UAT on 16 Jul, go-live 17–21 Jul**.
+**Created:** 2026-06-18 | **Updated:** 2026-07-07
 **Scope:** Sales module only — **confirmed pick list → SO → DN → push to SQL**. Invoice/CN, AR recon, credit control deferred (see end).
 **Model:** Structured on the [[Fixguru 2nd UAT Backward Plan]] — internal-test-with-live-dev-fix before the client sees it, then on-the-spot UAT during training.
 
@@ -22,6 +22,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Tm7SwwBs3ieWPLkWB9glwVMFgKg
 | 2026-07-01 | Training rescheduled to Tue 7 Jul |
 | 2026-07-02/03 | **M1 + M2 complete** — instance, Telegram chatbot, SQL sync all live |
 | 2026-07-06 | M3 in progress (this week, continue testing); M5 sequence flipped — **training first (7 Jul), UAT after** — UAT scope now mainly covers customised features (see Customisation Timeline below) |
+| 2026-07-07 | Training did not happen today — rescheduled to **16 Jul**, UAT same day; Go-Live now **17–21 Jul** |
 
 Per [[Weekly Update — Week of 2026-07-01]]: deployment + SQL integration done, internal testing done. Open client action: confirm Meta Business verification status (WhatsApp channel) — Telegram fallback already deployed and live.
 
@@ -42,7 +43,8 @@ Jun 18   Jun 18–19             Jun 19–22               Jun 22–24          
 | M2 SQL + Data Seed | Mon 22–Wed 24 Jun | Dev + PM | SQL sync working; master data seeded; PDF config |
 | M3 Internal Test + Live Fix | Wed 24 Jun | Gareth + Dev | Test full scope live; fix on spot |
 | M4 Stability + UAT Prep | Thu 25 Jun | PM | Stable; UAT form + training ready; client briefed |
-| M5 Training + UAT + Go-live | Fri 26 Jun | PM + Macrofood | Train, on-the-spot UAT, sign-off, go-live |
+| M5 Training + UAT | 16 Jul | PM + Macrofood | Train, UAT on customised features, sign-off |
+| Go-Live | 17–21 Jul | PM + Macrofood | Go-live |
 
 ---
 
@@ -143,18 +145,19 @@ If vendor slips past **Mon 22 Jun**, 26 Jun is at risk — escalate immediately.
 
 ---
 
-## M5 — Training (Tue 7 Jul) → UAT after (sequence flipped)
+## M5 — Training + UAT (16 Jul) → Go-Live (17–21 Jul)
 
 **Who:** PM + Macrofood testers
-**Format:** Training runs first. UAT no longer same-session on-the-spot — it now sits **after** training and mainly covers the 3 customised features below (see Customisation Timeline). Core sales flow (pick list → SO → DN → SQL) already validated in M3.
+**Format:** Training and UAT now run same day, 16 Jul (slipped from 7 Jul). UAT mainly covers the 3 customised features below (see Customisation Timeline). Core sales flow (pick list → SO → DN → SQL) already validated in M3.
 
 - [x] Channel for training: **Telegram** (live) — WhatsApp pending client's Meta Business verification
 - [ ] Brief: what's in scope (pick list → SO → DN → SQL)
 - [ ] Training Slide prep
 - [ ] Demo instance setup ready
-- [ ] Run training session — 7 Jul
-- [ ] UAT (post-training) — mainly customised features, dates TBC below
-- [ ] Sign-off (or conditional sign-off + punch list) → **go-live** (target: end of July / early Aug)
+- [ ] Run training session — 16 Jul
+- [ ] UAT — 16 Jul, mainly customised features
+- [ ] Sign-off (or conditional sign-off + punch list) → **go-live: 17–21 Jul**
+- [ ] Final Invoice / Subscription Start — 29–30 Jul
 
 ---
 

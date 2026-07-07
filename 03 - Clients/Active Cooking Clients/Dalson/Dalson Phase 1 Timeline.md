@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-01
+last_reviewed: 2026-07-07
 client: Dalson
 phase: 1
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/WlrVwm24PilISckXZdDl0lyzgde
@@ -9,9 +9,9 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/WlrVwm24PilISckXZdDl0lyzgde
 
 # Dalson Phase 1 — Backward Plan to Go-Live
 
-**End goal:** Core MAIA live + client trained by **Fri 24 Jul 2026**; hypercare through **1 Aug 2026**
+**End goal:** Core MAIA live + client trained by **Mon 27 Jul 2026**; hypercare **3 Aug 2026**
 **Created:** 2026-06-21
-**Updated:** 2026-07-01 — milestones rescheduled (M1–M7)
+**Updated:** 2026-07-07 — synced against task tracker; Go-Live/Training/Hypercare slipped, Core Internal QA and Final Invoice milestones added
 **Channel:** Telegram (Meta/WhatsApp on hold — business verification pending; Telegram confirmed with client)
 **Scope:** Core MAIA only — Customer PO → SO → Invoice → DO; AutoCount 2-way sync; SKU matching; DO retrieval; Proof of delivery; New customer push; e-invoice readiness.
 **Model:** Same pattern as [[Macrofood Phase 1 Timeline]] — internal test + live-fix session before client sees it; on-the-spot UAT during UAT session.
@@ -21,21 +21,22 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/WlrVwm24PilISckXZdDl0lyzgde
 ## Milestone Map
 
 ```
-NOW ─── M0 Deps ─── M1 Deploy + Chatbot ─── M2 AutoCount + 2-way sync ─── M3 Internal Test ─── M4 UAT ─── M5 Go-Live + Sign-off ─── M6 Training ─── M7 Hypercare
-Sat       Sat–Mon       Jul 1–3                  Jul 3–7                       Jul 8–10            Jul 14–17    Jul 18–20              Jul 22–24     Jul 30–Aug 1
+NOW ─── M0 Deps ─── M1 Env + Config Ready ─── M2 AutoCount + 2-way sync ─── M3 Internal QA ─── M4 UAT ─── Final Invoice ─── M5 Go-Live ─── M6 Training ─── M7 Hypercare
+Sat       Sat–Mon       Jun 30–Jul 7                Jul 3–7                     Jul 7–10          Jul 14–17    Jul 17           Jul 20–22    Jul 22–27     Aug 3
 Jun 21    Jun 21–23
 ```
 
 | Phase                                 | Date                | Status                                 | Who              | Goal                                                                                   |
 | ------------------------------------- | ------------------- | -------------------------------------- | ---------------- | -------------------------------------------------------------------------------------- |
 | M0 Deps + Kickoff                     | Sat 21 – Mon 23 Jun | Done                                   | Gareth           | Lock all remaining deps; confirm Telegram channel; chase AutoCount vendor              |
-| M1 AWS Deploy + Telegram              | Jul 1 – 3           | In progress                            | Dev              | MAIA instance live on AWS; Telegram chatbot connected and smoke-tested                 |
+| M1 Core Environment + Configuration Ready | Jun 30 – Jul 7  | In progress                            | Dev              | MAIA instance live on AWS; Telegram chatbot connected and smoke-tested; company config set |
 | M2 AutoCount Integration + 2-way Sync | Jul 3 – 7           | Scheduled                              | Dev + PM         | Customer/item master read; SO/Invoice/DO write; new customer push; 2-way sync verified |
-| M3 Internal Test + Core Features      | Jul 8 – 10          | Scheduled                              | Gareth + Dev     | Full Dalson workflow run-through live; fix on spot; all scope items green              |
+| M3 Core Internal QA                   | Jul 7 – 10          | Planned                                | Gareth + Dev     | Full Dalson workflow run-through live; fix on spot; all scope items green              |
 | M4 UAT                                | Jul 14 – 17         | To schedule — confirm date with client | PM + Dalson      | Client runs UAT on spot; PM triages same session                                       |
-| M5 Go-Live + Sign-off                 | Jul 20 – 22         | To schedule                            | PM + Dalson      | Punch list cleared; live confirmed; sign-off obtained                                  |
-| M6 Training                           | Jul 22 – 27         | To schedule — confirm date with client | PM + Dalson team | Full team trained on live system                                                       |
-| M7 Hypercare / Live Care              | Jul 30 – Aug 1      | Planned                                | PM + Dev         | Post-go-live monitoring; fast-response fixes                                           |
+| Final Invoice / Subscription Start    | Jul 17              | Not started                            | PM               | Final implementation invoice issued                                                    |
+| M5 Go-Live                            | Jul 20 – 22         | Planned                                | PM + Dalson      | Punch list cleared; live confirmed; sign-off obtained                                  |
+| M6 Training                           | Jul 22 – 27         | Planned — confirm date with client     | PM + Dalson team | Full team trained on live system                                                       |
+| M7 Hypercare / Live Care              | Aug 3               | Planned                                | PM + Dev         | Post-go-live monitoring; fast-response fixes                                           |
 
 ---
 
@@ -129,7 +130,7 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 
 ---
 
-## M3 — Internal Test + Core Features (Jul 8 – 10) — Scheduled
+## M3 — Core Internal QA (Jul 7 – 10) — Planned
 
 **Who:** Gareth + Dev
 **Duration:** ~2–3 hours (one session)
@@ -186,7 +187,13 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 
 ---
 
-## M5 — Go-Live + Sign-off (Jul 18 – 20) — To Schedule
+## Final Invoice / Subscription Start (Jul 17) — Not Started
+
+- [ ] Issue final implementation invoice
+
+---
+
+## M5 — Go-Live (Jul 20 – 22) — Planned
 
 **Who:** PM + Dalson
 **Goal:** UAT punch list cleared → confirm live → sign-off.
@@ -201,7 +208,7 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 
 ---
 
-## M6 — Training (Jul 22 – 24) — To Schedule (confirm date with client)
+## M6 — Training (Jul 22 – 27) — Planned (confirm date with client)
 
 **Who:** PM + full Dalson team (sales coordinators + any warehouse / delivery staff using chatbot)
 **Format:** Full structured session; cover end-to-end live workflow.
@@ -219,7 +226,7 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 
 ---
 
-## M7 — Hypercare / Live Care (Jul 30 – Aug 1)
+## M7 — Hypercare / Live Care (Aug 3)
 
 **Who:** PM + Dev
 **Goal:** Close monitoring post go-live; fast turnaround on any live issues.
@@ -279,13 +286,14 @@ If Azib's integration is not testable by **Sat 28 Jun**, internal test compresse
 | — | Payment Date (30% upfront) | TBC | — |
 | — | Kickoff Date | 2026-06-21 | Done |
 | M0 | Deps + Kickoff | 2026-06-21 – 2026-06-23 | Done |
-| M1 | AWS Deploy + Telegram | 2026-07-01 – 2026-07-03 | In progress |
+| M1 | Core Environment + Configuration Ready | 2026-06-30 – 2026-07-07 | In progress |
 | M2 | AutoCount Integration + 2-way Sync | 2026-07-03 – 2026-07-07 | Scheduled |
-| M3 | Internal Test + Core Features | 2026-07-08 – 2026-07-10 | Scheduled |
+| M3 | Core Internal QA | 2026-07-07 – 2026-07-10 | Planned |
 | M4 | UAT | 2026-07-14 – 2026-07-17 | To schedule — confirm with client |
-| M5 | Go-Live + Sign-off | 2026-07-18 – 2026-07-20 | To schedule |
-| M6 | Training | 2026-07-22 – 2026-07-24 | To schedule — confirm with client |
-| M7 | Hypercare / Live Care | 2026-07-30 – 2026-08-01 | Planned |
+| — | Final Invoice / Subscription Start | 2026-07-17 | Not started |
+| M5 | Go-Live | 2026-07-20 – 2026-07-22 | Planned |
+| M6 | Training | 2026-07-22 – 2026-07-27 | Planned — confirm with client |
+| M7 | Hypercare / Live Care | 2026-08-03 | Planned |
 
 ---
 

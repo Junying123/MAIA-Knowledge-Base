@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fixguru credit limit request"
+              "title": "Macrofood Phase 1 Timeline"
             }
           },
           {
@@ -128,7 +128,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -186,7 +186,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -353,7 +354,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 1074.5
+    "width": 1272.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -383,8 +384,12 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
+    "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 3.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.89693.36b8701aa2d9",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.89693.4733bddb1ffd",
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "Granola/Transcripts/2026-07-07/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-07",
@@ -407,20 +412,16 @@
     "02 - PM Playbook/Internal Sessions/Self-Assessment - Gareth Ng - H1 2027.md",
     "Granola/Transcripts/2026-07-02/MAIA WABA Setup - Follow up-transcript 2.md",
     "Granola/Transcripts/2026-07-02/Maxfresh Briefing-transcript 2.md",
-    "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 3.md",
     "02 - PM Playbook/Templates/[Template] Weekly PM Update 2.md",
     "Granola/Transcripts/2026-06-30/Mindhive  Daily Standup-transcript 2.md",
     "Granola/Transcripts/2026-07-06/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-06",
     "Granola/Transcripts/2026-07-03/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-07-03",
     "Granola/Transcripts/2026-07-02/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-02/Maxfresh Briefing-transcript.md",
     "Granola/Transcripts/2026-07-02/MAIA WABA Setup - Follow up-transcript.md",
-    "Granola/Transcripts/2026-07-02",
     "Granola/Transcripts/2026-07-01/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-06-30/Mindhive  Daily Standup-transcript.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",

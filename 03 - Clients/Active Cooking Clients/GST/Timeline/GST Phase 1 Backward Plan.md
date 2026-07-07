@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-06
+last_reviewed: 2026-07-07
 client: GST Fine Foods
 phase: 1
 lark_url:
@@ -11,51 +11,46 @@ lark_url:
 
 **End goal:** Core MAIA live + client trained + SAP B1 integration verified
 **Created:** 2026-06-22
+**Updated:** 2026-07-07 — synced against task tracker; work is active (not stalled) across environment, config, and SAP data pull; UAT/Go-Live/Training rescheduled
 **Channel:** WhatsApp (GST handles WABA/Meta setup themselves; MAIA provides setup guide) + Telegram as fallback
 **Scope:** Core MAIA — RFQ intake + product matching, Sales Order creation, payment slip approval routing, credit limit checks, SAP B1 integration (Service Layer API), Crystal Reports-aligned document output, daily digests.
-**Model:** Same pattern as [[Macrofood Phase 1 Timeline]] and [[Dalson Phase 1 Timeline]] — lock all deps, deploy instance, SAP integration, internal test + live fix, UAT, go-live, training.
+**Model:** Same pattern as [[Macrofood Phase 1 Timeline]] and [[Dalson Phase 1 Timeline]] — lock all deps, deploy instance, pull core data from SAP, internal test + live fix, UAT, go-live, training.
 
 ---
 
 ## Milestone Map
 
 ```
-NOW ─── M0 Deps ─── M1 Deploy + Chatbot ─── M2 SAP Integration ─── M3 Internal Test ─── M4 UAT ─── M5 Go-Live ─── M6 Training
-Jul 6      Jul 6–10       Jul 13–15                Jul 15–28               Jul 29–31          Aug 3–14   Aug 14–21       Aug 21
+NOW ─── M0 Deps ─── M1 Env + Config Ready ─── M2 Core Data Ready (SAP) ─── M3 Internal QA ─── M4 UAT ─── Final Invoice ─── M5 Go-Live ─── M6 Training
+Jul 7      Jun 29–Jul 9      Jul 10–14                   Jul 9–13                    Jul 9–31       Aug 4–6      Aug 7–10        Aug 6–11     Aug 12–14
 ```
 
-**Target: UAT-ready by EOM July 2026. This is a target schedule, not a confirmed one — see Critical Path below for what must close this week to hold it.**
-
-| Phase | Date | Who | Goal |
-|---|---|---|---|
-| M0 Deps + Kickoff | Mon 6 Jul – Fri 10 Jul | Gareth + GST | Lock all remaining deps; payment; SAP UAT license; schedule AWS + OpenAI setup meeting |
-| M1 AWS Deploy + Telegram/WA | Mon 13 – Wed 15 Jul | Dev | MAIA instance live on GST AWS; chatbot connected and smoke-tested |
-| M2 SAP B1 Integration + Data Seed | Wed 15 – Tue 28 Jul | Dev + PM | SAP Service Layer sync working; master data seeded; Crystal Reports PDF config |
-| M3 Internal Test + Live Fix | Wed 29 – Fri 31 Jul | Gareth + Dev | Full GST workflow run-through live; fix on spot; all scope items green |
-| M4 UAT | Mon 3 – Fri 14 Aug | PM + GST | Client runs UAT on spot; PM triages same session |
-| M5 Go-Live | Fri 14 – Fri 21 Aug | PM + GST | Punch list cleared; live confirmed; sign-off obtained |
-| M6 Training | w/c 21 Aug | PM + GST team | Full team trained on live system |
+| Phase | Date | Status | Who | Goal |
+|---|---|---|---|---|
+| M0 Deps + Kickoff (Requirements & Scope Lock) | 29 Jun | Done | Gareth + GST | Confirm core MAIA requirements and scope |
+| M1 Core Environment + Configuration Ready | 10 – 14 Jul | In Progress | Dev | MAIA instance deployed; company config set |
+| M2 Core Data Ready (pulled from SAP B1) | 9 – 13 Jul | In Progress | Dev + PM | Item/customer master, stock, pricing pulled from SAP Service Layer; Crystal Reports PDF config |
+| M3 Core Internal QA | 9 – 31 Jul | In Progress | Gareth + Dev | Full GST workflow run-through live; fix on spot; all scope items green |
+| M4 UAT | 4 – 6 Aug | Planned | PM + GST | Client runs UAT on spot; PM triages same session |
+| Final Invoice / Subscription Start | 7 – 10 Aug | Not started | PM | Final implementation invoice issued |
+| M5 Go-Live | 6 – 11 Aug | Planned | PM + GST | Punch list cleared; live confirmed; sign-off obtained |
+| M6 Training | 12 – 14 Aug | Planned | PM + GST team | Full team trained on live system |
 
 ---
 
-## ⚠️ Critical Path — SAP UAT License + Integration (M0 → M2 → M3)
+## ⚠️ Critical Path — SAP Data Pull + Integration (M0 → M2 → M3)
 
-SAP B1 integration via Service Layer API is a **hard go-live blocker**. Two gates control the critical path:
+SAP B1 integration via Service Layer API is a **hard go-live blocker** — Core Data Ready (M2) means the dev team has pulled item master, customer master, stock, and pricing from SAP, so this gate must clear before internal QA can run meaningfully.
 
-1. **SAP UAT license from GST's vendor** — expected Wed 25 Jun. No UAT environment = no integration build.
-2. **AWS + OpenAI setup meeting** — Gareth to schedule with GST; gates instance deploy (M1).
+> Environment + config ready (M1) → core data pulled from SAP (M2) → internal QA (M3) → UAT → go-live.
 
-> SAP UAT license received (Wed 25 Jun) → integration build starts → data seed → internal test → UAT → go-live.
-
-If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — escalate immediately.
-
-**2026-07-06 update:** No confirmation SAP UAT license arrived. No kickoff, payment, or AWS/OpenAI setup meeting confirmed as of this date. Target schedule above assumes payment + SAP license + kickoff **all close by Fri 10 Jul** — if any slips past ~10–13 Jul, EOM UAT-ready target is not achievable (M2 alone needs ~2wk minimum once it starts). Escalate this week.
+**2026-07-07 update:** Work is now active, not stalled — Requirements & Scope Lock done (29 Jun), Core Environment/Configuration Ready and Core Data Ready both in progress this week (see Milestone Map above). Internal QA runs in parallel through end of July. Target: UAT the week of 4 Aug, Go-Live 6–11 Aug, Training 12–14 Aug.
 
 **WABA / WhatsApp:** GST handles their own Meta + WABA account setup. MAIA provides the [[Guide] Channel & Infrastructure Setup Guide Copy] to GST. **Not a MAIA-controlled blocker.** Telegram is the fallback channel if WhatsApp is not ready at go-live.
 
 ---
 
-## M0 — Dependencies + Kickoff (Mon 6 Jul — Fri 10 Jul)
+## M0 — Dependencies + Kickoff / Requirements & Scope Lock (29 Jun) — Done
 
 **Who:** Gareth + GST
 **Goal:** Confirm every input M1 and M2 depend on. Nothing downstream moves until these land.
@@ -90,10 +85,10 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M1 — AWS Deploy + Chatbot Setup (Mon 13 — Wed 15 Jul)
+## M1 — Core Environment + Configuration Ready (10 — 14 Jul) — In Progress
 
-**Who:** Dev (pending M0 AWS + OpenAI setup meeting)
-**Goal:** MAIA instance live on GST's AWS; chatbot connected and responding.
+**Who:** Dev
+**Goal:** MAIA instance live on GST's AWS; chatbot connected and responding; company configuration set.
 
 - [ ] **Gareth schedules meeting with GST** to set up AWS account + OpenAI API key — gates this milestone
 - [ ] Deploy MAIA instance on GST's AWS
@@ -106,12 +101,11 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M2 — SAP B1 Integration + Data Seed (Wed 15 — Tue 28 Jul)
+## M2 — Core Data Ready — SAP B1 Integration + Data Seed (9 — 13 Jul) — In Progress
 
 **Who:** Dev + PM
-**Goal:** Full SAP Service Layer sync working. All read + write flows verified before internal test. Gates on SAP UAT license received.
+**Goal:** Core data pulled from SAP B1 via Service Layer. All read + write flows verified before internal test.
 
-- [ ] **SAP vendor delivers UAT license access** — expected Wed 25 Jun (hard gate)
 - [ ] Confirm integration approach with Azib: SAP B1 Service Layer API (RESTful) — confirmed in vendor meeting
 - [ ] Confirm custom UDF fields from GST's SAP — need list of customized fields outside MAIA standard; Service Layer cannot support custom UDFs natively; new endpoints required
 - [ ] Build + verify **SAP READ:**
@@ -133,7 +127,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M3 — Internal Test + Live Dev-Fix Session (Wed 29 — Fri 31 Jul)
+## M3 — Core Internal QA / Live Dev-Fix Session (9 — 31 Jul) — In Progress
 
 **Who:** Gareth + Dev
 **Duration:** ~2–3 hours (one session)
@@ -169,7 +163,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M4 — UAT — Client Session (Mon 3 — Fri 14 Aug)
+## M4 — UAT — Client Session (4 — 6 Aug)
 
 **Who:** PM + GST UAT users (Joey Ong — Sales; Soo Chin — Operations; Tim — Operations Manager; Finance PIC)
 **Format:** PM briefs scope → GST team runs UAT on the spot → PM triages same session.
@@ -190,7 +184,13 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M5 — Go-Live (Fri 14 — Fri 21 Aug)
+## Final Invoice / Subscription Start (7 — 10 Aug) — Not Started
+
+- [ ] Issue final implementation invoice
+
+---
+
+## M5 — Go-Live (6 — 11 Aug)
 
 **Who:** PM + GST
 **Goal:** UAT punch list cleared → confirm live → sign-off.
@@ -206,7 +206,7 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
-## M6 — Training (w/c 21 Aug)
+## M6 — Training (12 — 14 Aug)
 
 **Who:** PM + full GST team (sales coordinators, finance, logistics, management)
 **Format:** Full structured session; cover end-to-end live workflow.
@@ -252,6 +252,18 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 
 ---
 
+## Customisations (now tracked with dates)
+
+| # | Feature | Status | Date |
+|---|---|---|---|
+| 1 | Blanket Order | In Progress | 24 – 28 Jul |
+| 2 | Branch Doctype | Scoping | 10 – 14 Jul |
+| 3 | SOA (Statement of Account) | In Progress | 8 – 10 Jul |
+| 4 | Slow-Moving / Aging Alert | In Progress | 6 – 10 Jul |
+| 5 | Item Name Override | In Progress | 9 – 10 Jul |
+
+---
+
 ## Key Contacts
 
 | Role | Name | Contact |
@@ -271,17 +283,16 @@ If SAP vendor slips past **Wed 25 Jun**, all downstream milestones shift — esc
 | # | Milestone | Date |
 |---|---|---|
 | 1 | Signed Date | TBC |
-| 2 | Payment Date (upfront) | TBC — target: by Fri 10 Jul 2026 |
-| 3 | Kickoff Date | Target: by Fri 10 Jul 2026 |
-| 4 | Requirements Lock Date | Done — 4 May 2026 |
-| 5 | SAP UAT License Received | Expected Wed 25 Jun 2026 — unconfirmed as of 6 Jul; target: by Fri 10 Jul |
-| 6 | Instance Deploy Date | Target: Wed 15 Jul 2026 |
-| 7 | SAP Integration Complete | Target: Tue 28 Jul 2026 |
-| 8 | Internal Test Date | Target: Fri 31 Jul 2026 |
-| 9 | UAT Date | Target: Mon 3 – Fri 14 Aug 2026 |
-| 10 | Go-Live Date | Target: Fri 21 Aug 2026 |
-| 11 | Training Date | Target: w/c 21 Aug 2026 |
-| 12 | Customisations Date | TBC — Phase 2 |
+| 2 | Payment Date (upfront) | TBC |
+| 3 | Requirements & Scope Lock | Done — 29 Jun 2026 |
+| 4 | Core Environment + Configuration Ready | In progress — 10 – 14 Jul 2026 |
+| 5 | Core Data Ready (SAP) | In progress — 9 – 13 Jul 2026 |
+| 6 | Core Internal QA | In progress — 9 – 31 Jul 2026 |
+| 7 | UAT Date | Planned — 4 – 6 Aug 2026 |
+| 8 | Final Invoice / Subscription Start | Not started — 7 – 10 Aug 2026 |
+| 9 | Go-Live Date | Planned — 6 – 11 Aug 2026 |
+| 10 | Training Date | Planned — 12 – 14 Aug 2026 |
+| 11 | Customisations | See Customisations table above — 5 items in progress/scoping this month |
 
 ---
 
