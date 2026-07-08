@@ -3,7 +3,7 @@ granola_id: 73e26a3c-59a0-4508-a01a-6272be170d73
 title: Short recording - Transcript
 type: transcript
 created: 2026-07-08T10:19:23.256Z
-updated: 2026-07-08T11:11:44.843Z
+updated: 2026-07-08T11:25:57.801Z
 attendees: []
 ---
 
