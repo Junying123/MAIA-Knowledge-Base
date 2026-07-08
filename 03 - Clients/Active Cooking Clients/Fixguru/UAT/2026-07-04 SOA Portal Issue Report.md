@@ -42,18 +42,18 @@ These affect security, correctness, customer trust, or whether the SOA can be re
 | # | Severity | Surface | Issue | Linked tracker cases | MVP call |
 |---|---|---|---|---|---|
 | 1 | Critical | Public SOA portal | Expired SOA link shows password gate instead of expired page | `FAIL-01`, `FAIL-02` | Must fix |
+| 11 | Critical | Portal/PDF data | Portal total outstanding and PDF closing balance do not match | `SOA-PDF-05`, `SOA-PDF-06` | Must fix |
 | 2 | High | Public SOA portal | Missing statement date / as-of timestamp | `DATA-01`, `PORTAL-01` | Must fix |
 | 3 | High | Portal ledger | Empty/weak document status and missing due date / overdue context | `DOC-01`, `DOC-02`, `DOC-03` | Must fix status; add due-date context if available |
 | 4 | High | Portal/PDF data | Portal lacks reconciliation totals | `SOA-PDF-05`, `SOA-PDF-06` | Must fix |
 | 5 | High | Mobile portal | Mobile SOA view is not readable/actionable enough for WhatsApp-first use | `MOB-01`, `A11Y-01` | Must fix baseline |
-| 6 | Medium | Portal/PDF customer info | Supplier/company contact details are missing | `BRAND-01`, `BRAND-02` | Can defer if sending channel has reply path |
-| 7 | Medium | Portal collections UX | Payment instructions / next action are missing | `PAY-01`, `PAY-02` | Can defer if invoice/message already contains payment guidance |
 | 8 | High | Customer Profile activity | SOA activity log lacks audit-ready detail and older rows expose token values | `ACT-01`, `ACT-02`, `ACT-03` | Must fix raw token exposure; polish can follow |
 | 9 | High | Customer Profile PDF action | Download SOA PDF renders pre-signed S3 URL inside page | `SOA-PDF-01`, `SOA-PDF-02`, `PDF-DOC-02` | Must fix |
 | 10 | High | Generated SOA PDF | PDF layout/content is not fully customer-ready | `SOA-PDF-01`, `SOA-PDF-03`, `SOA-PDF-05`, `BRAND-03` | Must fix placeholder/internal fields |
-| 11 | Critical | Portal/PDF data | Portal total outstanding and PDF closing balance do not match | `SOA-PDF-05`, `SOA-PDF-06` | Must fix |
 | 12 | High | Customer Profile permissions | No frontend interface for SOA share/revoke/view permission denial | `SHARE-01`, `REV-01`, `ACT-01`, `ACT-02` | Must fix UX around permission denial |
 | 13 | High | Customer shared-link UX | Customer open-link prompt exposes unresolved URL placeholders and technical query parameters | `SHARE-01`, `SHARE-02`, `MSG-01`, `AUTH-01` | Must fix before customer sharing |
+| 6 | Medium | Portal/PDF customer info | Supplier/company contact details are missing | `BRAND-01`, `BRAND-02` | Can defer if sending channel has reply path |
+| 7 | Medium | Portal collections UX | Payment instructions / next action are missing | `PAY-01`, `PAY-02` | Can defer if invoice/message already contains payment guidance |
 
 ## Tracker Notes Added
 
