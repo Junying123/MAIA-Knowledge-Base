@@ -310,10 +310,14 @@
                   {
                     "id": 170,
                     "name": "zsh 170"
+                  },
+                  {
+                    "id": 171,
+                    "name": "zsh 171"
                   }
                 ],
-                "activeId": 170,
-                "nextId": 171
+                "activeId": 171,
+                "nextId": 172
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -334,7 +338,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 988.5
+    "width": 1072.5
   },
   "left-ribbon": {
     "hiddenItems": {
