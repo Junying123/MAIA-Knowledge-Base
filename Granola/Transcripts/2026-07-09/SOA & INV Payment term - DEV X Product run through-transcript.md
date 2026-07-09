@@ -3,7 +3,7 @@ granola_id: 70488eab-beda-47e4-9717-b0c7479257af
 title: SOA & INV Payment term - DEV X Product run through - Transcript
 type: transcript
 created: 2026-07-09T03:00:10.994Z
-updated: 2026-07-09T04:13:21.082Z
+updated: 2026-07-09T04:19:48.278Z
 attendees: 
   - bryantewyh@gmail.com
   - rahim.r2026@gmail.com
