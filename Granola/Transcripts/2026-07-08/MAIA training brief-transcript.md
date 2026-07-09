@@ -3,7 +3,7 @@ granola_id: 73e26a3c-59a0-4508-a01a-6272be170d73
 title: MAIA training brief - Transcript
 type: transcript
 created: 2026-07-08T10:19:23.256Z
-updated: 2026-07-09T01:30:39.968Z
+updated: 2026-07-09T01:44:07.723Z
 attendees: []
 ---
 

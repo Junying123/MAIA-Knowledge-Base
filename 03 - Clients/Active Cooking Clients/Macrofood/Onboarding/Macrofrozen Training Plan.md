@@ -24,16 +24,24 @@ Macrofrozen staff can run their sales workflow (Quote-to-Cash: Quotation → Sal
 
 ## Activities
 
-Base structure reused from [[01 - MAIA Product/Client Training/MAIA User Training - Slide Content Proposal]] (4 modules, full day, trainer Johnson Goh). Adapted for Macrofrozen:
+**Use the built deck, not the generic markdown proposal**: `01 - MAIA Product/Client Training/[Template] MAIA Training Slides v1.pptx` — 116 slides, already built to a 3-part 2-hour core format (not the old 4-module full-day structure):
 
-| Module | Content | Status for Macrofrozen |
+| Section | Content | Status for Macrofrozen |
 |---|---|---|
-| 1 — Intro to MAIA & B2B context | Quote-to-Cash overview, UI + Chatbot basics | Ready — generic, no dependency on their data |
-| 2 — Day-to-day user tasks | Login, WhatsApp/OCR capture, Quotation→SO→Invoice, payments, hands-on exercise | **Blocked** — hands-on exercise needs client sample data + tested sales flow on their instance |
-| 3 — Managing data & workflows | Customers/Items setup, roles, ERP/SQL integration sync, hands-on exercise | **Blocked** — Macrofrozen SQL integration still being set up (per Onboarding/Macro Frozen SQL Integration.md); exercise needs real data setup done first |
-| 4 — Reports, troubleshooting, final test | Dashboards, KPIs, CPO/data-mismatch fixing, final practical test, certificate | **Blocked** — final test requires Module 2/3 features working; CPO section only if in scope for Macrofrozen |
+| Opening (5 slides, ~5min) | Title, icebreaker (pick 1 of 3 variants), agenda | Ready — just fill [Client Name]/[Trainer Name]/[Date] placeholders |
+| Section 1 — Feature intro (22min) | Order capture, credit check, stock/reserve, pricing, search, SOA, AR/AP matching, ERP compat (AutoCount/SQL/SAP B1/Epicor), doc status flow (CPO→SO→DN→SI) | Ready — generic feature walkthrough, no dependency on their data |
+| Section 2 — "Watch it work" demo videos (25min) | 7 scripted video walkthroughs (PO→SO, credit check, SO→DN→SI, pick list, new customer, new item) | **Blocked** — all 7 video slides are `ATTACH VIDEO HERE` placeholders, recordings not yet captured |
+| Section 3 — "Drive it yourself" Mission Card game (47min) | 10 numbered mission cards (realistic order scenarios, front=team-facing/back=facilitator answer key), scoreboard, WhatsApp/Telegram bot connection, 6 bonus special missions | **Blocked** — game itself is fully built, but needs: sales module tested on Macrofrozen's own instance, demo WhatsApp number/Telegram bot (@maia_demo_bot) verified live, CPO flows in missions confirmed working |
+| Close (6 slides) | Recap, Monday-morning action commitments, troubleshooting guide, solo test, feedback QR | Ready — no dependency |
+| Appendix (facilitator-only, not shown live) | Role/permission matrix, ERP integration deep-dive, SOA/inventory videos | Reference only |
 
-Only Module 1 is safe to run as-is today. Modules 2–4 exercises hold until checklist below closes.
+**Real gaps, not a content-building task:**
+1. Record and embed the 7 demo videos (Section 2)
+2. Verify demo instance + WhatsApp/Telegram bot work live with Macrofrozen's actual data/CPO flows (Section 3)
+3. Fill client-specific placeholders (name/trainer/date)
+4. Confirm sales module tested on their instance before running the mission-card game live — training on an untested sales flow risks the same "hits errors live" failure mode we already flagged.
+
+Content is not the blocker — testing + video recording are.
 
 ## Pre-Training Readiness Checklist (current state)
 
