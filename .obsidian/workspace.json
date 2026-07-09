@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+                "file": "Granola/Transcripts/2026-07-08/MAIA training brief-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofrozen Training Plan"
+              "title": "MAIA training brief-transcript"
             }
           },
           {
@@ -162,8 +162,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -304,19 +303,11 @@
                     "name": "zsh 166"
                   },
                   {
-                    "id": 168,
-                    "name": "zsh 168"
-                  },
-                  {
-                    "id": 170,
-                    "name": "zsh 170"
-                  },
-                  {
                     "id": 171,
                     "name": "zsh 171"
                   }
                 ],
-                "activeId": 171,
+                "activeId": 166,
                 "nextId": 172
               },
               "icon": "terminal",
@@ -338,7 +329,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 950.5
+    "width": 890.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -368,9 +359,13 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
-    "Granola/Transcripts/2026-07-08/Short recording-transcript.md",
+    "Pasted image 20260407144220.png",
+    "Pasted image 20260608002056.png",
+    "Pasted image 20260608003523.png",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+    "Granola/Transcripts/2026-07-08/MAIA training brief-transcript.md",
     "02 - PM Playbook/Weekly Updates/2026-07-07 Weekly Update - Dalson, GST, Macrofood.md",
     "Granola/Transcripts/2026-07-08/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-08",
@@ -390,7 +385,6 @@
     "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.89693.4733bddb1ffd",
     "Granola/Transcripts/2026-07-07/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-07",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist.md",
     "Granola/Transcripts/2026-07-06/GTM × Product × Tech Delivery Review-transcript.md",
     "05 - Releases & Updates/Weekly Updates/Weekly Update - 06-07-2026.md",
@@ -405,15 +399,12 @@
     "Granola/Transcripts/2026-07-02/Maxfresh Briefing-transcript 2.md",
     "02 - PM Playbook/Templates/[Template] Weekly PM Update 2.md",
     "Granola/Transcripts/2026-06-30/Mindhive  Daily Standup-transcript 2.md",
-    "Granola/Transcripts/2026-07-06/Mindhive  Daily Standup-transcript.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
     "lark-auth-qr.png",
     "wiki_move_qr.png",
-    "Pasted image 20260608003523.png",
     "Pasted image 20260608003117.png",
-    "Pasted image 20260608002056.png",
     "slides/getting-started/assets/zeabur.svg",
     "slides/getting-started/assets/openai.svg",
     "Untitled.canvas",
