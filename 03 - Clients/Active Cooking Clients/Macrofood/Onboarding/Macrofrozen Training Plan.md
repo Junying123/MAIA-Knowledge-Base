@@ -37,11 +37,35 @@ Macrofrozen staff can run their sales workflow (Quote-to-Cash: Quotation → Sal
 
 **Real gaps, not a content-building task:**
 1. Record and embed the 7 demo videos (Section 2)
-2. Verify demo instance + WhatsApp/Telegram bot work live with Macrofrozen's actual data/CPO flows (Section 3)
+2. Verify demo instance + WhatsApp/Telegram bot work live with Macrofrozen's actual data (Section 3)
 3. Fill client-specific placeholders (name/trainer/date)
 4. Confirm sales module tested on their instance before running the mission-card game live — training on an untested sales flow risks the same "hits errors live" failure mode we already flagged.
+5. **Rebuild Mission Cards against locked scope only** (see Scope Lock section below) — don't use cards as-is if they assume unresolved/out-of-scope workflows.
 
-Content is not the blocker — testing + video recording are.
+Content is not the blocker — testing + video recording + scope-correct mission cards are.
+
+## Scope Lock (source: Lark doc "Macro Frozen — Scope Lock v1", 23 Jun 2026, Gareth Ng — not in local vault, retrieved from Lark)
+
+Governs which features are safe to build training content around.
+
+**LOCKED — safe to train on:**
+- SL-01 MAIA sits on top of SQL (SQL stays customer/item master, MAIA references it)
+- SL-02 AR customer invoice reconciliation (bank statement upload → auto-match → human confirms)
+- SL-03 Bulk price update & pricing enforcement (Excel upload, min price floor)
+- SL-04 Credit-limit/payment-term control (order blocked over limit, David approves override)
+- SL-05 Salesperson customer visibility (rep sees only own customers)
+- SL-06 One MAIA WhatsApp number (no multi-number routing)
+- SL-07 SO/DO/Invoice generation where integration allows (confidence MED — format depends on sample docs/SQL)
+
+**Agreed in principle, NOT locked — mention as "coming," don't build exercises around exact behavior:** fresh-weight adjustment, product catalogue/image generation, credit note support, outdoor sales assistant, customer info/notes, backend dashboard/reminders.
+
+**Needs scoping / blocking — exclude from training:** Phase 1 order/pick-list trigger, stock entry/GRN photo, inventory aging/expiry alerts, pro forma invoice, approval flows beyond credit, payment chasing escalation, POD attachment.
+
+**Out of scope entirely — exclude:** AP reconciliation, merchant/QR settlement reconciliation, delivery trip management, full WMS/barcode scanning, volume-based pricing, B2C ordering app, automated WhatsApp blasting.
+
+**CPO resolved**: not named as a locked scope item. Macrofrozen's core flow is WhatsApp order → SO/DO/Invoice, not a formal CPO upload workflow like C1/C3 tax-reference clients. CPO likely **not in scope for Macrofrozen** — treat as non-issue for their training, confirm with client before final lock.
+
+**New blocker surfaced: NS-01 (Phase 1 order/pick-list trigger) — BLOCKING, unresolved.** Two conflicting workflows not agreed with client: (a) MAIA drafts SO before physical pick, vs (b) Macro Frozen picks externally first then uploads to MAIA. This must be resolved (via Client Confirmation Agenda, Scope Lock doc §9) before Mission Cards are built — training the wrong workflow actively confuses staff, worse than no training.
 
 ## Pre-Training Readiness Checklist (current state)
 
@@ -66,7 +90,8 @@ Using [[02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist]]
 | Sales module | not tested | [TBD] | Y |
 | Data setup (customers/items) | not ready | [TBD] | Y |
 | SQL integration | in progress (vendor delays) | [TBD] | Y |
-| CPO/certificate features | 0% test coverage per Test Scenarios Index | [TBD] | Y — only if in scope for Macrofrozen |
+| NS-01 order/pick-list trigger | unresolved with client (Scope Lock §9) | [TBD] | Y — blocks Mission Card design |
+| CPO/certificate features | likely not in scope for Macrofrozen | — | N (pending final confirm) |
 
 ### Training Logistics
 - [x] Training goal defined (this doc)
