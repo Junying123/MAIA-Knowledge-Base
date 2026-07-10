@@ -1,0 +1,442 @@
+document: "MAIA - MacroFrozen Item Facet Definition"
+purpose: >
+  Define MacroFrozen frozen meat and food item hierarchy, item-only facets,
+  filters, and search conditions based on observed item names and MAIA KB notes.
+
+products:
+  item_group: "Products"
+  level: 0
+  Frozen Meat / Food:
+    item_group: "Frozen Meat / Food"
+    level: 1
+    section:
+      - section_idx: 0
+        label: "Product Identification"
+        section_description: "Core item identity fields used for search, matching, and catalog grouping."
+      - section_idx: 1
+        label: "Meat Specification"
+        section_description: "Cut, bone, skin, form, weight, and preparation details."
+      - section_idx: 2
+        label: "Origin & Brand"
+        section_description: "Country, supplier, brand, and origin markers from the item name."
+      - section_idx: 3
+        label: "Pack & Unit"
+        section_description: "Selling unit, pack size, and weight-related item attributes."
+      - section_idx: 4
+        label: "Alias & Raw Text"
+        section_description: "Chinese name, alternate name, and raw item name for matching."
+    attributes:
+      meat_type:
+        facet_idx: 0
+        section: "Product Identification"
+        item_facet: "Meat Type"
+        facet_description: "The primary product family, such as beef, buffalo, chicken, pork, duck, lamb, seafood, or processed frozen food."
+        is_required: 1
+        data_type: "Enum"
+        values: ["Beef", "Buffalo", "Chicken", "Pork", "Duck", "Lamb", "Seafood", "Processed Meat / Frozen Prepared Food", "Miscellaneous / Unclassified"]
+        doctypes: []
+      cut_part:
+        facet_idx: 1
+        section: "Product Identification"
+        item_facet: "Cut / Part"
+        facet_description: "The item cut or anatomical part, such as belly, collar, shoulder, breast, wing, shortribs, trotter, spare ribs, or back fat."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      product_form:
+        facet_idx: 2
+        section: "Meat Specification"
+        item_facet: "Product Form"
+        facet_description: "The product form or preparation shape, such as ball, roll, cube, chop, slice, strip, fillet, whole, joint, mince, or trimming."
+        is_required: 0
+        data_type: "Enum"
+        values: ["Ball", "Roll", "Cube", "Chop", "Slice", "Strip", "Fillet", "Whole", "Joint", "Mince", "Trimming", "Block", "Patty", "Nugget", "Sausage", "Mixed Pack", "Other"]
+        doctypes: []
+      bone_state:
+        facet_idx: 3
+        section: "Meat Specification"
+        item_facet: "Bone State"
+        facet_description: "Whether the item is bone-in, boneless, with bone, or unspecified."
+        is_required: 0
+        data_type: "Enum"
+        values: ["Bone In", "Boneless", "With Bone", "Unspecified"]
+        doctypes: []
+      skin_state:
+        facet_idx: 4
+        section: "Meat Specification"
+        item_facet: "Skin State"
+        facet_description: "Whether the item is skin-on, skinless, or unspecified."
+        is_required: 0
+        data_type: "Enum"
+        values: ["Skin On", "Skinless", "Unspecified"]
+        doctypes: []
+      cut_style:
+        facet_idx: 5
+        section: "Meat Specification"
+        item_facet: "Cut Style"
+        facet_description: "The specific cutting style or customer-facing cut wording, such as oyster meat, three joint wing, mid joint wing, hind knee, or picnic."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      thickness:
+        facet_idx: 6
+        section: "Meat Specification"
+        item_facet: "Thickness"
+        facet_description: "Thickness or special cut instruction, such as 3mm or thick cut, when stated."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      origin_country:
+        facet_idx: 7
+        section: "Origin & Brand"
+        item_facet: "Origin Country"
+        facet_description: "Country or origin marker in the item name, such as Brazil, Thailand, Netherlands, or Denmark."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      brand_supplier:
+        facet_idx: 8
+        section: "Origin & Brand"
+        item_facet: "Brand / Supplier"
+        facet_description: "Brand, supplier, packer, or trading name, such as Seaboard, FACCSA, Litera, Mafresa, Rivasam, Blackgold, Danish Crown, or Lordfood."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      weight_range:
+        facet_idx: 9
+        section: "Pack & Unit"
+        item_facet: "Weight Range"
+        facet_description: "Weight range or stated product weight, such as 30KG - 40KG."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      pack_size:
+        facet_idx: 10
+        section: "Pack & Unit"
+        item_facet: "Pack Size"
+        facet_description: "Pack quantity or packing instruction, such as carton, pack, bag, or kg per pack."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      uom:
+        facet_idx: 11
+        section: "Pack & Unit"
+        item_facet: "UOM"
+        facet_description: "Selling or measurement unit, such as KG, CTN, pack, bag, piece, or box."
+        is_required: 0
+        data_type: "Enum"
+        values: ["KG", "CTN", "Pack", "Bag", "Piece", "Box", "Other"]
+        doctypes: []
+      chinese_name:
+        facet_idx: 12
+        section: "Alias & Raw Text"
+        item_facet: "Chinese Name"
+        facet_description: "Chinese item name or customer-facing Chinese alias when present in the item name."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      alternate_name:
+        facet_idx: 13
+        section: "Alias & Raw Text"
+        item_facet: "Alternate Name"
+        facet_description: "Alternate English name, abbreviation, or common customer wording for the item."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      raw_item_name:
+        facet_idx: 14
+        section: "Alias & Raw Text"
+        item_facet: "Raw Item Name"
+        facet_description: "Original item name exactly as received from SQL or source system."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+    subcategories:
+      beef:
+        level: 2
+        item_group: "Beef"
+        subcategories:
+          beef_ball:
+            level: 3
+            item_group: "Beef Ball"
+          beef_roll:
+            level: 3
+            item_group: "Beef Roll"
+          shortribs:
+            level: 3
+            item_group: "Shortribs"
+          honeycomb:
+            level: 3
+            item_group: "Honeycomb"
+          brisket:
+            level: 3
+            item_group: "Brisket"
+          ribeye:
+            level: 3
+            item_group: "Ribeye"
+          sirloin:
+            level: 3
+            item_group: "Sirloin"
+          tenderloin:
+            level: 3
+            item_group: "Tenderloin"
+          striploin:
+            level: 3
+            item_group: "Striploin"
+          chuck:
+            level: 3
+            item_group: "Chuck"
+          flank:
+            level: 3
+            item_group: "Flank"
+          oxtail:
+            level: 3
+            item_group: "Oxtail"
+          trimming:
+            level: 3
+            item_group: "Trimming"
+      buffalo:
+        level: 2
+        item_group: "Buffalo"
+        subcategories:
+          trimming:
+            level: 3
+            item_group: "Trimming"
+          meat:
+            level: 3
+            item_group: "Meat"
+          cube:
+            level: 3
+            item_group: "Cube"
+          slice:
+            level: 3
+            item_group: "Slice"
+      chicken:
+        level: 2
+        item_group: "Chicken"
+        subcategories:
+          breast:
+            level: 3
+            item_group: "Breast"
+          leg:
+            level: 3
+            item_group: "Leg"
+          leg_cube:
+            level: 3
+            item_group: "Leg Cube"
+          whole_leg:
+            level: 3
+            item_group: "Whole Leg"
+          chop:
+            level: 3
+            item_group: "Chop"
+          whole_chicken:
+            level: 3
+            item_group: "Whole Chicken"
+          wing:
+            level: 3
+            item_group: "Wing"
+          mid_joint_wing:
+            level: 3
+            item_group: "Mid Joint Wing"
+          three_joint_wing:
+            level: 3
+            item_group: "Three Joint Wing"
+          fillet:
+            level: 3
+            item_group: "Fillet"
+          drumstick:
+            level: 3
+            item_group: "Drumstick"
+          thigh:
+            level: 3
+            item_group: "Thigh"
+          feet:
+            level: 3
+            item_group: "Feet"
+          giblet_offal:
+            level: 3
+            item_group: "Giblet / Offal"
+      pork:
+        level: 2
+        item_group: "Pork"
+        subcategories:
+          belly:
+            level: 3
+            item_group: "Belly"
+          collar:
+            level: 3
+            item_group: "Collar"
+          shoulder:
+            level: 3
+            item_group: "Shoulder"
+          shoulder_picnic:
+            level: 3
+            item_group: "Shoulder Picnic"
+          loin:
+            level: 3
+            item_group: "Loin"
+          ham:
+            level: 3
+            item_group: "Ham"
+          tenderloin:
+            level: 3
+            item_group: "Tenderloin"
+          trotter_hind_knee:
+            level: 3
+            item_group: "Trotter / Hind Knee"
+          spare_ribs:
+            level: 3
+            item_group: "Spare Ribs"
+          back_fat:
+            level: 3
+            item_group: "Back Fat"
+          whole_pig:
+            level: 3
+            item_group: "Whole Pig"
+          rib:
+            level: 3
+            item_group: "Rib"
+          neck:
+            level: 3
+            item_group: "Neck"
+          mince:
+            level: 3
+            item_group: "Mince"
+          trimming:
+            level: 3
+            item_group: "Trimming"
+          offal:
+            level: 3
+            item_group: "Offal"
+      duck:
+        level: 2
+        item_group: "Duck"
+        subcategories:
+          whole_duck:
+            level: 3
+            item_group: "Whole Duck"
+          duck_breast:
+            level: 3
+            item_group: "Duck Breast"
+          duck_leg:
+            level: 3
+            item_group: "Duck Leg"
+          duck_wing:
+            level: 3
+            item_group: "Duck Wing"
+          duck_feet:
+            level: 3
+            item_group: "Duck Feet"
+          duck_neck:
+            level: 3
+            item_group: "Duck Neck"
+          duck_tongue:
+            level: 3
+            item_group: "Duck Tongue"
+          duck_offal:
+            level: 3
+            item_group: "Duck Offal"
+      lamb:
+        level: 2
+        item_group: "Lamb"
+        subcategories:
+          lamb_shoulder:
+            level: 3
+            item_group: "Lamb Shoulder"
+          lamb_leg:
+            level: 3
+            item_group: "Lamb Leg"
+          lamb_rack_rib:
+            level: 3
+            item_group: "Lamb Rack / Rib"
+          lamb_chop:
+            level: 3
+            item_group: "Lamb Chop"
+          lamb_shank:
+            level: 3
+            item_group: "Lamb Shank"
+          lamb_loin:
+            level: 3
+            item_group: "Lamb Loin"
+          lamb_belly_breast:
+            level: 3
+            item_group: "Lamb Belly / Breast"
+          lamb_mince:
+            level: 3
+            item_group: "Lamb Mince"
+          lamb_trimming:
+            level: 3
+            item_group: "Lamb Trimming"
+      seafood:
+        level: 2
+        item_group: "Seafood"
+        subcategories:
+          fish:
+            level: 3
+            item_group: "Fish"
+          prawn_shrimp:
+            level: 3
+            item_group: "Prawn / Shrimp"
+          squid:
+            level: 3
+            item_group: "Squid"
+          scallop:
+            level: 3
+            item_group: "Scallop"
+          crab:
+            level: 3
+            item_group: "Crab"
+          mussel:
+            level: 3
+            item_group: "Mussel"
+          clam:
+            level: 3
+            item_group: "Clam"
+          mixed_seafood:
+            level: 3
+            item_group: "Mixed Seafood"
+      processed_meat_frozen_prepared_food:
+        level: 2
+        item_group: "Processed Meat / Frozen Prepared Food"
+        subcategories:
+          meat_ball:
+            level: 3
+            item_group: "Meat Ball"
+          sausage:
+            level: 3
+            item_group: "Sausage"
+          nugget:
+            level: 3
+            item_group: "Nugget"
+          patty:
+            level: 3
+            item_group: "Patty"
+          roll:
+            level: 3
+            item_group: "Roll"
+          slice:
+            level: 3
+            item_group: "Slice"
+          marinated_item:
+            level: 3
+            item_group: "Marinated Item"
+          ready_to_cook_item:
+            level: 3
+            item_group: "Ready-to-Cook Item"
+          mixed_pack:
+            level: 3
+            item_group: "Mixed Pack"
+      miscellaneous_unclassified:
+        level: 2
+        item_group: "Miscellaneous / Unclassified"
+        subcategories:
+          unclassified_meat_item:
+            level: 3
+            item_group: "Unclassified Meat Item"
+          unclassified_seafood_item:
+            level: 3
+            item_group: "Unclassified Seafood Item"
+          unclassified_frozen_item:
+            level: 3
+            item_group: "Unclassified Frozen Item"

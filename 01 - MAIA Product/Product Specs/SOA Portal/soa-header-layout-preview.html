@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SOA Header Layout Preview</title>
+    <style>
+      :root {
+        --border: #e5e7eb;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --blue-bg: #f1f8fd;
+        --blue-border: #cfe7f6;
+        --amber-bg: #fff8ef;
+        --amber-border: #f3d9ae;
+        --green-bg: #f0fbf1;
+        --green-border: #cdeccd;
+        --orange: #f5a623;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 28px;
+        background: #f8fafc;
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .page {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+
+      .preview-stack {
+        display: grid;
+        gap: 28px;
+      }
+
+      .preview-label {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #6b7280;
+      }
+
+      .soa-card {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+        padding: 22px 24px 24px;
+      }
+
+      .soa-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .logo {
+        font-size: 31px;
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        color: #111827;
+      }
+
+      .logo .accent {
+        color: var(--orange);
+      }
+
+      .doc-title {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #52525b;
+      }
+
+      .download-btn {
+        min-height: 40px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--orange);
+        color: #24160a;
+        font-size: 14px;
+        font-weight: 800;
+        cursor: default;
+      }
+
+      .soa-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        column-gap: 40px;
+        padding: 22px 0 20px;
+      }
+
+      .identity-row {
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 8px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .customer-id {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--muted);
+      }
+
+      .customer-details {
+        max-width: 680px;
+        display: grid;
+        gap: 12px;
+        color: #4b5563;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .detail-group {
+        display: grid;
+        gap: 3px;
+        align-content: start;
+      }
+
+      .detail-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .detail-primary {
+        font-weight: 650;
+        color: #374151;
+      }
+
+      .address-group {
+        max-width: 430px;
+      }
+
+      .meta-block {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+        justify-self: end;
+        padding-top: 2px;
+        min-width: 220px;
+        text-align: right;
+      }
+
+      .meta-item {
+        display: grid;
+        gap: 3px;
+      }
+
+      .meta-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .meta-value {
+        font-size: 15px;
+        font-weight: 750;
+        color: #111827;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .summary-card {
+        min-height: 76px;
+        display: grid;
+        align-content: center;
+        gap: 8px;
+        padding: 16px 18px;
+        border: 1px solid;
+        border-radius: 8px;
+      }
+
+      .summary-card span {
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .summary-card strong {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 24px;
+        line-height: 1;
+        font-weight: 850;
+      }
+
+      .debit {
+        background: var(--blue-bg);
+        border-color: var(--blue-border);
+      }
+
+      .overdue {
+        background: var(--amber-bg);
+        border-color: var(--amber-border);
+      }
+
+      .overdue strong {
+        color: #c45a00;
+      }
+
+      .credit {
+        background: var(--green-bg);
+        border-color: var(--green-border);
+      }
+
+      .credit strong {
+        color: #0f8a3a;
+      }
+
+      .age-section {
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+      }
+
+      .age-title {
+        margin: 0 0 12px;
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .age-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .age-card {
+        min-height: 60px;
+        display: grid;
+        gap: 7px;
+        padding: 13px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .age-card span {
+        font-size: 12px;
+        font-weight: 800;
+        color: #52525b;
+      }
+
+      .age-card strong {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 16px;
+      }
+
+      .age-card.current {
+        background: var(--blue-bg);
+        border-color: var(--blue-border);
+      }
+
+      .age-card.warning {
+        background: var(--amber-bg);
+        border-color: var(--amber-border);
+      }
+
+      .age-card.danger {
+        background: #fff5f5;
+        border-color: #f5d0d0;
+      }
+
+      .age-card.danger strong {
+        color: #d13b50;
+      }
+
+      .mobile-frame {
+        width: min(430px, 100%);
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        background: #fff;
+        padding: 0;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      }
+
+      .mobile-screen {
+        overflow: hidden;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .mobile-card {
+        padding: 22px 20px 24px;
+        background: #fff;
+        color: var(--text);
+      }
+
+      .mobile-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+      }
+
+      .mobile-logo {
+        font-size: 34px;
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+
+      .mobile-logo .accent {
+        color: var(--orange);
+      }
+
+      .mobile-download {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 45px;
+        margin-top: 16px;
+        padding: 0 20px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--orange);
+        color: #24160a;
+        font-size: 15px;
+        font-weight: 850;
+      }
+
+      .mobile-title {
+        margin-top: 0;
+        padding-left: 16px;
+        border-left: 1px solid var(--border);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #52525b;
+      }
+
+      .mobile-header {
+        margin-top: 17px;
+        padding: 20px 0 18px;
+        border-top: 1px solid var(--border);
+      }
+
+      .mobile-name {
+        font-size: 26px;
+        line-height: 1.1;
+        font-weight: 850;
+      }
+
+      .mobile-name span {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .mobile-meta {
+        display: grid;
+        gap: 6px;
+        justify-self: end;
+        min-width: 142px;
+        text-align: right;
+      }
+
+      .mobile-meta-item,
+      .mobile-detail-group {
+        display: grid;
+        gap: 3px;
+      }
+
+      .mobile-label {
+        font-size: 10px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .mobile-value {
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      .mobile-details {
+        display: grid;
+        gap: 12px;
+      }
+
+      .mobile-identity-meta {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) max-content;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .mobile-customer-stack {
+        display: grid;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .mobile-detail-group {
+        color: #4b5563;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .mobile-summary {
+        display: grid;
+        gap: 12px;
+      }
+
+      .mobile-summary-card {
+        display: grid;
+        gap: 12px;
+        min-height: 82px;
+        padding: 17px 18px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+      }
+
+      .mobile-summary-card span {
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .mobile-summary-card strong {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .mobile-summary-card.debit {
+        background: var(--blue-bg);
+        border-color: var(--blue-border);
+      }
+
+      .mobile-summary-card.overdue {
+        background: var(--amber-bg);
+        border-color: var(--amber-border);
+      }
+
+      .mobile-summary-card.credit {
+        background: var(--green-bg);
+        border-color: var(--green-border);
+      }
+
+      .mobile-age {
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+      }
+
+      .mobile-age-title {
+        margin: 0 0 14px;
+        font-size: 16px;
+        font-weight: 800;
+      }
+
+      .mobile-age-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .mobile-age-card {
+        min-height: 72px;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .mobile-age-card span {
+        font-size: 13px;
+        font-weight: 800;
+        color: #52525b;
+      }
+
+      .mobile-age-card strong {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 18px;
+      }
+
+      .mobile-age-card.current {
+        background: var(--blue-bg);
+        border-color: var(--blue-border);
+      }
+
+      .mobile-age-card.warning {
+        background: var(--amber-bg);
+        border-color: var(--amber-border);
+      }
+
+      .mobile-age-card.warning strong {
+        color: #c45a00;
+      }
+
+      .mobile-age-card.danger {
+        background: #fff5f5;
+        border-color: #f5d0d0;
+      }
+
+      .mobile-age-card.danger strong {
+        color: #d13b50;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          padding: 14px;
+        }
+
+        .soa-card {
+          padding: 18px;
+        }
+
+        .soa-topbar {
+          align-items: flex-start;
+        }
+
+        .brand {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .download-btn {
+          padding: 0 12px;
+          white-space: nowrap;
+        }
+
+        .soa-header,
+        .summary-grid,
+        .age-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .soa-header {
+          gap: 16px;
+        }
+
+        .identity-row {
+          flex-wrap: wrap;
+          gap: 8px 12px;
+        }
+
+        .summary-card strong {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="preview-stack">
+        <section aria-label="Desktop preview">
+          <p class="preview-label">Desktop</p>
+          <div class="soa-card" aria-label="Statement of Account preview">
+            <header class="soa-topbar">
+              <div class="brand">
+                <div class="logo">m<span class="accent">ai</span>a</div>
+                <div class="doc-title">Statement of Account</div>
+              </div>
+              <button class="download-btn" type="button">Download SOA (PDF)</button>
+            </header>
+
+            <section class="soa-header">
+              <div class="customer-block">
+                <div class="identity-row">
+                  <h1>Azib <span class="customer-id">· CUST-000004</span></h1>
+                </div>
+
+                <div class="customer-details">
+                  <div class="detail-group">
+                    <div class="detail-label">Contact</div>
+                    <div class="detail-primary">Jeffery Epstein Bin Laden</div>
+                    <div>+60 12-345 6789</div>
+                    <div>jeffery@example.com</div>
+                  </div>
+
+                  <div class="detail-group address-group">
+                    <div class="detail-label">Billing address</div>
+                    <div>KLPTC, 123, 71800 Nilai, Negeri Sembilan, Malaysia</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="meta-block">
+                <div class="meta-item">
+                  <div class="meta-label">Statement date</div>
+                  <div class="meta-value">09 Jul 2026</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-label">Account</div>
+                  <div class="meta-value">Debtors - MA</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="summary-grid" aria-label="Statement summary">
+              <div class="summary-card debit">
+                <span>Total debits</span>
+                <strong>RM 611,400.85</strong>
+              </div>
+              <div class="summary-card overdue">
+                <span>Total overdue</span>
+                <strong>RM 611,337.85</strong>
+              </div>
+              <div class="summary-card credit">
+                <span>Total credits</span>
+                <strong>RM 114,817.91</strong>
+              </div>
+            </section>
+
+            <section class="age-section" aria-label="Outstanding by age">
+              <h2 class="age-title">Outstanding by Age</h2>
+              <div class="age-grid">
+                <div class="age-card current">
+                  <span>Current</span>
+                  <strong>63.00</strong>
+                </div>
+                <div class="age-card">
+                  <span>1 Month</span>
+                  <strong>243,835.00</strong>
+                </div>
+                <div class="age-card warning">
+                  <span>2 Months</span>
+                  <strong>0.00</strong>
+                </div>
+                <div class="age-card warning">
+                  <span>3 Months</span>
+                  <strong>0.00</strong>
+                </div>
+                <div class="age-card warning">
+                  <span>4 Months</span>
+                  <strong>68.76</strong>
+                </div>
+                <div class="age-card danger">
+                  <span>5+ Months</span>
+                  <strong>367,434.09</strong>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section aria-label="Mobile preview">
+          <p class="preview-label">Mobile</p>
+          <div class="mobile-frame">
+            <div class="mobile-screen">
+              <div class="mobile-card">
+                <header class="mobile-topbar">
+                  <div class="mobile-logo">m<span class="accent">ai</span>a</div>
+                  <div class="mobile-title">Statement of Account</div>
+                </header>
+                <button class="mobile-download" type="button">Download SOA (PDF)</button>
+
+                <section class="mobile-header">
+                  <div class="mobile-identity-meta">
+                    <div class="mobile-customer-stack">
+                      <div>
+                        <div class="mobile-name">Azib</div>
+                        <div class="mobile-value">CUST-000004</div>
+                      </div>
+
+                      <div class="mobile-details">
+                        <div class="mobile-detail-group">
+                          <div class="mobile-label">Contact</div>
+                          <div class="detail-primary">Jeffery Epstein Bin Laden</div>
+                          <div>+60 12-345 6789</div>
+                          <div>jeffery@example.com</div>
+                        </div>
+
+                        <div class="mobile-detail-group">
+                          <div class="mobile-label">Billing address</div>
+                          <div>KLPTC, 123, 71800 Nilai, Negeri Sembilan, Malaysia</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mobile-meta">
+                      <div class="mobile-meta-item">
+                        <div class="mobile-label">Statement date</div>
+                        <div class="mobile-value">09 Jul 2026</div>
+                      </div>
+                      <div class="mobile-meta-item">
+                        <div class="mobile-label">Account</div>
+                        <div class="mobile-value">Debtors - MA</div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="mobile-summary" aria-label="Mobile statement summary">
+                  <div class="mobile-summary-card debit">
+                    <span>Total outstanding</span>
+                    <strong>RM 611,400.85</strong>
+                  </div>
+                  <div class="mobile-summary-card overdue">
+                    <span>Overdue</span>
+                    <strong>RM 611,337.85</strong>
+                  </div>
+                  <div class="mobile-summary-card credit">
+                    <span>Credit available</span>
+                    <strong>RM 114,817.91</strong>
+                  </div>
+                </section>
+
+                <section class="mobile-age" aria-label="Mobile outstanding by age">
+                  <h2 class="mobile-age-title">Outstanding by Age</h2>
+                  <div class="mobile-age-grid">
+                    <div class="mobile-age-card current">
+                      <span>Current</span>
+                      <strong>63.00</strong>
+                    </div>
+                    <div class="mobile-age-card">
+                      <span>1 Month</span>
+                      <strong>243,835.00</strong>
+                    </div>
+                    <div class="mobile-age-card warning">
+                      <span>2 Months</span>
+                      <strong>0.00</strong>
+                    </div>
+                    <div class="mobile-age-card warning">
+                      <span>3 Months</span>
+                      <strong>0.00</strong>
+                    </div>
+                    <div class="mobile-age-card warning">
+                      <span>4 Months</span>
+                      <strong>68.76</strong>
+                    </div>
+                    <div class="mobile-age-card danger">
+                      <span>5+ Months</span>
+                      <strong>367,434.09</strong>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

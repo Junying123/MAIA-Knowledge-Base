@@ -114,8 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -258,10 +257,18 @@
                   {
                     "id": 173,
                     "name": "zsh 173"
+                  },
+                  {
+                    "id": 174,
+                    "name": "zsh 174"
+                  },
+                  {
+                    "id": 175,
+                    "name": "zsh 175"
                   }
                 ],
-                "activeId": 173,
-                "nextId": 174
+                "activeId": 175,
+                "nextId": 176
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -282,7 +289,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 960.5
+    "width": 965.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -314,6 +321,13 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/macro_facet.yaml",
+    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen_item_hierarchy.md",
+    "03 - Clients/Active Cooking Clients/Dalson/dalson_industrial_supplies_facet.yaml",
+    "03 - Clients/Active Cooking Clients/Dalson/dalson_industrial_supplies_facet.md",
+    "01 - MAIA Product/Product Specs/SOA Portal/soa-portal-issue-report-2026-07-04.md",
+    "01 - MAIA Product/Product Specs/SOA Portal/soa-header-layout-preview.html",
+    "01 - MAIA Product/Product Specs/SOA Portal",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
@@ -337,9 +351,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Role Permission/MAIA_User_Macrofood.csv",
     "03 - Clients/Active Cooking Clients/Macrofood/Role Permission/MAIA_Sales_User_Macrofood.csv",
     "03 - Clients/Active Cooking Clients/Macrofood/Role Permission/MAIA_Sales_User_Macrofood.csv.tmp.28657.e84b059c8575",
-    "03 - Clients/Active Cooking Clients/Macrofood/Role Permission/MAIA_Role_Permission_Macrofood_Blank.csv",
-    "03 - Clients/Active Cooking Clients/Macrofood/Role Permission/MAIA_Role_Permission_Macrofood.csv",
-    "03 - Clients/Active Cooking Clients/Macrofood/Role Permission",
     "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
     "03 - Clients/Active Cooking Clients/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
@@ -349,10 +360,6 @@
     "Granola/Transcripts/2026-07-06/GTM × Product × Tech Delivery Review-transcript.md",
     "05 - Releases & Updates/Weekly Updates/Weekly Update - 06-07-2026.md",
     "Granola/Transcripts/2026-05-22/Dalson Requirements gathering-transcript.md",
-    "Granola/Transcripts/2026-07-02/Mindhive  Daily Standup-transcript 2.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/2026-07-04 SOA Portal Issue Report 2.md",
-    "Granola/Transcripts/2026-07-03/Mindhive  Daily Standup-transcript 2.md",
-    "Granola/Transcripts/2026-07-06/Mindhive  Daily Standup-transcript 2.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",

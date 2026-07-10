@@ -1,0 +1,947 @@
+document: "MAIA - Dalson Industrial Supplies Item Facet Definition"
+purpose: >
+  Break down categorization of Dalson industrial supply items; define item-only
+  properties, filters, and search conditions based on observed item name patterns.
+
+products:
+  item_group: "Products"
+  level: 0
+  Industrial Supplies:
+    item_group: "Industrial Supplies"
+    level: 1
+    section:
+      - section_idx: 0
+        label: "Product Identification"
+        section_description: "Core identity fields that commonly appear in Dalson item names."
+      - section_idx: 1
+        label: "Product Specification"
+        section_description: "Physical, technical, and variant specifications of the item."
+      - section_idx: 2
+        label: "Pack & Unit"
+        section_description: "Pack quantity, selling unit, and unit-of-measure details."
+    attributes:
+      brand:
+        facet_idx: 0
+        section: "Product Identification"
+        item_facet: "Brand"
+        facet_description: "The brand, manufacturer, or leading trade name in the item name."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      model_series:
+        facet_idx: 1
+        section: "Product Identification"
+        item_facet: "Model / Series"
+        facet_description: "The model, series, part number, or named product range."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      product_type:
+        facet_idx: 2
+        section: "Product Identification"
+        item_facet: "Product Type"
+        facet_description: "The functional item type, such as valve, glove, tape, pump, gauge, cleaner, or floodlight."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      material:
+        facet_idx: 3
+        section: "Product Specification"
+        item_facet: "Material"
+        facet_description: "The item material, such as brass, PVC, nylon, leather, stainless steel, PP, or rubber."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      size_dimension:
+        facet_idx: 4
+        section: "Product Specification"
+        item_facet: "Size / Dimension"
+        facet_description: "The size, dimension, diameter, thread size, length, width, height, or nominal inch/mm value."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      capacity_volume:
+        facet_idx: 5
+        section: "Product Specification"
+        item_facet: "Capacity / Volume"
+        facet_description: "The item capacity, volume, weight, or fill quantity, such as ml, L, kg, ton, or gallons."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      colour_finish:
+        facet_idx: 6
+        section: "Product Specification"
+        item_facet: "Colour / Finish"
+        facet_description: "The colour, finish, surface appearance, or visible variant of the item."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      specification_rating:
+        facet_idx: 7
+        section: "Product Specification"
+        item_facet: "Specification / Rating"
+        facet_description: "The technical rating or specification, such as wattage, voltage, IP rating, PN rating, pressure rating, grit, grade, or certification."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      pack_size:
+        facet_idx: 8
+        section: "Pack & Unit"
+        item_facet: "Pack Size"
+        facet_description: "The package quantity or pack wording, such as pcs/box, roll/pack, tube, bottle, or set quantity."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+      uom:
+        facet_idx: 9
+        section: "Pack & Unit"
+        item_facet: "UOM"
+        facet_description: "The selling or measurement unit used in the item name, such as pc, box, roll, tube, bottle, set, m, mm, inch, kg, L, or ml."
+        is_required: 0
+        data_type: "Text"
+        doctypes: []
+    subcategories:
+      tools_workshop_equipment:
+        level: 2
+        item_group: "Tools & Workshop Equipment"
+        section:
+          - section_idx: 0
+            label: "Tool Specification"
+            section_description: "Tool-specific sizes, ranges, compatibility, and capacity."
+        attributes:
+          tool_size:
+            facet_idx: 0
+            section: "Tool Specification"
+            item_facet: "Tool Size"
+            facet_description: "The stated size of a hand tool, bit, spanner, wrench, screwdriver, or accessory."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          drive_size:
+            facet_idx: 1
+            section: "Tool Specification"
+            item_facet: "Drive Size"
+            facet_description: "The socket or tool drive size, where applicable."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          measurement_range:
+            facet_idx: 2
+            section: "Tool Specification"
+            item_facet: "Measurement Range"
+            facet_description: "The working, torque, measuring, or adjustment range of the tool."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          compatible_vehicle_engine:
+            facet_idx: 3
+            section: "Tool Specification"
+            item_facet: "Compatible Vehicle / Engine"
+            facet_description: "The vehicle, engine, or system compatibility mentioned in the item name."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          power_capacity:
+            facet_idx: 4
+            section: "Tool Specification"
+            item_facet: "Power / Capacity"
+            facet_description: "The stated power, capacity, or machine capability."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          hand_tools:
+            level: 3
+            item_group: "Hand Tools"
+          automotive_tools:
+            level: 3
+            item_group: "Automotive Tools"
+          measuring_tools:
+            level: 3
+            item_group: "Measuring Tools"
+          cutting_stripping_tools:
+            level: 3
+            item_group: "Cutting / Stripping Tools"
+          machines_equipment:
+            level: 3
+            item_group: "Machines / Equipment"
+      safety_ppe:
+        level: 2
+        item_group: "Safety & PPE"
+        section:
+          - section_idx: 0
+            label: "PPE Specification"
+            section_description: "Safety product type, size, material, rating, and colour."
+        attributes:
+          ppe_type:
+            facet_idx: 0
+            section: "PPE Specification"
+            item_facet: "PPE Type"
+            facet_description: "The safety item type, such as glove, goggles, face shield, boots, rainwear, or lockout device."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          safety_rating_certification:
+            facet_idx: 1
+            section: "PPE Specification"
+            item_facet: "Safety Rating / Certification"
+            facet_description: "The safety standard, rating, certification, or resistance claim."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          gloves:
+            level: 3
+            item_group: "Gloves"
+          goggles_face_shield:
+            level: 3
+            item_group: "Goggles / Face Shield"
+          safety_shoes_boots:
+            level: 3
+            item_group: "Safety Shoes / Boots"
+          rainwear:
+            level: 3
+            item_group: "Rainwear"
+          lockout_tagout:
+            level: 3
+            item_group: "Lockout / Tagout"
+          first_aid_medical:
+            level: 3
+            item_group: "First Aid / Medical"
+      plumbing_sanitary:
+        level: 2
+        item_group: "Plumbing & Sanitary"
+        section:
+          - section_idx: 0
+            label: "Plumbing Specification"
+            section_description: "Tap, valve, hose, pipe, and sanitary fitting specifications."
+        attributes:
+          diameter:
+            facet_idx: 0
+            section: "Plumbing Specification"
+            item_facet: "Diameter"
+            facet_description: "The item diameter or nominal pipe size."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          thread_size:
+            facet_idx: 1
+            section: "Plumbing Specification"
+            item_facet: "Thread Size"
+            facet_description: "The thread size or fitting size stated for plumbing items."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          valve_tap_type:
+            facet_idx: 2
+            section: "Plumbing Specification"
+            item_facet: "Valve / Tap Type"
+            facet_description: "The type of tap, faucet, valve, inlet, outlet, or water fitting."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          taps_faucets:
+            level: 3
+            item_group: "Taps / Faucets"
+          valves:
+            level: 3
+            item_group: "Valves"
+          hoses:
+            level: 3
+            item_group: "Hoses"
+          pipe_fittings:
+            level: 3
+            item_group: "Pipe Fittings"
+          bathroom_accessories:
+            level: 3
+            item_group: "Bathroom Accessories"
+      electrical_lighting:
+        level: 2
+        item_group: "Electrical & Lighting"
+        section:
+          - section_idx: 0
+            label: "Electrical Specification"
+            section_description: "Electrical, lighting, wiring, and detector specifications."
+        attributes:
+          voltage:
+            facet_idx: 0
+            section: "Electrical Specification"
+            item_facet: "Voltage"
+            facet_description: "The voltage rating stated in the item name."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          wattage:
+            facet_idx: 1
+            section: "Electrical Specification"
+            item_facet: "Wattage"
+            facet_description: "The power or wattage rating stated in the item name."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          socket_type:
+            facet_idx: 2
+            section: "Electrical Specification"
+            item_facet: "Socket Type"
+            facet_description: "The socket, switch, plug, or outlet type."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          ip_rating:
+            facet_idx: 3
+            section: "Electrical Specification"
+            item_facet: "IP Rating"
+            facet_description: "The IP protection rating, if stated."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          light_colour_temperature:
+            facet_idx: 4
+            section: "Electrical Specification"
+            item_facet: "Light Colour / Temperature"
+            facet_description: "The light colour or colour temperature, such as 6500K."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          switches_sockets:
+            level: 3
+            item_group: "Switches / Sockets"
+          lights_floodlights:
+            level: 3
+            item_group: "Lights / Floodlights"
+          cables_wiring_accessories:
+            level: 3
+            item_group: "Cables / Wiring Accessories"
+          door_chime_intercom:
+            level: 3
+            item_group: "Door Chime / Intercom"
+          testers_detectors:
+            level: 3
+            item_group: "Testers / Detectors"
+      welding_gas:
+        level: 2
+        item_group: "Welding & Gas"
+        section:
+          - section_idx: 0
+            label: "Welding Specification"
+            section_description: "Welding consumable, machine, PPE, and gas specifications."
+        attributes:
+          rod_size:
+            facet_idx: 0
+            section: "Welding Specification"
+            item_facet: "Rod Size"
+            facet_description: "The welding rod diameter, size, or pack weight."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          lens_shade:
+            facet_idx: 1
+            section: "Welding Specification"
+            item_facet: "Lens Shade"
+            facet_description: "The shade or colour of welding lens or visor."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          machine_type:
+            facet_idx: 2
+            section: "Welding Specification"
+            item_facet: "Machine Type"
+            facet_description: "The welding machine type or model."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          gas_type:
+            facet_idx: 3
+            section: "Welding Specification"
+            item_facet: "Gas Type"
+            facet_description: "The gas type or oxygen-related product type."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          welding_rods:
+            level: 3
+            item_group: "Welding Rods"
+          welding_machines:
+            level: 3
+            item_group: "Welding Machines"
+          welding_ppe:
+            level: 3
+            item_group: "Welding PPE"
+          welding_accessories:
+            level: 3
+            item_group: "Welding Accessories"
+          gas_oxygen:
+            level: 3
+            item_group: "Gas / Oxygen"
+      adhesives_sealants_chemicals:
+        level: 2
+        item_group: "Adhesives, Sealants & Chemicals"
+        section:
+          - section_idx: 0
+            label: "Chemical Specification"
+            section_description: "Adhesive, sealant, solvent, lubricant, and chemical specifications."
+        attributes:
+          chemical_type:
+            facet_idx: 0
+            section: "Chemical Specification"
+            item_facet: "Chemical Type"
+            facet_description: "The chemical function, such as adhesive, sealant, cleaner, lubricant, epoxy, cement, solvent, or spray."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          application_surface:
+            facet_idx: 1
+            section: "Chemical Specification"
+            item_facet: "Application Surface"
+            facet_description: "The intended surface or material application, such as PVC, metal, glass, pipe, wall, or floor."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          cure_resistance_type:
+            facet_idx: 2
+            section: "Chemical Specification"
+            item_facet: "Cure / Resistance Type"
+            facet_description: "The cure type, resistance claim, or performance property."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          adhesives_glue:
+            level: 3
+            item_group: "Adhesives / Glue"
+          sealants:
+            level: 3
+            item_group: "Sealants"
+          solvents_cleaners:
+            level: 3
+            item_group: "Solvents / Cleaners"
+          lubricants_sprays:
+            level: 3
+            item_group: "Lubricants / Sprays"
+          epoxy_cement:
+            level: 3
+            item_group: "Epoxy / Cement"
+      cleaning_janitorial:
+        level: 2
+        item_group: "Cleaning & Janitorial"
+        section:
+          - section_idx: 0
+            label: "Cleaning Specification"
+            section_description: "Cleaning item type, container, and application area."
+        attributes:
+          cleaner_type:
+            facet_idx: 0
+            section: "Cleaning Specification"
+            item_facet: "Cleaner Type"
+            facet_description: "The cleaning item function, such as hand cleaner, floor cleaner, broom, extractor, or waste item."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          application_area:
+            facet_idx: 1
+            section: "Cleaning Specification"
+            item_facet: "Application Area"
+            facet_description: "The area or use case for the cleaning item."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          hand_cleaner:
+            level: 3
+            item_group: "Hand Cleaner"
+          brooms_brushes:
+            level: 3
+            item_group: "Brooms / Brushes"
+          waste_disposal:
+            level: 3
+            item_group: "Waste Disposal"
+          vacuum_extractor:
+            level: 3
+            item_group: "Vacuum / Extractor"
+          cleaning_chemicals:
+            level: 3
+            item_group: "Cleaning Chemicals"
+      lifting_handling_storage:
+        level: 2
+        item_group: "Lifting, Handling & Storage"
+        section:
+          - section_idx: 0
+            label: "Handling Specification"
+            section_description: "Load, length, height, wheel, and handling specifications."
+        attributes:
+          load_capacity:
+            facet_idx: 0
+            section: "Handling Specification"
+            item_facet: "Load Capacity"
+            facet_description: "The stated load, weight, or handling capacity."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          platform_height:
+            facet_idx: 1
+            section: "Handling Specification"
+            item_facet: "Platform Height"
+            facet_description: "The platform or ladder height."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          wheel_handle_type:
+            facet_idx: 2
+            section: "Handling Specification"
+            item_facet: "Wheel / Handle Type"
+            facet_description: "The wheel, handle, or movement-related feature."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          webbing_slings:
+            level: 3
+            item_group: "Webbing Slings"
+          wheelbarrows_trucks:
+            level: 3
+            item_group: "Wheelbarrows / Trucks"
+          pallets:
+            level: 3
+            item_group: "Pallets"
+          ladders:
+            level: 3
+            item_group: "Ladders"
+          brackets_holders:
+            level: 3
+            item_group: "Brackets / Holders"
+      building_maintenance_materials:
+        level: 2
+        item_group: "Building & Maintenance Materials"
+        section:
+          - section_idx: 0
+            label: "Building Material Specification"
+            section_description: "Building, maintenance, tape, cover, mounting, and board specifications."
+        attributes:
+          adhesive_type:
+            facet_idx: 0
+            section: "Building Material Specification"
+            item_facet: "Adhesive Type"
+            facet_description: "The adhesive or tape type used by the item."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          mounting_type:
+            facet_idx: 1
+            section: "Building Material Specification"
+            item_facet: "Mounting Type"
+            facet_description: "The mounting method or mounted product format."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          tapes:
+            level: 3
+            item_group: "Tapes"
+          canvas_covers:
+            level: 3
+            item_group: "Canvas / Covers"
+          fasteners_anchors:
+            level: 3
+            item_group: "Fasteners / Anchors"
+          wall_floor_accessories:
+            level: 3
+            item_group: "Wall / Floor Accessories"
+          boards_whiteboards:
+            level: 3
+            item_group: "Boards / Whiteboards"
+      automotive_supplies:
+        level: 2
+        item_group: "Automotive Supplies"
+        section:
+          - section_idx: 0
+            label: "Automotive Specification"
+            section_description: "Vehicle, engine, injector, spill kit, and battery-related specifications."
+        attributes:
+          vehicle_compatibility:
+            facet_idx: 0
+            section: "Automotive Specification"
+            item_facet: "Vehicle Compatibility"
+            facet_description: "The vehicle make, model, system, or generic vehicle compatibility."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          engine_type:
+            facet_idx: 1
+            section: "Automotive Specification"
+            item_facet: "Engine Type"
+            facet_description: "The engine type, engine code, or engine system referenced by the item."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          vehicle_tools:
+            level: 3
+            item_group: "Vehicle Tools"
+          engine_timing_tools:
+            level: 3
+            item_group: "Engine / Timing Tools"
+          injectors_valves:
+            level: 3
+            item_group: "Injectors / Valves"
+          spill_kits:
+            level: 3
+            item_group: "Spill Kits"
+          batteries_accessories:
+            level: 3
+            item_group: "Batteries / Accessories"
+      pumps_valves_fluid_control:
+        level: 2
+        item_group: "Pumps, Valves & Fluid Control"
+        section:
+          - section_idx: 0
+            label: "Fluid Control Specification"
+            section_description: "Pressure, diameter, flow, thread, and material specifications for fluid-control items."
+        attributes:
+          pressure_rating:
+            facet_idx: 0
+            section: "Fluid Control Specification"
+            item_facet: "Pressure Rating"
+            facet_description: "The pressure rating or pressure class stated in the item name."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          flow_type:
+            facet_idx: 1
+            section: "Fluid Control Specification"
+            item_facet: "Flow Type"
+            facet_description: "The flow, inlet, outlet, pump, or valve flow-related type."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          pumps:
+            level: 3
+            item_group: "Pumps"
+          valves:
+            level: 3
+            item_group: "Valves"
+          gauges:
+            level: 3
+            item_group: "Gauges"
+          nozzles:
+            level: 3
+            item_group: "Nozzles"
+          fluid_hoses:
+            level: 3
+            item_group: "Fluid Hoses"
+      measuring_testing_instruments:
+        level: 2
+        item_group: "Measuring & Testing Instruments"
+        section:
+          - section_idx: 0
+            label: "Measurement Specification"
+            section_description: "Measuring range, accuracy, dial size, unit, and model."
+        attributes:
+          measuring_range:
+            facet_idx: 0
+            section: "Measurement Specification"
+            item_facet: "Measuring Range"
+            facet_description: "The measuring range or capacity of the instrument."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          accuracy_precision:
+            facet_idx: 1
+            section: "Measurement Specification"
+            item_facet: "Accuracy / Precision"
+            facet_description: "The accuracy, precision class, or measurement tolerance."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          dial_size:
+            facet_idx: 2
+            section: "Measurement Specification"
+            item_facet: "Dial Size"
+            facet_description: "The dial or display size of the instrument."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          pressure_gauges:
+            level: 3
+            item_group: "Pressure Gauges"
+          detectors:
+            level: 3
+            item_group: "Detectors"
+          measuring_tapes:
+            level: 3
+            item_group: "Measuring Tapes"
+          calipers:
+            level: 3
+            item_group: "Calipers"
+          balances_scales:
+            level: 3
+            item_group: "Balances / Scales"
+      office_signage_facility_supplies:
+        level: 2
+        item_group: "Office, Signage & Facility Supplies"
+        section:
+          - section_idx: 0
+            label: "Facility Specification"
+            section_description: "Whiteboard, sign, holder, chair, fixture, and surface specifications."
+        attributes:
+          surface_type:
+            facet_idx: 0
+            section: "Facility Specification"
+            item_facet: "Surface Type"
+            facet_description: "The item surface type, such as magnetic, clear, stainless steel, wall-mounted, or sign surface."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          whiteboards:
+            level: 3
+            item_group: "Whiteboards"
+          signs_labels:
+            level: 3
+            item_group: "Signs / Labels"
+          holders:
+            level: 3
+            item_group: "Holders"
+          chairs:
+            level: 3
+            item_group: "Chairs"
+          facility_fixtures:
+            level: 3
+            item_group: "Facility Fixtures"
+      fasteners_hardware:
+        level: 2
+        item_group: "Fasteners & Hardware"
+        section:
+          - section_idx: 0
+            label: "Hardware Specification"
+            section_description: "Fastener, anchor, bracket, lock, and cable tie specifications."
+        attributes:
+          fastener_type:
+            facet_idx: 0
+            section: "Hardware Specification"
+            item_facet: "Fastener Type"
+            facet_description: "The fastener or hardware type, such as screw, anchor, bracket, hasp, padlock, or cable tie."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          pack_quantity:
+            facet_idx: 1
+            section: "Hardware Specification"
+            item_facet: "Pack Quantity"
+            facet_description: "The quantity per pack, box, or set."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          screws:
+            level: 3
+            item_group: "Screws"
+          anchors:
+            level: 3
+            item_group: "Anchors"
+          brackets:
+            level: 3
+            item_group: "Brackets"
+          hasps_padlocks:
+            level: 3
+            item_group: "Hasps / Padlocks"
+          cable_ties:
+            level: 3
+            item_group: "Cable Ties"
+      paint_surface_treatment_abrasives:
+        level: 2
+        item_group: "Paint, Surface Treatment & Abrasives"
+        section:
+          - section_idx: 0
+            label: "Surface Treatment Specification"
+            section_description: "Spray, polish, remover, grinding paste, abrasive, and finish specifications."
+        attributes:
+          surface_type:
+            facet_idx: 0
+            section: "Surface Treatment Specification"
+            item_facet: "Surface Type"
+            facet_description: "The intended surface for the product."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          finish:
+            facet_idx: 1
+            section: "Surface Treatment Specification"
+            item_facet: "Finish"
+            facet_description: "The finish or result produced by the product."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          grit_grade:
+            facet_idx: 2
+            section: "Surface Treatment Specification"
+            item_facet: "Grit / Grade"
+            facet_description: "The abrasive grit, grade, or polishing classification."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          sprays:
+            level: 3
+            item_group: "Sprays"
+          wax_polish:
+            level: 3
+            item_group: "Wax / Polish"
+          removers:
+            level: 3
+            item_group: "Removers"
+          grinding_paste:
+            level: 3
+            item_group: "Grinding Paste"
+          abrasive_tools:
+            level: 3
+            item_group: "Abrasive Tools"
+      packaging_tapes_strapping:
+        level: 2
+        item_group: "Packaging, Tapes & Strapping"
+        section:
+          - section_idx: 0
+            label: "Packaging Specification"
+            section_description: "Tape, strapping, webbing, tie, width, length, material, and pack specifications."
+        attributes:
+          width:
+            facet_idx: 0
+            section: "Packaging Specification"
+            item_facet: "Width"
+            facet_description: "The width of tape, webbing, strapping, or packaging material."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          length:
+            facet_idx: 1
+            section: "Packaging Specification"
+            item_facet: "Length"
+            facet_description: "The length of tape, webbing, strapping, or packaging material."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          wire_tape:
+            level: 3
+            item_group: "Wire Tape"
+          waterproof_tape:
+            level: 3
+            item_group: "Waterproof Tape"
+          strapping_rope:
+            level: 3
+            item_group: "Strapping Rope"
+          webbing:
+            level: 3
+            item_group: "Webbing"
+          cable_tie:
+            level: 3
+            item_group: "Cable Tie"
+      machinery_power_equipment:
+        level: 2
+        item_group: "Machinery & Power Equipment"
+        section:
+          - section_idx: 0
+            label: "Machine Specification"
+            section_description: "Machine type, power, voltage, capacity, and model."
+        attributes:
+          power:
+            facet_idx: 0
+            section: "Machine Specification"
+            item_facet: "Power"
+            facet_description: "The machine power rating."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          machine_type:
+            facet_idx: 1
+            section: "Machine Specification"
+            item_facet: "Machine Type"
+            facet_description: "The machine or powered equipment type."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          pumps:
+            level: 3
+            item_group: "Pumps"
+          threading_machines:
+            level: 3
+            item_group: "Threading Machines"
+          welding_machines:
+            level: 3
+            item_group: "Welding Machines"
+          fans:
+            level: 3
+            item_group: "Fans"
+          portable_equipment:
+            level: 3
+            item_group: "Portable Equipment"
+      furniture_fixtures:
+        level: 2
+        item_group: "Furniture & Fixtures"
+        section:
+          - section_idx: 0
+            label: "Fixture Specification"
+            section_description: "Furniture, holder, cabinet, mounting, material, and finish specifications."
+        attributes:
+          mounting_type:
+            facet_idx: 0
+            section: "Fixture Specification"
+            item_facet: "Mounting Type"
+            facet_description: "The fixture mounting type, such as wall-mounted or surface-mounted."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+        subcategories:
+          chairs:
+            level: 3
+            item_group: "Chairs"
+          wall_holders:
+            level: 3
+            item_group: "Wall Holders"
+          cabinets:
+            level: 3
+            item_group: "Cabinets"
+          mounted_fixtures:
+            level: 3
+            item_group: "Mounted Fixtures"
+      miscellaneous_unclassified:
+        level: 2
+        item_group: "Miscellaneous / Unclassified"
+        section:
+          - section_idx: 0
+            label: "Review"
+            section_description: "Fallback classification for items that need manual review."
+        attributes:
+          raw_item_name:
+            facet_idx: 0
+            section: "Review"
+            item_facet: "Raw Item Name"
+            facet_description: "The original item name before classification."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          probable_category:
+            facet_idx: 1
+            section: "Review"
+            item_facet: "Probable Category"
+            facet_description: "The likely category suggested during review."
+            is_required: 0
+            data_type: "Text"
+            doctypes: []
+          review_required:
+            facet_idx: 2
+            section: "Review"
+            item_facet: "Review Required"
+            facet_description: "Whether the item requires manual review."
+            is_required: 0
+            data_type: "Boolean"
+            doctypes: []
+        subcategories:
+          unclassified_items:
+            level: 3
+            item_group: "Unclassified Items"
