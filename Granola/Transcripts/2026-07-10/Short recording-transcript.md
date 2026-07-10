@@ -1,0 +1,15 @@
+---
+granola_id: 52a64487-7665-48a1-a8f9-56aafd71de32
+title: Short recording - Transcript
+type: transcript
+created: 2026-07-10T06:19:10.591Z
+updated: 2026-07-10T06:31:07.896Z
+attendees: []
+---
+
+# Transcript for: Short recording
+
+### You (2026-07-10T06:19:33.281Z)
+
+By the end of this month go live with 100 confidence providence. And in order to do that, our trigger needs updates, right? But imagine what my sister don't see. But you say it's okay. Only channel event. So in order to avoid that, the aspect. Woman say hello woman. Okay, so my daughter gets it dally because definitely a huge one. This is not built but not built. Okay. The answer I am. What does it tell you is in southeast meal aligned with customer expectation? This other one is chong. Such as a woman. She younger client clarifier. Okay. So you make an approval for woman approval for exactly what is the approval for exactly where is it, how it works. Right. Sorry. Yeah. So when young southern gets on, just stand out. And in order that what we will be doing is that come up with eager scope lock first. Just a woman. Taiwan. Is probably a long woman. So all check. Do you need to go see your check? When romance coping or don't say. Right? So. Okay. Yeah. Right. So mother plan if Jesus something all the way down south of woman product team, the ego. The scope law document, the needle, right? She understands the client. Someone with some more questions. But she can't study osamotongi. Come on with her. That woman share her kind of. Okay. So that by that time, woman, it's all narcissist. Oh, she's from a yoga girl. That's a woman to say eat the tomatoes. Right. My ego account. Toyang, your eager face and make sure that some of the high me of the tire. I'll choose a lot. Okay, so on Monday itself, okay. So that's a woman soil. So librarian a hall. This is a woman. Your face has high confidence that massage unity. It didn't have passed or how easy you go live. That's it. Be a counselor confidence with technology concern. Again, even hack the. So it started on season one. So woman put down my put down. So that's fine. Group of actually eating meals or more ketchup. Just call my hair. No, take a flow to the photo. But as always, come on. So microphone is not coming out. So they get to see. The soybean account and clarity down. Next step. Yeah, that's just. Just to show you. My action can't have messy. So that's easy. Either slower. It counts is what they are. Just say home. My cousin name medical eating up to air. The whole thing. Your wedding breakfast. Okay, so. That's simple. Yeah, yeah. To everyone. Okay. For the type of. Thing she adds, by the end of the day, you will make love get drama. Get to someone else based on what mythically. Okay. So that woman finalize the list of my ise. I mean, I'm going to ask me inside. Because. What if all of a sudden customization is a must? Doesn't rub a woman. If things. If I present money, eat by person, sign up to them. What is that? So instead of cursing, she just doesn't travel.
+
