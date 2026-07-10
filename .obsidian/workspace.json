@@ -312,7 +312,7 @@
                     "name": "zsh 172"
                   }
                 ],
-                "activeId": 171,
+                "activeId": 166,
                 "nextId": 173
               },
               "icon": "terminal",
@@ -334,7 +334,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 890.5
+    "width": 1255.5
   },
   "left-ribbon": {
     "hiddenItems": {
