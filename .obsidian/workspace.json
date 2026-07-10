@@ -306,10 +306,14 @@
                   {
                     "id": 171,
                     "name": "zsh 171"
+                  },
+                  {
+                    "id": 172,
+                    "name": "zsh 172"
                   }
                 ],
-                "activeId": 166,
-                "nextId": 172
+                "activeId": 172,
+                "nextId": 173
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -360,7 +364,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ed25b829c30e5f11",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "02 - PM Playbook/Weekly Updates/2026-07-07 Weekly Update - Dalson, GST, Macrofood.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
