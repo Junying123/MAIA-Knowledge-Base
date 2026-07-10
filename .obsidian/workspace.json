@@ -290,7 +290,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 965.5
+    "width": 957.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -322,6 +322,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript-2026-07-10_14-38-09.md",
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript.md",
     "Granola/Transcripts/2026-07-10/Short recording-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macro_facet.yaml",
@@ -360,7 +361,6 @@
     "Granola/Transcripts/2026-07-07/Mindhive  Daily Standup-transcript.md",
     "02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist.md",
     "Granola/Transcripts/2026-07-06/GTM × Product × Tech Delivery Review-transcript.md",
-    "05 - Releases & Updates/Weekly Updates/Weekly Update - 06-07-2026.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",

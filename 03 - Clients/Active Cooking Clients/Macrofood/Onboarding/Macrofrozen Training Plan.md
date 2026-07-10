@@ -29,9 +29,9 @@ Macrofrozen staff can run their sales workflow (Quote-to-Cash: Quotation → Sal
 | Section | Content | Status for Macrofrozen |
 |---|---|---|
 | Opening (5 slides, ~5min) | Title, icebreaker (pick 1 of 3 variants), agenda | Ready — just fill [Client Name]/[Trainer Name]/[Date] placeholders |
-| Section 1 — Feature intro (22min) | Order capture, credit check, stock/reserve, pricing, search, SOA, AR/AP matching, ERP compat (AutoCount/SQL/SAP B1/Epicor), doc status flow (CPO→SO→DN→SI) | Ready — generic feature walkthrough, no dependency on their data |
+| Section 1 — Feature intro (22min) | Order capture, credit check, pricing, search, SOA, ERP compat, doc status flow | Ready — trim doc status flow to WhatsApp order→SO→DO→Invoice (no CPO step, no live stock check for this client) |
 | Section 2 — "Watch it work" demo videos (25min) | 7 scripted video walkthroughs (PO→SO, credit check, SO→DN→SI, pick list, new customer, new item) | **Blocked** — all 7 video slides are `ATTACH VIDEO HERE` placeholders, recordings not yet captured |
-| Section 3 — "Drive it yourself" Mission Card game (47min) | 10 numbered mission cards (realistic order scenarios, front=team-facing/back=facilitator answer key), scoreboard, WhatsApp/Telegram bot connection, 6 bonus special missions | **Blocked** — game itself is fully built, but needs: sales module tested on Macrofrozen's own instance, demo WhatsApp number/Telegram bot (@maia_demo_bot) verified live, CPO flows in missions confirmed working |
+| Section 3 — "Drive it yourself" Mission Card game (47min) | 10 numbered mission cards (realistic order scenarios, front=team-facing/back=facilitator answer key), scoreboard, WhatsApp/Telegram bot connection, 6 bonus special missions | **Blocked** — needs NS-01 resolved (defines which mission scenarios are even correct), sales module tested on Macrofrozen's own instance, demo WhatsApp number/Telegram bot (@maia_demo_bot) verified live. Drop any CPO-based missions — not applicable to this client. |
 | Close (6 slides) | Recap, Monday-morning action commitments, troubleshooting guide, solo test, feedback QR | Ready — no dependency |
 | Appendix (facilitator-only, not shown live) | Role/permission matrix, ERP integration deep-dive, SOA/inventory videos | Reference only |
 
@@ -63,9 +63,16 @@ Governs which features are safe to build training content around.
 
 **Out of scope entirely — exclude:** AP reconciliation, merchant/QR settlement reconciliation, delivery trip management, full WMS/barcode scanning, volume-based pricing, B2C ordering app, automated WhatsApp blasting.
 
-**CPO resolved**: not named as a locked scope item. Macrofrozen's core flow is WhatsApp order → SO/DO/Invoice, not a formal CPO upload workflow like C1/C3 tax-reference clients. CPO likely **not in scope for Macrofrozen** — treat as non-issue for their training, confirm with client before final lock.
+**CPO confirmed OUT — not a "likely," a fact.** Source: 4 Jun meeting notes. Macrofrozen's actual agreed E2E flow: WhatsApp order → MAIA draft SO → warehouse picks → update actual weight → submit SO → DO/Invoice → push to SQL. No CPO upload/intake step exists anywhere in this flow. Drop CPO entirely from test scope, training content, and the M3/feature checklist below — it does not apply to this client.
 
-**New blocker surfaced: NS-01 (Phase 1 order/pick-list trigger) — BLOCKING, unresolved.** Two conflicting workflows not agreed with client: (a) MAIA drafts SO before physical pick, vs (b) Macro Frozen picks externally first then uploads to MAIA. This must be resolved (via Client Confirmation Agenda, Scope Lock doc §9) before Mission Cards are built — training the wrong workflow actively confuses staff, worse than no training.
+**NS-01 (Phase 1 order/pick-list trigger) — BLOCKING, unresolved.** Two structurally different candidate flows, not yet agreed with client:
+(a) MAIA drafts SO first → warehouse picks → confirms actual weight → submits, or
+(b) warehouse picks externally first (paper-based, stays outside MAIA for Phase 1) → uploads confirmed pick list → MAIA creates SO/DO/Invoice.
+This isn't just a scope question — it defines what "sales module tested end-to-end" even means. Can't finalize Mission Cards, demo flow, or sign off Feature Test Coverage below until answered. Resolve via Client Confirmation Agenda (Scope Lock doc §9) before anything else in this plan proceeds.
+
+**Also open**: doc samples (invoice, credit note, DO, pick list) requested from client at 4 Jun meeting — not yet confirmed received. SO/DO/Invoice PDF rendering (SL-07) can't be properly verified without them.
+
+**Not in scope, don't test**: live/real-time stock check — only annual stock count exists (10-20 unit variances, non-blocking), no live check feature was agreed for Phase 1.
 
 ## Pre-Training Readiness Checklist (current state)
 
@@ -90,8 +97,10 @@ Using [[02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist]]
 | Sales module | not tested | [TBD] | Y |
 | Data setup (customers/items) | not ready | [TBD] | Y |
 | SQL integration | in progress (vendor delays) | [TBD] | Y |
-| NS-01 order/pick-list trigger | unresolved with client (Scope Lock §9) | [TBD] | Y — blocks Mission Card design |
-| CPO/certificate features | likely not in scope for Macrofrozen | — | N (pending final confirm) |
+| NS-01 order/pick-list trigger | unresolved with client (Scope Lock §9) | [TBD] | Y — defines what "sales module tested" means, blocks Mission Card design |
+| Doc samples (invoice/CN/DO/pick list) | requested 4 Jun, not confirmed received | [TBD] | Y — blocks verifying SO/DO/Invoice PDF rendering |
+| CPO/certificate features | confirmed not in Macrofrozen's flow (4 Jun meeting) | — | N/A — drop from scope entirely |
+| Live stock check | not agreed for Phase 1 | — | N/A — don't test |
 
 ### Training Logistics
 - [x] Training goal defined (this doc)
