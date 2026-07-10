@@ -3,7 +3,7 @@ granola_id: c8529d89-c17e-4f44-9917-b6fb3fc81ada
 title: "MAIA Sync: Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload - Transcript"
 type: transcript
 created: 2026-07-10T06:37:26.897Z
-updated: 2026-07-10T09:22:51.679Z
+updated: 2026-07-10T09:41:47.395Z
 attendees: 
   - jermaine@mindhive.asia
   - rahim.r2026@gmail.com
