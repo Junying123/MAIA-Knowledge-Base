@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+                "file": "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,31 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofrozen Training Plan"
-            }
-          },
-          {
-            "id": "e54e88e8cc6156e5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 3.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "2026-07-01 Weekly Update - All Clients 3"
+              "title": "02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA"
             }
           }
         ],
@@ -302,17 +278,9 @@
                   {
                     "id": 166,
                     "name": "zsh 166"
-                  },
-                  {
-                    "id": 171,
-                    "name": "zsh 171"
-                  },
-                  {
-                    "id": 172,
-                    "name": "zsh 172"
                   }
                 ],
-                "activeId": 171,
+                "activeId": 166,
                 "nextId": 173
               },
               "icon": "terminal",
@@ -334,7 +302,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 1255.5
+    "width": 958.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -366,10 +334,14 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 3.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-10/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-10",
     "02 - PM Playbook/Weekly Updates/2026-07-07 Weekly Update - Dalson, GST, Macrofood.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
@@ -388,11 +360,9 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Role Permission",
     "03 - Clients/Active Cooking Clients/GST/Timeline/GST Phase 1 Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
-    "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 3.md",
     "03 - Clients/Active Cooking Clients/GST/[Filled Draft - Transcript Only] MAIA Pre-Onboarding Requirements Questionnaire - GST Fine Foods.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson Phase 1 Timeline.md.tmp.89693.36b8701aa2d9",
     "Granola/Transcripts/2026-07-07/Mindhive  Daily Standup-transcript.md",
     "02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist.md",
     "Granola/Transcripts/2026-07-06/GTM × Product × Tech Delivery Review-transcript.md",
@@ -403,8 +373,6 @@
     "Granola/Transcripts/2026-07-03/Mindhive  Daily Standup-transcript 2.md",
     "Granola/Transcripts/2026-07-06/Mindhive  Daily Standup-transcript 2.md",
     "Granola/Transcripts/2026-07-01/Mindhive  Daily Standup-transcript 2.md",
-    "02 - PM Playbook/Internal Sessions/Self-Assessment - Gareth Ng - H1 2027.md",
-    "Granola/Transcripts/2026-07-02/MAIA WABA Setup - Follow up-transcript 2.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
