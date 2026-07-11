@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofrozen Training Plan"
+              "title": "Macrofood — VoC Extraction"
             }
           }
         ],
@@ -316,8 +316,10 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ceef9d86007d72d6",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
     "Granola/Transcripts/2026-07-10/Maya product launch — four-week sprint planning with QA focus-transcript.md",
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript-2026-07-10_14-38-09.md",
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript.md",
@@ -335,7 +337,6 @@
     "02 - PM Playbook/Weekly Updates/2026-07-01 Weekly Update - All Clients 3.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-10/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-10",
     "02 - PM Playbook/Weekly Updates/2026-07-07 Weekly Update - Dalson, GST, Macrofood.md",
@@ -356,7 +357,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Timeline/Macrofood Phase 1 Timeline.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru credit limit request.md",
     "Granola/Transcripts/2026-07-07/Mindhive  Daily Standup-transcript.md",
-    "02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
