@@ -64,6 +64,55 @@ beats a confident invention.
 
 ---
 
+## Mental Framework (why VoC exists — read before extracting)
+
+VoC is not "collect feedback." It is **capture → analyze → act**. The verb that
+earns the work is *act*. Capture without action is theater. This skill produces
+the analyze step so a PM can act with confidence — so the output must always point
+at a decision (build / don't build / verify), never stop at description.
+
+Four truths that shape every extraction:
+
+1. **Customer-centricity is org DNA, not an episode.** Feedback investment
+   quietly decays as an account matures — the "mature-account trap." A PM
+   managing a live client must fight this: run VoC *again* after go-live, not
+   just at discovery. Stale VoC = building for a customer who moved on.
+2. **VoC tells you what NOT to build.** Its highest value is resource efficiency
+   and risk reduction — killing features the customer doesn't actually value and
+   catching pain before it becomes a crisis. Treat "misframed / scope-risk /
+   don't let it leak into go-live" flags as first-class output, not afterthoughts.
+3. **The silent majority is the real signal.** Loud voices (delighted and furious
+   extremes) distort reality. Deliberately ask: whose voice is *missing* from this
+   corpus, and would they contradict the loud ones? This is the coverage gate's job.
+4. **Product is never done.** VoC output has a shelf life. Note when it should be
+   re-run and what would trigger a refresh.
+
+### The five biases that kill VoC (defend against each — checklist)
+
+| Bias | How it corrupts VoC | Defense in this skill |
+|---|---|---|
+| **Vocal minority / extremes** | Loud satisfied+dissatisfied drown the silent majority | Coverage gate names underrepresented voices (P5); flag when a priority rests on one loud actor |
+| **Confirmation bias** | Team hears what confirms the existing roadmap | Vendor voice is quarantined (P1); every claim must be anchored (P3), not assumed |
+| **Social desirability** | Customer says what sounds good, not what's true | Weight revealed behaviour over stated words (P4); down-tag polite agreement to BELIEVED |
+| **Surface metrics** | A score hides the *why* | Extract the reason, not the rating; concrete framing preserved (P7) |
+| **Structural resistance** | Internal roadmap beats customer signal → "technically sound product nobody wants" | Bottom Line must name the account-sinking mistake, usually workflow/adoption not features |
+
+### Triangulate channels — don't trust a single source
+Best-practice VoC crosses channels: interviews, chat/support logs, usability
+observation, frontline/support insight, and behavioural signals. When the corpus
+leans on one channel, say so in the coverage verdict and treat single-channel
+claims as more fragile. Support/frontline and actual-usage voices often carry the
+truest signal — weight them.
+
+### Close the loop (the step after this skill)
+This skill ends at analysis, but VoC is incomplete until the loop closes: act on
+the insight, then tell the customer what changed. Always end the artifact by
+pointing at the next action — which VOC ids convert to backlog items, which need
+evidence collection, and what to report back to the client. Capture that a PM
+should feed the confirmed items into scope and communicate outcomes back.
+
+---
+
 ## Governing Principles (non-negotiable — apply throughout)
 
 **P1 — Customer voice is the only primary voice.**
@@ -187,6 +236,17 @@ One blockquote reframing the account's real VoC **in the customer's own terms** 
 not "they want AI" but the operational truth underneath. Then name the single
 product mistake most likely to sink the account, and the specific risk (usually
 workflow translation / adoption, not feature availability).
+
+### Close the Loop — Next Actions (always end here)
+VoC is not done at analysis. End every artifact with:
+- **To backlog** — which CONFIRMED / strongly-BELIEVED VOC ids convert to scope /
+  backlog items now.
+- **To verify first** — which items are gated on the "What we do not know" table
+  before they can be committed.
+- **To report back** — what to communicate to the client (closing the loop: "you
+  said X, here's what we're doing / not doing and why").
+- **Refresh trigger** — when this VoC should be re-run (post go-live, after N
+  weeks live, on a major workflow change) so the mature-account trap doesn't bite.
 
 ---
 
