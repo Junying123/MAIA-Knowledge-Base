@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAIA — Jul–Aug Sprint · Source of Truth</title>
+<style>
+  :root{
+    --bg:#EEF0F3; --surface:#FFFFFF; --ink:#161A21; --muted:#6B7280; --faint:#9AA1AB;
+    --hairline:#DDE1E7; --hairline-strong:#C7CCD4;
+    --prod:#6D48C9; --prod-tint:#EEE9FB;
+    --tech:#0E8F86; --tech-tint:#E0F3F1;
+    --qa:#B9740C;   --qa-tint:#FAEFD9;
+    --client:#3B6EA5; --client-tint:#E7EDF5;
+    --mit:#2E7D46; --mit-tint:#E7F3EA;
+    --block:#C0392B; --block-tint:#FBE7E4;
+    --today:#1E5FCB; --today-tint:#E6EEFB;
+    --crit:#C0392B; --crit-tint:#FBEEEC;
+    --amber:#B25E00; --amber-tint:#FCEFDD;
+    --go:#2E9E5B;
+    --rail:170px; --col:250px; --radius:9px; --phaseH:30px;
+    --mono:ui-monospace,"SF Mono","SFMono-Regular","JetBrains Mono","Roboto Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;}
+
+  .topbar{padding:20px 24px 12px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .title-block h1{margin:0;font-size:19px;letter-spacing:-0.01em;font-weight:650;}
+  .title-block .sub{margin-top:3px;font-family:var(--mono);font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--faint);}
+  .legend{display:flex;gap:13px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:0.02em;color:var(--muted);align-items:center;}
+  .legend .key{display:inline-flex;align-items:center;gap:6px;}
+  .swatch{width:11px;height:11px;border-radius:3px;display:inline-block;}
+  .sw-prod{background:var(--prod);} .sw-tech{background:var(--tech);} .sw-qa{background:var(--qa);}
+  .sw-client{background:var(--client);}
+
+  .goalbar{margin:0 24px 12px;background:var(--ink);color:#fff;border-radius:var(--radius);padding:15px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .gb-flag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.12em;background:var(--go);color:#fff;padding:5px 12px;border-radius:100px;}
+  .gb-text{font-size:22px;font-weight:650;letter-spacing:-0.01em;}
+  .gb-text strong{color:#7BE0A0;}
+  .gb-weeks{margin-left:auto;font-family:var(--mono);font-size:11px;color:#AEB6C2;letter-spacing:0.02em;}
+  @media(max-width:820px){.gb-weeks{margin-left:0;flex-basis:100%;}}
+
+  .actionbar{margin:0 24px 12px;background:var(--amber-tint);border:1px solid #E9C79A;border-left:4px solid var(--amber);border-radius:var(--radius);padding:11px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .ab-pill{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:0.06em;background:var(--amber);color:#fff;padding:4px 10px;border-radius:100px;white-space:nowrap;}
+  .ab-items{display:flex;gap:8px;flex-wrap:wrap;font-size:12.5px;color:#5c3d10;}
+  .ab-items b{color:#3d2908;} .ab-items span{background:#fff;border:1px solid #E9C79A;border-radius:6px;padding:3px 9px;}
+
+  .hardbar{margin:0 24px 12px;background:#FBEEEC;border:1px solid #E7B7B0;border-left:4px solid var(--crit);border-radius:var(--radius);padding:11px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .hb-pill{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:0.06em;background:var(--crit);color:#fff;padding:4px 10px;border-radius:100px;white-space:nowrap;}
+  .hb-items{display:flex;gap:8px;flex-wrap:wrap;font-size:12.5px;color:#6d322b;}
+  .hb-items b{color:#4a201b;} .hb-items span{background:#fff;border:1px solid #E7B7B0;border-radius:6px;padding:3px 9px;}
+
+  .glance{margin:0 24px 12px;background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius);padding:16px 18px;}
+  .glance-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-start;margin-bottom:14px;}
+  .gt-label{font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);margin-bottom:4px;}
+  .gt-north{font-size:15px;font-weight:600;max-width:540px;line-height:1.4;}
+  .gt-north b{color:var(--go);}
+  .gt-target{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .gt-num{font-size:40px;font-weight:750;line-height:1;}
+  .gt-desc{font-size:12px;color:var(--muted);}
+  .gt-conf{font-family:var(--mono);font-size:10px;background:#DCF0E3;color:#1f7a44;padding:4px 8px;border-radius:100px;}
+  .arc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px;}
+  @media(max-width:820px){.arc{grid-template-columns:1fr 1fr;}}
+  .arc-card{border-radius:8px;padding:11px 12px;border:1px solid var(--hairline);}
+  .arc-card.w1{background:#E7EDF5;} .arc-card.w2{background:#EEE9FB;} .arc-card.w3{background:#DFF3EC;} .arc-card.w4{background:#FAEFD9;}
+  .arc-card .aw{font-family:var(--mono);font-size:9.5px;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);}
+  .arc-card .at{font-size:14px;font-weight:650;margin:3px 0 8px;}
+  .arc-card .asub{font-size:11.5px;color:#444;}
+  .split{display:flex;height:20px;border-radius:5px;overflow:hidden;font-family:var(--mono);font-size:9px;font-weight:700;}
+  .split span{display:flex;align-items:center;justify-content:center;color:#fff;}
+  .split .sq{background:var(--qa);} .split .sd{background:var(--tech);}
+  .glance-rules{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;}
+  .glance-rules span{font-size:12px;background:var(--bg);border:1px solid var(--hairline);border-radius:100px;padding:4px 11px;}
+  .glance-foot{font-size:13px;color:#333;font-style:italic;border-top:1px dashed var(--hairline);padding-top:10px;}
+  .card.prin{border-left:3px solid var(--ink);}
+
+  .board-wrap{padding:0 24px 16px;}
+  .priority{margin:0 24px 12px;background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius);padding:12px 14px;}
+  .priority .cap{font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--faint);margin-bottom:8px;}
+  .pcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px 18px;}
+  .pcol{min-width:0;}
+  .pband-h{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);font-weight:700;margin:12px 0 4px;display:flex;align-items:center;gap:8px;}
+  .pband-h:first-child{margin-top:2px;}
+  .pband-h .cnt{background:var(--bg);border:1px solid var(--hairline);border-radius:100px;padding:0 7px;font-size:10px;color:var(--muted);font-weight:600;}
+  .band-top .cnt{background:#DCF0E3;color:#1f7a44;border-color:#bfe3cc;}
+  .band-aug .cnt{background:var(--amber-tint);color:var(--amber);border-color:#E9C79A;}
+  .prow{display:flex;align-items:center;gap:8px;padding:6px 2px;border-bottom:1px solid var(--hairline);flex-wrap:wrap;}
+  .prow:last-child{border-bottom:none;}
+  .prow .n{font-family:var(--mono);font-size:11px;font-weight:600;color:#fff;background:var(--ink);width:21px;height:21px;border-radius:6px;display:grid;place-items:center;flex:0 0 auto;}
+  .prow .nm{font-size:13px;font-weight:550;}
+  .tier{font-family:var(--mono);font-size:9.5px;font-weight:700;border-radius:4px;padding:1px 5px;}
+  .tier-A{background:#DCF0E3;color:#1f7a44;} .tier-B{background:#E7EDF5;color:#3B6EA5;} .tier-C{background:#FCEFDD;color:#b25e00;}
+  .pnote{font-family:var(--mono);font-size:9.5px;color:var(--muted);background:var(--bg);border:1px solid var(--hairline);border-radius:4px;padding:1px 5px;flex-basis:100%;width:max-content;}
+  .own{font-family:var(--mono);font-size:9px;font-weight:700;border-radius:4px;padding:1px 5px;letter-spacing:0.02em;}
+  .own-JYL{background:#E7EDF5;color:#2f5c8a;} .own-GN{background:#EEE9FB;color:#5a3aa0;} .own-WS{background:#FBEEEC;color:#b23b2c;} .own-JM{background:#DFF3EC;color:#116b42;}
+  .owner-card{background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius);padding:11px 13px;}
+  .owner-card .oh{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+  .owner-card .oname{font-weight:650;font-size:13.5px;}
+  .owner-card .ocount{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--bg);border:1px solid var(--hairline);border-radius:100px;padding:1px 8px;}
+  .owner-card .onote{font-size:11px;color:var(--block);font-weight:600;}
+  .oaccts{display:flex;flex-wrap:wrap;gap:5px;}
+  .oa{font-size:12px;background:var(--bg);border:1px solid var(--hairline);border-radius:100px;padding:3px 9px;}
+  .oa-hc{background:var(--amber-tint);border-color:#E9C79A;}
+  .oa .hc{font-family:var(--mono);font-size:8.5px;color:var(--amber);margin-left:5px;text-transform:uppercase;font-weight:700;}
+  .special{margin-top:12px;padding-top:10px;border-top:1px dashed var(--hairline);display:flex;flex-direction:column;gap:6px;}
+  .special .lbl{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--block);}
+  .special .st-chip{font-size:12px;background:var(--block-tint);color:var(--block);border-radius:7px;padding:4px 9px;}
+  .special .st-chip .cover{color:#8a5a52;font-size:11px;}
+
+  .scroll-hint{font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;color:var(--faint);margin:0 0 8px 2px;}
+  .board{overflow-x:auto;overflow-y:hidden;border:1px solid var(--hairline-strong);border-radius:var(--radius);background:var(--surface);}
+  .grid{display:grid;width:max-content;}
+  .cell{border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:9px 11px;min-width:0;}
+  .goal-cell,.track-cell,.mit-cell,.block-cell{white-space:pre-line;}
+
+  .phase-corner{position:sticky;left:0;top:0;z-index:6;height:var(--phaseH);padding:0 11px;display:flex;align-items:center;background:var(--surface);border-right:1px solid var(--hairline-strong);border-bottom:2px solid var(--hairline-strong);}
+  .phase-corner .lab{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--faint);font-weight:600;}
+  .phase-cell{position:sticky;top:0;z-index:4;height:var(--phaseH);padding:0;display:flex;align-items:center;border-right:1px solid var(--hairline-strong);border-bottom:2px solid var(--hairline-strong);}
+  .phase-cell .plab{position:sticky;left:calc(var(--rail) + 10px);padding:0 10px;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap;}
+  .ph-pre{background:#EAECEF;} .ph-pre .plab{color:var(--muted);}
+  .ph-1{background:#E7EDF5;border-bottom-color:var(--client);} .ph-1 .plab{color:#2f5c8a;}
+  .ph-2{background:#EEE9FB;border-bottom-color:var(--prod);} .ph-2 .plab{color:#5a3aa0;}
+  .ph-3{background:#DFF3EC;border-bottom-color:var(--go);} .ph-3 .plab{color:#116b42;}
+  .ph-4{background:#FAEFD9;border-bottom-color:var(--qa);} .ph-4 .plab{color:#8a5c12;}
+
+  .rail-cell{position:sticky;left:0;z-index:3;background:var(--surface);border-right:1px solid var(--hairline-strong);display:flex;flex-direction:column;justify-content:center;gap:2px;}
+  .rail-cell .lab{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;text-transform:uppercase;font-weight:600;}
+  .rail-cell .hint{font-size:10.5px;color:var(--faint);}
+  .rail-prod .lab{color:var(--prod);} .rail-tech .lab{color:var(--tech);} .rail-qa .lab{color:var(--qa);}
+  .rail-client .lab{color:var(--client);} .rail-mit .lab{color:var(--mit);} .rail-block .lab{color:var(--block);}
+
+  .date-cell{position:sticky;top:var(--phaseH);z-index:2;background:var(--surface);border-bottom:1px solid var(--hairline-strong);text-align:left;}
+  .date-cell .dow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);}
+  .date-cell .dnum{font-size:17px;font-weight:650;letter-spacing:-0.01em;line-height:1.1;}
+  .date-cell .mon{font-size:12px;color:var(--muted);font-weight:500;}
+  .tag{display:inline-block;margin-top:5px;font-family:var(--mono);font-size:9.5px;letter-spacing:0.05em;font-weight:600;padding:2px 7px;border-radius:100px;text-transform:uppercase;}
+  .tag-milestone{background:var(--ink);color:#fff;} .tag-crit{background:var(--crit);color:#fff;}
+  .tag-faber{background:var(--qa-tint);color:var(--qa);} .tag-uat{background:var(--tech-tint);color:var(--tech);}
+  .tag-training{background:var(--prod-tint);color:var(--prod);} .tag-buffer{background:var(--bg);color:var(--muted);border:1px solid var(--hairline-strong);}
+  .tag-plain{background:var(--bg);color:var(--muted);}
+
+  .corner{position:sticky;left:0;top:var(--phaseH);z-index:5;background:var(--surface);border-right:1px solid var(--hairline-strong);border-bottom:1px solid var(--hairline-strong);}
+  .corner .brand{font-family:var(--mono);font-size:11px;letter-spacing:0.06em;font-weight:600;}
+  .corner .rng{font-size:10.5px;color:var(--faint);margin-top:2px;}
+
+  .goal-cell{background:#FBFBFC;font-weight:550;font-size:13px;}
+  .track-cell{font-size:12.5px;color:#2A2F38;}
+  .track-cell.prod{background:var(--prod-tint);} .track-cell.tech{background:var(--tech-tint);}
+  .track-cell.qa{background:var(--qa-tint);} .track-cell.client{background:var(--client-tint);}
+  .mit-cell{background:var(--mit-tint);font-size:12px;color:#1f5a33;}
+  .block-cell{background:#FCFAFA;font-size:11.5px;color:var(--block);}
+  .empty{font-size:11px;color:var(--faint);font-style:italic;}
+
+  .weekend .date-cell,.weekend.goal-cell,.weekend.track-cell,.weekend.mit-cell,.weekend.block-cell{background-image:repeating-linear-gradient(45deg,transparent,transparent 6px,rgba(0,0,0,0.018) 6px,rgba(0,0,0,0.018) 12px);}
+  .weekend .dow,.weekend .dnum{color:var(--faint);}
+  .today.date-cell{box-shadow:inset 0 -3px 0 var(--today);}
+  .today.date-cell .dow{color:var(--today);}
+  .col-today{background:var(--today-tint)!important;}
+  .crit.goal-cell{background:var(--crit-tint);box-shadow:inset 3px 0 0 var(--crit);}
+  .month-start{border-left:2px solid var(--ink)!important;}
+  .board:focus-visible{outline:2px solid var(--today);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important;}}
+
+  .refwrap{padding:0 24px 40px;display:flex;flex-direction:column;gap:16px;}
+  .band-cap{font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);margin:6px 2px 0;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+  .card{background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius);padding:12px 14px;}
+  .card h3{margin:0 0 6px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);}
+  .card p{margin:0;font-size:12.5px;color:#333;line-height:1.5;}
+  .card.def{border-left:3px solid var(--client);}
+  .card.warn{border-color:var(--crit);background:var(--crit-tint);} .card.warn h3{color:var(--crit);}
+  .card.appr{border-left:3px solid var(--go);} .card.appr .num{font-family:var(--mono);color:var(--go);font-weight:700;}
+  .cadence{background:var(--surface);border:1px solid var(--hairline);border-left:3px solid var(--qa);border-radius:var(--radius);padding:12px 14px;display:flex;gap:12px;align-items:flex-start;}
+  .cadence.tri{border-left-color:var(--tech);}
+  .cadence .ctime{font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--qa);background:var(--qa-tint);border-radius:6px;padding:5px 9px;white-space:nowrap;}
+  .cadence.tri .ctime{color:var(--tech);background:var(--tech-tint);}
+  .cadence h3{margin:0 0 4px;font-size:13.5px;font-weight:650;}
+  .cadence p{margin:0;font-size:12.5px;color:#333;line-height:1.5;}
+
+  .tb-card{background:var(--surface);border:1px solid var(--hairline);border-left:3px solid var(--tech);border-radius:var(--radius);padding:12px 14px;}
+  .tb-card h3{margin:0 0 5px;font-size:13.5px;font-weight:650;color:var(--ink);}
+  .tb-card p{margin:0 0 8px;font-size:12.5px;color:#333;line-height:1.5;}
+  .tb-pills{display:flex;flex-wrap:wrap;gap:6px;}
+  .tbp{font-family:var(--mono);font-size:10px;letter-spacing:0.02em;padding:2px 8px;border-radius:100px;}
+  .tbp-top{background:var(--crit);color:#fff;font-weight:700;}
+  .tbp-block{background:var(--block-tint);color:var(--block);}
+  .tbp-owner{background:var(--bg);color:var(--muted);border:1px solid var(--hairline);}
+
+  .debt{background:#FBFAF7;border:1px solid #E8E1CE;border-left:4px solid var(--qa);border-radius:var(--radius);padding:6px 4px;}
+  .debt-row{display:flex;gap:12px;padding:9px 12px;border-bottom:1px solid #EFEAD9;align-items:baseline;}
+  .debt-row:last-child{border-bottom:none;}
+  .debt-row .da{font-weight:650;font-size:13px;min-width:150px;color:var(--ink);}
+  .debt-row .dt{font-size:12.5px;color:#5c4a1e;}
+  .debt-tag{font-family:var(--mono);font-size:9.5px;color:var(--qa);background:var(--qa-tint);border-radius:4px;padding:1px 6px;margin-left:auto;white-space:nowrap;}
+
+  .role{background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius);padding:11px 13px;}
+  .role .rh{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:7px;flex-wrap:wrap;}
+  .role .rname{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;text-transform:uppercase;font-weight:700;color:var(--ink);}
+  .role .rnote{font-size:11px;color:var(--muted);}
+  .ppl{display:flex;flex-wrap:wrap;gap:5px;}
+  .p{font-size:12px;background:var(--bg);border:1px solid var(--hairline);border-radius:100px;padding:3px 9px;display:inline-flex;gap:5px;align-items:center;}
+  .p .ptag{font-family:var(--mono);font-size:9px;font-weight:700;padding:1px 5px;border-radius:100px;text-transform:uppercase;}
+  .ptag-remote{background:var(--client-tint);color:var(--client);}
+  .ptag-lock{background:var(--amber-tint);color:var(--amber);}
+  .ptag-soon{background:var(--prod-tint);color:var(--prod);}
+  .role .cover{margin-top:7px;font-size:11px;color:#8a5a52;}
+
+  .q-list{background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius);overflow:hidden;}
+  .q-item{display:grid;grid-template-columns:22px 1fr auto;gap:11px;padding:11px 14px;border-bottom:1px solid var(--hairline);align-items:start;}
+  .q-item:last-child{border-bottom:none;}
+  .q-item .qn{font-family:var(--mono);font-size:11px;font-weight:600;color:#fff;background:var(--qa);width:22px;height:22px;border-radius:5px;display:grid;place-items:center;}
+  .q-item .qtext{font-size:13px;color:#2A2F38;line-height:1.45;}
+  .q-item .qtext strong{color:var(--ink);}
+  .q-meta{display:flex;flex-direction:column;gap:4px;align-items:flex-end;white-space:nowrap;}
+  .pill{font-family:var(--mono);font-size:10px;letter-spacing:0.02em;padding:2px 8px;border-radius:100px;}
+  .pill-owner{background:var(--bg);color:var(--muted);border:1px solid var(--hairline);}
+  .pill-by{background:var(--crit-tint);color:var(--crit);}
+  @media(max-width:640px){.q-item{grid-template-columns:22px 1fr;}.q-meta{grid-column:2;flex-direction:row;align-items:center;}}
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="title-block">
+      <h1>MAIA — Jul&ndash;Aug Sprint &middot; Source of Truth</h1>
+      <div class="sub">The single plan everyone aligns to &middot; 8 Jul &ndash; 6 Aug 2026</div>
+    </div>
+    <div class="legend">
+      <span class="key"><span class="swatch sw-prod"></span>🧩 Product</span>
+      <span class="key"><span class="swatch sw-tech"></span>🛠️ Tech</span>
+      <span class="key"><span class="swatch sw-qa"></span>✅ QA</span>
+      <span class="key"><span class="swatch sw-client"></span>🤝 Client</span>
+      <span class="key">🛡️ Mitigation</span>
+      <span class="key">⚠️ Blocker</span>
+    </div>
+  </header>
+
+  <section class="goalbar">
+    <span class="gb-flag">Goal</span>
+    <span class="gb-text">10 accounts <strong>Go Live</strong> at <strong>100% confidence</strong></span>
+    <span class="gb-weeks">Wk1 Find the gaps &rarr; Wk2 Close the gaps &rarr; Wk3 UATs &middot; Go-Lives &middot; Closure &rarr; Wk4 Hypercare &middot; Training</span>
+  </section>
+
+  <section class="actionbar">
+    <span class="ab-pill">🔒 Lock today · 10 Jul</span>
+    <div class="ab-items">
+      <span><b>Sprint calendar locked</b> + invites out (kickoff 13, showcase 23, training 5–6 Aug)</span>
+      <span><b>Freelance testers engaged</b> — Jessica &amp; Tawfiq confirmed</span>
+      <span><b>Kickoff 13 Jul planned</b> — time + room + invite</span>
+    </div>
+  </section>
+
+  <section class="hardbar">
+    <span class="hb-pill">📌 Hard dates</span>
+    <div class="hb-items">
+      <span><b>Macro Frozen</b> — UAT + training <b>16 Jul</b> · prep by 15th</span>
+      <span><b>SCC</b> — AWS setup by <b>17 Jul</b> · else → August</span>
+      <span><b>SJY Sports</b> — SQL-vendor UAT env by <b>17 Jul</b> · else → August</span>
+      <span><b>Ming Medical</b> — go-live <b>31 Jul</b> · not MAIA (PoC host+upgrade)</span>
+      <span><b>Ananas</b> — trial <b>1 Aug</b> · live <b>15 Aug</b> · inventory use-case must be locked first</span>
+    </div>
+  </section>
+
+  <section class="glance">
+    <div class="glance-top">
+      <div>
+        <div class="gt-label">Plan at a glance</div>
+        <div class="gt-north">Build a self-running <b>delivery engine</b> — this sprint is its first calibration run under load.</div>
+      </div>
+      <div class="gt-target">
+        <span class="gt-num">14</span>
+        <span class="gt-desc">accounts targeted<br>end-Jul → early-Aug</span>
+        <span class="gt-conf">Top 10 committed @ 100% confidence</span>
+      </div>
+    </div>
+    <div class="arc">
+      <div class="arc-card w1"><div class="aw">Week 1 · 13–17 Jul</div><div class="at">Find the holes</div><div class="split"><span class="sq" style="flex:60">QA 60</span><span class="sd" style="flex:40">Dev 40</span></div></div>
+      <div class="arc-card w2"><div class="aw">Week 2 · 20–24 Jul</div><div class="at">Fix the holes</div><div class="split"><span class="sq" style="flex:40">QA 40</span><span class="sd" style="flex:60">Dev 60</span></div></div>
+      <div class="arc-card w3"><div class="aw">Week 3 · 27–31 Jul</div><div class="at">UAT closure</div><div class="asub">UATs · sign-offs · go-lives</div></div>
+      <div class="arc-card w4"><div class="aw">Week 4 · 3–6 Aug</div><div class="at">Hypercare + training</div><div class="asub">load test 3 Aug · mass training 5–6 Aug</div></div>
+    </div>
+    <div class="glance-rules">
+      <span>🚫 No large new builds → slips to Aug</span>
+      <span>🐛 Daily 3pm triage from 14 Jul</span>
+      <span>✅ UAT ≤ 5 days · conditional sign-off</span>
+      <span>🎓 Mass training 5–6 Aug (mandatory)</span>
+      <span>🔒 Dates cannot move</span>
+      <span>🤝 Trust (dev) + Throughput (product)</span>
+    </div>
+    <div class="glance-foot">🚣 <b>Dragon boat</b> — the team paddles together, or the boat doesn't move.</div>
+  </section>
+
+  <section class="priority">
+    <div class="cap">Account priority — ranked 1–18 · owners: <b>JYL</b> Jun Yan Lim &middot; <b>GN</b> Gareth Ng &middot; <b>WS</b> Wan Sin &middot; <b>JM</b> Jermaine</div>
+    <div class="pcols" id="rankList"></div>
+    <div class="special">
+      <span class="lbl">Special treatment</span>
+      <span class="st-chip">Faber &rarr; Wan Sin <span class="cover">· cover: Tharani / Ivan</span></span>
+      <span class="st-chip">Ming &rarr; Jermaine <span class="cover">· not MAIA (PoC) · GL 31 Jul · ETA from Jermaine</span></span>
+    </div>
+  </section>
+
+  <div class="board-wrap">
+    <div class="scroll-hint">&#9668; scroll horizontally &middot; phase + dates + row labels stay pinned &middot; today = 10 Jul &#9658;</div>
+    <div class="board" id="board" tabindex="0" aria-label="Sprint timeline, scrollable">
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <div class="refwrap">
+
+    <div>
+      <div class="band-cap">Daily cadences — the sprint rhythm (on-site focus period · meeting room booked)</div>
+      <div class="cards">
+        <div class="cadence">
+          <div class="ctime">10:30–13:00</div>
+          <div><h3>🧪 QA focus block</h3><p>On-site meeting room booked — protected focus period where the whole team co-works on QA (find gaps Wk1 → fix gaps Wk2). No fragmented context-switching.</p></div>
+        </div>
+        <div class="cadence tri">
+          <div class="ctime">15:00</div>
+          <div><h3>🐛 Tech-leads triage</h3><p>Daily bug triage with tech leads: prune the backlog, prioritise fixes, schedule same-day or next-morning. Leads diagnose → one consolidated ticket → builders clear it. Starts Tue 14 Jul.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="band-cap">Product-side account owners — by owner (load visible) · Holsen &amp; Farmshop already in hypercare</div>
+      <div class="cards" id="owners"></div>
+    </div>
+
+    <div>
+      <div class="band-cap">Tech build — must-have for acceptance &middot; showcased today 2:30pm (goal 100%; Week 1 hunts minor bugs + user blindspots)</div>
+      <div class="cards" id="techbuild"></div>
+    </div>
+
+    <div>
+      <div class="band-cap">Resources at disposal — mobilise for delivery (not all at 100% capacity)</div>
+      <div class="cards" id="roster"></div>
+    </div>
+
+    <div>
+      <div class="band-cap">Agreed resourcing approach (from sprint planning)</div>
+      <div class="cards" id="approach"></div>
+    </div>
+
+    <div>
+      <div class="band-cap">Delivery engine — operating principles (from the SOP · what the sprint calibrates)</div>
+      <div class="cards">
+        <div class="card prin"><h3>Management = checkers, not doers</h3><p>Any product member picks up any account and knows the next step from the SOP — without asking. Mgmt are checkers &amp; stand-ins; they step in only when things derail.</p></div>
+        <div class="card prin"><h3>Three lenses before kickoff</h3><p><strong>Scope-lock</strong> (what we owe) · <strong>VoC</strong> (why they bought) · <strong>end-user process + UAT cases</strong> (how we prove it). Locked before the kickoff, not after.</p></div>
+        <div class="card prin"><h3>UAT checklist upfront</h3><p>Run the test cases past the client <strong>before development</strong> — not authored 1–2 days before UAT. This is the Fixguru-loss fix.</p></div>
+        <div class="card prin"><h3>Per-stage discipline</h3><p>Every stage carries <strong>owner · SLA date · definition-of-done · "if it slips" trigger</strong>. Dates are benchmarks that generate signals — investigate the process, don't blame the person.</p></div>
+        <div class="card prin"><h3>AI accelerates, doesn't replace</h3><p>The PM <strong>owns and iterates</strong> the AI output and embodies the three lenses. Generate-and-assume-done is the failure mode.</p></div>
+        <div class="card prin"><h3>Sales hands over raw materials only</h3><p>Signed proposal + transcripts. Product <strong>self-generates</strong> the narrative + scope-lock — the product lens goes deeper than sales.</p></div>
+        <div class="card prin"><h3>Trust + Throughput</h3><p>Product owns <strong>throughput</strong>; dev owns <strong>trust</strong> = accuracy (UAT/UX) + reliability (deploys don't break what was stable). Dev SOP owned by Jermaine.</p></div>
+        <div class="card prin"><h3>Board numbers + the 57-min check</h3><p>&lt; 8 deployments in flight · &gt; 10 go-lives / month. Every go-live gets the <strong>57-min QC</strong>: sample 20 random customers, tally across both systems — one or two wrong = the whole thing is wrong.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="band-cap">Definitions — lock these so status can't drift</div>
+      <div class="cards">
+        <div class="card def"><h3>Gap</h3><p>A delta preventing UAT acceptance. Triage tags type: <strong>(a) not-built · (b) buggy · (c) client-unconfirmed</strong>.</p></div>
+        <div class="card def"><h3>Clarity</h3><p>Gaps <strong>identified</strong> + clarification questions <strong>dispatched</strong> — NOT answers received.</p></div>
+        <div class="card def"><h3>Done</h3><p>Client-<strong>signed</strong> acceptance. Not "tech ticket closed." Sign-off authority mapped per account.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="band-cap">Standing rules</div>
+      <div class="cards">
+        <div class="card"><h3>QA prereq (per account)</h3><p>Dossier each account can be QA'd cold: <strong>UAT checklist + narrative + CV</strong>, TL;DR. A-accounts prepped first.</p></div>
+        <div class="card"><h3>EOD 3pm triage</h3><p>Leads diagnose the day's bugs &rarr; <strong>one consolidated ticket</strong> &rarr; next-morning resourcing for builders not on QA.</p></div>
+        <div class="card"><h3>Sign-off rule</h3><p>Accept &rarr; go-live. If client insists on testing: <strong>max 5 working days</strong>, then hypercare. UAT = decision-makers only.</p></div>
+        <div class="card"><h3>Fix pod (UAT week)</h3><p>Hold <strong>2&ndash;3 devs back</strong> 27&ndash;29 for UAT-surfaced P1s. Size TBD.</p></div>
+        <div class="card"><h3>Freeze &amp; go-live</h3><p><strong>No handover / no kickoff 13&ndash;24 Jul</strong>; resume after 24. Go-live follows accepted UAT, mid-Aug latest.</p></div>
+        <div class="card"><h3>Hypercare staffing</h3><p>Pre-stage roster vs <strong>Aug leave</strong>: Wan Sin back ~1 wk mid-Aug; Kate from 1 Aug (pending).</p></div>
+        <div class="card"><h3>UAT checklist — pass bar</h3><p>Internal pass = <strong>all blocking gaps removed</strong>. Minor non-blocking gaps &rarr; <strong>clear client plan + committed hypercare fix</strong> before sign-off.</p></div>
+        <div class="card"><h3>Training model</h3><p><strong>One combined session for many clients</strong> (not per-client), office <strong>auditorium</strong>. 5&ndash;6 Aug 2&ndash;5pm; Ivan leads, rest support.</p></div>
+        <div class="card warn"><h3>Fixed dates · weekends = spillover</h3><p>Weekends are <strong>spillover fallback</strong> for slipped work — not planned work. <strong>Dates cannot be moved; missing a date is not acceptable.</strong></p></div>
+        <div class="card warn"><h3>Load-bearing dependency</h3><p>17 Jul gate is client-dependent. Slip &rarr; 27&ndash;31 collapses into August. 15 Jul go/no-go de-risks early.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="band-cap">Open gaps &amp; questions — resolve before they bite</div>
+      <div class="q-list" id="qList"></div>
+    </div>
+
+    <div>
+      <div class="band-cap">⚠️ Known debt — non-blocking, ship AFTER go-live (don't overlook)</div>
+      <div class="debt" id="debt"></div>
+    </div>
+
+  </div>
+
+<script>
+/* ============================================================ SOURCE OF TRUTH — edit the arrays below. */
+const PRIORITIES = [
+  { name:"Mackessen", tier:"A", conf:"Med", owner:"WS" },
+  { name:"Ming Medical", tier:"A", conf:"Med", owner:"JM", note:"not MAIA · GL 31 Jul" },
+  { name:"SJY Sports", tier:"B", conf:"Low", owner:"JYL", note:"SQL-vendor UAT env by 17 Jul → else Aug" },
+  { name:"Dalson", tier:"B", conf:"Med", owner:"GN" },
+  { name:"Ladang Ventures", tier:"B", conf:"Med", owner:"JYL" },
+  { name:"DIY Ventures", tier:"B", conf:"High", owner:"JYL" },
+  { name:"Macro Frozen", tier:"A", conf:"Med", owner:"GN", note:"hard UAT+train 16 Jul" },
+  { name:"Lean Giap", tier:"A", conf:"High", owner:"WS", note:"already in UAT bug-fixing" },
+  { name:"Fixguru", tier:"B", conf:"High", owner:"GN", note:"UX feedback mtg 14/15" },
+  { name:"Ultimax", tier:"B", conf:"High", owner:"JYL", note:"UX feedback mtg 14/15" },
+  { name:"Faber", tier:"B", conf:"Low", owner:"WS", note:"accuracy · prolonged UAT restart, 2 wks from 8th" },
+  { name:"SCC", tier:"A", conf:"Low", owner:"JYL", note:"AWS setup blocked · by 17 Jul → else Aug" },
+  { name:"Custom Medz", tier:"B", conf:"Low", owner:"JYL", note:"pending NDA · med-reg build?" },
+  { name:"Ananas", tier:"B", conf:"Med", owner:"JYL", note:"Trial 1 Aug · Live 15 Aug · lock inventory use-case w/ client" },
+  { name:"Max Fresh", tier:"C", conf:"—", owner:"GN", note:"kickoff + reqs 20th" },
+  { name:"GST", tier:"C", conf:"—", owner:"GN", note:"Branch + Blanket Order modules not ready" },
+  { name:"Leon Fuat", tier:"C", conf:"—", owner:"WS", note:"SAP HANA (no connector) · scope escalation · reqs + build · end-Aug/mid-Sept" },
+  { name:"IASB", tier:"C", conf:"—", owner:"JYL", note:"client unresponsive · Workflow 1.0 build" },
+];
+
+const OWNERS = [
+  { init:"JYL", name:"Jun Yan Lim", accounts:["SCC","DIY Ventures","Custom Medz","Ladang Group","SJY Sports","IASB","Ananas","Ultimax"] },
+  { init:"GN", name:"Gareth Ng", accounts:["GST","Dalson","Macro Frozen","Max Fresh","Fixguru + Calc","Holsen (hypercare)"] },
+  { init:"WS", name:"Wan Sin", note:"remote 20 Jul · leave 21–22 · owns 8", accounts:["Mackessen","Lean Giap + ARAP","Faber Castell","Leon Fuat","Pelangi Awan","Pelangi Voucher","Farmshop (hypercare)","ZUS – Google Review"] },
+  { init:"JM", name:"Jermaine", note:"capacity reduced · owns dev SOP", accounts:["Ming Medical","SSM","Kossan","MH Demo"] },
+];
+
+const PHASES = [
+  { label:"Pre-sprint", span:5, cls:"ph-pre" },
+  { label:"Week 1 · Find the gaps", span:7, cls:"ph-1" },
+  { label:"Week 2 · Close the gaps", span:7, cls:"ph-2" },
+  { label:"Week 3 · UATs · Go-Lives · Closure", span:7, cls:"ph-3" },
+  { label:"Week 4 · Hypercare & Training", span:4, cls:"ph-4" },
+];
+
+const TECHBUILD = [
+  { h:"2-way sync spine", p:"100% data integrity in sync · handles rate limits · will not time out or fail.", pills:[] },
+  { h:"Dual-Use Doctype (Sales Credit Note)", p:"Azib builds the SQL sync adapter after backend is done.", pills:[{t:"TOP priority",c:"top"},{t:"blocks Macro Frozen",c:"block"},{t:"owner: Jermaine",c:"owner"},{t:"Azib: SQL adapter",c:"owner"}] },
+  { h:"UX improvements", p:"Chatbot response tailored to users · mobile-responsive UI.", pills:[] },
+  { h:"Accuracy must-haves", p:"CPO mapping algo optimised · customer retrieval fixed · item retrieval.", pills:[{t:"owners: Ivan, Jermaine, Wei Yon",c:"owner"}] },
+  { h:"Bulk file attachment handling", p:"Handle bulk file attachments end-to-end.", pills:[] },
+];
+
+const DEBT = [
+  { a:"Holsen & Mackessen", t:"Batch Quota Tracking for Tax Exemption" },
+  { a:"Lean Giap", t:"Customer Intelligence Questionnaires" },
+];
+
+const ROSTER = [
+  { role:"Management", note:"repurposable as testers · part-time", people:[{n:"Ivan"},{n:"Zian"},{n:"Johnson"},{n:"Jeremy"},{n:"Jermaine"}] },
+  { role:"Sales (closers)", note:"leverage as needed — testers / client liaison", people:[{n:"Natalie"},{n:"Rose"}] },
+  { role:"Delivery lead", note:"remote 20 Jul (working, not physical) · leave 22–23 · back ~1 wk mid-Aug", people:[{n:"Wan Sin",tag:"remote"}], cover:"Cover: Tharani / Ivan + product-team stand-in for physical-presence activities" },
+  { role:"Incoming PM", note:"from 1 Aug · pending offer", people:[{n:"Kate",tag:"soon"}] },
+  { role:"Junior PMs", note:"own A-account dossier + narrative prep", people:[{n:"Gareth"},{n:"Jun Yan"}] },
+  { role:"Process engineer", note:"can cover delivery lead", people:[{n:"Tharani"}] },
+  { role:"Developers", note:"split: QA vs bug-fix reserve", people:[{n:"Azib"},{n:"Fariha"},{n:"Wei Shen"},{n:"Bryan"},{n:"Haiqal"},{n:"Ash"},{n:"Rahim"},{n:"Ervyn"}] },
+  { role:"Tech leads", note:"diagnose bugs · run UATs", people:[{n:"Wei Yon"},{n:"Afiq"},{n:"Amirul"}] },
+  { role:"Freelance testers", note:"external testers · LOCK BY TMR", people:[{n:"Jessica",tag:"lock"},{n:"Tawfiq",tag:"lock"}] },
+  { role:"Freelance dev", note:"overflow tickets only", people:[{n:"Ale"}] },
+];
+
+const APPROACH = [
+  { h:"Run many tracks, not one", p:"Product unblocks QA and Tech in parallel; capacity flexes across tracks day to day." },
+  { h:"Week 1 = find holes, keep a fix reserve", p:"Majority hunt gaps; a slice of dev capacity stays on urgent bug-fixing — never 100% into QA at once." },
+  { h:"Management + freelancers as testers", p:"Testers need only the test-case set, not the client narrative. Bug-report form auto-links to accounts." },
+  { h:"Leads diagnose, builders fix", p:"Leads triage bugs fast at the EOD sync → one consolidated ticket → builders not on QA clear it next morning." },
+  { h:"Doc-prep is the unlock", p:"Junior PMs generate dossier + narrative for A-accounts so testers start Monday. Product preps for testers first." },
+  { h:"Tech optimises, doesn't build", p:"Weeks 1–2 tech sorts big-size tickets + keeps instance/data up — not new build. Overflow → Ale." },
+  { h:"Tech leads run the UATs", p:"In UAT week leads run sessions; system must be stable enough that no dev standby army is needed." },
+  { h:"Internal-first to 100%", p:"All testing internal before UAT. Scope-lock supersedes ~80% internally so client dependence is minimal." },
+];
+
+const DAYS = [
+  /* 8  Wed */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 9  Thu */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 10 Fri */ { goal:"Lock plan · buy-in · tech showcase · calendar locked", tag:"milestone", tagText:"Showcase 2:30", product:"1pm L10 — Ivan reviews plan w/ management, catch any remaining gaps · align product + leads/mgmt · draft plan + rationale", tech:"11am Tech Prio — Wan Sin pitches plan to tech leads for buy-in · 2:30pm tech showcase — big-ticket build progress (acceptance blockers) · clear staged tickets", qa:"—", client:"Communicate plan + missing activities to all stakeholders (post-meeting)", mit:"Showcase goal = 100% build; minor bugs + user-blindspots → uncover & fix Week 1 · sprint calendar LOCKED · freelancers (Jessica, Tawfiq) locked · kickoff scheduled", blockers:["11am Tech Prio (Wan Sin → tech leads)","1pm L10 (plan review w/ mgmt)","2:30pm tech showcase","Sprint calendar locked today"] },
+  /* 11 Sat */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 12 Sun */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 13 Mon */ { goal:"Kickoff · start finding gaps", tag:"milestone", tagText:"Kickoff", product:"Begin clarity pass = identify gaps per account · Junior PMs start A-account dossiers", tech:"Instance up · data ready", qa:"A-accounts at 100% clarity → start QA now", client:"Draft clarification requests; flag accounts needing client inputs · Macro Frozen: begin prep for hard 16 Jul UAT+train", mit:"Kickoff briefs whole team (leads + product pre-briefed) · Definitions live", blockers:["Kickoff: share 2-wk plan w/ whole team"] },
+  /* 14 Tue */ { goal:"Gaps identified · final account list", tag:"crit", tagText:"Must", critical:true, product:"MUST: all gaps identified on all accounts · FINAL account/client list locked", tech:"—", qa:"—", client:"DISPATCH clarification asks (client ETA Fri 17) · request UAT attendee availability · UX feedback mtg: Fixguru + Ultimax (14/15)", mit:"'Clarity' = gaps identified + questions sent, NOT closed · confirm attendees before locking wave", blockers:["Design/messaging final today","3pm triage cadence starts (daily)"] },
+  /* 15 Wed */ { goal:"Faber merge · QA I · GO/NO-GO", tag:"faber", tagText:"Faber", product:"Dossiers in progress (checklist + narrative + CV TL;DR)", tech:"Big-ticket fixes merged/deployed to Faber", qa:"QA & bugs — round I (1/3) · mgmt + freelancers test off the test-case set", client:"Per-account GO/NO-GO: who can realistically hit 27–31 UAT? · Fixguru/Ultimax UX feedback (14/15)", mit:"Mid-gate: move QA/UAT capacity off no-go accounts early", blockers:["Faber = accuracy-critical","Macro Frozen prep must be done today"] },
+  /* 16 Thu */ { goal:"QA & bugs I · Macro Frozen UAT+train", tag:"crit", tagText:"Macro UAT", critical:true, product:"Dossiers ready for QA", tech:"Fix urgent bugs (load-balanced)", qa:"QA & bugs — round I (2/3)", client:"Macro Frozen UAT + training — HARD date (prep done by 15th) · chase outstanding answers (due tmr)", mit:"Wan Sin action plan: ready product team + Tharani/Ivan to stand in for physical-presence activities (remote 20 Jul, leave 22–23)", blockers:["HARD: Macro Frozen UAT + training"] },
+  /* 17 Fri */ { goal:"HARD GATE — UAT-ready · QA I ends", tag:"crit", tagText:"Gate", critical:true, product:"UAT dates locked & scheduled", tech:"Big tickets cleaned · test data + configs stood up", qa:"QA & bugs — round I (3/3)", client:"CONFIRM per account: test data in · config confirmed · UAT date + attendees locked · external blockers cleared", mit:"Partial-pass OK: accounts failing gate → August cohort, don't hold the wave", blockers:["MUST: all test data (sample orders) + config (role permissions)","UAT dates scheduled","External blockers removed","SCC AWS setup cutoff → Aug if not done","SJY SQL UAT env cutoff → Aug if not done"] },
+  /* 18 Sat */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 19 Sun */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 20 Mon */ { goal:"QA & bugs II · lock showcase agenda", product:"Support gap-closure · LOCK showcase agenda (for 23rd)", tech:"Fix from triage queue (AM)", qa:"QA & bugs — round II (1/3)", client:"Reconfirm UAT attendees for 27–31 (1 wk out)", mit:"Product team + Tharani/Ivan cover physical-presence activities", blockers:["3pm triage (daily)","Wan Sin remote from today (working, not physically present)"] },
+  /* 21 Tue */ { goal:"QA & bugs II", product:"—", tech:"Fix queue", qa:"QA & bugs — round II (2/3)", client:"—", mit:"Cover holds Wan Sin's accounts (on leave)", blockers:["3pm triage","Wan Sin on LEAVE (21–22)"] },
+  /* 22 Wed */ { goal:"QA & bugs II · UAT briefing", tag:"milestone", tagText:"UAT brief", product:"UAT briefing — Ivan → all Leads + UAT conductors (prep for 27–31 wave)", tech:"Fix queue", qa:"QA & bugs — round II (3/3)", client:"—", mit:"Product team stands in for Wan Sin's accounts (on leave)", blockers:["3pm triage","Wan Sin on LEAVE (21–22)"] },
+  /* 23 Thu */ { goal:"Showcase / recap (AM)", tag:"milestone", tagText:"Showcase", product:"Recap readiness · agenda locked on 20th", tech:"Fix showcase issues", qa:"Final sweep", client:"Share showcase outcome w/ relevant stakeholders", mit:"Product team runs showcase physical logistics (Wan Sin remote — not physically present)", blockers:["Internal showcase / recap — morning","Wan Sin remote (not physically present)"] },
+  /* 24 Fri */ { goal:"Showcase fixes · prep UAT week", tag:"buffer", tagText:"Buffer", product:"Address showcase feedback", tech:"Clear showcase fixes", qa:"Verify fixes", client:"Final UAT logistics confirmation per account", mit:"Pre-stage hypercare roster vs Aug leave (Wan Sin back mid-Aug; Kate 1 Aug)", blockers:["Handover/kickoff resume AFTER today"] },
+  /* 25 Sat */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 26 Sun */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 27 Mon */ { goal:"UAT — bulk", tag:"uat", tagText:"UAT", product:"Run UATs (2 slots/day: AM+PM)", tech:"Tech leads run UATs", qa:"Support UAT", client:"UAT — confirmed attendees only", mit:"Fix pod held back (2–3 devs) for UAT-surfaced P1s — not all leads out", blockers:["Bulk UATs 27–29"] },
+  /* 28 Tue */ { goal:"UAT — bulk", tag:"uat", tagText:"UAT", product:"UAT slots AM+PM", tech:"Leads on UAT", qa:"Support", client:"UAT slots", mit:"Fix pod on standby", blockers:[] },
+  /* 29 Wed */ { goal:"UAT — bulk", tag:"uat", tagText:"UAT", product:"UAT slots AM+PM", tech:"Leads on UAT", qa:"Support", client:"UAT slots", mit:"Fix pod on standby", blockers:[] },
+  /* 30 Thu */ { goal:"Go-Live · push sign-offs", tag:"buffer", tagText:"Go-Live", product:"Push sign-offs; overflow UAT", tech:"Standby", qa:"—", client:"Sign-off push; if testing requested, start 5-day clock", mit:"Hypercare users need training — confirm interim plan pre-5 Aug", blockers:["Sign-off: sign today; if client tests → max 5 working days → hypercare"] },
+  /* 31 Fri */ { goal:"Go-Live · Ming (HARD) · sign-offs", tag:"buffer", tagText:"Go-Live", critical:true, product:"Push remaining sign-offs", tech:"Standby", qa:"—", client:"Ming Medical GO-LIVE — HARD date (not MAIA; PoC host+upgrade) · remaining sign-offs / schedule Aug cohort", mit:"—", blockers:["HARD: Ming Medical go-live","Slip → August cohort"] },
+  /* 1  Sat */ { goal:"Ananas — TRIAL DAY", tag:"uat", tagText:"Ananas Trial", critical:true, product:"Ananas trial begins (owner: JYL)", tech:"Support", qa:"—", client:"Ananas trial · inventory use-case must be locked prior", mit:"Trial precedes live on 15 Aug (beyond grid) — ensure inventory use-case locked before this", blockers:["HARD: Ananas trial 1 Aug · Live 15 Aug"] },
+  /* 2  Sun */ { goal:"—", product:"—", tech:"—", qa:"—", client:"—", mit:"—", blockers:[] },
+  /* 3  Mon */ { goal:"Load testing (internal)", tag:"crit", tagText:"Load test", critical:true, product:"Coordinate 'Maya Training Sdn Bhd' simulation · Product QC of final data (readiness before go-live)", tech:"Whole company stress-tests MAIA · monitor leads / load", qa:"Break-test · confirm no breakage", client:"—", mit:"Validates stability before client training · 1-day buffer for fixes", blockers:["Internal training simulation"] },
+  /* 4  Tue */ { goal:"Training prep", product:"Finalise agenda · confirm training dates + attendance (locked beforehand) · book auditorium · Kate joins (pending)", tech:"—", qa:"—", client:"Confirm attendees · send office invite (auditorium)", mit:"—", blockers:[] },
+  /* 5  Wed */ { goal:"Combined client training · Day 1", tag:"training", tagText:"Training", product:"Ivan leads, rest support · 2–5pm", tech:"Support", qa:"—", client:"Multi-client session — Auditorium, clients invited to office · 2–5pm", mit:"One training for many clients (not per-client) — saves time", blockers:["2–5pm · Auditorium · Day 1"] },
+  /* 6  Thu */ { goal:"Combined client training · Day 2", tag:"training", tagText:"Training", product:"Ivan leads, rest support · 2–5pm", tech:"Support", qa:"—", client:"Multi-client session — Auditorium, clients invited to office · 2–5pm", mit:"One training for many clients (not per-client) — saves time", blockers:["2–5pm · Auditorium · Day 2"] },
+];
+
+const QUESTIONS = [
+  { q:"<strong>Kickoff (13 Jul) logistics.</strong> AM or after the product sync? Room booked? Leads + product pre-briefed before the all-team session?", owner:"Ivan / Gareth", by:"10 Jul" },
+  { q:"<strong>Lock freelance testers.</strong> Jessica &amp; Tawfiq — engagement + arrangement confirmed so they can test from Week 1?", owner:"Ivan", by:"10 Jul" },
+  { q:"<strong>Goal count vs the 18-list.</strong> Top-10 band = the go-live target, but SCC / SJY / Faber / Custom Medz / Ananas each carry a live blocker. Which 10 are truly committable?", owner:"Ivan", by:"14 Jul" },
+  { q:"<strong>Macro Frozen hard date.</strong> UAT + training 16 Jul — ahead of the main wave. Prep must finish by 15 Jul, so it can't wait for the 14th list-lock.", owner:"Ivan", by:"13 Jul" },
+  { q:"<strong>Ming Medical timeline.</strong> Not MAIA — host + upgrade PoC, hard go-live 31 Jul. Get ETA + task breakdown from Jermaine to back-plan.", owner:"Jermaine", by:"14 Jul" },
+  { q:"<strong>SCC + SJY external setup by 17 Jul.</strong> Both hinge on outside vendors (AWS; SJY's SQL vendor). Are they committed to the 17th? If not, both drop to August.", owner:"Account owners", by:"15 Jul" },
+  { q:"<strong>Custom Medz NDA / med-reg.</strong> Pending NDA could force build changes for medical-regulation compliance. Review before committing to the July cohort.", owner:"Ivan", by:"16 Jul" },
+  { q:"<strong>UAT attendee availability.</strong> The wave is dated by us, not client calendars. Confirm decision-makers can attend 27–31 before locking on the 17th.", owner:"Account owners", by:"17 Jul" },
+  { q:"<strong>Kate contingency.</strong> Plan leans on Kate (1 Aug) for training/hypercare. Offer pending — fallback if she declines or slips?", owner:"Ivan", by:"~25 Jul" },
+  { q:"<strong>Owner load — Wan Sin &amp; Jun Yan Lim.</strong> Wan Sin owns 8 accounts (incl. Mackessen #1, Faber, Lean Giap) yet is remote 20 Jul + on leave 21–22; Jun Yan Lim also owns 8. Rebalance or name deputies before the 20th.", owner:"Ivan", by:"18 Jul" },
+  { q:"<strong>Sign-off authority per account.</strong> Who actually signs? (e.g. Fixguru = Yvonne + Marcus.) Map before UAT.", owner:"Account owners", by:"24 Jul" },
+];
+
+/* ================= RENDER ================= */
+const START=new Date(2026,6,8), TODAY=new Date(2026,6,10);
+const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const sameDay=(a,b)=>a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();
+
+/* priority — 3 bands, single column */
+PRIORITIES.forEach((p,i)=>p.rank=i+1);
+const cohortC=PRIORITIES.filter(p=>p.tier==='C');
+const julyAll=PRIORITIES.filter(p=>p.tier!=='C');
+const bands=[
+  {title:"Top 10 — go-live target", items:julyAll.slice(0,10), cls:"band-top"},
+  {title:"Beyond 10 (>10)", items:julyAll.slice(10), cls:""},
+  {title:"Next cohort — August", items:cohortC, cls:"band-aug"},
+];
+const rl=document.getElementById('rankList');
+bands.forEach(b=>{
+  const col=document.createElement('div'); col.className='pcol';
+  const h=document.createElement('div'); h.className='pband-h '+b.cls; h.innerHTML=`${b.title} <span class="cnt">${b.items.length}</span>`; col.appendChild(h);
+  b.items.forEach(p=>{const r=document.createElement('div');r.className='prow';r.innerHTML=`<span class="n">${p.rank}</span><span class="nm">${p.name}</span><span class="tier tier-${p.tier}">${p.tier}</span>${p.owner?`<span class="own own-${p.owner}">${p.owner}</span>`:''}${p.note?`<span class="pnote">${p.note}</span>`:''}`;col.appendChild(r);});
+  rl.appendChild(col);
+});
+
+/* board */
+const grid=document.getElementById('grid');
+grid.style.gridTemplateColumns=`var(--rail) repeat(${DAYS.length}, var(--col))`;
+const meta=DAYS.map((_,i)=>{const d=new Date(START);d.setDate(START.getDate()+i);const dow=d.getDay();const p=new Date(START);p.setDate(START.getDate()+i-1);return{d,dow,weekend:(dow===0||dow===6),today:sameDay(d,TODAY),monthStart:(i>0&&d.getMonth()!==p.getMonth())};});
+const cell=(cls,html)=>{const el=document.createElement('div');el.className='cell '+cls;el.innerHTML=html;return el;};
+const tagClass={milestone:'tag-milestone',crit:'tag-crit',faber:'tag-faber',uat:'tag-uat',training:'tag-training',buffer:'tag-buffer',plain:'tag-plain'};
+const wk=i=>meta[i].weekend?' weekend':'', td=i=>meta[i].today?' col-today':'', ms=i=>meta[i].monthStart?' month-start':'';
+function cellText(text,emoji){
+  if(!text||text==='—') return '<span class="empty">—</span>';
+  return (emoji?emoji+' ':'')+text.split(' · ').join('\n');
+}
+
+grid.appendChild(cell('phase-corner','<span class="lab">Phase</span>'));
+PHASES.forEach(p=>{const el=cell('phase-cell '+p.cls,`<span class="plab">${p.label}</span>`);el.style.gridColumn='span '+p.span;grid.appendChild(el);});
+
+grid.appendChild(cell('corner','<div class="brand">MAIA · Q3</div><div class="rng">8 Jul – 6 Aug</div>'));
+DAYS.forEach((day,i)=>{const m=meta[i];const cls='date-cell'+(m.weekend?' weekend':'')+(m.today?' today':'')+ms(i);const tag=(day.tag&&day.tagText)?`<span class="tag ${tagClass[day.tag]||'tag-plain'}">${day.tagText}</span>`:'';grid.appendChild(cell(cls,`<div class="dow">${DOW[m.dow]}</div><div class="dnum">${m.d.getDate()}</div><div class="mon">${MON[m.d.getMonth()]}</div>${tag}`));});
+
+grid.appendChild(cell('rail-cell rail-goal','<span class="lab">🎯 Daily goal</span><span class="hint">what "done" means</span>'));
+DAYS.forEach((day,i)=>{const g=(meta[i].weekend && (!day.goal||day.goal==='—'))?'Spillover buffer (fallback only)':day.goal;grid.appendChild(cell('goal-cell'+wk(i)+td(i)+ms(i)+(day.critical?' crit':''),cellText(g,'🎯')));});
+
+[['prod','🧩 Product','product','🧩'],['tech','🛠️ Tech','tech','🛠️'],['qa','✅ QA','qa','✅'],['client','🤝 Client','client','🤝']].forEach(([key,label,field,emoji])=>{
+  const hint=key==='client'?'<span class="hint">the binding constraint</span>':'';
+  grid.appendChild(cell(`rail-cell rail-${key}`,`<span class="lab">${label}</span>${hint}`));
+  DAYS.forEach((day,i)=>grid.appendChild(cell(`track-cell ${key}`+wk(i)+td(i)+ms(i),cellText(day[field],emoji))));
+});
+
+grid.appendChild(cell('rail-cell rail-mit','<span class="lab">🛡️ Mitigation</span><span class="hint">fix for the risk</span>'));
+DAYS.forEach((day,i)=>grid.appendChild(cell('mit-cell'+wk(i)+td(i)+ms(i),cellText(day.mit,'🛡️'))));
+
+grid.appendChild(cell('rail-cell rail-block','<span class="lab">⚠️ Blockers</span><span class="hint">caveats / risks</span>'));
+DAYS.forEach((day,i)=>{const html=(day.blockers&&day.blockers.length)?day.blockers.map(b=>'⚠️ '+b).join('\n'):'<span class="empty">clear</span>';grid.appendChild(cell('block-cell'+wk(i)+td(i)+ms(i),html));});
+
+/* owners */
+const ownersEl=document.getElementById('owners');
+OWNERS.forEach(o=>{
+  const el=document.createElement('div');el.className='owner-card';
+  const accts=o.accounts.map(a=>{const hc=/hypercare/i.test(a);const nm=a.replace(/\s*\(hypercare\)/i,'');return `<span class="oa${hc?' oa-hc':''}">${nm}${hc?'<span class="hc">hypercare</span>':''}</span>`;}).join('');
+  el.innerHTML=`<div class="oh"><span class="own own-${o.init}">${o.init}</span><span class="oname">${o.name}</span><span class="ocount">${o.accounts.length} accounts</span>${o.note?`<span class="onote">⚠ ${o.note}</span>`:''}</div><div class="oaccts">${accts}</div>`;
+  ownersEl.appendChild(el);
+});
+
+/* tech build */
+const tb=document.getElementById('techbuild');
+TECHBUILD.forEach((t,i)=>{const el=document.createElement('div');el.className='tb-card';const pills=t.pills.map(pp=>`<span class="tbp tbp-${pp.c}">${pp.t}</span>`).join('');el.innerHTML=`<h3>${i+1}. ${t.h}</h3>${t.p?`<p>${t.p}</p>`:''}${pills?`<div class="tb-pills">${pills}</div>`:''}`;tb.appendChild(el);});
+
+/* roster */
+const roster=document.getElementById('roster');
+ROSTER.forEach(r=>{const el=document.createElement('div');el.className='role';const ppl=r.people.map(pp=>`<span class="p">${pp.n}${pp.tag?`<span class="ptag ptag-${pp.tag}">${pp.tag}</span>`:''}</span>`).join('');el.innerHTML=`<div class="rh"><span class="rname">${r.role}</span><span class="rnote">${r.note}</span></div><div class="ppl">${ppl}</div>${r.cover?`<div class="cover">${r.cover}</div>`:''}`;roster.appendChild(el);});
+
+/* approach */
+const appr=document.getElementById('approach');
+APPROACH.forEach((a,i)=>{const el=document.createElement('div');el.className='card appr';el.innerHTML=`<h3><span class="num">${i+1}.</span> ${a.h}</h3><p>${a.p}</p>`;appr.appendChild(el);});
+
+/* questions */
+const qList=document.getElementById('qList');
+QUESTIONS.forEach((it,i)=>{const el=document.createElement('div');el.className='q-item';el.innerHTML=`<span class="qn">${i+1}</span><span class="qtext">${it.q}</span><span class="q-meta"><span class="pill pill-owner">${it.owner}</span><span class="pill pill-by">by ${it.by}</span></span>`;qList.appendChild(el);});
+
+/* debt */
+const debt=document.getElementById('debt');
+DEBT.forEach(d=>{const el=document.createElement('div');el.className='debt-row';el.innerHTML=`<span class="da">${d.a}</span><span class="dt">${d.t}</span><span class="debt-tag">ship post-go-live</span>`;debt.appendChild(el);});
+
+/* center on today */
+const board=document.getElementById('board');const ti=meta.findIndex(m=>m.today);
+if(ti>=0)board.scrollLeft=Math.max(0,170+ti*250-250);
+</script>
+</body>
+</html>
