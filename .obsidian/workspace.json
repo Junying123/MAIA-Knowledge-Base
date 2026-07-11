@@ -114,8 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -264,7 +263,7 @@
                     "name": "zsh 175"
                   }
                 ],
-                "activeId": 173,
+                "activeId": 174,
                 "nextId": 176
               },
               "icon": "terminal",
@@ -316,7 +315,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
