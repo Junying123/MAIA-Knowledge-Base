@@ -214,7 +214,11 @@ have **no scope-lock home yet** — those need David before they can be committe
 | VOC-014 (quotation before order) | — | **no scope-lock item** | ❌ *missing — add to SL-03* |
 | VOC-016, 017 (credit control + override) | SL-04 | LOCKED | ✅ |
 | VOC-019 (sales territory isolation) | SL-05 | LOCKED | ✅ |
-| VOC-004, 023, 025 (picking accountability) | NS-02 | parked (GRN stock entry not for now) | ⚠️ *GRN parked, but accountability/audit-trail need has no home* |
+| VOC-004, 025 (picking accountability) | NS-02 | parked (GRN stock entry not for now) | ⚠️ *GRN parked, but accountability/audit-trail need has no home* |
+| VOC-023 (damage / batch QC photo log) | — | only "issue ticket" mentioned, not scoped | ❌ *no home — see GAP-4* |
+| VOC-028 (SQL vendor access dependency) | — | no dependency section in scope lock | ⚠️ *critical go-live blocker not captured* |
+| VOC-003 (route-based pick grouping) | AS-01 flow | assumed within pick-list process | ⚠️ *not explicit — confirm* |
+| AS-04 (outdoor sales assistant) | AS-04 | SOW-driven | ⚠️ *thin VoC backing — confirm it's wanted* |
 | VOC-015, 029 (catalogue, fixed-format) | AS-02 | Agreed in principle — AC not locked | ✅ (build unlocked) |
 | VOC-018 (pro forma invoice) | NS-04 | RESOLVED — in MAIA now | ✅ |
 | VOC-021 (CN numbering) | AS-03 | Agreed in principle — Finance to align | ✅ |
@@ -227,10 +231,17 @@ have **no scope-lock home yet** — those need David before they can be committe
 | VOC-012 (wholesale/retail segments) | SL-03 | LOCKED (price lists) | ✅ |
 | VOC-002 (item-name fuzzy mapping + learning) | — | assumed Base MAIA (RACK + learn) | ⚠️ *not explicitly scoped — confirm Base* |
 
-### Three signals with no scope-lock home (need David)
+### Four signals with no scope-lock home (need David)
 1. **Picking accountability / audit trail (VOC-004)** — VoC priority **#2**. NS-02 parks *GRN stock entry*, but the real ask (proof of who picked / who checked) is not captured anywhere. The AS-01 pick-list upload carries **weight**, not **attribution**. Decision needed: attach-the-paper vs structured/enforced.
 2. **Quotation generation (VOC-014)** — big customers request quotation first; price-lock vs lower PO. Not in SL-03.
 3. **Cash-from-driver recording (VOC-009)** — finance's Excel cash log; MAIA can absorb it, but SL-02 covers bank/slip matching only.
+4. **Damage / batch QC log (VOC-023)** — warehouse photo-logs damaged/discoloured stock against a batch. Only a generic "issue ticket" was floated in the meeting; not scoped.
+
+### One critical dependency the scope lock omits
+- **SQL vendor access (VOC-028)** — go-live is blocked until the SQL vendor grants integration access. The scope lock has no dependency/blocker section, so this risk lives nowhere. Track it explicitly.
+
+### Confirm — assumed Base MAIA, not explicitly scoped
+- **VOC-002** item-name fuzzy mapping + learning · **VOC-003** route-based pick grouping · **AS-04** outdoor sales assistant (thin VoC backing).
 
 **Everything else is aligned.** Out-of-scope boundaries match exactly (AP, QR settlement, WMS, volume pricing, B2C, blasting).
 
