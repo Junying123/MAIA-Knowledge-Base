@@ -286,7 +286,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 957.5
+    "width": 1176
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -316,7 +316,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Checklist.md",

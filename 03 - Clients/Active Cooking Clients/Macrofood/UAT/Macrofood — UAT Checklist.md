@@ -8,8 +8,9 @@ last_reviewed: 2026-07-12
 
 > Lens 3 deliverable per the Product Onboarding SOP — authored at M3, run by the
 > client at M8 (Core UAT). Tests **only** what the Scope Lock marks LOCKED.
-> Sources: Customer Narrative, Scope Lock v1, VoC Extraction, VoC actor register.
-> All four sources present — no missing-source warning.
+> Sources: Customer Narrative, Scope Lock v1, VoC Extraction, Forensic Account Dossier (2026-06-21).
+> All four sources present — no missing-source warning. **v2 — consolidated with the
+> ChatGPT-generated checklist** (10 valid cases merged, re-anchored to locked scope).
 
 ---
 
@@ -63,8 +64,21 @@ last_reviewed: 2026-07-12
 | U15 | Must-NOT | QR-merchant settlement report uploaded for reconciliation | OOS (QR settlement) |
 | U16 | Must-NOT | MAIA must not **overwrite SQL** as master (customer/item edits) | SL-01 |
 | U17 | Missing/incomplete | Proforma requested but customer record has no billing detail | NS-04, SL-07 |
+| U18 | Missing/incomplete | Order has customer + item but **no quantity** | SL-01, SL-07 |
+| U19 | Invalid input | Warehouse enters negative / non-numeric weight ("-3 kg", "ten box") | AS-01 |
+| U20 | Boundary/limit | Partial payment — RM2,000 against RM5,000 outstanding | SL-02 |
+| U21 | Interruption/wrong state | **SQL sync fails after MAIA says "submitted"** (SQL vendor outage, VOC-028) | SL-01, SL-07 |
+| U22 | Missing/incomplete | Customer has no assigned pricing group | SL-03 |
+| U23 | Invalid input | Price template has wrong columns / negative price / invalid SKU | SL-03 |
+| U24 | Conflict/duplicate | Same SKU appears twice at two prices in the template | SL-03 |
+| U25 | Ambiguity | One phone number → several customer branches/companies | SL-01 |
+| U26 | Missing/incomplete | Price/stock queried but SQL data is missing/stale → must not invent | SL-01, SL-03 |
+| U27 | Wrong actor/permission | Salesperson tries to issue a Credit Note without finance/mgmt rights | SL-07, SL-04 |
+| U28 | Missing/incomplete | Credit Note started with no original invoice or reason | SL-07 |
 
-**Must-NOT cases (highest value):** U5, U11, U13, U14, U15, U16.
+**Must-NOT cases (highest value):** U5, U11, U13, U14, U15, U16, U21 (false-success on sync fail), U26 (don't-invent-data).
+
+*U18–U28 merged from the ChatGPT-generated checklist, re-anchored to LOCKED items.*
 
 ---
 
@@ -97,6 +111,21 @@ last_reviewed: 2026-07-12
 | UP-13 | SL-01 / AS-01 | Unhappy | Must-NOT | Sales/admin | Draft SO not yet confirmed | 1. Create a draft SO. 2. Check SQL before confirming. | Unconfirmed draft | Nothing is pushed to SQL until the SO is confirmed at final weight. |  |  |
 | UP-14 | OOS | Unhappy | Must-NOT | Finance | QR-merchant settlement report | 1. Upload a QR-merchant daily settlement report for reconciliation. | Merchant settlement file | MAIA does not attempt merchant-settlement reconciliation; it stays outside scope (customer-invoice AR only). |  |  |
 | UP-15 | SL-01 | Unhappy | Must-NOT | Sales/admin | — | 1. Try to edit a customer's master record (name/credit) in MAIA. | Master field edit | MAIA does not overwrite SQL as master; edits route to SQL / are not treated as source of truth. |  |  |
+| HP-11 | SL-07 | Happy | — | Finance/admin | Original invoice exists; correction reason agreed | 1. Open the invoice. 2. Choose credit note / correction. 3. Enter reason + adjustment. 4. Submit. | Original invoice {no.}; reason: weight correction | A Credit Note is created referencing the original invoice + reason; PDF viewable. *(CN numbering rule = AS-03, not asserted here.)* |  |  |
+| UP-16 | SL-07 / SL-01 | Unhappy | Missing/incomplete | Sales/admin | Item master loaded | 1. Forward an order with customer + item but **no quantity**. 2. Try to continue. | "AGF wants pork belly skin-on, deliver PJ" (no qty) | MAIA asks for the missing quantity/UOM and keeps the draft incomplete until supplied — does not guess. |  |  |
+| UP-17 | AS-01 | Unhappy | Invalid input | Warehouse/admin | Draft SO for kg-based item | 1. Enter an invalid actual weight. 2. Try to save. | Actual weight: **-3 kg** / "ten box" | MAIA rejects the value, asks for a valid numeric weight/UOM; no amount recalculated from invalid input. |  |  |
+| UP-18 | SL-02 | Unhappy | Boundary/limit | Finance/account | Customer has outstanding | 1. Upload a partial-payment slip. 2. Confirm match. 3. Check outstanding. | Outstanding RM5,000; payment **RM2,000** | MAIA allocates RM2,000 only after confirm and shows **remaining RM3,000** outstanding. |  |  |
+| UP-19 | SL-01 / SL-07 | Unhappy | Interruption/wrong state | Admin/manager | SQL sync temporarily down | 1. Submit / refresh a record while SQL sync is down. 2. Check status. | Simulated SQL vendor / API outage (ref VOC-028) | MAIA shows **sync failure / pending retry** — it does NOT falsely show the record as successfully updated in SQL. |  |  |
+| UP-20 | SL-03 | Unhappy | Missing/incomplete | Sales/admin | Customer has no group | 1. Create draft order for an ungrouped customer. 2. Try to price. | Customer with no wholesale/retail group | MAIA flags the missing group / price rule and requires assignment or an authorised price decision before proceeding. |  |  |
+| UP-21 | SL-03 | Unhappy | Invalid input | David/admin | Price upload active | 1. Upload a bad price template. 2. Review validation. | Missing SKU column, invalid SKU, wrong UOM, negative price | MAIA rejects invalid rows/file with **row-level errors**; existing prices are **not overwritten** by invalid data. |  |  |
+| UP-22 | SL-03 | Unhappy | Conflict/duplicate | David/admin | Price list exists | 1. Upload a template with the same SKU at two prices. 2. Try to confirm. | SKU X repeated @ RM16 and RM18 | MAIA flags the duplicate / conflicting rows and requires correction before the update is accepted. |  |  |
+| UP-23 | SL-01 | Unhappy | Ambiguity | Sales/admin | Two records share a phone | 1. Search / update customer by phone. 2. Try to save. | Phone matches HQ + Branch B | MAIA lists both matches and asks the user to choose — it does NOT auto-update the wrong record. |  |  |
+| UP-24 | SL-01 / SL-03 | Unhappy | Missing/incomplete | Sales rep | Item has no latest data | 1. Ask MAIA for price/stock of an item with no latest data. | Item with stale / missing price | MAIA states the data is unavailable / stale and **does NOT invent** a price or stock figure; it names what's missing. |  |  |
+| UP-25 | SL-07 / SL-04 | Unhappy | Wrong actor/permission | Sales rep | Rep has no CN rights | 1. As a sales rep, try to issue a credit note. | Any submitted invoice | MAIA blocks or routes to finance/management approval; the sales rep cannot independently issue a CN. |  |  |
+| UP-26 | SL-07 | Unhappy | Missing/incomplete | Finance/admin | Invoice exists | 1. Start a credit note. 2. Leave original invoice / reason blank. 3. Try to submit. | Missing reason / reference | MAIA refuses submission and asks for the original invoice + correction reason before the CN can proceed. |  |  |
+| UP-27 | NS-04 | Unhappy | Missing/incomplete | Sales rep | Customer lacks billing detail | 1. Generate a Pro Forma Invoice for a customer with no billing detail. | Customer with no billing address | MAIA flags the missing billing detail; it does NOT generate a blank/invalid proforma. |  |  |
+
+**Consolidation note:** HP-11 + UP-16 → UP-27 merge in the 10 valid cases from the ChatGPT-generated checklist (missing-qty, invalid weight, partial payment, SQL-sync failure, no-group, bad/duplicate price template, phone ambiguity, stale-data, Credit-Note flow) plus the proforma missing-billing case. Each was **re-anchored to a LOCKED scope item** — GPT's originals were anchored to un-locked AIP features (outdoor sales, dashboard) because GPT ran without the Scope Lock. Cases that only fit AIP items (catalogue, dashboard, customer-notes) were NOT imported; they stay in 4b until AC is locked.
 
 ---
 
@@ -106,18 +135,16 @@ last_reviewed: 2026-07-12
 
 | Scope ID | Locked item | Happy | Unhappy | Covered? |
 |---|---|---|---|---|
-| SL-01 | SQL master + item lookup | HP-02 | UP-01, UP-02, UP-13, UP-15 | YES |
-| SL-02 | AR reconciliation | HP-04 | UP-04 | YES |
-| SL-03 | Pricing + enforcement | HP-05, HP-06 | UP-07 | YES |
-| SL-04 | Credit control | HP-07 | UP-05, UP-06 | YES |
+| SL-01 | SQL master + item lookup | HP-02 | UP-01, UP-02, UP-13, UP-15, UP-16, UP-19, UP-23, UP-24 | YES |
+| SL-02 | AR reconciliation | HP-04 | UP-04, UP-18 | YES |
+| SL-03 | Pricing + enforcement | HP-05, HP-06 | UP-07, UP-20, UP-21, UP-22, UP-24 | YES |
+| SL-04 | Credit control | HP-07 | UP-05, UP-06, UP-25 | YES |
 | SL-05 | Sales visibility | HP-08 | UP-10 | YES |
 | SL-06 | One WhatsApp number | HP-01 | UP-11 | YES |
-| SL-07 | SO/DO/Invoice gen | HP-09 | UP-08, UP-09 | YES |
-| AS-01 | Fresh-weight | HP-03 | UP-03, UP-13 | YES |
-| NS-04 | Pro forma | HP-10 | UP-17* | PARTIAL — add a missing-billing-detail case |
-| NS-05 | Approval (generic) | (via HP-07/UP-05 credit route) | UP-06 | PARTIAL — generic non-credit approval not separately locked |
-
-*U17 not yet written as a row — add `UP-16` (proforma with missing billing detail → MAIA flags, doesn't generate a blank doc) to close NS-04 coverage.
+| SL-07 | SO/DO/Invoice + CN gen | HP-09, HP-11 | UP-08, UP-09, UP-16, UP-19, UP-25, UP-26 | YES |
+| AS-01 | Fresh-weight | HP-03 | UP-03, UP-13, UP-17 | YES |
+| NS-04 | Pro forma | HP-10 | UP-27 | YES |
+| NS-05 | Approval (generic) | (via HP-07/UP-05 credit route) | UP-06, UP-25 | PARTIAL — generic non-credit approval not separately locked |
 
 ### 4b. Excluded — not tested, and why (anti-laundering control — do not delete)
 
@@ -144,8 +171,9 @@ last_reviewed: 2026-07-12
 - **NS-04 / NS-05 sign-off gap:** both are "in the product now" but **not formally client-signed** in the Scope Lock. Tested provisionally; confirm sign-off or move to 4b.
 - **NS-03 aging:** scoped as Phase-1 build but not yet live — no test rows until it ships.
 - **SL-07 doctypes:** Credit Note generation is testable (locked doctype), but the CN *numbering* rule (AS-03) is not — kept out per rules.
-- **Add UP-16** (proforma missing billing detail) to close NS-04 traceability to YES.
-- **Source agreement:** Customer Narrative treats GRN stock entry as in-scope (§5.4); Scope Lock parks it (NS-02). **Scope Lock wins** per source-of-truth rule — excluded.
+- **Consolidation done:** merged 10 valid cases from the ChatGPT checklist (now HP-11, UP-16→27). GPT ran **without the Scope Lock** (`MISSING SOURCE: SCOPE_LOCK`) so it over-scoped 4 AIP items (outdoor sales AS-04, customer info AS-05, dashboard AS-06, catalogue AS-02) as LOCKED and left 4b/4c empty. We kept the correct scope spine and re-anchored every imported case to a LOCKED item; AIP-only cases were dropped to 4b.
+- **UP-19 / VOC-028 link:** the SQL-sync-failure case ties to the account's live go-live blocker (SQL vendor access). High-value — keep even though it needs a simulated outage to run.
+- **Source agreement:** Customer Narrative treats GRN stock entry as in-scope (§5.4); Scope Lock parks it (NS-02). **Scope Lock wins** per source-of-truth rule — excluded. Forensic Dossier corroborates (A2.2, A3: "not really a direct feature" for warehouse human error).
 
 ---
 
