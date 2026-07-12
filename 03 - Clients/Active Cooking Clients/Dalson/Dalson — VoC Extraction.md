@@ -94,7 +94,19 @@ last_reviewed: 2026-07-12
 
 ---
 
-## Phase 4 — not used
+## Phase 4 — Synthesis (Evidence Clusters)
+
+Grouping the raw VOC-NNN signals into the handful of underlying problems they actually point to, before interpretation:
+
+| Cluster | VOC ids | Underlying problem |
+|---|---|---|
+| **Operational memory loss** | VOC-011, VOC-012, VOC-019, VOC-020 | POs, DOs, and delivery proof live in scattered WhatsApp threads and paper — nothing is retrievable later without relying on staff memory |
+| **Onboarding friction (customer + item)** | VOC-015, VOC-016, VOC-017, VOC-018, VOC-030 | Both new-customer and new-item creation are blocked behind manual AutoCount key-in, and both happen daily, not occasionally |
+| **Trust in commercial transparency** | VOC-025, VOC-026, VOC-027 | Owner's confidence in the vendor rests on being told costs upfront, not discovering them mid-conversation — resolved 2026-07-12, but the pattern is worth watching for future commercial changes |
+| **Business-rule fidelity vs vendor assumption** | VOC-021, VOC-022, VOC-023, VOC-024 | Owner actively corrects vendor's default assumptions (SO stage, credit-note level, receipts) — real practice diverges from what the vendor's own scope docs assume |
+| **Setup readiness gap** | VOC-028, VOC-029 | Technical comfort level is low enough that written-only onboarding materials will under-serve this account |
+
+These five clusters are what Phase 5's interpretations are built on — each INFERENCE below traces back to one of these clusters, not to isolated VOC ids in a vacuum.
 
 ## Phase 5 — Empathic Interpretation Layer
 
