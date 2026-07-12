@@ -1,10 +1,15 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-11
+last_reviewed: 2026-07-12
+artifact_url: https://claude.ai/code/artifact/2028ed59-4119-4e22-9f11-357068bb85c2
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 ---
 
 # Macrofood (Macro Frozen) × MAIA — Voice of Customer Extraction
+
+> **Team-handoff site (visual overview):** https://claude.ai/code/artifact/2028ed59-4119-4e22-9f11-357068bb85c2
+> **Lark mirror:** https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 
 > Grounded, confidence-scored VoC. Truth source = the 4 June 2026 F2F Requirements
 > Gathering transcript. This is the check against wishful selling: what David and
