@@ -100,7 +100,25 @@ last_reviewed: 2026-07-11
 
 ---
 
-## Phase 4 — not used.
+## Phase 4 — Intermediate Synthesis (Theme Clusters)
+
+Bridge between raw evidence (Phase 2) and priority ranking (Phase 3): the 29 VOC
+signals collapse into **five themes**. Each theme carries an internal tension —
+the thing that makes it hard to build, not just describe.
+
+| Theme | Anchors | What it is | Internal tension (what makes it hard) |
+|---|---|---|---|
+| **T1 — Order is provisional until weight confirmed** | VOC-001, 005, 006, 013, 027 | Everything downstream (DO, invoice, price, SQL push) waits on the real picked weight | MAIA's native flow wants to own the pick list; David insists on his own paper flow + upload confirmed weights. Product bends to him, not reverse |
+| **T2 — Accountability, not automation, is the warehouse ask** | VOC-004, 006, 023, 025 | "10 kg ordered, 8 picked, checker still says 10" — wants proof of who picked/checked | David reaches for a system feature (GRN photo, WMS, batch QC) for a problem he himself calls human process. Must produce an audit trail or it misses the point |
+| **T3 — Pricing is a control plane the business has none of** | VOC-010, 011, 013, 014, 019 | Price lives in ChatGPT images + WhatsApp, not SQL, because "SQL has no enforcement" | The hook that makes David adopt discipline is *enforcement* (floor + customer-specific + quotation lock) — but volume-based pricing can't be enforced, stays manual |
+| **T4 — AR is trust + cash discipline under multi-mode payment noise** | VOC-007, 008, 009, 016, 020, 021 | Transfer + cash + QR-merchant + "one invoice" rule + finance→sales→boss chasing | MAIA auto-matches easy cases, holds human for hard ones — but QR-merchant settlement stays outside. Boundary must be explicit or finance expects magic |
+| **T5 — Presence anxiety drives the catalogue/blast cluster** | VOC-015, 018, 026, 029 | "Competitor sends price every 2–3 hours; we need to show we're active" | Biggest scope-creep risk: open-ended image gen + WhatsApp blasting (bans the number). Anxiety is real; deliverable must be fixed-format, blast expectation killed early |
+
+**Read across the themes:** T1–T4 are the operational spine (Phase-1 core); T5 is
+the commercial itch that will pull scope sideways if unmanaged. The single thread
+through all five: **David is the bottleneck, and every theme is really about
+removing him as the mandatory coordinator** — which is why adoption by warehouse,
+sales, and finance (all thin/absent voices) is the real risk, not feature coverage.
 
 ---
 
@@ -174,6 +192,28 @@ The product mistake that would sink this account: treating it as a generic Whats
 - **To verify first (gated):** pick-list upload format, payer-mismatch data, catalogue variant scope, warehouse adoption — see "What We Do NOT Know."
 - **To report back to David:** confirm what IS in Phase 1 vs parked (aging alert, delivery/POD, WhatsApp blasting = not supported), and why blasting can't be done (number ban). Set the catalogue as fixed-format, not freestyle.
 - **Refresh trigger:** re-run this VoC after go-live once the warehouse user has run real cycles — the warehouse voice is the biggest gap and only real usage closes it.
+
+---
+
+## Appendix — Changes from the Prior VoC
+
+This version supersedes the earlier "Voice of customer - Macrofrozen" draft. What
+changed and why it matters:
+
+| Dimension | Before (prior draft) | Now (this version) | Why it matters |
+|---|---|---|---|
+| **Truth source** | Ran against a mixed "project corpus"; anchors were vague ("F2F transcript opening") | 4 Jun F2F transcript as declared truth source; **every claim cites a line number** | Claims are now verifiable, not paraphrased-from-memory |
+| **Evidence count** | ~20 VOC ids | **29 VOC ids** | Caught 9+ real signals the draft missed |
+| **New signals captured** | — | Quotation-before-order (VOC-014), one-time credit override (VOC-017), CN numbering (VOC-021), aging/expiry alert (VOC-022), damage/batch QC (VOC-023), driver POD photo (VOC-024), once-a-year stock count (VOC-025), WhatsApp-blast-blocked (VOC-026), SQL-master constraint (VOC-027), go-live SQL dependency (VOC-028), team AI ambition (VOC-029) | These are scope-shaping — several are Phase-1 blockers or hard constraints |
+| **Coverage verdict** | "proceed" | **"proceed-with-caveats"** — names warehouse/picker as second-hand | Honest about the biggest evidence gap |
+| **Tables** | Embedded Lark sheets (not line-anchored, not diff-able) | Inline tables with line citations | Reviewable and auditable in-doc |
+| **Phase 4** | Absent | **Intermediate synthesis** — 5 theme clusters with tensions | Bridges evidence → priority; names what makes each hard to build |
+| **Misframing flags** | Warehouse-as-GRN noted | Same, plus **WhatsApp blast = cannot deliver** and **volume pricing = manual only** | Prevents over-promising |
+| **Close-the-loop** | Absent | **Next Actions** (backlog / verify / report-back / refresh-trigger) | VoC now points at a decision + client loop-close, per skill framework |
+
+**Net:** the before-draft was a solid provisional read; this version is
+line-grounded, adds the constraint/blocker signals a scope decision needs, and
+closes the loop instead of stopping at analysis.
 
 ---
 
