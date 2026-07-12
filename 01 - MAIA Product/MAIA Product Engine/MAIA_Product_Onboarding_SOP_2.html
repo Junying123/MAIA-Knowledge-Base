@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MAIA Product Onboarding SOP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --ink:#0f1117; --ink-mid:#3a3d4a; --ink-soft:#6b7080;
+    --canvas:#f8f8fa; --white:#ffffff;
+    --accent:#d63f3f; --accent2:#2a5fde; --border:#e2e3e8;
+    --tag-bg:#fff0f0; --tag-blue:#eef2ff; --tag-green:#ecfdf5;
+    --green:#059669; --amber:#d97706; --amber-bg:#fffbeb; --amber-bdr:#fcd34d;
+    --mat-bg:#f5f3ff; --mat-bdr:#a78bfa; --mat-text:#6d28d9;
+    --tech-bg:#ecfeff; --tech-bdr:#67e8f9; --tech-text:#0e7490;
+    --teal-bg:#f0fdfa; --teal-bdr:#5eead4; --teal-text:#0f766e;
+  }
+  body{ font-family:'Inter',sans-serif; background:var(--canvas); color:var(--ink); padding:44px 32px 96px; line-height:1.5; }
+
+  .page-header{ display:flex; align-items:baseline; gap:14px; margin-bottom:8px; flex-wrap:wrap; }
+  .page-header h1{ font-size:26px; font-weight:700; letter-spacing:-0.5px; }
+  .page-header .arrow{ font-size:20px; color:var(--ink-soft); }
+  .page-header .sub{ font-size:20px; font-weight:600; color:var(--accent2); }
+  .page-subtitle{ font-size:12px; color:var(--ink-soft); margin-bottom:16px; font-family:'JetBrains Mono',monospace; }
+  .legend-item{ white-space:nowrap; }
+
+  .intro{ background:var(--white); border:1px solid var(--border); border-left:4px solid var(--accent2); border-radius:8px; padding:14px 18px; margin-bottom:14px; font-size:12.5px; color:var(--ink-mid); line-height:1.55; }
+  .intro strong{ color:var(--ink); }
+  .note-strip{ margin:0 0 30px; background:var(--tag-green); border:1px solid #6ee7b7; border-radius:8px; padding:11px 16px; font-size:12px; color:var(--ink-mid); display:flex; gap:9px; align-items:flex-start; line-height:1.5; }
+  .note-strip .ns-icon{ color:var(--green); font-size:14px; flex-shrink:0; }
+  .note-strip strong{ color:var(--ink); }
+
+  .divider{ display:flex; align-items:center; gap:12px; margin:48px 0 22px; }
+  .divider-line{ flex:1; height:1px; background:var(--border); }
+  .divider-label{ font-size:10.5px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:var(--ink-soft); white-space:nowrap; }
+  .sub-note{ font-size:12px; color:var(--ink-soft); margin:-8px 0 18px; }
+
+  .chip{ display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:600; padding:2px 7px; border-radius:20px; white-space:nowrap; }
+  .chip-red{ background:#fef2f2; color:var(--accent); border:1px solid #fecaca; }
+  .chip-blue{ background:var(--tag-blue); color:var(--accent2); border:1px solid #c7d7f9; }
+  .chip-green{ background:var(--tag-green); color:var(--green); border:1px solid #6ee7b7; }
+  .chip-gray{ background:#f1f2f5; color:var(--ink-mid); border:1px solid var(--border); }
+  .chip-mat{ background:var(--mat-bg); color:var(--mat-text); border:1px solid var(--mat-bdr); }
+  .chip-tech{ background:var(--tech-bg); color:var(--tech-text); border:1px solid var(--tech-bdr); }
+  .gate-pill{ display:inline-flex; align-items:center; gap:5px; font-size:9.5px; font-weight:700; padding:3px 7px; border-radius:4px; background:var(--mat-text); color:#fff; width:fit-content; letter-spacing:0.4px; }
+  .gate-pill::before{ content:'✦'; font-size:8px; }
+  .gate-pill.review{ background:var(--accent); }
+
+  .band{ margin-bottom:14px; }
+  .band-label{ font-size:9.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:8px; }
+  .role-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .role-card{ background:var(--white); border:1px solid var(--border); border-top:3px solid var(--ink-soft); border-radius:8px; padding:14px 16px; }
+  .role-card.r-prod{ border-top-color:var(--accent2); }
+  .role-card.r-tech{ border-top-color:var(--tech-text); }
+  .role-card.r-chk{ border-top-color:var(--ink-soft); background:#fbfbfd; }
+  .role-card h4{ font-size:13px; font-weight:700; margin-bottom:2px; }
+  .role-card .who{ font-size:10px; color:var(--ink-soft); font-family:'JetBrains Mono',monospace; margin-bottom:8px; }
+  .role-card .desc{ font-size:11.5px; color:var(--ink-mid); line-height:1.5; }
+  .role-card .desc strong{ color:var(--ink); }
+
+  .pipeline-scroll{ overflow-x:auto; padding-bottom:16px; }
+  .pipeline{ display:flex; gap:0; min-width:max-content; align-items:stretch; }
+  .mnode{ width:198px; background:var(--white); border:1px solid var(--border); border-right:none; padding:14px 13px 16px; position:relative; display:flex; flex-direction:column; gap:8px; }
+  .mnode:last-child{ border-right:1px solid var(--border); border-radius:0 8px 8px 0; }
+  .mnode:first-child{ border-radius:8px 0 0 8px; }
+  .mnode:not(:last-child)::after{ content:''; position:absolute; right:-11px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:11px solid transparent; border-bottom:11px solid transparent; border-left:11px solid var(--border); z-index:2; }
+  .mnode:not(:last-child)::before{ content:''; position:absolute; right:-9px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid var(--white); z-index:3; }
+  .mnode.is-gate{ background:var(--mat-bg); border-color:var(--mat-bdr); }
+  .mnode.is-gate:not(:last-child)::before{ border-left-color:var(--mat-bg); }
+  .mnode.is-gate:not(:last-child)::after{ border-left-color:var(--mat-bdr); }
+  .mnode.is-review{ background:#fff7f7; border-color:#f3c7c7; }
+  .mnode.is-review:not(:last-child)::before{ border-left-color:#fff7f7; }
+  .mnode.is-review:not(:last-child)::after{ border-left-color:#f3c7c7; }
+  .mnode.is-live{ background:#f0fdf4; border-color:#a7f3d0; }
+  .mnode .m-num{ font-size:9px; font-weight:600; letter-spacing:1px; color:var(--ink-soft); font-family:'JetBrains Mono',monospace; }
+  .mnode .m-title{ font-size:12.5px; font-weight:700; color:var(--ink); line-height:1.3; }
+  .mnode .m-foot{ display:flex; flex-wrap:wrap; gap:4px; margin-top:auto; }
+
+  .ph{ font-size:9px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; padding:2px 7px; border-radius:20px; white-space:nowrap; }
+  .ph-hand{ background:#fef2f2; color:var(--accent); border:1px solid #fecaca; }
+  .ph-onb{ background:var(--tag-blue); color:var(--accent2); border:1px solid #c7d7f9; }
+  .ph-infra{ background:var(--tech-bg); color:var(--tech-text); border:1px solid var(--tech-bdr); }
+  .ph-qa{ background:var(--mat-bg); color:var(--mat-text); border:1px solid var(--mat-bdr); }
+  .ph-uat{ background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-bdr); }
+  .ph-train{ background:var(--teal-bg); color:var(--teal-text); border:1px solid var(--teal-bdr); }
+  .ph-live{ background:var(--tag-green); color:var(--green); border:1px solid #6ee7b7; }
+  .ph-comm{ background:#f1f2f5; color:var(--ink-mid); border:1px solid var(--border); }
+  .ph-cust{ background:var(--mat-bg); color:var(--mat-text); border:1px dashed var(--mat-bdr); }
+  .sla-pill{ display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; font-family:'JetBrains Mono',monospace; padding:2px 7px; border-radius:4px; background:#fff7ed; color:var(--amber); border:1px solid var(--amber-bdr); }
+  .sla-pill::before{ content:'⏱'; }
+  .phase-legend{ display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+
+  .tbl-wrap{ overflow-x:auto; }
+  table.tbl{ width:100%; border-collapse:collapse; min-width:760px; background:var(--white); border:1px solid var(--border); border-radius:8px; overflow:hidden; font-size:12px; }
+  table.tbl th{ text-align:left; font-size:9.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--ink-soft); padding:10px 13px; background:#fbfbfd; border-bottom:1px solid var(--border); }
+  table.tbl td{ padding:10px 13px; border-bottom:1px solid var(--border); color:var(--ink-mid); vertical-align:top; line-height:1.4; }
+  table.tbl tr:last-child td{ border-bottom:none; }
+  table.tbl .ms{ font-weight:600; color:var(--ink); }
+  table.tbl tr.exec{ background:#f6f9ff; }
+  .clk{ font-size:9px; font-weight:700; padding:1px 6px; border-radius:20px; white-space:nowrap; }
+  .clk-mh{ background:var(--tag-blue); color:var(--accent2); border:1px solid #c7d7f9; }
+  .clk-cl{ background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-bdr); }
+  .clk-par{ background:var(--tech-bg); color:var(--tech-text); border:1px solid var(--tech-bdr); }
+  .gold-band{ margin-top:10px; background:#f6f9ff; border:1px solid #c5d1f7; border-radius:8px; padding:11px 16px; font-size:12px; color:var(--ink-mid); line-height:1.5; }
+  .gold-band strong{ color:var(--accent2); }
+
+  /* PLAYBOOK CARDS */
+  .pb-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .pb{ background:var(--white); border:1px solid var(--border); border-top:3px solid var(--ink-soft); border-radius:9px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
+  .pb.t-hand{ border-top-color:var(--accent); }
+  .pb.t-onb{ border-top-color:var(--accent2); }
+  .pb.t-infra{ border-top-color:var(--tech-text); }
+  .pb.t-qa{ border-top-color:var(--mat-text); }
+  .pb.t-uat{ border-top-color:var(--amber); }
+  .pb.t-train{ border-top-color:var(--teal-text); }
+  .pb.t-live{ border-top-color:var(--green); }
+  .pb.t-comm{ border-top-color:var(--ink-soft); }
+  .pb.t-cust{ border-top-color:var(--mat-bdr); }
+  .pb-head{ display:flex; flex-direction:column; gap:6px; }
+  .pb-titlerow{ display:flex; align-items:baseline; gap:8px; }
+  .pb-num{ font-size:10px; font-weight:700; font-family:'JetBrains Mono',monospace; color:var(--ink-soft); }
+  .pb-title{ font-size:14px; font-weight:700; color:var(--ink); }
+  .pb-badges{ display:flex; flex-wrap:wrap; gap:5px; }
+
+  .pb-goal{ font-size:12px; color:var(--ink); background:var(--tag-blue); border-left:3px solid var(--accent2); border-radius:0 5px 5px 0; padding:8px 11px; line-height:1.5; }
+  .pb-goal .g-label{ font-size:8.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:var(--accent2); display:block; margin-bottom:2px; }
+
+  .pb-time{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; background:#fbfbfd; border:1px solid var(--border); border-radius:6px; padding:7px 11px; }
+  .pb-time::before{ content:'⏱'; color:var(--amber); font-size:12px; }
+  .pb-time .pt-day{ font-size:12px; font-weight:700; font-family:'JetBrains Mono',monospace; color:var(--ink); }
+  .pb-time .pt-detail{ font-size:10.5px; color:var(--ink-soft); flex:1; min-width:120px; }
+
+  .pb-field{ font-size:11.5px; color:var(--ink-mid); line-height:1.5; }
+  .pb-field .f-label{ font-size:8.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:var(--ink-soft); display:block; margin-bottom:3px; }
+  .pb-list{ display:flex; flex-direction:column; gap:4px; }
+  .pb-list .li{ display:flex; gap:7px; align-items:flex-start; font-size:11.5px; color:var(--ink-mid); line-height:1.45; }
+  .pb-list .li::before{ content:'☐'; color:var(--accent2); font-size:11px; flex-shrink:0; }
+  .pb-dod{ background:var(--tag-green); border:1px solid #6ee7b7; border-radius:6px; padding:8px 10px; font-size:11px; color:var(--ink-mid); line-height:1.45; }
+  .pb-dod .f-label{ color:var(--green); }
+  .pb-dod strong{ color:var(--ink); }
+
+  .pb-slip{ display:flex; flex-direction:column; gap:5px; }
+  .pb-slip .f-label{ font-size:8.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:var(--ink-soft); }
+  .slip-actor{ display:flex; gap:8px; align-items:flex-start; font-size:11px; color:var(--ink-mid); line-height:1.45; }
+  .actor-tag{ font-size:8px; font-weight:700; padding:2px 0; border-radius:20px; flex-shrink:0; width:62px; text-align:center; letter-spacing:0.3px; }
+  .at-client{ background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-bdr); }
+  .at-sales{ background:#fef2f2; color:var(--accent); border:1px solid #fecaca; }
+  .at-product{ background:var(--tag-blue); color:var(--accent2); border:1px solid #c7d7f9; }
+  .at-dev{ background:var(--tech-bg); color:var(--tech-text); border:1px solid var(--tech-bdr); }
+
+  .pb-escalate{ display:flex; align-items:flex-start; gap:6px; background:#fef2f2; border:1px solid #fecaca; border-radius:6px; padding:7px 10px; font-size:11px; color:var(--ink-mid); line-height:1.45; margin-top:2px; }
+  .pb-escalate::before{ content:'⇧'; color:var(--accent); font-weight:700; flex-shrink:0; }
+  .pb-escalate .e-label{ font-weight:700; color:var(--accent); }
+
+  /* THREE LENS */
+  .three-col{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .lens-card{ background:var(--white); border:1px solid var(--border); border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:8px; }
+  .lens-card .l-num{ font-size:9.5px; font-weight:700; font-family:'JetBrains Mono',monospace; color:var(--ink-soft); }
+  .lens-card h4{ font-size:13px; font-weight:700; }
+  .lens-card .l-q{ font-size:11.5px; font-style:italic; color:var(--accent2); line-height:1.45; }
+  .lens-card .l-dod{ font-size:11px; color:var(--ink-mid); line-height:1.5; background:var(--tag-green); border:1px solid #6ee7b7; border-radius:6px; padding:8px 10px; }
+  .lens-card .l-dod strong{ color:var(--ink); }
+  .lens-status{ display:flex; flex-direction:column; gap:5px; margin-top:2px; }
+  .lens-status .ls-label{ font-size:8.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:var(--ink-soft); }
+  .ls-row{ display:flex; gap:7px; align-items:flex-start; font-size:10.5px; color:var(--ink-mid); line-height:1.4; }
+  .ls-name{ font-weight:700; color:var(--ink); flex-shrink:0; }
+  .ls-dot{ width:6px; height:6px; border-radius:2px; margin-top:4px; flex-shrink:0; }
+  .d-locked{ background:var(--green); }
+  .d-impl{ background:var(--accent2); }
+  .d-super{ background:var(--ink-soft); }
+  .d-oos{ background:var(--accent); }
+  .d-aip{ background:var(--amber); }
+  .d-needs{ background:var(--accent); outline:2px solid #fecaca; }
+
+  /* HEARTBEAT */
+  .cadence{ display:flex; gap:14px; flex-wrap:wrap; }
+  .cadence-card{ flex:1; min-width:280px; background:#f0f4ff; border:1px solid #c5d1f7; border-left:4px solid var(--accent2); border-radius:8px; padding:14px 18px; }
+  .cadence-card .c-day{ font-size:10px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--accent2); margin-bottom:7px; display:flex; align-items:center; gap:6px; }
+  .cadence-card .c-txt{ font-size:12px; color:var(--ink-mid); line-height:1.5; }
+  .cadence-card strong{ color:var(--ink); }
+  .groom-list{ display:flex; flex-direction:column; gap:4px; margin-top:6px; }
+  .groom-list .gi{ display:flex; gap:7px; align-items:flex-start; font-size:11.5px; color:var(--ink-mid); line-height:1.45; }
+  .groom-list .gi .n{ font-weight:700; color:var(--accent2); font-family:'JetBrains Mono',monospace; flex-shrink:0; }
+  .std-card{ margin-top:6px; background:var(--white); border:1px solid #c5d1f7; border-radius:6px; padding:9px 12px; font-size:11px; color:var(--ink-mid); line-height:1.5; }
+  .std-card strong{ color:var(--ink); }
+  .promise{ display:inline-block; margin-top:8px; font-size:10px; font-weight:700; color:var(--accent); background:#fef2f2; border:1px solid #fecaca; border-radius:20px; padding:2px 9px; }
+  .std-list{ margin-top:14px; background:var(--white); border:1px solid var(--border); border-radius:8px; padding:14px 18px; }
+  .std-list .li{ display:flex; gap:9px; align-items:flex-start; font-size:12px; color:var(--ink-mid); line-height:1.5; padding:5px 0; border-bottom:1px solid #f0f0f4; }
+  .std-list .li:last-child{ border-bottom:none; }
+  .std-list .li::before{ content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; }
+  .std-list .li strong{ color:var(--ink); }
+
+  /* INTEGRATION */
+  .decision{ background:var(--mat-bg); border:1px solid var(--mat-bdr); border-radius:8px; padding:14px 18px; display:flex; gap:10px; align-items:flex-start; font-size:12.5px; color:var(--ink-mid); margin-bottom:12px; line-height:1.5; }
+  .decision .icon{ font-size:16px; flex-shrink:0; }
+  .decision strong{ color:var(--mat-text); }
+  .inprog{ background:var(--amber-bg); border:1px solid var(--amber-bdr); border-left:4px solid var(--amber); border-radius:8px; padding:12px 16px; margin-bottom:16px; font-size:12px; color:var(--ink-mid); line-height:1.55; display:flex; gap:10px; align-items:flex-start; }
+  .inprog .icon{ font-size:15px; flex-shrink:0; }
+  .inprog strong{ color:var(--ink); }
+  .target-badge{ display:inline-block; font-size:10px; font-weight:700; color:#fff; background:var(--amber); border-radius:4px; padding:2px 8px; white-space:nowrap; }
+  .opt-card{ background:var(--white); border:1px solid var(--border); border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:8px; }
+  .opt-card .o-head{ display:flex; align-items:baseline; gap:8px; }
+  .opt-card .o-num{ font-size:9.5px; font-weight:700; letter-spacing:1px; color:var(--ink-soft); font-family:'JetBrains Mono',monospace; }
+  .opt-card h4{ font-size:13px; font-weight:700; }
+  .opt-card .o-desc{ font-size:11.5px; color:var(--ink-mid); line-height:1.5; flex:1; }
+  .opt-card .o-tag{ font-size:9px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; padding:2px 8px; border-radius:20px; width:fit-content; }
+  .o-tag.explore{ background:var(--mat-bg); color:var(--mat-text); border:1px solid var(--mat-bdr); }
+  .o-tag.risk{ background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-bdr); }
+  .o-tag.dep{ background:#fef2f2; color:var(--accent); border:1px solid #fecaca; }
+  .connote{ margin-top:14px; background:#fbfbfd; border:1px solid var(--border); border-left:3px solid var(--tech-text); border-radius:6px; padding:12px 16px; font-size:12px; color:var(--ink-mid); line-height:1.5; }
+  .connote strong{ color:var(--ink); }
+
+  /* OS MAPPING */
+  .os-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .os-tier{ background:var(--white); border:1px solid var(--border); border-right:none; padding:16px 18px; position:relative; }
+  .os-tier:first-child{ border-radius:8px 0 0 8px; }
+  .os-tier:last-child{ border-right:1px solid var(--border); border-radius:0 8px 8px 0; }
+  .os-tier .t-tier{ font-size:9px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--ink-soft); font-family:'JetBrains Mono',monospace; }
+  .os-tier h4{ font-size:13px; font-weight:700; margin:4px 0 6px; }
+  .os-tier .t-desc{ font-size:11.5px; color:var(--ink-mid); line-height:1.5; }
+  .os-tier .t-desc strong{ color:var(--ink); }
+  .os-tier:not(:last-child)::after{ content:'▸'; position:absolute; right:-9px; top:50%; transform:translateY(-50%); color:var(--ink-soft); font-size:13px; background:var(--canvas); z-index:3; }
+
+  .rule-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .rule-card{ background:var(--white); border:1px solid var(--border); border-left:4px solid var(--mat-bdr); border-radius:8px; padding:14px 18px; }
+  .rule-card .r-tag{ font-size:10px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--mat-text); margin-bottom:6px; }
+  .rule-card .r-body{ font-size:12px; color:var(--ink-mid); line-height:1.5; }
+  .rule-card strong{ color:var(--ink); }
+
+  .watchout{ margin-top:40px; background:var(--amber-bg); border:1px solid var(--amber-bdr); border-radius:8px; padding:14px 18px; display:flex; gap:10px; align-items:flex-start; font-size:12.5px; color:var(--ink-mid); }
+  .watchout .icon{ font-size:16px; flex-shrink:0; margin-top:1px; }
+
+  .qa-note{ background:#fbfbfd; border:1px solid var(--border); border-left:3px solid var(--mat-text); border-radius:6px; padding:10px 14px; font-size:12px; color:var(--ink-mid); line-height:1.5; margin-bottom:14px; }
+  .qa-note strong{ color:var(--ink); }
+  .qa-min{ font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--amber); white-space:nowrap; }
+  .outline-box{ background:#fbfbfd; border:1px dashed var(--mat-bdr); border-radius:6px; padding:10px 12px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-mid); line-height:1.65; white-space:pre-wrap; margin-top:10px; }
+  .outline-box .o-cap{ display:block; font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:var(--mat-text); margin-bottom:6px; }
+  @media (max-width:920px){ .pb-grid,.role-grid,.three-col,.rule-grid,.os-grid{ grid-template-columns:1fr; } .os-tier{ border-right:1px solid var(--border); border-radius:8px; margin-bottom:10px;} .os-tier:not(:last-child)::after{display:none;} }
+  @media (max-width:600px){ body{ padding:24px 16px 60px; } }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>MAIA Product Onboarding</h1>
+  <span class="arrow">→</span>
+  <span class="sub">Standard Operating Procedure</span>
+</div>
+<p class="page-subtitle">
+  v1 · Jun 2026 &nbsp;·&nbsp;
+  <span class="legend-item" style="color:var(--mat-text)">🤖 AI-assisted</span> &nbsp;·&nbsp;
+  <span class="legend-item" style="color:var(--mat-text)">✦ Gate — no skip</span> &nbsp;·&nbsp;
+  <span class="legend-item" style="color:var(--amber)">⏱ SLA target</span> &nbsp;·&nbsp;
+  <span class="legend-item" style="color:var(--green)">▸ Definition of Done</span>
+</p>
+
+<div class="intro">
+  <strong>Purpose:</strong> a delivery engine that runs without founders. Any product member can pick up any account and know the next step without asking. <strong>Acceptance test:</strong> a junior PM can run a full onboarding solo using only this SOP. <strong>Management (Ivan, Jermaine, Jeremy, Johnson) are checkers and resource-trap stand-ins — never doers</strong> (one deliberate exception: Ivan + Jermaine review every proposal at send-out). <strong>Q3 target:</strong> Core MAIA gold-standard ≤ 1 week of active execution; clear the delivery backlog first.
+</div>
+
+<div class="note-strip">
+  <span class="ns-icon">✓</span>
+  <div><strong>June cohort onwards — WABA &amp; hosting internalised.</strong> MAIA runs on a Mindhive-owned WhatsApp number, Mindhive-hosted. Client-side WABA setup and the hosting decision are out of onboarding entirely.</div>
+</div>
+
+<!-- ROLE MODEL -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Role Model — Doers vs Checkers</span><div class="divider-line"></div></div>
+<p class="sub-note">Owners are <strong>roles, not people</strong> — so the engine survives any one person leaving. A separate roster maps people → roles and can change without touching this document.</p>
+<div class="band">
+  <div class="band-label">▍ Doers — the engine (Product)</div>
+  <div class="role-grid">
+    <div class="role-card r-prod"><h4>Onboarding PM</h4><div class="who">Senior product doer</div><div class="desc">Owns the client end-to-end: relationship, scope lock, the <strong>quality gate</strong>, UAT sign-off, Tuesday update, and the customisation track per account.</div></div>
+    <div class="role-card r-prod"><h4>Delivery PM ×2</h4><div class="who">Junior product doers</div><div class="desc">Execute steps and own accounts: prerequisites, data coordination, configuration, UAT-checklist drafting, client comms.</div></div>
+    <div class="role-card r-prod"><h4>Process Engineer</h4><div class="who">Incoming · works with Head of Product</div><div class="desc">Owns the <strong>engine, not clients</strong>: the SOP, Lark OS automation, SLA instrumentation, the template/how-to library, friction reduction and quality of each activity.</div></div>
+  </div>
+</div>
+<div class="band">
+  <div class="band-label">▍ Doers — the build (Tech)</div>
+  <div class="role-grid">
+    <div class="role-card r-tech"><h4>Domain Tech Leads</h4><div class="who">Chatbot · Front-end · Back-end</div><div class="desc">Feasibility + build quality in-stack, join high-difficulty scoping, own tech-brief accuracy, co-execute QA.</div></div>
+    <div class="role-card r-tech"><h4>Developers</h4><div class="who">Per stack</div><div class="desc">Build tasks under the leads; hold milestone/ticket responsibilities in the pipeline.</div></div>
+    <div class="role-card r-tech"><h4>Tech · Data &amp; Infra</h4><div class="who">Owners of Data / Environment</div><div class="desc">Data validation + import; instance, hosting, Mindhive WABA, messaging channels, AWS checklist.</div></div>
+  </div>
+</div>
+<div class="band">
+  <div class="band-label">▍ Checkers / stand-ins — NOT on the critical path</div>
+  <div class="role-grid">
+    <div class="role-card r-chk"><h4>Head of Product · CTO</h4><div class="who">Ivan · Jermaine</div><div class="desc">Check, and stand in during a resource trap. The one standing doer-task: <strong>proposal review at send-out</strong>. Escalation target for scope / technical failures.</div></div>
+    <div class="role-card r-chk"><h4>Head of Revenue</h4><div class="who">Jeremy</div><div class="desc">Owns Sales handover quality upstream; escalation target for handover + payment issues.</div></div>
+    <div class="role-card r-chk"><h4>CEO</h4><div class="who">Johnson</div><div class="desc">Escalation of last resort only. A normal week never requires management as doers.</div></div>
+  </div>
+</div>
+
+<!-- MILESTONE BACKBONE -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Milestone Backbone — Signed to Go-Live (Lark Gantt key dates)</span><div class="divider-line"></div></div>
+<div class="pipeline-scroll"><div class="pipeline">
+  <div class="mnode is-review"><span class="m-num">G0</span><span class="m-title">Proposal Review</span><div class="m-foot"><span class="gate-pill review">REVIEW</span><span class="ph ph-hand">Pre-deal</span></div></div>
+  <div class="mnode is-gate"><span class="m-num">M1</span><span class="m-title">Sales → Product Handover</span><div class="m-foot"><span class="gate-pill">GATE 1</span><span class="ph ph-hand">Handover</span><span class="sla-pill">2d</span></div></div>
+  <div class="mnode"><span class="m-num">M2</span><span class="m-title">Kickoff Meeting</span><div class="m-foot"><span class="ph ph-onb">Onboarding</span><span class="sla-pill">≤3d</span></div></div>
+  <div class="mnode is-gate"><span class="m-num">M3</span><span class="m-title">Requirements &amp; Scope Lock</span><div class="m-foot"><span class="gate-pill">GATE 2</span><span class="ph ph-onb">Onboarding</span><span class="sla-pill">D1</span></div></div>
+  <div class="mnode"><span class="m-num">M4</span><span class="m-title">Core Environment Ready</span><div class="m-foot"><span class="ph ph-infra">Infra</span><span class="sla-pill">D2 · 1st</span></div></div>
+  <div class="mnode"><span class="m-num">M5</span><span class="m-title">Core Data Ready</span><div class="m-foot"><span class="ph ph-onb">Onboarding</span><span class="sla-pill">D3 ∥</span></div></div>
+  <div class="mnode"><span class="m-num">M6</span><span class="m-title">Core Configuration Ready</span><div class="m-foot"><span class="ph ph-onb">Onboarding</span><span class="sla-pill">D3 ∥</span></div></div>
+  <div class="mnode is-gate"><span class="m-num">M7</span><span class="m-title">Core Internal QA</span><div class="m-foot"><span class="gate-pill">GATE 3</span><span class="ph ph-qa">QA</span><span class="sla-pill">D4</span></div></div>
+  <div class="mnode is-gate"><span class="m-num">M8</span><span class="m-title">Core UAT</span><div class="m-foot"><span class="gate-pill">GATE 4</span><span class="ph ph-uat">UAT</span><span class="sla-pill">D4–5</span></div></div>
+  <div class="mnode"><span class="m-num">M9</span><span class="m-title">Client Training</span><div class="m-foot"><span class="ph ph-train">Training</span><span class="sla-pill">D5</span></div></div>
+  <div class="mnode is-live"><span class="m-num">M10</span><span class="m-title">Core Go Live</span><div class="m-foot"><span class="ph ph-live">Go Live</span><span class="sla-pill">D5</span></div></div>
+  <div class="mnode"><span class="m-num">M11</span><span class="m-title">Final Invoice / Sub Start</span><div class="m-foot"><span class="ph ph-comm">Commercial</span><span class="sla-pill">≤2d</span></div></div>
+  <div class="mnode"><span class="m-num">M12</span><span class="m-title">Customisations 1..n</span><div class="m-foot"><span class="ph ph-cust">Customisation</span><span class="sla-pill">wk-tracked</span></div></div>
+</div></div>
+<div class="phase-legend">
+  <span class="ph ph-hand">Handover</span><span class="ph ph-onb">Onboarding</span><span class="ph ph-infra">Infra</span><span class="ph ph-qa">QA</span><span class="ph ph-uat">UAT</span><span class="ph ph-train">Training</span><span class="ph ph-live">Go Live</span><span class="ph ph-comm">Commercial</span><span class="ph ph-cust">Customisation</span>
+  &nbsp;&nbsp;<span style="font-size:11px;color:var(--ink-soft)">Sequence: M4 Environment first → M5 Data ∥ M6 Config → M7 QA · D# = day of execution week</span>
+</div>
+
+<!-- SLA BREAKDOWN -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">SLA Targets — Gold Standard (clean account)</span><div class="divider-line"></div></div>
+<p class="sub-note">Vendor clock starts at <strong>signed date</strong>. Each target is marked <span class="clk clk-mh">Mindhive</span> (we control it) or <span class="clk clk-cl">Client</span> (depends on client) — so a slipped date tells you <em>whose</em> bottleneck it is. Highlighted rows are the <strong>1-week execution chain</strong>.</p>
+<div class="tbl-wrap">
+<table class="tbl">
+  <thead><tr><th style="width:30%">Milestone</th><th style="width:16%">Owner (role)</th><th style="width:16%">Target</th><th style="width:14%">Clock</th><th style="width:24%">Note</th></tr></thead>
+  <tbody>
+    <tr><td class="ms">G0 · Proposal Review</td><td>Ivan + Jermaine</td><td>1 day turnaround</td><td><span class="clk clk-mh">Mindhive</span></td><td>Pre-deal; not on vendor clock</td></tr>
+    <tr><td class="ms">M1 · Handover</td><td>Sales</td><td>2 working days</td><td><span class="clk clk-mh">Mindhive</span></td><td>From signed (anchor)</td></tr>
+    <tr><td class="ms">— Prerequisites returned</td><td>Client (PM chases)</td><td>≤5 working days</td><td><span class="clk clk-cl">Client</span></td><td>Questionnaire ≥80% + sample data</td></tr>
+    <tr><td class="ms">M2 · Kickoff</td><td>Onboarding PM</td><td>≤3 wd of handover</td><td><span class="clk clk-cl">Client</span></td><td>Client availability</td></tr>
+    <tr class="exec"><td class="ms">M3 · Requirements &amp; Scope Lock</td><td>Onboarding PM</td><td>Day 1</td><td><span class="clk clk-mh">Mindhive</span></td><td>Signed; zero "needs scoping"; UAT checklist defined</td></tr>
+    <tr class="exec"><td class="ms">M4 · Core Environment Ready</td><td>Tech · Infra</td><td>Day 2 — first</td><td><span class="clk clk-mh">Mindhive</span></td><td>Foundation — Data + Config build on it</td></tr>
+    <tr class="exec"><td class="ms">M5 · Core Data Ready</td><td>Tech · Data (PM coord)</td><td>Day 3</td><td><span class="clk clk-par">Parallel</span></td><td>Runs ∥ with Config, after Environment</td></tr>
+    <tr class="exec"><td class="ms">M6 · Core Configuration Ready</td><td>Onboarding PM / Tech</td><td>Day 3</td><td><span class="clk clk-par">Parallel</span></td><td>Runs ∥ with Data, after Environment</td></tr>
+    <tr class="exec"><td class="ms">M7 · Core Internal QA</td><td>PM = gate · Tech co-exec</td><td>Day 4</td><td><span class="clk clk-mh">Mindhive</span></td><td>Entry: M4+M5+M6 all ready</td></tr>
+    <tr class="exec"><td class="ms">M8 · Core UAT</td><td>Onboarding PM</td><td>Day 4–5</td><td><span class="clk clk-cl">Client</span></td><td>Slot pre-booked at M3</td></tr>
+    <tr class="exec"><td class="ms">M9 · Client Training</td><td>Onboarding PM</td><td>Day 5 (~0.5d)</td><td><span class="clk clk-cl">Client</span></td><td>Async fallback if unavailable</td></tr>
+    <tr class="exec"><td class="ms">M10 · Core Go Live</td><td>PM (client) · Tech (stability)</td><td>Day 5</td><td><span class="clk clk-mh">Mindhive</span></td><td>Hypercare begins</td></tr>
+    <tr><td class="ms">M11 · Final Invoice / Sub Start</td><td>Commercial (PM triggers)</td><td>≤2 wd of go-live</td><td><span class="clk clk-mh">Mindhive</span></td><td>Recurring billing on</td></tr>
+    <tr><td class="ms">M12 · Customisations 1..n</td><td>Onboarding PM</td><td>Per-customisation</td><td><span class="clk clk-mh">Mindhive</span></td><td>Weekly-tracked, same gate subset</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="gold-band">
+  <strong>The 1-week gold standard = the execution chain (M3 signed → M10 go-live) ≈ 5 working days.</strong> Holds only for clean accounts: config-time ready connector, low customisation, responsive client. Handover (2d) and client prerequisite turnaround sit <em>around</em> it. Heavier accounts run the same milestones — the dates stretch. The week leaks at <strong>kickoff scheduling</strong> and <strong>UAT availability</strong>; both pre-booked at scope-lock signing.
+</div>
+
+<!-- PLAYBOOK -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">The Playbook — One Card Per Milestone</span><div class="divider-line"></div></div>
+<p class="sub-note">Each card is self-contained: read it, do it, no asking. In Lark OS each card = a project ticket; checklist items = tasks.</p>
+
+<div class="pb-grid">
+
+  <!-- M1 -->
+  <div class="pb t-hand">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M1</span><span class="pb-title">Sales → Product Handover</span></div>
+      <div class="pb-badges"><span class="gate-pill">GATE 1</span><span class="ph ph-hand">Handover</span><span class="chip chip-red">Owner: Sales</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Product holds everything it needs to run the account with zero re-discovery.</div>
+    <div class="pb-time"><span class="pt-day">2 working days</span><span class="pt-detail">from signed date · Mindhive-controlled</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Deal signed — SOW/proposal signed, invoice paid or terms agreed.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Deliver handover packet: signed SOW/proposal + client handover doc</span>
+        <span class="li">Sales narrative — company background + day-in-the-life from discovery calls</span>
+        <span class="li">Commercial context + client expectations</span>
+        <span class="li">Hand over all recordings / transcripts / contact bank</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Product has <strong>accepted a complete packet</strong>; account created on the Lark log board.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-sales">SALES</span>Deliver any missing packet item same day.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Chase daily; refuse partial acceptance; log status on board.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> handover still incomplete &gt;2 wd after signing → Head of Revenue (Jeremy).</span></div>
+  </div>
+
+  <!-- M2 -->
+  <div class="pb t-onb">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M2</span><span class="pb-title">Kickoff Meeting</span></div>
+      <div class="pb-badges"><span class="ph ph-onb">Onboarding</span><span class="chip chip-blue">Owner: Onboarding PM</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Client + Mindhive aligned on owners, timeline, success criteria and comms channel; UAT signatory named.</div>
+    <div class="pb-time"><span class="pt-day">≤ 3 working days</span><span class="pt-detail">of handover · Client-dependent (availability)</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Handover accepted; internal sales↔product recon done.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Align client stakeholders + Mindhive owners</span>
+        <span class="li">Set onboarding timeline + success criteria; give estimated core go-live date</span>
+        <span class="li">Establish working comms channel (client WhatsApp group)</span>
+        <span class="li">Name client UAT signatory + internal project owner</span>
+        <span class="li">Pre-book UAT + training slots now (where the week leaks)</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Stakeholders, timeline, success criteria, comms channel and <strong>UAT signatory</strong> all confirmed in writing.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Confirm attendees + a slot.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Offer 2 alternate slots; mark client-dependent on board.</div>
+      <div class="slip-actor"><span class="actor-tag at-sales">SALES</span>Use the relationship to unblock scheduling.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> no kickoff scheduled &gt;5 wd after handover → Head of Product.</span></div>
+  </div>
+
+  <!-- M3 -->
+  <div class="pb t-onb">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M3</span><span class="pb-title">Requirements &amp; Scope Lock</span></div>
+      <div class="pb-badges"><span class="gate-pill">GATE 2</span><span class="ph ph-onb">Onboarding</span><span class="chip chip-blue">Owner: Onboarding PM</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>A hyper-clear, signed definition of what it takes to close this client — and the UAT checklist that proves it — with no ambiguity left.</div>
+    <div class="pb-time"><span class="pt-day">Day 1</span><span class="pt-detail">of execution week · Mindhive-controlled (gated by prerequisites)</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Prerequisites in (questionnaire ≥80%, sample data); kickoff held.</div>
+    <div class="pb-field"><span class="f-label">Activities — the 3 product artifacts</span>
+      <div class="pb-list">
+        <span class="li"><strong>Scope Lock</strong> — resolve every item to a terminal status (see lenses below)</span>
+        <span class="li"><strong>Voice of Customer</strong> (🤖) — extract + verify from transcripts</span>
+        <span class="li"><strong>End-user &amp; Process Map</strong> — map real users + workflows AND author the locked UAT checklist upfront</span>
+        <span class="li">Run the lock through live in kickoff; capture client sign-off</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Scope Lock signed — <strong>zero "needs scoping"</strong> (AIP allowed); VoC extraction verified; End-user map + <strong>locked UAT checklist</strong> stored in workspace.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Provide missing info / attend the scoping call.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Book targeted scoping call ≤1 wd; never sign with open scoping items.</div>
+      <div class="slip-actor"><span class="actor-tag at-sales">SALES</span>Leverage relationship to get client responses.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> "needs scoping" items unresolved &gt;1 wd on client non-response → Head of Product.</span></div>
+  </div>
+
+  <!-- M4 ENVIRONMENT (first) -->
+  <div class="pb t-infra">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M4</span><span class="pb-title">Core Environment Ready</span></div>
+      <div class="pb-badges"><span class="ph ph-infra">Infra</span><span class="chip chip-tech">Owner: Tech · Infra</span><span class="chip chip-gray">runs first</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>A live, messaging-ready MAIA instance that Data and Config can build on.</div>
+    <div class="pb-time"><span class="pt-day">Day 2 — first</span><span class="pt-detail">foundation · Mindhive-controlled · precedes Data + Config</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Scope lock signed; account provisioning approved.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Deploy MAIA instance (Mindhive-hosted)</span>
+        <span class="li">Acquire number + configure Mindhive WABA</span>
+        <span class="li">Validate messaging channels</span>
+        <span class="li">Confirm AWS form / checklist</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Instance live, WABA validated, messaging confirmed, AWS checklist signed off.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-dev">DEV/TECH</span>Escalate infra blocker to Domain Tech Lead same day.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Hold Data/Config start until instance exists; adjust board dates.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> instance not live &gt;1 wd → CTO (Jermaine). Infra is the structural long pole — watch it closest.</span></div>
+  </div>
+
+  <!-- M5 DATA (parallel) -->
+  <div class="pb t-onb">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M5</span><span class="pb-title">Core Data Ready</span></div>
+      <div class="pb-badges"><span class="ph ph-onb">Onboarding · Data</span><span class="chip chip-tech">Owner: Tech · Data</span><span class="chip chip-blue">PM coord</span><span class="chip chip-gray">∥ Config</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Verified master data in the instance — the system reflects the client's real world.</div>
+    <div class="pb-time"><span class="pt-day">Day 3</span><span class="pt-detail">parallel with Config · starts once Environment (M4) is live</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Environment ready; sample data received; data structures locked.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Validate → clean → map → import → verify</span>
+        <span class="li">Customer, item, pricing, tax, warehouse, outlet, user data</span>
+        <span class="li">Row-count reconciliation; zero duplicates</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> All master data imported &amp; verified (counts match, zero dupes); validation report closed.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Fix flagged data within 24h.</div>
+      <div class="slip-actor"><span class="actor-tag at-dev">DEV/TECH</span>Send row-level fix list; re-import on fix.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Chase client on the fix-list deadline.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> client data unusable / absent &gt;2 wd → Head of Product + Sales.</span></div>
+  </div>
+
+  <!-- M6 CONFIG (parallel) -->
+  <div class="pb t-onb">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M6</span><span class="pb-title">Core Configuration Ready</span></div>
+      <div class="pb-badges"><span class="ph ph-onb">Onboarding · Config</span><span class="chip chip-blue">Owner: Onboarding PM</span><span class="chip chip-tech">Tech support</span><span class="chip chip-gray">∥ Data</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>MAIA configured to the client's actual workflows + edge cases per the locked scope.</div>
+    <div class="pb-time"><span class="pt-day">Day 3</span><span class="pt-detail">parallel with Data · starts once Environment (M4) is live</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Environment ready; scope lock signed.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Configure company profile, users, roles</span>
+        <span class="li">Warehouse / outlet structure; pricing rules</span>
+        <span class="li">Core workflows + operational edge cases</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> All core config complete per scope lock; edge cases handled.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Reference End-user/Process map; targeted clarification, not a guess.</div>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Clarify ambiguous workflow same day.</div>
+      <div class="slip-actor"><span class="actor-tag at-dev">DEV/TECH</span>Support non-standard configuration.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> a config requirement contradicts the signed scope lock → Head of Product (scope integrity).</span></div>
+  </div>
+
+  <!-- M7 QA -->
+  <div class="pb t-qa">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M7</span><span class="pb-title">Core Internal QA</span></div>
+      <div class="pb-badges"><span class="gate-pill">GATE 3</span><span class="ph ph-qa">QA</span><span class="chip chip-mat">PM = quality gate</span><span class="chip chip-tech">Tech co-exec</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>A build proven correct internally before the client ever sees it.</div>
+    <div class="pb-time"><span class="pt-day">Day 4</span><span class="pt-detail">Mindhive-controlled · entry gate: M4 + M5 + M6 all ready</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition — hard gate</span><strong>Environment + Data + Config ALL ready.</strong> The slowest of the three sets this date — do not start half-baked.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Run the Core Internal QA protocol (defined below) — sampling-based, &lt;1hr</span>
+        <span class="li">One person runs, a different person countersigns</span>
+        <span class="li">Any Fail → stop, log, fix, recount</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> QA passed (no open Fails); reviewer countersigned; status "Ready for UAT". <strong>Product owns this gate.</strong></div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-dev">DEV/TECH</span>Fix Fails; re-run affected sections.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Hold UAT until green; never expose a failing build.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> Fails can't clear in the QA window / systemic defect → CTO (Jermaine).</span></div>
+  </div>
+
+  <!-- M8 UAT -->
+  <div class="pb t-uat">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M8</span><span class="pb-title">Core UAT</span></div>
+      <div class="pb-badges"><span class="gate-pill">GATE 4</span><span class="ph ph-uat">UAT</span><span class="chip chip-blue">Owner: Onboarding PM</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Client validates against the pre-defined (M3) UAT checklist and signs off in writing.</div>
+    <div class="pb-time"><span class="pt-day">Day 4–5</span><span class="pt-detail">Client-dependent · slot pre-booked at M3</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Internal QA passed; UAT signatory named; UAT checklist (from M3) ready.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Client tests against the M3 UAT checklist</span>
+        <span class="li">Real order, invoice, payment, delivery, messaging + exceptions</span>
+        <span class="li">Deployment-blocking issues fixed + retested</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> All UAT checklist items <strong>signed off in writing</strong> by the client signatory.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Complete UAT within the booked slot.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Chase signatory; triage blocker vs non-blocker (non-blockers → post-go-live list).</div>
+      <div class="slip-actor"><span class="actor-tag at-dev">DEV/TECH</span>Fast-fix deployment-blockers, retest.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> client won't sign despite a green checklist / repeated no-shows &gt;1 wd → Head of Product.</span></div>
+  </div>
+
+  <!-- M9 TRAINING -->
+  <div class="pb t-train">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M9</span><span class="pb-title">Client Training</span></div>
+      <div class="pb-badges"><span class="ph ph-train">Training</span><span class="chip chip-blue">Owner: Onboarding PM</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Every user role can actually operate MAIA in their real work.</div>
+    <div class="pb-time"><span class="pt-day">Day 5 (~0.5d)</span><span class="pt-detail">Client-dependent</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>UAT substantially passed.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Train users on real MAIA usage — web app + chatbot</span>
+        <span class="li">Workflows + role-specific responsibilities</span>
+        <span class="li">Sales / finance / logistics roles covered</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Each role trained; training acknowledged.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Record async training as fallback; never block go-live for scheduling.</div>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Nominate users for the session.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> adoption resistance threatens go-live → Head of Product.</span></div>
+  </div>
+
+  <!-- M10 GO LIVE -->
+  <div class="pb t-live">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M10</span><span class="pb-title">Core Go Live</span></div>
+      <div class="pb-badges"><span class="ph ph-live">Go Live</span><span class="chip chip-green">PM (client)</span><span class="chip chip-tech">Tech (stability)</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Client transacting in production on MAIA, monitored and supported.</div>
+    <div class="pb-time"><span class="pt-day">Day 5</span><span class="pt-detail">Mindhive-controlled</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>UAT signed off; training done.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Readiness checklist + access verification</span>
+        <span class="li">Messaging validation; first live transaction monitoring</span>
+        <span class="li">Hypercare begins</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Client transacting in prod; first live transaction monitored OK; hypercare active.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-dev">DEV/TECH</span>Resolve go-live blocker via hypercare triage.</div>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Monitor first transactions; coordinate hypercare.</div>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Run first live transactions.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> production-critical failure at go-live → CTO immediately.</span></div>
+  </div>
+
+  <!-- M11 COMMERCIAL -->
+  <div class="pb t-comm">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M11</span><span class="pb-title">Final Invoice / Subscription Start</span></div>
+      <div class="pb-badges"><span class="ph ph-comm">Commercial</span><span class="chip chip-gray">Owner: Commercial</span><span class="chip chip-blue">PM triggers</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Revenue recognised — final invoice out, recurring billing on, account in support/success.</div>
+    <div class="pb-time"><span class="pt-day">≤ 2 working days</span><span class="pt-detail">of go-live · Mindhive-controlled</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Core go-live confirmed.</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Issue final implementation invoice; confirm payment</span>
+        <span class="li">Start recurring billing</span>
+        <span class="li">Move account into support / success phase</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Final invoice issued, recurring billing active, account in support/success.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Trigger Commercial; supply go-live evidence.</div>
+      <div class="slip-actor"><span class="actor-tag at-sales">SALES</span>Issue invoice; chase payment.</div>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Settle per terms.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> payment dispute / non-payment → Head of Revenue + CEO (a founder-permitted item).</span></div>
+  </div>
+
+  <!-- M12 CUSTOMISATIONS -->
+  <div class="pb t-cust">
+    <div class="pb-head"><div class="pb-titlerow"><span class="pb-num">M12</span><span class="pb-title">Customisations 1..n</span></div>
+      <div class="pb-badges"><span class="ph ph-cust">Customisation</span><span class="chip chip-blue">Owner: Onboarding PM</span></div></div>
+    <div class="pb-goal"><span class="g-label">Key outcome</span>Each contracted customisation delivered live under the same account, on managed timelines.</div>
+    <div class="pb-time"><span class="pt-day">Per-customisation</span><span class="pt-detail">weekly-tracked in product group · Mindhive-controlled</span></div>
+    <div class="pb-field"><span class="f-label">Entry condition</span>Core live; customisation scoped (the "Implementation" items from scope lock).</div>
+    <div class="pb-field"><span class="f-label">Activities</span>
+      <div class="pb-list">
+        <span class="li">Each runs the same gate subset: Scope Lock → Config → QA → UAT → Go Live</span>
+        <span class="li">On its own dates, under the same client account</span>
+        <span class="li">PM manages scope, timeline + risk</span>
+      </div></div>
+    <div class="pb-dod"><strong>Definition of Done:</strong> Each customisation live + signed off; timelines updated weekly in the product group.</div>
+    <div class="pb-slip"><span class="f-label">If slipping</span>
+      <div class="slip-actor"><span class="actor-tag at-product">PRODUCT</span>Re-baseline scope; update weekly timeline; never bundle into the core week.</div>
+      <div class="slip-actor"><span class="actor-tag at-dev">DEV/TECH</span>Flag build overruns early.</div>
+      <div class="slip-actor"><span class="actor-tag at-client">CLIENT</span>Sign off per customisation.</div>
+    </div>
+    <div class="pb-escalate"><span><span class="e-label">Escalate:</span> scope balloons beyond contract / timeline repeatedly slips → Head of Product.</span></div>
+  </div>
+
+</div>
+
+<!-- 3 LENSES -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Product's Definition of the Client — 3 Lenses (at M3)</span><div class="divider-line"></div></div>
+<div class="three-col">
+  <div class="lens-card">
+    <span class="l-num">LENS 1</span><h4>Scope Lock</h4>
+    <div class="l-q">"What do we owe to close this client?"</div>
+    <div class="l-dod"><strong>Done when:</strong> every item resolved to a status below; <strong>zero "needs scoping"</strong> (AIP allowed); client signed.</div>
+    <div class="lens-status"><span class="ls-label">Scope statuses</span>
+      <div class="ls-row"><span class="ls-dot d-locked"></span><span><span class="ls-name">Locked</span> — confirmed, in this core build.</span></div>
+      <div class="ls-row"><span class="ls-dot d-impl"></span><span><span class="ls-name">Implementation</span> — confirmed, scheduled as a later customisation.</span></div>
+      <div class="ls-row"><span class="ls-dot d-super"></span><span><span class="ls-name">Superseded</span> — replaced by a newer agreed decision.</span></div>
+      <div class="ls-row"><span class="ls-dot d-oos"></span><span><span class="ls-name">Out of scope</span> — explicitly excluded, client-acknowledged.</span></div>
+      <div class="ls-row"><span class="ls-dot d-aip"></span><span><span class="ls-name">Agreement in principle</span> — directionally agreed, detail pending. <em>Allowed at lock.</em></span></div>
+      <div class="ls-row"><span class="ls-dot d-needs"></span><span><span class="ls-name">Needs scoping</span> — unresolved. <strong>Must be zero</strong> before sign.</span></div>
+    </div>
+  </div>
+  <div class="lens-card">
+    <span class="l-num">LENS 2</span><h4>Voice of the Customer</h4>
+    <div class="l-q">"What matters most — never lose sight of it."</div>
+    <div class="l-dod"><strong>Done when:</strong> the full complete narrative is present <em>and</em> the VoC extraction document is present — extracted from conversation + meeting transcripts and <strong>verified</strong>. Stands as the per-account north star for every build decision.</div>
+  </div>
+  <div class="lens-card">
+    <span class="l-num">LENS 3</span><h4>End-user &amp; Process Map</h4>
+    <div class="l-q">"How will it actually be used — and how do we prove it?"</div>
+    <div class="l-dod"><strong>Done when:</strong> real end users named + contacted (sales/finance/logistics); order intake, documents and step-by-step order-taking captured; <strong>and a locked-in UAT checklist</strong> with all test cases defining how each user will use the system. Product defines this checklist <strong>upfront</strong> — it is the proof of full clarity on the end goal.</div>
+  </div>
+</div>
+
+<!-- CORE INTERNAL QA -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Core Internal QA — What Gets Tested (M7)</span><div class="divider-line"></div></div>
+<p class="sub-note">Owned by Product as the gate; Tech co-executes. <strong>Sampling-based — not 100% coverage.</strong> The samples below are the repeatable guidance. <strong>One junior PM completes the full pass in under 1 hour.</strong> One person runs, a second countersigns — no self-approval. Mark each block Pass / Fail / Flag; any Fail → stop, log, fix, recount.</p>
+<div class="qa-note"><strong>Boundary:</strong> this is the <strong>internal</strong> gate — build proven correct before the client ever sees it. It is separate from <strong>Core UAT (M8)</strong>, which the client runs against the UAT checklist authored at M3.</div>
+<div class="tbl-wrap">
+<table class="tbl">
+  <thead><tr><th style="width:4%">#</th><th style="width:17%">What to test</th><th style="width:11%">Sample</th><th style="width:36%">Method — the defined step</th><th style="width:24%">Pass criteria</th><th style="width:8%">~min</th></tr></thead>
+  <tbody>
+    <tr><td class="ms">1</td><td class="ms">Messaging alive</td><td>3 messages</td><td>From a test number on the live channel, send a greeting + one stock query + one price query.</td><td>MAIA replies coherently and on-topic to all 3 within seconds.</td><td><span class="qa-min">2</span></td></tr>
+    <tr><td class="ms">2</td><td class="ms">Customer data — accuracy &amp; query</td><td>20 random customers</td><td>Pull 20 at random. Cross-check each against AutoCount / SQL / 3rd-party: code, name, <strong>credit limit, credit exposure / outstanding</strong>, payment terms, contacts, addresses, metadata. Then query 3 via chat ("credit for {X}").</td><td>All 20 tally exactly — <strong>zero tolerance on credit limit + exposure</strong>. Chat figures match source.</td><td><span class="qa-min">14</span></td></tr>
+    <tr><td class="ms">3</td><td class="ms">Item data — accuracy</td><td>20 random SKUs</td><td>Pull 20 at random. Cross-check code, name, UOM + conversion factor, standard price, a customer-specific price (spot), stock level per warehouse.</td><td>All 20 tally. Pricing + stock exact; UOM conversions correct.</td><td><span class="qa-min">11</span></td></tr>
+    <tr><td class="ms">4</td><td class="ms">Purchase order intake</td><td>20 sample POs</td><td>Batch-feed 20 real client POs. Check AI extraction (customer / items / qty / date) on all; deep-check item-matching + QT/SO conversion on 5.</td><td>Extraction accurate; items matched to master; no phantom or missing lines.</td><td><span class="qa-min">10</span></td></tr>
+    <tr><td class="ms">5</td><td class="ms">Customer order queries</td><td>20 queries</td><td>Across the sampled customers, run 20 chat queries: stock check, price check, order status, credit check, last-invoice.</td><td>Correct, customer-scoped answers; <strong>no cross-entity leakage</strong>.</td><td><span class="qa-min">8</span></td></tr>
+    <tr><td class="ms">6</td><td class="ms">Pricing &amp; credit logic</td><td>3 scenarios</td><td>(a) QT for a customer with a special price → special auto-applies; (b) null-price item → submit blocked + notification fires; (c) order at/above credit limit → block / approval routes to the right role.</td><td>All 3 behave per config; audit trail records the action.</td><td><span class="qa-min">6</span></td></tr>
+    <tr><td class="ms">7</td><td class="ms">Document output</td><td>1 each: QT / SO / Invoice / DO</td><td>Generate one of each PDF. Visual check: header, logo, customer, line items, totals, tax.</td><td>All render correctly; no broken or blank required fields.</td><td><span class="qa-min">3</span></td></tr>
+    <tr><td class="ms">8</td><td class="ms">Role &amp; permission spot</td><td>2 role logins</td><td>Log in as a Sales user and a Logistics user. Confirm can-create + cannot-access boundaries; multi-entity → no cross-company data.</td><td>Boundaries hold; no data leakage.</td><td><span class="qa-min">3</span></td></tr>
+  </tbody>
+</table>
+</div>
+<div class="gold-band"><strong>Total &asymp; 57 min &middot; one junior PM.</strong> Mark Pass / Fail / Flag per block; countersigned by a second person. This is guidance-by-sampling, not exhaustive coverage — the credit &amp; pricing blocks carry the heaviest sample because that is where a day-one error hurts the client most.</div>
+
+<!-- HEARTBEAT -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Always-Do Standards — The Weekly Heartbeat</span><div class="divider-line"></div></div>
+<div class="cadence">
+  <div class="cadence-card">
+    <div class="c-day">📋 Every Monday — Account Grooming</div>
+    <div class="c-txt">For <strong>every account</strong>, each PM must be hyper-clear on 4 things. This feeds Tuesday and surfaces slippage before it becomes a fire.</div>
+    <div class="groom-list">
+      <div class="gi"><span class="n">1.</span><span><strong>Current state</strong> — where the account actually is right now.</span></div>
+      <div class="gi"><span class="n">2.</span><span><strong>Milestones</strong> — with date clarity (target vs actual).</span></div>
+      <div class="gi"><span class="n">3.</span><span><strong>Blockers</strong> — with date clarity (since when, until when).</span></div>
+      <div class="gi"><span class="n">4.</span><span><strong>Next action</strong> — named, for each of Client / Product / Tech / Sales.</span></div>
+    </div>
+    <div class="outline-box"><span class="o-cap">Sample outline — grooming entry (internal)</span>{Client} — {current milestone}
+① State:     {one line — where it actually is}
+② Milestone: {next} · target {d} / actual {d | on-track}
+③ Blocker:   {what} · since {d} · needs {who} by {d}
+④ Next action
+   Client  → {action / date}
+   Product → {action / date}
+   Tech    → {action / date}
+   Sales   → {action / date}</div>
+  </div>
+  <div class="cadence-card">
+    <div class="c-day">📅 Every Tuesday — Client Status Update</div>
+    <div class="c-txt">Sent to the client. Progress last week · open items needing action (with owners) · next-week plan with important dates locked in.</div>
+    <div class="std-card"><strong>Standard:</strong> an easily digestible, readable, actionable message sent directly into the <strong>client WhatsApp group</strong> — not a buried doc.</div>
+    <div class="outline-box"><span class="o-cap">Sample outline — Tuesday WhatsApp update</span>[MAIA] {Client} · Weekly Update — {date}
+
+✅ Progress (last week)
+   • {what shipped / milestone hit}
+
+🔧 Needs action
+   • {item} — {owner} — by {date}
+
+📅 This week
+   • {milestone} — target {date}
+
+📌 Locked dates
+   • UAT {date} · Go-live {date}</div>
+    <span class="promise">★ This is a promise — it does not slip</span>
+  </div>
+</div>
+<div class="std-list">
+  <div class="li"><strong>Every client meeting → summary within 24h:</strong> findings, learnings, feedback/blockers, action points with owners and dates.</div>
+  <div class="li"><strong>Deploy Core MAIA first, always.</strong> Customisations scheduled on separate dates later — PM owns their scope, timeline and risk under the same account.</div>
+  <div class="li"><strong>Every artifact lives in the account workspace.</strong> Nothing important sits only in a person's head or DMs.</div>
+  <div class="li"><strong>Every scope decision cites its source</strong> (transcript / SOW / kickoff note) — no laundering of unconfirmed assumptions into the lock.</div>
+  <div class="li"><strong>No self-approval on QA.</strong> One runs, a different person countersigns.</div>
+  <div class="li"><strong>Client comms flow through the Account/Onboarding PM</strong> — one voice to the client.</div>
+</div>
+
+<!-- INTEGRATION -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Integration Readiness — 3 Paths · Decision In Progress</span><div class="divider-line"></div></div>
+<div class="inprog">
+  <span class="icon">🚧</span>
+  <div><strong>IN PROGRESS — being finalised.</strong> We are working out the full decision tree / paths / permutations for integration readiness and the impact to <strong>client, Mindhive, and internal teams</strong>. &nbsp;<span class="target-badge">Target to finalise &amp; reflect here: 8 July 2026</span></div>
+</div>
+<div class="decision">
+  <span class="icon">◈</span>
+  <div>Until finalised, <strong>integration access is the live blocker</strong> on integration-dependent scope (M3 + M4). Direction of travel mirrors WABA — internalise the dependency (Option 2). Owner: Product coordinates, Tech validates the path connects; triggered at SOW signing.</div>
+</div>
+<div class="three-col">
+  <div class="opt-card"><div class="o-head"><span class="o-num">OPT 1</span><h4>Client sandbox</h4></div><div class="o-desc">Client's IT vendor stands up a sandbox; production data replicated. Most faithful to reality.</div><span class="o-tag dep">Depends on client IT vendor</span></div>
+  <div class="opt-card"><div class="o-head"><span class="o-num">OPT 2</span><h4>Mindhive sandbox</h4></div><div class="o-desc">Sandbox on Mindhive's own SAP / SQL / AutoCount servers; client provides a production snapshot. Removes the client-IT dependency.</div><span class="o-tag explore">Exploring — removes blocker</span></div>
+  <div class="opt-card"><div class="o-head"><span class="o-num">OPT 3</span><h4>Test in production</h4></div><div class="o-desc">Controlled test-in-prod where no sandbox is feasible. Fastest to start, operates on live data.</div><span class="o-tag risk">Last resort — data-integrity risk</span></div>
+</div>
+<div class="connote"><strong>Connector readiness sits across all three.</strong> Ready connector (AutoCount / SQL / SAP) → integration is <strong>config-time</strong> (fits the gold-standard week). New platform → <strong>build timeline</strong>; flag at G0 buildability and schedule on the customisation track, never inside the core week.</div>
+
+<!-- OS MAPPING -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Mindhive OS — Where This Lives (Lark)</span><div class="divider-line"></div></div>
+<div class="os-grid">
+  <div class="os-tier"><span class="t-tier">Tier 1 · Portfolio</span><h4>Log Board</h4><div class="t-desc">All open projects + client accounts. Each shows current milestone + <strong>target-vs-actual date</strong>. <strong>This is the self-report surface</strong> — management glances here instead of asking.</div></div>
+  <div class="os-tier"><span class="t-tier">Tier 2 · Account</span><h4>Project &amp; Dev Tickets</h4><div class="t-desc">Per account: milestone / outcome / blocker based. <strong>Each milestone = a ticket</strong> with role-owner + SLA; blockers carry the if-slipping reason.</div></div>
+  <div class="os-tier"><span class="t-tier">Tier 3 · Execution</span><h4>Tasks</h4><div class="t-desc">Activity-based. <strong>Each playbook checklist item = a task</strong> with owner + SLA. The Process Engineer automates breach surfacing up to Tier 1.</div></div>
+</div>
+
+<!-- RULES -->
+<div class="divider"><div class="divider-line"></div><span class="divider-label">Seam Rules — Where It Breaks</span><div class="divider-line"></div></div>
+<div class="rule-grid">
+  <div class="rule-card"><div class="r-tag">Rule A · Feasibility ≠ commitment</div><div class="r-body">Tech leads assess feasibility in the room but <strong>never commit scope there</strong>. Feasibility is an input; scope is only locked in the scope-lock doc.</div></div>
+  <div class="rule-card"><div class="r-tag">Rule B · Recon before the client sees it</div><div class="r-body">Sales↔product reconciliation happens <strong>before</strong> kickoff. The lock is run through as a reconciled artifact — never the moment a gap is discovered.</div></div>
+  <div class="rule-card"><div class="r-tag">Rule C · Internalise blockers, validate early</div><div class="r-body">Pull dependencies in-house where we can — <strong>WABA + hosting done</strong>; integration sandbox (Opt 2) next. No integration-dependent work starts until the path is validated as connecting.</div></div>
+  <div class="rule-card"><div class="r-tag">Rule D · Escalation is rare and pre-defined</div><div class="r-body">Only fixed triggers reach founders (see each card's escalate line). <strong>Everything else has a standing rule the PM executes alone</strong> — that's what keeps management out of the engine.</div></div>
+</div>
+
+<div class="watchout">
+  <span class="icon">⚠</span>
+  <div>
+    <strong style="color:var(--amber);">The document is not the goal — a demonstrated smooth run is.</strong><br>
+    This SOP can be written in weeks; the Q3 goal is the engine actually <em>running</em> without founders at ≤1-week gold standard. That needs a live dry-run before declaring victory. Two standing risks: <strong>(1)</strong> key-man risk has moved onto the <strong>Process Engineer</strong> — the SOP + automation must be documented well enough to survive them leaving; <strong>(2)</strong> the customisation track (M12), not the core week, is where 3 PMs actually get loaded across 15 accounts — size cohorts by measured capacity, not ambition.
+  </div>
+</div>
+
+</body>
+</html>
