@@ -101,7 +101,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | 4 | **AR / payment matching with human confirmation** | Asks about payer mismatch, transfer/cash/QR, finance role | Finance uses Excel for driver cash (VOC-009); account is the AR user; QR settlement parked as manual (VOC-008) | **HIGH** |
 | 5 | **Credit control & "one invoice" cash discipline** | Describes one-invoice rule + pattern-based limits | Chase spans finance→sales→boss (VOC-020) — cash collection is an operating rhythm | **MED-HIGH** |
 | 6 | **Catalogue as a sales operating tool** | Wants image catalogue, not PDF; team AI ambition | Still live in post-meeting follow-up (WhatsApp); scope-risky if left open-ended (VOC-015/029) | **MED-HIGH** |
-| 7 | **Inventory aging / expiry alert** | Asks for near-expiry/slow-mover notification | Concrete pain (4 of 78 tons in 6 months); but sits behind core go-live (VOC-022) | **MED** |
+| 7 | **Inventory aging / expiry alert** | Asks for near-expiry/slow-mover notification | Concrete pain (4 of 78 tons in 6 months); **confirmed Phase 1 — being built** (Scope Lock NS-03) (VOC-022) | **MED** |
 
 ---
 
@@ -152,7 +152,7 @@ sales, and finance (all thin/absent voices) is the real risk, not feature covera
 5. **Credit control with one-time override** — block on limit/term, notify David to approve a single order (VOC-016/017). *Testable.*
 6. **Fixed-format catalogue generation** — reflect live MAIA/SQL price, *not* open-ended ChatGPT-style freestyle; memo/admin freestyle image gen is **out of scope** (VOC-015/029). *Scope risk — hold the line on fixed format.*
 7. **Preserve sales territory isolation** — reps see only their own customers (VOC-019). *Testable.*
-8. **Inventory aging alert** — near-expiry / slow-mover notification (VOC-022). *Flag: likely Phase 2 unless explicitly pulled forward.*
+8. **Inventory aging alert** — near-expiry / slow-mover notification (VOC-022). *Confirmed Phase 1 — being built (Scope Lock NS-03).*
 
 ---
 
@@ -164,7 +164,7 @@ sales, and finance (all thin/absent voices) is the real risk, not feature covera
 | Warehouse "stock entry" | Framed as GRN/stock-count feature | David's own examples are picking/checking error + accountability; he concludes "not a system problem" | **Misframed — it's accountability, not GRN OCR** |
 | Product catalogue | Explicitly requested + chased after meeting | Became concrete follow-up (GPT link, Excel, 3-mo images) | **Commercially salient; scope-risky — fix format** |
 | Pricing enforcement | "We not update any system" | The *enforcement* (floor) is the hook that would make him adopt SQL-side discipline | **Real P1 — the control plane** |
-| Inventory aging | Asked for in meeting | Concrete pain but sits behind core go-live | **Phase 2 unless pulled forward** |
+| Inventory aging | Asked for in meeting | Concrete pain; now confirmed in-scope | **Phase 1 — being built (SL NS-03)** |
 | Delivery trip management / POD accuracy | Discussed (driver photo → tag invoice) | Vendor parks it; POD photo accuracy is unreliable | **Do-not-let-it-leak-into-go-live** |
 | WhatsApp price blasting | Wants to blast 300–400 customers | Technically bans the number; unsupported | **Cannot deliver — manage expectation now** |
 
@@ -197,6 +197,42 @@ The product mistake that would sink this account: treating it as a generic Whats
 - **To verify first (gated):** pick-list upload format, payer-mismatch data, catalogue variant scope, warehouse adoption — see "What We Do NOT Know."
 - **To report back to David:** confirm what IS in Phase 1 vs parked (aging alert, delivery/POD, WhatsApp blasting = not supported), and why blasting can't be done (number ban). Set the catalogue as fixed-format, not freestyle.
 - **Refresh trigger:** re-run this VoC after go-live once the warehouse user has run real cycles — the warehouse voice is the biggest gap and only real usage closes it.
+
+---
+
+## Scope Lock Alignment
+
+Cross-reference of every VoC theme/signal against **Macro Frozen — Scope Lock v1**
+(as of 2026-07-12). Confirms the two documents agree, and flags the signals that
+have **no scope-lock home yet** — those need David before they can be committed.
+
+| VoC signal(s) | Scope Lock item | Scope Lock status | Aligned? |
+|---|---|---|---|
+| VOC-001, 005, 027 (two-stage O2C, SQL master) | SL-01, SL-07, AS-01, NS-01 | LOCKED / RESOLVED — draft SO first → confirm after external pick weight | ✅ |
+| VOC-007, 008, 009 (AR, payer mismatch, cash) | SL-02 | LOCKED (AR) | ⚠️ *cash-from-driver (VOC-009) not in SL-02 AC* |
+| VOC-010, 011, 013 (pricing, floor, cust-specific) | SL-03 | LOCKED | ✅ |
+| VOC-014 (quotation before order) | — | **no scope-lock item** | ❌ *missing — add to SL-03* |
+| VOC-016, 017 (credit control + override) | SL-04 | LOCKED | ✅ |
+| VOC-019 (sales territory isolation) | SL-05 | LOCKED | ✅ |
+| VOC-004, 023, 025 (picking accountability) | NS-02 | parked (GRN stock entry not for now) | ⚠️ *GRN parked, but accountability/audit-trail need has no home* |
+| VOC-015, 029 (catalogue, fixed-format) | AS-02 | Agreed in principle — AC not locked | ✅ (build unlocked) |
+| VOC-018 (pro forma invoice) | NS-04 | RESOLVED — in MAIA now | ✅ |
+| VOC-021 (CN numbering) | AS-03 | Agreed in principle — Finance to align | ✅ |
+| VOC-020 (payment escalation) | NS-06 | overdue alert exists; routing/timing still open | ✅ (alert) / ⚠️ (sequence) |
+| VOC-022 (inventory aging alert) | NS-03 | RESOLVED — Phase 1, being built | ✅ |
+| VOC-024 (POD driver photo) | NS-07 | still planning — exploring ERPNext | ✅ |
+| VOC-008 (QR merchant settlement) | Out of scope | excluded | ✅ |
+| VOC-026 (WhatsApp blasting) | Out of scope | excluded — bans the number | ✅ |
+| VOC-013 (volume-based pricing) | Out of scope | not supported — manual check | ✅ |
+| VOC-012 (wholesale/retail segments) | SL-03 | LOCKED (price lists) | ✅ |
+| VOC-002 (item-name fuzzy mapping + learning) | — | assumed Base MAIA (RACK + learn) | ⚠️ *not explicitly scoped — confirm Base* |
+
+### Three signals with no scope-lock home (need David)
+1. **Picking accountability / audit trail (VOC-004)** — VoC priority **#2**. NS-02 parks *GRN stock entry*, but the real ask (proof of who picked / who checked) is not captured anywhere. The AS-01 pick-list upload carries **weight**, not **attribution**. Decision needed: attach-the-paper vs structured/enforced.
+2. **Quotation generation (VOC-014)** — big customers request quotation first; price-lock vs lower PO. Not in SL-03.
+3. **Cash-from-driver recording (VOC-009)** — finance's Excel cash log; MAIA can absorb it, but SL-02 covers bank/slip matching only.
+
+**Everything else is aligned.** Out-of-scope boundaries match exactly (AP, QR settlement, WMS, volume pricing, B2C, blasting).
 
 ---
 
