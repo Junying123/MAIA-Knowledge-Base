@@ -76,6 +76,7 @@ last_reviewed: 2026-07-12
 | VOC-027 | Payment mechanics concern | Owner is uneasy about the token top-up model (needing to attach a credit card, buying more tokens as they run low) — wants a simpler mental model | Transcript | BELIEVED |
 | VOC-028 | WhatsApp setup unfamiliarity | Owner needs a dedicated new phone number solely for MAIA's WhatsApp Business account, and repeatedly double-checks unfamiliar mechanics ("no one can use it at all?") — signals this setup step needs hand-holding, not a self-serve doc | Transcript | CONFIRMED |
 | VOC-029 | OpenAI API key handling — technical comfort | Owner asks basic questions about how/where to safely store the API key ("put in a pen drive?") — signals low technical sophistication and a need for a guided, not written-only, setup process | Transcript | CONFIRMED |
+| VOC-030 | Item/SKU creation via chatbot | Client confirms need extends beyond customer creation to **item creation** via chatbot — new SKUs must be creatable through the MAIA/Telegram chat flow, not just referenced from existing master data | PM confirmation, 2026-07-12 | CONFIRMED |
 
 ---
 
@@ -110,6 +111,7 @@ last_reviewed: 2026-07-12
 1. Ingest and reference exported customer, credit-limit/credit-terms, item/SKU, pricing, and order-history data (VOC-005, VOC-007).
 2. Support at least PO → quotation → invoice as the real document flow — **no sales order stage exists today** and nothing in the transcript indicates the owner asked for one (VOC-021). *(Flag: this conflicts with the vendor's own Customer Narrative and Scope Lock, both of which build around a PO→SO→Invoice→DO flow — see Stated vs Revealed table below.)*
 3. Provide a fallback path for new-customer creation that doesn't require the owner or coordinator to fully hand-key into AutoCount every time, even if full automated vendor creation isn't possible (VOC-015, VOC-017). Scope risk — open-ended until AutoCount validation constraints are resolved with Ms Tan.
+3a. **[NEW 2026-07-12]** Extend the same chatbot-driven creation capability to **items/SKUs**, not just customers — client confirms this is a needed feature, not an edge case (VOC-030). Same AutoCount-validation dependency likely applies as customer creation; must be functionally tested, not just built.
 4. Provide a driver-facing capture flow for proof-of-delivery photos, tied to the order/DO record so it's retrievable later (VOC-010, VOC-012).
 5. Issue credit notes at invoice level, not customer-account level (VOC-022).
 6. Generate receipts only on request, not automatically per order (VOC-023, VOC-024).
@@ -123,6 +125,7 @@ last_reviewed: 2026-07-12
 | Item | Stated | Revealed | Read |
 |---|---|---|---|
 | New-customer creation flow | Explicit question, pressed twice | Daily frequency, described as a real blocker if unresolved | **Real P1** — this is a Scope Lock blocking item ("Customer approval flow") and the transcript confirms it's not an edge case |
+| Item/SKU creation via chatbot | Not raised in original transcript | PM confirms client needs this alongside customer creation (2026-07-12) — same functional pattern, same risk profile | **NEW Real P1** — untested. Treat as sibling to new-customer creation: build + AutoCount-validation dependency + explicit test pass required before sign-off. |
 | Sales Order stage | Not raised by owner at all | Owner explicitly says "no sales order" exists today | **Scope-risk / misframing** — vendor's Customer Narrative and Scope Lock both assume a PO→SO→Invoice→DO flow; the transcript's only direct customer statement on this contradicts that assumption. Needs client confirmation before this is treated as locked. |
 | Cost transparency | Raised emotionally in the moment, not as a formal requirement | Strong revealed signal — real frustration, direct commercial trust impact | **RESOLVED (2026-07-12)** — PM confirms cost has been noticed/addressed with client. No longer an open trust gap. |
 | Receipts | Stated explicitly as low priority | Consistent — no revealed contradiction | **Confirmed Phase 2 / low priority**, do not over-build |
@@ -160,6 +163,7 @@ last_reviewed: 2026-07-12
 
 **To verify first** (gated on "What We Do NOT Know"):
 - New-customer creation fallback (VOC-015/016/017) — gated on Ms Tan / AutoCount validation constraint resolution. **Still open.**
+- **[NEW]** Item/SKU creation via chatbot (VOC-030) — gated on functional test pass. **Not yet tested — needs QA pass through Telegram chatbot flow before sign-off.**
 - SO-stage existence (VOC-021) — gated on direct written confirmation from owner; currently contradicts vendor's own Customer Narrative and Scope Lock. **Still open.**
 - ~~WhatsApp vs Telegram channel~~ — **RESOLVED 2026-07-12**, Telegram confirmed with client.
 
