@@ -4,6 +4,8 @@ status: draft
 last_reviewed: 2026-07-12
 ---
 
+> **Update 2026-07-12:** PM confirms most flags below align with current account state. Two items resolved since original extraction: (1) Telegram as production channel confirmed with client (channel-switch risk closed), (2) cost transparency has been addressed/noticed by client (no longer an open trust gap). Resolved items marked inline below; rest of extraction unchanged.
+
 # Dalson Industrial Supplies — Voice of Customer (VoC) Extraction
 
 ## Phase 0 — Source Inventory & Coverage Gate
@@ -122,9 +124,9 @@ last_reviewed: 2026-07-12
 |---|---|---|---|
 | New-customer creation flow | Explicit question, pressed twice | Daily frequency, described as a real blocker if unresolved | **Real P1** — this is a Scope Lock blocking item ("Customer approval flow") and the transcript confirms it's not an edge case |
 | Sales Order stage | Not raised by owner at all | Owner explicitly says "no sales order" exists today | **Scope-risk / misframing** — vendor's Customer Narrative and Scope Lock both assume a PO→SO→Invoice→DO flow; the transcript's only direct customer statement on this contradicts that assumption. Needs client confirmation before this is treated as locked. |
-| Cost transparency | Raised emotionally in the moment, not as a formal requirement | Strong revealed signal — real frustration, direct commercial trust impact | **P1.5** — not a build item, but a client-communication requirement that should be closed before go-live, not left implicit |
+| Cost transparency | Raised emotionally in the moment, not as a formal requirement | Strong revealed signal — real frustration, direct commercial trust impact | **RESOLVED (2026-07-12)** — PM confirms cost has been noticed/addressed with client. No longer an open trust gap. |
 | Receipts | Stated explicitly as low priority | Consistent — no revealed contradiction | **Confirmed Phase 2 / low priority**, do not over-build |
-| WhatsApp vs Telegram channel | Owner was walked through **WhatsApp** setup in this meeting (dedicated number, Business account) | Scope Lock v1 (23 Jun 2026, a month later) records the channel as shifted to **Telegram** for go-live, with client agreement explicitly marked "NOT EVIDENCED" | **Do-not-let-it-leak-into-go-live** — this is the single clearest source-conflict in the whole account. The owner spent real setup effort and clarifying questions on WhatsApp specifically; a silent switch to Telegram is a direct risk to the trust this transcript shows the owner already investing. |
+| WhatsApp vs Telegram channel | Owner was walked through **WhatsApp** setup in this meeting (dedicated number, Business account) | Scope Lock v1 (23 Jun 2026) recorded the channel shift to **Telegram** with client agreement "NOT EVIDENCED" | **RESOLVED (2026-07-12)** — PM confirms Telegram use has since been confirmed with client. No longer an open risk. |
 | DO / document retrieval | Raised as a specific complaint | Concrete failure anecdote given | **Real P1.5** — smaller in scope than new-customer creation but has a clear, testable acceptance bar (owner can find a past DO from a live order reference) |
 
 ---
@@ -136,17 +138,17 @@ last_reviewed: 2026-07-12
 | Whether coordinators/warehouse/drivers will actually adopt the flow the owner is describing on their behalf | The owner's description of "they just upload it, he just packs it" is management's version of the workflow, not the actual users' | Sit with one coordinator and one warehouse staff member through one real order cycle before build hardens the intake/packing flow |
 | Exact SKU alias / description-mismatch failure rate | Owner references it heavily in conversation but never gives a concrete example or count in this transcript | Collect 15–20 real customer POs with the item descriptions as customers actually write them, compare against AutoCount SKU names |
 | Whether "no sales order" is a firm fact or a moment of imprecise phrasing | This directly contradicts the vendor's own scope docs; if wrong, a chunk of the current build plan is safe — if right, SO stage may need reframing as new, not existing, process | Ask the owner directly, in writing, to confirm: "Do you currently issue a Sales Order document separate from a Quotation/Invoice today, yes or no?" |
-| Whether the owner has been told about (and agreed to) the WhatsApp→Telegram channel switch since this meeting | Direct trust risk if not — see Stated vs Revealed table | Confirm with account team whether this was communicated; if not, raise before go-live prep continues |
-| Real monthly order volume and its cost impact for the owner | Owner reacted to cost surprise but the transcript doesn't establish what monthly volume actually means for them financially | Get 2–3 months of actual order counts from AutoCount export (already requested per VOC-005) and model the real per-month token cost against it |
+| ~~Whether the owner has been told about the WhatsApp→Telegram channel switch~~ | ~~Direct trust risk if not~~ | **RESOLVED 2026-07-12** — PM confirms Telegram use confirmed with client. |
+| Real monthly order volume and its cost impact for the owner | Cost surprise itself is resolved (PM confirms noticed/addressed), but exact volume-to-cost model still not established in this corpus | Get 2–3 months of actual order counts from AutoCount export (already requested per VOC-005) and model the real per-month token cost against it — worth doing even though the trust issue is closed, so the number doesn't drift again |
 | Whether the minimal-fallback customer creation (VOC-017) is actually acceptable to the owner or just a hypothetical raised in the moment | Owner floated it once as a "if really cannot, then maybe..." — not fully committed | Confirm explicitly once the AutoCount vendor-creation constraint is resolved with Ms Tan |
 
 ---
 
 ## Bottom Line
 
-> Dalson's owner isn't asking for an "AI operational layer" — they're asking to stop personally carrying the operational memory of the business: which document went where, what a new customer needs before they can be invoiced, and what an order actually costs before it's too late to change course. The transcript shows someone who trusts the process enough to ask basic, sometimes naive questions in front of the vendor team — that trust is the asset most at risk if MAIA quietly changes plans (channel switch) or under-delivers on the one thing raised as blocking and daily (new-customer creation).
+> Dalson's owner isn't asking for an "AI operational layer" — they're asking to stop personally carrying the operational memory of the business: which document went where, what a new customer needs before they can be invoiced, and what an order actually costs before it's too late to change course. The transcript shows someone who trusts the process enough to ask basic, sometimes naive questions in front of the vendor team — channel and cost trust gaps have since been closed with the client (confirmed 2026-07-12); the remaining exposure is new-customer creation (daily, unresolved) and the SO-stage misframing.
 
-**The single most likely mistake to sink this account:** shipping a technically correct build against the vendor's own scope assumptions (SO stage, Telegram channel) without re-confirming them against what the owner actually said in the only meeting where their direct voice was captured. This is a workflow-translation risk, not a feature-availability risk — the features described are buildable; the risk is building the wrong version of them because the only two customer-voice contradictions in the whole corpus (SO stage, channel) were never explicitly resolved with the client afterward.
+**The single most likely mistake to sink this account (updated):** with channel and cost now confirmed, the live risk narrows to new-customer creation into AutoCount — a daily, not edge-case, blocker that is still gated on Ms Tan/AutoCount validation constraints — and the unconfirmed SO-stage assumption baked into the vendor's own scope docs. This is a workflow-translation risk, not a feature-availability risk.
 
 ---
 
@@ -157,13 +159,13 @@ last_reviewed: 2026-07-12
 - VOC-010/012 (driver POD capture + DO retrieval) — safe to scope as a build item; acceptance bar is concrete (owner can retrieve a past DO from a live reference).
 
 **To verify first** (gated on "What We Do NOT Know"):
-- New-customer creation fallback (VOC-015/016/017) — gated on Ms Tan / AutoCount validation constraint resolution.
-- SO-stage existence (VOC-021) — gated on direct written confirmation from owner; currently contradicts vendor's own Customer Narrative and Scope Lock.
-- WhatsApp vs Telegram channel — gated on confirming whether the owner has been told about the switch recorded in Scope Lock v1.
+- New-customer creation fallback (VOC-015/016/017) — gated on Ms Tan / AutoCount validation constraint resolution. **Still open.**
+- SO-stage existence (VOC-021) — gated on direct written confirmation from owner; currently contradicts vendor's own Customer Narrative and Scope Lock. **Still open.**
+- ~~WhatsApp vs Telegram channel~~ — **RESOLVED 2026-07-12**, Telegram confirmed with client.
 
 **To report back to the client:**
-- Close the loop on cost transparency: proactively walk the owner through a real per-month cost estimate using their actual order volume, before it becomes a second surprise at invoicing time.
-- If the channel is genuinely switching to Telegram, tell the owner directly and reconcile it with the WhatsApp setup work already walked through in this meeting.
+- ~~Cost transparency~~ — **RESOLVED 2026-07-12**, noticed/addressed with client. Still worth modeling real per-month cost against actual order volume once AutoCount export lands, to keep the number from drifting again.
+- ~~Channel confirmation~~ — **RESOLVED 2026-07-12**, Telegram confirmed.
 
 **Refresh trigger:** re-run this VoC extraction after the workflow/UAT sign-off session (where coordinator, warehouse, and driver voices can actually be captured directly), and again post-go-live once real order volume and new-customer frequency are observed rather than estimated.
 
