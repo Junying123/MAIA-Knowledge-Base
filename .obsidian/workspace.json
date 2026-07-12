@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",
+                "file": "03 - Clients/Active Cooking Clients/Dalson/Dalson — Lens Alignment Report.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Dalson — VoC Extraction"
+              "title": "Dalson — Lens Alignment Report"
             }
           }
         ],
@@ -316,12 +316,13 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ceef9d86007d72d6",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Scope Lock v1 (reconciled).md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Checklist.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT",
@@ -356,7 +357,6 @@
     "Granola/Transcripts/2026-07-09/Invoice payment terms and status behavior review with Fariha-transcript.md",
     "Granola/Transcripts/2026-07-09/SOA & INV Payment term - DEV X Product run through-transcript.md",
     "Granola/Transcripts/2026-07-09/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-07-08/Mindhive  Daily Standup-transcript.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
