@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Checklist.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofood — VoC Extraction"
+              "title": "Macrofood — UAT Checklist"
             }
           }
         ],
@@ -316,8 +316,9 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ceef9d86007d72d6",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Checklist.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT",
     "MAIA_Product_Onboarding_SOP_2.html",
@@ -326,7 +327,6 @@
     "01 - MAIA Product/Sprint Plan/10Jul26-v2-MAIA-Sprint-Timeline.html",
     "01 - MAIA Product/Sprint Plan",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — VoC Extraction.md",
     "Granola/Transcripts/2026-07-10/Maya product launch — four-week sprint planning with QA focus-transcript.md",
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript-2026-07-10_14-38-09.md",
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript.md",
