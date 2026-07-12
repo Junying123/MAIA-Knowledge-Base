@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofood — Lens Alignment Report"
+              "title": "Macrofrozen Training Plan"
             }
           }
         ],
@@ -316,13 +316,13 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ceef9d86007d72d6",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Checklist.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Scope Lock v1 (reconciled).md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Checklist.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — End-user & Process Map.md",
