@@ -1,21 +1,23 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-12
+last_reviewed: 2026-07-13
 ---
 
-# Dalson Industrial Supplies — Lens Alignment Report
+# Dalson Industrial Supplies — Lens Alignment Report (v2)
+
+Re-run following: Scope Lock reconciliation (2026-07-12/13), UAT Checklist build (2026-07-12), End-user & Process Map build (2026-07-13). Previous report (2026-07-12) found Lens 3 entirely missing — that structural gap is now closed.
 
 ## 1. Version Ledger
 
 | Doc | Version | last_reviewed | Newest? | Stale vs spine? |
 |---|---|---|---|---|
-| Scope Lock v1 | v1 | 23 Jun 2026 | No | **Stale** — predates both the VoC extraction and the 2026-07-12 item-creation requirement |
-| VoC Extraction | v1 (+ inline 2026-07-12 update) | 12 Jul 2026 | **Yes** | — |
-| UAT Checklist | — | — | — | **MISSING** |
-| End-user & Process Map | — | — | — | **MISSING** |
+| Scope Lock v1 | v1 (heavily reconciled) | 23 Jun 2026 → reconciled 2026-07-12/13 | No | Second-newest — finalized before UAT/Map were built, so both are current against it |
+| VoC Extraction | v1 + 2026-07-12 inline update | 12 Jul 2026 | No | **Mildly stale** — doesn't carry the "Xiao Bai" name now used in Scope Lock/UAT/Map (see Drift #1) |
+| UAT Checklist | v1 | 12 Jul 2026 | No | Built after Scope Lock's SL-4–SL-9 resolutions — current against spine, but its own 4c note ("Process Map doesn't exist") is now stale (see Drift #2) |
+| End-user & Process Map | v1 | 13 Jul 2026 | **Yes** | — |
 
-The VoC doc is 19 days newer than the Scope Lock and carries two resolved risks (channel, cost) plus one new confirmed requirement (VOC-030, item/SKU creation via chatbot) that Scope Lock has never seen.
+No freshness problem in the risky direction (Scope Lock outrunning UAT/Map) — both Lens-3 docs were built *after* the spine was finalized. The lag is smaller and one-directional: VoC hasn't caught up on one name.
 
 ---
 
@@ -23,13 +25,15 @@ The VoC doc is 19 days newer than the Scope Lock and carries two resolved risks 
 
 | Check | Pair | Result | # findings |
 |---|---|---|---|
-| A | Scope Lock ↔ VoC | **DRIFT** | 4 |
-| B | Scope Lock ↔ UAT Checklist | **GAP** (UAT missing — no check possible) | 1 (doc absent) |
-| C | Scope Lock ↔ Process Map | **GAP** (Map missing — no check possible) | 1 (doc absent) |
-| D | VoC ↔ Process Map | **GAP** (Map missing — no check possible) | 1 (doc absent) |
-| E | Cross-status consistency | **DRIFT** | 3 |
-| F | Gaps & Dependencies | **DRIFT** | 2 |
-| G | Version & freshness | **DRIFT** | 1 |
+| A | Scope Lock ↔ VoC | ALIGNED (soft note) | 1 |
+| B | Scope Lock ↔ UAT Checklist | DRIFT (minor) | 1 |
+| C | Scope Lock ↔ Process Map | ALIGNED | 0 |
+| D | VoC ↔ Process Map | ALIGNED | 0 |
+| E | Cross-status consistency | DRIFT (minor) | 2 |
+| F | Gaps & Dependencies | ALIGNED (consistent, unresolved) | 1 |
+| G | Version & freshness | DRIFT (minor) | 1 |
+
+Sharp improvement from the last report: Checks B, C, D can now run at all (previously GAP). No contradictions found — every finding this cycle is a staleness or coverage gap, not two docs disagreeing.
 
 ---
 
@@ -37,47 +41,54 @@ The VoC doc is 19 days newer than the Scope Lock and carries two resolved risks 
 
 | # | Item | Doc A says | Doc B says | Check | Verdict | Recommended fix |
 |---|---|---|---|---|---|---|
-| 1 | New-customer creation into AutoCount | Scope Lock lists "Customer approval flow" as a **blocking item** (Source Manifest section) but gives no detail beyond the label | VoC (VOC-015/016/017) gives the full shape: daily frequency, owner pressed for a direct answer, fallback tolerance (minimal invoice-first flow) exists | A | **VoC is right, Scope Lock under-specified** | Scope Lock should absorb VOC-015/016/017 detail into its blocking-item description so the daily-frequency severity isn't lost in a one-line label |
-| 2 | **Item/SKU creation via chatbot** | **Not present anywhere in Scope Lock v1** — neither Locked, Agreed-in-principle, Needs-Scoping Register, nor Blocking items | VoC VOC-030 (added 2026-07-12): client confirms this is a **needed feature**, sibling to customer creation, explicitly flagged untested | A, F | **VoC is right — this is a real GAP in Scope Lock**, not a resolved-elsewhere item | Add "Item/SKU creation via chatbot" to Scope Lock's Needs Scoping Register (or Blocking items, given it shares the AutoCount-validation dependency of customer creation) before next Scope Lock revision |
-| 3 | Messaging channel (WhatsApp vs Telegram) | Scope Lock v1 flags this as "Locked (Superseded)" — Telegram intended for go-live, client agreement explicitly marked **"NOT EVIDENCED"**, risk = HIGH | VoC (Stated vs Revealed table): **RESOLVED 2026-07-12** — PM confirms Telegram use has since been confirmed with client | E, G | **VoC is newer and authoritative** — Scope Lock's risk flag is now stale | Scope Lock needs a v2 revision closing S1 (Supersessions Log) with client-confirmed evidence; until then Scope Lock still shows this as an open HIGH risk that no longer reflects reality |
-| 4 | Cost / pricing transparency | Scope Lock does not carry a cost-transparency item at all (its Client Confirmation Agenda has no question on this) | VoC (VOC-025/026): raised as a real trust incident, now **RESOLVED 2026-07-12** per PM confirmation | A, E | Non-conflicting but **orphaned** — VoC tracked and closed a risk Scope Lock never logged | No action required to reconcile (both now agree the item is closed), but note for future Scope Lock revisions: cost items surfaced in discovery should get a Scope Lock line even if resolved quickly, so the audit trail isn't VoC-only |
+| 1 | Owner's real name | Scope Lock, UAT Checklist, Process Map all use **"Xiao Bai"** by name (confirmed 2026-07-12/13) | VoC Extraction's Actor & Role Register still only says **"Dalson Owner/Principal"** — never updated with the real name | E, G | **VoC is stale** — the name surfaced after the VoC doc was last touched | Update VoC's Phase 1 Actor & Role Register to add "Xiao Bai" alongside the generic label |
+| 2 | Process Map existence | Process Map now exists (built 2026-07-13, `HSQJd5QSsoTUW6xVyuRlfAgdgfe`) | UAT Checklist's own §4c still reads "End-user & Process Map does not exist for Dalson" | G | **UAT Checklist text is stale** | Update UAT §4c to note the Map now exists and resolve/soften the "biggest carried risk" framing accordingly |
+| 3 | SL-3 (Telegram channel) unhappy-path coverage | Scope Lock: LOCKED | UAT Checklist: only 1 unhappy case (UP-07), self-flagged as "acceptable — Telegram's smaller surface area" | B | **Technically under the ≥2 minimum** — real but low-severity | Add one more unhappy case for SL-3, e.g. non-text message type sent to the bot, or a message sent while MAIA/Telegram integration is down |
+
+No hard contradictions this cycle — all three rows are staleness/coverage gaps, not disagreement.
 
 ---
 
 ## 4. Orphans
 
-**In scope (VoC), not tested/mapped:**
-- Item/SKU creation via chatbot (VOC-030) — no UAT case can exist because UAT doesn't exist yet; also has no Scope Lock home (see Drift #2)
-- New-customer creation fallback (VOC-015/016/017) — same: no UAT to verify the daily-frequency blocker is actually resolved
-- DO / document retrieval (VOC-012) — concrete, testable acceptance bar defined in VoC, nothing in UAT to test it because UAT doesn't exist
-- Driver-facing POD capture (VOC-010) — same
+**In scope, not tested/mapped:** none — SL-1 through SL-9 all have UAT coverage and a Process Map home.
 
-**Tested/mapped, not in scope:**
-- N/A — no UAT/Map exists to check.
+**Tested/mapped, not in scope:** none — no UAT case or process step exceeds Scope Lock's locked set.
 
-**VoC signal, no home:**
-- **VOC-030 (item/SKU creation via chatbot)** — confirmed by client, not present in Scope Lock's Locked, Agreed-in-principle, or Needs-Scoping Register. This is the single highest-priority gap in this audit: a client-confirmed requirement with zero scope documentation.
-- SO-stage existence (VOC-021, "no sales order" per owner) — Scope Lock and the vendor's own Customer Narrative both assume a PO→SO→Invoice→DO flow; VoC flags this as unresolved misframing. Scope Lock's Needs Scoping Register does list "PO → SO → Invoice → DO workflow automation" as agreed-in-principle-not-locked, so there is a partial home, but the underlying contradiction (does an SO stage exist today at all) is not called out anywhere in Scope Lock.
+**VoC signal, no home:** **Receipts (VOC-023/024 — generate only on customer request)**. This is the single standing orphan, and it's a repeat finding from the last report. It has now been independently flagged in three places — VoC itself, UAT Checklist §4c, and Process Map §6 sign-off agenda item #7 — and all three agree it's unresolved. Being flagged three times consistently is not the same as being fixed: it still has zero home in Scope Lock. **This is the top fix-list item.**
 
 ---
 
 ## 5. Fix List (ordered by blast radius)
 
-1. **[Scope Lock]** Add "Item/SKU creation via chatbot" as a new line item (Needs Scoping Register or Blocking, per the AutoCount-validation dependency) — this is a client-confirmed requirement currently invisible to the build/test spine. *(Drift #2 — highest priority, status-mismatch-equivalent since it's a confirmed requirement with zero scope trace.)*
-2. **[Scope Lock]** Close S1 (Messaging channel supersession) — mark Telegram as client-confirmed, drop the HIGH risk flag, since VoC already shows this resolved 2026-07-12. *(Drift #3 — stale risk flag actively misleading if read today.)*
-3. **[Scope Lock]** Expand the "Customer approval flow" blocking-item description to carry the daily-frequency severity and fallback-tolerance detail already captured in VoC. *(Drift #1 — under-specification, not a contradiction, but worth tightening before it's used to scope a fix.)*
-4. **[New doc]** Build the **UAT Checklist** — Checks B, F cannot run until this exists, and two client-confirmed daily-frequency features (customer + item creation) currently have no test plan.
-5. **[New doc]** Build the **End-user & Process Map** — Checks C, D cannot run until this exists; VoC's own coverage gate already flags that coordinator/warehouse/driver voices are unheard, which is exactly what this doc is meant to formalize as `NEEDS CLIENT INPUT`.
+1. **[Scope Lock]** Add "Receipts — generated only on customer request, never automatic" as a new locked line item. It's a low-ambiguity, already-confirmed business rule (VOC-023/024) that's been flagged independently three times without ever landing in the spine — cheapest, highest-value fix available.
+2. **[VoC Extraction]** Add "Xiao Bai" to the Phase 1 Actor & Role Register alongside "Dalson Owner/Principal" — closes a naming gap now visible in three other docs.
+3. **[UAT Checklist]** Update §4c to reflect that the End-user & Process Map now exists — the current text is stale and overstates an already-closed risk.
+4. **[UAT Checklist]** Add a second unhappy-path case for SL-3 (Telegram channel) to meet the ≥2 minimum.
+5. **[Scope Lock, optional]** Consider giving VOC-012 (DO/document-trail retrievability) an explicit locked line item — it's already functionally tested (UP-06, UP-11) and mapped, but has no discrete name in Scope Lock, which slightly weakens future-regen traceability.
+
+---
+
+## Answers to specific questions asked
+
+**(1) Did building UAT + Process Map resolve the prior structural gap, or introduce new drift between the two Lens-3 docs?** Resolved, cleanly. Checks B, C, D — previously blocked entirely — now run and pass with only one minor finding each (SL-3 coverage, a stale self-reference). No contradiction was introduced between UAT and the Process Map themselves.
+
+**(2) Does the receipts gap count as fixed by being flagged three times?** No. Consistency across docs about an unresolved item is not resolution — it's documentation of an unresolved item. It still has zero home in Scope Lock. Treated here as the top fix-list priority precisely because it's cheap to close and has already been correctly identified three separate times.
+
+**(3) Any freshness mismatch now that Scope Lock was heavily edited today but UAT/Map came after?** No mismatch in the risky direction — UAT and the Process Map were both built *after* the Scope Lock edits they depend on, so they're current against the spine. The one lag found runs the other way: VoC hasn't picked up the "Xiao Bai" name that surfaced during the Scope Lock edits (Drift #1).
+
+**(4) Is "Sales Coordinator" as UAT tester role vs. "NEEDS CLIENT INPUT" in the Process Map a contradiction?** No — this is the correct, intentional pattern, not an oversight. UAT assigns test steps to the functional role (someone forwards POs — that role exists regardless of who fills it) while the Process Map is explicit that the *identity* behind that role is unconfirmed and lists it as sign-off agenda item #2. Both docs agree on the same underlying fact; neither overstates confirmation.
 
 ---
 
 ## 6. Verdict
 
-**DRIFT — 5 fixes before Gate-2.** Scope Lock is 19 days stale against the VoC and is missing a client-confirmed requirement (item/SKU creation) entirely. Both Lens-3 artifacts (UAT Checklist, End-user & Process Map) don't exist yet, so three of the seven alignment checks (B, C, D) can't run at all — that's a structural gap, not just content drift, and should be treated as the bigger blocker to sign-off.
+**DRIFT — 5 fixes before Gate-2**, but a materially lighter set than the last cycle: no contradictions, no structural gaps, no over-scoped or under-tested locked items. All five fixes are either a single missing Scope Lock line item (receipts) or doc-freshness housekeeping (name propagation, stale cross-reference, one extra test case). Safe to treat as **near-ready** — closing fix #1 (receipts → Scope Lock) is the only item with real weight; the rest are cleanup.
 
 ---
 
 ## See Also
 - [[Dalson — VoC Extraction]]
+- [[Dalson — UAT Checklist]]
+- [[Dalson — End-user & Process Map]]
 - Scope Lock v1 — Dalson Industrial Supplies (Lark)
-- [[Dalson Phase 1 Timeline]]
