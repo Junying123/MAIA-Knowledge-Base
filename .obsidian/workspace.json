@@ -35,24 +35,12 @@
             "id": "ceef9d86007d72d6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
+                "file": "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw"
               },
-              "icon": "lucide-file",
-              "title": "Macrofrozen Training Plan"
+              "icon": "excalidraw-icon",
+              "title": "Macro Frozen As-Is Order-to-Cash Process"
             }
           }
         ],
@@ -114,7 +102,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -265,10 +254,14 @@
                   {
                     "id": 176,
                     "name": "zsh 176"
+                  },
+                  {
+                    "id": 177,
+                    "name": "zsh 177"
                   }
                 ],
-                "activeId": 176,
-                "nextId": 177
+                "activeId": 177,
+                "nextId": 178
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -319,8 +312,11 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "785c6f8d67308809",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Excalidraw/Macro Frozen To-Be Order-to-Cash Process (Roles).excalidraw",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+    "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
     "Granola/Transcripts/2026-07-13/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-13",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
@@ -338,7 +334,6 @@
     "01 - MAIA Product/MAIA Product Engine",
     "01 - MAIA Product/Sprint Plan/10Jul26-v2-MAIA-Sprint-Timeline.html",
     "01 - MAIA Product/Sprint Plan",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-10/Maya product launch — four-week sprint planning with QA focus-transcript.md",
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript-2026-07-10_14-38-09.md",
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript.md",
@@ -348,7 +343,6 @@
     "03 - Clients/Active Cooking Clients/Dalson/dalson_industrial_supplies_facet.yaml",
     "03 - Clients/Active Cooking Clients/Dalson/dalson_industrial_supplies_facet.md",
     "01 - MAIA Product/Product Specs/SOA Portal/soa-portal-issue-report-2026-07-04.md",
-    "01 - MAIA Product/Product Specs/SOA Portal/soa-header-layout-preview.html",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru 2nd UAT Backward Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
@@ -359,7 +353,6 @@
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
-    "Granola/Transcripts/2026-07-08/MAIA training brief-transcript.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
