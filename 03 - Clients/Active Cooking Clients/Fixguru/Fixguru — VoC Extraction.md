@@ -197,15 +197,27 @@ All 15 questions in Scope Lock v2's "Client Confirmation Agenda" answered and ap
 | 6 | Phone/mobile/WhatsApp search, partial? | YES, confirmed 24 Jun debrief (phone-first, mobile+landline). Partial-number search still unconfirmed | PARTIAL |
 | 7 | Branch disambiguation on duplicate phone? | Moot for Fixguru — no branches (NS-06). Generic dedup rule: merge only on duplicate contact type | RESOLVED (n/a) |
 | 8 | Last 5 delivery methods shown? | YES, confirmed 24 Jun debrief. Source doctype still pending (NS-07) | PARTIAL |
-| 9 | Confirm delivery charge SKU list | Still open — exact list not yet confirmed | OPEN |
+| 9 | Confirm delivery charge SKU list | RESOLVED — SKU options pulled directly from AutoCount's master list, not a separately-confirmed list | RESOLVED |
 | 10 | Credit block point | DN-level, confirmed 24 Jun debrief, dev built. Needs client testing (NS-04) | RESOLVED-PENDING-TEST |
 | 11 | Payment proof override AR block? | **Parked/deferred by deliberate choice** — debrief discussed a bank-in-slip mechanism (prepaid auto, credit-exceeded case-by-case, no hard-stop) but Gareth chose not to lock it this round (NS-05) | PARKED |
-| 12 | Min-price threshold: item or item+UOM? | Still open — debrief leans per-item, but 14 May transcript suggests UOM may matter | OPEN |
-| 13 | Price-book bypasses min-price approval? | Still open — not reconfirmed since 14 May | OPEN |
+| 12 | Min-price threshold: item or item+UOM? | RESOLVED — item + UOM. Threshold varies by UOM within the same item | RESOLVED |
+| 13 | Price-book bypasses min-price approval? | RESOLVED — a locked price-book/customer-specific price bypasses standard min-price approval. Exception: if requested price goes below even that locked price, approval is still required | RESOLVED |
 | 14 | Warehouse/shelf source of truth | Partially resolved — shelf goes to DN additional-note (NS-08); broader warehouse/branch mapping still pending | PARTIAL |
 | 15 | Malay/Chinese required for sign-off? | Implemented, needs testing (NS-09) | RESOLVED-PENDING-TEST |
 
 **Note on Q11:** the debrief evidence for a resolution exists, but Gareth explicitly chose to keep it parked rather than treat the debrief mention as a lock — flagged here so the choice is traceable, not accidental.
+
+### Round 4 (13 Jul 2026) — remaining real open items closed
+
+| Item | Resolution |
+|---|---|
+| Q9 (delivery charge SKUs) | Options pulled directly from AutoCount's master list |
+| Q12 (min-price grain) | Item + UOM confirmed |
+| Q13 (price-book bypass) | Locked price-book price bypasses approval, unless requested price undercuts even that locked price |
+
+**Only 2 items remain genuinely open for Fixguru:**
+1. **Delivery-method-history source doctype** (NS-07) — invoice vs SO vs DO. You confirmed this still needs asking, pending tech+client alignment.
+2. **Warehouse/branch structure mapping proper** (part of NS-08/Q14) — shelf-in-DN-note is resolved, but the broader "which AutoCount module is source of truth for warehouse" question is still pending tech investigation.
 
 ## See Also
 
