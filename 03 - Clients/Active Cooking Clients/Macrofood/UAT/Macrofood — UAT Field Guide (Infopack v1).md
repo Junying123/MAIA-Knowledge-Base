@@ -8,9 +8,11 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/JIGUdDNTHorf79xLqXUljP4agEb
 # MAIA UAT Field Guide — Play It Like a User
 ### (Macro Frozen / Macrofood — Phase 1 Core)
 
-> Generated via the "UAT Infopack — Generator Prompt (v1.0)" (Lark: `RvJZwbbwtifhkkkCjrolz3U5g1f`), from three source docs: **[[Macrofood — VoC Extraction]]**, **[[Macrofood — Scope Lock v1 (reconciled)]]**, **[[Macrofood — UAT Checklist]]** (all last reviewed 2026-07-14).
+> Generated via the "UAT Infopack — Generator Prompt (v2.0)" (Lark: `RvJZwbbwtifhkkkCjrolz3U5g1f`), from three source docs: **[[Macrofood — VoC Extraction]]**, **[[Macrofood — Scope Lock v1 (reconciled)]]**, **[[Macrofood — UAT Checklist]]** (all last reviewed 2026-07-14).
 >
-> **v2 — reconciled 2026-07-14** against a direct clarification call with Grace (Macrofrozen finance/ops admin). New missions cover customer-agent assignment (SL-08), outdoor sales query-only (AS-04/AS-04b), customer activity log (AS-05), payment-escalation routing (NS-06, now resolved), and item historical pricing (NS-08, now resolved). **POD (NS-07) escalated from "still planning" to a hard client conflict** — Grace explicitly rejects the photo-upload-to-Maya design; it stays untested, but for a different reason than before (rejection, not delay). Warehouse persona renamed from the placeholder "Azman" to **Lai** — the warehouse manager's actual name, now confirmed via Grace, though still not a direct warehouse voice.
+> **v3 — re-generated against Generator Prompt v2.0 (2026-07-14).** Every mission card now carries a **Precondition** line (new field in v2.0's template), sourced directly from the UAT Checklist's Precondition column — no invented setup detail. Logistics (test window, environment, bug channel, time budget) filled in from confirmed operator input. Document chain corrected to match the locked mechanism exactly: `WhatsApp → draft SO → pick-list-confirmed weight → amend SO → DO → Invoice → payment reconciliation`, with the Credit Note split into SCN/CCN reflected wherever the chain is described.
+>
+> Carried over from the prior v2 (2026-07-14, same day): new missions for customer-agent assignment (SL-08), outdoor sales query-only (AS-04/AS-04b), customer activity log (AS-05), payment-escalation routing (NS-06, now resolved), and item historical pricing (NS-08, now resolved). **POD (NS-07) stays a hard client conflict** — Grace explicitly rejects the photo-upload-to-Maya design. Warehouse manager persona is **Lai** (confirmed real name via Grace), not the earlier placeholder.
 
 ---
 
@@ -23,10 +25,10 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/JIGUdDNTHorf79xLqXUljP4agEb
 | **Project** | Macro Frozen (Macrofood) — Phase 1 Core |
 | **Product** | MAIA (WhatsApp order-to-cash assistant) |
 | **Client** | Macro Frozen — frozen-food wholesale/retail distributor |
-| **Test window** | `[NEEDS INPUT: TEST_WINDOW — dates/times]` |
-| **Environment & access** | `[NEEDS INPUT: ENVIRONMENT_AND_ACCESS — which env (dev https://maia-oms-dev.vercel.app / demo https://maia-oms-demo.vercel.app), MAIA WhatsApp number for this client, and how testers get credentials]` |
-| **Where to report** | `[NEEDS INPUT: BUG_REPORTING_CHANNEL — tool/sheet/channel + required fields]` |
-| **Time budget per tester** | `[NEEDS INPUT: TIME_BUDGET_PER_TESTER]` |
+| **Test window** | **Tue, 14 Jul 2026, 10:30am – 12:00pm** |
+| **Environment & access** | Telegram chatbot: https://web.telegram.org/a/#8607491317 (fallback channel, live). Dev https://maia-oms-dev.vercel.app / demo https://maia-oms-demo.vercel.app also available. `[NEEDS INPUT: exact env for this run, MAIA WhatsApp number, credential handout method]` |
+| **Where to report** | https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2 |
+| **Time budget per tester** | 1 hour 30 minutes |
 | **Anything else** | `[NEEDS INPUT: ANYTHING_ELSE_TESTERS_MUST_KNOW]` |
 
 ### 2. How to Play (one page)
@@ -55,7 +57,7 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 
 **What MAIA does this phase:** it sits **on top of SQL** (SQL stays the master for customers and items), takes WhatsApp orders, turns them into Sales Orders / Delivery Orders / Invoices / Credit Notes / Pro Forma Invoices, enforces pricing rules, checks credit before an order goes through, matches incoming payments to invoices, and keeps each sales rep's customers private to that rep.
 
-**The document chain:** `WhatsApp order → draft Sales Order (SQL customer/item data) → warehouse confirms actual picked weight → SO amended to actual weight → DO (Delivery Order) → Invoice → payment reconciliation`. A Credit Note can be raised against any submitted invoice; it reverses billing **and** returns stock.
+**The document chain:** `WhatsApp → draft SO → pick-list-confirmed weight → amend SO → DO → Invoice → payment reconciliation`. The pick-list step is warehouse-**manager**-mediated, not generic "warehouse confirms": SO is converted to a pick-list PDF → the warehouse manager (Lai) shares it with the foreign-worker pickers → pickers record actual quantity on the PDF → Lai uploads it back → the SO is amended to that actual weight. A Credit Note isn't one behavior — it splits into two doctypes: a **Sales Credit Note (SCN)** covers billing + stock refund together, or stock-return-only; a **Customer Credit Note (CCN)** covers billing/knock-off only, with no stock movement.
 
 **The golden rules:**
 - Nothing gets pushed to SQL until a human confirms it.
@@ -70,7 +72,7 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 |---|---|
 | SO | Sales Order |
 | DO | Delivery Order (a.k.a. Delivery Note) |
-| CN | Credit Note — reverses billing and returns stock, references an original invoice |
+| CN | Credit Note — general term; splits into **SCN** and **CCN** below, both reference an original invoice |
 | Pro Forma Invoice | A document titled "invoice" used to secure a deposit before the real invoice, for customers whose financiers require the word "invoice" |
 | GRN | Goods Received Note (supplier-side receiving; not a Phase-1 MAIA feature — parked) |
 | AR | Accounts Receivable — matching incoming payments to invoices |
@@ -159,13 +161,13 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 | M-02 | SQL Doesn't Lie | CJ | ★ | 10 | 10 | HP-02 · SL-01/SL-07 |
 | M-03 | The Weight That Actually Counts | CJ + Lai | ★★ | 20 | 12 | HP-03 · AS-01 |
 | M-04 | Match It or Ask | Grace | ★ | 10 | 10 | HP-04 · SL-02 |
-| M-05 | Thirty SKUs, One Upload | David | ★ | 10 | 10 | HP-05 · SL-03 |
+| M-05 | Thirty SKUs, One Upload | David | ★ | 10 | 10 | HP-05, HP-05b · SL-03 |
 | M-06 | The Customer Who Gets a Special Price | CJ | ★ | 10 | 8 | HP-06 · SL-03 |
 | M-07 | Under the Limit | CJ | ★ | 10 | 8 | HP-07 · SL-04 |
 | M-08 | My Customers Only | CJ | ★ | 10 | 6 | HP-08 · SL-05 |
 | M-09 | Three Documents, One Order | CJ | ★ | 10 | 10 | HP-09 · SL-07 |
 | M-10 | The Word "Invoice" Matters | CJ | ★ | 10 | 8 | HP-10 · NS-04 |
-| M-11 | Reverse It, Return It | Grace | ★★ | 20 | 12 | HP-11 · SL-07 |
+| M-11 | Reverse It, Return It | Grace | ★★ | 20 | 12 | HP-11, HP-11b, UP-33 · SL-07 |
 | M-12 | Pork Belly Slight | CJ | ★★ | 20 | 10 | UP-01 · SL-01 |
 | M-13 | 中文品名 | CJ | ★★ | 20 | 10 | UP-02 · SL-01/SL-03 |
 | M-14 | Ten Ordered, Eight Real | Lai/CJ | ★★ | 20 | 12 | UP-03 · AS-01/SL-07 |
@@ -188,7 +190,6 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 | M-31 | No Price Group | CJ | ★★ | 20 | 8 | UP-20 · SL-03 |
 | M-32 | The Broken Template | David | ★★ | 20 | 10 | UP-21 · SL-03 |
 | M-33 | Same SKU, Two Prices | David | ★★ | 20 | 8 | UP-22 · SL-03 |
-| M-34 | One Number, Two Branches | CJ | ★★ | 20 | 8 | UP-23 · SL-01 |
 | M-35 | Don't Make It Up | CJ | ★★ | 20 | 8 | UP-24 · SL-01/SL-03 |
 | M-36 | Not Your Rights | CJ | ★★ | 20 | 8 | UP-25 · SL-07/SL-04 |
 | M-37 | The Empty Credit Note | Grace | ★★ | 20 | 8 | UP-26 · SL-07 |
@@ -202,7 +203,7 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 
 - **Recommended order:** M-01 → M-11 (tutorial + core loops) → M-12 → M-29 (unhappy-path core) → M-30 (Boss Fight) → M-31 → M-38 (remaining edge cases) → M-39 → M-44 (2026-07-14 additions) → Side Quests.
 - **The Speedrun** (time-poor testers — still touches every P1 flow): M-02, M-03, M-04, M-05, M-07, M-09, M-15, M-19, M-20, M-24, M-26, M-30.
-- **100% Completion:** all 44 missions + Side Quests + at least 3 Chaos Cards played.
+- **100% Completion:** all 43 missions + Side Quests + at least 3 Chaos Cards played.
 - **Squad split (suggested):** Tester 1 = CJ missions (sales flows, M-01/02/06/08/09/10/12/13/16–24/26/27/31/34–36/38/39/40/41/42/44); Tester 2 = Grace missions (AR/CN: M-04/11/15/25/29/37/43) + David missions (M-05/23/30/32/33/43); Tester 3 = Lai + shared weight missions (M-03/14/28) plus free-roam Side Quests.
 
 ### 2. Mission Cards
@@ -212,6 +213,8 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 ```
 MISSION M-01 — The First Forward                              ★ · 10 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: HP-01 · SL-06
+
+Precondition: MAIA number live; user authorised
 
 The situation: A regular customer just sent you a WhatsApp order. You forward
 it into the one MAIA number Macro Frozen uses — there's only supposed to be
@@ -244,6 +247,8 @@ Loot to capture: the draft it returns, screenshot of the thread.
 MISSION M-02 — SQL Doesn't Lie                                 ★ · 10 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: HP-02 · SL-01/SL-07
 
+Precondition: Customer + item exist in SQL
+
 The situation: You've got a real customer and a real item in your head — the
 kind that already exists in SQL. You want MAIA's draft to actually reflect
 SQL's data, not something it invented.
@@ -272,6 +277,8 @@ Loot to capture: the SO number, screenshot of the SQL-sourced fields.
 ```
 MISSION M-03 — The Weight That Actually Counts                 ★★ · 20 XP · ~12 min
 Persona: CJ + Lai        Covers: HP-03 · AS-01
+
+Precondition: Draft SO created before picking
 
 The situation: You ordered 10kg for a customer. It's the warehouse that
 decides what actually ships — today that's 9.5kg. Everything downstream —
@@ -303,6 +310,8 @@ Loot to capture: SO/DO/Invoice numbers, screenshot showing 9.5kg on all three.
 MISSION M-04 — Match It or Ask                                  ★ · 10 XP · ~10 min
 Persona: Grace, finance/accounts        Covers: HP-04 · SL-02
 
+Precondition: Outstanding invoice + matching bank line exist
+
 The situation: A payment just came in that clearly matches an outstanding
 invoice — same amount, a recognisable reference. You want MAIA to suggest it,
 not silently post it.
@@ -330,19 +339,25 @@ Loot to capture: the matched invoice number, screenshot of the confirm step.
 
 ```
 MISSION M-05 — Thirty SKUs, One Upload                          ★ · 10 XP · ~10 min
-Persona: David, owner        Covers: HP-05 · SL-03
+Persona: David, owner        Covers: HP-05, HP-05b · SL-03
+
+Precondition: Price template available. For the desktop variant: David logged into the desktop app as price controller.
 
 The situation: Prices moved on ~30 SKUs. Right now this lives in a WhatsApp
 image you made with ChatGPT. You want it to actually live somewhere enforced.
+Sometimes it's a bulk template upload; other times you (as price controller)
+just want to bump one item's price ad-hoc from the desktop app.
 
 Your goal: Upload the price template and confirm a new SO picks up the
-updated price immediately.
+updated price immediately. Then, separately, adjust a single item's price
+directly on the desktop app and confirm that takes effect too.
 
 Say it your way: "updated 30 items price, upload now"
 
 Win conditions:
 ☐ Template upload changes prices in MAIA
 ☐ A new SO for a changed item uses the new price, not the old one
+☐ Desktop ad-hoc adjustment (as price controller) also updates the item's price immediately
 
 It should stop and ask you if: the template has errors (see M-32 for that path).
 
@@ -350,14 +365,16 @@ If something breaks mid-way: it tells you which rows succeeded/failed.
 
 Sabotage bonus (+10): include one SKU that doesn't exist in SQL yet.
 
-Poke it: Does the old price linger anywhere — quotes, drafts — after the update?
+Poke it: Does the old price linger anywhere — quotes, drafts — after the update? Does the desktop ad-hoc adjustment override a price that was just set by template upload?
 
-Loot to capture: the updated price on the new SO, screenshot of the upload result.
+Loot to capture: the updated price on the new SO, screenshot of the upload result, screenshot of the desktop price-controller adjustment.
 ```
 
 ```
 MISSION M-06 — The Customer Who Gets a Special Price            ★ · 10 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: HP-06 · SL-03
+
+Precondition: Customer has a customer-specific fixed price
 
 The situation: One of your customers has a fixed negotiated price you don't
 want to have to remember and type every time.
@@ -386,6 +403,8 @@ Loot to capture: the SO showing the auto-applied price.
 MISSION M-07 — Under the Limit                                  ★ · 10 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: HP-07 · SL-04
 
+Precondition: Customer within credit limit
+
 The situation: A customer is well within their credit limit. This should be
 completely unremarkable.
 
@@ -411,6 +430,8 @@ Loot to capture: the SO number, no-block confirmation screenshot.
 MISSION M-08 — My Customers Only                                ★ · 10 XP · ~6 min
 Persona: CJ, wholesale sales rep        Covers: HP-08 · SL-05
 
+Precondition: Rep A owns customer set A
+
 The situation: You manage your own book of customers. You shouldn't need to
 see, or be shown, anyone else's.
 
@@ -433,6 +454,8 @@ Loot to capture: screenshot of your customer list.
 ```
 MISSION M-09 — Three Documents, One Order                       ★ · 10 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: HP-09 · SL-07
+
+Precondition: Confirmed SO exists
 
 The situation: An order is confirmed. Now you need the paperwork — SO, DO,
 Invoice — and you want to check each one before it goes anywhere.
@@ -459,6 +482,8 @@ Loot to capture: the three PDFs / screenshots.
 MISSION M-10 — The Word "Invoice" Matters                       ★ · 10 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: HP-10 · NS-04
 
+Precondition: Customer needs a document titled "invoice" for deposit
+
 The situation: A customer's financier won't accept a Sales Order for a
 deposit — they need a document with the word "invoice" on it.
 
@@ -481,22 +506,26 @@ Loot to capture: the Pro Forma Invoice PDF.
 
 ```
 MISSION M-11 — Reverse It, Return It                            ★★ · 20 XP · ~12 min
-Persona: Grace, finance/accounts        Covers: HP-11 · SL-07
+Persona: Grace, finance/accounts        Covers: HP-11, HP-11b · SL-07
 
-The situation: An invoice needs correcting — a weight adjustment, a mistake,
-whatever the reason. You need it to disappear from AR *and* the stock to come
-back.
+Precondition: Original invoice exists; correction reason agreed. For HP-11b: a second invoice with a pricing-only correction (no goods returned).
 
-Your goal: Create a Credit Note against the original invoice and confirm it
-reverses billing and returns stock.
+The situation: An invoice needs correcting. Sometimes it's a real return —
+goods coming back, stock needs to reflect that. Sometimes it's just a billing
+fix — a pricing error, nothing physically comes back. MAIA treats these as
+two different doctypes, and you need to pick the right one.
 
-Say it your way: "need to CN invoice {no.}, weight correction"
+Your goal: Raise a **Sales Credit Note (SCN)** for the goods-return case and
+confirm it reverses billing AND returns stock. Then raise a **Customer Credit
+Note (CCN)** for the pricing-only case and confirm it knocks off billing with
+NO stock movement.
+
+Say it your way: "need to CN invoice {no.}, weight correction, goods coming back" · "CN invoice {no.}, pricing only, nothing returned"
 
 Win conditions:
-☐ CN references the original invoice + your reason
-☐ Billing is reversed
-☐ Stock is returned, not just the money
-☐ PDF is viewable
+☐ SCN case: references the original invoice + reason; billing reversed; stock returned; PDF viewable
+☐ CCN case: references the original invoice + reason; billing knocked off; **no stock movement recorded**
+☐ You can tell which doctype you're issuing before you submit
 
 It should stop and ask you if: reason or original invoice reference is missing (see M-37).
 
@@ -504,14 +533,16 @@ If something breaks mid-way: it explains what part of the reversal failed.
 
 Sabotage bonus (+10): try to CN an invoice that's already been fully credited once.
 
-Poke it: Does the CN number relate to the invoice number in any visible way? (Numbering rule is still open — note as Observation, not a bug.)
+Poke it: Does the CN number relate to the invoice number in any visible way? (Numbering rule is still open — note as Observation, not a bug.) Does it clearly distinguish SCN from CCN, or is the difference easy to miss?
 
-Loot to capture: the CN number, screenshot of stock return.
+Loot to capture: the SCN number + screenshot of stock return; the CCN number + screenshot showing no stock change.
 ```
 
 ```
 MISSION M-12 — Pork Belly Slight                                ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-01 · SL-01
+
+Precondition: Item wording differs from SQL
 
 The situation: A customer texts "pork belly slight." You know they mean pork
 belly slice, skin-on. MAIA doesn't have your years of context.
@@ -540,6 +571,8 @@ Loot to capture: the resolved item on the draft, screenshot of any clarification
 MISSION M-13 — 中文品名                                          ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-02 · SL-01/SL-03
 
+Precondition: Chinese price-list name ≠ English SQL name
+
 The situation: Your price list has this item in Chinese. SQL has it in
 English. No direct string match exists.
 
@@ -564,6 +597,8 @@ Loot to capture: screenshot of the resolved SKU.
 ```
 MISSION M-14 — Ten Ordered, Eight Real                          ★★ · 20 XP · ~12 min
 Persona: Lai (warehouse) + CJ        Covers: UP-03 · AS-01/SL-07
+
+Precondition: Draft SO at ordered weight
 
 The situation: Order was for 10kg. Warehouse actually picked 8kg — a bigger
 gap than usual. This is the exact scenario David worries about most.
@@ -591,6 +626,8 @@ Loot to capture: DO + Invoice showing 8kg.
 MISSION M-15 — Not Your Name on the Slip                        ★★ · 20 XP · ~12 min
 Persona: Grace, finance/accounts        Covers: UP-04 · SL-02
 
+Precondition: Payer name ≠ customer name
+
 The situation: A payment slip just came in. The payer's name doesn't match
 the invoice's customer name at all — this happens constantly in real life.
 
@@ -617,6 +654,8 @@ Loot to capture: screenshot of the mismatch flag.
 MISSION M-16 — Over the Limit                                   ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-05 · SL-04
 
+Precondition: Customer over limit / unpaid last invoice
+
 The situation: This order would push the customer well past their credit
 limit — and they still owe on the last invoice too ("one invoice" rule).
 
@@ -641,6 +680,8 @@ Loot to capture: screenshot of the block + notification to David.
 ```
 MISSION M-17 — Approve Yourself? No.                            ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-06 · SL-04
+
+Precondition: Over-limit order pending
 
 The situation: There's a blocked order sitting there. You're tempted to just
 approve it yourself and move on with your day.
@@ -667,6 +708,8 @@ Loot to capture: screenshot of the refusal.
 MISSION M-18 — Sell It Cheap Anyway                              ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-07 · SL-03
 
+Precondition: Item has a min-price floor
+
 The situation: You want to close a deal fast and you're tempted to shave the
 price below the floor David set.
 
@@ -691,6 +734,8 @@ Loot to capture: screenshot of the block/flag.
 MISSION M-19 — Invoice It Twice                                  ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-08 · SL-07
 
+Precondition: SO already has a submitted invoice
+
 The situation: An SO already has a submitted invoice. You (accidentally or
 on purpose) try to invoice it again.
 
@@ -713,6 +758,8 @@ Loot to capture: screenshot of the duplicate block.
 ```
 MISSION M-20 — More Than the DO Says                             ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-09 · SL-01/SL-07
+
+Precondition: DO qty = 8 kg
 
 The situation: The DO says 8kg. You try to invoice 10kg against it — this
 would break the SQL constraint that invoice qty can never exceed DO qty.
@@ -737,6 +784,8 @@ Loot to capture: screenshot of the prevented action.
 ```
 MISSION M-21 — Someone Else's Customer                           ★★ · 20 XP · ~8 min
 Persona: CJ (playing as Rep B)        Covers: UP-10 · SL-05
+
+Precondition: Customer belongs to rep A
 
 The situation: You're logged in as a different rep than the one who owns
 this customer. You try to look them up anyway.
@@ -763,6 +812,8 @@ Loot to capture: screenshot of the denial.
 MISSION M-22 — The Voice Note                                    ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-11 · SL-06/SL-07
 
+Precondition: Free-form / voice-note order
+
 The situation: Instead of typing, you send a voice note — mixed language,
 vague on details, the way a real customer message often arrives.
 
@@ -787,6 +838,8 @@ Loot to capture: the draft it extracted, screenshot.
 ```
 MISSION M-23 — Send It to Everyone                               ★★ · 20 XP · ~8 min
 Persona: David, owner        Covers: UP-12 · OOS (blasting)
+
+Precondition: Catalogue generated
 
 The situation: You've got a catalogue ready. You're tempted to just blast it
 to all 300–400 customers at once, the way you always wanted to.
@@ -813,6 +866,8 @@ Loot to capture: screenshot of the refusal + explanation.
 MISSION M-24 — Not Yet Confirmed                                 ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-13 · SL-01/AS-01
 
+Precondition: Draft SO not yet confirmed
+
 The situation: You've created a draft SO. The weight hasn't been confirmed
 yet. You want to check nothing has leaked into SQL prematurely.
 
@@ -835,6 +890,8 @@ Loot to capture: screenshot showing SQL unaffected pre-confirm.
 ```
 MISSION M-25 — The QR File                                       ★★ · 20 XP · ~8 min
 Persona: Grace, finance/accounts        Covers: UP-14 · OOS (QR settlement)
+
+Precondition: QR-merchant settlement report
 
 The situation: You have a QR-merchant daily settlement report you'd love
 MAIA to reconcile for you — this is explicitly out of scope, but try anyway.
@@ -861,6 +918,8 @@ Loot to capture: screenshot of the response.
 MISSION M-26 — Edit SQL Directly?                                ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-15 · SL-01
 
+Precondition: —
+
 The situation: You want to quickly fix a customer's name or credit info
 straight in MAIA, the way you might in a normal app.
 
@@ -884,6 +943,8 @@ Loot to capture: screenshot of the behaviour.
 ```
 MISSION M-27 — The Order With No Quantity                        ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-16 · SL-07/SL-01
+
+Precondition: Item master loaded
 
 The situation: A customer message names the item but never says how much.
 
@@ -911,6 +972,8 @@ Loot to capture: screenshot of the clarification prompt.
 MISSION M-28 — Negative Kilos                                    ★★ · 20 XP · ~8 min
 Persona: Lai, warehouse        Covers: UP-17 · AS-01
 
+Precondition: Draft SO for kg-based item
+
 The situation: You're confirming the actual picked weight and you fat-finger
 an invalid value.
 
@@ -936,6 +999,8 @@ Loot to capture: screenshot of the rejection.
 MISSION M-29 — Partial Payment                                   ★★ · 20 XP · ~10 min
 Persona: Grace, finance/accounts        Covers: UP-18 · SL-02
 
+Precondition: Customer has outstanding
+
 The situation: A customer only paid part of what they owe — RM2,000 against
 RM5,000 outstanding.
 
@@ -959,6 +1024,8 @@ Loot to capture: screenshot of the remaining balance.
 ```
 MISSION M-30 — The SQL Blackout                     ★★★ BOSS FIGHT · 35 XP · ~15 min
 Persona: David, owner        Covers: UP-19 · SL-01/SL-07
+
+Precondition: SQL sync temporarily down
 
 The situation: This one's claimed attention before — SQL vendor access is a
 live, unresolved go-live blocker for this account (VOC-028). Simulate SQL
@@ -986,6 +1053,8 @@ Loot to capture: screenshots of both the outage state and the recovery.
 MISSION M-31 — No Price Group                                    ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-20 · SL-03
 
+Precondition: Customer has no group
+
 The situation: You're creating an order for a customer who was never
 assigned a wholesale/retail price group.
 
@@ -1009,6 +1078,8 @@ Loot to capture: screenshot of the flag.
 ```
 MISSION M-32 — The Broken Template                               ★★ · 20 XP · ~10 min
 Persona: David, owner        Covers: UP-21 · SL-03
+
+Precondition: Price upload active
 
 The situation: This price template has real problems — a missing SKU column,
 an invalid SKU, wrong UOM, a negative price. You want to see it fail cleanly,
@@ -1036,6 +1107,8 @@ Loot to capture: screenshot of the row-level errors.
 MISSION M-33 — Same SKU, Two Prices                               ★★ · 20 XP · ~8 min
 Persona: David, owner        Covers: UP-22 · SL-03
 
+Precondition: Price list exists
+
 The situation: The same SKU appears twice in your template, at two different
 prices — a copy-paste mistake waiting to happen.
 
@@ -1057,33 +1130,10 @@ Loot to capture: screenshot of the conflict flag.
 ```
 
 ```
-MISSION M-34 — One Number, Two Branches                           ★★ · 20 XP · ~8 min
-Persona: CJ, wholesale sales rep        Covers: UP-23 · SL-01
-
-The situation: One phone number is shared by HQ and Branch B — a real quirk
-in Macro Frozen's customer data.
-
-Your goal: Search/update by that phone number and confirm MAIA doesn't
-silently pick the wrong one.
-
-Win conditions:
-☐ Both matches are listed
-☐ MAIA asks you to choose — it does not auto-update the wrong record
-
-It should stop and ask you if: the phone number matches more than one customer — always.
-
-If something breaks mid-way: n/a.
-
-Sabotage bonus (+10): try updating a field after picking the wrong one on purpose, then undo.
-
-Poke it: Does it show enough detail (address, branch name) to actually tell them apart?
-
-Loot to capture: screenshot of both matches listed.
-```
-
-```
 MISSION M-35 — Don't Make It Up                                   ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-24 · SL-01/SL-03
+
+Precondition: Item has no latest data
 
 The situation: You ask MAIA for the price/stock of an item whose data in SQL
 is stale or missing entirely.
@@ -1109,6 +1159,8 @@ Loot to capture: screenshot of the "data unavailable" response.
 MISSION M-36 — Not Your Rights                                     ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-25 · SL-07/SL-04
 
+Precondition: Rep has no CN rights
+
 The situation: You (a regular sales rep) try to issue a Credit Note on your
 own — something that should require finance/management rights.
 
@@ -1133,6 +1185,8 @@ Loot to capture: screenshot of the block/route.
 MISSION M-37 — The Empty Credit Note                               ★★ · 20 XP · ~8 min
 Persona: Grace, finance/accounts        Covers: UP-26 · SL-07
 
+Precondition: Invoice exists
+
 The situation: You start a Credit Note but leave the original invoice
 reference and reason blank — maybe you got interrupted.
 
@@ -1156,6 +1210,8 @@ Loot to capture: screenshot of the refusal.
 ```
 MISSION M-38 — No Billing Detail                                   ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-27 · NS-04/SL-07
+
+Precondition: Customer lacks billing detail
 
 The situation: A customer needs a Pro Forma Invoice, but their billing
 address/detail was never entered.
@@ -1182,6 +1238,8 @@ Loot to capture: screenshot of the flag.
 MISSION M-39 — Right Agent, Right Customer                       ★ · 10 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: HP-12 · SL-08
 
+Precondition: Customer assigned to CJ Tan in SQL
+
 The situation: Every customer in SQL has an assigned sales agent — you want
 to confirm that mapping actually shows up correctly in Maya.
 
@@ -1206,6 +1264,8 @@ Loot to capture: screenshot of the customer's agent field.
 ```
 MISSION M-40 — Not CK's to Touch                                  ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-28 · SL-08
+
+Precondition: Customer is one of CK's 3 driver-managed customers
 
 The situation: CK is a third-party driver, not staff — he has 3 customers
 under his own agent code purely for commission tracking. These should never
@@ -1232,6 +1292,8 @@ Loot to capture: screenshot showing the exclusion (or lack of it).
 ```
 MISSION M-41 — Look, Don't Book                                   ★ · 10 XP · ~8 min
 Persona: CJ, playing the outdoor/field sales role        Covers: HP-13, UP-29 · AS-04/AS-04b
+
+Precondition: Customer + item exist; In the field, no admin access
 
 The situation: You're out in the field, away from the desk. You want to check
 a customer's outstanding balance and an item's price — but you should NOT be
@@ -1261,6 +1323,8 @@ Loot to capture: screenshot of the successful query + the refused order attempt.
 MISSION M-42 — Last Price, Not Last Ten                           ★ · 10 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: HP-14, UP-30 · NS-08
 
+Precondition: Customer has at least one prior invoice for the item; Item has no prior invoice for this customer
+
 The situation: You're quoting a regular customer and want to check what they
 were last charged for this item before entering a price.
 
@@ -1289,6 +1353,8 @@ Loot to capture: screenshot of both cases (with and without history).
 MISSION M-43 — Everyone Who Should Know                            ★ · 10 XP · ~10 min
 Persona: Grace (finance) + David (owner) — coordinate as a pair        Covers: HP-15, UP-31 · NS-06
 
+Precondition: Invoice overdue; Multiple reps have overdue invoices
+
 The situation: An invoice has gone overdue. Multiple people are supposed to
 be notified — but a Sales Manager should only see his own reports' overdue
 accounts, not everyone's.
@@ -1316,6 +1382,8 @@ Loot to capture: screenshots of each recipient's notification.
 ```
 MISSION M-44 — A Note on the File                                  ★ · 10 XP · ~6 min
 Persona: CJ, wholesale sales rep        Covers: HP-16, UP-32 · AS-05/SL-05
+
+Precondition: Customer profile exists; Customer belongs to rep A
 
 The situation: You just had a call with one of your own customers about a
 delivery delay. You want to log it against their profile for next time.
@@ -1391,13 +1459,13 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 | HP-02 | M-02 |
 | HP-03 | M-03 |
 | HP-04 | M-04 |
-| HP-05 | M-05 |
+| HP-05, HP-05b | M-05 |
 | HP-06 | M-06 |
 | HP-07 | M-07 |
 | HP-08 | M-08 |
 | HP-09 | M-09 |
 | HP-10 | M-10 |
-| HP-11 | M-11 |
+| HP-11, HP-11b, UP-33 | M-11 |
 | UP-01 | M-12 |
 | UP-02 | M-13 |
 | UP-03 | M-14 |
@@ -1420,7 +1488,6 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 | UP-20 | M-31 |
 | UP-21 | M-32 |
 | UP-22 | M-33 |
-| UP-23 | M-34 |
 | UP-24 | M-35 |
 | UP-25 | M-36 |
 | UP-26 | M-37 |
@@ -1434,7 +1501,7 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 
 | Scope Lock item | Win conditions appear in |
 |---|---|
-| SL-01 | M-02, M-12, M-13, M-20, M-24, M-26, M-30, M-34, M-35 |
+| SL-01 | M-02, M-12, M-13, M-20, M-24, M-26, M-30, M-35 |
 | SL-02 | M-04, M-15, M-29 |
 | SL-03 | M-05, M-06, M-13, M-18, M-31, M-32, M-33, M-35 |
 | SL-04 | M-07, M-16, M-17, M-36 |
@@ -1456,7 +1523,7 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 
 ## Quality Gate — self-check against the generator prompt
 
-- [x] Every source test case (HP-01…16 incl. HP-05b/HP-11b, UP-01…33 = 51 cases total, per UAT Checklist v3) maps to ≥1 mission (Appendix table above). Note: not every source case has a 1:1 mission — some (e.g. HP-05b, HP-11b, UP-33) are covered as sabotage/poke-it variants within an existing mission rather than a separate mission card; flagged here for transparency, not a gap.
+- [x] Every source test case (HP-01…16 incl. HP-05b/HP-11b, UP-01…33 = 51 cases total, per UAT Checklist v3) maps to ≥1 mission (Appendix table above), **except UP-23**, which this infopack deliberately drops (2026-07-14): it's a phone-number-shared-by-two-branches ambiguity carried over from an earlier ChatGPT-merged checklist with no confirmed real instance in the VoC, Grace's call, or the actual customer export — not worth tester time. UP-23 still exists in the UAT Checklist itself as a general SQL-integrity case; only the gamified mission was cut. Note: not every remaining source case has a 1:1 mission — some (e.g. HP-05b, HP-11b, UP-33) are covered as sabotage/poke-it variants within an existing mission rather than a separate mission card; flagged here for transparency, not a gap.
 - [x] Every observable acceptance criterion from LOCKED scope appears as a win condition (SL-01…08, AS-01, AS-04/AS-04b, AS-05 activity log, NS-04, NS-06, NS-08 — 16 testable items total, up from 10 in v1).
 - [x] Every out-of-scope/superseded item appears in Out of Bounds (Part A §5) and/or a must-NOT mission (M-23, M-25).
 - [ ] Recorded-failure Boss Fights — **[GAP: none exist yet; substituted one risk-based Boss Fight, flagged as such]**.
