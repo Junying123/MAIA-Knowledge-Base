@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-12
+last_reviewed: 2026-07-13
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/F5yKw59yui16UbkQjGqlha8egif
 ---
 
@@ -16,6 +16,8 @@ Macro Frozen — Scope Lock v1
 **Scope stance:** Conservative. Anything without evidenced mutual agreement is **not locked**. ⚠️
 
 **Reconciled 2026-07-12:** all Needs-Scoping items resolved to terminal statuses (see below). ⚠️ **Client sign-off still pending** — this lock is internally reconciled but not yet client-signed; UAT signatory unconfirmed (see Dependencies).
+
+**Re-checked 2026-07-13 (Ivan × Gareth scope lock discussion):** three items marked RESOLVED on 2026-07-12 (NS-03, NS-05, NS-06) turned out to be "feature exists" resolutions, not "mechanism documented" resolutions — Ivan flagged each as needing deeper detail before UAT. Reopened as **RESOLVED (feature) / OPEN (mechanism detail)**. NS-07's question sharpened. AS-01 mechanism detail expanded. New item NS-08 (item historical pricing) added. See per-item notes below.
 
 
 
@@ -33,6 +35,7 @@ Macro Frozen — Scope Lock v1
 | `Macrofood — Requirement Gathering Questionnaire` | 4 Jun prep | Yes as scoping checklist, not agreement | Used only to identify open questions and required samples; it is not evidence of client agreement. |
 | `2026-06-08 Macrofrozen MAIA setup-transcript.md` | 8 Jun 2026 | Targeted review | Mostly setup/API/AWS/data collection; weak for scope lock. |
 | Fireflies connector | queried 23 Jun 2026 | Title-scope search | Queries run: `Macro`, `Macro Frozen`, `Macrofood`, `Macro Food`, `David`. Found `new client brief custom med, macro food` dated 19 May 2026 and `Macro Food F2F` dated 6 May 2026. `Macro Food F2F` appears to be a coverage hole: not clearly present as a project file. |
+| `Ivan x Gareth Macrofrozen scope lock discussion` (Fireflies transcript) | 13 Jul 2026 | Yes, full transcript | Internal scope re-check between Ivan (lead) and Gareth's team (Speaker 3). Confirms/expands AR recon, AS-01 pick-list mechanism, pricing template, credit note doc type, POD attachment behaviour; surfaces that NS-03/NS-05/NS-06 "resolved" statuses lack mechanism detail; surfaces new item historical pricing requirement. |
 
 
 
@@ -53,7 +56,7 @@ Macro Frozen — Scope Lock v1
 | **LOCKED** | 7 | SQL/customer-item master boundary; AR customer-invoice reconciliation; bulk price update; credit-limit control; role visibility; one MAIA WhatsApp number; core document generation for SO/DO/Invoice where integration allows |
 | **LOCKED (SUPERSEDED)** | 0 | None fully qualifies; supersessions exist but lack clean client sign-off evidence. |
 | **AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED** | 6 | Fresh-weight workflow; product catalogue/image generation; credit note support; outdoor sales assistant; customer information/notes; backend dashboard/reminders |
-| **NEEDS SCOPING** | 0 | ✅ All resolved 2026-07 → terminal statuses (see Needs-Scoping Register). |
+| **NEEDS SCOPING** | 1 | NS-08 item historical pricing (new 2026-07-13). NS-03/NS-05/NS-06 reopened at mechanism-detail level (feature resolved, config/detail open) — see Needs-Scoping Register. |
 | **OUT OF SCOPE** | 7 | AP reconciliation; merchant/QR settlement reconciliation; delivery trip management; full WMS/barcode/QR scanning; volume-based pricing; full B2C/customer ordering app; automated WhatsApp blasting |
 
 
@@ -67,7 +70,7 @@ Macro Frozen — Scope Lock v1
 3. **Inventory aging/expiry alert — LOCKED (Phase 1, being built).**
 4. **Product catalogue — AGREED IN PRINCIPLE.** Acceptance criteria (template/fields/count/output) still to lock — blocks catalogue build only, not core go-live.
 
-**Remaining open (non-blocking):** NS-06 payment-escalation routing/timing; NS-07 POD (exploring ERPNext); the 4 VoC gaps + SQL-access dependency (see Dependencies).
+**Remaining open (non-blocking):** NS-03 aging-alert mechanism detail; NS-05 credit-block approval mechanism detail; NS-06 payment-escalation routing/timing; NS-07 POD all-vs-some enforcement question + tech ticket; NS-08 item historical pricing (blocks SL-03 pricing AC — see register); the 4 VoC gaps + SQL-access dependency (see Dependencies).
 
 ---
 
@@ -271,6 +274,10 @@ Macro Frozen — Scope Lock v1
 
 RESOLVED — confirmed 2026-07-10.
 
+**Mechanism detail added 2026-07-13:** Full flow is: create draft SO → submit/confirm SO → generate pick list **as a Maya PDF** → send PDF to warehouse → picker works off the PDF as a physical checklist (marks actual picked qty against ordered qty) → picked PDF uploaded back to Maya → Maya amends the SO with actual quantities → only then DN/DO/Invoice generated. This replaces the client's current WhatsApp-message pick list. Kevin (dev) supports the upload-back function; must be tested and working by **Thu 16 Jul** (this is the "happy flow," top priority, cannot slip — blocks Macro Frozen readiness).
+
+**⚠️ Adoption risk flagged 2026-07-13:** Grace indicated (per a call the night before) that Macro Frozen may keep using their own existing pick list first rather than adopting the Maya-generated PDF flow. Ivan's instruction was "we need to do this flow" — i.e. build and test it regardless — but this is a live adoption risk, not a closed item. **Action: run one real pick → confirm → upload cycle with the actual warehouse person before go-live** (this was already flagged as an open unknown in the VoC Extraction; today's comment confirms it's still unresolved, not hypothetical).
+
 
 
 ---
@@ -310,6 +317,8 @@ RESOLVED — confirmed 2026-07-10.
 **Precise question:** Will Macro Frozen accept MAIA running CN numbers, or must CN be created in SQL first and pulled into MAIA?  
 
 **Blocking:** NO for core SO/DO/Invoice; YES for CN.
+
+**Mechanism resolved 2026-07-13:** In Maya, credit note is its own doc type — "Sales Credit Note" — distinct from a generic/customer credit note, referencing the original invoice number. It does two things: reverses billing AND returns stock (i.e. tracks the stock coming back, not just the financial reversal). Sync works both directions — CN can be created in SQL and synced to Maya, or created in Maya and synced to SQL. **Only the numbering question (precise question above) remains open** — the doc-type/stock-reversal mechanism is settled.
 
 
 
@@ -385,11 +394,12 @@ RESOLVED — confirmed 2026-07-10.
 |-|-|-|-|-|-|
 | NS-01 | Phase 1 order/pick-list trigger | SOW target, meeting notes and WhatsApp recap describe different order/pick timing. | “For Phase 1, should MAIA create a draft SO before picking, or should Macro Frozen pick externally first and upload the confirmed pick list so MAIA creates SO/DO/Invoice?” | David + MAIA delivery lead | YES |
 | NS-02 | Stock entry / GRN photo | Narrative treats it as Phase 1/to-clarify; meeting reframes root cause as human checking error and says no direct Phase 1 feature. | “Is GRN photo/simple stock entry included in Phase 1, deferred, or separately priced?”  <br/>**Answer (2026-07-12):** Not for now — parked. | David + sales owner + delivery lead | RESOLVED — parked (not for now) |
-| NS-03 | Inventory aging / expiry alert | Meeting notes say agreed; WhatsApp recap says not Phase 1 / to explore. | “Should near-expiry/slow-moving stock alert be delivered in Phase 1, or parked after core go-live?”  <br/>**Answer (2026-07-10):** Being built now — targeted for Phase 1. | David | RESOLVED — being built for Phase 1 |
+| NS-03 | Inventory aging / expiry alert | Meeting notes say agreed; WhatsApp recap says not Phase 1 / to explore. | “Should near-expiry/slow-moving stock alert be delivered in Phase 1, or parked after core go-live?”  <br/>**Answer (2026-07-10):** Being built now — targeted for Phase 1.  <br/>**Reopened 2026-07-13:** feature is being built, but trigger threshold, alert recipient, and cadence were never defined — Ivan: "you need to have the details, how this works." | David | RESOLVED (feature) / **OPEN (mechanism — threshold, recipient, cadence)** |
 | NS-04 | Pro forma invoice | Proposal includes proforma where required; meeting says dedicated proforma document needs confirmation. | “Do you require a document explicitly titled ‘Pro Forma Invoice’, or is MAIA Sales Order sufficient?”  <br/>**Answer (2026-07-10):** MAIA already has Pro Forma Invoice in the product now. | David / Finance | NO |
-| NS-05 | Approval flows beyond credit | SOW includes broad approval flows; only credit-limit approval is defined. | “Besides credit limit/payment-term block, what exact approval triggers are required in Phase 1?”  <br/>**Answer (2026-07-12):** MAIA already has approval flows — we have this as well. | David | NO |
-| NS-06 | Payment chasing escalation | Meeting parks overdue notifications/escalation but sequence is not locked. | “Who receives overdue alerts first: account, salesperson, David, or all three; and at what timing?”  <br/>**Answer (2026-07-10):** MAIA already has overdue alert now. | David / Finance | NO |
-| NS-07 | POD attachment without delivery module | Delivery module is out of scope, but signed DO/photo attachment was discussed. | “In Phase 1, should driver-sent signed DO photos be attached manually to orders, or is POD tracking fully deferred with delivery trip management?”  <br/>**Answer (2026-07-10):** Still planning — exploring ERPNext capability for this. | David + MAIA delivery lead | NO |
+| NS-05 | Approval flows beyond credit | SOW includes broad approval flows; only credit-limit approval is defined. | “Besides credit limit/payment-term block, what exact approval triggers are required in Phase 1?”  <br/>**Answer (2026-07-12):** MAIA already has approval flows — we have this as well.  <br/>**Reopened 2026-07-13:** the actual ask is a **credit block** approval (not credit limit) — a credit controller role approves an order when the customer is credit-blocked. Ivan: "you need to answer deeper." Mechanics (who is the controller, approval UI, override record) not yet documented. | David | RESOLVED (feature) / **OPEN (mechanism — credit-block approval flow detail)** |
+| NS-06 | Payment chasing escalation | Meeting parks overdue notifications/escalation but sequence is not locked. | “Who receives overdue alerts first: account, salesperson, David, or all three; and at what timing?”  <br/>**Answer (2026-07-10):** MAIA already has overdue alert now.  <br/>**Reopened 2026-07-13:** Ivan re-raised the identical routing question live in this meeting — "who receive overdue alert first" is still unanswered by the client. Alert feature exists; routing/sequence does not. | David / Finance | RESOLVED (feature) / **OPEN (routing/sequence — still needs David)** |
+| NS-07 | POD attachment without delivery module | Delivery module is out of scope, but signed DO/photo attachment was discussed. | ~~“In Phase 1, should driver-sent signed DO photos be attached manually to orders, or is POD tracking fully deferred with delivery trip management?”~~ **Sharpened 2026-07-13 (Ivan):** Expected behavior settled — POD is a normal photo attachment, required upload **before** a DO can be marked "delivered" (upload-gates-status). Open question is narrower: **"Do ALL DOs require POD, or only some?"** If all → hard enforcement block is buildable. If only some → system can't cleanly enforce a block, needs a different design (e.g. optional/conditional field). Separately: check with tech whether the delivered-trip/stock tracking gap (currently Out-of-Scope) needs its own ticket regardless of the POD answer.  <br/>**Prior answer (2026-07-10):** Still planning — exploring ERPNext capability for this. | David + MAIA delivery lead / tech (Beyon) | NO — but **client question (all-vs-some) + internal tech ticket both still open** |
+| NS-08 | Item historical pricing | **New 2026-07-13.** During a call the night before, Grace (finance admin) told the team Macro Frozen uses item historical pricing for customer pricing — i.e. past transaction prices inform current customer-specific pricing. Not previously captured anywhere in scope. | “Confirm exact mechanism: is historical pricing a reference lookup (last price charged to this customer for this SKU) surfaced during order entry, or does it drive automatic pricing suggestions? How many periods of history are needed?” | David / Grace | **YES — blocks SL-03 pricing acceptance criteria until scoped** |
 
 
 
@@ -480,3 +490,7 @@ Use this in the next client conversation. Each answer should close one lock risk
 10. **Outdoor sales:** “For Phase 1, should outdoor sales users only query price/outstanding/customer info, or should they also create orders and request documents?”  
 11. **POD/signed DO:** “For Phase 1, should signed DO photos be attached to orders manually, or should proof-of-delivery tracking be deferred with the delivery trip module?”  
 12. **Payment escalation:** “When a customer is overdue, should MAIA notify Finance first, Sales first, David first, or all three — and after how many days?”
+13. **Item historical pricing:** “Grace mentioned you use item historical pricing for customer pricing — is this a lookup of the last price charged to that customer for that SKU during order entry, or should it drive automatic pricing suggestions? How many periods of history matter?”
+14. **POD enforcement scope:** “Do ALL delivery orders require a proof-of-delivery photo before being marked delivered, or only some? If only some, what determines which ones?”
+15. **Inventory aging alert detail:** “What should trigger a near-expiry/slow-moving alert (days-to-expiry threshold, stock-age threshold), and who should receive it?”
+16. **Credit-block approval detail:** “When an order is blocked for exceeding credit limit, who exactly is the approver, and do you want an override reason recorded?”
