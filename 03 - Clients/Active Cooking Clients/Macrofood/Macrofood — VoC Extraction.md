@@ -28,7 +28,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | Pre-Onboarding Requirements Questionnaire | Vendor-authored guide | Not customer voice | Actor identity + open-question context only |
 | Proposal / Customer Narrative | Vendor-authored | Not customer voice | Scope boundary + risk comparison only |
 | `Ivan x Gareth Macrofrozen scope lock discussion` (13 Jul 2026) | Internal scope re-check transcript, vendor-side only (Ivan + Speaker 3) | **Internal — not customer voice**, but relays one second-hand client statement (Grace, item historical pricing → VOC-030) | Confirms mechanism detail on AS-01/AS-03/NS-07; surfaces VOC-030; source for warehouse-adoption partial answer below |
-| `Macrofrozen Client Scope Lock Clarification` (13 Jul 2026, call with Grace) | Direct client call, vendor + Grace | **Primary — direct client voice** (Grace, finance/ops admin) | Resolves VOC-030 to CONFIRMED (was second-hand); adds VOC-031 (role/permission reality), VOC-032 (customer-agent SQL assignment), VOC-033 (AR auto-match adoption skepticism), VOC-034 (backup-coverage gap); updates VOC-024 with a direct conflict (client rejects POD photo-upload-to-Maya); narrows VOC-014's evidence (formal quotations barely used in practice) |
+| `Macrofrozen Client Scope Lock Clarification` (13 Jul 2026, call with Grace) | Direct client call, vendor + Grace | **Primary — direct client voice** (Grace, finance/ops admin) | Resolves VOC-030 to CONFIRMED (was second-hand); adds VOC-031 (role/permission reality), VOC-032 (customer-agent SQL assignment), VOC-033 (AR auto-match adoption skepticism), VOC-034 (backup-coverage gap), VOC-035 (customer PO issuance — 3 customers, new 2026-07-14); updates VOC-024 with a direct conflict (client rejects POD photo-upload-to-Maya); narrows VOC-014's evidence (formal quotations barely used in practice) |
 
 **Coverage verdict: proceed-with-caveats.**
 
@@ -95,6 +95,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | VOC-032 | Customer → sales-agent assignment | Every SQL customer record has an Agent field. 3 active salesmen: CJ Tan, Aben, Quinny. CK (3rd-party driver) has 3 customers under his own agent code, excluded from normal sales ops. Unassigned/legacy customers default to David | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** |
 | VOC-033 | AR auto-match adoption skepticism | When walked through the proposed Maya AR auto-match flow (upload slip → auto-match → knock off in SQL), Grace pushed back: sees it as the same manual work just routed through Maya, not a real time-save, since she'd still upload each slip and still manually pick which invoice(s) to knock off for multi-invoice payments | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — direct operator skepticism, not a hypothetical concern |
 | VOC-034 | Backup coverage gap | No process exists if the warehouse/logistics manager (Mr. Lai) is absent — foreign workers' reported picked quantities are taken at face value, zero verification. No defined backup for Finance Manager duties either (only Grace's own admin role has an informal backup — the boss's wife) | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — real operational gap, not a system config question |
+| VOC-035 | Customer PO issuance (new, 2026-07-14) | A small subset of customers — **3 confirmed** — issue a formal Purchase Order document instead of ordering informally via WhatsApp. Flow described: upload/receive the PO, match it against customer + item records, submit as a confirmed order (CPO) | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — low-volume use case, mechanism (PO format, extraction vs reference-only, match logic) not yet detailed |
 
 ---
 
@@ -241,6 +242,7 @@ have **no scope-lock home yet** — those need David before they can be committe
 | VOC-032 (customer-agent SQL assignment) | SL-08 (new 2026-07-14) | LOCKED | ✅ |
 | VOC-033 (AR auto-match skepticism) | SL-02 | Adoption-risk flag added 2026-07-14 | ⚠️ *design unchanged, but real-usage validation now explicitly flagged as needed* |
 | VOC-034 (backup coverage gap) | NS-10 (new 2026-07-14) | Needs scoping — real operational gap, not a system config question | ⚠️ *no resolution yet, David to decide* |
+| VOC-035 (customer PO issuance) | AS-08 / NS-12 (new 2026-07-14) | Agreed in principle — low-volume (3 customers), mechanism not yet detailed | ⚠️ *has a scope-lock home; PO format/extraction/match-logic questions still open for David* |
 | VOC-008 (QR merchant settlement) | Out of scope | excluded | ✅ |
 | VOC-026 (WhatsApp blasting) | Out of scope | excluded — bans the number | ✅ |
 | VOC-013 (volume-based pricing) | Out of scope | not supported — manual check | ✅ |
@@ -279,6 +281,7 @@ Feature existence ≠ mechanism documented. Ivan flagged all three live in the 1
 - **New adoption-risk signal:** VOC-033 (AR auto-match skepticism) — echoes the existing AS-01 pick-list adoption risk. Two independent signals now point at the same underlying risk: Grace doesn't yet see how routing her existing manual work through Maya saves her time.
 - **New signals with scope-lock homes already:** VOC-031 (role/permission reality → SL-04/AS-05), VOC-032 (customer-agent assignment → new SL-08).
 - **New signal with no home yet:** VOC-034 (backup coverage gap → new NS-10) — a real operational gap, not a Maya feature question.
+- **New signal, low volume, has a home:** VOC-035 (customer PO issuance → new AS-08/NS-12) — only 3 customers issue formal POs; use case is narrow, supplements the WhatsApp-first intake channel for those accounts only. Mechanism (PO format, OCR-vs-reference, match logic) still needs David.
 - **Narrowed evidence:** VOC-014 (quotation before order) — stated ask (wants price-lock) vs revealed behavior (formal quotations barely used) now diverge; AS-07's real necessity is an open question for David, not just its enforcement detail.
 
 **Everything else is aligned.** Out-of-scope boundaries match exactly (AP, QR settlement, WMS, volume pricing, B2C, blasting).

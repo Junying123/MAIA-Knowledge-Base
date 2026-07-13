@@ -12,7 +12,9 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/JIGUdDNTHorf79xLqXUljP4agEb
 >
 > **v3 — re-generated against Generator Prompt v2.0 (2026-07-14).** Every mission card now carries a **Precondition** line (new field in v2.0's template), sourced directly from the UAT Checklist's Precondition column — no invented setup detail. Logistics (test window, environment, bug channel, time budget) filled in from confirmed operator input. Document chain corrected to match the locked mechanism exactly: `WhatsApp → draft SO → pick-list-confirmed weight → amend SO → DO → Invoice → payment reconciliation`, with the Credit Note split into SCN/CCN reflected wherever the chain is described.
 >
-> Carried over from the prior v2 (2026-07-14, same day): new missions for customer-agent assignment (SL-08), outdoor sales query-only (AS-04/AS-04b), customer activity log (AS-05), payment-escalation routing (NS-06, now resolved), and item historical pricing (NS-08, now resolved). **POD (NS-07) stays a hard client conflict** — Grace explicitly rejects the photo-upload-to-Maya design. Warehouse manager persona is **Lai** (confirmed real name via Grace), not the earlier placeholder.
+> Carried over from the prior v2 (2026-07-14, same day): new missions for customer-agent assignment (SL-08), outdoor sales query-only (AS-04/AS-04b), customer activity log (AS-05), payment-escalation routing (NS-06, now resolved), and item historical pricing (NS-08, now resolved). **POD (NS-07) stays a hard client conflict** — Grace explicitly rejects the photo-upload-to-Maya design. Warehouse manager persona is **Lai** (confirmed real name via Grace), not the earlier placeholder. M-23/M-25 (OOS missions for blasting/QR settlement) removed — not worth tester time confirming a deliberate refusal.
+>
+> **Added later same day:** M-45 — customer PO upload & match (AS-08/NS-12), covering the 3 confirmed customers who issue formal POs instead of WhatsApp orders. Happy-path only, matching the UAT Checklist's own scope (see its §4c note on why this is a deliberate exception to LOCKED-only testing).
 
 ---
 
@@ -82,6 +84,7 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 | AIP | "Agreed in Principle" — direction agreed, implementation details not locked; **not tested this round** |
 | SCN | Sales Credit Note — Maya doctype covering billing reversal + stock return together, or stock-return-only |
 | CCN | Customer Credit Note — Maya doctype for billing/knock-off only, no stock movement |
+| PO / CPO | Purchase Order — a formal order document a small number of customers (3 confirmed) send instead of a WhatsApp message; MAIA matches it to customer + item records and converts it to a confirmed Sales Order (CPO) after review |
 
 ### 5. In Bounds / Out of Bounds / Needs Scoping
 
@@ -99,6 +102,7 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 - Let sales log notes/events/tasks on their own customer's profile (activity log).
 - Route overdue-invoice alerts to Finance, the responsible salesperson, their Sales Manager, and David.
 - Show the single latest invoiced price for an item at order entry — nothing older, no cross-item view (that's a deliberate scope boundary now, not a gap).
+- For the 3 customers who issue formal POs: match an uploaded PO against customer + item records and let you review the match before submitting as a confirmed order. This is a narrow, low-volume path — not the main order-intake channel.
 
 **Out of bounds — if you notice this missing, that's by design, don't log it as a bug** (note it as an *Observation* if it genuinely confused you as the persona):
 - AP (supplier payment) reconciliation.
@@ -198,10 +202,11 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 | M-42 | Last Price, Not Last Ten | CJ | ★ | 10 | 8 | HP-14, UP-30 · NS-08 |
 | M-43 | Everyone Who Should Know | Grace + David | ★ | 10 | 10 | HP-15, UP-31 · NS-06 |
 | M-44 | A Note on the File | CJ | ★ | 10 | 6 | HP-16, UP-32 · AS-05/SL-05 |
+| M-45 | The Formal Customer | CJ | ★ | 10 | 10 | HP-17 · AS-08 |
 
 - **Recommended order:** M-01 → M-11 (tutorial + core loops) → M-12 → M-29 (unhappy-path core) → M-30 (Boss Fight) → M-31 → M-38 (remaining edge cases) → M-39 → M-44 (2026-07-14 additions) → Side Quests.
 - **The Speedrun** (time-poor testers — still touches every P1 flow): M-02, M-03, M-04, M-05, M-07, M-09, M-15, M-19, M-20, M-24, M-26, M-30.
-- **100% Completion:** all 41 missions + Side Quests + at least 3 Chaos Cards played.
+- **100% Completion:** all 42 missions + Side Quests + at least 3 Chaos Cards played.
 - **Squad split (suggested):** Tester 1 = CJ missions (sales flows, M-01/02/06/08/09/10/12/13/16–24/26/27/31/34–36/38/39/40/41/42/44); Tester 2 = Grace missions (AR/CN: M-04/11/15/25/29/37/43) + David missions (M-05/23/30/32/33/43); Tester 3 = Lai + shared weight missions (M-03/14/28) plus free-roam Side Quests.
 
 ### 2. Mission Cards
@@ -1353,6 +1358,39 @@ Poke it: Does the note show who logged it and when?
 Loot to capture: screenshot of the saved note + the other rep's denied view.
 ```
 
+```
+MISSION M-45 — The Formal Customer                                 ★ · 10 XP · ~10 min
+Persona: CJ, wholesale sales rep        Covers: HP-17 · AS-08
+
+Precondition: One of the 3 confirmed PO-issuing customers has sent a PO document
+
+The situation: Most customers just WhatsApp you an order. But a handful — 3
+confirmed accounts — do things properly and issue a real Purchase Order
+document. You want to get that PO turned into a confirmed order without
+retyping everything by hand.
+
+Your goal: Upload the customer's PO to MAIA, review the matched customer and
+item lines, and confirm a CPO (converted Sales Order) gets created.
+
+Say it your way: "PO from customer, please process" (this is a rare, low-volume flow — only 3 accounts do this, so don't over-invent variety here)
+
+Win conditions:
+☐ MAIA matches the PO to the correct customer record
+☐ MAIA matches the PO's line items to the correct SKUs
+☐ You review the match before anything is submitted
+☐ A confirmed SO (CPO) is created referencing the matched data
+
+It should stop and ask you if: the customer or an item can't be confidently matched from the PO.
+
+If something breaks mid-way: it tells you what it matched, what it couldn't, and asks how to proceed — it doesn't guess a customer or item.
+
+Sabotage bonus (+10): use a PO with an item name that doesn't cleanly match any SKU and see if MAIA invents a match instead of asking.
+
+Poke it: Does it show you a diff between what the PO says and what it matched, so you can catch a wrong match before confirming?
+
+Loot to capture: the CPO/SO number, screenshot of the match-review step.
+```
+
 ### 3. Boss Fights
 
 > **[GAP: no previously recorded UAT failures exist for this project — this is a pre-launch Phase-1 UAT, not a regression cycle.]** The one Boss Fight below is risk-based, not failure-based: it targets the single highest-stakes, explicitly-flagged live risk in the account (the SQL vendor access blocker, VOC-028), not a bug anyone has actually hit yet.
@@ -1390,7 +1428,7 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 **Test Data Kit (updated 2026-07-14 — real SQL export received):**
 - **Real customers:** XS BBQ ENTERPRISE, XING RUI SDN BHD, RESTORAN TONG YANG, Restoran Wang Chuang sarawak mee, OASIS CAFE, Hwa Lyuk Korean Grill Puchong, RESTORAN APOLO - MIXED RICE, MUNCHY FOOD PROCESSING SDN. BHD., MEATMEET TRADING, CHING GROUP SDN BHD (from a 700+ row customer export — pick any real account for missions that don't require a specific agent-ownership fact).
 - **Real items:** BEEF SHORTRIBS BONELESS (B1108), BRAZIL BEEF HONEY COMB (B3406, RM28.50/kg), CHICKEN SBB TH (C0214, RM14.00/kg), CHICKEN BONELESS LEG (C0614, RM10.70/kg), WHOLE CHICKEN FREE SIZE 全鸡（冻）(C1210, RM10.50/kg), JC WHOLE LEG TH (C1814, RM13.50/kg), SHOULDER SKINLESS INCARLOPSA 无皮前腿 (P0101I, RM23.00/kg) — from a 459-row item export.
-- **Still `[GAP: NEEDS CLIENT INPUT]`** — not resolvable from this export: a real credit-limit figure per customer, a real payer-mismatch example, a sample GRN, a sample price-update template, and confirmation of which specific customers are assigned to CJ Tan / Aben / Quinny's agent codes vs CK's 3 excluded ones (SL-08) — the export shown didn't include the Agent field, so mission M-39/M-40 still need a real example pulled with that field visible before running.
+- **Still `[GAP: NEEDS CLIENT INPUT]`** — not resolvable from this export: a real credit-limit figure per customer, a real payer-mismatch example, a sample GRN, a sample price-update template, and confirmation of which specific customers are assigned to CJ Tan / Aben / Quinny's agent codes vs CK's 3 excluded ones (SL-08) — the export shown didn't include the Agent field, so mission M-39/M-40 still need a real example pulled with that field visible before running. Also still needed for M-45 (AS-08): which of the 700+ customers are the 3 confirmed PO-issuers, and a sample real PO document to run the mission against — not identifiable from the exports shown.
 - Tag every record you create with a `UAT-` marker in remarks/reference fields where possible, so cleanup after the run is easy.
 
 **Scoring & Badges:**
@@ -1446,6 +1484,7 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 | HP-14, UP-30 | M-42 |
 | HP-15, UP-31 | M-43 |
 | HP-16, UP-32 | M-44 |
+| HP-17 | M-45 |
 
 | Scope Lock item | Win conditions appear in |
 |---|---|
@@ -1464,6 +1503,7 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 | NS-05 | (generic approval route, no dedicated mission — see UAT Checklist §4a "PARTIAL") |
 | NS-06 | M-43 |
 | NS-08 | M-42 |
+| AS-08 | M-45 (happy path only) |
 
 **Not tested this round (per Scope Lock/UAT §4b — do not log as bugs, Observation only if genuinely confusing as a persona):** AS-02 (catalogue — creation process is David-only knowledge), AS-03 (CN numbering rule), AS-05 master-data fields (address/phone/billing — separate from the activity log, which IS tested in M-44), AS-06 (dashboard), AS-07 (quotation/price-lock — real usage confirmed low), NS-02 (GRN, parked), NS-03 (aging alert, mechanism undefined), **NS-07 (POD — 🚫 client conflict, not "not yet built"; do not attempt to test or report its absence as a bug)**, NS-09/NS-10/NS-11 (stock-expiry sales-inclusion, backup coverage, warehouse device model — all need David's decision), and all explicit Out-of-Scope items (AP recon, QR settlement, delivery trip, WMS, volume pricing, B2C app, blasting). **No missions test OOS behavior at all (removed 2026-07-14)** — testers shouldn't spend time probing what the product deliberately refuses to do; the boundary is documented here and in Part A §5 instead.
 
@@ -1471,8 +1511,8 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 
 ## Quality Gate — self-check against the generator prompt
 
-- [x] Every source test case (HP-01…16 incl. HP-05b/HP-11b, UP-01…33 = 51 cases total, per UAT Checklist v3) maps to ≥1 mission (Appendix table above), **except UP-23, UP-12, and UP-14** (all removed 2026-07-14): UP-23 is a phone-number-shared-by-two-branches ambiguity carried over from an earlier ChatGPT-merged checklist with no confirmed real instance in the VoC, Grace's call, or the actual customer export; UP-12/UP-14 tested OOS (blasting, QR settlement) refusal behavior, which isn't worth tester time confirming a deliberate boundary. All three still exist in the UAT Checklist itself; only the gamified missions were cut. Note: not every remaining source case has a 1:1 mission — some (e.g. HP-05b, HP-11b, UP-33) are covered as sabotage/poke-it variants within an existing mission rather than a separate mission card; flagged here for transparency, not a gap.
-- [x] Every observable acceptance criterion from LOCKED scope appears as a win condition (SL-01…08, AS-01, AS-04/AS-04b, AS-05 activity log, NS-04, NS-06, NS-08 — 16 testable items total, up from 10 in v1).
+- [x] Every source test case (HP-01…17 incl. HP-05b/HP-11b, UP-01…33 = 52 cases total, per UAT Checklist v3) maps to ≥1 mission (Appendix table above), **except UP-23, UP-12, and UP-14** (all removed 2026-07-14): UP-23 is a phone-number-shared-by-two-branches ambiguity carried over from an earlier ChatGPT-merged checklist with no confirmed real instance in the VoC, Grace's call, or the actual customer export; UP-12/UP-14 tested OOS (blasting, QR settlement) refusal behavior, which isn't worth tester time confirming a deliberate boundary. All three still exist in the UAT Checklist itself; only the gamified missions were cut. Note: not every remaining source case has a 1:1 mission — some (e.g. HP-05b, HP-11b, UP-33) are covered as sabotage/poke-it variants within an existing mission rather than a separate mission card; flagged here for transparency, not a gap.
+- [x] Every observable acceptance criterion from LOCKED scope appears as a win condition (SL-01…08, AS-01, AS-04/AS-04b, AS-05 activity log, NS-04, NS-06, NS-08 — 16 testable items total, up from 10 in v1) — plus AS-08 (M-45), a deliberate happy-path-only exception since it's AGREED IN PRINCIPLE, not LOCKED (documented in the UAT Checklist §4c and here).
 - [x] Every out-of-scope/superseded item appears in Out of Bounds (Part A §5). No dedicated OOS missions this version (M-23/M-25 removed 2026-07-14) — not worth tester time confirming a deliberate refusal.
 - [ ] Recorded-failure Boss Fights — **[GAP: none exist yet; substituted one risk-based Boss Fight, flagged as such]**.
 - [x] Every primary user role (David, CJ, Grace, Lai) has a persona card; every mission's persona exists.

@@ -23,6 +23,8 @@ Macro Frozen — Scope Lock v1
 
 **Reconciled 2026-07-14 (Grace clarification call, "Macrofrozen Client Scope Lock Clarification"):** NS-08 fully **RESOLVED** — Grace confirmed the real mechanism is single-latest-invoice-per-item, which the existing Base feature already covers; the earlier Base-feature gap is closed, no extension needed. NS-06 routing **RESOLVED** — all recipients confirmed. **NS-07 (POD) escalated to a CONFLICT** — Grace explicitly rejects the photo-upload-to-Maya design; this is now a blocker for David, not just an open enforcement question. SL-02 gains an adoption-risk flag (Grace skeptical of AR auto-match's value). AS-07's real-world usage context added (formal quotations barely used in practice). New items: SL-08 (customer→sales-agent assignment), NS-09 (stock-expiry alert — sales inclusion), NS-10 (backup coverage gap for Logistics/Finance Manager absence), NS-11 (warehouse Maya access model). Role/permission detail clarified under SL-04/AS-05, but the full matrix remains **NOT LOCKED** pending the 16 Jul training. Client Confirmation Agenda restructured with a new "For David Directly" section.
 
+**Updated 2026-07-14 (later same day):** New AS-08 / NS-12 added — **3 confirmed customers issue formal customer POs** instead of ordering informally via WhatsApp. Low-volume use case: upload PO → match customer + item → submit as confirmed SO (CPO). Mechanism (format, OCR-vs-reference-only, match logic) not yet detailed with David.
+
 
 
 ## 1. Source Manifest
@@ -61,9 +63,9 @@ Macro Frozen — Scope Lock v1
 | **LOCKED** | 10 | SQL/customer-item master boundary; AR customer-invoice reconciliation (adoption-risk flagged); bulk price update + price controller role; credit-limit control; role visibility; one MAIA WhatsApp number; core document generation for SO/DO/Invoice where integration allows; outdoor sales assistant (AS-04, query-only); sales-to-admin order relay (AS-04b); customer→sales-agent assignment (SL-08, new) |
 | **LOCKED (SUPERSEDED)** | 0 | None fully qualifies; supersessions exist but lack clean client sign-off evidence. |
 | **AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED** | 5 | Fresh-weight workflow; product catalogue/image generation (pricing/catalog update mechanism now flagged David-only); credit note support (doctype design finalized, numbering risk flagged); customer information/notes (activity log confirmed, master-field writability open); backend dashboard/reminders |
-| **AGREED IN PRINCIPLE — IMPLEMENTATION PROPOSED** | 1 | AS-07 quotation-before-order — flow proposed, price-lock enforcement sub-question open, real-world usage confirmed low (Grace: formal quotations rarely used) |
+| **AGREED IN PRINCIPLE — IMPLEMENTATION PROPOSED** | 2 | AS-07 quotation-before-order — flow proposed, price-lock enforcement sub-question open, real-world usage confirmed low (Grace: formal quotations rarely used). AS-08 customer PO upload & match (new 2026-07-14) — 3 customers, low volume, mechanism not yet detailed. |
 | **BLOCKED — CLIENT CONFLICT** | 1 | NS-07 POD — client (Grace) explicitly rejects the photo-upload-to-Maya design; awaiting David's decision before this can move forward at all |
-| **NEEDS SCOPING** | 3 | NS-09 stock-expiry alert sales-inclusion (new); NS-10 backup coverage for Logistics/Finance Manager absence (new); NS-11 warehouse Maya access model (new). NS-03/NS-05 remain reopened at mechanism-detail level. NS-08 now RESOLVED — see Needs-Scoping Register. |
+| **NEEDS SCOPING** | 4 | NS-09 stock-expiry alert sales-inclusion (new); NS-10 backup coverage for Logistics/Finance Manager absence (new); NS-11 warehouse Maya access model (new); NS-12 customer PO upload & match mechanism (new). NS-03/NS-05 remain reopened at mechanism-detail level. NS-08 now RESOLVED — see Needs-Scoping Register. |
 | **OUT OF SCOPE** | 7 | AP reconciliation; merchant/QR settlement reconciliation; delivery trip management; full WMS/barcode/QR scanning; volume-based pricing; full B2C/customer ordering app; automated WhatsApp blasting |
 
 
@@ -485,6 +487,24 @@ Confirms the real-world entry point for orders: sales rep → WhatsApp message t
 
 
 
+### AS-08 — Customer PO upload & match (new 2026-07-14)
+
+**Status:** AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED
+
+**Now intended:** A small number of customers — **3 confirmed** — issue a formal Purchase Order (PO) document instead of ordering via WhatsApp/informal message. For these customers, the flow is: customer uploads/sends their PO → MAIA matches the PO against the customer record and item/SKU list → user reviews the match → submits as a confirmed Sales Order (CPO — Confirmed Purchase Order/converted SO).
+
+**Precise question:** Confirm the 3 customers who issue POs, the PO format (PDF/scanned/photo), whether MAIA needs to extract line items from the PO document itself (OCR-style) or whether the PO is just a reference attachment while the user manually keys in the order, and what "match" means exactly — auto-match customer+item by name/code, with human confirmation before submit?
+
+**Scope note:** This is a **low-volume, narrow use case** — only 3 customers, not a general intake channel. Do not build this as the primary order-intake path; it supplements the WhatsApp-first flow (SL-06) for these specific accounts only.
+
+**Blocking:** NO — low volume, does not block core go-live.
+
+
+
+---
+
+
+
 ## 5. Needs-Scoping Register
 
 
@@ -502,6 +522,7 @@ Confirms the real-world entry point for orders: sales rep → WhatsApp message t
 | NS-09 | Stock-expiry alert — sales inclusion | **New 2026-07-14.** Boss and Warehouse/Logistics Manager confirmed as recipients of the stock-expiry alert; whether Sales also needs it is undecided. | “Should salespeople also receive the stock-expiry/near-expiry alert, or is it warehouse/management only?” Grace explicitly said to ask David directly at the 16 Jul training. | David | NO — non-blocking, but needs David's answer |
 | NS-10 | Backup coverage — Logistics/Finance Manager absence | **New 2026-07-14.** No backup process exists today: if the warehouse/logistics manager (Mr. Lai) is absent, no one double-checks foreign workers' reported picked quantities — taken at face value. No equivalent backup is defined for Finance Manager duties either (only Grace's own admin role has an informal backup — the boss's wife). | “If the Logistics Manager or Finance Manager is absent, who backs up their MAIA-related duties (pick-list verification, AR/cash entries, approvals)?” Real operational gap, not just a system config question — David needs to decide, not just confirm a Maya setting. | David | Real operational gap — recommend resolving before go-live, not just before UAT |
 | NS-11 | Warehouse Maya access model | **New 2026-07-14.** Undecided whether each foreign-worker picker gets individual Maya access, or whether the whole warehouse team shares **one company phone/device** for Maya. Warehouse manager leans toward one shared device. | “Should foreign-worker pickers each get individual Maya logins, or should the warehouse team share one company device/phone for Maya?” To be decided at 16 Jul training. | David / Warehouse Manager | Affects AS-01's pick-list-upload step — needs resolving before UAT of that flow |
+| NS-12 | Customer PO upload & match | **New 2026-07-14.** 3 customers issue formal POs instead of ordering informally via WhatsApp. Mechanism (upload → match customer/item → submit CPO) proposed but not detailed — format, OCR-vs-reference-only, and match logic undefined. | “Confirm the 3 customers, PO format, whether MAIA extracts line items from the PO or it's a reference attachment, and what 'match' means (auto-match + human confirm before submit)?” | David | NO — low volume (3 customers only), does not block core go-live |
 
 
 
@@ -618,3 +639,4 @@ Surfaced from the 2026-07-14 Grace clarification call — these specifically req
 27. **Stock-expiry alert — include Sales?** “Boss and warehouse/logistics manager will get the stock-expiry alert — should sales also receive it?”
 28. **Backup coverage for Logistics/Finance Manager absence:** “If Mr. Lai (logistics) or your Finance staff is out, who should back up pick-list verification / AR entries / approvals? There's currently no process for this.”
 29. **Warehouse Maya access model:** “Should each foreign-worker picker get their own Maya login, or should the warehouse team share one company phone/device?”
+30. **Customer PO upload & match (AS-08/NS-12):** “Please confirm the 3 customers who issue formal POs, the PO format they send (PDF/scanned/photo), and whether MAIA should extract line items from the PO document itself or treat it as a reference attachment while staff key in the order manually.”

@@ -18,6 +18,9 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/HWQddZGpio5iROxedovlI9yNgCb
 > **Removed/escalated:** NS-07 (POD) is now a hard client conflict, not just
 > unbuilt — excluded from testing entirely pending David's decision, not just
 > "planning."
+> **Added same day (later):** AS-08 / NS-12 — customer PO upload & match (3
+> confirmed customers). Happy-path-only test case (HP-17); genuine exception to
+> the LOCKED-only testing rule, documented in §4c.
 
 ---
 
@@ -41,6 +44,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/HWQddZGpio5iROxedovlI9yNgCb
 | NS-05 | Approval flows (generic route) | RESOLVED (feature) / OPEN (credit-block mechanism detail) | UNKNOWN | **YES** (generic route only, per existing credit tests) |
 | NS-06 | Payment chasing escalation | **RESOLVED 2026-07-14** — full routing confirmed (Finance, responsible salesperson, Sales Manager, David) | YES | **YES — newly testable** |
 | NS-08 | Item historical pricing | **RESOLVED 2026-07-14** — matches existing Base feature exactly | YES | **YES — newly testable** |
+| AS-08 | Customer PO upload & match (new 2026-07-14) | AGREED IN PRINCIPLE — mechanism proposed (upload PO → match customer/item → submit CPO), not fully locked | UNKNOWN | **YES — happy path only, low-volume/low-risk exception to the LOCKED-only rule** (mirrors how NS-08 was tested before it formally resolved); do NOT write unhappy-path cases until PO format/match logic is confirmed with David |
 | AS-02 | Product catalogue / image | AIP — AC open; catalog-creation mechanism confirmed David-only | NO | NO → 4b |
 | AS-03 | Credit-note **numbering** rule | AIP — AC open (reference field vs mirrored number risk) | NO | NO (CN *generation*/doctype-split tested under SL-07; numbering rule → 4b) |
 | AS-06 | Backend dashboard / reminders | AIP — guiding questions drafted, not yet asked | NO | NO → 4b |
@@ -53,7 +57,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/HWQddZGpio5iROxedovlI9yNgCb
 | NS-11 | Warehouse Maya access model (new) | NEEDS SCOPING | UNKNOWN | NO → 4b |
 | OOS-* | AP recon · QR settlement · delivery trip · WMS · volume pricing · B2C · blasting | OUT OF SCOPE | — | NO → 4b |
 
-**Testable set:** SL-01…SL-08, AS-01, AS-04, AS-04b, AS-05 (activity log only), NS-04, NS-05, NS-06, NS-08 (16 items — up from 10 in v2).
+**Testable set:** SL-01…SL-08, AS-01, AS-04, AS-04b, AS-05 (activity log only), AS-08 (happy path only), NS-04, NS-05, NS-06, NS-08 (17 items — up from 10 in v2).
 
 ---
 
@@ -98,6 +102,7 @@ Cases U1–U28 carried over unchanged from v2 (see prior version history); new c
 | HP-14 | NS-08 | Happy | — | Sales/admin | Customer has at least one prior invoice for the item | 1. Start creating a new SO for a regular customer. 2. Open the unit-price field for an item with prior history. | Item Z, customer has 1 prior invoice at RM20/kg | MAIA shows the last invoiced price (RM20) inline in the price dropdown, matching the existing Base "last price" feature. |  |  |
 | HP-15 | NS-06 | Happy | — | Finance, salesperson, Sales Manager, David | Invoice overdue | 1. Let an invoice pass its due date unpaid. 2. Check each recipient's notifications. | Overdue invoice, responsible rep = Aben | Finance, Aben (the responsible salesperson), the Sales Manager, and David all receive the overdue alert. |  |  |
 | HP-16 | AS-05 | Happy | — | Sales rep (own customer) | Customer profile exists | 1. Open own customer's profile. 2. Add a note/event/task logging a recent interaction. | "Called customer 14 Jul re: delivery delay" | Note is saved and visible on the customer's activity log for future reference. |  |  |
+| HP-17 | AS-08 | Happy | — | Sales/admin | One of the 3 confirmed PO-issuing customers has sent a PO document | 1. Upload/forward the customer's PO to Maya. 2. Review MAIA's matched customer + item lines. 3. Confirm and submit as a CPO. | Real PO from one of the 3 confirmed customers, real SKUs (e.g. CHICKEN BONELESS LEG, BRAZIL BEEF HONEY COMB) | MAIA matches the PO to the correct customer record and item/SKU lines; user reviews before submit; a confirmed SO (CPO) is created referencing the matched data — nothing submits without human confirmation. |  |  |
 | UP-01 | SL-01 | Unhappy | Ambiguity | Sales/admin | Item wording differs from SQL | 1. Forward "pork belly slight". 2. Review MAIA extraction. | "pork belly slight" = pork belly slice skin-on | MAIA maps to the correct SQL SKU **or**, if it cannot, surfaces the line for manual selection — it does NOT silently pick a wrong item. |  |  |
 | UP-02 | SL-01 | Unhappy | Missing/incomplete | Sales/admin | Chinese price-list name ≠ English SQL name | 1. Forward an order using the Chinese item name. | 中文品名 vs English SKU | MAIA matches via learned mapping, or asks the user to confirm the SKU — no phantom line. |  |  |
 | UP-03 | AS-01 | Unhappy | Downstream integrity | Warehouse manager + sales | Draft SO at ordered weight | 1. Order 10 kg. 2. Pick-list PDF comes back annotated 8 kg picked. 3. Upload PDF. 4. Generate DO/Invoice. | 10 kg ordered → 8 kg picked | SO is amended to 8 kg on upload; DO + Invoice bill **8 kg**. Neither shows 10 kg. Amount recalculated. |  |  |
@@ -155,6 +160,7 @@ Cases U1–U28 carried over unchanged from v2 (see prior version history); new c
 | NS-05 | Approval (generic route) | (via HP-07/UP-05 credit route) | UP-06, UP-25 | PARTIAL — generic non-credit approval not separately locked |
 | NS-06 | Payment-escalation routing | HP-15 | UP-31 | YES |
 | NS-08 | Item historical pricing | HP-14 | UP-30 | YES |
+| AS-08 | Customer PO upload & match | HP-17 | — | PARTIAL — happy path only, no unhappy cases until PO format/match logic confirmed with David |
 
 ### 4b. Excluded — not tested, and why (anti-laundering control — do not delete)
 
@@ -181,6 +187,7 @@ Cases U1–U28 carried over unchanged from v2 (see prior version history); new c
 
 - **Real test data needed (NEEDS CLIENT INPUT):** actual SQL customer + SKU codes, a real customer-specific fixed price, real credit-limit figure, a real payer-mismatch example, sample GRN, sample price template, real CJ Tan/Aben/Quinny customer examples (from Grace's promised SQL export), a real item with prior invoice history for NS-08 testing.
 - **NS-04 / NS-05 sign-off gap:** both are "in the product now" but **not formally client-signed** in the Scope Lock. Tested provisionally; confirm sign-off or move to 4b.
+- **AS-08 exception to the LOCKED-only rule:** AS-08 is technically AGREED IN PRINCIPLE, not LOCKED, so per the checklist's own rule it shouldn't get test cases yet. Included as happy-path-only (HP-17) because: (a) the mechanism is simple and low-risk — upload, match, human-confirm — matching the pattern already used elsewhere in Maya; (b) it's low-volume (3 customers), so a failed test costs little; (c) NS-08 was handled the same way before it formally resolved. Do not add unhappy-path cases for this until David confirms PO format and match logic (Scope Lock NS-12) — if the real mechanism turns out more complex (e.g. OCR extraction from a PDF), this happy case may need rewriting, not just extending.
 - **NS-03 aging:** scoped as Phase-1 build but mechanism (threshold/recipient/cadence) still undefined as of 2026-07-14 — no test rows until resolved.
 - **NS-06 / NS-08 newly testable:** both were excluded in v2 and are now included following the direct Grace clarification call (2026-07-14) — this is the main structural change from v2 to v3.
 - **AS-01 / SL-02 adoption risk:** both features pass their design-level test cases, but Grace expressed real skepticism about whether either reduces her actual workload (pick-list adoption doubt; AR auto-match seen as "same work through Maya"). **Passing UAT does not confirm adoption** — recommend a real-usage check post-go-live for both, per the Scope Lock's own recommendation.
