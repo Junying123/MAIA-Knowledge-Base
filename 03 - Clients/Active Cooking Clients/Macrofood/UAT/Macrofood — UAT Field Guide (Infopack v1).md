@@ -179,9 +179,7 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 | M-20 | More Than the DO Says | CJ | ★★ | 20 | 10 | UP-09 · SL-01/SL-07 |
 | M-21 | Someone Else's Customer | CJ (as B) | ★★ | 20 | 8 | UP-10 · SL-05 |
 | M-22 | The Voice Note | CJ | ★★ | 20 | 10 | UP-11 · SL-06/SL-07 |
-| M-23 | Send It to Everyone | David | ★★ | 20 | 8 | UP-12 · OOS |
 | M-24 | Not Yet Confirmed | CJ | ★★ | 20 | 10 | UP-13 · SL-01/AS-01 |
-| M-25 | The QR File | Grace | ★★ | 20 | 8 | UP-14 · OOS |
 | M-26 | Edit SQL Directly? | CJ | ★★ | 20 | 8 | UP-15 · SL-01 |
 | M-27 | The Order With No Quantity | CJ | ★★ | 20 | 8 | UP-16 · SL-07/SL-01 |
 | M-28 | Negative Kilos | Lai | ★★ | 20 | 8 | UP-17 · AS-01 |
@@ -203,7 +201,7 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 
 - **Recommended order:** M-01 → M-11 (tutorial + core loops) → M-12 → M-29 (unhappy-path core) → M-30 (Boss Fight) → M-31 → M-38 (remaining edge cases) → M-39 → M-44 (2026-07-14 additions) → Side Quests.
 - **The Speedrun** (time-poor testers — still touches every P1 flow): M-02, M-03, M-04, M-05, M-07, M-09, M-15, M-19, M-20, M-24, M-26, M-30.
-- **100% Completion:** all 43 missions + Side Quests + at least 3 Chaos Cards played.
+- **100% Completion:** all 41 missions + Side Quests + at least 3 Chaos Cards played.
 - **Squad split (suggested):** Tester 1 = CJ missions (sales flows, M-01/02/06/08/09/10/12/13/16–24/26/27/31/34–36/38/39/40/41/42/44); Tester 2 = Grace missions (AR/CN: M-04/11/15/25/29/37/43) + David missions (M-05/23/30/32/33/43); Tester 3 = Lai + shared weight missions (M-03/14/28) plus free-roam Side Quests.
 
 ### 2. Mission Cards
@@ -256,7 +254,7 @@ SQL's data, not something it invented.
 Your goal: Confirm a draft SO whose customer, item, and price all trace back
 to SQL — and get a real SO out of it.
 
-Say it your way: "order for {real customer}, {real item} x{qty}"
+Say it your way: "order for XING RUI SDN BHD, 20kg CHICKEN BONELESS LEG"
 
 Win conditions:
 ☐ The draft shows SQL-sourced customer + item + price
@@ -280,7 +278,7 @@ Persona: CJ + Lai        Covers: HP-03 · AS-01
 
 Precondition: Draft SO created before picking
 
-The situation: You ordered 10kg for a customer. It's the warehouse that
+The situation: You ordered 10kg of CHICKEN BONELESS LEG for a customer. It's the warehouse that
 decides what actually ships — today that's 9.5kg. Everything downstream —
 DO, invoice, amount owed — has to reflect 9.5kg, not the number you typed.
 
@@ -319,7 +317,7 @@ not silently post it.
 Your goal: Get MAIA's suggested match, confirm it, and see the invoice knock
 off — nothing posts before you say so.
 
-Say it your way: "payment RM{amt} came in, check against invoice {no.}"
+Say it your way: "payment RM2000 came in from XS BBQ ENTERPRISE, check against invoice {no.}"
 
 Win conditions:
 ☐ MAIA suggests the correct invoice match automatically
@@ -352,7 +350,7 @@ Your goal: Upload the price template and confirm a new SO picks up the
 updated price immediately. Then, separately, adjust a single item's price
 directly on the desktop app and confirm that takes effect too.
 
-Say it your way: "updated 30 items price, upload now"
+Say it your way: "updated 30 items price, upload now" — e.g. CHICKEN SBB TH RM14.00 → RM15.50/kg in the bulk template; CHICKEN BONELESS LEG RM10.70 → RM12.00/kg as the desktop ad-hoc adjustment
 
 Win conditions:
 ☐ Template upload changes prices in MAIA
@@ -382,7 +380,7 @@ want to have to remember and type every time.
 Your goal: Create an SO for that customer and item and see the fixed price
 apply itself.
 
-Say it your way: "order for {customer A}, {item X}"
+Say it your way: "order for MEATMEET TRADING, BRAZIL BEEF HONEY COMB" (item's normal selling price is RM28.50/kg — the customer's negotiated fixed price should be lower, e.g. RM26.00/kg)
 
 Win conditions:
 ☐ The fixed customer-specific price auto-applies
@@ -410,7 +408,7 @@ completely unremarkable.
 
 Your goal: Submit the order and confirm it goes through with zero friction.
 
-Say it your way: "order for {customer}, well within limit"
+Say it your way: "order for RESTORAN APOLO - MIXED RICE, well within limit"
 
 Win conditions:
 ☐ SO submits normally, no block, no approval needed
@@ -550,7 +548,7 @@ belly slice, skin-on. MAIA doesn't have your years of context.
 Your goal: Forward the order and see whether MAIA maps it correctly or
 honestly asks instead of guessing wrong.
 
-Say it your way: "pork belly slight for {customer}"
+Say it your way: "pork belly slight for OASIS CAFE" (real client quote — keep the actual garbled phrasing, pair it with any real customer)
 
 Win conditions:
 ☐ MAIA maps to the correct SQL SKU, OR surfaces the line for manual selection
@@ -600,7 +598,7 @@ Persona: Lai (warehouse) + CJ        Covers: UP-03 · AS-01/SL-07
 
 Precondition: Draft SO at ordered weight
 
-The situation: Order was for 10kg. Warehouse actually picked 8kg — a bigger
+The situation: Order was for 10kg of BEEF SHORTRIBS BONELESS. Warehouse actually picked 8kg — a bigger
 gap than usual. This is the exact scenario David worries about most.
 
 Your goal: Confirm 8kg picked and verify the DO and Invoice both bill 8kg,
@@ -711,7 +709,7 @@ Persona: CJ, wholesale sales rep        Covers: UP-07 · SL-03
 Precondition: Item has a min-price floor
 
 The situation: You want to close a deal fast and you're tempted to shave the
-price below the floor David set.
+price below the floor David set. SHOULDER SKINLESS INCARLOPSA 无皮前腿 sells at RM23.00/kg — you try RM21.00.
 
 Your goal: Try to enter a below-floor price and confirm it's blocked or flagged.
 
@@ -836,32 +834,6 @@ Loot to capture: the draft it extracted, screenshot.
 ```
 
 ```
-MISSION M-23 — Send It to Everyone                               ★★ · 20 XP · ~8 min
-Persona: David, owner        Covers: UP-12 · OOS (blasting)
-
-Precondition: Catalogue generated
-
-The situation: You've got a catalogue ready. You're tempted to just blast it
-to all 300–400 customers at once, the way you always wanted to.
-
-Your goal: Ask MAIA to do this and confirm it refuses to auto-blast.
-
-Win conditions:
-☐ MAIA does NOT auto-send to the full list
-☐ It produces the catalogue for manual review/forward
-☐ It states blasting isn't supported
-
-It should stop and ask you if: n/a — refusal is the win.
-
-If something breaks mid-way: n/a. **If it actually sends to everyone, this is a P1 — stop and report immediately, do not continue testing this flow.**
-
-Sabotage bonus (+10): ask it a second, more insistent way ("just send lah, no need confirm").
-
-Poke it: Does it explain *why* it can't (number ban risk), or just refuse silently?
-
-Loot to capture: screenshot of the refusal + explanation.
-```
-
 ```
 MISSION M-24 — Not Yet Confirmed                                 ★★ · 20 XP · ~10 min
 Persona: CJ, wholesale sales rep        Covers: UP-13 · SL-01/AS-01
@@ -888,32 +860,6 @@ Loot to capture: screenshot showing SQL unaffected pre-confirm.
 ```
 
 ```
-MISSION M-25 — The QR File                                       ★★ · 20 XP · ~8 min
-Persona: Grace, finance/accounts        Covers: UP-14 · OOS (QR settlement)
-
-Precondition: QR-merchant settlement report
-
-The situation: You have a QR-merchant daily settlement report you'd love
-MAIA to reconcile for you — this is explicitly out of scope, but try anyway.
-
-Your goal: Upload it and confirm MAIA doesn't attempt merchant-settlement
-reconciliation.
-
-Win conditions:
-☐ MAIA stays within customer-invoice AR only
-☐ It doesn't attempt to reconcile the merchant file
-
-It should stop and ask you if: n/a.
-
-If something breaks mid-way: n/a — staying out of scope IS the win here. If it genuinely confused you as Grace, note it as an Observation, not a bug.
-
-Sabotage bonus (+10): try uploading it disguised as a regular payment slip.
-
-Poke it: Does it at least tell you clearly this isn't something it handles?
-
-Loot to capture: screenshot of the response.
-```
-
 ```
 MISSION M-26 — Edit SQL Directly?                                ★★ · 20 XP · ~8 min
 Persona: CJ, wholesale sales rep        Covers: UP-15 · SL-01
@@ -974,7 +920,7 @@ Persona: Lai, warehouse        Covers: UP-17 · AS-01
 
 Precondition: Draft SO for kg-based item
 
-The situation: You're confirming the actual picked weight and you fat-finger
+The situation: You're confirming the actual picked weight for CHICKEN SBB TH and you fat-finger
 an invalid value.
 
 Your goal: Enter "-3 kg" or "ten box" and confirm MAIA rejects it cleanly.
@@ -1110,7 +1056,7 @@ Persona: David, owner        Covers: UP-22 · SL-03
 Precondition: Price list exists
 
 The situation: The same SKU appears twice in your template, at two different
-prices — a copy-paste mistake waiting to happen.
+prices — a copy-paste mistake waiting to happen. E.g. CHICKEN BONELESS LEG (C0614) listed once at RM10.70 and again at RM12.00 in the same upload.
 
 Your goal: Upload it and confirm MAIA flags the conflict rather than picking one silently.
 
@@ -1441,7 +1387,11 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 
 **Evidence rules:** screenshots + every document ID created (SO/DO/Invoice/CN number) + timestamps.
 
-**Test Data Kit:** `[GAP: source docs use illustrative example values only — 10kg orders, RM16.50/kg fixed price, RM5,000 credit limit, 998kg GRN mismatch, 30% deposit proforma. Per the UAT Checklist's own note (§4c): "Real test data needed (NEEDS CLIENT INPUT): actual SQL customer + SKU codes, a real customer-specific fixed price, real credit-limit figure, a real payer-mismatch example, sample GRN, sample price template." Do not run this pack against production data until real test values are supplied.]` Tag every record you create with a `UAT-` marker in remarks/reference fields where possible, so cleanup after the run is easy.
+**Test Data Kit (updated 2026-07-14 — real SQL export received):**
+- **Real customers:** XS BBQ ENTERPRISE, XING RUI SDN BHD, RESTORAN TONG YANG, Restoran Wang Chuang sarawak mee, OASIS CAFE, Hwa Lyuk Korean Grill Puchong, RESTORAN APOLO - MIXED RICE, MUNCHY FOOD PROCESSING SDN. BHD., MEATMEET TRADING, CHING GROUP SDN BHD (from a 700+ row customer export — pick any real account for missions that don't require a specific agent-ownership fact).
+- **Real items:** BEEF SHORTRIBS BONELESS (B1108), BRAZIL BEEF HONEY COMB (B3406, RM28.50/kg), CHICKEN SBB TH (C0214, RM14.00/kg), CHICKEN BONELESS LEG (C0614, RM10.70/kg), WHOLE CHICKEN FREE SIZE 全鸡（冻）(C1210, RM10.50/kg), JC WHOLE LEG TH (C1814, RM13.50/kg), SHOULDER SKINLESS INCARLOPSA 无皮前腿 (P0101I, RM23.00/kg) — from a 459-row item export.
+- **Still `[GAP: NEEDS CLIENT INPUT]`** — not resolvable from this export: a real credit-limit figure per customer, a real payer-mismatch example, a sample GRN, a sample price-update template, and confirmation of which specific customers are assigned to CJ Tan / Aben / Quinny's agent codes vs CK's 3 excluded ones (SL-08) — the export shown didn't include the Agent field, so mission M-39/M-40 still need a real example pulled with that field visible before running.
+- Tag every record you create with a `UAT-` marker in remarks/reference fields where possible, so cleanup after the run is easy.
 
 **Scoring & Badges:**
 - Mission XP: ★ = 10, ★★ = 20, ★★★ = 35.
@@ -1477,9 +1427,7 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 | UP-09 | M-20 |
 | UP-10 | M-21 |
 | UP-11 | M-22 |
-| UP-12 | M-23 |
 | UP-13 | M-24 |
-| UP-14 | M-25 |
 | UP-15 | M-26 |
 | UP-16 | M-27 |
 | UP-17 | M-28 |
@@ -1517,15 +1465,15 @@ Loot to capture: screenshot of the saved note + the other rep's denied view.
 | NS-06 | M-43 |
 | NS-08 | M-42 |
 
-**Not tested this round (per Scope Lock/UAT §4b — do not log as bugs, Observation only if genuinely confusing as a persona):** AS-02 (catalogue — creation process is David-only knowledge), AS-03 (CN numbering rule), AS-05 master-data fields (address/phone/billing — separate from the activity log, which IS tested in M-44), AS-06 (dashboard), AS-07 (quotation/price-lock — real usage confirmed low), NS-02 (GRN, parked), NS-03 (aging alert, mechanism undefined), **NS-07 (POD — 🚫 client conflict, not "not yet built"; do not attempt to test or report its absence as a bug)**, NS-09/NS-10/NS-11 (stock-expiry sales-inclusion, backup coverage, warehouse device model — all need David's decision), and all explicit Out-of-Scope items (AP recon, QR settlement, delivery trip, WMS, volume pricing, B2C app, blasting — blasting and QR settlement do get one deliberate "must-NOT" mission each: M-23, M-25).
+**Not tested this round (per Scope Lock/UAT §4b — do not log as bugs, Observation only if genuinely confusing as a persona):** AS-02 (catalogue — creation process is David-only knowledge), AS-03 (CN numbering rule), AS-05 master-data fields (address/phone/billing — separate from the activity log, which IS tested in M-44), AS-06 (dashboard), AS-07 (quotation/price-lock — real usage confirmed low), NS-02 (GRN, parked), NS-03 (aging alert, mechanism undefined), **NS-07 (POD — 🚫 client conflict, not "not yet built"; do not attempt to test or report its absence as a bug)**, NS-09/NS-10/NS-11 (stock-expiry sales-inclusion, backup coverage, warehouse device model — all need David's decision), and all explicit Out-of-Scope items (AP recon, QR settlement, delivery trip, WMS, volume pricing, B2C app, blasting). **No missions test OOS behavior at all (removed 2026-07-14)** — testers shouldn't spend time probing what the product deliberately refuses to do; the boundary is documented here and in Part A §5 instead.
 
 ---
 
 ## Quality Gate — self-check against the generator prompt
 
-- [x] Every source test case (HP-01…16 incl. HP-05b/HP-11b, UP-01…33 = 51 cases total, per UAT Checklist v3) maps to ≥1 mission (Appendix table above), **except UP-23**, which this infopack deliberately drops (2026-07-14): it's a phone-number-shared-by-two-branches ambiguity carried over from an earlier ChatGPT-merged checklist with no confirmed real instance in the VoC, Grace's call, or the actual customer export — not worth tester time. UP-23 still exists in the UAT Checklist itself as a general SQL-integrity case; only the gamified mission was cut. Note: not every remaining source case has a 1:1 mission — some (e.g. HP-05b, HP-11b, UP-33) are covered as sabotage/poke-it variants within an existing mission rather than a separate mission card; flagged here for transparency, not a gap.
+- [x] Every source test case (HP-01…16 incl. HP-05b/HP-11b, UP-01…33 = 51 cases total, per UAT Checklist v3) maps to ≥1 mission (Appendix table above), **except UP-23, UP-12, and UP-14** (all removed 2026-07-14): UP-23 is a phone-number-shared-by-two-branches ambiguity carried over from an earlier ChatGPT-merged checklist with no confirmed real instance in the VoC, Grace's call, or the actual customer export; UP-12/UP-14 tested OOS (blasting, QR settlement) refusal behavior, which isn't worth tester time confirming a deliberate boundary. All three still exist in the UAT Checklist itself; only the gamified missions were cut. Note: not every remaining source case has a 1:1 mission — some (e.g. HP-05b, HP-11b, UP-33) are covered as sabotage/poke-it variants within an existing mission rather than a separate mission card; flagged here for transparency, not a gap.
 - [x] Every observable acceptance criterion from LOCKED scope appears as a win condition (SL-01…08, AS-01, AS-04/AS-04b, AS-05 activity log, NS-04, NS-06, NS-08 — 16 testable items total, up from 10 in v1).
-- [x] Every out-of-scope/superseded item appears in Out of Bounds (Part A §5) and/or a must-NOT mission (M-23, M-25).
+- [x] Every out-of-scope/superseded item appears in Out of Bounds (Part A §5). No dedicated OOS missions this version (M-23/M-25 removed 2026-07-14) — not worth tester time confirming a deliberate refusal.
 - [ ] Recorded-failure Boss Fights — **[GAP: none exist yet; substituted one risk-based Boss Fight, flagged as such]**.
 - [x] Every primary user role (David, CJ, Grace, Lai) has a persona card; every mission's persona exists.
 - [x] A newcomer could run M-01 using only this pack.

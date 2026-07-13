@@ -170,6 +170,43 @@ Cross-checked against Scope Lock v2 via lens-align. Gareth's answers, applied to
 | VOC-032 (dual interface) | Resolved as: chatbot returns a URL; user taps to open the FE page for a quick-glance table view — a link-out from chat, not a separate always-on web app. | AIP-02 updated: status moved from AGREED IN PRINCIPLE to LOCKED |
 | VOC-013 (weight/volume/stock-block) | Confirmed as-is — no change needed, already correctly captured. | No change |
 
+### Round 2 resolutions (13 Jul 2026, NS-01 through NS-11)
+
+| NS id | Resolution | Applied to Scope Lock v2 as |
+|---|---|---|
+| NS-01 (historical pricing UI) | Standalone FE URL link-out. Chatbot fetches and returns a pre-filtered URL (customer/item/history) for quick-glance viewing — not an inline WhatsApp table/image. Example: `https://maia-oms-dev.vercel.app/sales-staging?company=MAIA&customer=CUST-000004&items=...&tab=history&src=whatsapp&chat=...` | NS-01 updated with resolution + example URL |
+| NS-02 (historical data source) | For Fixguru, the view checks from **Sales Invoice**. MAIA still generally supports Quotation and Sales Order history as a system capability, just not surfaced in this Fixguru view. | NS-02 updated |
+| NS-03 (exact fields) | Locked: item code, item name, date, invoice no, quantity, standard price, discount %, net price (8 fields, invoice-sourced). | NS-03 updated |
+| NS-05 (payment proof vs AR timing override) | Parked / deferred — not resolving this round. | NS-05 updated |
+| NS-06 (customer search duplicates, refined) | No branch hierarchy — single level. Dedup rule: contacts merge only if contact type is duplicated (same type/number); differently-named branches (e.g. "Branch 1" vs "Branch 2") do not merge. | NS-06 updated with dedup rule |
+| NS-07 (delivery method history) | Still open — aligning with tech team and Fixguru client on which doctype (invoice/SO/DO) delivery-method history should reference. | NS-07 updated with next step, still open |
+| NS-09 (multilingual quality) | Implemented — needs testing. | NS-09 updated |
+| NS-11 (SST/tax) | RESOLVED. | NS-11 updated: status moved from "needs fix" to RESOLVED |
+
+### Round 3 — Client Confirmation Agenda answered (13 Jul 2026)
+
+All 15 questions in Scope Lock v2's "Client Confirmation Agenda" answered and applied directly in Lark. Cross-checked against 2026-06-24 UAT Debrief where relevant.
+
+| Q# | Question | Answer | Status |
+|---|---|---|---|
+| 1 | Show last 5 invoice transactions? | MAIA lists ALL transactions in FE UI, not capped at 5 (5 is a floor, not a cap) | RESOLVED |
+| 2 | Confirm historical pricing columns | Locked per NS-03: item code, item name, date, invoice no, quantity, standard price, discount %, net price | RESOLVED |
+| 3 | SI only vs QTN/SO history | SI only, confirmed with client previously (NS-02) | RESOLVED |
+| 4 | Chat + web review acceptable? | YES — chatbot output response has format/length limitations, hence the FE link-out (NS-01) | RESOLVED |
+| 5 | Image/table attachment in WhatsApp? | SUPERSEDED — chosen route is a standalone FE URL link-out (NS-01), not an inline image | SUPERSEDED |
+| 6 | Phone/mobile/WhatsApp search, partial? | YES, confirmed 24 Jun debrief (phone-first, mobile+landline). Partial-number search still unconfirmed | PARTIAL |
+| 7 | Branch disambiguation on duplicate phone? | Moot for Fixguru — no branches (NS-06). Generic dedup rule: merge only on duplicate contact type | RESOLVED (n/a) |
+| 8 | Last 5 delivery methods shown? | YES, confirmed 24 Jun debrief. Source doctype still pending (NS-07) | PARTIAL |
+| 9 | Confirm delivery charge SKU list | Still open — exact list not yet confirmed | OPEN |
+| 10 | Credit block point | DN-level, confirmed 24 Jun debrief, dev built. Needs client testing (NS-04) | RESOLVED-PENDING-TEST |
+| 11 | Payment proof override AR block? | **Parked/deferred by deliberate choice** — debrief discussed a bank-in-slip mechanism (prepaid auto, credit-exceeded case-by-case, no hard-stop) but Gareth chose not to lock it this round (NS-05) | PARKED |
+| 12 | Min-price threshold: item or item+UOM? | Still open — debrief leans per-item, but 14 May transcript suggests UOM may matter | OPEN |
+| 13 | Price-book bypasses min-price approval? | Still open — not reconfirmed since 14 May | OPEN |
+| 14 | Warehouse/shelf source of truth | Partially resolved — shelf goes to DN additional-note (NS-08); broader warehouse/branch mapping still pending | PARTIAL |
+| 15 | Malay/Chinese required for sign-off? | Implemented, needs testing (NS-09) | RESOLVED-PENDING-TEST |
+
+**Note on Q11:** the debrief evidence for a resolution exists, but Gareth explicitly chose to keep it parked rather than treat the debrief mention as a lock — flagged here so the choice is traceable, not accidental.
+
 ## See Also
 
 - [[Scope Lock v1 — Fixguru]]
