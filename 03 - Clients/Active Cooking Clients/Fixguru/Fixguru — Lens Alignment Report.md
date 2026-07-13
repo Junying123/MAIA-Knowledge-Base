@@ -86,11 +86,33 @@ Scope: **Check A** (Scope Lock ↔ VoC) run in full. Checks B, C, D remain MISSI
 Also added: VOC-032 (dual-interface acceptance) to the VoC Extraction, closing the reverse-direction gap where v2 was ahead of the VoC doc.
 
 **Remaining open items (unchanged, not part of this resolution round):**
-- Checks B, C, D still MISSING — no UAT Checklist or End-user & Process Map exists for Fixguru.
+- Checks C, D still MISSING — no End-user & Process Map exists for Fixguru.
 - Scope Lock v2 still only lives in Lark — not yet pulled into KB Markdown; v1 in KB has no supersession note pointing to v2.
-- v2's remaining genuine open items (historical pricing exact fields, minimum-price threshold scope, price-book bypass, warehouse-mapping-proper) still need client answers — these were never drift, they're legitimate Needs-Scoping questions for Fixguru.
+- v2's remaining genuine open items (historical pricing exact fields, minimum-price threshold scope, price-book bypass, warehouse-mapping-proper) were fully closed in the 14 Jul follow-up round (see below) — none left except delivery-method-history doctype and warehouse-source-of-truth.
 
-**Verdict: ALIGNED on Check A, pending Checks B–D.** Safe to proceed with v2's Client Confirmation Agenda — it no longer re-asks questions Gareth had already answered internally.
+## 7. Update — 13 Jul 2026, Check B now runnable
+
+Generated `[[UAT/Fixguru — UAT Checklist]]`, tested against the current Scope Lock v2 (post all resolutions above). Two items were promoted from AGREED-IN-PRINCIPLE to LOCKED because their acceptance criteria fully resolved this session:
+- **AIP-01** (historical pricing) — all 4 sub-criteria resolved (source, count, fields, output format)
+- **AIP-02** (chat + web) — resolved as FE URL link-out
+
+**Check B result: ALIGNED.** L-01 through L-08, AIP-01, AIP-02 (10 locked items) all have ≥1 happy + ≥2 unhappy test cases, traced in the checklist's Section 4a. AIP-03/04/05/06/07/08 remain correctly un-tested (Excluded table, 4b) since they're not fully locked — smoke-tests only added for their individually-resolved sub-criteria (item+UOM threshold, price-book bypass, DN-level block, shelf-in-DN-note, multilingual, PDF parity).
+
+**Verdict: ALIGNED on Checks A and B.**
+
+## 8. Update — 13 Jul 2026, Checks C and D now runnable
+
+Discovered Fixguru's actual Lark folder (a level above where earlier work was scoped) contains a **Client Narrative v2**, a **Forensic Account Dossier**, and a **completed Role Permission CSV** — none of which were listed in Scope Lock v2's own Source Manifest, none previously synced to the KB. Built `[[Fixguru — End-user & Process Map]]` from all four sources (Scope Lock v2, VoC, Forensic Dossier, Client Narrative v2) plus the permission CSV.
+
+**Check C (Scope Lock ↔ Process Map): ALIGNED.** Every LOCKED feature (L-01 through L-08, AIP-01, AIP-02) has an owning role in the swimlane. No process step maps to a deferred/AIP-only feature — the driver/delivery step is explicitly flagged as not-yet-locked rather than mapped as live.
+
+**Check D (VoC ↔ Process Map): DRIFT — 1 finding.** VoC's actor register treats the central "Guest" voice (source of most historical-pricing/credit VOC rows) as BELIEVED-attributed to Yvonne or "Gareth (Fixguru)". The Forensic Dossier's own actor table (B4) points more specifically to **Marcus Lim** as the likely speaker, cross-referenced against the Role Permission CSV (Marcus Lim = Admin). Neither is CONFIRMED. Recommend resolving at the sign-off session — see Process Map Section 6, item 5.
+
+**New gaps surfaced (not drift, but real):** No named Sales Manager, no named Logistics Manager, no named driver anywhere across all four sources — three unstaffed approval/process points. No confirmed UAT signatory — the single highest-risk open item on the account per the Forensic Dossier.
+
+## 9. Final Verdict (13 Jul 2026)
+
+**ALIGNED on Checks A, B, C — DRIFT (1 minor) on D.** All four Lens 3 artifacts (Scope Lock v2, VoC Extraction, UAT Checklist, End-user & Process Map) now exist and cross-check cleanly against each other. Remaining work is not artifact alignment — it's closing real identity/process gaps (UAT signatory, 2 unnamed manager roles, driver) at a client sign-off session, and the low-priority Guest-attribution question. Safe to proceed toward Gate-2 once the sign-off agenda in the Process Map (Section 6) is worked through.
 
 ## See Also
 
