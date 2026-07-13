@@ -27,6 +27,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | Prior "MAIA × Macro Frozen — VoC Extraction" (Lark doc `Pm4Owq…`) | Vendor-authored prior analysis | **Not customer voice — CLAIMED** | Cross-check only; never a source of fact |
 | Pre-Onboarding Requirements Questionnaire | Vendor-authored guide | Not customer voice | Actor identity + open-question context only |
 | Proposal / Customer Narrative | Vendor-authored | Not customer voice | Scope boundary + risk comparison only |
+| `Ivan x Gareth Macrofrozen scope lock discussion` (13 Jul 2026) | Internal scope re-check transcript, vendor-side only (Ivan + Speaker 3) | **Internal — not customer voice**, but relays one second-hand client statement (Grace, item historical pricing → VOC-030) | Confirms mechanism detail on AS-01/AS-03/NS-07; surfaces VOC-030; source for warehouse-adoption partial answer below |
 
 **Coverage verdict: proceed-with-caveats.**
 
@@ -88,6 +89,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | VOC-027 | SQL stays master; must not break | Docs must conform to SQL's flow — invoice qty can't exceed DO qty, no duplicate invoice, running IDs can't be overridden | Transcript L377, L836 | **CONFIRMED** |
 | VOC-028 | Go-live dependency = SQL access | Go-live (target end-June) blocked on SQL vendor granting integration access | WhatsApp L356 | **CONFIRMED** |
 | VOC-029 | Team AI-generation ambition | Asks if marketing/admin team can use MAIA to generate catalogue & memo images | WhatsApp L384; vendor scopes to fixed catalogue only L390 | **CONFIRMED** (ask); scope-limited by vendor |
+| VOC-030 | Item historical pricing | Grace (finance admin) told the team by phone that Macro Frozen uses item historical pricing for customer pricing — past prices charged inform current customer-specific pricing | Relayed by Speaker 3 in `Ivan x Gareth Macrofrozen scope lock discussion` transcript, 13 Jul 2026, citing a call with Grace the night before | **BELIEVED** — second-hand (relayed via internal call recap, not a direct client-transcript quote); mechanism not yet clarified |
 
 ---
 
@@ -174,7 +176,7 @@ sales, and finance (all thin/absent voices) is the real risk, not feature covera
 
 | Unknown | Why it matters | How to resolve |
 |---|---|---|
-| Whether the warehouse user will actually use MAIA (or David keeps coordinating) | The real failure mode is adoption, not features — and the warehouse voice is entirely second-hand | Observe one real pick→confirm→upload cycle with the actual warehouse person before go-live |
+| Whether the warehouse user will actually use MAIA (or David keeps coordinating) — **partially answered 2026-07-13:** internal team confirmed only the warehouse *manager* will touch Maya directly; foreign worker pickers stay on paper/manual instruction. Ivan also flagged that Grace indicated the client may keep using their own pick list rather than the Maya-generated PDF flow — adoption is not yet demonstrated. | The real failure mode is adoption, not features — and the warehouse voice is entirely second-hand | Observe one real pick→confirm→upload cycle with the actual warehouse manager before go-live — still not done as of 13 Jul |
 | Format of the confirmed pick-list upload (Excel vs scanned PDF vs photo) | OCR/extraction fails on blurry or handwritten paper; David leans toward "upload the Excel" | Collect 10 real pick lists and test extraction before promising accuracy |
 | Real payer-mismatch patterns (aliases, partial payments, references) | AR auto-match quality depends on real data, not the ideal case | Collect 20 real payments: bank rows + payment slips + invoice mappings |
 | Whether "pro forma invoice" must be a distinct titled document | David's customer's financier may reject a Sales Order that lacks the word "invoice" | Get 2–3 real cases where a financier/customer required the exact wording |
@@ -222,8 +224,9 @@ have **no scope-lock home yet** — those need David before they can be committe
 | VOC-015, 029 (catalogue, fixed-format) | AS-02 | Agreed in principle — AC not locked | ✅ (build unlocked) |
 | VOC-018 (pro forma invoice) | NS-04 | RESOLVED — in MAIA now | ✅ |
 | VOC-021 (CN numbering) | AS-03 | Agreed in principle — Finance to align | ✅ |
-| VOC-020 (payment escalation) | NS-06 | overdue alert exists; routing/timing still open | ✅ (alert) / ⚠️ (sequence) |
-| VOC-022 (inventory aging alert) | NS-03 | RESOLVED — Phase 1, being built | ✅ |
+| VOC-020 (payment escalation) | NS-06 | RESOLVED (feature) / **OPEN (routing/sequence)** — reopened 2026-07-13, same question re-raised live in that meeting | ✅ (alert) / ⚠️ (sequence — still needs David) |
+| VOC-022 (inventory aging alert) | NS-03 | RESOLVED (feature) / **OPEN (mechanism: threshold, recipient, cadence)** — reopened 2026-07-13 | ⚠️ (feature ✅, config detail ❌) |
+| VOC-030 (item historical pricing) | NS-08 (new 2026-07-13) | **NEEDS SCOPING — new, blocks SL-03 pricing AC** | ❌ *no home until scoped* |
 | VOC-024 (POD driver photo) | NS-07 | still planning — exploring ERPNext | ✅ |
 | VOC-008 (QR merchant settlement) | Out of scope | excluded | ✅ |
 | VOC-026 (WhatsApp blasting) | Out of scope | excluded — bans the number | ✅ |
@@ -236,6 +239,12 @@ have **no scope-lock home yet** — those need David before they can be committe
 2. **Quotation generation (VOC-014)** — big customers request quotation first; price-lock vs lower PO. Not in SL-03.
 3. **Cash-from-driver recording (VOC-009)** — finance's Excel cash log; MAIA can absorb it, but SL-02 covers bank/slip matching only.
 4. **Damage / batch QC log (VOC-023)** — warehouse photo-logs damaged/discoloured stock against a batch. Only a generic "issue ticket" was floated in the meeting; not scoped.
+
+### Three "resolved" items reopened at mechanism-detail level (2026-07-13)
+Feature existence ≠ mechanism documented. Ivan flagged all three live in the 13 Jul scope re-check:
+- **NS-03 inventory aging alert** — being built, but trigger threshold / recipient / cadence never defined.
+- **NS-05 approval flows beyond credit** — the real ask is a credit-*block* approval by a credit controller role; approver identity + override-recording behaviour not documented.
+- **NS-06 payment chasing escalation** — alert feature exists, but "who receives first" (VOC-020) is still the exact open question Ivan re-asked live.
 
 ### One critical dependency the scope lock omits
 - **SQL vendor access (VOC-028)** — go-live is blocked until the SQL vendor grants integration access. The scope lock has no dependency/blocker section, so this risk lives nowhere. Track it explicitly.

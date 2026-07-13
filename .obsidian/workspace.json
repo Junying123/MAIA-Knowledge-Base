@@ -266,10 +266,14 @@
                   {
                     "id": 178,
                     "name": "zsh 178"
+                  },
+                  {
+                    "id": 179,
+                    "name": "zsh 179"
                   }
                 ],
                 "activeId": 178,
-                "nextId": 179
+                "nextId": 180
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -322,6 +326,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Client Clarification Questions (2026-07-13).md",
     "Excalidraw/Macro Frozen To-Be Order-to-Cash Process (Roles).excalidraw",
     "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
     "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
