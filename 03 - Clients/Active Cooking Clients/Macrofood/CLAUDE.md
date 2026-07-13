@@ -8,6 +8,7 @@ Macrofood is an active client. Proposal signed 2026-05-20. Pre-onboarding phase.
 - [[Onboarding Status]] — current phase status and milestones
 - [[Ordermaia x Macrofood Proposal]] — signed proposal (15 May 2026, RM40,000)
 - [[Meetings/Requirement Gathering Questionnaire]] — RG questionnaire for kickoff
+- `Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw` — visual diagram of the current 9-step as-is process, including the fresh weight adjustment stage
 
 ## Folder Structure
 - `Meetings/` — meeting notes and transcripts
