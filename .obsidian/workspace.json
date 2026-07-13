@@ -114,8 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -262,10 +261,14 @@
                   {
                     "id": 175,
                     "name": "zsh 175"
+                  },
+                  {
+                    "id": 176,
+                    "name": "zsh 176"
                   }
                 ],
-                "activeId": 166,
-                "nextId": 176
+                "activeId": 176,
+                "nextId": 177
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -316,7 +319,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ceef9d86007d72d6",
+  "active": "785c6f8d67308809",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",

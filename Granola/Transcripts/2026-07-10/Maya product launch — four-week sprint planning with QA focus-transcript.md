@@ -3,7 +3,7 @@ granola_id: a35ff89b-5d2b-45b6-a41a-f93efd9a0bc6
 title: Maya product launch — four-week sprint planning with QA focus - Transcript
 type: transcript
 created: 2026-07-10T09:41:50.153Z
-updated: 2026-07-10T10:53:48.773Z
+updated: 2026-07-13T01:44:08.143Z
 attendees: []
 ---
 
