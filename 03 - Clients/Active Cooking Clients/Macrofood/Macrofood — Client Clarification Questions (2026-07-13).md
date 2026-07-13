@@ -2,7 +2,7 @@
 owner: Gareth
 status: review
 last_reviewed: 2026-07-14
-lark_url: https://eg69120xnei.sg.larksuite.com/docx/GFfodwcSXo9MHtxHBQplFr6ygUc
+lark_url: https://eg69120xnei.sg.larksuite.com/docx/Bo8VdouaJoUTSfx9oDllMGyOglg
 ---
 
 # Macro Frozen — Open Questions for Grace / David
