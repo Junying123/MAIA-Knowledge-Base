@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-13
+last_reviewed: 2026-07-14
 artifact_url: https://claude.ai/code/artifact/2028ed59-4119-4e22-9f11-357068bb85c2
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 ---
@@ -210,35 +210,37 @@ have **no scope-lock home yet** — those need David before they can be committe
 
 | VoC signal(s) | Scope Lock item | Scope Lock status | Aligned? |
 |---|---|---|---|
-| VOC-001, 005, 027 (two-stage O2C, SQL master) | SL-01, SL-07, AS-01, NS-01 | LOCKED / RESOLVED — draft SO first → confirm after external pick weight | ✅ |
-| VOC-007, 008, 009 (AR, payer mismatch, cash) | SL-02 | LOCKED (AR) | ⚠️ *cash-from-driver (VOC-009) not in SL-02 AC* |
-| VOC-010, 011, 013 (pricing, floor, cust-specific) | SL-03 | LOCKED | ✅ |
-| VOC-014 (quotation before order) | — | **no scope-lock item** | ❌ *missing — add to SL-03* |
-| VOC-016, 017 (credit control + override) | SL-04 | LOCKED | ✅ |
+| VOC-001, 005, 027 (two-stage O2C, SQL master) | SL-01, SL-07, AS-01, NS-01 | LOCKED / RESOLVED — full mechanism traced 2026-07-14 (SO → pick-list PDF → warehouse manager → foreign workers → upload back → amend SO) | ✅ |
+| VOC-007, 008, 009 (AR, payer mismatch, cash) | SL-02 | LOCKED (AR) | ⚠️ *cash-from-driver (VOC-009) still not in SL-02 AC* |
+| VOC-010, 011, 013 (pricing, floor, cust-specific) | SL-03 | LOCKED, price-controller role (David, desktop) added 2026-07-14 | ✅ |
+| VOC-014 (quotation before order) | AS-07 (new 2026-07-14) | AGREED IN PRINCIPLE — PROPOSED: QTN → edit price → submit → convert to SO | ⚠️ *flow proposed, but price-lock enforcement on conversion still unanswered — doesn't yet close the actual pain point* |
+| VOC-016, 017 (credit control + override) | SL-04 | LOCKED | ✅ — *see NS-05 mechanism gap below* |
 | VOC-019 (sales territory isolation) | SL-05 | LOCKED | ✅ |
-| VOC-004, 025 (picking accountability) | NS-02 | parked (GRN stock entry not for now) | ⚠️ *GRN parked, but accountability/audit-trail need has no home* |
-| VOC-023 (damage / batch QC photo log) | — | only "issue ticket" mentioned, not scoped | ❌ *no home — see GAP-4* |
-| VOC-028 (SQL vendor access dependency) | — | no dependency section in scope lock | ⚠️ *critical go-live blocker not captured* |
+| VOC-004, 025 (picking accountability) | AS-01 (updated 2026-07-14) | Addressed at **warehouse-manager level** via pick-list PDF flow — discrepancy visible before SO amendment | ⚠️ *manager-level accountability now covered; per-worker digital attribution still not covered — confirm with David if that's needed* |
+| VOC-023 (damage / batch QC photo log) | — | only "issue ticket" mentioned, not scoped | ❌ *no home — still a gap* |
+| VOC-028 (SQL vendor access dependency) | DEP-1 (Section 6b) | OPEN — live blocker, tracked | ✅ *correction: Scope Lock DOES have a Dependencies section (6b) covering this — prior note in this doc claiming it was uncaptured was stale* |
 | VOC-003 (route-based pick grouping) | AS-01 flow | assumed within pick-list process | ⚠️ *not explicit — confirm* |
-| AS-04 (outdoor sales assistant) | AS-04 | SOW-driven | ⚠️ *thin VoC backing — confirm it's wanted* |
+| AS-04 (outdoor sales assistant) | AS-04, AS-04b (new) | **LOCKED 2026-07-14** — query-only; sales relay orders to office admin via WhatsApp, admin enters SO | ✅ *resolved via Grace's clarification* |
 | VOC-015, 029 (catalogue, fixed-format) | AS-02 | Agreed in principle — AC not locked | ✅ (build unlocked) |
 | VOC-018 (pro forma invoice) | NS-04 | RESOLVED — in MAIA now | ✅ |
-| VOC-021 (CN numbering) | AS-03 | Agreed in principle — Finance to align | ✅ |
+| VOC-021 (CN numbering) | AS-03 | Doctype design finalized 2026-07-14 (SCN + CCN split); numbering decided as MAIA running number + invoice reference field (not mirrored) | ⚠️ *design decided, but may not satisfy Finance's stated "mirror the number" want — flagged as a risk to confirm* |
 | VOC-020 (payment escalation) | NS-06 | RESOLVED (feature) / **OPEN (routing/sequence)** — reopened 2026-07-13, same question re-raised live in that meeting | ✅ (alert) / ⚠️ (sequence — still needs David) |
 | VOC-022 (inventory aging alert) | NS-03 | RESOLVED (feature) / **OPEN (mechanism: threshold, recipient, cadence)** — reopened 2026-07-13 | ⚠️ (feature ✅, config detail ❌) |
-| VOC-030 (item historical pricing) | NS-08 (new 2026-07-13) | **NEEDS SCOPING — new, blocks SL-03 pricing AC** | ❌ *no home until scoped* |
-| VOC-024 (POD driver photo) | NS-07 | still planning — exploring ERPNext | ✅ |
+| VOC-030 (item historical pricing) | NS-08 (new 2026-07-13, detailed 2026-07-14) | NEEDS SCOPING — mechanism defined (check last SO/SI price across items, discount, transaction date); mapped to existing Base MAIA feature but **exceeds its current scope** (Base shows single latest price only, no date, no cross-item view) | ⚠️ *Base feature partially covers this; gap needs a feasibility/scope-widening decision, not just a client answer* |
+| VOC-024 (POD driver photo) | NS-07 | Mechanism finalized 2026-07-14 — POD attaches to DO only (not Invoice); DN linked to Invoice for traceability | ⚠️ *mechanism ✅, all-vs-some enforcement question still open* |
 | VOC-008 (QR merchant settlement) | Out of scope | excluded | ✅ |
 | VOC-026 (WhatsApp blasting) | Out of scope | excluded — bans the number | ✅ |
 | VOC-013 (volume-based pricing) | Out of scope | not supported — manual check | ✅ |
 | VOC-012 (wholesale/retail segments) | SL-03 | LOCKED (price lists) | ✅ |
 | VOC-002 (item-name fuzzy mapping + learning) | — | assumed Base MAIA (RACK + learn) | ⚠️ *not explicitly scoped — confirm Base* |
 
-### Four signals with no scope-lock home (need David)
-1. **Picking accountability / audit trail (VOC-004)** — VoC priority **#2**. NS-02 parks *GRN stock entry*, but the real ask (proof of who picked / who checked) is not captured anywhere. The AS-01 pick-list upload carries **weight**, not **attribution**. Decision needed: attach-the-paper vs structured/enforced.
-2. **Quotation generation (VOC-014)** — big customers request quotation first; price-lock vs lower PO. Not in SL-03.
-3. **Cash-from-driver recording (VOC-009)** — finance's Excel cash log; MAIA can absorb it, but SL-02 covers bank/slip matching only.
-4. **Damage / batch QC log (VOC-023)** — warehouse photo-logs damaged/discoloured stock against a batch. Only a generic "issue ticket" was floated in the meeting; not scoped.
+### Two signals resolved 2026-07-14
+1. ~~**Picking accountability / audit trail (VOC-004)**~~ — **now addressed** via AS-01's traced pick-list-PDF flow: warehouse manager receives, distributes, collects, and uploads the pick list, so discrepancies are visible before SO amendment. This is **manager-level** accountability, not per-individual-picker attribution — confirm with David whether that's sufficient (VoC's "punishment of the error" framing implied per-person, which this doesn't fully deliver).
+2. ~~**Quotation generation (VOC-014)**~~ — **now has a proposed home**, AS-07: QTN → edit price → submit → convert to SO. Still open: whether the quoted price is enforced/locked on conversion — the proposal covers the *document*, not yet the *price-lock* that was the actual pain.
+
+### Two signals still with no scope-lock home (need David)
+1. **Cash-from-driver recording (VOC-009)** — finance's Excel cash log; MAIA can absorb it, but SL-02 covers bank/slip matching only.
+2. **Damage / batch QC log (VOC-023)** — warehouse photo-logs damaged/discoloured stock against a batch. Only a generic "issue ticket" was floated in the meeting; not scoped.
 
 ### Three "resolved" items reopened at mechanism-detail level (2026-07-13)
 Feature existence ≠ mechanism documented. Ivan flagged all three live in the 13 Jul scope re-check:
@@ -246,11 +248,17 @@ Feature existence ≠ mechanism documented. Ivan flagged all three live in the 1
 - **NS-05 approval flows beyond credit** — the real ask is a credit-*block* approval by a credit controller role; approver identity + override-recording behaviour not documented.
 - **NS-06 payment chasing escalation** — alert feature exists, but "who receives first" (VOC-020) is still the exact open question Ivan re-asked live.
 
-### One critical dependency the scope lock omits
-- **SQL vendor access (VOC-028)** — go-live is blocked until the SQL vendor grants integration access. The scope lock has no dependency/blocker section, so this risk lives nowhere. Track it explicitly.
+### 2026-07-14 updates — AS-04 locked, AS-05 partially locked, one new numbering risk
+- **AS-04 (outdoor sales assistant) → LOCKED.** Grace clarified salespeople relay orders to office admin via WhatsApp rather than entering orders themselves — Phase 1 stays query-only. New AS-04b captures this relay pattern explicitly.
+- **AS-05 (customer info) → partially locked.** Sales can log notes/events/tasks against a customer profile (activity log) — that part is confirmed. Master-data field writability (address, phone, etc.) is still open.
+- **AS-03 numbering risk.** CN numbering was decided internally (MAIA running number + invoice-reference field, not a mirrored number) — but VOC-021's original ask was for the number to *mirror* the invoice "so we don't confuse the customer." A reference field ≠ a mirrored number. Flagged for Finance/Grace to explicitly confirm this still meets their need, not assumed closed.
+
+### Correction — SQL vendor dependency IS captured
+- **SQL vendor access (VOC-028)** — go-live is blocked until the SQL vendor grants integration access. **Correction 2026-07-14:** an earlier version of this doc claimed the Scope Lock had no dependency/blocker section — that's wrong. Scope Lock Section 6b (Dependencies & Blockers) has DEP-1 covering exactly this, status OPEN. No action needed beyond keeping DEP-1 current.
 
 ### Confirm — assumed Base MAIA, not explicitly scoped
-- **VOC-002** item-name fuzzy mapping + learning · **VOC-003** route-based pick grouping · **AS-04** outdoor sales assistant (thin VoC backing).
+- **VOC-002** item-name fuzzy mapping + learning · **VOC-003** route-based pick grouping.
+- ~~AS-04 outdoor sales assistant~~ — resolved 2026-07-14, LOCKED (see above).
 
 **Everything else is aligned.** Out-of-scope boundaries match exactly (AP, QR settlement, WMS, volume pricing, B2C, blasting).
 

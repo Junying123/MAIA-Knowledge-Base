@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-13
+last_reviewed: 2026-07-14
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/F5yKw59yui16UbkQjGqlha8egif
 ---
 
@@ -18,6 +18,8 @@ Macro Frozen — Scope Lock v1
 **Reconciled 2026-07-12:** all Needs-Scoping items resolved to terminal statuses (see below). ⚠️ **Client sign-off still pending** — this lock is internally reconciled but not yet client-signed; UAT signatory unconfirmed (see Dependencies).
 
 **Re-checked 2026-07-13 (Ivan × Gareth scope lock discussion):** three items marked RESOLVED on 2026-07-12 (NS-03, NS-05, NS-06) turned out to be "feature exists" resolutions, not "mechanism documented" resolutions — Ivan flagged each as needing deeper detail before UAT. Reopened as **RESOLVED (feature) / OPEN (mechanism detail)**. NS-07's question sharpened. AS-01 mechanism detail expanded. New item NS-08 (item historical pricing) added. See per-item notes below.
+
+**Updated 2026-07-14 (Gareth):** AS-01 fully traced end-to-end and now closes VOC-004 at warehouse-manager level; SL-03 gains a price-controller role (David, desktop); AS-03 CN doctype design finalized (SCN + CCN split) with a numbering risk flagged for Finance to confirm; AS-04 LOCKED (outdoor sales = query-only, confirmed via Grace); new AS-04b (sales-to-admin relay) and AS-07 (quotation-before-order, closes VOC-014) added; AS-05 partially locked (activity log); AS-06 guiding questions drafted; NS-07 POD mechanism finalized (DO-only, DN-linked-to-INV); NS-08 mechanism detailed with a Base-feature gap identified against the Fixguru Item Historical Pricing spec.
 
 
 
@@ -53,10 +55,11 @@ Macro Frozen — Scope Lock v1
 
 | Status | Count | Items |
 |-|-|-|
-| **LOCKED** | 7 | SQL/customer-item master boundary; AR customer-invoice reconciliation; bulk price update; credit-limit control; role visibility; one MAIA WhatsApp number; core document generation for SO/DO/Invoice where integration allows |
+| **LOCKED** | 9 | SQL/customer-item master boundary; AR customer-invoice reconciliation; bulk price update + price controller role; credit-limit control; role visibility; one MAIA WhatsApp number; core document generation for SO/DO/Invoice where integration allows; outdoor sales assistant (AS-04, query-only); sales-to-admin order relay (AS-04b) |
 | **LOCKED (SUPERSEDED)** | 0 | None fully qualifies; supersessions exist but lack clean client sign-off evidence. |
-| **AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED** | 6 | Fresh-weight workflow; product catalogue/image generation; credit note support; outdoor sales assistant; customer information/notes; backend dashboard/reminders |
-| **NEEDS SCOPING** | 1 | NS-08 item historical pricing (new 2026-07-13). NS-03/NS-05/NS-06 reopened at mechanism-detail level (feature resolved, config/detail open) — see Needs-Scoping Register. |
+| **AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED** | 5 | Fresh-weight workflow; product catalogue/image generation; credit note support (doctype design finalized, numbering risk flagged); customer information/notes (activity log confirmed, master-field writability open); backend dashboard/reminders |
+| **AGREED IN PRINCIPLE — IMPLEMENTATION PROPOSED** | 1 | AS-07 quotation-before-order (new 2026-07-14) — flow proposed, price-lock enforcement sub-question open |
+| **NEEDS SCOPING** | 1 | NS-08 item historical pricing (new 2026-07-13, mechanism detailed 2026-07-14, Base-feature gap identified). NS-03/NS-05/NS-06 reopened at mechanism-detail level (feature resolved, config/detail open) — see Needs-Scoping Register. |
 | **OUT OF SCOPE** | 7 | AP reconciliation; merchant/QR settlement reconciliation; delivery trip management; full WMS/barcode/QR scanning; volume-based pricing; full B2C/customer ordering app; automated WhatsApp blasting |
 
 
@@ -70,7 +73,7 @@ Macro Frozen — Scope Lock v1
 3. **Inventory aging/expiry alert — LOCKED (Phase 1, being built).**
 4. **Product catalogue — AGREED IN PRINCIPLE.** Acceptance criteria (template/fields/count/output) still to lock — blocks catalogue build only, not core go-live.
 
-**Remaining open (non-blocking):** NS-03 aging-alert mechanism detail; NS-05 credit-block approval mechanism detail; NS-06 payment-escalation routing/timing; NS-07 POD all-vs-some enforcement question + tech ticket; NS-08 item historical pricing (blocks SL-03 pricing AC — see register); the 4 VoC gaps + SQL-access dependency (see Dependencies).
+**Remaining open (non-blocking):** NS-03 aging-alert mechanism detail; NS-05 credit-block approval mechanism detail; NS-06 payment-escalation routing/timing; NS-07 POD all-vs-some enforcement question + tech ticket; NS-08 item historical pricing (blocks SL-03 pricing AC — see register, Base-feature gap on transaction-date/cross-item view); AS-07 price-lock enforcement on QTN→SO conversion; AS-03 CN-numbering risk (reference field vs Finance's "mirror the number" ask); AS-05 master-data field writability; AS-06 dashboard/reminders access — guiding questions drafted, not yet asked; the picking-accountability gap (VOC-004) is now addressed at manager-level via AS-01, per-worker attribution still open if David wants it; the 4 VoC gaps + SQL-access dependency (see Dependencies).
 
 ---
 
@@ -147,6 +150,8 @@ Macro Frozen — Scope Lock v1
 - SO pricing uses latest MAIA price.  
 - Wholesale/retail/customer-specific prices are supported.  
 - Minimum price rule prevents below-floor pricing.  
+
+**Price controller role added 2026-07-14:** David is the **price controller** — the person authorized to adjust prices (not just upload the bulk template). He does this via the **desktop app**, not WhatsApp/chatbot. This is distinct from the template-upload flow above: template upload is bulk/scheduled price refresh; the price controller role is ad-hoc/manual adjustment authority sitting on top of it.
 
 **Confidence:** HIGH.
 
@@ -278,6 +283,10 @@ RESOLVED — confirmed 2026-07-10.
 
 **⚠️ Adoption risk flagged 2026-07-13:** Grace indicated (per a call the night before) that Macro Frozen may keep using their own existing pick list first rather than adopting the Maya-generated PDF flow. Ivan's instruction was "we need to do this flow" — i.e. build and test it regardless — but this is a live adoption risk, not a closed item. **Action: run one real pick → confirm → upload cycle with the actual warehouse person before go-live** (this was already flagged as an open unknown in the VoC Extraction; today's comment confirms it's still unresolved, not hypothetical).
 
+**Mechanism detail confirmed 2026-07-14:** Full end-to-end trace — WhatsApp order comes in (e.g. 10kg) → create SO → submit SO → convert SO to pick list → generate pick list PDF → **warehouse manager** receives the PDF and shares it with the foreign-worker pickers → pickers physically pick and record actual quantity picked against the PDF → warehouse manager uploads the annotated pick list PDF back to MAIA → pick list record is updated with actual quantities → once weight/quantity is confirmed from the uploaded pick list, the SO is amended to match.
+
+**Closes VOC-004 (picking accountability) — process-level, not per-worker digital attribution:** This flow gives accountability at the **warehouse manager** level — the manager is the single point who receives the pick list, distributes it, collects it back, and uploads it, so any quantity discrepancy is visible before the SO is amended and traceable to the manager's batch. It does **not** provide per-individual-picker digital attribution (who exactly picked which line) — that still lives on the paper PDF the manager collects, not as structured system data. If the client's "punishment of the error" expectation requires knowing exactly which foreign worker picked a given short line (not just that the batch was short), that is **not covered** by this design and would need a separate structured/enforced pick-list feature (previously scoped out under NS-02). Recommend confirming with David whether manager-level accountability is sufficient.
+
 
 
 ---
@@ -320,6 +329,14 @@ RESOLVED — confirmed 2026-07-10.
 
 **Mechanism resolved 2026-07-13:** In Maya, credit note is its own doc type — "Sales Credit Note" — distinct from a generic/customer credit note, referencing the original invoice number. It does two things: reverses billing AND returns stock (i.e. tracks the stock coming back, not just the financial reversal). Sync works both directions — CN can be created in SQL and synced to Maya, or created in Maya and synced to SQL. **Only the numbering question (precise question above) remains open** — the doc-type/stock-reversal mechanism is settled.
 
+**Doctype design finalized 2026-07-14:** SQL's single SCN currently handles both billing reversal and stock return together. MAIA/ERPNext natively splits this into two mechanisms (CN for billing, RN for stock) — so Phase 1 introduces **two doc types** to bridge that gap:
+- **SCN — Sales Credit Note (new doctype):** flexible, covers the combined SQL use case — can be used for **payment + stock refund together**, or for **stock return only** (no payment impact), matching however the original SQL transaction was structured.
+- **CCN — Customer Credit Note:** payment/billing only, **no stock impact** — this is the "normal/customer credit note" already referenced in the 2026-07-13 discussion.
+
+**Numbering decision (answers the precise question above) 2026-07-14:** MAIA will **not** copy/mirror the invoice number as the CN's own number. CN gets its own MAIA-generated running number; the original invoice number is stored as a **reference field** on the CN, not as the CN's number itself.
+
+**⚠️ Risk to confirm with Finance:** VOC-021 recorded Finance's original ask as wanting the CN number to **mirror** the invoice number specifically "so we don't confuse our customer." A reference field achieves traceability but is not the same as a mirrored number — a customer glancing at the CN number alone won't see the invoice number. Recommend explicitly confirming with Finance (Grace) that a reference field satisfies their stated concern before treating this as closed.
+
 
 
 ---
@@ -330,7 +347,7 @@ RESOLVED — confirmed 2026-07-10.
 
 
 
-**Status:** AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED  
+**Status:** LOCKED — confirmed 2026-07-14  
 
 **SOW said:** Outdoor sales assistant supports price queries, customer outstanding/payment status, customer-facing document generation where required, and customer information updates.  
 
@@ -338,7 +355,21 @@ RESOLVED — confirmed 2026-07-10.
 
 **Precise question:** For Phase 1, should outdoor sales be query-only, order-entry capable, or document-generation capable?  
 
+**Answer (2026-07-14, per Grace):** Salespeople don't enter orders directly into any system while in the field — they relay the order to the office **admin via WhatsApp**, and the admin does the actual order entry. This means Phase 1 outdoor sales scope is **query-only**: price lookup, customer outstanding/payment status, customer info — **not** order-entry capable. Order creation stays with office admin using the standard SO flow.
+
 **Blocking:** NO.
+
+
+
+---
+
+
+
+### AS-04b — Sales-to-admin order relay (new, derived from AS-04 answer)
+
+**Status:** LOCKED — 2026-07-14
+
+Confirms the real-world entry point for orders: sales rep → WhatsApp message to office admin → admin creates SO in MAIA. This is consistent with SL-06 (one MAIA WhatsApp number) and VOC-001 (order comes via WhatsApp). No separate field-sales order-entry UI is needed for Phase 1.
 
 
 
@@ -357,6 +388,8 @@ RESOLVED — confirmed 2026-07-10.
 **Now intended:** Transcript demonstrates customer notes/preferences can be stored, surfaced, and learned for future order accuracy.  
 
 **Precise question:** Which customer fields are writable in Phase 1, and which require approval before syncing to SQL?  
+
+**Partial answer confirmed 2026-07-14:** Sales users can record **notes, events, and tasks** under a customer's profile — an activity log to track their interactions/history with that customer. This part is locked in as a feature. **Still open:** which *master-data* fields (address, contact, phone, billing address etc.) are directly writable vs require approval before syncing to SQL — the original precise question above is unresolved for master-data fields specifically, only for the activity-log piece.
 
 **Blocking:** NO.
 
@@ -378,7 +411,33 @@ RESOLVED — confirmed 2026-07-10.
 
 **Precise question:** What dashboard statuses and daily reminders are required for Phase 1 go-live?  
 
+**Guiding questions drafted 2026-07-14 (to structure the client conversation, not yet asked):**
+1. Who should have access to the dashboard at all — David only, David + Finance, David + Finance + Sales, or all roles (incl. warehouse manager)?
+2. Does access differ by role — e.g. should Sales only see their own customers' orders/outstanding on the dashboard, mirroring the SL-05 sales-isolation rule, or should the dashboard be a full cross-account view for whoever has access?
+3. What should the dashboard actually show — order status pipeline, payment/AR exceptions, pending approvals (credit blocks), document trail, or a combination? Which of these is most important to see first?
+4. For daily reminders: who receives them — same access list as the dashboard, or a narrower set (e.g. only David + Finance for payment reminders, only warehouse manager for pick-list reminders)?
+5. What triggers a reminder — a fixed daily schedule (e.g. every morning), or event-based (e.g. immediately when an order is blocked or a payment goes overdue)?
+6. Should reminders be delivered inside MAIA only, or also pushed to WhatsApp/Telegram given the team is WhatsApp-driven?
+
 **Blocking:** NO.
+
+
+
+---
+
+
+
+### AS-07 — Quotation before order (new 2026-07-14, closes VOC-014)
+
+**Status:** AGREED IN PRINCIPLE — IMPLEMENTATION PROPOSED, not yet walked through with client
+
+**VoC said:** Big customers request a quotation first; client wants a price-lock so a lower PO price than what was quoted gets surfaced or blocked (VOC-014). Previously had no scope-lock home.
+
+**Proposed flow (Gareth, 2026-07-14):** Create QTN (Quotation) for the big customer → edit/set price on the QTN → submit QTN → convert QTN to SO.
+
+**⚠️ Open sub-question — not yet answered by this proposal:** VOC-014's actual pain was the **price-lock/enforcement**, not just the existence of a quotation document. Does converting a submitted QTN to SO carry the quoted price forward as a floor (i.e. block or flag a SO priced lower than the QTN), or can the SO be freely edited down after conversion with no check? This needs to be explicitly defined before AS-07 can move to LOCKED — otherwise the flow exists but the actual pain point (customer/salesperson underselling relative to the quote) isn't addressed.
+
+**Blocking:** NO for core go-live; recommend resolving before catalog/pricing UAT since it touches SL-03.
 
 
 
@@ -398,8 +457,8 @@ RESOLVED — confirmed 2026-07-10.
 | NS-04 | Pro forma invoice | Proposal includes proforma where required; meeting says dedicated proforma document needs confirmation. | “Do you require a document explicitly titled ‘Pro Forma Invoice’, or is MAIA Sales Order sufficient?”  <br/>**Answer (2026-07-10):** MAIA already has Pro Forma Invoice in the product now. | David / Finance | NO |
 | NS-05 | Approval flows beyond credit | SOW includes broad approval flows; only credit-limit approval is defined. | “Besides credit limit/payment-term block, what exact approval triggers are required in Phase 1?”  <br/>**Answer (2026-07-12):** MAIA already has approval flows — we have this as well.  <br/>**Reopened 2026-07-13:** the actual ask is a **credit block** approval (not credit limit) — a credit controller role approves an order when the customer is credit-blocked. Ivan: "you need to answer deeper." Mechanics (who is the controller, approval UI, override record) not yet documented. | David | RESOLVED (feature) / **OPEN (mechanism — credit-block approval flow detail)** |
 | NS-06 | Payment chasing escalation | Meeting parks overdue notifications/escalation but sequence is not locked. | “Who receives overdue alerts first: account, salesperson, David, or all three; and at what timing?”  <br/>**Answer (2026-07-10):** MAIA already has overdue alert now.  <br/>**Reopened 2026-07-13:** Ivan re-raised the identical routing question live in this meeting — "who receive overdue alert first" is still unanswered by the client. Alert feature exists; routing/sequence does not. | David / Finance | RESOLVED (feature) / **OPEN (routing/sequence — still needs David)** |
-| NS-07 | POD attachment without delivery module | Delivery module is out of scope, but signed DO/photo attachment was discussed. | ~~“In Phase 1, should driver-sent signed DO photos be attached manually to orders, or is POD tracking fully deferred with delivery trip management?”~~ **Sharpened 2026-07-13 (Ivan):** Expected behavior settled — POD is a normal photo attachment, required upload **before** a DO can be marked "delivered" (upload-gates-status). Open question is narrower: **"Do ALL DOs require POD, or only some?"** If all → hard enforcement block is buildable. If only some → system can't cleanly enforce a block, needs a different design (e.g. optional/conditional field). Separately: check with tech whether the delivered-trip/stock tracking gap (currently Out-of-Scope) needs its own ticket regardless of the POD answer.  <br/>**Prior answer (2026-07-10):** Still planning — exploring ERPNext capability for this. | David + MAIA delivery lead / tech (Beyon) | NO — but **client question (all-vs-some) + internal tech ticket both still open** |
-| NS-08 | Item historical pricing | **New 2026-07-13.** During a call the night before, Grace (finance admin) told the team Macro Frozen uses item historical pricing for customer pricing — i.e. past transaction prices inform current customer-specific pricing. Not previously captured anywhere in scope. | “Confirm exact mechanism: is historical pricing a reference lookup (last price charged to this customer for this SKU) surfaced during order entry, or does it drive automatic pricing suggestions? How many periods of history are needed?” | David / Grace | **YES — blocks SL-03 pricing acceptance criteria until scoped** |
+| NS-07 | POD attachment without delivery module | Delivery module is out of scope, but signed DO/photo attachment was discussed. | ~~“In Phase 1, should driver-sent signed DO photos be attached manually to orders, or is POD tracking fully deferred with delivery trip management?”~~ **Sharpened 2026-07-13 (Ivan):** Expected behavior settled — POD is a normal photo attachment, required upload **before** a DO can be marked "delivered" (upload-gates-status). Open question is narrower: **"Do ALL DOs require POD, or only some?"** If all → hard enforcement block is buildable. If only some → system can't cleanly enforce a block, needs a different design (e.g. optional/conditional field). Separately: check with tech whether the delivered-trip/stock tracking gap (currently Out-of-Scope) needs its own ticket regardless of the POD answer.  <br/>**Prior answer (2026-07-10):** Still planning — exploring ERPNext capability for this.  <br/>**Mechanism finalized 2026-07-14:** POD photo attaches to the **DO only** — it is not attached to the Invoice. Traceability from Invoice back to proof-of-delivery is achieved by **linking DN (Delivery Note) to the Invoice**, not by duplicating the photo onto the invoice record. The all-vs-some enforcement question remains open. | David + MAIA delivery lead / tech (Beyon) | NO — but **client question (all-vs-some) + internal tech ticket both still open** |
+| NS-08 | Item historical pricing | **New 2026-07-13.** During a call the night before, Grace (finance admin) told the team Macro Frozen uses item historical pricing for customer pricing — i.e. past transaction prices inform current customer-specific pricing. Not previously captured anywhere in scope. | “Confirm exact mechanism: is historical pricing a reference lookup (last price charged to this customer for this SKU) surfaced during order entry, or does it drive automatic pricing suggestions? How many periods of history are needed?”  <br/>**Detail confirmed 2026-07-14:** When sales/admin create an SO for a regular customer, they need to check that customer's pricing history — specifically last SO/SI price offered, across items, with discount and transaction date, before finalizing the new order's price.  <br/>**Base feature reference:** MAIA already has a related Base feature — [[01 - MAIA Product/Product Specs/Item Historical Pricing/Item Historical Pricing & Discount]] (built for Fixguru, v0.5) — which surfaces last price + discount % inline in the unit-price dropdown at order entry.  <br/>**⚠️ Gap vs Macro Frozen's ask:** The existing Base feature shows only the **single latest price** per item (dropdown label "Last Price"/"Past Price"), not a transaction date, and only one item at a time — not a cross-item view. Macro Frozen's ask (transaction date shown, checked across multiple items) **exceeds current Base scope** — the spec explicitly lists "multiple past prices as separate rows" and "price history graph" as Out of Scope/Future. This needs either a scope-widening decision or managing Macro Frozen's expectation down to what Base already does. | David / Grace | **YES — blocks SL-03 pricing acceptance criteria until scoped; needs feasibility check on the transaction-date + cross-item gap** |
 
 
 
@@ -460,7 +519,7 @@ RESOLVED — confirmed 2026-07-10.
 | Conflict | Evidence A | Evidence B | Resolution |
 |-|-|-|-|
 | Phase 1 pick-list flow | Meeting notes: target workflow includes MAIA draft SO → pick → confirm weight, but pick-list flow inside MAIA is Phase 2 / may remain outside MAIA initially. | WhatsApp recap: Sales creates draft SO internally, runs own pick list, uploads confirmed pick list to MAIA, then MAIA creates SO/DO/Invoice. | ✅ Resolved 2026-07 (AS-01): draft SO first, external pick confirms weight. |
-| Stock entry / GRN | Narrative: GRN photo/simple stock entry appears in Phase 1 list or needs pricing clarification. | Meeting notes: no direct MAIA feature for stock-entry pain; GRN extraction does not solve root cause. | ✅ Resolved 2026-07: GRN stock entry parked (out of scope); real need = picking accountability (unscoped gap). |
+| Stock entry / GRN | Narrative: GRN photo/simple stock entry appears in Phase 1 list or needs pricing clarification. | Meeting notes: no direct MAIA feature for stock-entry pain; GRN extraction does not solve root cause. | ✅ Resolved 2026-07: GRN stock entry parked (out of scope); real need = picking accountability, **now addressed at warehouse-manager level via AS-01's pick-list-PDF flow (2026-07-14)** — per-worker digital attribution still open if David wants it beyond manager-level. |
 | Inventory aging / expiry | Meeting notes: inventory aging/expiry alert agreed feature. | WhatsApp recap: stock/inventory alerts “to be explored — not in Phase 1 scope.” | ✅ Resolved 2026-07: aging alert LOCKED, Phase 1 (being built). |
 | Product Update Assistant status | Proposal page says optional add-on unless confirmed in writing. | Handover narrative says it was committed during sales to close the deal. | Direction is in scope; implementation not locked without template/fields/output confirmation. |
 
@@ -494,3 +553,9 @@ Use this in the next client conversation. Each answer should close one lock risk
 14. **POD enforcement scope:** “Do ALL delivery orders require a proof-of-delivery photo before being marked delivered, or only some? If only some, what determines which ones?”
 15. **Inventory aging alert detail:** “What should trigger a near-expiry/slow-moving alert (days-to-expiry threshold, stock-age threshold), and who should receive it?”
 16. **Credit-block approval detail:** “When an order is blocked for exceeding credit limit, who exactly is the approver, and do you want an override reason recorded?”
+17. **Picking accountability sufficiency:** “The pick-list PDF flow now gives accountability at the warehouse manager level — any quantity discrepancy is visible before the SO is amended. Is that enough, or do you need to know exactly which individual picker picked a short/wrong line?”
+18. **Quotation price-lock:** “Once a Quotation is submitted for a big customer, should the Sales Order created from it be blocked or flagged if someone tries to price it lower than the quote — or is that not necessary?”
+19. **CN numbering confirmation (Finance/Grace):** “The credit note will carry the original invoice number as a reference field, but will run its own separate number series rather than copying the invoice number. Does that meet your need to avoid confusing customers, or do you specifically need the CN number itself to match the invoice number?”
+20. **Master-data field writability:** “Beyond notes/events/tasks logging, which customer master fields — address, phone, billing address, contact — should sales/admin be able to edit directly in MAIA, and which should require approval before syncing to SQL?”
+21. **Dashboard & reminders access (see AS-06 guiding questions above):** who has dashboard access, does it differ by role, what should it show first, who gets daily reminders, what triggers them, and should they also push to WhatsApp/Telegram.
+22. **Item historical pricing scope:** “You mentioned checking last SO/SI pricing across items with discount and transaction date when quoting regular customers — MAIA's current base feature shows only the single latest price per item, not a date or multi-item view. Is the latest-price-per-item view sufficient, or do you specifically need the transaction date and a side-by-side view across items?”
