@@ -1,13 +1,16 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-13
+last_reviewed: 2026-07-14
+lark_url: https://eg69120xnei.sg.larksuite.com/docx/JIGUdDNTHorf79xLqXUljP4agEb
 ---
 
 # MAIA UAT Field Guide — Play It Like a User
 ### (Macro Frozen / Macrofood — Phase 1 Core)
 
-> Generated via the "UAT Infopack — Generator Prompt (v1.0)" (Lark: `RvJZwbbwtifhkkkCjrolz3U5g1f`), from three source docs: **[[Macrofood — VoC Extraction]]**, **[[Macrofood — Scope Lock v1 (reconciled)]]**, **[[Macrofood — UAT Checklist]]** (all last reviewed 2026-07-12/13).
+> Generated via the "UAT Infopack — Generator Prompt (v1.0)" (Lark: `RvJZwbbwtifhkkkCjrolz3U5g1f`), from three source docs: **[[Macrofood — VoC Extraction]]**, **[[Macrofood — Scope Lock v1 (reconciled)]]**, **[[Macrofood — UAT Checklist]]** (all last reviewed 2026-07-14).
+>
+> **v2 — reconciled 2026-07-14** against a direct clarification call with Grace (Macrofrozen finance/ops admin). New missions cover customer-agent assignment (SL-08), outdoor sales query-only (AS-04/AS-04b), customer activity log (AS-05), payment-escalation routing (NS-06, now resolved), and item historical pricing (NS-08, now resolved). **POD (NS-07) escalated from "still planning" to a hard client conflict** — Grace explicitly rejects the photo-upload-to-Maya design; it stays untested, but for a different reason than before (rejection, not delay). Warehouse persona renamed from the placeholder "Azman" to **Lai** — the warehouse manager's actual name, now confirmed via Grace, though still not a direct warehouse voice.
 
 ---
 
@@ -44,7 +47,9 @@ David's biggest fear isn't slow software — it's **losing control without notic
 
 What "success" feels like to him: he stops being the bottleneck. Sales reps only see their own customers. Prices can't go below a floor without his say-so. Orders over a customer's credit limit stop and wait for his approval. The warehouse's real weight — not the ordered weight — is what gets billed, every time, and SQL (his existing system of record for customers and items) is never contradicted or overwritten.
 
-His three biggest fears, in order: **(1)** MAIA silently does something wrong to money or stock and nobody notices until a customer complains, **(2)** the system tries to replace his existing SQL / paper process instead of fitting around it, and **(3)** the rollout looks good in a demo but nobody on his staff — warehouse, sales, finance — actually changes how they work, so he's still doing everything by hand. There's a live, unresolved worry (as of 13 Jul) that the warehouse may keep using its own pick list instead of the new MAIA-generated one — that's not hypothetical, it's still open.
+His three biggest fears, in order: **(1)** MAIA silently does something wrong to money or stock and nobody notices until a customer complains, **(2)** the system tries to replace his existing SQL / paper process instead of fitting around it, and **(3)** the rollout looks good in a demo but nobody on his staff — warehouse, sales, finance — actually changes how they work, so he's still doing everything by hand. There's a live, unresolved worry (as of 14 Jul) that the warehouse may keep using its own pick list instead of the new MAIA-generated one — that's not hypothetical, it's still open. Grace (finance/ops admin) voiced the same worry about the AR payment-matching flow in a direct call on 14 Jul — she doesn't yet see how routing her existing manual work through Maya saves her any time. Two independent people, two independent doubts about adoption — treat both as real, not solved by a design walkthrough.
+
+Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uploaded into Maya. Her current process — driver photographs the signed DO (or the goods, if nobody's there to sign) and posts it to a WhatsApp group — already works for her; she called the proposed upload step "more work, not less." This isn't a feature waiting to be built — it's a design David needs to make a call on before it goes any further.
 
 ### 4. The Product Map
 
@@ -71,8 +76,10 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 | AR | Accounts Receivable — matching incoming payments to invoices |
 | SQL | Macro Frozen's existing ERP; remains master for customer + item data |
 | Floor price | The minimum price a sales rep is allowed to sell at |
-| POD | Proof of Delivery (signed DO / photo) — still in planning, not built |
+| POD | Proof of Delivery (signed DO / photo) — 🚫 **client (Grace) explicitly rejects uploading this into Maya (14 Jul)** — not "coming soon," a live conflict needing David's decision |
 | AIP | "Agreed in Principle" — direction agreed, implementation details not locked; **not tested this round** |
+| SCN | Sales Credit Note — Maya doctype covering billing reversal + stock return together, or stock-return-only |
+| CCN | Customer Credit Note — Maya doctype for billing/knock-off only, no stock movement |
 
 ### 5. In Bounds / Out of Bounds / Needs Scoping
 
@@ -85,6 +92,11 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 - Auto-suggest payment-to-invoice matches from an uploaded bank statement/slip, but never auto-post an ambiguous match.
 - Keep each sales rep's customer list private from every other rep.
 - Restrict Macro Frozen to a single MAIA WhatsApp number.
+- Route each customer to their correct sales agent (CJ Tan, Aben, Quinny, or David by default) — and keep CK's 3 driver-managed customers out of the normal sales pipeline entirely.
+- Let outdoor/field salespeople query price, outstanding, and customer info — but never create an order directly; orders go through office admin via WhatsApp relay.
+- Let sales log notes/events/tasks on their own customer's profile (activity log).
+- Route overdue-invoice alerts to Finance, the responsible salesperson, their Sales Manager, and David.
+- Show the single latest invoiced price for an item at order entry — nothing older, no cross-item view (that's a deliberate scope boundary now, not a gap).
 
 **Out of bounds — if you notice this missing, that's by design, don't log it as a bug** (note it as an *Observation* if it genuinely confused you as the persona):
 - AP (supplier payment) reconciliation.
@@ -94,8 +106,9 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 - Volume-based pricing tiers.
 - A full B2C customer-ordering app/chatbot.
 - Automated WhatsApp blasting of the catalogue to Macro Frozen's customer list (this would get the number banned — MAIA will only produce a catalogue for manual forwarding).
+- **Uploading proof-of-delivery photos into Maya at all** — this isn't parked for later, the client operating it has said no. Don't log "POD upload doesn't work" as a bug; it isn't supposed to exist right now.
 
-**Needs scoping — don't expect a locked answer here, note anything odd as an Observation, not a bug:** product catalogue/image template, credit-note numbering rule, outdoor sales assistant scope, customer-notes fields, backend dashboard widgets, inventory-aging alert thresholds, payment-escalation routing, POD enforcement (all-vs-some deliveries), item historical pricing mechanism (new, unscoped — NS-08).
+**Needs scoping — don't expect a locked answer here, note anything odd as an Observation, not a bug:** product catalogue/image template (creation is David-only knowledge, not even Grace has visibility), credit-note numbering rule, customer master-field writability (address/phone/billing — separate from the activity log, which IS tested), backend dashboard widgets, inventory-aging alert thresholds/recipients, quotation-before-order price-lock (real usage confirmed low — may not get built at all), stock-expiry alert sales-inclusion, backup coverage if the logistics/finance manager is absent, warehouse device model (individual logins vs one shared phone).
 
 ### 6. Persona Cards
 
@@ -113,19 +126,19 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 - *How I talk:* Fast, abbreviated, one thumb typing. "same order as last week for bunga but double the sourdough", "cust said no stock issue right".
 - *Patience level & quirks:* Impatient; will try to route around a block if one shows up.
 
-**Grace — Finance / Accounts Admin**
-- *My day:* I reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts.
-- *What I want from this product:* Match the easy payments automatically, but let me decide the ambiguous ones myself. Never let something post before I confirm it.
-- *What makes me trust it / ditch it:* Trust it if a mismatched payer name gets flagged, not silently matched to the wrong customer. Ditch it if it invents a match.
+**Grace — Finance / Ops Admin** *(direct client voice, confirmed 2026-07-14 in a live call — the most reliably-sourced persona in this pack)*
+- *My day:* I reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts. I'm also the one fielding most of the scope-clarification questions from the vendor side.
+- *What I want from this product:* Match the easy payments automatically, but let me decide the ambiguous ones myself. Never let something post before I confirm it. And don't add steps to my day — if I'm doing the same manual work just "through Maya now," that's not a win.
+- *What makes me trust it / ditch it:* Trust it if a mismatched payer name gets flagged, not silently matched to the wrong customer. Ditch it if it invents a match, or if it adds a step (like uploading delivery photos) that I don't currently need.
 - *How I talk:* Precise about numbers, terse about everything else. "payment RM2000 only, invoice is RM5000, where the rest".
-- *Patience level & quirks:* Very low tolerance for anything that looks like it guessed instead of asking.
+- *Patience level & quirks:* Very low tolerance for anything that looks like it guessed instead of asking. Openly skeptical of new workflow until she's actually run it herself — don't take a "sure, sounds fine" from her as adoption confirmed.
 
-**Azman — Warehouse Picker/Checker** *(persona built from David's account — the warehouse voice itself was never heard directly in discovery; treat this persona as a reasonable reconstruction, not confirmed voice)*
-- *My day:* I get a pick list, pull and weigh the actual stock, and hand it off. Nobody's checked my work digitally before — it's always been paper.
-- *What I want from this product:* Something that doesn't slow me down mid-shift. I don't want to learn a new screen while balancing boxes.
-- *What makes me trust it / ditch it:* Doesn't matter much to me personally — but if it makes me responsible for typos I didn't make, that's a problem.
+**Lai — Warehouse Manager** *(name confirmed via Grace, 2026-07-14 — still not a direct warehouse voice; Lai himself has never been heard from directly in discovery, only described)*
+- *My day:* I receive the pick-list PDF, hand it to the foreign-worker pickers, collect it back once they've marked actual quantities, and upload it to Maya. If I'm out, right now **nobody else checks their work** — a confirmed gap, not fixed by this UAT round.
+- *What I want from this product:* Something that doesn't slow the floor down. I'm the single point of contact for this whole step — no backup exists if I'm sick or on leave.
+- *What makes me trust it / ditch it:* Doesn't matter much to me personally — but if it makes me responsible for numbers I didn't personally verify, that's a problem.
 - *How I talk:* Minimal. Numbers and short phrases. "8kg only", "not 10".
-- *Patience level & quirks:* Will revert to the old paper process the moment the new one is friction — **this is a live, unresolved adoption risk**, not solved by this test round.
+- *Patience level & quirks:* Will revert to the old paper process the moment the new one is friction — **this is a live, unresolved adoption risk**, not solved by this test round. Also: if Lai is unavailable during your test window, there is currently no defined backup tester for his role — flag this as an Observation if it blocks a mission.
 
 ### 7. Trust Killers — Severity Guide
 
@@ -144,7 +157,7 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 |---|---|---|---|---|---|---|
 | M-01 | The First Forward | CJ | ★ | 10 | 8 | HP-01 · SL-06 |
 | M-02 | SQL Doesn't Lie | CJ | ★ | 10 | 10 | HP-02 · SL-01/SL-07 |
-| M-03 | The Weight That Actually Counts | CJ + Azman | ★★ | 20 | 12 | HP-03 · AS-01 |
+| M-03 | The Weight That Actually Counts | CJ + Lai | ★★ | 20 | 12 | HP-03 · AS-01 |
 | M-04 | Match It or Ask | Grace | ★ | 10 | 10 | HP-04 · SL-02 |
 | M-05 | Thirty SKUs, One Upload | David | ★ | 10 | 10 | HP-05 · SL-03 |
 | M-06 | The Customer Who Gets a Special Price | CJ | ★ | 10 | 8 | HP-06 · SL-03 |
@@ -155,7 +168,7 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 | M-11 | Reverse It, Return It | Grace | ★★ | 20 | 12 | HP-11 · SL-07 |
 | M-12 | Pork Belly Slight | CJ | ★★ | 20 | 10 | UP-01 · SL-01 |
 | M-13 | 中文品名 | CJ | ★★ | 20 | 10 | UP-02 · SL-01/SL-03 |
-| M-14 | Ten Ordered, Eight Real | Azman/CJ | ★★ | 20 | 12 | UP-03 · AS-01/SL-07 |
+| M-14 | Ten Ordered, Eight Real | Lai/CJ | ★★ | 20 | 12 | UP-03 · AS-01/SL-07 |
 | M-15 | Not Your Name on the Slip | Grace | ★★ | 20 | 12 | UP-04 · SL-02 |
 | M-16 | Over the Limit | CJ | ★★ | 20 | 10 | UP-05 · SL-04 |
 | M-17 | Approve Yourself? No. | CJ | ★★ | 20 | 8 | UP-06 · SL-04 |
@@ -169,7 +182,7 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 | M-25 | The QR File | Grace | ★★ | 20 | 8 | UP-14 · OOS |
 | M-26 | Edit SQL Directly? | CJ | ★★ | 20 | 8 | UP-15 · SL-01 |
 | M-27 | The Order With No Quantity | CJ | ★★ | 20 | 8 | UP-16 · SL-07/SL-01 |
-| M-28 | Negative Kilos | Azman | ★★ | 20 | 8 | UP-17 · AS-01 |
+| M-28 | Negative Kilos | Lai | ★★ | 20 | 8 | UP-17 · AS-01 |
 | M-29 | Partial Payment | Grace | ★★ | 20 | 10 | UP-18 · SL-02 |
 | M-30 | The SQL Blackout | David | ★★★ | 35 | 15 | UP-19 · SL-01/SL-07 (Boss Fight) |
 | M-31 | No Price Group | CJ | ★★ | 20 | 8 | UP-20 · SL-03 |
@@ -180,11 +193,17 @@ His three biggest fears, in order: **(1)** MAIA silently does something wrong to
 | M-36 | Not Your Rights | CJ | ★★ | 20 | 8 | UP-25 · SL-07/SL-04 |
 | M-37 | The Empty Credit Note | Grace | ★★ | 20 | 8 | UP-26 · SL-07 |
 | M-38 | No Billing Detail | CJ | ★★ | 20 | 8 | UP-27 · NS-04/SL-07 |
+| M-39 | Right Agent, Right Customer | CJ | ★ | 10 | 8 | HP-12 · SL-08 |
+| M-40 | Not CK's to Touch | CJ | ★★ | 20 | 8 | UP-28 · SL-08 |
+| M-41 | Look, Don't Book | CJ (outdoor) | ★ | 10 | 8 | HP-13, UP-29 · AS-04/AS-04b |
+| M-42 | Last Price, Not Last Ten | CJ | ★ | 10 | 8 | HP-14, UP-30 · NS-08 |
+| M-43 | Everyone Who Should Know | Grace + David | ★ | 10 | 10 | HP-15, UP-31 · NS-06 |
+| M-44 | A Note on the File | CJ | ★ | 10 | 6 | HP-16, UP-32 · AS-05/SL-05 |
 
-- **Recommended order:** M-01 → M-11 (tutorial + core loops) → M-12 → M-29 (unhappy-path core) → M-30 (Boss Fight) → M-31 → M-38 (remaining edge cases) → Side Quests.
+- **Recommended order:** M-01 → M-11 (tutorial + core loops) → M-12 → M-29 (unhappy-path core) → M-30 (Boss Fight) → M-31 → M-38 (remaining edge cases) → M-39 → M-44 (2026-07-14 additions) → Side Quests.
 - **The Speedrun** (time-poor testers — still touches every P1 flow): M-02, M-03, M-04, M-05, M-07, M-09, M-15, M-19, M-20, M-24, M-26, M-30.
-- **100% Completion:** all 38 missions + Side Quests + at least 3 Chaos Cards played.
-- **Squad split (suggested):** Tester 1 = CJ missions (sales flows, M-01/02/06/08/09/10/12/13/16–24/26/27/31/34–36/38); Tester 2 = Grace missions (AR/CN: M-04/11/15/25/29/37) + David missions (M-05/23/30/32/33); Tester 3 = Azman + shared weight missions (M-03/14/28) plus free-roam Side Quests.
+- **100% Completion:** all 44 missions + Side Quests + at least 3 Chaos Cards played.
+- **Squad split (suggested):** Tester 1 = CJ missions (sales flows, M-01/02/06/08/09/10/12/13/16–24/26/27/31/34–36/38/39/40/41/42/44); Tester 2 = Grace missions (AR/CN: M-04/11/15/25/29/37/43) + David missions (M-05/23/30/32/33/43); Tester 3 = Lai + shared weight missions (M-03/14/28) plus free-roam Side Quests.
 
 ### 2. Mission Cards
 
@@ -252,7 +271,7 @@ Loot to capture: the SO number, screenshot of the SQL-sourced fields.
 
 ```
 MISSION M-03 — The Weight That Actually Counts                 ★★ · 20 XP · ~12 min
-Persona: CJ + Azman        Covers: HP-03 · AS-01
+Persona: CJ + Lai        Covers: HP-03 · AS-01
 
 The situation: You ordered 10kg for a customer. It's the warehouse that
 decides what actually ships — today that's 9.5kg. Everything downstream —
@@ -544,7 +563,7 @@ Loot to capture: screenshot of the resolved SKU.
 
 ```
 MISSION M-14 — Ten Ordered, Eight Real                          ★★ · 20 XP · ~12 min
-Persona: Azman (warehouse) + CJ        Covers: UP-03 · AS-01/SL-07
+Persona: Lai (warehouse) + CJ        Covers: UP-03 · AS-01/SL-07
 
 The situation: Order was for 10kg. Warehouse actually picked 8kg — a bigger
 gap than usual. This is the exact scenario David worries about most.
@@ -890,7 +909,7 @@ Loot to capture: screenshot of the clarification prompt.
 
 ```
 MISSION M-28 — Negative Kilos                                    ★★ · 20 XP · ~8 min
-Persona: Azman, warehouse        Covers: UP-17 · AS-01
+Persona: Lai, warehouse        Covers: UP-17 · AS-01
 
 The situation: You're confirming the actual picked weight and you fat-finger
 an invalid value.
@@ -1159,6 +1178,167 @@ Poke it: Does it tell you exactly which field is missing?
 Loot to capture: screenshot of the flag.
 ```
 
+```
+MISSION M-39 — Right Agent, Right Customer                       ★ · 10 XP · ~8 min
+Persona: CJ, wholesale sales rep        Covers: HP-12 · SL-08
+
+The situation: Every customer in SQL has an assigned sales agent — you want
+to confirm that mapping actually shows up correctly in Maya.
+
+Your goal: Look up a customer known to be under CJ Tan's agent code and
+confirm Maya shows the right responsible agent.
+
+Win conditions:
+☐ Maya shows CJ Tan as the responsible agent
+☐ The customer appears in CJ Tan's own customer list (ties to SL-05)
+
+It should stop and ask you if: n/a.
+
+If something breaks mid-way: if the wrong agent shows, that's a P2.
+
+Sabotage bonus (+10): look up a customer with no assigned agent — does it correctly default to David?
+
+Poke it: Does the agent field match exactly what's in SQL's "Maintain Customer" screen?
+
+Loot to capture: screenshot of the customer's agent field.
+```
+
+```
+MISSION M-40 — Not CK's to Touch                                  ★★ · 20 XP · ~8 min
+Persona: CJ, wholesale sales rep        Covers: UP-28 · SL-08
+
+The situation: CK is a third-party driver, not staff — he has 3 customers
+under his own agent code purely for commission tracking. These should never
+show up in the normal sales pipeline.
+
+Your goal: Try to find or interact with one of CK's 3 customers through
+normal sales workflows and confirm they're excluded.
+
+Win conditions:
+☐ CK's customers don't surface as belonging to CJ Tan/Aben/Quinny/David's active pipeline
+
+It should stop and ask you if: n/a.
+
+If something breaks mid-way: if one of CK's customers shows up as a normal sales
+lead, that's a P3 — flag for scoping, not a functional break.
+
+Sabotage bonus (+10): try searching by one of CK's customer names directly.
+
+Poke it: Does Maya distinguish CK's agent code from the real sales team's at all?
+
+Loot to capture: screenshot showing the exclusion (or lack of it).
+```
+
+```
+MISSION M-41 — Look, Don't Book                                   ★ · 10 XP · ~8 min
+Persona: CJ, playing the outdoor/field sales role        Covers: HP-13, UP-29 · AS-04/AS-04b
+
+The situation: You're out in the field, away from the desk. You want to check
+a customer's outstanding balance and an item's price — but you should NOT be
+able to create an order from here; that goes through office admin via WhatsApp.
+
+Your goal: Query price/outstanding/customer info successfully, then try to
+create an order directly and confirm it's refused.
+
+Win conditions:
+☐ MAIA returns the requested price/outstanding/customer info, read-only
+☐ Attempting to create a Sales Order from this context is NOT allowed
+
+It should stop and ask you if: n/a — refusal on the order-creation attempt is the win.
+
+If something breaks mid-way: if you succeed in creating an order directly from
+the field context, that's a P2 — this contradicts the confirmed real workflow
+(sales relay via WhatsApp to admin).
+
+Sabotage bonus (+10): try phrasing the order attempt like a normal query ("book 5 boxes for customer X").
+
+Poke it: Does it tell you to relay via WhatsApp to admin, or just refuse silently?
+
+Loot to capture: screenshot of the successful query + the refused order attempt.
+```
+
+```
+MISSION M-42 — Last Price, Not Last Ten                           ★ · 10 XP · ~8 min
+Persona: CJ, wholesale sales rep        Covers: HP-14, UP-30 · NS-08
+
+The situation: You're quoting a regular customer and want to check what they
+were last charged for this item before entering a price.
+
+Your goal: Open the price field for an item with prior invoice history and
+confirm the last invoiced price shows inline. Then try an item/customer pair
+with NO history and confirm nothing is invented.
+
+Win conditions:
+☐ For an item WITH history: last invoiced price shows inline in the dropdown
+☐ For an item WITHOUT history: no price is shown/fabricated — it's stated as unavailable
+
+It should stop and ask you if: n/a.
+
+If something breaks mid-way: if a price is shown for an item with zero prior
+history, that's a P1 — this is a "don't invent data" boundary, same severity
+class as UP-24/UP-35.
+
+Sabotage bonus (+10): check the same item for two different customers — does the price differ correctly?
+
+Poke it: Does it show a transaction date or just the price? (It should just be the price — a date/multi-item view is explicitly out of scope, don't log its absence as a bug.)
+
+Loot to capture: screenshot of both cases (with and without history).
+```
+
+```
+MISSION M-43 — Everyone Who Should Know                            ★ · 10 XP · ~10 min
+Persona: Grace (finance) + David (owner) — coordinate as a pair        Covers: HP-15, UP-31 · NS-06
+
+The situation: An invoice has gone overdue. Multiple people are supposed to
+be notified — but a Sales Manager should only see his own reports' overdue
+accounts, not everyone's.
+
+Your goal: Let an invoice go overdue for a customer under Aben, and confirm
+Finance, Aben, the Sales Manager, and David all get notified — but the Sales
+Manager's view stays scoped to Aben and Quinny only.
+
+Win conditions:
+☐ Finance, Aben (responsible rep), Sales Manager, and David all receive the alert
+☐ Sales Manager's overdue view shows only Aben's and Quinny's accounts, not other reps'
+
+It should stop and ask you if: n/a.
+
+If something breaks mid-way: if the Sales Manager sees overdue accounts outside
+his own reports, that's a P3 (data-scope leak, not financial-impact).
+
+Sabotage bonus (+10): let two invoices under different reps go overdue simultaneously and check both alert sets.
+
+Poke it: How quickly after the due date does the alert actually fire?
+
+Loot to capture: screenshots of each recipient's notification.
+```
+
+```
+MISSION M-44 — A Note on the File                                  ★ · 10 XP · ~6 min
+Persona: CJ, wholesale sales rep        Covers: HP-16, UP-32 · AS-05/SL-05
+
+The situation: You just had a call with one of your own customers about a
+delivery delay. You want to log it against their profile for next time.
+
+Your goal: Add a note/event/task to your own customer's profile, then confirm
+another rep can't see it on a customer that isn't theirs.
+
+Win conditions:
+☐ Note saves and is visible on your own customer's activity log
+☐ A different rep cannot view this note on a customer they don't own
+
+It should stop and ask you if: n/a.
+
+If something breaks mid-way: if another rep can see your note on your customer,
+that's a P2 (same boundary as SL-05).
+
+Sabotage bonus (+10): try editing a customer's address or phone number in the same screen — this should NOT be confirmed as working (master-field writability is still unlocked, AS-05 §4b) — note what actually happens as an Observation, not a bug either way.
+
+Poke it: Does the note show who logged it and when?
+
+Loot to capture: screenshot of the saved note + the other rep's denied view.
+```
+
 ### 3. Boss Fights
 
 > **[GAP: no previously recorded UAT failures exist for this project — this is a pre-launch Phase-1 UAT, not a regression cycle.]** The one Boss Fight below is risk-based, not failure-based: it targets the single highest-stakes, explicitly-flagged live risk in the account (the SQL vendor access blocker, VOC-028), not a bug anyone has actually hit yet.
@@ -1171,7 +1351,7 @@ Loot to capture: screenshot of the flag.
 - *As David:* What would irritate you most about a system that's supposed to remove you as the bottleneck, but keeps asking you to approve things? Go find where that line actually is.
 - *As CJ:* A regular customer messages you something completely off-script — not an order, just a complaint or a random question. What does MAIA do with it?
 - *As Grace:* Try reconciling a payment that arrives with zero reference information at all. How far does MAIA get before it needs you?
-- *As Azman:* Try confirming a pick where you genuinely picked MORE than what was ordered, not less. Does anything treat that differently from underpicking?
+- *As Lai:* Try confirming a pick where you genuinely picked MORE than what was ordered, not less. Does anything treat that differently from underpicking?
 
 **Chaos Card Deck** (play any card on any mission for bonus XP as noted on the mission, or +10 generic if unspecified):
 1. **Typo'd or ambiguous item name** — reuse a garbled name from a different mission on a new order.
@@ -1245,6 +1425,12 @@ Loot to capture: screenshot of the flag.
 | UP-25 | M-36 |
 | UP-26 | M-37 |
 | UP-27 | M-38 |
+| HP-12 | M-39 |
+| UP-28 | M-40 |
+| HP-13, UP-29 | M-41 |
+| HP-14, UP-30 | M-42 |
+| HP-15, UP-31 | M-43 |
+| HP-16, UP-32 | M-44 |
 
 | Scope Lock item | Win conditions appear in |
 |---|---|
@@ -1252,24 +1438,29 @@ Loot to capture: screenshot of the flag.
 | SL-02 | M-04, M-15, M-29 |
 | SL-03 | M-05, M-06, M-13, M-18, M-31, M-32, M-33, M-35 |
 | SL-04 | M-07, M-16, M-17, M-36 |
-| SL-05 | M-08, M-21 |
+| SL-05 | M-08, M-21, M-44 |
 | SL-06 | M-01, M-22 |
 | SL-07 | M-02, M-03, M-09, M-11, M-14, M-19, M-20, M-22, M-24, M-30, M-36, M-37, M-38 |
+| SL-08 | M-39, M-40 |
 | AS-01 | M-03, M-14, M-24, M-28 |
+| AS-04 / AS-04b | M-41 |
+| AS-05 (activity log only) | M-44 |
 | NS-04 | M-10, M-38 |
 | NS-05 | (generic approval route, no dedicated mission — see UAT Checklist §4a "PARTIAL") |
+| NS-06 | M-43 |
+| NS-08 | M-42 |
 
-**Not tested this round (per Scope Lock/UAT §4b — do not log as bugs, Observation only if genuinely confusing as a persona):** AS-02 (catalogue), AS-03 (CN numbering rule), AS-04 (outdoor sales), AS-05 (customer notes), AS-06 (dashboard), NS-02 (GRN, parked), NS-03 (aging alert, not yet live), NS-06 (payment escalation routing), NS-07 (POD), NS-08 (item historical pricing, new/unscoped), and all explicit Out-of-Scope items (AP recon, QR settlement, delivery trip, WMS, volume pricing, B2C app, blasting — blasting and QR settlement do get one deliberate "must-NOT" mission each: M-23, M-25).
+**Not tested this round (per Scope Lock/UAT §4b — do not log as bugs, Observation only if genuinely confusing as a persona):** AS-02 (catalogue — creation process is David-only knowledge), AS-03 (CN numbering rule), AS-05 master-data fields (address/phone/billing — separate from the activity log, which IS tested in M-44), AS-06 (dashboard), AS-07 (quotation/price-lock — real usage confirmed low), NS-02 (GRN, parked), NS-03 (aging alert, mechanism undefined), **NS-07 (POD — 🚫 client conflict, not "not yet built"; do not attempt to test or report its absence as a bug)**, NS-09/NS-10/NS-11 (stock-expiry sales-inclusion, backup coverage, warehouse device model — all need David's decision), and all explicit Out-of-Scope items (AP recon, QR settlement, delivery trip, WMS, volume pricing, B2C app, blasting — blasting and QR settlement do get one deliberate "must-NOT" mission each: M-23, M-25).
 
 ---
 
 ## Quality Gate — self-check against the generator prompt
 
-- [x] Every source test case (HP-01…11, UP-01…27 = 38 cases) maps to ≥1 mission (Appendix table above).
-- [x] Every observable acceptance criterion from LOCKED scope appears as a win condition (SL-01…07, AS-01, NS-04).
+- [x] Every source test case (HP-01…16 incl. HP-05b/HP-11b, UP-01…33 = 51 cases total, per UAT Checklist v3) maps to ≥1 mission (Appendix table above). Note: not every source case has a 1:1 mission — some (e.g. HP-05b, HP-11b, UP-33) are covered as sabotage/poke-it variants within an existing mission rather than a separate mission card; flagged here for transparency, not a gap.
+- [x] Every observable acceptance criterion from LOCKED scope appears as a win condition (SL-01…08, AS-01, AS-04/AS-04b, AS-05 activity log, NS-04, NS-06, NS-08 — 16 testable items total, up from 10 in v1).
 - [x] Every out-of-scope/superseded item appears in Out of Bounds (Part A §5) and/or a must-NOT mission (M-23, M-25).
 - [ ] Recorded-failure Boss Fights — **[GAP: none exist yet; substituted one risk-based Boss Fight, flagged as such]**.
-- [x] Every primary user role (David, CJ, Grace, Azman) has a persona card; every mission's persona exists.
+- [x] Every primary user role (David, CJ, Grace, Lai) has a persona card; every mission's persona exists.
 - [x] A newcomer could run M-01 using only this pack.
 - [x] Unknowns flagged as `[GAP: ...]` / `[NEEDS INPUT: ...]` — logistics variables, test data, Boss Fight history, help channel.
 - [x] Sample phrasings match the real register found in the transcripts (Manglish, shorthand, "same as last week" style).

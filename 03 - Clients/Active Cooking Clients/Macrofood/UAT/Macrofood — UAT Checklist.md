@@ -2,7 +2,7 @@
 owner: Gareth
 status: draft
 last_reviewed: 2026-07-14
-lark_url:
+lark_url: https://eg69120xnei.sg.larksuite.com/docx/HWQddZGpio5iROxedovlI9yNgCb
 ---
 
 # Macro Frozen — UAT Checklist (Phase 1 Core)
