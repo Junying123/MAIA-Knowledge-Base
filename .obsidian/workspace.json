@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,31 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Ivan x Gareth Macrofrozen scope lock discussion"
+              "title": "Scope Lock v1 — Fixguru"
+            }
+          },
+          {
+            "id": "18df7b94c10cd7e5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Fixguru — VoC Extraction"
             }
           }
         ],
@@ -298,7 +322,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 1134.5
+    "width": 972.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -330,8 +354,9 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
-    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — Lens Alignment Report.md",
+    "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Internal Questions for Ivan (2026-07-14).md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Internal Questions for Ivan (2026-07-14).md.tmp.94722.dce6006c2076",
     "Granola/Transcripts/2026-07-13/July sprint for MAIA-transcript.md",
@@ -339,7 +364,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Client Clarification Questions (2026-07-13).md",
     "Excalidraw/Macro Frozen To-Be Order-to-Cash Process (Roles).excalidraw",
     "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
-    "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
     "Granola/Transcripts/2026-07-13/Automation and Workflow Enhancements Meeting - Fireflies Transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-13/Mindhive  Daily Standup-transcript.md",
