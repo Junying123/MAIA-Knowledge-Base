@@ -141,6 +141,8 @@ Product team should understand that the project is not only order automation. It
 
 ## 4.1 High-Level Current Flow
 
+See visual diagram: `Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw`
+
 Current flow is likely:
 
 1. Customer places order through WhatsApp.
