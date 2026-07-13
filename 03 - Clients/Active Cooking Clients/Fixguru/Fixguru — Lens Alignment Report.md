@@ -69,9 +69,28 @@ Scope: **Check A** (Scope Lock ↔ VoC) run in full. Checks B, C, D remain MISSI
 5. **Pull Scope Lock v2 into the KB as Markdown**, mark v1 as `status: archived` with a pointer to v2, per the KB's single-source-of-truth rule — currently v2 only exists in Lark.
 6. **Build the UAT Checklist and End-user & Process Map**, then re-run lens-align across all four docs — Checks B, C, D still cannot run.
 
-## 6. Verdict
+## 6. Verdict — Updated 13 Jul 2026
 
-**DRIFT — 6 fixes before Gate-2.** The good news: Scope Lock v2 is a substantial improvement over v1 — it correctly demoted the credit-block-timing contradiction from "wrongly locked" (v1) to "explicitly open" (v2), and it locked delivery-as-SKU and draft-editability cleanly. The bad news: v2 was built without ingesting two KB documents (Scope Alignment doc, learnings.md) that already contain answers to two of its own "Needs-Scoping" questions, and it silently dropped PDF/template tracking that v1 had. None of the 6 drifts are contradictions the client needs to resolve — they're **source-completeness gaps on the vendor side**, which is a faster fix than a client decision. Recommend closing fix #1 and #2 before sending v2's 15-question "Client Confirmation Agenda" to Fixguru, so the account isn't asking questions it's already been given the answer to.
+**RESOLVED — all 6 drifts closed same day, by Gareth, applied directly to Scope Lock v2 (Lark).**
+
+| # | Item | Resolution | Applied |
+|---|---|---|---|
+| 1 | Credit-block timing (NS-04) | Block at DN level — dev configured, needs testing | ✅ Scope Lock v2 updated |
+| 2 | Branch handling (NS-06) | Parked — no branches, all contacts same level under customer | ✅ Scope Lock v2 updated |
+| — | Shelf handling (NS-08) | Scoped per 2nd UAT Backward Plan M0: shelf no. in DN additional-note only | ✅ Scope Lock v2 updated |
+| 3 | PDF AutoCount-parity | Implemented — needs client testing/involvement | ✅ Re-added to Scope Lock v2 as NS-10 |
+| 4 | Brand-in-item-display | In scope — core requirement | ✅ Added to Scope Lock v2 as L-08 (LOCKED) |
+| 5 | SST/tax visibility | Needs fix — confirmed open | ✅ Added to Scope Lock v2 as NS-11 |
+| 6 | Dual-interface (AIP-02) | Resolved: chatbot returns URL → FE quick-glance page, not a separate web app | ✅ Scope Lock v2 updated, status moved to LOCKED |
+
+Also added: VOC-032 (dual-interface acceptance) to the VoC Extraction, closing the reverse-direction gap where v2 was ahead of the VoC doc.
+
+**Remaining open items (unchanged, not part of this resolution round):**
+- Checks B, C, D still MISSING — no UAT Checklist or End-user & Process Map exists for Fixguru.
+- Scope Lock v2 still only lives in Lark — not yet pulled into KB Markdown; v1 in KB has no supersession note pointing to v2.
+- v2's remaining genuine open items (historical pricing exact fields, minimum-price threshold scope, price-book bypass, warehouse-mapping-proper) still need client answers — these were never drift, they're legitimate Needs-Scoping questions for Fixguru.
+
+**Verdict: ALIGNED on Check A, pending Checks B–D.** Safe to proceed with v2's Client Confirmation Agenda — it no longer re-asks questions Gareth had already answered internally.
 
 ## See Also
 

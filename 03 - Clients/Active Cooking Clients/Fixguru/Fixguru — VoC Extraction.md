@@ -79,6 +79,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/LKmswszY3iPzmbkjSOHlCkhZgue
 | VOC-029 | Credit exposure formula | Full credit exposure must include unbilled SO amount **plus** outstanding unpaid invoices, not SO amount alone — this was raised as a correction to the original scoped formula | Meetings/2026-05-15 UAT Action Items (documents a scope-change driven by client requirement) | CLAIMED (vendor doc, but explicitly framed as a client-driven correction) |
 | VOC-030 | Credit/approval logic (sharpened) | Blocking should happen at the Delivery Note stage, not at order-creation stage — blocking too early "loses money collection opportunity" | context/learnings.md, 2026-06-24 debrief | CLAIMED (vendor synthesis of client direction, not direct quote) |
 | VOC-031 | Sentiment / trust | Client sentiment is patient but visibly eroding after four UAT cycles without sign-off on the core pricing blocker | 2026-06-24 UAT Debrief | CONFIRMED (direct quote anchors this) |
+| VOC-032 | Dual-interface acceptance | Client accepted, in principle, a hybrid chat + web workflow to solve the one-glance historical-pricing display problem — vendor proposed it as a response to chat's limits on rich tabular data, client agreed if it solves the "one glance" problem | 2026-06-24 UAT Debrief / Fireflies transcript (same source as VOC-001–005) | CONFIRMED (matches Scope Lock v2 AIP-02, same source date) |
 
 ## Phase 3 — Salience & Priority Signals
 
@@ -153,6 +154,21 @@ The single mistake most likely to sink this account is **continuing to patch the
 - Shelf-tied-to-UoM: communicate the standard-warehouse-modelling alternative (already drafted in Scope Alignment doc) and get their explicit accept/reject
 
 **Refresh trigger:** re-run this VoC extraction after step-1 (historical pricing) ships and is retested — sentiment and priority ranking will likely shift once the core blocker clears. Also re-run post-go-live once the sales team has real daily usage data, since several ranks here (PDF parity, shelf handling) are BELIEVED-confidence and may resolve differently once live.
+
+## Resolutions Log (13 Jul 2026)
+
+Cross-checked against Scope Lock v2 via lens-align. Gareth's answers, applied to Scope Lock v2 (Lark) directly:
+
+| VOC id | Resolution | Applied to Scope Lock v2 as |
+|---|---|---|
+| VOC-030 | Block at DN level — dev has configured and built this. Needs client-side testing, not a further client decision. | NS-04 updated: RESOLVED-PENDING-TEST |
+| VOC-017 | Parked — Fixguru has no branches; all contacts sit at the same level under the customer record. | NS-06 updated: Blocking downgraded to NO |
+| VOC-014 (shelf) | Per 2nd UAT Backward Plan M0 Decisions: scoped fix, not full sub-warehouse modelling — shelf number populates in the DN additional-note field only. | NS-08 updated: shelf downgraded to NO, warehouse mapping itself remains open |
+| VOC-010, VOC-011 (PDF) | Implemented — needs client testing/involvement. Was dropped from v2 entirely (present in v1). | Re-added to Scope Lock v2 as NS-10 |
+| VOC-009 (brand) | In scope — confirmed core requirement. | Added to Scope Lock v2 as new locked item L-08 |
+| VOC-025 (SST/tax) | Needs fix — confirmed still open, not yet resolved. | Added to Scope Lock v2 as NS-11 |
+| VOC-032 (dual interface) | Resolved as: chatbot returns a URL; user taps to open the FE page for a quick-glance table view — a link-out from chat, not a separate always-on web app. | AIP-02 updated: status moved from AGREED IN PRINCIPLE to LOCKED |
+| VOC-013 (weight/volume/stock-block) | Confirmed as-is — no change needed, already correctly captured. | No change |
 
 ## See Also
 
