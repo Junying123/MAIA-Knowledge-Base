@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-14
+last_reviewed: 2026-07-14 (Grace call reconciled)
 artifact_url: https://claude.ai/code/artifact/2028ed59-4119-4e22-9f11-357068bb85c2
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 ---
@@ -28,6 +28,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | Pre-Onboarding Requirements Questionnaire | Vendor-authored guide | Not customer voice | Actor identity + open-question context only |
 | Proposal / Customer Narrative | Vendor-authored | Not customer voice | Scope boundary + risk comparison only |
 | `Ivan x Gareth Macrofrozen scope lock discussion` (13 Jul 2026) | Internal scope re-check transcript, vendor-side only (Ivan + Speaker 3) | **Internal — not customer voice**, but relays one second-hand client statement (Grace, item historical pricing → VOC-030) | Confirms mechanism detail on AS-01/AS-03/NS-07; surfaces VOC-030; source for warehouse-adoption partial answer below |
+| `Macrofrozen Client Scope Lock Clarification` (13 Jul 2026, call with Grace) | Direct client call, vendor + Grace | **Primary — direct client voice** (Grace, finance/ops admin) | Resolves VOC-030 to CONFIRMED (was second-hand); adds VOC-031 (role/permission reality), VOC-032 (customer-agent SQL assignment), VOC-033 (AR auto-match adoption skepticism), VOC-034 (backup-coverage gap); updates VOC-024 with a direct conflict (client rejects POD photo-upload-to-Maya); narrows VOC-014's evidence (formal quotations barely used in practice) |
 
 **Coverage verdict: proceed-with-caveats.**
 
@@ -73,7 +74,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | VOC-011 | Pricing cadence | "Most time it's monthly but sometime update based on market situation" | WhatsApp L280; Transcript L905 | **CONFIRMED** |
 | VOC-012 | Customer segments | Two categories: **wholesale** and **retail** (retail = restaurants/hotels); difference between them is quantity, not treatment | Transcript L941, L1576 | **CONFIRMED** |
 | VOC-013 | Customer-specific price + floor enforcement | Wants fixed/customer-specific prices and min-price so "salesperson… cannot sell different than that price"; **volume-based pricing left unresolved** | Transcript L959, L986; vendor flags volume gap L1565 | **CONFIRMED** (volume-based = open) |
-| VOC-014 | Quotation before order | Big customers "request a quotation first"; needs price-lock so a lower PO price than quoted is surfaced/blocked | Transcript L962, L977 | **CONFIRMED** |
+| VOC-014 | Quotation before order | Big customers "request a quotation first"; needs price-lock so a lower PO price than quoted is surfaced/blocked | Transcript L962, L977 | **CONFIRMED** (original ask) — ⚠️ **narrowed 2026-07-14**: Grace confirmed formal quotations are barely used in practice; salespeople mostly WhatsApp price directly and skip QTN even for new items/customers. The stated ask and the revealed daily behavior diverge — see VOC-033-adjacent note in Scope Lock AS-07. |
 | VOC-015 | Product catalogue (image) | Wants image/picture catalogue (not long PDF list) for select in-stock SKUs — "old people… scared to click PDF"; sent to existing + new customers to signal "we are active" | Transcript L1007, L1013, L1061 | **CONFIRMED** |
 | VOC-016 | Credit control — "one invoice" | "Most our customer they are one invoice — next order they have to pay the last invoice"; credit limit set from order pattern (e.g. 5,000/week) | Transcript L1586, L1616 | **CONFIRMED** |
 | VOC-017 | One-time credit-limit override | Wants authorised person to raise/approve credit limit for a single order when a good customer's volume spikes | Transcript L851, L857 | **CONFIRMED** |
@@ -83,13 +84,17 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | VOC-021 | Credit-note numbering | Finance wants CN number to mirror the invoice number "because we don't want to confuse our customer" | Transcript L827 | **CONFIRMED** |
 | VOC-022 | Inventory aging / expiry alert | Wants a report/notification for near-expiry & slow-moving stock — "import a container 78 tons, within 6 months only can sell 4 tons"; wants to trigger offers | Transcript L1430, L1442 | **CONFIRMED** |
 | VOC-023 | Damage / batch QC log | Wants warehouse to photo-log damaged/discoloured stock against a batch ("come in yellow, plastic") for a data trail; batch not currently practised but willing | Transcript L1472, L1478 | **BELIEVED** |
-| VOC-024 | POD via driver photo | Driver already sends signed DO photo to the group; asks if driver can send straight to MAIA and tag the invoice/DN | Transcript L473, L497 | **CONFIRMED** |
+| VOC-024 | POD via driver photo | Driver already sends signed DO photo to the group; asks if driver can send straight to MAIA and tag the invoice/DN | Transcript L473, L497 | **CONFIRMED** (original ask, discussed in principle) — 🚫 **CONFLICT surfaced 2026-07-14**: In the direct Grace call, when this was proposed concretely, Grace explicitly rejected it — "I appoint Maya to reduce my work, not add to it." Current process (photo → WhatsApp group only, no system status) is what she actually wants preserved. The earlier "in principle" interest and the concrete rejection are a direct contradiction — treat the earlier signal as superseded by this one, since it came from an actual operator being asked to do the work, not a general discussion. |
 | VOC-025 | Stock count inaccurate in SQL | Stock check only **once a year**; SQL stock count off by ~10–20 — root cause is human process, not a system gap | Transcript L1331, L1337 | **CONFIRMED** |
 | VOC-026 | WhatsApp blast wish (blocked) | Wants to blast new prices to 300–400 old-account customers; can't segment WhatsApp Business — vendor warns blasting bans the number | Transcript L1079, L1118 | **CONFIRMED** (wish); constraint is vendor-stated |
 | VOC-027 | SQL stays master; must not break | Docs must conform to SQL's flow — invoice qty can't exceed DO qty, no duplicate invoice, running IDs can't be overridden | Transcript L377, L836 | **CONFIRMED** |
 | VOC-028 | Go-live dependency = SQL access | Go-live (target end-June) blocked on SQL vendor granting integration access | WhatsApp L356 | **CONFIRMED** |
 | VOC-029 | Team AI-generation ambition | Asks if marketing/admin team can use MAIA to generate catalogue & memo images | WhatsApp L384; vendor scopes to fixed catalogue only L390 | **CONFIRMED** (ask); scope-limited by vendor |
-| VOC-030 | Item historical pricing | Grace (finance admin) told the team by phone that Macro Frozen uses item historical pricing for customer pricing — past prices charged inform current customer-specific pricing | Relayed by Speaker 3 in `Ivan x Gareth Macrofrozen scope lock discussion` transcript, 13 Jul 2026, citing a call with Grace the night before | **BELIEVED** — second-hand (relayed via internal call recap, not a direct client-transcript quote); mechanism not yet clarified |
+| VOC-030 | Item historical pricing | Grace confirmed directly: checks only the single **latest invoice** per item (not multiple past transactions) — unit price, quantity (kg/piece), occasionally discount (rare, started for some customers last month) | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — upgraded from BELIEVED (was second-hand); mechanism now fully clarified and matches existing Base MAIA feature exactly |
+| VOC-031 | Role/permission model reality | Read = view, Write = edit, Create = new entry, Submit = needs manager approval. Sales users create/edit own customer details freely; new customer code + credit limit need Sales Manager approval. Credit limit should be set by Sales Manager, not Finance — Grace flagged current Finance config may be wrong | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** (definitions + principle); full matrix still **NOT LOCKED**, pending 16 Jul training |
+| VOC-032 | Customer → sales-agent assignment | Every SQL customer record has an Agent field. 3 active salesmen: CJ Tan, Aben, Quinny. CK (3rd-party driver) has 3 customers under his own agent code, excluded from normal sales ops. Unassigned/legacy customers default to David | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** |
+| VOC-033 | AR auto-match adoption skepticism | When walked through the proposed Maya AR auto-match flow (upload slip → auto-match → knock off in SQL), Grace pushed back: sees it as the same manual work just routed through Maya, not a real time-save, since she'd still upload each slip and still manually pick which invoice(s) to knock off for multi-invoice payments | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — direct operator skepticism, not a hypothetical concern |
+| VOC-034 | Backup coverage gap | No process exists if the warehouse/logistics manager (Mr. Lai) is absent — foreign workers' reported picked quantities are taken at face value, zero verification. No defined backup for Finance Manager duties either (only Grace's own admin role has an informal backup — the boss's wife) | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — real operational gap, not a system config question |
 
 ---
 
@@ -176,12 +181,16 @@ sales, and finance (all thin/absent voices) is the real risk, not feature covera
 
 | Unknown | Why it matters | How to resolve |
 |---|---|---|
-| Whether the warehouse user will actually use MAIA (or David keeps coordinating) — **partially answered 2026-07-13:** internal team confirmed only the warehouse *manager* will touch Maya directly; foreign worker pickers stay on paper/manual instruction. Ivan also flagged that Grace indicated the client may keep using their own pick list rather than the Maya-generated PDF flow — adoption is not yet demonstrated. | The real failure mode is adoption, not features — and the warehouse voice is entirely second-hand | Observe one real pick→confirm→upload cycle with the actual warehouse manager before go-live — still not done as of 13 Jul |
+| Whether the warehouse user will actually use MAIA (or David keeps coordinating) — **partially answered 2026-07-13:** internal team confirmed only the warehouse *manager* will touch Maya directly; foreign worker pickers stay on paper/manual instruction. Ivan also flagged that Grace indicated the client may keep using their own pick list rather than the Maya-generated PDF flow — adoption is not yet demonstrated. **Reinforced 2026-07-14:** Grace's parallel skepticism on the AR auto-match flow (VOC-033) suggests this isn't isolated to the pick-list — there's a broader pattern of frontline staff not yet seeing the value of routing existing manual work through Maya. | The real failure mode is adoption, not features — and the warehouse voice is entirely second-hand | Observe one real pick→confirm→upload cycle with the actual warehouse manager before go-live — still not done as of 14 Jul. Same applies to AR: watch Grace actually use the auto-match flow post-go-live rather than assuming the walkthrough convinced her. |
 | Format of the confirmed pick-list upload (Excel vs scanned PDF vs photo) | OCR/extraction fails on blurry or handwritten paper; David leans toward "upload the Excel" | Collect 10 real pick lists and test extraction before promising accuracy |
 | Real payer-mismatch patterns (aliases, partial payments, references) | AR auto-match quality depends on real data, not the ideal case | Collect 20 real payments: bank rows + payment slips + invoice mappings |
 | Whether "pro forma invoice" must be a distinct titled document | David's customer's financier may reject a Sales Order that lacks the word "invoice" | Get 2–3 real cases where a financier/customer required the exact wording |
-| Catalogue: how many variants, which SKUs per picture, which photo per SKU | David wants images; scope explodes if open-ended | Lock a fixed template, allowed fields, SKU count per catalogue, review/send process (WhatsApp follow-up already started) |
+| Catalogue: how many variants, which SKUs per picture, which photo per SKU | David wants images; scope explodes if open-ended | Lock a fixed template, allowed fields, SKU count per catalogue, review/send process (WhatsApp follow-up already started). **Confirmed 2026-07-14: this is David-only knowledge** — Grace has no visibility into his ChatGPT-based catalog process, needs a direct David conversation. |
 | SQL integration access + timing | Training/go-live depends on live customer/SKU data | Close SQL vendor credential/API access this week (already the flagged blocker) |
+| ~~Item historical pricing mechanism~~ — **RESOLVED 2026-07-14.** Grace confirmed single-latest-invoice-per-item, matches existing Base feature exactly. | — | No further action needed. |
+| **NEW — POD workflow conflict.** Grace explicitly rejects photo-upload-to-Maya; current SQL/process has no "mark delivered" status at all. | Directly contradicts the NS-07 design (photo gates delivered status) — building this without resolving the conflict risks a feature nobody uses | Needs David's explicit decision: build a lighter-weight version, or drop the "mark as delivered" feature entirely and leave delivery confirmation as WhatsApp-photo-only, no system status |
+| **NEW — Backup coverage for Logistics/Finance Manager absence.** No process exists today. | Real operational gap that will surface during UAT/training regardless of what Maya builds | David needs to decide a backup assignment; not resolvable by product design alone |
+| **NEW — Warehouse Maya access model.** Individual logins vs one shared device. | Affects how AS-01's pick-list-upload step is actually operated day to day | Confirm with David/warehouse manager at 16 Jul training before finalizing AS-01's UAT scenarios |
 
 ---
 
@@ -211,9 +220,9 @@ have **no scope-lock home yet** — those need David before they can be committe
 | VoC signal(s) | Scope Lock item | Scope Lock status | Aligned? |
 |---|---|---|---|
 | VOC-001, 005, 027 (two-stage O2C, SQL master) | SL-01, SL-07, AS-01, NS-01 | LOCKED / RESOLVED — full mechanism traced 2026-07-14 (SO → pick-list PDF → warehouse manager → foreign workers → upload back → amend SO) | ✅ |
-| VOC-007, 008, 009 (AR, payer mismatch, cash) | SL-02 | LOCKED (AR) | ⚠️ *cash-from-driver (VOC-009) still not in SL-02 AC* |
+| VOC-007, 008, 009 (AR, payer mismatch, cash) | SL-02 | LOCKED (AR) | ⚠️ *cash-from-driver (VOC-009) still not in SL-02 AC; VOC-033 adds adoption skepticism from Grace on the auto-match flow itself* |
 | VOC-010, 011, 013 (pricing, floor, cust-specific) | SL-03 | LOCKED, price-controller role (David, desktop) added 2026-07-14 | ✅ |
-| VOC-014 (quotation before order) | AS-07 (new 2026-07-14) | AGREED IN PRINCIPLE — PROPOSED: QTN → edit price → submit → convert to SO | ⚠️ *flow proposed, but price-lock enforcement on conversion still unanswered — doesn't yet close the actual pain point* |
+| VOC-014 (quotation before order) | AS-07 (new 2026-07-14) | AGREED IN PRINCIPLE — PROPOSED: QTN → edit price → submit → convert to SO | ⚠️ *flow proposed, but price-lock enforcement on conversion still unanswered; Grace's 14 Jul call also revealed real usage is much lower than assumed — whether David still wants this built at all is now the live question, not just the enforcement detail* |
 | VOC-016, 017 (credit control + override) | SL-04 | LOCKED | ✅ — *see NS-05 mechanism gap below* |
 | VOC-019 (sales territory isolation) | SL-05 | LOCKED | ✅ |
 | VOC-004, 025 (picking accountability) | AS-01 (updated 2026-07-14) | Addressed at **warehouse-manager level** via pick-list PDF flow — discrepancy visible before SO amendment | ⚠️ *manager-level accountability now covered; per-worker digital attribution still not covered — confirm with David if that's needed* |
@@ -226,8 +235,12 @@ have **no scope-lock home yet** — those need David before they can be committe
 | VOC-021 (CN numbering) | AS-03 | Doctype design finalized 2026-07-14 (SCN + CCN split); numbering decided as MAIA running number + invoice reference field (not mirrored) | ⚠️ *design decided, but may not satisfy Finance's stated "mirror the number" want — flagged as a risk to confirm* |
 | VOC-020 (payment escalation) | NS-06 | RESOLVED (feature) / **OPEN (routing/sequence)** — reopened 2026-07-13, same question re-raised live in that meeting | ✅ (alert) / ⚠️ (sequence — still needs David) |
 | VOC-022 (inventory aging alert) | NS-03 | RESOLVED (feature) / **OPEN (mechanism: threshold, recipient, cadence)** — reopened 2026-07-13 | ⚠️ (feature ✅, config detail ❌) |
-| VOC-030 (item historical pricing) | NS-08 (new 2026-07-13, detailed 2026-07-14) | NEEDS SCOPING — mechanism defined (check last SO/SI price across items, discount, transaction date); mapped to existing Base MAIA feature but **exceeds its current scope** (Base shows single latest price only, no date, no cross-item view) | ⚠️ *Base feature partially covers this; gap needs a feasibility/scope-widening decision, not just a client answer* |
-| VOC-024 (POD driver photo) | NS-07 | Mechanism finalized 2026-07-14 — POD attaches to DO only (not Invoice); DN linked to Invoice for traceability | ⚠️ *mechanism ✅, all-vs-some enforcement question still open* |
+| VOC-030 (item historical pricing) | NS-08 | **RESOLVED 2026-07-14** — Grace confirmed real practice is single-latest-invoice-per-item, matching the existing Base MAIA feature exactly. No extension needed. | ✅ *fully resolved, Base feature sufficient* |
+| VOC-024 (POD driver photo) | NS-07 | Mechanism finalized 2026-07-14, but **CONFLICT surfaced same day** — Grace explicitly rejects the photo-upload-to-Maya design | ❌ *not aligned — client rejects the proposed mechanism; BLOCKED pending David's decision* |
+| VOC-031 (role/permission reality) | SL-04, AS-05 | Definitions + principle clarified 2026-07-14; full matrix still NOT LOCKED | ⚠️ *clarified but unconfirmed — pending 16 Jul training* |
+| VOC-032 (customer-agent SQL assignment) | SL-08 (new 2026-07-14) | LOCKED | ✅ |
+| VOC-033 (AR auto-match skepticism) | SL-02 | Adoption-risk flag added 2026-07-14 | ⚠️ *design unchanged, but real-usage validation now explicitly flagged as needed* |
+| VOC-034 (backup coverage gap) | NS-10 (new 2026-07-14) | Needs scoping — real operational gap, not a system config question | ⚠️ *no resolution yet, David to decide* |
 | VOC-008 (QR merchant settlement) | Out of scope | excluded | ✅ |
 | VOC-026 (WhatsApp blasting) | Out of scope | excluded — bans the number | ✅ |
 | VOC-013 (volume-based pricing) | Out of scope | not supported — manual check | ✅ |
@@ -259,6 +272,14 @@ Feature existence ≠ mechanism documented. Ivan flagged all three live in the 1
 ### Confirm — assumed Base MAIA, not explicitly scoped
 - **VOC-002** item-name fuzzy mapping + learning · **VOC-003** route-based pick grouping.
 - ~~AS-04 outdoor sales assistant~~ — resolved 2026-07-14, LOCKED (see above).
+
+### 2026-07-14 Grace clarification call — summary of what changed
+- **Resolved:** VOC-030/NS-08 (item historical pricing — Base feature sufficient, no gap); VOC-020/NS-06 (payment-escalation routing fully confirmed).
+- **New conflict, not just a gap:** VOC-024/NS-07 (POD) — client actively rejects the proposed upload-to-Maya mechanism. This is qualitatively different from the other "needs scoping" items — it's a rejection of a specific design, not an absence of information.
+- **New adoption-risk signal:** VOC-033 (AR auto-match skepticism) — echoes the existing AS-01 pick-list adoption risk. Two independent signals now point at the same underlying risk: Grace doesn't yet see how routing her existing manual work through Maya saves her time.
+- **New signals with scope-lock homes already:** VOC-031 (role/permission reality → SL-04/AS-05), VOC-032 (customer-agent assignment → new SL-08).
+- **New signal with no home yet:** VOC-034 (backup coverage gap → new NS-10) — a real operational gap, not a Maya feature question.
+- **Narrowed evidence:** VOC-014 (quotation before order) — stated ask (wants price-lock) vs revealed behavior (formal quotations barely used) now diverge; AS-07's real necessity is an open question for David, not just its enforcement detail.
 
 **Everything else is aligned.** Out-of-scope boundaries match exactly (AP, QR settlement, WMS, volume pricing, B2C, blasting).
 

@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: review
-last_reviewed: 2026-07-14
+last_reviewed: 2026-07-14 (Grace call reconciled)
 lark_url: https://eg69120xnei.sg.larksuite.com/docx/HuYldO3gCoEHEpxURIml9WOHgNg
 ---
 
@@ -9,9 +9,9 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/HuYldO3gCoEHEpxURIml9WOHgNg
 
 Not client-facing — these need a tech/feasibility answer before we either build, or go back to Grace/David with a scoped-down ask.
 
-## 1. POD enforcement (NS-07)
+## 1. POD enforcement (NS-07) — now a harder blocker
 
-Is a **conditional/partial enforcement rule** technically buildable — i.e. POD required for some DOs but not others — or does the system only support an all-or-nothing block? This determines how we frame the client question ("all vs some DOs require POD").
+**Escalated 2026-07-14:** This is no longer just an enforcement-scope question. In a direct call, Grace explicitly rejected the whole photo-upload-to-Maya design — her current process (photo → WhatsApp group only, no system status) already works for her, and she sees the proposed upload step as added work, not reduced. Original question (is conditional/partial enforcement technically buildable — POD required for some DOs but not others, vs all-or-nothing) is now secondary to the real one: **should we build any formal POD/mark-as-delivered feature at all**, given the person who'd operate it doesn't want it? This is now a David decision (see client question #19), but flag to Ivan so the team doesn't keep building toward a design that may get killed.
 
 ## 2. Delivery trip / stock tracking gap
 
@@ -21,9 +21,9 @@ Currently Out-of-Scope, but flagged as a real gap (DO needs delivery proof even 
 
 Confirm Kevin's upload-back support (pick-list PDF → Maya → amend SO) is tested and working. Hard deadline **Thu 16 Jul** — this is the top-priority "happy flow," blocks Macro Frozen readiness if it slips.
 
-## 4. Item historical pricing — feasibility (NS-08)
+## 4. Item historical pricing — RESOLVED, no action needed
 
-Macro Frozen wants to check last SO/SI price **across items**, with **discount and transaction date shown**, when quoting a regular customer. Our existing Base feature ([[01 - MAIA Product/Product Specs/Item Historical Pricing/Item Historical Pricing & Discount]], built for Fixguru) only shows the single latest price per item, no date, one item at a time — the spec explicitly lists "multiple past prices" and "price history graph" as Out of Scope/Future. Before we ask the client to accept the narrower Base behavior, need your read: is extending it to show transaction date + a cross-item view a small lift or a real scope item? This decides whether we scope-widen or manage expectations down.
+**Resolved 2026-07-14:** Grace confirmed directly that the real practice is much simpler than assumed — checking only the single **latest invoice** per item (unit price, quantity, occasional discount), not a multi-transaction/date/cross-item view. This matches [[01 - MAIA Product/Product Specs/Item Historical Pricing/Item Historical Pricing & Discount]] exactly as built for Fixguru. No feasibility check needed — closing this item.
 
 ## 5. Quotation → SO price-lock feasibility (AS-07 / VOC-014)
 
@@ -39,7 +39,13 @@ Finance currently keeps a self-made Excel log of cash collected from drivers. SL
 
 ## 8. Damage / batch QC photo log (VOC-023) — build estimate
 
-Warehouse wants to photo-log damaged/discoloured stock against a batch. Only a generic "issue ticket" was floated in the 4 Jun meeting — never scoped. Rough estimate needed before offering this to the client (see client question #23).
+Warehouse wants to photo-log damaged/discoloured stock against a batch. Only a generic "issue ticket" was floated in the 4 Jun meeting — never scoped. Rough estimate needed before offering this to the client (see client question #16).
+
+## 9. New from 2026-07-14 Grace call — awareness only, no dev action yet
+
+Two new items surfaced that are product/process decisions for David, not dev feasibility questions — flagging for awareness so the team isn't caught off guard:
+- **AR auto-match adoption skepticism (SL-02):** Grace pushed back on the AR auto-match flow as no real time-save over direct SQL entry. Worth planning for a real-usage check post-go-live rather than assuming the walkthrough convinced her.
+- **Backup coverage gap (NS-10):** No process exists today if the logistics or finance manager is absent. Not a Maya config question — David needs to make an operational decision here.
 
 ---
 

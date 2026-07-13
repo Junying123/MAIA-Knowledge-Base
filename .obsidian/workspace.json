@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Scope Lock v1 — Fixguru"
+              "title": "Fixguru — VoC Extraction"
             }
           },
           {
@@ -300,7 +300,7 @@
                     "name": "zsh 180"
                   }
                 ],
-                "activeId": 178,
+                "activeId": 180,
                 "nextId": 181
               },
               "icon": "terminal",
@@ -322,7 +322,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 972.5
+    "width": 1012.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -352,11 +352,13 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ceef9d86007d72d6",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — Lens Alignment Report.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
     "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Internal Questions for Ivan (2026-07-14).md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Internal Questions for Ivan (2026-07-14).md.tmp.94722.dce6006c2076",
     "Granola/Transcripts/2026-07-13/July sprint for MAIA-transcript.md",
@@ -388,8 +390,6 @@
     "Granola/Transcripts/2026-07-10/MAIA Sync_ Chatbot Responses, FE Mobile Responsiveness & Bulk DO Upload-transcript.md",
     "Granola/Transcripts/2026-07-10/Short recording-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen_item_hierarchy.md",
-    "03 - Clients/Active Cooking Clients/Dalson/dalson_industrial_supplies_facet.md",
-    "01 - MAIA Product/Product Specs/SOA Portal/soa-portal-issue-report-2026-07-04.md",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
