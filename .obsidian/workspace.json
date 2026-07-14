@@ -264,10 +264,6 @@
                     "name": "zsh 176"
                   },
                   {
-                    "id": 177,
-                    "name": "zsh 177"
-                  },
-                  {
                     "id": 178,
                     "name": "zsh 178"
                   },
@@ -284,7 +280,7 @@
                     "name": "zsh 181"
                   }
                 ],
-                "activeId": 176,
+                "activeId": 181,
                 "nextId": 182
               },
               "icon": "terminal",
@@ -338,6 +334,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.html",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen-scn-ccn-use-case-handoff.md",

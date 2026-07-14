@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Macrofrozen — SQL SCN and CCN Use Case Handoff</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+  :root { color-scheme: light; }
+  body { max-width: 980px; margin: 0 auto; padding: 40px 28px 64px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #243447; background: #f6f8fb; line-height: 1.62; }
+  main, body > * { }
+  h1 { color: #123b5d; font-size: 2.15rem; line-height: 1.15; margin-bottom: .6rem; }
+  h2 { color: #1c587e; margin-top: 2.2rem; padding-bottom: .35rem; border-bottom: 2px solid #d9e6ef; }
+  h3 { color: #285f79; margin-top: 1.55rem; }
+  p, ul, ol { font-size: 1rem; }
+  li { margin: .28rem 0; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.4rem; background: #fff; box-shadow: 0 2px 10px rgba(24, 54, 78, .06); }
+  th { background: #e7f0f6; color: #163f59; text-align: left; font-weight: 700; }
+  th, td { border: 1px solid #cbd9e3; padding: 10px 12px; vertical-align: top; }
+  tr:nth-child(even) td { background: #fbfdfe; }
+  code { background: #edf2f5; border-radius: 4px; padding: .12em .35em; color: #174e70; }
+  blockquote { margin: 1rem 0; padding: .8rem 1rem; border-left: 4px solid #4b91b5; background: #eef7fb; }
+  a { color: #086fae; }
+  hr { border: 0; border-top: 1px solid #d9e6ef; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Macrofrozen — SQL SCN and CCN Use Case Handoff</h1>
+</header>
+<h1
+id="macrofrozen-sql-sales-credit-note-scn-and-customer-credit-note-ccn">Macrofrozen
+— SQL Sales Credit Note (SCN) and Customer Credit Note (CCN)</h1>
+<h2 id="purpose">Purpose</h2>
+<p>This document consolidates:</p>
+<ul>
+<li><strong>SQL Accounting documented behaviour</strong> — what the
+platform supports.</li>
+<li><strong>Macrofrozen’s Fireflies transcript</strong> — how the client
+says it currently works in SQL.</li>
+</ul>
+<p>When they differ, use the SQL documentation for platform capability
+and the Macrofrozen transcript for the client’s agreed/current operating
+practice.</p>
+<h2 id="terms">Terms</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning in this document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SCN / Sales CN</strong></td>
+<td>SQL Sales Credit Note, created in the Sales module. Required for a
+customer stock return.</td>
+</tr>
+<tr>
+<td><strong>CCN / Customer CN</strong></td>
+<td>SQL Customer Credit Note, held in Customer/AR and used to knock off
+customer documents.</td>
+</tr>
+<tr>
+<td><strong>Knock off</strong></td>
+<td>Apply a credit or payment against an outstanding customer document,
+fully or partially reducing its balance.</td>
+</tr>
+<tr>
+<td><strong>Unapplied credit</strong></td>
+<td>A CCN amount that has not yet been knocked off against an
+outstanding document.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="source-of-truth-decision">Source-of-truth decision</h2>
+<p>Ask these two questions in sequence:</p>
+<ol type="1">
+<li><strong>Are goods physically returned?</strong></li>
+<li><strong>Is there an outstanding invoice to apply the credit
+against?</strong></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Goods returned?</th>
+<th>Original invoice status</th>
+<th>SQL starting document</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>Outstanding</td>
+<td><strong>Sales CN</strong></td>
+<td>Use the related CCN to knock off the outstanding invoice.</td>
+</tr>
+<tr>
+<td>Yes</td>
+<td>Already paid</td>
+<td><strong>Sales CN</strong></td>
+<td>Credit remains unapplied; apply to another invoice or refund the
+customer.</td>
+</tr>
+<tr>
+<td>No</td>
+<td>Outstanding</td>
+<td><strong>Customer CN</strong></td>
+<td>Create a direct CCN for a discount/adjustment, then knock it
+off.</td>
+</tr>
+<tr>
+<td>No</td>
+<td>Already paid</td>
+<td><strong>Customer CN</strong></td>
+<td>Create a direct CCN; apply it elsewhere, retain it as credit, or
+refund it.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sql-supported-process">SQL-supported process</h2>
+<h3 id="customer-returns-stock-create-a-sales-credit-note-first">1.
+Customer returns stock — create a Sales Credit Note first</h3>
+<p>SQL’s documented flow is:</p>
+<ol type="1">
+<li>Go to <code>Sales → Credit Note → New</code>.</li>
+<li>Select the customer.</li>
+<li>Right-click the Credit Note title and choose <strong>Transfer from
+Sales Invoice / Cash Sales</strong>.</li>
+<li>Select the source document and enter the returned
+items/quantities.</li>
+<li>Save the Sales CN.</li>
+<li>Go to <code>Customer → Customer Credit Note</code> and knock off the
+relevant document.</li>
+</ol>
+<p>SQL explicitly says that a customer stock return should use a Sales
+Credit Note first, then be knocked off in Customer Credit Note.</p>
+<h3
+id="customer-receives-a-non-stock-credit-create-a-customer-credit-note-directly">2.
+Customer receives a non-stock credit — create a Customer Credit Note
+directly</h3>
+<p>For a discount, rebate, price correction or other adjustment where no
+goods are returned:</p>
+<ol type="1">
+<li>Go to <code>Customer → Customer Credit Note → New CN</code>.</li>
+<li>Select the customer and appropriate GL account.</li>
+<li>Enter the credit amount.</li>
+<li>Knock off the relevant invoice(s).</li>
+<li>Save.</li>
+</ol>
+<h3 id="customer-refund">3. Customer refund</h3>
+<p>If a Customer Credit Note remains unapplied and Macrofrozen is
+returning money to the customer instead of keeping it as credit:</p>
+<ol type="1">
+<li>Go to <code>Customer → Customer Refund → New</code>.</li>
+<li>Select the customer and payment method.</li>
+<li>Enter the refund amount.</li>
+<li>Knock off the unapplied Customer Credit Note.</li>
+<li>Save.</li>
+</ol>
+<h2 id="macrofrozen-current-practice-from-the-transcript">Macrofrozen
+current practice from the transcript</h2>
+<p>The client states that it normally uses <strong>Sales CN</strong> for
+customer returns.</p>
+<h3 id="standard-return-against-an-outstanding-invoice">Standard return
+against an outstanding invoice</h3>
+<ol type="1">
+<li>Finance opens the original Sales Invoice in SQL.</li>
+<li>The invoice is transferred to Sales CN.</li>
+<li>The returned goods and return value are recorded.</li>
+<li>After saving, the credit is available in Customer Credit Note.</li>
+<li>Finance knocks off the original invoice by the returned value.</li>
+</ol>
+<p>Example given in the call:</p>
+<ul>
+<li>Original invoice: RM5,000</li>
+<li>Returned goods / credit: RM1,000</li>
+<li>Amount knocked off: RM1,000</li>
+<li>Remaining invoice balance: RM4,000</li>
+</ul>
+<p>The credit reduces the invoice by the CCN value; it does not have to
+cancel the whole invoice.</p>
+<h3 id="return-against-a-fully-paid-invoice">Return against a fully paid
+invoice</h3>
+<p>The client described this sequence:</p>
+<ol type="1">
+<li>Create the Sales CN from the original invoice in the usual way.</li>
+<li>If the original invoice is already fully paid, no further credit can
+be applied to that invoice.</li>
+<li>Finance manually opens Customer Credit Note.</li>
+<li>Finance applies the available credit to another outstanding invoice
+for the same customer.</li>
+</ol>
+<p>SQL’s documented alternative is to use <strong>Customer
+Refund</strong> if the credit is to be paid back to the customer rather
+than carried forward.</p>
+<h3 id="one-credit-across-several-invoices">One credit across several
+invoices</h3>
+<p>Macrofrozen says that an available CCN can be allocated across
+multiple open invoices where required.</p>
+<p>Example from the discussion:</p>
+<ul>
+<li>Available CCN: RM1,000</li>
+<li>First open invoice: RM500</li>
+<li>Apply RM500 to the first invoice.</li>
+<li>Apply the remaining RM500 to a second eligible invoice.</li>
+</ul>
+<p>The client regards this as situational and uncommon because returns
+are usually small. Allocation must not be arbitrary: it must be against
+open documents for the correct customer and cannot exceed the available
+credit.</p>
+<h3 id="payment-and-credit-reallocation-scenario">Payment and credit
+reallocation scenario</h3>
+<p>The client also described an accounting allocation option for a
+RM5,000 invoice that has been paid and later receives a RM1,000
+credit:</p>
+<ul>
+<li>Apply the RM1,000 CCN to the original invoice.</li>
+<li>Apply RM4,000 of the customer payment to that invoice.</li>
+<li>Apply the remaining RM1,000 payment to another eligible
+invoice.</li>
+</ul>
+<p>Treat this as <strong>Macrofrozen operating knowledge to validate in
+their live SQL environment</strong>, not as a documented SQL rule in the
+references below.</p>
+<h2 id="key-implementation-and-uat-rules">Key implementation and UAT
+rules</h2>
+<ol type="1">
+<li>Do not create a direct CCN for a physical stock return; create an
+SCN first.</li>
+<li>Preserve the reference to the source Sales Invoice or Cash Sales
+document.</li>
+<li>Support partial credit amounts; do not assume an invoice is fully
+cancelled.</li>
+<li>Permit an unapplied CCN only for the same customer.</li>
+<li>Do not allocate a credit above its remaining value.</li>
+<li>Do not allocate against an already fully knocked-off document.</li>
+<li>For a paid invoice, support both client choices:
+<ul>
+<li>carry the CCN forward to another open invoice; or</li>
+<li>process a Customer Refund.</li>
+</ul></li>
+<li>Keep SCN, CCN, source invoice, knock-off allocations and refund
+references traceable for audit.</li>
+</ol>
+<h2 id="validation-notes">Validation notes</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Statement</th>
+<th>Status</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock return starts with Sales CN.</td>
+<td>Confirmed.</td>
+<td>SQL documentation and Macrofrozen transcript.</td>
+</tr>
+<tr>
+<td>SCN is transferred from a Sales Invoice or Cash Sales.</td>
+<td>Confirmed.</td>
+<td>SQL documentation.</td>
+</tr>
+<tr>
+<td>CCN is used for AR knock-off.</td>
+<td>Confirmed.</td>
+<td>SQL documentation and Macrofrozen transcript.</td>
+</tr>
+<tr>
+<td>Discount/non-stock adjustment can start as direct CCN.</td>
+<td>Confirmed.</td>
+<td>SQL documentation.</td>
+</tr>
+<tr>
+<td>Unapplied CCN can be refunded.</td>
+<td>Confirmed.</td>
+<td>SQL Customer Refund documentation.</td>
+</tr>
+<tr>
+<td>Saving SCN automatically creates/opens a CCN.</td>
+<td>Client-described; SQL docs show the subsequent Customer Credit Note
+step but do not explicitly describe the automation.</td>
+<td>Macrofrozen transcript.</td>
+</tr>
+<tr>
+<td>A CCN can be split across multiple invoices.</td>
+<td>Client-described; validate in Macrofrozen’s live SQL
+configuration.</td>
+<td>Macrofrozen transcript.</td>
+</tr>
+<tr>
+<td>Payment allocations may be rearranged after a return.</td>
+<td>Client-described; validate in Macrofrozen’s live SQL
+configuration.</td>
+<td>Macrofrozen transcript.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="source-references">Source references</h2>
+<ul>
+<li>Macrofrozen transcript: <a
+href="https://app.fireflies.ai/view/01KXDBDJWT29A4DR4P63MKDEQA">Macrofrozen
+Client Scope Lock Clarification</a></li>
+<li>SQL Customer Guide: <a
+href="https://docs.sql.com.my/sqlacc/usage/customer/guide#customer-credit-note">Customer
+Credit Note</a></li>
+<li>SQL Singapore User Guide: <a
+href="https://docs.sql.com.my/sqlacc/singapore/user-guide#411-sales-credit-note">Sales
+Credit Note</a></li>
+<li>SQL Singapore User Guide: <a
+href="https://docs.sql.com.my/sqlacc/singapore/user-guide#54-customer-credit-note">Customer
+Credit Note</a></li>
+<li>SQL tutorial video: <a
+href="https://www.youtube.com/watch?v=XmrLgBL4hTc">How To Perform Credit
+Note &amp; Refund Note</a></li>
+</ul>
+<h2 id="video-scope-note">Video scope note</h2>
+<p>The tutorial video explicitly covers these scenarios:</p>
+<ul>
+<li>Paid invoice with goods return.</li>
+<li>Outstanding invoice with and without goods return.</li>
+<li>Paid invoice without goods return.</li>
+</ul>
+<p>The written SQL documentation is the authoritative procedural
+reference in this handoff; the video is included as a scenario
+walkthrough.</p>
+<h2 id="uncovered-return-part-clarifications-for-macrofrozen">Uncovered
+return-part clarifications for Macrofrozen</h2>
+<p>The following return-specific points were not fully clarified in the
+client transcript and should be confirmed before finalising the workflow
+or UAT cases.</p>
+<h3 id="return-trigger-and-source-document">Return trigger and source
+document</h3>
+<ul>
+<li>Who is authorised to accept a customer return: salesperson, sales
+manager, Finance or warehouse?</li>
+<li>Does every return start from a Sales Invoice, or can it start from
+Cash Sales, Delivery Order or another document?</li>
+<li>Is a return reference, return authorisation number or reason
+required?</li>
+</ul>
+<h3 id="return-scope-and-quantity">Return scope and quantity</h3>
+<ul>
+<li>Can a customer return only selected lines or quantities from an
+invoice?</li>
+<li>Are items recorded by pieces, weight or both?</li>
+<li>Can one return cover several invoices?</li>
+<li>What happens when the warehouse accepts only part of the quantity
+returned?</li>
+<li>How are wrong items, damaged items, expired items and rejected
+returns distinguished?</li>
+</ul>
+<h3 id="physical-stock-handling">Physical stock handling</h3>
+<ul>
+<li>Who confirms that the goods physically arrived back at the
+warehouse?</li>
+<li>Is there a warehouse inspection or quarantine step before the SCN is
+issued?</li>
+<li>When does returned quantity go back into available stock?</li>
+<li>Are returned goods placed into a separate damaged, rejected or
+quarantine location?</li>
+<li>How will batch number and expiry date be recorded when Macrofrozen
+begins using batches?</li>
+<li>What evidence is required: signed DO, return photo, warehouse
+receipt or another document?</li>
+</ul>
+<h3 id="credit-valuation">Credit valuation</h3>
+<ul>
+<li>Is the credit based on the original invoice unit price or the
+current price?</li>
+<li>How are invoice discounts, item-level discounts, tax and delivery
+charges treated on the return?</li>
+<li>If only part of a line is returned, how is the tax and rounding
+calculated?</li>
+<li>If the original invoice used a quotation or historical price, which
+price is the source of truth for the SCN?</li>
+</ul>
+<h3 id="invoice-and-payment-status">Invoice and payment status</h3>
+<ul>
+<li>For an unpaid invoice, must the CCN always knock off the original
+invoice?</li>
+<li>For a paid invoice, should Macrofrozen carry the credit forward,
+apply it to another invoice or refund the customer?</li>
+<li>If the CCN is larger than the original invoice balance, what
+allocation order should be used for the remaining amount?</li>
+<li>Can one CCN be split across multiple invoices in Macrofrozen’s SQL
+setup?</li>
+<li>Is the payment-and-credit reallocation scenario from the transcript
+an approved operating procedure or only a possible SQL capability?</li>
+</ul>
+<h3 id="replacement-refund-and-approval">Replacement, refund and
+approval</h3>
+<ul>
+<li>Does a return result in a credit, a cash refund, replacement goods
+or a choice between these outcomes?</li>
+<li>Who approves the SCN, CCN, replacement or refund?</li>
+<li>Is a customer refund allowed only after warehouse acceptance?</li>
+<li>What happens when the customer returns goods but requests
+replacement rather than a credit?</li>
+</ul>
+<h3 id="period-tax-and-integration-handling">Period, tax and integration
+handling</h3>
+<ul>
+<li>What happens when the return is processed in a later accounting or
+GST period?</li>
+<li>Does the SCN need to reference the original tax invoice for
+e-invoice submission?</li>
+<li>Which document IDs and statuses must sync between MAIA and SQL:
+source invoice, SCN, CCN, knock-off allocation, remaining credit and
+refund?</li>
+<li>How are duplicate returns, failed syncs and edited or cancelled SCNs
+handled?</li>
+</ul>
+<p>These questions should become dedicated return UAT cases. The
+transcript confirms the broad return flow, but it does not yet define
+the operational rules for physical stock acceptance, valuation,
+approval, replacement and exception handling.</p>
+</body>
+</html>
