@@ -114,10 +114,23 @@ Discovered Fixguru's actual Lark folder (a level above where earlier work was sc
 
 **ALIGNED on Checks A, B, C — DRIFT (1 minor) on D.** All four Lens 3 artifacts (Scope Lock v2, VoC Extraction, UAT Checklist, End-user & Process Map) now exist and cross-check cleanly against each other. Remaining work is not artifact alignment — it's closing real identity/process gaps (UAT signatory, 2 unnamed manager roles, driver) at a client sign-off session, and the low-priority Guest-attribution question. Safe to proceed toward Gate-2 once the sign-off agenda in the Process Map (Section 6) is worked through.
 
+## Lark Links (14 Jul 2026)
+
+| Doc | Lark URL |
+|---|---|
+| Scope Lock v2 | https://eg69120xnei.sg.larksuite.com/wiki/AdBgwaw2TiMhFOkChoVlJVKGgng |
+| VoC Extraction | https://eg69120xnei.sg.larksuite.com/wiki/LKmswszY3iPzmbkjSOHlCkhZgue |
+| UAT Checklist | https://eg69120xnei.sg.larksuite.com/wiki/LggewkrBbiEtyJkSLGHl081XgGe |
+| UAT Field Guide (Infopack) — "14Jul26-Fixguru-MAIA UAT field guide" | https://eg69120xnei.sg.larksuite.com/wiki/Wp90wCNHtiLD2Hk2oCBlqNC5gPe |
+| End-user & Process Map | KB-only, not yet pushed to Lark |
+
 ## See Also
 
 - [[Scope Lock v1 — Fixguru]]
 - [[Fixguru — VoC Extraction]]
+- [[UAT/Fixguru — UAT Checklist]]
+- [[UAT/Fixguru — UAT Field Guide (Infopack v1)]]
+- [[Fixguru — End-user & Process Map]]
 - [[Scope Alignment - Delivery Method & Out-of-Scope Items]]
 - [[context/learnings]]
 - [[Meetings/2026-06-24 Fixguru UAT Debrief]]

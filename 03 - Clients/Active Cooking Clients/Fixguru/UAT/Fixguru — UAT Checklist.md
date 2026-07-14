@@ -5,6 +5,7 @@ last_reviewed: 2026-07-13
 client: Fixguru
 document_type: internal
 version: v1
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/LggewkrBbiEtyJkSLGHl081XgGe
 ---
 
 # Fixguru — UAT Checklist
