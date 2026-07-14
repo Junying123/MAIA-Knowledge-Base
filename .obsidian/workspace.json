@@ -295,7 +295,7 @@
                     "name": "zsh 182"
                   }
                 ],
-                "activeId": 166,
+                "activeId": 181,
                 "nextId": 183
               },
               "icon": "terminal",
@@ -347,7 +347,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ed25b829c30e5f11",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.95680.985a74767f3d",

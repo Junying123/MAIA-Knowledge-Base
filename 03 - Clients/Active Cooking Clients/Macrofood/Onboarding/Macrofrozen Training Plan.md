@@ -1,125 +1,130 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-06
+last_reviewed: 2026-07-14
 ---
 
 # Macrofrozen Training Plan
 
-## Status: RESCHEDULE
+## Note on naming
+"Macrofrozen" and "Macrofood" refer to the same client — confirmed via matching SQL vendor contact (Mr. Chua, +60 12 212 2126) appearing in both this file's linked SQL doc and the Lark "Macrofood Phase 1 — Backward Timeline to Go-Live" doc. Filed under Macrofood in this vault; treat as one account.
 
-Training was scheduled for tmr (2026-07-07). Rescheduling — not ready per checklist below.
+## Status: Training format changed — informal, no slides
 
-**Reasons:**
-- Data setup on Macrofrozen instance not ready
-- Sales module — their main go-live feature — not fully tested
-- Most other features not fully tested
-- Training planning (goal/activities/logistics) not finalized before date was set
+Per 14 Jul Post Mortem discussion: skip the 116-slide deck. Client works fast, wants output not polish. Run as a casual, live, handhold-style session — introduction straight into live demo, then let them try it themselves.
 
-New date: **[TBD]** — set only after checklist below fully green.
+Training was originally set for 2026-07-07, rescheduled since — not ready per checklist below at the time. Re-approach: informal live-demo format, not the slide deck.
+
+## Confirmed Attendees (~6 users + 2 referrers)
+- David — MD / credit controller
+- CJ — Sales Manager
+- Grace — role TBD, confirm
+- 2x Finance staff — names not yet confirmed
+- 1x Warehouse staff — name not yet confirmed
+- Krystle + Sean also attending (referred this client)
 
 ## Training Goal
 
-Macrofrozen staff can run their sales workflow (Quote-to-Cash: Quotation → Sales Order → Invoice → Receipt) unassisted on their own instance after training. Minimum viable competency for go-live, not full feature mastery.
+Macrofrozen staff can run their sales workflow end-to-end (order intake → SO → external pick list → weight confirm → DN → Invoice → push to SQL) unassisted on their own instance after training. Minimum viable competency for go-live, not full feature mastery. Invoice/CN reconciliation, AR reconciliation, credit control deferred beyond disclosure below — not full training scope.
 
-## Activities
+## How to Conduct the Training
 
-**Use the built deck, not the generic markdown proposal**: `01 - MAIA Product/Client Training/[Template] MAIA Training Slides v1.pptx` — 116 slides, already built to a 3-part 2-hour core format (not the old 4-module full-day structure):
+**Format:** Introduction → straight into live demo → let them try it themselves → collect feedback for a follow-up UAT.
 
-| Section | Content | Status for Macrofrozen |
+1. Skip intros/theory. Go straight to: "Here is how we are going to create an order" — live demo on MAIA using their actual business workflow, not generic examples.
+2. Demo the confirmed E2E flow, live, in this order:
+   - Forward a real customer WhatsApp order into the one MAIA number → show extracted draft (customer/item/qty)
+   - Also show the CPO path: a PO-issuing customer sends a PO document → MAIA matches customer/item lines → confirm → submit as CPO → same downstream flow from here
+   - Sales reviews + confirms draft → credit check runs live (block if over limit, David approves override)
+   - External pick list (PDF-based): SO → pick list PDF generated → shared with warehouse pickers → annotated with actual picked qty → uploaded back to MAIA
+   - SO auto-amends to actual picked weight → DO + Invoice regenerate at the confirmed weight — verify this works before demoing live, flagged top priority
+   - Finance side: payment slip + bank statement upload → MAIA suggests invoice match → confirm → knock-off
+   - David's side: bulk price template upload, credit override, dashboard
+3. Let them drive. After the demo, hand over and let them try 1-2 of their own real orders live.
+4. Expect Q&A-heavy, not presentation-heavy — they want to know how to use it, not sit through a pitch.
+5. Confirm setup for all ~6 users before anything else — more important than covering every feature.
+
+## 5 Action Items During Training
+
+1. **AWS form** — bring the AWS form (from JobService), get it signed by the client during the session.
+2. **Credit Note — be transparent about the known SQL mismatch.** Tell them plainly: everything else should work, except credit notes. For now, continue doing CN the way they currently do in SQL; once the backend fix ships, it reverses back into MAIA. Don't overpromise this is fixed.
+3. **Bulk price update — show it, but don't claim it's 100% ready.** Just completed early this week, still testing on the back end. Demo it live, state that clearly, ask David for initial feedback/impressions (he currently manages pricing via Excel) rather than presenting as finished.
+4. **Product catalogue customisation — bring prepared questions.** Product team hasn't answered the open catalogue-format questions yet. Extract answers directly from the client in person (Excel format, fields, etc.) rather than relying on async follow-up.
+5. **Prepare a conditional/partial-acceptance walkthrough.** Pre-decide how to handle features that work vs. don't as you go, rather than expecting a clean pass/fail. Pre-plan known edge cases (e.g., customer retrieval) so you're not improvising live.
+
+**Timeline transparency:** if asked about customisation delivery, tell them end of this month to mid-August, AR reconciliation likely longer (phased rollout). Be upfront that capacity is affected by a broader multi-client rollout, but customisations are still coming.
+
+## E2E Sales Order Workflow (confirmed — 4 Jun meeting notes + End-user & Process Map)
+
+```
+WhatsApp order  ──┐
+                   ├──> SO ──> external pick list (PDF, annotated by warehouse) ──> confirm weight ──> DN ──> Invoice ──> push to SQL
+CPO (PO document) ─┘
+```
+
+CPO = plain PO document intake for a subset of customers who issue formal purchase orders, not the certificate/tax-reference CPO feature built for C1/C3 clients — no cert linkage, no tax reference validation needed. Same downstream flow either way. Pick list stays external/outside MAIA for Phase 1, for both intake channels.
+
+## Roles & Permission Matrix
+
+| Role | Can create | Can approve | Can view | Cannot do |
+|---|---|---|---|---|
+| Sales (CJ + reps) | SO, quotation, customer order | — | Own customers only | See other reps' data, approve over-limit, edit master |
+| Finance/Account | CN, payment entry, knock-off | Payment match (self-confirm) | AR/outstanding | Override credit limit, auto-post unclear payer |
+| Warehouse | Pick-list upload / weight confirm | — | Own tasks | Edit customer master, pricing, credit terms |
+| Management (David) | All | Credit-limit override, pricing floor | All | — |
+
+## Scope Lock Reference (source: Lark "Macro Frozen — Scope Lock v1", 23 Jun 2026)
+
+**Train only on LOCKED items:**
+- SL-01 MAIA sits on top of SQL (SQL is customer/item master)
+- SL-02 AR customer invoice reconciliation (deferred from Phase 1 — verify before including)
+- SL-03 Bulk price update & pricing enforcement (untested, disclose as WIP — see Action Item 3)
+- SL-04 Credit-limit / payment-term control
+- SL-05 Salesperson customer visibility (own customers only)
+- SL-06 One MAIA WhatsApp number
+- SL-07 SO/DO/Invoice generation where integration allows
+
+**Disclose as known issue, don't hide:** Credit Note — SQL/MAIA version mismatch, client continues in SQL until fixed (Action Item 2).
+
+**Do NOT build training content around:**
+- Any out-of-scope item: AP reconciliation, merchant/QR settlement, delivery trip management, WMS/barcode scanning, volume pricing, B2C ordering app, WhatsApp blasting
+- Certificate/tax-reference CPO features (C1/C3-style) — not applicable to Macrofrozen; their CPO is plain PO document intake only
+- Driver POD (parked), quotation flow (unresolved gap), live/real-time stock check (only annual stock count exists, non-blocking)
+
+## Internal QA Readiness Before Session (14 Jul Post Mortem findings)
+
+- [ ] Confirm tax template set to **No Tax only** (Macro Frozen-specific data seeding requirement)
+- [ ] Verify fresh-weight adjustment flow actually works — flagged top priority, deadline Thu 16 Jul
+- [ ] Confirm demo/facilitator uses correct role mapping (Sales/Finance/Warehouse/Management per matrix above), not generic labels
+- [ ] Verify historical item pricing shows correctly in front end/chatbot (last-invoiced-price feature)
+- [ ] Have fallback/remediation steps ready for likely blockers — don't improvise live in front of client
+- [ ] Catalogue real sample documents (orders, POs, pick-list PDFs) in advance — don't source live during session
+- [ ] Confirm UAT signatory (likely David, not yet confirmed in writing)
+- [ ] Confirm names/contacts for: 2 finance staff, warehouse staff, driver (still unconfirmed)
+- [ ] Bring AWS form (JobService) for signature during session
+
+## Known Blockers
+
+| Feature/Module | Status | Blocking training? |
 |---|---|---|
-| Opening (5 slides, ~5min) | Title, icebreaker (pick 1 of 3 variants), agenda | Ready — just fill [Client Name]/[Trainer Name]/[Date] placeholders |
-| Section 1 — Feature intro (22min) | Order capture, credit check, pricing, search, SOA, ERP compat, doc status flow | Ready — trim doc status flow to WhatsApp order→SO→DO→Invoice (no CPO step, no live stock check for this client) |
-| Section 2 — "Watch it work" demo videos (25min) | 7 scripted video walkthroughs (PO→SO, credit check, SO→DN→SI, pick list, new customer, new item) | **Blocked** — all 7 video slides are `ATTACH VIDEO HERE` placeholders, recordings not yet captured |
-| Section 3 — "Drive it yourself" Mission Card game (47min) | 10 numbered mission cards (realistic order scenarios, front=team-facing/back=facilitator answer key), scoreboard, WhatsApp/Telegram bot connection, 6 bonus special missions | **Blocked** — needs NS-01 resolved (defines which mission scenarios are even correct), sales module tested on Macrofrozen's own instance, demo WhatsApp number/Telegram bot (@maia_demo_bot) verified live. Drop any CPO-based missions — not applicable to this client. |
-| Close (6 slides) | Recap, Monday-morning action commitments, troubleshooting guide, solo test, feedback QR | Ready — no dependency |
-| Appendix (facilitator-only, not shown live) | Role/permission matrix, ERP integration deep-dive, SOA/inventory videos | Reference only |
-
-**Real gaps, not a content-building task:**
-1. Record and embed the 7 demo videos (Section 2)
-2. Verify demo instance + WhatsApp/Telegram bot work live with Macrofrozen's actual data (Section 3)
-3. Fill client-specific placeholders (name/trainer/date)
-4. Confirm sales module tested on their instance before running the mission-card game live — training on an untested sales flow risks the same "hits errors live" failure mode we already flagged.
-5. **Rebuild Mission Cards against locked scope only** (see Scope Lock section below) — don't use cards as-is if they assume unresolved/out-of-scope workflows.
-
-Content is not the blocker — testing + video recording + scope-correct mission cards are.
-
-## Scope Lock (source: Lark doc "Macro Frozen — Scope Lock v1", 23 Jun 2026, Gareth Ng — not in local vault, retrieved from Lark)
-
-Governs which features are safe to build training content around.
-
-**LOCKED — safe to train on:**
-- SL-01 MAIA sits on top of SQL (SQL stays customer/item master, MAIA references it)
-- SL-02 AR customer invoice reconciliation (bank statement upload → auto-match → human confirms)
-- SL-03 Bulk price update & pricing enforcement (Excel upload, min price floor)
-- SL-04 Credit-limit/payment-term control (order blocked over limit, David approves override)
-- SL-05 Salesperson customer visibility (rep sees only own customers)
-- SL-06 One MAIA WhatsApp number (no multi-number routing)
-- SL-07 SO/DO/Invoice generation where integration allows (confidence MED — format depends on sample docs/SQL)
-
-**Agreed in principle, NOT locked — mention as "coming," don't build exercises around exact behavior:** fresh-weight adjustment, product catalogue/image generation, credit note support, outdoor sales assistant, customer info/notes, backend dashboard/reminders.
-
-**Needs scoping / blocking — exclude from training:** Phase 1 order/pick-list trigger, stock entry/GRN photo, inventory aging/expiry alerts, pro forma invoice, approval flows beyond credit, payment chasing escalation, POD attachment.
-
-**Out of scope entirely — exclude:** AP reconciliation, merchant/QR settlement reconciliation, delivery trip management, full WMS/barcode scanning, volume-based pricing, B2C ordering app, automated WhatsApp blasting.
-
-**CPO confirmed OUT — not a "likely," a fact.** Source: 4 Jun meeting notes. Macrofrozen's actual agreed E2E flow: WhatsApp order → MAIA draft SO → warehouse picks → update actual weight → submit SO → DO/Invoice → push to SQL. No CPO upload/intake step exists anywhere in this flow. Drop CPO entirely from test scope, training content, and the M3/feature checklist below — it does not apply to this client.
-
-**NS-01 (Phase 1 order/pick-list trigger) — BLOCKING, unresolved.** Two structurally different candidate flows, not yet agreed with client:
-(a) MAIA drafts SO first → warehouse picks → confirms actual weight → submits, or
-(b) warehouse picks externally first (paper-based, stays outside MAIA for Phase 1) → uploads confirmed pick list → MAIA creates SO/DO/Invoice.
-This isn't just a scope question — it defines what "sales module tested end-to-end" even means. Can't finalize Mission Cards, demo flow, or sign off Feature Test Coverage below until answered. Resolve via Client Confirmation Agenda (Scope Lock doc §9) before anything else in this plan proceeds.
-
-**Also open**: doc samples (invoice, credit note, DO, pick list) requested from client at 4 Jun meeting — not yet confirmed received. SO/DO/Invoice PDF rendering (SL-07) can't be properly verified without them.
-
-**Not in scope, don't test**: live/real-time stock check — only annual stock count exists (10-20 unit variances, non-blocking), no live check feature was agreed for Phase 1.
-
-## Pre-Training Readiness Checklist (current state)
-
-Using [[02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist]].
-
-### Data Setup
-- [ ] Master data loaded: customers
-- [ ] Master data loaded: items/SKUs
-- [ ] Sample/exercise data prepared
-- [ ] Client's own instance verified (not placeholder data)
-
-### Feature Test Coverage
-- [ ] Core workflow tested end-to-end on Macrofrozen's instance
-- [ ] Sales module tested and signed off — **primary go-live blocker**
-- [ ] SQL/ERP integration tested (not just configured — see [[Macro Frozen SQL Integration]])
-- [ ] No open blocking bugs in scope modules
-
-### Known Blockers
-
-| Feature/Module | Status | Owner | Blocking training? |
-|---|---|---|---|
-| Sales module | not tested | [TBD] | Y |
-| Data setup (customers/items) | not ready | [TBD] | Y |
-| SQL integration | in progress (vendor delays) | [TBD] | Y |
-| NS-01 order/pick-list trigger | unresolved with client (Scope Lock §9) | [TBD] | Y — defines what "sales module tested" means, blocks Mission Card design |
-| Doc samples (invoice/CN/DO/pick list) | requested 4 Jun, not confirmed received | [TBD] | Y — blocks verifying SO/DO/Invoice PDF rendering |
-| CPO/certificate features | confirmed not in Macrofrozen's flow (4 Jun meeting) | — | N/A — drop from scope entirely |
-| Live stock check | not agreed for Phase 1 | — | N/A — don't test |
-
-### Training Logistics
-- [x] Training goal defined (this doc)
-- [x] Activities mapped to existing slide deck (this doc)
-- [ ] Trainer assigned (Johnson Goh per slide deck default — confirm availability for new date)
-- [ ] Participant credentials/access confirmed
-- [ ] Environment link confirmed reachable
-- [ ] Exercises checked against actual instance state
-- [ ] Venue/AV check: confirm monitor/screen count at Macrofrozen's site vs number of trainees — if only 1 monitor, decide format ahead of time (small-group rotation / screen-share to own devices / hands-on-first per-desk access)
-
-### Go/No-Go
-- [ ] Not signed off — do not lock new date yet
+| Fresh-weight adjustment flow | Top priority, deadline Thu 16 Jul, not yet confirmed working | Y if not resolved by session |
+| Credit Note (SQL mismatch) | Known issue, in progress — disclose to client, SQL workaround for now | N — disclosed workaround |
+| Bulk price update | Just completed, untested — show with caveat | N — disclosed as WIP |
+| Product catalogue format | Open questions, not yet answered by product team | N — capture live in session |
+| Doc samples (invoice/CN/DO/pick list) | Requested 4 Jun, receipt unconfirmed | Y — blocks PDF-render verification |
+| User/role permission setup for all ~6 users | Incomplete | Y |
+| Certificate/tax-reference CPO features | Confirmed not applicable to Macrofrozen | N/A |
+| Live stock check | Not agreed for Phase 1 | N/A — don't test |
 
 ## Next Actions
 
-1. Confirm with Macrofrozen: reschedule, no new date yet
-2. Close data setup + sales module testing first — biggest blockers
-3. Re-run checklist before proposing new date
-4. Once green, propose training date and lock
+1. Bring AWS form from JobService before session
+2. Confirm tax template (No Tax only) and fresh-weight flow internally before demo
+3. Prepare catalogue-format questions to ask David live
+4. Prepare partial-acceptance walkthrough plan + fallback answers for likely blockers
+5. Confirm names/access for all ~6 users (2 finance, 1 warehouse still unconfirmed)
+6. Run informal, no-slides, live demo per structure above
+7. Collect feedback → schedule second UAT focused on custom features (AR recon, bulk price, catalogue)
 
 ## Draft Client Message (WhatsApp)
 
@@ -154,3 +159,4 @@ No vendor/1st-delay mention — full ownership, keep it simple.
 - [[01 - MAIA Product/Client Training/MAIA User Training - Slide Content Proposal]]
 - [[02 - PM Playbook/Templates/[Template] Pre-Training Readiness Checklist]]
 - [[04 - QA & Known Issues/Test Scenarios Index]]
+- Lark: Scope Lock v1, End-user & Process Map (Lens 3), UAT Checklist (Phase 1 Core), Product D1 QA Post Mortem
