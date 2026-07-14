@@ -318,7 +318,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 902.5
+    "width": 785.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -348,8 +348,9 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "1cea89260b50165b",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.ed795f94b47a",
     "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
     "Excalidraw/Macro Frozen To-Be Order-to-Cash Process (Roles).excalidraw",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",

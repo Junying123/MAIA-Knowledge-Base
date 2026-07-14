@@ -21,10 +21,10 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/D9pxdPKRIoUei7xQMn5ldxRDgih
   - Section 4 — The Map (In Bounds / NS / Out of Bounds / Beyond Tester Reach)
   - Section 5 — Persona Cards
     - Persona P-01 — David Chong, Owner / MD / Credit Controller / Price Controller
-    - Persona P-02 — CJ, Sales Rep (applies to CJ Tan, Aben, Quinny)
-    - Persona P-03 — Grace, Finance / Ops Admin
-    - Persona P-04 — The Sales Manager
-    - Persona P-05 — Lai, Warehouse Manager
+    - Persona P-02 — Ben / Queenie, Sales Rep
+    - Persona P-03 — Grace, Finance Manager
+    - Persona P-04 — CJ Tan, Sales Manager
+    - Persona P-05 — Lai, Logistics/Warehouse Manager
   - Section 6 — Trust Killers
 - PART B — THE MISSIONS
   - Section 7 — Campaign Overview
@@ -109,12 +109,12 @@ Macro Frozen is a **frozen-food wholesale/retail distributor** in Malaysia. Cust
 
 Macro Frozen sells frozen meat (beef, chicken, pork variants) and related frozen products, priced and sold by weight (kg) rather than by unit in most cases. Customers fall into two broad segments — **wholesale** and **retail** (restaurants/hotels) — with the main difference being order volume, not how they're treated. The business runs on **SQL/AutoCount**, an existing accounting and order system that the client has used for years; MAIA is being layered on top of it, not replacing it.
 
-The team includes: **David** (owner/MD, who personally coordinates almost everything and controls credit and pricing), **3 active sales reps** (CJ Tan, Aben, and Quinny — each manages their own customer list, with a Sales Manager overseeing Aben and Quinny), **Grace** (finance/ops admin, who is also the person who actually types every order into the system once a sales rep relays it), and **Lai** (the warehouse manager, who coordinates a team of foreign-worker pickers). A third-party driver, **CK**, also has 3 customers of his own under a separate commission arrangement — these are not Macro Frozen's normal sales customers and should stay outside the usual sales workflows.
+The team includes: **David** (owner/MD, who personally coordinates almost everything and controls credit and pricing), **Applle** (Admin — same permission level as David, not separately covered by a persona card in this pack), **CJ Tan** (Sales Manager, overseeing 2 reps), **2 sales reps** (**Ben** and **Queenie** — each manages their own customer list), **Grace** (Finance Manager, who is also the person who actually types every order into the system once a sales rep relays it), and **Lai** (the Logistics/warehouse manager, who coordinates a team of foreign-worker pickers). A third-party driver, **CK**, also has 3 customers of his own under a separate commission arrangement — these are not Macro Frozen's normal sales customers and should stay outside the usual sales workflows.
 
 #### How a normal working day unfolds
 
 1. A customer sends an order via **WhatsApp**, often in shorthand or informal language (e.g. "pork belly slight" meaning slice, skin-on).
-2. A **sales rep** (CJ, Aben, or Quinny) receives it — but does *not* key it into any system themselves. Instead, they relay it to the office, and **Grace types it in**.
+2. A **sales rep** (Ben or Queenie) receives it — but does *not* key it into any system themselves. Instead, they relay it to the office, and **Grace types it in**.
 3. Grace creates a **draft Sales Order** using MAIA, referencing SQL customer/item data.
 4. The SO is submitted and converted into a **pick list PDF**, sent to **Lai** (the warehouse manager).
 5. Lai shares the pick list with his foreign-worker pickers, who physically weigh and pack the product, recording the **actual picked weight** on the paper.
@@ -223,7 +223,7 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 | Sales rep | Own customer records, activity notes | — | Viewing another rep's customers; creating an order directly instead of relaying via WhatsApp; self-approving an over-limit order; issuing a CN unsupervised | Grace (order entry), David (credit approval) |
 | Grace (Finance/Admin) | SOs (from relayed orders), payment matches, CCN | Payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
 | David | Price adjustments (desktop), credit overrides | Credit-limit overrides | — | — (top of hierarchy) |
-| Sales Manager | — | — | Viewing accounts outside his own 2 reps (Aben, Quinny) | David (escalation) |
+| Sales Manager | — | — | Viewing accounts outside his own 2 reps (Ben, Queenie) | David (escalation) |
 | Lai (Warehouse Manager) | Pick-list uploads | — | — | Grace/system (amended SO) |
 
 #### Data authority and external boundaries
@@ -279,7 +279,7 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 - Auto-suggest payment-to-invoice matches, but never auto-post an ambiguous match.
 - Keep each sales rep's customer list private from every other rep.
 - Restrict Macro Frozen to a single MAIA order-intake number.
-- Route each customer to their correct sales agent (CJ Tan, Aben, Quinny, or David by default); keep CK's 3 driver-managed customers out of the normal sales pipeline.
+- Route each customer to their correct sales agent (CJ Tan, Ben, Queenie, or David by default); keep CK's 3 driver-managed customers out of the normal sales pipeline.
 - Let field/outdoor sales query price, outstanding, and customer info — but never create an order directly.
 - Let sales log notes/events/tasks on their own customer's profile.
 - Route overdue-invoice alerts to Finance, the responsible salesperson, their Sales Manager, and David.
@@ -372,7 +372,7 @@ Low patience for back-and-forth on things he considers obvious; very high attent
 
 ---
 
-#### Persona P-02 — CJ, Sales Rep (also stands in for Aben and Quinny)
+#### Persona P-02 — Ben / Queenie, Sales Rep
 
 **Evidence basis:** direct VoC (transcript-confirmed on territory isolation), partial (individual personality inferred)
 
@@ -387,7 +387,7 @@ I manage my own list of restaurant/hotel and wholesale customers. Orders come in
 - **Before I submit:** nothing — I don't submit SOs, I relay to Grace.
 - **I can approve:** nothing formally — I escalate anything unusual.
 - **I cannot approve:** credit overrides, CN issuance.
-- **I escalate to:** my Sales Manager (for team matters) or David directly (for credit blocks).
+- **I escalate to:** CJ Tan, my Sales Manager (for team matters), or David directly (for credit blocks).
 
 ##### What I want from this product
 
@@ -419,7 +419,7 @@ Impatient; will try to route around a block if one shows up.
 
 ---
 
-#### Persona P-03 — Grace, Finance / Ops Admin — *and the person who actually keys in every order*
+#### Persona P-03 — Grace, Finance Manager — *and the person who actually keys in every order*
 
 **Evidence basis:** direct VoC (live clarification call, 2026-07-14) — the most reliably-sourced persona in this pack
 
@@ -466,20 +466,20 @@ Very low tolerance for anything that looks like it guessed instead of asking. Op
 
 ---
 
-#### Persona P-04 — The Sales Manager
+#### Persona P-04 — CJ Tan, Sales Manager
 
-**Evidence basis:** direct VoC (role confirmed 2026-07-14) — name not yet given, `[NEEDS CLIENT INPUT: name]`. Play the role, not a specific name.
+**Evidence basis:** direct VoC (role confirmed 2026-07-14) + confirmed via `Macrofood Sales User Setup.xlsx` (real staff roster) — name confirmed as **CJ Tan**, correcting an earlier placeholder in this pack.
 
 ##### A day in my life
 
-I've got two reps under me — Aben and Quinny. I approve what they can't approve themselves, and I'm on the hook when their customers don't pay on time. If I have to see every other rep's overdue accounts too, I'm just another bottleneck — I only want to see my own two.
+I've got two reps under me — Ben and Queenie. I approve what they can't approve themselves, and I'm on the hook when their customers don't pay on time. If I have to see every other rep's overdue accounts too, I'm just another bottleneck — I only want to see my own two.
 
 ##### Business rules I live by
 
 - **Always:** check my own two reps' overdue accounts.
 - **Never:** expect to see, or act on, another rep's accounts outside my team.
 - **Before I submit:** nothing formal — my role here is oversight of alerts.
-- **I can approve:** matters escalated by Aben or Quinny within my authority.
+- **I can approve:** matters escalated by Ben or Queenie within my authority.
 - **I cannot approve:** credit-limit overrides beyond my scope (David's call).
 - **I escalate to:** David.
 
@@ -498,7 +498,7 @@ If I'm seeing accounts that aren't my reps', or approving things a rep should ha
 ##### How I talk
 
 - "who's chasing this one"
-- "that's Aben's customer, not mine"
+- "that's Ben's customer, not mine"
 
 ##### Patience level and quirks
 
@@ -506,7 +506,7 @@ Cares sharply about scope of responsibility — will notice immediately if shown
 
 ##### What this means when you test as me
 
-- The single thing to verify: my overdue-alert view shows *only* Aben's and Quinny's accounts, never anyone else's.
+- The single thing to verify: my overdue-alert view shows *only* Ben's and Queenie's accounts, never anyone else's.
 - **This mission cannot be run solo** — you need someone playing this role and someone checking what Finance/David receive at the same time.
 
 ---
@@ -579,23 +579,23 @@ Will revert to the old paper process the moment the new one is friction — a li
 
 | Mission | Persona | Difficulty | XP | Time |
 |-|-|-:|-:|-:|
-| M-01 — The First Forward | CJ | ★ | 10 | 8 min |
-| M-02 — SQL Doesn't Lie | CJ | ★★ | 20 | 14 min |
-| M-03 — Nothing Moves Until You Say So | CJ | ★★ | 20 | 10 min |
+| M-01 — The First Forward | Ben / Queenie | ★ | 10 | 8 min |
+| M-02 — SQL Doesn't Lie | Ben / Queenie | ★★ | 20 | 14 min |
+| M-03 — Nothing Moves Until You Say So | Ben / Queenie | ★★ | 20 | 10 min |
 | M-04 — Match It or Ask | Grace | ★★ | 20 | 12 min |
 | M-05 — Price Control | David | ★ | 10 | 10 min |
 | M-06 — The Broken Template | David | ★★ | 20 | 12 min |
-| M-07 — Under the Limit, Over the Limit | CJ | ★★ | 20 | 12 min |
-| M-08 — My Customers Only | CJ | ★ | 10 | 6 min |
-| M-09 — Three Documents, One Order | CJ/Grace | ★ | 10 | 10 min |
-| M-10 — The Word "Invoice" Matters | CJ | ★ | 10 | 8 min |
+| M-07 — Under the Limit, Over the Limit | Ben / Queenie | ★★ | 20 | 12 min |
+| M-08 — My Customers Only | Ben / Queenie | ★ | 10 | 6 min |
+| M-09 — Three Documents, One Order | Ben / Queenie / Grace | ★ | 10 | 10 min |
+| M-10 — The Word "Invoice" Matters | Ben / Queenie | ★ | 10 | 8 min |
 | M-11 — Reverse It, Return It | Grace | ★★ | 20 | 14 min |
-| M-12 — Not Your Rights | CJ | ★★ | 20 | 8 min |
-| M-13 — Right Agent, Right Customer | CJ | ★ | 10 | 8 min |
-| M-14 — Look, Don't Book | CJ | ★ | 10 | 8 min |
-| M-15 — Last Price, Not Last Ten | CJ | ★ | 10 | 8 min |
+| M-12 — Not Your Rights | Ben / Queenie | ★★ | 20 | 8 min |
+| M-13 — Right Agent, Right Customer | Ben / Queenie | ★ | 10 | 8 min |
+| M-14 — Look, Don't Book | Ben / Queenie | ★ | 10 | 8 min |
+| M-15 — Last Price, Not Last Ten | Ben / Queenie | ★ | 10 | 8 min |
 | M-16 — Everyone Who Should Know | Sales Manager + Grace | ★ | 10 | 10 min |
-| M-17 — A Note on the File | CJ | ★ | 10 | 6 min |
+| M-17 — A Note on the File | Ben / Queenie | ★ | 10 | 6 min |
 | M-18 — The Formal Customer | Grace | ★ | 10 | 10 min |
 | BF-01 — The SQL Blackout | David | ★★★ | 35 | 15 min |
 
@@ -625,8 +625,8 @@ Given the tight budget, run **M-02 → M-03 → BF-01** first if time is short.
 
 | Tester | Persona focus | Missions | Est. |
 |-|-|-|-|
-| T1 | CJ — sales core | M-01, M-02, M-08, M-09, M-10, M-12 | 52 min |
-| T2 | CJ — sales edge | M-07, M-13, M-14, M-15, M-17 | 42 min |
+| T1 | Ben/Queenie — sales core | M-01, M-02, M-08, M-09, M-10, M-12 | 52 min |
+| T2 | Ben/Queenie — sales edge | M-07, M-13, M-14, M-15, M-17 | 42 min |
 | T3 | Grace — finance/AR | M-04, M-11, M-16*, M-18 | 46 min |
 | T4 | David — control & pricing | M-05, M-06, BF-01 | 37 min |
 | T5 | (shared) M-03 + spillover from T1–T4, plus Side Quests | M-03 + overflow | ~variable |
@@ -644,7 +644,7 @@ All 18 missions + BF-01 + Side Quests + at least 3 Chaos Cards played. Requires 
 
 #### Mission M-01 — The First Forward · ★ · 10 XP · ~8 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** HP-01 · SL-06
 **Mission type:** Core
 
@@ -720,7 +720,7 @@ It tells you what it captured, what's missing, and asks how to proceed — it **
 
 #### Mission M-02 — SQL Doesn't Lie · ★★ · 20 XP · ~14 min
 
-**Persona:** CJ, Sales Rep (+ optionally Lai for the weight-confirmation half)
+**Persona:** Ben / Queenie, Sales Rep (+ optionally Lai for the weight-confirmation half)
 **Covers:** HP-02, HP-03 · UP-01, UP-02, UP-03, UP-13, UP-15, UP-16, UP-17, UP-24 · SL-01, SL-07, AS-01
 **Mission type:** Core + Edge
 
@@ -805,7 +805,7 @@ MAIA states what it couldn't confirm rather than guessing, and never generates d
 
 #### Mission M-03 — Nothing Moves Until You Say So · ★★ · 20 XP · ~10 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** UP-13, UP-15, UP-19 (partial — see BF-01 for the full outage scenario) · SL-01, AS-01
 **Mission type:** Edge
 
@@ -877,7 +877,7 @@ If anything appears in SQL early, or a direct edit silently overwrites SQL, that
 
 #### Mission M-04 — Match It or Ask · ★★ · 20 XP · ~12 min
 
-**Persona:** Grace, Finance/Ops Admin
+**Persona:** Grace, Finance Manager
 **Covers:** HP-04 · UP-04, UP-18 · SL-02
 **Mission type:** Core + Edge
 
@@ -1113,7 +1113,7 @@ If valid existing prices get corrupted, that's a **P2**. If it silently picks on
 
 #### Mission M-07 — Under the Limit, Over the Limit · ★★ · 20 XP · ~12 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** HP-07 · UP-05, UP-06 · SL-04
 **Mission type:** Core + Edge
 
@@ -1190,7 +1190,7 @@ n/a for the within-limit case (a block here would itself be a bug). For the over
 
 #### Mission M-08 — My Customers Only · ★ · 10 XP · ~6 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** HP-08 · UP-10 · SL-05
 **Mission type:** Core
 
@@ -1258,7 +1258,7 @@ n/a — any leaked data here is a **P2**.
 
 #### Mission M-09 — Three Documents, One Order · ★ · 10 XP · ~10 min
 
-**Persona:** CJ/Grace
+**Persona:** Ben / Queenie / Grace
 **Covers:** HP-09 · UP-08, UP-09 · SL-07
 **Mission type:** Core + Edge
 
@@ -1332,7 +1332,7 @@ It tells you which document failed to generate and why.
 
 #### Mission M-10 — The Word "Invoice" Matters · ★ · 10 XP · ~8 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** HP-10 · UP-27 · NS-04
 **Mission type:** Core + Edge
 
@@ -1403,9 +1403,11 @@ It names what's missing rather than producing a blank doc.
 
 #### Mission M-11 — Reverse It, Return It · ★★ · 20 XP · ~14 min
 
-**Persona:** Grace, Finance/Ops Admin
+**Persona:** Grace, Finance Manager
 **Covers:** HP-11, HP-11b · UP-25, UP-26, UP-33 · SL-07, SL-04
 **Mission type:** Core + Edge
+
+> **🚧 WIP — DO NOT TEST THIS ROUND.** Per the 14 Jul Training Plan post-mortem: there's a known SQL/MAIA mismatch on Credit Notes right now. The client has been told plainly — everything else should work except CN — and to keep doing CN the way they currently do in SQL until the backend fix ships and reverses back into MAIA. Running this mission now will either produce a known-broken result (wasting your time) or a false confidence read. **Leave this mission card as reference for once the fix ships; do not run it this round.**
 
 ##### The situation
 
@@ -1479,7 +1481,7 @@ It explains what part of the reversal failed. If a sales rep succeeds in issuing
 
 #### Mission M-12 — Not Your Rights · ★★ · 20 XP · ~8 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** UP-01, UP-02, UP-16, UP-24 · SL-01, SL-03
 **Mission type:** Edge
 
@@ -1554,7 +1556,7 @@ If it invents a number for the missing-data case, that's a **P1**.
 
 #### Mission M-13 — Right Agent, Right Customer · ★ · 10 XP · ~8 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** HP-12 · UP-28 · SL-08
 **Mission type:** Core + Edge
 
@@ -1562,7 +1564,7 @@ If it invents a number for the missing-data case, that's a **P1**.
 
 Every customer in SQL has an assigned sales agent. You want to confirm that mapping shows up correctly in MAIA — and that CK's 3 driver-managed customers stay out of the normal sales pipeline.
 
-**Precondition:** The SQL customer→agent export is loaded (CJ Tan / Aben / Quinny / CK / David-default visible per customer).
+**Precondition:** The SQL customer→agent export is loaded (CJ Tan / Ben / Queenie / CK / David-default visible per customer).
 
 ##### Input recipe
 
@@ -1624,7 +1626,7 @@ A wrong agent shown is a **P2**; CK's customers leaking into the normal pipeline
 
 #### Mission M-14 — Look, Don't Book · ★ · 10 XP · ~8 min
 
-**Persona:** CJ, playing the field/outdoor sales role
+**Persona:** Ben / Queenie, playing the field/outdoor sales role
 **Covers:** HP-13 · UP-29 · AS-04, AS-04b
 **Mission type:** Core + Edge
 
@@ -1694,7 +1696,7 @@ If order creation succeeds directly from the field context, that's a **P2** — 
 
 #### Mission M-15 — Last Price, Not Last Ten · ★ · 10 XP · ~8 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** HP-14 · UP-30 · NS-08
 **Mission type:** Core + Edge
 
@@ -1763,7 +1765,7 @@ If a price is shown for an item with zero prior history, that's a **P1** — a "
 
 #### Mission M-16 — Everyone Who Should Know · ★ · 10 XP · ~10 min
 
-**Persona:** The Sales Manager + Grace — ⚠️ **needs two people**
+**Persona:** CJ Tan (Sales Manager) + Grace — ⚠️ **needs two people**
 **Covers:** HP-15 · UP-31 · NS-06
 **Mission type:** Core + Edge
 
@@ -1773,14 +1775,14 @@ An invoice has gone overdue. Multiple people are supposed to be notified — but
 
 > **Coordinate before you start:** one of you plays the Sales Manager (see Section 5), the other checks what Finance/David receive. You cannot verify the routing rule solo.
 
-**Precondition:** An invoice overdue for a customer under Aben (or Quinny); a second overdue invoice under a rep outside the Sales Manager's team.
+**Precondition:** An invoice overdue for a customer under Ben (or Queenie); a second overdue invoice under a rep outside the Sales Manager's team.
 
 ##### Input recipe
 
 **Input type:** overdue invoice condition (create or simulate)
 
 **Choose or prepare:**
-- An invoice overdue under Aben's or Quinny's customer.
+- An invoice overdue under Ben's or Queenie's customer.
 - A second overdue invoice under a different rep, to prove the scoping boundary.
 
 **Your chosen data must satisfy:**
@@ -1799,7 +1801,7 @@ An invoice has gone overdue. Multiple people are supposed to be notified — but
 
 ##### Your goal
 
-Confirm Finance, the responsible rep, the Sales Manager, and David all receive the overdue alert for Aben's/Quinny's customer — and confirm the Sales Manager's view stays scoped to just his own team when a second overdue invoice exists under a different rep.
+Confirm Finance, the responsible rep, the Sales Manager, and David all receive the overdue alert for Ben's/Queenie's customer — and confirm the Sales Manager's view stays scoped to just his own team when a second overdue invoice exists under a different rep.
 
 ##### Say it your way
 
@@ -1834,7 +1836,7 @@ If the Sales Manager sees accounts outside his scope, that's a **P3** (data-scop
 
 #### Mission M-17 — A Note on the File · ★ · 10 XP · ~6 min
 
-**Persona:** CJ, Sales Rep
+**Persona:** Ben / Queenie, Sales Rep
 **Covers:** HP-16 · UP-32 · AS-05, SL-05
 **Mission type:** Core + Edge
 
@@ -1904,7 +1906,7 @@ If another rep can see your note, that's a **P2** (same boundary as SL-05).
 
 #### Mission M-18 — The Formal Customer · ★ · 10 XP · ~10 min
 
-**Persona:** Grace, Finance/Ops Admin
+**Persona:** Grace, Finance Manager
 **Covers:** HP-17 · AS-08
 **Mission type:** Core (happy path only — see note below)
 
@@ -2015,10 +2017,10 @@ SQL vendor integration access is a live, unresolved go-live blocker for this acc
 **Side Quests** (open prompts — no win-condition checklist, just go explore):
 
 - *As David:* What would irritate you most about a system that's supposed to remove you as the bottleneck, but keeps asking you to approve things? Go find where that line actually is.
-- *As CJ:* A regular customer messages you something completely off-script — not an order, just a complaint or a random question. What does MAIA do with it?
+- *As Ben/Queenie:* A regular customer messages you something completely off-script — not an order, just a complaint or a random question. What does MAIA do with it?
 - *As Grace:* Try reconciling a payment that arrives with zero reference information at all. How far does MAIA get before it needs you?
 - *As Lai:* Try confirming a pick where you genuinely picked MORE than what was ordered, not less. Does anything treat that differently from underpicking?
-- *As the Sales Manager:* Go looking for a reason to complain that you're being shown someone else's problem. Can you see any account that isn't Aben's or Quinny's?
+- *As the Sales Manager:* Go looking for a reason to complain that you're being shown someone else's problem. Can you see any account that isn't Ben's or Queenie's?
 
 **🔥 The Adoption Side Quest — the most valuable thing you can do today**
 
@@ -2158,11 +2160,11 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 |-|-|-|-|
 | David | Only role that can approve a credit override | SL-04 | M-07 |
 | David | Price adjustments via desktop, not WhatsApp | SL-03 | M-05 |
-| CJ (Sales Rep) | Never sees another rep's customers | SL-05 | M-08, M-12, M-17 |
-| CJ (Sales Rep) | Cannot create orders directly in the field | AS-04/AS-04b | M-14 |
+| Ben/Queenie (Sales Rep) | Never sees another rep's customers | SL-05 | M-08, M-12, M-17 |
+| Ben/Queenie (Sales Rep) | Cannot create orders directly in the field | AS-04/AS-04b | M-14 |
 | Grace | Keys in every order relayed by sales | VoC (direct, 2026-07-14) | M-01–M-18 (implicit throughout) |
 | Grace | Only Finance issues CN; never a rep unsupervised | SL-07/SL-04 | M-11 |
-| Sales Manager | Sees only Aben/Quinny's overdue accounts | NS-06 | M-16 |
+| CJ (Sales Manager) | Sees only Ben/Queenie's overdue accounts | NS-06 | M-16 |
 | Lai | Single point of contact for pick-list upload; no backup exists | AS-01, VoC (NS-10) | M-02 |
 
 #### Beyond Tester Reach handoffs
