@@ -1,3 +1,10 @@
+---
+owner: Gareth
+status: draft
+last_reviewed: 2026-07-14
+lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
+---
+
 # MAIA — UAT Launch Readiness Checklist
 ### Macro Frozen (Macrofood) — Phase 1 Core
 
