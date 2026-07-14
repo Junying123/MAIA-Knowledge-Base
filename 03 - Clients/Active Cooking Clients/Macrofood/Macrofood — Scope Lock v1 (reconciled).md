@@ -25,6 +25,8 @@ Macro Frozen — Scope Lock v1
 
 **Updated 2026-07-14 (later same day):** New AS-08 / NS-12 added — **3 confirmed customers issue formal customer POs** instead of ordering informally via WhatsApp. Low-volume use case: upload PO → match customer + item → submit as confirmed SO (CPO). Mechanism (format, OCR-vs-reference-only, match logic) not yet detailed with David.
 
+**Updated 2026-07-14 (later still):** New AS-09 / NS-13 added — client confirmed a requirement for MAIA to **track and bulk-update item cost/buying price**, not just selling price. SL-03's existing template flow was scoped around selling price only; cost price is a separate SQL field with its own fluctuation pattern. Mechanism (shared vs separate template, who's authorized, downstream triggers) not yet detailed with David.
+
 
 
 ## 1. Source Manifest
@@ -63,9 +65,9 @@ Macro Frozen — Scope Lock v1
 | **LOCKED** | 10 | SQL/customer-item master boundary; AR customer-invoice reconciliation (adoption-risk flagged); bulk price update + price controller role; credit-limit control; role visibility; one MAIA WhatsApp number; core document generation for SO/DO/Invoice where integration allows; outdoor sales assistant (AS-04, query-only); sales-to-admin order relay (AS-04b); customer→sales-agent assignment (SL-08, new) |
 | **LOCKED (SUPERSEDED)** | 0 | None fully qualifies; supersessions exist but lack clean client sign-off evidence. |
 | **AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED** | 5 | Fresh-weight workflow; product catalogue/image generation (pricing/catalog update mechanism now flagged David-only); credit note support (doctype design finalized, numbering risk flagged); customer information/notes (activity log confirmed, master-field writability open); backend dashboard/reminders |
-| **AGREED IN PRINCIPLE — IMPLEMENTATION PROPOSED** | 2 | AS-07 quotation-before-order — flow proposed, price-lock enforcement sub-question open, real-world usage confirmed low (Grace: formal quotations rarely used). AS-08 customer PO upload & match (new 2026-07-14) — 3 customers, low volume, mechanism not yet detailed. |
+| **AGREED IN PRINCIPLE — IMPLEMENTATION PROPOSED** | 3 | AS-07 quotation-before-order — flow proposed, price-lock enforcement sub-question open, real-world usage confirmed low (Grace: formal quotations rarely used). AS-08 customer PO upload & match (new 2026-07-14) — 3 customers, low volume, mechanism not yet detailed. AS-09 cost/buying price tracking & bulk update (new 2026-07-14) — confirmed requirement, separate from SL-03's selling-price-only scope, mechanism not yet detailed. |
 | **BLOCKED — CLIENT CONFLICT** | 1 | NS-07 POD — client (Grace) explicitly rejects the photo-upload-to-Maya design; awaiting David's decision before this can move forward at all |
-| **NEEDS SCOPING** | 4 | NS-09 stock-expiry alert sales-inclusion (new); NS-10 backup coverage for Logistics/Finance Manager absence (new); NS-11 warehouse Maya access model (new); NS-12 customer PO upload & match mechanism (new). NS-03/NS-05 remain reopened at mechanism-detail level. NS-08 now RESOLVED — see Needs-Scoping Register. |
+| **NEEDS SCOPING** | 5 | NS-09 stock-expiry alert sales-inclusion (new); NS-10 backup coverage for Logistics/Finance Manager absence (new); NS-11 warehouse Maya access model (new); NS-12 customer PO upload & match mechanism (new); NS-13 cost/buying price tracking mechanism (new). NS-03/NS-05 remain reopened at mechanism-detail level. NS-08 now RESOLVED — see Needs-Scoping Register. |
 | **OUT OF SCOPE** | 7 | AP reconciliation; merchant/QR settlement reconciliation; delivery trip management; full WMS/barcode/QR scanning; volume-based pricing; full B2C/customer ordering app; automated WhatsApp blasting |
 
 
@@ -505,6 +507,24 @@ Confirms the real-world entry point for orders: sales rep → WhatsApp message t
 
 
 
+### AS-09 — Cost/buying price tracking & bulk update (new 2026-07-14)
+
+**Status:** AGREED IN PRINCIPLE — IMPLEMENTATION NOT LOCKED
+
+**Now intended:** SL-03 currently only covers **selling price** — the bulk template upload, floor enforcement, and price-controller role are all scoped around what the customer is charged. Item cost/buying price (a separate field in SQL — see the item export's "Item Value"/buying price column, distinct from "Selling Price") was not previously in scope. **Confirmed 2026-07-14: client needs MAIA to track and bulk-update cost/buying price as well**, since raw material cost fluctuates independently of when selling price gets updated.
+
+**Precise question:** Does cost-price update follow the same bulk-template mechanism as SL-03 (upload → update), or a separate flow? Who is authorized to update it — same price-controller role (David) or someone else (e.g. procurement)? Does a cost-price change need to trigger any downstream action — margin recalculation, a selling-price review alert — or is it purely a stored reference field?
+
+**Scope note:** This is **new scope, not an extension already implied by SL-03** — selling price and cost price are different fields with potentially different owners and update cadences. Do not assume the existing price-template flow automatically covers this without confirming the answers above.
+
+**Blocking:** NO for core go-live; recommend resolving before SL-03 is fully re-tested, since the two price fields may end up sharing UI/template design.
+
+
+
+---
+
+
+
 ## 5. Needs-Scoping Register
 
 
@@ -523,6 +543,7 @@ Confirms the real-world entry point for orders: sales rep → WhatsApp message t
 | NS-10 | Backup coverage — Logistics/Finance Manager absence | **New 2026-07-14.** No backup process exists today: if the warehouse/logistics manager (Mr. Lai) is absent, no one double-checks foreign workers' reported picked quantities — taken at face value. No equivalent backup is defined for Finance Manager duties either (only Grace's own admin role has an informal backup — the boss's wife). | “If the Logistics Manager or Finance Manager is absent, who backs up their MAIA-related duties (pick-list verification, AR/cash entries, approvals)?” Real operational gap, not just a system config question — David needs to decide, not just confirm a Maya setting. | David | Real operational gap — recommend resolving before go-live, not just before UAT |
 | NS-11 | Warehouse Maya access model | **New 2026-07-14.** Undecided whether each foreign-worker picker gets individual Maya access, or whether the whole warehouse team shares **one company phone/device** for Maya. Warehouse manager leans toward one shared device. | “Should foreign-worker pickers each get individual Maya logins, or should the warehouse team share one company device/phone for Maya?” To be decided at 16 Jul training. | David / Warehouse Manager | Affects AS-01's pick-list-upload step — needs resolving before UAT of that flow |
 | NS-12 | Customer PO upload & match | **New 2026-07-14.** 3 customers issue formal POs instead of ordering informally via WhatsApp. Mechanism (upload → match customer/item → submit CPO) proposed but not detailed — format, OCR-vs-reference-only, and match logic undefined. | “Confirm the 3 customers, PO format, whether MAIA extracts line items from the PO or it's a reference attachment, and what 'match' means (auto-match + human confirm before submit)?” | David | NO — low volume (3 customers only), does not block core go-live |
+| NS-13 | Cost/buying price tracking & bulk update | **New 2026-07-14.** Confirmed client needs MAIA to track/bulk-update cost/buying price, separate from SL-03's selling-price-only scope. Mechanism (same template flow vs separate, who's authorized, downstream triggers) undefined. | “Does cost-price update use the same bulk template mechanism as SL-03, or a separate flow? Who's authorized to update it? Does a cost-price change need to trigger margin recalculation or a selling-price review alert?” | David | NO for go-live; recommend resolving before SL-03 re-test since UI/template may be shared |
 
 
 
@@ -640,3 +661,4 @@ Surfaced from the 2026-07-14 Grace clarification call — these specifically req
 28. **Backup coverage for Logistics/Finance Manager absence:** “If Mr. Lai (logistics) or your Finance staff is out, who should back up pick-list verification / AR entries / approvals? There's currently no process for this.”
 29. **Warehouse Maya access model:** “Should each foreign-worker picker get their own Maya login, or should the warehouse team share one company phone/device?”
 30. **Customer PO upload & match (AS-08/NS-12):** “Please confirm the 3 customers who issue formal POs, the PO format they send (PDF/scanned/photo), and whether MAIA should extract line items from the PO document itself or treat it as a reference attachment while staff key in the order manually.”
+31. **Cost/buying price tracking (AS-09/NS-13):** “Beyond selling price, you need MAIA to also track and bulk-update item cost/buying price. Should this use the same bulk template flow as selling price, or a separate one? Who's authorized to update it — same price controller (you), or someone else like procurement? Should a cost-price change trigger anything automatically, like a margin check or a selling-price review alert?”

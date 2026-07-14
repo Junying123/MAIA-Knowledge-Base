@@ -96,6 +96,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Pm4OwqdgFi8EQ2kx5BClxtnVgWb
 | VOC-033 | AR auto-match adoption skepticism | When walked through the proposed Maya AR auto-match flow (upload slip → auto-match → knock off in SQL), Grace pushed back: sees it as the same manual work just routed through Maya, not a real time-save, since she'd still upload each slip and still manually pick which invoice(s) to knock off for multi-invoice payments | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — direct operator skepticism, not a hypothetical concern |
 | VOC-034 | Backup coverage gap | No process exists if the warehouse/logistics manager (Mr. Lai) is absent — foreign workers' reported picked quantities are taken at face value, zero verification. No defined backup for Finance Manager duties either (only Grace's own admin role has an informal backup — the boss's wife) | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — real operational gap, not a system config question |
 | VOC-035 | Customer PO issuance (new, 2026-07-14) | A small subset of customers — **3 confirmed** — issue a formal Purchase Order document instead of ordering informally via WhatsApp. Flow described: upload/receive the PO, match it against customer + item records, submit as a confirmed order (CPO) | `Macrofrozen Client Scope Lock Clarification` transcript, 13 Jul 2026 — Grace, direct | **CONFIRMED** — low-volume use case, mechanism (PO format, extraction vs reference-only, match logic) not yet detailed |
+| VOC-036 | Cost/buying price tracking (new, 2026-07-14) | Item cost/buying price fluctuates independently of selling price. Client needs MAIA to track and bulk-update this — a separate need from the existing selling-price template (SL-03) | Relayed by Gareth (PM) during scope reconciliation, 2026-07-14 — not yet in a recorded client transcript | **CONFIRMED as a requirement** — source is PM relay, not a direct client quote; mechanism entirely undefined |
 
 ---
 
@@ -243,6 +244,7 @@ have **no scope-lock home yet** — those need David before they can be committe
 | VOC-033 (AR auto-match skepticism) | SL-02 | Adoption-risk flag added 2026-07-14 | ⚠️ *design unchanged, but real-usage validation now explicitly flagged as needed* |
 | VOC-034 (backup coverage gap) | NS-10 (new 2026-07-14) | Needs scoping — real operational gap, not a system config question | ⚠️ *no resolution yet, David to decide* |
 | VOC-035 (customer PO issuance) | AS-08 / NS-12 (new 2026-07-14) | Agreed in principle — low-volume (3 customers), mechanism not yet detailed | ⚠️ *has a scope-lock home; PO format/extraction/match-logic questions still open for David* |
+| VOC-036 (cost/buying price tracking) | AS-09 / NS-13 (new 2026-07-14) | Agreed in principle — confirmed requirement, mechanism not yet detailed | ⚠️ *has a scope-lock home; distinct from SL-03 (selling price only) — do not assume overlap* |
 | VOC-008 (QR merchant settlement) | Out of scope | excluded | ✅ |
 | VOC-026 (WhatsApp blasting) | Out of scope | excluded — bans the number | ✅ |
 | VOC-013 (volume-based pricing) | Out of scope | not supported — manual check | ✅ |
@@ -282,6 +284,7 @@ Feature existence ≠ mechanism documented. Ivan flagged all three live in the 1
 - **New signals with scope-lock homes already:** VOC-031 (role/permission reality → SL-04/AS-05), VOC-032 (customer-agent assignment → new SL-08).
 - **New signal with no home yet:** VOC-034 (backup coverage gap → new NS-10) — a real operational gap, not a Maya feature question.
 - **New signal, low volume, has a home:** VOC-035 (customer PO issuance → new AS-08/NS-12) — only 3 customers issue formal POs; use case is narrow, supplements the WhatsApp-first intake channel for those accounts only. Mechanism (PO format, OCR-vs-reference, match logic) still needs David.
+- **New signal, real scope gap, has a home:** VOC-036 (cost/buying price tracking → new AS-09/NS-13) — SL-03's price-update flow was scoped around selling price only; cost/buying price is a separate SQL field with its own fluctuation. This is not covered by testing SL-03/M-05 — needs its own mechanism confirmed with David before it can be built or tested.
 - **Narrowed evidence:** VOC-014 (quotation before order) — stated ask (wants price-lock) vs revealed behavior (formal quotations barely used) now diverge; AS-07's real necessity is an open question for David, not just its enforcement detail.
 
 **Everything else is aligned.** Out-of-scope boundaries match exactly (AP, QR settlement, WMS, volume pricing, B2C, blasting).
