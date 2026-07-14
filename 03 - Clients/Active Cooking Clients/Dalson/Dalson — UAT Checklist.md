@@ -81,6 +81,7 @@ Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction 
 |---|---|---|---|---|---|---|---|---|---|---|
 | HP-03 | SL-3 | Happy | — | Xiao Bai / staff | Dalson Telegram account set up | 1. Send a message from a registered staff Telegram account. 2. Confirm MAIA responds. | Registered account | MAIA responds correctly via Telegram | | |
 | UP-07 | SL-3 | Unhappy | Wrong actor | Unregistered person | — | 1. Message MAIA's Telegram account from an unknown/unregistered number. 2. Observe response. | Any non-staff Telegram account | MAIA does not process the message as a valid staff order/action (rejects or ignores per access-control design) | | |
+| UP-19 | SL-3 | Unhappy | Invalid input | Xiao Bai / staff | Dalson Telegram account set up | 1. Send a non-text message (e.g. a photo, sticker, or voice note with no text) to MAIA's Telegram account from a registered staff account. 2. Observe response. | Registered account, non-text message type | MAIA does not misinterpret the message as an order/action — either prompts for valid text input or rejects gracefully, no false order creation | | |
 
 ### SL-4 — SKU alias mapping / matching
 
@@ -139,7 +140,7 @@ Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction 
 |---|---|---|---|---|
 | SL-1 | MAIA overlay on AutoCount | HP-01 | UP-01, UP-02, UP-03 | YES |
 | SL-2 | Order intake via unstructured channels | HP-02 | UP-04, UP-05, UP-06 | YES |
-| SL-3 | Telegram channel | HP-03 | UP-07 | YES |
+| SL-3 | Telegram channel | HP-03 | UP-07, UP-19 | YES |
 | SL-4 | SKU alias mapping | HP-04 | UP-08, UP-09 | YES |
 | SL-5 | POD capture | HP-05 | UP-10, UP-11 | YES |
 | SL-6 | AutoCount integration (access + migration) | HP-06 | UP-12, UP-13 | YES |
@@ -165,15 +166,15 @@ Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction 
 - **Receipts (VOC-023/024)** — client-confirmed business rule (generate on request only, not automatic) has no corresponding Scope Lock item. NEEDS CLIENT/SCOPE INPUT: should this be added to Scope Lock as a locked item before next UAT cycle, given it's a clear, low-ambiguity rule?
 - **SO-stage contradiction (SL-13)** — see 4b. This needs direct client confirmation before the PO→SO→Invoice→DO flow can be locked or tested as designed.
 - **Pricing logic (SL-10)** — NEEDS CLIENT INPUT. No source in this corpus answers ad hoc vs structured/per-customer pricing. Recommend adding as a standing question on the Client Confirmation Agenda (already present in Scope Lock).
-- **Coordinator / warehouse / driver roles** — VoC's own coverage gate flags these as BELIEVED, not CONFIRMED (owner described them secondhand, they never spoke in the source transcript). Several test cases above (UP-04, UP-05, HP-02, HP-05, HP-09, UP-18) assign these roles as testers on the assumption the process the owner described is accurate. NEEDS CLIENT INPUT to confirm actual named testers before UAT execution — this is also flagged in the End-user & Process Map, which does not yet exist for Dalson.
-- **End-user & Process Map does not exist for Dalson** — role/actor assignments above are provisional; a formal process map should confirm named UAT testers per role before this checklist is executed live.
+- **Coordinator / warehouse / driver roles** — VoC's own coverage gate flags these as BELIEVED, not CONFIRMED (owner described them secondhand, they never spoke in the source transcript). Several test cases above (UP-04, UP-05, HP-02, HP-05, HP-09, UP-18) assign these roles as testers on the assumption the process the owner described is accurate. NEEDS CLIENT INPUT to confirm actual named testers before UAT execution — tracked as a sign-off agenda item in the End-user & Process Map (§6, item #2).
+- **End-user & Process Map now exists** (built 2026-07-13) — role/actor assignments above are current against it; named-tester confirmation for coordinator/warehouse/driver roles remains the one open item, carried in the Map's sign-off agenda rather than as a missing artifact.
 - **Test data** — all "sample" data placeholders above need real Dalson data (customer records, SKUs, sample POs) per VOC-005/VOC-008 export request; none of it should be fabricated at execution time.
 
 ---
 
 ## Verdict
 
-**9 of 16 scope items are testable this cycle.** The checklist above covers all 9 with ≥1 happy + ≥2 unhappy cases each (SL-3 has 1 unhappy — Telegram's smaller surface area, acceptable). 7 items are correctly excluded, most notably the two live blockers (pricing logic, customer/item creation via chatbot) which must not be tested until scoped. Biggest structural risk carried into this checklist: no End-user & Process Map exists yet, so role assignments for non-owner testers are provisional.
+**9 of 16 scope items are testable this cycle.** The checklist above covers all 9 with ≥1 happy + ≥2 unhappy cases each (SL-3 now has 2 unhappy cases — UP-07, UP-19 — meeting the ≥2 minimum). 7 items are correctly excluded, most notably the two live blockers (pricing logic, customer/item creation via chatbot) which must not be tested until scoped. The End-user & Process Map now exists (built 2026-07-13), closing the role-assignment risk flagged in the prior cycle — see §4c below.
 
 ---
 

@@ -138,8 +138,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -264,10 +263,6 @@
                     "name": "zsh 179"
                   },
                   {
-                    "id": 180,
-                    "name": "zsh 180"
-                  },
-                  {
                     "id": 181,
                     "name": "zsh 181"
                   },
@@ -276,7 +271,7 @@
                     "name": "zsh 182"
                   }
                 ],
-                "activeId": 182,
+                "activeId": 181,
                 "nextId": 183
               },
               "icon": "terminal",
@@ -330,6 +325,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.95680.985a74767f3d",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.html",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen",
@@ -365,7 +361,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Scope Lock v1 (reconciled).md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Checklist.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — End-user & Process Map.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",

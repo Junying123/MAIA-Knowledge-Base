@@ -5,6 +5,8 @@ last_reviewed: 2026-07-12
 ---
 
 > **Update 2026-07-12:** PM confirms most flags below align with current account state. Two items resolved since original extraction: (1) Telegram as production channel confirmed with client (channel-switch risk closed), (2) cost transparency has been addressed/noticed by client (no longer an open trust gap). Resolved items marked inline below; rest of extraction unchanged.
+>
+> **Update 2026-07-14:** Owner's real name ("Xiao Bai") confirmed during Scope Lock reconciliation (2026-07-12/13) and now propagated into the Actor & Role Register below, aligning with Scope Lock, UAT Checklist, and End-user & Process Map.
 
 # Dalson Industrial Supplies — Voice of Customer (VoC) Extraction
 
@@ -33,7 +35,7 @@ last_reviewed: 2026-07-12
 
 | Raw label | Re-attributed identity | Role | Confidence | Basis |
 |---|---|---|---|---|
-| "You" (majority of transcript) | Dalson Owner/Principal | Customer — decision-maker, business owner | CONFIRMED | Attendee `dalsonmultisupply@gmail.com`; first-person ownership language throughout ("my business", "my clients", sets credit-note policy, negotiates cost) |
+| "You" (majority of transcript) | Dalson Owner/Principal — **Xiao Bai** (name confirmed 2026-07-12/13, post-extraction) | Customer — decision-maker, business owner | CONFIRMED | Attendee `dalsonmultisupply@gmail.com`; first-person ownership language throughout ("my business", "my clients", sets credit-note policy, negotiates cost) |
 | "she" / "her" (invoice/customer creation, office-based) | Internal Sales Coordinator(s) (unnamed) | Customer — order processing, invoicing, in-office | BELIEVED | Owner describes them in third person: "they are mainly inside office... customer send POs, they just upload them"; never speaks directly |
 | "the guy" (packing) | Warehouse/Packing Staff (unnamed) | Customer — fulfillment | BELIEVED | Owner: "I will send PO to the guy, and then he will just pack that"; secondhand only |
 | "she can assist... dealer of AutoCount" | Ms Tan, AutoCount Software Support | Customer-side contractor — AutoCount setup/dealer, handles Dalson's accounting/P&L | CONFIRMED | Cross-referenced against `Dalson MAIA autocount integration.md` contact table: "Ms Tan, AutoCount Software Support, easysoftprosolution@gmail.com" |
