@@ -244,14 +244,6 @@
               "state": {
                 "sessions": [
                   {
-                    "id": 156,
-                    "name": "zsh 156"
-                  },
-                  {
-                    "id": 161,
-                    "name": "zsh 161"
-                  },
-                  {
                     "id": 166,
                     "name": "zsh 166"
                   },
@@ -284,7 +276,7 @@
                     "name": "zsh 182"
                   }
                 ],
-                "activeId": 182,
+                "activeId": 166,
                 "nextId": 183
               },
               "icon": "terminal",
