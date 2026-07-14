@@ -102,30 +102,6 @@
               "icon": "lucide-file",
               "title": "Macrofrozen Training Plan"
             }
-          },
-          {
-            "id": "18df7b94c10cd7e5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Fixguru — VoC Extraction"
-            }
           }
         ],
         "currentTab": 3
@@ -342,7 +318,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 853.5
+    "width": 902.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -372,13 +348,16 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "1cea89260b50165b",
   "lastOpenFiles": [
+    "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
+    "Excalidraw/Macro Frozen To-Be Order-to-Cash Process (Roles).excalidraw",
+    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Launch_Readiness_Checklist.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.95680.985a74767f3d",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.html",
@@ -390,7 +369,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Field Guide (Infopack v1).md.tmp.94722.97793c215557",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Field Guide (Infopack v1).md.tmp.35230.c60a310a97f9",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — Lens Alignment Report.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Field Guide (Infopack v1).md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
@@ -401,15 +379,12 @@
     "Granola/Transcripts/2026-07-13/July sprint for MAIA-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Field Guide (Infopack v1).md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Client Clarification Questions (2026-07-13).md",
-    "Excalidraw/Macro Frozen To-Be Order-to-Cash Process (Roles).excalidraw",
-    "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
     "Granola/Transcripts/2026-07-13/Automation and Workflow Enhancements Meeting - Fireflies Transcript.md",
     "Granola/Transcripts/2026-07-13/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — End-user & Process Map.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Checklist.md",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
