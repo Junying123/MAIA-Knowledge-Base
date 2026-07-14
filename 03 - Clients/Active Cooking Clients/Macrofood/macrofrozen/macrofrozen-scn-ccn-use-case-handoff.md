@@ -180,3 +180,80 @@ The tutorial video explicitly covers these scenarios:
 
 The written SQL documentation is the authoritative procedural reference in this
 handoff; the video is included as a scenario walkthrough.
+
+## Uncovered return-part clarifications for Macrofrozen
+
+The following return-specific points were not fully clarified in the client
+transcript and should be confirmed before finalising the workflow or UAT cases.
+
+### Return trigger and source document
+
+- Who is authorised to accept a customer return: salesperson, sales manager,
+  Finance or warehouse?
+- Does every return start from a Sales Invoice, or can it start from Cash Sales,
+  Delivery Order or another document?
+- Is a return reference, return authorisation number or reason required?
+
+### Return scope and quantity
+
+- Can a customer return only selected lines or quantities from an invoice?
+- Are items recorded by pieces, weight or both?
+- Can one return cover several invoices?
+- What happens when the warehouse accepts only part of the quantity returned?
+- How are wrong items, damaged items, expired items and rejected returns
+  distinguished?
+
+### Physical stock handling
+
+- Who confirms that the goods physically arrived back at the warehouse?
+- Is there a warehouse inspection or quarantine step before the SCN is issued?
+- When does returned quantity go back into available stock?
+- Are returned goods placed into a separate damaged, rejected or quarantine
+  location?
+- How will batch number and expiry date be recorded when Macrofrozen begins
+  using batches?
+- What evidence is required: signed DO, return photo, warehouse receipt or
+  another document?
+
+### Credit valuation
+
+- Is the credit based on the original invoice unit price or the current price?
+- How are invoice discounts, item-level discounts, tax and delivery charges
+  treated on the return?
+- If only part of a line is returned, how is the tax and rounding calculated?
+- If the original invoice used a quotation or historical price, which price is
+  the source of truth for the SCN?
+
+### Invoice and payment status
+
+- For an unpaid invoice, must the CCN always knock off the original invoice?
+- For a paid invoice, should Macrofrozen carry the credit forward, apply it to
+  another invoice or refund the customer?
+- If the CCN is larger than the original invoice balance, what allocation order
+  should be used for the remaining amount?
+- Can one CCN be split across multiple invoices in Macrofrozen's SQL setup?
+- Is the payment-and-credit reallocation scenario from the transcript an
+  approved operating procedure or only a possible SQL capability?
+
+### Replacement, refund and approval
+
+- Does a return result in a credit, a cash refund, replacement goods or a choice
+  between these outcomes?
+- Who approves the SCN, CCN, replacement or refund?
+- Is a customer refund allowed only after warehouse acceptance?
+- What happens when the customer returns goods but requests replacement rather
+  than a credit?
+
+### Period, tax and integration handling
+
+- What happens when the return is processed in a later accounting or GST period?
+- Does the SCN need to reference the original tax invoice for e-invoice
+  submission?
+- Which document IDs and statuses must sync between MAIA and SQL: source invoice,
+  SCN, CCN, knock-off allocation, remaining credit and refund?
+- How are duplicate returns, failed syncs and edited or cancelled SCNs handled?
+
+These questions should become dedicated return UAT cases. The transcript confirms
+the broad return flow, but it does not yet define the operational rules for
+physical stock acceptance, valuation, approval, replacement and exception
+handling.
