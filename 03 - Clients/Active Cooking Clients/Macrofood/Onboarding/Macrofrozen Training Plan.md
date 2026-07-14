@@ -15,12 +15,14 @@ Per 14 Jul Post Mortem discussion: skip the 116-slide deck. Client works fast, w
 
 Training was originally set for 2026-07-07, rescheduled since — not ready per checklist below at the time. Re-approach: informal live-demo format, not the slide deck.
 
-## Confirmed Attendees (~6 users + 2 referrers)
-- David — MD / credit controller
-- CJ — Sales Manager
-- Grace — role TBD, confirm
-- 2x Finance staff — names not yet confirmed
-- 1x Warehouse staff — name not yet confirmed
+## Confirmed Attendees (source: Macrofood Sales User Setup.xlsx)
+- David — Admin / MD / credit controller
+- CJ Tan — Sales Manager
+- Ben — Sales User (rep)
+- Queenie — Sales User (rep)
+- Grace — Finance Manager (and the person who actually keys in every order — sales reps WhatsApp orders to her, she doesn't self-serve in MAIA)
+- Lai — Logistics Manager (warehouse: pick-list handoff + weight confirm)
+- Applle — Admin
 - Krystle + Sean also attending (referred this client)
 
 ## Training Goal
@@ -64,14 +66,15 @@ CPO (PO document) ─┘
 
 CPO = plain PO document intake for a subset of customers who issue formal purchase orders, not the certificate/tax-reference CPO feature built for C1/C3 clients — no cert linkage, no tax reference validation needed. Same downstream flow either way. Pick list stays external/outside MAIA for Phase 1, for both intake channels.
 
-## Roles & Permission Matrix
+## Roles & Permission Matrix (source: Macrofood Sales User Setup.xlsx)
 
-| Role | Can create | Can approve | Can view | Cannot do |
-|---|---|---|---|---|
-| Sales (CJ + reps) | SO, quotation, customer order | — | Own customers only | See other reps' data, approve over-limit, edit master |
-| Finance/Account | CN, payment entry, knock-off | Payment match (self-confirm) | AR/outstanding | Override credit limit, auto-post unclear payer |
-| Warehouse | Pick-list upload / weight confirm | — | Own tasks | Edit customer master, pricing, credit terms |
-| Management (David) | All | Credit-limit override, pricing floor | All | — |
+| Role | Who | Can create | Can approve | Can view | Cannot do |
+|---|---|---|---|---|---|
+| Sales User | Ben, Queenie | SO, quotation, customer order | — | Own customers only | See other reps' data, approve over-limit, edit master |
+| Sales Manager | CJ Tan | Same as Sales User + team oversight | Team-level approvals only | Own team's reps' data (not company-wide) | Approve outside own team |
+| Finance Manager | Grace | CN, payment entry, knock-off, SO (keys in orders sales reps WhatsApp to her) | Payment match (self-confirm) | AR/outstanding | Override credit limit, auto-post unclear payer |
+| Logistics Manager | Lai | Pick-list upload / weight confirm | — | Own tasks | Edit customer master, pricing, credit terms |
+| Admin | David, Applle | All | Credit-limit override, pricing floor | All | — |
 
 ## Scope Lock Reference (source: Lark "Macro Frozen — Scope Lock v1", 23 Jun 2026)
 
@@ -100,7 +103,8 @@ CPO = plain PO document intake for a subset of customers who issue formal purcha
 - [ ] Have fallback/remediation steps ready for likely blockers — don't improvise live in front of client
 - [ ] Catalogue real sample documents (orders, POs, pick-list PDFs) in advance — don't source live during session
 - [ ] Confirm UAT signatory (likely David, not yet confirmed in writing)
-- [ ] Confirm names/contacts for: 2 finance staff, warehouse staff, driver (still unconfirmed)
+- [x] Confirm names/roles: Ben, Queenie (Sales Users), CJ Tan (Sales Manager), Grace (Finance Manager), Lai (Logistics Manager), Applle, David (Admin) — per Macrofood Sales User Setup.xlsx
+- [ ] Driver — not named/contacted, no MAIA role defined yet
 - [ ] Bring AWS form (JobService) for signature during session
 
 ## Known Blockers
@@ -112,7 +116,7 @@ CPO = plain PO document intake for a subset of customers who issue formal purcha
 | Bulk price update | Just completed, untested — show with caveat | N — disclosed as WIP |
 | Product catalogue format | Open questions, not yet answered by product team | N — capture live in session |
 | Doc samples (invoice/CN/DO/pick list) | Requested 4 Jun, receipt unconfirmed | Y — blocks PDF-render verification |
-| User/role permission setup for all ~6 users | Incomplete | Y |
+| User/role permission setup | Names/roles confirmed (xlsx); login/access still to verify | Y until access verified |
 | Certificate/tax-reference CPO features | Confirmed not applicable to Macrofrozen | N/A |
 | Live stock check | Not agreed for Phase 1 | N/A — don't test |
 

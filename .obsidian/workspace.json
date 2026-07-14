@@ -80,6 +80,30 @@
             }
           },
           {
+            "id": "1cea89260b50165b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "Macrofrozen Training Plan"
+            }
+          },
+          {
             "id": "18df7b94c10cd7e5",
             "type": "leaf",
             "state": {
@@ -104,7 +128,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -162,7 +186,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -317,7 +342,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 1012.5
+    "width": 853.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -349,6 +374,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.95680.985a74767f3d",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.html",
@@ -374,7 +401,6 @@
     "Excalidraw/Macro Frozen To-Be Order-to-Cash Process (Roles).excalidraw",
     "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
     "Granola/Transcripts/2026-07-13/Automation and Workflow Enhancements Meeting - Fireflies Transcript.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-13/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",
