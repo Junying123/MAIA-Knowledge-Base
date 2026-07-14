@@ -122,7 +122,7 @@ Discovered Fixguru's actual Lark folder (a level above where earlier work was sc
 | VoC Extraction | https://eg69120xnei.sg.larksuite.com/wiki/LKmswszY3iPzmbkjSOHlCkhZgue |
 | UAT Checklist | https://eg69120xnei.sg.larksuite.com/wiki/LggewkrBbiEtyJkSLGHl081XgGe |
 | UAT Field Guide (Infopack) — "14Jul26-Fixguru-MAIA UAT field guide" | https://eg69120xnei.sg.larksuite.com/wiki/Wp90wCNHtiLD2Hk2oCBlqNC5gPe |
-| End-user & Process Map | KB-only, not yet pushed to Lark |
+| End-user & Process Map | https://eg69120xnei.sg.larksuite.com/wiki/F9DYwCVbHiAHOykSFNSlJbgkgAd |
 
 ## See Also
 

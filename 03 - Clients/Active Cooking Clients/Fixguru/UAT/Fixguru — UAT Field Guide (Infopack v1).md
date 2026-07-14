@@ -12,6 +12,8 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Wp90wCNHtiLD2Hk2oCBlqNC5gPe
 ### (Fixguru / IAM Worldwide Sdn Bhd)
 
 > Generated via the "UAT Infopack — Generator Prompt (v2.0)" (Lark: `RvJZwbbwtifhkkkCjrolz3U5g1f`), from three source docs per Gareth's instruction: **[[Fixguru — VoC Extraction]]**, **Scope Lock v2** (Lark, https://eg69120xnei.sg.larksuite.com/wiki/AdBgwaw2TiMhFOkChoVlJVKGgng), **[[Fixguru — End-user & Process Map]]**. Mission material (win conditions, unhappy paths) cross-referenced from the already scope-locked **[[UAT/Fixguru — UAT Checklist]]**, generated the same day from the same two source docs — no new facts introduced.
+>
+> **v2 (14 Jul 2026):** Logistics filled in from confirmed operator input — test window, FE URL, WhatsApp number, reporting channel, time budget. Added the **time math** to the Campaign Overview: the 20 missions total ~187 minutes against a 90-minute window, so the pack now names three explicit routes (squad split / Speedrun / 20-minute minimum) instead of implying all 20 are runnable solo. Added the two-surface briefing (WhatsApp + web app) to *How to Play* — the historical-pricing link-out is itself under test, not a side detail. One `[NEEDS INPUT]` remains: how testers receive login credentials.
 
 ---
 
@@ -24,11 +26,11 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Wp90wCNHtiLD2Hk2oCBlqNC5gPe
 | **Project** | Fixguru (IAM Worldwide Sdn Bhd) |
 | **Product** | MAIA (internal WhatsApp order-to-cash assistant, sits on AutoCount) |
 | **Client** | Fixguru — Malaysia-based packaging/carton box supplier for e-commerce sellers |
-| **Test window** | `[NEEDS INPUT: TEST_WINDOW]` |
-| **Environment & access** | `[NEEDS INPUT: ENVIRONMENT_AND_ACCESS — MAIA WhatsApp number / sandbox URL / credential handout]`. UAT must run in the setup sandbox only, never against Fixguru's production AutoCount. |
-| **Where to report** | `[NEEDS INPUT: BUG_REPORTING_CHANNEL]` |
-| **Time budget per tester** | `[NEEDS INPUT: TIME_BUDGET_PER_TESTER]` |
-| **Anything else** | `[NEEDS INPUT: ANYTHING_ELSE_TESTERS_MUST_KNOW]` |
+| **Test window** | **Tue, 14 Jul 2026, 10:30am – 12:00pm** |
+| **Environment & access** | Web app (FE): https://maia-fe-fixguru.vercel.app/login · MAIA WhatsApp number: **012-491 2154**. Run everything in the sandbox environment only — **never against Fixguru's production AutoCount.** `[NEEDS INPUT: how testers receive their login credentials]` |
+| **Where to report** | https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2 |
+| **Time budget per tester** | 1 hour 30 minutes |
+| **Anything else** | You have 90 minutes and 20 missions — you will not finish them all, and that's fine. Run **The Speedrun** (Part B §1) if you're short on time; it still touches every P1 flow. **M-20 is the mission that matters most** — if you only do one thing properly, do that one. |
 
 ### 2. How to Play (one page)
 
@@ -39,6 +41,10 @@ lark_url: https://eg69120xnei.sg.larksuite.com/wiki/Wp90wCNHtiLD2Hk2oCBlqNC5gPe
 - Out of bounds ≠ bug. Check the map (§4) before you log.
 - No loot, no glory: evidence (screenshots + document IDs) or it didn't happen.
 - Scoring in one line: XP for missions, bounty for bugs (P1 highest), bonus for Chaos Cards. Full detail in the Field Manual (Part B, §4).
+
+**Two surfaces, one product.** You'll move between **WhatsApp** (012-491 2154 — where a real Fixguru salesperson lives; this is where orders start) and the **web app** (https://maia-fe-fixguru.vercel.app/login — where the historical pricing table opens, and where you verify what the chatbot actually created). Most missions start in WhatsApp. The moment a mission hands you a link, that link is the product too — how fast it opens and how readable it is at a glance **is** the thing being tested, not a side detail.
+
+**Sandbox only.** Everything runs against the sandbox. Never push a test document to Fixguru's production AutoCount.
 
 ### 3. The World in Five Minutes
 
@@ -177,10 +183,15 @@ His three biggest fears, distilled from the actual UAT transcripts: **(1)** MAIA
 | M-19 | Look Like AutoCount | Nisa | ★ | 10 | 8 | NS-10 (ST-07) |
 | M-20 | I Speak Many Times The Same | Marcus | ★★★ BOSS FIGHT | 35 | 15 | AIP-01 full regression (VOC-005) |
 
-- **Recommended order:** M-01 → M-02 (tutorial) → M-03 → M-05 (the flagship flow) → M-06 → M-14 (core loops) → M-15 → M-19 (approval/finance) → **M-20 last, as the closing boss fight**.
-- **The Speedrun** (time-poor testers — still touches every P1 flow): M-02, M-03, M-04, M-07, M-12, M-13, M-15, M-16, M-20.
-- **100% Completion:** all 20 missions + Side Quests + at least 3 Chaos Cards played.
-- **Squad split (suggested):** Tester 1 = Xiao Ling missions (M-01/02/03/04/05/06/07/08/09/10/12/14/15/16/18); Tester 2 = Nisa + Marcus missions (M-11 shared, M-13/15/16/19/20); Tester 3 = Asrul (M-17) + free-roam Side Quests.
+**⏱ Read the time math before you start.** All 20 missions total roughly **187 minutes**. You have **90**. Nobody solos this pack — that's by design, not an oversight. Pick one of these three routes:
+
+- **Squad route (default, 3+ testers):** split by persona so coverage doesn't overlap. Tester 1 = Xiao Ling (M-01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 12, 14, 18). Tester 2 = Nisa + Marcus (M-11 shared, M-13, 15, 16, 19, **20**). Tester 3 = Asrul (M-17) + free-roam Side Quests + Chaos Cards. Each tester lands around 80–90 minutes.
+- **The Speedrun (solo / time-poor — ~93 min, still touches every P1 flow):** M-02 → M-03 → M-04 → M-07 → M-12 → M-13 → M-15 → M-16 → **M-20**. If you're running solo, this is your run. Skip everything else without guilt.
+- **100% Completion (multi-session only):** all 20 missions + Side Quests + 3+ Chaos Cards. Not achievable in one 90-minute window.
+
+**If you only have 20 minutes:** do **M-03** and **M-20**. Those two are the account. Everything else is supporting evidence.
+
+**Recommended order within your route:** tutorial (M-01, M-02) → the flagship pricing flow (M-03, M-04, M-05) → core document loops (M-06 through M-14) → approval & finance (M-15 through M-19) → **M-20 always last**, as the closing boss fight, when you've built enough context to judge it honestly.
 
 ### 2. Mission Cards
 
@@ -880,7 +891,7 @@ Rule: tag every record you create with a test-round reference in remarks/notes w
 - Chaos Card played meaningfully: +10. Sabotage bonus: as listed on the card.
 - Badges: **First Blood** (first bug of the run) · **Method Actor** (all missions, zero copy-pasted phrasings) · **Chaos Agent** (5+ chaos cards) · **Boss Slayer** (survive M-20) · **Cartographer** (3+ useful Observations) · **Completionist** (100%).
 
-**Help:** `[NEEDS INPUT: where testers ask questions during the window]`
+**Help:** Ask Gareth directly during the window. Log anything you're unsure about as an *Observation* in the reporting channel rather than sitting on it — a wrong guess about whether something is a bug costs the run more than a question does.
 
 ### Appendix — Coverage Map
 
