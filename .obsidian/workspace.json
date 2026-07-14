@@ -56,6 +56,30 @@
             }
           },
           {
+            "id": "ed25b829c30e5f11",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA"
+            }
+          },
+          {
             "id": "18df7b94c10cd7e5",
             "type": "leaf",
             "state": {
@@ -80,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -323,8 +347,9 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.95680.985a74767f3d",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.html",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.md",
@@ -337,7 +362,6 @@
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Field Guide (Infopack v1).md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
@@ -352,7 +376,6 @@
     "Granola/Transcripts/2026-07-13/Automation and Workflow Enhancements Meeting - Fireflies Transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-13/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-07-13",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — Lens Alignment Report.md",
