@@ -122,7 +122,7 @@ His three biggest fears, distilled from the actual UAT transcripts: **(1)** MAIA
 - *My day:* Customers WhatsApp me directly, all day. I forward the order into MAIA, and I'm juggling 4 to 10 of these at once — no order gets my undivided attention for long.
 - *What I want from this product:* Show me what I gave this customer last time, in one glance, faster than I could pull it up in AutoCount. That's the whole job.
 - *What makes me trust it / ditch it:* Trust it the moment it beats AutoCount at that one lookup. Ditch it the moment it makes me read three extra lines to find one number.
-- *How I talk:* Fast, item codes and shorthand, minimal punctuation. "G1 100pcs for CUST-000004, last price?" · "lalamove RM10 add"
+- *How I talk:* Fast, item codes and shorthand, minimal punctuation. "SEA LARK, BW 1mx100 SL Clear, last price?" · "3PL DC add"
 - *Patience level & quirks:* Very low patience for anything that requires re-reading. Will bail back to AutoCount the instant this feels slower.
 
 **Marcus Lim — Admin / Escalation Authority**
@@ -211,7 +211,7 @@ Your goal: Get the chatbot to accept your forwarded order and confirm it's
 working with you as an internal user, not routing anything back to the
 customer directly.
 
-Say it your way: "create quotation for CUST-000004, G1 x100" · "new order, customer 4, item G1, hundred pieces"
+Say it your way: "create quotation for FLYBEAR SDN BHD, PM74 x100" · "new order, flybear, item PM74, hundred pieces"
 → now forget these and type it how YOU would.
 
 Win conditions:
@@ -244,7 +244,7 @@ land correctly in AutoCount — with AutoCount's own document ID, not MAIA's.
 Your goal: Confirm the SO syncs to AutoCount once, cleanly, using AutoCount's
 external ID.
 
-Say it your way: "confirm SO for CUST-000004"
+Say it your way: "confirm SO for FLYBEAR SDN BHD"
 
 Win conditions:
 ☐ SO appears in AutoCount sandbox matching customer, item, qty
@@ -284,7 +284,11 @@ Your goal: Query the item's history and get back a one-glance table — all
 past invoice transactions, item code, date, invoice no., qty, standard price,
 discount %, net price — via a link you can tap straight from WhatsApp.
 
-Say it your way: "price history CUST-000004 COFFEE-NESTLE-001" · "what did I give them last time for this item"
+Real test pair (10 real invoices, price genuinely drifted 41 → 49.8 → 47 over
+the past year — this is not a fabricated scenario): customer **300-S0048 SEA
+LARK SOLUTION LIMITED**, item **BW 1mx100m (SL Clear) 4.5kg**.
+
+Say it your way: "price history SEA LARK, BW 1mx100m SL Clear" · "what did I give them last time for this item"
 
 Win conditions:
 ☐ Chatbot returns a tappable URL, not a wall of WhatsApp text
@@ -309,13 +313,19 @@ Loot to capture: the URL, screenshot of the opened table.
 MISSION M-04 — Not Found Means Not Found                        ★★ · 20 XP · ~12 min
 Persona: Xiao Ling, sales user        Covers: AIP-01 (UP-18, UP-19, UP-20)
 
-Precondition: One item/customer pair with zero invoice history; one with only 2 invoices.
+Precondition: One item/customer pair with zero invoice history; one with only 1–2 invoices.
 
 The situation: Not every item has history. You want to see MAIA handle that
 honestly — no invented rows, no fake "smoothing over" of a gap.
 
 Your goal: Query a never-before-ordered item/customer pair, then a
 thin-history one, and confirm both are handled truthfully.
+
+Real test pairs: **SEA LARK SOLUTION LIMITED + item PM72** — Sea Lark has 29
+different items on record, but has genuinely never bought PM72 — this is a
+real zero-history case, not staged. For thin-history: **FLYBEAR SDN BHD +
+item AWB-350** (exactly 1 real invoice on file) or **FLYBEAR SDN BHD + item
+A3B** (exactly 1 real invoice).
 
 Win conditions:
 ☐ Zero-history query clearly shows "not found" — no fabricated or unrelated records
@@ -405,6 +415,11 @@ discount" and the system captures it as "RM3 off" instead.
 
 Your goal: Enter a discount intending it as a percentage and confirm it's
 never silently misapplied as a flat currency amount.
+
+Real reference (discount genuinely varies invoice to invoice for the same
+customer+item — this is the exact behaviour the % field exists to capture):
+**BOOKXCESS SDN BHD + item BW 0.5mx100m (SL Clear)** — standard price RM27.70,
+discount recorded as 5% on two invoices and 10% on a third.
 
 Say it your way: "3% off" · "discount 3 percent"
 
@@ -561,15 +576,17 @@ Persona: Xiao Ling, sales user        Covers: L-07 (HP-09, UP-14)
 Precondition: —
 
 The situation: Fixguru treats delivery charges as item lines for e-invoice
-purposes — but only if you actually state the charge amount.
+purposes — but only if you actually state the charge amount. AutoCount's real
+charge master has these as actual item codes — **"3PL DC"** and **"IAM DC"**
+— not just a generic "delivery method" label.
 
-Your goal: Book a Lalamove delivery two ways — once stating method + charge
-together, once stating only the method — and see the difference hold.
+Your goal: Book a delivery two ways — once stating method + charge together,
+once stating only the method — and see the difference hold.
 
-Say it your way: "fulfillment Lalamove, delivery charge RM10" (full) · "fulfillment is Lalamove" (method only, no charge stated)
+Say it your way: "fulfillment 3PL, delivery charge item 3PL DC, RM35" (full) · "fulfillment is 3PL" (method only, no charge/SKU stated)
 
 Win conditions:
-☐ Stating method + charge together adds delivery as its own SKU/item line, sourced from AutoCount's charge master
+☐ Stating method + charge together adds "3PL DC" (or "IAM DC") as its own SKU/item line, sourced from AutoCount's real charge master — not an invented code
 ☐ Stating method alone sets the fulfillment method ONLY — it does NOT auto-add a SKU line without an explicit amount
 
 It should stop and ask you if: n/a — the two behaviours ARE the win condition.
@@ -876,12 +893,21 @@ Loot to capture: timed screenshots of the full flow, start to finish.
 
 **Evidence rules:** screenshots + every document ID created (Quotation/SO/DO/Invoice/Credit Note numbers) + timestamps.
 
-**Test Data Kit** (from the source docs — mark any gap you hit as `[GAP]`):
-- Items: G1 (std 0.33, piece-UOM floor 0.27), G3, PM72, COFFEE-NESTLE-001, DAIRY-MILK-FRESH-001, MEAL-001
-- Customer: CUST-000004, phone 60123456789 / sample format 011-xxxx
-- Delivery: Lalamove RM10, 3PL
-- FOC example: order 1000 billable + 10 FOC → stock −1010, revenue on 1000 only
-- Historical pricing example rows: 06/2026 RM0.10 std, 3% disc, RM0.097 net, qty 100 · 05/2026 RM0.10 std, 10% disc, RM0.090 net, qty 1000 · 01/2025 RM0.05 std, 5% disc, RM0.0475 net, qty 500
+**Test Data Kit** — two sources, both real, kept separate:
+
+*From actual AutoCount pricing-history export (`pricing_history.csv`, verified 14 Jul 2026 — use these for M-03, M-04, M-07, M-12, M-13):*
+- **Flagship pair (10 real invoices, genuine price drift 41 → 49.8 → 47 over a year):** customer `300-S0048` SEA LARK SOLUTION LIMITED, item `BW 1mx100m (SL Clear) 4.5kg`
+- **Zero-history pair:** SEA LARK SOLUTION LIMITED + item `PM72` (Sea Lark has 29 items on record, genuinely never bought this one)
+- **Thin-history pairs (exactly 1 invoice each):** FLYBEAR SDN BHD + `AWB-350`, or FLYBEAR SDN BHD + `A3B`
+- **Discount-drift pair (5% → 5% → 10% across 3 real invoices):** BOOKXCESS SDN BHD + item `BW 0.5mx100m (SL Clear)`, standard price RM27.70
+- **Real delivery-charge SKU codes (not generic labels):** `3PL DC` (e.g. FLYBEAR, 2 invoices, RM30 then RM35.10), `IAM DC` (multiple customers — UMAKE DESIGN GROUP PLT has 7 invoices on this code)
+
+*From meeting transcripts (24 Jun debrief — use for M-15, M-20):*
+- Items G1 (standard 0.33, piece-UOM floor 0.27), G3, PM72 — the client's own worked minimum-price example
+- Multi-item order format quoted directly by the client: "011-xxxx — G3 100, G1 300, PM72 500"
+- FOC example from UAT Action Items: order 1000 billable + 10 FOC → stock −1010, revenue on 1000 only
+
+`[GAP]` — no confirmed real phone/WhatsApp number exists in either source for customer lookup testing (AIP-03); use a sandbox test number and flag if one isn't provided separately.
 
 Rule: tag every record you create with a test-round reference in remarks/notes where possible, so cleanup is easy.
 
