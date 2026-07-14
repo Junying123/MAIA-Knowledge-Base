@@ -15,6 +15,19 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/JIGUdDNTHorf79xLqXUljP4agEb
 > Carried over from the prior v2 (2026-07-14, same day): new missions for customer-agent assignment (SL-08), outdoor sales query-only (AS-04/AS-04b), customer activity log (AS-05), payment-escalation routing (NS-06, now resolved), and item historical pricing (NS-08, now resolved). **POD (NS-07) stays a hard client conflict** — Grace explicitly rejects the photo-upload-to-Maya design. Warehouse manager persona is **Lai** (confirmed real name via Grace), not the earlier placeholder. M-23/M-25 (OOS missions for blasting/QR settlement) removed — not worth tester time confirming a deliberate refusal.
 >
 > **Added later same day:** M-45 — customer PO upload & match (AS-08/NS-12), covering the 3 confirmed customers who issue formal POs instead of WhatsApp orders. Happy-path only, matching the UAT Checklist's own scope (see its §4c note on why this is a deliberate exception to LOCKED-only testing).
+>
+> ---
+>
+> ### v4 — full audit pass (2026-07-14). Six defects fixed; two would have broken the session on the day.
+>
+> 1. **The pack didn't fit its own window.** 42 missions ≈ 385 min of testing against a 90-min budget — and the old "Speedrun" was itself 125 min, also over. Replaced with an honest timing note, a **4-tier priority ladder** (Tier 1 = the P1 Core, 65 min), and a **6-tester squad split** that actually adds up. The shortfall is now visible before the session, not during it.
+> 2. **The pack said WhatsApp; the test channel is Telegram.** Every mission told testers to use a WhatsApp number that isn't live. Added a prominent channel note up front — the swap is not a bug, and the persona's world stays WhatsApp-shaped.
+> 3. **Fictional bakery content had leaked in from the generator prompt's worked example.** CJ's persona and Chaos Card 2 both referenced "Café Bunga" and "sourdough." Macro Frozen sells frozen meat. Replaced with their real customers and SKUs.
+> 4. **M-43 had no runnable actor** — it tests a Sales Manager's alert scoping, and no Sales Manager persona existed. Added the persona, flagged the mission as needing two people.
+> 5. **The severity guide contradicted the missions.** M-35 and M-42 both call data fabrication a P1, but "invents data" wasn't in the P1 list. It is now.
+> 6. **Grace's real role was buried.** She isn't just finance — *she is the person who types in every order.* That's now stated plainly in her persona card, because it changes who the "sales/admin creates the SO" missions are really about.
+>
+> Also added: an **Adoption Side Quest** (the two people this product depends on aren't yet convinced it saves them time — that's the most valuable thing to learn today), an `ADOPTION` observation tag, a warning that **M-30's simulated SQL outage must be arranged in advance or it silently won't happen**, and a 13th Chaos Card for the KG-vs-boxes unit mismatch.
 
 ---
 
@@ -27,11 +40,20 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/JIGUdDNTHorf79xLqXUljP4agEb
 | **Project** | Macro Frozen (Macrofood) — Phase 1 Core |
 | **Product** | MAIA (WhatsApp order-to-cash assistant) |
 | **Client** | Macro Frozen — frozen-food wholesale/retail distributor |
-| **Test window** | **Tue, 14 Jul 2026, 10:30am – 12:00pm** |
-| **Environment & access** | Telegram chatbot: https://web.telegram.org/a/#8607491317 (fallback channel, live). Dev https://maia-oms-dev.vercel.app / demo https://maia-oms-demo.vercel.app also available. `[NEEDS INPUT: exact env for this run, MAIA WhatsApp number, credential handout method]` |
+| **Test window** | **Tue, 14 Jul 2026, 10:30am – 12:00pm** (90 min — see the timing note in Part B §1 before you plan) |
+| **Environment & access** | Chat channel for this run: **Telegram** — https://web.telegram.org/a/#8607491317. Web app: dev https://maia-oms-dev.vercel.app / demo https://maia-oms-demo.vercel.app. `[NEEDS INPUT: which web env (dev or demo) for this run + how testers get credentials]` |
 | **Where to report** | https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2 |
-| **Time budget per tester** | 1 hour 30 minutes |
+| **Time budget per tester** | 90 minutes (~20 min reading Part A + **~70 min actual testing**) |
+| **Testers needed** | **6 for full coverage.** Fewer testers = run the tiered priority in Part B §1, don't try to rush all 42 missions. |
 | **Anything else** | `[NEEDS INPUT: ANYTHING_ELSE_TESTERS_MUST_KNOW]` |
+
+> ### ⚠️ Read this first: WhatsApp vs Telegram
+>
+> Macro Frozen's **real-world** channel is WhatsApp — that's how their customers order, and that's what the missions and personas describe, because that's the world you're role-playing.
+>
+> **For this test run, you will actually be typing into Telegram** (link above), because the client's WhatsApp Business number isn't live yet. Same bot, same behaviour, different app.
+>
+> So: read "forward it into the MAIA WhatsApp number" as **"send it to the MAIA bot on Telegram."** The channel swap is *not* a bug — don't log it. Everything else about the persona's world stays true.
 
 ### 2. How to Play (one page)
 
@@ -129,15 +151,26 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 - *My day:* I manage my own list of restaurant/hotel and wholesale customers. Orders come in on WhatsApp all day, often at the worst moment.
 - *What I want from this product:* Get the order in fast, without re-typing everything, and without another rep or David breathing down my neck over my customers.
 - *What makes me trust it / ditch it:* Trust it if it applies my customer's price correctly without me having to remember it. Ditch it if it lets another rep see my customer's info, or blocks me on something that should just work.
-- *How I talk:* Fast, abbreviated, one thumb typing. "same order as last week for bunga but double the sourdough", "cust said no stock issue right".
+- *How I talk:* Fast, abbreviated, one thumb typing. Mixes English/Malay/Chinese without thinking about it. "same as last week for xing rui but double the chicken leg", "got stock or not ah", "20kg boneless leg for oasis, friday".
 - *Patience level & quirks:* Impatient; will try to route around a block if one shows up.
 
-**Grace — Finance / Ops Admin** *(direct client voice, confirmed 2026-07-14 in a live call — the most reliably-sourced persona in this pack)*
-- *My day:* I reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts. I'm also the one fielding most of the scope-clarification questions from the vendor side.
+**Grace — Finance / Ops Admin — *and the person who actually keys in every order*** *(direct client voice, confirmed 2026-07-14 in a live call — the most reliably-sourced persona in this pack)*
+
+> **Important:** the sales reps do *not* enter orders themselves. They WhatsApp the order to the office, and **Grace types it in.** In her own words: everything gets opened on her side. So when a mission says "sales/admin creates the SO," that's usually Grace at a desk — not CJ in the field. She is the single busiest touchpoint in the whole product; if MAIA adds steps to *her* day, the deployment fails no matter how good it looks to David.
+
+- *My day:* I reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts. I key in the orders the sales reps send me. I'm also the one fielding most of the scope-clarification questions from the vendor side.
 - *What I want from this product:* Match the easy payments automatically, but let me decide the ambiguous ones myself. Never let something post before I confirm it. And don't add steps to my day — if I'm doing the same manual work just "through Maya now," that's not a win.
 - *What makes me trust it / ditch it:* Trust it if a mismatched payer name gets flagged, not silently matched to the wrong customer. Ditch it if it invents a match, or if it adds a step (like uploading delivery photos) that I don't currently need.
 - *How I talk:* Precise about numbers, terse about everything else. "payment RM2000 only, invoice is RM5000, where the rest".
 - *Patience level & quirks:* Very low tolerance for anything that looks like it guessed instead of asking. Openly skeptical of new workflow until she's actually run it herself — don't take a "sure, sounds fine" from her as adoption confirmed.
+
+**The Sales Manager** *(role confirmed 2026-07-14; the person's name hasn't been given to us — `[NEEDS CLIENT INPUT: name]`. Play the role, not a name.)*
+- *My day:* I've got two reps under me — **Aben** and **Quinny**. I approve what they can't approve themselves, and I'm on the hook when their customers don't pay.
+- *What I want from this product:* Show me *my* two reps' problems — overdue invoices, blocked orders — without drowning me in everyone else's. If I have to approve every small thing, I'm just another bottleneck.
+- *What makes me trust it / ditch it:* Trust it if the alerts it sends me are actually mine to act on. Ditch it if I'm seeing accounts that aren't my reps', or if I'm approving things a rep should have handled.
+- *How I talk:* Short, managerial. "who's chasing this one", "that's Aben's customer, not mine".
+- *Patience level & quirks:* Cares about scope of responsibility — will notice immediately if he's shown data outside his team.
+- ⚠️ *Used in M-43. That mission cannot be run solo — you need someone playing this role and someone checking David's/Finance's alerts at the same time.*
 
 **Lai — Warehouse Manager** *(name confirmed via Grace, 2026-07-14 — still not a direct warehouse voice; Lai himself has never been heard from directly in discovery, only described)*
 - *My day:* I receive the pick-list PDF, hand it to the foreign-worker pickers, collect it back once they've marked actual quantities, and upload it to Maya. If I'm out, right now **nobody else checks their work** — a confirmed gap, not fixed by this UAT round.
@@ -148,10 +181,16 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 
 ### 7. Trust Killers — Severity Guide
 
-- **P1 — Client walks away:** MAIA bills the ordered weight instead of the actual picked weight; MAIA overwrites SQL's customer/item data as if it were master; MAIA shows a record as successfully synced to SQL when the sync actually failed (false success).
-- **P2 — Client gets nervous:** below-floor price goes through; an over-credit-limit order is not blocked, or a non-David user can approve it; a duplicate invoice is created on an already-submitted SO; a payment gets auto-matched to the wrong customer.
+- **P1 — Client walks away:**
+  - MAIA bills the **ordered** weight instead of the **actual picked** weight.
+  - MAIA overwrites SQL's customer/item data as if it were master.
+  - MAIA shows a record as successfully synced to SQL when the sync actually **failed** (false success).
+  - **MAIA invents data** — a price, a stock figure, a customer, an item — instead of saying it doesn't know. Every number this product shows has to be traceable to SQL or it's worthless. If you catch it fabricating, that's a P1, full stop.
+- **P2 — Client gets nervous:** below-floor price goes through; an over-credit-limit order is not blocked, or a non-David user can approve it; a duplicate invoice is created on an already-submitted SO; a payment gets auto-matched to the wrong customer; a sales rep sees another rep's customer data.
 - **P3 — Annoying but survivable:** MAIA needs several rounds of clarification for an ambiguous item name; a price-template error isn't explained clearly; a rep has to fight the system to get an obviously-correct order through.
 - **P4 — Cosmetic:** PDF formatting/layout doesn't match Macro Frozen's existing SQL document look.
+
+> **The one-line version of all of the above:** David's fear isn't that MAIA is slow — it's that MAIA does something wrong to *money or stock*, quietly, and he only finds out when a customer shouts at him. Anything that could do that is a P1, even if it looks small.
 
 ---
 
@@ -204,10 +243,43 @@ Also surfaced on 14 Jul: Grace explicitly does **not** want delivery photos uplo
 | M-44 | A Note on the File | CJ | ★ | 10 | 6 | HP-16, UP-32 · AS-05/SL-05 |
 | M-45 | The Formal Customer | CJ | ★ | 10 | 10 | HP-17 · AS-08 |
 
-- **Recommended order:** M-01 → M-11 (tutorial + core loops) → M-12 → M-29 (unhappy-path core) → M-30 (Boss Fight) → M-31 → M-38 (remaining edge cases) → M-39 → M-44 (2026-07-14 additions) → Side Quests.
-- **The Speedrun** (time-poor testers — still touches every P1 flow): M-02, M-03, M-04, M-05, M-07, M-09, M-15, M-19, M-20, M-24, M-26, M-30.
-- **100% Completion:** all 42 missions + Side Quests + at least 3 Chaos Cards played.
-- **Squad split (suggested):** Tester 1 = CJ missions (sales flows, M-01/02/06/08/09/10/12/13/16–24/26/27/31/34–36/38/39/40/41/42/44); Tester 2 = Grace missions (AR/CN: M-04/11/15/25/29/37/43) + David missions (M-05/23/30/32/33/43); Tester 3 = Lai + shared weight missions (M-03/14/28) plus free-roam Side Quests.
+#### ⏱️ Read this before you plan the session — the math matters
+
+All 42 missions total **≈385 minutes (6h25m)** of testing. Your window is **90 minutes per tester**, and ~20 of those go to reading Part A. That leaves **~70 minutes of actual testing per person.**
+
+**One person cannot run this pack.** Full coverage in a single 90-minute window needs **6 testers**, each taking ~70 minutes of missions. Plan for that, or deliberately cut scope using the tiers below — don't discover the shortfall at 11:45am.
+
+**If you have fewer than 6 testers, run the tiers in this order and stop when time runs out:**
+
+**🔴 Tier 1 — The P1 Core (65 min).** If only one person tests anything, it's this. Every mission here maps to a failure that, per the VoC, makes the client walk away.
+`M-03 (12) · M-14 (12) · M-30 (15) · M-26 (8) · M-35 (8) · M-02 (10)`
+— wrong weight billed · big weight gap · false sync success · SQL overwritten · MAIA inventing data · draft not SQL-sourced.
+
+**🟠 Tier 2 — Trust & Control (66 min).** The money guardrails.
+`M-04 (10) · M-15 (12) · M-16 (10) · M-17 (8) · M-18 (8) · M-19 (10) · M-20 (10)`
+
+**🟡 Tier 3 — Core Loops (70 min).** The everyday flows.
+`M-01 (8) · M-05 (10) · M-06 (8) · M-07 (8) · M-09 (10) · M-11 (12) · M-12 (10) · M-13 (10)`
+
+**🟢 Tier 4 — Everything else (~180 min).** Edge cases and the 2026-07-14 additions: M-08, M-10, M-21, M-22, M-24, M-27, M-28, M-29, M-31, M-32, M-33, M-36, M-37, M-38, M-39, M-40, M-41, M-42, M-43, M-44, M-45.
+
+- **Recommended order (within whatever tier you reach):** tutorial + core loops → unhappy paths → Boss Fight → edge cases → Side Quests.
+- **100% Completion:** all 42 missions + Side Quests + at least 3 Chaos Cards played. **This requires 6 testers.**
+
+#### Squad split — 6 testers, ~70 min each, full coverage
+
+| Tester | Persona focus | Missions | Est. |
+|---|---|---|---|
+| **T1** | CJ — sales core | M-01, M-02, M-06, M-07, M-08, M-09, M-10, M-12 | 68 min |
+| **T2** | CJ — sales edge | M-13, M-16, M-17, M-18, M-19, M-20, M-21, M-22 | 74 min |
+| **T3** | Grace — finance/AR | M-04, M-11, M-15, M-29, M-37, M-43\*, M-44 | 68 min |
+| **T4** | David — control & pricing | M-05, M-30 *(Boss Fight)*, M-31, M-32, M-33, M-36, M-38 | 67 min |
+| **T5** | Lai — warehouse & weight | M-03, M-14, M-24, M-26, M-27, M-28, M-35 | 66 min |
+| **T6** | New scope (14 Jul additions) | M-39, M-40, M-41, M-42, M-45 | 42 min |
+
+\* **M-43 needs two people** — a Sales Manager and someone to check David's/Finance's alerts. T3 runs it with T4 or the Sales Manager persona (see §6). Coordinate before starting it.
+
+**T6 has ~28 spare minutes** — after finishing, take Side Quests, or pick up whatever T2/T5 didn't reach.
 
 ### 2. Mission Cards
 
@@ -1302,9 +1374,13 @@ Loot to capture: screenshot of both cases (with and without history).
 
 ```
 MISSION M-43 — Everyone Who Should Know                            ★ · 10 XP · ~10 min
-Persona: Grace (finance) + David (owner) — coordinate as a pair        Covers: HP-15, UP-31 · NS-06
+Persona: The Sales Manager + Grace (finance) — ⚠️ NEEDS TWO PEOPLE        Covers: HP-15, UP-31 · NS-06
 
-Precondition: Invoice overdue; Multiple reps have overdue invoices
+Precondition: Invoice overdue for a customer under Aben; a second overdue invoice under a rep OUTSIDE the Sales Manager's team (to prove the scoping). Multiple reps have overdue invoices.
+
+⚠️ Coordinate before you start: one of you plays the Sales Manager (see §6), the
+other checks what Finance/David receive. You cannot verify the routing rule solo —
+the whole point is that different roles see different things.
 
 The situation: An invoice has gone overdue. Multiple people are supposed to
 be notified — but a Sales Manager should only see his own reports' overdue
@@ -1397,33 +1473,54 @@ Loot to capture: the CPO/SO number, screenshot of the match-review step.
 
 - **M-30 — The SQL Blackout** (see Mission Cards above). This area hasn't claimed a tester yet — be the first.
 
+> ⚠️ **Before the session, someone must decide how M-30 actually gets run.** It needs SQL sync to *fail* mid-submit — you can't just wish that into existence during a 90-minute window on a live environment. Either the dev team simulates the outage (pull the connection, point at a dead endpoint, kill the sync worker), or the mission can't run and should be scheduled separately.
+>
+> **Do not skip it silently.** This is the single failure mode the client named as an account-killer — a false "synced!" when nothing synced. If it can't be tested on the day, say so out loud and book it, rather than letting it quietly fall off the list. `[NEEDS INPUT: who arranges the simulated outage, and when]`
+
 ### 4. Side Quests & Chaos Cards
 
-**Side Quests** (1–2 open prompts per persona — no win-condition checklist, just go explore):
+**Side Quests** (open prompts — no win-condition checklist, just go explore):
 - *As David:* What would irritate you most about a system that's supposed to remove you as the bottleneck, but keeps asking you to approve things? Go find where that line actually is.
 - *As CJ:* A regular customer messages you something completely off-script — not an order, just a complaint or a random question. What does MAIA do with it?
 - *As Grace:* Try reconciling a payment that arrives with zero reference information at all. How far does MAIA get before it needs you?
 - *As Lai:* Try confirming a pick where you genuinely picked MORE than what was ordered, not less. Does anything treat that differently from underpicking?
+- *As the Sales Manager:* Go looking for a reason to complain that you're being shown someone else's problem. Can you see any account that isn't Aben's or Quinny's?
+
+**🔥 The Adoption Side Quest — the most valuable thing you can do today**
+
+> Grace, the person who will actually use this every day, told us plainly: routing her existing manual work *through* MAIA isn't obviously a win. She'd still upload each slip. She'd still pick which invoice to knock off. Lai may just keep using his own paper pick list. **Two of the three people this product depends on are not yet convinced.**
+>
+> So, whichever persona you're playing, once per session ask yourself honestly:
+>
+> **"If this were my actual job — would I use this tomorrow, or would I quietly go back to the old way?"**
+>
+> Then write down *the specific moment* that made you think that. Not "the UI is clunky" — the exact step where you felt it was faster to just do it yourself. That answer is worth more to this project than any bug you find today. Log it as an **Observation**, tagged `ADOPTION`.
 
 **Chaos Card Deck** (play any card on any mission for bonus XP as noted on the mission, or +10 generic if unspecified):
-1. **Typo'd or ambiguous item name** — reuse a garbled name from a different mission on a new order.
-2. **Two requests in one message** — "repeat last week's order but double the sourdough and also update my address."
+1. **Typo'd or ambiguous item name** — reuse a garbled name from a different mission on a new order ("chicken bonless leg", "shoulder skinles").
+2. **Two requests in one message** — "same as last week for xing rui but double the chicken leg, and also update their delivery address."
 3. **Change your mind right after confirming** — confirm an SO, then immediately try to cancel/modify it.
-4. **An unreadable "photo"** — describe sending a blurry pick-list photo and see how MAIA responds to a description of unreadable input.
+4. **An unreadable pick-list upload** — upload a blurry, skewed, or partially-cut scan of the annotated pick-list PDF. Does MAIA read a wrong quantity off it, or does it say it can't read it? *(This is the highest-value chaos card in the deck — the real warehouse will hand back creased, marker-scrawled paper, not a clean scan.)*
 5. **"Same as last time" with no other detail** — give MAIA nothing else to go on and see if it fabricates specifics.
 6. **Interrupting mid-flow** — start a price upload, then immediately ask an unrelated question before it finishes.
-7. **Mixed-language message** — order in a mix of English, Mandarin, and Malay in one message.
+7. **Mixed-language message** — order in a mix of English, Mandarin, and Malay in one message (this is normal here, not an edge case — their team genuinely talks this way).
 8. **A voice-note-style rambling message** — long, meandering, buries the actual ask in the middle.
 9. **Wrong customer, right item** — deliberately reference the wrong customer name and see if it's caught.
 10. **A number that's technically valid but absurd** — order 10,000kg of one SKU and see what happens (not a system limit test, a sanity-check test).
 11. **Retry storm** — submit the same action three times in quick succession.
 12. **The disappearing confirm** — start confirming a weight update, then go silent for a while before finishing it.
+13. **Two units, one order** — their items are priced by KG, but the team talks in boxes/pieces too ("3 boxes chicken chop"). Order in a unit the system doesn't price in and see whether it converts, asks, or silently guesses.
 
 ### 5. Field Manual
 
-**How to log a result:** mission code · persona · what you typed (verbatim) · what happened · what you expected · severity (P1–P4) · evidence link · chaos cards played.
+**How to log a result:** mission code · persona · what you typed (verbatim) · what happened · what you expected · severity (P1–P4, or `OBSERVATION`) · evidence link · chaos cards played.
 
-**Evidence rules:** screenshots + every document ID created (SO/DO/Invoice/CN number) + timestamps.
+**Three things you can log — know the difference:**
+- **Bug** — MAIA did something it shouldn't, or failed to do something it should. Has a severity (P1–P4).
+- **Observation** — not a bug, but it confused you *as the persona*. Out-of-bounds gaps go here. No severity.
+- **`ADOPTION` Observation** — the moment you'd have given up and done it the old way. Tag these explicitly; see the Adoption Side Quest above. **These are the highest-value thing in this run.**
+
+**Evidence rules:** screenshots + every document ID created (SO/DO/Invoice/SCN/CCN/CPO number) + timestamps.
 
 **Test Data Kit (updated 2026-07-14 — real SQL export received):**
 - **Real customers:** XS BBQ ENTERPRISE, XING RUI SDN BHD, RESTORAN TONG YANG, Restoran Wang Chuang sarawak mee, OASIS CAFE, Hwa Lyuk Korean Grill Puchong, RESTORAN APOLO - MIXED RICE, MUNCHY FOOD PROCESSING SDN. BHD., MEATMEET TRADING, CHING GROUP SDN BHD (from a 700+ row customer export — pick any real account for missions that don't require a specific agent-ownership fact).
@@ -1435,9 +1532,9 @@ Loot to capture: the CPO/SO number, screenshot of the match-review step.
 - Mission XP: ★ = 10, ★★ = 20, ★★★ = 35.
 - Bug bounty: P1 = 50, P2 = 30, P3 = 15, P4 = 5. First unique finder gets it.
 - Chaos Card played meaningfully: +10. Sabotage bonus: as listed on the card/mission.
-- Badges: **First Blood** (first bug of the run) · **Method Actor** (all missions, zero copy-pasted phrasings) · **Chaos Agent** (5+ chaos cards) · **Boss Slayer** (M-30 survived) · **Cartographer** (3+ useful Observations) · **Completionist** (100%).
+- Badges: **First Blood** (first bug of the run) · **Method Actor** (all missions, zero copy-pasted phrasings) · **Chaos Agent** (5+ chaos cards) · **Boss Slayer** (M-30 survived) · **Cartographer** (3+ useful Observations) · **Truth Teller** (an `ADOPTION` observation that changes what we build) · **Completionist** (100%).
 
-**Help:** `[NEEDS INPUT: who testers ask questions of during the window]`.
+**Help:** `[NEEDS INPUT: who testers ask questions of during the window]` — with only 70 minutes of real testing time, a tester stuck for 10 minutes has lost 15% of their run. Name a person before the session starts.
 
 ### 6. Appendix — Coverage Map
 
@@ -1515,11 +1612,12 @@ Loot to capture: the CPO/SO number, screenshot of the match-review step.
 - [x] Every observable acceptance criterion from LOCKED scope appears as a win condition (SL-01…08, AS-01, AS-04/AS-04b, AS-05 activity log, NS-04, NS-06, NS-08 — 16 testable items total, up from 10 in v1) — plus AS-08 (M-45), a deliberate happy-path-only exception since it's AGREED IN PRINCIPLE, not LOCKED (documented in the UAT Checklist §4c and here).
 - [x] Every out-of-scope/superseded item appears in Out of Bounds (Part A §5). No dedicated OOS missions this version (M-23/M-25 removed 2026-07-14) — not worth tester time confirming a deliberate refusal.
 - [ ] Recorded-failure Boss Fights — **[GAP: none exist yet; substituted one risk-based Boss Fight, flagged as such]**.
-- [x] Every primary user role (David, CJ, Grace, Lai) has a persona card; every mission's persona exists.
+- [x] Every primary user role (David, CJ, Grace, **the Sales Manager**, Lai) has a persona card; every mission's persona exists. *(Sales Manager added 2026-07-14 — M-43 previously had no runnable actor.)*
 - [x] A newcomer could run M-01 using only this pack.
-- [x] Unknowns flagged as `[GAP: ...]` / `[NEEDS INPUT: ...]` — logistics variables, test data, Boss Fight history, help channel.
-- [x] Sample phrasings match the real register found in the transcripts (Manglish, shorthand, "same as last week" style).
-- [x] The Speedrun subset (Campaign Overview §1) still covers every P1-risk flow (SQL-master, weight billing, false-sync-success, floor pricing, credit block, duplicate invoice, DO/invoice qty).
+- [x] Unknowns flagged as `[GAP: ...]` / `[NEEDS INPUT: ...]` — logistics variables, test data, Boss Fight history, help channel, Sales Manager's name, M-30 outage arrangement.
+- [x] Sample phrasings match the real register found in the transcripts (Manglish, shorthand, code-switching). **Fixed 2026-07-14:** removed leaked bakery examples ("Café Bunga", "sourdough") from CJ's persona and Chaos Card 2 — those came from the generator prompt's fictional illustration, not this client. Macro Frozen sells frozen meat.
+- [x] **Tier 1 (the P1 Core, Part B §1) covers every P1-risk flow** — wrong weight billed (M-03, M-14), SQL overwritten (M-26), false sync success (M-30), invented data (M-35), draft not SQL-sourced (M-02). *(Replaced the old "Speedrun," which claimed full P1 coverage but omitted M-35 — data fabrication — and in any case didn't fit the 90-minute budget.)*
+- [x] **The pack's scope fits its window.** 42 missions ≈ 385 min; the timing note and 6-tester squad split make that explicit rather than leaving the shortfall to be discovered on the day.
 
 ---
 
