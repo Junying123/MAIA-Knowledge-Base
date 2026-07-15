@@ -73,7 +73,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/D9pxdPKRIoUei7xQMn5ldxRDgih
 | **Bug reporting** | `https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2` |
 | **Tracker to update progress** | QA Testing Tracker |
 | **Time budget per tester** | 90 minutes (~20 min reading Part A + ~70 min actual testing) |
-| **Testers needed** | 6 for full coverage. Fewer testers = run the tiered priority in Part B §1, don't try to rush all 18 missions. |
+| **Testers needed** | 5–6 for full coverage. Fewer testers = run the tiered priority in Part B §1, don't try to rush all 18 missions. |
 
 > **Remember:** Macro Frozen's *real* channel is WhatsApp — that's the world every persona and mission describes. **For this test run you will actually use the Chatbot handle above**, since the client's WhatsApp number isn't live yet. Same bot, same behaviour, different app. The channel swap is not a bug — don't log it.
 
@@ -511,7 +511,7 @@ Cares sharply about scope of responsibility — will notice immediately if shown
 
 ---
 
-#### Persona P-05 — Lai, Warehouse Manager
+#### Persona P-05 — Lai, Logistics/Warehouse Manager
 
 **Evidence basis:** name confirmed via Grace (2026-07-14); not a direct warehouse voice — Lai himself has never been heard from directly in discovery, only described
 
@@ -599,33 +599,33 @@ Will revert to the old paper process the moment the new one is friction — a li
 | M-18 — The Formal Customer | Grace | ★ | 10 | 10 min |
 | BF-01 — The SQL Blackout | David | ★★★ | 35 | 15 min |
 
-**Total if run end to end: ~199 minutes.** Your window is 90 minutes per tester (~70 minutes of actual testing) — see the priority tiers below.
+**Total if run end to end: ~189 minutes** (includes M-04 and M-11, both excluded from active testing this round — 163 min for the 17 active missions + BF-01). Your window is 90 minutes per tester (~70 minutes of actual testing) — see the priority tiers below.
 
 #### Recommended order
 
 Tutorial (M-01) → core loops (M-02, M-05, M-07, M-09) → unhappy paths (M-03, M-06, M-12) → new-scope additions (M-13 through M-18) → Boss Fight (BF-01) → Side Quests. (M-04 and M-11 excluded this round — see their WIP/not-shipped flags.)
 
-#### 🔴 Tier 1 — The P1 Core (~44 min)
+#### 🔴 Tier 1 — The P1 Core (~39 min core, plus a partial run-through of M-06's outage check)
 
 If only one person tests anything, it's this — every mission here maps to a failure that makes the client walk away.
-`M-02 (14) · M-03 (10) · BF-01 (15) · M-06 (part of, see below)`
+`M-02 (14) · M-03 (10) · BF-01 (15)` — plus a partial (unscored) look at M-06's broken-template outage check; M-06 is scored in full under Tier 2.
 
 Given the tight budget, run **M-02 → M-03 → BF-01** first if time is short.
 
-#### 🟠 Tier 2 — Trust & Control (~52 min)
+#### 🟠 Tier 2 — Trust & Control (~40 min)
 `M-05 (10) · M-07 (12) · M-06 (12) · M-08 (6)` — **M-04 excluded this round (not yet shipped, next sprint)**
 
-#### 🟡 Tier 3 — Core Loops (~32 min)
+#### 🟡 Tier 3 — Core Loops (~34 min)
 `M-01 (8) · M-09 (10) · M-10 (8) · M-12 (8, if time)`
 
-#### 🟢 Tier 4 — New Scope Additions (~52 min)
-`M-13 (8) · M-14 (8) · M-15 (8) · M-16 (10) · M-17 (6) · M-18 (10, blocked pending FIX-01)` — **M-11 excluded this round (WIP, see mission card)**
+#### 🟢 Tier 4 — New Scope Additions (~50 min)
+`M-13 (8) · M-14 (8) · M-15 (8) · M-16 (10) · M-17 (6) · M-18 (10)` — **M-11 excluded this round (WIP, see mission card)**
 
 #### Squad split — suggested for 5–6 testers, ~70 min each
 
 | Tester | Persona focus | Missions | Est. |
 |-|-|-|-|
-| T1 | Ben/Queenie — sales core | M-01, M-02, M-08, M-09, M-10, M-12 | 52 min |
+| T1 | Ben/Queenie — sales core | M-01, M-02, M-08, M-09, M-10, M-12 | 54 min |
 | T2 | Ben/Queenie — sales edge | M-07, M-13, M-14, M-15, M-17 | 42 min |
 | T3 | Grace — finance/AR | M-16*, M-18 | 20 min (M-04 not shipped yet, M-11 WIP — both excluded) |
 | T4 | David — control & pricing | M-05, M-06, BF-01 | 37 min |
@@ -721,7 +721,7 @@ It tells you what it captured, what's missing, and asks how to proceed — it **
 #### Mission M-02 — SQL Doesn't Lie · ★★ · 20 XP · ~14 min
 
 **Persona:** Ben / Queenie, Sales Rep (+ optionally Lai for the weight-confirmation half)
-**Covers:** HP-02, HP-03 · UP-01, UP-02, UP-03, UP-13, UP-15, UP-16, UP-17, UP-24 · SL-01, SL-07, AS-01
+**Covers:** HP-02, HP-03 · UP-01, UP-02, UP-03, UP-17 · SL-01, SL-07, AS-01
 **Mission type:** Core + Edge
 
 ##### The situation
@@ -1175,7 +1175,7 @@ Submit the within-limit order and confirm it goes through with zero friction; th
 
 ##### It should stop and ask you if
 
-- the order breaches the credit limit or unpaid "one invoice" rule.
+- the order breaches the credit limit.
 
 ##### If something breaks mid-way
 
@@ -1927,20 +1927,20 @@ Most customers just message you an order. But a handful — 3 confirmed accounts
 >
 > **Scope note:** For Macro Frozen, CPO = plain customer PO document intake only. There is no certificate/tax-reference linkage to test here (that's a different CPO feature built for other clients) — don't test for or expect cert/tax validation.
 
-**Precondition:** ⚠️ **Blocked pending FIX-01** — one of the 3 confirmed PO-issuing customers has sent a real PO document. If no real sample is available yet, mark this mission **Blocked — Test Data/Configuration**.
+**Precondition:** FIX-01 supplied 2026-07-15 ("Macrofrozen Sample PO") — one of the 3 confirmed PO-issuing customers' real PO document.
 
 ##### Input recipe
 
 **Input type:** customer Purchase Order document (see `05_Customer_Purchase_Orders/`)
 
 **Choose or prepare:**
-- Use the fixed real PO sample once supplied (FIX-01).
+- Use the fixed real PO sample, "Macrofrozen Sample PO" (FIX-01).
 - Do not invent a customer as a "PO customer" unless confirmed by David/Grace as one of the actual 3.
 
 **Your chosen data must satisfy:**
 - The customer must be one of the genuinely confirmed 3 PO-issuers.
 
-**Fixed reference:** FIX-01 — `sample_po_[customer]_2026-07.pdf` (not yet supplied)
+**Fixed reference:** FIX-01 — "Macrofrozen Sample PO" (supplied 2026-07-15)
 
 ##### Roles and business rules
 
@@ -2162,7 +2162,7 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 | Price update templates (valid + broken) | M-05, M-06 | Valid ready; broken template open |
 | Pick-list samples | M-02 (sabotage) | Open, non-blocking |
 | Payment slips | M-04 | Open, blocking (PA-10) |
-| Customer PO (FIX-01) | M-18 | **Blocking — not yet supplied** |
+| Customer PO (FIX-01) | M-18 | Supplied 2026-07-15 |
 | SQL outage simulation | BF-01 | **Blocking — not yet arranged (PA-04)** |
 
 #### Persona-rule traceability

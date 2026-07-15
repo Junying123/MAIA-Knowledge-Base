@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-14
+last_reviewed: 2026-07-15
 lark_url: https://eg69120xnei.sg.larksuite.com/docx/NKJLdn92WoqJirxoS3mlAMjegaf
 ---
 
@@ -61,7 +61,7 @@ Every folder here traces to at least one active mission in the Field Guide. Noth
 **Why it exists:** M-18 tests the customer-PO-upload-and-match flow (Scope Lock AS-08) — a low-volume path used by only 3 confirmed customers.
 **Used by:** M-18.
 **Minimum pool:** 1 real PO, treated as a **fixed fixture** (see below) because this mission's realism depends on knowing what an authentic PO actually looks like, not an invented one.
-**Status:** blocking — no real PO sample exists yet. See Launch Readiness Checklist PA-02/PA-03.
+**Status:** resolved 2026-07-15 — "Macrofrozen Sample PO" supplied. See Launch Readiness Checklist PA-02/PA-03.
 
 ### 06_Special_Regression_Fixtures/
 **Why it's currently empty:** The one high-stakes regression risk in this account — a false "synced!" when SQL sync actually fails (Boss Fight BF-01) — is an **environment condition**, not a file. It needs to be arranged by the dev team (kill the sync connection, point at a dead endpoint) rather than supplied as a document.
@@ -83,7 +83,7 @@ Every folder here traces to at least one active mission in the Field Guide. Noth
 
 | Fixture ID | Filename | Used by | Rule |
 |-|-|-|-|
-| FIX-01 | `sample_po_[customer]_2026-07.pdf` | M-18 | Not yet supplied — blocking, see Launch Readiness Checklist §6 |
+| FIX-01 | "Macrofrozen Sample PO" | M-18 | Supplied 2026-07-15, see Launch Readiness Checklist §6 |
 
 ## Folder rules
 

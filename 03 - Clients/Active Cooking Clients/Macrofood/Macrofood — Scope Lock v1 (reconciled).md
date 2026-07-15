@@ -281,9 +281,9 @@ Macro Frozen — Scope Lock v1
 
 **Status:** LOCKED
 
-**Mechanism confirmed:** Every customer record in SQL's "Maintain Customer" screen carries an **Agent** field/code. Currently **3 active salesmen**: CJ Tan, Aben, Quinny (spelling to double-check with Grace's export). **CK** is a third-party driver, not staff — has 3 customers under his own agent code purely for commission tracking; Macrofrozen does **not** manage or involve these 3 customers in normal sales operations, and they should stay excluded from MAIA's sales-territory logic (ties to SL-05). All unassigned/legacy customers (e.g. from resigned agents) **default to David** as agent.
+**Mechanism confirmed:** Every customer record in SQL's "Maintain Customer" screen carries an **Agent** field/code. Currently **3 active salesmen**: CJ Tan, Ben, Queenie (spelling corrected 2026-07-15 against `Macrofood Sales User Setup.xlsx` — was mistranscribed as Aben/Quinny; note CJ Tan is Sales Manager, Ben/Queenie are the 2 reps under him). **CK** is a third-party driver, not staff — has 3 customers under his own agent code purely for commission tracking; Macrofrozen does **not** manage or involve these 3 customers in normal sales operations, and they should stay excluded from MAIA's sales-territory logic (ties to SL-05). All unassigned/legacy customers (e.g. from resigned agents) **default to David** as agent.
 
-**Acceptance criteria:** MAIA's customer-agent mapping must mirror this SQL structure exactly — CJ Tan/Aben/Quinny's customers route to them, CK's 3 customers are excluded from MAIA sales workflows, everything else defaults to David.
+**Acceptance criteria:** MAIA's customer-agent mapping must mirror this SQL structure exactly — CJ Tan/Ben/Queenie's customers route to them, CK's 3 customers are excluded from MAIA sales workflows, everything else defaults to David.
 
 **Action:** Grace's team will export the SQL customer→agent data for the build team to reference directly.
 
