@@ -73,7 +73,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/D9pxdPKRIoUei7xQMn5ldxRDgih
 | **Bug reporting** | `https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2` |
 | **Tracker to update progress** | QA Testing Tracker |
 | **Time budget per tester** | 90 minutes (~20 min reading Part A + ~70 min actual testing) |
-| **Testers needed** | 6 for full coverage. Fewer testers = run the tiered priority in Part B §1, don't try to rush all 42 missions. |
+| **Testers needed** | 6 for full coverage. Fewer testers = run the tiered priority in Part B §1, don't try to rush all 18 missions. |
 
 > **Remember:** Macro Frozen's *real* channel is WhatsApp — that's the world every persona and mission describes. **For this test run you will actually use the Chatbot handle above**, since the client's WhatsApp number isn't live yet. Same bot, same behaviour, different app. The channel swap is not a bug — don't log it.
 
@@ -108,13 +108,13 @@ Macro Frozen is a **frozen-food wholesale/retail distributor** in Malaysia. Cust
 
 Macro Frozen sells frozen meat (beef, chicken, pork variants) and related frozen products, priced and sold by weight (kg) rather than by unit in most cases. Customers fall into two broad segments — **wholesale** and **retail** (restaurants/hotels) — with the main difference being order volume, not how they're treated. The business runs on **SQL/AutoCount**, an existing accounting and order system that the client has used for years; MAIA is being layered on top of it, not replacing it.
 
-The team includes: **David** (owner/MD, who personally coordinates almost everything and controls credit and pricing), **Applle** (Admin — same permission level as David, not separately covered by a persona card in this pack), **CJ Tan** (Sales Manager, overseeing 2 reps), **2 sales reps** (**Ben** and **Queenie** — each manages their own customer list), **Grace** (Finance Manager, who is also the person who actually types every order into the system once a sales rep relays it), and **Lai** (the Logistics/warehouse manager, who coordinates a team of foreign-worker pickers). A third-party driver, **CK**, also has 3 customers of his own under a separate commission arrangement — these are not Macro Frozen's normal sales customers and should stay outside the usual sales workflows.
+The team includes: **David** (owner/MD, who personally coordinates almost everything and controls credit and pricing), **Applle** (Admin — same permission level as David, not separately covered by a persona card in this pack), **CJ Tan** (Sales Manager, overseeing 2 reps), **2 sales reps** (**Ben** and **Queenie** — each manages their own customer list), **Grace** (Finance Manager — payment reconciliation, AR, CCN approval; not an order-entry role), and **Lai** (the Logistics/warehouse manager, who coordinates a team of foreign-worker pickers). A third-party driver, **CK**, also has 3 customers of his own under a separate commission arrangement — these are not Macro Frozen's normal sales customers and should stay outside the usual sales workflows.
 
 #### How a normal working day unfolds
 
 1. A customer sends an order via **WhatsApp**, often in shorthand or informal language (e.g. "pork belly slight" meaning slice, skin-on).
-2. A **sales rep** (Ben or Queenie) receives it — but does *not* key it into any system themselves. Instead, they relay it to the office, and **Grace types it in**.
-3. Grace creates a **draft Sales Order** using MAIA, referencing SQL customer/item data.
+2. A **sales rep** (Ben or Queenie) receives it — but does *not* key it into any system themselves. Instead, they relay it to the office for order entry. **(Correction 2026-07-15: Grace is Finance Manager only, not the order-entry person — who actually keys in the order is an open question, see Launch Readiness Checklist.)**
+3. The office creates a **draft Sales Order** using MAIA, referencing SQL customer/item data.
 4. The SO is submitted and converted into a **pick list PDF**, sent to **Lai** (the warehouse manager).
 5. Lai shares the pick list with his foreign-worker pickers, who physically weigh and pack the product, recording the **actual picked weight** on the paper.
 6. Lai collects the annotated pick list and **uploads it back to MAIA**, which amends the SO to the actual weight.
@@ -126,7 +126,7 @@ The team includes: **David** (owner/MD, who personally coordinates almost everyt
 
 | Stage | Acting role | Input | Action | Output | Main failure consequence |
 |-|-|-|-|-|-|
-| 1. Order intake | Sales rep → Grace | WhatsApp/Telegram message | Grace creates draft SO | Draft SO | Wrong item/customer picked silently |
+| 1. Order intake | Sales rep → office | WhatsApp message | Office creates draft SO | Draft SO | Wrong item/customer picked silently |
 | 2. Weight confirmation | Lai + pickers | Pick-list PDF | Physical weighing, annotate, upload | Amended SO | Billed weight ≠ actual weight |
 | 3. Document generation | MAIA | Amended SO | Generate DO + Invoice | DO, Invoice | Duplicate invoice, or invoice qty > DO qty |
 | 4. Payment | Grace | Bank slip / cash / QR | Match to invoice | Payment record | Wrong customer credited |
@@ -134,7 +134,7 @@ The team includes: **David** (owner/MD, who personally coordinates almost everyt
 
 #### Systems, channels, and documents
 
-- **Telegram (test channel) / WhatsApp (real channel):** the single order-intake channel — one number, no multi-inbox routing.
+- **Chatbot (test channel) / WhatsApp (real channel):** the single order-intake channel — one number, no multi-inbox routing.
 - **MAIA:** the operational layer testers interact with directly.
 - **SQL/AutoCount:** the client's existing ERP — **authoritative for customer and item master data**. MAIA references it but never overwrites it. You cannot access this system directly during testing — see Section 4, Beyond Tester Reach.
 - **Documents:** Sales Order (SO) → Delivery Order (DO) → Invoice → Credit Note (split into **SCN**, which can reverse billing and/or return stock, and **CCN**, billing-only) → Pro Forma Invoice (a document literally titled "invoice," used for deposit-collection cases).
@@ -163,7 +163,7 @@ David's stated want was faster order processing. What his actual behaviour revea
 
 - **MAIA silently does something wrong to money or stock, and nobody notices until a customer complains.** This is David's single biggest fear.
 - **MAIA tries to replace the existing SQL/paper process instead of fitting around it.**
-- **The rollout looks good in a demo, but nobody on staff — warehouse, sales, finance — actually changes how they work.** There is a live, unresolved risk here: Grace (the person who keys in every order and matches every payment) has directly told the team she isn't yet convinced the new AR-matching flow saves her any real time compared to her current manual process. This is not hypothetical scepticism — it came from the person who will actually operate the system daily.
+- **The rollout looks good in a demo, but nobody on staff — warehouse, sales, finance — actually changes how they work.** There is a live, unresolved risk here: Grace (the Finance Manager who matches every payment) has directly told the team she isn't yet convinced the new AR-matching flow saves her any real time compared to her current manual process. This is not hypothetical scepticism — it came from the person who will actually operate the system daily.
 - **A photo/proof-of-delivery upload step gets added that nobody asked for.** Grace has explicitly rejected the idea of uploading delivery photos into MAIA — her current WhatsApp-group process already works for her, and she sees an upload step as *more* work, not less. This is a real, unresolved conflict, not a future feature — see Section 4.
 
 #### What this means when you test
@@ -179,7 +179,7 @@ David's stated want was faster order processing. What his actual behaviour revea
 
 #### Product purpose
 
-MAIA is an **internal operations assistant** for Macro Frozen's Phase 1 — it converts informal WhatsApp/Telegram orders into structured, SQL-referencing Sales Orders, supports the actual-weight confirmation workflow, generates SO/DO/Invoice/Credit Note documents, enforces pricing and credit rules, and assists (without fully automating) AR reconciliation. It is explicitly **not** intended to replace SQL, become a customer-facing ordering app, or automate the client's entire warehouse process.
+MAIA is an **internal operations assistant** for Macro Frozen's Phase 1 — it converts informal WhatsApp orders into structured, SQL-referencing Sales Orders, supports the actual-weight confirmation workflow, generates SO/DO/Invoice/Credit Note documents, enforces pricing and credit rules, and assists (without fully automating) AR reconciliation. It is explicitly **not** intended to replace SQL, become a customer-facing ordering app, or automate the client's entire warehouse process.
 
 #### In-scope workflow chain
 
@@ -219,8 +219,8 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 
 | Role | May create | May submit/approve | Must be refused | Hands off to |
 |-|-|-|-|-|
-| Sales rep (Ben, Queenie) | Own customer records, activity notes | — | Viewing another rep's customers; creating an order directly instead of relaying via WhatsApp; self-approving an over-limit order; issuing a CN unsupervised | Grace (order entry), CJ Tan (team matters), David (credit approval) |
-| Grace (Finance Manager) | SOs (from relayed orders), payment matches, CCN | Payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
+| Sales rep (Ben, Queenie) | Own customer records, activity notes | — | Viewing another rep's customers; creating an order directly instead of relaying via WhatsApp; self-approving an over-limit order; issuing a CN unsupervised | Office (order entry — owner open question), CJ Tan (team matters), David (credit approval) |
+| Grace (Finance Manager) | Payment matches, CCN | Payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
 | David (Admin) | Price adjustments (desktop), credit overrides | Credit-limit overrides | — | — (top of hierarchy) |
 | Applle (Admin — same permissions as David) | All (per role matrix) | All (per role matrix) | — | Not separately covered by a persona card this round |
 | CJ Tan (Sales Manager) | — | Team-level approvals for Ben/Queenie | Viewing accounts outside his own 2 reps | David (escalation) |
@@ -378,13 +378,13 @@ Low patience for back-and-forth on things he considers obvious; very high attent
 
 ##### A day in my life
 
-I manage my own list of restaurant/hotel and wholesale customers. Orders come in on WhatsApp all day, often at the worst moment. I don't type the order into MAIA myself — I relay it to the office, and Grace keys it in. What I actually do in MAIA (once field access is live) is check prices, check a customer's outstanding balance, and log a quick note after a call. I want my customer's price applied correctly without me having to remember it, and I never want another rep — or David — breathing down my neck over my own customers.
+I manage my own list of restaurant/hotel and wholesale customers. Orders come in on WhatsApp all day, often at the worst moment. I don't type the order into MAIA myself — I relay it to the office for entry. What I actually do in MAIA (once field access is live) is check prices, check a customer's outstanding balance, and log a quick note after a call. I want my customer's price applied correctly without me having to remember it, and I never want another rep — or David — breathing down my neck over my own customers.
 
 ##### Business rules I live by
 
 - **Always:** verify a price looks right before relaying an order; keep my own customer notes up to date.
 - **Never:** try to view another rep's customer list; try to create an order directly instead of relaying it to the office; try to issue a credit note myself.
-- **Before I submit:** nothing — I don't submit SOs, I relay to Grace.
+- **Before I submit:** nothing — I don't submit SOs, I relay to the office.
 - **I can approve:** nothing formally — I escalate anything unusual.
 - **I cannot approve:** credit overrides, CN issuance.
 - **I escalate to:** CJ Tan, my Sales Manager (for team matters), or David directly (for credit blocks).
@@ -419,19 +419,19 @@ Impatient; will try to route around a block if one shows up.
 
 ---
 
-#### Persona P-03 — Grace, Finance Manager — *and the person who actually keys in every order*
+#### Persona P-03 — Grace, Finance Manager
 
-**Evidence basis:** direct VoC (live clarification call, 2026-07-14) — the most reliably-sourced persona in this pack
+**Evidence basis:** direct VoC (live clarification call, 2026-07-14) — the most reliably-sourced persona in this pack. **Correction 2026-07-15:** earlier drafts of this pack described Grace as the person who keys in every order. That's wrong — Grace is Finance Manager only, no order-entry duty. Who actually enters relayed orders is an open question (see Launch Readiness Checklist).
 
 ##### A day in my life
 
-I reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts. I also key in every single order the sales reps relay to me over WhatsApp; nothing gets entered into MAIA except through me. I'm also the one fielding most of the scope-clarification questions from the vendor side, so I know this product's design better than most of the team.
+I reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts. I'm also the one fielding most of the scope-clarification questions from the vendor side, so I know this product's design better than most of the team.
 
-> **Why this matters:** I am the single busiest touchpoint in the entire product. If MAIA adds steps to *my* day, the deployment fails no matter how good it looks to David in a demo.
+> **Why this matters:** payment reconciliation and AR are daily, high-volume work for me. If MAIA adds steps to *my* day, the deployment fails no matter how good it looks to David in a demo.
 
 ##### Business rules I live by
 
-- **Always:** verify a mismatched payer name before matching it to any invoice; key in orders exactly as relayed, flagging anything unclear back to the rep.
+- **Always:** verify a mismatched payer name before matching it to any invoice.
 - **Never:** let a payment auto-match on an ambiguous case without my confirmation; let something post before I've explicitly confirmed it.
 - **Before I submit:** a payment match, I check that the amount and reference genuinely line up.
 - **I can approve:** payment matches, Customer Credit Notes (billing-only).
@@ -468,7 +468,7 @@ Very low tolerance for anything that looks like it guessed instead of asking. Op
 
 #### Persona P-04 — CJ Tan, Sales Manager
 
-**Evidence basis:** direct VoC (role confirmed 2026-07-14) + confirmed via `Macrofood Sales User Setup.xlsx` (real staff roster) — name confirmed as **CJ Tan**, correcting an earlier placeholder in this pack.
+**Evidence basis:** direct VoC (role confirmed 2026-07-14) + confirmed via `Macrofood Sales User Setup.xlsx` (real staff roster) — name confirmed as **CJ Tan**, correcting an earlier placeholder in this pack. Role Permission sheet confirms Sales Manager perm = READ, WRITE, CREATE on Customer/Quotation/Sales Order — Sales Manager only, no Admin access (the sheet's separate "Admin" list is stale/incorrect where it names him, per Gareth 2026-07-15).
 
 ##### A day in my life
 
@@ -517,7 +517,7 @@ Cares sharply about scope of responsibility — will notice immediately if shown
 
 ##### A day in my life
 
-I receive the pick-list PDF, hand it to the foreign-worker pickers, collect it back once they've marked actual quantities, and upload it to MAIA. If I'm out sick, right now **nobody else checks their work** — a confirmed operational gap, not something this test round fixes.
+I receive the pick-list PDF, hand it to the foreign-worker pickers on paper, collect it back once they've marked actual quantities, and upload it to MAIA myself. **The foreign-worker pickers never touch MAIA directly** — no login, no account, by design, not a gap — I am the sole system user for this step. If I'm out sick, right now **nobody else checks their work** — a confirmed operational gap, not something this test round fixes.
 
 ##### Business rules I live by
 
@@ -654,7 +654,7 @@ A regular customer just sent you an order over WhatsApp. You relay it into the *
 
 > **Why this matters:** A single intake channel is a locked, load-bearing rule — if MAIA quietly accepts a second channel, the whole territory-isolation and order-routing design breaks.
 
-**Precondition:** The MAIA/Telegram channel is live and you are an authorised user.
+**Precondition:** The MAIA chatbot channel is live and you are an authorised user.
 
 ##### Input recipe
 
@@ -1641,7 +1641,7 @@ A wrong agent shown is a **P2**; CK's customers leaking into the normal pipeline
 
 ##### The situation
 
-You're out in the field. You want to check a customer's outstanding balance and an item's price — but you should **not** be able to create an order directly from here; that goes through the office via WhatsApp relay to Grace.
+You're out in the field. You want to check a customer's outstanding balance and an item's price — but you should **not** be able to create an order directly from here; that goes through the office via WhatsApp relay for entry.
 
 **Precondition:** A real customer and item exist.
 
@@ -2173,7 +2173,7 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 | David | Price adjustments via desktop, not WhatsApp | SL-03 | M-05 |
 | Ben/Queenie (Sales Rep) | Never sees another rep's customers | SL-05 | M-08, M-12, M-17 |
 | Ben/Queenie (Sales Rep) | Cannot create orders directly in the field | AS-04/AS-04b | M-14 |
-| Grace | Keys in every order relayed by sales | VoC (direct, 2026-07-14) | M-01–M-18 (implicit throughout) |
+| Grace | Finance Manager — payment reconciliation, AR, CCN | VoC (direct, 2026-07-14) | M-01–M-18 (implicit throughout) |
 | Grace | Only Finance issues CN; never a rep unsupervised | SL-07/SL-04 | M-11 (currently WIP, not run this round) |
 | CJ (Sales Manager) | Sees only Ben/Queenie's overdue accounts | NS-06 | M-16 |
 | Lai | Single point of contact for pick-list upload; no backup exists | AS-01, VoC (NS-10) | M-02 |
