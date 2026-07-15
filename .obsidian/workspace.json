@@ -294,10 +294,14 @@
                   {
                     "id": 183,
                     "name": "zsh 183"
+                  },
+                  {
+                    "id": 184,
+                    "name": "zsh 184"
                   }
                 ],
-                "activeId": 183,
-                "nextId": 184
+                "activeId": 184,
+                "nextId": 185
               },
               "icon": "terminal",
               "title": "Terminal"
