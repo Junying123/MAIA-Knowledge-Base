@@ -334,7 +334,7 @@ Very low patience for anything that requires re-reading. Will bail back to AutoC
 
 ##### Language preference
 
-Chats in a **mixed English / Bahasa Malaysia / Mandarin** register — item codes and shorthand carry across all three, per her own sample phrasings above. Reply-language preference is user-configurable (English or Bahasa Malaysia, per NS-09) and should be tested holding — see M-18. `[GAP: whether she personally defaults to EN or BM reply is not confirmed in source docs — test both]`
+EN/BM/Mandarin mix (VOC-028, NS-09). `[GAP: her own default not confirmed — test both EN and BM reply, see M-18]`
 
 ##### What I can do without asking anyone
 
@@ -398,7 +398,7 @@ Patient but visibly eroding — treat every interaction with him as a live trust
 
 ##### Language preference
 
-Chats in **English** — his one direct quote in the corpus ("I speak many times the same… I don't know how to tell you") is English, and every debrief interaction attributed to him is in English. `[GAP: no evidence he ever switches to BM/Mandarin — test in English by default]`
+English (his only direct quote is English). `[GAP: no evidence he ever switches]`
 
 ##### What I can do without asking anyone
 
@@ -462,7 +462,7 @@ Will double-check every PDF against what AutoCount would have produced.
 
 ##### Language preference
 
-`[GAP: no VoC source describes Nisa directly — this persona is scope-and-UAT inferred, not a real transcript voice. Her sample phrasing above is illustrative, not evidence of language choice. Her name is Malay, which is a real signal, but not confirmation — don't assume English by default. Test both English and Bahasa Malaysia reply preference for this persona, and treat whichever the real Fixguru finance user actually uses as the thing to confirm with the client, not infer.]`
+`[GAP: no VoC source for Nisa — don't assume English or BM, test both, confirm with client]`
 
 ##### What I can do without asking anyone
 
@@ -525,7 +525,7 @@ No tolerance for missing physical detail — this is the floor, not an app scree
 
 ##### Language preference
 
-Chats in short **Bahasa Malaysia-inflected English**, broken and physical ("which shelf, how many box"). `[GAP: VoC evidence for this persona is thin-voice/relayed via sales, not direct — no confirmed reply-language preference; test in his natural mixed register, note if UAT owner confirms a preferred reply language]`
+`[GAP: no direct VoC source for Asrul — don't assume BM, test both, confirm with client]`
 
 ##### What I can do without asking anyone
 
