@@ -67,20 +67,17 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/D9pxdPKRIoUei7xQMn5ldxRDgih
 | **Product** | MAIA — WhatsApp-first order-to-cash assistant |
 | **Client** | Macro Frozen — frozen-food wholesale/retail distributor |
 | **Issued** | 2026-07-14 |
-| **Test window** | **Tue 14 Jul 2026, 10:30am – 12:00pm (90 minutes)** |
-| **Environment / access** | Test channel is **Telegram**: `https://web.telegram.org/a/#8607491317`. Web app: dev `maia-oms-dev.vercel.app` / demo `maia-oms-demo.vercel.app`. `[NEEDS INPUT: which web env, and credential handout method]` |
-| **Bug-reporting channel** | `https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2` |
-| **XP tracker** | `[NEEDS INPUT]` |
-| **UAT owner** | Gareth (PM) |
-| **Time budget per tester** | 90 minutes total — expect **~20 minutes reading Part A** and **~70 minutes of actual mission testing** |
-| **Input library** | See `00_START_HERE_INPUT_LIBRARY.md` in the shared UAT folder |
-| **Test-data access notes** | Real customer and item master data (700+ customers, 459 items) is available — confirm it's loaded into your test account before you start |
-| **Inaccessible systems** | You cannot see the client's SQL/AutoCount system directly. Anything that depends on verifying data *inside* SQL is a **Beyond Tester Reach** handoff — see Section 4 |
-| **Anything else** | `[NEEDS INPUT]` |
+| **Test window** | Tue, 14 Jul 2026, 10:30am – 12:00pm (90 min — see the timing note in Part B §1 before you plan) |
+| **Environment & access** | Web app: `https://maia-fe-macrofrozen.vercel.app/`. Chatbot: `@maia_macrofoods_bot` |
+| **Input Document** | Macrofrozen Sample PO |
+| **Bug reporting** | `https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2` |
+| **Tracker to update progress** | QA Testing Tracker |
+| **Time budget per tester** | 90 minutes (~20 min reading Part A + ~70 min actual testing) |
+| **Testers needed** | 6 for full coverage. Fewer testers = run the tiered priority in Part B §1, don't try to rush all 42 missions. |
 
-> **Remember:** Macro Frozen's *real* channel is WhatsApp — that's the world every persona and mission describes. **For this test run you will actually type into Telegram**, because the client's WhatsApp number isn't live yet. Same bot, same behaviour, different app. The channel swap is not a bug — don't log it.
+> **Remember:** Macro Frozen's *real* channel is WhatsApp — that's the world every persona and mission describes. **For this test run you will actually use the Chatbot handle above**, since the client's WhatsApp number isn't live yet. Same bot, same behaviour, different app. The channel swap is not a bug — don't log it.
 
-> **Stop:** 42 missions' worth of ground exists in this account's history, but this Field Guide is scoped to what's actually **LOCKED**. If a mission isn't here, it's either not ready to test yet or genuinely out of scope — check Section 4 before assuming something is missing.
+> **Stop:** This Field Guide covers 18 mission cards (16 active + 2 kept as reference — M-04 and M-11, currently excluded, see their WIP flags), scoped to what's actually **LOCKED**. If a mission isn't here, it's either not ready to test yet or genuinely out of scope — check Section 4 before assuming something is missing.
 
 ---
 

@@ -16,7 +16,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 
 **USABLE WITH GAPS.**
 
-**Corrected 2026-07-15** against the local Macrofrozen Training Plan (real staff roster + 14 Jul post-mortem) — several names and feature-readiness statuses in the prior version of this pack were wrong. The Field Guide can run today with the real customer/item data already on hand, but two blocking gaps remain: (1) no real PO sample exists for the customer-PO mission, and (2) the SQL-outage Boss Fight has no arranged simulation method. The Sales Manager role is now correctly named (**CJ Tan**) — that gap is closed. **Two missions are now correctly excluded from this round, not silently tested as if ready:** M-04 (AR reconciliation — locked scope, ships next sprint) and M-11 (Credit Note — known SQL/MAIA mismatch, WIP). Bulk price update (M-05/M-06) is being actively tested today (2026-07-15), targeting closure before tomorrow's client training — treat as high-attention, not fully stable yet.
+**Corrected 2026-07-15** against the local Macrofrozen Training Plan (real staff roster + 14 Jul post-mortem) — several names and feature-readiness statuses in the prior version of this pack were wrong. **Later same day:** environment (dedicated web app + `@maia_macrofoods_bot` chatbot), the PO sample fixture (FIX-01 — "Macrofrozen Sample PO"), and the progress tracker (QA Testing Tracker) were all confirmed — closing out what were previously the pack's biggest blockers. **One genuine blocker remains: the SQL-outage Boss Fight (BF-01) still has no arranged simulation method.** The Sales Manager role is correctly named (**CJ Tan**). **Two missions stay correctly excluded from this round, not silently tested as if ready:** M-04 (AR reconciliation — locked scope, ships next sprint) and M-11 (Credit Note — known SQL/MAIA mismatch, WIP). Bulk price update (M-05/M-06) is being actively tested today (2026-07-15), targeting closure before tomorrow's client training — treat as high-attention, not fully stable yet.
 
 ---
 
@@ -25,13 +25,13 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 | Variable | Current value | Required action | Blocking? |
 |-|-|-|-|
 | TEST_WINDOW | Tue 14 Jul 2026, 10:30am–12:00pm | Confirmed | No |
-| ENVIRONMENT_AND_ACCESS | Telegram bot (live): `https://web.telegram.org/a/#8607491317`. Web: dev `maia-oms-dev.vercel.app` / demo `maia-oms-demo.vercel.app` | Confirm which web environment (dev or demo) testers use, and how credentials are handed out | Yes |
+| ENVIRONMENT_AND_ACCESS | **Confirmed 2026-07-15.** Web app: `https://maia-fe-macrofrozen.vercel.app/`. Chatbot: `@maia_macrofoods_bot` — a dedicated Macrofrozen environment/bot, not shared dev/demo. | Confirm credential handout method for the web app | No — env/access confirmed, only credential handout still open |
 | INPUT_LIBRARY_FOLDER | Not yet created | Create the shared folder and drop `00_START_HERE_INPUT_LIBRARY.md` inside it | Yes |
 | CURRENT_INPUT_LIBRARY_CONTENTS | A 700+ row customer export and a 459-row item export exist as screenshots/data, not yet organised into the library | Organise into the folder structure in Output B | Yes |
 | TEST_DATA_ACCESS_NOTES | Testers can browse real customers/items once seeded into the test environment | Confirm the customer + item exports are actually loaded into the UAT/demo account, not just known to the PM | Yes |
 | SYSTEMS_TESTERS_CANNOT_ACCESS | Client's SQL/AutoCount system | `[NEEDS INPUT: confirm no tester needs direct SQL access for any mission]` | No |
 | BUG_REPORTING_CHANNEL | `https://eg69120xnei.sg.larksuite.com/wiki/CsWLwSjOgiO98JkitQ8lGfpPgF2` | Confirmed | No |
-| XP_TRACKER_LINK | `[NEEDS INPUT]` | Provide a tracker link or sheet | No |
+| XP_TRACKER_LINK | **Confirmed 2026-07-15:** QA Testing Tracker | Confirm testers all have access to it | No — named, access still to confirm |
 | UAT_OWNER | Gareth (PM) | `[NEEDS INPUT: who is the on-the-day point of contact if Gareth is unavailable]` | No |
 | TIME_BUDGET_PER_TESTER | 90 minutes | Confirmed — see §3 for what this means for scope | No |
 | ANYTHING_ELSE_TESTERS_MUST_KNOW | Not yet supplied | `[NEEDS INPUT]` | No |
@@ -44,7 +44,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 |-|-|-|-|-|-|-|-|
 | PA-01 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Load the real customer export (700+ rows) and item export (459 rows) into the test/UAT environment | Missions rely on testers picking real, active customers and items rather than inventing fake ones | M-01, M-02, M-05, M-07, M-08, M-09, M-13 | Dev team | Open | **Yes** |
 | PA-02 | CLIENT MUST CONFIRM | Which 3 customers issue formal POs (Scope Lock AS-08/NS-12) | M-18 cannot select correct-persona data without knowing which customer accounts these are | M-18 | Gareth → David | Open | **Yes for M-18 only** |
-| PA-03 | PREPARE FIXED REGRESSION FIXTURE | One real PO document (any format the client actually uses) from one of the 3 PO customers | M-18's input recipe needs at least one authentic PO to establish what "clear" input looks like, even though testers may also improvise variants | M-18 | Gareth → David/Grace | Open | **Yes for M-18 only** |
+| PA-03 | PREPARE FIXED REGRESSION FIXTURE | **Resolved 2026-07-15:** "Macrofrozen Sample PO" now supplied as the fixed reference (FIX-01) | M-18's input recipe needs at least one authentic PO to establish what "clear" input looks like | M-18 | Gareth | **Done** | No longer blocking |
 | PA-04 | OPERATOR MUST SUPPLY | Arrange a way to simulate SQL sync failure (kill the sync worker, point at a dead endpoint, or a dev-triggered flag) | BF-01 requires an actual failure state — it cannot be produced by a tester alone | BF-01 | Dev team | Open | **Yes for BF-01 only** |
 | PA-05 | CONFIRMED | Sales Manager role = **CJ Tan** (confirmed via `Macrofood Sales User Setup.xlsx`, not a placeholder) | M-16 requires two coordinated testers; the role is now named, still needs a scheduling confirmation that CJ Tan is available during the window | M-16 | Gareth → CJ Tan | Name confirmed; availability still open | No longer blocking on the name — confirm availability only |
 | PA-06 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Confirm at least one customer has a configured customer-specific fixed price, and at least one has a configured credit limit | M-05, M-07 need testers to find these conditions rather than have them invented | M-05, M-07 | Dev team | Open | Yes |
@@ -81,7 +81,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 | Price update templates | `02_Price_Update_Templates/` | 1 valid template (~10–30 SKUs) + 1 template with deliberate errors (missing column, invalid SKU, wrong UOM, negative price, duplicate SKU) | M-05, M-06 | Which real SKUs to include in a self-made template | The two template files above | Open | Yes for M-06 |
 | Pick-list PDFs (annotated) | `03_Pick_List_Samples/` | 1 clean sample, 1 blurry/skewed sample | M-02 (sabotage variant only) | Real quantities | Two sample scans | Open (nice-to-have, not blocking) | No |
 | Payment slips / bank statements | `04_Payment_Slips/` | 1 clean matching example, 1 payer-name-mismatch example | M-04 | Which real invoice to match against | Two sample files | Open | Yes |
-| Customer Purchase Orders | `05_Customer_Purchase_Orders/` | 1 real PO from a confirmed PO-issuing customer | M-18 | N/A — this is the fixed reference | 1 real PO (PA-03) | Open | **Yes** |
+| Customer Purchase Orders | `05_Customer_Purchase_Orders/` | 1 real PO from a confirmed PO-issuing customer | M-18 | N/A — this is the fixed reference | "Macrofrozen Sample PO" (FIX-01, supplied 2026-07-15) | **Done** | No |
 | Special regression fixtures | `06_Special_Regression_Fixtures/` | NONE — BF-01's outage is an environment condition, not a file | BF-01 | N/A | Arrange the simulated outage (PA-04) | Open | **Yes** |
 
 ---
@@ -90,7 +90,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 
 | Fixture ID | Exact filename | Why fixed data is required | Mission(s) / Boss Fight(s) | Status | Owner | Blocking? |
 |-|-|-|-|-|-|-|
-| FIX-01 | `sample_po_[customer]_2026-07.pdf` | M-18 needs at least one authentic PO to establish real format/fields before testers improvise variants | M-18 | Not yet supplied | Gareth → David/Grace | **Yes** |
+| FIX-01 | Macrofrozen Sample PO | M-18 needs at least one authentic PO to establish real format/fields before testers improvise variants | M-18 | **Supplied 2026-07-15** | Gareth | No longer blocking |
 
 If PA-04's simulated SQL outage ends up needing a specific reproducible trigger (rather than a live dev action), register it here as FIX-02 once defined.
 
@@ -136,8 +136,8 @@ If PA-04's simulated SQL outage ends up needing a specific reproducible trigger 
 - [ ] All blocking project variables are completed (§2).
 - [ ] Required accounts and roles are ready (§7) — Sales Manager (CJ Tan) name confirmed; confirm his availability for the window.
 - [ ] Testers can find valid data matching mission criteria (§4) — pending PA-01/PA-06/PA-07/PA-08.
-- [ ] Reusable input pools meet the minimum sample count (§5) — PO sample (FIX-01) still open; payment-slip prep deferred with M-04 (next sprint).
-- [ ] Fixed regression fixtures are present (§6) — FIX-01 still open.
+- [x] Reusable input pools meet the minimum sample count (§5) — PO sample (FIX-01) supplied 2026-07-15; payment-slip prep deferred with M-04 (next sprint, not needed this round).
+- [x] Fixed regression fixtures are present (§6) — FIX-01 (Macrofrozen Sample PO) supplied 2026-07-15.
 - [ ] M-04 (AR) and M-11 (CN) are excluded from this round's scored missions — confirmed correctly excluded, not silently tested.
 - [ ] M-05/M-06 (bulk price update) results reviewed before tomorrow's client training — this is today's closure target.
 - [ ] `00_START_HERE_INPUT_LIBRARY.md` is in the shared folder.
