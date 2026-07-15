@@ -332,6 +332,10 @@ Ditch it the moment it makes me read three extra lines to find one number.
 
 Very low patience for anything that requires re-reading. Will bail back to AutoCount the instant this feels slower.
 
+##### Language preference
+
+Chats in a **mixed English / Bahasa Malaysia / Mandarin** register — item codes and shorthand carry across all three, per her own sample phrasings above. Reply-language preference is user-configurable (English or Bahasa Malaysia, per NS-09) and should be tested holding — see M-18. `[GAP: whether she personally defaults to EN or BM reply is not confirmed in source docs — test both]`
+
 ##### What I can do without asking anyone
 
 Create/edit drafts, query historical pricing, generate calculator prices, choose delivery method.
@@ -391,6 +395,10 @@ Ditch it — permanently, this account has a real limit — if it's still slow o
 ##### Patience level and quirks
 
 Patient but visibly eroding — treat every interaction with him as a live trust test, not a routine one.
+
+##### Language preference
+
+Chats in **English** — his one direct quote in the corpus ("I speak many times the same… I don't know how to tell you") is English, and every debrief interaction attributed to him is in English. `[GAP: no evidence he ever switches to BM/Mandarin — test in English by default]`
 
 ##### What I can do without asking anyone
 
@@ -452,6 +460,10 @@ Ditch it if a delivery charge line quietly becomes "product" in the books.
 
 Will double-check every PDF against what AutoCount would have produced.
 
+##### Language preference
+
+`[GAP: no VoC source describes Nisa directly — this persona is scope-and-UAT inferred, not a real transcript voice. Her sample phrasing above is illustrative, not evidence of language choice. Her name is Malay, which is a real signal, but not confirmation — don't assume English by default. Test both English and Bahasa Malaysia reply preference for this persona, and treat whichever the real Fixguru finance user actually uses as the thing to confirm with the client, not infer.]`
+
 ##### What I can do without asking anyone
 
 Audit invoices, flag accounting-code mismatches.
@@ -510,6 +522,10 @@ Ditch it if I have to go hunting for it.
 ##### Patience level and quirks
 
 No tolerance for missing physical detail — this is the floor, not an app screen, to him.
+
+##### Language preference
+
+Chats in short **Bahasa Malaysia-inflected English**, broken and physical ("which shelf, how many box"). `[GAP: VoC evidence for this persona is thin-voice/relayed via sales, not direct — no confirmed reply-language preference; test in his natural mixed register, note if UAT owner confirms a preferred reply language]`
 
 ##### What I can do without asking anyone
 
