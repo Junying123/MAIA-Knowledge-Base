@@ -118,7 +118,7 @@ The team includes: **David** (owner/MD, who personally coordinates almost everyt
 4. The SO is submitted and converted into a **pick list PDF**, sent to **Lai** (the warehouse manager).
 5. Lai shares the pick list with his foreign-worker pickers, who physically weigh and pack the product, recording the **actual picked weight** on the paper.
 6. Lai collects the annotated pick list and **uploads it back to MAIA**, which amends the SO to the actual weight.
-7. Only now does MAIA generate the **Delivery Order (DO)** and **Invoice**, both reflecting the real weight, not the original order.
+7. Only now does **Finance (Grace)** create and submit the **Delivery Order (DO)** and **Invoice** in MAIA — Role Permission sheet: Delivery Note and Sales Invoice CREATE/SUBMIT both sit with Finance Manager, not Logistics or Sales — both reflecting the real weight, not the original order.
 8. The customer pays — by bank transfer, cash (collected by a driver), or QR scan — and Grace matches the payment against the outstanding invoice, either automatically (easy cases) or manually (ambiguous ones).
 9. A small number of customers — **3 confirmed** — send a formal **Purchase Order (PO)** document instead of an informal WhatsApp message; this is a rare, low-volume variant of the same overall flow.
 
@@ -128,7 +128,7 @@ The team includes: **David** (owner/MD, who personally coordinates almost everyt
 |-|-|-|-|-|-|
 | 1. Order intake | Sales rep → office | WhatsApp message | Office creates draft SO | Draft SO | Wrong item/customer picked silently |
 | 2. Weight confirmation | Lai + pickers | Pick-list PDF | Physical weighing, annotate, upload | Amended SO | Billed weight ≠ actual weight |
-| 3. Document generation | MAIA | Amended SO | Generate DO + Invoice | DO, Invoice | Duplicate invoice, or invoice qty > DO qty |
+| 3. Document generation | Grace, Finance Manager | Amended SO | Create + submit DO, then Invoice | DO, Invoice | Duplicate invoice, or invoice qty > DO qty |
 | 4. Payment | Grace | Bank slip / cash / QR | Match to invoice | Payment record | Wrong customer credited |
 | 5. Credit gate | Sales rep, David | New/updated order | Check credit limit before submit | Approved or blocked order | Over-limit order slips through unchecked |
 
@@ -220,7 +220,7 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 | Role | May create | May submit/approve | Must be refused | Hands off to |
 |-|-|-|-|-|
 | Sales rep (Ben, Queenie) | Own customer records, activity notes | — | Viewing another rep's customers; creating an order directly instead of relaying via WhatsApp; self-approving an over-limit order; issuing a CN unsupervised | Office (order entry — owner open question), CJ Tan (team matters), David (credit approval) |
-| Grace (Finance Manager) | Payment matches, CCN | Payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
+| Grace (Finance Manager) | Delivery Note, Sales Invoice, Payment Receipt/Voucher, payment matches, CCN | DO/Invoice submission, payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
 | David (Admin) | Price adjustments (desktop), credit overrides | Credit-limit overrides | — | — (top of hierarchy) |
 | Applle (Admin — same permissions as David) | All (per role matrix) | All (per role matrix) | — | Not separately covered by a persona card this round |
 | CJ Tan (Sales Manager) | — | Team-level approvals for Ben/Queenie | Viewing accounts outside his own 2 reps | David (escalation) |
@@ -425,15 +425,15 @@ Impatient; will try to route around a block if one shows up.
 
 ##### A day in my life
 
-I reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts. I'm also the one fielding most of the scope-clarification questions from the vendor side, so I know this product's design better than most of the team.
+I create and submit the **Delivery Order** and **Sales Invoice** once the SO is amended to the real picked weight, reconcile whatever payments come in against outstanding invoices — bank transfers, cash from drivers, QR scans — and chase overdue accounts. I'm also the one fielding most of the scope-clarification questions from the vendor side, so I know this product's design better than most of the team.
 
-> **Why this matters:** payment reconciliation and AR are daily, high-volume work for me. If MAIA adds steps to *my* day, the deployment fails no matter how good it looks to David in a demo.
+> **Why this matters:** invoice creation and payment reconciliation are daily, high-volume work for me. If MAIA adds steps to *my* day, the deployment fails no matter how good it looks to David in a demo.
 
 ##### Business rules I live by
 
-- **Always:** verify a mismatched payer name before matching it to any invoice.
-- **Never:** let a payment auto-match on an ambiguous case without my confirmation; let something post before I've explicitly confirmed it.
-- **Before I submit:** a payment match, I check that the amount and reference genuinely line up.
+- **Always:** verify a mismatched payer name before matching it to any invoice; check invoice qty never exceeds the DO qty before submitting.
+- **Never:** let a payment auto-match on an ambiguous case without my confirmation; let something post before I've explicitly confirmed it; submit an invoice that doesn't reflect the amended (real) weight.
+- **Before I submit:** an invoice, I confirm it matches the DO; a payment match, I check that the amount and reference genuinely line up.
 - **I can approve:** payment matches, Customer Credit Notes (billing-only).
 - **I cannot approve:** credit-limit overrides (that's David); Sales Credit Notes with a stock-return component may need sign-off depending on the case.
 - **I escalate to:** David, for anything involving credit or pricing decisions.
