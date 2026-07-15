@@ -1,14 +1,14 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-14
+last_reviewed: 2026-07-15
 lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 ---
 
 # MAIA — UAT Launch Readiness Checklist
 ### Macro Frozen (Macrofood) — Phase 1 Core
 
-**Issued:** 2026-07-14 · **Owner:** Gareth (PM) · Generated against Scope Lock v1 (2026-07-14), VoC Extraction (2026-07-14), UAT Checklist v3 (2026-07-14).
+**Issued:** 2026-07-14 · **Corrected:** 2026-07-15 (against Macrofrozen Training Plan) · **Owner:** Gareth (PM) · Generated against Scope Lock v1 (2026-07-14), VoC Extraction (2026-07-14), UAT Checklist v3 (2026-07-14).
 
 ---
 
@@ -16,7 +16,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 
 **USABLE WITH GAPS.**
 
-The Field Guide can run today with the real customer/item data already on hand, but three blocking gaps must close before Tuesday: (1) no real PO sample exists for the customer-PO mission, (2) the SQL-outage Boss Fight has no arranged simulation method, and (3) the Sales Manager persona has no assigned tester because the role has no confirmed name. Everything else — core order, weight, pricing, credit, CN, and agent-assignment missions — is ready to run against real data now.
+**Corrected 2026-07-15** against the local Macrofrozen Training Plan (real staff roster + 14 Jul post-mortem) — several names and feature-readiness statuses in the prior version of this pack were wrong. The Field Guide can run today with the real customer/item data already on hand, but two blocking gaps remain: (1) no real PO sample exists for the customer-PO mission, and (2) the SQL-outage Boss Fight has no arranged simulation method. The Sales Manager role is now correctly named (**CJ Tan**) — that gap is closed. **Two missions are now correctly excluded from this round, not silently tested as if ready:** M-04 (AR reconciliation — locked scope, ships next sprint) and M-11 (Credit Note — known SQL/MAIA mismatch, WIP). Bulk price update (M-05/M-06) is being actively tested today (2026-07-15), targeting closure before tomorrow's client training — treat as high-attention, not fully stable yet.
 
 ---
 
@@ -42,16 +42,19 @@ The Field Guide can run today with the real customer/item data already on hand, 
 
 | Action ID | Preparation mode | Action / deliverable | Why testers need it | Used by mission(s) | Owner | Status | Blocking? |
 |-|-|-|-|-|-|-|-|
-| PA-01 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Load the real customer export (700+ rows) and item export (459 rows) into the test/UAT environment | Missions rely on testers picking real, active customers and items rather than inventing fake ones | M-01, M-02, M-05, M-07, M-08, M-09, M-11, M-13 | Dev team | Open | **Yes** |
+| PA-01 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Load the real customer export (700+ rows) and item export (459 rows) into the test/UAT environment | Missions rely on testers picking real, active customers and items rather than inventing fake ones | M-01, M-02, M-05, M-07, M-08, M-09, M-13 | Dev team | Open | **Yes** |
 | PA-02 | CLIENT MUST CONFIRM | Which 3 customers issue formal POs (Scope Lock AS-08/NS-12) | M-18 cannot select correct-persona data without knowing which customer accounts these are | M-18 | Gareth → David | Open | **Yes for M-18 only** |
 | PA-03 | PREPARE FIXED REGRESSION FIXTURE | One real PO document (any format the client actually uses) from one of the 3 PO customers | M-18's input recipe needs at least one authentic PO to establish what "clear" input looks like, even though testers may also improvise variants | M-18 | Gareth → David/Grace | Open | **Yes for M-18 only** |
 | PA-04 | OPERATOR MUST SUPPLY | Arrange a way to simulate SQL sync failure (kill the sync worker, point at a dead endpoint, or a dev-triggered flag) | BF-01 requires an actual failure state — it cannot be produced by a tester alone | BF-01 | Dev team | Open | **Yes for BF-01 only** |
-| PA-05 | CLIENT MUST CONFIRM | Name a specific person to play the Sales Manager role during the test window (Aben/Quinny's manager) | M-16 requires two coordinated testers, one of whom must act in this specific role | M-16 | Gareth → David | Open | **Yes for M-16 only** |
+| PA-05 | CONFIRMED | Sales Manager role = **CJ Tan** (confirmed via `Macrofood Sales User Setup.xlsx`, not a placeholder) | M-16 requires two coordinated testers; the role is now named, still needs a scheduling confirmation that CJ Tan is available during the window | M-16 | Gareth → CJ Tan | Name confirmed; availability still open | No longer blocking on the name — confirm availability only |
 | PA-06 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Confirm at least one customer has a configured customer-specific fixed price, and at least one has a configured credit limit | M-05, M-07 need testers to find these conditions rather than have them invented | M-05, M-07 | Dev team | Open | Yes |
 | PA-07 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Confirm at least one item has ≥1 prior invoice history for a real customer, and at least one item/customer pair has none | M-15's win conditions require both a "has history" and a "no history" case to exist | M-15 | Dev team | Open | Yes |
-| PA-08 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Confirm the SQL customer→agent export (CJ Tan / Aben / Quinny / CK / David-default) has been loaded so agent assignment is visible per customer | M-13 cannot be tested without a customer whose agent is verifiably CJ Tan (or another named rep), and one of CK's 3 excluded customers | M-13 | Grace's team → Dev team | Open | Yes |
+| PA-08 | CONFIRM AVAILABLE IN TEST ACCOUNTS | Confirm the SQL customer→agent export (CJ Tan / Ben / Queenie / CK / David-default) has been loaded so agent assignment is visible per customer | M-13 cannot be tested without a customer whose agent is verifiably CJ Tan (or another named rep), and one of CK's 3 excluded customers | M-13 | Grace's team → Dev team | Open | Yes |
 | PA-09 | SANITISE BEFORE USE | Confirm all customer/item data used is either the client's real (already-shared) master data or clearly synthetic — no personal data beyond business contact info | Testers must not handle sensitive personal data unnecessarily | All | Gareth | Open | No |
-| PA-10 | CONFIGURE IN UAT | Confirm a bank statement / payment slip upload path is testable in the chosen environment | M-04 depends on this feature actually being reachable in dev/demo | M-04 | Dev team | Open | Yes |
+| PA-10 | CONFIGURE IN UAT | Confirm a bank statement / payment slip upload path is testable in the chosen environment | Held for the next-sprint AR UAT round, not this one — M-04 excluded this round (see §1) | M-04 (next sprint) | Dev team | Deferred with M-04 | No — not needed this round |
+| PA-11 | CONFIGURE IN UAT | Tax template set to **No Tax only** | Macro Frozen-specific data-seeding requirement, per 14 Jul Training Plan post-mortem | All order/document missions | Dev team | **Done — already configured** | No |
+| PA-12 | PREPARE FIXED REGRESSION FIXTURE | Sample documents: invoice, CN, DO, pick-list PDFs, for format/PDF-render verification | M-09's win conditions require checking real document rendering, not just data correctness | M-09 | **Gareth — in progress, will add** | Open, owned | No longer unassigned — Gareth is sourcing these |
+| PA-13 | CLIENT MUST CONFIRM | UAT signatory (likely David, not yet confirmed in writing) | Gate-2/M8 UAT sign-off needs a named signatory (Scope Lock DEP-2) | All (governance, not a specific mission) | Gareth → David | Open | No — not blocking this test round, but blocking overall go-live |
 
 ---
 
@@ -59,14 +62,14 @@ The Field Guide can run today with the real customer/item data already on hand, 
 
 | Data category | Tester selection criteria | How tester finds it | Mission(s) | Status | Owner | Blocking? |
 |-|-|-|-|-|-|-|
-| Active customers | Any customer visible in the loaded export, active status | Search/browse in MAIA | M-01, M-02, M-05, M-07, M-08, M-09, M-11 | Pending PA-01 | Dev team | Yes |
+| Active customers | Any customer visible in the loaded export, active status | Search/browse in MAIA | M-01, M-02, M-05, M-07, M-08, M-09 | Pending PA-01 | Dev team | Yes |
 | Active items/SKUs | Any item from the loaded export, marked "For Sale = Yes" | Search/browse item catalogue | M-01, M-02, M-05, M-06, M-15 | Pending PA-01 | Dev team | Yes |
 | Customer-item fixed price | A customer with a configured customer-specific price on ≥1 item | Check the customer's pricing tab | M-05 | Pending PA-06 | Dev team | Yes |
 | Customer credit limit | A customer with a configured credit limit low enough to breach with a normal-size order | Check the customer's credit tab | M-07 | Pending PA-06 | Dev team | Yes |
 | Item historical price | An item/customer pair with ≥1 prior invoice, and a separate pair with none | Check invoice history | M-15 | Pending PA-07 | Dev team | Yes |
-| Customer-agent assignment | A customer visibly assigned to CJ Tan (or Aben/Quinny), and one of CK's 3 excluded customers | Check the customer's agent field | M-13 | Pending PA-08 | Dev team/Grace | Yes |
-| Submitted SO / DO in various states | An SO in Submitted status (not yet DO'd); a DO with a known qty | Create during the mission, or find an existing one | M-09, M-11 | Ready — testers create these live | Testers | No |
-| Overdue invoice | An invoice past due, ideally under a rep with a Sales Manager (Aben/Quinny) | Create during the mission by backdating or waiting | M-16 | Ready — testers create/simulate | Testers | No |
+| Customer-agent assignment | A customer visibly assigned to CJ Tan, Ben, or Queenie, and one of CK's 3 excluded customers | Check the customer's agent field | M-13 | Pending PA-08 | Dev team/Grace | Yes |
+| Submitted SO / DO in various states | An SO in Submitted status (not yet DO'd); a DO with a known qty | Create during the mission, or find an existing one | M-09 | Ready — testers create these live | Testers | No |
+| Overdue invoice | An invoice past due, ideally under Ben or Queenie (CJ Tan's 2 reps) | Create during the mission by backdating or waiting | M-16 | Ready — testers create/simulate | Testers | No |
 
 ---
 
@@ -97,11 +100,12 @@ If PA-04's simulated SQL outage ends up needing a specific reproducible trigger 
 
 | Role | Persona | Required account/access | Permitted actions | Refused actions to test | Status | Owner |
 |-|-|-|-|-|-|-|
-| Owner / MD / Credit Controller / Price Controller | David | Desktop app access | Approve credit overrides; adjust prices ad-hoc | N/A (top of hierarchy) | Ready | Dev team |
-| Sales rep | CJ / Aben / Quinny | Standard MAIA access, own-customer scope | Create/view own customers, create SOs, log activity notes | View another rep's customers; self-approve over-limit orders; issue a CN unsupervised | Ready | Dev team |
-| Sales Manager | `[NEEDS INPUT: name]` | Standard MAIA access with manager-level overdue-alert scope | View Aben's and Quinny's overdue accounts | View other reps' overdue accounts outside his team | **Blocked on PA-05** | Gareth → David |
-| Finance / Ops Admin (also keys in every order) | Grace | Standard MAIA access, AR + admin functions | Match payments, issue CCN/SCN, key in SOs relayed from sales | N/A | Ready | Dev team |
-| Warehouse Manager | Lai | Pick-list upload access | Upload confirmed pick lists | N/A | Ready | Dev team |
+| Owner / MD / Credit Controller / Price Controller (Admin) | David | Desktop app access | Approve credit overrides; adjust prices ad-hoc | N/A (top of hierarchy) | Ready | Dev team |
+| Admin (same permissions as David) | Applle | Standard MAIA access, full permissions | Same as David | N/A | Not separately tested this round — no persona card built for her | Gareth |
+| Sales Manager | CJ Tan | Standard MAIA access with manager-level overdue-alert scope | View Ben's and Queenie's overdue accounts | View other reps' overdue accounts outside his team | Name confirmed; availability for the window still open | Gareth → CJ Tan |
+| Sales rep | Ben, Queenie | Standard MAIA access, own-customer scope | Create/view own customers, create SOs, log activity notes | View another rep's customers; self-approve over-limit orders; issue a CN unsupervised | Ready | Dev team |
+| Finance Manager (also keys in every order) | Grace | Standard MAIA access, AR + admin functions | Match payments; key in SOs relayed from sales | Issue CCN/SCN this round (feature WIP — see M-11) | Ready except CN (WIP) | Dev team |
+| Logistics/Warehouse Manager | Lai | Pick-list upload access | Upload confirmed pick lists | N/A | Ready | Dev team |
 
 ---
 
@@ -111,13 +115,13 @@ If PA-04's simulated SQL outage ends up needing a specific reproducible trigger 
 |-|-|-|-|-|-|
 | BTR-01 | SL-01: confirmed SO/DO/Invoice push to SQL where integration allows | Tester can confirm MAIA shows a "pending sync"/"synced" state and does not fabricate a synced status | Whether the record actually lands correctly inside the client's live SQL/AutoCount instance | Dev team + SQL vendor | Screenshot of MAIA-side status + a later confirmation from the SQL/dev side that the record appears correctly |
 | BTR-02 | AS-01: pick-list-PDF flow works with a real warehouse manager and real foreign-worker pickers | Tester can confirm the upload/amend mechanism works with test data | Whether Lai and his pickers actually adopt this flow instead of reverting to their own paper process | David / Lai | A real pick→confirm→upload cycle observed post-go-live, not simulated in this UAT round |
-| BTR-03 | SL-02: AR auto-match genuinely reduces Grace's workload | Tester can confirm the auto-match/flag mechanism functions correctly | Whether Grace, using it for real, finds it faster than her current manual process | Grace | Grace's own usage feedback after go-live, not a UAT pass/fail |
+| BTR-03 | SL-02: AR auto-match genuinely reduces Grace's workload | **Not applicable this round** — SL-02 ships next sprint, see §1/§3 | Whether Grace, using it for real, finds it faster than her current manual process | Grace | Deferred to next sprint's UAT |
 
 ---
 
 ## 9. Cleanup and collision control
 
-- **UAT naming convention:** prefix every test-created record's reference/remarks field with `UAT-[testerinitials]-[date]`, e.g. `UAT-CJ-0714`.
+- **UAT naming convention:** prefix every test-created record's reference/remarks field with `UAT-[testerinitials]-[date]`, e.g. `UAT-BQ-0715` (Ben/Queenie).
 - **Unique reference format:** combine tester initials + a running number to avoid two testers picking the same "new" customer name or PO number.
 - **May be created freely:** SOs, DOs, Invoices, CNs, activity-log notes, price adjustments on non-critical SKUs.
 - **Must not be reused/altered:** the fixed PO fixture (FIX-01) and any price-update template files — copy before annotating.
@@ -130,10 +134,12 @@ If PA-04's simulated SQL outage ends up needing a specific reproducible trigger 
 ## 10. Distribution checklist
 
 - [ ] All blocking project variables are completed (§2).
-- [ ] Required accounts and roles are ready (§7) — Sales Manager role still needs a name (PA-05).
+- [ ] Required accounts and roles are ready (§7) — Sales Manager (CJ Tan) name confirmed; confirm his availability for the window.
 - [ ] Testers can find valid data matching mission criteria (§4) — pending PA-01/PA-06/PA-07/PA-08.
-- [ ] Reusable input pools meet the minimum sample count (§5) — payment slips and PO sample still open.
+- [ ] Reusable input pools meet the minimum sample count (§5) — PO sample (FIX-01) still open; payment-slip prep deferred with M-04 (next sprint).
 - [ ] Fixed regression fixtures are present (§6) — FIX-01 still open.
+- [ ] M-04 (AR) and M-11 (CN) are excluded from this round's scored missions — confirmed correctly excluded, not silently tested.
+- [ ] M-05/M-06 (bulk price update) results reviewed before tomorrow's client training — this is today's closure target.
 - [ ] `00_START_HERE_INPUT_LIBRARY.md` is in the shared folder.
 - [ ] Synthetic/real data use is approved (PA-09).
 - [ ] Bug tracker and XP tracker are accessible — XP tracker link still needed.

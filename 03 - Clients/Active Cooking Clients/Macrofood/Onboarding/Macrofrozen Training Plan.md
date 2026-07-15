@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-14
+last_reviewed: 2026-07-15
 ---
 
 # Macrofrozen Training Plan
@@ -39,9 +39,9 @@ Macrofrozen staff can run their sales workflow end-to-end (order intake → SO �
    - Also show the CPO path: a PO-issuing customer sends a PO document → MAIA matches customer/item lines → confirm → submit as CPO → same downstream flow from here
    - Sales reviews + confirms draft → credit check runs live (block if over limit, David approves override)
    - External pick list (PDF-based): SO → pick list PDF generated → shared with warehouse pickers → annotated with actual picked qty → uploaded back to MAIA
-   - SO auto-amends to actual picked weight → DO + Invoice regenerate at the confirmed weight — verify this works before demoing live, flagged top priority
-   - Finance side: payment slip + bank statement upload → MAIA suggests invoice match → confirm → knock-off
-   - David's side: bulk price template upload, credit override, dashboard
+   - Weight adjustment: after pick list confirms actual picked weight, admin manually adjusts the weight/quantity field on the SO → DO + Invoice regenerate at the confirmed weight — **confirmed working 2026-07-15**
+   - ~~Finance side: payment slip + bank statement upload → MAIA suggests invoice match → confirm → knock-off~~ — **cut from this session (2026-07-15): AR reconciliation (SL-02) is locked scope but ships next sprint, not this build. Do not demo.**
+   - David's side: bulk price template upload (currently being closed out today, disclose as WIP if not fully stable by session), credit override, dashboard
 3. Let them drive. After the demo, hand over and let them try 1-2 of their own real orders live.
 4. Expect Q&A-heavy, not presentation-heavy — they want to know how to use it, not sit through a pitch.
 5. Confirm setup for all ~6 users before anything else — more important than covering every feature.
@@ -80,8 +80,8 @@ CPO = plain PO document intake for a subset of customers who issue formal purcha
 
 **Train only on LOCKED items:**
 - SL-01 MAIA sits on top of SQL (SQL is customer/item master)
-- SL-02 AR customer invoice reconciliation (deferred from Phase 1 — verify before including)
-- SL-03 Bulk price update & pricing enforcement (untested, disclose as WIP — see Action Item 3)
+- SL-02 AR customer invoice reconciliation — **confirmed 2026-07-15: locked scope, but ships next sprint, not this build. Do not include in this training session at all.**
+- SL-03 Bulk price update & pricing enforcement — **being actively tested 2026-07-15, targeting closure before this training. Disclose as WIP if not fully closed by session (see Action Item 3).**
 - SL-04 Credit-limit / payment-term control
 - SL-05 Salesperson customer visibility (own customers only)
 - SL-06 One MAIA WhatsApp number
@@ -94,28 +94,32 @@ CPO = plain PO document intake for a subset of customers who issue formal purcha
 - Certificate/tax-reference CPO features (C1/C3-style) — not applicable to Macrofrozen; their CPO is plain PO document intake only
 - Driver POD (parked), quotation flow (unresolved gap), live/real-time stock check (only annual stock count exists, non-blocking)
 
-## Internal QA Readiness Before Session (14 Jul Post Mortem findings)
+## Internal QA Readiness Before Session (14 Jul Post Mortem findings; updated 2026-07-15)
 
-- [ ] Confirm tax template set to **No Tax only** (Macro Frozen-specific data seeding requirement)
-- [ ] Verify fresh-weight adjustment flow actually works — flagged top priority, deadline Thu 16 Jul
+- [x] Confirm tax template set to **No Tax only** — **done, already configured**
+- [x] Verify fresh-weight adjustment flow actually works — **confirmed 2026-07-15, working as a manual weight-adjust step on SO amendment**
 - [ ] Confirm demo/facilitator uses correct role mapping (Sales/Finance/Warehouse/Management per matrix above), not generic labels
-- [ ] Verify historical item pricing shows correctly in front end/chatbot (last-invoiced-price feature)
+- [x] Verify historical item pricing shows correctly in front end/chatbot (last-invoiced-price feature) — **resolved, mechanism confirmed to match existing Base feature; do a final render check before session**
 - [ ] Have fallback/remediation steps ready for likely blockers — don't improvise live in front of client
-- [ ] Catalogue real sample documents (orders, POs, pick-list PDFs) in advance — don't source live during session
+- [ ] Catalogue real sample documents (orders, POs, pick-list PDFs) in advance — don't source live during session — **owner: Gareth, in progress as of 2026-07-15**
 - [ ] Confirm UAT signatory (likely David, not yet confirmed in writing)
 - [x] Confirm names/roles: Ben, Queenie (Sales Users), CJ Tan (Sales Manager), Grace (Finance Manager), Lai (Logistics Manager), Applle, David (Admin) — per Macrofood Sales User Setup.xlsx
 - [ ] Driver — not named/contacted, no MAIA role defined yet
 - [ ] Bring AWS form (JobService) for signature during session
+- [ ] **New 2026-07-15:** Confirm bulk price update (SL-03) testing closes today — this is the last WIP item before session; escalate immediately if not resolved
+- [x] **New 2026-07-15:** Confirm AR reconciliation (SL-02) is fully excluded from this session's demo/training scope — locked but ships next sprint
 
 ## Known Blockers
 
 | Feature/Module | Status | Blocking training? |
 |---|---|---|
-| Fresh-weight adjustment flow | Top priority, deadline Thu 16 Jul, not yet confirmed working | Y if not resolved by session |
-| Credit Note (SQL mismatch) | Known issue, in progress — disclose to client, SQL workaround for now | N — disclosed workaround |
-| Bulk price update | Just completed, untested — show with caveat | N — disclosed as WIP |
+| Fresh-weight adjustment flow | **Confirmed 2026-07-15: working.** Manual step — admin adjusts the weight/quantity field on the SO after the pick list confirms actual picked weight; not automatic recalculation. | N — confirmed working, verify once more live before session as a sanity check |
+| Credit Note (SQL mismatch) | Known issue, in progress — disclose to client, SQL workaround for now. Doctype design (SCN/CCN split) finalized, but backend fix for the SQL mismatch not yet shipped. | N — disclosed workaround |
+| Bulk price update | **Actively under test 2026-07-15**, targeting closure before this training session. Show live with caveat if not fully closed by then. | N — disclosed as WIP, closing today |
+| AR customer invoice reconciliation | **Confirmed 2026-07-15: locked scope, ships next sprint.** Do not demo or train on this — out of scope for this session entirely. | N/A — excluded from this session |
 | Product catalogue format | Open questions, not yet answered by product team | N — capture live in session |
-| Doc samples (invoice/CN/DO/pick list) | Requested 4 Jun, receipt unconfirmed | Y — blocks PDF-render verification |
+| Historical item pricing (last-invoiced-price) | Resolved — mechanism confirmed to match the existing Base feature exactly (single latest invoice per item) | N — confirmed, just verify it renders correctly in front end/chatbot before session |
+| Doc samples (invoice/CN/DO/pick list) | Requested 4 Jun, receipt unconfirmed — **Gareth sourcing these now (2026-07-15)** | Y until received — in progress, owned |
 | User/role permission setup | Names/roles confirmed (xlsx); login/access still to verify | Y until access verified |
 | Certificate/tax-reference CPO features | Confirmed not applicable to Macrofrozen | N/A |
 | Live stock check | Not agreed for Phase 1 | N/A — don't test |

@@ -1,11 +1,13 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-14
+last_reviewed: 2026-07-15
 lark_url: https://eg69120xnei.sg.larksuite.com/docx/D9pxdPKRIoUei7xQMn5ldxRDgih
 ---
 
 # MAIA UAT Field Guide — Play It Like a User
+
+> **Corrected 2026-07-15** against the local Macrofrozen Training Plan (real staff roster + 14 Jul post-mortem findings): Sales Manager renamed to **CJ Tan** (was a placeholder); sales reps renamed **Ben** and **Queenie** (were mistranscribed as Aben/Quinny); Grace's title corrected to **Finance Manager**; **Applle** (Admin, same permissions as David) added to the roles table, not separately persona'd; **M-04 (AR reconciliation)** and **M-11 (Credit Note)** flagged as not testable this round (AR ships next sprint; CN has a known SQL/MAIA mismatch, client using a SQL workaround) — both kept as reference cards, not deleted; **M-05/M-06 (bulk price update)** flagged as actively under test today, targeting closure before tomorrow's client training; **M-02** clarified — the SO amendment to actual picked weight is a confirmed **manual** step, not automatic; **CPO terminology** fixed to mean Customer Purchase Order (plain document intake), explicitly not the certificate/tax-reference CPO feature used for other (C1/C3) clients.
 
 ## Table of Contents
 
@@ -220,11 +222,12 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 
 | Role | May create | May submit/approve | Must be refused | Hands off to |
 |-|-|-|-|-|
-| Sales rep | Own customer records, activity notes | — | Viewing another rep's customers; creating an order directly instead of relaying via WhatsApp; self-approving an over-limit order; issuing a CN unsupervised | Grace (order entry), David (credit approval) |
-| Grace (Finance/Admin) | SOs (from relayed orders), payment matches, CCN | Payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
-| David | Price adjustments (desktop), credit overrides | Credit-limit overrides | — | — (top of hierarchy) |
-| Sales Manager | — | — | Viewing accounts outside his own 2 reps (Ben, Queenie) | David (escalation) |
-| Lai (Warehouse Manager) | Pick-list uploads | — | — | Grace/system (amended SO) |
+| Sales rep (Ben, Queenie) | Own customer records, activity notes | — | Viewing another rep's customers; creating an order directly instead of relaying via WhatsApp; self-approving an over-limit order; issuing a CN unsupervised | Grace (order entry), CJ Tan (team matters), David (credit approval) |
+| Grace (Finance Manager) | SOs (from relayed orders), payment matches, CCN | Payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
+| David (Admin) | Price adjustments (desktop), credit overrides | Credit-limit overrides | — | — (top of hierarchy) |
+| Applle (Admin — same permissions as David) | All (per role matrix) | All (per role matrix) | — | Not separately covered by a persona card this round |
+| CJ Tan (Sales Manager) | — | Team-level approvals for Ben/Queenie | Viewing accounts outside his own 2 reps | David (escalation) |
+| Lai (Logistics/Warehouse Manager) | Pick-list uploads | — | — | Grace/system (amended SO) |
 
 #### Data authority and external boundaries
 
@@ -250,8 +253,7 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 | CN | Credit Note — general term; splits into SCN and CCN |
 | SCN | Sales Credit Note — can reverse billing + return stock together, or stock-return only |
 | CCN | Customer Credit Note — billing/knock-off only, no stock movement |
-| CPO | A Sales Order converted from a matched customer Purchase Order |
-| PO | Purchase Order — a formal order document a small number of customers (3 confirmed) send instead of an informal message |
+| CPO | **Customer Purchase Order** — a formal order document a small number of customers (3 confirmed) send instead of an informal message; MAIA matches it and converts it to a confirmed Sales Order. **For Macro Frozen this is plain PO document intake only — no certificate/tax-reference linkage.** (A separate certificate/tax-reference "CPO" feature exists for other clients (C1/C3-style) — not applicable here; don't conflate the two.) |
 | Pro Forma Invoice | A document titled "invoice," used to secure a deposit before the real invoice |
 | AR | Accounts Receivable — matching incoming payments to invoices |
 | SQL | Macro Frozen's existing ERP (AutoCount-based); remains master for customer + item data |
@@ -291,7 +293,8 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 | Item | Source | Why not locked | What you do if encountered |
 |-|-|-|-|
 | Product catalogue / image generation | AS-02 | Acceptance criteria not locked; creation process is David-only knowledge | Log an Observation only if genuinely confusing |
-| Credit-note numbering rule | AS-03 | Whether the CN number should mirror the invoice number is unresolved | Don't test the numbering scheme itself; CN generation IS testable via M-11 |
+| Credit-note numbering rule | AS-03 | Whether the CN number should mirror the invoice number is unresolved | Don't test the numbering scheme itself |
+| Credit Note (SCN/CCN) generation | SL-07 | **WIP — known SQL/MAIA mismatch, per 14 Jul Training Plan post-mortem.** Client uses SQL directly for CN until the backend fix ships and reverses back into MAIA. | Do not test — see M-11's WIP flag |
 | Customer master-data field writability | AS-05 | Only the activity-log sub-feature is locked; address/phone/billing writability is open | Log an Observation if you notice inconsistent field editability |
 | Backend dashboard / reminders | AS-06 | Guiding questions drafted, not yet asked to the client | Do not test |
 | Quotation-before-order / price-lock | AS-07 | Proposed, not locked; real-world usage confirmed low | Do not test |
@@ -582,14 +585,14 @@ Will revert to the old paper process the moment the new one is friction — a li
 | M-01 — The First Forward | Ben / Queenie | ★ | 10 | 8 min |
 | M-02 — SQL Doesn't Lie | Ben / Queenie | ★★ | 20 | 14 min |
 | M-03 — Nothing Moves Until You Say So | Ben / Queenie | ★★ | 20 | 10 min |
-| M-04 — Match It or Ask | Grace | ★★ | 20 | 12 min |
+| M-04 — Match It or Ask 🚧 (not shipped — next sprint) | Grace | ★★ | 20 | 12 min |
 | M-05 — Price Control | David | ★ | 10 | 10 min |
 | M-06 — The Broken Template | David | ★★ | 20 | 12 min |
 | M-07 — Under the Limit, Over the Limit | Ben / Queenie | ★★ | 20 | 12 min |
 | M-08 — My Customers Only | Ben / Queenie | ★ | 10 | 6 min |
 | M-09 — Three Documents, One Order | Ben / Queenie / Grace | ★ | 10 | 10 min |
 | M-10 — The Word "Invoice" Matters | Ben / Queenie | ★ | 10 | 8 min |
-| M-11 — Reverse It, Return It | Grace | ★★ | 20 | 14 min |
+| M-11 — Reverse It, Return It 🚧 (WIP — do not run) | Grace | ★★ | 20 | 14 min |
 | M-12 — Not Your Rights | Ben / Queenie | ★★ | 20 | 8 min |
 | M-13 — Right Agent, Right Customer | Ben / Queenie | ★ | 10 | 8 min |
 | M-14 — Look, Don't Book | Ben / Queenie | ★ | 10 | 8 min |
@@ -603,7 +606,7 @@ Will revert to the old paper process the moment the new one is friction — a li
 
 #### Recommended order
 
-Tutorial (M-01) → core loops (M-02, M-05, M-07, M-09) → unhappy paths (M-03, M-04, M-06, M-12) → new-scope additions (M-13 through M-18) → Boss Fight (BF-01) → Side Quests.
+Tutorial (M-01) → core loops (M-02, M-05, M-07, M-09) → unhappy paths (M-03, M-06, M-12) → new-scope additions (M-13 through M-18) → Boss Fight (BF-01) → Side Quests. (M-04 and M-11 excluded this round — see their WIP/not-shipped flags.)
 
 #### 🔴 Tier 1 — The P1 Core (~44 min)
 
@@ -613,13 +616,13 @@ If only one person tests anything, it's this — every mission here maps to a fa
 Given the tight budget, run **M-02 → M-03 → BF-01** first if time is short.
 
 #### 🟠 Tier 2 — Trust & Control (~52 min)
-`M-04 (12) · M-05 (10) · M-07 (12) · M-06 (12) · M-08 (6)`
+`M-05 (10) · M-07 (12) · M-06 (12) · M-08 (6)` — **M-04 excluded this round (not yet shipped, next sprint)**
 
 #### 🟡 Tier 3 — Core Loops (~32 min)
 `M-01 (8) · M-09 (10) · M-10 (8) · M-12 (8, if time)`
 
 #### 🟢 Tier 4 — New Scope Additions (~52 min)
-`M-11 (14) · M-13 (8) · M-14 (8) · M-15 (8) · M-16 (10) · M-17 (6) · M-18 (10, blocked pending FIX-01)`
+`M-13 (8) · M-14 (8) · M-15 (8) · M-16 (10) · M-17 (6) · M-18 (10, blocked pending FIX-01)` — **M-11 excluded this round (WIP, see mission card)**
 
 #### Squad split — suggested for 5–6 testers, ~70 min each
 
@@ -627,7 +630,7 @@ Given the tight budget, run **M-02 → M-03 → BF-01** first if time is short.
 |-|-|-|-|
 | T1 | Ben/Queenie — sales core | M-01, M-02, M-08, M-09, M-10, M-12 | 52 min |
 | T2 | Ben/Queenie — sales edge | M-07, M-13, M-14, M-15, M-17 | 42 min |
-| T3 | Grace — finance/AR | M-04, M-11, M-16*, M-18 | 46 min |
+| T3 | Grace — finance/AR | M-16*, M-18 | 20 min (M-04 not shipped yet, M-11 WIP — both excluded) |
 | T4 | David — control & pricing | M-05, M-06, BF-01 | 37 min |
 | T5 | (shared) M-03 + spillover from T1–T4, plus Side Quests | M-03 + overflow | ~variable |
 
@@ -730,6 +733,8 @@ You have a real customer and a real item in mind — the kind that already exist
 
 > **Why this matters:** This is the single highest-priority workflow in the whole account — if the billed weight is wrong, or if MAIA invents data instead of naming a gap, the deployment fails at its core promise.
 
+> **Confirmed process detail (2026-07-15):** amending the SO to the real weight is a **manual step**, not an automatic recalculation. Once the pick list comes back with the actual picked quantity, Grace/admin manually adjusts the weight/quantity field on the SO to match — MAIA doesn't infer it on its own. Test this as a deliberate human data-entry action, and confirm the recalculated amount follows correctly once that manual adjustment is made.
+
 **Precondition:** A real active customer and item exist in the test environment.
 
 ##### Input recipe
@@ -773,7 +778,8 @@ Confirm a draft SO whose customer, item, and price all trace to SQL, then confir
 - [ ] The draft shows SQL-sourced customer + item + price.
 - [ ] Confirming creates a real SO referencing that SQL data.
 - [ ] An ambiguous item name is either resolved correctly or surfaced for manual selection — never silently guessed.
-- [ ] Once the pick list confirms a different weight than ordered, the SO amends to the actual weight, and DO + Invoice reflect that new weight and recalculated amount.
+- [ ] Once the pick list confirms a different weight than ordered, you can manually adjust the SO's weight/quantity field to match, and the SO amends correctly — this is a deliberate human action, not automatic.
+- [ ] After the manual adjustment, DO + Invoice reflect the new weight and recalculated amount.
 - [ ] Nothing is pushed to SQL before confirmation at any stage.
 
 ##### It should stop and ask you if
@@ -881,6 +887,8 @@ If anything appears in SQL early, or a direct edit silently overwrites SQL, that
 **Covers:** HP-04 · UP-04, UP-18 · SL-02
 **Mission type:** Core + Edge
 
+> **🚧 NOT YET SHIPPED — DO NOT TEST THIS ROUND.** SL-02 (AR reconciliation) is LOCKED scope — the design commitment stands — but the actual feature ships **next sprint**, not this build. Leave this mission card as reference for that sprint's UAT; don't run it now.
+
 ##### The situation
 
 A payment just came in. Sometimes it clearly matches an outstanding invoice; sometimes the payer's name doesn't match the customer at all, or the amount only covers part of what's owed.
@@ -960,6 +968,8 @@ It flags the uncertainty rather than posting a guess.
 **Covers:** HP-05, HP-05b, HP-06 · SL-03
 **Mission type:** Core
 
+> **⚠️ Active testing in progress.** Bulk price update just finished build this week and is being tested today (2026-07-15), targeting closure before tomorrow's client training. Run this mission with extra scrutiny — if you hit a failure, report it immediately; this is the last chance to catch it before the client sees it.
+
 ##### The situation
 
 Prices moved on a batch of SKUs. Right now this lives in a WhatsApp image you made with ChatGPT — you want it to actually live somewhere enforced. Sometimes it's a bulk template upload; other times you just want to bump one item's price ad-hoc from the desktop.
@@ -1035,6 +1045,8 @@ It tells you which rows succeeded/failed.
 **Persona:** David, Owner
 **Covers:** UP-07, UP-20, UP-21, UP-22 · SL-03
 **Mission type:** Edge
+
+> **⚠️ Active testing in progress.** Same feature as M-05 — being tested today (2026-07-15), targeting closure before tomorrow's client training. High-value mission right now: this is exactly where a bad-data bug would surface.
 
 ##### The situation
 
@@ -1915,6 +1927,8 @@ If another rep can see your note, that's a **P2** (same boundary as SL-05).
 Most customers just message you an order. But a handful — 3 confirmed accounts — do things properly and issue a real Purchase Order document. You want to get that PO turned into a confirmed order without retyping everything by hand.
 
 > **Why this matters:** This is a genuinely low-volume path — don't over-invest testing time relative to how rarely this happens in real life.
+>
+> **Scope note:** For Macro Frozen, CPO = plain customer PO document intake only. There is no certificate/tax-reference linkage to test here (that's a different CPO feature built for other clients) — don't test for or expect cert/tax validation.
 
 **Precondition:** ⚠️ **Blocked pending FIX-01** — one of the 3 confirmed PO-issuing customers has sent a real PO document. If no real sample is available yet, mark this mission **Blocked — Test Data/Configuration**.
 
@@ -2088,14 +2102,14 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 | HP-01 | ACTIVE MISSION | M-01 | Locked (SL-06) |
 | HP-02 | ACTIVE MISSION | M-02 | Locked (SL-01, SL-07) |
 | HP-03 | ACTIVE MISSION | M-02 | Locked (AS-01) — merged into M-02 |
-| HP-04 | ACTIVE MISSION | M-04 | Locked (SL-02) |
+| HP-04 | ADAPTED MISSION (not yet shipped, next sprint) | M-04 | Locked scope (SL-02), but feature ships next sprint, not this build |
 | HP-05, HP-05b | ACTIVE MISSION | M-05 | Locked (SL-03) |
 | HP-06 | ACTIVE MISSION | M-05 | Locked (SL-03) |
 | HP-07 | ACTIVE MISSION | M-07 | Locked (SL-04) |
 | HP-08 | ACTIVE MISSION | M-08 | Locked (SL-05) |
 | HP-09 | ACTIVE MISSION | M-09 | Locked (SL-07) |
 | HP-10 | ACTIVE MISSION | M-10 | Locked (NS-04) |
-| HP-11, HP-11b | ACTIVE MISSION | M-11 | Locked (SL-07) |
+| HP-11, HP-11b | ADAPTED MISSION (WIP, do not run) | M-11 | Locked in design (SL-07), but known SQL/MAIA mismatch — client using SQL workaround until backend fix ships |
 | HP-12 | ACTIVE MISSION | M-13 | Locked (SL-08) |
 | HP-13 | ACTIVE MISSION | M-14 | Locked (AS-04/AS-04b) |
 | HP-14 | ACTIVE MISSION | M-15 | Resolved/Locked (NS-08) |
@@ -2104,7 +2118,7 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 | HP-17 | ADAPTED MISSION | M-18 | AGREED IN PRINCIPLE, not fully locked — deliberate happy-path-only exception (low-volume, low-risk) |
 | UP-01, UP-02 | ACTIVE MISSION | M-02, M-12 | Locked (SL-01) |
 | UP-03, UP-17 | ACTIVE MISSION | M-02 | Locked (AS-01) |
-| UP-04, UP-18 | ACTIVE MISSION | M-04 | Locked (SL-02) |
+| UP-04, UP-18 | ADAPTED MISSION (not yet shipped, next sprint) | M-04 | Same as HP-04 above |
 | UP-05, UP-06 | ACTIVE MISSION | M-07 | Locked (SL-04) |
 | UP-07, UP-20, UP-21, UP-22 | ACTIVE MISSION | M-06 | Locked (SL-03) |
 | UP-08, UP-09 | ACTIVE MISSION | M-09 | Locked (SL-07) |
@@ -2116,7 +2130,7 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 | UP-16, UP-24 | ACTIVE MISSION | M-12 | Locked (SL-01, SL-03) |
 | UP-19 | ACTIVE MISSION (risk-based) | BF-01 | Locked (SL-01, SL-07) — no recorded failure, risk-based Boss Fight |
 | UP-23 | SUPERSEDED | — | Ungrounded scenario (phone-shared-branches) carried from an earlier merged checklist with no confirmed real instance — removed |
-| UP-25, UP-26, UP-33 | ACTIVE MISSION | M-11 | Locked (SL-07, SL-04) |
+| UP-25, UP-26, UP-33 | ADAPTED MISSION (WIP, do not run) | M-11 | Same CN mismatch as HP-11/HP-11b above |
 | UP-27 | ACTIVE MISSION | M-10 | Locked (NS-04) |
 | UP-28 | ACTIVE MISSION | M-13 | Locked (SL-08) |
 | UP-29 | ACTIVE MISSION | M-14 | Locked (AS-04/AS-04b) |
@@ -2128,13 +2142,13 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 
 | Scope item | Status | Mission(s) / boundary section |
 |-|-|-|
-| SL-01…SL-08 | LOCKED | M-02, M-03, M-04, M-05, M-06, M-07, M-08, M-09, M-11, M-12, M-13 |
+| SL-01…SL-08 | LOCKED | M-02, M-03, M-05, M-06, M-07, M-08, M-09, M-12, M-13 (M-04 excluded this round — ships next sprint; M-11 excluded — CN is WIP) |
 | AS-01 | RESOLVED/LOCKED | M-02, M-03 |
 | AS-04, AS-04b | LOCKED | M-14 |
 | AS-05 (activity log) | Partially LOCKED | M-17 |
 | AS-08 | AGREED IN PRINCIPLE (exception) | M-18 |
 | NS-04 | RESOLVED | M-10 |
-| NS-05 | RESOLVED (feature)/OPEN (mechanism) | Generic route only, via M-07/M-11 |
+| NS-05 | RESOLVED (feature)/OPEN (mechanism) | Generic route only, via M-07 |
 | NS-06 | RESOLVED | M-16 |
 | NS-08 | RESOLVED | M-15 |
 | AS-02, AS-03, AS-06, AS-07 | AGREED IN PRINCIPLE, NOT LOCKED | Section 4 — Needs Scoping |
@@ -2163,7 +2177,7 @@ Write down the exact moment that made you think that — not "the UI is clunky,"
 | Ben/Queenie (Sales Rep) | Never sees another rep's customers | SL-05 | M-08, M-12, M-17 |
 | Ben/Queenie (Sales Rep) | Cannot create orders directly in the field | AS-04/AS-04b | M-14 |
 | Grace | Keys in every order relayed by sales | VoC (direct, 2026-07-14) | M-01–M-18 (implicit throughout) |
-| Grace | Only Finance issues CN; never a rep unsupervised | SL-07/SL-04 | M-11 |
+| Grace | Only Finance issues CN; never a rep unsupervised | SL-07/SL-04 | M-11 (currently WIP, not run this round) |
 | CJ (Sales Manager) | Sees only Ben/Queenie's overdue accounts | NS-06 | M-16 |
 | Lai | Single point of contact for pick-list upload; no backup exists | AS-01, VoC (NS-10) | M-02 |
 
