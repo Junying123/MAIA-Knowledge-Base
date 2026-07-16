@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen 1st UAT Checklist.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofrozen Training Plan"
+              "title": "16Jul26 Macrofrozen 1st UAT Checklist"
             }
           }
         ],
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -353,10 +354,12 @@
   },
   "active": "1cea89260b50165b",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist.docx",
+    "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen 1st UAT Checklist.md",
     "Granola/Transcripts/2026-07-16/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-16",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist (Reformatted).docx",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist.docx",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofrozen_MAIA_UAT_Signoff_Checklist.md",
     "Company Logo transparent-v4.png",
     "Company Logo transparent-clean.png",
@@ -372,7 +375,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.ed795f94b47a",
     "Excalidraw/Macro Frozen As-Is Order-to-Cash Process.excalidraw",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Launch_Readiness_Checklist.md",
@@ -391,8 +393,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofood — UAT Field Guide (Infopack v1).md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Client Clarification Questions (2026-07-13).md",
     "Granola/Transcripts/2026-07-13/Automation and Workflow Enhancements Meeting - Fireflies Transcript.md",
-    "Granola/Transcripts/2026-07-13/Mindhive  Daily Standup-transcript.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Lens Alignment Report.md",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",

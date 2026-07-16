@@ -158,4 +158,3 @@ Decision (to confirm in this session): 6a — [ ] Option A  [ ] Option B  •  6
 | Name | [TO FILL] |
 | Position | [TO FILL] |
 | Date | |
-- [[Macrofood — Scope Lock v1 (reconciled)]]
