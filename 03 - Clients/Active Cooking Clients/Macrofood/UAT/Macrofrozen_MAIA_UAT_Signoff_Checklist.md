@@ -1,5 +1,7 @@
 # MACRO FROZEN SDN. BHD.
-# MAIA — UAT Acceptance & Sign-Off Checklist
+# MAIA — UAT Acceptance & Sign-Off Checklist (1st UAT — Partial Sign-Off)
+
+**This is the 1st UAT session and a partial sign-off only.** Not all capabilities in Section 4 are expected to be demonstrable this round — items not covered or not passed here are carried forward to a **2nd UAT session** scheduled after outstanding fixes/configuration are completed. Full acceptance under Section 7 is only achieved once both UAT rounds are signed off.
 
 **Purpose.** This checklist records User Acceptance Testing sign-off for the MAIA implementation at Macro Frozen Sdn. Bhd., against the signed proposal effective 15 May 2026 and Macro Frozen's current operating model. Section 4 is completed by circling Pass or Fail for each item during the in-person UAT session. The signed and annotated copy serves as the acceptance record. Where the signed proposal and Macro Frozen's current operating model differ, the current operating model prevails for acceptance; this checklist does not expand the signed commercial scope.
 
@@ -85,9 +87,6 @@ Out of scope (this UAT round): the items below.
 | 19 | Customer → sales-agent assignment | Each customer routes to the correct agent (CJ Tan / Ben / Queenie); CK's 3 customers stay excluded from normal sales workflows; unassigned customers default to David. | Pass / Fail |
 | 20 | Sales visibility isolation | A sales rep cannot view another rep's customer records or accounts; the Sales Manager (CJ Tan) sees only his own two reps' overdue accounts, never anyone else's; David sees all accounts across every rep. | Pass / Fail |
 | 21 | Payment escalation alerts | Overdue-payment alerts route correctly to Finance, the responsible salesperson, the Sales Manager, and David. | Pass / Fail |
-| **H. Billing & Payment Support** | | | |
-| 22 | Payment matching | A clean payment (matching payer name and amount) auto-matches to the correct invoice; a mismatched-payer-name payment is flagged for Finance's manual confirmation, never silently matched. | Pass / Fail |
-| 23 | Confirmation before posting | No record (price, credit, stock, or payment match) posts without explicit human confirmation. | Pass / Fail |
 
 ---
 
@@ -102,7 +101,6 @@ Each criterion below is accepted when demonstrated successfully during the UAT s
 | Standard document flow operates correctly across Sales Order, Pick List, Delivery Order and Sales Invoice, with the correct role (Finance) owning DO/Invoice creation | Pass / Fail |
 | Credit-limit and price-floor gates block correctly, with David as sole approver | Pass / Fail |
 | Sales territory isolation (customer→agent assignment, rep-to-rep visibility) is enforced correctly | Pass / Fail |
-| Payment matching flags ambiguous cases for Finance rather than silently matching | Pass / Fail |
 
 ---
 
@@ -128,20 +126,20 @@ Decision (to confirm in this session): 6a — [ ] Option A  [ ] Option B  •  6
 
 ---
 
-## 7. Acceptance Declaration
+## 7. Acceptance Declaration (1st UAT — Partial)
 
-**Client acceptance statement.** By signing this checklist, Macro Frozen Sdn. Bhd. confirms that the MAIA implementation has been demonstrated and reviewed against the scope in Section 2 and the criteria in Sections 4 and 5.
+**Client acceptance statement.** By signing this checklist, Macro Frozen Sdn. Bhd. confirms that the MAIA implementation has been demonstrated and reviewed, for the items covered in this 1st UAT session, against the scope in Section 2 and the criteria in Sections 4 and 5.
 
-**Pass / Fail annotation.** Items marked Pass are accepted as meeting the relevant expectation. Items marked Fail are recorded as open, deferred or retest items before final operational acceptance, unless both parties agree in writing to exclude them.
+**Pass / Fail annotation.** Items marked Pass are accepted as meeting the relevant expectation. Items marked Fail, or not yet demonstrated this round, are carried forward to the **2nd UAT session** as open, deferred or retest items, unless both parties agree in writing to exclude them.
 
-**Commercial milestone.** Where all relevant items are marked Pass and this checklist is signed by the authorised client representative, the UAT acceptance milestone under the signed proposal is treated as achieved.
+**Commercial milestone.** This 1st UAT session is a **partial sign-off**. The UAT acceptance milestone under the signed proposal is treated as achieved only once all Section 4 items are marked Pass across this 1st session and the 2nd UAT session, and the final combined checklist is signed by the authorised client representative.
 
-**Evidence.** This checklist intentionally excludes internal test notes, screenshots and chat logs. The signed and annotated copy serves as the acceptance record.
+**Evidence.** This checklist intentionally excludes internal test notes, screenshots and chat logs. The signed and annotated copy serves as the acceptance record for this round.
 
-**Sign-off selection:**
-- [ ] Accepted — all relevant items marked Pass.
-- [ ] Accepted with exceptions — failed / deferred items annotated above.
-- [ ] Not accepted — retest required before UAT sign-off.
+**Sign-off selection (1st UAT):**
+- [ ] Accepted — all items demonstrated this round marked Pass; no items carried to 2nd UAT.
+- [ ] Accepted with carry-forward — items demonstrated this round annotated above; remaining/failed items to be retested at the 2nd UAT session.
+- [ ] Not accepted — retest required before this round can be considered complete.
 
 ---
 
