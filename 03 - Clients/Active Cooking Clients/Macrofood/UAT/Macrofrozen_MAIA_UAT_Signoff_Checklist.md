@@ -1,14 +1,5 @@
----
-owner: Gareth
-status: draft
-last_reviewed: 2026-07-16
-lark_url: https://eg69120xnei.sg.larksuite.com/docx/Ki3tdXhIPotbu2xQWDPlsjKQgRg
----
-
 # MACRO FROZEN SDN. BHD.
 # MAIA — UAT Acceptance & Sign-Off Checklist
-
-**Reference format:** built from `18June26_Ultimax_MAIA_UAT_Signoff_Checklist.docx` (the same checklist structure used for Ultimax's signed UAT acceptance), adapted to Macro Frozen's own scope per `Macrofood — Scope Lock v1 (reconciled).md` and the UAT Field Guide / Launch Readiness Checklist for this account.
 
 **Purpose.** This checklist records User Acceptance Testing sign-off for the MAIA implementation at Macro Frozen Sdn. Bhd., against the signed proposal effective 15 May 2026 and Macro Frozen's current operating model. Section 4 is completed by circling Pass or Fail for each item during the in-person UAT session. The signed and annotated copy serves as the acceptance record. Where the signed proposal and Macro Frozen's current operating model differ, the current operating model prevails for acceptance; this checklist does not expand the signed commercial scope.
 
@@ -76,7 +67,7 @@ Out of scope (this UAT round): the items below.
 | **C. Order Capture** | | | |
 | 6 | Informal WhatsApp order intake | A draft Sales Order is created from an informal, relayed WhatsApp order message, correctly resolving customer, item, and price. | Pass / Fail |
 | 7 | Customer PO upload & match | For one of the 3 confirmed PO-issuing customers, a real Customer PO document is uploaded, matched to customer/item, and converted to a draft order — happy path only. | Pass / Fail |
-| 8 | Outdoor sales query-only access | A field sales rep can query a customer's price and outstanding balance, but cannot create or submit an order directly from that context. | Pass / Fail |
+| 8 | Sales rep field access | A field sales rep (Ben/Queenie) can retrieve a customer's price and outstanding balance, create/update customer info directly, and create an order in MAIA — per Role Permission sheet, Sales User has READ/WRITE/CREATE on Customer and Sales Order (submit remains with Sales Manager/Finance). | Pass / Fail |
 | **D. Standard Document Flow** | | | |
 | 9 | Sales Order (SO) | A confirmed order becomes a Sales Order, referencing SQL customer/item data, with the correct role able to submit it. | Pass / Fail |
 | 10 | Pick List | The confirmed SO generates a pick-list PDF for the warehouse. | Pass / Fail |
@@ -92,7 +83,7 @@ Out of scope (this UAT round): the items below.
 | 18 | Credit-limit gate | An order that would breach a customer's credit limit is blocked, not just warned, pending David's explicit override. | Pass / Fail |
 | **G. Sales Territory & Notifications** | | | |
 | 19 | Customer → sales-agent assignment | Each customer routes to the correct agent (CJ Tan / Ben / Queenie); CK's 3 customers stay excluded from normal sales workflows; unassigned customers default to David. | Pass / Fail |
-| 20 | Sales visibility isolation | A sales rep cannot view another rep's customer records or accounts; the Sales Manager (CJ Tan) sees only his own two reps' overdue accounts, never anyone else's. | Pass / Fail |
+| 20 | Sales visibility isolation | A sales rep cannot view another rep's customer records or accounts; the Sales Manager (CJ Tan) sees only his own two reps' overdue accounts, never anyone else's; David sees all accounts across every rep. | Pass / Fail |
 | 21 | Payment escalation alerts | Overdue-payment alerts route correctly to Finance, the responsible salesperson, the Sales Manager, and David. | Pass / Fail |
 | **H. Billing & Payment Support** | | | |
 | 22 | Payment matching | A clean payment (matching payer name and amount) auto-matches to the correct invoice; a mismatched-payer-name payment is flagged for Finance's manual confirmation, never silently matched. | Pass / Fail |
@@ -112,7 +103,6 @@ Each criterion below is accepted when demonstrated successfully during the UAT s
 | Credit-limit and price-floor gates block correctly, with David as sole approver | Pass / Fail |
 | Sales territory isolation (customer→agent assignment, rep-to-rep visibility) is enforced correctly | Pass / Fail |
 | Payment matching flags ambiguous cases for Finance rather than silently matching | Pass / Fail |
-| MAIA never overwrites SQL customer/item master data, and never shows a false "synced" status when SQL sync actually fails | Pass / Fail |
 
 ---
 
@@ -170,10 +160,4 @@ Decision (to confirm in this session): 6a — [ ] Option A  [ ] Option B  •  6
 | Name | [TO FILL] |
 | Position | [TO FILL] |
 | Date | |
-
----
-
-## See Also
-- [[MAIA_UAT_Field_Guide_Play_It_Like_A_User]]
-- [[MAIA_UAT_Launch_Readiness_Checklist]]
 - [[Macrofood — Scope Lock v1 (reconciled)]]
