@@ -298,10 +298,14 @@
                   {
                     "id": 184,
                     "name": "zsh 184"
+                  },
+                  {
+                    "id": 185,
+                    "name": "zsh 185"
                   }
                 ],
-                "activeId": 178,
-                "nextId": 185
+                "activeId": 182,
+                "nextId": 186
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -322,7 +326,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 785.5
+    "width": 938.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -352,7 +356,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "1cea89260b50165b",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist.pdf",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist (Reformatted)-20260716193057.pdf",
