@@ -2,7 +2,7 @@
 owner: Gareth
 status: review
 last_reviewed: 2026-07-17
-lark_url: https://eg69120xnei.sg.larksuite.com/file/HHFAbC4Sso6eC9xVbgGl2Xklgtc
+lark_url: https://eg69120xnei.sg.larksuite.com/docx/Yxwldzz9BoHWtxxgm5XlozHyg5c
 ---
 
 # Fixguru — Item Historical Pricing Demo — Issues (2026-07-17)
