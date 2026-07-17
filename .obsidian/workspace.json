@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen 1st UAT Checklist.md",
+                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-07-17 Fixguru Item Historical Pricing - Issues.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "16Jul26 Macrofrozen 1st UAT Checklist"
+              "title": "2026-07-17 Fixguru Item Historical Pricing - Issues"
             }
           }
         ],
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -301,10 +302,14 @@
                   {
                     "id": 185,
                     "name": "zsh 185"
+                  },
+                  {
+                    "id": 186,
+                    "name": "zsh 186"
                   }
                 ],
-                "activeId": 185,
-                "nextId": 186
+                "activeId": 186,
+                "nextId": 187
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -355,8 +360,10 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "1cea89260b50165b",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen 1st UAT Checklist.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-07-17 Fixguru Item Historical Pricing - Issues.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/content_Maya 訂單與倉儲出貨流程培訓會_202607170008.txt",
     "Granola/Transcripts/2026-07-17/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-17",
@@ -365,7 +372,6 @@
     "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist.docx",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen 1st UAT Checklist.md",
     "Granola/Transcripts/2026-07-16/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-16",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist (Reformatted).docx",
@@ -377,7 +383,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.1bd240b2d5a5",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.fa177e04238a",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.c68e803425e5",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.13a6af8ebf03",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Launch Readiness Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
