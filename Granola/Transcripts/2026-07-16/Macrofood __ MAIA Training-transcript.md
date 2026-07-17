@@ -3,7 +3,7 @@ granola_id: 5cfc46b8-120a-4f48-9990-7d433b4cd149
 title: Macrofood <> MAIA Training  - Transcript
 type: transcript
 created: 2026-07-16T06:30:05.494Z
-updated: 2026-07-16T14:08:18.580Z
+updated: 2026-07-17T02:48:12.321Z
 attendees: []
 ---
 
