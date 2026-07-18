@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-07-17 Fixguru Item Historical Pricing - Issues.md",
+                "file": "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-07-17 Fixguru Item Historical Pricing - Issues"
+              "title": "Macrofood __ MAIA Training-transcript"
             }
           }
         ],
@@ -162,8 +162,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -356,11 +355,15 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "1cea89260b50165b",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-07-17 Fixguru Item Historical Pricing - Issues.md",
+    "Pasted image 20260407144220.png",
+    "Pasted image 20260608002056.png",
+    "Pasted image 20260608003523.png",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/attachments",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen 1st UAT Checklist.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-07-17 Fixguru Item Historical Pricing - Issues.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/content_Maya 訂單與倉儲出貨流程培訓會_202607170008.txt",
     "Granola/Transcripts/2026-07-17/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-17",
@@ -379,7 +382,6 @@
     "Company Logo transparent.png",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.1bd240b2d5a5",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.fa177e04238a",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md.tmp.94722.c68e803425e5",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Launch Readiness Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — VoC Extraction.md",
@@ -395,12 +397,8 @@
     "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Checklist.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Scope Lock v1 — Fixguru.md",
-    "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Internal Questions for Ivan (2026-07-14).md",
     "Granola/Transcripts/2026-07-13/July sprint for MAIA-transcript.md",
-    "Pasted image 20260407144220.png",
-    "Pasted image 20260608002056.png",
-    "Pasted image 20260608003523.png",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
