@@ -1,12 +1,14 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-12
+last_reviewed: 2026-07-19
 ---
 
 > **Update 2026-07-12:** PM confirms most flags below align with current account state. Two items resolved since original extraction: (1) Telegram as production channel confirmed with client (channel-switch risk closed), (2) cost transparency has been addressed/noticed by client (no longer an open trust gap). Resolved items marked inline below; rest of extraction unchanged.
 >
-> **Update 2026-07-14:** Owner's real name ("Xiao Bai") confirmed during Scope Lock reconciliation (2026-07-12/13) and now propagated into the Actor & Role Register below, aligning with Scope Lock, UAT Checklist, and End-user & Process Map.
+> **Update 2026-07-14:** Owner's real name ("Yap Li Min") confirmed during Scope Lock reconciliation (2026-07-12/13) and now propagated into the Actor & Role Register below, aligning with Scope Lock, UAT Checklist, and End-user & Process Map.
+>
+> **Update 2026-07-19:** Per Lens Alignment Report v3 — sales coordinator and warehouse/packing staff identities resolved via the MAIA User List (Sample Data Checklist doc, Lark), propagated below. SL-11 (chatbot customer/item creation) promoted to LOCKED — this was VoC's own top-2 priority signal (Phase 3, Rank 2); status language throughout updated to reflect resolution. SL-13 (SO-stage reinterpretation) resolved in Scope Lock v2 — status language updated accordingly.
 
 # Dalson Industrial Supplies — Voice of Customer (VoC) Extraction
 
@@ -35,9 +37,9 @@ last_reviewed: 2026-07-12
 
 | Raw label | Re-attributed identity | Role | Confidence | Basis |
 |---|---|---|---|---|
-| "You" (majority of transcript) | Dalson Owner/Principal — **Xiao Bai** (name confirmed 2026-07-12/13, post-extraction) | Customer — decision-maker, business owner | CONFIRMED | Attendee `dalsonmultisupply@gmail.com`; first-person ownership language throughout ("my business", "my clients", sets credit-note policy, negotiates cost) |
-| "she" / "her" (invoice/customer creation, office-based) | Internal Sales Coordinator(s) (unnamed) | Customer — order processing, invoicing, in-office | BELIEVED | Owner describes them in third person: "they are mainly inside office... customer send POs, they just upload them"; never speaks directly |
-| "the guy" (packing) | Warehouse/Packing Staff (unnamed) | Customer — fulfillment | BELIEVED | Owner: "I will send PO to the guy, and then he will just pack that"; secondhand only |
+| "You" (majority of transcript) | Dalson Owner/Principal — **Yap Li Min**, aka "Xiao Bai" (nickname used during early Scope Lock reconciliation; Yap Li Min is her real name per the MAIA User List, 2026-07-19) | Customer — decision-maker, business owner | CONFIRMED | Attendee `dalsonmultisupply@gmail.com`; first-person ownership language throughout ("my business", "my clients", sets credit-note policy, negotiates cost) |
+| "she" / "her" (invoice/customer creation, office-based) | Internal Sales Coordinator — **Asilah Amirah binti Khairuddin** (name confirmed 2026-07-19 via MAIA User List, `dalsonsales.wei@gmail.com`) | Customer — order processing, invoicing, in-office | CONFIRMED identity (User List); role description still BELIEVED — owner describes her in third person: "they are mainly inside office... customer send POs, they just upload them"; she has not spoken directly in any source yet |
+| "the guy" (packing) | Warehouse/Packing Staff — **Joseph** (Admin/Store Keeper, name confirmed 2026-07-19 via MAIA User List) | Customer — fulfillment | CONFIRMED identity (User List); role description still BELIEVED — owner: "I will send PO to the guy, and then he will just pack that"; secondhand only |
 | "she can assist... dealer of AutoCount" | Ms Tan, AutoCount Software Support | Customer-side contractor — AutoCount setup/dealer, handles Dalson's accounting/P&L | CONFIRMED | Cross-referenced against `Dalson MAIA autocount integration.md` contact table: "Ms Tan, AutoCount Software Support, easysoftprosolution@gmail.com" |
 | Implicit vendor voice throughout | Brendan (+ Jeremy, Natalie present but not clearly attributed speech) | Vendor — Mindhive/MAIA onboarding team | CONFIRMED (attendance) / not customer voice | Attendee list: `jeremy@mindhive.asia`, `natalie@mindhive.asia`, `brendan@mindhive.asia` |
 
@@ -123,9 +125,9 @@ These five clusters are what Phase 5's interpretations are built on — each INF
 ## Phase 6 — What They Expect the Product to Do
 
 1. Ingest and reference exported customer, credit-limit/credit-terms, item/SKU, pricing, and order-history data (VOC-005, VOC-007).
-2. Support at least PO → quotation → invoice as the real document flow — **no sales order stage exists today** and nothing in the transcript indicates the owner asked for one (VOC-021). *(Flag: this conflicts with the vendor's own Customer Narrative and Scope Lock, both of which build around a PO→SO→Invoice→DO flow — see Stated vs Revealed table below.)*
-3. Provide a fallback path for new-customer creation that doesn't require the owner or coordinator to fully hand-key into AutoCount every time, even if full automated vendor creation isn't possible (VOC-015, VOC-017). Scope risk — open-ended until AutoCount validation constraints are resolved with Ms Tan.
-3a. **[NEW 2026-07-12]** Extend the same chatbot-driven creation capability to **items/SKUs**, not just customers — client confirms this is a needed feature, not an edge case (VOC-030). Same AutoCount-validation dependency likely applies as customer creation; must be functionally tested, not just built.
+2. Support at least PO → quotation → invoice as the real document flow — **no sales order stage exists today** and nothing in the transcript indicates the owner asked for one (VOC-021). **[RESOLVED 2026-07-19]** Scope Lock v2 (SL-13) reconciled this: SO/quotation stays inside MAIA only, Invoice + DO push to AutoCount, new customers get a MAIA-generated proforma document. Verbally agreed on the 2026-05-22 call, locked at MED confidence; a written-confirmation candidate has since surfaced (Sample Data Checklist doc) but hasn't formally closed this yet.
+3. Provide a fallback path for new-customer creation that doesn't require the owner or coordinator to fully hand-key into AutoCount every time, even if full automated vendor creation isn't possible (VOC-015, VOC-017). **[RESOLVED 2026-07-19]** No fallback needed — SL-11 confirmed with Ivan (Vendor/Dev) as full chatbot-based creation, not a degraded default.
+3a. **[RESOLVED 2026-07-19]** Item/SKU creation via chatbot (VOC-030) — same resolution as customer creation above. SL-11 in Scope Lock v2 covers both. A functional QA pass through the live chatbot flow is still worth doing before go-live, as a build-verification step, not because scope status is in question.
 4. Provide a driver-facing capture flow for proof-of-delivery photos, tied to the order/DO record so it's retrievable later (VOC-010, VOC-012).
 5. Issue credit notes at invoice level, not customer-account level (VOC-022).
 6. Generate receipts only on request, not automatically per order (VOC-023, VOC-024).
@@ -138,9 +140,9 @@ These five clusters are what Phase 5's interpretations are built on — each INF
 
 | Item | Stated | Revealed | Read |
 |---|---|---|---|
-| New-customer creation flow | Explicit question, pressed twice | Daily frequency, described as a real blocker if unresolved | **Real P1** — this is a Scope Lock blocking item ("Customer approval flow") and the transcript confirms it's not an edge case |
-| Item/SKU creation via chatbot | Not raised in original transcript | PM confirms client needs this alongside customer creation (2026-07-12) — same functional pattern, same risk profile | **NEW Real P1** — untested. Treat as sibling to new-customer creation: build + AutoCount-validation dependency + explicit test pass required before sign-off. |
-| Sales Order stage | Not raised by owner at all | Owner explicitly says "no sales order" exists today | **Scope-risk / misframing** — vendor's Customer Narrative and Scope Lock both assume a PO→SO→Invoice→DO flow; the transcript's only direct customer statement on this contradicts that assumption. Needs client confirmation before this is treated as locked. |
+| New-customer creation flow | Explicit question, pressed twice | Daily frequency, described as a real blocker if unresolved | **RESOLVED 2026-07-19** — SL-11 LOCKED, confirmed with Ivan; full chatbot-based creation, no fallback needed |
+| Item/SKU creation via chatbot | Not raised in original transcript | PM confirms client needs this alongside customer creation (2026-07-12) — same functional pattern, same risk profile | **RESOLVED 2026-07-19** — same SL-11 lock covers this. Functional QA pass still recommended before go-live as a build-verification step. |
+| Sales Order stage | Not raised by owner at all | Owner explicitly says "no sales order" exists today | **RESOLVED 2026-07-19** — SL-13 LOCKED (SUPERSEDED) at MED confidence in Scope Lock v2; SO stays in MAIA only, Invoice+DO push to AutoCount. Written-confirmation candidate found, not yet formally applied — worth upgrading to HIGH confidence. |
 | Cost transparency | Raised emotionally in the moment, not as a formal requirement | Strong revealed signal — real frustration, direct commercial trust impact | **RESOLVED (2026-07-12)** — PM confirms cost has been noticed/addressed with client. No longer an open trust gap. |
 | Receipts | Stated explicitly as low priority | Consistent — no revealed contradiction | **Confirmed Phase 2 / low priority**, do not over-build |
 | WhatsApp vs Telegram channel | Owner was walked through **WhatsApp** setup in this meeting (dedicated number, Business account) | Scope Lock v1 (23 Jun 2026) recorded the channel shift to **Telegram** with client agreement "NOT EVIDENCED" | **RESOLVED (2026-07-12)** — PM confirms Telegram use has since been confirmed with client. No longer an open risk. |
@@ -154,7 +156,7 @@ These five clusters are what Phase 5's interpretations are built on — each INF
 |---|---|---|
 | Whether coordinators/warehouse/drivers will actually adopt the flow the owner is describing on their behalf | The owner's description of "they just upload it, he just packs it" is management's version of the workflow, not the actual users' | Sit with one coordinator and one warehouse staff member through one real order cycle before build hardens the intake/packing flow |
 | Exact SKU alias / description-mismatch failure rate | Owner references it heavily in conversation but never gives a concrete example or count in this transcript | Collect 15–20 real customer POs with the item descriptions as customers actually write them, compare against AutoCount SKU names |
-| Whether "no sales order" is a firm fact or a moment of imprecise phrasing | This directly contradicts the vendor's own scope docs; if wrong, a chunk of the current build plan is safe — if right, SO stage may need reframing as new, not existing, process | Ask the owner directly, in writing, to confirm: "Do you currently issue a Sales Order document separate from a Quotation/Invoice today, yes or no?" |
+| ~~Whether "no sales order" is a firm fact or a moment of imprecise phrasing~~ | ~~This directly contradicts the vendor's own scope docs~~ | **RESOLVED 2026-07-19** — SL-13 LOCKED (SUPERSEDED) in Scope Lock v2 at MED confidence (verbal-only). A written-confirmation candidate has surfaced (Sample Data Checklist doc) but hasn't formally closed this to HIGH yet — still worth getting the direct written line from the owner. |
 | ~~Whether the owner has been told about the WhatsApp→Telegram channel switch~~ | ~~Direct trust risk if not~~ | **RESOLVED 2026-07-12** — PM confirms Telegram use confirmed with client. |
 | Real monthly order volume and its cost impact for the owner | Cost surprise itself is resolved (PM confirms noticed/addressed), but exact volume-to-cost model still not established in this corpus | Get 2–3 months of actual order counts from AutoCount export (already requested per VOC-005) and model the real per-month token cost against it — worth doing even though the trust issue is closed, so the number doesn't drift again |
 | Whether the minimal-fallback customer creation (VOC-017) is actually acceptable to the owner or just a hypothetical raised in the moment | Owner floated it once as a "if really cannot, then maybe..." — not fully committed | Confirm explicitly once the AutoCount vendor-creation constraint is resolved with Ms Tan |
@@ -163,9 +165,9 @@ These five clusters are what Phase 5's interpretations are built on — each INF
 
 ## Bottom Line
 
-> Dalson's owner isn't asking for an "AI operational layer" — they're asking to stop personally carrying the operational memory of the business: which document went where, what a new customer needs before they can be invoiced, and what an order actually costs before it's too late to change course. The transcript shows someone who trusts the process enough to ask basic, sometimes naive questions in front of the vendor team — channel and cost trust gaps have since been closed with the client (confirmed 2026-07-12); the remaining exposure is new-customer creation (daily, unresolved) and the SO-stage misframing.
+> Dalson's owner isn't asking for an "AI operational layer" — they're asking to stop personally carrying the operational memory of the business: which document went where, what a new customer needs before they can be invoiced, and what an order actually costs before it's too late to change course. The transcript shows someone who trusts the process enough to ask basic, sometimes naive questions in front of the vendor team — channel, cost, new-customer creation, and the SO-stage question have all since been closed with the client or the dev team (as of 2026-07-19).
 
-**The single most likely mistake to sink this account (updated):** with channel and cost now confirmed, the live risk narrows to new-customer creation into AutoCount — a daily, not edge-case, blocker that is still gated on Ms Tan/AutoCount validation constraints — and the unconfirmed SO-stage assumption baked into the vendor's own scope docs. This is a workflow-translation risk, not a feature-availability risk.
+**The single most likely mistake to sink this account (updated 2026-07-19):** with channel, cost, new-customer creation, and the SO-stage direction all now resolved, the remaining live risk is narrow — get the SO-stage written confirmation formally applied (verbal MED confidence today, a written candidate already exists), and run the SL-11 functional QA pass before go-live. Neither is a feature-availability risk anymore; both are closeout housekeeping.
 
 ---
 
@@ -176,9 +178,9 @@ These five clusters are what Phase 5's interpretations are built on — each INF
 - VOC-010/012 (driver POD capture + DO retrieval) — safe to scope as a build item; acceptance bar is concrete (owner can retrieve a past DO from a live reference).
 
 **To verify first** (gated on "What We Do NOT Know"):
-- New-customer creation fallback (VOC-015/016/017) — gated on Ms Tan / AutoCount validation constraint resolution. **Still open.**
-- **[NEW]** Item/SKU creation via chatbot (VOC-030) — gated on functional test pass. **Not yet tested — needs QA pass through Telegram chatbot flow before sign-off.**
-- SO-stage existence (VOC-021) — gated on direct written confirmation from owner; currently contradicts vendor's own Customer Narrative and Scope Lock. **Still open.**
+- ~~New-customer creation fallback (VOC-015/016/017)~~ — **RESOLVED 2026-07-19**. SL-11 LOCKED, confirmed with Ivan (Vendor/Dev), not via the accountant/Ms Tan as originally assumed — no further Ms Tan involvement needed on this specific item.
+- ~~Item/SKU creation via chatbot (VOC-030)~~ — **RESOLVED 2026-07-19**, same SL-11 lock. A functional QA pass through the Telegram chatbot flow is still recommended before go-live, as build verification, not as a scope gate.
+- ~~SO-stage existence (VOC-021)~~ — **RESOLVED 2026-07-19**, SL-13 LOCKED (SUPERSEDED) at MED confidence. A written-confirmation candidate has surfaced but not yet formally closed — worth chasing to HIGH confidence.
 - ~~WhatsApp vs Telegram channel~~ — **RESOLVED 2026-07-12**, Telegram confirmed with client.
 
 **To report back to the client:**

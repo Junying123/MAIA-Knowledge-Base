@@ -88,14 +88,14 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 | Role | Can create | Can approve | Can view (own vs all) | Cannot do |
 |---|---|---|---|---|
 | Yap Li Min | Draft orders, credit notes, receipts (on request) | SO / Invoice (sole approver, SL-7) | All | — |
-| Asilah (Sales Coordinator) | Draft orders (forward PO into MAIA) | **Cannot approve SO/Invoice** — explicitly tested as a must-block case (UAT UP-14) | **NEEDS CLIENT INPUT** — own vs all customer visibility not confirmed anywhere in the sources | Approve/finalize SO or Invoice; create new customer/item records via chatbot (SL-11, still blocking/unscoped — do not assign this permission yet) |
+| Asilah (Sales Coordinator) | Draft orders (forward PO into MAIA); **new customer/item records via chatbot (SL-11, LOCKED 2026-07-19 — confirmed with Ivan)** | **Cannot approve SO/Invoice** — explicitly tested as a must-block case (UAT UP-14) | **NEEDS CLIENT INPUT** — own vs all customer visibility not confirmed anywhere in the sources | Approve/finalize SO or Invoice |
 | Joseph (Store Keeper) | — | — | **NEEDS CLIENT INPUT** | Approve orders; not confirmed whether he has any MAIA-facing access at all vs. receiving forwarded instructions only |
 | Driver(s) | POD photo upload | — | Own delivery assignments only (assumed, **NEEDS CLIENT INPUT** to confirm) | Approve orders, access customer/pricing data |
 | Ms Tan | N/A (not a MAIA user) | N/A | N/A | Not a MAIA end-user — AutoCount-side only |
 
 **Registration rule (new):** MAIA recognises users only by the personal WhatsApp number they message from — shared/office numbers are explicitly disallowed. Yap Li Min, Asilah, and Joseph each have a personal number on file; whoever the driver turns out to be will need their own number registered too, not a shared logistics line.
 
-**New customer/item creation via chatbot (Scope Lock SL-11):** no role has a confirmed permission here yet — this capability itself is still blocking/unscoped. Do not assign it to any role in training or config until SL-11 is resolved.
+**New customer/item creation via chatbot (Scope Lock SL-11):** LOCKED 2026-07-19, confirmed with Ivan — full chatbot-based creation, not a fallback. Assigned to Asilah (Sales Coordinator) above, matching the existing pattern for who forwards/creates orders. Include in training and config now that it's resolved.
 
 ---
 

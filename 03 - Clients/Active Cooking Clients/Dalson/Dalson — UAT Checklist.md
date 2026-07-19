@@ -1,12 +1,14 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-12
+last_reviewed: 2026-07-19
 ---
 
 # Dalson Industrial Supplies — UAT Checklist
 
-Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction (2026-07-12) · Dalson Industrial Supplies Customer Narrative Document (used for realistic test data/roles only — vendor voice, not scope authority).
+Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extraction · Dalson Industrial Supplies Customer Narrative Document (used for realistic test data/roles only — vendor voice, not scope authority).
+
+> **Regenerated 2026-07-19** per Lens Alignment Report v3 — this doc predated the entire Scope Lock v2 rerun. Fixes applied: SL-12 numbering collision resolved, SL-11/SL-13/SL-17 status + coverage added, SL-10 reworded, verdict recomputed.
 
 ---
 
@@ -16,22 +18,24 @@ Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction 
 |---|---|---|---|---|
 | SL-1 | MAIA as operational layer on top of AutoCount | LOCKED | YES | **YES** |
 | SL-2 | Core order intake via unstructured channels (WhatsApp/call/email) | LOCKED | YES | **YES** |
-| SL-3 | Messaging channel = Telegram | LOCKED (Supersession, was "Superseded", now confirmed 2026-07-12) | YES | **YES** |
-| SL-4 | SKU alias mapping / matching | RESOLVED → LOCKED (2026-07-12: core MAIA platform engine) | YES | **YES** |
-| SL-5 | POD capture (photo) | RESOLVED → LOCKED (2026-07-12: core MAIA feature) | YES | **YES** |
-| SL-6 | AutoCount integration (read/write access + data migration) | RESOLVED → LOCKED (2026-07-12: access granted, data migrated) | YES | **YES** |
-| SL-7 | Customer approval flow (SO/Invoice authority — single approver) | RESOLVED → LOCKED (2026-07-12: Xiao Bai sole approver) | YES | **YES** |
-| SL-8 | Credit note handling (invoice-level) | RESOLVED → LOCKED (2026-07-12: platform supports it) | YES | **YES** |
-| SL-9 | Warehouse / stock update responsibility | RESOLVED → LOCKED (2026-07-12: platform supports it) | YES | **YES** |
-| SL-10 | Pricing logic (ad hoc vs structured per customer) | NEEDS SCOPING (Blocking) | UNKNOWN | NO |
-| SL-11 | Customer & item/SKU creation via chatbot | Blocking item, unresolved | UNKNOWN | NO |
-| SL-12 | Customer master requirements (e-invoice mandatory fields) | NEEDS SCOPING — PARTIAL, re-verify | UNKNOWN | NO |
-| SL-13 | PO → SO → Invoice → DO workflow automation (approval/edit/override rules) | AGREED IN PRINCIPLE — NOT LOCKED | NO | NO |
+| SL-3 | Messaging channel = Telegram | LOCKED (Superseded, confirmed 2026-07-12) | YES | **YES** |
+| SL-4 | SKU alias mapping / matching | LOCKED | YES | **YES** |
+| SL-5 | POD capture (photo) | LOCKED | YES | **YES** |
+| SL-6 | AutoCount integration (access + data migration) | LOCKED | YES | **YES** |
+| SL-7 | Customer approval flow (SO/Invoice authority — single approver) | LOCKED | YES | **YES** |
+| SL-8 | Credit note handling (invoice-level) | LOCKED | YES | **YES** |
+| SL-9 | Warehouse / stock update responsibility | LOCKED | YES | **YES** |
+| SL-10 | Pricing logic (ad hoc, per-customer negotiated) | AGREED IN PRINCIPLE — direction agreed (ad hoc, MAIA holds customer price + history), auto-suggest vs manual entry mechanic still undefined | NO (direction yes, mechanic no) | NO |
+| SL-11 | Customer & item/SKU creation via chatbot | **LOCKED (2026-07-19)** — confirmed with Ivan (Vendor/Dev): chatbot can create both new customers and new SKUs directly in AutoCount, full capability not a fallback | YES | **YES** |
+| — | Customer master e-invoice mandatory fields (sub-question under SL-11, not a standalone Scope Lock item — previously mislabeled "SL-12" in this doc) | NEEDS SCOPING — PARTIAL, needs re-verification specific to Dalson | UNKNOWN | NO |
+| SL-12 | AutoCount integration: ongoing 2-way sync mechanism | AGREED IN PRINCIPLE — direction agreed (integrate not replace), API vs middleware vs DB access undefined | NO | NO |
+| SL-13 | PO → SO → Invoice → DO workflow (SO stage reinterpreted) | **LOCKED (SUPERSEDED)** — confidence MED, verbal agreement only; a written-confirmation candidate has surfaced (Sample Data Checklist doc) but hasn't formally closed this yet | YES (verbal) | **YES** |
 | SL-14 | Document generation (SO/Invoice/DO PDFs — layout/templates) | AGREED IN PRINCIPLE — NOT LOCKED | NO | NO |
 | SL-15 | Supplier-side procurement automation | OUT OF SCOPE | N/A | NO |
 | SL-16 | Full ERP replacement | OUT OF SCOPE | N/A | NO |
+| SL-17 | Receipts | **LOCKED** | YES | **YES** |
 
-**Testable this cycle: SL-1 through SL-9 (9 items).**
+**Testable this cycle: SL-1 through SL-9, SL-11, SL-13, SL-17 (12 items).**
 
 ---
 
@@ -130,6 +134,30 @@ Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction 
 | HP-09 | SL-9 | Happy | — | Warehouse staff | Order confirmed | 1. Confirm an order. 2. Confirm stock levels update to reflect the fulfilled order. | Sample stocked SKU | Stock quantity reflects the order without manual re-entry | | |
 | UP-18 | SL-9 | Unhappy | Downstream integrity | Warehouse staff | — | 1. Fulfill an order for an item marked as one that doesn't require stock-count tracking (per VOC-006: only a few items need real tracking). 2. Confirm system behaves correctly (doesn't force a stock update where none is expected). | Non-tracked SKU | System respects the item's tracking configuration; does not force an update where the client doesn't track stock | | |
 
+### SL-11 — Customer & item/SKU creation via chatbot
+
+| Test ID | Scope ref | Path | Trigger type | Role/actor | Precondition | Steps | Test data | Expected result | Pass/Fail | Tester & date |
+|---|---|---|---|---|---|---|---|---|---|---|
+| HP-10 | SL-11 | Happy | — | Asilah / staff | Chatbot access to MAIA | 1. Create a new customer via the chatbot for a first-time buyer. 2. Confirm it pushes correctly to AutoCount. 3. Repeat for a new SKU/item not yet in the item master. | New customer + new item details | Both new customer and new item are created and reflected correctly in AutoCount, no manual key-in required | | |
+| UP-20 | SL-11 | Unhappy | Invalid input | Asilah / staff | — | 1. Attempt to create a new customer via chatbot with a mandatory field missing (e.g. no tax identity). 2. Observe response. | Incomplete customer details | MAIA flags the missing mandatory field and does not push an incomplete record to AutoCount | | |
+| UP-21 | SL-11 | Unhappy | Conflict / duplicate | Asilah / staff | Customer or SKU already exists | 1. Attempt to create a customer/SKU that already exists in AutoCount. 2. Observe response. | Existing customer or SKU name | MAIA detects the duplicate, does not create a second record, prompts staff to use the existing one | | |
+
+### SL-13 — PO → SO → Invoice → DO workflow (SO stage reinterpreted)
+
+| Test ID | Scope ref | Path | Trigger type | Role/actor | Precondition | Steps | Test data | Expected result | Pass/Fail | Tester & date |
+|---|---|---|---|---|---|---|---|---|---|---|
+| HP-11 | SL-13 | Happy | — | Yap Li Min | New customer requiring upfront payment | 1. Generate the MAIA-side proforma/SO-style document for a new customer. 2. Confirm the customer pays. 3. Confirm Invoice + DO push to AutoCount as normal, while the SO/quotation-equivalent document stays inside MAIA only. | New customer order | Proforma document generated correctly; only Invoice + DO reach AutoCount, no formal SO record created there | | |
+| UP-22 | SL-13 | Unhappy | Must-NOT | — | Any order at SO/quotation stage | 1. Confirm the SO/quotation-equivalent document is never pushed to AutoCount as a formal Sales Order record. | Any order | AutoCount never receives a Sales Order record from MAIA — only Invoice and DO | | |
+| UP-23 | SL-13 | Unhappy | Wrong state | — | SO/quotation document exists in MAIA, not yet an invoice | 1. Attempt to push the MAIA-side SO/quotation document directly to AutoCount without going through the Invoice step. 2. Observe response. | In-progress SO/quotation | System blocks or rejects — the only valid path to AutoCount is via Invoice, not directly from the SO/quotation stage | | |
+
+### SL-17 — Receipts
+
+| Test ID | Scope ref | Path | Trigger type | Role/actor | Precondition | Steps | Test data | Expected result | Pass/Fail | Tester & date |
+|---|---|---|---|---|---|---|---|---|---|---|
+| HP-12 | SL-17 | Happy | — | Yap Li Min / staff | Customer has paid, proof of payment attached | 1. Customer explicitly requests a receipt. 2. Staff generates it via one click in MAIA, tied to the related order/invoice. | Paid order with proof of payment attached | Receipt is generated correctly and linked to the correct order/invoice | | |
+| UP-24 | SL-17 | Unhappy | Must-NOT | — | Proof of payment attached to an order/invoice | 1. Attach a proof of payment to an order or invoice. 2. Confirm no receipt is auto-generated. | Any paid order | No receipt is generated automatically — receipt generation only happens on explicit request | | |
+| UP-25 | SL-17 | Unhappy | Missing precondition | Yap Li Min / staff | No proof of payment attached | 1. Attempt to generate a receipt for an order with no attached proof of payment. 2. Observe response. | Unpaid or unconfirmed order | System flags the missing precondition or requires explicit confirmation — does not silently generate a receipt with nothing to back it | | |
+
 ---
 
 ## Step 4 — Coverage & Traceability
@@ -147,25 +175,27 @@ Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction 
 | SL-7 | Approval flow (Xiao Bai) | HP-07 | UP-14, UP-15 | YES |
 | SL-8 | Credit note handling | HP-08 | UP-16, UP-17 | YES |
 | SL-9 | Warehouse/stock update | HP-09 | UP-18 | YES |
+| SL-11 | Customer & item/SKU creation via chatbot | HP-10 | UP-20, UP-21 | YES |
+| SL-13 | PO→SO→Invoice→DO workflow (SO reinterpreted) | HP-11 | UP-22, UP-23 | YES |
+| SL-17 | Receipts | HP-12 | UP-24, UP-25 | YES |
 
 ### 4b. Excluded — not tested
 
 | ID | Item | Reason not tested |
 |---|---|---|
-| SL-10 | Pricing logic (ad hoc vs structured) | NS — genuinely unresolved; no evidence in VoC or transcript; needs direct client question before it can be scoped, let alone tested |
-| SL-11 | Customer & item/SKU creation via chatbot | Blocking — client-confirmed need (VOC-015/016/017/030) but validation constraints and fallback flow not yet defined; do not test until scoped |
-| SL-12 | Customer master requirements (e-invoice) | NS — PARTIAL, needs re-verification specific to Dalson before testable |
-| SL-13 | PO→SO→Invoice→DO workflow automation | Not locked — approval/edit/override rules undefined. **Also flag:** VoC (VOC-021) records the owner saying "no sales order" exists in their current process, directly contradicting this assumed flow — do not test an SO stage until this is confirmed with the client |
+| SL-10 | Pricing logic (ad hoc, per-customer) | AIP — direction agreed (ad hoc, MAIA holds customer price + history), but the auto-suggest-vs-manual-entry mechanic is still undefined; not testable until that's resolved |
+| — | Customer master e-invoice mandatory fields (sub-question under SL-11) | NS — PARTIAL, needs re-verification specific to Dalson before testable |
+| SL-12 | AutoCount integration: ongoing 2-way sync mechanism | AIP — direction agreed (integrate not replace), API vs middleware vs DB access undefined |
 | SL-14 | Document generation (SO/Invoice/DO PDFs) | Not locked — required outputs defined but layout/templates only partially available |
 | SL-15 | Supplier-side procurement automation | OOS — explicitly excluded from Phase 1 |
 | SL-16 | Full ERP replacement | OOS — MAIA is overlay only |
-| — | Receipts (generate only on customer request, per VOC-023/024) | VoC signal with **no Scope Lock home** — Scope Lock doesn't mention receipts at all. Not tested this cycle; flagged as a gap below, not silently assumed |
 
 ### 4c. Assumptions & gaps
 
-- **Receipts (VOC-023/024)** — client-confirmed business rule (generate on request only, not automatic) has no corresponding Scope Lock item. NEEDS CLIENT/SCOPE INPUT: should this be added to Scope Lock as a locked item before next UAT cycle, given it's a clear, low-ambiguity rule?
-- **SO-stage contradiction (SL-13)** — see 4b. This needs direct client confirmation before the PO→SO→Invoice→DO flow can be locked or tested as designed.
-- **Pricing logic (SL-10)** — NEEDS CLIENT INPUT. No source in this corpus answers ad hoc vs structured/per-customer pricing. Recommend adding as a standing question on the Client Confirmation Agenda (already present in Scope Lock).
+- **Receipts (SL-17)** — RESOLVED. Locked in Scope Lock v2 and now has full test coverage (HP-12, UP-24, UP-25) above.
+- **SO-stage (SL-13)** — RESOLVED to LOCKED (SUPERSEDED) at MED confidence; a written-confirmation candidate (Sample Data Checklist doc) has surfaced but hasn't formally closed this yet — worth re-testing at HIGH confidence once that's applied to Scope Lock.
+- **Pricing logic (SL-10)** — direction now agreed (ad hoc, per-customer, MAIA holds price history); only the auto-suggest-vs-manual mechanic remains open. Still correctly excluded from testing.
+- **SL-11 unblock mechanism** — resolved via Ivan (Vendor/Dev) confirmation, not via the accountant/Ms Tan as earlier docs assumed. Worth noting so the AutoCount-dealer conversation isn't re-opened unnecessarily.
 - **Coordinator / warehouse / driver roles** — VoC's own coverage gate flags these as BELIEVED, not CONFIRMED (owner described them secondhand, they never spoke in the source transcript). Several test cases above (UP-04, UP-05, HP-02, HP-05, HP-09, UP-18) assign these roles as testers on the assumption the process the owner described is accurate. NEEDS CLIENT INPUT to confirm actual named testers before UAT execution — tracked as a sign-off agenda item in the End-user & Process Map (§6, item #2).
 - **End-user & Process Map now exists** (built 2026-07-13) — role/actor assignments above are current against it; named-tester confirmation for coordinator/warehouse/driver roles remains the one open item, carried in the Map's sign-off agenda rather than as a missing artifact.
 - **Test data** — all "sample" data placeholders above need real Dalson data (customer records, SKUs, sample POs) per VOC-005/VOC-008 export request; none of it should be fabricated at execution time.
@@ -174,11 +204,11 @@ Sources: Scope Lock v1 (current state, reconciled 2026-07-12) · VoC Extraction 
 
 ## Verdict
 
-**9 of 16 scope items are testable this cycle.** The checklist above covers all 9 with ≥1 happy + ≥2 unhappy cases each (SL-3 now has 2 unhappy cases — UP-07, UP-19 — meeting the ≥2 minimum). 7 items are correctly excluded, most notably the two live blockers (pricing logic, customer/item creation via chatbot) which must not be tested until scoped. The End-user & Process Map now exists (built 2026-07-13), closing the role-assignment risk flagged in the prior cycle — see §4c below.
+**12 of 17 scope items are testable this cycle** (up from 9 of 16 — Scope Lock v2 added SL-17 and promoted SL-11 and SL-13). The checklist above covers all 12 with ≥1 happy + ≥2 unhappy cases each. 5 items are correctly excluded (SL-10, SL-12, SL-14 — all AGREED IN PRINCIPLE with a real open mechanic; SL-15, SL-16 — OOS), plus one sub-question (e-invoice mandatory fields) that isn't a standalone Scope Lock item. No locked item is missing coverage as of this regeneration.
 
 ---
 
 ## See Also
 - [[Dalson — VoC Extraction]]
 - [[Dalson — Lens Alignment Report]]
-- Scope Lock v1 — Dalson Industrial Supplies (Lark)
+- Scope Lock v2 — Dalson Industrial Supplies (Lark)
