@@ -49,9 +49,7 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 | Credit Note | Yap Li Min / finance | Customer return, tied to a **specific invoice ID** | Invoice-level only — account-level credit notes explicitly rejected (SL-8, VOC-022) |
 | Receipt | On customer request only, not automatic | Customer explicitly asks | **Resolved in Scope Lock v2** — SL-17, LOCKED. No longer a gap. |
 
-**Resolved — SO stage.** Yap Li Min stated directly in the requirements transcript that **no formal Sales Order stage exists** in Dalson's current process ("I understand that you may have foreseen your quotation, your phone invoice. No sales order" — VOC-021, CONFIRMED). Scope Lock v2 (SL-13) reconciled this: Invoice + DO push to AutoCount, the SO/quotation-equivalent stays inside MAIA only, and new customers get a MAIA-generated proforma document for upfront payment — verbally agreed on the 2026-05-22 call, so SL-13 was locked at MED confidence pending written sign-off.
-
-**That written sign-off now exists.** The Sample Data Checklist doc (Lark, section "Sample Transaction Documents") states: *"You are happy to use MAIA's template for Sales Orders and Proforma Invoices for new customers. Invoices will continue to be generated via AutoCount."* This is written, not verbal, confirmation of the same arrangement SL-13 describes. **Recommend bumping SL-13 to HIGH confidence in the next Scope Lock pass** — not done in this map, since Process Map doesn't own Scope Lock's confidence field, but flagging it here so it isn't missed.
+**Resolved — SO stage.** Yap Li Min stated directly in the requirements transcript that **no formal Sales Order stage exists** in Dalson's current process ("I understand that you may have foreseen your quotation, your phone invoice. No sales order" — VOC-021, CONFIRMED). Scope Lock v2 (SL-13) reconciled this: Invoice + DO push to AutoCount, the SO/quotation-equivalent stays inside MAIA only, and new customers get a MAIA-generated proforma document for upfront payment. The Sample Data Checklist doc (Lark, section "Sample Transaction Documents") provided written confirmation: *"You are happy to use MAIA's template for Sales Orders and Proforma Invoices for new customers. Invoices will continue to be generated via AutoCount."* SL-13 is now LOCKED (SUPERSEDED) at **HIGH confidence** (upgraded from MED, 2026-07-19).
 
 **ERP-master boundary:** MAIA sits on top of AutoCount; AutoCount remains the accounting/invoicing core throughout (Scope Lock SL-1, HIGH confidence, locked).
 
@@ -108,7 +106,7 @@ Each line below is one question to close at the workflow/UAT sign-off session. T
 3. ~~Warehouse/packing staff identity~~ — **CLOSED.** Joseph (Admin/Store Keeper), confirmed via MAIA User List.
 4. **Driver identity** — who will be using the driver-facing POD capture flow? The 3-person User List (Yap, Asilah, Joseph) has no driver entry — confirm whether Joseph doubles as driver, delivery is ad hoc/outsourced, or a fourth person needs registering. Needed before UAT execution and training (M9). *(open, narrowed)*
 5. **Sales coordinator visibility scope** — does Asilah see only her own assigned customers/orders, or all of Dalson's orders? Not addressed anywhere in the current sources. *(open)*
-6. ~~SO-stage confirmation~~ — **CLOSED.** Sample Data Checklist doc has written confirmation of the SO-stays-in-MAIA / proforma-for-new-customers arrangement — see Section 3. Recommend this trigger a Scope Lock v2 confidence bump on SL-13 (verbal MED → written HIGH), separately from this map.
+6. ~~SO-stage confirmation~~ — **CLOSED.** Sample Data Checklist doc has written confirmation of the SO-stays-in-MAIA / proforma-for-new-customers arrangement — see Section 3. SL-13 upgraded to HIGH confidence in Scope Lock v2 (2026-07-19).
 7. ~~Receipt rule scope home~~ — **CLOSED.** SL-17 in Scope Lock v2.
 
 ---

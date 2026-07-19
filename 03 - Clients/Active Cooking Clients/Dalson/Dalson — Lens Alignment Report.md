@@ -105,6 +105,21 @@ Items 1–6 (UAT) carry the most weight — it's the only doc that hasn't been t
 
 ---
 
+---
+
+## 8. Re-verification (2026-07-19, same day)
+
+All 11 fixes from §6 applied, plus 2 items surfaced in a spot-check after the fix pass:
+- Name inconsistency ("Xiao Bai" vs "Yap Li Min") — resolved across all 4 docs (Scope Lock, VoC, UAT, Process Map now all say Yap Li Min; VoC keeps one explanatory nickname note for transcript traceability). UAT test-case actors also renamed to Asilah/Joseph where identity was already known.
+- SL-13 confidence bump (MED → HIGH) — applied everywhere; written confirmation (Sample Data Checklist doc) is now reflected in Scope Lock's SL-13 block, Supersessions Log S3, Client Confirmation Agenda (item closed and removed), and Bottom Line, with matching updates in VoC and UAT.
+- Bonus: Scope Lock's Client Confirmation Agenda cited the wrong Needs-Scoping Register row for e-invoice fields (row 8, which had since become "Approval flow" after other rows resolved) — corrected to row 3.
+
+Re-checked all four docs post-fix: dashboard counts (10 LOCKED / 2 LOCKED-SUPERSEDED / 3 AIP / 0 NEEDS-SCOPING / 2 OOS) match UAT's "12 testable" claim exactly (10+2=12). No leftover status mismatches, no orphans, no stale names outside of VoC's intentional one-line nickname footnote.
+
+**Verdict: ALIGNED.** Safe to proceed to Gate-2 sign-off prep. Remaining open items (SL-10 pricing mechanic, SL-12 sync method, SL-14 templates, e-invoice fields, driver identity, coordinator visibility scope, UAT signatory) are genuine unresolved business questions, not doc drift — tracked consistently as open across all four docs.
+
+---
+
 ## See Also
 - [[Dalson — VoC Extraction]]
 - [[Dalson — UAT Checklist]]

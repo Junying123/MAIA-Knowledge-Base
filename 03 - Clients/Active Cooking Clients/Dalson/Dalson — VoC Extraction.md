@@ -167,7 +167,7 @@ These five clusters are what Phase 5's interpretations are built on — each INF
 
 > Dalson's owner isn't asking for an "AI operational layer" — they're asking to stop personally carrying the operational memory of the business: which document went where, what a new customer needs before they can be invoiced, and what an order actually costs before it's too late to change course. The transcript shows someone who trusts the process enough to ask basic, sometimes naive questions in front of the vendor team — channel, cost, new-customer creation, and the SO-stage question have all since been closed with the client or the dev team (as of 2026-07-19).
 
-**The single most likely mistake to sink this account (updated 2026-07-19):** with channel, cost, new-customer creation, and the SO-stage direction all now resolved, the remaining live risk is narrow — get the SO-stage written confirmation formally applied (verbal MED confidence today, a written candidate already exists), and run the SL-11 functional QA pass before go-live. Neither is a feature-availability risk anymore; both are closeout housekeeping.
+**The single most likely mistake to sink this account (updated 2026-07-19):** with channel, cost, new-customer creation, and the SO-stage question all now resolved at HIGH confidence, there is no remaining feature-availability or scope risk. The one item worth doing before go-live is a functional QA pass on SL-11's chatbot flow — closeout housekeeping, not a risk.
 
 ---
 
@@ -180,7 +180,7 @@ These five clusters are what Phase 5's interpretations are built on — each INF
 **To verify first** (gated on "What We Do NOT Know"):
 - ~~New-customer creation fallback (VOC-015/016/017)~~ — **RESOLVED 2026-07-19**. SL-11 LOCKED, confirmed with Ivan (Vendor/Dev), not via the accountant/Ms Tan as originally assumed — no further Ms Tan involvement needed on this specific item.
 - ~~Item/SKU creation via chatbot (VOC-030)~~ — **RESOLVED 2026-07-19**, same SL-11 lock. A functional QA pass through the Telegram chatbot flow is still recommended before go-live, as build verification, not as a scope gate.
-- ~~SO-stage existence (VOC-021)~~ — **RESOLVED 2026-07-19**, SL-13 LOCKED (SUPERSEDED) at MED confidence. A written-confirmation candidate has surfaced but not yet formally closed — worth chasing to HIGH confidence.
+- ~~SO-stage existence (VOC-021)~~ — **RESOLVED 2026-07-19**, SL-13 LOCKED (SUPERSEDED) at HIGH confidence, written confirmation applied.
 - ~~WhatsApp vs Telegram channel~~ — **RESOLVED 2026-07-12**, Telegram confirmed with client.
 
 **To report back to the client:**
