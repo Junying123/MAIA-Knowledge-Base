@@ -2,22 +2,24 @@
 
 ## 1. Launch verdict
 
-**USABLE WITH GAPS.** All 12 LOCKED scope items have full Mission coverage and the Field Guide is complete and Lark-ready. The gaps are entirely logistical (test window, environment access, bug/XP tracker links, UAT owner, time budget — none of which exist in the source docs) plus one identity gap (the driver role is unconfirmed, so M-05 must be played by a stand-in). Nothing here blocks distributing the pack once the missing project variables are filled in.
+**USABLE WITH GAPS.** All 12 LOCKED scope items have full Mission coverage and the Field Guide is complete and Lark-ready. Test window, environment access, and the bug-reporting channel are now confirmed (Section 2). Remaining gaps: XP tracker link, a named UAT owner, and the time budget vs. the confirmed 60-minute window (see warning below) — plus one identity gap (the driver role is unconfirmed, so M-05 must be played by a stand-in). Nothing here blocks distributing the pack once these are closed.
+
+> **Time-budget warning:** the confirmed test window is **60 minutes on 20 July**. This pack's own estimate (12 missions × ~10 min + 3 Boss Fights × ~14 min) runs closer to **~3 hours** for full completion. Recommend either scoping this session to the Speedrun set (M-07, M-08, M-11, M-12 — the P1-risk flows) or splitting the campaign across multiple sessions. Flag to the UAT owner before distribution.
 
 ## 2. Missing project variables
 
 | Variable | Current value | Required action | Blocking? |
 |---|---|---|---|
-| TEST_WINDOW | `[NEEDS INPUT]` | UAT owner to set dates | Yes — testers need a window |
-| ENVIRONMENT_AND_ACCESS | `[NEEDS INPUT]` | Confirm UAT account URL + login method | Yes |
-| INPUT_LIBRARY_FOLDER | Set — `Dalson — UAT Infopack/` | — | No |
+| TEST_WINDOW | **20 July, 60 minutes** | See time-budget warning above — confirm scope (Speedrun vs full campaign) | No longer missing — scope decision needed |
+| ENVIRONMENT_AND_ACCESS | **https://maia-fe-dalson.vercel.app/** · Telegram: **@maia_dalson_bot** | — | No longer missing |
+| INPUT_LIBRARY_FOLDER | **Sample Docs, Sample POs, WhatsApp Sample Order Msg** (Google Drive, linked in Lark) | — | No |
 | CURRENT_INPUT_LIBRARY_CONTENTS | See `00_START_HERE_INPUT_LIBRARY.md` | — | No |
 | TEST_DATA_ACCESS_NOTES | Covered per-mission in Field Guide | — | No |
 | SYSTEMS_TESTERS_CANNOT_ACCESS | Set — Dalson's live AutoCount instance | — | No |
-| BUG_REPORTING_CHANNEL | `[NEEDS INPUT]` | UAT owner to set | Yes |
+| BUG_REPORTING_CHANNEL | **QA Testing Tracker** (Lark doc) | — | No longer missing |
 | XP_TRACKER_LINK | `[NEEDS INPUT]` | UAT owner to set (or skip scoring) | No — optional |
 | UAT_OWNER | `[NEEDS INPUT]` | Assign a name | Yes |
-| TIME_BUDGET_PER_TESTER | `[NEEDS INPUT]` | UAT owner to estimate (12 missions × ~10 min ≈ 2 hrs + 3 Boss Fights × ~14 min ≈ 42 min → suggest budgeting ~3 hrs) | No — suggestion given |
+| TIME_BUDGET_PER_TESTER | 60 min confirmed, but see time-budget warning above | UAT owner to confirm scope | Yes |
 | ANYTHING_ELSE_TESTERS_MUST_KNOW | Not specified | Optional | No |
 
 ## 3. Preparation action register

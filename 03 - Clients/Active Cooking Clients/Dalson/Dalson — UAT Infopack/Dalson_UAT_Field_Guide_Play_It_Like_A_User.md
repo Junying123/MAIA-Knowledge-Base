@@ -51,17 +51,19 @@
 - **Product:** MAIA
 - **Client:** Dalson Industrial Supplies Sdn Bhd
 - **Issued:** 2026-07-19
-- **Test window:** `[NEEDS INPUT: TEST_WINDOW]`
-- **Environment / access:** `[NEEDS INPUT: ENVIRONMENT_AND_ACCESS]`
-- **Bug-reporting channel:** `[NEEDS INPUT: BUG_REPORTING_CHANNEL]`
+- **Test window:** 20 July, 60 minutes — see time-budget warning below
+- **Environment / access:** https://maia-fe-dalson.vercel.app/ · Telegram: @maia_dalson_bot
+- **Bug-reporting channel:** QA Testing Tracker (Lark)
 - **XP tracker:** `[NEEDS INPUT: XP_TRACKER_LINK]`
 - **UAT owner:** `[NEEDS INPUT: UAT_OWNER]`
-- **Time budget per tester:** `[NEEDS INPUT: TIME_BUDGET_PER_TESTER]`
+- **Time budget per tester:** 60 min confirmed — see time-budget warning below, this pack estimates ~3 hrs for full completion
 - **Input library:** `Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md`
 - **Test-data access notes:** Most missions let you pick your own customer, item, and order data straight from your UAT account — see each mission's Input recipe.
 - **Systems you cannot access:** Dalson's live AutoCount instance is not part of your UAT account. Where a win condition depends on AutoCount state, this guide tells you exactly which half you can verify yourself and which half is a handoff (see **Beyond Tester Reach**, Section 4).
 
 > **Campaign warning:** Dalson is a small, single-owner trading business. Every persona you play answers, directly or indirectly, to **one person — Yap Li Min**. Nothing about this account is bureaucratic. If a mission feels like it needs three layers of sign-off, you've misread the business — flag it as an Observation, not a defect.
+
+> **Time-budget warning:** your confirmed window is **60 minutes**. Full completion (12 missions + 3 Boss Fights) runs closer to ~3 hours. Unless your UAT owner tells you otherwise, prioritise the **Speedrun set — M-07, M-08, M-11, M-12** (the P1-risk flows) — see Section 7, Campaign Overview.
 
 ### Section 1 — How to Play
 

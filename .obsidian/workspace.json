@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
+                "file": "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Macrofood __ MAIA Training-transcript"
+              "title": "00_START_HERE_INPUT_LIBRARY"
             }
           }
         ],
@@ -325,7 +325,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 1112.5
+    "width": 739.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -357,6 +357,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/Dalson_UAT_Launch_Readiness_Checklist.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/Dalson_UAT_Field_Guide_Play_It_Like_A_User.md",
@@ -377,7 +378,6 @@
     "Granola/Transcripts/2026-07-17",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist.pdf",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist (Reformatted)-20260716193057.pdf",
-    "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-16/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofrozen_MAIA_UAT_Signoff_Checklist.md",
