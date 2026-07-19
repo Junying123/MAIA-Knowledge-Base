@@ -303,7 +303,7 @@
                     "name": "zsh 186"
                   }
                 ],
-                "activeId": 185,
+                "activeId": 181,
                 "nextId": 187
               },
               "icon": "terminal",
@@ -325,7 +325,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 938.5
+    "width": 1112.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -355,7 +355,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "1cea89260b50165b",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-07-17 Fixguru Item Historical Pricing - Issues.md",
