@@ -22,7 +22,7 @@
   - Section 7 — Campaign Overview
   - Section 8 — Mission Cards
     - Mission M-01 — The Overlay Holds
-    - Mission M-02 — The Photo That Became an Order
+    - Mission M-02 — The Photo (or PDF) That Became an Order
     - Mission M-03 — Only Registered Numbers Talk
     - Mission M-04 — Same Words, Different SKU
     - Mission M-05 — Proof or It Didn't Happen
@@ -508,7 +508,7 @@ After a delivery is scheduled, I take a photo as proof and it gets attached to t
 | Mission | Persona | Difficulty | XP | Time |
 |---|---|---:|---:|---:|
 | M-01 — The Overlay Holds | Yap Li Min | ★ | 10 | 8 min |
-| M-02 — The Photo That Became an Order | Asilah | ★★ | 15 | 10 min |
+| M-02 — The Photo (or PDF) That Became an Order | Asilah | ★★ | 15 | 10 min |
 | M-03 — Only Registered Numbers Talk | Asilah | ★ | 10 | 6 min |
 | M-04 — Same Words, Different SKU | Asilah | ★★ | 15 | 10 min |
 | M-05 — Proof or It Didn't Happen | Driver (TBC) | ★★ | 15 | 10 min |
@@ -609,7 +609,7 @@ It should tell you the sync failed and let you resume — it must **never** sile
 
 ---
 
-#### Mission M-02 — The Photo That Became an Order · ★★ · 15 XP · ~10 min
+#### Mission M-02 — The Photo (or PDF) That Became an Order · ★★ · 15 XP · ~10 min
 
 **Persona:** Asilah, Sales Coordinator
 **Covers:** HP-02, UP-04, UP-05, UP-06 · SL-2
@@ -617,7 +617,7 @@ It should tell you the sync failed and let you resume — it must **never** sile
 
 ##### The situation
 
-A customer sends you a **PO — photo or text**, exactly the way it actually happens at Dalson: unstructured, sometimes messy. You forward it into MAIA and see what comes back. Later, you accidentally forward the **same PO twice**, and separately, a **garbled/incomplete** one.
+A customer sends you a **PO — photo, PDF, or text**, exactly the way it actually happens at Dalson: unstructured, sometimes messy. You forward it into MAIA and see what comes back. Later, you accidentally forward the **same PO twice**, and separately, a **garbled/incomplete** one.
 
 > **Why this matters:** this is Dalson's real daily intake pattern — unstructured, error-prone, high-volume.
 
@@ -625,10 +625,10 @@ A customer sends you a **PO — photo or text**, exactly the way it actually hap
 
 ##### Input recipe
 
-**Input type:** PO photo or text message
+**Input type:** PO photo, PDF, or text message
 
 **Choose or prepare:**
-- Write or photograph a PO in your own words for any active customer/item you can find.
+- Write, photograph, or export a PDF of a PO in your own words for any active customer/item you can find.
 - Reuse the same PO a second time to test duplicate handling.
 - Deliberately crop or truncate a PO for the garbled-input case.
 
