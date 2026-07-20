@@ -16,7 +16,7 @@
     - Persona P-01 — Yap Li Min, Owner
     - Persona P-02 — Asilah Amirah binti Khairuddin, Sales Coordinator
     - Persona P-03 — Joseph, Admin / Store Keeper
-    - Persona P-04 — The Driver (role TBC)
+    - Persona P-04 — RETIRED (no internal driver, delivery via Lalamove)
   - Section 6 — Trust Killers
 - PART B — THE MISSIONS
   - Section 7 — Campaign Overview
@@ -63,7 +63,7 @@
 
 > **Campaign warning:** Dalson is a small, single-owner trading business. Every persona you play answers, directly or indirectly, to **one person — Yap Li Min**. Nothing about this account is bureaucratic. If a mission feels like it needs three layers of sign-off, you've misread the business — flag it as an Observation, not a defect.
 
-> **Time-budget warning:** your confirmed window is **60 minutes**. Full completion (12 missions + 3 Boss Fights) runs closer to ~3 hours. Unless your UAT owner tells you otherwise, prioritise the **Speedrun set — M-07, M-08, M-11, M-12** (the P1-risk flows) — see Section 7, Campaign Overview.
+> **Time-budget warning:** your confirmed window is **60 minutes**. Full completion (12 missions + 3 Boss Fights) runs closer to ~3 hours. Unless your UAT owner tells you otherwise, prioritise the **Speedrun set — M-07, M-08, M-10, M-11, M-12** (the P1-risk flows) — see Section 7, Campaign Overview.
 
 ### Section 1 — How to Play
 
@@ -104,8 +104,8 @@ A customer sends a PO — usually a WhatsApp photo, sometimes a text, occasional
 | Intake | Yap Li Min or Asilah | PO photo/text/call | Forward into MAIA | Order draft | Whoever's handling it, for submission | Wrong item silently committed |
 | Matching | MAIA + Asilah | Draft with item wording | Confirm/correct SKU match | Confirmed line items | Submission | Wrong SKU shipped |
 | Submission | Yap Li Min, Asilah, or Joseph | Draft SO/Invoice | Submit directly — no approval gate | Pushed to AutoCount | Joseph for fulfilment | MAIA auto-submitting on its own, with no human action |
-| Fulfilment | Joseph | Submitted order | Pack directly, no pick list | Packed order | Driver for delivery | Wrong/missing items packed |
-| Delivery | Driver (role TBC) | Packed order | Deliver, capture POD photo | POD + signed DO in MAIA | Yap Li Min / customer | POD lost, "master DO" unfindable later |
+| Fulfilment | Joseph | Submitted order | Pack directly, no pick list | Packed order | Lalamove for delivery | Wrong/missing items packed |
+| Delivery | Lalamove (external courier) | Packed order | Deliver, capture POD | POD attached to DO in MAIA by staff afterward | Yap Li Min / customer | POD lost, "master DO" unfindable later |
 | Invoicing | AutoCount (system) | Submitted order | Finalise invoice | Invoice record | Customer | — |
 | Exceptions | Yap Li Min / Asilah / Joseph | Return or payment request | Credit note (invoice-level) or receipt (on request) | Credit note / receipt | Customer | Wrong-level credit note, unrequested receipt |
 
@@ -123,7 +123,7 @@ A customer sends a PO — usually a WhatsApp photo, sometimes a text, occasional
 - Customer PO wording rarely matches Dalson's internal SKU names — **this is the single most-referenced pain point in the client's own words.**
 - POs arrive as blurry photos, cropped screenshots, or garbled text.
 - The same PO sometimes gets forwarded twice by mistake.
-- New customers need fast onboarding (daily frequency, not an edge case) without a multi-step AutoCount detour.
+- **New customers and new items need fast onboarding through the chatbot — daily frequency, not an edge case.** This is the account's second-highest priority signal (VoC Phase 3, Rank 2) and was the very last blocking item resolved before go-live (2026-07-19). Dalson explicitly does not want a manual AutoCount detour for this — the chatbot has to genuinely create the record, not just draft one for someone else to key in.
 - Delivery proof historically lived in scattered WhatsApp threads — "**maybe I cannot find it anymore**" is a direct, real quote from the owner about the old process.
 
 #### Why the client bought this product
@@ -171,7 +171,7 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 | 3 | Confirmed draft | Yap Li Min, Asilah, or Joseph | Submitted SO/Invoice | Submitted | Push to AutoCount |
 | 4 | Submitted order | AutoCount | Ledger record | Final | Fulfilment |
 | 5 | Submitted order | Joseph | Packed order | Packed | Delivery |
-| 6 | Packed order | Driver | POD photo + signed DO in MAIA | Delivered | Invoice finalisation |
+| 6 | Packed order | Lalamove delivers; staff attaches POD after the fact | POD attached to DO in MAIA | Delivered | Invoice finalisation |
 | 7 | Delivered order | AutoCount | Invoice | Final | Credit note (if return) / Receipt (if requested) |
 
 #### Objects and documents
@@ -207,8 +207,8 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 |---|---|---|---|---|
 | Yap Li Min | Draft orders, credit notes, receipts (on request) | SO/Invoice — direct submission | — | AutoCount, Joseph, customer |
 | Asilah | Draft orders, new customer/item via chatbot | SO/Invoice — direct submission | — | AutoCount, Joseph, customer |
-| Joseph | — | SO/Invoice — direct submission, in principle; actual MAIA-facing access still unconfirmed | — | Driver |
-| Driver (TBC) | POD photo upload | Not a registered user for submission | Submitting orders, accessing customer/pricing data | Yap Li Min / customer |
+| Joseph | — | SO/Invoice — direct submission, in principle; actual MAIA-facing access still unconfirmed | — | — |
+| Lalamove (external courier) | N/A (not a MAIA user) | N/A | N/A | Not a MAIA end-user — delivery-side only, POD attached by staff afterward |
 
 > **Update 2026-07-20:** the earlier model (only Yap Li Min approves, Asilah/Joseph refused) is superseded. All 3 registered MAIA users can submit directly — the remaining permission boundary is registration itself (SL-3: only registered numbers act as staff), not a role hierarchy on top of it.
 
@@ -465,27 +465,11 @@ Not established.
 
 ---
 
-#### Persona P-04 — The Driver (role TBC)
+#### Persona P-04 — RETIRED (no internal driver role — delivery via Lalamove)
 
-**Evidence basis:** scope-and-UAT inferred; VOC-010 confirms the *need* for a driver-facing capture flow, but no individual has been named
+**Evidence basis:** client confirmation, 2026-07-20
 
-> **Stop:** this persona's real-world identity is an **open onboarding item**, not something for testers to resolve. Any staff member may play this persona for UAT purposes — the goal is to test the POD capture *behaviour*, not to simulate a specific unconfirmed person.
-
-##### A day in my life
-
-After a delivery is scheduled, I take a photo as proof and it gets attached to the order in MAIA. Right now Dalson just prints things out or keeps a WhatsApp record, which is hard to search later — that's exactly the pain point MAIA's meant to fix.
-
-##### Business rules I live by
-
-- **Always:** capture POD photo/signed DO after completing a delivery.
-- **Never:** approve orders, access customer or pricing data.
-- **I can approve:** nothing.
-
-##### What this means when you test as me
-
-- Test the upload-and-link behaviour, not a specific individual's login.
-- If a delivery completes with **no** POD uploaded, confirm the system reflects that state rather than silently marking it fully complete.
-- Confirm a past POD stays retrievable later — this directly answers the owner's "master DO" complaint (VOC-012).
+> **Update 2026-07-20:** there is **no internal driver**. Dalson delivers via **Lalamove** (third-party courier). Lalamove captures and provides the POD; one of the 3 registered users (typically Asilah or Yap Li Min) then **attaches that POD to the Delivery Order in MAIA for future reference** — it isn't captured live by a Dalson staff member in the field. Mission M-05 now plays this as an attach-after-the-fact action by Asilah, not a driver capturing a photo mid-delivery. This closes the driver-identity gap that Process Map previously carried open — there was never a person to identify.
 
 ---
 
@@ -499,6 +483,7 @@ After a delivery is scheduled, I take a photo as proof and it gets attached to t
 | **P1** | A formal Sales Order record appears in AutoCount | Contradicts the reconciled, client-confirmed design (SL-13) |
 | **P2** | A receipt is generated without the customer requesting it | Contradicts explicit client preference (VOC-023/024) |
 | **P2** | An ambiguous SKU is silently auto-committed instead of flagged | The account's most-repeated real pain point, now inverted into a new risk |
+| **P2** | Chatbot-based customer/item creation falls back to a partial/manual-entry workaround instead of genuinely creating the record | Dalson explicitly rejected the fallback design — full chatbot creation was the whole point (VoC Phase 3 Rank 2, SL-11) |
 | **P3** | An unregistered Telegram number is treated as a valid staff action | Breaks the access-control design (SL-3) |
 | **P4** | A confirmed non-tracked SKU forces an unwanted stock update | Minor, but breaks a stated business rule (VOC-006, SL-9) |
 
@@ -514,7 +499,7 @@ After a delivery is scheduled, I take a photo as proof and it gets attached to t
 | M-02 — The Photo (or PDF) That Became an Order | Asilah | ★★ | 15 | 10 min |
 | M-03 — Only Registered Numbers Talk | Asilah | ★ | 10 | 6 min |
 | M-04 — Same Words, Different SKU | Asilah | ★★ | 15 | 10 min |
-| M-05 — Proof or It Didn't Happen | Driver (TBC) | ★★ | 15 | 10 min |
+| M-05 — Proof or It Didn't Happen | Asilah | ★★ | 15 | 10 min |
 | M-06 — Trust the Migrated Ledger | Yap Li Min | ★ | 10 | 8 min |
 | M-07 — Anyone Registered Can Submit | Yap Li Min + Asilah | ★★ | 20 | 10 min |
 | M-08 — Credit Where the Invoice Is | Yap Li Min | ★★ | 15 | 10 min |
@@ -524,9 +509,9 @@ After a delivery is scheduled, I take a photo as proof and it gets attached to t
 | M-12 — A Receipt, Only If Asked | Yap Li Min | ★ | 10 | 6 min |
 
 - **Recommended order:** M-01 → M-02 → M-04 → M-03 → M-06 → M-07 → M-10 → M-11 → M-05 → M-09 → M-08 → M-12.
-- **Speedrun (P1-risk flows only):** M-07, M-08, M-11, M-12.
+- **Speedrun (P1-risk flows only):** M-07, M-08, M-10, M-11, M-12. **M-10 is included even though it's not a Trust Killer** — chatbot-based customer/item creation is the highest-priority capability for Dalson (VoC Phase 3, Rank 2; it was the last blocking item resolved before go-live, 2026-07-19), so it stays in scope even under time pressure.
 - **100% Completion:** all 12 missions + all 3 Boss Fights.
-- **Squad split:** one tester plays Yap Li Min + Asilah across M-07 (both halves needed for the permission test); Joseph/Driver missions can run solo.
+- **Squad split:** one tester plays Yap Li Min + Asilah across M-07 (both halves needed for the permission test); Joseph/M-05 missions can run solo.
 - **XP summary:** 175 XP across missions, +115 XP available across the 3 Boss Fights' win conditions and sabotage bonuses.
 
 ---
@@ -842,25 +827,27 @@ It must ask, never guess — this is the account's most sensitive behaviour.
 
 #### Mission M-05 — Proof or It Didn't Happen · ★★ · 15 XP · ~10 min
 
-**Persona:** The Driver (role TBC — any staff member may play this)
+**Persona:** Asilah, Sales Coordinator (or Yap Li Min)
 **Covers:** HP-05, UP-10, UP-11 · SL-5
 **Mission type:** Core
 
+> **Updated 2026-07-20:** there's no internal driver — Dalson delivers via **Lalamove** (third-party courier). Lalamove captures the POD; a Dalson staff member then attaches it to the Delivery Order in MAIA afterward, for future reference. This mission now plays that attach-after-the-fact action, not a driver capturing a photo mid-delivery.
+
 ##### The situation
 
-A delivery is scheduled. You complete it and **upload a POD photo**. Separately, you complete a delivery and deliberately **skip** the POD upload, to see how the system reflects that.
+A delivery has gone out via Lalamove and **Lalamove has provided the POD** (photo/confirmation from their app). You **attach that POD to the correct Delivery Order in MAIA** for future reference. Separately, a delivery completes and you deliberately **don't attach** the Lalamove POD yet, to see how the system reflects that.
 
-> **Why this matters:** the "master DO I can't find later" complaint is a direct, named pain point from the client.
+> **Why this matters:** the "master DO I can't find later" complaint is a direct, named pain point from the client — this is about MAIA holding a reference that Lalamove itself doesn't organise for Dalson.
 
-**Precondition:** A delivery is scheduled in MAIA and tied to an order.
+**Precondition:** A delivery has been dispatched via Lalamove and is tied to an order/DO in MAIA.
 
 ##### Input recipe
 
-**Input type:** photo (POD)
+**Input type:** photo (Lalamove-sourced POD)
 
 **Choose or prepare:**
-- Any sample delivery photo — synthetic/placeholder is fine.
-- A second delivery run where you deliberately don't upload anything.
+- Any sample delivery photo standing in for a Lalamove POD — synthetic/placeholder is fine.
+- A second delivery where you deliberately don't attach anything yet.
 
 **Your chosen data must satisfy:**
 - The delivery is genuinely tied to a real order/DO in your account.
@@ -869,25 +856,25 @@ A delivery is scheduled. You complete it and **upload a POD photo**. Separately,
 
 ##### Roles and business rules
 
-**Roles and approvals:** none formally confirmed for this persona — do not invent an approval step.
+**Roles and approvals:** any of the 3 registered users (Yap Li Min, Asilah, Joseph) can attach the POD — no approval gate (SL-7).
 
-- **Always:** attach the POD photo to the correct order/DO.
+- **Always:** attach the Lalamove POD to the correct order/DO.
 - **Never:** let a missing POD get silently marked as a fully complete delivery.
 
 ##### Your goal
 
-Confirm POD attaches correctly and stays retrievable later, and that a missing POD is visibly flagged.
+Confirm a Lalamove POD attaches correctly to the right order and stays retrievable later, and that a missing POD is visibly flagged.
 
 ##### Say it your way
 
-- "delivered, here's the photo"
+- "delivery's done, Lalamove sent the POD, attaching it now"
 
 > **Now forget these examples and type it how YOU would.**
 
 ##### Win conditions
 
-- [ ] The POD photo is stored and linked to the correct order/DO.
-- [ ] A delivery with no POD reflects that status rather than appearing fully complete.
+- [ ] The Lalamove POD is stored and linked to the correct order/DO.
+- [ ] A delivery with no POD attached yet reflects that status rather than appearing fully complete.
 - [ ] A past POD remains viewable from the order/DO trail later.
 
 ##### It should stop and ask you if
@@ -905,10 +892,11 @@ The order should retain a clear "POD missing" state, never silently default to c
 ##### Poke it
 
 - Can you find a POD from a live order reference alone, without remembering the exact date?
+- Does MAIA distinguish "Lalamove hasn't delivered yet" from "delivered but POD not attached yet"? Worth checking — they're different failure states.
 
 ##### Loot to capture
 
-- POD upload screenshot; retrieval screenshot for a past order; status screenshot for the no-POD case.
+- POD attachment screenshot; retrieval screenshot for a past order; status screenshot for the no-POD case.
 
 ---
 
@@ -942,7 +930,7 @@ You spot-check that migrated customer/item records match AutoCount, then push a 
 
 ##### Roles and business rules
 
-**Roles and approvals:** Yap Li Min approves the pushed order.
+**Roles and approvals:** any of the 3 registered users (Yap Li Min, Asilah, Joseph) — no approval gate (SL-7).
 
 - **Never:** let MAIA fabricate data for a record it can't find.
 
@@ -1383,7 +1371,7 @@ A customer has **paid and proof of payment is attached**. They **explicitly ask*
 
 ##### Roles and business rules
 
-**Roles and approvals:** Yap Li Min or Asilah, on explicit customer request only.
+**Roles and approvals:** any of the 3 registered users (Yap Li Min, Asilah, Joseph), on explicit customer request only.
 
 - **Always:** require an explicit request before generating a receipt.
 - **Never:** auto-generate a receipt just because payment was attached.
@@ -1606,7 +1594,7 @@ See Section 9 of the Launch Readiness Checklist.
 | Yap Li Min | SO stays in MAIA, never AutoCount | SL-13 | M-11, BF-03 |
 | Asilah | Submits directly, same authority as Yap Li Min | SL-7 (superseded 2026-07-20), UAT UP-14 | M-07 |
 | Asilah | Confirms ambiguous SKU matches | SL-4, VoC | M-04, BF-01 |
-| Driver (TBC) | Captures POD, not a registered submission user | SL-5, VOC-010 | M-05 |
+| Lalamove (external) | Captures POD; not a MAIA user or registered submission user | SL-5, VOC-010 | M-05 |
 
 #### Beyond Tester Reach handoffs
 
