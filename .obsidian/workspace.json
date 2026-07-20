@@ -300,7 +300,7 @@
                     "name": "zsh 186"
                   }
                 ],
-                "activeId": 185,
+                "activeId": 181,
                 "nextId": 187
               },
               "icon": "terminal",
@@ -352,7 +352,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "1cea89260b50165b",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
