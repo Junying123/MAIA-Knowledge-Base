@@ -28,6 +28,50 @@ Gaps identified from the Maya 訂單與倉儲出貨流程培訓會 order & wareh
 13. **Customer churn / inactivity alert not automatic** — concept discussed (notify if a customer hasn't ordered in a while) but not implemented.
 14. **Duplicate customer detection incomplete** — scenarios include an old customer returning, two people from the same company, or different phone numbers for the same customer; system should block duplicate conversion but this is not fully proven/working.
 
+## Use Case Detail: Stock Entry & Packing List
+
+**Stock entry flow discussed:**
+- Stock entry created by item code + quantity, with batch tracking.
+- Batch can come from supplier's own batch or SKU batch code; each item can carry its own batch, expiry date, shelf life.
+- Serial number tracking possible for item-level items (e.g. "like iPhone serial number").
+- Stock tracked in both pieces and kg (SQL-side); opening quantity, cost price, moving average cost also recorded at stock entry.
+- Supplier packing list can eventually feed quantity/batch/stock entry creation, but not yet — supplier name and cost still on SQL side (see Gap #5).
+
+**Packing list flow discussed:**
+- Packing list = the picking-stage record showing actual quantity/weight picked per box/carton, line by line.
+- Needed because carton weight varies per box (e.g. 25.8, 23.52, 21.3 kg) even when order is placed by carton/box count.
+- Used downstream by sales/accounts to reconcile actual picked weight against the original sales order before invoicing (ties to Gap #7, 12kg vs 11.87kg example).
+- Combined into one PDF/file per pick list once picking is complete — can be printed, emailed, or forwarded.
+
+**Gap:**
+- Stock entry does not yet fully cover supplier name, cost, and purchase invoice — still split across Maya and SQL.
+- No confirmed one-time stock reconciliation done before go-live (see Gap #6).
+
+## Use Case Detail: Item Image / Catalog
+
+**Scenarios raised:**
+- Item photo/image suggested as a faster way to identify an item or customer instead of typing full name/code.
+- Barcode generated alongside packing at stock entry time.
+- Photo/image can be shared to customer as a prescreen (link or download) alongside order documents.
+
+**Gap:**
+- No confirmed item catalog feature — image use was raised as an idea/proposal in discussion, not a demoed or built feature.
+- No clarity on where item image would live (item master vs pick list vs customer-facing doc).
+
+## Use Case Detail: Sales Management Dashboard
+
+**Scenarios raised:**
+- Dashboard shows total sales, MTD sales, and a graph-style overview per salesperson.
+- Daily digest notification concept — surfacing what needs action (e.g. expiring items, pending payments).
+- Aging list / overdue payment visibility tied into the dashboard.
+- At-risk customer flagging based on credit/payment behavior.
+- Sales-user level view is filterable to "own records only"; management wants a broader/full owner dashboard.
+
+**Gap:**
+- Management **cannot check each individual salesperson's performance** from the dashboard yet — no per-salesperson filter (same as Gap #2).
+- Daily digest / notify-on-action concept discussed but not confirmed as built (ties to Gap #1).
+- At-risk customer view and full owner dashboard authority not finalized.
+
 ## Use Case Detail: Lead / Prospect / Customer Conversion
 
 **Flow discussed:**
@@ -60,6 +104,20 @@ Gaps identified from the Maya 訂單與倉儲出貨流程培訓會 order & wareh
 - This is **not yet fully working** — remarks and customer preference data are currently not fully carried into pick list output (same as Gap #3 above).
 - Whether specific fields should be hidden or shown to different roles is still under evaluation.
 - A future "customer hasn't ordered in a while" reminder use case was discussed as desirable but is not currently automatic (ties to Gap #13).
+
+## Use Case Detail: Related / Family / Linked Company Scenarios
+
+**Scenarios raised:**
+- Same owner runs multiple stalls, multiple orders → team decided to keep them separate, not grouped.
+- Same customer orders via different chat threads/locations → no link between them yet.
+- Related companies → price changes should apply to both, not supported yet.
+- Two people sharing one customer account, different prices → risk one sees the other's price.
+- Friend-referral customers → relationship not captured in system.
+
+**Gap:**
+- No way to link related/family/sister companies for pricing, ordering, or reporting.
+- Whether linked entities share one price profile or stay independent — still undecided.
+- Extends Gap #9.
 
 ## See Also
 - `[[macrofrozen-scn-ccn-use-case-handoff]]`
