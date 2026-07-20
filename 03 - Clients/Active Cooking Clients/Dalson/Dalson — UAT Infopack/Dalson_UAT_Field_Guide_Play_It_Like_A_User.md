@@ -375,6 +375,7 @@ I'm mostly desk-based — Yap Li Min is always out in the field, so a lot of the
 - **Always:** confirm ambiguous SKU matches before submitting.
 - **Always:** submit directly once I'm confident in the match — no need to route it through Yap Li Min first.
 - **Before I submit:** make sure the draft reflects what the customer actually asked for.
+- **In practice:** I'll often check in with Yap Li Min before submitting, especially if anything's unusual — she's the boss, that's just how we work. That's a habit, not a system requirement — MAIA never makes me wait for her.
 - **I can submit:** any SO, Invoice, credit note, receipt-on-request — same direct authority as Yap Li Min and Joseph.
 - **I escalate to:** **Yap Li Min (Owner)** only for business-rule questions (pricing, credit policy), not for submission sign-off — there isn't one.
 
@@ -425,14 +426,14 @@ That the item and customer match is actually correct, not just plausible-looking
 
 ##### A day in my life
 
-Once an order's approved, it comes to me and I pack it — there's no formal pick-list step today, I just work from the confirmed order directly. **Start of day:** whatever's been approved overnight is what I pack first. **When the first request arrives:** I check the order and pull the stock. **Before I submit:** I don't "submit" anything in MAIA myself in the current design — my role in this phase is fulfilment, not system interaction. **What I can do without asking anyone:** none of the MAIA-facing actions are confirmed for me yet — this is a real open item, not a testing shortcut (see Gap #5, Process Map).
+Once an order's submitted, it comes to me and I pack it — there's no formal pick-list step today, I just work from the submitted order directly. My job is stock — packing, fulfilment, keeping track of what's on hand. **Start of day:** whatever's been submitted overnight is what I pack first. **When the first request arrives:** I check the order and pull the stock. **Before I submit:** I have the same submission rights as Yap Li Min and Asilah (SL-7, no approval gate) — but submitting orders isn't normally my job. If it ever falls to me (Yap Li Min and Asilah both out, say), I can do it directly, same as they would. **What I can do without asking anyone:** submit an order if I need to, though day-to-day I'm focused on stock, not intake.
 
 ##### Business rules I live by
 
-- **Always:** pack against the approved order, not a separate pick list.
-- **Never:** approve orders — not my role.
-- **I can approve:** nothing.
-- **I escalate to:** **Yap Li Min (Owner)**.
+- **Always:** pack against the submitted order, not a separate pick list — that's my main job.
+- **In practice:** if I ever do submit something, I'd check with Yap Li Min first — she's the boss. That's just how we work, not something MAIA requires.
+- **I can submit:** SO/Invoice/credit notes directly, same authority as Yap Li Min and Asilah (SL-7, no approval gate) — but submitting isn't my normal day-to-day; my role is stock and fulfilment.
+- **I escalate to:** **Yap Li Min (Owner)** for anything outside stock/fulfilment.
 
 ##### What I want from this product
 
@@ -448,15 +449,15 @@ Not established in the sources.
 
 ##### What I can do without asking anyone
 
-`[GAP — Process Map flags this as NEEDS CLIENT INPUT: not confirmed whether Joseph has any MAIA-facing access at all, versus receiving forwarded instructions only.]`
+Pack and fulfil submitted orders (main role). Submit an order myself if it falls to me — I have the same rights as Yap Li Min and Asilah, I just don't usually exercise them.
 
 ##### What must be approved or handed off
 
-Everything MAIA-facing, until his access level is confirmed.
+Nothing about submission — I have direct rights same as the others. Day-to-day, order intake and submission isn't mine to do; stock and fulfilment is.
 
 ##### What I check before I trust the result
 
-Not established.
+Not established for stock/fulfilment specifics — his voice hasn't been captured directly in any source.
 
 ##### What this means when you test as me
 
@@ -981,6 +982,8 @@ Failure must be visible to you — never a silent drop or duplicate.
 **Mission type:** Core
 
 > **Updated 2026-07-20:** this mission previously tested a sole-approver gate. Client (Yap Li Min) confirmed only 3 people use MAIA for Dalson, so a separate approval step was dropped — any of the 3 registered users can submit directly. The mission now proves that redesign holds: submission works for more than one person, and MAIA never submits on its own.
+>
+> **Don't confuse office habit with a system rule:** in practice, Asilah and Joseph will often check with Yap Li Min before submitting anything unusual — she's the boss, that's just workplace culture. **MAIA itself must never require or wait for that check.** If Asilah submits directly without consulting anyone, that's correct system behaviour, not a shortcut worth flagging.
 
 ##### The situation
 
