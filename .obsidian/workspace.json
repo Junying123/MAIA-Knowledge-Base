@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
+                "file": "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Maya Training — Identified Gaps Report"
+              "title": "Macrofood __ MAIA Training-transcript"
             }
           }
         ],
@@ -162,8 +162,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -288,23 +287,15 @@
                     "name": "zsh 181"
                   },
                   {
-                    "id": 183,
-                    "name": "zsh 183"
-                  },
-                  {
                     "id": 185,
                     "name": "zsh 185"
                   },
                   {
                     "id": 186,
                     "name": "zsh 186"
-                  },
-                  {
-                    "id": 187,
-                    "name": "zsh 187"
                   }
                 ],
-                "activeId": 181,
+                "activeId": 185,
                 "nextId": 188
               },
               "icon": "terminal",
@@ -358,8 +349,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
     "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/Dalson_UAT_Launch_Readiness_Checklist.md",
