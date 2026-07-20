@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-19
+last_reviewed: 2026-07-20
 ---
 
 # Dalson Industrial Supplies — UAT Checklist
@@ -22,7 +22,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | SL-4 | SKU alias mapping / matching | LOCKED | YES | **YES** |
 | SL-5 | POD capture (photo) | LOCKED | YES | **YES** |
 | SL-6 | AutoCount integration (access + data migration) | LOCKED | YES | **YES** |
-| SL-7 | Customer approval flow (SO/Invoice authority — single approver) | LOCKED | YES | **YES** |
+| SL-7 | Submission flow (no separate approval gate) | LOCKED (SUPERSEDED 2026-07-20 — approval gate removed, only 3 registered users: Yap Li Min, Asilah, Joseph) | YES | **YES** |
 | SL-8 | Credit note handling (invoice-level) | LOCKED | YES | **YES** |
 | SL-9 | Warehouse / stock update responsibility | LOCKED | YES | **YES** |
 | SL-10 | Pricing logic (ad hoc, per-customer negotiated) | AGREED IN PRINCIPLE — direction agreed (ad hoc, MAIA holds customer price + history), auto-suggest vs manual entry mechanic still undefined | NO (direction yes, mechanic no) | NO |
@@ -46,13 +46,13 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | 1 | Invalid input | Customer PO uses their own item wording that doesn't match Dalson's internal SKU naming (Customer Narrative §4.3: "customer item descriptions may differ from internal SKU naming") | SL-4 |
 | 2 | Ambiguity | Customer's item description matches more than one similar SKU (Narrative: "similar SKUs can create confusion") | SL-4 |
 | 3 | Missing / incomplete data | Customer record incomplete/not found in AutoCount when preparing an invoice (Narrative §4.4: "if the customer is not properly found in AutoCount, staff still need to manually key in invoice details") | SL-1, SL-6 |
-| 4 | Wrong actor / permission | Someone other than Yap Li Min (e.g. Asilah) attempts to approve a Sales Order or Invoice | SL-7 |
+| 4 | Wrong actor / permission | Someone not on the 3-person registered list attempts to submit a Sales Order or Invoice | SL-7 |
 | 5 | Conflict / duplicate | Same PO forwarded into MAIA twice (staff error, common with WhatsApp/Telegram forwarding) | SL-2 |
 | 6 | Interruption / wrong state | AutoCount sync fails or times out mid-order-draft | SL-1, SL-6 |
 | 7 | Downstream integrity | Owner needs to retrieve a past Delivery Order later from a live order reference (VOC-012: "master DO... maybe I cannot find it anymore") | SL-2, SL-5, SL-6 |
 | 8 | Missing / incomplete data | Delivery is completed but no POD photo is uploaded | SL-5 |
 | 9 | Wrong actor / permission | Message sent to the MAIA Telegram account from an unregistered/unknown number | SL-3 |
-| 10 | Must-NOT | MAIA must NOT finalize/push an invoice to AutoCount without human (Yap Li Min) review and confirmation (SL-1 AC: "no scenario where MAIA replaces AutoCount as ledger/invoicing source") | SL-1, SL-7 |
+| 10 | Must-NOT | MAIA must NOT finalize/push an invoice to AutoCount without one of the 3 registered users (Yap Li Min, Asilah, Joseph) explicitly submitting it (SL-1 AC: "no scenario where MAIA replaces AutoCount as ledger/invoicing source") | SL-1, SL-7 |
 | 11 | Must-NOT | MAIA must NOT issue a credit note at customer-account level — only at invoice level (VOC-022, Dalson's confirmed practice) | SL-8 |
 | 12 | Boundary / limit | Credit note requested against an invoice ID that doesn't exist / already fully credited | SL-8 |
 | 13 | Downstream integrity | Stock/inventory update from an order must reflect back correctly without manual re-entry (SL-9) | SL-9 |
@@ -111,13 +111,15 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | UP-12 | SL-6 | Unhappy | Interruption | Yap Li Min | — | 1. Simulate AutoCount unavailability. 2. Attempt to push a confirmed order. 3. Observe MAIA's response. | Any confirmed order | MAIA surfaces the failure clearly, does not silently drop or duplicate the record | | |
 | UP-13 | SL-6 | Unhappy | Missing / incomplete data | Yap Li Min | — | 1. Identify a record in AutoCount not present in the migrated data. 2. Query it via MAIA. | Edge-case record | MAIA does not fabricate data for a record it cannot find; flags as not found | | |
 
-### SL-7 — Customer approval flow (single approver: Yap Li Min)
+### SL-7 — Submission flow (no separate approval gate)
+
+> **Updated 2026-07-20:** SL-7 was superseded — client (Yap Li Min) confirmed only 3 people use MAIA for Dalson (herself, Asilah, Joseph), so the earlier sole-approver gate was dropped. Any of the 3 can submit a document directly; submission is final. Test cases below rewritten accordingly — UP-14 previously tested that Asilah's approval was refused; that behaviour is now wrong, so it's replaced with a no-silent-auto-submit check. UP-15 previously tested an unapproved draft; replaced with an unregistered-actor submission check (mirrors SL-3's access control, specific to the submit action).
 
 | Test ID | Scope ref | Path | Trigger type | Role/actor | Precondition | Steps | Test data | Expected result | Pass/Fail | Tester & date |
 |---|---|---|---|---|---|---|---|---|---|---|
-| HP-07 | SL-7 | Happy | — | Yap Li Min | Draft SO/Invoice ready | 1. Yap Li Min reviews draft. 2. Yap Li Min approves. 3. Confirm it proceeds to AutoCount. | Sample draft order | Order proceeds only after Yap Li Min's approval | | |
-| UP-14 | SL-7 | Unhappy | Wrong actor / permission | Asilah | Draft SO/Invoice ready | 1. Asilah (not Yap Li Min) attempts to approve. 2. Observe system response. | Same sample draft | System blocks or does not treat coordinator's action as valid approval | | |
-| UP-15 | SL-7 | Unhappy | Must-NOT | — | Draft SO/Invoice ready, unapproved | 1. Leave draft unapproved. 2. Confirm it is not auto-pushed to AutoCount after a timeout/delay. | Same sample draft | Draft remains pending; is not auto-approved or auto-submitted | | |
+| HP-07 | SL-7 | Happy | — | Asilah (or Yap Li Min, or Joseph) | Draft SO/Invoice ready | 1. Any of the 3 registered users submits the draft directly. 2. Confirm it proceeds to AutoCount without requiring a second person's sign-off. | Sample draft order | Order proceeds to AutoCount on the registered user's own submission — no second approval step exists or is required | | |
+| UP-14 | SL-7 | Unhappy | Must-NOT | — | Draft SO/Invoice ready, not yet submitted | 1. Leave the draft unsubmitted. 2. Confirm MAIA itself never auto-pushes it to AutoCount without one of the 3 registered users explicitly taking the submit action. | Same sample draft | Draft remains pending until a registered user explicitly submits — MAIA never submits on its own | | |
+| UP-15 | SL-7 | Unhappy | Wrong actor / permission | Unregistered person | Draft SO/Invoice ready | 1. An unregistered/non-staff account attempts to submit the draft. 2. Observe system response. | Same sample draft | System refuses — only the 3 registered users (Yap Li Min, Asilah, Joseph) can submit | | |
 
 ### SL-8 — Credit note handling (invoice-level)
 
@@ -172,7 +174,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | SL-4 | SKU alias mapping | HP-04 | UP-08, UP-09 | YES |
 | SL-5 | POD capture | HP-05 | UP-10, UP-11 | YES |
 | SL-6 | AutoCount integration (access + migration) | HP-06 | UP-12, UP-13 | YES |
-| SL-7 | Approval flow (Yap Li Min) | HP-07 | UP-14, UP-15 | YES |
+| SL-7 | Submission flow (no approval gate) | HP-07 | UP-14, UP-15 | YES |
 | SL-8 | Credit note handling | HP-08 | UP-16, UP-17 | YES |
 | SL-9 | Warehouse/stock update | HP-09 | UP-18 | YES |
 | SL-11 | Customer & item/SKU creation via chatbot | HP-10 | UP-20, UP-21 | YES |

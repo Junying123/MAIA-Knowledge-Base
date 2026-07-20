@@ -13,7 +13,7 @@
   - Section 3 — Product Map
   - Section 4 — The Map
   - Section 5 — Persona Cards
-    - Persona P-01 — Yap Li Min, Owner / Sole Approver
+    - Persona P-01 — Yap Li Min, Owner
     - Persona P-02 — Asilah Amirah binti Khairuddin, Sales Coordinator
     - Persona P-03 — Joseph, Admin / Store Keeper
     - Persona P-04 — The Driver (role TBC)
@@ -27,7 +27,7 @@
     - Mission M-04 — Same Words, Different SKU
     - Mission M-05 — Proof or It Didn't Happen
     - Mission M-06 — Trust the Migrated Ledger
-    - Mission M-07 — Only Yap Li Min Signs Off
+    - Mission M-07 — Anyone Registered Can Submit
     - Mission M-08 — Credit Where the Invoice Is
     - Mission M-09 — Stock Moves, Quietly
     - Mission M-10 — New Customer, No Detour to AutoCount
@@ -95,25 +95,25 @@ Dalson buys and resells industrial hardware — items span many brands, one unit
 
 #### How a normal working day unfolds
 
-A customer sends a PO — usually a WhatsApp photo, sometimes a text, occasionally a call. Whoever receives it (Yap Li Min or the sales coordinator, Asilah) forwards it into MAIA. MAIA reads the request, matches items to Dalson's internal SKUs, and drafts an order. **Nothing goes further until Yap Li Min reviews and approves it** — she is the business's only approval authority. Once approved, the order pushes to AutoCount, which stays the single source of truth for the ledger. The confirmed order goes to Joseph, the store keeper, who packs it directly — there's no formal pick-list step today. Delivery happens, proof of delivery gets captured, and the invoice is finalised in AutoCount.
+A customer sends a PO — usually a WhatsApp photo, sometimes a text, occasionally a call. Whoever receives it (Yap Li Min or the sales coordinator, Asilah) forwards it into MAIA. MAIA reads the request, matches items to Dalson's internal SKUs, and drafts an order. **Whoever's handling it submits it directly** — Yap Li Min, Asilah, or Joseph. There's no separate approval step: only 3 people use MAIA for Dalson, and the client confirmed on 2026-07-20 that a sign-off gate wasn't worth the friction. Once submitted, the order pushes to AutoCount, which stays the single source of truth for the ledger. The confirmed order goes to Joseph, the store keeper, who packs it directly — there's no formal pick-list step today. Delivery happens, proof of delivery gets captured, and the invoice is finalised in AutoCount.
 
 #### The end-to-end business journey
 
 | Stage | Acting role | Input | Action | Output | Next handoff | Main failure consequence |
 |---|---|---|---|---|---|---|
-| Intake | Yap Li Min or Asilah | PO photo/text/call | Forward into MAIA | Order draft | Yap Li Min for approval | Wrong item silently committed |
-| Matching | MAIA + Asilah | Draft with item wording | Confirm/correct SKU match | Confirmed line items | Yap Li Min for approval | Wrong SKU shipped |
-| Approval | Yap Li Min | Draft SO/Invoice | Review, approve | Pushed to AutoCount | Joseph for fulfilment | Unapproved order finalised |
-| Fulfilment | Joseph | Approved order | Pack directly, no pick list | Packed order | Driver for delivery | Wrong/missing items packed |
+| Intake | Yap Li Min or Asilah | PO photo/text/call | Forward into MAIA | Order draft | Whoever's handling it, for submission | Wrong item silently committed |
+| Matching | MAIA + Asilah | Draft with item wording | Confirm/correct SKU match | Confirmed line items | Submission | Wrong SKU shipped |
+| Submission | Yap Li Min, Asilah, or Joseph | Draft SO/Invoice | Submit directly — no approval gate | Pushed to AutoCount | Joseph for fulfilment | MAIA auto-submitting on its own, with no human action |
+| Fulfilment | Joseph | Submitted order | Pack directly, no pick list | Packed order | Driver for delivery | Wrong/missing items packed |
 | Delivery | Driver (role TBC) | Packed order | Deliver, capture POD photo | POD + signed DO in MAIA | Yap Li Min / customer | POD lost, "master DO" unfindable later |
-| Invoicing | AutoCount (system) | Approved order | Finalise invoice | Invoice record | Customer | — |
-| Exceptions | Yap Li Min / finance | Return or payment request | Credit note (invoice-level) or receipt (on request) | Credit note / receipt | Customer | Wrong-level credit note, unrequested receipt |
+| Invoicing | AutoCount (system) | Submitted order | Finalise invoice | Invoice record | Customer | — |
+| Exceptions | Yap Li Min / Asilah / Joseph | Return or payment request | Credit note (invoice-level) or receipt (on request) | Credit note / receipt | Customer | Wrong-level credit note, unrequested receipt |
 
 #### Systems, channels, and documents
 
 - **Telegram** — the live MAIA channel for staff (superseded from an earlier WhatsApp-based plan; Telegram is now the confirmed production channel).
 - **MAIA (chatbot + backend workspace)** — drafts orders, matches SKUs, holds customer price history, captures POD, generates the SO-equivalent and proforma documents, generates receipts on request.
-- **AutoCount** — Dalson's accounting system of record. MAIA never replaces it; MAIA reads from and writes to it after human approval.
+- **AutoCount** — Dalson's accounting system of record. MAIA never replaces it; MAIA reads from and writes to it only when one of the 3 registered users submits.
 - **Documents in play:** Quotation, Invoice, Delivery Order (DO), Credit Note, Receipt (on request only), and a MAIA-generated **proforma/SO-style document** for new customers who need to pay upfront — this last one never gets pushed into AutoCount as a formal Sales Order.
 
 > **Why this matters:** AutoCount is authoritative. If a tester ever sees MAIA claim something is "final" without it appearing correctly on the AutoCount side of the story, that is exactly the kind of gap this UAT exists to catch — even though your account can't check AutoCount directly (see Beyond Tester Reach).
@@ -128,26 +128,27 @@ A customer sends a PO — usually a WhatsApp photo, sometimes a text, occasional
 
 #### Why the client bought this product
 
-Yap Li Min isn't buying "an AI operational layer." She's buying relief from **personally carrying the operational memory of the business** — which document went where, what a new customer needs before they can be invoiced, what an order actually costs. She wants MAIA to remove daily friction (SKU matching, new-customer onboarding, document retrieval) without replacing AutoCount or adding new approval bureaucracy she never asked for.
+Yap Li Min isn't buying "an AI operational layer." She's buying relief from **personally carrying the operational memory of the business** — which document went where, what a new customer needs before they can be invoiced, what an order actually costs. She wants MAIA to remove daily friction (SKU matching, new-customer onboarding, document retrieval) without replacing AutoCount or adding bureaucracy — which is exactly why she confirmed (2026-07-20) that a formal approval gate wasn't needed for a 3-person team.
 
 #### What success feels like to the client
 
 - Correct SKU matched (or a clear ask for confirmation) instead of a guess.
 - A new customer or item onboarded through the chatbot without a manual AutoCount detour.
 - A past delivery order retrievable on request, instead of a WhatsApp scavenger hunt.
-- Nothing ever pushed to AutoCount, or billed, without her seeing and approving it first.
+- Any of the 3 registered users can submit a document without waiting on someone else — and nothing ever reaches AutoCount by MAIA acting on its own.
 
 #### What would destroy trust
 
 - **MAIA silently committing a guessed SKU or customer record without confirmation.**
-- **Any order or invoice reaching AutoCount without Yap Li Min's explicit approval.**
+- **MAIA auto-submitting an order or invoice to AutoCount without any of the 3 registered users taking the submit action.**
 - **A credit note issued at the customer-account level instead of tied to a specific invoice** — she was explicit that Dalson's practice is invoice-level only, contradicting how another vendor client apparently works.
 - **A receipt generated automatically** — Dalson doesn't do this today and doesn't want MAIA to start.
 - **A formal Sales Order record appearing in AutoCount** — Dalson doesn't use a Sales Order stage, and the reconciled design deliberately keeps it out of AutoCount.
+- **Someone outside the 3-person registered list submitting anything at all.**
 
 #### What this means when you test
 
-- Verify repeatedly that nothing reaches AutoCount, or a customer, without an explicit human confirmation step.
+- Verify repeatedly that MAIA never submits anything to AutoCount on its own — a human (any of the 3 registered users) must take the action, but it no longer needs to be a specific person.
 - Introduce ambiguity into item descriptions — that's the account's real, most-cited weak point.
 - The shortcuts a rushed coordinator would take (skip a confirmation, assume a match) are exactly the shortcuts worth trying.
 - Anything that silently commits, silently auto-generates, or silently escalates should make the system stop, not proceed.
@@ -166,10 +167,10 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 | Stage | Source input | Acting role | Resulting record | Expected status | Next allowed action |
 |---|---|---|---|---|---|
 | 1 | PO photo/text/call | Yap Li Min or Asilah | Order draft in MAIA | Draft | SKU matching |
-| 2 | Draft + item wording | MAIA, confirmed by Asilah | Matched line items | Draft, confirmed | Approval |
-| 3 | Confirmed draft | Yap Li Min | Approved SO/Invoice | Approved | Push to AutoCount |
-| 4 | Approved order | AutoCount | Ledger record | Final | Fulfilment |
-| 5 | Approved order | Joseph | Packed order | Packed | Delivery |
+| 2 | Draft + item wording | MAIA, confirmed by Asilah | Matched line items | Draft, confirmed | Submission |
+| 3 | Confirmed draft | Yap Li Min, Asilah, or Joseph | Submitted SO/Invoice | Submitted | Push to AutoCount |
+| 4 | Submitted order | AutoCount | Ledger record | Final | Fulfilment |
+| 5 | Submitted order | Joseph | Packed order | Packed | Delivery |
 | 6 | Packed order | Driver | POD photo + signed DO in MAIA | Delivered | Invoice finalisation |
 | 7 | Delivered order | AutoCount | Invoice | Final | Credit note (if return) / Receipt (if requested) |
 
@@ -177,17 +178,17 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 
 | Object | Represents | Created by | May be created from | Key statuses | Must not update silently |
 |---|---|---|---|---|---|
-| Order draft | An in-progress customer request | MAIA, from forwarded PO/text/call | Any unstructured input | Draft → Confirmed → Approved | Approval status |
-| SO/quotation-equivalent | Dalson's internal pre-invoice document | MAIA | Approved order | Stays inside MAIA, never in AutoCount | Whether it's pushed to AutoCount |
+| Order draft | An in-progress customer request | MAIA, from forwarded PO/text/call | Any unstructured input | Draft → Confirmed → Submitted | Submission status |
+| SO/quotation-equivalent | Dalson's internal pre-invoice document | MAIA | Submitted order | Stays inside MAIA, never in AutoCount | Whether it's pushed to AutoCount |
 | Proforma | Payment request for a **new** customer | MAIA | New-customer order | Sent, paid | — |
-| Invoice | Final AutoCount ledger record | AutoCount, from an approved order | Approved order only | Final | — |
-| Delivery Order (DO) | Fulfilment + POD record | MAIA, tied to fulfilment | Approved, packed order | Delivered | POD attachment |
-| Credit Note | A return/adjustment | Yap Li Min / finance | A specific invoice ID | Issued | Never account-level |
+| Invoice | Final AutoCount ledger record | AutoCount, from a submitted order | Submitted order only | Final | — |
+| Delivery Order (DO) | Fulfilment + POD record | MAIA, tied to fulfilment | Submitted, packed order | Delivered | POD attachment |
+| Credit Note | A return/adjustment | Yap Li Min / Asilah / Joseph | A specific invoice ID | Issued | Never account-level |
 | Receipt | Proof of payment document | MAIA, one click | Customer's explicit request only | Generated on request | Never auto-generated |
 
 #### State and lifecycle rules
 
-- **Draft → Confirmed → Approved → Pushed to AutoCount** is the only valid path for an order. Nothing skips straight from Draft to AutoCount.
+- **Draft → Confirmed → Submitted → Pushed to AutoCount** is the only valid path for an order — no separate approval stage sits between Confirmed and Submitted (SL-7, superseded 2026-07-20). Nothing skips straight from Draft to AutoCount without a registered user's submit action.
 - The SO/quotation-equivalent document **never transitions into AutoCount as a formal Sales Order** — only Invoice and DO make that trip.
 - A credit note requires a specific source invoice; there is no account-level credit balance state to draw from.
 - A receipt has no "pending" or "scheduled" state — it either doesn't exist, or it exists because the customer asked.
@@ -196,18 +197,20 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 
 - **Routine, may proceed:** looking up an existing customer/item that's an unambiguous match.
 - **Ambiguous, requires clarification:** an item description matching more than one SKU; an incomplete/garbled PO.
-- **High-impact, requires explicit confirmation:** anything about to be pushed to AutoCount (Yap Li Min only).
-- **Permission-gated:** approval itself — only Yap Li Min.
-- **Must never happen silently:** SKU auto-selection under ambiguity, order finalisation without approval, receipt generation without request, account-level credit notes.
+- **High-impact, requires explicit submission:** anything about to be pushed to AutoCount — by any of the 3 registered users, no second sign-off needed.
+- **Permission-gated:** submission itself — only the 3 registered users (Yap Li Min, Asilah, Joseph); no one else, and no automatic submission by MAIA.
+- **Must never happen silently:** SKU auto-selection under ambiguity, order finalisation with no human submit action at all, receipt generation without request, account-level credit notes.
 
 #### Roles, permissions, and handoffs
 
-| Role | Can create | Can approve | Refused | Hands off to |
+| Role | Can create | Can submit (no approval gate, SL-7) | Refused | Hands off to |
 |---|---|---|---|---|
-| Yap Li Min | Draft orders, credit notes, receipts (on request) | SO/Invoice (sole approver) | — | AutoCount, Joseph, customer |
-| Asilah | Draft orders, new customer/item via chatbot | Cannot approve SO/Invoice | Approving/finalising orders | Yap Li Min |
-| Joseph | — | — | Approving orders | Driver |
-| Driver (TBC) | POD photo upload | — | Approving orders, accessing customer/pricing data | Yap Li Min / customer |
+| Yap Li Min | Draft orders, credit notes, receipts (on request) | SO/Invoice — direct submission | — | AutoCount, Joseph, customer |
+| Asilah | Draft orders, new customer/item via chatbot | SO/Invoice — direct submission | — | AutoCount, Joseph, customer |
+| Joseph | — | SO/Invoice — direct submission, in principle; actual MAIA-facing access still unconfirmed | — | Driver |
+| Driver (TBC) | POD photo upload | Not a registered user for submission | Submitting orders, accessing customer/pricing data | Yap Li Min / customer |
+
+> **Update 2026-07-20:** the earlier model (only Yap Li Min approves, Asilah/Joseph refused) is superseded. All 3 registered MAIA users can submit directly — the remaining permission boundary is registration itself (SL-3: only registered numbers act as staff), not a role hierarchy on top of it.
 
 #### Data authority and external boundaries
 
@@ -215,11 +218,12 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 
 #### Golden product rules
 
-- **Never** push anything to AutoCount without Yap Li Min's explicit approval.
+- **Never** let MAIA push anything to AutoCount without one of the 3 registered users (Yap Li Min, Asilah, Joseph) explicitly submitting it.
 - **Never** auto-select an ambiguous SKU.
 - **Never** auto-generate a receipt.
 - **Never** issue a credit note without a specific invoice reference.
 - **Never** let the SO/quotation-equivalent document reach AutoCount as a formal Sales Order.
+- **Never** let anyone outside the 3 registered users submit anything.
 - **Always** let the tester correct a matched item before it's committed.
 
 #### Glossary
@@ -235,9 +239,9 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 #### What this means when you test
 
 - Preserve order references across the whole flow — a mission's "loot" often depends on tracing one order end to end.
-- Always check the current state before acting — a draft that's already approved behaves differently than one that isn't.
-- Always check role boundaries — try the wrong actor deliberately.
-- Always check that confirmation gates actually block silent progress.
+- Always check the current state before acting — a draft that's already submitted behaves differently than one that isn't.
+- Always check registration boundaries — try an unregistered actor deliberately (there's no role hierarchy above that to test, since any of the 3 registered users can submit).
+- Always check that MAIA never submits anything on its own — a human always has to take the submit action.
 - Check partial-failure behaviour — a broken sync should never silently drop or duplicate a record.
 - Never assume an AutoCount-side claim is true just because MAIA says so — flag it for the handoff.
 
@@ -255,7 +259,7 @@ Only these 12 items are LOCKED and open for active testing:
 - **SL-4** — SKU alias mapping / matching
 - **SL-5** — Proof of Delivery capture
 - **SL-6** — AutoCount integration: access + data migration
-- **SL-7** — Approval flow (single approver)
+- **SL-7** — Submission flow (no separate approval gate, superseded 2026-07-20)
 - **SL-8** — Credit note handling (invoice-level)
 - **SL-9** — Warehouse / stock update responsibility
 - **SL-11** — Customer & item/SKU creation via chatbot
@@ -295,29 +299,28 @@ No superseded items are currently out of bounds — both SL-3 (channel) and SL-1
 
 ### Section 5 — Persona Cards
 
-#### Persona P-01 — Yap Li Min, Owner / Sole Approver
+#### Persona P-01 — Yap Li Min, Owner
 
-**Evidence basis:** direct VoC (primary speaker in the source transcript) + Scope Lock (SL-7) + Process Map
+**Evidence basis:** direct VoC (primary speaker in the source transcript) + Scope Lock (SL-7, superseded 2026-07-20) + Process Map
 
 ##### A day in my life
 
-I'm always out — visiting customers, sourcing stock, chasing payments. My phone is my office. Every order that matters, whether it comes to me directly or gets forwarded by Asilah, ends up in front of me before it goes anywhere near AutoCount. I don't do this because I don't trust my team — I do it because I'm the one who negotiates pricing customer by customer, and I'm the one who has to answer for anything that goes wrong with a ledger entry.
+I'm always out — visiting customers, sourcing stock, chasing payments. My phone is my office. Orders come to me directly or get forwarded by Asilah, and whoever's handling one submits it straight through — there's no separate sign-off step anymore, since it's just the three of us using MAIA. I still care about getting things right, because I'm the one who negotiates pricing customer by customer, and I'm the one who has to answer for anything that goes wrong with a ledger entry — I just don't have to personally touch every single order to make that true.
 
-**Start of day:** I check whatever's come in overnight — usually a photo of a PO forwarded from a customer, sometimes something Asilah's already drafted. **When the first request arrives:** I glance at the matched items. If something looks off — a SKU that doesn't feel right, a price that's not what I'd normally charge this customer — I stop and fix it before approving. **Before I submit:** I always check the customer is right, the items are right, and — for a new customer — that we're not skipping straight to an invoice without at least a proforma to get paid upfront. **When something looks wrong:** I don't guess. I'd rather ask than have it wrong in AutoCount. **At handoff:** once I approve, it's Joseph's job to pack it and someone's job to deliver it — I don't manage that day-to-day. **End of day:** I want to know everything that happened today is retrievable tomorrow if a customer calls asking "where's my DO."
+**Start of day:** I check whatever's come in overnight — usually a photo of a PO forwarded from a customer, sometimes something Asilah's already submitted. **When the first request arrives:** I glance at the matched items. If something looks off — a SKU that doesn't feel right, a price that's not what I'd normally charge this customer — I fix it before submitting. **Before I submit:** I always check the customer is right, the items are right, and — for a new customer — that we're not skipping straight to an invoice without at least a proforma to get paid upfront. **When something looks wrong:** I don't guess. I'd rather ask than have it wrong in AutoCount. **At handoff:** once it's submitted, it's Joseph's job to pack it and someone's job to deliver it — I don't manage that day-to-day. **End of day:** I want to know everything that happened today is retrievable tomorrow if a customer calls asking "where's my DO."
 
 ##### Business rules I live by
 
-- **Always:** review and approve every SO/Invoice myself before it reaches AutoCount.
+- **Always:** check the customer and item match before submitting, especially for a first-time customer.
 - **Always:** insist a credit note references the specific invoice, never the customer account.
 - **Never:** let a receipt go out unless the customer specifically asked for one.
-- **Before I submit:** double-check the customer and item match, especially for a first-time customer.
-- **I can approve:** any SO, Invoice, credit note, receipt-on-request.
-- **I cannot approve:** nothing — I'm the top of the chain for this account.
-- **I escalate to:** nobody internally; for AutoCount technical issues I go through **Ms Tan (AutoCount dealer)**.
+- **Never:** let MAIA submit anything on its own — a person (any of the 3 of us) always takes the submit action.
+- **I can submit:** any SO, Invoice, credit note, receipt-on-request — directly, same as Asilah and Joseph.
+- **I escalate to:** nobody internally for submission — there's no one above me to sign off to; for AutoCount technical issues I go through **Ms Tan (AutoCount dealer)**.
 
 ##### What I want from this product
 
-"I don't want to be the one who has to remember every document. I want to open MAIA, see what's waiting for me, fix what's wrong, and approve it — without having to also go dig through AutoCount myself."
+"I don't want to be the one who has to remember every document. I want to open MAIA, see what's waiting, fix what's wrong, and submit it — without having to also go dig through AutoCount myself, and without needing to personally clear everything my team does."
 
 ##### What makes me trust it
 
@@ -325,7 +328,7 @@ Correct SKU matches without me having to correct every single one. A new custome
 
 ##### What would make me ditch it
 
-Anything reaching AutoCount without my say-so. A guessed item that turns out wrong. A receipt customers never asked for showing up in their inbox.
+MAIA pushing something to AutoCount without any of us actually submitting it. A guessed item that turns out wrong. A receipt customers never asked for showing up in their inbox. Someone outside the 3 of us managing to submit something.
 
 ##### How I talk
 
@@ -339,7 +342,7 @@ Low patience for unnecessary steps, high patience for getting the details right.
 
 ##### What I can do without asking anyone
 
-Approve or reject any order, set business rules (credit note, receipt policy), request a receipt.
+Submit any order, credit note, or receipt request directly — same authority as Asilah and Joseph. Set business rules (credit note, receipt policy).
 
 ##### What must be approved or handed off
 
@@ -347,13 +350,13 @@ Anything touching live AutoCount configuration goes through Ms Tan, not me direc
 
 ##### What I check before I trust the result
 
-That the customer and item match what I'd expect, and that nothing pushed to AutoCount without me clicking approve.
+That the customer and item match what I'd expect, and that nothing pushed to AutoCount without one of the 3 of us actually taking the submit action.
 
 ##### What this means when you test as me
 
-- Never let an order slip through to "approved" without explicitly playing the approval step.
-- Try approving as the wrong persona (Asilah) — it must fail.
-- Try leaving a draft unapproved and confirm it doesn't auto-submit after a delay.
+- Confirm MAIA never submits anything on its own — the submit action always has to come from a registered user (any of the 3).
+- Try submitting as Asilah too — it should succeed the same way it does for me, not be refused.
+- Try leaving a draft unsubmitted and confirm it doesn't auto-push after a delay.
 - Push back on any SKU match that looks even slightly off — that's realistic Yap Li Min behaviour.
 - Never accept a receipt appearing without you asking for it.
 
@@ -365,16 +368,15 @@ That the customer and item match what I'd expect, and that nothing pushed to Aut
 
 ##### A day in my life
 
-I'm mostly desk-based — Yap Li Min is always out in the field, so a lot of the order processing and AutoCount data entry lands on me. Customers send POs, I forward them into MAIA, and I confirm the item matches before it goes for approval. **Start of day:** checking what's come in from customers overnight. **When the first request arrives:** I forward it into MAIA and watch what it matches. **Before I submit:** if MAIA flags an ambiguous item, I pick the right one — I know our SKUs better than a fresh chatbot would on day one. **When something looks wrong:** I don't approve anything myself — that's not my call — I just flag it or wait for Yap Li Min. **At handoff:** once I've confirmed the draft, it goes to her for approval; I don't touch it again until it's approved and I need to help with a new customer or item.
+I'm mostly desk-based — Yap Li Min is always out in the field, so a lot of the order processing and AutoCount data entry lands on me. Customers send POs, I forward them into MAIA, and I confirm the item matches before I submit it directly. **Start of day:** checking what's come in from customers overnight. **When the first request arrives:** I forward it into MAIA and watch what it matches. **Before I submit:** if MAIA flags an ambiguous item, I pick the right one — I know our SKUs better than a fresh chatbot would on day one — then I submit it myself, no need to wait on Yap Li Min. **When something looks wrong:** I flag it or hold off submitting until I'm sure. **At handoff:** once I've submitted, it moves to fulfilment; I don't touch it again unless I need to help with a new customer or item.
 
 ##### Business rules I live by
 
-- **Always:** confirm ambiguous SKU matches before they go to approval.
-- **Never:** attempt to approve an SO or Invoice myself.
+- **Always:** confirm ambiguous SKU matches before submitting.
+- **Always:** submit directly once I'm confident in the match — no need to route it through Yap Li Min first.
 - **Before I submit:** make sure the draft reflects what the customer actually asked for.
-- **I can approve:** nothing.
-- **I cannot approve:** SO, Invoice, credit notes, receipts.
-- **I escalate to:** **Yap Li Min (Owner)** for anything needing sign-off.
+- **I can submit:** any SO, Invoice, credit note, receipt-on-request — same direct authority as Yap Li Min and Joseph.
+- **I escalate to:** **Yap Li Min (Owner)** only for business-rule questions (pricing, credit policy), not for submission sign-off — there isn't one.
 
 ##### What I want from this product
 
@@ -386,7 +388,7 @@ It gets the SKU match right, or clearly tells me when it's unsure instead of gue
 
 ##### What would make me ditch it
 
-If it silently picks the wrong item and I only find out after it's already gone to Yap Li Min for approval.
+If it silently picks the wrong item and I only find out after it's already been submitted and pushed to AutoCount.
 
 ##### How I talk
 
@@ -399,11 +401,11 @@ Moderate — I'm used to manual work, so I'm forgiving of a system that asks me 
 
 ##### What I can do without asking anyone
 
-Forward orders, confirm SKU matches, create new customers/items via the chatbot.
+Forward orders, confirm SKU matches, create new customers/items via the chatbot, submit orders directly.
 
 ##### What must be approved or handed off
 
-Any SO/Invoice approval — that's Yap Li Min's alone.
+Nothing about submission — I submit directly. Business-rule decisions (pricing, credit policy) still go through Yap Li Min.
 
 ##### What I check before I trust the result
 
@@ -412,7 +414,7 @@ That the item and customer match is actually correct, not just plausible-looking
 ##### What this means when you test as me
 
 - Try forwarding an ambiguous or garbled PO and see if it correctly asks for clarification instead of guessing.
-- Try approving an order as Asilah — it must be refused.
+- Try submitting an order as Asilah — it should succeed directly, same as Yap Li Min (no approval gate to test as a refusal anymore).
 - Try creating a new customer/item via chatbot and confirm it doesn't require a manual AutoCount detour.
 
 ---
@@ -491,7 +493,8 @@ After a delivery is scheduled, I take a photo as proof and it gets attached to t
 
 | Priority | Trust Killer | Why it's P1–P4 |
 |---|---|---|
-| **P1** | Any order/invoice reaches AutoCount without Yap Li Min's explicit approval | Unauthorised action reaching the ledger — the account's single biggest fear |
+| **P1** | Any order/invoice reaches AutoCount without one of the 3 registered users (Yap Li Min, Asilah, Joseph) taking the submit action | MAIA acting on its own — the account's single biggest fear, updated 2026-07-20 (previously framed as "without Yap Li Min's approval," now any of the 3 submitting is fine, but MAIA submitting unprompted is not) |
+| **P1** | Someone outside the 3-person registered list submits anything | Breaks the new no-approval-gate design's only remaining boundary (SL-7, SL-3) |
 | **P1** | A credit note is issued at customer-account level instead of a specific invoice | Directly contradicts Dalson's stated, confirmed practice (VOC-022) |
 | **P1** | A formal Sales Order record appears in AutoCount | Contradicts the reconciled, client-confirmed design (SL-13) |
 | **P2** | A receipt is generated without the customer requesting it | Contradicts explicit client preference (VOC-023/024) |
@@ -513,7 +516,7 @@ After a delivery is scheduled, I take a photo as proof and it gets attached to t
 | M-04 — Same Words, Different SKU | Asilah | ★★ | 15 | 10 min |
 | M-05 — Proof or It Didn't Happen | Driver (TBC) | ★★ | 15 | 10 min |
 | M-06 — Trust the Migrated Ledger | Yap Li Min | ★ | 10 | 8 min |
-| M-07 — Only Yap Li Min Signs Off | Yap Li Min + Asilah | ★★ | 20 | 10 min |
+| M-07 — Anyone Registered Can Submit | Yap Li Min + Asilah | ★★ | 20 | 10 min |
 | M-08 — Credit Where the Invoice Is | Yap Li Min | ★★ | 15 | 10 min |
 | M-09 — Stock Moves, Quietly | (system check) | ★ | 10 | 6 min |
 | M-10 — New Customer, No Detour to AutoCount | Asilah | ★★ | 20 | 12 min |
@@ -560,11 +563,11 @@ You want to double-check MAIA is actually reading from AutoCount, not making thi
 
 ##### Roles and business rules
 
-**Roles and approvals:** Yap Li Min only for approval actions in this mission.
+**Roles and approvals:** Yap Li Min, or any of the 3 registered users — no approval gate to test in this mission (SL-7).
 
 - **Always:** verify a looked-up customer's details match AutoCount exactly.
 - **Never:** let MAIA invent a customer record for one that isn't found.
-- **Before submitting:** confirm you're not treating a draft as final.
+- **Before submitting:** confirm you're not treating a draft as final — MAIA must never submit it without you taking the action.
 
 ##### Your goal
 
@@ -983,76 +986,78 @@ Failure must be visible to you — never a silent drop or duplicate.
 
 ---
 
-#### Mission M-07 — Only Yap Li Min Signs Off · ★★ · 20 XP · ~10 min
+#### Mission M-07 — Anyone Registered Can Submit · ★★ · 20 XP · ~10 min
 
 **Persona:** Yap Li Min, Owner + Asilah, Sales Coordinator (play both halves)
 **Covers:** HP-07, UP-14, UP-15 · SL-7
 **Mission type:** Core
 
+> **Updated 2026-07-20:** this mission previously tested a sole-approver gate. Client (Yap Li Min) confirmed only 3 people use MAIA for Dalson, so a separate approval step was dropped — any of the 3 registered users can submit directly. The mission now proves that redesign holds: submission works for more than one person, and MAIA never submits on its own.
+
 ##### The situation
 
-A draft SO/Invoice is ready. **As Yap Li Min, you approve it** and confirm it proceeds. Then, on a fresh draft, **you switch to Asilah and try to approve it yourself.**
+A draft SO/Invoice is ready. **As Yap Li Min, you submit it** and confirm it proceeds. Then, on a fresh draft, **you switch to Asilah and submit that one too** — it should work exactly the same way, not be refused.
 
-> **Why this matters:** this is the account's core trust boundary — a P1 Trust Killer if it fails.
+> **Why this matters:** the account's core trust boundary shifted from "only Yap Li Min may act" to "MAIA never acts without a human" — this mission proves the second half still holds.
 
-**Precondition:** A draft SO/Invoice exists and is unapproved.
+**Precondition:** A draft SO/Invoice exists and is unsubmitted.
 
 ##### Input recipe
 
 **Input type:** draft order
 
 **Choose or prepare:**
-- Any draft order ready for approval.
-- A second, fresh draft for the refusal test.
+- Any draft order ready for submission.
+- A second, fresh draft for Asilah's submission.
 
 **Your chosen data must satisfy:**
-- Both drafts are genuinely unapproved at the start of the test.
+- Both drafts are genuinely unsubmitted at the start of the test.
 
 **Fixed reference:** NONE
 
 ##### Roles and business rules
 
-**Roles and approvals:** **Yap Li Min (sole approver)** approves; **Asilah's** attempt must be refused.
+**Roles and approvals:** **Yap Li Min** and **Asilah** both submit directly — no approval gate between them (SL-7, superseded 2026-07-20).
 
-- **Always:** confirm approval only proceeds under the correct role.
-- **Never:** let a draft auto-approve after a delay with no action.
+- **Always:** confirm submission proceeds identically regardless of which of the 3 registered users takes the action.
+- **Never:** let a draft auto-submit after a delay with no human action.
 
 ##### Your goal
 
-Prove the approval gate holds both ways — the right person succeeds, the wrong person is refused.
+Prove the no-approval-gate design holds: multiple registered users can submit successfully, and MAIA never acts on its own.
 
 ##### Say it your way
 
-- "approved, push it"
-- (as Asilah) "let me just approve this one"
+- "submitted, push it"
+- (as Asilah) "pushing this one through now"
 
 > **Now forget these examples and type it how YOU would.**
 
 ##### Win conditions
 
-- [ ] Yap Li Min's approval proceeds the order to AutoCount.
-- [ ] Asilah's approval attempt is blocked or not treated as valid.
-- [ ] A left-unapproved draft does not auto-submit after a timeout.
+- [ ] Yap Li Min's submission proceeds the order to AutoCount.
+- [ ] Asilah's submission proceeds the order to AutoCount the same way — not blocked or treated differently.
+- [ ] A left-unsubmitted draft does not auto-submit after a timeout.
 
 ##### It should stop and ask you if
 
-- the acting role isn't the approver.
+- the acting user isn't one of the 3 registered (Yap Li Min, Asilah, Joseph) — see Mission M-03/BF-relevant access-control checks.
 
 ##### If something breaks mid-way
 
-An incorrectly-attempted approval must be refused cleanly, with no partial state change.
+An unsubmitted draft must stay pending — never silently push itself through, regardless of who last touched it.
 
 ##### Sabotage bonus (+20 XP)
 
-- Have Asilah try approving, get refused, then have Yap Li Min approve the same draft immediately after — confirm no leftover state from the failed attempt.
+- Have Asilah submit a draft, then have Yap Li Min submit a second, unrelated draft immediately after — confirm no cross-contamination between the two submissions.
 
 ##### Poke it
 
-- Does the system tell Asilah *why* she can't approve, or just silently fail?
+- Does the system behave any differently based on which of the 3 registered users is submitting? It shouldn't.
 
 ##### Loot to capture
 
-- Yap Li Min's successful approval screenshot; Asilah's refused-attempt screenshot; unapproved-draft timeout check.
+- Yap Li Min's successful submission screenshot; Asilah's successful submission screenshot; unsubmitted-draft timeout check.
 
 ---
 
@@ -1085,7 +1090,7 @@ A customer wants to return an item against an existing invoice. You issue a cred
 
 ##### Roles and business rules
 
-**Roles and approvals:** Yap Li Min / finance only.
+**Roles and approvals:** any of the 3 registered users (Yap Li Min, Asilah, Joseph) — no separate approval gate (SL-7).
 
 - **Always:** tie every credit note to a specific invoice ID.
 - **Never:** allow an account-level credit note.
@@ -1304,7 +1309,7 @@ A **new customer** needs to pay upfront. You generate MAIA's proforma/SO-style d
 
 ##### Roles and business rules
 
-**Roles and approvals:** Yap Li Min approves.
+**Roles and approvals:** any of the 3 registered users (Yap Li Min, Asilah, Joseph) can submit — no approval gate (SL-7).
 
 - **Always:** confirm only Invoice + DO reach AutoCount.
 - **Never:** let the SO/quotation-equivalent document reach AutoCount as a formal Sales Order.
@@ -1509,7 +1514,7 @@ None. No historical UAT failures are recorded in the source Checklist — all Pa
 
 ### Section 10 — Side Quests and Chaos Cards
 
-Given Dalson's small scope (12 locked items, single-owner approval chain), dedicated Side Quests/Chaos Cards beyond what's already built into each Mission's Sabotage Bonus and Poke It sections would duplicate coverage rather than add it. Use the Sabotage Bonus prompts on M-04, M-07, M-10, and M-11 as your chaos-injection points — those are where the account's real fragility concentrates.
+Given Dalson's small scope (12 locked items, 3-person, no-approval-gate submission model), dedicated Side Quests/Chaos Cards beyond what's already built into each Mission's Sabotage Bonus and Poke It sections would duplicate coverage rather than add it. Use the Sabotage Bonus prompts on M-04, M-07, M-10, and M-11 as your chaos-injection points — those are where the account's real fragility concentrates.
 
 ---
 
@@ -1596,12 +1601,12 @@ See Section 9 of the Launch Readiness Checklist.
 
 | Persona | Business rule | Source | Mission(s) |
 |---|---|---|---|
-| Yap Li Min | Sole approval authority | SL-7, VoC | M-07 |
+| Yap Li Min | One of 3 registered users, no approval gate above her | SL-7 (superseded 2026-07-20), VoC | M-07 |
 | Yap Li Min | Invoice-level credit notes only | SL-8, VOC-022 | M-08 |
 | Yap Li Min | SO stays in MAIA, never AutoCount | SL-13 | M-11, BF-03 |
-| Asilah | Cannot approve SO/Invoice | SL-7, UAT UP-14 | M-07 |
+| Asilah | Submits directly, same authority as Yap Li Min | SL-7 (superseded 2026-07-20), UAT UP-14 | M-07 |
 | Asilah | Confirms ambiguous SKU matches | SL-4, VoC | M-04, BF-01 |
-| Driver (TBC) | Captures POD, no approval authority | SL-5, VOC-010 | M-05 |
+| Driver (TBC) | Captures POD, not a registered submission user | SL-5, VOC-010 | M-05 |
 
 #### Beyond Tester Reach handoffs
 

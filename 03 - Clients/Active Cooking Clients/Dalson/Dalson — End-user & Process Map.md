@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-19
+last_reviewed: 2026-07-20
 ---
 
 # Dalson Industrial Supplies — End-user & Process Map
@@ -16,9 +16,9 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 
 | Actor (real name) | MAIA role | Authority | Contacted? | UAT signatory? | What they do in MAIA | Voice confidence |
 |---|---|---|---|---|---|---|
-| **Yap Li Min** (`dalsonmultisupply@gmail.com`, WhatsApp 6012-368-1558) — this is "Yap Li Min" from the VoC/Scope Lock transcripts; MAIA User List names her role as **"sales coordinator/owner"** (dual role, not owner-only) | Management / Sales (sole approver) | Sole SO/Invoice approval authority (Scope Lock SL-7, locked) | YES — attended the 2026-05-22 requirements session directly | **Likely, but not formally confirmed** — see Gap #1 | Reviews and approves draft SO/Invoice; sets business rules (credit note policy, receipt policy); field/mobile-based, uses MAIA remotely | CONFIRMED — identity now grounded in the MAIA User List, not just the transcript |
-| **Asilah Amirah binti Khairuddin** (`dalsonsales.wei@gmail.com`, WhatsApp 6017-574-6626) | Sales / Admin | Uploads/processes orders; does **not** have SO/Invoice approval authority (explicitly tested as a must-block case, UAT UP-14) | YES — named in MAIA User List | **NEEDS CLIENT INPUT** — named now, sign-off role still unconfirmed | Forwards customer POs into MAIA; handles invoice/customer creation in AutoCount today (desk-based, in-office) | CONFIRMED identity (User List); role description still BELIEVED — Yap Li Min/Yap described the coordinator's day-to-day only in third person, this person has not spoken directly in any source yet |
-| **Joseph** (Admin/Store Keeper — no email on file, WhatsApp 6017-224-8046) | Logistics | Packs confirmed orders; no formal pick-list role today | YES — named in MAIA User List | **NEEDS CLIENT INPUT** | Receives forwarded PO, packs order directly | CONFIRMED identity (User List); role description still BELIEVED — same third-person-only sourcing as above |
+| **Yap Li Min** (`dalsonmultisupply@gmail.com`, WhatsApp 6012-368-1558) — this is "Yap Li Min" from the VoC/Scope Lock transcripts; MAIA User List names her role as **"sales coordinator/owner"** (dual role, not owner-only) | Management / Sales | One of 3 registered MAIA users who can submit a document directly — **no separate approval authority** (Scope Lock SL-7, superseded 2026-07-20: approval gate removed, client confirmed) | YES — attended the 2026-05-22 requirements session directly | **Likely, but not formally confirmed** — see Gap #1 | Submits draft SO/Invoice directly; sets business rules (credit note policy, receipt policy); field/mobile-based, uses MAIA remotely | CONFIRMED — identity now grounded in the MAIA User List, not just the transcript |
+| **Asilah Amirah binti Khairuddin** (`dalsonsales.wei@gmail.com`, WhatsApp 6017-574-6626) | Sales / Admin | One of 3 registered MAIA users who can submit a document directly (Scope Lock SL-7, superseded 2026-07-20 — previously blocked from approving, now no approval step exists to be blocked from) | YES — named in MAIA User List | **NEEDS CLIENT INPUT** — named now, sign-off role still unconfirmed | Forwards customer POs into MAIA; submits orders directly; handles invoice/customer creation in AutoCount today (desk-based, in-office) | CONFIRMED identity (User List); role description still BELIEVED — Yap Li Min/Yap described the coordinator's day-to-day only in third person, this person has not spoken directly in any source yet |
+| **Joseph** (Admin/Store Keeper — no email on file, WhatsApp 6017-224-8046) | Logistics | One of 3 registered MAIA users; packs confirmed orders, no formal pick-list role today | YES — named in MAIA User List | **NEEDS CLIENT INPUT** | Receives forwarded PO, packs order directly | CONFIRMED identity (User List); role description still BELIEVED — same third-person-only sourcing as above |
 | Driver(s) | Logistics | Captures proof-of-delivery | **STILL NEEDS CLIENT INPUT** — the 3-person User List (Yap, Asilah, Joseph) has no separate driver entry | **NEEDS CLIENT INPUT** | Uploads POD photo via MAIA after delivery (Scope Lock SL-5, locked) | BELIEVED — driver-workspace requirement is confirmed (VOC-010), but it's now unclear whether Joseph doubles as driver, delivery is ad hoc/outsourced, or a driver simply wasn't listed. Confirm at sign-off — do not assume Joseph covers this. |
 | Ms Tan (AutoCount Software Support) | Admin (external, not a MAIA end-user) | AutoCount system owner/dealer; technical point of contact for integration | YES — contact details on file (`easysoftprosolution@gmail.com`) | N/A — not a MAIA end-user | Manages Dalson's AutoCount instance; was the party who granted AutoCount access and coordinated the data migration (Scope Lock SL-6) | CONFIRMED — cross-referenced against `Dalson MAIA autocount integration.md` contact table |
 
@@ -34,8 +34,8 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 - **Channel for MAIA production (locked 2026-07-13** — Scope Lock SL-3): **Telegram**. Note this is a shift from what Yap Li Min was walked through during the original May 2026 setup session (dedicated WhatsApp Business number, new phone number solely for MAIA) — the switch has since been confirmed with the client directly (per PM, 2026-07-12), so no open risk remains, but it is worth remembering during training/onboarding materials that Yap Li Min's original mental model was WhatsApp-specific.
 - **One number vs many:** MAIA operates on a single dedicated messaging account (originally scoped as a WhatsApp-only number "no one can use it at all... this number is only for Maya"), now realized on Telegram instead. Single-number model carries over.
 - **Who forwards:** customer sends PO/order request → forwarded into MAIA by staff. Now that Asilah (sales coordinator) and Yap Li Min (owner, also coordinator-role) are both named and registered MAIA users, either can plausibly forward — sources still don't state a hard rule for which one does it day-to-day. Downgraded from a full identity gap to a workflow-detail gap.
-- **Human review before submit:** MAIA prepares a draft; Yap Li Min reviews and approves before anything is pushed to AutoCount (Scope Lock SL-1 acceptance criteria: "no scenario where MAIA replaces AutoCount as ledger/invoicing source"; SL-7: sole approver).
-- **Must-NOT:** an order draft must never be auto-pushed/finalized without Yap Li Min's explicit approval (tested directly in UAT UP-02, UP-15).
+- **Submission, no separate approval gate (updated 2026-07-20):** MAIA prepares a draft; any of the 3 registered users (Yap Li Min, Asilah, Joseph) can submit it directly to AutoCount — client confirmed this is safe given only 3 people use MAIA for Dalson (Scope Lock SL-7, superseded 2026-07-20). AutoCount still remains the ledger/invoicing system of record (SL-1) — this only removes the internal sign-off step, not AutoCount's authority.
+- **Must-NOT:** an order draft must never be auto-pushed/finalized by MAIA itself without one of the 3 registered users taking the submit action (tested directly in UAT UP-02, UP-15 — updated to test "any registered user submits" rather than "only Yap Li Min approves").
 
 ---
 
@@ -43,10 +43,10 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 
 | Document | Generated by role | Trigger | AutoCount constraint |
 |---|---|---|---|
-| Quotation | MAIA (draft) → Yap Li Min reviews | Customer inquiry / early-stage order | Not pushed to AutoCount until confirmed |
-| Invoice | MAIA (draft) → Yap Li Min approves | Confirmed order | Pushed to AutoCount as final ledger record; AutoCount remains system of record (SL-1) |
+| Quotation | MAIA (draft) → any of the 3 registered users submits | Customer inquiry / early-stage order | Not pushed to AutoCount until submitted |
+| Invoice | MAIA (draft) → any of the 3 registered users submits | Confirmed order | Pushed to AutoCount as final ledger record; AutoCount remains system of record (SL-1) |
 | Delivery Order (DO) | MAIA, tied to fulfillment | Delivery scheduled/completed | Stores POD attachment against the order trail (SL-5) |
-| Credit Note | Yap Li Min / finance | Customer return, tied to a **specific invoice ID** | Invoice-level only — account-level credit notes explicitly rejected (SL-8, VOC-022) |
+| Credit Note | Yap Li Min / Asilah / Joseph | Customer return, tied to a **specific invoice ID** | Invoice-level only — account-level credit notes explicitly rejected (SL-8, VOC-022) |
 | Receipt | On customer request only, not automatic | Customer explicitly asks | **Resolved in Scope Lock v2** — SL-17, LOCKED. No longer a gap. |
 
 **Resolved — SO stage.** Yap Li Min stated directly in the requirements transcript that **no formal Sales Order stage exists** in Dalson's current process ("I understand that you may have foreseen your quotation, your phone invoice. No sales order" — VOC-021, CONFIRMED). Scope Lock v2 (SL-13) reconciled this: Invoice + DO push to AutoCount, the SO/quotation-equivalent stays inside MAIA only, and new customers get a MAIA-generated proforma document for upfront payment. The Sample Data Checklist doc (Lark, section "Sample Transaction Documents") provided written confirmation: *"You are happy to use MAIA's template for Sales Orders and Proforma Invoices for new customers. Invoices will continue to be generated via AutoCount."* SL-13 is now LOCKED (SUPERSEDED) at **HIGH confidence** (upgraded from MED, 2026-07-19).
@@ -61,8 +61,8 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 2. Staff (Asilah, as sales coordinator, or Yap Li Min herself — both named/registered MAIA users; exact day-to-day split not stated in sources) forwards it into MAIA via Telegram.
 3. MAIA extracts an order draft, matching item descriptions to internal SKUs (SL-4, core platform matching engine — locked).
 4. MAIA references AutoCount for customer, pricing, and stock data (SL-6, access granted, data migrated).
-5. Yap Li Min reviews the draft and approves — sole approval authority (SL-7).
-6. Approved order is pushed to AutoCount; AutoCount remains system of record (SL-1).
+5. Whoever's handling the order (Yap Li Min, Asilah, or Joseph) submits it directly — no separate approval step (SL-7, superseded 2026-07-20).
+6. Submitted order is pushed to AutoCount; AutoCount remains system of record (SL-1).
 7. Confirmed order is forwarded to Joseph (Admin/Store Keeper), who packs it directly — no formal pick-list step today (VOC-019/020).
 8. Delivery is carried out; driver captures POD photo via MAIA, stored against the order/DO trail (SL-5) — directly resolves the "master DO" retrieval pain point Yap Li Min raised (VOC-012). **Who the driver actually is remains unconfirmed** — Joseph is named as store keeper, not driver; do not assume he covers this without asking.
 9. Invoice is finalized in AutoCount.
@@ -73,8 +73,8 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 
 | Role | What they do across the flow |
 |---|---|
-| **Yap Li Min** | Reviews and approves every draft SO/Invoice; sets and enforces business rules (credit note, receipt policy); the only person with final sign-off |
-| **Asilah Amirah binti Khairuddin** (sales coordinator) | Forwards customer orders into MAIA; historically handles direct AutoCount data entry and invoice/customer creation (desk-based) |
+| **Yap Li Min** | Submits draft SO/Invoice directly (no separate approval step, SL-7); sets and enforces business rules (credit note, receipt policy) |
+| **Asilah Amirah binti Khairuddin** (sales coordinator) | Forwards customer orders into MAIA and submits them directly; historically handles direct AutoCount data entry and invoice/customer creation (desk-based) |
 | **Joseph** (Admin/Store Keeper) | Receives confirmed orders, packs and prepares for delivery |
 | **Driver(s)** *(NEEDS CLIENT INPUT — identity; not covered by the 3-person User List)* | Completes delivery, captures POD photo via MAIA |
 | **Ms Tan** (external, not a MAIA end-user) | Manages AutoCount system; granted integration access and coordinated data migration; ongoing technical point of contact |
@@ -83,13 +83,15 @@ Sources: Scope Lock v2 (2026-07-14) · VoC Extraction (2026-07-14) · UAT Checkl
 
 ## 5. Permission Matrix
 
-| Role | Can create | Can approve | Can view (own vs all) | Cannot do |
+| Role | Can create | Can submit (no separate approval step, SL-7) | Can view (own vs all) | Cannot do |
 |---|---|---|---|---|
-| Yap Li Min | Draft orders, credit notes, receipts (on request) | SO / Invoice (sole approver, SL-7) | All | — |
-| Asilah (Sales Coordinator) | Draft orders (forward PO into MAIA); **new customer/item records via chatbot (SL-11, LOCKED 2026-07-19 — confirmed with Ivan)** | **Cannot approve SO/Invoice** — explicitly tested as a must-block case (UAT UP-14) | **NEEDS CLIENT INPUT** — own vs all customer visibility not confirmed anywhere in the sources | Approve/finalize SO or Invoice |
-| Joseph (Store Keeper) | — | — | **NEEDS CLIENT INPUT** | Approve orders; not confirmed whether he has any MAIA-facing access at all vs. receiving forwarded instructions only |
-| Driver(s) | POD photo upload | — | Own delivery assignments only (assumed, **NEEDS CLIENT INPUT** to confirm) | Approve orders, access customer/pricing data |
+| Yap Li Min | Draft orders, credit notes, receipts (on request) | SO / Invoice — direct submission | All | — |
+| Asilah (Sales Coordinator) | Draft orders (forward PO into MAIA); **new customer/item records via chatbot (SL-11, LOCKED 2026-07-19 — confirmed with Ivan)** | SO / Invoice — direct submission (SL-7 superseded 2026-07-20; previously blocked, now no gate exists) | **NEEDS CLIENT INPUT** — own vs all customer visibility not confirmed anywhere in the sources | — |
+| Joseph (Store Keeper) | — | SO / Invoice — direct submission, in principle (SL-7); actual MAIA-facing access still unconfirmed | **NEEDS CLIENT INPUT** | Not confirmed whether he has any MAIA-facing access at all vs. receiving forwarded instructions only |
+| Driver(s) | POD photo upload | — (not a registered MAIA user for submission purposes) | Own delivery assignments only (assumed, **NEEDS CLIENT INPUT** to confirm) | Submit orders, access customer/pricing data |
 | Ms Tan | N/A (not a MAIA user) | N/A | N/A | Not a MAIA end-user — AutoCount-side only |
+
+> **Update 2026-07-20:** Scope Lock SL-7 was superseded — client (Yap Li Min) confirmed only 3 people use MAIA for Dalson (herself, Asilah, Joseph), so a separate approval gate before AutoCount submission was dropped. All 3 registered users can now submit directly; UAT UP-14 (previously "Asilah's approval attempt must be refused") needs to be retested as "Asilah's submission succeeds directly," not refused.
 
 **Registration rule (new):** MAIA recognises users only by the personal WhatsApp number they message from — shared/office numbers are explicitly disallowed. Yap Li Min, Asilah, and Joseph each have a personal number on file; whoever the driver turns out to be will need their own number registered too, not a shared logistics line.
 

@@ -62,13 +62,15 @@ No dedicated folder is needed for missions that run entirely on tester-selected 
 
 ## 7. Roles, accounts, and permissions
 
+> **Update 2026-07-20:** SL-7's approval gate is superseded — client (Yap Li Min) confirmed only 3 people use MAIA for Dalson, and a separate sign-off step was dropped as unnecessary friction for a team this size. All 3 registered users (Yap Li Min, Asilah, Joseph) now submit directly.
+
 | Role | Persona | Required account/access | Permitted actions | Refused actions to test | Status | Owner |
 |---|---|---|---|---|---|---|
-| Owner / Sole Approver | Yap Li Min | Full UAT account access | Approve SO/Invoice, issue credit notes, generate receipts | — | `[NEEDS INPUT]` | `[NEEDS INPUT]` |
-| Sales Coordinator | Asilah | UAT account, chatbot access | Draft orders, create customers/items via chatbot | Approving SO/Invoice | `[NEEDS INPUT]` | `[NEEDS INPUT]` |
-| Store Keeper | Joseph | Not confirmed — see Field Guide Persona P-03 | Not confirmed | Approving orders | Open gap, not blocking | `[NEEDS INPUT]` |
-| Driver | Role TBC | Any staff account may stand in | Upload POD | Approving orders, accessing customer/pricing data | Open gap, not blocking | `[NEEDS INPUT]` |
-| Unregistered Telegram account | N/A | A Telegram account **not** on the staff list | None | Everything | `[NEEDS INPUT]` — needs provisioning (A-02) | `[NEEDS INPUT]` |
+| Owner | Yap Li Min | Full UAT account access | Submit SO/Invoice directly, issue credit notes, generate receipts | — | `[NEEDS INPUT]` | `[NEEDS INPUT]` |
+| Sales Coordinator | Asilah | UAT account, chatbot access | Draft and submit orders directly, create customers/items via chatbot | — | `[NEEDS INPUT]` | `[NEEDS INPUT]` |
+| Store Keeper | Joseph | Not confirmed — see Field Guide Persona P-03 | Submit orders directly, in principle (SL-7); actual MAIA-facing access unconfirmed | — | Open gap, not blocking | `[NEEDS INPUT]` |
+| Driver | Role TBC | Any staff account may stand in | Upload POD | Submitting orders, accessing customer/pricing data | Open gap, not blocking | `[NEEDS INPUT]` |
+| Unregistered Telegram account | N/A | A Telegram account **not** on the staff list | None | Everything, including submission | `[NEEDS INPUT]` — needs provisioning (A-02) | `[NEEDS INPUT]` |
 
 ## 8. Beyond Tester Reach handoffs
 
