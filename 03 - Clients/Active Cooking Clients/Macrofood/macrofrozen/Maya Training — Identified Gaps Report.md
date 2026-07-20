@@ -27,6 +27,10 @@ Gaps identified from the Maya 訂單與倉儲出貨流程培訓會 order & wareh
 12. **Combine-routing logic for multi-customer/multi-stall scenarios unresolved** — e.g. one boss covering multiple stalls/outlets still needs correct order separation logic.
 13. **Customer churn / inactivity alert not automatic** — concept discussed (notify if a customer hasn't ordered in a while) but not implemented.
 14. **Duplicate customer detection incomplete** — scenarios include an old customer returning, two people from the same company, or different phone numbers for the same customer; system should block duplicate conversion but this is not fully proven/working.
+15. **Pick-list route-selection method not finalized** — at pick list creation, whether to split by delivery route or by grouping 3 customers together was raised as still undecided ("這個我們還沒有finalizing").
+16. **Customer preference data only lives in chat/Maya memory, not searchable in backend** — when asked "where can I find this", the answer was it's only in Maya's conversational memory, not surfaced in a searchable UI view. Root cause behind Gap #3.
+17. **Payment reconciliation breaks on third-party payments** — concrete scenario: customer ABC company's invoice gets paid from a bank account that is not registered under "ABC company" — system can't auto-match, no clear resolved process for this beyond manual matching.
+18. **Financial reports across related companies cannot be grouped** — explicitly stated current state: "都不能做成group" (cannot be grouped) "because it would be too chaotic" — direct confirmation that related-company financial linkage is not just unbuilt but was actively avoided due to complexity risk.
 
 ## Use Case Detail: Stock Entry & Packing List
 
