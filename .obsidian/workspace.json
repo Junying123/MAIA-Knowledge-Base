@@ -78,33 +78,9 @@
               "icon": "lucide-file",
               "title": "02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA"
             }
-          },
-          {
-            "id": "1cea89260b50165b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Macrofood __ MAIA Training-transcript"
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
