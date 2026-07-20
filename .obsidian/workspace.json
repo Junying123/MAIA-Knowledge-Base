@@ -85,7 +85,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -100,7 +100,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "00_START_HERE_INPUT_LIBRARY"
+              "title": "Maya Training — Identified Gaps Report"
             }
           }
         ],
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -299,7 +300,7 @@
                     "name": "zsh 186"
                   }
                 ],
-                "activeId": 181,
+                "activeId": 185,
                 "nextId": 187
               },
               "icon": "terminal",
@@ -351,12 +352,12 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "1cea89260b50165b",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
     "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/Dalson_UAT_Launch_Readiness_Checklist.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/Dalson_UAT_Field_Guide_Play_It_Like_A_User.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack",
