@@ -298,7 +298,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 852.5
+    "width": 791.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -328,7 +328,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ed25b829c30e5f11",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",

@@ -2,6 +2,7 @@
 owner: Gareth
 status: draft
 last_reviewed: 2026-07-21
+lark_url: https://eg69120xnei.sg.larksuite.com/docx/VEyqdxeFVoy4kaxFbDblY78pgDb
 ---
 
 # T.C.K Sdn Bhd (Maxfresh) — VoC Extraction v1

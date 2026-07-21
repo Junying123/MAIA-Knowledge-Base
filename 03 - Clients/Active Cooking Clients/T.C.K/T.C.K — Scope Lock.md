@@ -2,6 +2,7 @@
 owner: Gareth
 status: draft
 last_reviewed: 2026-07-21
+lark_url: https://eg69120xnei.sg.larksuite.com/docx/LwyFdZSC3ovhj0xuVLclSyDQgPe
 ---
 
 # T.C.K Sdn Bhd (Maxfresh) — Scope Lock v1
@@ -55,133 +56,273 @@ No WhatsApp/chat exports, Forensic Account Dossier, or kickoff notes exist yet f
 
 ## 3. Locked Scope (Build-Ready)
 
-**SL-1 — WhatsApp order intake (internal forwarding)**
-Status: LOCKED
-Source: `[P]` §4.2, §6.1 Scenario A; `[DH]` §7.1; `[Q]` 9.3
-Flow: Customer sends order via existing WhatsApp group → internal staff forwards the message into MAIA via WhatsApp → MAIA extracts customer, item, quantity, and order details → MAIA references preloaded customer/item/stock/pricing data → if fields are missing, MAIA asks follow-up questions or flags for human review → MAIA prepares a draft sales order → staff reviews and confirms → MAIA submits into AutoCount.
-Acceptance criteria: A forwarded WhatsApp order produces a correctly-populated draft SO for known customers/items; missing-field cases are flagged, not silently guessed.
-Confidence: HIGH
+### SL-1 — WhatsApp order intake (internal forwarding)
 
-**SL-2 — Draft SO review/confirmation before submission**
-Status: LOCKED
-Source: `[P]` §4.2–4.3, §6.1; `[DH]` §7.1
-Flow: MAIA never submits to AutoCount without an explicit human confirmation step.
-Acceptance criteria: No SO reaches AutoCount without a logged confirmation action by a staff user.
-Confidence: HIGH
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[P]` §4.2, §6.1 Scenario A · `[DH]` §7.1 · `[Q]` 9.3 |
 
-**SL-3 — AutoCount as system of record; MAIA as operating layer, not replacement**
-Status: LOCKED
-Source: `[P]` Exec Summary, §3.1; `[DH]` §2, §10.1; `[FF-PF1]`; `[FF-PF2]`
-Flow: AutoCount remains source of truth for accounting, GL, and official document numbering. MAIA sits in front of it for order intake/prep/tracking.
-Acceptance criteria: Finance continues operating in AutoCount unchanged in Phase 1; no GL/accounting functions built in MAIA.
-Confidence: HIGH
+**Flow:**
+1. Customer sends order via existing WhatsApp group
+2. Internal staff forwards the message into MAIA via WhatsApp
+3. MAIA extracts customer, item, quantity, and order details
+4. MAIA references preloaded customer/item/stock/pricing data
+5. If fields are missing, MAIA asks follow-up questions or flags for human review
+6. MAIA prepares a draft sales order
+7. Staff reviews and confirms
+8. MAIA submits into AutoCount
 
-**SL-4 — AutoCount running-number continuity**
-Status: LOCKED
-Source: `[FF-PF2]` ("running numbers ... will definitely follow your current auto count running numbers"); `[DH]` §7.3, §10.4
-Flow: Documents (SO, invoice, CN) generated via MAIA are actually created inside AutoCount; MAIA does not run a parallel numbering sequence.
-Acceptance criteria: Every document MAIA "creates" has an AutoCount-issued running number, continuous with T.C.K's existing 10-year sequence.
-Confidence: HIGH
+**Acceptance criteria:** A forwarded WhatsApp order produces a correctly-populated draft SO for known customers/items; missing-field cases are flagged, not silently guessed.
 
-**SL-5 — Documents included: SO, Invoice, DO, Pick list**
-Status: LOCKED
-Source: `[P]` §4.4; `[PS]` §4; `[DH]` §8.3
-Acceptance criteria: All four document types can be generated from a confirmed order, formatted to match existing AutoCount layout (see SL-11).
-Confidence: HIGH
+---
 
-**SL-6 — Customer grouping with markup (customization, FOC)**
-Status: LOCKED (mechanism partially undefined — see SL-10 for the open sub-question)
-Source: `[P]` §5.1, §9.1; `[PS]` §5; `[DH]` §9; `[Q]` 4.3, 4.8–4.9
-Flow: Customers are grouped into pricing categories (e.g. "Hotels"); each group carries a markup applied on top of the weekly base price during order creation.
-Acceptance criteria: A customer in a defined group receives base price + that group's markup automatically during draft SO creation.
-Confidence: MED — the *group-vs-customer* pricing-level question (SL-10) sits underneath this and isn't resolved yet.
+### SL-2 — Draft SO review/confirmation before submission
 
-**SL-7 (item) — Weekly base price upload/update (customization, FOC)**
-Status: LOCKED
-Source: `[P]` §5.1; `[PS]` §5; `[DH]` §7.2, §9; `[Q]` 4.11
-Flow: T.C.K uploads weekly item base prices via a MAIA-provided template; MAIA uses the latest uploaded prices for all subsequent order pricing.
-Acceptance criteria: Uploading a new weekly price file updates the base price used in the very next order draft; previous week's prices are not silently reused.
-Confidence: HIGH
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[P]` §4.2–4.3, §6.1 · `[DH]` §7.1 |
 
-**SL-8 — Min/max selling price guardrails (setup item)**
-Status: LOCKED (thresholds themselves NOT locked — see SL-16)
-Source: `[P]` §5.2; `[PS]` §5; `[DH]` §9
-Flow: MAIA checks a computed selling price against configured min/max limits and flags orders that fall outside them.
-Acceptance criteria: An order priced below/above the configured guardrail is flagged before submission, not silently allowed.
-Confidence: MED (mechanism locked, values needed — SL-16)
+**Flow:** MAIA never submits to AutoCount without an explicit human confirmation step.
 
-**SL-9 — High-value order approval flow (setup item)**
-Status: LOCKED (threshold + approver NOT locked — see SL-15)
-Source: `[P]` §5.2, §6.4; `[PS]` §5; `[DH]` §9, §12.2
-Flow: Orders above a configured order-value threshold are routed for approval before final AutoCount submission.
-Acceptance criteria: An order exceeding the (TBD) threshold is held in a pending-approval state and cannot reach AutoCount until approved.
-Confidence: MED (mechanism locked, values needed — SL-15)
+**Acceptance criteria:** No SO reaches AutoCount without a logged confirmation action by a staff user.
 
-**SL-10 — Pick list generation and fulfillment status support**
-Status: LOCKED
-Source: `[P]` §4.2, §6.3 Scenario C; `[DH]` §7.5; `[FF-PF3]`
-Flow: A confirmed SO generates a pick list; warehouse/logistics staff execute picking and update MAIA (via WhatsApp or backend) when picking is in-progress/complete; status is reflected in the backend workspace. Only confirmed-complete records are pushed to AutoCount — canceled orders are never pushed.
-Acceptance criteria: Pick list reflects the confirmed SO's line items; status transitions (pending/in-progress/complete/canceled) are visible in backend; canceled orders never create AutoCount records.
-Confidence: HIGH
+---
 
-**SL-11 — Document format matches existing AutoCount layout**
-Status: LOCKED
-Source: `[FF-PF3]` ("invoice preview will follow exactly the same as how your auto count format is"); `[DH]` §8.3
-Acceptance criteria: Generated invoice/DO/pick list visually match T.C.K's current AutoCount letterhead/layout, confirmed by client sign-off during UAT.
-Confidence: HIGH
+### SL-3 — AutoCount as system of record; MAIA as operating layer, not replacement
 
-**SL-12 — Forward-only data model (no historical migration by default)**
-Status: LOCKED
-Source: `[FF-PF2]`; `[DH]` §10.2; `[Q]` 11.4 (checkbox: Forward-only confirmed)
-Flow: Historical transaction data stays in AutoCount. MAIA begins operational tracking from an agreed cutoff date (date itself not yet fixed — see SL-13 in Needs-Scoping).
-Acceptance criteria: MAIA reporting/analytics only covers transactions from the agreed cutoff forward; no bulk historical import occurs without a separately-scoped change order.
-Confidence: HIGH
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[P]` Exec Summary, §3.1 · `[DH]` §2, §10.1 · `[FF-PF1]` · `[FF-PF2]` |
 
-**SL-13 — Selective/flexible push-pull between MAIA and AutoCount**
-Status: LOCKED
-Source: `[FF-PF3]` (client can choose not to push stock balances but does push invoices/DN/CN); `[DH]` §10.4
-Flow: Data sync direction is configurable per data type — client can elect to keep certain data (e.g. stock balances) MAIA-only while pushing transactional documents (invoice, DN, CN) to AutoCount.
-Acceptance criteria: Sync behavior per data type matches what's configured during onboarding technical session; no unintended pushes of unconfirmed/canceled data.
-Confidence: MED — general mechanism confirmed, exact per-field push/pull map still to be defined during the technical onboarding session (this is expected follow-up work, not an open risk).
+**Flow:** AutoCount remains source of truth for accounting, GL, and official document numbering. MAIA sits in front of it for order intake/prep/tracking.
+
+**Acceptance criteria:** Finance continues operating in AutoCount unchanged in Phase 1; no GL/accounting functions built in MAIA.
+
+---
+
+### SL-4 — AutoCount running-number continuity
+
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[FF-PF2]` ("running numbers ... will definitely follow your current auto count running numbers") · `[DH]` §7.3, §10.4 |
+
+**Flow:** Documents (SO, invoice, CN) generated via MAIA are actually created inside AutoCount; MAIA does not run a parallel numbering sequence.
+
+**Acceptance criteria:** Every document MAIA "creates" has an AutoCount-issued running number, continuous with T.C.K's existing 10-year sequence.
+
+---
+
+### SL-5 — Documents included: SO, Invoice, DO, Pick list
+
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[P]` §4.4 · `[PS]` §4 · `[DH]` §8.3 |
+
+**Acceptance criteria:** All four document types can be generated from a confirmed order, formatted to match existing AutoCount layout (see SL-11).
+
+---
+
+### SL-6 — Customer grouping with markup (customization, FOC)
+
+| | |
+| --- | --- |
+| Status | LOCKED — mechanism partially undefined, see SL-10 (open sub-question) |
+| Confidence | MED — the *group-vs-customer* pricing-level question (SL-20) sits underneath this and isn't resolved yet |
+| Source | `[P]` §5.1, §9.1 · `[PS]` §5 · `[DH]` §9 · `[Q]` 4.3, 4.8–4.9 |
+
+**Flow:** Customers are grouped into pricing categories (e.g. "Hotels"); each group carries a markup applied on top of the weekly base price during order creation.
+
+**Acceptance criteria:** A customer in a defined group receives base price + that group's markup automatically during draft SO creation.
+
+---
+
+### SL-7 — Weekly base price upload/update (customization, FOC)
+
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[P]` §5.1 · `[PS]` §5 · `[DH]` §7.2, §9 · `[Q]` 4.11 |
+
+**Flow:** T.C.K uploads weekly item base prices via a MAIA-provided template; MAIA uses the latest uploaded prices for all subsequent order pricing.
+
+**Acceptance criteria:** Uploading a new weekly price file updates the base price used in the very next order draft; previous week's prices are not silently reused.
+
+---
+
+### SL-8 — Min/max selling price guardrails (setup item)
+
+| | |
+| --- | --- |
+| Status | LOCKED — thresholds themselves NOT locked, see SL-16 |
+| Confidence | MED — mechanism locked, values needed (SL-16) |
+| Source | `[P]` §5.2 · `[PS]` §5 · `[DH]` §9 |
+
+**Flow:** MAIA checks a computed selling price against configured min/max limits and flags orders that fall outside them.
+
+**Acceptance criteria:** An order priced below/above the configured guardrail is flagged before submission, not silently allowed.
+
+---
+
+### SL-9 — High-value order approval flow (setup item)
+
+| | |
+| --- | --- |
+| Status | LOCKED — threshold + approver NOT locked, see SL-15 |
+| Confidence | MED — mechanism locked, values needed (SL-15) |
+| Source | `[P]` §5.2, §6.4 · `[PS]` §5 · `[DH]` §9, §12.2 |
+
+**Flow:** Orders above a configured order-value threshold are routed for approval before final AutoCount submission.
+
+**Acceptance criteria:** An order exceeding the (TBD) threshold is held in a pending-approval state and cannot reach AutoCount until approved.
+
+---
+
+### SL-10 — Pick list generation and fulfillment status support
+
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[P]` §4.2, §6.3 Scenario C · `[DH]` §7.5 · `[FF-PF3]` |
+
+**Flow:**
+1. A confirmed SO generates a pick list
+2. Warehouse/logistics staff execute picking
+3. Staff update MAIA (via WhatsApp or backend) when picking is in-progress/complete
+4. Status is reflected in the backend workspace
+5. Only confirmed-complete records are pushed to AutoCount — canceled orders are never pushed
+
+**Acceptance criteria:** Pick list reflects the confirmed SO's line items; status transitions (pending/in-progress/complete/canceled) are visible in backend; canceled orders never create AutoCount records.
+
+---
+
+### SL-11 — Document format matches existing AutoCount layout
+
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[FF-PF3]` ("invoice preview will follow exactly the same as how your auto count format is") · `[DH]` §8.3 |
+
+**Acceptance criteria:** Generated invoice/DO/pick list visually match T.C.K's current AutoCount letterhead/layout, confirmed by client sign-off during UAT.
+
+---
+
+### SL-12 — Forward-only data model (no historical migration by default)
+
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | HIGH |
+| Source | `[FF-PF2]` · `[DH]` §10.2 · `[Q]` 11.4 (checkbox: Forward-only confirmed) |
+
+**Flow:** Historical transaction data stays in AutoCount. MAIA begins operational tracking from an agreed cutoff date (date itself not yet fixed — see SL-17 in Agreed-in-Principle).
+
+**Acceptance criteria:** MAIA reporting/analytics only covers transactions from the agreed cutoff forward; no bulk historical import occurs without a separately-scoped change order.
+
+---
+
+### SL-13 — Selective/flexible push-pull between MAIA and AutoCount
+
+| | |
+| --- | --- |
+| Status | LOCKED |
+| Confidence | MED — general mechanism confirmed, exact per-field push/pull map still to be defined during the technical onboarding session (expected follow-up work, not an open risk) |
+| Source | `[FF-PF3]` (client can choose not to push stock balances but does push invoices/DN/CN) · `[DH]` §10.4 |
+
+**Flow:** Data sync direction is configurable per data type — client can elect to keep certain data (e.g. stock balances) MAIA-only while pushing transactional documents (invoice, DN, CN) to AutoCount.
+
+**Acceptance criteria:** Sync behavior per data type matches what's configured during onboarding technical session; no unintended pushes of unconfirmed/canceled data.
 
 ## 4. Agreed in Principle — Not Locked
 
-**SL-14 — Hosting on client's own cloud (same environment as AutoCount)**
-Status: AGREED IN PRINCIPLE — NOT LOCKED
-Source: `[FF-PF3]`; `[FF-PF4]`; `[DH]` §10.3
-What's undefined: Client's IT/AutoCount vendor has not yet formally confirmed compatibility/setup in writing (only verbally, via Jeremy relaying a vendor call in `[FF-PF4]`). Exact hosting spec, access method, and responsibility split (who provisions what) not documented.
-Decision needed from: T.C.K IT contact + AutoCount vendor, validated by Mindhive technical lead.
+### SL-14 — Hosting on client's own cloud (same environment as AutoCount)
 
-**SL-15 — Order value approval threshold + approver identity**
-Status: AGREED IN PRINCIPLE — NOT LOCKED
-Source: `[P]` §5.2; `[DH]` §14.3; `[Q]` 5.6, 7.3 (both explicitly marked "exact thresholds to be configured")
-What's undefined: The actual RM threshold and named approver(s). Andrew Tay is confirmed as ultimate decision-maker (`[Q]` 12.3) but day-to-day approver for this specific flow is not named.
-Decision needed from: Andrew Tay / Cheryl, during kickoff workflow session.
+| | |
+| --- | --- |
+| Status | AGREED IN PRINCIPLE — NOT LOCKED |
+| Source | `[FF-PF3]` · `[FF-PF4]` · `[DH]` §10.3 |
 
-**SL-16 — Min/max selling price guardrail values**
-Status: AGREED IN PRINCIPLE — NOT LOCKED
-Source: `[P]` §5.2; `[Q]` (no section directly answers; §4.8 confirms pricing varies but no min/max figures given)
-What's undefined: The actual min/max price reference values or logic (per-SKU? per-group? flat margin floor?).
-Decision needed from: Andrew Tay / pricing owner (Wei Wei, per `[Q]` 4.12).
+**What's undefined:** Client's IT/AutoCount vendor has not yet formally confirmed compatibility/setup in writing (only verbally, via Jeremy relaying a vendor call in `[FF-PF4]`). Exact hosting spec, access method, and responsibility split (who provisions what) not documented.
 
-**SL-17 — Cutoff date for go-live / inventory load**
-Status: AGREED IN PRINCIPLE — NOT LOCKED
-Source: `[FF-PF2]` ("1st of July" floated as an example, not fixed); `[DH]` §7.4, §14.3
-What's undefined: A firm calendar date has never been agreed — only used as an illustrative example during a finalization call. Given the account is now past July, this needs to be re-set at kickoff.
-Decision needed from: T.C.K + Mindhive onboarding team, at kickoff.
+**Decision needed from:** T.C.K IT contact + AutoCount vendor, validated by Mindhive technical lead.
 
-**SL-18 — Stock deduction event (invoice vs delivery order)**
-Status: AGREED IN PRINCIPLE — NOT LOCKED
-Source: `[DH]` §7.4, §14.3 ("Whether stock is deducted at invoice or delivery order" listed as an open workflow decision); `[FF-PF3]` (confirms SO reserves without deducting; deduction happens at one of these two points, client's choice)
-What's undefined: Which of the two points T.C.K actually wants.
-Decision needed from: T.C.K sales/logistics leads, at kickoff.
+---
 
-**SL-19 — Weekly text-format price/catalog broadcast to customers**
-Status: AGREED IN PRINCIPLE — NOT LOCKED
-Source: `[G]` (Jeremy: client wants a weekly text-format items+price list generated so the "boss can forward to whatever groups"; confirmed "within phase one" by Jeremy, but exact build/timing left to onboarding team's discretion)
-What's undefined: This was sold informally in a sales call, not written into the signed proposal's explicit feature list — it rides on top of the already-scoped weekly base price upload but as an *outbound* customer-facing text digest, not just an internal price update. Needs to be explicitly reconciled against `[P]` before committing a build date.
-Decision needed from: Mindhive PM team (Gareth/Ivan) to decide scope/timing, per Jeremy's handover; client expectation should be re-confirmed at kickoff since this wasn't in the signed document.
-Confidence flag: this is a vendor-side (sales) commitment made informally and not written into the SOW — see Supersessions Log.
+### SL-15 — Order value approval threshold + approver identity
+
+| | |
+| --- | --- |
+| Status | AGREED IN PRINCIPLE — NOT LOCKED |
+| Source | `[P]` §5.2 · `[DH]` §14.3 · `[Q]` 5.6, 7.3 (both explicitly marked "exact thresholds to be configured") |
+
+**What's undefined:** The actual RM threshold and named approver(s). Andrew Tay is confirmed as ultimate decision-maker (`[Q]` 12.3) but day-to-day approver for this specific flow is not named.
+
+**Decision needed from:** Andrew Tay / Cheryl, during kickoff workflow session.
+
+---
+
+### SL-16 — Min/max selling price guardrail values
+
+| | |
+| --- | --- |
+| Status | AGREED IN PRINCIPLE — NOT LOCKED |
+| Source | `[P]` §5.2 · `[Q]` (no section directly answers; §4.8 confirms pricing varies but no min/max figures given) |
+
+**What's undefined:** The actual min/max price reference values or logic (per-SKU? per-group? flat margin floor?).
+
+**Decision needed from:** Andrew Tay / pricing owner (Wei Wei, per `[Q]` 4.12).
+
+---
+
+### SL-17 — Cutoff date for go-live / inventory load
+
+| | |
+| --- | --- |
+| Status | AGREED IN PRINCIPLE — NOT LOCKED |
+| Source | `[FF-PF2]` ("1st of July" floated as an example, not fixed) · `[DH]` §7.4, §14.3 |
+
+**What's undefined:** A firm calendar date has never been agreed — only used as an illustrative example during a finalization call. Given the account is now past July, this needs to be re-set at kickoff.
+
+**Decision needed from:** T.C.K + Mindhive onboarding team, at kickoff.
+
+---
+
+### SL-18 — Stock deduction event (invoice vs delivery order)
+
+| | |
+| --- | --- |
+| Status | AGREED IN PRINCIPLE — NOT LOCKED |
+| Source | `[DH]` §7.4, §14.3 ("Whether stock is deducted at invoice or delivery order" listed as an open workflow decision) · `[FF-PF3]` (confirms SO reserves without deducting; deduction happens at one of these two points, client's choice) |
+
+**What's undefined:** Which of the two points T.C.K actually wants.
+
+**Decision needed from:** T.C.K sales/logistics leads, at kickoff.
+
+---
+
+### SL-19 — Weekly text-format price/catalog broadcast to customers
+
+| | |
+| --- | --- |
+| Status | AGREED IN PRINCIPLE — NOT LOCKED |
+| Confidence flag | Vendor-side (sales) commitment made informally, not written into the SOW — see Supersessions Log |
+| Source | `[G]` (Jeremy: client wants a weekly text-format items+price list generated so the "boss can forward to whatever groups"; confirmed "within phase one" by Jeremy, but exact build/timing left to onboarding team's discretion) |
+
+**What's undefined:** This was sold informally in a sales call, not written into the signed proposal's explicit feature list — it rides on top of the already-scoped weekly base price upload but as an *outbound* customer-facing text digest, not just an internal price update. Needs to be explicitly reconciled against `[P]` before committing a build date.
+
+**Decision needed from:** Mindhive PM team (Gareth/Ivan) to decide scope/timing, per Jeremy's handover; client expectation should be re-confirmed at kickoff since this wasn't in the signed document.
 
 ## 5. Needs-Scoping Register
 
