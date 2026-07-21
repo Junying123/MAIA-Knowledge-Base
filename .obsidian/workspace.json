@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
+                "file": "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-07-21-scc-sqlquery-access-request-email"
+              "title": "Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA"
             }
           }
         ],
@@ -138,8 +138,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -270,10 +269,14 @@
                   {
                     "id": 188,
                     "name": "zsh 188"
+                  },
+                  {
+                    "id": 189,
+                    "name": "zsh 189"
                   }
                 ],
-                "activeId": 188,
-                "nextId": 189
+                "activeId": 189,
+                "nextId": 190
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -324,12 +327,13 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
-    "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
-    "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
+    "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
+    "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
     "03 - Clients/Active Cooking Clients/2026-07-21-scc-sqlquery-access-request-email.md",
     "2026-07-21-scc-sqlquery-access-request-email.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
@@ -352,7 +356,6 @@
     "03 - Clients/Active Cooking Clients/Macrofood/Meetings/content_Maya 訂單與倉儲出貨流程培訓會_202607170008.txt",
     "Granola/Transcripts/2026-07-17/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-17",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen MAIA UAT Signoff Checklist.pdf",
     "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/Macrofrozen Training Plan.md",
     "Granola/Transcripts/2026-07-16/Mindhive  Daily Standup-transcript.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/Macrofrozen_MAIA_UAT_Signoff_Checklist.md",
