@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
+                "file": "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA"
+              "title": "T.C.K — VoC Extraction"
             }
           }
         ],
@@ -138,7 +138,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -327,8 +328,9 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Scope Lock.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/03_Pre-Onboarding Questionnaire - T.C.K Sdn Bhd x MAIA.md",
@@ -342,7 +344,6 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript 2.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
     "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
     "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
