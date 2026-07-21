@@ -268,12 +268,12 @@
                     "name": "zsh 185"
                   },
                   {
-                    "id": 186,
-                    "name": "zsh 186"
+                    "id": 188,
+                    "name": "zsh 188"
                   }
                 ],
-                "activeId": 181,
-                "nextId": 188
+                "activeId": 188,
+                "nextId": 189
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -294,7 +294,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 739.5
+    "width": 852.5
   },
   "left-ribbon": {
     "hiddenItems": {
