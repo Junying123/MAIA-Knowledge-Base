@@ -268,15 +268,11 @@
                     "name": "zsh 185"
                   },
                   {
-                    "id": 188,
-                    "name": "zsh 188"
-                  },
-                  {
                     "id": 189,
                     "name": "zsh 189"
                   }
                 ],
-                "activeId": 189,
+                "activeId": 181,
                 "nextId": 190
               },
               "icon": "terminal",
