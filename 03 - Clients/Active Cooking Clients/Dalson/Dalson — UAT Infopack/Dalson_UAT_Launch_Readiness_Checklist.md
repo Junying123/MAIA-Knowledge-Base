@@ -2,9 +2,10 @@
 
 ## 1. Launch verdict
 
-**USABLE WITH GAPS.** All 12 LOCKED scope items have full Mission coverage and the Field Guide is complete and Lark-ready. Test window, environment access, and the bug-reporting channel are now confirmed (Section 2). Remaining gaps: XP tracker link, a named UAT owner, and the time budget vs. the confirmed 60-minute window (see warning below) — plus one identity gap (the driver role is unconfirmed, so M-05 must be played by a stand-in). Nothing here blocks distributing the pack once these are closed.
+**USABLE WITH GAPS.** All 13 LOCKED scope items have full Mission coverage and the Field Guide is complete and Lark-ready. Test window, environment access, and the bug-reporting channel are now confirmed (Section 2). Remaining gaps: XP tracker link, a named UAT owner, and the time budget vs. the confirmed 60-minute window (see warning below) — plus one identity gap (the driver role is unconfirmed, so M-05 must be played by a stand-in). Nothing here blocks distributing the pack once these are closed.
 
-> **Time-budget warning:** the confirmed test window is **60 minutes on 20 July**. This pack's own estimate (12 missions × ~10 min + 3 Boss Fights × ~14 min) runs closer to **~3 hours** for full completion. Recommend either scoping this session to the Speedrun set (M-07, M-08, M-11, M-12 — the P1-risk flows) or splitting the campaign across multiple sessions. Flag to the UAT owner before distribution.
+> **Time-budget warning:** the confirmed test window is **60 minutes on 20 July**. This pack's own estimate (13 missions × ~10 min + 3 Boss Fights × ~14 min) runs closer to **~3 hours** for full completion. Recommend either scoping this session to the Speedrun set (M-07, M-08, M-11, M-12 — the P1-risk flows) or splitting the campaign across multiple sessions. Flag to the UAT owner before distribution.
+> **Updated 2026-07-22** — SL-10 (Pricing logic) promoted to LOCKED; new Mission M-13 added, not yet reflected in the mission-count estimate above beyond this note.
 
 ## 2. Missing project variables
 

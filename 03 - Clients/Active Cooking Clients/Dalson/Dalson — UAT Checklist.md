@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-20
+last_reviewed: 2026-07-22
 ---
 
 # Dalson Industrial Supplies — UAT Checklist
@@ -9,6 +9,7 @@ last_reviewed: 2026-07-20
 Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extraction · Dalson Industrial Supplies Customer Narrative Document (used for realistic test data/roles only — vendor voice, not scope authority).
 
 > **Regenerated 2026-07-19** per Lens Alignment Report v3 — this doc predated the entire Scope Lock v2 rerun. Fixes applied: SL-12 numbering collision resolved, SL-11/SL-13/SL-17 status + coverage added, SL-10 reworded, verdict recomputed.
+> **Updated 2026-07-22** — SL-10 (Pricing logic) promoted to LOCKED per Scope Lock v2 (owner confirmed both open mechanics: price-history reference + standard-price fallback). Moved from excluded to tested.
 
 ---
 
@@ -25,7 +26,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | SL-7 | Submission flow (no separate approval gate) | LOCKED (SUPERSEDED 2026-07-20 — approval gate removed, only 3 registered users: Yap Li Min, Asilah, Joseph) | YES | **YES** |
 | SL-8 | Credit note handling (invoice-level) | LOCKED | YES | **YES** |
 | SL-9 | Warehouse / stock update responsibility | LOCKED | YES | **YES** |
-| SL-10 | Pricing logic (ad hoc, per-customer negotiated) | AGREED IN PRINCIPLE — direction agreed (ad hoc, MAIA holds customer price + history), auto-suggest vs manual entry mechanic still undefined | NO (direction yes, mechanic no) | NO |
+| SL-10 | Pricing logic (ad hoc, per-customer negotiated) | **LOCKED (2026-07-22)** — owner confirmed: chatbot surfaces item price history from customer's last few orders, staff manually decides/confirms referencing it; standard AutoCount price auto-applies as default when no customer history exists yet | YES | **YES** |
 | SL-11 | Customer & item/SKU creation via chatbot | **LOCKED (2026-07-19)** — confirmed with Ivan (Vendor/Dev): chatbot can create both new customers and new SKUs directly in AutoCount, full capability not a fallback | YES | **YES** |
 | — | Customer master e-invoice mandatory fields (sub-question under SL-11, not a standalone Scope Lock item — previously mislabeled "SL-12" in this doc) | NEEDS SCOPING — PARTIAL, needs re-verification specific to Dalson | UNKNOWN | NO |
 | SL-12 | AutoCount integration: ongoing 2-way sync mechanism | AGREED IN PRINCIPLE — direction agreed (integrate not replace), API vs middleware vs DB access undefined | NO | NO |
@@ -35,7 +36,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | SL-16 | Full ERP replacement | OUT OF SCOPE | N/A | NO |
 | SL-17 | Receipts | **LOCKED** | YES | **YES** |
 
-**Testable this cycle: SL-1 through SL-9, SL-11, SL-13, SL-17 (12 items).**
+**Testable this cycle: SL-1 through SL-11, SL-13, SL-17 (13 items).**
 
 ---
 
@@ -144,6 +145,14 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | UP-20 | SL-11 | Unhappy | Invalid input | Asilah / staff | — | 1. Attempt to create a new customer via chatbot with a mandatory field missing (e.g. no tax identity). 2. Observe response. | Incomplete customer details | MAIA flags the missing mandatory field and does not push an incomplete record to AutoCount | | |
 | UP-21 | SL-11 | Unhappy | Conflict / duplicate | Asilah / staff | Customer or SKU already exists | 1. Attempt to create a customer/SKU that already exists in AutoCount. 2. Observe response. | Existing customer or SKU name | MAIA detects the duplicate, does not create a second record, prompts staff to use the existing one | | |
 
+### SL-10 — Pricing logic (ad hoc, per-customer)
+
+| Test ID | Scope ref | Path | Trigger type | Role/actor | Precondition | Steps | Test data | Expected result | Pass/Fail | Tester & date |
+|---|---|---|---|---|---|---|---|---|---|---|
+| HP-13 | SL-10 | Happy | — | Yap Li Min / staff | Customer has ordered this item at least once before | 1. Start a new order for a repeat customer + item they've bought before. 2. Open the pricing step in the chatbot. 3. Confirm the chatbot displays the price(s) charged on that customer's last few orders for this item. 4. Enter/confirm the price for this order referencing that history. | Repeat customer, item with prior order history | Chatbot surfaces the last few order prices for that customer+item combo; staff can reference it before confirming the line price | | |
+| UP-26 | SL-10 | Unhappy | Missing precondition | Yap Li Min / staff | New customer, or first order of this item for this customer — no price history exists | 1. Start a new order for a customer/item combo with no prior order history. 2. Observe pricing step. | New customer or new item for existing customer | MAIA auto-applies the standard AutoCount item price as the default; staff can still override it — no blank/undefined price field | | |
+| UP-27 | SL-10 | Unhappy | Must-NOT | — | Repeat customer with price history | 1. Confirm the chatbot does not silently auto-fill a single "last price" without staff confirmation. | Repeat customer order | Staff always sees and confirms the price line — history is a reference, not an auto-committed value | | |
+
 ### SL-13 — PO → SO → Invoice → DO workflow (SO stage reinterpreted)
 
 | Test ID | Scope ref | Path | Trigger type | Role/actor | Precondition | Steps | Test data | Expected result | Pass/Fail | Tester & date |
@@ -177,6 +186,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | SL-7 | Submission flow (no approval gate) | HP-07 | UP-14, UP-15 | YES |
 | SL-8 | Credit note handling | HP-08 | UP-16, UP-17 | YES |
 | SL-9 | Warehouse/stock update | HP-09 | UP-18 | YES |
+| SL-10 | Pricing logic (ad hoc, per-customer) | HP-13 | UP-26, UP-27 | YES |
 | SL-11 | Customer & item/SKU creation via chatbot | HP-10 | UP-20, UP-21 | YES |
 | SL-13 | PO→SO→Invoice→DO workflow (SO reinterpreted) | HP-11 | UP-22, UP-23 | YES |
 | SL-17 | Receipts | HP-12 | UP-24, UP-25 | YES |
@@ -185,7 +195,6 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 
 | ID | Item | Reason not tested |
 |---|---|---|
-| SL-10 | Pricing logic (ad hoc, per-customer) | AIP — direction agreed (ad hoc, MAIA holds customer price + history), but the auto-suggest-vs-manual-entry mechanic is still undefined; not testable until that's resolved |
 | — | Customer master e-invoice mandatory fields (sub-question under SL-11) | NS — PARTIAL, needs re-verification specific to Dalson before testable |
 | SL-12 | AutoCount integration: ongoing 2-way sync mechanism | AIP — direction agreed (integrate not replace), API vs middleware vs DB access undefined |
 | SL-14 | Document generation (SO/Invoice/DO PDFs) | Not locked — required outputs defined but layout/templates only partially available |
@@ -196,7 +205,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 
 - **Receipts (SL-17)** — RESOLVED. Locked in Scope Lock v2 and now has full test coverage (HP-12, UP-24, UP-25) above.
 - **SO-stage (SL-13)** — RESOLVED to LOCKED (SUPERSEDED) at HIGH confidence (2026-07-19, written confirmation applied to Scope Lock v2). No longer a live risk.
-- **Pricing logic (SL-10)** — direction now agreed (ad hoc, per-customer, MAIA holds price history); only the auto-suggest-vs-manual mechanic remains open. Still correctly excluded from testing.
+- **Pricing logic (SL-10)** — RESOLVED to LOCKED (2026-07-22, owner-confirmed). Both open mechanics closed: chatbot surfaces last-few-order price history per customer+item (staff decides manually, not auto-suggested), and standard AutoCount price auto-applies as fallback when no history exists. Now has full test coverage (HP-13, UP-26, UP-27) above.
 - **SL-11 unblock mechanism** — resolved via Ivan (Vendor/Dev) confirmation, not via the accountant/Ms Tan as earlier docs assumed. Worth noting so the AutoCount-dealer conversation isn't re-opened unnecessarily.
 - **Coordinator / warehouse / driver roles** — VoC's own coverage gate flags these as BELIEVED, not CONFIRMED (owner described them secondhand, they never spoke in the source transcript). Several test cases above (UP-04, UP-05, HP-02, HP-05, HP-09, UP-18) assign these roles as testers on the assumption the process the owner described is accurate. NEEDS CLIENT INPUT to confirm actual named testers before UAT execution — tracked as a sign-off agenda item in the End-user & Process Map (§6, item #2).
 - **End-user & Process Map now exists** (built 2026-07-13) — role/actor assignments above are current against it; named-tester confirmation for coordinator/warehouse/driver roles remains the one open item, carried in the Map's sign-off agenda rather than as a missing artifact.
@@ -206,7 +215,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 
 ## Verdict
 
-**12 of 17 scope items are testable this cycle** (up from 9 of 16 — Scope Lock v2 added SL-17 and promoted SL-11 and SL-13). The checklist above covers all 12 with ≥1 happy + ≥2 unhappy cases each. 5 items are correctly excluded (SL-10, SL-12, SL-14 — all AGREED IN PRINCIPLE with a real open mechanic; SL-15, SL-16 — OOS), plus one sub-question (e-invoice mandatory fields) that isn't a standalone Scope Lock item. No locked item is missing coverage as of this regeneration.
+**13 of 17 scope items are testable this cycle** (up from 12 — SL-10 promoted to LOCKED 2026-07-22, owner confirmed pricing mechanic). The checklist above covers all 13 with ≥1 happy + ≥2 unhappy cases each. 4 items are correctly excluded (SL-12, SL-14 — AGREED IN PRINCIPLE with a real open mechanic; SL-15, SL-16 — OOS), plus one sub-question (e-invoice mandatory fields) that isn't a standalone Scope Lock item. No locked item is missing coverage as of this regeneration.
 
 ---
 

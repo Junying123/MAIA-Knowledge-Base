@@ -33,6 +33,7 @@
     - Mission M-10 — New Customer, No Detour to AutoCount
     - Mission M-11 — The Proforma, Not the Sales Order
     - Mission M-12 — A Receipt, Only If Asked
+    - Mission M-13 — What Did We Charge Them Last Time?
   - Section 9 — Boss Fights
     - Boss Fight BF-01 — The Impersonator SKU
     - Boss Fight BF-02 — Déjà Vu PO
@@ -63,7 +64,7 @@
 
 > **Campaign warning:** Dalson is a small, single-owner trading business. Every persona you play answers, directly or indirectly, to **one person — Yap Li Min**. Nothing about this account is bureaucratic. If a mission feels like it needs three layers of sign-off, you've misread the business — flag it as an Observation, not a defect.
 
-> **Time-budget warning:** your confirmed window is **60 minutes**. Full completion (12 missions + 3 Boss Fights) runs closer to ~3 hours. Unless your UAT owner tells you otherwise, prioritise the **Speedrun set — M-07, M-08, M-10, M-11, M-12** (the P1-risk flows) — see Section 7, Campaign Overview.
+> **Time-budget warning:** your confirmed window is **60 minutes**. Full completion (13 missions + 3 Boss Fights) runs closer to ~3 hours. Unless your UAT owner tells you otherwise, prioritise the **Speedrun set — M-07, M-08, M-10, M-11, M-12** (the P1-risk flows) — see Section 7, Campaign Overview.
 
 ### Section 1 — How to Play
 
@@ -251,7 +252,7 @@ In this phase, MAIA is an **operational layer sitting on top of AutoCount** — 
 
 #### In Bounds
 
-Only these 12 items are LOCKED and open for active testing:
+Only these 13 items are LOCKED and open for active testing:
 
 - **SL-1** — MAIA as operational layer on top of AutoCount
 - **SL-2** — Core order intake via unstructured channels
@@ -262,6 +263,7 @@ Only these 12 items are LOCKED and open for active testing:
 - **SL-7** — Submission flow (no separate approval gate, superseded 2026-07-20)
 - **SL-8** — Credit note handling (invoice-level)
 - **SL-9** — Warehouse / stock update responsibility
+- **SL-10** — Pricing logic (ad hoc, per-customer — chatbot shows last-few-order price history, staff decides; standard price is default fallback for no-history cases)
 - **SL-11** — Customer & item/SKU creation via chatbot
 - **SL-13** — PO → SO → Invoice → DO workflow, SO stage reinterpreted (Locked, Superseded)
 - **SL-17** — Receipts (on request only)
@@ -270,8 +272,7 @@ Only these 12 items are LOCKED and open for active testing:
 
 | Item | Source | Why not locked | What tester does if encountered |
 |---|---|---|---|
-| SL-10 Pricing logic | Scope Lock | Direction agreed (ad hoc, per-customer, MAIA holds price history) but auto-suggest vs manual-entry mechanic undefined | Log an Observation, don't score it as a mission |
-| SL-12 AutoCount 2-way sync mechanism | Scope Lock | Access/migration is locked (SL-6); the *ongoing* write-back method (API/middleware/DB) is not | Same — Observation only |
+| SL-12 AutoCount 2-way sync mechanism | Scope Lock | Access/migration is locked (SL-6); the *ongoing* write-back method (API/middleware/DB) is not | Observation only |
 | SL-14 Document generation (SO/Invoice/DO PDFs) | Scope Lock | Required outputs defined, templates only partially available | Same |
 | E-invoice mandatory customer fields | Scope Lock Needs-Scoping Register | Needs re-verification specific to Dalson | Same |
 
@@ -508,10 +509,11 @@ Not established for stock/fulfilment specifics — his voice hasn't been capture
 | M-10 — New Customer, No Detour to AutoCount | Asilah | ★★ | 20 | 12 min |
 | M-11 — The Proforma, Not the Sales Order | Yap Li Min | ★★★ | 25 | 12 min |
 | M-12 — A Receipt, Only If Asked | Yap Li Min | ★ | 10 | 6 min |
+| M-13 — What Did We Charge Them Last Time? | Yap Li Min | ★★ | 15 | 10 min |
 
-- **Recommended order:** M-01 → M-02 → M-04 → M-03 → M-06 → M-07 → M-10 → M-11 → M-05 → M-09 → M-08 → M-12.
+- **Recommended order:** M-01 → M-02 → M-04 → M-03 → M-06 → M-07 → M-10 → M-11 → M-05 → M-09 → M-08 → M-13 → M-12.
 - **Speedrun (P1-risk flows only):** M-07, M-08, M-10, M-11, M-12. **M-10 is included even though it's not a Trust Killer** — chatbot-based customer/item creation is the highest-priority capability for Dalson (VoC Phase 3, Rank 2; it was the last blocking item resolved before go-live, 2026-07-19), so it stays in scope even under time pressure.
-- **100% Completion:** all 12 missions + all 3 Boss Fights.
+- **100% Completion:** all 13 missions + all 3 Boss Fights.
 - **Squad split:** one tester plays Yap Li Min + Asilah across M-07 (both halves needed for the permission test); Joseph/M-05 missions can run solo.
 - **XP summary:** 175 XP across missions, +115 XP available across the 3 Boss Fights' win conditions and sabotage bonuses.
 
@@ -1417,6 +1419,79 @@ It must flag the missing precondition, never generate a receipt with nothing to 
 
 ---
 
+#### Mission M-13 — What Did We Charge Them Last Time? · ★★ · 15 XP · ~10 min
+
+**Persona:** Yap Li Min, Owner (or Asilah)
+**Covers:** HP-13, UP-26, UP-27 · SL-10
+**Mission type:** Core
+
+##### The situation
+
+You're pricing a new order. For a **repeat customer buying an item they've bought before**, open the pricing step and confirm the chatbot shows what this customer was charged for this item over their **last few orders** — not just one number, a reference. You then decide/confirm the price yourself. Separately, try a **new customer, or an existing customer's first order of a given item** — there's no history to show, and the standard AutoCount price should apply as the default (still editable by you).
+
+> **Why this matters:** Dalson prices ad hoc, per-customer, order-to-order — the owner negotiates from memory today. MAIA's job is to hold that memory, not to make the pricing decision for him.
+
+**Precondition:** At least one repeat customer + item combo with prior order history, and at least one customer/item combo with none.
+
+##### Input recipe
+
+**Input type:** pricing step of a new order
+
+**Choose or prepare:**
+- A repeat customer ordering an item they've ordered before (ideally 2-3 prior orders at different prices).
+- A brand-new customer, or an existing customer ordering an item for the first time.
+
+**Your chosen data must satisfy:**
+- The repeat case genuinely has multiple prior orders on record for that item; the fallback case genuinely has none.
+
+**Fixed reference:** NONE
+
+##### Roles and business rules
+
+**Roles and approvals:** any of the 3 registered users (Yap Li Min, Asilah, Joseph) can price an order; pricing judgment itself escalates to Yap Li Min for business-rule questions, not for submission sign-off.
+
+- **Always:** show the customer's last-few-order price history for that item before the price line is confirmed.
+- **Never:** silently auto-fill a single "last price" without staff seeing and confirming it.
+- **Always:** fall back to the standard AutoCount price, editable, when no customer-specific history exists.
+
+##### Your goal
+
+Confirm the chatbot surfaces price history as a reference for staff judgment — not an auto-decision — and that the no-history case never leaves the price blank or undefined.
+
+##### Say it your way
+
+- "what did we charge them last time for this one"
+
+> **Now forget these examples and type it how YOU would.**
+
+##### Win conditions
+
+- [ ] Repeat customer+item combo shows the last few order prices before you confirm the current line price.
+- [ ] New customer, or first order of an item, defaults to the standard AutoCount price — editable, never blank.
+- [ ] No price is ever auto-committed without staff seeing and confirming it.
+
+##### It should stop and ask you if
+
+- the price history shown doesn't match what you'd expect for that customer (data mismatch, not a mechanic bug — flag it).
+
+##### If something breaks mid-way
+
+It must never submit an order with an unconfirmed or blank price line.
+
+##### Sabotage bonus (+10 XP)
+
+- Try a customer with a long order history for the same item and confirm the display stays usable (doesn't dump an unreadable wall of every historical price).
+
+##### Poke it
+
+- Does the chatbot ever pick a price for you without showing its reasoning, or does it always leave the decision visibly in your hands?
+
+##### Loot to capture
+
+- Screenshot of the price-history reference shown for a repeat customer+item; screenshot of the standard-price fallback for a no-history case.
+
+---
+
 ### Section 9 — Boss Fights
 
 #### Boss Fight BF-01 — The Impersonator SKU · ★★★ · 40 XP · ~15 min
@@ -1499,13 +1574,13 @@ This is the account's most consequential must-not: Dalson's entire SO-workflow a
 
 #### Deferred / Retired Regression Alerts
 
-None. No historical UAT failures are recorded in the source Checklist — all Pass/Fail fields are currently blank, meaning this is the account's first live UAT execution cycle for these 12 items.
+None. No historical UAT failures are recorded in the source Checklist — all Pass/Fail fields are currently blank, meaning this is the account's first live UAT execution cycle for these 13 items.
 
 ---
 
 ### Section 10 — Side Quests and Chaos Cards
 
-Given Dalson's small scope (12 locked items, 3-person, no-approval-gate submission model), dedicated Side Quests/Chaos Cards beyond what's already built into each Mission's Sabotage Bonus and Poke It sections would duplicate coverage rather than add it. Use the Sabotage Bonus prompts on M-04, M-07, M-10, and M-11 as your chaos-injection points — those are where the account's real fragility concentrates.
+Given Dalson's small scope (13 locked items, 3-person, no-approval-gate submission model), dedicated Side Quests/Chaos Cards beyond what's already built into each Mission's Sabotage Bonus and Poke It sections would duplicate coverage rather than add it. Use the Sabotage Bonus prompts on M-04, M-07, M-10, and M-11 as your chaos-injection points — those are where the account's real fragility concentrates.
 
 ---
 
@@ -1567,13 +1642,14 @@ See Section 9 of the Launch Readiness Checklist.
 | HP-10, UP-20, UP-21 (SL-11) | ACTIVE MISSION | M-10 | LOCKED |
 | HP-11, UP-22, UP-23 (SL-13) | ACTIVE MISSION | M-11, BF-03 | LOCKED (Superseded) |
 | HP-12, UP-24, UP-25 (SL-17) | ACTIVE MISSION | M-12 | LOCKED |
+| HP-13, UP-26, UP-27 (SL-10) | ACTIVE MISSION | M-13 | LOCKED (2026-07-22) |
 
 #### Scope coverage
 
 | Scope item | Status | Mission(s) / boundary section |
 |---|---|---|
-| SL-1 through SL-9, SL-11, SL-13, SL-17 | LOCKED / LOCKED (Superseded) | M-01–M-12, BF-01–BF-03 |
-| SL-10, SL-12, SL-14, e-invoice fields | AGREED IN PRINCIPLE / NEEDS SCOPING | Section 4, NS table |
+| SL-1 through SL-11, SL-13, SL-17 | LOCKED / LOCKED (Superseded) | M-01–M-13, BF-01–BF-03 |
+| SL-12, SL-14, e-invoice fields | AGREED IN PRINCIPLE / NEEDS SCOPING | Section 4, NS table |
 | SL-15, SL-16 | OUT OF SCOPE | Section 4, Out of Bounds |
 
 #### Input-requirement traceability

@@ -1,12 +1,14 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-19
+last_reviewed: 2026-07-22
 ---
 
 # Dalson Industrial Supplies — Lens Alignment Report (v3)
 
 Re-run following: Scope Lock v2 rerun (2026-07-14) + SL-11 promotion (2026-07-19), Process Map roster update (2026-07-19). Previous report (v2, 2026-07-13) predates all of this — the spine has moved twice since the last check and the other three docs have not fully caught up.
+
+> **Superseded 2026-07-22:** SL-10 (Pricing logic) promoted from AGREED IN PRINCIPLE to LOCKED (owner confirmed mechanic). UAT Checklist and UAT Infopack have both been updated to match (SL-10 now tested, HP-13/UP-26/UP-27, Mission M-13). The SL-10 row in the Cross-Status Table below (§3) reflects the pre-2026-07-22 state — treat it as historical, not current. A full v4 rerun would clear it properly; this note is the interim fix.
 
 ## 1. Version Ledger
 
