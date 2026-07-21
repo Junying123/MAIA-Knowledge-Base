@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
+                "file": "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA"
+              "title": "2026-07-21-scc-sqlquery-access-request-email"
             }
           }
         ],
@@ -138,7 +138,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -325,10 +326,15 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
+    "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
+    "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
+    "03 - Clients/Active Cooking Clients/2026-07-21-scc-sqlquery-access-request-email.md",
+    "2026-07-21-scc-sqlquery-access-request-email.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
-    "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/Dalson_UAT_Launch_Readiness_Checklist.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/Dalson_UAT_Field_Guide_Play_It_Like_A_User.md",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack",
@@ -360,14 +366,9 @@
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Launch_Readiness_Checklist.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-scn-ccn-use-case-handoff.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen-scn-ccn-use-case-handoff.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — Lens Alignment Report.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Field Guide (Infopack v1).md",
-    "03 - Clients/Active Cooking Clients/Fixguru/UAT/Fixguru — UAT Checklist.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Scope Alignment - Delivery Method & Out-of-Scope Items.md",
     "lark_auth_qr2.png",
     "lark_auth_qr.png",
     "lark-base-auth-qrcode.png",
