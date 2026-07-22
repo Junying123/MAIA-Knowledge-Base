@@ -138,8 +138,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -324,12 +323,15 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript 2.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Introductory Meeting (2026-04-20).md",
+    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
     "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — Scope Lock.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
     "Granola/Transcripts/2026-07-22/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-22",
@@ -341,9 +343,6 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Finalization 2 (2026-06-17).md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Finalization 1 (2026-06-10).md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Walkthrough (2026-04-27).md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Introductory Meeting (2026-04-20).md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript 2.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
