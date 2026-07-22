@@ -270,13 +270,9 @@
                   {
                     "id": 190,
                     "name": "zsh 190"
-                  },
-                  {
-                    "id": 191,
-                    "name": "zsh 191"
                   }
                 ],
-                "activeId": 191,
+                "activeId": 190,
                 "nextId": 192
               },
               "icon": "terminal",
@@ -330,6 +326,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — VoC Extraction.md",
+    "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — Scope Lock.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
@@ -364,11 +362,9 @@
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Checklist.md.tmp.13503.47a296b7104f",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.13503.1d7059e1097b",
     "Granola/Transcripts/2026-07-13/Ivan x Gareth Macrofrozen scope lock discussion.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/2026-07-17 Fixguru Item Historical Pricing - Issues.md",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
-    "03 - Clients/Active Cooking Clients/Fixguru/Meetings/attachments",
     "Company Logo transparent-v4.png",
     "Company Logo transparent-clean.png",
     "Company Logo transparent-v2.png",
