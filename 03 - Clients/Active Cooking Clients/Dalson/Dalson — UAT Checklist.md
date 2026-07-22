@@ -2,6 +2,7 @@
 owner: Gareth
 status: draft
 last_reviewed: 2026-07-22
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/L5E8wsDWHilVDkku64ZlmHxSgGd
 ---
 
 # Dalson Industrial Supplies — UAT Checklist

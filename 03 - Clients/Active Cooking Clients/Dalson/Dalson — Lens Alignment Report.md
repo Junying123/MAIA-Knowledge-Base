@@ -2,6 +2,7 @@
 owner: Gareth
 status: draft
 last_reviewed: 2026-07-22
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/I86uwtbJ9iE7gwk5ZfvltCPTgph
 ---
 
 # Dalson Industrial Supplies — Lens Alignment Report (v3)

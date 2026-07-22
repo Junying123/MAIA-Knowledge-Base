@@ -1,3 +1,10 @@
+---
+owner: Gareth
+status: draft
+last_reviewed: 2026-07-22
+lark_url: https://eg69120xnei.sg.larksuite.com/wiki/KFSiwwEj4izMqtkqz6nlpQzrgKg
+---
+
 # MAIA — UAT Launch Readiness Checklist
 
 ## 1. Launch verdict
