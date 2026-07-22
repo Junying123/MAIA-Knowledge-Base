@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
+                "file": "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "T.C.K — VoC Extraction"
+              "title": "T.C.K — Kickoff Clarification Questions"
             }
           }
         ],
@@ -138,8 +138,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -272,7 +271,7 @@
                     "name": "zsh 189"
                   }
                 ],
-                "activeId": 189,
+                "activeId": 181,
                 "nextId": 190
               },
               "icon": "terminal",
@@ -326,11 +325,12 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
+    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
     "Granola/Transcripts/2026-07-22/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-22",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Scope Lock.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/03_Pre-Onboarding Questionnaire - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Finalization 4 - Signing (2026-06-26).md",
@@ -364,7 +364,6 @@
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
     "03 - Clients/Active Cooking Clients/Fixguru/Meetings/attachments",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/16Jul26 Macrofrozen 1st UAT Checklist.md",
     "Company Logo transparent-v4.png",
     "Company Logo transparent-clean.png",
     "Company Logo transparent-v2.png",
