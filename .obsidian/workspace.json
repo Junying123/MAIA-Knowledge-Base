@@ -138,7 +138,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -269,10 +270,14 @@
                   {
                     "id": 190,
                     "name": "zsh 190"
+                  },
+                  {
+                    "id": 191,
+                    "name": "zsh 191"
                   }
                 ],
-                "activeId": 190,
-                "nextId": 191
+                "activeId": 191,
+                "nextId": 192
               },
               "icon": "terminal",
               "title": "Terminal"
