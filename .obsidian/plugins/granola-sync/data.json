@@ -51,6 +51,9 @@
       }
     },
     "docFolders": {
+      "bb577594-f1f7-41be-b898-0062c17ee9c0": [
+        "C1 briefing"
+      ],
       "01417e56-6f80-43e7-97ad-6143c9dedd1f": [
         "Mindhive Daily Standup"
       ],
@@ -142,6 +145,6 @@
         "Holsen"
       ]
     },
-    "lastUpdated": 1784826470811
+    "lastUpdated": 1784827522177
   }
 }
