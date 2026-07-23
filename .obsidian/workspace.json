@@ -276,7 +276,7 @@
                     "name": "zsh 192"
                   }
                 ],
-                "activeId": 192,
+                "activeId": 190,
                 "nextId": 193
               },
               "icon": "terminal",
@@ -298,7 +298,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 791.5
+    "width": 949.5
   },
   "left-ribbon": {
     "hiddenItems": {

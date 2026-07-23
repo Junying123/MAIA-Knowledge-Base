@@ -29,6 +29,8 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/OMtAdppypoVc3FxeCgTlvLYSgVf
 | — | not present | **NSD-06 (new)** | Stock source-of-truth for Phase 1 rule checks (SAP live / daily extract / hybrid) — distinct from NSD-04 (sync cadence); not resolved by v1.2, still open per Backward Plan. |
 | — | not present | **SL-13 (new)** | Consolidated pick list — warehouse team-split, actual picked-qty capture, DN creation. Not in v1.2 at all; surfaced by a full pass through the Fireflies raw transcript and the Implementation Plan narrative. Team-split already built; actual-qty capture and multi-SO DN split still open (NSD-07, NSD-08). |
 | — | not present | **NSD-07 / NSD-08 (new)** | Two sub-gaps under SL-13: low-stock exception on actual-picked-qty capture, and DN resolution when a pick list spans multiple SOs. Neither blocking for MVP, both needed before UAT sign-off on SL-13. |
+| — | not present | **SL-14 through SL-19 (new)** | Item description/name override, customer preference capture, DO/Invoice shared numbering, credit note/return matching, role-based dashboards, and out-of-stock substitution advisory — all surfaced by a full read of Ivan's 2026-05-04 RG Complete Notes doc, none previously in v1.2 or this Scope Lock. Paired NSD-09 through NSD-12 cover the undefined mechanics under each. |
+| — | not present | **SUP-05 correction** | "Item Name Override has no scope trace" was wrong — Ivan's RG notes document it directly. Now tracked as SL-14. Remaining risk on SUP-05 is sequencing only, not provenance. |
 
 ---
 
@@ -58,8 +60,8 @@ v1.2's own citation keys (`[FF-RG-A]`, `[FF-PROP]`, `[SAP-VENDOR]`, `[WA]`, `[Q]
 | Status | Count |
 |---|---|
 | LOCKED (operating constraints, `LOC`) | 6 |
-| LOCKED (build scope, `SL`) | 13 (12 carried, 1 new) |
-| NEEDS SCOPING (`NSD`) | 8 (4 carried from v1.2, 4 new) |
+| LOCKED (build scope, `SL`) | 19 (12 carried, 7 new) |
+| NEEDS SCOPING (`NSD`) | 12 (4 carried from v1.2, 8 new) |
 | RESOLVED / non-blocking (`R`) | 4 |
 | SUPERSEDED (`SUP`) | 5 (4 carried, 1 new) |
 | OUT OF SCOPE (`OOS`) | 6 |
@@ -398,6 +400,122 @@ Not present in v1.2 at all — this is a genuine addition, surfaced by a fuller 
 
 ---
 
+### SL-14 (new) — Item description / name override in sales documents
+
+**Status:** LOCKED — INTERNAL BUILD SCOPE
+**Source:** `[Ivan RG Notes | §8]` — "GST requires the ability to override item name or item description in sales documents"; corroborated by Ivan's raw meeting notes, which list it as its own line separate from Blanket Order
+
+Not present in v1.2 or anywhere else in the corpus before this pass — direct GST requirement from the founding 2026-05-04 RG session, previously untraced. This also resolves the SUP-05 "Item Name Override has no scope trace" flag — see correction there.
+
+#### User-facing flow
+- Same SKU may need a different customer-facing description depending on the transaction (processing instructions, customer-preferred wording)
+- User overrides the item description at the transaction/line-item level on a sales document, without touching the item master
+
+#### Acceptance criteria
+- Description override is transaction-level only; the underlying SKU identity and item master record are unchanged
+- No data pollution of the shared item master from a one-off customer-facing description
+
+#### Confidence: HIGH — direct, twice-documented client requirement
+
+---
+
+### SL-15 (new) — Customer preference / processing-instruction capture
+
+**Status:** LOCKED — INTERNAL BUILD SCOPE (Phase 1: free-text remarks + RAG suggestion only)
+**Source:** `[Ivan RG Notes | §7]` — "Shangri-La wants butterfly cut... another customer wants cleaned and gutted"; Implementation Plan's "Customer Preferences — UX at Each Phase" section
+
+Not present in v1.2. Whole feature area was missing from the Scope Lock despite being documented in two separate KB sources.
+
+#### User-facing flow
+- Staff types customer/processing preferences into remarks on QT/SO/SI/DN (document- or line-item-level)
+- MAIA embeds remarks per customer; on the next document creation for that customer, MAIA surfaces relevant historical remarks as a suggestion in the chatbot
+- Staff applies or ignores the suggestion — never auto-applied
+
+#### Acceptance criteria
+- Remarks captured at document and line-item level on QT/SO/SI/DN
+- Suggestion is surfaced, not silently applied; historical order-data migration seeds the initial embeddings
+- Structured preference fields (dropdown for cut type, toggle for glaze, auto-populating into QT/SO/Pick List/DN) are an explicit **Phase 2 enhancement**, not promised now — do not build ahead of Phase 1 free-text + RAG
+
+#### Confidence: HIGH on Phase 1 (free-text + RAG suggestion); Phase 2 structured fields is future scope only
+
+---
+
+### SL-16 (new) — DO / Invoice shared document-numbering behaviour
+
+**Status:** LOCKED — INTERNAL BUILD SCOPE
+**Source:** `[Ivan RG Notes | §17]` — GST's own workaround so DO and Invoice share a number/reference to reduce customer confusion; corroborated by `[CSV | Pre-Phase 1 Gate #12]` and `[SAPV | Key Point D]`
+
+Previously only referenced in the VoC Extraction (VOC-020) as customer-voice evidence — never carried into the Scope Lock as build logic. This is a numbering-scheme requirement, not just a PDF-layout detail under SL-08.
+
+#### User-facing flow
+- MAIA generates DO and Invoice under GST's existing numbering convention — same/linked reference number, template title differs
+- Multiple DOs can be created under one SO, each still following the convention
+
+#### Acceptance criteria
+- MAIA-generated DO/Invoice numbering matches GST's existing scheme exactly — this is what prevents the customer confusion GST already built a workaround for
+- Document numbering does not regress to a naive separate-sequence-per-doctype default
+
+#### Confidence: HIGH — direct client requirement plus independently confirmed technical mechanism
+
+---
+
+### SL-17 (new) — Credit note / return matching to invoice or delivery
+
+**Status:** LOCKED — INTERNAL BUILD SCOPE, NSD-09 open
+**Source:** `[Ivan RG Notes | §18]` — returns matched to the original invoice by "which invoice, which day goods sent," not by batch; corroborated by `[SAPV | Key Point F]` (multiple invoices per payment, partial knock-off, return notes/refunds linked to invoices)
+
+Not present in v1.2. No item in the Scope Lock currently owns credit-note/return handling at all.
+
+#### User-facing flow
+- User identifies the original invoice/delivery a return relates to (by invoice reference and ship date, not batch number — GST tried batch tracking previously and abandoned it as "too slow, not mature enough")
+- Credit note is created against that specific invoice; refund is processed via a payment entry after the return note is created
+
+#### Acceptance criteria
+- Credit note creation requires selecting the source invoice/delivery — no account-level credit-balance mechanism
+- Batch-level tracking is explicitly not required (consistent with OOS-04)
+
+#### Confidence: HIGH on requirement; MEDIUM on exact SAP writeback mechanics — see NSD-09
+
+---
+
+### SL-18 (new) — Role-based dashboards (salesperson / logistics / finance / management)
+
+**Status:** LOCKED — INTERNAL BUILD SCOPE, NSD-10 open
+**Source:** `[Ivan RG Notes | §20.1-20.2]`; corroborated by `[SOW | §2.2 — User Workspaces: Sales Agent, Finance, Management/Backend Dashboard]`
+
+SOW already describes workspace-level dashboards generically; Ivan's notes add a more specific management ask (salesperson performance vs budget) that isn't yet build-confirmed.
+
+#### User-facing flow
+- Each role sees a dashboard tailored to their function: salesperson (own orders/performance), logistics (pick lists/fulfillment), finance (payment/credit queue), management (cross-functional overview)
+- Management dashboard specifically includes salesperson performance vs budget visibility
+
+#### Acceptance criteria
+- Each of the 4 roles has a dedicated dashboard view
+- Management view surfaces up-to-date sales vs budget — source and refresh cadence of budget figures still open, see NSD-10
+
+#### Confidence: MEDIUM — generic workspace dashboards are well-evidenced (SOW); the specific sales-vs-budget metric is a newer, more specific ask not yet scoped
+
+---
+
+### SL-19 (new) — Substitution-on-out-of-stock advisory flow
+
+**Status:** LOCKED — INTERNAL BUILD SCOPE, NSD-11 open
+**Source:** `[Ivan RG Notes | §12]`; corroborated by `[RG | Special Workflows — Substitute item handling]`
+
+Distinct from SL-02 (which matches customer wording to an item) — this is a stock-driven substitution trigger, not a wording-match problem.
+
+#### User-facing flow
+- When the ordered/matched item is out of stock, MAIA surfaces the nearest substitute (same species/type, different size or spec)
+- Salesperson reviews and confirms with the customer before applying the substitution — never auto-applied
+
+#### Acceptance criteria
+- Substitution suggestion triggers only on confirmed insufficient stock, distinct from SL-02's wording-match trigger
+- Customer confirmation is required before the substitution is applied to the order
+
+#### Confidence: HIGH on requirement (independently documented twice); MEDIUM on whether this shares SL-02's matching engine or needs separate logic — see NSD-11
+
+---
+
 ## 5. Needs-Scoping Register
 
 ### NSD-01 — Document format samples
@@ -522,6 +640,67 @@ Not present in v1.2 at all — this is a genuine addition, surfaced by a fuller 
 
 ---
 
+### NSD-09 (new) — Credit note / return SAP writeback mechanics
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[SAPV | Key Point F]` — return notes and refunds must link accurately to invoices; exact field-level mechanics not mapped
+
+#### Issue
+- Exact mechanics for linking return note → credit note → refund → SAP writeback are not fully mapped
+
+#### Required decision / input
+- Map field-level behaviour with the SAP vendor (same class of gap as NSD-02)
+
+#### Blocking: NO for core Phase 1 SO/Invoice flow — YES before the credit-note module (SL-17) can pass UAT
+
+---
+
+### NSD-10 (new) — Sales-vs-budget dashboard metric source
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[Ivan RG Notes | §20.1]` — management asked for "up-to-date sales versus budget"
+
+#### Issue
+- Budget target source (SAP? manual entry? separate planning sheet?) and refresh cadence are undefined
+
+#### Required decision / input
+- Confirm where budget figures come from and how often they refresh
+
+#### Blocking: NO for MVP — YES before management dashboard (SL-18) can pass UAT
+
+---
+
+### NSD-11 (new) — Substitution engine: shared with SL-02 or separate logic
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[Ivan RG Notes | §12]`
+
+#### Issue
+- Unclear whether out-of-stock substitution (SL-19) uses the same underlying matching engine as SL-02's wording-match suggestions, or needs separate stock-aware trigger logic
+
+#### Required decision / input
+- Confirm with dev whether one shared engine suffices or a second trigger path is needed
+
+#### Blocking: NO
+
+---
+
+### NSD-12 (new) — Item master enrichment scope (photos, public links, quotation images)
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[Ivan RG Notes | §21]` — GST asked whether MAIA can support richer item database features; per Ivan's own outcome note, "exact GST usage requires sample quotation / PDF documents" — direction itself is not yet agreed, not just implementation detail
+
+#### Issue
+- Requested or discussed: product photos, special attributes, customer-facing item links, public SKU information, item images in quotation PDFs
+- No confirmation yet on which of these GST actually wants built vs was exploratory conversation
+
+#### Required decision / input
+- Sample quotation/PDF documents from GST to clarify actual usage before this is locked one way or the other
+
+#### Blocking: NO — but do not treat as locked scope until GST confirms direction
+
+---
+
 ## 6. Resolved / Non-Blocking (carried from v1.2, unchanged)
 
 ### R-01 — Vendor custom UDF/UDH support
@@ -630,7 +809,7 @@ No new evidence changes any of R-01 through R-04.
 - **Who changed:** Appears to be a Mindhive delivery-team sequencing decision — no client-side source shows GST requesting or agreeing to this
 - **Rationale:** Not evidenced
 - **Client agreed:** NOT EVIDENCED
-- **Risk:** Two of these three items are traceable to a locked scope item (SL-07 covers SOA); "Item Name Override" has no scope trace anywhere in the corpus at all — see NSD-05's sibling gap. Recommend Gareth trace "Item Name Override" to its origin before UAT.
+- **Risk (corrected):** Originally flagged "Item Name Override" as having no scope trace anywhere in the corpus. That was wrong — Ivan's 2026-05-04 RG notes document it directly (§8, and separately in his raw bullet notes) as "item description/name override in sales document," a genuine GST requirement. It's now formally tracked as SL-14. All three items in this supersession (SOA/SL-07, item description override/SL-14, and the aging alert) are traceable to real requirements — the remaining risk is purely the **sequencing** one: building Phase-2-adjacent work ahead of the Phase 1 UAT gate, not a scope-provenance gap.
 
 ---
 
