@@ -3,7 +3,7 @@ granola_id: b691b78d-2d50-4b73-b11c-92dc059cd8a1
 title: Product Team Scope Lock  - Transcript
 type: transcript
 created: 2026-07-23T03:54:04.944Z
-updated: 2026-07-23T03:54:06.733Z
+updated: 2026-07-23T05:08:32.487Z
 attendees: 
   - ivan@mindhive.asia
   - lim.junyan@gmail.com
@@ -1904,4 +1904,1780 @@ Called Junior proposed.
 ### Guest (2026-07-23T04:31:19.753Z)
 
 So Junyan propose and remove both.
+
+### You (2026-07-23T04:31:21.666Z)
+
+I draft a bus.
+
+### Guest (2026-07-23T04:31:23.273Z)
+
+Vitrile purpose in the what?
+
+### You (2026-07-23T04:31:25.186Z)
+
+Y tragedy.
+
+### Guest (2026-07-23T04:31:25.593Z)
+
+Make a call which one to keep.
+
+### You (2026-07-23T04:31:27.426Z)
+
+Either if or in the prospect.
+
+### Guest (2026-07-23T04:31:28.713Z)
+
+Either Lim or either prospect?
+
+### You (2026-07-23T04:31:31.266Z)
+
+Right?
+
+### Guest (2026-07-23T04:31:32.633Z)
+
+Right that's what your proposal right merger. Why you think that option isn't even harder how to.
+
+### You (2026-07-23T04:31:41.266Z)
+
+I can watch it and then that's another.
+
+### Guest (2026-07-23T04:31:44.473Z)
+
+Allow much what does merging mean.
+
+### You (2026-07-23T04:31:45.746Z)
+
+What do you mean by launch?
+
+### Guest (2026-07-23T04:31:47.113Z)
+
+What do you mean by much what's the difference how to lead can go to customer Prospect can also go to customer lead can become prospect.
+
+### You (2026-07-23T04:31:51.346Z)
+
+Ing.
+
+### Guest (2026-07-23T04:31:54.793Z)
+
+What to merge.
+
+### You (2026-07-23T04:31:55.426Z)
+
+I can't believe the same thing. For me.
+
+### Guest (2026-07-23T04:31:56.713Z)
+
+Extend holding the same information.
+
+### You (2026-07-23T04:31:57.746Z)
+
+We just crossed by a staging.
+
+### Guest (2026-07-23T04:31:58.953Z)
+
+It's just prospect is a staging before it goes into a customer so the real use case of prospect is in terms of certain deals that require multiple interactions the prospect is a dog type that you can trace all the interaction before a deal is closed.
+
+### You (2026-07-23T04:32:01.746Z)
+
+The real use case of prospec. T. Adoptive. Quality. That's why that's the only reason.
+
+### Guest (2026-07-23T04:32:14.633Z)
+
+That's why that's the only reason you need to have a staging area for that. Leads can also have a lot of duplicates because leads can come in from many scenarios like many many sources like let's say I sell property you click my Facebook ad you come to my road show event you come to my email listing list in my system you are recorded three times I want to consolidate you as one that's what Wansin said that this guy all gathered from here from here it's the same Gare. Th then I will need to have a use case like prospects.
+
+### You (2026-07-23T04:32:42.226Z)
+
+To have. So that's what.
+
+### Guest (2026-07-23T04:32:46.153Z)
+
+So that's what the prospect dog type is for. Right so the question here is that any one of our customers is like that answer was no.
+
+### You (2026-07-23T04:32:49.346Z)
+
+I said. What's the.
+
+### Guest (2026-07-23T04:32:55.113Z)
+
+So then what's the call here how do we propose this what is the proposal that we are going to come up with.
+
+### You (2026-07-23T04:32:55.186Z)
+
+Call? Back?
+
+### Guest (2026-07-23T04:33:03.753Z)
+
+Okay I mean if that's the case right. If we really have to keep only one I would recommend we keep only list but we just hide the prospect. Okay. So the proposal so we all agree with that we just bought one just said okay.
+
+### You (2026-07-23T04:33:23.026Z)
+
+I think inside the module, we can like have the option for them to drop down to pick whether this one with stitch of this list.
+
+### Guest (2026-07-23T04:33:31.593Z)
+
+Stitch after this.
+
+### You (2026-07-23T04:33:32.706Z)
+
+This guy is can define this is a list.
+
+### Guest (2026-07-23T04:33:34.473Z)
+
+Guy is the heist we can define it this is the list of.
+
+### You (2026-07-23T04:33:37.826Z)
+
+Bit.
+
+### Guest (2026-07-23T04:33:42.473Z)
+
+Four who needs. That. Who need that.
+
+### You (2026-07-23T04:33:49.266Z)
+
+Over here.
+
+### Guest (2026-07-23T04:33:51.193Z)
+
+Right.
+
+### You (2026-07-23T04:33:51.506Z)
+
+So, see this is a decision making.
+
+### Guest (2026-07-23T04:33:52.633Z)
+
+So see this is the decision making right. So so we walk through why important customer.
+
+### You (2026-07-23T04:33:55.186Z)
+
+So. My. Political business.
+
+### Guest (2026-07-23T04:33:59.593Z)
+
+Why modern for the business.
+
+### You (2026-07-23T04:34:00.306Z)
+
+What I bought product.
+
+### Guest (2026-07-23T04:34:01.593Z)
+
+Why important for the product.
+
+### You (2026-07-23T04:34:03.666Z)
+
+And then we kind of deliber.
+
+### Guest (2026-07-23T04:34:04.713Z)
+
+And then we kind of deliberate the thought process behind it.
+
+### You (2026-07-23T04:34:04.866Z)
+
+Ate. Has been idea. And then we can come up with a solid.
+
+### Guest (2026-07-23T04:34:09.433Z)
+
+Dynamic can come up with a solid proposal with all the justifications they all call. Out and when you go tell like hey do this.
+
+### You (2026-07-23T04:34:12.866Z)
+
+Back here. In a very clearly.
+
+### Guest (2026-07-23T04:34:15.993Z)
+
+We already know very clearly why.
+
+### You (2026-07-23T04:34:18.946Z)
+
+Right? So this is how you make a.
+
+### Guest (2026-07-23T04:34:20.233Z)
+
+Right so this is how you make a product decision. It's not like my field this customer need like this.
+
+### You (2026-07-23T04:34:25.026Z)
+
+Custom. Er.
+
+### Guest (2026-07-23T04:34:29.113Z)
+
+Oh should we go do this and why? I don't know.
+
+### You (2026-07-23T04:34:31.986Z)
+
+Right. So. From. Feedback.
+
+### Guest (2026-07-23T04:34:34.073Z)
+
+So from this feedback.
+
+### You (2026-07-23T04:34:35.506Z)
+
+In point of why.
+
+### Guest (2026-07-23T04:34:36.233Z)
+
+The pain point of why this this this decision or this proposal we are discussing this is that. There is a pain point here when you're all doing the testing everybody observe that there's a confusion within the end prospect.
+
+### You (2026-07-23T04:34:45.186Z)
+
+You observe that. This is something most likely or.
+
+### Guest (2026-07-23T04:34:51.593Z)
+
+And this is something like the customer will feel so much.
+
+### You (2026-07-23T04:34:52.706Z)
+
+Something. So if you bring me some.
+
+### Guest (2026-07-23T04:34:55.513Z)
+
+So did we bring this up.
+
+### You (2026-07-23T04:34:57.506Z)
+
+Way to be able to.
+
+### Guest (2026-07-23T04:34:58.233Z)
+
+You need to bring be able to bring this up.
+
+### You (2026-07-23T04:35:00.306Z)
+
+Act, because tech will not really.
+
+### Guest (2026-07-23T04:35:01.273Z)
+
+To tech because tech will not fill this one.
+
+### You (2026-07-23T04:35:03.186Z)
+
+Come back over, I think only.
+
+### Guest (2026-07-23T04:35:04.233Z)
+
+Only Prospect or my two confusion only Prospect oh the customer don't know how is it don't you think the engineers will say that? Like they say hey you raise this customer actually leave.
+
+### You (2026-07-23T04:35:11.826Z)
+
+Raises up. And this customer actually. Tells me that I say greatly on my.
+
+### Guest (2026-07-23T04:35:16.633Z)
+
+Then you call them a why this I say create this is it or prospect.
+
+### You (2026-07-23T04:35:22.066Z)
+
+Say, oh.
+
+### Guest (2026-07-23T04:35:23.273Z)
+
+Say oh you never be explicit enough that's what the chatbot was supposed to do because sleep can be prosperous prospect can be needed so much so you're confirming with the only thing you tell I think like that I think to say that. Do you see a picture? Why tech will never see that. Yep.
+
+### You (2026-07-23T04:35:46.386Z)
+
+Yeah. So.
+
+### Guest (2026-07-23T04:35:47.193Z)
+
+Yeah so we must this is our this is our job.
+
+### You (2026-07-23T04:35:47.586Z)
+
+We must.
+
+### Guest (2026-07-23T04:35:51.513Z)
+
+Product. Right.
+
+### You (2026-07-23T04:35:53.106Z)
+
+Start like this.
+
+### Guest (2026-07-23T04:35:53.753Z)
+
+Come up with stuff like this.
+
+### You (2026-07-23T04:35:56.786Z)
+
+Okay.
+
+### Guest (2026-07-23T04:35:57.273Z)
+
+Okay so.
+
+### You (2026-07-23T04:35:57.826Z)
+
+So. Here is.
+
+### Guest (2026-07-23T04:35:59.593Z)
+
+Proposal here is to.
+
+### You (2026-07-23T04:35:59.906Z)
+
+To.
+
+### Guest (2026-07-23T04:36:01.833Z)
+
+Hide.
+
+### You (2026-07-23T04:36:03.106Z)
+
+Help. Us.
+
+### Guest (2026-07-23T04:36:07.993Z)
+
+The first.
+
+### You (2026-07-23T04:36:10.306Z)
+
+Okay.
+
+### Guest (2026-07-23T04:36:10.873Z)
+
+Okay.
+
+### You (2026-07-23T04:36:11.346Z)
+
+So.
+
+### Guest (2026-07-23T04:36:11.993Z)
+
+So on lead to also support crm node yep I think just right right there right there leads me to support CR prospect actually got CRM node already one it's just not in the interface.
+
+### You (2026-07-23T04:36:12.226Z)
+
+Only cause the ion. I think that's right. Actually got the data. So then the arrangement.
+
+### Guest (2026-07-23T04:36:25.353Z)
+
+Right. So then we need to also support.
+
+### You (2026-07-23T04:36:28.306Z)
+
+Be to passan. A.
+
+### Guest (2026-07-23T04:36:29.113Z)
+
+Convert lead to customer.
+
+### You (2026-07-23T04:36:30.306Z)
+
+For another profit international.
+
+### Guest (2026-07-23T04:36:31.593Z)
+
+Conversation yeah. Yeah high prospect.
+
+### You (2026-07-23T04:36:40.546Z)
+
+Ly all of.
+
+### Guest (2026-07-23T04:36:43.593Z)
+
+Convert it to customer and we even have the one that it will block you to convert if let's say there is a same company name one so technically prospect is not that important unless the company itself they need this thing.
+
+### You (2026-07-23T04:37:02.706Z)
+
+This.
+
+### Guest (2026-07-23T04:37:03.833Z)
+
+No it's just good like this convert behavior should be by default yeah yeah yeah.
+
+### You (2026-07-23T04:37:04.626Z)
+
+Company. Yeah. So just now you said.
+
+### Guest (2026-07-23T04:37:11.273Z)
+
+So just now you said there was something that blocks why is it a block doesn't mean it block it blocks if let's say there is a company that is already being converted and then it tried to convert again then it will say cannot lie because there is already a customer with this company.
+
+### You (2026-07-23T04:37:29.506Z)
+
+What about.
+
+### Guest (2026-07-23T04:37:29.913Z)
+
+Okay then what about like merging. And that's the that's the behavior here my right like here okay great I know I existing like let's say there could be a scenario where I'm working a lead right having appointment with this lead and whatever I say wait this flow confirm the order already that's it last time before I joined this company actually this company register already so now is this thing is and then I have an existing customer record so now I try to convert it to a block I need to be able to merge notes or whatever from the link into the existing customers exactly yeah is it you see we're hitting a viral error.
+
+### You (2026-07-23T04:37:48.706Z)
+
+So now this is. Now I have converted. To be able to notes on my platform. Exactly.
+
+### Guest (2026-07-23T04:38:07.913Z)
+
+Say good work today right so that's why that merging important.
+
+### You (2026-07-23T04:38:08.226Z)
+
+So. That's. Fine.
+
+### Guest (2026-07-23T04:38:16.793Z)
+
+And overwrite all the existing data.
+
+### You (2026-07-23T04:38:19.506Z)
+
+No. Much, much.
+
+### Guest (2026-07-23T04:38:20.633Z)
+
+No much much.
+
+### You (2026-07-23T04:38:21.026Z)
+
+Much.
+
+### Guest (2026-07-23T04:38:22.313Z)
+
+Only the invested there is anything that is in conflict for example the annual revenue or like any data that wasn't the same as the existing one. With the letters. Are you guys talking? Yeah. Okay yeah. So yeah this one is basically Maya already handled this this whole thing it's just that my yard does not match by phone number but instead match by company name but this one actually is not relevant anymore. Yeah so that's basically it from all the feedback they share.
+
+### You (2026-07-23T04:39:34.706Z)
+
+Okay. So.
+
+### Guest (2026-07-23T04:39:35.833Z)
+
+Okay so I want you to think of the workflow part right the Workflow part make sure before that 4 p.m release clean through in the in the in Maya how to handle this scenario in that current workflow the first one section a.
+
+### You (2026-07-23T04:39:51.906Z)
+
+All the way to. The game. That was.
+
+### Guest (2026-07-23T04:39:54.073Z)
+
+Yep what's that yeah yeah so make sure this one yes okay have this as a customer expected but what how should they do in maya with us not having to change anything.
+
+### You (2026-07-23T04:39:54.466Z)
+
+That. How should they meet. My us not having change. Anything?
+
+### Guest (2026-07-23T04:40:07.673Z)
+
+I think this one right we only need to add the additional notes but the problem is that you remember our pick list is very small. But they will have like kg per box that one.
+
+### You (2026-07-23T04:40:18.226Z)
+
+So then. All those.
+
+### Guest (2026-07-23T04:40:19.433Z)
+
+So then all those things up right like now you talked about like can we change the PDF to landscape mode can we add certain columns here and that all those things need to be part of this thing for the 4 p.
+
+### You (2026-07-23T04:40:23.426Z)
+
+Can be asked.
+
+### Guest (2026-07-23T04:40:29.513Z)
+
+M. All of this you only scrutinize that dire flow right because.
+
+### You (2026-07-23T04:40:34.466Z)
+
+Because.
+
+### Guest (2026-07-23T04:40:38.713Z)
+
+My question is. How like. So it become more like a free texting isn't. Like instead of instead of writing the kg per box inside the pick quantity column. They write it somewhere else is it or what? Can that be done?
+
+### You (2026-07-23T04:41:07.906Z)
+
+Somewhere.
+
+### Guest (2026-07-23T04:41:08.313Z)
+
+What do you mean write it somewhere else okay so. Basically if you look at the pick list PDF right. The column is very small for them to write if let's say they have like 500 boxes. The column is very small for them to write kg per box for every boxes.
+
+### You (2026-07-23T04:41:29.906Z)
+
+Okay. So.
+
+### Guest (2026-07-23T04:41:30.953Z)
+
+Okay so then so then how do you solve this?
+
+### You (2026-07-23T04:41:33.826Z)
+
+You propose.
+
+### Guest (2026-07-23T04:41:34.633Z)
+
+Okay my question is what I would propose is that in the paper itself because they cannot write it directly inside the column unless our column is very big. But how to make the color yeah. I mean is is that something that is like adaptable based on the quantity of the order. Or can that be done like oh if let's say the quantity of the order is like one then the line is like one row only then if I say the quantity is like 20 then the line should be 20 or something like that should it be like that? Thing realistically right what that line to have 20 not realistic yeah so what I think what I was going to propose is that instead of writing inside the column itself they write it. After the entire table. So that it's like this are like number one then the kg kg kg kg kg number two the kg but can that actually be done.
+
+### You (2026-07-23T04:42:40.866Z)
+
+Like that.
+
+### Guest (2026-07-23T04:42:41.353Z)
+
+No if you write like that then how will my extract?
+
+### You (2026-07-23T04:42:43.826Z)
+
+The whole point.
+
+### Guest (2026-07-23T04:42:44.793Z)
+
+Yeah the whole point that entire excel that they have is a packing list my right.
+
+### You (2026-07-23T04:42:50.066Z)
+
+So the maya has.
+
+### Guest (2026-07-23T04:42:51.193Z)
+
+So does maya have a packing list now Maya don't have.
+
+### You (2026-07-23T04:42:55.266Z)
+
+My.
+
+### Guest (2026-07-23T04:42:56.393Z)
+
+My cannot support backing list so what they need to do.
+
+### You (2026-07-23T04:42:57.826Z)
+
+Enemy. They remain their own.
+
+### Guest (2026-07-23T04:43:00.633Z)
+
+They remain their own packing list behavior and attach it to the pig leave. That tells the problem now in that they need to two times work. Because when they okay when they writing in piglist right they don't write it in total way they write it one like per kg per kg per G and then they add it total up if let's say you mya is not like letting them to do the kg per box then they write the total way inside the pick list but then inside the packing list they need to separate them again. And then this thing because when they generate dn from the pig list right because Maya don't have backlist when they generate the DN based on the pick list and the sales order whatever right the DN cannot be like one one line saying that pork belly 100 kg it should be like pork belly 15 kg and then pork belly 12 kg probably 20 kg like that. Exactly just like they are packed this one. That's why they want it to separate inside the pig list itself already.
+
+### You (2026-07-23T04:44:12.866Z)
+
+Do the throw yourselves. Gain the quality.
+
+### Guest (2026-07-23T04:44:16.153Z)
+
+Gain the clarity what I cannot do. What was the last sentence?
+
+### You (2026-07-23T04:44:22.786Z)
+
+Do. That.
+
+### Guest (2026-07-23T04:44:24.153Z)
+
+Do that behavior how they will use maya yourselves to feel the experience.
+
+### You (2026-07-23T04:44:24.706Z)
+
+How. They. Feel. The experiment.
+
+### Guest (2026-07-23T04:44:29.913Z)
+
+Acceptable or not. Compare that with how they are.
+
+### You (2026-07-23T04:44:36.226Z)
+
+Helping. To do. This. Overall. They need already.
+
+### Guest (2026-07-23T04:44:45.513Z)
+
+Then it means that they if let's say we don't solve this right it means that they cannot use maya for the end. O when you haven't low that flow. You haven't done it yourself wait so meaning that so wait my question is so are we going to let them to insert kg per box or are we really have to let them to insert total weight. That's why I'm telling you do that flow then you will understand. Understand what.
+
+### You (2026-07-23T04:45:12.146Z)
+
+Understand how you.
+
+### Guest (2026-07-23T04:45:13.433Z)
+
+Understand how they will use maya.
+
+### You (2026-07-23T04:45:16.226Z)
+
+Haven't gone.
+
+### Guest (2026-07-23T04:45:17.433Z)
+
+You haven't experienced I know I know how they are going to use maya but the problem is that are we going to have the kg per box for them to fill up. Now I ask you back this question what will you propose? But the two things I proposed you say it cannot be done right. Analysis. You say how my eyes are going to affect that. Is that the question or is that like maya cannot do this?
+
+### You (2026-07-23T04:45:46.306Z)
+
+So that one is attacking me.
+
+### Guest (2026-07-23T04:45:47.833Z)
+
+So that one is a packing list rights and packing list is two different things right yeah but Maya is not doing tightlist isn't it?
+
+### You (2026-07-23T04:45:51.026Z)
+
+So. Right. So it might not.
+
+### Guest (2026-07-23T04:45:55.913Z)
+
+Correct so if Maya not doing factories how to.
+
+### You (2026-07-23T04:45:58.386Z)
+
+Because technique is important. For.
+
+### Guest (2026-07-23T04:45:59.913Z)
+
+Because technique is important for them important for their operation still now right so if they cannot when they pick they will already do the packing list right the Excel confirm already exists one month.
+
+### You (2026-07-23T04:46:01.426Z)
+
+It. So. When they did, they were already. So what to do with this technique?
+
+### Guest (2026-07-23T04:46:11.513Z)
+
+So what to do with this pack list.
+
+### You (2026-07-23T04:46:13.106Z)
+
+If I upload my.
+
+### Guest (2026-07-23T04:46:14.553Z)
+
+If I upload to my end cannot extract cannot turn it into any document what should it be it should just be an attachment okay in this case right if let's say we are processing their pack list doesn't mean we don't need them to do to use the pick list already. Oh who said we are doing who said we are processing the pack list. Who said we are processing the backlist okay then are we doing pack list.
+
+### You (2026-07-23T04:46:40.866Z)
+
+If you do not have pack.
+
+### Guest (2026-07-23T04:46:42.153Z)
+
+If we do not have pack list if you do not have backing list now.
+
+### You (2026-07-23T04:46:42.226Z)
+
+Age. You don't have backing list. How much effort does it cost?
+
+### Guest (2026-07-23T04:46:46.153Z)
+
+How much effort does it cause us to build packing list how important is this use case?
+
+### You (2026-07-23T04:46:47.586Z)
+
+How important is this use case? Let's say to build packing list.
+
+### Guest (2026-07-23T04:46:51.753Z)
+
+Essay to build backing list takes 20 let's say take 10 Monday is.
+
+### You (2026-07-23T04:46:55.026Z)
+
+Equivalent to be okay.
+
+### Guest (2026-07-23T04:46:55.833Z)
+
+10 minutes equivalent to 15k.
+
+### You (2026-07-23T04:46:58.466Z)
+
+When you stand within here.
+
+### Guest (2026-07-23T04:46:59.833Z)
+
+Will you spend 15k.
+
+### You (2026-07-23T04:47:00.706Z)
+
+For macrophage to close. That.
+
+### Guest (2026-07-23T04:47:02.073Z)
+
+For macrophage to close that.
+
+### You (2026-07-23T04:47:03.026Z)
+
+When you stand. It committed that.
+
+### Guest (2026-07-23T04:47:04.473Z)
+
+Will you spend. Think of it are we are we do are we not doing it?
+
+### You (2026-07-23T04:47:11.106Z)
+
+So.
+
+### Guest (2026-07-23T04:47:12.153Z)
+
+So what I'm saying is go through that flow right do do it like how macro food will use our system.
+
+### You (2026-07-23T04:47:14.866Z)
+
+Do it. How. Good. You use. The. And based on your finding.
+
+### Guest (2026-07-23T04:47:20.233Z)
+
+And based on your finding after that experience you need to propose to me.
+
+### You (2026-07-23T04:47:22.226Z)
+
+You don't need to propose to me. Either acceptable or not.
+
+### Guest (2026-07-23T04:47:25.353Z)
+
+Whether acceptable or not.
+
+### You (2026-07-23T04:47:26.226Z)
+
+Understand? Or not.
+
+### Guest (2026-07-23T04:47:27.593Z)
+
+Understand or not?
+
+### You (2026-07-23T04:47:27.666Z)
+
+Because now you're telling.
+
+### Guest (2026-07-23T04:47:29.033Z)
+
+Because now you're telling me it's not I need to make the call you know you need to give me a solid proposal meaning that no matter how if I say it is a must then we will do it is it.
+
+### You (2026-07-23T04:47:30.386Z)
+
+Me. I need to call. You to give me a solid. Yeah, you need to make a solid.
+
+### Guest (2026-07-23T04:47:43.753Z)
+
+But you need to make a solid case.
+
+### You (2026-07-23T04:47:44.946Z)
+
+Because your decision.
+
+### Guest (2026-07-23T04:47:46.233Z)
+
+Because your decision is worth 15 000.
+
+### You (2026-07-23T04:47:49.986Z)
+
+Your decision to say.
+
+### Guest (2026-07-23T04:47:50.793Z)
+
+Okay your decision to say hey the packing list is worth 15 000.
+
+### You (2026-07-23T04:47:56.386Z)
+
+I cannot see this.
+
+### Guest (2026-07-23T04:47:57.433Z)
+
+I cannot simply say yes.
+
+### You (2026-07-23T04:47:58.466Z)
+
+I need to have a solid meter.
+
+### Guest (2026-07-23T04:47:59.273Z)
+
+Right I need to have a solid reason for 15 000 right.
+
+### You (2026-07-23T04:48:00.866Z)
+
+Of thousands. Right? So every one of your decision.
+
+### Guest (2026-07-23T04:48:04.553Z)
+
+So every one of your decision has has cause implications or you need to see that so that would be a customization.
+
+### You (2026-07-23T04:48:12.306Z)
+
+S? No, not customization.
+
+### Guest (2026-07-23T04:48:13.753Z)
+
+No not customization.
+
+### You (2026-07-23T04:48:14.786Z)
+
+It will not be enough.
+
+### Guest (2026-07-23T04:48:16.153Z)
+
+It will not be a customization how to be a customization.
+
+### You (2026-07-23T04:48:17.026Z)
+
+How is your custom idea?
+
+### Guest (2026-07-23T04:48:20.953Z)
+
+Okay anyway I was just yeah I was safe.
+
+### You (2026-07-23T04:48:24.306Z)
+
+Yeah. So this is.
+
+### Guest (2026-07-23T04:48:25.353Z)
+
+Yeah so this is.
+
+### You (2026-07-23T04:48:26.386Z)
+
+Every decision.
+
+### Guest (2026-07-23T04:48:27.753Z)
+
+Every decision that is being made has a cost implication to it and every proposal that comes from product comes from client fixes that we do need to be thought out in.
+
+### You (2026-07-23T04:48:27.826Z)
+
+That you. Make. Complication. A being proposed. This way.
+
+### Guest (2026-07-23T04:48:38.953Z)
+
+This area like this way right so let's say when we do that fix to hide the need and prospect estimate how much time.
+
+### You (2026-07-23T04:48:39.586Z)
+
+So let's say. Do that. Estimate how much time? That's it. I take too many.
+
+### Guest (2026-07-23T04:48:47.993Z)
+
+Let's say I take two main days two main days worth 3K I say about 3K.
+
+### You (2026-07-23T04:48:53.106Z)
+
+Ministry.
+
+### Guest (2026-07-23T04:48:54.393Z)
+
+With this 3K what would be the benefit of it?
+
+### You (2026-07-23T04:48:56.066Z)
+
+The Lima.
+
+### Guest (2026-07-23T04:48:57.273Z)
+
+The lead and prospect confusion will go away.
+
+### You (2026-07-23T04:48:59.106Z)
+
+Customers when they use.
+
+### Guest (2026-07-23T04:49:00.473Z)
+
+Customers when they use the chatbot to say hey I got this customer one quotation lead that problem will disappear.
+
+### You (2026-07-23T04:49:05.826Z)
+
+Overall. Across.
+
+### Guest (2026-07-23T04:49:07.033Z)
+
+Overall across all client will feel this impact.
+
+### You (2026-07-23T04:49:11.266Z)
+
+It.
+
+### Guest (2026-07-23T04:49:11.993Z)
+
+Map for stage.
+
+### You (2026-07-23T04:49:12.786Z)
+
+Like Forster.
+
+### Guest (2026-07-23T04:49:14.233Z)
+
+Net positive outcome.
+
+### You (2026-07-23T04:49:14.626Z)
+
+It's no alpha high impacting. Correct.
+
+### Guest (2026-07-23T04:49:19.593Z)
+
+Correct you need to have a solid ROI right of every decision every decision that I make.
+
+### You (2026-07-23T04:49:19.826Z)
+
+So the ROI. That. Companies.
+
+### Guest (2026-07-23T04:49:26.473Z)
+
+Remake as a company is scrutinized in this way.
+
+### You (2026-07-23T04:49:28.786Z)
+
+Everything that we do.
+
+### Guest (2026-07-23T04:49:29.993Z)
+
+Everything that we do in the product is scrutinized in that way.
+
+### You (2026-07-23T04:49:32.066Z)
+
+So a lot of.
+
+### Guest (2026-07-23T04:49:33.513Z)
+
+So we a lot of these decisions so far I'm making. Now I want y'all to be able to make these sort of decisions and proposal sure still will go through me first right eventually you again the trust and authority to make those decisions yourselves but I need to make sure our models are aligned.
+
+### You (2026-07-23T04:49:41.746Z)
+
+People eventually you again. Measure our model.
+
+### Guest (2026-07-23T04:49:51.433Z)
+
+You know what I mean any the major our models are like our decision making process is aligned.
+
+### You (2026-07-23T04:49:55.186Z)
+
+It's my knowledge of eventually.
+
+### Guest (2026-07-23T04:49:56.233Z)
+
+So in order to eventually become head of product.
+
+### You (2026-07-23T04:49:58.066Z)
+
+Oh, product. Me.
+
+### Guest (2026-07-23T04:49:59.353Z)
+
+Or product.
+
+### You (2026-07-23T04:49:59.506Z)
+
+You need to have this.
+
+### Guest (2026-07-23T04:50:00.553Z)
+
+Need you need to have this decision making by default.
+
+### You (2026-07-23T04:50:02.066Z)
+
+One. We don't justify.
+
+### Guest (2026-07-23T04:50:03.913Z)
+
+You need to be able to justify every single one of the decision from the customer lens from the company lens from the cost lens from the product man and be able to justify this to the team.
+
+### You (2026-07-23T04:50:05.666Z)
+
+The. Company. That. We are able to justify. This. Power is.
+
+### Guest (2026-07-23T04:50:14.473Z)
+
+Power doesn't come from anything.
+
+### You (2026-07-23T04:50:15.986Z)
+
+Because we can. Miss.
+
+### Guest (2026-07-23T04:50:17.033Z)
+
+Always because you can do this.
+
+### You (2026-07-23T04:50:19.106Z)
+
+But. I'm going to. Right.
+
+### Guest (2026-07-23T04:50:20.393Z)
+
+Product lines also.
+
+### You (2026-07-23T04:50:21.346Z)
+
+So.
+
+### Guest (2026-07-23T04:50:21.833Z)
+
+Right. So yeah so that's the work that you need to go through to in order to gain clarity on whether this is a solid proposal.
+
+### You (2026-07-23T04:50:22.386Z)
+
+Yeah. That's. Good. So I can do that. Work.
+
+### Guest (2026-07-23T04:50:30.713Z)
+
+I can do that work I can think and maybe come to that decision on your question once it.
+
+### You (2026-07-23T04:50:36.466Z)
+
+But that's not why I supposed to do.
+
+### Guest (2026-07-23T04:50:36.633Z)
+
+Right but that's not why I'm supposed to do now.
+
+### You (2026-07-23T04:50:39.746Z)
+
+Okay. So that's my day.
+
+### Guest (2026-07-23T04:50:40.553Z)
+
+Okay so that's why I'm saying I'm pointing in the right direction where you need to go and experience this flow.
+
+### You (2026-07-23T04:50:46.066Z)
+
+It is a problem. If you know.
+
+### Guest (2026-07-23T04:50:47.433Z)
+
+If it's a problem if it's good if it's bad then you tell me.
+
+### You (2026-07-23T04:50:50.226Z)
+
+Because you gone through them.
+
+### Guest (2026-07-23T04:50:51.513Z)
+
+Because you've gone through that because now I know you have not gone through it.
+
+### You (2026-07-23T04:50:53.506Z)
+
+So we cannot justify why.
+
+### Guest (2026-07-23T04:50:54.633Z)
+
+So you cannot justify why this 15k matters.
+
+### You (2026-07-23T04:50:57.426Z)
+
+So. Hence.
+
+### Guest (2026-07-23T04:50:58.953Z)
+
+So hence. You have to go through it and you tell me.
+
+### You (2026-07-23T04:51:02.306Z)
+
+Well mac. Ro foot.
+
+### Guest (2026-07-23T04:51:03.673Z)
+
+Well macro food.
+
+### You (2026-07-23T04:51:04.386Z)
+
+We want it. Out.
+
+### Guest (2026-07-23T04:51:05.833Z)
+
+We want it or not.
+
+### You (2026-07-23T04:51:06.466Z)
+
+And we still cannot answer.
+
+### Guest (2026-07-23T04:51:07.993Z)
+
+And we see the kind of answer then the five hours that we spend there is not worth it.
+
+### You (2026-07-23T04:51:11.186Z)
+
+It's a net loss. For five hours.
+
+### Guest (2026-07-23T04:51:12.633Z)
+
+Is a net loss for the company to spend five hours in that pursuit of three people's time.
+
+### You (2026-07-23T04:51:18.306Z)
+
+Okay.
+
+### Guest (2026-07-23T04:51:19.753Z)
+
+Okay.
+
+### You (2026-07-23T04:51:20.066Z)
+
+So you see the bar.
+
+### Guest (2026-07-23T04:51:21.353Z)
+
+So you see the bar this is the bar.
+
+### You (2026-07-23T04:51:23.346Z)
+
+Is the bar or how we.
+
+### Guest (2026-07-23T04:51:24.713Z)
+
+This is the bar of how we are supposed to.
+
+### You (2026-07-23T04:51:26.386Z)
+
+Do.
+
+### Guest (2026-07-23T04:51:26.633Z)
+
+Run we need to step up.
+
+### You (2026-07-23T04:51:27.986Z)
+
+Okay. In order to find that opt.
+
+### Guest (2026-07-23T04:51:29.673Z)
+
+Okay in all the climate house.
+
+### You (2026-07-23T04:51:29.906Z)
+
+Ion. When this is net,
+
+### Guest (2026-07-23T04:51:32.233Z)
+
+But this is not good for you to reach this bug.
+
+### You (2026-07-23T04:51:36.386Z)
+
+You understand?
+
+### Guest (2026-07-23T04:51:37.673Z)
+
+Because then whatever promotion wallet salary you want to command solid because you bring solid value right I can entrust decisions to you and I'm trying to do certain things here and. There and you can take all parts of the product because the product is that big.
+
+### You (2026-07-23T04:51:50.466Z)
+
+Mentally as always.
+
+### Guest (2026-07-23T04:51:50.793Z)
+
+Right eventually there's going to be people who specialize in certain areas people who specialize in particular industry suppliants.
+
+### You (2026-07-23T04:51:57.666Z)
+
+Right. So that's the.
+
+### Guest (2026-07-23T04:51:59.033Z)
+
+Right so that's the path when we land in market that's how most likely the product team or group.
+
+### You (2026-07-23T04:52:02.706Z)
+
+Most. Active. People. You all see that. You see.
+
+### Guest (2026-07-23T04:52:08.153Z)
+
+You'll see that you see the picture right and in order for that to happen individually. How we need to conduct ourselves in the things that we do.
+
+### You (2026-07-23T04:52:17.746Z)
+
+Okay. Okay.
+
+### Guest (2026-07-23T04:52:19.593Z)
+
+Okay. Okay.
+
+### You (2026-07-23T04:52:20.626Z)
+
+Macroflow anymore.
+
+### Guest (2026-07-23T04:52:22.073Z)
+
+Microfluid animal before we move on. Nope.
+
+### You (2026-07-23T04:52:27.346Z)
+
+Okay.
+
+### Guest (2026-07-23T04:52:28.313Z)
+
+Okay.
+
+### You (2026-07-23T04:52:29.906Z)
+
+Next. Let's. Do the.
+
+### Guest (2026-07-23T04:52:31.273Z)
+
+Next. Plus 2.
+
+### You (2026-07-23T04:52:32.466Z)
+
+High level.
+
+### Guest (2026-07-23T04:52:36.633Z)
+
+1.
+
+### You (2026-07-23T04:52:41.106Z)
+
+Maybe we take a pause here.
+
+### Guest (2026-07-23T04:52:42.473Z)
+
+Maybe we take a pause here we have already been doing this for. Coming to two hours now.
+
+### You (2026-07-23T04:52:46.866Z)
+
+We go for lunch.
+
+### Guest (2026-07-23T04:52:48.233Z)
+
+We go for lunch and come back.
+
+### You (2026-07-23T04:52:49.506Z)
+
+In terms of.
+
+### Guest (2026-07-23T04:52:50.553Z)
+
+So in terms of whatever we continue discuss here maybe you process the accounts then later we just have a very high level summary focus more on the brokers and the stuff that are still open that require decisions.
+
+### You (2026-07-23T04:52:55.106Z)
+
+Your. Account. It's not as open. And what is. Reporting.
+
+### Guest (2026-07-23T04:53:05.273Z)
+
+Not reporting.
+
+### You (2026-07-23T04:53:06.946Z)
+
+The raw. Information.
+
+### Guest (2026-07-23T04:53:08.153Z)
+
+The raw information undigested information.
+
+### You (2026-07-23T04:53:10.706Z)
+
+Because in our production.
+
+### Guest (2026-07-23T04:53:12.153Z)
+
+Because in our product scenes and meetings and conversations we need to be more digested to anyone not digest together.
+
+### You (2026-07-23T04:53:18.706Z)
+
+Because I guess together.
+
+### Guest (2026-07-23T04:53:20.233Z)
+
+Because I guess together is very inefficient.
+
+### You (2026-07-23T04:53:22.226Z)
+
+So this session.
+
+### Guest (2026-07-23T04:53:23.833Z)
+
+So this session yes I purposely make it miss the objective because there's an even more important point I wanted to communicate.
+
+### You (2026-07-23T04:53:26.306Z)
+
+Has.
+
+### Guest (2026-07-23T04:53:30.473Z)
+
+Which is whatever I said so far.
+
+### You (2026-07-23T04:53:32.466Z)
+
+All that.
+
+### Guest (2026-07-23T04:53:33.113Z)
+
+So absorbed back and start practicing it.
+
+### You (2026-07-23T04:53:35.186Z)
+
+Okay.
+
+### Guest (2026-07-23T04:53:36.313Z)
+
+Okay.
+
+### You (2026-07-23T04:53:36.706Z)
+
+You know what? I'm?
+
+### Guest (2026-07-23T04:53:37.593Z)
+
+So you go for lunch.
+
+### You (2026-07-23T04:53:39.106Z)
+
+Back?
+
+### Guest (2026-07-23T04:53:39.353Z)
+
+Then after lunch come back then we're just gonna have a short one.
+
+### You (2026-07-23T04:53:41.266Z)
+
+With. All the information.
+
+### Guest (2026-07-23T04:53:44.073Z)
+
+Because all the information should be already digested in those 14 accounts that we're supposed to run through and scrutinize.
+
+### You (2026-07-23T04:53:49.266Z)
+
+Okay, so any problems?
+
+### Guest (2026-07-23T04:53:50.713Z)
+
+Okay so any problems raise up there then we discuss it just as how we discuss this session to overcome that and confirm and validate our assumptions or it really cannot then it's those questions that need to be asked to the client.
+
+### You (2026-07-23T04:53:58.146Z)
+
+Between them. Okay. Are we all aligned?
+
+### Guest (2026-07-23T04:54:05.353Z)
+
+Okay are we all aligned.
+
+### You (2026-07-23T04:54:08.306Z)
+
+Anything to add?
+
+### Guest (2026-07-23T04:54:09.833Z)
+
+Anything to add.
+
+### You (2026-07-23T04:54:12.146Z)
+
+Ress. So basically we are scan through all the account and give it a high level. Any blockers.
+
+### Guest (2026-07-23T04:54:12.713Z)
+
+From your. IV doctors.
+
+### You (2026-07-23T04:54:21.266Z)
+
+Right. So.
+
+### Guest (2026-07-23T04:54:22.633Z)
+
+All right so I think in terms of the individual specific accounts how should that update me later is that understanding first.
+
+### You (2026-07-23T04:54:26.146Z)
+
+How should. That be? Understanding? By the messaging.
+
+### Guest (2026-07-23T04:54:32.873Z)
+
+For example let's say micro okay so let's say does not know about let's say the normal fixed gur.
+
+### You (2026-07-23T04:54:34.386Z)
+
+Committee. So for us.
+
+### Guest (2026-07-23T04:54:40.073Z)
+
+U so for us to all be on the same page we start off with okay who is the client what matters to them what do they do?
+
+### You (2026-07-23T04:54:48.066Z)
+
+You know.
+
+### Guest (2026-07-23T04:54:49.033Z)
+
+Like is that you know because you read through the narrative very much so you can say like okay fix guru is a custom box supplier they may need some packaging material and for them the nature of business is very high volume models but small order volume each of their orders usually has certain customization to it because the sell box one so every one of their clients will have very different dimensions of what the box needs to be and when they purchase it. So besides dimensions they can also have certain printing certain finishing of the box that's usually added on services only. So for them majority of because they sell on e-commerce also so majority of their customers are C's custom direct customers but they also have businesses.
+
+### You (2026-07-23T04:55:33.986Z)
+
+Majority of other.
+
+### Guest (2026-07-23T04:55:35.113Z)
+
+So majority of the order comes via WhatsApp. For them when they take orders they expect they want Maya to help them.
+
+### You (2026-07-23T04:55:43.506Z)
+
+Expediting.
+
+### Guest (2026-07-23T04:55:44.793Z)
+
+Expedite.
+
+### You (2026-07-23T04:55:45.106Z)
+
+Increase the.
+
+### Guest (2026-07-23T04:55:46.073Z)
+
+Or increase their efficiency of taking orders and getting the orders right because due to this high volume and higher level of customization for this can be wrong and there are main reason of buying maya is to make sure that or reduce the errors in order.
+
+### You (2026-07-23T04:55:47.666Z)
+
+Audience. Because.
+
+### Guest (2026-07-23T04:56:00.713Z)
+
+To reduce their dependence on the salesperson's premium memory to remember what this customer preference was, negotiate price and all this. Right eliminate manual data entry using AutoConfig.
+
+### You (2026-07-23T04:56:12.626Z)
+
+Of.
+
+### Guest (2026-07-23T04:56:13.033Z)
+
+That is their biggest manual data entry in Auto count.
+
+### You (2026-07-23T04:56:16.546Z)
+
+Them.
+
+### Guest (2026-07-23T04:56:17.033Z)
+
+So for them.
+
+### You (2026-07-23T04:56:17.506Z)
+
+How may. A.
+
+### Guest (2026-07-23T04:56:18.953Z)
+
+How will Maya.
+
+### You (2026-07-23T04:56:19.346Z)
+
+Can order. Right?
+
+### Guest (2026-07-23T04:56:20.633Z)
+
+Get the order right?
+
+### You (2026-07-23T04:56:21.106Z)
+
+Then it's very simple.
+
+### Guest (2026-07-23T04:56:22.313Z)
+
+That needs to be a simple flow right so when a PO comes in when a WhatsApp message comes in they just flexibly forward it to my will draft that order out for this user.
+
+### You (2026-07-23T04:56:22.626Z)
+
+So when. It comes in. Find out the draft. Okay. So.
+
+### Guest (2026-07-23T04:56:33.753Z)
+
+Okay so when my draft out this order for the user the user step is to set the price for each item. Okay check the customer is correct item is correct for each item make sure the quantity the unit price the discount is correct.
+
+### You (2026-07-23T04:56:43.266Z)
+
+Rry. For them, how they said.
+
+### Guest (2026-07-23T04:56:50.873Z)
+
+For them how they set price and discount is based on historical price.
+
+### You (2026-07-23T04:56:53.586Z)
+
+So they need to be able to.
+
+### Guest (2026-07-23T04:56:54.953Z)
+
+So they need to be able to see that hey this customer this item previously the last five records what did I sell it to them for?
+
+### You (2026-07-23T04:56:58.306Z)
+
+Record. What was discounted?
+
+### Guest (2026-07-23T04:57:03.033Z)
+
+And what was the discount that I reflected?
+
+### You (2026-07-23T04:57:04.226Z)
+
+What. Is this important?
+
+### Guest (2026-07-23T04:57:05.513Z)
+
+Why is this important?
+
+### You (2026-07-23T04:57:05.906Z)
+
+Because for them.
+
+### Guest (2026-07-23T04:57:06.953Z)
+
+It's because for them there are raw material price fluctuates.
+
+### You (2026-07-23T04:57:10.146Z)
+
+So ideally.
+
+### Guest (2026-07-23T04:57:11.513Z)
+
+So my deal with the customer is not fixed price but mind you the customer is fixed discount.
+
+### You (2026-07-23T04:57:16.386Z)
+
+Every time I start to get better.
+
+### Guest (2026-07-23T04:57:17.673Z)
+
+Every time I sell together it's always 10% off.
+
+### You (2026-07-23T04:57:18.466Z)
+
+I. Said more.
+
+### Guest (2026-07-23T04:57:21.113Z)
+
+I allow myself to Junyan it's always 5%
+
+### You (2026-07-23T04:57:23.346Z)
+
+And this historical.
+
+### Guest (2026-07-23T04:57:25.033Z)
+
+And this historical pricing need to be seamless because for them their salespeople process I say 30 to 50 orders per person per day.
+
+### You (2026-07-23T04:57:29.106Z)
+
+Process asset.
+
+### Guest (2026-07-23T04:57:36.313Z)
+
+Estimate range.
+
+### You (2026-07-23T04:57:36.706Z)
+
+So then after that.
+
+### Guest (2026-07-23T04:57:37.833Z)
+
+So then after that.
+
+### You (2026-07-23T04:57:39.826Z)
+
+They should be able to use. A.
+
+### Guest (2026-07-23T04:57:41.033Z)
+
+They should be able to select the delivery method is that there should be imagine I pick Lalamove or whatever there's additional delivery charge going in.
+
+### You (2026-07-23T04:57:42.946Z)
+
+Method. My order.
+
+### Guest (2026-07-23T04:57:50.473Z)
+
+Okay my orders must not have tax.
+
+### You (2026-07-23T04:57:52.066Z)
+
+So when I submit.
+
+### Guest (2026-07-23T04:57:53.273Z)
+
+So when I submit.
+
+### You (2026-07-23T04:57:53.666Z)
+
+I order.
+
+### Guest (2026-07-23T04:57:54.953Z)
+
+My order.
+
+### You (2026-07-23T04:57:55.506Z)
+
+Success training.
+
+### Guest (2026-07-23T04:57:56.633Z)
+
+It will surface credit limit but it's not credit limit block.
+
+### You (2026-07-23T04:57:58.706Z)
+
+That's. Why. Because.
+
+### Guest (2026-07-23T04:58:00.313Z)
+
+Why because they block credit limit on delivery not block credit limit on sales order. Okay so then whatever down the pipeline is down the pipeline. So for them in custom box custom box orders we also have a calculator for them that they will use that they can code three types of products two types RIC and die cut.
+
+### You (2026-07-23T04:58:21.186Z)
+
+I say.
+
+### Guest (2026-07-23T04:58:22.633Z)
+
+IC and die cut so they should be able to trigger the calculator from the Chatbot or the front end and then key in whatever value and the template should be able to return the specs of this thing in the quotation or in order.
+
+### You (2026-07-23T04:58:35.186Z)
+
+What were you told about?
+
+### Guest (2026-07-23T04:58:36.153Z)
+
+You see as I walk you through the order is like hyper clear one right every step you can visualize how it goes okay so this one is my clarity of experience.
+
+### You (2026-07-23T04:58:44.386Z)
+
+Okay. So initial value.
+
+### Guest (2026-07-23T04:58:45.833Z)
+
+Okay so in each somewhat.
+
+### You (2026-07-23T04:58:49.346Z)
+
+Some of. That. Some.
+
+### Guest (2026-07-23T04:58:51.273Z)
+
+There.
+
+### You (2026-07-23T04:58:51.346Z)
+
+One like that.
+
+### Guest (2026-07-23T04:58:52.473Z)
+
+Somewhat there between okay no need to be. Like okay probably let's say what I say is not 100% maybe let's say 90% 95%
+
+### You (2026-07-23T04:59:02.226Z)
+
+I should not be. 0%
+
+### Guest (2026-07-23T04:59:03.433Z)
+
+Buy should not be 0% but it should not be 40% or less or 50% or less because then if it's not the case not enough clarity.
+
+### You (2026-07-23T04:59:03.986Z)
+
+Can't be 14. And you do this program.
+
+### Guest (2026-07-23T04:59:11.993Z)
+
+Then when you do the scope lock and all this right the purpose of doing that is if you go through that process solidly and really understand what you are doing.
+
+### You (2026-07-23T04:59:14.466Z)
+
+If you go to. Understand what.
+
+### Guest (2026-07-23T04:59:20.473Z)
+
+You will reach this level of clarity.
+
+### You (2026-07-23T04:59:24.946Z)
+
+Okay. So example.
+
+### Guest (2026-07-23T04:59:26.553Z)
+
+Okay so example okay so then now current that is about the account so then where are we at now.
+
+### You (2026-07-23T04:59:34.946Z)
+
+You can do that first. Part.
+
+### Guest (2026-07-23T04:59:35.913Z)
+
+Actually if you can do that first part also enough really. Right.
+
+### You (2026-07-23T04:59:39.186Z)
+
+Second part is.
+
+### Guest (2026-07-23T04:59:40.793Z)
+
+Second part is. And I don't know not enough sorry the spark essential because if you cannot have the first part then your second part most likely is an issue because the main point of us having this as no currently between what we are going to ship next week.
+
+### You (2026-07-23T04:59:50.706Z)
+
+The main point of this. Currently.
+
+### Guest (2026-07-23T04:59:58.073Z)
+
+Because we want to set the unity of 1st of August so now it's already 20th July so in two weeks let's say we sell at unity in two weeks what are the current gaps that we need to bridge in this two weeks buffer time that we have? So that that UAD is a success right but if the gaps that we identify now is too big to settle in two weeks we can make a call to move them to the following week.
+
+### You (2026-07-23T05:00:19.666Z)
+
+So this is what?
+
+### Guest (2026-07-23T05:00:20.633Z)
+
+So you see so this is what this session is for. So the.
+
+### You (2026-07-23T05:00:24.146Z)
+
+Shortness of the count.
+
+### Guest (2026-07-23T05:00:24.233Z)
+
+Main. Short list of accounts that we have is we have 10 account shortlisted we have two tiers one is two like ready to go.
+
+### You (2026-07-23T05:00:32.226Z)
+
+Y. Has that.
+
+### Guest (2026-07-23T05:00:32.793Z)
+
+Right I call my ears the sjy that also macrophage. And who don't know forgot one more. Then we have the second five right the second five that a bit more cooks here and there it's blue ultimate.
+
+### You (2026-07-23T05:00:47.106Z)
+
+Pol. Icy.
+
+### Guest (2026-07-23T05:00:48.633Z)
+
+All this right if you want.
+
+### You (2026-07-23T05:00:49.746Z)
+
+But.
+
+### Guest (2026-07-23T05:00:51.193Z)
+
+But for those right here too because lower confidence.
+
+### You (2026-07-23T05:00:55.026Z)
+
+If you can close.
+
+### Guest (2026-07-23T05:00:56.313Z)
+
+If you can close by in this two weeks okay two no not bad for that for us to make that call whether we want to sign that UAT date is to have this level of clarity.
+
+### You (2026-07-23T05:00:56.706Z)
+
+In this to it. So primarily.
+
+### Guest (2026-07-23T05:01:07.513Z)
+
+Surprise and clarity first. Okay okay. So clear on that meeting what was that on the after after we come back from lunch what's going to happen?
+
+### You (2026-07-23T05:01:21.826Z)
+
+Exp. And.
+
+### Guest (2026-07-23T05:01:23.033Z)
+
+Here spend two weeks already of the thing you you cannot articulate okay. Don't need to articulate like super fluent right sure not everyone can articulate it in super fluent way I want at least the point home.
+
+### You (2026-07-23T05:01:39.106Z)
+
+That.
+
+### Guest (2026-07-23T05:01:39.513Z)
+
+For inform that quantum cannot miss for this time I want to hear. Right now maybe that's not present was super as supposed to give presentation like that public speaking and all. Am I right you give me a point one can I do one okay automatics need to have this the one I have that right okay no need to be like super storyline right at least the points are there okay now I feel better expectation not like so.
+
+### You (2026-07-23T05:02:01.266Z)
+
+That is a point that I have.
+
+### Guest (2026-07-23T05:02:09.113Z)
+
+Okay solid clear continue. Yep.
+
+### You (2026-07-23T05:02:14.226Z)
+
+Okay, great. Okay.
+
+### Guest (2026-07-23T05:02:15.513Z)
+
+Okay great okay let's go for lunch.
+
+### You (2026-07-23T05:02:23.666Z)
+
+Okay.
+
+### Guest (2026-07-23T05:02:24.633Z)
+
+Okay.
 
