@@ -3,7 +3,7 @@ granola_id: 27d7b8fc-4927-417a-8e75-32fc6484ff5d
 title: Mindhive  Daily Standup - Transcript
 type: transcript
 created: 2026-07-23T01:46:10.342Z
-updated: 2026-07-23T03:12:21.154Z
+updated: 2026-07-23T03:25:32.023Z
 attendees: []
 ---
 
