@@ -272,12 +272,12 @@
                     "name": "zsh 190"
                   },
                   {
-                    "id": 192,
-                    "name": "zsh 192"
+                    "id": 193,
+                    "name": "zsh 193"
                   }
                 ],
-                "activeId": 192,
-                "nextId": 193
+                "activeId": 193,
+                "nextId": 194
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -328,7 +328,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ed25b829c30e5f11",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-07-23/Client implementation review — pricing, delivery, and UAT gaps-transcript.md",
     "Granola/Transcripts/2026-07-23/Product Team Scope Lock-transcript.md",
