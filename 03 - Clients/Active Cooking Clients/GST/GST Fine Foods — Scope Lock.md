@@ -27,6 +27,8 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/OMtAdppypoVc3FxeCgTlvLYSgVf
 | — | not present | **SUP-05 (new)** | Three Phase-2-adjacent items (SOA portal build, Aging/slow-stock reports, "Item Name Override") are showing "In Progress" in the July 2026 backward plan — during the Phase 1 build window, ahead of Phase 1 UAT. This postdates v1.2 and is new risk, not previously assessed. |
 | — | not present | **SC-07 (new)** | Branch decision (LOC-03) marked LOCKED in June, shown open again in July's backward plan — internal document staleness or a genuinely reopened question; unresolved which. |
 | — | not present | **NSD-06 (new)** | Stock source-of-truth for Phase 1 rule checks (SAP live / daily extract / hybrid) — distinct from NSD-04 (sync cadence); not resolved by v1.2, still open per Backward Plan. |
+| — | not present | **SL-13 (new)** | Consolidated pick list — warehouse team-split, actual picked-qty capture, DN creation. Not in v1.2 at all; surfaced by a full pass through the Fireflies raw transcript and the Implementation Plan narrative. Team-split already built; actual-qty capture and multi-SO DN split still open (NSD-07, NSD-08). |
+| — | not present | **NSD-07 / NSD-08 (new)** | Two sub-gaps under SL-13: low-stock exception on actual-picked-qty capture, and DN resolution when a pick list spans multiple SOs. Neither blocking for MVP, both needed before UAT sign-off on SL-13. |
 
 ---
 
@@ -56,8 +58,8 @@ v1.2's own citation keys (`[FF-RG-A]`, `[FF-PROP]`, `[SAP-VENDOR]`, `[WA]`, `[Q]
 | Status | Count |
 |---|---|
 | LOCKED (operating constraints, `LOC`) | 6 |
-| LOCKED (build scope, `SL`) | 12 |
-| NEEDS SCOPING (`NSD`) | 6 (4 carried from v1.2, 2 new) |
+| LOCKED (build scope, `SL`) | 13 (12 carried, 1 new) |
+| NEEDS SCOPING (`NSD`) | 8 (4 carried from v1.2, 4 new) |
 | RESOLVED / non-blocking (`R`) | 4 |
 | SUPERSEDED (`SUP`) | 5 (4 carried, 1 new) |
 | OUT OF SCOPE (`OOS`) | 6 |
@@ -373,6 +375,29 @@ Because GST does not capture batch number or expiry data in structured form, MAI
 
 ---
 
+### SL-13 (new) — Consolidated pick list: warehouse team-split, actual picked qty capture, and DN creation
+
+**Status:** LOCKED — INTERNAL BUILD SCOPE (partially built)
+**Source:** `[RG | Captured Requirements — Logistics/Warehouse Workflow]` `[CSV | Pre-Phase 1 Gate #10-11, Core MAIA Extension #1-2, #8-9]` `[FF | 5/4 session B — "picking list basically picking list S O D O invoice... it will all in Crystal report"]`; Implementation Plan's "Pick List — The UX at Each Phase" section
+
+Not present in v1.2 at all — this is a genuine addition, surfaced by a fuller pass through the Fireflies raw transcript and the Implementation Plan narrative.
+
+#### User-facing flow
+- Warehouse manager creates a consolidated pick list pulling items from multiple pending SOs
+- MAIA auto-splits the pick list by warehouse section (frozen produce vs ready-packed stock) so each team sees only its items
+- After picking (and, for frozen items, stock transformation — stays in SAP, unchanged in Phase 1), warehouse user updates actual picked quantities directly in MAIA — no paper annotation, no sales-support re-entry
+- Pick list is submitted with actual quantities → DN created per customer from the consolidated list
+
+#### Acceptance criteria
+- Team-split view/print correctly filters by item group (frozen vs ready-packed) — already Completed per delivery tracker
+- Actual picked quantity is captured in MAIA UI and flows through to DN without a second data-entry step — Not Started (see NSD-07)
+- When a pick list spans multiple SOs, the system defines how DN creation resolves which SO(s) to create the DN for — Not Started, no defined logic yet (see NSD-08)
+- Pick List PDF output matches GST's Crystal Reports layout — gated on the same document-sample dependency as NSD-01
+
+#### Confidence: HIGH on team-split (built); MEDIUM-LOW on actual-qty capture and multi-SO DN split (undefined edge cases)
+
+---
+
 ## 5. Needs-Scoping Register
 
 ### NSD-01 — Document format samples
@@ -464,6 +489,36 @@ Because GST does not capture batch number or expiry data in structured form, MAI
 - GST to confirm SAP-live vs daily-extract vs hybrid
 
 #### Blocking: YES — overdue against the SOW's own pre-build gate
+
+---
+
+### NSD-07 (new) — Actual picked-qty capture, low-stock exception
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[CSV | Core MAIA Extension #9]` — "if low stock there is an exception case here which is not currently supported by the UI"
+
+#### Issue
+- No UI/logic defined for what happens when actual picked qty is less than ordered qty (partial fulfilment case)
+
+#### Required decision / input
+- GST to confirm desired behaviour: partial DN, hold, or exception flag
+
+#### Blocking: NO for MVP — YES before UAT sign-off on SL-13
+
+---
+
+### NSD-08 (new) — DN creation from a pick list spanning multiple SOs
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[CSV | Core MAIA Extension #8]` — "if Pick List spans across Orders, they will need to pick which other to Create DN for"
+
+#### Issue
+- User must currently pick which SO to create the DN for; no auto-resolution logic exists
+
+#### Required decision / input
+- Confirm whether one DN per SO is forced, or a smarter default is wanted
+
+#### Blocking: NO for MVP — YES before UAT sign-off on SL-13
 
 ---
 
