@@ -298,7 +298,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 949.5
+    "width": 826.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -328,7 +328,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "2abe2995e1e24dad",
+  "active": "ed25b829c30e5f11",
   "lastOpenFiles": [
     "Granola/Transcripts/2026-07-23/Client implementation review — pricing, delivery, and UAT gaps-transcript.md",
     "Granola/Transcripts/2026-07-23/Product Team Scope Lock-transcript.md",
