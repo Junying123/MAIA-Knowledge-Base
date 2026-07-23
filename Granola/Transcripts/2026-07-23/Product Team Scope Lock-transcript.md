@@ -3,8 +3,12 @@ granola_id: b691b78d-2d50-4b73-b11c-92dc059cd8a1
 title: Product Team Scope Lock  - Transcript
 type: transcript
 created: 2026-07-23T03:54:04.944Z
-updated: 2026-07-23T08:18:04.419Z
-attendees: []
+updated: 2026-07-23T17:19:00.689Z
+attendees: 
+  - ivan@mindhive.asia
+  - lim.junyan@gmail.com
+  - wansin@mindhive.asia
+  - itharanie@gmail.com
 ---
 
 # Transcript for: Product Team Scope Lock 
