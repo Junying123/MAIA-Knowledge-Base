@@ -375,49 +375,254 @@ Because GST does not capture batch number or expiry data in structured form, MAI
 
 ## 5. Needs-Scoping Register
 
-**NSD-01 — Document format samples.** Carried, unchanged, blocking. `[FF-RG-A]` `[CSV | PDF Generation, 5 of 6 types Not Started]`.
+### NSD-01 — Document format samples
 
-**NSD-02 — Blanket Order/Agreement behaviour.** Carried, unchanged, blocking for pricing accuracy.
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — carried, unchanged
+**Source:** `[FF-RG-A]` `[CSV | PDF Generation, 5 of 6 types Not Started]`
 
-**NSD-03 — SOA portal security settings** (expiry, password method/delivery, access logging, revocation, exposed doc list). Carried, unchanged, blocking for production SOA release.
+#### Issue
+- MAIA must match GST document formats, but document samples are pending
 
-**NSD-04 — Inventory sync cadence** (SAP → MAIA, after a stock-transformation event). Carried, unchanged, blocking for inventory-visibility acceptance. Independently corroborated as unresolved in `[SAPV | Key Point E]` and `[GTM | §5]` — GST's own IT team engaged on this directly in the 2026-05-19 session, but no number was pinned down.
+#### Required decision / input
+- GST must provide samples for all in-scope generated documents
 
-**NSD-05 (new) — Sales check-in / customer-visit-location reporting.** Soo Chin requested this 2026-05-07/08; Ivan told her MAIA doesn't currently have it `[DOSSIER | B1 rank 5, B6, B9]`. Never formally closed as declined, deferred, or quoted as a change request. **Blocking:** not for Phase 1 core, but for expectation management — if GST believes this is still pending an answer, silence reads as ignored, not declined.
+#### Blocking: YES — for document UAT
 
-**NSD-06 (new) — Stock source of truth** (SAP live / daily extract / hybrid) for Phase 1 business-rule checks. Distinct from NSD-04 (which is about sync *cadence* after a transformation event, not which source is authoritative day-to-day). SOW frames this as a pre-build gate `[SOW | §6]`; still shown unchecked in the 2026-07-07 backward plan, three weeks after core build (M1–M3) began. **Blocking — overdue against the SOW's own gate.**
+---
+
+### NSD-02 — Blanket Order / Agreement behaviour
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — carried, unchanged
+**Source:** `[FF-RG-A | pricing / Blanket Agreement]`
+
+#### Issue
+- GST's SAP Blanket Order/Blanket Agreement functionality is richer than current MAIA support
+
+#### Required decision / input
+- Walk through GST's SAP Blanket Order/Agreement behaviour and map fields, lifecycle, price application, validity, and writeback
+
+#### Blocking: YES — for pricing/order accuracy
+
+---
+
+### NSD-03 — SOA portal security settings
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — carried, unchanged
+**Source:** `[FF-RG-A | SOA link security]`
+
+#### Issue
+- SOA portal behaviour is locked (SL-07), but exact security settings are not
+
+#### Required decision / input
+- Link expiry period, password generation method, password delivery method, access logging, revocation audit, and the document list exposed in the portal
+
+#### Blocking: YES — for production SOA portal release
+
+---
+
+### NSD-04 — Inventory sync cadence
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — carried, unchanged
+**Source:** `[SAP-VENDOR | SAP sync / middleware architecture]`; independently corroborated as unresolved in `[SAPV | Key Point E]` and `[GTM | §5]` — GST's own IT team engaged directly on this in the 2026-05-19 session, but no number was pinned down
+
+#### Issue
+- MAIA will reflect SAP inventory based on sync jobs (SAP → MAIA, after a stock-transformation event); sync cadence affects stock accuracy and user trust
+
+#### Required decision / input
+- Confirm acceptable sync interval and whether any objects need near-real-time sync
+
+#### Blocking: YES — for inventory-visibility acceptance
+
+---
+
+### NSD-05 (new) — Sales check-in / customer-visit-location reporting
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[DOSSIER | B1 rank 5, B6, B9]`
+
+#### Issue
+- Soo Chin requested this 2026-05-07/08; Ivan told her MAIA doesn't currently have it
+- Never formally closed as declined, deferred, or quoted as a change request
+
+#### Required decision / input
+- Decide and communicate: declined, deferred to a named future phase, or quoted as a change request
+
+#### Blocking: NO for Phase 1 core — YES for expectation management. If GST believes this is still pending an answer, silence reads as ignored, not declined.
+
+---
+
+### NSD-06 (new) — Stock source of truth
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL — new
+**Source:** `[SOW | §6]`; still shown unchecked in the 2026-07-07 Backward Plan, three weeks after core build (M1–M3) began
+
+#### Issue
+- Which inventory source is authoritative for Phase 1 business-rule checks — SAP live, daily extract, or hybrid
+- Distinct from NSD-04, which is about sync *cadence* after a transformation event, not which source is authoritative day-to-day
+
+#### Required decision / input
+- GST to confirm SAP-live vs daily-extract vs hybrid
+
+#### Blocking: YES — overdue against the SOW's own pre-build gate
 
 ---
 
 ## 6. Resolved / Non-Blocking (carried from v1.2, unchanged)
 
-R-01 (vendor UDF/UDH out-of-scope boundary), R-02 (SAP endpoint coverage non-blocking), R-03 (payment receipt/voucher mapping — user-instructed, no prior scenario mapping needed), R-04 (fulfillment percentage calculation — former NSD-08 removed, existing MAIA logic applies). No new evidence changes any of these.
+### R-01 — Vendor custom UDF/UDH support
+
+**Status:** RESOLVED AS OUT-OF-SCOPE BOUNDARY
+**Source:** `[Mindhive internal decision | NSD-01 correction]`
+
+#### Decision
+- MAIA will not support custom UDF/UDH development in vendor third-party software as part of base development
+
+#### Treatment
+- If a custom UDF/UDH limitation is identified as a blocker, Mindhive raises it and scopes it as a separate customisation
+
+---
+
+### R-02 — SAP endpoint coverage
+
+**Status:** RESOLVED / NON-BLOCKING
+**Source:** `[SAP-VENDOR | integration path]`
+
+#### Decision
+- SAP endpoint coverage is not treated as a blocker in this document — the team already knows the integration path required
+
+#### Treatment
+- Build proceeds on the known SAP integration path; any unexpected endpoint limitation is escalated through delivery risk management, not treated as an unresolved scope question
+
+---
+
+### R-03 — Payment receipt / voucher mapping
+
+**Status:** RESOLVED / NON-BLOCKING
+**Source:** `[Mindhive internal decision | NSD-06 correction]`
+
+#### Decision
+- MAIA does not need prior scenario mapping to proceed — the user instructs MAIA whether to create a payment receipt or payment voucher
+
+#### Treatment
+- The attachment is attached to the draft payment entry; reconciliation and allocation of payment to invoices remains manual and user-instructed
+
+---
+
+### R-04 — Fulfillment percentage calculation source
+
+**Status:** REMOVED
+**Source:** v1.2
+
+#### Decision
+- The former NSD-08 item is removed — MAIA's existing order listing and fulfillment logic applies
+
+---
+
+No new evidence changes any of R-01 through R-04.
 
 ---
 
 ## 7. Supersessions Log
 
-**SUP-01 — CPR/CPRN replaced by committed-order visibility.** Carried, unchanged. OUT OF SCOPE, validated in RG as not a common use case for GST.
+### SUP-01 — CPR/CPRN pre-order reservation replaced by committed-order visibility
 
-**SUP-02 — Stock transformation engine excluded from MAIA.** Carried, unchanged. OUT OF SCOPE — MAIA syncs resulting inventory after SAP-side transformation; does not model the transformation itself.
+- **Original idea:** A CPR/CPRN/customer purchase request note concept was discussed in earlier proposal context, to track pre-order commitments or informal stock reservation
+- **Now intended:** CPR/CPRN is out of scope; the validated requirement is visibility into reserved/committed quantities tied to actual order flow
+- **Who changed:** Validated during requirements gathering as not a common use case for GST
+- **Rationale:** `[FF-PROP | CPRN concept]` `[FF-RG-A | CPRN reframed as not common use case]`
+- **Client agreed:** Validated in requirements gathering as not a common use case
+- **Current status:** OUT OF SCOPE (carried, unchanged) — see OOS-01
 
-**SUP-03 — Batch/expiry alerts replaced by movement-based slow stock reports.** Carried, unchanged.
+---
 
-**SUP-04 — Excel planning/purchasing calculator excluded.** Carried, unchanged. OUT OF SCOPE.
+### SUP-02 — Stock transformation engine excluded from MAIA
 
-**SUP-05 (new) — Phase-2-adjacent items building ahead of their commercial/UAT gate.**
-**v1.2 said** nothing on this — it predates the July build calendar.
-**Now observed**: the 2026-07-07 Backward Plan's Customisations table shows SOA-related build work, an "Aging/Slow-Moving Alert," and an item called "Item Name Override" all **"In Progress"** with July dates `[BP | Customisations table]` — i.e. during the Phase 1 core build window (M1–M3), before Phase 1 UAT (planned 2026-08-04–06). The SOW frames Phase 2 items as separately priced and payable only after their own UAT `[SOW | §4, §5.2]`.
-**Changed by**: appears to be a Mindhive delivery-team sequencing decision. No client-side source shows GST requesting or agreeing to this.
-**Rationale**: not evidenced.
-**Client agreed? NOT EVIDENCED.**
-**Risk**: two of these three items (SOA, item-level customisation) are exactly the kind of thing that should be traceable to a locked scope item (SL-07 for SOA has a clear trace; "Item Name Override" has none at all — see NSD-05's sibling gap). Recommend Gareth trace "Item Name Override" to its origin before UAT.
+- **Original idea:** GST's seafood processing and stock transformation was explored as a possible MAIA capability
+- **Now intended:** MAIA will not support GST's custom SAP stock-transformation workflow; users continue performing stock transformation in SAP; MAIA syncs resulting inventory quantities after SAP-side transformation
+- **Who changed:** `[FF-RG-A | stock transformation discussion]` `[SAP-VENDOR | SAP stock transformation custom feature]`
+- **Rationale:** GST's transformation module is a custom SAP module, not standard BOM
+- **Client agreed:** Yes, per v1.2
+- **Current status:** OUT OF SCOPE (carried, unchanged) — see OOS-02. This corrects the draft this v2 started from, which had incorrectly marked stock-transformation *sync depth* as a locked build requirement based on SOW §2.4 wording alone.
+
+---
+
+### SUP-03 — Batch/expiry alerts replaced by movement-based slow stock reports
+
+- **Original idea:** Expiry, aging, or batch-based alerts were discussed
+- **Now intended:** Because GST does not capture batch number or expiry data in the required structured form, MAIA will not provide batch-expiry alerts — instead it surfaces slow-moving stock via reports, notifications, warehouse dashboard, stock aging reports, and stock movement reports
+- **Who changed:** `[FF-RG-A | batch / expiry limitation]`
+- **Rationale:** Data unavailable in SAP in the required form
+- **Client agreed:** Yes, per v1.2
+- **Current status:** Batch/expiry alerts OUT OF SCOPE (OOS-04); movement-based slow stock visibility IN SCOPE (SL-12) — carried, unchanged
+
+---
+
+### SUP-04 — Excel planning / purchasing calculator excluded
+
+- **Original idea:** An Excel export or planning/purchasing support item was discussed
+- **Now intended:** Excel planning/purchasing calculator is out of scope
+- **Who changed:** `[FF-RG-A | planning Excel unclear]`
+- **Rationale:** Stakeholders present in detailed requirements gathering were unsure of the direct or detailed requirements — not safe to treat as scoped
+- **Client agreed:** Not evidenced as GST-requested; internal Mindhive scoping call
+- **Current status:** OUT OF SCOPE (carried, unchanged) — see OOS-05
+
+---
+
+### SUP-05 (new) — Phase-2-adjacent items building ahead of their commercial/UAT gate
+
+- **SOW baseline:** Phase 2 customisations (CPRN-adjacent tracking, SOA generation, Aging/clearance reminders) are scoped and built only after Phase 1 go-live, separately priced, and payable only after their own Phase 2 UAT `[SOW | §4, §5.2]`
+- **Now intended:** the 2026-07-07 Backward Plan's Customisations table shows SOA-related build work, an "Aging/Slow-Moving Alert," and an item called "Item Name Override" all **"In Progress"** with July dates `[BP | Customisations table]` — during the Phase 1 core build window (M1–M3), before Phase 1 UAT (planned 2026-08-04–06)
+- **Who changed:** Appears to be a Mindhive delivery-team sequencing decision — no client-side source shows GST requesting or agreeing to this
+- **Rationale:** Not evidenced
+- **Client agreed:** NOT EVIDENCED
+- **Risk:** Two of these three items are traceable to a locked scope item (SL-07 covers SOA); "Item Name Override" has no scope trace anywhere in the corpus at all — see NSD-05's sibling gap. Recommend Gareth trace "Item Name Override" to its origin before UAT.
 
 ---
 
 ## 8. Out-of-Scope / Explicit Exclusions (carried from v1.2, unchanged)
 
-OOS-01 (CPR/CPRN), OOS-02 (SAP stock transformation workflow), OOS-03 (SAP item master/UOM reconfiguration), OOS-04 (batch-number/expiry-date alerts), OOS-05 (Excel planning/purchasing calculator), OOS-06 (vendor custom UDF/UDH development).
+### OOS-01 — CPR/CPRN / pre-confirmation stock reservation
+
+- Not in scope for the current build — validated during requirements gathering as not a common use case for GST
+- Current in-scope substitute: inventory visual cues and reserved-quantity visibility inside the normal quotation/SO/DN flow (SL-09)
+
+---
+
+### OOS-02 — GST SAP stock transformation workflow
+
+- MAIA will not support GST's custom SAP stock-transformation workflow — it is customised in SAP and is not standard BOM
+- Users continue performing stock transformation in SAP; MAIA reflects latest SAP inventory quantities after scheduled sync
+
+---
+
+### OOS-03 — SAP item master / UOM reconfiguration
+
+- MAIA will not reconfigure or change GST's item master setup
+- The KG vs NOS variable-weight-fish issue is an operational challenge tied to GST's current SAP item master and stock-transformation configuration, not something MAIA fixes
+- MAIA syncs item master data from SAP as-is
+
+---
+
+### OOS-04 — Batch-number / expiry-date alerts
+
+- MAIA will not support batch-number or expiry-date alerting in current scope, because GST does not capture batch number or expiry-related data in the required structured form
+- In-scope alternative: movement-based slow stock visibility and reports (SL-12)
+
+---
+
+### OOS-05 — Excel planning / purchasing calculator
+
+- Out of scope — stakeholders in detailed requirements gathering were unsure of the direct or detailed requirements, so this cannot be safely built as a scoped item
+- Requires separate scoping if revived
+
+---
+
+### OOS-06 — Vendor custom UDF/UDH development
+
+- MAIA will not support custom UDF/UDH development inside vendor third-party software in base development
+- If a custom vendor-side UDF/UDH limitation becomes a blocker, it is raised and scoped as a separate customisation
+
+---
 
 Additional exclusions independently corroborated from the wider KB corpus, consistent with v1.2's framing: full ERP replacement/SAP restructuring `[SOW | §6]`, customer-facing WhatsApp bot `[SOW | §6]`, advanced approval matrices beyond scoped `[SOW | §6]`, Penang/Langkawi branch rollout beyond the confirmed first branch (paid add-on) `[SOW | §6]`, full logistics workspace beyond reference-only delivery visibility `[SOW | §2.1.2]`.
 
