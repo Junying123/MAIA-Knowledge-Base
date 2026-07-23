@@ -272,7 +272,7 @@
                     "name": "zsh 190"
                   }
                 ],
-                "activeId": 189,
+                "activeId": 190,
                 "nextId": 192
               },
               "icon": "terminal",
@@ -324,7 +324,7 @@
       "agent-client:Open agent client": false
     }
   },
-  "active": "ed25b829c30e5f11",
+  "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript 2.md",
