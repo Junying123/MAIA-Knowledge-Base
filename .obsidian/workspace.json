@@ -268,10 +268,6 @@
                     "name": "zsh 189"
                   },
                   {
-                    "id": 190,
-                    "name": "zsh 190"
-                  },
-                  {
                     "id": 193,
                     "name": "zsh 193"
                   },
@@ -282,10 +278,14 @@
                   {
                     "id": 195,
                     "name": "zsh 195"
+                  },
+                  {
+                    "id": 196,
+                    "name": "zsh 196"
                   }
                 ],
-                "activeId": 190,
-                "nextId": 196
+                "activeId": 193,
+                "nextId": 197
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -338,6 +338,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "Granola/Transcripts/2026-07-24/Mindhive  Daily Standup-transcript.md",
+    "Granola/Transcripts/2026-07-24",
     "Granola/Transcripts/2026-07-23/Client implementation review — pricing, delivery, and UAT gaps-transcript.md",
     "Granola/Transcripts/2026-07-23/Product Team Scope Lock-transcript.md",
     "Granola/Transcripts/2026-07-23/Mindhive  Daily Standup-transcript.md",
@@ -368,12 +370,10 @@
     "03 - Clients/Active Cooking Clients/2026-07-21-scc-sqlquery-access-request-email.md",
     "2026-07-21-scc-sqlquery-access-request-email.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack/00_START_HERE_INPUT_LIBRARY.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.13503.0d1656b8b77a",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Checklist.md.tmp.13503.21c584734323",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Checklist.md.tmp.13503.47a296b7104f",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
