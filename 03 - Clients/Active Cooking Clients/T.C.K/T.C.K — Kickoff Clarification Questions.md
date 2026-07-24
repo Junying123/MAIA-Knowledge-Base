@@ -48,7 +48,7 @@ This customization (`[P]` §5.1, waived/FOC) is locked in principle, but the upl
 
 ## Bulk Item Pricing Update — Guided Clarification Questions
 
-The weekly upload (above) is the *recurring cadence*; this section is about the *bulk mechanism itself* — what a single upload actually does to the price list, and how MAIA should behave when a bulk file is applied. Answer these so we can design the validation and rollback logic correctly the first time.
+The weekly upload (above) is the *recurring cadence*; this section is about the *bulk mechanism itself* — what a single upload actually does to the price list, and ho//w MAIA should behave when a bulk file is applied. Answer these so we can design the validation and rollback logic correctly the first time.
 
 24. When you upload prices, is it usually the full item list (~350 SKUs) every time, or only the items that changed that week?
 25. Should a bulk upload fully replace the existing price list, or only update the rows included in the file and leave everything else untouched?
