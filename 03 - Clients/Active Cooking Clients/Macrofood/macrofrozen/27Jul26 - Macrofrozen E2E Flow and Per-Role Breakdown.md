@@ -175,6 +175,17 @@ The Packing List spans multiple customers, orders, and products on one sheet —
 - She **attaches that screenshot to each corresponding DN** — one screenshot per customer's DN, not the whole Packing List dumped on every DN.
 - This gives each DN its own visual proof of the picked breakdown that produced it, without needing the DN line-item entry itself to reference the full multi-customer sheet.
 
+##### Sub-workaround — 1 Pick List per customer (Approach 2b, 2026-07-27)
+
+An alternative to the screenshot workaround above: instead of one Pick List covering multiple customers and manually screenshotting per customer afterward, split the Pick List itself by customer from the start.
+
+- **Lai converts each SO into its own single Pick List** — one Pick List per customer, not one consolidated multi-customer list.
+- Lai **attaches the Packing List for that one customer** to that customer's Pick List.
+- **Grace is notified.**
+- When the DN is created from that Pick List, the **single-customer Packing List propagates to the DN automatically as an attachment** — no manual screenshot or export step needed, since the Pick List only ever held one customer's data to begin with.
+
+This achieves the same per-customer separation as the screenshot sub-workaround, but structurally (one Pick List = one customer = one Packing List = one DN) rather than manually (one big Pick List, cut up after the fact). Still deferred alongside the rest of Approach 2 — same double-entry caveat applies, since Lai still maintains the Packing List in Excel.
+
 **Why this is deferred, not adopted:** the Excel Packing List and its double-entry are still in the loop — Lai still maintains it, and Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does). This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go.
 
 ### 3c. Pick List → SO amendment → Invoice, then Pick List → DN (Approach 3 — documented, deferred, most tedious)
