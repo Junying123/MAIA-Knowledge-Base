@@ -205,92 +205,271 @@ Same start as Approach 1/2: Pick List completed, Grace is notified.
 
 ### David — Owner (Boss)
 
-##### Does
-- Approves prices below the minimum price (top tier).
-- Approves credit-limit overrides / exceptional commercial decisions.
-- Monitors sales, warehouse, delivery, financial activity (dashboard, all data).
-- Handles major exceptions, high-risk overrides.
-- Makes the product catalogue himself (ChatGPT-based, outside MAIA).
+##### Responsibilities
+- Oversees the full operation.
+- Reviews major exceptions.
+- Approves prices below the minimum price.
+- Monitors sales, warehouse, delivery, and financial activity.
 
-##### Can view
-All leads, prospects, customers, Sales Orders, approvals, warehouse progress, delivery status, financial status.
+##### Permissions — can view
+All leads, all prospects, all customers, all Sales Orders, all approvals, warehouse progress, delivery status, financial status.
 
-##### No longer does (moved off him by MAIA)
-- Manually consolidating every order.
-- Preparing every Pick List.
+##### Approvals — David approves
+- Selling prices below the minimum price.
+- Exceptional commercial decisions.
+- High-risk overrides, where required.
 
-##### Risk
-Remains a bottleneck if too many transactions need his approval; must stay reachable for below-minimum-price and credit-override requests.
+##### Benefits
+- No longer needs to consolidate every order manually.
+- Does not need to prepare every Pick List.
+- Can focus on exceptions and higher-risk decisions.
+- Gains visibility without coordinating every routine activity.
+
+##### Risks
+- May remain a bottleneck if too many transactions require approval.
+- Pricing rules must be configured correctly.
+- Staff may keep using the company WhatsApp group instead of forwarding orders to the MAIA WhatsApp chat unless the workflow is enforced.
 
 ---
 
 ### CJ — Sales Manager
 
-##### Does
-- Approves prices below customer/default price, above minimum price (submits the SO to approve, or rejects it).
-- Oversees the sales team, reviews pricing exceptions.
-- Monitors customer and Sales Order activity across all reps.
-- Supports salespeople when they need approval.
+##### Responsibilities
+- Oversees the sales team.
+- Reviews pricing exceptions.
+- Monitors customer and Sales Order activity.
+- Supports salespeople where approval is needed.
 
-##### Can view
-All salespeople's leads, prospects, customers, Sales Orders, pending sales approvals — not just his own.
+##### Permissions — can view
+All salespeople's leads, all prospects, all customers, all Sales Orders, pending sales approvals — not just his own.
 
-##### Cannot
-Approve a price below the minimum — that's David's tier only.
+##### Approvals — CJ approves
+- Prices below the default selling price.
+- Prices below the customer-specific price.
+- Prices that remain above the minimum price.
 
-##### Risk
-Can get flooded with approval requests if pricing data isn't maintained.
+##### Benefits
+- Clear sales-team visibility.
+- Formal approval queue.
+- Better pricing discipline.
+- Reduced need to search through WhatsApp group messages.
+
+##### Risks
+- May receive too many approval requests if pricing data is not maintained.
+- The distinction between default, customer, and minimum prices must be clear.
+- The system must prevent CJ from approving prices below the minimum.
 
 ---
 
 ### Queenie / Ben — Sales Reps
 
-##### Does
-- Receives customer order (call/WhatsApp from customer).
-- Forwards the order to the MAIA WhatsApp chat.
-- Reviews MAIA's draft SO interpretation (customer/product/SKU/qty/unit/price/notes).
-- Corrects anything MAIA misread.
-- Submits the Sales Order themselves — no admin does it for them.
-- Creates/maintains own leads and prospects.
-- Converts own leads/prospects into customers.
+##### Responsibilities
+- Receives customer orders.
+- Forwards customer orders to the MAIA WhatsApp chat.
+- Reviews MAIA's interpretation.
+- Corrects any incorrectly interpreted information.
+- Submits Sales Orders through MAIA.
+- Maintains leads and prospects.
+- Converts leads or prospects into customers.
 - Uploads customer payment proof where applicable.
-- Follows up on inactive/recurring customers.
+- Follows up on inactive or recurring customers.
 
-##### Can view / do
-Only their own leads, prospects, customers, Sales Orders; can view own customers' credit status.
+##### Permissions — can view/do (own records only)
+- Own leads, own prospects, own customers, own Sales Orders.
+- Create leads, create prospects.
+- Convert leads or prospects into customers.
+- Forward orders to the MAIA WhatsApp chat.
+- Review MAIA-generated Sales Order drafts.
+- Submit Sales Orders.
+- View own customers' credit status.
+- Upload payment proof.
 
 ##### Cannot
 - Create a customer directly from a raw record.
-- View another rep's customers.
-- Edit credit terms or credit limits.
-- Bypass a pricing approval or approve their own exception.
+- View another salesperson's customers.
+- Edit credit terms.
+- Edit credit limits.
+- Bypass pricing approvals.
+- Approve their own pricing exception.
 
-##### Risk
-Must review MAIA's draft carefully — a wrong forward means a wrong SO.
+##### Benefits
+- Can continue working through WhatsApp.
+- Faster order entry, less manual retyping.
+- Clear approval status.
+- Better visibility of customer credit issues.
+- Recurring-order and inactive-customer reminders.
+- CRM notes and customer history.
+- Lower duplicate-customer risk.
+
+##### Risks
+- Must review MAIA's interpretation carefully.
+- Forwarding the wrong message or an incomplete order may create an inaccurate draft.
+- Incorrect SKU selection remains possible where product names are ambiguous.
+- Orders may be delayed while approvals are pending.
+- Strict credit controls may block urgent orders.
+- Staff may keep forwarding orders to the old internal group instead of MAIA.
+
+---
+
+### Apple — Finance
+
+##### Responsibilities
+- Sets customer credit limits.
+- Maintains finance-related customer settings.
+- Controls customer credit terms.
+- Ensures customer financial settings are accurate.
+
+##### Permissions — Apple can manage
+Credit limits, credit terms, credit-control settings, finance-related customer configuration.
+
+##### Benefits
+- Central control over customer credit exposure.
+- Reduced unauthorised changes by Sales.
+- Better separation between Sales and Finance.
+- More consistent application of credit rules.
+
+##### Risks
+- Credit limits based only on average order value may not reflect total payment risk.
+- Zero-credit-limit treatment must be clearly defined.
+- Incorrect settings may block valid orders or allow excessive exposure.
 
 ---
 
 ### Grace — Accounts / Finance Manager
 
-##### Does
-- Receives notification when Lai's Pick List → amended SO is ready.
-- Reviews the amended SO (original vs final SKU/qty/boxes/kg-per-box/price/credit).
-- Submits the amended SO.
-- Explicitly asks MAIA to generate the Invoice and Delivery Note — this step does not happen automatically, it's her call.
-- Reviews the generated Invoice and DN, submits/confirms them.
-- Uploads Proof of Delivery (POD) — not the driver, Grace does this.
-- Reviews payment proof, checks the company bank account.
-- Confirms money received, submits the payment receipt.
-- Knocks off the Invoice.
+##### Responsibilities
+- Receives completed Pick-List notifications.
+- Reviews the Sales Order amendment prepared by MAIA.
+- Confirms the final quantity and SKU.
+- Submits the amended Sales Order.
+- Asks MAIA to generate the Invoice and Delivery Note.
+- Reviews the generated Invoice and Delivery Note.
+- Submits or confirms the financial documents.
+- Uploads Proof of Delivery.
+- Reviews payment proof.
+- Confirms receipt of money in the bank.
+- Submits payment receipts.
+- Knocks off Invoices.
 
-##### Can
-Review warehouse-confirmed quantities, review/submit SO amendments, request Invoice/DN generation, confirm payment receipts, knock off invoices.
+##### Permissions — Grace can
+Review warehouse-confirmed quantities, review Sales Order amendments, submit amended Sales Orders, request MAIA to generate an Invoice, request MAIA to generate a Delivery Note, review and submit financial documents, confirm payment receipts, perform Invoice knock-off.
 
-##### Cannot
-MAIA must not generate Invoice/DN before she asks; must not auto-submit financial docs without her confirming.
+##### Explicit document-generation control
+Submitting the amended Sales Order does **not** automatically generate the Invoice or Delivery Note — Grace must separately instruct MAIA to generate them: she submits the amended SO, then asks MAIA to generate the Invoice and DN, MAIA generates them, and she reviews and submits.
 
-##### Risk
-Final control point everywhere — can become the bottleneck if she's slow, unavailable, or misses a notification; bank verification stays a manual step for her regardless.
+##### Benefits
+- No need to manually re-enter warehouse quantities.
+- Lower risk of transcription errors.
+- Faster document preparation.
+- Retains control over when financial documents are generated.
+- Clear relationship between Sales Order, Pick List, Delivery Note, Invoice, POD, and payment.
+- Easier audit trail; payment receipts can be drafted automatically.
+
+##### Risks
+- May become a bottleneck if every order requires individual review and a separate generation request.
+- Automatic amendments must be clearly highlighted.
+- SKU and quantity changes must be easy to compare.
+- MAIA must not generate the Invoice or Delivery Note before Grace requests it.
+- MAIA must not submit financial documents without Grace's confirmation.
+- Bank verification remains a manual step for her regardless.
+
+---
+
+### Lai — Warehouse Manager
+
+##### Responsibilities
+- Reviews Sales Orders each morning.
+- Groups Sales Orders into Pick Lists.
+- Organises Pick Lists by route, area, driver, or date.
+- Prints Pick Lists.
+- Assigns work to warehouse workers.
+- Reviews completed picking.
+- Confirms actual quantities.
+- Records kilograms per box.
+- Records replacement SKUs.
+- Uploads completed Pick Lists to MAIA.
+
+##### Permissions — Lai can view
+Sales Orders, product information required for picking, Pick Lists, customer names, Sales Order notes, delivery information.
+
+##### Permissions — Lai can
+Group Sales Orders, generate Pick Lists, confirm quantities, record kilograms per box, record replacement SKUs, upload completed Pick Lists.
+
+##### Cannot view
+Product cost price, product margin, sensitive customer financial information, accounting records unrelated to warehouse work.
+
+##### Benefits
+- Better visibility of all orders requiring picking.
+- Easier grouping by delivery route and driver.
+- Clear customer and Sales Order references.
+- Structured quantity confirmation.
+- Ability to record replacement SKUs.
+- Reduced dependence on David.
+
+##### Risks
+- Warehouse still depends on printed Pick Lists unless a digital workflow is adopted.
+- Handwriting may be difficult for MAIA to interpret.
+- Unit conversions must be configured correctly.
+- Warehouse users must understand the difference between number of boxes, kilograms per box, and total kilograms.
+- SKU replacement may require approval.
+
+---
+
+### Warehouse Workers
+
+##### Responsibilities
+- Receive the Pick List.
+- Pick the products.
+- Pack the products.
+- Record or confirm actual quantities.
+- Inform the Warehouse Manager when stock is unavailable.
+- Follow customer-specific preparation notes.
+
+##### Permissions — may see
+Customer name, SKU, product description, sales notes, ordered quantity, packing instructions, route or delivery grouping.
+
+##### Permissions — should not see
+Product cost, margin, customer credit information, sensitive financial data, internal pricing approvals.
+
+##### Benefits
+- Clearer picking instructions.
+- Customer names displayed on Pick Lists.
+- Additional Sales Order notes.
+- Less confusion over formal SKU names.
+- Better handling of multiple orders on one Pick List.
+
+##### Risks
+- Printed documents can be lost or damaged.
+- Handwriting may remain ambiguous.
+- Notes must be captured accurately.
+- Workers may select an incorrect replacement SKU without clear rules.
+
+---
+
+### Driver
+
+##### Responsibilities
+- Receives the goods and Delivery Note.
+- Delivers according to the assigned route.
+- Obtains the customer's signature.
+- Returns or sends the signed Proof of Delivery.
+
+##### Permissions — should only receive
+Delivery route, customer address, customer contact, Delivery Note, delivery instructions, goods assigned for delivery.
+
+##### Permissions — should not see
+Product cost, customer credit limit, internal pricing approvals, internal financial information.
+
+##### Benefits
+- Clearer route assignment.
+- Correct delivery documents linked to each order.
+- Easier POD submission.
+- Reduced risk of carrying the wrong documents.
+
+##### Risks
+- POD quality may be poor if submitted as a low-quality photo.
+- Driver may forget to obtain a signature.
+- Failed or partial deliveries require a separate exception process.
 
 ---
 
