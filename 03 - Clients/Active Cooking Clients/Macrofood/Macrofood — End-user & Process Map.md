@@ -1,92 +1,110 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-12
+last_reviewed: 2026-07-27
 ---
 
 # Macro Frozen — End-user & Process Map (Lens 3)
 
 > The map half of Lens 3 (Product Onboarding SOP, M3 → feeds M6 config / M9 training).
 > Answers *"who uses MAIA, and how — step by step?"* Pairs with the UAT Checklist.
-> Sources: Forensic Dossier (B4/B3), VoC Extraction, Scope Lock v1, Customer Narrative,
-> Role Permission CSV. **Identity gaps are marked `NEEDS CLIENT INPUT` — not guessed.**
+> **Rerun 2026-07-27** — superseded v1 (2026-07-12) was built when most roles were
+> `NEEDS CLIENT INPUT`. Scope Lock v2 (2026-07-27) and its two client-facing build
+> docs — `20Jul26 - Macrofrozen Before vs After MAIA` and `23Jul26 - Macro Frozen
+> Enhancement` (both Lark) — name every role directly and close almost every
+> identity gap from v1. Sources: Scope Lock v2, VoC Extraction (incl. 17 Jul
+> training signals VOC-037–060), `20Jul26` and `23Jul26` Lark docs, Maya Training
+> — Identified Gaps Report.
 
 ---
 
 ## 1. Actor & Role Register
 
-| Actor | MAIA role | Authority | Contacted? | UAT signatory? | What they do in MAIA | VoC voice |
+| Actor | MAIA role | Authority | Contacted? | UAT signatory? | What they do in MAIA | Confidence |
 |---|---|---|---|---|---|---|
-| **David Chong** (Choy Kien Yang) | Admin / Management | MD, credit controller, decision-maker | YES | **UNKNOWN** — likely, confirm | Approve credit-limit overrides; control pricing floor; catalogue direction; monitor via dashboard | CONFIRMED (Speaker 2) |
-| **CJ Tan** | Sales Manager | Daily sales user | YES | UNKNOWN | Create SO/quote, customer-specific pricing, manage own customers | BELIEVED |
-| Finance / Account rep | Finance | Key AR user | YES (Speaker 5 in F2F) | UNKNOWN | Payment-slip + bank-statement matching, credit notes, cash-from-driver record, knock-off | BELIEVED — **name `NEEDS CLIENT INPUT`** |
-| Warehouse picker | Logistics / Warehouse | Picks + confirms weight | PARTIAL (How Siang raised GR concern 18 May) | No | Upload confirmed pick list / actual weight; stock | THIN — 2nd-hand — **name `NEEDS CLIENT INPUT`** |
-| Driver | Logistics / Delivery | Delivers, POD | **NO** | No | Signed-DO photo (POD parked, NS-07) | ABSENT — **`NEEDS CLIENT INPUT`** |
-| Applle | Admin / setup | Setup support | YES | No | AWS/OTP setup (not a daily operational role) | BELIEVED |
-| Krystle Wong | Coordination | Scheduling / comms | YES | No | Training logistics, project scheduling | BELIEVED |
-| SQL vendor | — (external) | Integration dependency | — | — | Not a MAIA user — grants SQL access (DEP-1 blocker) | — |
+| **David** (Chong / Choy Kien Yang) | Owner / Management | MD, price controller (below-minimum tier), credit override authority, oversees full operation | YES | **Likely, still not formally named** — #1 open gap | Approves prices below minimum; approves credit-limit overrides; monitors all sales/warehouse/delivery/finance activity; makes the product catalogue himself (ChatGPT) | CONFIRMED — named directly, `20Jul26` doc §6.1 |
+| **CJ** (Tan) | Sales Manager | Mid-tier price approver; sets customer credit limit at customer creation | YES | UNKNOWN | Approves prices below customer/default price but above minimum (submits or rejects the SO); oversees sales team; reviews pricing exceptions | CONFIRMED — `20Jul26` doc §6.2, Scope Lock SL-03/SL-08 |
+| **Queenie**, **Ben** | Sales Rep | Daily sales users, each with own customer book (SQL Agent field) | YES | UNKNOWN | Forwards customer order to MAIA WhatsApp chat; reviews/corrects MAIA's draft SO; submits SO directly (no admin relay — AS-04 v2); manages own leads/prospects/customers only; uploads customer payment proof | CONFIRMED — named + spelling-corrected 2026-07-15 (was "Aben/Quinny"), `20Jul26` doc §6.3, VOC-032 |
+| **Apple** | Finance | Sets customer credit limits, maintains finance-related customer settings — **narrower than "Admin parity with David"**, corrected 2026-07-20 | YES | UNKNOWN | Manages credit limits, credit terms, credit-control settings | CONFIRMED — role corrected in Scope Lock v2 SL-04, `20Jul26` doc §6.4 |
+| **Grace** | Accounts / Finance Manager | Final control point before Invoice/DN generation and before payment knock-off | YES — direct source for most of the VoC's newer signals | **Possibly, alongside David — not formally named** | Reviews MAIA-prepared amended SO after warehouse confirms pick list; submits amended SO; **explicitly requests** Invoice + DN generation (not automatic — SL-07); reviews and submits financial documents; uploads POD; confirms bank receipt; submits payment receipt; knocks off invoice | CONFIRMED — `20Jul26` doc §6.5, VoC Phase 0/2 (VOC-030 to 036) |
+| **Lai** (Ah Lai) | Warehouse Manager | Groups SOs into pick lists; confirms quantities; no defined backup (NS-10 gap) | YES | No | Every morning reviews available SOs, groups into Pick Lists (by route/driver/area/date); prints Pick List; assigns warehouse workers; reviews completed picking; confirms actual kg, boxes, kg/box, replacement SKU; uploads completed Pick List to MAIA | CONFIRMED — `20Jul26` doc §6.6; formerly "Warehouse picker, THIN 2nd-hand" in v1 — now named directly |
+| Warehouse workers (foreign workers) | Logistics / Warehouse | Physical picking/packing only | PARTIAL — described by Lai/David, not heard directly | No | Pick and pack per Pick List; record actual quantity/boxes/kg-per-box; flag SKU unavailability to Lai; **cannot** use MAIA directly — no convenient phone/system access (VOC-041) | THIN — still second-hand; access model open (NS-11) |
+| **CK** (3rd-party) | Driver / external agent | Not staff — has own SQL Agent code for 3 customers, commission-tracking only, excluded from normal sales-territory logic | Indirect — named in SQL data, not interviewed | No | Delivers goods on assigned route; obtains signature; returns signed POD to Accounts (Grace uploads — driver does **not** upload directly, per SL-06/NS-07 mechanism note) | CONFIRMED identity (SL-08); role-in-MAIA still **`NEEDS CLIENT INPUT`** — POD flow itself is BLOCKED (NS-07 conflict) |
+| Ms Tan-equivalent — SQL vendor | External | Integration dependency, not a MAIA user | — | N/A | Grants SQL API/integration access (DEP-1, still OPEN, live go-live blocker) | — |
+| Krystle, Applle (setup-era) | Admin / setup coordination | Non-operational, setup-phase only | YES | No | Training logistics, AWS/OTP setup handshake — not part of the live order-to-cash flow | Legacy from v1, retained for continuity only |
 
-**Roster (Role Permission CSV):** CJ Tan = Sales Manager; David = Admin (`admin@macrogroup.biz`); **10 Sales User rows are blank**; no Finance / Warehouse / Driver rows defined.
-- Transcript indicates **~8 users**: 3 sales (David named "three sales… me or Lee"), finance + account (2), warehouse (1 — the bottleneck).
-- **`NEEDS CLIENT INPUT`:** names/phones/emails for the 10 sales rows, the finance/account pair, and the warehouse user.
+**Checkpoint — headcount resolved.** v1 had 8 of 8 operational roles as `NEEDS CLIENT INPUT` except David/CJ. v2 closes 6 of those: Apple, Grace, Lai, Queenie, Ben are now named with full role descriptions; CK is identified as the driver-equivalent but his actual MAIA touchpoints remain open pending the NS-07 POD decision.
 
-**#1 gap — UAT signatory not named.** Forensic B4 flags authority ambiguity as HIGH risk. SOP M2/M8 require a named signatory. Most likely David; **must be confirmed in writing.**
+**#1 gap — UAT signatory still not formally named.** David remains the most likely signatory (per DEP-2), but no written confirmation exists. Grace is a plausible co-signatory given her operational centrality — raise both at sign-off.
 
 ---
 
 ## 2. Order-Intake Map
 
-| Aspect | Reality |
+| Aspect | Reality (v2) |
 |---|---|
-| Channel | **WhatsApp** — text + **voice notes**; forwarded customer messages; informal wording |
-| Number | **One** MAIA WhatsApp number (SL-06); authorised staff forward into it; no multi-inbox |
-| Language | Chinese-heavy; mixed English/Malay/Mandarin; item names often **Chinese ≠ SQL English** |
-| Who inputs | Sales / admin forward orders; MAIA extracts customer / item / qty / remarks |
-| Volume | ~700 orders/month (proposal); order cap 2,500/month |
-| **Must-NOT** | Voice-note / free-form orders **never auto-submit** — human review + confirm before any SO is created |
-
-Item-name ambiguity ("pork belly slight" → skin-on slice; Chinese name) is resolved by MAIA's item matching + learned mapping, or surfaced for manual selection (VOC-002 — Base MAIA; confirm-assumed).
+| Channel | **MAIA WhatsApp chat** — a dedicated MAIA number, distinct from the internal company WhatsApp group used today |
+| Number | **One** MAIA WhatsApp number (SL-06) — no multi-inbox |
+| Who forwards | The **salesperson** who owns the customer (Queenie/Ben/CJ) forwards the customer's order directly into the MAIA chat |
+| Who submits | **The same salesperson** reviews MAIA's draft SO and submits it themselves — **no office-admin relay step** (AS-04 superseded 2026-07-27; the earlier "query-only, admin enters" design from v1 is stale and should not be built) |
+| Language / ambiguity | Chinese-heavy, mixed English/Malay/Mandarin item names; MAIA's item-matching resolves or surfaces for manual selection (VOC-002, assumed Base MAIA) |
+| Units | Order may be entered as **box / pieces / carton / kilogram** — warehouse always confirms in kilograms, but separately captures kg-per-box and box count |
+| **Must-NOT** | An order draft is never auto-submitted — the salesperson must review and explicitly submit; MAIA must not push to SQL before that |
 
 ---
 
 ## 3. Document Flow
 
-| Document | Generated by | Trigger | SQL / ERP constraint |
+| Document | Generated by | Trigger | SQL constraint |
 |---|---|---|---|
-| **Sales Order (SO)** | Sales / admin (MAIA) | Confirmed order after weight | SQL master for customer/item; MAIA sits on top |
-| **Delivery Order / DN** | Sales / admin (MAIA) | SO confirmed | Generated from SO; qty = confirmed actual weight |
-| **Invoice** | Sales / admin (MAIA) | After DO | **Invoice qty ≤ DO qty**; no duplicate on submitted SO; running IDs not overridable |
-| **Credit Note** | Finance (MAIA) | Correction / return | CN generation locked; **numbering rule open (AS-03)** |
-| **Pro Forma Invoice** | Sales (MAIA) | Deposit / financier request | Exists in product (NS-04); ~30% deposit use case |
-| Payment receipt / entry | Finance (MAIA) | Payment matched | Knock-off pushed to SQL where integration allows |
+| **Sales Order (SO)** — draft | MAIA, from forwarded WhatsApp order | Salesperson forwards order | Not pushed to SQL until salesperson submits |
+| **Sales Order (SO)** — submitted | Salesperson (own customers) | Salesperson reviews/corrects, submits | Routes through SL-03 tiered price approval + SL-04 credit check before proceeding |
+| **Pick List** | Lai (Warehouse Manager), from grouped SOs | Every morning, SOs available for picking | Grouped by route/driver/area/date; carries customer name + SO notes (post-23Jul fix) |
+| **Sales Order — amended** | MAIA, from Lai's confirmed Pick List | Warehouse confirms actual kg / boxes / kg-per-box / replacement SKU | Grace reviews and submits — MAIA does not auto-submit the amendment |
+| **Delivery Note (DN) / Invoice** | MAIA, **only on Grace's explicit request** | Grace asks MAIA to generate, after submitting the amended SO | **Not automatic** on SO-amendment submission (SL-07) — this is a deliberate control point, not a lag; MAIA should flag Grace if a submitted amendment has no DN/Invoice request yet |
+| **Credit Note** | — | Return/correction | **NOT YET BUILT** (AS-03 — design finalized as SCN/CCN split, but flagged next-round priority per 16/17 Jul training, Gap #10). Do not treat as available. |
+| **Pro Forma Invoice** | Sales (MAIA) | Financier / deposit requirement (~30% deposit use case) | Exists in product (NS-04, resolved) |
+| **Payment receipt** | Grace (MAIA, draft) | Customer submits payment proof, Sales/Accounts uploads | Grace verifies bank receipt before submitting; knocks off Invoice, updates outstanding + available credit |
 
-**Boundary:** MAIA is the operational assistant layer; **SQL / AutoCount stays master** for customer, item, stock, and payment records. MAIA must not overwrite SQL as master.
+**Stock-timing rule (confirmed 2026-07-27, SL-07):** stock in SQL only moves at **Invoice or SCN issuance** — not at SO submission, DO generation, or pick-list confirmation. MAIA must not show a stock deduction before the Invoice actually posts.
+
+**Boundary:** MAIA is the operational layer; **SQL stays master** for customer, item, stock, and payment records.
 
 ---
 
 ## 4. Step-by-Step Process Map (the spine)
 
-Confirmed Phase-1 order-to-cash flow (VoC E2E + AS-01 resolution + 8 Jun recap):
+Confirmed end-to-end flow (Scope Lock v2 + `20Jul26` Before/After doc, superseding v1's flow):
 
-1. Customer places order via **WhatsApp** → authorised staff forward into the one MAIA number. *[Sales/admin · WhatsApp]*
-2. MAIA extracts customer / item / qty / remarks → **draft SO**. *[MAIA]*
-3. Sales reviews + confirms the draft; **credit check** runs (SL-04). *[Sales; David approves if over limit]*
-4. Sales creates the draft SO internally and **runs its own external paper pick list**. *[Sales → Warehouse]*
-5. Warehouse **picks, confirms actual weight** on the paper pick list. *[Warehouse]*
-6. **Confirmed pick list uploaded** to MAIA → SO confirmed at actual weight. *[Sales/admin · web/WhatsApp]*
-7. MAIA generates **DO + Invoice at confirmed weight**; pushes to SQL. *[MAIA/admin]*
-8. Goods delivered; driver collects **signed DO** (photo). *[Driver]* — POD tracking parked (NS-07).
-9. Customer sends **payment slip** → Finance reconciles (bank statement + slip + invoice) in MAIA → **knock off in SQL**. *[Finance]*
-10. David **monitors** via dashboard; controls pricing floor + credit overrides. *[Management]*
+1. Customer sends order to salesperson (Queenie, Ben, or CJ). *[Customer → Sales]*
+2. Salesperson **forwards the order to the MAIA WhatsApp chat**. *[Sales · WhatsApp]*
+3. MAIA interprets the message and prepares a **draft Sales Order** (customer, product, SKU, qty, unit, price, notes). *[MAIA]*
+4. Salesperson **reviews, corrects, and submits** the SO themselves — no admin relay. *[Sales]*
+5. MAIA checks price against the **3-tier ladder**: at/above approved price → proceeds automatically; below customer/default but above minimum → **CJ approves**; below minimum → **David approves**. *[MAIA → CJ/David as needed]*
+6. MAIA checks **credit**: outstanding balance, credit limit, overdue status, "previous invoice cleared" rule. Blocked orders route to David for override. *[MAIA → David]*
+7. Every morning, **Lai** reviews available SOs and groups them into **Pick Lists** by route/driver/area/date. *[Lai]*
+8. Warehouse workers **pick and pack**, recording actual kg, box count, kg-per-box, and any replacement SKU (SKU substitution flow — AS-10). *[Warehouse workers → Lai]*
+9. Lai checks the completed work, photographs the completed Pick List, and **uploads it to MAIA**. *[Lai]*
+10. MAIA prepares the **amended Sales Order** using the warehouse-confirmed data — Grace does not need to retype anything. *[MAIA]*
+11. **Grace reviews** the amendment (original vs final SKU/qty/boxes/kg-per-box/price/credit status) and **submits** it. *[Grace]*
+12. Grace **explicitly asks MAIA to generate** the Invoice and Delivery Note — this is not automatic. *[Grace → MAIA]*
+13. Warehouse prints the DN; **CK** (driver) delivers per the assigned route. *[Lai/Warehouse → CK]*
+14. Customer signs; CK returns the signed document to **Accounts**, who uploads the POD to MAIA (driver does not upload directly — mechanism confirmed 2026-07-27, but the feature itself remains **BLOCKED** pending David's NS-07 decision). *[CK → Grace/Accounts]*
+15. Customer submits payment proof → Sales/Accounts uploads → MAIA drafts a payment receipt → **Grace verifies the bank** → Grace submits → **Invoice knocked off**, outstanding/available-credit updated. *[Grace]*
+16. **David monitors** the full pipeline via dashboard (now filterable per-salesperson, NS-14) and handles exceptions/overrides. *[David]*
 
 ### Per-role swimlane
 
 | Role | Across the flow |
 |---|---|
-| **Sales** (CJ + reps) | Steps 2–4, 6 — review/confirm order, SO, customer-specific pricing, quotation (GAP-2), own customers only (SL-05) |
-| **Finance / Account** | Step 9 — AR matching, CN, cash-from-driver record (GAP-3), knock-off; cannot override credit |
-| **Logistics / Warehouse + Driver** | Steps 5–8 — pick + confirm weight + upload; driver POD (parked); picking accountability (GAP-1) unaddressed |
-| **Management** (David) | Steps 3, 10 — credit-override approval, pricing control, catalogue, monitoring |
+| **Queenie / Ben (Sales Reps)** | Steps 1–4 — forward order, review/correct/submit SO, own-customer-only visibility (SL-05); may upload customer payment proof |
+| **CJ (Sales Manager)** | Step 5 (mid-tier price approval), oversight of sales team, sets credit limit at customer creation (SL-08) |
+| **David (Owner)** | Steps 5–6 (top-tier price approval, credit override), step 16 (monitoring, exceptions) — no longer the order-consolidation bottleneck |
+| **Lai (Warehouse Manager)** | Steps 7–9 — groups SOs, prints/distributes Pick Lists, confirms quantities/SKU replacements, uploads. No defined backup (NS-10). |
+| **Warehouse workers** | Step 8 — physical pick/pack, cannot access MAIA directly (NS-11 open) |
+| **Apple (Finance)** | Sets/maintains credit limits and terms (not in the live order flow — a config-time role) |
+| **Grace (Accounts/Finance Manager)** | Steps 11–12, 14–15 — the final control point for SO amendment, document generation request, POD upload, payment verification and knock-off |
+| **CK (Driver, 3rd-party)** | Step 13–14 — delivers, obtains signature, returns POD to Accounts (does not touch MAIA himself under the current mechanism note) |
 
 ---
 
@@ -94,31 +112,37 @@ Confirmed Phase-1 order-to-cash flow (VoC E2E + AS-01 resolution + 8 Jun recap):
 
 | Role | Can create | Can approve | Can view | Cannot do |
 |---|---|---|---|---|
-| **Sales** | SO, quotation, customer order | — | **Own customers only** | See other reps' customers/pricing/outstanding; approve over-limit; edit master |
-| **Finance / Account** | CN, payment entry, knock-off | Payment match (self-confirm) | AR / outstanding | Override credit limit (David only); auto-post unclear payer |
-| **Warehouse** | Pick-list upload / weight confirm | — | Own tasks | Edit customer master, pricing, or credit terms |
-| **Management (David / Admin)** | All | **Credit-limit override**, pricing floor | **All** | (governs the rest) |
-| **All** | — | — | — | Overwrite SQL as master; auto-blast WhatsApp; push draft to SQL |
+| **Sales Rep (Queenie/Ben)** | Leads, prospects, draft/submitted SO, convert lead→customer | — | **Own leads/prospects/customers/SOs only** | Create a customer directly from a raw record; view another rep's customers; edit credit terms/limits; bypass or self-approve pricing exceptions |
+| **CJ (Sales Manager)** | Same as reps, plus sets credit limit at customer creation | SO price approval (below customer/default, above minimum) | All sales reps' leads/prospects/customers/SOs, pending approvals | Approve a price below the minimum (David-only) |
+| **David (Owner)** | All | SO price approval (below minimum), credit-limit override | **All** — leads, prospects, customers, SOs, approvals, warehouse/delivery/financial status | (governs the rest) |
+| **Apple (Finance)** | Credit limits, credit terms, credit-control settings | — | Finance-related customer configuration | Blanket Admin parity with David — role is Finance-specific only |
+| **Grace (Accounts/Finance Manager)** | Amended-SO submission, Invoice/DN generation requests, payment receipts | Invoice knock-off | Warehouse-confirmed quantities, SO amendments, AR / outstanding | Auto-generate Invoice/DN without explicit request; auto-post an unclear payer |
+| **Lai (Warehouse Manager)** | Pick Lists (grouping), quantity/kg-per-box/replacement-SKU confirmation | — | SOs needing picking, product info for picking, customer names, SO notes, delivery info | View product cost/margin, sensitive customer financial data, accounting records unrelated to warehouse work |
+| **Warehouse workers** | — (execute only) | — | Customer name, SKU, product description, sales notes, ordered qty, packing instructions, route grouping | View cost/margin/credit/financial/pricing-approval data |
+| **CK (Driver)** | — | — | Delivery route, customer address/contact, DN, delivery instructions | View cost, credit limit, pricing approvals, internal financial data |
 
-Grounded in Scope Lock SL-04 (credit approval), SL-05 (sales isolation), and the Role Permission CSV. **Matrix values not in the CSV = `NEEDS CLIENT INPUT`** (finance + warehouse rows undefined).
+Grounded in Scope Lock SL-03/SL-04/SL-05/SL-08 and the `20Jul26` doc's per-person permission tables. **Full matrix confidence is MED** — Scope Lock v2 itself notes the access matrix is still pending a full training re-walk with all managers present.
 
 ---
 
 ## 6. Gaps & Sign-off Agenda
 
-Close these at the workflow/UAT sign-off session (Forensic A4 recommends: David + CJ + Finance + warehouse user):
+Six real gaps remain — down from v1's near-total identity gap, but these need David/Grace directly before Gate-2:
 
-1. **Name the UAT signatory** (David or delegate?) — #1 gap, blocks M8.
-2. **Name + contact** the warehouse picker and the driver.
-3. **Complete the roster** — the 10 blank Sales User rows, the finance/account pair, warehouse user (name/phone/email).
-4. **Confirm the permission matrix** against the Role Permission CSV (finance + warehouse rows undefined).
-5. **Confirm David = credit controller/approver** and the approval threshold.
-6. **Pick-list upload format** — Excel / PDF / photo? (ties to UAT UP-16 + AS-01).
-7. **The 4 open GAPs** — picking accountability, quotation, cash-from-driver, batch QC — in or deferred?
+1. **UAT signatory** — David is the likely signatory (DEP-2), still not formally confirmed in writing; consider whether Grace co-signs given her operational centrality.
+2. **NS-07 POD — BLOCKED, client conflict.** Grace explicitly rejects photo-upload-to-Maya. The mechanism note (Accounts uploads, not driver) only refines a design she has already rejected in principle. Needs David's explicit decision: build a lighter version, or drop "mark as delivered" entirely.
+3. **NS-10 backup coverage** — no process exists for when Lai (warehouse) or Grace/Finance is absent. Real operational gap, not a config question — David must assign backups.
+4. **NS-11 warehouse Maya access model** — individual logins per picker vs one shared device for warehouse workers (who cannot conveniently use phones — VOC-041). Affects how step 8/9 actually runs.
+5. **AS-10 SKU-replacement approval routing** — who approves a mid-pick SKU substitution (Sales, CJ, David, Grace, or the customer)? Not yet defined; recommend resolving before AS-01/pick-list UAT.
+6. **CK's actual MAIA touchpoint** — identified as the driver by SQL Agent code, but with POD blocked (gap #2), it's unclear whether CK will ever interact with MAIA directly, or remain entirely outside it.
+
+Closed since v1: sales-coordinator identity (Queenie/Ben/CJ), finance identity (Apple), warehouse identity (Lai), account identity (Grace) — all now named with full role/permission detail.
 
 ---
 
 ## See Also
-- [[Macrofood — UAT Checklist]] — the other half of Lens 3
-- [[Macrofood — VoC Extraction]] · [[Customer Narrative - Macrofood]]
-- Scope Lock v1 (Lark) · Forensic Account Dossier (Lark)
+- [[Macrofood — Scope Lock v2]] — spine, rerun 2026-07-27
+- [[Macrofood — VoC Extraction]] — VOC-037 through VOC-060 (17 Jul training) ground most of this rerun
+- [[Macrofood — UAT Checklist]] — the other half of Lens 3 (not yet rerun against Scope Lock v2 — check for drift)
+- [[Macrofood — Lens Alignment Report]] — stale (2026-07-12, predates v2); recommend a fresh `lens-align` pass now that this map has moved
+- `20Jul26 - Macrofrozen Before vs After MAIA` (Lark) · `23Jul26 - Macro Frozen Enhancement` (Lark)
