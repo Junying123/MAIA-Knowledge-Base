@@ -1,9 +1,11 @@
 ---
 owner: Gareth
-status: draft
-last_reviewed: 2026-07-14 (Grace call reconciled)
+status: archived
+last_reviewed: 2026-07-27
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/F5yKw59yui16UbkQjGqlha8egif
 ---
+
+> **Archived 2026-07-27 — superseded by `Macrofood — Scope Lock v2.md`.**
 
 # 24 June 26 - Macro Frozen — Scope Lock v1
 
@@ -26,6 +28,8 @@ Macro Frozen — Scope Lock v1
 **Updated 2026-07-14 (later same day):** New AS-08 / NS-12 added — **3 confirmed customers issue formal customer POs** instead of ordering informally via WhatsApp. Low-volume use case: upload PO → match customer + item → submit as confirmed SO (CPO). Mechanism (format, OCR-vs-reference-only, match logic) not yet detailed with David.
 
 **Updated 2026-07-14 (later still):** New AS-09 / NS-13 added — client confirmed a requirement for MAIA to **track and bulk-update item cost/buying price**, not just selling price. SL-03's existing template flow was scoped around selling price only; cost price is a separate SQL field with its own fluctuation pattern. Mechanism (shared vs separate template, who's authorized, downstream triggers) not yet detailed with David.
+
+**Superseded 2026-07-27 by `Macrofood — Scope Lock v2.md`** — see that file for the current version. This v1 file is kept as historical record, not maintained further.
 
 
 

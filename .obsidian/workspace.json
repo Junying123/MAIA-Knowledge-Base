@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
+                "file": "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Fixguru — End-user & Process Map"
+              "title": "Maya Training — Identified Gaps Report"
             }
           },
           {
@@ -80,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -138,8 +138,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -272,10 +271,6 @@
                     "name": "zsh 193"
                   },
                   {
-                    "id": 194,
-                    "name": "zsh 194"
-                  },
-                  {
                     "id": 195,
                     "name": "zsh 195"
                   },
@@ -284,7 +279,7 @@
                     "name": "zsh 196"
                   }
                 ],
-                "activeId": 189,
+                "activeId": 178,
                 "nextId": 197
               },
               "icon": "terminal",
@@ -338,6 +333,9 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen Scope Lock Update Notes.md",
+    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
     "Granola/Transcripts/2026-07-24/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-24",
     "Granola/Transcripts/2026-07-23/Client implementation review — pricing, delivery, and UAT gaps-transcript.md",
@@ -347,7 +345,6 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript 2.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Introductory Meeting (2026-04-20).md",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
     "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — VoC Extraction.md",
     "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — Scope Lock.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
@@ -368,8 +365,6 @@
     "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
     "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
     "03 - Clients/Active Cooking Clients/2026-07-21-scc-sqlquery-access-request-email.md",
-    "2026-07-21-scc-sqlquery-access-request-email.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.13503.0d1656b8b77a",
