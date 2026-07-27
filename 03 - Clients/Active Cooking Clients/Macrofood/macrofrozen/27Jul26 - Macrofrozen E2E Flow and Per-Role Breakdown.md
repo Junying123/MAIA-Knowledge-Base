@@ -128,7 +128,7 @@ Customer sends order to Salesperson (Queenie / Ben / CJ).
 **Lai (Warehouse Manager):** checks what needs picking today across different Sales Orders.
 
 - **Pick List can have orders/items added to it.** Macrofrozen currently picks based on order (not consolidated by item across orders).
-- **Lai / Grace / David consolidate customer SOs into one Pick List** together.
+- **Lai consolidates customer SOs into one Pick List** himself.
 - The Pick List shows the **total qty from each SO** as a reference.
 - Lai checks that total and updates the **Picked Qty column** against it.
 - Lai uploads/updates the Pick List (PDF or in-app UI) back into MAIA.
@@ -154,7 +154,7 @@ Customer sends order to Salesperson (Queenie / Ben / CJ).
 
 ### 3b. Pick List → DN (Approach 2 — documented, deferred to a future session)
 
-Same start as Approach 1: Lai checks the Pick List across SOs, consolidates customer SOs into one Pick List (with Grace/David), checks the total qty from each SO, updates the Picked Qty column, and uploads the Pick List back into MAIA.
+Same start as Approach 1: Lai checks the Pick List across SOs, consolidates customer SOs into one Pick List himself, checks the total qty from each SO, updates the Picked Qty column, and uploads the Pick List back into MAIA.
 
 **Where it diverges from Approach 1:**
 
@@ -208,14 +208,22 @@ Same start as Approach 1/2: Pick List completed, Grace is notified.
 ##### Responsibilities
 - Oversees the full operation.
 - Reviews major exceptions.
-- Approves prices below the minimum price.
+- Approves prices below the minimum price — bottom tier of the 3-tier SO price-approval ladder (auto → CJ → David).
+- Approves credit-limit overrides at **both gate points** — SO submission and DN stage — since picked/amended qty can shift real exposure by the time DN is reached.
 - Monitors sales, warehouse, delivery, and financial activity.
+- **Only David can access cost/buying price** (AS-09) — no other role, including CJ and Sales, has visibility into item cost/buying price.
+- Views the sales dashboard with a **per-salesperson filter** (NS-14, resolved 2026-07-23) — same filter access as CJ.
+- Receives the overdue-payment escalation alert (NS-06) alongside Finance, the responsible salesperson, and the Sales Manager.
 
 ##### Permissions — can view
-All leads, all prospects, all customers, all Sales Orders, all approvals, warehouse progress, delivery status, financial status.
+- All leads, all prospects, all customers, all Sales Orders, all approvals.
+- Warehouse progress, delivery status, financial status.
+- Item cost/buying price — David only.
+- Sales dashboard filtered by salesperson.
 
 ##### Approvals — David approves
-- Selling prices below the minimum price.
+- Selling prices below the minimum price (SO stage).
+- Credit-limit/override requests blocked at SO or DN stage.
 - Exceptional commercial decisions.
 - High-risk overrides, where required.
 
@@ -236,17 +244,29 @@ All leads, all prospects, all customers, all Sales Orders, all approvals, wareho
 
 ##### Responsibilities
 - Oversees the sales team.
-- Reviews pricing exceptions.
+- Reviews pricing exceptions — middle tier of the 3-tier SO price-approval ladder (auto → **CJ** → David).
 - Monitors customer and Sales Order activity.
-- Supports salespeople where approval is needed.
+- Supports salespeople where approval is needed — approves (submits) or rejects the SO at this tier.
+- Views the sales dashboard with a **per-salesperson filter** (NS-14, resolved 2026-07-23) — same filter access as David.
+- Receives the overdue-payment escalation alert (NS-06) for his own two reps' accounts, alongside Finance, the responsible salesperson, and David.
+- **Also has the same access as a Sales Rep** (2026-07-27) — can run his own customer/order workflow on top of his manager-level duties, not manager-view only.
 
 ##### Permissions — can view
-All salespeople's leads, all prospects, all customers, all Sales Orders, pending sales approvals — not just his own.
+- All salespeople's leads, all prospects, all customers, all Sales Orders, pending sales approvals — not just his own.
+- Sales dashboard filtered by salesperson.
+
+##### Permissions — can do (same as a Sales Rep, 2026-07-27)
+- Create leads, create prospects, convert leads/prospects into customers.
+- Forward orders to the MAIA WhatsApp chat, review MAIA-generated Sales Order drafts, submit his own Sales Orders.
+- View his own customers' credit status, upload payment proof.
+
+##### Cannot
+- View item cost/buying price — David-only.
 
 ##### Approvals — CJ approves
-- Prices below the default selling price.
-- Prices below the customer-specific price.
-- Prices that remain above the minimum price.
+- Prices below the default selling price, above the minimum — at **SO submission**.
+- Prices below the customer-specific price, above the minimum.
+- Cannot approve below the minimum price — that tier is David's only.
 
 ##### Benefits
 - Clear sales-team visibility.
@@ -268,11 +288,15 @@ All salespeople's leads, all prospects, all customers, all Sales Orders, pending
 - Forwards customer orders to the MAIA WhatsApp chat.
 - Reviews MAIA's interpretation.
 - Corrects any incorrectly interpreted information.
-- Submits Sales Orders through MAIA.
+- Submits Sales Orders through MAIA themselves — no admin relay.
+- **Sets the correct order-unit case at intake (2026-07-27):**
+  - **Kg orders:** SO qty = the ordered weight (e.g. 20kg); some variance against picked weight is normal.
+  - **Carton orders:** records the carton count in the SO's **Additional Notes** (e.g. "2 cartons") and sets the SO qty field to a **1kg placeholder** — the real qty is confirmed later from the Pick List.
 - Maintains leads and prospects.
 - Converts leads or prospects into customers.
 - Uploads customer payment proof where applicable.
 - Follows up on inactive or recurring customers.
+- Receives the overdue-payment escalation alert (NS-06) for their own customers, alongside Finance, CJ, and David.
 
 ##### Permissions — can view/do (own records only)
 - Own leads, own prospects, own customers, own Sales Orders.
@@ -280,9 +304,10 @@ All salespeople's leads, all prospects, all customers, all Sales Orders, pending
 - Convert leads or prospects into customers.
 - Forward orders to the MAIA WhatsApp chat.
 - Review MAIA-generated Sales Order drafts.
-- Submit Sales Orders.
+- Submit Sales Orders themselves — subject to the SO price-approval ladder (auto/CJ/David) and the SO-stage credit check.
 - View own customers' credit status.
 - Upload payment proof.
+- **Cannot** view item cost/buying price — David-only.
 
 ##### Cannot
 - Create a customer directly from a raw record.
@@ -311,7 +336,7 @@ All salespeople's leads, all prospects, all customers, all Sales Orders, pending
 
 ---
 
-### Apple — Finance
+### Apple — Finance Manager
 
 ##### Responsibilities
 - Sets customer credit limits.
@@ -320,7 +345,10 @@ All salespeople's leads, all prospects, all customers, all Sales Orders, pending
 - Ensures customer financial settings are accurate.
 
 ##### Permissions — Apple can manage
-Credit limits, credit terms, credit-control settings, finance-related customer configuration.
+- Credit limits.
+- Credit terms.
+- Credit-control settings.
+- Finance-related customer configuration.
 
 ##### Benefits
 - Central control over customer credit exposure.
@@ -335,14 +363,16 @@ Credit limits, credit terms, credit-control settings, finance-related customer c
 
 ---
 
-### Grace — Accounts / Finance Manager
+### Grace — Accounts / Finance User
 
 ##### Responsibilities
-- Receives completed Pick-List notifications.
-- Reviews the Sales Order amendment prepared by MAIA.
+- Receives notification once Lai marks the Pick List **Completed**.
+- **Approach 1 (adopted):** reviews the picked qty for every DN line item — the breakdown now happens directly inside the DN (propagated from the Pick List), replacing the old Excel Packing List double-entry.
+- **Approach 2 / 2b / 3 (deferred, documented only):** converts the Pick List into the DN herself; exports the linked Packing List (whole-sheet in Approach 2, single-customer in 2b) and cross-checks it against the DN line items before proceeding; under Approach 3, first goes back to amend the linked SO to the picked qty and creates the Invoice from that amended SO, then separately converts the Pick List to DN.
+- Reviews the Sales Order amendment prepared by MAIA (where applicable).
 - Confirms the final quantity and SKU.
-- Submits the amended Sales Order.
-- Asks MAIA to generate the Invoice and Delivery Note.
+- Submits the amended Sales Order / DN.
+- Explicitly asks MAIA to generate the Invoice and Delivery Note — not automatic.
 - Reviews the generated Invoice and Delivery Note.
 - Submits or confirms the financial documents.
 - Uploads Proof of Delivery.
@@ -350,12 +380,29 @@ Credit limits, credit terms, credit-control settings, finance-related customer c
 - Confirms receipt of money in the bank.
 - Submits payment receipts.
 - Knocks off Invoices.
+- **Handles Customer PO intake (AS-08)** — for the 3 confirmed customers who issue a formal PO instead of an informal WhatsApp order, Grace uploads/matches the PO against customer + item records and **converts the PO into a Sales Order**.
+- Receives the overdue-payment escalation alert (NS-06) alongside the responsible salesperson, CJ, and David.
 
 ##### Permissions — Grace can
-Review warehouse-confirmed quantities, review Sales Order amendments, submit amended Sales Orders, request MAIA to generate an Invoice, request MAIA to generate a Delivery Note, review and submit financial documents, confirm payment receipts, perform Invoice knock-off.
+- Review warehouse-confirmed quantities and DN line items.
+- Review Sales Order amendments; amend a linked SO to match picked qty (Approach 3).
+- Submit amended Sales Orders.
+- Convert a completed Pick List into a DN; export a linked Packing List.
+- Upload and match a Customer PO and convert it to an SO (AS-08).
+- Request MAIA to generate an Invoice; request MAIA to generate a Delivery Note.
+- Review and submit financial documents.
+- Confirm payment receipts; perform Invoice knock-off.
+
+##### Cannot
+- View item cost/buying price — David-only.
 
 ##### Explicit document-generation control
-Submitting the amended Sales Order does **not** automatically generate the Invoice or Delivery Note — Grace must separately instruct MAIA to generate them: she submits the amended SO, then asks MAIA to generate the Invoice and DN, MAIA generates them, and she reviews and submits.
+- Submitting the amended Sales Order does **not** automatically generate the Invoice or Delivery Note.
+- Grace must separately instruct MAIA to generate them.
+- She submits the amended SO.
+- She asks MAIA to generate the Invoice and DN.
+- MAIA generates them.
+- She reviews and submits.
 
 ##### Benefits
 - No need to manually re-enter warehouse quantities.
@@ -378,25 +425,31 @@ Submitting the amended Sales Order does **not** automatically generate the Invoi
 ### Lai — Warehouse Manager
 
 ##### Responsibilities
-- Reviews Sales Orders each morning.
-- Groups Sales Orders into Pick Lists.
-- Organises Pick Lists by route, area, driver, or date.
-- Prints Pick Lists.
-- Assigns work to warehouse workers.
-- Reviews completed picking.
-- Confirms actual quantities.
-- Records kilograms per box.
-- Records replacement SKUs.
-- Uploads completed Pick Lists to MAIA.
+- Checks what needs picking today across different Sales Orders.
+- Adds orders/items to the Pick List — Macrofrozen currently picks based on order, not consolidated by item.
+- Consolidates customer SOs into one Pick List himself.
+- Checks the total qty shown from each SO and updates the **Picked Qty** column against it.
+- Records kilograms per box, box count, and any replacement SKU (flags substitutions to Grace/David where approval is unclear).
+- Uploads/updates the Pick List (PDF or in-app UI) back into MAIA.
+- Marks the Pick List **Completed** once all Picked Qty values are in.
+- **Approach 1 (adopted):** converts the completed Pick List into a **draft DN** himself — the total picked qty propagates in as one line, then gets broken into DN line items directly (e.g. 100kg → 20kg × 5) instead of a separate Excel Packing List.
+- **Approach 2 / 2b / 3 (deferred, documented only):** still maintains the Packing List in Excel — breaks down picked qty per customer/product, uploads it as a CSV attachment linked to the Pick List (in 2b, one Pick List and one Packing List per customer); does **not** convert to DN himself under these approaches — that becomes Grace's step.
 
 ##### Permissions — Lai can view
-Sales Orders, product information required for picking, Pick Lists, customer names, Sales Order notes, delivery information.
+- Sales Orders, product information required for picking.
+- Pick Lists, customer names, Sales Order notes, delivery information.
 
 ##### Permissions — Lai can
-Group Sales Orders, generate Pick Lists, confirm quantities, record kilograms per box, record replacement SKUs, upload completed Pick Lists.
+- Group/consolidate Sales Orders into one Pick List, add orders/items to a Pick List.
+- Generate Pick Lists, update the Picked Qty column, confirm quantities.
+- Record kilograms per box, record replacement SKUs.
+- Mark a Pick List Completed, upload completed Pick Lists.
+- Convert a completed Pick List to a draft DN (Approach 1 only).
 
 ##### Cannot view
-Product cost price, product margin, sensitive customer financial information, accounting records unrelated to warehouse work.
+- Product cost price, product margin.
+- Sensitive customer financial information.
+- Accounting records unrelated to warehouse work.
 
 ##### Benefits
 - Better visibility of all orders requiring picking.
@@ -426,10 +479,12 @@ Product cost price, product margin, sensitive customer financial information, ac
 - Follow customer-specific preparation notes.
 
 ##### Permissions — may see
-Customer name, SKU, product description, sales notes, ordered quantity, packing instructions, route or delivery grouping.
+- Customer name, SKU, product description, sales notes.
+- Ordered quantity, packing instructions, route or delivery grouping.
 
 ##### Permissions — should not see
-Product cost, margin, customer credit information, sensitive financial data, internal pricing approvals.
+- Product cost, margin.
+- Customer credit information, sensitive financial data, internal pricing approvals.
 
 ##### Benefits
 - Clearer picking instructions.
@@ -455,10 +510,12 @@ Product cost, margin, customer credit information, sensitive financial data, int
 - Returns or sends the signed Proof of Delivery.
 
 ##### Permissions — should only receive
-Delivery route, customer address, customer contact, Delivery Note, delivery instructions, goods assigned for delivery.
+- Delivery route, customer address, customer contact.
+- Delivery Note, delivery instructions, goods assigned for delivery.
 
 ##### Permissions — should not see
-Product cost, customer credit limit, internal pricing approvals, internal financial information.
+- Product cost, customer credit limit.
+- Internal pricing approvals, internal financial information.
 
 ##### Benefits
 - Clearer route assignment.
