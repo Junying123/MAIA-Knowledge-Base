@@ -7,7 +7,31 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/TlqRdfxCPou1nJxaiG4lKgyTgkf
 
 # E2E Flow - Macrofrozen
 
-## E2E Flow: Order Intake → Invoice
+## Before MAIA — Current (As-Is) Flow
+
+- Customer sends an order to the salesperson.
+- Salesperson forwards the order into the **company WhatsApp group** — orders from different salespeople/customers mix together in one thread.
+- **David** reads the group, manually consolidates all the orders himself.
+- David prepares and prints one or more **Picking Lists** — grouped by delivery route, driver, area, schedule, or warehouse efficiency; one Picking List can span multiple customers, and one customer can span multiple orders.
+- Warehouse picks the physical stock; actual picked quantity may differ from ordered quantity; workers write the actual picked qty **by hand on the paper** Picking List.
+- The Warehouse Manager checks the completed picking work — the annotated paper list becomes the operational source of truth.
+- **Grace** manually transfers the handwritten final quantities into the accounting system: reviews the paper list against the original order, identifies quantity/SKU differences, keys the final quantity in by hand, creates the **Delivery Note**, then creates the **Invoice** — checking both match what the warehouse actually picked.
+- Driver delivers the goods; customer signs the Delivery Order/Note; driver returns or sends back the signed document as **Proof of Delivery**; Accounts files it as evidence delivery happened.
+- **Credit control today:** a customer's previous invoice must be cleared before they can place a new order; Grace/Finance checks manually whether payment has cleared; credit limit is generally set off the customer's average order value (e.g. average order RM5,000 → indicative limit RM5,000).
+
+##### Problems this creates
+- **Heavy dependence on David** — reads every order, interprets messages, consolidates, groups by route, prepares every Picking List, handles all exceptions. If he's unavailable, the whole order flow slows or stops.
+- **Heavy dependence on Grace** — the sole person reconciling handwritten warehouse changes into the accounting system and generating documents. If she's busy/unavailable, documents and delivery stall.
+- **Orders are unstructured** — informal WhatsApp language risks wrong product, wrong quantity, wrong unit, missed special instructions, duplicate orders, orders overlooked in the group.
+- **Limited traceability** — hard to tell who submitted the order, who changed the quantity and why, who approved a price, who picked a replacement SKU, or whether payment was actually verified; the trail is scattered across WhatsApp, paper, handwriting, the accounting system, and physical signed documents.
+- **Manual quantity amendments** — every handwritten pick-list change has to be manually re-typed by Grace, risking wrong Delivery Note/Invoice quantities or billing the ordered amount instead of what was actually delivered.
+- **Duplicate data entry** — the same order information gets handled four times (salesperson → David consolidates → warehouse writes actual qty → Grace re-types it), each pass adding time and error risk.
+- **Limited role separation** — day-to-day coordination relies on personal trust, not system permissions; no clear system control over who can see customer records, approve price changes, edit credit terms/limits, see product cost, amend Sales Orders, or submit financial documents.
+- **Credit control is strict but manual** — sales may not know a customer is blocked until they ask; a customer may have already paid but the payment isn't verified yet; new orders can be delayed waiting on Grace/Finance; exceptions get handled inconsistently.
+
+---
+
+## After MAIA — E2E Flow: Order Intake → Invoice
 
 ### 1. Order Intake & Sales Order
 
@@ -18,6 +42,23 @@ Customer sends order to Salesperson (Queenie / Ben / CJ).
 **MAIA:** interprets the message, prepares a draft Sales Order (customer, product, SKU, qty, unit, price, notes).
 
 **Salesperson:** reviews, corrects, and submits the SO themselves — no admin relay.
+
+##### Two order-unit cases (2026-07-27)
+
+**Case 1 — ordered in kg**
+- Customer orders a weight, e.g. **20kg**.
+- Some variance against actual picked weight is expected and normal, e.g. picked **19.71kg**.
+- SO qty = the ordered figure (20kg).
+- Final billed qty = whatever the pick list confirms (19.71kg).
+
+**Case 2 — ordered in cartons**
+- Customer orders by carton, not by weight, e.g. **2 cartons**.
+- No meaningful kg figure exists yet at this stage.
+- Real total weight only appears once the pick list confirms each carton's actual weight, e.g. **10.44kg + 11.82kg = 22.26kg total**.
+- At order intake, the salesperson:
+  - Records the carton count in the SO's **Additional Notes** (e.g. "2 cartons").
+  - Sets the SO **qty field to a placeholder of 1kg**.
+- The real qty gets confirmed later from the pick list — not guessed at intake.
 
 ##### Check — Price (3-tier)
 - At/above approved price → auto-proceed.
