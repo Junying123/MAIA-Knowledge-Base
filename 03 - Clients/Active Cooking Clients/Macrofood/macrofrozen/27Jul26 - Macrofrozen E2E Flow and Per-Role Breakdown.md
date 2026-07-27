@@ -116,6 +116,10 @@ Customer sends order to Salesperson (Queenie / Ben / CJ).
 ##### Check — Credit
 - Outstanding balance / credit limit / overdue / "previous invoice cleared."
 - Order blocked if any check fails → approve: **David** (override).
+- **Gate points (2026-07-27):** the credit check runs at **SO** and again at **DN** — not at Invoice.
+  - At SO, it's the earliest point to catch an over-limit order, before any picking effort is spent.
+  - At DN, it's re-checked because the picked/amended qty can change the actual billed exposure from what the SO originally showed.
+  - Not Invoice-only — by Invoice time the DN already exists and goods have already physically left (DN issues alongside dispatch); blocking at Invoice only stops the paperwork, not the goods already with the customer. Checking only at Invoice would also leave the whole SO→DN window unchecked, since Grace only generates the Invoice on her own explicit request and that can happen well after the DN. SO and DN are the two points where a block still actually stops something — picking effort and dispatch — which is why the check lives there.
 
 > **Decision (2026-07-27):** two approaches were put to the client for replacing the current Excel Packing List double-entry (see Before-MAIA flow above). **Approach 1 is adopted now** — Pick List → DN line-item breakdown, described below. **Approach 2 is deferred to a future session** (not yet defined/scheduled).
 
@@ -171,7 +175,18 @@ The Packing List spans multiple customers, orders, and products on one sheet —
 - She **attaches that screenshot to each corresponding DN** — one screenshot per customer's DN, not the whole Packing List dumped on every DN.
 - This gives each DN its own visual proof of the picked breakdown that produced it, without needing the DN line-item entry itself to reference the full multi-customer sheet.
 
-**Why this is deferred, not adopted:** the Excel Packing List and its double-entry are still in the loop — Lai still maintains it, and Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does). This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go. the Excel Packing List and its double-entry are still in the loop — Lai still maintains it, and Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does). This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go.
+**Why this is deferred, not adopted:** the Excel Packing List and its double-entry are still in the loop — Lai still maintains it, and Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does). This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go.
+
+### 3c. Pick List → SO amendment → Invoice, then Pick List → DN (Approach 3 — documented, deferred, most tedious)
+
+Same start as Approach 1/2: Pick List completed, Grace is notified.
+
+- **Grace checks the variance** between ordered qty and picked qty on the Pick List.
+- She goes **back to the Sales Order(s) linked to that Pick List** and **amends the SO qty** to match the picked qty.
+- After the amendment, she **creates the Invoice directly from the amended SO** — a separate path from the DN.
+- She then goes **back to the Pick List** and **converts it to a DN** — from this point on, it's the **same as Approach 2**: Excel Packing List, CSV attachment, Grace exports and manually keys DN lines, cross-checks, screenshot-per-customer sub-workaround if used.
+
+**Why this is deferred, not adopted:** this is the most tedious of the three — it duplicates work across two separate documents (Invoice built from the amended SO, DN built separately from the Pick List via Approach 2's process) instead of one document driving the other. Kept as a documented fallback only; not a candidate for adoption unless both Approach 1 and Approach 2 turn out unworkable.
 
 ---
 

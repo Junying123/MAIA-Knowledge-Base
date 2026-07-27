@@ -157,6 +157,11 @@ This is new detail on top of the existing minimum-price-block rule — it define
 
 **✅ Warehouse/Purchasing visibility (2026-07-23, `23Jul26` doc):** Confirmed as a build item — hide the Purchasing tab from the Item Detail screen for warehouse users (they should not see cost/purchasing data). Reinforces the existing rule that warehouse staff shouldn't see cost/margin/financial data, now as a concrete UI change rather than just a stated principle.
 
+**✅ Credit-check gate points confirmed (2026-07-27):** The credit-limit check is configured to run at **SO** and **DN** — **not at Invoice**.
+- **At SO:** this is the earliest point exposure can be judged, before any picking/warehouse work happens — blocking here avoids wasted picking effort on an order that shouldn't proceed.
+- **At DN:** re-checked here because the picked/amended qty (and therefore the billed amount) can differ from the original SO — per the pick-list workarounds (Approaches 1–3), qty is only finalised after picking, so the DN stage is the last point where the real exposure is known before the customer is actually billed.
+- **Not Invoice-only:** by the time the Invoice is generated, the DN already exists and — under the confirmed stock-movement rule (see above) — goods have already physically left, since DN is issued alongside/ahead of dispatch. A credit block at Invoice stage would only stop the paperwork, not the goods; the customer would already be holding stock the company can't recall. Checking only at Invoice also means the exposure sits completely unchecked through the entire SO→DN window, which per Grace's explicit-request flow (SL-07) can sit open for a while before she asks MAIA to generate anything — an over-limit customer could accumulate multiple fulfilled, undelivered-on-paper orders in that gap with no gate at all. SO and DN are the two points where blocking still has teeth — stopping picking effort (SO) and stopping dispatch (DN) — which is why the check sits there instead of waiting for Invoice.
+
 **Confidence:** HIGH (mechanics/definitions) / MED (final matrix, pending training).
 
 ---
