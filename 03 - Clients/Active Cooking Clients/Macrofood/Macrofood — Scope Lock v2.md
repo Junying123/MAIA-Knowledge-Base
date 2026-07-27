@@ -277,6 +277,17 @@ Originally confirmed the office-admin-enters-order model. **Superseded by AS-04'
 
 **Also ties to AS-10 (SKU replacement)** — the same pick-list-confirmation step is where SKU substitution is discovered and recorded.
 
+**✅ SO-entry convention for the two variance cases confirmed (2026-07-27):**
+
+1. **Order entered in KG** — customer orders a specific weight (e.g. **20 kg**); picked weight will vary slightly either side (e.g. **19.71 kg**). SO qty = the ordered kg figure as normal; amended SO/Invoice uses the picked kg once Lai uploads the confirmed Pick List.
+
+2. **Order entered in CARTON** — customer only cares about carton count, not kg; final billable weight is the **sum of each carton's actual weight**, only known after picking (e.g. **2 cartons** → 10.44 kg + 11.82 kg = **22.26 kg total**, and each carton's individual weight varies). Since the true qty can't be known at order time, the SO is entered with:
+   - **Additional Notes** = carton count (e.g. "2 cartons")
+   - **Qty field** = **placeholder `1kg`** — a dummy value, not the real order quantity
+   - Real qty is confirmed only after the Pick List returns with actual per-carton weights; MAIA's amended-SO step must overwrite the placeholder with the real summed kg, not treat it as a genuine 1kg order.
+
+**Acceptance-criteria implication:** the amended-SO step (pick-list upload → MAIA amendment) must be able to fully replace a placeholder quantity, not just adjust an existing kg figure by a small variance. MAIA/UAT must distinguish "expected small variance around a real ordered qty" (case 1) from "placeholder qty, real value unknown until picked" (case 2) — treating both the same risks silently accepting a 1kg order that is actually 22kg+.
+
 ---
 
 ### AS-02 — Product catalogue / product update image

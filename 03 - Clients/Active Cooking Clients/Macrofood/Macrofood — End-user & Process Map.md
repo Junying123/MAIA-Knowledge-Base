@@ -18,6 +18,83 @@ last_reviewed: 2026-07-27
 
 ---
 
+## Quick Reference — E2E Flow & User Needs
+
+```
+1. Customer → salesperson (Queenie/Ben/CJ)
+2. Salesperson forwards order → MAIA WhatsApp chat
+3. MAIA drafts SO
+4. Salesperson reviews/corrects/submits (no admin relay — AS-04 superseded)
+5. Price check (3-tier):
+     at/above approved price   → auto-proceed
+     below customer/default,
+       above minimum           → CJ approves
+     below minimum             → David approves
+6. Credit check → MAIA blocks if over limit/overdue → David overrides
+7. Lai (Warehouse Mgr) groups SOs → Pick Lists (by route/driver/area/date), every morning
+8. Warehouse workers pick/pack:
+     - actual kg
+     - box count
+     - kg per box
+     - replacement SKU (if unavailable)
+9. Lai uploads confirmed Pick List → MAIA
+10. MAIA auto-prepares amended SO (no manual retype)
+11. Grace reviews amended SO → submits
+12. Grace explicitly requests Invoice + DN (NOT automatic)
+13. CK (3rd-party driver) delivers, gets signature
+14. CK → Grace: signed POD → Grace uploads to MAIA
+      ⚠ POD feature itself BLOCKED — Grace rejects driver-direct-upload design
+15. Customer sends payment proof → Grace verifies bank → submits receipt → invoice knocked off
+16. David monitors full pipeline via dashboard (salesperson-filterable)
+```
+
+```
+David (Owner)
+  needs: top-tier price approval, credit override, full visibility,
+         dashboard monitoring, catalogue creation tool
+  cannot: —
+
+CJ (Sales Manager)
+  needs: mid-tier price approval, set credit limit at customer creation,
+         team-wide sales visibility
+  cannot: approve below-minimum price
+
+Queenie / Ben (Sales Reps)
+  needs: forward order → MAIA, review/correct draft, submit own SO,
+         own-customer visibility only
+  cannot: see other reps' customers, edit credit terms, self-approve pricing
+
+Apple (Finance)
+  needs: set/maintain credit limits + terms (config-time role, not in live flow)
+  cannot: blanket admin parity with David (corrected 2026-07-20)
+
+Grace (Accounts / Finance Mgr)
+  needs: review+submit amended SO, explicit Invoice/DN generation trigger,
+         POD upload, payment verification, knock-off
+  cannot: auto-generate docs w/o explicit ask; auto-post unclear payer
+  blocker: rejects driver-direct POD upload (NS-07)
+
+Lai (Warehouse Manager)
+  needs: morning SO review, Pick List grouping/print, quantity+SKU
+         confirmation, upload back to MAIA
+  cannot: see cost/margin/financial data
+  gap: no backup defined (NS-10)
+
+Warehouse workers
+  needs: simple non-phone picking flow (can't use phones/system directly)
+  cannot: see cost/margin/credit/pricing data
+  gap: access model undecided (NS-11)
+
+CK (Driver, 3rd-party)
+  needs: route, address, DN, delivery instructions
+  cannot: see cost/credit/financial data
+  gap: unclear if CK ever touches MAIA directly
+```
+
+**6 open gaps for sign-off:** UAT signatory · NS-07 POD conflict · backup coverage · warehouse device model · SKU-replacement approval routing · CK's actual MAIA role. (Full detail in §6 below.)
+
+---
+
 ## 1. Actor & Role Register
 
 | Actor | MAIA role | Authority | Contacted? | UAT signatory? | What they do in MAIA | Confidence |
@@ -49,7 +126,8 @@ last_reviewed: 2026-07-27
 | Who submits | **The same salesperson** reviews MAIA's draft SO and submits it themselves — **no office-admin relay step** (AS-04 superseded 2026-07-27; the earlier "query-only, admin enters" design from v1 is stale and should not be built) |
 | Language / ambiguity | Chinese-heavy, mixed English/Malay/Mandarin item names; MAIA's item-matching resolves or surfaces for manual selection (VOC-002, assumed Base MAIA) |
 | Units | Order may be entered as **box / pieces / carton / kilogram** — warehouse always confirms in kilograms, but separately captures kg-per-box and box count |
-| **Must-NOT** | An order draft is never auto-submitted — the salesperson must review and explicitly submit; MAIA must not push to SQL before that |
+| **Weight-variance entry convention (confirmed 2026-07-27)** | Two distinct cases: **(1) ordered in kg** — SO qty = ordered kg (e.g. 20kg), small variance expected at pick (e.g. 19.71kg actual), amended at pick-list-upload step. **(2) ordered in carton** — customer doesn't specify kg; SO qty is entered as a **placeholder `1kg`**, carton count goes in **Additional Notes** (e.g. "2 cartons"); true qty = sum of each carton's actual picked weight (e.g. 10.44kg + 11.82kg = 22.26kg), only known after Lai uploads the confirmed Pick List. MAIA's amendment step must fully **replace** the placeholder, not treat it as a real 1kg order with a variance. |
+| **Must-NOT** | An order draft is never auto-submitted — the salesperson must review and explicitly submit; MAIA must not push to SQL before that. **Also must-NOT:** treat a carton-order's placeholder `1kg` as a genuine committed quantity anywhere downstream (credit check, dashboard, reporting) before the pick list confirms it. |
 
 ---
 
