@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
+                "file": "03 - Clients/Active Cooking Clients/T.C.K/Meetings/2026-07-24 - Maxfresh Kickoff Meeting Raw Notes.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +52,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Maya Training — Identified Gaps Report"
+              "title": "2026-07-24 - Maxfresh Kickoff Meeting Raw Notes"
             }
           },
           {
@@ -275,7 +275,7 @@
                     "name": "zsh 195"
                   }
                 ],
-                "activeId": 189,
+                "activeId": 178,
                 "nextId": 197
               },
               "icon": "terminal",
@@ -329,6 +329,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User_v2.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/2026-07-24 - Maxfresh Kickoff Meeting Raw Notes.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Scope Lock v2.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen Scope Lock Update Notes.md",
@@ -358,8 +360,6 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Finalization 1 (2026-06-10).md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Walkthrough (2026-04-27).md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
     "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack",

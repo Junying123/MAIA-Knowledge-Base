@@ -23,6 +23,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MUiBdupA6oiC9jxs6RyluUeNgAs
 - **SL-07** acceptance criteria extended — Invoice/DN generation is an explicit Grace-initiated request, not automatic.
 - **NS-14, NS-15, NS-16** (new, from training gaps) — dashboard per-salesperson filter, pick-list remarks carry-through, duplicate-customer detection — all **RESOLVED (build spec confirmed 2026-07-23)**.
 - **Prospect module hidden** — flat Lead → Customer flow, CRM notes carry forward on conversion.
+- **Stock movement timing confirmed (later, 2026-07-27):** in SQL, stock only moves inbound/outbound at Invoice/SCN issuance, not at SO/DO/pick-list stages — MAIA must mirror this exactly (SL-07).
 - **Apple's role corrected** — Finance scope specifically (credit limits, credit terms), not blanket Admin parity with David.
 - **NS-07 (POD)** mechanism note added (Accounts uploads, not driver) — blocker itself unresolved, still awaiting David.
 
@@ -197,6 +198,8 @@ This is new detail on top of the existing minimum-price-block rule — it define
 - Current Macro Frozen sample layouts are used where feasible.
 
 **✅ Explicit-request nuance confirmed (2026-07-20, `20Jul26` doc):** MAIA does **not** automatically generate the Invoice or Delivery Note when Grace submits the amended Sales Order. Grace must **separately and explicitly ask MAIA to generate** the Invoice and DN. This is a meaningful correction to the acceptance criteria above — "can be generated from the confirmed order state" means *on explicit request*, not automatically on SO submission. MAIA should clearly flag to Grace when an amended SO has been submitted but the Invoice/DN have not yet been requested, to avoid this becoming a silent delay.
+
+**✅ Stock movement timing confirmed (2026-07-27):** In SQL, stock only moves **inbound/outbound at the point Invoice or SCN is issued** — not at SO submission, not at DO generation, not at pick-list confirmation. MAIA must mirror this exactly: stock quantity stays untouched through SO/DO/pick-list stages and only deducts (outbound) on Invoice issuance, or reverses (inbound) on SCN issuance. This directly affects AS-01's stock-visibility behaviour and AS-10's SKU-replacement flow — neither should show a stock deduction before the Invoice actually posts.
 
 **Confidence:** MED — locked as a functional commitment, but final format matching depends on sample documents and SQL integration.
 

@@ -1,14 +1,14 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-15
+last_reviewed: 2026-07-27
 lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 ---
 
 # MAIA — UAT Launch Readiness Checklist
 ### Macro Frozen (Macrofood) — Phase 1 Core
 
-**Issued:** 2026-07-14 · **Corrected:** 2026-07-15 (against Macrofrozen Training Plan) · **Owner:** Gareth (PM) · Generated against Scope Lock v1 (2026-07-14), VoC Extraction (2026-07-14), UAT Checklist v3 (2026-07-14).
+**Issued:** 2026-07-14 · **Corrected:** 2026-07-15 (Macrofrozen Training Plan) · **Regenerated:** 2026-07-27 (Scope Lock v2) · **Owner:** Gareth (PM) · Generated against Scope Lock v2 (2026-07-27), VoC Extraction (2026-07-27), UAT Checklist v4 (2026-07-27), Field Guide v2 (`MAIA_UAT_Field_Guide_Play_It_Like_A_User_v2.md`).
 
 ---
 
@@ -16,7 +16,7 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/MCvpdWnPuoEHgaxshSmlfuGMgVf
 
 **USABLE WITH GAPS.**
 
-**Corrected 2026-07-15** against the local Macrofrozen Training Plan (real staff roster + 14 Jul post-mortem) — several names and feature-readiness statuses in the prior version of this pack were wrong. **Later same day:** environment (dedicated web app + `@maia_macrofoods_bot` chatbot), the PO sample fixture (FIX-01 — "Macrofrozen Sample PO"), and the progress tracker (QA Testing Tracker) were all confirmed — closing out what were previously the pack's biggest blockers. **One genuine blocker remains: the SQL-outage Boss Fight (BF-01) still has no arranged simulation method.** The Sales Manager role is correctly named (**CJ Tan**). **Two missions stay correctly excluded from this round, not silently tested as if ready:** M-04 (AR reconciliation — locked scope, ships next sprint) and M-11 (Credit Note — known SQL/MAIA mismatch, WIP). Bulk price update (M-05/M-06) is being actively tested today (2026-07-15), targeting closure before tomorrow's client training — treat as high-attention, not fully stable yet.
+**Regenerated 2026-07-27 against Scope Lock v2:** the pack grew from 18 to **22 active missions** — new M-19 (SKU replacement, AS-10), M-20 (dashboard salesperson filter, NS-14 — resolved), M-21 (pick-list remarks carry-through, NS-15 — resolved), M-22 (duplicate-customer detection/Lead Merge, NS-16 — resolved). **M-14 was rewritten, not just extended** — AS-04 was reopened and superseded: salespeople now submit their own Sales Orders directly via the MAIA WhatsApp chat, replacing the old query-only/office-admin-relay design entirely. M-09 was extended with SL-07's explicit-request nuance (Grace must explicitly ask MAIA to generate Invoice/DN — it's not automatic). **M-11 (Credit Note)** stays WIP, now with a training-confirmed "not built" status, not just a known mismatch. **One genuine blocker remains unchanged: the SQL-outage Boss Fight (BF-01) still has no arranged simulation method.**
 
 ---
 
@@ -101,7 +101,7 @@ If PA-04's simulated SQL outage ends up needing a specific reproducible trigger 
 | Role | Persona | Required account/access | Permitted actions | Refused actions to test | Status | Owner |
 |-|-|-|-|-|-|-|
 | Owner / MD / Credit Controller / Price Controller (Admin) | David | Desktop app access | Approve credit overrides; adjust prices ad-hoc | N/A (top of hierarchy) | Ready | Dev team |
-| Admin (same permissions as David) | Applle | Standard MAIA access, full permissions | Same as David | N/A | Not separately tested this round — no persona card built for her | Gareth |
+| Finance (credit limits/terms) | Apple | Sets customer credit limits, controls credit terms, finance customer config — **corrected 2026-07-27**, not blanket Admin parity with David | Finance-scope only | N/A | Not separately tested this round — no persona card built for her | Gareth |
 | Sales Manager | CJ Tan | Standard MAIA access with manager-level overdue-alert scope | View Ben's and Queenie's overdue accounts | View other reps' overdue accounts outside his team | Name confirmed; availability for the window still open | Gareth → CJ Tan |
 | Sales rep | Ben, Queenie | Standard MAIA access, own-customer scope | Create/view own customers, create SOs, log activity notes | View another rep's customers; self-approve over-limit orders; issue a CN unsupervised | Ready | Dev team |
 | Finance Manager (also keys in every order) | Grace | Standard MAIA access, AR + admin functions | Match payments; key in SOs relayed from sales | Issue CCN/SCN this round (feature WIP — see M-11) | Ready except CN (WIP) | Dev team |
