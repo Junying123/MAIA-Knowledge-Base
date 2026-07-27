@@ -184,9 +184,16 @@ An alternative to the screenshot workaround above: instead of one Pick List cove
 - **Grace is notified.**
 - When the DN is created from that Pick List, the **single-customer Packing List propagates to the DN automatically as an attachment** — no manual screenshot or export step needed, since the Pick List only ever held one customer's data to begin with.
 
-This achieves the same per-customer separation as the screenshot sub-workaround, but structurally (one Pick List = one customer = one Packing List = one DN) rather than manually (one big Pick List, cut up after the fact). Still deferred alongside the rest of Approach 2 — same double-entry caveat applies, since Lai still maintains the Packing List in Excel.
+**What this achieves:**
+- Same per-customer separation as the screenshot sub-workaround.
+- Done **structurally** (one Pick List = one customer = one Packing List = one DN) instead of manually (one big Pick List, cut up after the fact).
+- Still deferred alongside the rest of Approach 2 — same double-entry caveat applies, since Lai still maintains the Packing List in Excel.
 
-**Why this is deferred, not adopted:** the Excel Packing List and its double-entry are still in the loop — Lai still maintains it, and Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does). This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go.
+**Why this is deferred, not adopted:**
+- The Excel Packing List and its double-entry are still in the loop.
+- Lai still maintains it.
+- Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does).
+- This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go.
 
 ### 3c. Pick List → SO amendment → Invoice, then Pick List → DN (Approach 3 — documented, deferred, most tedious)
 
