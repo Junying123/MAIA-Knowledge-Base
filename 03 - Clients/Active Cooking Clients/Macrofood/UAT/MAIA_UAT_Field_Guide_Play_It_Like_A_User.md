@@ -8,6 +8,8 @@ lark_url: https://eg69120xnei.sg.larksuite.com/docx/D9pxdPKRIoUei7xQMn5ldxRDgih
 # MAIA UAT Field Guide — Play It Like a User
 
 > **Corrected 2026-07-15** against the local Macrofrozen Training Plan (real staff roster + 14 Jul post-mortem findings): Sales Manager renamed to **CJ Tan** (was a placeholder); sales reps renamed **Ben** and **Queenie** (were mistranscribed as Aben/Quinny); Grace's title corrected to **Finance Manager**; **Applle** (Admin, same permissions as David) added to the roles table, not separately persona'd; **M-04 (AR reconciliation)** and **M-11 (Credit Note)** flagged as not testable this round (AR ships next sprint; CN has a known SQL/MAIA mismatch, client using a SQL workaround) — both kept as reference cards, not deleted; **M-05/M-06 (bulk price update)** flagged as actively under test today, targeting closure before tomorrow's client training; **M-02** clarified — the SO amendment to actual picked weight is a confirmed **manual** step, not automatic; **CPO terminology** fixed to mean Customer Purchase Order (plain document intake), explicitly not the certificate/tax-reference CPO feature used for other (C1/C3) clients.
+>
+> **Regenerated 2026-07-27 against Scope Lock v2, VoC Extraction (17 Jul training transcript), and UAT Checklist v4.** Major changes: **M-14 rewritten** — AS-04 reopened/superseded, Ben/Queenie now submit their own Sales Order directly via the MAIA WhatsApp chat (not query-only, not office-admin relay); **M-02 extended** — kg-per-box/box-count tracking alongside total actual weight; **new M-19** (SKU replacement during picking, AS-10); **new M-20** (dashboard salesperson filter, NS-14); **new M-21** (pick-list remarks carry-through, NS-15); **new M-22** (duplicate-customer detection / Lead Merge, NS-16); **SL-03 price approval is now a 3-tier ladder** (auto → CJ Tan → David) reflected across M-05/M-06/M-14; **new win condition on Grace's finance missions** — Invoice/DN generation is an explicit request, not automatic on SO-amendment submission; **M-11 (Credit Note)** still WIP, now with a training-confirmed "not built" note (not just a known SQL mismatch); **Applle's role corrected** to Finance-specific (credit limits, credit terms), not blanket Admin parity with David; **Prospect module noted as being hidden** — CRM flow simplifies to a flat Lead → Customer conversion.
 
 ## Table of Contents
 
@@ -108,12 +110,12 @@ Macro Frozen is a **frozen-food wholesale/retail distributor** in Malaysia. Cust
 
 Macro Frozen sells frozen meat (beef, chicken, pork variants) and related frozen products, priced and sold by weight (kg) rather than by unit in most cases. Customers fall into two broad segments — **wholesale** and **retail** (restaurants/hotels) — with the main difference being order volume, not how they're treated. The business runs on **SQL/AutoCount**, an existing accounting and order system that the client has used for years; MAIA is being layered on top of it, not replacing it.
 
-The team includes: **David** (owner/MD, who personally coordinates almost everything and controls credit and pricing), **Applle** (Admin — same permission level as David, not separately covered by a persona card in this pack), **CJ Tan** (Sales Manager, overseeing 2 reps), **2 sales reps** (**Ben** and **Queenie** — each manages their own customer list), **Grace** (Finance Manager — payment reconciliation, AR, CCN approval; not an order-entry role), and **Lai** (the Logistics/warehouse manager, who coordinates a team of foreign-worker pickers). A third-party driver, **CK**, also has 3 customers of his own under a separate commission arrangement — these are not Macro Frozen's normal sales customers and should stay outside the usual sales workflows.
+The team includes: **David** (owner/MD, who personally coordinates almost everything and controls credit and pricing), **Apple** (Finance — sets customer credit limits, controls credit terms, maintains finance-related customer settings; **corrected 2026-07-27** — this is a Finance-specific scope, not blanket Admin parity with David; not separately covered by a persona card in this pack), **CJ Tan** (Sales Manager, overseeing 2 reps), **2 sales reps** (**Ben** and **Queenie** — each manages their own customer list), **Grace** (Finance Manager — payment reconciliation, AR, CCN approval; not an order-entry role), and **Lai** (the Logistics/warehouse manager, who coordinates a team of foreign-worker pickers). A third-party driver, **CK**, also has 3 customers of his own under a separate commission arrangement — these are not Macro Frozen's normal sales customers and should stay outside the usual sales workflows.
 
 #### How a normal working day unfolds
 
 1. A customer sends an order via **WhatsApp**, often in shorthand or informal language (e.g. "pork belly slight" meaning slice, skin-on).
-2. A **sales rep** (Ben or Queenie) receives it — but does *not* key it into any system themselves. Instead, they relay it to the office for order entry. **(Correction 2026-07-15: Grace is Finance Manager only, not the order-entry person — who actually keys in the order is an open question, see Launch Readiness Checklist.)**
+2. A **sales rep** (Ben or Queenie) receives it and **forwards it directly to the MAIA WhatsApp chat** — MAIA drafts the SO, the rep reviews/corrects it, and submits it themselves. **(Resolved 2026-07-27, Scope Lock v2: AS-04 reopened/superseded — no office-admin relay step exists; this replaces the earlier "who keys in the order" open question.)**
 3. The office creates a **draft Sales Order** using MAIA, referencing SQL customer/item data.
 4. The SO is submitted and converted into a **pick list PDF**, sent to **Lai** (the warehouse manager).
 5. Lai shares the pick list with his foreign-worker pickers, who physically weigh and pack the product, recording the **actual picked weight** on the paper.
@@ -126,7 +128,7 @@ The team includes: **David** (owner/MD, who personally coordinates almost everyt
 
 | Stage | Acting role | Input | Action | Output | Main failure consequence |
 |-|-|-|-|-|-|
-| 1. Order intake | Sales rep → office | WhatsApp message | Office creates draft SO | Draft SO | Wrong item/customer picked silently |
+| 1. Order intake | Sales rep (self-service) | WhatsApp message | Rep forwards to MAIA chat, MAIA drafts, rep reviews/submits | Draft SO | Wrong item/customer picked silently |
 | 2. Weight confirmation | Lai + pickers | Pick-list PDF | Physical weighing, annotate, upload | Amended SO | Billed weight ≠ actual weight |
 | 3. Document generation | Grace, Finance Manager | Amended SO | Create + submit DO, then Invoice | DO, Invoice | Duplicate invoice, or invoice qty > DO qty |
 | 4. Payment | Grace | Bank slip / cash / QR | Match to invoice | Payment record | Wrong customer credited |
@@ -219,10 +221,10 @@ A small number of customers (3 confirmed) instead send a formal **PO document**,
 
 | Role | May create | May submit/approve | Must be refused | Hands off to |
 |-|-|-|-|-|
-| Sales rep (Ben, Queenie) | Own customer records, activity notes | — | Viewing another rep's customers; creating an order directly instead of relaying via WhatsApp; self-approving an over-limit order; issuing a CN unsupervised | Office (order entry — owner open question), CJ Tan (team matters), David (credit approval) |
+| Sales rep (Ben, Queenie) | Own customer records, activity notes, own Sales Orders (self-submitted, 2026-07-27) | — | Viewing another rep's customers; self-approving a below-default or below-floor price; issuing a CN unsupervised | CJ Tan (price approval, team matters), David (floor-price/credit approval) |
 | Grace (Finance Manager) | Delivery Note, Sales Invoice, Payment Receipt/Voucher, payment matches, CCN | DO/Invoice submission, payment confirmation | — | Lai (pick list), David (pricing/credit escalation) |
 | David (Admin) | Price adjustments (desktop), credit overrides | Credit-limit overrides | — | — (top of hierarchy) |
-| Applle (Admin — same permissions as David) | All (per role matrix) | All (per role matrix) | — | Not separately covered by a persona card this round |
+| Apple (Finance — credit limits, credit terms, finance-related customer settings) | Credit limit/term fields, finance customer config | Credit limit/term fields, finance customer config | — | Not separately covered by a persona card this round; role corrected 2026-07-27 — Finance-specific, not blanket Admin parity with David |
 | CJ Tan (Sales Manager) | — | Team-level approvals for Ben/Queenie | Viewing accounts outside his own 2 reps | David (escalation) |
 | Lai (Logistics/Warehouse Manager) | Pick-list uploads | — | — | Grace/system (amended SO) |
 
@@ -378,13 +380,13 @@ Low patience for back-and-forth on things he considers obvious; very high attent
 
 ##### A day in my life
 
-I manage my own list of restaurant/hotel and wholesale customers. Orders come in on WhatsApp all day, often at the worst moment. I don't type the order into MAIA myself — I relay it to the office for entry. What I actually do in MAIA (once field access is live) is check prices, check a customer's outstanding balance, and log a quick note after a call. I want my customer's price applied correctly without me having to remember it, and I never want another rep — or David — breathing down my neck over my own customers.
+I manage my own list of restaurant/hotel and wholesale customers. Orders come in on WhatsApp all day, often at the worst moment. **(Corrected 2026-07-27 — Scope Lock v2)** I forward the order straight to the MAIA WhatsApp chat myself — MAIA drafts the Sales Order, I review it, fix anything it misread, and submit it. No office relay step exists anymore. I also check prices, check a customer's outstanding balance, and log a quick note after a call. I want my customer's price applied correctly without me having to remember it, and I never want another rep — or David — breathing down my neck over my own customers.
 
 ##### Business rules I live by
 
-- **Always:** verify a price looks right before relaying an order; keep my own customer notes up to date.
-- **Never:** try to view another rep's customer list; try to create an order directly instead of relaying it to the office; try to issue a credit note myself.
-- **Before I submit:** nothing — I don't submit SOs, I relay to the office.
+- **Always:** review MAIA's drafted SO before submitting; verify a price looks right; keep my own customer notes up to date.
+- **Never:** try to view another rep's customer list; try to self-approve a price below default or floor; try to issue a credit note myself.
+- **Before I submit:** I check the customer, item, quantity, and price MAIA drafted are correct.
 - **I can approve:** nothing formally — I escalate anything unusual.
 - **I cannot approve:** credit overrides, CN issuance.
 - **I escalate to:** CJ Tan, my Sales Manager (for team matters), or David directly (for credit blocks).
@@ -747,6 +749,7 @@ You have a real customer and a real item in mind — the kind that already exist
 - The customer and item exist in SQL-derived data.
 - For the ambiguity variant: the item name must genuinely not have a direct string match.
 - For the weight variant: the picked quantity must differ from the ordered quantity.
+- If the SO was placed in a non-kg unit (box/carton), also capture the number of boxes and kg-per-box on confirmation, not just total kg.
 
 **Fixed reference:** NONE (optional sample pick-list scans in `03_Pick_List_Samples/` for the sabotage variant)
 
@@ -777,6 +780,7 @@ Confirm a draft SO whose customer, item, and price all trace to SQL, then confir
 - [ ] An ambiguous item name is either resolved correctly or surfaced for manual selection — never silently guessed.
 - [ ] Once the pick list confirms a different weight than ordered, you can manually adjust the SO's weight/quantity field to match, and the SO amends correctly — this is a deliberate human action, not automatic.
 - [ ] After the manual adjustment, DO + Invoice reflect the new weight and recalculated amount.
+- [ ] If the SO used box/carton units, the Pick List and amended SO show number of boxes AND kg-per-box, not just a single total-weight figure.
 - [ ] Nothing is pushed to SQL before confirmation at any stage.
 
 ##### It should stop and ask you if
@@ -1265,15 +1269,17 @@ n/a — any leaked data here is a **P2**.
 
 ---
 
-#### Mission M-09 — Three Documents, One Order · ★ · 10 XP · ~10 min
+#### Mission M-09 — Three Documents, One Order · ★★ · 15 XP · ~12 min
 
-**Persona:** Ben / Queenie / Grace
-**Covers:** HP-09 · UP-08, UP-09 · SL-07
+**Persona:** Ben / Queenie (SO) + Grace, Finance Manager (DO + Invoice)
+**Covers:** HP-09 · UP-08, UP-09, UP-35 · SL-07
 **Mission type:** Core + Edge
 
 ##### The situation
 
-An order is confirmed. You need SO, DO, and Invoice — and you want to check each one before it goes anywhere. You also want to confirm MAIA won't let you double-invoice the same order, or invoice more than the DO actually shipped.
+An order is confirmed. You need SO, DO, and Invoice — and you want to check each one before it goes anywhere. You also want to confirm MAIA won't let you double-invoice the same order, or invoice more than the DO actually shipped. **And critically:** once Grace submits the amended SO, MAIA does **not** automatically generate the Invoice/DN — she has to explicitly ask for them.
+
+> **Why this matters (2026-07-27):** if MAIA silently auto-generates documents Grace hasn't asked for, that breaks her explicit control point. If it silently does nothing and gives no reminder, orders stall invisibly. Both failure modes are real risks.
 
 **Precondition:** A confirmed order exists, with a known DO quantity.
 
@@ -1291,16 +1297,16 @@ An order is confirmed. You need SO, DO, and Invoice — and you want to check ea
 
 ##### Roles and business rules
 
-**Roles and approvals:** Sales/Admin.
+**Roles and approvals:** Sales/Admin submits the SO; Grace creates/submits the DO and Invoice, and must explicitly request their generation.
 
-- **Always:** review each document before it's sent anywhere.
-- **Never:** generate a second invoice on an already-submitted SO; invoice more than the DO quantity.
+- **Always:** review each document before it's sent anywhere; confirm Grace has explicitly asked MAIA to generate the Invoice/DN before expecting them to exist.
+- **Never:** generate a second invoice on an already-submitted SO; invoice more than the DO quantity; expect the Invoice/DN to appear automatically just because the amended SO was submitted.
 - **Before submitting:** confirm all three documents agree on quantity/price.
 - **Escalate when:** n/a.
 
 ##### Your goal
 
-Generate all three PDFs and confirm they're reviewable and consistent; then try to create a duplicate invoice and an over-DO-quantity invoice, and confirm both are blocked.
+Generate all three PDFs and confirm they're reviewable and consistent; then try to create a duplicate invoice and an over-DO-quantity invoice, and confirm both are blocked; separately, confirm that submitting the amended SO alone does NOT auto-generate the Invoice/DN.
 
 ##### Say it your way
 
@@ -1314,6 +1320,7 @@ Generate all three PDFs and confirm they're reviewable and consistent; then try 
 - [ ] You can review before anything is sent.
 - [ ] A second invoice attempt on the same SO is blocked.
 - [ ] Invoicing more than the DO quantity is prevented.
+- [ ] Submitting the amended SO does NOT by itself generate the Invoice/DN — Grace must explicitly request generation, and MAIA reminds her if she hasn't yet.
 
 ##### It should stop and ask you if
 
@@ -1416,7 +1423,7 @@ It names what's missing rather than producing a blank doc.
 **Covers:** HP-11, HP-11b · UP-25, UP-26, UP-33 · SL-07, SL-04
 **Mission type:** Core + Edge
 
-> **🚧 WIP — DO NOT TEST THIS ROUND.** Per the 14 Jul Training Plan post-mortem: there's a known SQL/MAIA mismatch on Credit Notes right now. The client has been told plainly — everything else should work except CN — and to keep doing CN the way they currently do in SQL until the backend fix ships and reverses back into MAIA. Running this mission now will either produce a known-broken result (wasting your time) or a false confidence read. **Leave this mission card as reference for once the fix ships; do not run it this round.**
+> **🚧 WIP — DO NOT TEST THIS ROUND.** Per the 14 Jul Training Plan post-mortem there's a known SQL/MAIA mismatch on Credit Notes. **Confirmed 2026-07-27 by the client's own 16/17 Jul training feedback: Credit Note is NOT BUILT yet**, explicitly flagged as a next-round priority — this is not just a mismatch to fix, the feature itself isn't shipped. The client has been told plainly to keep doing CN the way they currently do in SQL until this ships. Running this mission now will either produce a known-broken result (wasting your time) or a false confidence read. **Leave this mission card as reference for once it ships; do not run it this round.**
 
 ##### The situation
 
@@ -1633,73 +1640,82 @@ A wrong agent shown is a **P2**; CK's customers leaking into the normal pipeline
 
 ---
 
-#### Mission M-14 — Look, Don't Book · ★ · 10 XP · ~8 min
+#### Mission M-14 — Forward It, Own It · ★★ · 15 XP · ~10 min
 
-**Persona:** Ben / Queenie, playing the field/outdoor sales role
-**Covers:** HP-13 · UP-29 · AS-04, AS-04b
-**Mission type:** Core + Edge
+**Persona:** Ben / Queenie, Sales Rep
+**Covers:** HP-13, HP-20, HP-21 · UP-29 · AS-04, SL-03
+**Mission type:** Core
+
+> **Superseded 2026-07-27:** this mission used to test that field sales could only query (not create) orders, relayed via office admin. That design is dead — Scope Lock v2 reopened and superseded AS-04. Don't run the old script.
 
 ##### The situation
 
-You're out in the field. You want to check a customer's outstanding balance and an item's price — but you should **not** be able to create an order directly from here; that goes through the office via WhatsApp relay for entry.
+A customer sends you an order over WhatsApp. You **forward it directly to the MAIA WhatsApp chat** — no office relay step exists anymore. MAIA drafts a Sales Order from your message; you review it, correct anything it misread, and **submit it yourself**. Whether it goes through cleanly depends on price: at the approved price it just proceeds, below the customer/default price **CJ Tan** has to approve it, and below the price floor it needs **David**.
 
-**Precondition:** A real customer and item exist.
+> **Why this matters:** if the salesperson can't actually submit an order through MAIA, the entire self-service design collapses back into the old admin-relay bottleneck it was built to remove.
+
+**Precondition:** A real customer and item exist; you know (or can find) that item's default/customer-specific price and its floor price.
 
 ##### Input recipe
 
-**Input type:** query message
+**Input type:** WhatsApp-style order message, run 3 times at 3 price points
 
 **Choose or prepare:**
-- Any real customer/item pair.
+- Any real customer/item pair, phrased in your own words.
 
 **Your chosen data must satisfy:**
-- n/a beyond normal existence.
+- Run once at the approved/default price (auto-proceeds).
+- Run once below default/customer price but above floor (routes to CJ).
+- Run once below the floor price (routes to David).
 
 **Fixed reference:** NONE
 
 ##### Roles and business rules
 
-**Roles and approvals:** field sales — query only, no order creation.
+**Roles and approvals:** Sales rep submits directly; CJ Tan approves the middle tier; David approves the floor-breach tier.
 
-- **Always:** relay orders via WhatsApp to the office, never create directly from the field.
-- **Never:** expect order creation to succeed from the outdoor/query context.
-- **Before submitting:** n/a.
-- **Escalate when:** n/a.
+- **Always:** review MAIA's drafted SO before submitting — customer, product, SKU, qty, unit, price, notes.
+- **Never:** expect self-approval on a below-default or below-floor price.
+- **Before submitting:** correct any misread field.
+- **Escalate when:** price is below default (→ CJ) or below floor (→ David).
 
 ##### Your goal
 
-Query price/outstanding/customer info successfully, then try to create an order directly and confirm it's refused.
+Submit a Sales Order yourself at the approved price and confirm it proceeds; then confirm the two lower price tiers route to the right approver instead of submitting outright.
 
 ##### Say it your way
 
-- "what's the outstanding for this customer, and current price for this item"
+- "same as last week for xing rui but double the chicken leg"
+- "20kg boneless leg for oasis, friday"
 
 > **Now forget these examples and type it how YOU would.**
 
 ##### Win conditions
 
-- [ ] MAIA returns the requested info, read-only.
-- [ ] Attempting order creation from this context is refused.
+- [ ] At approved price, the SO submits with no approval step.
+- [ ] Below default/customer price (above floor), the SO routes to **CJ Tan**, not David, and not auto-submitted.
+- [ ] Below the floor price, the SO routes to **David**, not CJ.
+- [ ] You cannot approve your own below-default or below-floor submission.
 
 ##### It should stop and ask you if
 
-- n/a — the refusal is the win.
+- The price you enter is below the item's default/customer price or floor price.
 
 ##### If something breaks mid-way
 
-If order creation succeeds directly from the field context, that's a **P2** — it contradicts the confirmed real workflow.
+If a below-floor price submits without David's approval, or a below-default price submits without CJ's, that's a **P1** — the tiered pricing control is the entire point of this mission.
 
 ##### Sabotage bonus (+10 XP)
 
-- Try phrasing the order attempt like a normal query ("book 5 boxes for customer X").
+- Try entering a price exactly at the floor (boundary case) and confirm it does NOT trigger David's approval tier.
 
 ##### Poke it
 
-- Does it tell you to relay via WhatsApp to admin, or just refuse silently?
+- Does MAIA tell you *why* it's routing to CJ vs David, or just say "pending approval"?
 
 ##### Loot to capture
 
-- Screenshot of the successful query and the refused order attempt.
+- Screenshots of all 3 submissions and their resulting approval states.
 
 ---
 
@@ -1987,6 +2003,302 @@ It tells you what it matched, what it couldn't, and asks how to proceed — it n
 ##### Loot to capture
 
 - The CPO/SO number, screenshot of the match-review step, input filename used.
+
+---
+
+#### Mission M-19 — Out of Stock, Not Out of Options · ★★ · 15 XP · ~10 min
+
+**Persona:** Lai, Logistics/Warehouse Manager
+**Covers:** HP-18 · UP-34 · AS-10
+**Mission type:** Core (new, 2026-07-27)
+
+##### The situation
+
+You're picking an order and the ordered SKU isn't there — out of stock. You substitute a replacement. MAIA needs to record the swap properly: original SKU, replacement, who changed it, and why — not just a note scrawled on the pick list.
+
+> **Why this matters:** an unrecorded SKU swap means a different price, different cost, and a customer getting something they didn't order, with no trace of why.
+
+**Precondition:** A confirmed SO exists with an item you can mark unavailable.
+
+##### Input recipe
+
+**Input type:** pick-list confirmation with a substitution
+
+**Choose or prepare:**
+- Any real SO/item pair where you can simulate an out-of-stock condition.
+- A plausible replacement SKU of a similar type.
+
+**Your chosen data must satisfy:**
+- The original and replacement must be genuinely different SKUs.
+
+**Fixed reference:** NONE
+
+##### Roles and business rules
+
+**Roles and approvals:** Warehouse Manager records the substitution; approval routing (if any) is still an open question per Scope Lock v2 — treat any approval prompt as a pass, and its absence as an Observation, not a defect.
+
+- **Always:** record original SKU, replacement SKU, who made the change, and the reason.
+- **Never:** let a substitution reach the amended SO with no record of why.
+- **Before submitting:** confirm the replacement is reflected on the Pick List.
+- **Escalate when:** unclear — flag as Observation if no approval step appears.
+
+##### Your goal
+
+Substitute a SKU during picking and confirm the original SKU, replacement, changer, and reason all persist through to the Pick List and the amended SO.
+
+##### Say it your way
+
+- "Brand A out of stock, swapping to Brand B, same cut"
+
+> **Now forget these examples and type it how YOU would.**
+
+##### Win conditions
+
+- [ ] The original SKU is recorded.
+- [ ] The replacement SKU is recorded.
+- [ ] Who made the change is recorded.
+- [ ] A reason is recorded.
+- [ ] The replacement flows into the Pick List and the amended SO; the final DN/Invoice use the replacement SKU.
+
+##### It should stop and ask you if
+
+- You try to submit a substitution with no reason recorded.
+
+##### If something breaks mid-way
+
+If the swap silently reaches the invoice with no trace of the substitution, that's a **P2**.
+
+##### Sabotage bonus (+10 XP)
+
+- Try substituting with no reason entered and see if MAIA blocks it.
+
+##### Poke it
+
+- Does the substitution require anyone's approval, or does it go straight through? (This is a genuinely open question — log what you observe either way.)
+
+##### Loot to capture
+
+- Screenshot of the substitution record, and the final Invoice/DN showing the replacement SKU.
+
+---
+
+#### Mission M-20 — Filtered, Not Flooded · ★ · 10 XP · ~6 min
+
+**Persona:** David or CJ Tan
+**Covers:** HP-22 · UP-36 · NS-14
+**Mission type:** Core (new, resolved 2026-07-23)
+
+##### The situation
+
+The sales dashboard used to show everything or nothing granular. Now David and CJ can filter it down to one salesperson at a time.
+
+**Precondition:** At least two salespeople have dashboard activity to compare against.
+
+##### Input recipe
+
+**Input type:** dashboard filter selection
+
+**Choose or prepare:**
+- Any two real salespeople with order activity.
+
+**Your chosen data must satisfy:**
+- n/a beyond having comparable activity.
+
+**Fixed reference:** NONE
+
+##### Roles and business rules
+
+**Roles and approvals:** David and CJ Tan only.
+
+- **Always:** confirm the filtered view shows only the selected salesperson's data.
+- **Never:** expect a regular sales rep to have this filter — they only see their own data by default (SL-05).
+- **Before submitting:** n/a — read-only.
+- **Escalate when:** n/a.
+
+##### Your goal
+
+Filter the dashboard to one salesperson and confirm the data shown is theirs alone; then confirm a regular sales rep cannot access another rep's filtered view.
+
+##### Say it your way
+
+- "show me Ben's numbers only"
+
+> **Now forget these examples and type it how YOU would.**
+
+##### Win conditions
+
+- [ ] Filtering to one salesperson shows only that person's data.
+- [ ] David and CJ can both use the filter.
+- [ ] A sales rep cannot use the filter to view another rep's data.
+
+##### It should stop and ask you if
+
+- n/a.
+
+##### If something breaks mid-way
+
+If a rep can see another rep's filtered dashboard, that's a **P2** — it breaks SL-05's isolation guarantee via a side door.
+
+##### Sabotage bonus (+10 XP)
+
+- Try accessing the filter as a regular sales rep and confirm it's unavailable or refused.
+
+##### Poke it
+
+- Does the filter cover the same metrics for everyone, or does David see more than CJ?
+
+##### Loot to capture
+
+- Screenshot of the filtered dashboard view.
+
+---
+
+#### Mission M-21 — Notes That Travel · ★ · 10 XP · ~8 min
+
+**Persona:** Lai, Logistics/Warehouse Manager (viewing) + Sales rep (setting the remark)
+**Covers:** HP-23 · UP-37 · NS-15
+**Mission type:** Core (new, resolved 2026-07-23)
+
+##### The situation
+
+A customer's profile has remarks — cutting method, weight range, delivery time, "China name." Until now, warehouse staff never saw them on the Pick List. Now they should, and near the top of the page, not buried at the bottom.
+
+**Precondition:** A customer profile with at least one remark exists (or you set one).
+
+##### Input recipe
+
+**Input type:** customer remark + generated Pick List
+
+**Choose or prepare:**
+- Any real customer; add a remark if none exists (e.g. "do not be too fatty", "23–25 kg range").
+- A second customer with no remarks, for the empty-state check.
+
+**Your chosen data must satisfy:**
+- At least one remark must be genuinely set before generating the Pick List.
+
+**Fixed reference:** NONE
+
+##### Roles and business rules
+
+**Roles and approvals:** Sales rep sets the remark; Warehouse Manager reads it off the Pick List.
+
+- **Always:** check the remark appears on the Pick List before picking starts.
+- **Never:** let a remark silently vanish between the profile and the Pick List.
+- **Before submitting:** n/a.
+- **Escalate when:** n/a.
+
+##### Your goal
+
+Confirm a customer's remarks appear on the generated Pick List, positioned near the top with the customer name, and that a customer with no remarks doesn't produce a broken or fabricated entry.
+
+##### Say it your way
+
+- "customer wants it not too fatty, mark it on the pick list"
+
+> **Now forget these examples and type it how YOU would.**
+
+##### Win conditions
+
+- [ ] The Pick List includes the Customer Name column.
+- [ ] The Pick List includes an Additional Notes / remarks column showing the profile remark.
+- [ ] Remarks appear near the top of the page, not the bottom.
+- [ ] A customer with no remarks renders cleanly, with no placeholder error or invented text.
+
+##### It should stop and ask you if
+
+- n/a.
+
+##### If something breaks mid-way
+
+If a remark is dropped or displaced to the bottom, that's a **P2** for the warehouse — this is the exact gap the 16/17 Jul training surfaced.
+
+##### Sabotage bonus (+10 XP)
+
+- Set a remark in Chinese and confirm it renders correctly on the Pick List.
+
+##### Poke it
+
+- Does the remark placement change if there are multiple customers on one combined Pick List?
+
+##### Loot to capture
+
+- Pick List PDF showing the remark, screenshot of the customer profile it came from.
+
+---
+
+#### Mission M-22 — Same Customer, New Face · ★★ · 15 XP · ~10 min
+
+**Persona:** Sales rep (Ben/Queenie)
+**Covers:** HP-24 · UP-38 · NS-16
+**Mission type:** Core (new, resolved 2026-07-23)
+
+##### The situation
+
+A customer who hasn't ordered in years re-contacts you. You create a Lead for them — but they might already exist as a customer record. MAIA should catch that during conversion and offer to merge, not create a silent duplicate.
+
+> **Why this matters:** a real lapsed-customer case surfaced during training with no duplicate check at all — this mission proves the fix.
+
+**Precondition:** An existing customer record you can simulate a "lapsed return" against (matching phone, or same company under a different contact).
+
+##### Input recipe
+
+**Input type:** Lead → Customer conversion attempt
+
+**Choose or prepare:**
+- One clean case: a Lead whose phone/company clearly matches an existing customer.
+- One ambiguous case: a Lead that partially matches (e.g. same company, different phone) — for the unhappy path.
+
+**Your chosen data must satisfy:**
+- The clean case must have an unambiguous match.
+- The ambiguous case must have a genuinely partial/uncertain match.
+
+**Fixed reference:** NONE
+
+##### Roles and business rules
+
+**Roles and approvals:** Sales rep creates the Lead and attempts conversion.
+
+- **Always:** review the proposed merge before confirming.
+- **Never:** let a clear duplicate silently create a second customer record.
+- **Before submitting:** check which fields will merge and which take precedence (latest value wins on conflict).
+- **Escalate when:** the match is ambiguous — surface it for human review rather than auto-merging or auto-creating.
+
+##### Your goal
+
+Trigger the duplicate-detection/merge flow on a clean match, and confirm an ambiguous match is surfaced for review instead of silently resolved either way.
+
+##### Say it your way
+
+- "this is 明光's company again, they used to order years back"
+
+> **Now forget these examples and type it how YOU would.**
+
+##### Win conditions
+
+- [ ] A clean-match Lead conversion detects the existing customer and offers a merge.
+- [ ] Merge covers CRM notes, contact, phone, email, address, company info.
+- [ ] Latest value wins on a field conflict.
+- [ ] An ambiguous match is surfaced for human review, not silently merged or silently duplicated.
+
+##### It should stop and ask you if
+
+- The match is ambiguous (partial signal, not a clean single match).
+
+##### If something breaks mid-way
+
+If a clear duplicate slips through as a new customer record, that's a **P2** — direct evidence this exact gap exists in production data already (see VoC training transcript).
+
+##### Sabotage bonus (+10 XP)
+
+- Try converting the same Lead twice and confirm the second attempt also catches the duplicate.
+
+##### Poke it
+
+- What happens to CRM notes logged against the Lead once it merges into the existing customer?
+
+##### Loot to capture
+
+- Screenshot of the merge-review screen and the final merged customer record.
 
 ---
 

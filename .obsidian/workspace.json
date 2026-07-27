@@ -273,13 +273,9 @@
                   {
                     "id": 195,
                     "name": "zsh 195"
-                  },
-                  {
-                    "id": 196,
-                    "name": "zsh 196"
                   }
                 ],
-                "activeId": 178,
+                "activeId": 189,
                 "nextId": 197
               },
               "icon": "terminal",
@@ -333,6 +329,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/2026-07-24 - Maxfresh Kickoff Meeting Raw Notes.md",
+    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Scope Lock v2.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen Scope Lock Update Notes.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
@@ -363,8 +361,6 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/02_Project Scope and Meeting Links - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/GST/2026-07-21-scc-sqlquery-access-request-email.md",
     "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
-    "Granola/Transcripts/2026-07-16/Macrofood __ MAIA Training-transcript.md",
-    "03 - Clients/Active Cooking Clients/2026-07-21-scc-sqlquery-access-request-email.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.13503.0d1656b8b77a",
