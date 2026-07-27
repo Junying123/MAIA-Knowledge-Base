@@ -117,25 +117,61 @@ Customer sends order to Salesperson (Queenie / Ben / CJ).
 - Outstanding balance / credit limit / overdue / "previous invoice cleared."
 - Order blocked if any check fails → approve: **David** (override).
 
+> **Decision (2026-07-27):** two approaches were put to the client for replacing the current Excel Packing List double-entry (see Before-MAIA flow above). **Approach 1 is adopted now** — Pick List → DN line-item breakdown, described below. **Approach 2 is deferred to a future session** (not yet defined/scheduled).
+
 ### 2. Warehouse — Pick List & Picking
 
-**Lai (Warehouse Manager):** every morning, reviews available Sales Orders; groups SOs into a Pick List (by route / driver / area / delivery date); prints the Pick List — includes customer name, SO number, SKU, product notes, ordered qty/unit, box count, kg-per-box field, replacement-SKU field, route, driver. No separate "Packing List" doc — pack detail lives on the Pick List itself.
+**Lai (Warehouse Manager):** checks what needs picking today across different Sales Orders.
 
-**Warehouse Workers:** pick and pack the physical goods; record actual kg, number of boxes, kg per box; record a replacement SKU if the original is unavailable and flag it to Lai.
+- **Pick List can have orders/items added to it.** Macrofrozen currently picks based on order (not consolidated by item across orders).
+- **Lai / Grace / David consolidate customer SOs into one Pick List** together.
+- The Pick List shows the **total qty from each SO** as a reference.
+- Lai checks that total and updates the **Picked Qty column** against it.
+- Lai uploads/updates the Pick List (PDF or in-app UI) back into MAIA.
 
-**Lai (Warehouse Manager):** checks completed picking matches the Pick List; photographs the completed Pick List; uploads the confirmed Pick List to MAIA.
+**Warehouse Workers:** pick and pack the physical goods; record actual kg, number of boxes, kg per box; flag a replacement SKU to Lai if the original is unavailable.
 
-### 3. Pick List → Amended SO → Invoice
+**Lai (Warehouse Manager):** once all Picked Qty values are updated and the Pick List is complete, marks the Pick List as **Completed**.
 
-**MAIA:** auto-prepares an amended Sales Order from Lai's confirmed Pick List (final qty, boxes, kg-per-box, replacement SKU — no manual retype).
+### 3. Pick List → Draft DN → Invoice (Approach 1 — adopted 2026-07-27)
 
-**Grace (Accounts / Finance Manager):** checks original vs final SKU/qty/boxes/kg-per-box/price/credit status; reviews and submits the amended SO.
+**Lai:** converts the completed Pick List into a **draft Delivery Note (DN)**.
 
-**Grace:** explicitly asks MAIA to generate the Invoice and Delivery Note — this is not automatic on SO-amendment submission.
+- The total picked qty **propagates from the Pick List into the DN as one line** (e.g. 100kg for Item A).
+- Instead of Lai manually re-keying a breakdown into a separate Excel Packing List, **the breakdown now happens directly inside the DN** — the same breakdown work the old Packing List did, done once, in MAIA.
+- Example: 100kg propagated from the Pick List can be broken into DN line items — 20kg, 20kg, 20kg, 20kg, 20kg — instead of one combined 100kg line.
+- This removes the double-entry step entirely: no separate Excel file, no re-typing the same breakdown twice.
 
-**MAIA:** generates the requested Invoice and Delivery Note.
+**Grace (Accounts / Finance Manager):** gets a reminder/notification to review the picked qty for every DN line item.
 
-**Grace:** reviews the generated Invoice and DN, submits/confirms them.
+- Reviews each broken-down line for accuracy.
+- Submits the DN.
+- Issues the Invoice **from the DN**.
+
+### 3b. Pick List → DN (Approach 2 — documented, deferred to a future session)
+
+Same start as Approach 1: Lai checks the Pick List across SOs, consolidates customer SOs into one Pick List (with Grace/David), checks the total qty from each SO, updates the Picked Qty column, and uploads the Pick List back into MAIA.
+
+**Where it diverges from Approach 1:**
+
+- **Lai keeps updating the Packing List in their current Excel** — this approach does **not** remove that step.
+- Lai **uploads the Packing List as a CSV attachment**; the Pick List links to this uploaded file.
+- Lai marks the Pick List as **Completed**.
+- **Grace is notified** and converts the Pick List into a DN.
+- The attached Packing List **propagates to the DN as well** (as a linked reference, not as broken-out line items automatically).
+- **Grace exports the Packing List** and manually updates the DN line items **one by one**, based on what the Packing List shows.
+- Grace **cross-checks the DN line items against the Packing List** before proceeding.
+- Only then does she submit the DN and convert it into the Invoice.
+
+##### Sub-workaround — screenshot per customer (2026-07-27)
+
+The Packing List spans multiple customers, orders, and products on one sheet — it isn't naturally split per customer.
+
+- Grace **breaks down the Packing List and takes a screenshot** of just the relevant rows for each customer/order/product.
+- She **attaches that screenshot to each corresponding DN** — one screenshot per customer's DN, not the whole Packing List dumped on every DN.
+- This gives each DN its own visual proof of the picked breakdown that produced it, without needing the DN line-item entry itself to reference the full multi-customer sheet.
+
+**Why this is deferred, not adopted:** the Excel Packing List and its double-entry are still in the loop — Lai still maintains it, and Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does). This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go. the Excel Packing List and its double-entry are still in the loop — Lai still maintains it, and Grace still manually keys DN line items off an exported file rather than the breakdown happening natively inside MAIA (as Approach 1 does). This is a smaller change from the current as-is process, kept as a fallback/next-session option if Approach 1 turns out too disruptive to adopt in one go.
 
 ---
 
