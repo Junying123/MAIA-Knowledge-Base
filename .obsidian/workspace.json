@@ -277,10 +277,14 @@
                   {
                     "id": 197,
                     "name": "zsh 197"
+                  },
+                  {
+                    "id": 198,
+                    "name": "zsh 198"
                   }
                 ],
-                "activeId": 178,
-                "nextId": 198
+                "activeId": 198,
+                "nextId": 199
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -333,6 +337,8 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Macrofrozen User Roles and Functions Infographic.png",
+    "AGENTS.md.tmp",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen E2E Flow and Per-Role Breakdown.md.tmp.94722.01942c77f705",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-before-after-maia-workflow.png",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen E2E Flow and Per-Role Breakdown.md",
@@ -369,8 +375,6 @@
     "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md.tmp.18091.5d9fae919b69",
     "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Infopack",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — VoC Extraction.md.tmp.13503.0d1656b8b77a",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — UAT Checklist.md.tmp.13503.21c584734323",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
