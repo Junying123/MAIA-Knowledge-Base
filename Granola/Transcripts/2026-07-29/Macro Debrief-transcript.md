@@ -3,7 +3,7 @@ granola_id: 6c013cdf-bec3-4bb6-863a-b032804224d2
 title: Macro Debrief - Transcript
 type: transcript
 created: 2026-07-29T02:42:24.128Z
-updated: 2026-07-29T03:17:20.108Z
+updated: 2026-07-29T03:34:00.239Z
 attendees: 
   - jermaine@mindhive.asia
   - ivan@mindhive.asia
@@ -379,5 +379,737 @@ So in SQL, when you type a state or whatever, you already search by the customer
 
 ### You (2026-07-29T03:16:12.809Z)
 
-According to their area. Of country. Is just to extend. Like, let's say. As long as. Right. Is that using the. Mill? I know some customers. I don't mean to have all. That's the default. They default.
+According to their area. Of country. Is just to extend. Like, let's say. As long as. Right. Is that using the.
+
+### Guest (2026-07-29T03:16:32.336Z)
+
+So as long as I something like that also in SQL, right, it's just using the customer Punia configured billing address or shipping address. The default. I know some customer can have many, but I don't need to have all. Just the defaults will do. The default shipping address.
+
+### You (2026-07-29T03:16:37.929Z)
+
+Mill? I know some customers. I don't mean to have all. That's the default. They default. Name as well. Right. Ah. Okay. So I believe we should also.
+
+### Guest (2026-07-29T03:16:49.856Z)
+
+Ah. Okay. So this one in where this coming to the P203. So actually we should also have a listing of contacts. So we got lead Prospect customer. We should also have a listing of contacts. So here it's not micro specific, but the example here is that, let's say I'm dealing with mutu. Right. It can be. I know him as mutu.
+
+### You (2026-07-29T03:17:00.569Z)
+
+Here. It's not macro put. Here with that. Let's say dealing with motive. Right. He can be. I know him. But let's say we do business.
+
+### Guest (2026-07-29T03:17:16.416Z)
+
+But let's say we do business so long. Okay. Impossible. But let's say new lead. I don't really know his cus. I don't know. Let's say many company. I don't really exactly remember his company name, but in the chatbot or something, I'll say a create order for motu.
+
+### You (2026-07-29T03:17:18.249Z)
+
+But let's say I don't really know his. I don't know many companies. I don't really exactly remember his happening, but in the chatbot. In my heart from Malaysia food.
+
+### Guest (2026-07-29T03:17:32.336Z)
+
+But in my customer database, I can have many more tools. I can move from the high on anel motul from Malaysia food.
+
+### You (2026-07-29T03:17:39.369Z)
+
+This should work also.
+
+### Guest (2026-07-29T03:17:40.256Z)
+
+This should work also.
+
+### You (2026-07-29T03:17:42.089Z)
+
+Okay.
+
+### Guest (2026-07-29T03:17:42.816Z)
+
+Okay, then what else? Searching custom contact. Okay, so let's say from. From. From knowing, like a motu wants this order on Chatbots side, you can say, hey, you got three module. Which moto? Which company?
+
+### You (2026-07-29T03:17:46.569Z)
+
+Okay. So let's say from. From knowing it can be on which control which company. Because I remember people sometimes may not exactly.
+
+### Guest (2026-07-29T03:17:56.496Z)
+
+Because I remember people as people. Sometimes I may not exactly remember what exactly his company name is.
+
+### You (2026-07-29T03:18:02.649Z)
+
+I know he's doing it in my sister. It's like easy Empire, you know? Like, you're like a bit more smaller companies. The brand name and the company name is very different.
+
+### Guest (2026-07-29T03:18:03.696Z)
+
+That's it. I know he's doing mama one, but let's say his company name in my system is like easy Empire, you know, like, you know, like a bit more smaller companies. The brand name and the company name is very different one.
+
+### You (2026-07-29T03:18:17.529Z)
+
+So we need to research for the container and find the company itself. Exactly. So from this contact is what company.
+
+### Guest (2026-07-29T03:18:21.296Z)
+
+Exactly. So from the contact database, you can see like this, this contact is tied to what, what company went. And from there you resolve.
+
+### You (2026-07-29T03:18:30.489Z)
+
+Is under customer. And cities. No, contact is his own.
+
+### Guest (2026-07-29T03:18:35.456Z)
+
+Now contact is his own entity. It's his own entity. So contact search. It's just a contact.
+
+### You (2026-07-29T03:18:36.729Z)
+
+Entity. So on the front end base.
+
+### Guest (2026-07-29T03:18:42.816Z)
+
+So on the front end page, we just have one more contact list.
+
+### You (2026-07-29T03:18:44.729Z)
+
+Contact list. So this is actually all pretty.
+
+### Guest (2026-07-29T03:18:46.576Z)
+
+So this is actually all pretty interesting. Like, like we know further, we know further. We know how it can be better. And this, that's why I say, like, from this uat to although you wanted to close. But we learned a lot about how this can be much better for them. But you see all the feedback that we give all very useful, like for everybody else. Okay, so for them, they will have this one Uncle one that helped them deliver all their pork. Right. They even, they call him his, he's just called Uncle. I don't know what's his name, but he's the driver.
+
+### You (2026-07-29T03:18:48.089Z)
+
+Like. Like we know further. We know how it can be better. That's why I say, like from this close. We learn a lot about this much better for them. Now you see all the video. Okay, then you have this one that help them deliver all your. Right. Then even they call him. It's just called Uncle. I don't know his name. But he's a driver. So for them.
+
+### Guest (2026-07-29T03:19:16.016Z)
+
+So for them, this delivery trip delivery stock module. Not so useful because the Uncle, the uncle already know the standard delivery schedule already, so they don't want to pay more. But what they want is that, okay, this Uncle can also talk to Maya, but his scope is very specific.
+
+### You (2026-07-29T03:19:19.129Z)
+
+So useful. The Uncle already know the schedule. So they don't want to pay. What they want is that. Okay. Yes, it's a driver.
+
+### Guest (2026-07-29T03:19:32.736Z)
+
+Yes, it's a driver role, but his scope is to see all the delivery notes.
+
+### You (2026-07-29T03:19:33.769Z)
+
+Scope is going to see all the neutrinos. And also be able to just proof of delivery.
+
+### Guest (2026-07-29T03:19:37.776Z)
+
+And also be able to just put the proof of delivery.
+
+### You (2026-07-29T03:19:40.329Z)
+
+I don't need the.
+
+### Guest (2026-07-29T03:19:41.296Z)
+
+I don't need the delivery trade. Delivery stop module because the route planning all not important because there's only like one or two drivers. So there's a self-manage. Okay, that's all.
+
+### You (2026-07-29T03:19:45.529Z)
+
+There's only like one. Okay. So configure.
+
+### Guest (2026-07-29T03:19:53.376Z)
+
+So we need to configure a new role called driver. We need to get the credentials of this Uncle, his email and the, and the name.
+
+### You (2026-07-29T03:19:56.329Z)
+
+You need to get the credential and. And then configure.
+
+### Guest (2026-07-29T03:20:02.656Z)
+
+And then configure his permission accordingly that only can CDN and also be able to update to the end cannot summit cannot cancel.
+
+### You (2026-07-29T03:20:05.449Z)
+
+Also be able. To have on the company. Yes. So. So for when I map as proof of payment and proof of delivery.
+
+### Guest (2026-07-29T03:20:11.856Z)
+
+For the delivery degree. Not to complete. Yes. This. So, so for them, macro food, they want the delivery. When I mark as delivered must have proof of payment, approve of delivery. And then another scenario is that sometimes they may add on some proof of delivery after I mark as deliver. So this one should also work. But I shouldn't be able to delete the, the proof of delivery.
+
+### You (2026-07-29T03:20:25.689Z)
+
+And another area is that sometimes. After I mark and this one should also work. But I shouldn't be able to read the proper delivery. Okay. So approval.
+
+### Guest (2026-07-29T03:20:39.136Z)
+
+Okay, so at prove our delivery to the end.
+
+### You (2026-07-29T03:20:43.449Z)
+
+Aftermarket has delivered.
+
+### Guest (2026-07-29T03:20:44.416Z)
+
+Aftermarket has delivered, have more better than have utility.
+
+### You (2026-07-29T03:20:45.049Z)
+
+I have more better. Yeah.
+
+### Guest (2026-07-29T03:20:48.496Z)
+
+Yeah.
+
+### You (2026-07-29T03:20:51.769Z)
+
+Everything is at one.
+
+### Guest (2026-07-29T03:20:52.736Z)
+
+Everything is at one place.
+
+### You (2026-07-29T03:20:52.889Z)
+
+Place. So the business visa here.
+
+### Guest (2026-07-29T03:20:54.416Z)
+
+So the business reason here is that right now how this works. When this Uncle go and deliver Eddie, right? He will forward all the product delivery in a delivery WhatsApp group one.
+
+### You (2026-07-29T03:20:55.529Z)
+
+Right now how this works. When is Uncle go and he will forward all the product. So Grace who's finance lady or issues the DM and also.
+
+### Guest (2026-07-29T03:21:03.776Z)
+
+So Grace, who's the finance lady who issues the DN and also the SI has to maintain a catalog of all this proof of delivery, you know. So what happens when there is dispute? So dispute. Okay. Why dispute happen? They also said how dispute happened in their business. So they, they send all their goods in cold truck. So everything is like negative 18 degrees on send to the customer is frozen. So sometimes when they deliver, they deliver on time, but the customer not there to pick up or they just leave it there. Then suddenly sometimes when the customer come like 10 minutes later, some goods missing. And they say, hey, you never said.
+
+### You (2026-07-29T03:21:07.209Z)
+
+Has to maintain a catalog of delivery. So what happens when. Okay. Why dispute happen? How did you happen in so. Everything is like. Sending to the customer. Sometimes when you deliver on time, the government not there to become. They just leave it presently sometimes. And they say, hey. So this one issue. Another issue is Unlock at it. This thing. And the artwork, leave it in the hot side for that.
+
+### Guest (2026-07-29T03:21:40.096Z)
+
+So this is one issue. Another issue is sometimes I unload already. So the Unlock one palette of this thing, then the artwork leave it in the hot sun for 10 minutes. Letting start melting. I said, hey, why your hell? Why your delivery person, your code truck never on freezer?
+
+### You (2026-07-29T03:21:55.689Z)
+
+How to proof.
+
+### Guest (2026-07-29T03:21:56.896Z)
+
+How to prove?
+
+### You (2026-07-29T03:21:57.609Z)
+
+Then because you have.
+
+### Guest (2026-07-29T03:21:58.496Z)
+
+Then? Because we want to maintain. Okay. No choice but to give a discount. So what they are doing now, they are actually expanding their business. So they subscribe to GPS like a fleet monitoring service that allows them to have at every point of time. What was my truck temperature, truck location? So they have proof.
+
+### You (2026-07-29T03:22:01.049Z)
+
+So what they are doing, they actually expect. That allows them at every point of time. Temperature. So they have. Two that I delivered. I truck all this product.
+
+### Guest (2026-07-29T03:22:16.256Z)
+
+That I delivered and my truck all coal confirmed. And I always prove a delivery important for fulfillment because all these are the losses in their business that they want Maya to. Since we have this system, we'll help them solve a lot problem. This one was further down. No, never mind. Right. They're not so important. Right. Not so important. Never all we can scope out later. So they said like, hey, what if Maya can pull in this data and do something with it? Don't know what yet. But like, if Maya good, he can see how my value to his business already. So that's what he's talking about all these things. Right. He also setting up a new warehouse. He wants a wms system that he's talking to crystal to get a partner to get that. WM system costs about one mil.
+
+### You (2026-07-29T03:22:20.729Z)
+
+For fulfillment. These are the laws. Since we have this, have them solve a lot. This one was for the conversation that you want to integrate to pull the data on. They're not so important. Right. Not so important. That's all we can support later. So they say like where I can pull in with the gun or something with the. He can see how my. So that's what he's talking about. Right. He also setting up a new house. He wants a ws system that he's talking to crystal to get a Partner to get. Minimum. Also one minute.
+
+### Guest (2026-07-29T03:23:02.816Z)
+
+Minimum also one mil. WMS system.
+
+### You (2026-07-29T03:23:06.809Z)
+
+Thank you.
+
+### Guest (2026-07-29T03:23:07.536Z)
+
+Thank you. Expensive barcode need to scan. A barcode Mayan can support. Can, but we see to see how. Right.
+
+### You (2026-07-29T03:23:15.529Z)
+
+So. So.
+
+### Guest (2026-07-29T03:23:16.336Z)
+
+So, so, so easy. Yeah.
+
+### You (2026-07-29T03:23:19.369Z)
+
+He is growing.
+
+### Guest (2026-07-29T03:23:20.336Z)
+
+He is growing his business. And how Mayan can help him grow faster, reduce all these losses is very apparent. Right. So I'm sharing all this. So you also have business contacts.
+
+### You (2026-07-29T03:23:22.169Z)
+
+And grow faster. Reduce all these losses. So I'm sharing all. Okay.
+
+### Guest (2026-07-29T03:23:30.896Z)
+
+Okay.
+
+### You (2026-07-29T03:23:31.769Z)
+
+So the low stock.
+
+### Guest (2026-07-29T03:23:32.656Z)
+
+So the low stock near expiry notification should go to everybody. This one is everybody. All their roles. Priority recipients are debit sales team and also like.
+
+### You (2026-07-29T03:23:36.969Z)
+
+Everybody, all the arrows. Everything recipient. So this one is a PDF.
+
+### Guest (2026-07-29T03:23:46.656Z)
+
+This one is the PDF special character. Okay.
+
+### You (2026-07-29T03:23:48.249Z)
+
+Okay. Okay. So battery is also required.
+
+### Guest (2026-07-29T03:23:50.976Z)
+
+Okay. So I know all this, although this thing is P3, but actually it's also required because these are all easily configured notifications only. So every Sunday 8 a.m.
+
+### You (2026-07-29T03:23:57.689Z)
+
+So every Sunday one month.
+
+### Guest (2026-07-29T03:24:03.536Z)
+
+Day one month to date sale summary for CJ and David. So here action point is product side to design this summary first. So it's something that one thing if you are in a call. Yeah, there's something for you to do. And then one setting is done. Then just give that spec to Aion. Then it's just easily wiped out really because it's just a crown.
+
+### You (2026-07-29T03:24:06.329Z)
+
+So here action point. Is something that one thing, if you are in a. Yeah. Something for you to one setting. And just give. Yeah, it's a month today.
+
+### Guest (2026-07-29T03:24:26.976Z)
+
+Yeah, it's a month to date. So that means today July 29, the report is 1st of July to today.
+
+### You (2026-07-29T03:24:27.529Z)
+
+That means you. First. Leave month to date.
+
+### Guest (2026-07-29T03:24:35.136Z)
+
+Month to date. That's what month today is month to date summary.
+
+### You (2026-07-29T03:24:36.329Z)
+
+Month to date. On every Sunday.
+
+### Guest (2026-07-29T03:24:40.096Z)
+
+On every Sunday 8 a.m.
+
+### You (2026-07-29T03:24:41.449Z)
+
+So another one is.
+
+### Guest (2026-07-29T03:24:42.176Z)
+
+So another one is month a year to date.
+
+### You (2026-07-29T03:24:44.969Z)
+
+A cell summary. Start of the year.
+
+### Guest (2026-07-29T03:24:46.016Z)
+
+Sale summary from start of the year to today. How much sales?
+
+### You (2026-07-29T03:24:47.849Z)
+
+How much sales? Okay, so.
+
+### Guest (2026-07-29T03:24:50.256Z)
+
+Okay, so it should just be a simple WhatsApp report or can be a PDF.
+
+### You (2026-07-29T03:24:55.289Z)
+
+Why is.
+
+### Guest (2026-07-29T03:24:56.336Z)
+
+Why you said on Sunday one? You say, David say Sunday I know your family day. But may I spam you so you can read later on when you got free time at least Sunday you can read first Monday. Then you come in already. No, you should have reread all this. So his logic is like that. They work six days a week.
+
+### You (2026-07-29T03:25:01.529Z)
+
+It? I mean, so he's watching. About six years a week. Never six days a week.
+
+### Guest (2026-07-29T03:25:13.456Z)
+
+They work six days a week. Maybe works up at 6 a.m. and relay start work.
+
+### You (2026-07-29T03:25:14.569Z)
+
+David. Wake up. Until 10 p.m.
+
+### Guest (2026-07-29T03:25:19.216Z)
+
+Until 10 p.m. he woke.
+
+### You (2026-07-29T03:25:20.169Z)
+
+He's like, so after bring me.
+
+### Guest (2026-07-29T03:25:21.376Z)
+
+He's like because they do sales one. So after evening I go entertain customer drink.
+
+### You (2026-07-29T03:25:27.209Z)
+
+Their life is electric.
+
+### Guest (2026-07-29T03:25:28.176Z)
+
+Their life is.
+
+### You (2026-07-29T03:25:30.649Z)
+
+Okay. Per salesperson.
+
+### Guest (2026-07-29T03:25:31.536Z)
+
+Okay. So then per salesperson month to date report also same.
+
+### You (2026-07-29T03:25:36.249Z)
+
+Okay.
+
+### Guest (2026-07-29T03:25:36.816Z)
+
+Okay.
+
+### You (2026-07-29T03:25:38.649Z)
+
+Per salesperson.
+
+### Guest (2026-07-29T03:25:39.616Z)
+
+Per salesperson.
+
+### You (2026-07-29T03:25:39.849Z)
+
+So this one is all like.
+
+### Guest (2026-07-29T03:25:40.656Z)
+
+So this one is all quite easy for us to do. Right.
+
+### You (2026-07-29T03:25:47.929Z)
+
+New lead by salesperson.
+
+### Guest (2026-07-29T03:25:48.576Z)
+
+New leads by salesperson month to date.
+
+### You (2026-07-29T03:25:51.369Z)
+
+Because what happens?
+
+### Guest (2026-07-29T03:25:52.416Z)
+
+Because what happens in their business is that all the salesperson run ads on their own.
+
+### You (2026-07-29T03:25:53.449Z)
+
+All the salesperson run ads on their own. So they will nurture themselves. And then when it's time to create the.
+
+### Guest (2026-07-29T03:25:57.776Z)
+
+So they will nurture their ads, the leads themselves. And then when it's time to create quotation, they will create the lead.
+
+### You (2026-07-29T03:26:04.329Z)
+
+So they want to know how much that has potential.
+
+### Guest (2026-07-29T03:26:05.296Z)
+
+So they want to know every salesperson actually from your ads, how much leads you convert into warm leads that has potential. So after that, they also want to know new customer by salesperson.
+
+### You (2026-07-29T03:26:13.209Z)
+
+So after that. Customer. So that, so then you know your sales competition.
+
+### Guest (2026-07-29T03:26:19.216Z)
+
+So that, so then from all the new leads, how many translate to new customer, then you know your sales conversion rate already.
+
+### You (2026-07-29T03:26:24.329Z)
+
+The reason logic is that if this thing, then I can strategize.
+
+### Guest (2026-07-29T03:26:25.376Z)
+
+The reason is like that. If this thing comes to my inbox every Sunday, then I can strategize. Right. I see Aviation. He got 100 customers. But then if one salesperson deal with 100 customers, impossible, then it gives me visibility. I need to hire another salesperson. Give him the lower value customers. You focus on the higher value customers.
+
+### You (2026-07-29T03:26:32.569Z)
+
+100 customers. But then if one. Give him the lower. He wants to be able.
+
+### Guest (2026-07-29T03:26:45.776Z)
+
+He wants to be able. He wants this information to make this sort of decisions. Right. Then he also want to see why conversion rate. It's, let's say compare Afiq equation. Oh, yeah. Afiq conversion rate.
+
+### You (2026-07-29T03:26:49.289Z)
+
+Then he has all this. His entire.
+
+### Guest (2026-07-29T03:26:58.016Z)
+
+His entire sales performance last week, 200k. Only got 10 customer. But then we hit one entire performance last week. 50k, but got 20 customers. Why so much difference?
+
+### You (2026-07-29T03:27:03.449Z)
+
+One. Is it you're doing something.
+
+### Guest (2026-07-29T03:27:09.456Z)
+
+Is it you are doing something different? Maybe y'all can learn from each other. Or maybe we can do some strategizing so that, you know, everybody performs better or something.
+
+### You (2026-07-29T03:27:10.729Z)
+
+We all can learn from each other. Or maybe we can strategize. Everybody perform or something. This is visibility.
+
+### Guest (2026-07-29T03:27:18.816Z)
+
+This is visibility.
+
+### You (2026-07-29T03:27:20.729Z)
+
+Right. Another one is custom.
+
+### Guest (2026-07-29T03:27:21.536Z)
+
+Right. So another one is customer churn. So this one, this one, we can ship later. Right. Sales dashboard by salesperson also can be later. But this notification thing, right? If we do P3 one to six, maybe P308 never come also mind.
+
+### You (2026-07-29T03:27:23.049Z)
+
+So this one. This one we can ship later. Sales dashboard by this notification. If we do three. Maybe P3. This one is to assess.
+
+### Guest (2026-07-29T03:27:40.976Z)
+
+This one is to assess later.
+
+### You (2026-07-29T03:27:42.649Z)
+
+Okay.
+
+### Guest (2026-07-29T03:27:43.136Z)
+
+Okay.
+
+### You (2026-07-29T03:27:45.129Z)
+
+Okay.
+
+### Guest (2026-07-29T03:27:45.936Z)
+
+Okay. So for AR. I don't know why it's P3 over here, but they did mention they want to move up the timeline for the AR module.
+
+### You (2026-07-29T03:27:48.809Z)
+
+I don't know why it's character. But they didn't mention they want to move. Around. So for AR.
+
+### Guest (2026-07-29T03:27:56.016Z)
+
+So for AR in outside, right in Maya, it's basically after we create the, the payment entry, you just have a bank statement to recall this thing. So when it's reconciled properly, then you shoot it to SQL. In a way, it's a simpler version than, than Gap version. Yeah, there needs to be a workspace to do this reconciliation. We will do some Auto matching. Actually, in the rv next back end can automate trade even the most important thing from this documents is extracting the fields and mapping to the right places. And then you can use spec the EIP next function to automat. There is a feature that you want.
+
+### You (2026-07-29T03:27:57.929Z)
+
+It's basically after you create the payment entry, you just have a bank. To be called this thing. When you reconsult properly, then you shoot it as well. Anyway, it's a simpler version. Then get measured to confirm the. Yeah, there needs to be some. Actually, the most important thing. You can use.
+
+### Guest (2026-07-29T03:28:35.296Z)
+
+For by ID. It's like my ID by string match type of thing, stuff like that. So, so, so those are certain things that can be done.
+
+### You (2026-07-29T03:28:35.609Z)
+
+By my ID. So. So.
+
+### Guest (2026-07-29T03:28:46.736Z)
+
+I don't be part of call. It will be. Yeah, this can be part of call myan. It's a finance workspace thing. A few other clients, I think two, three clients also need something like this.
+
+### You (2026-07-29T03:28:48.489Z)
+
+This can be part of the financial space. A few other clients. How are we going to turn off for some of the night? There needs to be the permissions to ID.
+
+### Guest (2026-07-29T03:28:59.856Z)
+
+There needs to be a feature kill switch or reduce the permissions to, to hide it.
+
+### You (2026-07-29T03:29:05.049Z)
+
+Okay, so be treated. Very fantastic feature.
+
+### Guest (2026-07-29T03:29:06.016Z)
+
+Okay, so P310. Very fantastic. Cheer. Right. Because we actually have issues.
+
+### You (2026-07-29T03:29:10.409Z)
+
+Because we actually have issues. And the issues is why we created last time is for them. They got a lot of customer complaints. So they want to use this feature.
+
+### Guest (2026-07-29T03:29:14.896Z)
+
+And the issues is why we created life free to block customer complaints and so on. For them, they got a lot of customer complaints. So they want to use this feature as well.
+
+### You (2026-07-29T03:29:22.889Z)
+
+Okay. So in the issues listing.
+
+### Guest (2026-07-29T03:29:23.616Z)
+
+Okay. So in the issues list, there should be a customer complaining. Basically in the chat about how they'll say is that, okay, this customer complain. His complaint is this. And then you should create a customer complaint ticket to just log it so that they have this Trail somewhere.
+
+### You (2026-07-29T03:29:31.289Z)
+
+This. Get to that. So that they have this. Okay, so this is part of our. So I also work.
+
+### Guest (2026-07-29T03:29:38.736Z)
+
+Okay, so this is part of our issues. Just need to check it for this thing. Okay. So I also walk through some out of scope and certain change requests. The also request is that a way for Maya to have internal memo or announcements. This is actually a pretty good idea, but it's not in our current scope. So it will be a CR.
+
+### You (2026-07-29T03:29:46.649Z)
+
+Out of scope and he also requested to have internal memo or actually a pretty good idea. Facebook marketing and auto reply. So I'm gonna be spoke soon. So the BMS integration.
+
+### Guest (2026-07-29T03:29:58.096Z)
+
+Facebook marketing lead capture and auto reply. So there's also CR, but it's not going to be scope. So wms integration. Fleet GPS temperature bank statement record. This one actually in scope. Yeah. And thank you.
+
+### You (2026-07-29T03:30:08.489Z)
+
+In scope. Thank you. No, no, no. How is code?
+
+### Guest (2026-07-29T03:30:16.816Z)
+
+No, no, no. Out of scope. All these are out of scope.
+
+### You (2026-07-29T03:30:19.049Z)
+
+This P4 said.
+
+### Guest (2026-07-29T03:30:19.936Z)
+
+This P4 set. A whole out of scope.
+
+### You (2026-07-29T03:30:23.129Z)
+
+Okay, so this is our final.
+
+### Guest (2026-07-29T03:30:23.376Z)
+
+Okay, so this is our findings from macro fluid.
+
+### You (2026-07-29T03:30:30.729Z)
+
+Any comment?
+
+### Guest (2026-07-29T03:30:31.616Z)
+
+Any comments, guys? Good.
+
+### You (2026-07-29T03:30:33.529Z)
+
+Not too big.
+
+### Guest (2026-07-29T03:30:34.256Z)
+
+Not too big. I think it's doable. All of this. As long as we have Clarity, it's just one, two problems away.
+
+### You (2026-07-29T03:30:36.649Z)
+
+As long as we already. Just one to it. So I put a notification. I need to check the pipeline.
+
+### Guest (2026-07-29T03:30:44.896Z)
+
+Notification one. You take the pipeline. Why? Why is it not coming true?
+
+### You (2026-07-29T03:30:47.369Z)
+
+It's not critical.
+
+### Guest (2026-07-29T03:30:50.416Z)
+
+Oh, and then it says to configure it.
+
+### You (2026-07-29T03:30:53.449Z)
+
+I don't think. It'll be easier. Now.
+
+### Guest (2026-07-29T03:31:04.496Z)
+
+So.
+
+### You (2026-07-29T03:31:05.849Z)
+
+Yeah.
+
+### Guest (2026-07-29T03:31:08.416Z)
+
+Complete for each company.
+
+### You (2026-07-29T03:31:09.689Z)
+
+No, there's one actually.
+
+### Guest (2026-07-29T03:31:10.736Z)
+
+No, actually in the back end, what you got is there's just a notification seeder. That's a few things. Yeah. Bryan already got ready one.
+
+### You (2026-07-29T03:31:17.689Z)
+
+Invoice ID. Yeah. Much more structure with that product. Yeah. I think right now.
+
+### Guest (2026-07-29T03:31:23.696Z)
+
+Structural weight every time. Yeah. We help them create some custom notification. I think Bryan mentioned we just do row to row. First look is correct. Roll the roll first. So right now, I think on product side, it's more to be very clear on these requirements, just like how I, I laid out. Right. So that from these requirements, you can then populate that Excel yourself or something that populate these either.
+
+### You (2026-07-29T03:31:49.769Z)
+
+Video agent. But eventually there is that.
+
+### Guest (2026-07-29T03:31:50.496Z)
+
+With your agents. But eventually we will. Yeah, there is a process here that we need to work on such that on product side, probably the XL is already created. But now it's kind of still stopped at the requirement side of things. So tax side still need to take note of these requirements and just do it in, in how it is first, but good that we already established there are certain touch points that then product can later fit into our, we'll see how to make this more streamlined.
+
+### You (2026-07-29T03:32:00.169Z)
+
+But now it's kind of requirements. I think. So. Good. We'll see how make this more streamlined. Okay. Sorry.
+
+### Guest (2026-07-29T03:32:22.736Z)
+
+Okay, so this overall macro foods took a bit longer than expected.
+
+### You (2026-07-29T03:32:24.169Z)
+
+It took a bit longer than expected. Any questions pointing to.
+
+### Guest (2026-07-29T03:32:27.456Z)
+
+But any questions? Good finding, cool earnings.
+
+### You (2026-07-29T03:32:28.969Z)
+
+The case?
+
+### Guest (2026-07-29T03:32:33.136Z)
+
+I muted on the call.
+
+### You (2026-07-29T03:32:44.329Z)
+
+Okay.
+
+### Guest (2026-07-29T03:32:45.136Z)
+
+Okay.
 
