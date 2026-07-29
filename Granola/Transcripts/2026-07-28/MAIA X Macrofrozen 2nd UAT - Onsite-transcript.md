@@ -3,7 +3,7 @@ granola_id: c6a97e1e-4853-4c12-8441-c53df490eec1
 title: MAIA X Macrofrozen 2nd UAT - Onsite - Transcript
 type: transcript
 created: 2026-07-28T05:19:30.890Z
-updated: 2026-07-29T02:42:23.103Z
+updated: 2026-07-29T04:13:05.075Z
 attendees: 
   - admin@macrogroup.biz
   - itharanie@gmail.com

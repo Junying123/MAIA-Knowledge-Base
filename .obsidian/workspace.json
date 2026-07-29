@@ -30,57 +30,8 @@
               "icon": "lucide-file",
               "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood"
             }
-          },
-          {
-            "id": "ceef9d86007d72d6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03 - Clients/Active Cooking Clients/T.C.K/Meetings/2026-07-24 - Maxfresh Kickoff Meeting Raw Notes.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "2026-07-24 - Maxfresh Kickoff Meeting Raw Notes"
-            }
-          },
-          {
-            "id": "ed25b829c30e5f11",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "T.C.K — Kickoff Clarification Questions"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -138,7 +89,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5
+    "width": 314.5,
+    "collapsed": true
   },
   "right": {
     "id": "4643902206108d97",
@@ -295,7 +247,7 @@
                     "name": "zsh 202"
                   }
                 ],
-                "activeId": 202,
+                "activeId": 185,
                 "nextId": 203
               },
               "icon": "terminal",
@@ -349,6 +301,10 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/2026-07-24 - Maxfresh Kickoff Meeting Raw Notes.md",
+    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — Before vs After MAIA and E2E Flow.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — Before vs After MAIA and E2E Flow.md.tmp.95400.7a4869228294",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/28Jul26 - 2nd UAT Bug Fixes Checklist.md",
     "Granola/Transcripts/2026-07-29/Macro Debrief-transcript.md",
     "Granola/Transcripts/2026-07-29",
@@ -363,11 +319,9 @@
     "_authqr.png",
     "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User_v2.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/2026-07-24 - Maxfresh Kickoff Meeting Raw Notes.md",
     "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Scope Lock v2.md",
     "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen Scope Lock Update Notes.md",
     "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
     "Granola/Transcripts/2026-07-24/Mindhive  Daily Standup-transcript.md",
     "Granola/Transcripts/2026-07-24",
     "Granola/Transcripts/2026-07-23/Client implementation review — pricing, delivery, and UAT gaps-transcript.md",
@@ -386,9 +340,7 @@
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Scope Lock.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/03_Pre-Onboarding Questionnaire - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Finalization 4 - Signing (2026-06-26).md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings",
-    "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
     "Pasted image 20260407144220.png",
     "Pasted image 20260608002056.png",
     "Pasted image 20260608003523.png",
