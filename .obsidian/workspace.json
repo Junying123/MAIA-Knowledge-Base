@@ -283,12 +283,20 @@
                     "name": "zsh 198"
                   },
                   {
-                    "id": 199,
-                    "name": "zsh 199"
+                    "id": 200,
+                    "name": "zsh 200"
+                  },
+                  {
+                    "id": 201,
+                    "name": "zsh 201"
+                  },
+                  {
+                    "id": 202,
+                    "name": "zsh 202"
                   }
                 ],
-                "activeId": 199,
-                "nextId": 200
+                "activeId": 202,
+                "nextId": 203
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -341,6 +349,7 @@
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
+    "03 - Clients/Active Cooking Clients/Macrofood/UAT/28Jul26 - 2nd UAT Bug Fixes Checklist.md",
     "Granola/Transcripts/2026-07-29/Macro Debrief-transcript.md",
     "Granola/Transcripts/2026-07-29",
     "Granola/Transcripts/2026-07-28/MAIA X Macrofrozen 2nd UAT - Onsite-transcript.md",
@@ -378,7 +387,6 @@
     "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Scope Lock.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/03_Pre-Onboarding Questionnaire - T.C.K Sdn Bhd x MAIA.md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Finalization 4 - Signing (2026-06-26).md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Proposal Finalization 3 (2026-06-23).md",
     "03 - Clients/Active Cooking Clients/T.C.K/Meetings",
     "Excalidraw/Dalson To-Be Order-to-Cash Process (Roles).excalidraw",
     "Pasted image 20260407144220.png",
