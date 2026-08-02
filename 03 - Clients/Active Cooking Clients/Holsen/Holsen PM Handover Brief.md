@@ -39,6 +39,7 @@ Handover doc for incoming PM. Gareth resigning from Mindhive, no longer managing
 | A57 tax exemption enforcement | Deferred, not yet enforced | [[Client Overview]], [[Config Overlay]] |
 | AutoCount/SQL integration (replaces UBS CSV) | ⚠️ Starting Aug 2026 — Holsen moving to SQL Accounting on-prem this month. Before any sync: confirm all MAIA data is ready — master data (customers, items), inventory/stock, and every doctype — then push to their SQL on-prem | Dev Brief - Holsen UAT Issues - 2026-06-25, Holsen Go-Live Action Plan - 2026-06-25 |
 | Credit limit approval workflow (Finance) | ⚠️ Not yet enabled — clarify with Mr Tam before turning on. Future use: Finance team; approval routes to **Mr Chin** (boss / credit controller) when a customer's credit exceeds their limit at order creation | [[Client Overview]], [[Config Overlay]] |
+| One DN → many Invoices (staged/drawdown billing) | ❓ Open question from client, not confirmed — see below | Not documented in KB as built |
 | PSO (Poison Sign Order) | ✅ Built, UAT-tested (Test 23) — 7 config items pending as of 25 Mar, unclear if resolved | [[MAIA UAT Form - Holsen - 2026-03]] |
 | Multiple credit notes per invoice | Platform-wide limitation, not Holsen-specific, roadmap item | [[Known Limitations]] |
 | Meta/WhatsApp cutover from Telegram UAT bot | Unclear — Telegram (@maia_holsen_bot) still referenced as of June User Guide | Holsen MAIA User Guide - Mr Tam Team, [[Client Overview]] |
@@ -93,6 +94,19 @@ This is the feature that was deferred alongside C1/C3 — flagging it separately
 
 **Bottom line:** treat batch allocation as **NOT started** against the live system, same caveat as C1/C3 — the checklist is unchecked as of 17 Mar and nothing in this KB checkout confirms it moved since. Verify directly with dev before it's counted toward the A3 balance.
 
+## Open Question — One DN → Many Invoices (Drawdown Billing)
+
+Client (Holsen) asked whether **one Delivery Note can be invoiced across multiple Invoices** — i.e. blanket-order behaviour applied at the **DN → Invoice** stage, not the SO → DN stage.
+
+**Client scenario:** customer orders 1 tonne, MAIA/Holsen deliver the full 1 tonne to the customer's warehouse in a single DN, then invoice incrementally as the customer draws down/consumes the stock — e.g. 4 separate invoices of 0.25 tonne each against that one DN.
+
+**What's confirmed in the KB today:**
+- [[01 - MAIA Product/Product Specs/Blanket Order Spec|Blanket Order Spec]] documents the *other* direction: **one SO → many DNs**, each with its own qty split, date, and address (F-01/F-02). This is built and specced.
+- [[01 - MAIA Product/Product Specs/Delivery Note Spec|Delivery Note Spec]] F-02 only covers **DN from Invoice** (goods dispatched after invoice raised), and even flags "Multiple DNs from one Invoice?" as `[TO FILL]` — the reverse of what's being asked.
+- **One DN → many Invoices (staged/drawdown billing) is not documented anywhere in this KB as a built or specced capability.**
+
+**Bottom line:** do not confirm this to the client as supported. Raise with product/dev as a new capability question — needs its own spec (business rule for allocating invoiced qty against a single DN's delivered qty, remaining-to-invoice tracking, and whether the DN closes only once fully invoiced).
+
 ## Reading Order (in-folder docs only)
 
 1. **CLAUDE** (Holsen folder) — orientation map
@@ -118,6 +132,7 @@ This is the feature that was deferred alongside C1/C3 — flagging it separately
 - [ ] Verify batch allocation (§8–10: Advanced Batch Intake, C3 Allocation, K1 Traceability, picklist lot dropdown) actual build status against live system — checklist says not started, may be stale — Owner: [New PM] — Needed by: before commercial balance discussion
 - [ ] Holsen starts using SQL Accounting on-prem this month (Aug 2026) — before pushing any data to their SQL on-prem, confirm all MAIA data is sync-ready: master data (customers, items), **inventory/stock**, and every doctype involved — Owner: [New PM] — Needed by: before first sync
 - [ ] Clarify credit limit approval workflow with Mr Tam before enabling — future feature for the Finance team; when a customer's credit exceeds their limit at order creation, approval routes to **Mr Chin** (boss / credit controller) — Owner: [New PM] — Needed by: before Finance rollout
+- [ ] Raise "one DN → many Invoices" (drawdown billing) with product/dev — not documented as built anywhere in the KB; client wants to deliver full qty in one DN, then invoice in partial increments as consumed — Owner: [New PM] — Needed by: before responding to client
 
 ## See Also
 
@@ -132,3 +147,5 @@ This is the feature that was deferred alongside C1/C3 — flagging it separately
 - [[DN to Pick List - Batch Number Test Cases]]
 - [[Known Limitations]]
 - [[2026-03-16-ending-phase-agenda]]
+- [[01 - MAIA Product/Product Specs/Blanket Order Spec|Blanket Order Spec]]
+- [[01 - MAIA Product/Product Specs/Delivery Note Spec|Delivery Note Spec]]
