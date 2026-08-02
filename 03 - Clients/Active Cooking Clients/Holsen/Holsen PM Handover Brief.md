@@ -20,7 +20,7 @@ Handover doc for incoming PM. Gareth resigning from Mindhive, no longer managing
 - **Folder:** `03 - Clients/Active Cooking Clients/Holsen/`
 - **Phase:** A1 (Core MAIA) live since ~25 Jun 2026, slipped from original 31 Mar target. A3 (batch/compliance/C1C3) deferred, post-go-live.
 - ⚠️ Live status is ambiguous — a 29 Jun status note explicitly flags "confirm live vs slipped"; a 1 Jul weekly update treats client as already live (discussing stock-data issue, training). First action: confirm directly with Holsen.
-- ⚠️ No named client contact anywhere in the KB. Client Overview contact fields were never filled in. Only role names appear scattered across meeting/UAT docs (Mr. Tam, Ong Siow Chui). Get this from Gareth or chase the client before takeover.
+- ⚠️ No named client contact anywhere in the KB. Client Overview contact fields were never filled in. Only role names appear scattered across meeting/UAT docs (Mr. Tam, Ong Siow Chui, and **Mr. Chin** — boss / credit controller, approves customer credit limit exceedances). Get this from Gareth or chase the client before takeover.
 
 ## Status Table
 
@@ -37,7 +37,8 @@ Handover doc for incoming PM. Gareth resigning from Mindhive, no longer managing
 | K1 traceability | Deferred to A3 | [[Onboarding Status]], Go-Live backlog |
 | COA generation/blinding | Deferred to A3 (backlog F3) | Holsen Go-Live Action Plan - 2026-06-25 |
 | A57 tax exemption enforcement | Deferred, not yet enforced | [[Client Overview]], [[Config Overlay]] |
-| AutoCount/SQL integration (replaces UBS CSV) | ⚠️ Starting Aug 2026 — Holsen moving to SQL Accounting on-prem this month. Before any sync: confirm all MAIA data is ready — master data (customers, items) and every doctype — then push to their SQL on-prem | Dev Brief - Holsen UAT Issues - 2026-06-25, Holsen Go-Live Action Plan - 2026-06-25 |
+| AutoCount/SQL integration (replaces UBS CSV) | ⚠️ Starting Aug 2026 — Holsen moving to SQL Accounting on-prem this month. Before any sync: confirm all MAIA data is ready — master data (customers, items), inventory/stock, and every doctype — then push to their SQL on-prem | Dev Brief - Holsen UAT Issues - 2026-06-25, Holsen Go-Live Action Plan - 2026-06-25 |
+| Credit limit approval workflow (Finance) | ⚠️ Not yet enabled — clarify with Mr Tam before turning on. Future use: Finance team; approval routes to **Mr Chin** (boss / credit controller) when a customer's credit exceeds their limit at order creation | [[Client Overview]], [[Config Overlay]] |
 | PSO (Poison Sign Order) | ✅ Built, UAT-tested (Test 23) — 7 config items pending as of 25 Mar, unclear if resolved | [[MAIA UAT Form - Holsen - 2026-03]] |
 | Multiple credit notes per invoice | Platform-wide limitation, not Holsen-specific, roadmap item | [[Known Limitations]] |
 | Meta/WhatsApp cutover from Telegram UAT bot | Unclear — Telegram (@maia_holsen_bot) still referenced as of June User Guide | Holsen MAIA User Guide - Mr Tam Team, [[Client Overview]] |
@@ -115,7 +116,8 @@ This is the feature that was deferred alongside C1/C3 — flagging it separately
 - [ ] Formally close and sign UAT form (Tests 1–36, incl. never-executed C1/C3 tests) — Owner: [New PM] — Needed by: before reporting A3 progress
 - [ ] Verify FR-01–FR-05 (C1/C3) actual build status against live system — checklist says not started but may be stale post-May UAT — Owner: [New PM] — Needed by: before commercial balance discussion
 - [ ] Verify batch allocation (§8–10: Advanced Batch Intake, C3 Allocation, K1 Traceability, picklist lot dropdown) actual build status against live system — checklist says not started, may be stale — Owner: [New PM] — Needed by: before commercial balance discussion
-- [ ] Holsen starts using SQL Accounting on-prem this month (Aug 2026) — before pushing any data to their SQL on-prem, confirm all MAIA data is sync-ready: master data (customers, items) and every doctype involved — Owner: [New PM] — Needed by: before first sync
+- [ ] Holsen starts using SQL Accounting on-prem this month (Aug 2026) — before pushing any data to their SQL on-prem, confirm all MAIA data is sync-ready: master data (customers, items), **inventory/stock**, and every doctype involved — Owner: [New PM] — Needed by: before first sync
+- [ ] Clarify credit limit approval workflow with Mr Tam before enabling — future feature for the Finance team; when a customer's credit exceeds their limit at order creation, approval routes to **Mr Chin** (boss / credit controller) — Owner: [New PM] — Needed by: before Finance rollout
 
 ## See Also
 
