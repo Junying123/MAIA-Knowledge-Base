@@ -12,6 +12,7 @@ last_updated: 2026-05-03
 Holsen is an active client in Phase 1 go-live. Wholesale/distribution business using MAIA for order-to-cash workflows.
 
 ## Key Files
+- [[Holsen PM Handover Brief]] — PM transition doc (Gareth → incoming PM); status table, C1/C3 and batch allocation deep dives, open follow-ups
 - [[Client Overview]] — business profile and key contacts
 - [[Onboarding Status]] — current phase status and milestones
 - [[Config Overlay]] — MAIA configuration specific to Holsen
