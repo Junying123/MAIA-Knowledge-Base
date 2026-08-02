@@ -30,7 +30,7 @@ Handover doc for incoming PM. Gareth resigning from Mindhive, no longer managing
 | UAT sign-off (target 22 Jun) | ❌ Not formally closed — no completed results/signature | [[MAIA UAT Form - Holsen - 2026-03]] |
 | Go-live (25 Jun) | ⚠️ Ambiguous — see Overview | cross-referenced in weekly status notes (outside this folder) |
 | B1–B8 go-live bugs (warehouse default, stock check, payment due date, tax override, batch→picklist carry, min-price enforcement, discount display, pick-list chatbot notification) | ⚠️ Open as of 25 Jun, no confirmed closure since | Dev Brief - Holsen UAT Issues - 2026-06-25 |
-| Stock/batch data ingest accuracy | ⚠️ Issue open 1 Jul, no ETA | Handover Brief - Holsen 2026 Stock Ingest - 2026-06-26 |
+| Stock/batch data ingest accuracy | ⚠️ Still in progress — ingesting stock from Holsen's Excel; batch qty per item and stock reco not tallying. Plan: may re-ingest stock data; if discrepancies persist after re-ingest, Holsen does stock recon manually. Blocks SQL sync readiness (see below) | Handover Brief - Holsen 2026 Stock Ingest - 2026-06-26 |
 | Refresher training | Tentative 9–10 Jul, unconfirmed by client | cross-referenced in weekly status notes |
 | C1/C3 compliance (Phase A3) | ⚠️ Scoped, UAT tests built, sessions run — not signed off, not confirmed built. See deep dive below | See below |
 | **Batch allocation (lot-level, FEFO, C1/C3/K1 tagging)** | ⚠️ Deferred to A3 — not started per checklist (17 Mar), not re-verified against live system | [[Holsen SOW Feature Checklist]] §8–10, [[2026-03-16-ending-phase-agenda]] "Phase A3." See deep dive below |
@@ -112,7 +112,7 @@ This is the feature that was deferred alongside C1/C3 — flagging it separately
 
 - [ ] Confirm live/production status directly with Holsen — Owner: [New PM] — Needed by: ASAP
 - [ ] Get B1–B8 bug status from dev team — Owner: [New PM] — Needed by: ASAP
-- [ ] Chase stock-data-issue root cause + ETA — Owner: [New PM] — Needed by: ASAP
+- [ ] Chase stock-data-issue root cause + ETA — batch qty per item and stock reco from Holsen's Excel ingest not tallying; plan is to re-ingest stock data, and if discrepancies persist after re-ingest, Holsen falls back to manual stock recon — Owner: [New PM] — Needed by: ASAP, and before SQL sync (item below)
 - [ ] Formally close and sign UAT form (Tests 1–36, incl. never-executed C1/C3 tests) — Owner: [New PM] — Needed by: before reporting A3 progress
 - [ ] Verify FR-01–FR-05 (C1/C3) actual build status against live system — checklist says not started but may be stale post-May UAT — Owner: [New PM] — Needed by: before commercial balance discussion
 - [ ] Verify batch allocation (§8–10: Advanced Batch Intake, C3 Allocation, K1 Traceability, picklist lot dropdown) actual build status against live system — checklist says not started, may be stale — Owner: [New PM] — Needed by: before commercial balance discussion
