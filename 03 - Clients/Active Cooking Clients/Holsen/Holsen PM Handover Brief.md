@@ -37,7 +37,7 @@ Handover doc for incoming PM. Gareth resigning from Mindhive, no longer managing
 | K1 traceability | Deferred to A3 | [[Onboarding Status]], Go-Live backlog |
 | COA generation/blinding | Deferred to A3 (backlog F3) | Holsen Go-Live Action Plan - 2026-06-25 |
 | A57 tax exemption enforcement | Deferred, not yet enforced | [[Client Overview]], [[Config Overlay]] |
-| AutoCount/SQL integration (replaces UBS CSV) | Target Aug 2026 | Dev Brief - Holsen UAT Issues - 2026-06-25, Holsen Go-Live Action Plan - 2026-06-25 |
+| AutoCount/SQL integration (replaces UBS CSV) | ⚠️ Starting Aug 2026 — Holsen moving to SQL Accounting on-prem this month. Before any sync: confirm all MAIA data is ready — master data (customers, items) and every doctype — then push to their SQL on-prem | Dev Brief - Holsen UAT Issues - 2026-06-25, Holsen Go-Live Action Plan - 2026-06-25 |
 | PSO (Poison Sign Order) | ✅ Built, UAT-tested (Test 23) — 7 config items pending as of 25 Mar, unclear if resolved | [[MAIA UAT Form - Holsen - 2026-03]] |
 | Multiple credit notes per invoice | Platform-wide limitation, not Holsen-specific, roadmap item | [[Known Limitations]] |
 | Meta/WhatsApp cutover from Telegram UAT bot | Unclear — Telegram (@maia_holsen_bot) still referenced as of June User Guide | Holsen MAIA User Guide - Mr Tam Team, [[Client Overview]] |
@@ -115,6 +115,7 @@ This is the feature that was deferred alongside C1/C3 — flagging it separately
 - [ ] Formally close and sign UAT form (Tests 1–36, incl. never-executed C1/C3 tests) — Owner: [New PM] — Needed by: before reporting A3 progress
 - [ ] Verify FR-01–FR-05 (C1/C3) actual build status against live system — checklist says not started but may be stale post-May UAT — Owner: [New PM] — Needed by: before commercial balance discussion
 - [ ] Verify batch allocation (§8–10: Advanced Batch Intake, C3 Allocation, K1 Traceability, picklist lot dropdown) actual build status against live system — checklist says not started, may be stale — Owner: [New PM] — Needed by: before commercial balance discussion
+- [ ] Holsen starts using SQL Accounting on-prem this month (Aug 2026) — before pushing any data to their SQL on-prem, confirm all MAIA data is sync-ready: master data (customers, items) and every doctype involved — Owner: [New PM] — Needed by: before first sync
 
 ## See Also
 
