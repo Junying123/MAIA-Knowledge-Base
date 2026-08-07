@@ -16,6 +16,7 @@ GST Fine Foods is a discovery prospect. Food distribution company. Proposal v2 s
 - [[GST Fine Foods × MAIA Proposal v2 [SIGNED]]] — signed proposal
 - [[GST Fine Foods — Requirement Gathering Questionnaire]] — RG questionnaire
 - [[GST Fine Foods — GTM Brief Context and Unclear Items]] — GTM brief context and open questions
+- [[Sample Data Checklist - GST Fine Foods]] — pre-onboarding sample data checklist
 
 ## Folder Structure
 - `brand_context/` — GST Fine Foods brand assets
