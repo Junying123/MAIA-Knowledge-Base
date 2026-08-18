@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-13
+last_reviewed: 2026-08-06
 client: Fixguru
 document_type: internal
 version: v1
@@ -41,9 +41,9 @@ None of these four core sources were previously synced to the KB or listed in Sc
 | Amirul, Bryan, Azib, WeiShen | Mindhive developers (vendor-side) | Implementation owners for specific fixes | N/A (vendor) | No | Build/fix chatbot, FE, calculator, integration items | Vendor voice, not customer voice |
 | Johnson Goh, Jermaine | Mindhive executives (vendor-side) | Commercial/technical authority | N/A (vendor) | No | Commercial accountability, scope/product decisions | Vendor voice, not customer voice |
 
-**UAT signatory — NEEDS CLIENT INPUT.** This is the #1 identity gap. The Forensic Dossier explicitly flags it (B11): "Who can sign UAT? 2nd UAT plan lists testers, not signatory... unresolved signing authority is a high-risk account control gap." The 2026-06-24 debrief action item C6 ("Confirm UAT sign-off authority — is Gareth the signatory?") also remains open. **Do not assume any of the named testers above has signing authority until confirmed.**
+**UAT signatory — RESOLVED 2026-08-06.** Yvonne Choo confirmed as Fixguru's internal champion — she is the sole authority to sign off UAT pass. This closes the #1 identity gap: the Forensic Dossier previously flagged it (B11) as "who can sign UAT? 2nd UAT plan lists testers, not signatory... unresolved signing authority is a high-risk account control gap," and debrief action item C6 is now closed by this confirmation.
 
-**Checkpoint:** the central blocking voice across most of the VoC corpus (historical pricing escalation, credit/approval detail, item code accuracy) is attributed with only BELIEVED confidence to a specific individual — likely Marcus Lim based on cross-referencing the Forensic Dossier's actor table against the transcript "Guest" label, but not CONFIRMED. This does not block the map (the operational content stands regardless of exact speaker), but it should be resolved at the sign-off session alongside the UAT signatory question.
+**Checkpoint:** the central blocking voice across most of the VoC corpus (historical pricing escalation, credit/approval detail, item code accuracy) is attributed with only BELIEVED confidence to a specific individual — likely Marcus Lim based on cross-referencing the Forensic Dossier's actor table against the transcript "Guest" label, but not CONFIRMED. This does not block the map (the operational content stands regardless of exact speaker), but it should be resolved at the sign-off session (the UAT signatory question itself is now resolved — see above).
 
 ---
 
@@ -126,7 +126,7 @@ Pulled directly from `Role Permission/MAIA_Role_Permission_Fixguru_Completed.csv
 
 Ordered by blast radius — each line closes one identity or process gap before the workflow/UAT sign-off session:
 
-1. **Who is the UAT signatory?** Unresolved since at least the 24 June debrief (action item C6). The 2nd UAT plan names testers, not a signatory. Payment Milestone 2 (RM24,000) depends on a valid sign-off — this is the highest-risk unresolved item in the entire account per the Forensic Dossier (B4, B11).
+1. ~~**Who is the UAT signatory?**~~ **RESOLVED 2026-08-06** — Yvonne Choo confirmed as internal champion, sole UAT sign-off authority. Was unresolved since at least the 24 June debrief (action item C6); Payment Milestone 2 (RM24,000) depends on this sign-off.
 2. **Name the Sales Manager and Logistics Manager.** Both roles exist with defined permissions in the CSV matrix but have no assigned person. Approval-level actions (step 4, step 9's escalations) have no confirmed human owner.
 3. **Name the driver(s).** The delivery/proof-of-delivery step (step 10) has zero named individuals anywhere in the four sources. If Lalamove/3PL handles all deliveries, confirm that explicitly — otherwise this is an unstaffed process step.
 4. **Confirm real WhatsApp order-intake samples** (2026-06-24 debrief action item C1, owned by Yvonne, still outstanding) — needed to validate the Order-Intake Map (Section 2) against actual message formats, not assumption.

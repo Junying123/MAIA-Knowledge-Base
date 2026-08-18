@@ -1,7 +1,7 @@
 ---
 owner: Gareth
 status: draft
-last_reviewed: 2026-07-22
+last_reviewed: 2026-07-31
 lark_url: https://eg69120xnei.sg.larksuite.com/wiki/L5E8wsDWHilVDkku64ZlmHxSgGd
 ---
 
@@ -11,6 +11,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 
 > **Regenerated 2026-07-19** per Lens Alignment Report v3 — this doc predated the entire Scope Lock v2 rerun. Fixes applied: SL-12 numbering collision resolved, SL-11/SL-13/SL-17 status + coverage added, SL-10 reworded, verdict recomputed.
 > **Updated 2026-07-22** — SL-10 (Pricing logic) promoted to LOCKED per Scope Lock v2 (owner confirmed both open mechanics: price-history reference + standard-price fallback). Moved from excluded to tested.
+> **Updated 2026-07-31** per Lens Alignment Report v4 + Scope Lock rerun: SL-13 confidence HIGH → MED (uncited quotation-push claim rejected, reverted to "quotation stays MAIA-only"; test steps unchanged, they already tested the correct behavior). SL-5 test cases corrected — delivery is via **Lalamove** (external courier, not a MAIA user), POD is uploaded/attached by **Asilah or Yap Li Min**, not a "Driver" role. SL-14 (document templates) confirmed **LOCKED** — MAIA's own PDF template for all 5 doc types — but has **no test cases yet**, added as a coverage gap. SL-12 (AutoCount 2-way sync) confirmed **LOCKED (design)** but **not turned on** in Dalson's live environment — stays excluded from this UAT cycle. Cash Sales Invoice gap (confirmed 2026-07-31, blocking, no SL-ID yet) added to 4b.
 
 ---
 
@@ -30,14 +31,14 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 | SL-10 | Pricing logic (ad hoc, per-customer negotiated) | **LOCKED (2026-07-22)** — owner confirmed: chatbot surfaces item price history from customer's last few orders, staff manually decides/confirms referencing it; standard AutoCount price auto-applies as default when no customer history exists yet | YES | **YES** |
 | SL-11 | Customer & item/SKU creation via chatbot | **LOCKED (2026-07-19)** — confirmed with Ivan (Vendor/Dev): chatbot can create both new customers and new SKUs directly in AutoCount, full capability not a fallback | YES | **YES** |
 | — | Customer master e-invoice mandatory fields (sub-question under SL-11, not a standalone Scope Lock item — previously mislabeled "SL-12" in this doc) | NEEDS SCOPING — PARTIAL, needs re-verification specific to Dalson | UNKNOWN | NO |
-| SL-12 | AutoCount integration: ongoing 2-way sync mechanism | AGREED IN PRINCIPLE — direction agreed (integrate not replace), API vs middleware vs DB access undefined | NO | NO |
-| SL-13 | PO → SO → Invoice → DO workflow (SO stage reinterpreted) | **LOCKED (SUPERSEDED)** — confidence HIGH (upgraded 2026-07-19: written confirmation found in the Sample Data Checklist doc) | YES (written) | **YES** |
-| SL-14 | Document generation (SO/Invoice/DO PDFs — layout/templates) | AGREED IN PRINCIPLE — NOT LOCKED | NO | NO |
+| SL-12 | AutoCount integration: ongoing 2-way sync mechanism | **LOCKED (design)** — direct DB access confirmed 2026-07-24, but **not turned on yet** in Dalson's live environment (confirmed 2026-07-31) | YES (design) | **NO — do not test this cycle** |
+| SL-13 | PO → SO → Invoice → DO workflow (SO stage reinterpreted) | **LOCKED (SUPERSEDED)** — confidence **MED** (downgraded 2026-07-31: an uncited claim that the quotation pushes to AutoCount was rejected for lacking citation; reverted to "quotation stays MAIA-only," pending a properly attributed re-verification) | YES (written) | **YES** |
+| SL-14 | Document generation (SO/Invoice/DO PDFs — layout/templates) | **LOCKED** — confirmed 2026-07-31: MAIA's own PDF template used for all 5 doc types (SO/SI/DO/CN/QTN) | YES | **NO — no test cases written yet (coverage gap)** |
 | SL-15 | Supplier-side procurement automation | OUT OF SCOPE | N/A | NO |
 | SL-16 | Full ERP replacement | OUT OF SCOPE | N/A | NO |
 | SL-17 | Receipts | **LOCKED** | YES | **YES** |
 
-**Testable this cycle: SL-1 through SL-11, SL-13, SL-17 (13 items).**
+**Testable this cycle: SL-1 through SL-11, SL-13, SL-17 (13 items).** SL-14 is now LOCKED but has no test cases yet (coverage gap, not a scope-status exclusion). SL-12 is LOCKED at the design level but not active in the live environment — correctly excluded.
 
 ---
 
@@ -101,8 +102,8 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 
 | Test ID | Scope ref | Path | Trigger type | Role/actor | Precondition | Steps | Test data | Expected result | Pass/Fail | Tester & date |
 |---|---|---|---|---|---|---|---|---|---|---|
-| HP-05 | SL-5 | Happy | — | Driver | Delivery scheduled in MAIA | 1. Complete a delivery. 2. Upload a POD photo via MAIA. 3. Confirm it's attached to the order/DO. | Sample delivery + photo | Photo is stored and linked to the correct order/DO record | | |
-| UP-10 | SL-5 | Unhappy | Missing data | Driver | Delivery scheduled | 1. Complete a delivery. 2. Do NOT upload a POD photo. 3. Check order status in backend. | — | Order/DO status reflects missing POD rather than silently marking delivery fully complete | | |
+| HP-05 | SL-5 | Happy | — | Asilah (or Yap Li Min) | Delivery completed via Lalamove | 1. Receive POD (photo/signed doc) from Lalamove after delivery. 2. Upload and attach it to the DN in MAIA. 3. Confirm it's linked to the correct order/DO. | Sample delivery + POD | POD is stored and linked to the correct order/DO record | | |
+| UP-10 | SL-5 | Unhappy | Missing data | Asilah | Delivery completed via Lalamove | 1. Complete a delivery. 2. Do NOT attach a POD to the DN. 3. Check order status in backend. | — | Order/DO status reflects missing POD rather than silently marking delivery fully complete | | |
 | UP-11 | SL-5 | Unhappy | Downstream integrity | Yap Li Min | POD uploaded previously | 1. Retrieve a past order. 2. Confirm the POD photo is still viewable from the order/DO trail. | Past completed delivery | POD photo remains retrievable and correctly linked, addressing VOC-011/012 | | |
 
 ### SL-6 — AutoCount integration (access + data migration)
@@ -196,9 +197,10 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 
 | ID | Item | Reason not tested |
 |---|---|---|
+| — | Cash Sales Invoice support (walk-in/unknown customer) | **NEEDS SCOPING, BLOCKING** — confirmed 2026-07-31, no SL-ID yet; MAIA has no cash-invoice type built (no front-end payment UI, chatbot, backend schema, PDF/reporting) |
 | — | Customer master e-invoice mandatory fields (sub-question under SL-11) | NS — PARTIAL, needs re-verification specific to Dalson before testable |
-| SL-12 | AutoCount integration: ongoing 2-way sync mechanism | AIP — direction agreed (integrate not replace), API vs middleware vs DB access undefined |
-| SL-14 | Document generation (SO/Invoice/DO PDFs) | Not locked — required outputs defined but layout/templates only partially available |
+| SL-12 | AutoCount integration: ongoing 2-way sync mechanism | LOCKED (design), but not turned on yet in Dalson's live environment — do not test this cycle |
+| SL-14 | Document generation (SO/Invoice/DO PDFs) | LOCKED 2026-07-31 (MAIA's own PDF template, all 5 doc types) — no test cases written yet, coverage gap not a scope exclusion |
 | SL-15 | Supplier-side procurement automation | OOS — explicitly excluded from Phase 1 |
 | SL-16 | Full ERP replacement | OOS — MAIA is overlay only |
 
@@ -216,7 +218,7 @@ Sources: Scope Lock v2 (rerun 2026-07-14, SL-11 promoted 2026-07-19) · VoC Extr
 
 ## Verdict
 
-**13 of 17 scope items are testable this cycle** (up from 12 — SL-10 promoted to LOCKED 2026-07-22, owner confirmed pricing mechanic). The checklist above covers all 13 with ≥1 happy + ≥2 unhappy cases each. 4 items are correctly excluded (SL-12, SL-14 — AGREED IN PRINCIPLE with a real open mechanic; SL-15, SL-16 — OOS), plus one sub-question (e-invoice mandatory fields) that isn't a standalone Scope Lock item. No locked item is missing coverage as of this regeneration.
+**13 of 17 scope items are testable this cycle** (unchanged since 2026-07-22). The checklist above covers all 13 with ≥1 happy + ≥2 unhappy cases each. SL-12 and SL-14 are now both LOCKED (as of 2026-07-31) but neither is testable this cycle for different reasons — SL-12's mechanism isn't turned on in the live environment, and SL-14 has no test cases written yet (a real coverage gap, tracked, not a scope exclusion). SL-15/SL-16 remain correctly OOS. Plus one confirmed BLOCKING gap outside the 17 SL-ids (Cash Sales Invoice support) and one sub-question (e-invoice mandatory fields) still needing scoping. No *tested* locked item is missing coverage — SL-14 is the one locked item with a genuine test-writing gap to close before it can be executed.
 
 ---
 

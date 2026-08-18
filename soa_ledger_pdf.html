@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOA Ledger PDF — Design</title>
+<style>
+  :root{
+    --maia:#5b3df5; --maia-dark:#3a25a8; --ink:#1a1a2e; --muted:#6b7280;
+    --bg:#f4f5fb; --card:#ffffff; --line:#e5e7f0; --red:#e23b4e; --green:#13a868;
+    --amber:#e09b13; --shadow:0 8px 30px rgba(40,30,90,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding:30px 26px 80px}
+  .wrap{max-width:1040px;margin:0 auto}
+  h1{font-size:27px;letter-spacing:-.5px}
+  .sub{color:var(--muted);font-size:15px;margin-top:6px;margin-bottom:24px}
+
+  /* PDF mock styles — kept in lockstep with soa_portal_complete_reference.html */
+  .pdfwrap{background:#e9eaf2;border-radius:14px;padding:24px;border:1px solid var(--line)}
+  .pdf-fn{font-family:ui-monospace,Consolas,monospace;font-size:12px;background:#fff;border:1px solid var(--line);padding:4px 9px;border-radius:6px;color:var(--maia-dark);display:inline-block;margin-bottom:14px}
+  .page{max-width:760px;margin:0 auto;background:#fff;box-shadow:0 14px 40px rgba(30,20,70,.18);border-radius:3px;padding:40px 44px 26px;position:relative}
+  .pdf-head2{display:flex;justify-content:space-between;border-bottom:3px solid var(--maia);padding-bottom:16px}
+  .co .logo2{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;color:var(--maia-dark)}
+  .co .logo2 .dot{width:20px;height:20px;background:linear-gradient(135deg,var(--maia),var(--maia-dark));border-radius:6px}
+  .co .addr2{font-size:11px;color:var(--muted);margin-top:7px;line-height:1.5}
+  .doc-title2{text-align:right}
+  .doc-title2 h2{font-size:23px;letter-spacing:1px}
+  .doc-title2 .stmt{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.6}
+  .doc-title2 .stmt b{color:var(--ink)}
+  .prow{display:flex;justify-content:space-between;gap:20px;margin-top:18px}
+  .billto2{font-size:12px;flex:1}
+  .billto2 .k{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:4px}
+  .billto2 .nm{font-weight:700;font-size:13.5px}
+  .billto2 .a{color:#444;line-height:1.5;margin-top:2px}
+  .closing2{min-width:220px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .closing2 .top{background:#f6f4ff;padding:10px 13px;border-bottom:1px solid var(--line)}
+  .closing2 .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+  .closing2 .big{font-size:22px;font-weight:800;color:var(--red)}
+  .closing2 table{width:100%;font-size:11.5px}
+  .closing2 td{padding:5px 13px}
+  .closing2 td:last-child{text-align:right;font-weight:600}
+
+  .ledger{width:100%;border-collapse:collapse;margin-top:20px;font-size:11.5px}
+  .ledger thead th{background:var(--maia);color:#fff;padding:8px 9px;text-align:left;font-weight:600;font-size:10.5px}
+  .ledger thead th.num{text-align:right}
+  .ledger tbody td{padding:8px 9px;border-bottom:1px solid #eef0f6}
+  .ledger tbody td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .ledger tbody tr:nth-child(even){background:#faf9ff}
+  .ledger .ref{font-weight:600;color:var(--maia-dark)}
+  .ledger .credit{color:var(--green)}
+  .ledger .bal{font-weight:700}
+  .ledger .opening td{background:#f1f0fa;font-style:italic;color:var(--muted)}
+  .ledger tfoot td{padding:10px 9px;font-weight:800;border-top:2px solid var(--maia)}
+  .ledger tfoot .lbl{text-align:right;text-transform:uppercase;font-size:10.5px;letter-spacing:.5px}
+  .ledger tfoot .num{text-align:right}
+  .ledger tfoot .credit{color:var(--green)}
+  .ledger tfoot .close{color:var(--red);font-size:13px}
+
+  .pdf-foot2{margin-top:18px;border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted)}
+  .pdf-foot2 a{color:var(--maia);text-decoration:none;font-weight:600}
+  .qr2{width:48px;height:48px;border:1px solid var(--line);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:8px;color:#aaa;text-align:center;line-height:1.2}
+
+  .legend{background:#fffdf2;border:1px solid #f0e6bf;border-radius:12px;padding:14px 18px;margin-top:24px;font-size:13.5px;color:#6b5d20;line-height:1.6}
+  .legend code{font-family:ui-monospace,Consolas,monospace;background:#fff;border:1px solid #ece3c0;padding:1px 5px;border-radius:4px;font-size:12px}
+
+  /* Example section titles */
+  .ex-title{max-width:760px;margin:0 auto 14px;display:flex;align-items:center;gap:12px}
+  .ex-title .num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--maia);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;box-shadow:0 4px 12px rgba(91,61,245,.28)}
+  .ex-title .txt{flex:1}
+  .ex-title h2{font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.2px;margin:0}
+  .ex-title .sub2{font-size:12.5px;color:var(--muted);margin-top:2px;font-style:italic}
+  .ex-divider{max-width:760px;margin:36px auto 28px;height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);position:relative}
+  .ex-divider::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Consolidated SOA PDF</h1>
+  <p class="sub">Multipage format — one page per customer, continuation pages for overflow. Mirrors the debtor statement convention.</p>
+  <div class="pdfwrap">
+    <div class="pdf-fn">SOA_20260602_AllCustomers.pdf</div>
+
+    <!-- ============ EXAMPLE 1 TITLE: SINGLE-PAGE ============ -->
+    <div class="ex-title">
+      <div class="num">1</div>
+      <div class="txt">
+        <h2>Example A · Single-page statement</h2>
+        <div class="sub2">Bumblebee Trading — all transactions fit on one page (Page 1 of 1).</div>
+      </div>
+    </div>
+
+    <!-- ============ PAGE 1: Bumblebee Trading (fits in one page) ============ -->
+    <div class="page" style="margin-bottom:32px;padding:36px 44px 28px;">
+      <div class="pdf-head2">
+        <div class="co"><div class="logo2"><span class="dot"></span> Acme Supplies Sdn Bhd</div>
+          <div class="addr2">No. 12, Jalan Perindustrian 4/2<br>47100 Puchong, Selangor, Malaysia<br>+60 3-8765 4321 · accounts@acmesupplies.com.my</div></div>
+        <div class="doc-title2"><h2>STATEMENT OF ACCOUNT</h2>
+          <div class="stmt">Statement Date: <b>02 June 2026</b><br>A/C No.: <b>CUST-00418</b><br>Terms: <b>C.O.D.</b><br>Page: <b>1 of 1</b></div></div>
+      </div>
+      <div class="prow">
+        <div class="billto2"><div class="k">Debtor:</div><div class="nm">Bumblebee Trading Sdn Bhd</div>
+          <div class="a">Lot 8, Jalan Dagang 2<br>40200 Shah Alam, Selangor<br>Attn: Accounts Payable</div></div>
+        <div class="closing2">
+          <div class="top"><div class="lbl">Closing Balance (Amount Due)</div><div class="big">RM 18,450.00</div></div>
+          <table>
+            <tr><td>Opening Balance</td><td>RM 7,200.00</td></tr>
+            <tr><td>Total Debits</td><td>RM 19,650.00</td></tr>
+            <tr><td>Total Credits</td><td>RM 8,400.00</td></tr>
+          </table>
+        </div>
+      </div>
+      <table class="ledger">
+        <thead><tr><th style="width:80px">Date</th><th style="width:120px">Reference</th><th>Description</th><th class="num">DR</th><th class="num">CR</th><th class="num">Balance</th></tr></thead>
+        <tbody>
+          <tr class="opening"><td>01 Apr</td><td>—</td><td>Opening balance brought forward</td><td class="num">—</td><td class="num">—</td><td class="num bal">7,200.00</td></tr>
+          <tr><td>02 Apr</td><td class="ref">PR-2026-0190</td><td>Payment received — bank transfer</td><td class="num">—</td><td class="num credit">7,200.00</td><td class="num bal">0.00</td></tr>
+          <tr><td>14 Apr</td><td class="ref">INV-2026-0355</td><td>Sales invoice — SO-0991</td><td class="num">4,200.00</td><td class="num">—</td><td class="num bal">4,200.00</td></tr>
+          <tr><td>21 Apr</td><td class="ref">INV-2026-0388</td><td>Sales invoice — SO-1004</td><td class="num">6,050.00</td><td class="num">—</td><td class="num bal">10,250.00</td></tr>
+          <tr><td>24 Apr</td><td class="ref">CN-2026-0042</td><td>Credit note — returned goods</td><td class="num">—</td><td class="num credit">1,200.00</td><td class="num bal">9,050.00</td></tr>
+          <tr><td>28 Apr</td><td class="ref">INV-2026-0412</td><td>Sales invoice — SO-1027</td><td class="num">8,200.00</td><td class="num">—</td><td class="num bal">17,250.00</td></tr>
+          <tr><td>05 May</td><td class="ref">DN-2026-0009</td><td>Debit note — late delivery surcharge</td><td class="num">1,200.00</td><td class="num">—</td><td class="num bal" style="color:var(--red);font-weight:700;">18,450.00</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3" class="lbl">Totals / Closing Balance</td><td class="num">19,650.00</td><td class="num credit">8,400.00</td><td class="num close">18,450.00</td></tr></tfoot>
+      </table>
+      <div style="margin-top:16px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin-bottom:6px;">Aging of Outstanding Balance</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <thead><tr style="background:#faf9ff;">
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">Current</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">1 Month</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">2 Months</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">3 Months</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">4 Months</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">5+ Months</th>
+          </tr></thead>
+          <tbody><tr>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);background:#fdeaec;color:var(--red);font-weight:700;">RM 18,450.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+          </tr></tbody>
+        </table>
+      </div>
+      <div style="font-size:10.5px;color:var(--ink);font-style:italic;border-top:1px dashed var(--line);padding-top:8px;margin-top:8px;display:flex;justify-content:space-between;gap:12px;">
+        <span>Ringgit Malaysia Eighteen Thousand Four Hundred Fifty Only</span>
+        <span><b>RM : 18,450.00</b></span>
+      </div>
+      <div style="font-size:10px;color:var(--muted);font-style:italic;margin-top:10px;">We shall be grateful if you will let us have payment as soon as possible. Any discrepancy in this statement must be reported to us in writing within 10 days.</div>
+      <div class="pdf-foot2" style="border-top:1px solid var(--line);padding-top:10px;margin-top:18px;">
+        <div>Generated by <a href="#">MAIA — ordermaia.com</a><br>System-generated; no signature required.</div>
+        <div class="qr2">QR<br>Phase 2</div>
+      </div>
+    </div>
+
+    <!-- ============ DIVIDER BETWEEN EXAMPLES ============ -->
+    <div class="ex-divider"></div>
+
+    <!-- ============ EXAMPLE 2 TITLE: MULTIPAGE ============ -->
+    <div class="ex-title">
+      <div class="num">2</div>
+      <div class="txt">
+        <h2>Example B · Multipage statement (with continuation)</h2>
+        <div class="sub2">A Klasse Essentials — transactions overflow onto a second page. Full header repeats; ledger picks up with a "Balance brought forward" row.</div>
+      </div>
+    </div>
+
+    <!-- ============ PAGE BREAK ============ -->
+    <div style="border-top:2px dashed #c8c6d8;margin:0 auto 32px;max-width:760px;"></div>
+
+    <!-- ============ PAGE 2: A Klasse Essentials (Page 1 of 2 — overflows) ============ -->
+    <div class="page" style="margin-bottom:32px;padding:36px 44px 28px;">
+      <div class="pdf-head2">
+        <div class="co"><div class="logo2"><span class="dot"></span> Acme Supplies Sdn Bhd</div>
+          <div class="addr2">No. 12, Jalan Perindustrian 4/2<br>47100 Puchong, Selangor, Malaysia<br>+60 3-8765 4321 · accounts@acmesupplies.com.my</div></div>
+        <div class="doc-title2"><h2>STATEMENT OF ACCOUNT</h2>
+          <div class="stmt">Statement Date: <b>02 June 2026</b><br>A/C No.: <b>CUST-00172</b><br>Terms: <b>CASH</b><br>Page: <b>1 of 2</b></div></div>
+      </div>
+      <div class="prow">
+        <div class="billto2"><div class="k">Debtor:</div><div class="nm">A Klasse Essentials Sdn Bhd</div>
+          <div class="a">Suite D-2-6, Block D, Megan Avenue 1<br>189 Jln Tun Razak, 50450 Kuala Lumpur<br>Attn: Accounts Payable</div></div>
+        <div class="closing2">
+          <div class="top"><div class="lbl">Closing Balance (Amount Due)</div><div class="big">RM 2,585.00</div></div>
+          <table>
+            <tr><td>Opening Balance</td><td>RM 0.00</td></tr>
+            <tr><td>Total Debits</td><td>RM 5,816.25</td></tr>
+            <tr><td>Total Credits</td><td>RM 3,231.25</td></tr>
+          </table>
+        </div>
+      </div>
+      <table class="ledger">
+        <thead><tr><th style="width:80px">Date</th><th style="width:140px">Reference</th><th>Description</th><th class="num">DR</th><th class="num">CR</th><th class="num">Balance</th></tr></thead>
+        <tbody>
+          <tr class="opening"><td>01 Mar</td><td>—</td><td>Opening balance brought forward</td><td class="num">—</td><td class="num">—</td><td class="num bal">0.00</td></tr>
+          <tr><td>05 Mar</td><td class="ref">IAM-2603-0004</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">646.25</td></tr>
+          <tr><td>26 Mar</td><td class="ref">IAM-2603-0006</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">1,292.50</td></tr>
+          <tr><td>26 Mar</td><td class="ref">IAM-2603-0007</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">1,938.75</td></tr>
+          <tr><td>26 Mar</td><td class="ref">IAM-2603-0008</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">2,585.00</td></tr>
+          <tr><td>02 Apr</td><td class="ref">IAM-2604-0011</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">3,231.25</td></tr>
+          <tr><td>02 Apr</td><td class="ref">IAM-2604-0012</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">3,877.50</td></tr>
+          <tr><td>05 Apr</td><td class="ref">IAM-2604-0015</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">4,523.75</td></tr>
+          <tr><td colspan="6" style="text-align:center;font-style:italic;color:var(--muted);background:#faf9ff;padding:10px;">Continued on next page →</td></tr>
+        </tbody>
+      </table>
+      <div class="pdf-foot2" style="border-top:1px solid var(--line);padding-top:10px;margin-top:18px;">
+        <div>Generated by <a href="#">MAIA — ordermaia.com</a><br>System-generated; no signature required.</div>
+        <div class="qr2">QR<br>Phase 2</div>
+      </div>
+    </div>
+
+    <!-- ============ PAGE BREAK ============ -->
+    <div style="border-top:2px dashed #c8c6d8;margin:0 auto 32px;max-width:760px;"></div>
+
+    <!-- ============ PAGE 3: A Klasse Essentials (Page 2 of 2 — continuation) ============ -->
+    <div class="page" style="margin-bottom:32px;padding:36px 44px 28px;">
+      <div class="pdf-head2">
+        <div class="co"><div class="logo2"><span class="dot"></span> Acme Supplies Sdn Bhd</div>
+          <div class="addr2">No. 12, Jalan Perindustrian 4/2<br>47100 Puchong, Selangor, Malaysia<br>+60 3-8765 4321 · accounts@acmesupplies.com.my</div></div>
+        <div class="doc-title2"><h2>STATEMENT OF ACCOUNT</h2>
+          <div class="stmt">Statement Date: <b>02 June 2026</b><br>A/C No.: <b>CUST-00172</b><br>Terms: <b>CASH</b><br>Page: <b>2 of 2</b></div></div>
+      </div>
+      <div class="prow">
+        <div class="billto2"><div class="k">Debtor:</div><div class="nm">A Klasse Essentials Sdn Bhd</div>
+          <div class="a">Suite D-2-6, Block D, Megan Avenue 1<br>189 Jln Tun Razak, 50450 Kuala Lumpur<br>Attn: Accounts Payable</div></div>
+        <div class="closing2">
+          <div class="top"><div class="lbl">Closing Balance (Amount Due)</div><div class="big">RM 2,585.00</div></div>
+          <table>
+            <tr><td>Opening Balance</td><td>RM 0.00</td></tr>
+            <tr><td>Total Debits</td><td>RM 5,816.25</td></tr>
+            <tr><td>Total Credits</td><td>RM 3,231.25</td></tr>
+          </table>
+        </div>
+      </div>
+      <table class="ledger">
+        <thead><tr><th style="width:80px">Date</th><th style="width:140px">Reference</th><th>Description</th><th class="num">DR</th><th class="num">CR</th><th class="num">Balance</th></tr></thead>
+        <tbody>
+          <tr class="opening"><td>05 Apr</td><td>—</td><td>Balance brought forward</td><td class="num">—</td><td class="num">—</td><td class="num bal">4,523.75</td></tr>
+          <tr><td>08 Apr</td><td class="ref">IAM-2604-0018</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">5,170.00</td></tr>
+          <tr><td>10 Apr</td><td class="ref">IAM-2604-0021</td><td>Sales invoice</td><td class="num">646.25</td><td class="num">—</td><td class="num bal">5,816.25</td></tr>
+          <tr><td>15 Apr</td><td class="ref">ACC-PAY-2604-001</td><td>Payment received — bank transfer</td><td class="num">—</td><td class="num credit">3,231.25</td><td class="num bal" style="color:var(--red);font-weight:700;">2,585.00</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3" class="lbl">Page 2 Subtotals / Closing Balance</td><td class="num">1,292.50</td><td class="num credit">3,231.25</td><td class="num close">2,585.00</td></tr></tfoot>
+      </table>
+      <div style="margin-top:16px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin-bottom:6px;">Aging of Outstanding Balance</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <thead><tr style="background:#faf9ff;">
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">Current</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">1 Month</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">2 Months</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">3 Months</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">4 Months</th>
+            <th style="padding:7px 10px;text-align:center;font-weight:700;color:var(--muted);border:0.5px solid var(--line);">5+ Months</th>
+          </tr></thead>
+          <tbody><tr>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);background:#fdeaec;color:var(--red);font-weight:700;">RM 2,585.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+            <td style="padding:7px 10px;text-align:center;border:0.5px solid var(--line);">0.00</td>
+          </tr></tbody>
+        </table>
+      </div>
+      <div style="font-size:10.5px;color:var(--ink);font-style:italic;border-top:1px dashed var(--line);padding-top:8px;margin-top:8px;display:flex;justify-content:space-between;gap:12px;">
+        <span>Ringgit Malaysia Two Thousand Five Hundred Eighty Five Only</span>
+        <span><b>RM : 2,585.00</b></span>
+      </div>
+      <div style="font-size:10px;color:var(--muted);font-style:italic;margin-top:10px;">We shall be grateful if you will let us have payment as soon as possible. Any discrepancy in this statement must be reported to us in writing within 10 days.</div>
+      <div class="pdf-foot2" style="border-top:1px solid var(--line);padding-top:10px;margin-top:18px;">
+        <div>Generated by <a href="#">MAIA — ordermaia.com</a><br>System-generated; no signature required.</div>
+        <div class="qr2">QR<br>Phase 2</div>
+      </div>
+    </div>
+  </div>
+  <div class="legend">Multipage format mirrors the debtor statement convention: one customer per page, full header repeated on every continuation page. Type badges (<b>IN/CN/DN/PR</b>) sourced from ERPNext GL party-filtered query. Aging buckets computed from posting date vs statement date. Closing balance reconciles to the portal's Total Outstanding. Amount in words and 10-day discrepancy notice follow debtor statement convention. QR slot is a <b>Phase 2</b> placeholder (GAP-003). Filename per FR-024.</div>
+</div>
+</body>
+</html>

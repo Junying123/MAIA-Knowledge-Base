@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "258d7a54c6be4141",
+        "id": "1878d2378ae8dba7",
         "type": "tabs",
         "children": [
           {
-            "id": "8c6b1a9e8e45a419",
+            "id": "0851928e3493e49b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Clients/Active Cooking Clients/Macrofood/Onboarding/[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood.md",
+                "file": "Granola/Transcripts/2026-08-05/Holsen x Mindhive Refresher Training-transcript.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,10 +28,47 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "[Survey] MAIA Pre-Onboarding Requirements Questionnaire - Macrofood"
+              "title": "Holsen x Mindhive Refresher Training-transcript"
+            }
+          },
+          {
+            "id": "e1e8d314c9677b5e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Granola/Transcripts/2026-08-05/UAT issues and deployment readiness — 1000 and Wholeson-transcript.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "UAT issues and deployment readiness — 1000 and Wholeson-transcript"
+            }
+          },
+          {
+            "id": "68af16af5bdcc019",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.13.6"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -68,7 +105,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -89,8 +128,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 314.5,
-    "collapsed": true
+    "width": 314.5
   },
   "right": {
     "id": "4643902206108d97",
@@ -207,48 +245,20 @@
                     "name": "zsh 176"
                   },
                   {
-                    "id": 178,
-                    "name": "zsh 178"
-                  },
-                  {
-                    "id": 185,
-                    "name": "zsh 185"
-                  },
-                  {
-                    "id": 189,
-                    "name": "zsh 189"
-                  },
-                  {
-                    "id": 193,
-                    "name": "zsh 193"
-                  },
-                  {
-                    "id": 195,
-                    "name": "zsh 195"
-                  },
-                  {
                     "id": 197,
                     "name": "zsh 197"
                   },
                   {
-                    "id": 198,
-                    "name": "zsh 198"
+                    "id": 205,
+                    "name": "zsh 205"
                   },
                   {
-                    "id": 200,
-                    "name": "zsh 200"
-                  },
-                  {
-                    "id": 201,
-                    "name": "zsh 201"
-                  },
-                  {
-                    "id": 202,
-                    "name": "zsh 202"
+                    "id": 214,
+                    "name": "zsh 214"
                   }
                 ],
-                "activeId": 185,
-                "nextId": 203
+                "activeId": 214,
+                "nextId": 215
               },
               "icon": "terminal",
               "title": "Terminal"
@@ -269,7 +279,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 826.5
+    "width": 1119.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -295,58 +305,57 @@
       "tasknotes:Open Kanban board": false,
       "tasknotes:Open Pomodoro timer": false,
       "tasknotes:Open Pomodoro statistics": false,
-      "realclaudian:Open Claudian": false,
-      "agent-client:Open agent client": false
+      "realclaudian:Open Claudian": false
     }
   },
   "active": "2abe2995e1e24dad",
   "lastOpenFiles": [
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/2026-07-24 - Maxfresh Kickoff Meeting Raw Notes.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Kickoff Clarification Questions.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — Before vs After MAIA and E2E Flow.md",
-    "03 - Clients/Active Cooking Clients/Dalson/Dalson — Before vs After MAIA and E2E Flow.md.tmp.95400.7a4869228294",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/28Jul26 - 2nd UAT Bug Fixes Checklist.md",
-    "Granola/Transcripts/2026-07-29/Macro Debrief-transcript.md",
-    "Granola/Transcripts/2026-07-29",
-    "Granola/Transcripts/2026-07-28/MAIA X Macrofrozen 2nd UAT - Onsite-transcript.md",
-    "Granola/Transcripts/2026-07-28",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Macrofrozen User Roles Story Infographic v2.png",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Macrofrozen User Roles and Functions Infographic.png",
-    "AGENTS.md.tmp",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen E2E Flow and Per-Role Breakdown.md.tmp.94722.01942c77f705",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/macrofrozen-before-after-maia-workflow.png",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen E2E Flow and Per-Role Breakdown.md",
-    "_authqr.png",
-    "03 - Clients/Active Cooking Clients/Macrofood/UAT/MAIA_UAT_Field_Guide_Play_It_Like_A_User_v2.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/Maya Training — Identified Gaps Report.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/Macrofood — Scope Lock v2.md",
-    "03 - Clients/Active Cooking Clients/Macrofood/macrofrozen/27Jul26 - Macrofrozen Scope Lock Update Notes.md",
-    "03 - Clients/Active Cooking Clients/Fixguru/Fixguru — End-user & Process Map.md",
-    "Granola/Transcripts/2026-07-24/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-07-24",
-    "Granola/Transcripts/2026-07-23/Client implementation review — pricing, delivery, and UAT gaps-transcript.md",
-    "Granola/Transcripts/2026-07-23/Product Team Scope Lock-transcript.md",
-    "Granola/Transcripts/2026-07-23/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-07-23",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Maxfresh Briefing-transcript 2.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings/Fireflies - Introductory Meeting (2026-04-20).md",
-    "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — VoC Extraction.md",
-    "03 - Clients/Active Cooking Clients/GST/GST Fine Foods — Scope Lock.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/01_Signed Proposal - T.C.K Sdn Bhd x MAIA Proposal.pdf",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — VoC Extraction.md",
-    "Granola/Transcripts/2026-07-22/Mindhive  Daily Standup-transcript.md",
-    "Granola/Transcripts/2026-07-22",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/Detailed Onboarding Handover - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/T.C.K — Scope Lock.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Onboarding/03_Pre-Onboarding Questionnaire - T.C.K Sdn Bhd x MAIA.md",
-    "03 - Clients/Active Cooking Clients/T.C.K/Meetings",
-    "Pasted image 20260407144220.png",
-    "Pasted image 20260608002056.png",
-    "Pasted image 20260608003523.png",
-    "Company Logo transparent-v4.png",
-    "Company Logo transparent-clean.png",
-    "Company Logo transparent-v2.png",
+    "gst_v3_tmp.md",
+    "gst_v2_tmp.md",
+    "gst_sample_data_checklist_tmp.md",
+    "_dalson_uat_fixes_tmp.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — 1st UAT Fixes Checklist.md",
+    "03 - Clients/Active Cooking Clients/Dalson/Dalson — 1st UAT Fixes Checklist.md.tmp.13544.5326a02e8c19",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/manifest.json",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/05Aug26_MacroFrozen_Role_Workflows_Before_After_MAIA_v0.5.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Role Workflows — Before - After MAIA Prompt V0/05Aug26_MacroFrozen_Role_Workflows_Before_After_MAIA_v0.5.docx",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/05Aug26_MacroFrozen_Role_Workflows_Before_After_MAIA_v0.2.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Role Workflows — Before - After MAIA Prompt V0/05Aug26_MacroFrozen_Role_Workflows_Before_After_MAIA_v0.2.docx",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/[EXAMPLE-1] Macrofrozen.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Role Workflows — Before - After MAIA Prompt V0/[EXAMPLE-1] Macrofrozen.docx",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Role Workflows — Before - After MAIA Prompt V0",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets/media/image6.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets/media/image5.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets/media/image4.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets/media/image3.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets/media/image2.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets/media/image1.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets/media",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Role Workflows — Before - After MAIA Prompt V0_assets",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Role Workflows — Before - After MAIA Prompt V0.docx",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/03Aug26_MacroFrozen_Operational_UAT_Conductor_Pack.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/UAT Briefing Pack - Generator Prompt/03Aug26_MacroFrozen_Operational_UAT_Conductor_Pack.docx",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/03Aug26_MacroFrozen_UAT_Conductor_Handbook.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Nm19wXwPJib0Tdka94klDwV8g4c.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Nm19wXwPJib0Tdka94klDwV8g4c_assets/media/image9.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Nm19wXwPJib0Tdka94klDwV8g4c_assets/media/image8.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Nm19wXwPJib0Tdka94klDwV8g4c_assets/media/image7.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Nm19wXwPJib0Tdka94klDwV8g4c_assets/media/image6.png",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/UAT Briefing Pack - Generator Prompt.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/07Aug26_MacroFrozen_MAIA_Configuration_Requirements_Iteration2.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/06Aug26_MacroFrozen_MAIA_Configuration_Requirements_StrictEvidence.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/06Aug26_MacroFrozen_MAIA_Configuration_Requirements.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/MAIA Client Configuration Requirements.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/03Aug26_MacroFrozen_Client_Specific_MAIA_Configuration_Requirements.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/[EXAMPLE-5] Macrofrozen.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/maia_core_capabilities.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Config Requirements Prompt V4 - Claude.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Configurations Requirements Prompt V5.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/UAT Infopack - Generator Prompt (v3.5).md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/MAIA_Mackessen_UAT_Field_Guide_v3.4_Lark.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Mackessen_MAIA_UAT_Preparation_Checklist_v4.1.md",
+    "02 - PM Playbook/Templates/Product Prompt Pack/Lark Wiki Export/Markdown/Mackessen_MAIA_UAT_Field_Guide_v4.1_Atomic.md",
     "Untitled.canvas",
     "Untitled 1.canvas",
     "Untitled 2.canvas"

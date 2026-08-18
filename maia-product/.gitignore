@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local secrets
+.env
+*.secret
+secrets/
+
+# Lark raw dumps / temp
+.tmp/
+tmp/
+raw-lark-dumps/

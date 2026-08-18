@@ -11182,6 +11182,20 @@ body.is-mobile .tasknotes-plugin .reminder-modal__action-btn svg {
 .task-selector-with-create-modal .prompt {
     display: flex;
     flex-direction: column;
+    width: min(720px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+}
+
+.task-selector-with-create-modal .suggestion-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.task-selector-with-create-modal .suggestion-item {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 /* ================================================
@@ -11194,10 +11208,27 @@ body.is-mobile .tasknotes-plugin .reminder-modal__action-btn svg {
     box-shadow: none;
     padding: var(--tn-spacing-sm) 0;
     margin: 0;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .task-selector-with-create-modal .task-card:hover {
     background: transparent;
+}
+
+.task-selector-with-create-modal .task-card__main-row,
+.task-selector-with-create-modal .task-card__content,
+.task-selector-with-create-modal .task-card__title,
+.task-selector-with-create-modal .task-card__title-text {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.task-selector-with-create-modal .task-card__title-text {
+    word-break: normal;
+    overflow-wrap: anywhere;
 }
 
 /* Hide context menu icon in modal suggestions */
@@ -12248,6 +12279,22 @@ body.is-mobile .tasknotes-plugin .reminder-modal__action-btn svg {
 
     /* Allow filter dropdowns to extend beyond widget boundaries */
     overflow: visible;
+}
+
+.markdown-source-view .cm-sizer > .tasknotes-relationships-widget {
+    /*
+     * CodeMirror editor selection autoscroll can stop when drag selection reaches
+     * the non-editable widget after the editable document content.
+     */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.markdown-source-view .cm-sizer > .tasknotes-relationships-widget input,
+.markdown-source-view .cm-sizer > .tasknotes-relationships-widget textarea,
+.markdown-source-view .cm-sizer > .tasknotes-relationships-widget [contenteditable="true"] {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 .is-readable-line-width .tasknotes-relationships-widget {
@@ -15006,6 +15053,24 @@ body.is-mobile .advanced-calendar-view.advanced-calendar-view--list .fc-scroller
     overflow-wrap: anywhere;
     text-decoration: inherit;
     white-space: normal;
+}
+
+.advanced-calendar-view .fc-timegrid-all-day-events .fc-daygrid-event {
+    white-space: nowrap;
+}
+
+.advanced-calendar-view .fc-timegrid-all-day-events .fc-event-main,
+.advanced-calendar-view .fc-timegrid-all-day-events .fc-event-main-frame {
+    min-width: 0;
+}
+
+.advanced-calendar-view .fc-timegrid-all-day-events .fc-event-title {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .advanced-calendar-view .fc-timegrid-slot-label {

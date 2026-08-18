@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manufacture Stock — API Contract</title>
+<style>
+  :root{
+    --maia:#5b3df5; --maia-dark:#3a25a8; --ink:#1a1a2e; --muted:#6b7280;
+    --bg:#f4f5fb; --card:#ffffff; --line:#e5e7f0; --red:#e23b4e; --green:#13a868;
+    --amber:#e09b13; --blue:#2f5fe0; --shadow:0 8px 30px rgba(40,30,90,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  .topnav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:12px 24px;flex-wrap:wrap}
+  .topnav .brand{font-weight:800;color:var(--maia-dark);margin-right:18px;display:flex;align-items:center;gap:8px}
+  .topnav .brand .dot{width:18px;height:18px;border-radius:6px;background:linear-gradient(135deg,var(--maia),var(--maia-dark))}
+  .topnav a{font-size:13px;font-weight:700;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px}
+  .topnav a:hover{background:#f4f2ff;color:var(--maia-dark)}
+  .wrap{max-width:980px;margin:0 auto;padding:34px 24px 90px}
+  section{margin-bottom:52px;scroll-margin-top:70px}
+  h1{font-size:26px;letter-spacing:-.4px}
+  h2{font-size:20px;letter-spacing:-.3px;margin-bottom:6px}
+  .eyebrow{display:inline-block;background:#ece8ff;color:var(--maia-dark);font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;margin-bottom:10px;letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:14.5px;margin-bottom:22px;max-width:680px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:800px){.grid2{grid-template-columns:1fr}.topnav{display:none}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+  .card h3{font-size:15.5px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .card p,.card li{font-size:13.5px;color:#3a3a52}
+  .badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px}
+  .badge.bad{background:#fdeaec;color:var(--red)}
+  .badge.good{background:#e3f7ee;color:var(--green)}
+  .badge.warn{background:#fff4e0;color:#7a5800}
+  ul.flow{list-style:none;margin-top:8px}
+  ul.flow li{position:relative;padding:7px 0 7px 26px;border-left:2px solid var(--line);margin-left:6px}
+  ul.flow li:before{content:"";position:absolute;left:-6px;top:13px;width:11px;height:11px;border-radius:50%;background:var(--maia)}
+  ul.flow li.bad:before{background:var(--red)}
+  .legend{background:#fffdf2;border:1px solid #f0e6bf;border-radius:12px;padding:14px 18px;font-size:13px;color:#6b5d20;line-height:1.6}
+  .legend code{font-family:ui-monospace,Consolas,monospace;background:#fff;border:1px solid #ece3c0;padding:1px 5px;border-radius:4px;font-size:12px}
+
+  /* step block */
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:22px;overflow:hidden}
+  .step-hd{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:#fafbff}
+  .step-num{width:30px;height:30px;border-radius:50%;background:var(--maia);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .step-title{font-size:15.5px;font-weight:800;color:var(--ink)}
+  .step-tag{margin-left:auto;font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.4px}
+  .step-tag.fe{background:#e7eeff;color:var(--blue)}
+  .step-tag.be{background:#fff4e0;color:#7a5800}
+  .step-body{padding:18px 20px 20px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+  @media(max-width:800px){.step-body{grid-template-columns:1fr}}
+
+  /* mock frame */
+  .frame{background:#16181d;border:1px solid #2a2d35;border-radius:12px;overflow:hidden}
+  .frame-top{background:#1b1e24;border-bottom:1px solid #2a2d35;padding:9px 14px;font-size:12px;color:#9aa0ad;display:flex;justify-content:space-between}
+  .frame-body{padding:16px 16px 14px}
+  .f{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+  .f label{font-size:10.5px;color:#9aa0ad;font-weight:600}
+  .fi{background:#23262e;border:1px solid #343843;border-radius:7px;padding:8px 11px;color:#e6e8ee;font-size:13px}
+  .fi.hl{border-color:#a78bfa;box-shadow:0 0 0 2px rgba(167,139,250,.2)}
+  .fi.sm{font-size:11.5px;color:#9aa0ad}
+  .result-row{background:#1d2027;border:1px solid #2a2d35;border-radius:8px;padding:9px 13px;display:flex;align-items:center;gap:14px;font-size:12.5px;margin-top:6px}
+  .result-row .rl{color:#9aa0ad;font-size:10.5px;text-transform:uppercase;font-weight:700;min-width:70px}
+  .result-row .rv{font-family:ui-monospace,Consolas,monospace;font-weight:700;color:#e6e8ee}
+  .result-row.success{border-color:#1f3a2a;background:#0f1f14}
+  .result-row.success .rv{color:#5fd17a}
+  .result-row.short{border-color:#3a1f1f;background:#1f1114}
+  .result-row.short .rv{color:#e23b4e}
+  .result-row.warn{border-color:#3a2f10;background:#1f1a0f}
+  .result-row.warn .rv{color:#f5a524}
+  .pillnote{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:4px}
+  .pillnote.success{background:#1f3a2a;color:#5fd17a}
+  .pillnote.short{background:#3a1f1f;color:#e23b4e}
+  .pillnote.warn{background:#3a2f10;color:#f5a524}
+  .chip{display:inline-block;background:#23262e;color:#c7cad2;border:1px solid #343843;font-size:11px;padding:4px 9px;border-radius:6px;margin-right:6px}
+  .btn{font-size:12px;font-weight:700;padding:8px 13px;border-radius:7px;border:none;cursor:pointer}
+  .btn.org{background:#f5a524;color:#1a1000}
+  .btn.grn{background:#1a7a45;color:#e3f7ee}
+
+  /* explain */
+  .explain h4{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:8px}
+  .explain ol{padding-left:18px;margin-bottom:14px}
+  .explain ol li{font-size:13px;color:#3a3a52;margin-bottom:6px;line-height:1.55}
+  .explain ol li code{font-family:ui-monospace,Consolas,monospace;background:#fafbff;border:1px solid var(--line);padding:0 4px;border-radius:3px;font-size:11.5px;color:var(--maia-dark)}
+  .api-btn{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--maia-dark);background:#ece8ff;border:1px solid #ddd6ff;padding:8px 13px;border-radius:8px;cursor:pointer;text-decoration:none}
+  .api-btn:hover{background:#ddd6ff}
+  .no-api{font-size:12px;color:var(--muted);font-style:italic}
+
+  /* flow diagram */
+  .flow-diagram{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .flow-box{background:#f0fdf4;border:1px solid #b7e6cd;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;color:#166534;text-align:center;min-width:80px}
+  .flow-box.raw{background:#fef9ee;border-color:#f0d9a0;color:#7a5200}
+  .flow-box.fg{background:#e7eeff;border-color:#c0ccf8;color:var(--blue)}
+  .flow-arrow{color:var(--muted);font-size:18px}
+
+  /* summary / API table */
+  .sumtbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);font-size:13px}
+  .sumtbl th{background:#f6f7fb;padding:10px 14px;text-align:left;font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--line)}
+  .sumtbl td{padding:10px 14px;border-bottom:1px solid #f0f1f8;color:#3a3a52;vertical-align:top}
+  .sumtbl tr:last-child td{border-bottom:none}
+  .sumtbl td:first-child{font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700;color:var(--maia-dark);width:22%}
+  .req-pill{font-size:9.5px;font-weight:800;background:#fdeaec;color:var(--red);padding:1px 5px;border-radius:3px;margin-left:4px}
+  .opt-pill{font-size:9.5px;font-weight:800;background:#eef0f6;color:var(--muted);padding:1px 5px;border-radius:3px;margin-left:4px}
+
+  /* decision tree */
+  .tree{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:#fafbff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;line-height:2;color:#3a3a52}
+  .tree .t-success{color:var(--green);font-weight:700}
+  .tree .t-warn{color:var(--amber);font-weight:700}
+  .tree .t-err{color:var(--red);font-weight:700}
+
+  /* modal */
+  .modal-bg{position:fixed;inset:0;background:rgba(20,15,50,.5);backdrop-filter:blur(2px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-bg.on{display:flex}
+  .modal{background:#fff;border-radius:14px;max-width:680px;width:100%;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(20,10,60,.4)}
+  .modal-hd{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .modal-hd h4{font-size:14px;font-family:ui-monospace,Consolas,monospace;color:var(--maia-dark)}
+  .modal-hd .x{cursor:pointer;font-size:22px;color:var(--muted);line-height:1}
+  .modal-body{padding:16px 20px 20px;overflow-y:auto;font-size:13px}
+  .modal-body h6{font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:14px;margin-bottom:7px}
+  .modal-body h6:first-child{margin-top:0}
+  .modal-body p{font-size:13px;color:#3a3a52;margin-bottom:8px;line-height:1.6}
+  .modal-body pre{background:#f6f7fb;border:1px solid var(--line);border-radius:8px;padding:14px;font-size:11.5px;overflow-x:auto;color:#3a3a52;line-height:1.6;margin-bottom:10px}
+  .sch-tbl{width:100%;border-collapse:collapse;font-size:12px}
+  .sch-tbl td{padding:6px 8px;border-bottom:1px dashed var(--line);vertical-align:top}
+  .sch-tbl td.fn{font-family:ui-monospace,Consolas,monospace;font-weight:700;color:var(--maia-dark);width:32%}
+  .sch-tbl td.tp{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--muted);width:16%}
+  .req{font-size:9.5px;font-weight:800;background:#fdeaec;color:var(--red);padding:1px 5px;border-radius:3px;margin-left:4px}
+  .opt{font-size:9.5px;font-weight:800;background:#eef0f6;color:var(--muted);padding:1px 5px;border-radius:3px;margin-left:4px}
+
+  /* form example section */
+  .form-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  @media(max-width:800px){.form-wrap{grid-template-columns:1fr}}
+  .form-demo{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .form-demo-hd{background:#fafbff;border-bottom:1px solid var(--line);padding:14px 20px;font-size:14px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:10px}
+  .form-demo-body{padding:20px}
+  .fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+  .fg label{font-size:11.5px;font-weight:700;color:#4b5563}
+  .fg .req-star{color:var(--red)}
+  .fg input,.fg select{background:#f9fafb;border:1.5px solid #d1d5db;border-radius:8px;padding:9px 12px;font-size:13.5px;color:var(--ink);outline:none;transition:border .15s,box-shadow .15s;font-family:inherit}
+  .fg input:focus,.fg select:focus{border-color:var(--maia);box-shadow:0 0 0 3px rgba(91,61,245,.12)}
+  .fg .hint{font-size:11px;color:var(--muted)}
+  .form-actions{display:flex;gap:10px;margin-top:6px}
+  .form-btn{font-size:13px;font-weight:700;padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-family:inherit}
+  .form-btn.primary{background:var(--maia);color:#fff}
+  .form-btn.primary:hover{background:var(--maia-dark)}
+  .form-btn.secondary{background:#f4f5fb;color:var(--muted);border:1px solid var(--line)}
+  .result-panel{border-radius:14px;padding:18px;font-size:13px;line-height:1.6}
+  .result-panel.success{background:#f0fdf4;border:1.5px solid #b7e6cd}
+  .result-panel.shortage{background:#fff5f5;border:1.5px solid #fbc5cc}
+  .result-panel.error{background:#fff8e1;border:1.5px solid #f0d9a0}
+  .result-panel h5{font-size:13.5px;font-weight:800;margin-bottom:10px}
+  .result-panel h5.success{color:#166534}
+  .result-panel h5.shortage{color:var(--red)}
+  .result-panel h5.error{color:#7a5200}
+  .doc-link{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:6px;font-size:11.5px;font-weight:700;font-family:ui-monospace,Consolas,monospace;padding:3px 9px;color:var(--maia-dark);margin-right:6px;margin-bottom:6px}
+  .shortage-tbl{width:100%;font-size:12px;border-collapse:collapse;margin-top:8px}
+  .shortage-tbl th{text-align:left;padding:5px 8px;background:#fdeaec;color:var(--red);font-size:10.5px;font-weight:800;text-transform:uppercase}
+  .shortage-tbl td{padding:6px 8px;border-bottom:1px solid #fdeaec;font-family:ui-monospace,Consolas,monospace}
+  .shortage-tbl tr:last-child td{border-bottom:none}
+  .consumed-row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-bottom:1px dashed #d1fae5}
+  .consumed-row:last-child{border-bottom:none}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="brand"><span class="dot"></span>Manufacture Stock</div>
+  <a href="javascript:void(0)" onclick="scrollToSection('overview')">Overview</a>
+  <a href="javascript:void(0)" onclick="scrollToSection('request')">Request</a>
+  <a href="javascript:void(0)" onclick="scrollToSection('outcomes')">Outcomes</a>
+  <a href="javascript:void(0)" onclick="scrollToSection('integration')">Integration</a>
+  <a href="javascript:void(0)" onclick="scrollToSection('form-example')">Form Example</a>
+</div>
+
+<div class="wrap">
+
+<!-- ================= OVERVIEW ================= -->
+<section id="overview">
+  <span class="eyebrow">API Contract · Draft</span>
+  <h1>Manufacture Stock</h1>
+  <p class="sub">One-shot "make finished goods from raw materials" call. A single request creates the production paperwork <strong>and</strong> moves stock — the caller never orchestrates Work Orders or Stock Entries themselves.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>⚙️ What it does</h3>
+      <ul class="flow">
+        <li>Explodes the BOM recipe and scales raw-material quantities to the requested <code>qty</code>.</li>
+        <li>Checks raw-material availability in <code>source_warehouse</code> atomically before touching anything.</li>
+        <li>On success, creates a Work Order (with <code>skip_transfer=1</code>) and a "Manufacture" Stock Entry in one transaction.</li>
+        <li>Returns the names of both documents and the full consumed / produced ledger lines.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🛑 What it does <em>not</em> do <span class="badge bad">Guardrails</span></h3>
+      <ul class="flow">
+        <li class="bad">No partial production — it's all or nothing. If any raw material is short, nothing moves.</li>
+        <li class="bad">Not idempotent — two identical successful calls create two stock movements.</li>
+        <li class="bad">No dedup / auto-retry — check for an existing Stock Entry before retrying a timed-out call.</li>
+        <li class="bad">All raw materials must be in a single <code>source_warehouse</code> — no per-component sourcing yet.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legend" style="margin-top:18px">
+    <b>Flow:</b> raw material <code>source_warehouse</code> ──▶ BOM recipe (explode + scale) ──▶ finished-good stock <code>target_warehouse</code>. Under the hood this is a <code>Work Order</code> with <code>skip_transfer=1</code> + one <b>Manufacture Stock Entry</b>. The caller sees only the resulting names and ledger movements.
+  </div>
+</section>
+
+<!-- ================= REQUEST ================= -->
+<section id="request">
+  <span class="eyebrow">Endpoint &amp; Request</span>
+  <h2>What to send</h2>
+  <p class="sub">Single <code>POST</code> with a JSON body. Four fields are required; the rest have sensible defaults.</p>
+
+  <div style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow);margin-bottom:22px">
+    <table style="font-size:13px;border-collapse:collapse;width:100%">
+      <tr><td style="width:90px;font-weight:700;padding:5px 0;color:var(--muted)">Method</td><td><code style="background:#ece8ff;color:var(--maia-dark);padding:2px 8px;border-radius:5px;font-size:12.5px">POST</code></td></tr>
+      <tr><td style="font-weight:700;padding:5px 0;color:var(--muted)">Path</td><td style="font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:#3a3a52">/api/method/mindhive_erpnext_apis.…endpoints.v1.inventory_management_workspace.manufacture.manufacture_stock</td></tr>
+      <tr><td style="font-weight:700;padding:5px 0;color:var(--muted)">Auth</td><td style="font-size:13px;color:#3a3a52">Bearer token — <code style="font-size:12px">Authorization: Bearer &lt;token&gt;</code></td></tr>
+      <tr><td style="font-weight:700;padding:5px 0;color:var(--muted)">Idempotent</td><td><span class="badge bad">No</span> &nbsp;Each successful call posts a new stock movement.</td></tr>
+    </table>
+  </div>
+
+  <table class="sumtbl">
+    <thead>
+      <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>item_id<span class="req-pill">REQ</span></td><td>string</td><td><code>Item.name</code> of the finished good. Must have <code>item_type = "MANUFACTURED"</code>. Legacy alias <code>item_code</code> also accepted.</td></tr>
+      <tr><td>qty<span class="req-pill">REQ</span></td><td>number</td><td>Quantity of finished good to produce. Must be <code>&gt; 0</code>.</td></tr>
+      <tr><td>source_warehouse<span class="req-pill">REQ</span></td><td>string</td><td>Raw materials drawn from here. Must be a leaf (non-group) warehouse belonging to <code>company</code>.</td></tr>
+      <tr><td>target_warehouse<span class="req-pill">REQ</span></td><td>string</td><td>Finished good lands here. Same leaf/company rules as <code>source_warehouse</code>.</td></tr>
+      <tr><td>bom_no<span class="opt-pill">OPT</span></td><td>string</td><td>A submitted, active BOM whose output is <code>item_id</code>. Defaults to the item's <code>default_bom</code>.</td></tr>
+      <tr><td>company<span class="opt-pill">OPT</span></td><td>string</td><td>Defaults to the user/site default company.</td></tr>
+      <tr><td>use_multi_level_bom<span class="opt-pill">OPT</span></td><td>bool</td><td>Default <code>true</code>. Explodes sub-assemblies down to leaf raw materials.</td></tr>
+      <tr><td>posting_date<span class="opt-pill">OPT</span></td><td>date</td><td><code>YYYY-MM-DD</code>. Defaults to today. Use to back-date a movement.</td></tr>
+      <tr><td>posting_time<span class="opt-pill">OPT</span></td><td>time</td><td><code>HH:MM:SS</code>. Defaults to now.</td></tr>
+      <tr><td>remarks<span class="opt-pill">OPT</span></td><td>string</td><td>Free-text audit note stamped on the Stock Entry.</td></tr>
+    </tbody>
+  </table>
+
+  <button class="api-btn" style="margin-top:16px" onclick="openApi('request')">📋 View full JSON example</button>
+</section>
+
+<!-- ================= OUTCOMES ================= -->
+<section id="outcomes">
+  <span class="eyebrow">Responses &amp; Decision Flow</span>
+  <h2>Three possible outcomes</h2>
+  <p class="sub">Branch on the <code>status</code> field, not just the HTTP code — a stock shortage returns <code>HTTP 200</code> with <code>status: "insufficient_stock"</code>, not an error.</p>
+
+  <!-- outcome 1 -->
+  <div class="step">
+    <div class="step-hd"><div class="step-num">✓</div><div class="step-title">Success — stock moved</div><div class="step-tag" style="background:#e3f7ee;color:var(--green)">HTTP 200</div></div>
+    <div class="step-body">
+      <div class="frame">
+        <div class="frame-top"><span>manufacture_stock response</span><span>status: success</span></div>
+        <div class="frame-body">
+          <div class="result-row success"><span class="rl">Work Order</span><span class="rv">MFG-WO-0001</span><span class="pillnote success">created</span></div>
+          <div class="result-row success" style="margin-top:6px"><span class="rl">Stock Entry</span><span class="rv">MFG-SE-0001</span><span class="pillnote success">posted</span></div>
+          <div style="margin-top:10px;font-size:10.5px;color:#9aa0ad;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Consumed</div>
+          <div class="result-row" style="margin-top:4px"><span class="rl">RAW-1</span><span class="chip">Stores - MAIA</span><span class="rv" style="color:#e23b4e">−20.0</span></div>
+          <div class="result-row" style="margin-top:4px"><span class="rl">RAW-2</span><span class="chip">Stores - MAIA</span><span class="rv" style="color:#e23b4e">−5.0</span></div>
+          <div style="margin-top:10px;font-size:10.5px;color:#9aa0ad;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Produced</div>
+          <div class="result-row success" style="margin-top:4px"><span class="rl">FG-WIDGET-001</span><span class="chip">Finished Goods - MAIA</span><span class="rv">+10.0</span></div>
+        </div>
+      </div>
+      <div class="explain">
+        <h4>What to show the user</h4>
+        <ol>
+          <li>Confirm the run: "✅ Manufactured 10 × FG-WIDGET-001 into Finished Goods - MAIA."</li>
+          <li>Show <code>work_order</code> and <code>stock_entry</code> as clickable links to their detail views.</li>
+          <li>Render the <code>consumed[]</code> and <code>produced[]</code> ledger lines so the user can verify the raw-material deduction.</li>
+        </ol>
+        <button class="api-btn" onclick="openApi('success')">📄 View success response shape</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- outcome 2 -->
+  <div class="step">
+    <div class="step-hd"><div class="step-num">⚠</div><div class="step-title">Insufficient stock — nothing created</div><div class="step-tag" style="background:#fff4e0;color:#7a5800">HTTP 200</div></div>
+    <div class="step-body">
+      <div class="frame">
+        <div class="frame-top"><span>manufacture_stock response</span><span>status: insufficient_stock</span></div>
+        <div class="frame-body">
+          <div class="result-row short"><span class="rl">Work Order</span><span class="rv">null</span><span class="pillnote short">not created</span></div>
+          <div class="result-row short" style="margin-top:6px"><span class="rl">Stock Entry</span><span class="rv">null</span><span class="pillnote short">not created</span></div>
+          <div style="margin-top:10px;font-size:10.5px;color:#9aa0ad;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Shortages</div>
+          <div class="result-row short" style="margin-top:4px;gap:8px">
+            <span class="rl">RAW-1</span>
+            <span style="font-size:11px;color:#9aa0ad">need</span><span class="rv" style="color:#f5a524">20.0</span>
+            <span style="font-size:11px;color:#9aa0ad">have</span><span class="rv" style="color:#e23b4e">12.0</span>
+            <span class="pillnote short">−8.0</span>
+          </div>
+          <div class="result-row short" style="margin-top:4px;gap:8px">
+            <span class="rl">RAW-2</span>
+            <span style="font-size:11px;color:#9aa0ad">need</span><span class="rv" style="color:#f5a524">5.0</span>
+            <span style="font-size:11px;color:#9aa0ad">have</span><span class="rv" style="color:#e23b4e">0.0</span>
+            <span class="pillnote short">−5.0</span>
+          </div>
+        </div>
+      </div>
+      <div class="explain">
+        <h4>What to show the user</h4>
+        <ol>
+          <li>This is <b>not a failure toast</b> — it's an expected, actionable outcome. Render it as an informational state.</li>
+          <li>"⚠️ Can't build 10 × FG-WIDGET-001 — short on RAW-1 (need 8 more) and RAW-2 (need 5 more). Nothing was created."</li>
+          <li>Render a shortage table from <code>shortages[]</code>: item, required, available, shortfall.</li>
+          <li>Offer next steps: top up via purchase/transfer, or reduce <code>qty</code> and resubmit.</li>
+        </ol>
+        <button class="api-btn" onclick="openApi('shortage')">📄 View shortage response shape</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- outcome 3 -->
+  <div class="step">
+    <div class="step-hd"><div class="step-num">✕</div><div class="step-title">HTTP error — bad input or server fault</div><div class="step-tag be">4xx / 5xx</div></div>
+    <div class="step-body">
+      <div class="frame">
+        <div class="frame-top"><span>manufacture_stock error</span><span>HTTP 422</span></div>
+        <div class="frame-body">
+          <div class="f"><label>error</label><div class="fi" style="color:#e23b4e">Unprocessable Entity</div></div>
+          <div class="f"><label>message</label><div class="fi sm">Item 'FG-X' is not manufacturable (item_type='STOCK').</div></div>
+          <div class="f"><label>errors[]</label><div class="fi sm">Pydantic validation list — map back to form fields</div></div>
+        </div>
+      </div>
+      <div class="explain">
+        <h4>HTTP error codes</h4>
+        <ol>
+          <li><code>422</code> — Missing or invalid field (e.g. <code>qty ≤ 0</code>, missing warehouse).</li>
+          <li><code>404</code> — <code>item_id</code>, <code>bom_no</code>, company, or a warehouse doesn't exist.</li>
+          <li><code>422</code> — Business rule broken: item not <code>MANUFACTURED</code>, BOM not submitted/active, group warehouse, wrong company, no default BOM.</li>
+          <li><code>422</code> — Ledger rejected (e.g. race caused negative stock).</li>
+          <li><code>401/403</code> — Missing or invalid token / no permission.</li>
+          <li><code>500</code> — Unexpected server error.</li>
+        </ol>
+        <p class="no-api">Shape: <code>{ "error": "…", "message": "…" }</code>. Validation failures also include <code>errors[]</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- decision tree -->
+  <div class="tree">
+POST manufacture_stock<br>
+&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├─ HTTP 4xx/5xx ········ <span class="t-err">show error.message; fix input / auth</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└─ HTTP 200<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ status == "success" ············· <span class="t-success">done — show produced/consumed + doc links</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ status == "insufficient_stock" · <span class="t-warn">show shortages[] — nothing was created</span>
+  </div>
+</section>
+
+<!-- ================= INTEGRATION ================= -->
+<section id="integration">
+  <span class="eyebrow">Integration Notes</span>
+  <h2>Frontend &amp; Chatbot guidance</h2>
+  <p class="sub">Single call, three outcomes. Collect the four required slots then fire once.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>🖥️ Frontend</h3>
+      <ul class="flow">
+        <li>Form collects: finished-good item, qty, source warehouse, target warehouse. BOM optional — leave blank to use the item default.</li>
+        <li>On <code>status: "success"</code> — confirm the run, show <code>work_order</code> and <code>stock_entry</code> as links, render consumed/produced lines.</li>
+        <li>On <code>status: "insufficient_stock"</code> — render shortage table. Don't treat as an error toast — it's actionable.</li>
+        <li>On HTTP error — surface <code>message</code>; for <code>422 Validation error</code> map <code>errors[]</code> back to form fields.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🤖 Chatbot</h3>
+      <ul class="flow">
+        <li>Collect four slots conversationally: <code>item_id</code>, <code>qty</code>, <code>source_warehouse</code>, <code>target_warehouse</code>. Ask for <code>bom_no</code> only if the item has multiple BOMs.</li>
+        <li><b>Confirm before firing</b> — this moves real stock. State the item, qty, and warehouses before the call.</li>
+        <li>Never silently retry — a timed-out call may have succeeded.</li>
+        <li>On shortage, offer: "Want me to check where that stock is, or reduce the quantity?"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="legend" style="margin-top:18px">
+    <b>Atomicity guarantee:</b> on <code>insufficient_stock</code> nothing is created. If the Stock Entry fails after the Work Order exists, the Work Order is rolled back — no orphan documents. Availability is checked point-in-time; native stock validation still guards against negative stock from a race.
+  </div>
+</section>
+
+<!-- ================= FORM EXAMPLE ================= -->
+<section id="form-example">
+  <span class="eyebrow">Form Example</span>
+  <h2>Frontend form — three outcome states</h2>
+  <p class="sub">Below is a working HTML example of the manufacture form. Click the buttons to see how each outcome state should render.</p>
+
+  <div class="form-wrap">
+    <!-- Form -->
+    <div class="form-demo">
+      <div class="form-demo-hd">⚙️ Manufacture Stock</div>
+      <div class="form-demo-body">
+        <div class="fg">
+          <label>Finished Good Item <span class="req-star">*</span></label>
+          <input type="text" id="f-item" value="FG-WIDGET-001" placeholder="e.g. FG-WIDGET-001">
+        </div>
+        <div class="fg">
+          <label>Quantity to Produce <span class="req-star">*</span></label>
+          <input type="number" id="f-qty" value="10" min="0.001" step="any">
+        </div>
+        <div class="fg">
+          <label>Source Warehouse <span class="req-star">*</span></label>
+          <input type="text" id="f-src" value="Stores - MAIA" placeholder="e.g. Stores - MAIA">
+          <span class="hint">Raw materials drawn from here</span>
+        </div>
+        <div class="fg">
+          <label>Target Warehouse <span class="req-star">*</span></label>
+          <input type="text" id="f-tgt" value="Finished Goods - MAIA" placeholder="e.g. Finished Goods - MAIA">
+          <span class="hint">Finished good produced into here</span>
+        </div>
+        <div class="fg">
+          <label>BOM No <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+          <input type="text" id="f-bom" placeholder="Defaults to item's default BOM">
+          <span class="hint">Leave blank to use the item's default BOM</span>
+        </div>
+        <div class="fg">
+          <label>Remarks <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+          <input type="text" id="f-remarks" placeholder="Audit note on Stock Entry">
+        </div>
+        <div class="form-actions">
+          <button class="form-btn primary" onclick="showResult('success')">Manufacture</button>
+          <button class="form-btn secondary" onclick="showResult('shortage')">Simulate Shortage</button>
+          <button class="form-btn secondary" onclick="showResult('error')">Simulate Error</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result panel -->
+    <div id="result-area" style="display:none"></div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<!-- ================= MODAL ================= -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <div class="modal-hd"><h4 id="modal-title">—</h4><span class="x" onclick="closeApi()">&#10005;</span></div>
+    <div class="modal-body" id="modal-body">—</div>
+  </div>
+</div>
+
+<script>
+function scrollToSection(id){
+  var el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ---- result panel ---- */
+function showResult(type){
+  var area=document.getElementById('result-area');
+  area.style.display='block';
+  var item=document.getElementById('f-item').value||'FG-WIDGET-001';
+  var qty=document.getElementById('f-qty').value||'10';
+  var tgt=document.getElementById('f-tgt').value||'Finished Goods - MAIA';
+  var src=document.getElementById('f-src').value||'Stores - MAIA';
+
+  if(type==='success'){
+    area.innerHTML=`
+      <div class="result-panel success">
+        <h5 class="success">✅ Manufacture Successful</h5>
+        <p>Manufactured <strong>${qty} × ${item}</strong> into <strong>${tgt}</strong>.</p>
+        <div style="margin:10px 0 4px;font-size:11px;font-weight:700;color:#166534;text-transform:uppercase">Documents</div>
+        <span class="doc-link">MFG-WO-0001</span>
+        <span class="doc-link">MFG-SE-0001</span>
+        <div style="margin:12px 0 6px;font-size:11px;font-weight:700;color:#166534;text-transform:uppercase">Consumed</div>
+        <div class="consumed-row"><span>RAW-1</span><span style="color:var(--red);font-family:ui-monospace,monospace">−20.0 from ${src}</span></div>
+        <div class="consumed-row"><span>RAW-2</span><span style="color:var(--red);font-family:ui-monospace,monospace">−5.0 from ${src}</span></div>
+        <div style="margin:12px 0 6px;font-size:11px;font-weight:700;color:#166534;text-transform:uppercase">Produced</div>
+        <div class="consumed-row" style="border-color:#d1fae5"><span>${item}</span><span style="color:var(--green);font-family:ui-monospace,monospace">+${qty} into ${tgt}</span></div>
+      </div>`;
+  } else if(type==='shortage'){
+    area.innerHTML=`
+      <div class="result-panel shortage">
+        <h5 class="shortage">⚠️ Insufficient Raw Material</h5>
+        <p>Can't build <strong>${qty} × ${item}</strong> — 2 component(s) short in <strong>${src}</strong>. Nothing was created.</p>
+        <table class="shortage-tbl">
+          <thead><tr><th>Item</th><th>Required</th><th>Available</th><th>Shortfall</th></tr></thead>
+          <tbody>
+            <tr><td>RAW-1</td><td>20.0</td><td>12.0</td><td style="color:var(--red)">−8.0</td></tr>
+            <tr><td>RAW-2</td><td>5.0</td><td>0.0</td><td style="color:var(--red)">−5.0</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px;font-size:12px;color:#7a3030">Top up stock via purchase or transfer, then resubmit — or reduce the quantity.</p>
+      </div>`;
+  } else {
+    area.innerHTML=`
+      <div class="result-panel error">
+        <h5 class="error">❌ Validation Error (HTTP 422)</h5>
+        <p><strong>message:</strong> Item '${item}' is not manufacturable (item_type='STOCK').</p>
+        <p style="margin-top:8px;font-size:12px;color:#7a5200">Fix the input and retry. Check that the item exists and has <code>item_type = "MANUFACTURED"</code>.</p>
+      </div>`;
+  }
+}
+
+/* ---- modal ---- */
+var APIS={
+  request:{
+    title:'POST body — manufacture_stock',
+    body:`<h6>Full JSON example</h6>
+<pre>{
+  "item_id": "FG-WIDGET-001",
+  "qty": 10.0,
+  "source_warehouse": "Stores - MAIA",
+  "target_warehouse": "Finished Goods - MAIA",
+  "bom_no": "BOM-FG-WIDGET-001-001",   // optional
+  "company": "MAIA",                    // optional
+  "use_multi_level_bom": true,          // optional, default true
+  "posting_date": "2026-07-08",         // optional
+  "posting_time": "14:30:00",           // optional
+  "remarks": "One-shot production run"  // optional
+}</pre>
+<h6>Envelope note</h6>
+<p>Frappe wraps every whitelisted method return under a top-level <code>message</code> key. Read <code>response.message</code> — all payloads described here are the inner object.</p>`
+  },
+  success:{
+    title:'Response — status: "success"',
+    body:`<h6>HTTP 200 · Stock moved</h6>
+<pre>{
+  "status": "success",
+  "message": "Manufactured 10.0 x FG-WIDGET-001 into 'Finished Goods - MAIA'.",
+  "work_order": "MFG-WO-0001",
+  "stock_entry": "MFG-SE-0001",
+  "bom_no": "BOM-FG-WIDGET-001-001",
+  "finished_good_item": "FG-WIDGET-001",
+  "finished_good_qty": 10.0,
+  "target_warehouse": "Finished Goods - MAIA",
+  "consumed": [
+    { "item_code": "RAW-1", "warehouse": "Stores - MAIA", "qty": 20.0, "direction": "out" },
+    { "item_code": "RAW-2", "warehouse": "Stores - MAIA", "qty": 5.0,  "direction": "out" }
+  ],
+  "produced": [
+    { "item_code": "FG-WIDGET-001", "warehouse": "Finished Goods - MAIA", "qty": 10.0, "direction": "in" }
+  ]
+}</pre>
+<h6>Fields</h6>
+<table class="sch-tbl">
+  <tr><td class="fn">consumed[]</td><td class="tp">array</td><td>Raw-material lines — direction: "out", stock ↓</td></tr>
+  <tr><td class="fn">produced[]</td><td class="tp">array</td><td>Finished-good line(s) — direction: "in", stock ↑</td></tr>
+  <tr><td class="fn">work_order</td><td class="tp">string</td><td>Created Work Order name — link to detail view</td></tr>
+  <tr><td class="fn">stock_entry</td><td class="tp">string</td><td>Created Stock Entry name — link to detail view</td></tr>
+</table>`
+  },
+  shortage:{
+    title:'Response — status: "insufficient_stock"',
+    body:`<h6>HTTP 200 · Nothing created</h6>
+<pre>{
+  "status": "insufficient_stock",
+  "message": "Insufficient raw material in 'Stores - MAIA' to manufacture 10.0 x FG-WIDGET-001. 2 component(s) short.",
+  "work_order": null,
+  "stock_entry": null,
+  "bom_no": "BOM-FG-WIDGET-001-001",
+  "finished_good_item": "FG-WIDGET-001",
+  "finished_good_qty": 10.0,
+  "target_warehouse": "Finished Goods - MAIA",
+  "consumed": [],
+  "produced": [],
+  "shortages": [
+    { "item_code": "RAW-1", "warehouse": "Stores - MAIA", "required": 20.0, "available": 12.0, "shortfall": 8.0 },
+    { "item_code": "RAW-2", "warehouse": "Stores - MAIA", "required": 5.0,  "available": 0.0,  "shortfall": 5.0 }
+  ]
+}</pre>
+<h6>Important</h6>
+<p>A shortage is <strong>HTTP 200 with <code>status: "insufficient_stock"</code></strong>, not an HTTP error. Branch on the <code>status</code> field. <code>shortages[]</code> is only present on this response.</p>`
+  }
+};
+function openApi(key){
+  var a=APIS[key]; if(!a) return;
+  document.getElementById('modal-title').textContent=a.title;
+  document.getElementById('modal-body').innerHTML=a.body;
+  document.getElementById('modal-bg').classList.add('on');
+}
+function closeApi(){ document.getElementById('modal-bg').classList.remove('on'); }
+document.getElementById('modal-bg').addEventListener('click',function(e){ if(e.target===this) closeApi(); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeApi(); });
+</script>
+</body>
+</html>

@@ -141,6 +141,7 @@
     "scheduled": "scheduled",
     "contexts": "contexts",
     "projects": "projects",
+    "attachments": "attachments",
     "timeEstimate": "timeEstimate",
     "completedDate": "completedDate",
     "dateCreated": "dateCreated",
@@ -312,10 +313,6 @@
   "maintainDueDateOffsetInRecurring": false,
   "resetCheckboxesOnRecurrence": false,
   "useFrontmatterMarkdownLinks": false,
-  "googleOAuthClientId": "554564758739-mcq5vfrc7elb6gotvpfu00e4f18dqsk3.apps.googleusercontent.com",
-  "googleOAuthClientSecret": "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",
-  "microsoftOAuthClientId": "",
-  "microsoftOAuthClientSecret": "",
   "enableGoogleCalendar": false,
   "enableMicrosoftCalendar": false,
   "enabledGoogleCalendars": [],
@@ -339,7 +336,7 @@
     "defaultReminderMinutes": null
   },
   "enableDebugLogging": false,
-  "lastSeenVersion": "4.11.1",
+  "lastSeenVersion": "5.0.0-beta.0",
   "modalFieldsConfig": {
     "version": 1,
     "fields": [
@@ -473,7 +470,6 @@
       }
     ]
   },
-  "oauthConnections": {},
   "pomodoroState": {
     "isRunning": false,
     "timeRemaining": 1500
@@ -490,6 +486,8 @@
   "notificationSoundVolume": 50,
   "disableCalendarOnMobile": false,
   "checkForUpdatesOnStartup": true,
-  "lastNotifiedReleaseVersion": "4.11.0",
-  "starterNoteCreated": false
+  "lastNotifiedReleaseVersion": "4.12.3",
+  "starterNoteCreated": false,
+  "occurrenceFilenameTemplate": "",
+  "occurrenceFilenameTemplateProperty": "occurrenceFilenameTemplate"
 }

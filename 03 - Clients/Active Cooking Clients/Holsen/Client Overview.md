@@ -67,6 +67,10 @@ End-to-end order management via WhatsApp chatbot — from PO intake and quotatio
 **Go-Live Date:** 2026-03-31 (Core MAIA only — C1/C3 compliance excluded)
 **Notes:** UAT started 2026-03-18 covering core MAIA only. C1/C3 and A57 tax exemption enforcement are post-go-live scope.
 
+## External Resources
+
+- **Sample docs (client-provided, Google Drive):** https://drive.google.com/drive/folders/1o56UJmTAk9CsefX6fj6JoyJnC6FnGI_T
+
 ## See Also
 
 - [[03 - Clients/Holsen/Onboarding Status]]

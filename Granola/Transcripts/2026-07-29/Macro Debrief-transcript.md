@@ -3,7 +3,7 @@ granola_id: 6c013cdf-bec3-4bb6-863a-b032804224d2
 title: Macro Debrief - Transcript
 type: transcript
 created: 2026-07-29T02:42:24.128Z
-updated: 2026-07-29T04:13:01.799Z
+updated: 2026-07-29T15:52:53.773Z
 attendees: 
   - jermaine@mindhive.asia
   - ivan@mindhive.asia

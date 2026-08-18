@@ -1,0 +1,997 @@
+**GST Fine Foods --- Scope Lock v2**
+
+**Date:** 2026-07-22\
+**Build stage:** In-build. Backward plan: M0 (Requirements & Scope Lock) closed 2026-06-29; M1/M2 in progress since 2026-07-10; M3 (Internal QA) runs through 2026-07-31; UAT planned 2026-08-04--06 \[BP \| 2026-07-07\].\
+**Supersedes:Scope Lock v1.2** (Lark, dated 2026-06-23, node TYNQwno6ai7bSDktYAelAjhSg0d) --- no markdown mirror of this document existed in the KB before now. This v2 was drafted before that discovery and has been rewritten to reconcile against it, per the \"Rerunning an existing Scope Lock\" protocol: v1.2\'s resolved positions are preserved and re-cited, not re-litigated; only genuinely new evidence (mined from sources v1.2 didn\'t have --- the 2026-05 Requirement Gathering Output, the 2026-07-07 Backward Plan, the 7 May delivery-tracker CSV, and the 2026-06-22 Forensic Account Dossier) changes anything. **v1.2\'s own id namespace (LOC-N, SL-N, NSD-N, R-N, SUP-N, OOS-N) is preserved and continued** --- this v2 does not renumber.
+
+**0. Changelog Since v1.2**
+
+  ---------------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Item                                     v1.2 status                                                      v2 status                                                  What changed
+
+  LOC-03 (Penang-first)                    LOCKED                                                           LOCKED, **flagged stale**                                  The 2026-07-07 Backward Plan still lists \"confirm which branch goes live first\" as an unchecked open item --- three weeks after this was supposedly locked. See SC-07 (new).
+
+  SL-02 (RAG item suggestion)              LOCKED --- INTERNAL BUILD SCOPE                                  LOCKED, **reconciled against internal tracker conflict**   The 7 May delivery-tracker CSV marks \"cRFQ / Quotation\" module config as \"Out of Scope\" --- this is now understood to be the CSV using different terminology for the same or an adjacent decision, not a live contradiction. See SC-01 addendum.
+
+  SL-03 (Blanket Order/Agreement)          LOCKED --- INTERNAL BUILD SCOPE, NSD-02 open                     LOCKED, unchanged                                          Confirmed this is the same item as the Backward Plan\'s \"Blanket Order\" customisation (In Progress, 24--28 Jul) --- **not** the same as CPRN (which stays OOS-01). Clarifying this to prevent future confusion --- earlier drafting of this Scope Lock conflated the two.
+
+  SUP-01 / OOS-01 (CPRN)                   OUT OF SCOPE                                                     OUT OF SCOPE, unchanged                                    Confirmed.
+
+  SUP-02 / OOS-02 (stock transformation)   OUT OF SCOPE --- MAIA syncs post-transformation inventory only   OUT OF SCOPE, unchanged                                    Confirmed. Superseded the draft this v2 started from, which had incorrectly marked stock-transformation *sync depth* as a locked build requirement based on SOW §2.4 wording alone.
+
+  ---                                      not present                                                      **NSD-05 (new)**                                           Sales check-in / customer-visit-location reporting --- Soo Chin asked for it 2026-05-07/08; Ivan said MAIA doesn\'t currently have it; never formally answered as in/out/CR. Surfaced by the Forensic Account Dossier.
+
+  ---                                      not present                                                      **SUP-05 (new)**                                           Three Phase-2-adjacent items (SOA portal build, Aging/slow-stock reports, \"Item Name Override\") are showing \"In Progress\" in the July 2026 backward plan --- during the Phase 1 build window, ahead of Phase 1 UAT. This postdates v1.2 and is new risk, not previously assessed.
+
+  ---                                      not present                                                      **SC-07 (new)**                                            Branch decision (LOC-03) marked LOCKED in June, shown open again in July\'s backward plan --- internal document staleness or a genuinely reopened question; unresolved which.
+
+  ---                                      not present                                                      **NSD-06 (new)**                                           Stock source-of-truth for Phase 1 rule checks (SAP live / daily extract / hybrid) --- distinct from NSD-04 (sync cadence); not resolved by v1.2, still open per Backward Plan.
+
+  ---                                      not present                                                      **SL-13 (new)**                                            Consolidated pick list --- warehouse team-split, actual picked-qty capture, DN creation. Not in v1.2 at all; surfaced by a full pass through the Fireflies raw transcript and the Implementation Plan narrative. Team-split already built; actual-qty capture and multi-SO DN split still open (NSD-07, NSD-08).
+
+  ---                                      not present                                                      **NSD-07 / NSD-08 (new)**                                  Two sub-gaps under SL-13: low-stock exception on actual-picked-qty capture, and DN resolution when a pick list spans multiple SOs. Neither blocking for MVP, both needed before UAT sign-off on SL-13.
+
+  ---                                      not present                                                      **SL-14 through SL-19 (new)**                              Item description/name override, customer preference capture, DO/Invoice shared numbering, credit note/return matching, role-based dashboards, and out-of-stock substitution advisory --- all surfaced by a full read of Ivan\'s 2026-05-04 RG Complete Notes doc, none previously in v1.2 or this Scope Lock. Paired NSD-09 through NSD-12 cover the undefined mechanics under each.
+
+  ---                                      not present                                                      **SUP-05 correction**                                      \"Item Name Override has no scope trace\" was wrong --- Ivan\'s RG notes document it directly. Now tracked as SL-14. Remaining risk on SUP-05 is sequencing only, not provenance.
+  ---------------------------------------- ---------------------------------------------------------------- ---------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**1. Source Manifest**
+
+  ------------------------------------------------------------ ----------------------------------------- -------------------------- --------------
+  Source                                                       Type                                      Date                       Citation key
+
+  **Scope Lock v1.2** (Lark)                                   Prior version of this document            2026-06-23                 \[SL-v1.2\]
+
+  **Forensic Account Dossier** (Lark)                          Internal cross-source synthesis           2026-06-22                 \[DOSSIER\]
+
+  SOW for MAIA GST Fine Foods.md                               Contractual draft (unsigned in KB copy)   last_reviewed 2026-05-20   \`\[SOW
+
+  GST Fine Foods × MAIA Proposal v2 \[SIGNED\].md              Signed proposal                           2026-03-12                 \`\[PR
+
+  GST Fine Foods Customer Narrative.md                         Client-facing narrative                   ---                        \`\[CN
+
+  Requirement Gathering Output - GST Fine Foods - 2026-05.md   PM synthesis of 2026-05-04 RG session     2026-05-04                 \`\[RG
+
+  GST Fine Foods --- GTM Brief Context and Unclear Items.md    Synthesis of 2026-04-27 GTM brief         2026-04-27                 \`\[GTM
+
+  GST SAP Vendor × Mindhive --- Meeting Notes.md               Meeting notes, GST IT present             2026-05-19                 \`\[SAPV
+
+  7May26 - GST X MAIA Gaps - Sheet1.csv                        Internal delivery tracker                 as of 2026-05-07           \`\[CSV
+
+  Timeline/GST Phase 1 Backward Plan.md                        Internal delivery plan                    last_reviewed 2026-07-07   \`\[BP
+
+  GST Lark Wiki/GST WhatsApp Group.md                          WhatsApp export, GST-side                 from 2026-04-13            \`\[WA
+
+  Fireflies raw transcripts (2026-05-04, both recordings)      Raw RG session transcripts                2026-05-04                 \`\[FF
+  ------------------------------------------------------------ ----------------------------------------- -------------------------- --------------
+
+v1.2\'s own citation keys (\[FF-RG-A\], \[FF-PROP\], \[SAP-VENDOR\], \[WA\], \[Q\], \[RG-NOTES\]) are preserved as-is inside carried-forward items below, since re-deriving them against the raw Fireflies transcript risks losing v1.2\'s original provenance.
+
+**2. Scope Lock Summary (Dashboard)**
+
+  ------------------------------------- ---------------------------------
+  Status                                Count
+
+  LOCKED (operating constraints, LOC)   6
+
+  LOCKED (build scope, SL)              19 (12 carried, 7 new)
+
+  NEEDS SCOPING (NSD)                   12 (4 carried from v1.2, 8 new)
+
+  RESOLVED / non-blocking (R)           4
+
+  SUPERSEDED (SUP)                      5 (4 carried, 1 new)
+
+  OUT OF SCOPE (OOS)                    6
+
+  Source conflicts (SC)                 7 (6 carried, 1 new)
+  ------------------------------------- ---------------------------------
+
+**🔴 Blocking items**
+
+**NSD-06 (new) --- Stock source of truth** (SAP live / daily extract / hybrid). Not resolved by v1.2. SOW frames this as a pre-build gate \[SOW \| §6\]; Backward Plan shows it still unchecked as of 2026-07-07, three weeks into build.
+
+**SC-07 (new) --- Branch decision integrity.** v1.2 declared Penang-first LOCKED (LOC-03) on 23 Jun; the 7 Jul backward plan still lists it as an open confirmation item. Either the plan is stale or the decision was reopened --- nobody has said which.
+
+**NSD-01 (carried) --- Document format samples** still pending from GST; blocks document UAT per v1.2\'s own assessment.
+
+**NSD-02 (carried) --- Blanket Order/Agreement behaviour mapping** still open; blocks pricing/order accuracy per v1.2.
+
+**SUP-05 (new) --- Phase-2-adjacent items building ahead of their gate.** SOA, Aging/slow-stock, and \"Item Name Override\" show \"In Progress\" in July, before Phase 1 UAT (planned Aug 4--6) --- no evidence GST agreed to this sequencing, and \"Item Name Override\" has no scope trace anywhere else in the corpus.
+
+**Top items to confirm with client**
+
+Stock source of truth (NSD-06).
+
+Reconfirm branch --- is Penang-first still the plan, or did something change since 23 Jun (SC-07)?
+
+Document format samples for all in-scope types (NSD-01, v1.2\'s own #1 confirmation item).
+
+Blanket Order/Agreement behaviour walkthrough (NSD-02, v1.2\'s own #2 confirmation item).
+
+Sales check-in / customer-visit-location reporting (NSD-05) --- was this ever formally closed as declined, or does GST still expect it?
+
+What is \"Item Name Override,\" and is it a decision GST is even aware is being built?
+
+**3. Locked Operating Constraints (carried from v1.2, unchanged unless noted)**
+
+**LOC-01 --- MAIA sits above SAP B1**
+
+**Status:** LOCKED --- CLIENT-EVIDENCED OPERATING CONSTRAINT\
+**Source:**\[FF-PROP\]\[FF-RG-A\]\[SAP-VENDOR\]; independently confirmed by \[SOW \| §1, §6\] (\"not a replacement\")
+
+**Decision**
+
+SAP Business One remains the system of record for accounting, inventory, documents, and operations
+
+MAIA operates as the coordination/workflow layer on top of SAP, not in place of it
+
+**Build implication**
+
+Any MAIA document, payment, inventory, pricing, customer, or order behaviour touching the system of record must account for SAP sync or writeback
+
+**LOC-02 --- SAP integration is a core delivery path**
+
+**Status:** LOCKED --- CLIENT-EVIDENCED OPERATING CONSTRAINT\
+**Source:**\[FF-RG-A\]\[SAP-VENDOR\]
+
+**Decision**
+
+SAP integration is required --- GST\'s pricing, item master, customer master, invoices, stock, and document flows all depend on it
+
+Build proceeds on the known SAP integration path; SAP endpoint coverage itself is not treated as an unresolved blocker
+
+**Build implication**
+
+MAIA will not build custom UDF/UDH inside GST\'s SAP as part of base scope
+
+Any vendor-side custom UDF/UDH limitation that blocks delivery is raised and scoped as a separate customisation, not absorbed into base build
+
+**LOC-03 --- Phase 1 is Penang-first unless client changes rollout**
+
+**Status:** LOCKED per v1.2, **flagged stale** --- see SC-07\
+**Source:**\[FF-RG-A\]\[Q\]; independently corroborated by \[RG \| E2E Workflow --- \"Penang branch is Phase 1 target\"\]
+
+**Decision**
+
+RG conversation framed the first rollout around Penang --- clearest B2B sales workflow and SAP pricing practice
+
+Initial configuration, UAT, and sample data use Penang-first assumptions unless GST explicitly confirms KL or multi-branch go-live
+
+**Build implication**
+
+The 2026-07-07 Backward Plan still lists \"confirm which branch goes live first\" as an unchecked open item --- three weeks after this was supposedly locked
+
+Treat as needing a 30-second internal confirmation before UAT, not a re-opened client discovery question (see SC-07)
+
+**LOC-04 --- MAIA must respect SAP branch/data ownership**
+
+**Status:** LOCKED --- CLIENT-EVIDENCED OPERATING CONSTRAINT\
+**Source:**\[FF-RG-A\]\[RG-NOTES\]
+
+**Decision**
+
+GST\'s SAP structure uses branch/data ownership logic --- users and documents are associated with branch-level visibility and control
+
+**Build implication**
+
+MAIA must not expose all branch data to all users by default
+
+User visibility and document access must respect branch permissions
+
+**LOC-05 --- Joey is the working internal implementation PIC**
+
+**Status:** LOCKED --- CLIENT-EVIDENCED OPERATING CONSTRAINT\
+**Source:**\[FF-RG-A\]\[WA\]
+
+**Decision**
+
+Joey is the working implementation PIC / day-to-day coordination owner on GST\'s side
+
+SOW §7.2 spells this \"Joey Pong\"; every other source spells \"Joey Ong\" --- treated as the same person (transcription variance), not two PICs
+
+**Build implication**
+
+Sample collection, UAT coordination, and requirement confirmations route through Joey unless GST assigns another owner
+
+**LOC-06 --- GST-side setup dependencies are required**
+
+**Status:** LOCKED --- CLIENT-EVIDENCED OPERATING CONSTRAINT\
+**Source:**\[FF-RG-A\]\[WA\]
+
+**Decision**
+
+GST must support setup of WhatsApp Business Account, OpenAI API, AWS account, and relevant phone/account access
+
+**Build implication**
+
+Infrastructure readiness is a client-side dependency --- Mindhive can assist setup but cannot fully proceed without account ownership and access
+
+**4. Locked Scope (carried from v1.2, unchanged unless noted)**
+
+**SL-01 --- Multi-format order/quotation intake and quotation draft**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| quotation intake / order request channels\]; independently corroborated by \[RG \| Captured Requirements --- Sales Workflow\] (WhatsApp freeform text + Excel forwarding) and \[SOW \| §2.1.1\]
+
+**User-facing flow**
+
+Customer sends order request → user uploads or forwards it into MAIA (quotation doc, handwritten doc, WhatsApp message, or other feasible artefact)
+
+MAIA parses the request and drafts quotation lines
+
+User reviews item, quantity, customer, price, remarks, and delivery details, then confirms or edits
+
+**Acceptance criteria**
+
+MAIA drafts editable quotation lines; user can edit every extracted field before confirmation
+
+MAIA never auto-finalises a quotation without user confirmation
+
+**Confidence: HIGH on scope; MEDIUM on input-format performance until sample documents are received**
+
+**SL-02 --- Item suggestion using RAG / item master retrieval**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| product matching / item master\]
+
+**Reconciliation note:** the 7 May delivery-tracker CSV marks a \"cRFQ / Quotation\" module config line as \"Out of Scope\" \[CSV \| cRFQ/Quotation section\]. Read against v1.2 (dated three weeks later), the likelier explanation is that the CSV\'s \"cRFQ\" line referred to a heavier, standalone quotation-generation module that was folded into (or replaced by) this lighter RAG-suggestion approach --- not that item matching was dropped outright. Best current reconciliation, not a confirmed fact --- flag for a one-line check with whoever owns the CSV.
+
+**User-facing flow**
+
+User uploads an order request → MAIA extracts item text → searches the item master → suggests likely/similar items
+
+User confirms, rejects, or overrides each suggestion
+
+**Acceptance criteria**
+
+MAIA never silently substitutes an item
+
+Suggestion quality is explicitly stated as dependent on item-master data quality, not guaranteed
+
+**Confidence: HIGH on scope; MEDIUM on performance (external data-quality dependency)**
+
+**SL-03 --- SAP-style Blanket Order / Blanket Agreement support**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE, NSD-02 still open\
+**Source:**\[FF-RG-A \| pricing / Blanket Agreement\]
+
+**Distinct from CPRN (OOS-01) --- do not conflate.** This is the same item tracked as \"Blanket Order\" in the Backward Plan\'s Customisations table (In Progress, 24--28 Jul) \[BP \| Customisations table\] --- that build activity is consistent with this LOCKED item, not a violation of it.
+
+**User-facing flow**
+
+User creates a quotation/order for a customer → MAIA checks the applicable Blanket Order/Agreement → applies the agreed customer/item terms
+
+SAP writeback preserves the required Blanket Order/Agreement linkage and traceability
+
+**Acceptance criteria**
+
+MAIA supports GST\'s required Blanket Order/Agreement fields and aligns behaviour with SAP-side agreement logic
+
+Missing or expired agreement cases are surfaced to the user, not silently applied
+
+**Confidence: HIGH on internal scope; MEDIUM on implementation until SAP behaviour is fully mapped**
+
+**SL-04 --- Credit approval / approval workflow behaviour in MAIA**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| credit block / approval delay\]; independently corroborated --- credit-approval authority already held by named individuals \[CSV \| Pre-Phase 1 Gate #13, Completed\], credit-block notification build marked Completed \[CSV \| Notifications #1\]
+
+**User-facing flow**
+
+Order hits an approval condition → MAIA flags the requirement → approver receives task/notification → approves, rejects, or comments → decision recorded
+
+Sales/finance sees the outcome; order proceeds per the decision
+
+**Acceptance criteria**
+
+Approvers can act inside MAIA; decision trail records actor, time, status, and comments
+
+SAP-side credit-block release is not assumed unless confirmed in the integration design
+
+**Confidence: HIGH on MAIA workflow; MEDIUM on SAP release automation**
+
+**SL-05 --- Payment proof upload and payment entry decision**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| payment proof workflow\]; corroborated --- payment-proof → draft payment entry workflow marked Completed \[CSV \| Core MAIA Extension #6\]
+
+**User-facing flow**
+
+User uploads payment proof → MAIA reads/stores the attachment → asks whether to create a payment receipt or payment voucher → creates the draft payment entry with attachment
+
+Reconciliation/allocation to invoices remains manual, user-instructed
+
+**Acceptance criteria**
+
+MAIA never finalises a payment document without user confirmation
+
+Payment document status and SAP writeback status are visible
+
+**Confidence: HIGH on workflow; MEDIUM on SAP payment object mapping**
+
+**SL-06 --- Invoice / document retrieval by users**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| invoice retrieval request\]; corroborated --- invoice retrieval by salesperson (mobile) marked Completed \[CSV \| Core MAIA Extension #7\]
+
+**User-facing flow**
+
+Sales user requests an invoice or related document → MAIA searches synced/linked records → returns matches → user downloads or shares as permitted
+
+**Acceptance criteria**
+
+Access respects user permissions; SAP document reference is visible where applicable
+
+**Confidence: HIGH on scope; MEDIUM on available SAP document access**
+
+**SL-07 --- Password-protected SOA portal link**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE, NSD-03 still open\
+**Source:**\[FF-RG-A \| SOA / secure link concern\]
+
+No corroboration found elsewhere in the KB corpus for this self-service portal design --- this is the single largest piece of scope this v2\'s own source set would have missed entirely without v1.2. Treat v1.2 as the authoritative source for SOA design detail going forward.
+
+**User-facing flow**
+
+Sales user requests an SOA link → MAIA generates a password-protected, time-limited, revocable link → customer opens a mobile-responsive portal showing SOA, invoices, credit notes, orders, and related documents → customer self-service downloads
+
+**Acceptance criteria**
+
+Portal exposes only documents within the intended customer/account scope; access revocation takes effect after user action
+
+**Confidence: HIGH on scope; MEDIUM on security design detail**
+
+**SL-08 --- Client document format matching**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE, NSD-01 still open (blocking)\
+**Source:**\[FF-RG-A \| Crystal Reports / document format\]; independently corroborated as a hard, \"non-negotiable\" requirement \[SOW \| §2.3\]
+
+**User-facing flow**
+
+User generates a quotation/order/invoice/other supported document in MAIA → MAIA outputs using GST-approved layout → user reviews, downloads, or sends
+
+**Acceptance criteria**
+
+GST provides sample formats for every in-scope document type; a missing sample is treated as a blocker for that document type
+
+All 6 document types (QT, SO, DO, Invoice, Pick List, CN) still show \"Not Started\" or awaiting client PDF samples \[CSV \| PDF Generation section\]
+
+**Confidence: HIGH on scope; LOW on document-specific acceptance until samples are received**
+
+**SL-09 --- Inventory visual cue on document item tables**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| committed stock / inventory visibility\]
+
+**User-facing flow**
+
+User adds an item to a quotation/SO/DN → MAIA displays actual/available/reserved/producible quantity beside the line → user decides whether to proceed, reduce quantity, or choose an alternative
+
+**Acceptance criteria**
+
+Producible quantity appears only where MAIA-configured BOM/Product Bundle data exists
+
+UI does not imply GST\'s custom SAP stock-transformation workflow is supported --- this is a MAIA-side cue only, it does **not** mean MAIA models the transformation engine itself (see OOS-02)
+
+**Confidence: HIGH on the MAIA-side cue; MEDIUM on accuracy (SAP sync dependency)**
+
+**SL-10 --- Order listing, fulfillment percentage, and order aging**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| stale order / fulfillment visibility\]
+
+**User-facing flow**
+
+User opens the order listing → sees status, fulfillment percentage, and order age → filters/sorts by aging or fulfillment → opens order detail to act
+
+**Acceptance criteria**
+
+Users can identify slow-moving or long-open orders directly from the listing
+
+**Confidence: HIGH**
+
+**SL-11 --- MAIA-created document writeback to SAP**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| SAP integration dependency\]\[SAP-VENDOR \| MAIA → middleware → SAP\]; corroborated by \[SOW \| §2.4\]
+
+**User-facing flow**
+
+User creates a supported document in MAIA → confirms → MAIA writes it to SAP through the integration layer → SAP returns a document reference / success or failure
+
+**Acceptance criteria**
+
+Writeback success/failure is visible to users; duplicate document creation is prevented
+
+SAP-write build rows show \"Not Started\" as of 7 May, \"In Progress\" per the 7 Jul backward plan\'s M2 milestone --- a tracker-freshness gap, not a scope gap
+
+**Confidence: HIGH on scope**
+
+**SL-12 --- Movement-based slow stock visibility and reports**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[FF-RG-A \| batch / expiry limitation\]
+
+Because GST does not capture batch number or expiry data in structured form, MAIA does not provide batch-expiry alerts (see SUP-03/OOS-04) --- instead it surfaces movement-based slow stock signals.
+
+**User-facing flow**
+
+User opens the warehouse dashboard or stock report → sees movement/aging signals from available stock-movement data → identifies slow-moving stock → follows up operationally
+
+**Acceptance criteria**
+
+MAIA does not claim batch-level expiry alerting; reports use available SAP/MAIA stock-movement data only
+
+**Confidence: HIGH on scope; MEDIUM on rule definitions**
+
+**SL-13 (new) --- Consolidated pick list: warehouse team-split, actual picked qty capture, and DN creation**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE (partially built)\
+**Source:**\[RG \| Captured Requirements --- Logistics/Warehouse Workflow\]\[CSV \| Pre-Phase 1 Gate #10-11, Core MAIA Extension #1-2, #8-9\]\[FF \| 5/4 session B --- \"picking list basically picking list S O D O invoice\... it will all in Crystal report\"\]; Implementation Plan\'s \"Pick List --- The UX at Each Phase\" section
+
+Not present in v1.2 at all --- this is a genuine addition, surfaced by a fuller pass through the Fireflies raw transcript and the Implementation Plan narrative.
+
+**User-facing flow**
+
+Warehouse manager creates a consolidated pick list pulling items from multiple pending SOs
+
+MAIA auto-splits the pick list by warehouse section (frozen produce vs ready-packed stock) so each team sees only its items
+
+After picking (and, for frozen items, stock transformation --- stays in SAP, unchanged in Phase 1), warehouse user updates actual picked quantities directly in MAIA --- no paper annotation, no sales-support re-entry
+
+Pick list is submitted with actual quantities → DN created per customer from the consolidated list
+
+**Acceptance criteria**
+
+Team-split view/print correctly filters by item group (frozen vs ready-packed) --- already Completed per delivery tracker
+
+Actual picked quantity is captured in MAIA UI and flows through to DN without a second data-entry step --- Not Started (see NSD-07)
+
+When a pick list spans multiple SOs, the system defines how DN creation resolves which SO(s) to create the DN for --- Not Started, no defined logic yet (see NSD-08)
+
+Pick List PDF output matches GST\'s Crystal Reports layout --- gated on the same document-sample dependency as NSD-01
+
+**Confidence: HIGH on team-split (built); MEDIUM-LOW on actual-qty capture and multi-SO DN split (undefined edge cases)**
+
+**SL-14 (new) --- Item description / name override in sales documents**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[Ivan RG Notes \| §8\] --- \"GST requires the ability to override item name or item description in sales documents\"; corroborated by Ivan\'s raw meeting notes, which list it as its own line separate from Blanket Order
+
+Not present in v1.2 or anywhere else in the corpus before this pass --- direct GST requirement from the founding 2026-05-04 RG session, previously untraced. This also resolves the SUP-05 \"Item Name Override has no scope trace\" flag --- see correction there.
+
+**User-facing flow**
+
+Same SKU may need a different customer-facing description depending on the transaction (processing instructions, customer-preferred wording)
+
+User overrides the item description at the transaction/line-item level on a sales document, without touching the item master
+
+**Acceptance criteria**
+
+Description override is transaction-level only; the underlying SKU identity and item master record are unchanged
+
+No data pollution of the shared item master from a one-off customer-facing description
+
+**Confidence: HIGH --- direct, twice-documented client requirement**
+
+**SL-15 (new) --- Customer preference / processing-instruction capture**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE (Phase 1: free-text remarks + RAG suggestion only)\
+**Source:**\[Ivan RG Notes \| §7\] --- \"Shangri-La wants butterfly cut\... another customer wants cleaned and gutted\"; Implementation Plan\'s \"Customer Preferences --- UX at Each Phase\" section
+
+Not present in v1.2. Whole feature area was missing from the Scope Lock despite being documented in two separate KB sources.
+
+**User-facing flow**
+
+Staff types customer/processing preferences into remarks on QT/SO/SI/DN (document- or line-item-level)
+
+MAIA embeds remarks per customer; on the next document creation for that customer, MAIA surfaces relevant historical remarks as a suggestion in the chatbot
+
+Staff applies or ignores the suggestion --- never auto-applied
+
+**Acceptance criteria**
+
+Remarks captured at document and line-item level on QT/SO/SI/DN
+
+Suggestion is surfaced, not silently applied; historical order-data migration seeds the initial embeddings
+
+Structured preference fields (dropdown for cut type, toggle for glaze, auto-populating into QT/SO/Pick List/DN) are an explicit **Phase 2 enhancement**, not promised now --- do not build ahead of Phase 1 free-text + RAG
+
+**Confidence: HIGH on Phase 1 (free-text + RAG suggestion); Phase 2 structured fields is future scope only**
+
+**SL-16 (new) --- DO / Invoice shared document-numbering behaviour**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE\
+**Source:**\[Ivan RG Notes \| §17\] --- GST\'s own workaround so DO and Invoice share a number/reference to reduce customer confusion; corroborated by \[CSV \| Pre-Phase 1 Gate #12\] and \[SAPV \| Key Point D\]
+
+Previously only referenced in the VoC Extraction (VOC-020) as customer-voice evidence --- never carried into the Scope Lock as build logic. This is a numbering-scheme requirement, not just a PDF-layout detail under SL-08.
+
+**User-facing flow**
+
+MAIA generates DO and Invoice under GST\'s existing numbering convention --- same/linked reference number, template title differs
+
+Multiple DOs can be created under one SO, each still following the convention
+
+**Acceptance criteria**
+
+MAIA-generated DO/Invoice numbering matches GST\'s existing scheme exactly --- this is what prevents the customer confusion GST already built a workaround for
+
+Document numbering does not regress to a naive separate-sequence-per-doctype default
+
+**Confidence: HIGH --- direct client requirement plus independently confirmed technical mechanism**
+
+**SL-17 (new) --- Credit note / return matching to invoice or delivery**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE, NSD-09 open\
+**Source:**\[Ivan RG Notes \| §18\] --- returns matched to the original invoice by \"which invoice, which day goods sent,\" not by batch; corroborated by \[SAPV \| Key Point F\] (multiple invoices per payment, partial knock-off, return notes/refunds linked to invoices)
+
+Not present in v1.2. No item in the Scope Lock currently owns credit-note/return handling at all.
+
+**User-facing flow**
+
+User identifies the original invoice/delivery a return relates to (by invoice reference and ship date, not batch number --- GST tried batch tracking previously and abandoned it as \"too slow, not mature enough\")
+
+Credit note is created against that specific invoice; refund is processed via a payment entry after the return note is created
+
+**Acceptance criteria**
+
+Credit note creation requires selecting the source invoice/delivery --- no account-level credit-balance mechanism
+
+Batch-level tracking is explicitly not required (consistent with OOS-04)
+
+**Confidence: HIGH on requirement; MEDIUM on exact SAP writeback mechanics --- see NSD-09**
+
+**SL-18 (new) --- Role-based dashboards (salesperson / logistics / finance / management)**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE, NSD-10 open\
+**Source:**\[Ivan RG Notes \| §20.1-20.2\]; corroborated by \[SOW \| §2.2 --- User Workspaces: Sales Agent, Finance, Management/Backend Dashboard\]
+
+SOW already describes workspace-level dashboards generically; Ivan\'s notes add a more specific management ask (salesperson performance vs budget) that isn\'t yet build-confirmed.
+
+**User-facing flow**
+
+Each role sees a dashboard tailored to their function: salesperson (own orders/performance), logistics (pick lists/fulfillment), finance (payment/credit queue), management (cross-functional overview)
+
+Management dashboard specifically includes salesperson performance vs budget visibility
+
+**Acceptance criteria**
+
+Each of the 4 roles has a dedicated dashboard view
+
+Management view surfaces up-to-date sales vs budget --- source and refresh cadence of budget figures still open, see NSD-10
+
+**Confidence: MEDIUM --- generic workspace dashboards are well-evidenced (SOW); the specific sales-vs-budget metric is a newer, more specific ask not yet scoped**
+
+**SL-19 (new) --- Substitution-on-out-of-stock advisory flow**
+
+**Status:** LOCKED --- INTERNAL BUILD SCOPE, NSD-11 open\
+**Source:**\[Ivan RG Notes \| §12\]; corroborated by \[RG \| Special Workflows --- Substitute item handling\]
+
+Distinct from SL-02 (which matches customer wording to an item) --- this is a stock-driven substitution trigger, not a wording-match problem.
+
+**User-facing flow**
+
+When the ordered/matched item is out of stock, MAIA surfaces the nearest substitute (same species/type, different size or spec)
+
+Salesperson reviews and confirms with the customer before applying the substitution --- never auto-applied
+
+**Acceptance criteria**
+
+Substitution suggestion triggers only on confirmed insufficient stock, distinct from SL-02\'s wording-match trigger
+
+Customer confirmation is required before the substitution is applied to the order
+
+**Confidence: HIGH on requirement (independently documented twice); MEDIUM on whether this shares SL-02\'s matching engine or needs separate logic --- see NSD-11**
+
+**5. Needs-Scoping Register**
+
+**NSD-01 --- Document format samples**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- carried, unchanged\
+**Source:**\[FF-RG-A\]\[CSV \| PDF Generation, 5 of 6 types Not Started\]
+
+**Issue**
+
+MAIA must match GST document formats, but document samples are pending
+
+**Required decision / input**
+
+GST must provide samples for all in-scope generated documents
+
+**Blocking: YES --- for document UAT**
+
+**NSD-02 --- Blanket Order / Agreement behaviour**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- carried, unchanged\
+**Source:**\[FF-RG-A \| pricing / Blanket Agreement\]
+
+**Issue**
+
+GST\'s SAP Blanket Order/Blanket Agreement functionality is richer than current MAIA support
+
+**Required decision / input**
+
+Walk through GST\'s SAP Blanket Order/Agreement behaviour and map fields, lifecycle, price application, validity, and writeback
+
+**Blocking: YES --- for pricing/order accuracy**
+
+**NSD-03 --- SOA portal security settings**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- carried, unchanged\
+**Source:**\[FF-RG-A \| SOA link security\]
+
+**Issue**
+
+SOA portal behaviour is locked (SL-07), but exact security settings are not
+
+**Required decision / input**
+
+Link expiry period, password generation method, password delivery method, access logging, revocation audit, and the document list exposed in the portal
+
+**Blocking: YES --- for production SOA portal release**
+
+**NSD-04 --- Inventory sync cadence**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- carried, unchanged\
+**Source:**\[SAP-VENDOR \| SAP sync / middleware architecture\]; independently corroborated as unresolved in \[SAPV \| Key Point E\] and \[GTM \| §5\] --- GST\'s own IT team engaged directly on this in the 2026-05-19 session, but no number was pinned down
+
+**Issue**
+
+MAIA will reflect SAP inventory based on sync jobs (SAP → MAIA, after a stock-transformation event); sync cadence affects stock accuracy and user trust
+
+**Required decision / input**
+
+Confirm acceptable sync interval and whether any objects need near-real-time sync
+
+**Blocking: YES --- for inventory-visibility acceptance**
+
+**NSD-05 (new) --- Sales check-in / customer-visit-location reporting**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[DOSSIER \| B1 rank 5, B6, B9\]
+
+**Issue**
+
+Soo Chin requested this 2026-05-07/08; Ivan told her MAIA doesn\'t currently have it
+
+Never formally closed as declined, deferred, or quoted as a change request
+
+**Required decision / input**
+
+Decide and communicate: declined, deferred to a named future phase, or quoted as a change request
+
+**Blocking: NO for Phase 1 core --- YES for expectation management. If GST believes this is still pending an answer, silence reads as ignored, not declined.**
+
+**NSD-06 (new) --- Stock source of truth**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[SOW \| §6\]; still shown unchecked in the 2026-07-07 Backward Plan, three weeks after core build (M1--M3) began
+
+**Issue**
+
+Which inventory source is authoritative for Phase 1 business-rule checks --- SAP live, daily extract, or hybrid
+
+Distinct from NSD-04, which is about sync *cadence* after a transformation event, not which source is authoritative day-to-day
+
+**Required decision / input**
+
+GST to confirm SAP-live vs daily-extract vs hybrid
+
+**Blocking: YES --- overdue against the SOW\'s own pre-build gate**
+
+**NSD-07 (new) --- Actual picked-qty capture, low-stock exception**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[CSV \| Core MAIA Extension #9\] --- \"if low stock there is an exception case here which is not currently supported by the UI\"
+
+**Issue**
+
+No UI/logic defined for what happens when actual picked qty is less than ordered qty (partial fulfilment case)
+
+**Required decision / input**
+
+GST to confirm desired behaviour: partial DN, hold, or exception flag
+
+**Blocking: NO for MVP --- YES before UAT sign-off on SL-13**
+
+**NSD-08 (new) --- DN creation from a pick list spanning multiple SOs**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[CSV \| Core MAIA Extension #8\] --- \"if Pick List spans across Orders, they will need to pick which other to Create DN for\"
+
+**Issue**
+
+User must currently pick which SO to create the DN for; no auto-resolution logic exists
+
+**Required decision / input**
+
+Confirm whether one DN per SO is forced, or a smarter default is wanted
+
+**Blocking: NO for MVP --- YES before UAT sign-off on SL-13**
+
+**NSD-09 (new) --- Credit note / return SAP writeback mechanics**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[SAPV \| Key Point F\] --- return notes and refunds must link accurately to invoices; exact field-level mechanics not mapped
+
+**Issue**
+
+Exact mechanics for linking return note → credit note → refund → SAP writeback are not fully mapped
+
+**Required decision / input**
+
+Map field-level behaviour with the SAP vendor (same class of gap as NSD-02)
+
+**Blocking: NO for core Phase 1 SO/Invoice flow --- YES before the credit-note module (SL-17) can pass UAT**
+
+**NSD-10 (new) --- Sales-vs-budget dashboard metric source**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[Ivan RG Notes \| §20.1\] --- management asked for \"up-to-date sales versus budget\"
+
+**Issue**
+
+Budget target source (SAP? manual entry? separate planning sheet?) and refresh cadence are undefined
+
+**Required decision / input**
+
+Confirm where budget figures come from and how often they refresh
+
+**Blocking: NO for MVP --- YES before management dashboard (SL-18) can pass UAT**
+
+**NSD-11 (new) --- Substitution engine: shared with SL-02 or separate logic**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[Ivan RG Notes \| §12\]
+
+**Issue**
+
+Unclear whether out-of-stock substitution (SL-19) uses the same underlying matching engine as SL-02\'s wording-match suggestions, or needs separate stock-aware trigger logic
+
+**Required decision / input**
+
+Confirm with dev whether one shared engine suffices or a second trigger path is needed
+
+**Blocking: NO**
+
+**NSD-12 (new) --- Item master enrichment scope (photos, public links, quotation images)**
+
+**Status:** NEEDS SCOPING / TECHNICAL DETAIL --- new\
+**Source:**\[Ivan RG Notes \| §21\] --- GST asked whether MAIA can support richer item database features; per Ivan\'s own outcome note, \"exact GST usage requires sample quotation / PDF documents\" --- direction itself is not yet agreed, not just implementation detail
+
+**Issue**
+
+Requested or discussed: product photos, special attributes, customer-facing item links, public SKU information, item images in quotation PDFs
+
+No confirmation yet on which of these GST actually wants built vs was exploratory conversation
+
+**Required decision / input**
+
+Sample quotation/PDF documents from GST to clarify actual usage before this is locked one way or the other
+
+**Blocking: NO --- but do not treat as locked scope until GST confirms direction**
+
+**6. Resolved / Non-Blocking (carried from v1.2, unchanged)**
+
+**R-01 --- Vendor custom UDF/UDH support**
+
+**Status:** RESOLVED AS OUT-OF-SCOPE BOUNDARY\
+**Source:**\[Mindhive internal decision \| NSD-01 correction\]
+
+**Decision**
+
+MAIA will not support custom UDF/UDH development in vendor third-party software as part of base development
+
+**Treatment**
+
+If a custom UDF/UDH limitation is identified as a blocker, Mindhive raises it and scopes it as a separate customisation
+
+**R-02 --- SAP endpoint coverage**
+
+**Status:** RESOLVED / NON-BLOCKING\
+**Source:**\[SAP-VENDOR \| integration path\]
+
+**Decision**
+
+SAP endpoint coverage is not treated as a blocker in this document --- the team already knows the integration path required
+
+**Treatment**
+
+Build proceeds on the known SAP integration path; any unexpected endpoint limitation is escalated through delivery risk management, not treated as an unresolved scope question
+
+**R-03 --- Payment receipt / voucher mapping**
+
+**Status:** RESOLVED / NON-BLOCKING\
+**Source:**\[Mindhive internal decision \| NSD-06 correction\]
+
+**Decision**
+
+MAIA does not need prior scenario mapping to proceed --- the user instructs MAIA whether to create a payment receipt or payment voucher
+
+**Treatment**
+
+The attachment is attached to the draft payment entry; reconciliation and allocation of payment to invoices remains manual and user-instructed
+
+**R-04 --- Fulfillment percentage calculation source**
+
+**Status:** REMOVED\
+**Source:** v1.2
+
+**Decision**
+
+The former NSD-08 item is removed --- MAIA\'s existing order listing and fulfillment logic applies
+
+No new evidence changes any of R-01 through R-04.
+
+**7. Supersessions Log**
+
+**SUP-01 --- CPR/CPRN pre-order reservation replaced by committed-order visibility**
+
+**Original idea:** A CPR/CPRN/customer purchase request note concept was discussed in earlier proposal context, to track pre-order commitments or informal stock reservation
+
+**Now intended:** CPR/CPRN is out of scope; the validated requirement is visibility into reserved/committed quantities tied to actual order flow
+
+**Who changed:** Validated during requirements gathering as not a common use case for GST
+
+**Rationale:**\[FF-PROP \| CPRN concept\]\[FF-RG-A \| CPRN reframed as not common use case\]
+
+**Client agreed:** Validated in requirements gathering as not a common use case
+
+**Current status:** OUT OF SCOPE (carried, unchanged) --- see OOS-01
+
+**SUP-02 --- Stock transformation engine excluded from MAIA**
+
+**Original idea:** GST\'s seafood processing and stock transformation was explored as a possible MAIA capability
+
+**Now intended:** MAIA will not support GST\'s custom SAP stock-transformation workflow; users continue performing stock transformation in SAP; MAIA syncs resulting inventory quantities after SAP-side transformation
+
+**Who changed:**\[FF-RG-A \| stock transformation discussion\]\[SAP-VENDOR \| SAP stock transformation custom feature\]
+
+**Rationale:** GST\'s transformation module is a custom SAP module, not standard BOM
+
+**Client agreed:** Yes, per v1.2
+
+**Current status:** OUT OF SCOPE (carried, unchanged) --- see OOS-02. This corrects the draft this v2 started from, which had incorrectly marked stock-transformation *sync depth* as a locked build requirement based on SOW §2.4 wording alone.
+
+**SUP-03 --- Batch/expiry alerts replaced by movement-based slow stock reports**
+
+**Original idea:** Expiry, aging, or batch-based alerts were discussed
+
+**Now intended:** Because GST does not capture batch number or expiry data in the required structured form, MAIA will not provide batch-expiry alerts --- instead it surfaces slow-moving stock via reports, notifications, warehouse dashboard, stock aging reports, and stock movement reports
+
+**Who changed:**\[FF-RG-A \| batch / expiry limitation\]
+
+**Rationale:** Data unavailable in SAP in the required form
+
+**Client agreed:** Yes, per v1.2
+
+**Current status:** Batch/expiry alerts OUT OF SCOPE (OOS-04); movement-based slow stock visibility IN SCOPE (SL-12) --- carried, unchanged
+
+**SUP-04 --- Excel planning / purchasing calculator excluded**
+
+**Original idea:** An Excel export or planning/purchasing support item was discussed
+
+**Now intended:** Excel planning/purchasing calculator is out of scope
+
+**Who changed:**\[FF-RG-A \| planning Excel unclear\]
+
+**Rationale:** Stakeholders present in detailed requirements gathering were unsure of the direct or detailed requirements --- not safe to treat as scoped
+
+**Client agreed:** Not evidenced as GST-requested; internal Mindhive scoping call
+
+**Current status:** OUT OF SCOPE (carried, unchanged) --- see OOS-05
+
+**SUP-05 (new) --- Phase-2-adjacent items building ahead of their commercial/UAT gate**
+
+**SOW baseline:** Phase 2 customisations (CPRN-adjacent tracking, SOA generation, Aging/clearance reminders) are scoped and built only after Phase 1 go-live, separately priced, and payable only after their own Phase 2 UAT \[SOW \| §4, §5.2\]
+
+**Now intended:** the 2026-07-07 Backward Plan\'s Customisations table shows SOA-related build work, an \"Aging/Slow-Moving Alert,\" and an item called \"Item Name Override\" all **\"In Progress\"** with July dates \[BP \| Customisations table\] --- during the Phase 1 core build window (M1--M3), before Phase 1 UAT (planned 2026-08-04--06)
+
+**Who changed:** Appears to be a Mindhive delivery-team sequencing decision --- no client-side source shows GST requesting or agreeing to this
+
+**Rationale:** Not evidenced
+
+**Client agreed:** NOT EVIDENCED
+
+**Risk (corrected):** Originally flagged \"Item Name Override\" as having no scope trace anywhere in the corpus. That was wrong --- Ivan\'s 2026-05-04 RG notes document it directly (§8, and separately in his raw bullet notes) as \"item description/name override in sales document,\" a genuine GST requirement. It\'s now formally tracked as SL-14. All three items in this supersession (SOA/SL-07, item description override/SL-14, and the aging alert) are traceable to real requirements --- the remaining risk is purely the **sequencing** one: building Phase-2-adjacent work ahead of the Phase 1 UAT gate, not a scope-provenance gap.
+
+**8. Out-of-Scope / Explicit Exclusions (carried from v1.2, unchanged)**
+
+**OOS-01 --- CPR/CPRN / pre-confirmation stock reservation**
+
+Not in scope for the current build --- validated during requirements gathering as not a common use case for GST
+
+Current in-scope substitute: inventory visual cues and reserved-quantity visibility inside the normal quotation/SO/DN flow (SL-09)
+
+**OOS-02 --- GST SAP stock transformation workflow**
+
+MAIA will not support GST\'s custom SAP stock-transformation workflow --- it is customised in SAP and is not standard BOM
+
+Users continue performing stock transformation in SAP; MAIA reflects latest SAP inventory quantities after scheduled sync
+
+**OOS-03 --- SAP item master / UOM reconfiguration**
+
+MAIA will not reconfigure or change GST\'s item master setup
+
+The KG vs NOS variable-weight-fish issue is an operational challenge tied to GST\'s current SAP item master and stock-transformation configuration, not something MAIA fixes
+
+MAIA syncs item master data from SAP as-is
+
+**OOS-04 --- Batch-number / expiry-date alerts**
+
+MAIA will not support batch-number or expiry-date alerting in current scope, because GST does not capture batch number or expiry-related data in the required structured form
+
+In-scope alternative: movement-based slow stock visibility and reports (SL-12)
+
+**OOS-05 --- Excel planning / purchasing calculator**
+
+Out of scope --- stakeholders in detailed requirements gathering were unsure of the direct or detailed requirements, so this cannot be safely built as a scoped item
+
+Requires separate scoping if revived
+
+**OOS-06 --- Vendor custom UDF/UDH development**
+
+MAIA will not support custom UDF/UDH development inside vendor third-party software in base development
+
+If a custom vendor-side UDF/UDH limitation becomes a blocker, it is raised and scoped as a separate customisation
+
+Additional exclusions independently corroborated from the wider KB corpus, consistent with v1.2\'s framing: full ERP replacement/SAP restructuring \[SOW \| §6\], customer-facing WhatsApp bot \[SOW \| §6\], advanced approval matrices beyond scoped \[SOW \| §6\], Penang/Langkawi branch rollout beyond the confirmed first branch (paid add-on) \[SOW \| §6\], full logistics workspace beyond reference-only delivery visibility \[SOW \| §2.1.2\].
+
+**9. Source-Conflict Register**
+
+SC-01 through SC-06 carried from v1.2 (CPRN sold-idea vs RG validation; stock-transformation need vs MAIA capability; expiry alerts vs missing batch data; rich SAP Blanket Agreement vs MAIA capability; document generation scope vs missing samples; SAP UDF/UDH exposure vs base scope) --- all still resolved as v1.2 states them. **Addendum to SC-01**: see SL-02\'s reconciliation note above regarding the CSV\'s \"cRFQ Out of Scope\" line --- treated as terminology overlap with SL-02, not a live conflict, pending a one-line confirmation.
+
+**SC-07 (new) --- Branch decision: locked in June, reopened-looking in July.**\
+Citation A: \[SL-v1.2 \| LOC-03\] --- \"Phase 1 is Penang-first,\" status LOCKED, dated 2026-06-23.\
+Citation B: \[BP \| M0 Pending --- Critical, \"confirm which branch goes live first\"\] --- shown as an unchecked, unresolved item as of 2026-07-07.\
+**Resolution: unresolved.** Two explanations are equally plausible from the evidence available: (a) the backward plan\'s checklist is simply stale and wasn\'t updated to reflect a decision already locked three weeks earlier, or (b) the branch question was genuinely reopened after 23 June and the Scope Lock was never updated to reflect that. This needs a 30-second confirmation from Gareth or Ivan, not a client conversation --- it\'s an internal bookkeeping question first.
+
+**10. Client Confirmation Agenda**
+
+Combining v1.2\'s original six confirmation items with what this v2 adds:
+
+Provide sample formats for every in-scope document type (QT, SO, DO, Invoice, CN, Pick List) --- v1.2\'s #1, still open.
+
+Walk through SAP Blanket Order/Blanket Agreement behaviour MAIA must match --- v1.2\'s #2, still open.
+
+Confirm acceptable SAP ↔ MAIA inventory sync cadence --- v1.2\'s #3, still open.
+
+Confirm slow-moving stock definition (item category / days without movement) --- v1.2\'s #4, still open.
+
+Confirm SOA link settings (validity, password method, revocation, exposed document types) --- v1.2\'s #5, still open.
+
+Confirm which user roles can generate/revoke SOA links, retrieve invoices, create documents, create payment entries --- v1.2\'s #6, still open.
+
+**(new)** Confirm the authoritative stock source for Phase 1 business-rule checks: SAP live, daily extract, or hybrid.
+
+**(new)** Reconfirm Penang as the first branch --- or flag if this has changed since 23 June.
+
+**(new)** Close the loop on the sales check-in/customer-visit-location request: is this declined, deferred to a named future phase, or should it be quoted as a change request?
+
+**11. Bottom Line**
+
+The core of what\'s LOCKED here is stable and was already correctly and thoroughly reasoned through in v1.2 --- MAIA is a coordination/workflow layer over SAP, not a replacement, and explicitly does not attempt to model GST\'s stock-transformation reality (it syncs the result); CPRN, batch/expiry alerting, and Excel planning tooling were all deliberately cut after being raised, not overlooked. That discipline should be preserved, not re-litigated.
+
+What\'s changed since 23 June is entirely on the delivery-execution side, not the scope-definition side: two genuine blocking gates (stock source of truth, and now a reopened-looking branch decision) remain unresolved three weeks into active build, and three Phase-2-adjacent items are showing up \"In Progress\" in the July calendar without a visible trace back to client agreement or, in one case (\"Item Name Override\"), to any documented requirement at all. None of this is a scope-definition failure --- it\'s a **scope-discipline** failure: the team defined things well in June and then let July\'s calendar quietly get ahead of what was actually confirmed. Recommend closing NSD-06 and SC-07 this week, and getting Gareth to trace \"Item Name Override\" before it reaches UAT.
+
+**See Also**
+
+\[\[GST Fine Foods Customer Narrative\]\]
+
+\[\[SOW for MAIA GST Fine Foods\]\]
+
+\[\[GST Fine Foods × MAIA Proposal v2 \[SIGNED\]\]\]
+
+\[\[Requirement Gathering Output - GST Fine Foods - 2026-05\]\]
+
+\[\[GST Fine Foods --- GTM Brief Context and Unclear Items\]\]
+
+\[\[GST SAP Vendor × Mindhive --- Meeting Notes\]\]
+
+\[\[Timeline/GST Phase 1 Backward Plan\]\]
+
+Scope Lock v1.2 (Lark) --- <https://eg69120xnei.sg.larksuite.com/wiki/TYNQwno6ai7bSDktYAelAjhSg0d>
+
+GST Forensic Account Dossier (Lark) --- <https://eg69120xnei.sg.larksuite.com/wiki/FkB4wT0pNihTe1k890DlnaJjgke>

@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAIA Invoice Detail — Payment Terms Mockup</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#1c1c1e;color:#f0ede8;font-size:13px;}
+.page-tabs{display:flex;border-bottom:0.5px solid #333;background:#242424;padding:0 16px;}
+.page-tab{font-size:13px;padding:12px 16px;color:#888;border-bottom:2px solid transparent;cursor:pointer;user-select:none;}
+.page-tab.active{color:#f0ede8;border-bottom:2px solid #5090c8;}
+.page-tab:hover:not(.active){color:#c8c4bc;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+/* ── Layout ── */
+html,body{margin:0;padding:0;}
+.app-layout{display:flex;min-height:100vh;}
+.sidebar{width:200px;flex-shrink:0;background:#1a1a1a;border-right:0.5px solid #2e2e2e;display:flex;flex-direction:column;transition:width 0.2s ease;position:sticky;top:0;height:100vh;overflow:hidden;}
+.sidebar.collapsed{width:40px;}
+.sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:12px 12px 10px;border-bottom:0.5px solid #2a2a2a;flex-shrink:0;min-height:44px;}
+.sidebar-title{font-size:10px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;overflow:hidden;transition:opacity 0.15s;}
+.sidebar.collapsed .sidebar-title{opacity:0;pointer-events:none;}
+.sidebar-toggle{width:22px;height:22px;border-radius:5px;background:transparent;border:0.5px solid #333;color:#666;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:background 0.1s;}
+.sidebar-toggle:hover{background:#2a2a2a;color:#aaa;}
+.sidebar-nav{padding:8px 0;overflow-y:auto;flex:1;}
+.page-tab{font-size:12px;padding:8px 16px;color:#888;cursor:pointer;user-select:none;border-left:2px solid transparent;transition:all 0.1s;line-height:1.4;white-space:nowrap;overflow:hidden;display:flex;align-items:center;gap:9px;}
+.page-tab .tab-icon{font-size:13px;flex-shrink:0;width:16px;text-align:center;}
+.page-tab .tab-label{overflow:hidden;transition:opacity 0.15s;}
+.sidebar.collapsed .tab-label{opacity:0;pointer-events:none;}
+.sidebar.collapsed .page-tab{padding:8px 0;justify-content:center;}
+.page-tab.active{color:#f0ede8;border-left:2px solid #5090c8;background:#242424;}
+.page-tab:hover:not(.active){color:#c8c4bc;background:#222;}
+.sub-tab{font-size:11px;padding:6px 16px 6px 40px;color:#666;cursor:pointer;border-left:2px solid transparent;line-height:1.4;white-space:nowrap;overflow:hidden;display:flex;align-items:center;gap:7px;transition:all 0.1s;}
+.sub-tab.active{color:#c8c4bc;border-left:2px solid #3a6a8a;background:#1e1e1e;}
+.sub-tab:hover:not(.active){color:#a0a0a0;background:#1c1c1c;}
+.sidebar.collapsed .sub-tab{display:none;}
+.content-area{flex:1;min-width:0;padding:20px;}
+
+.api-section{margin-bottom:20px;}
+.api-card{background:#242424;border:0.5px solid #383838;border-radius:10px;padding:16px;margin-bottom:12px;}
+.api-card-title{font-size:12px;font-weight:500;color:#6aabf0;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;}
+.api-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:0.5px solid #333;font-size:12px;}
+.api-row:last-child{border-bottom:none;}
+.api-key{color:#a0a0a0;min-width:120px;flex-shrink:0;font-family:monospace;font-size:11px;}
+.api-val{color:#d8d4cc;line-height:1.5;}
+.api-method{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;font-family:monospace;background:#3a2a0a;color:#f5b840;}
+.api-endpoint{font-family:monospace;font-size:12px;color:#f0ede8;word-break:break-all;}
+.api-note{font-size:11px;color:#666;margin-top:4px;}
+.field-list{font-family:monospace;font-size:11px;color:#8fcc5a;line-height:2;}
+.field-new{color:#f5b840;margin-left:6px;font-size:10px;}
+.field-existing{color:#666;margin-left:6px;font-size:10px;}
+.divider-label{font-size:11px;color:#666;padding:6px 0 2px;font-style:italic;}
+.api-response-box{background:#1a1a1c;border:0.5px solid #383838;border-radius:8px;padding:12px;font-family:monospace;font-size:11px;color:#8fcc5a;line-height:1.8;white-space:pre;overflow-x:auto;margin-top:10px;}
+.key-c{color:#6aabf0;}
+.val-c{color:#8fcc5a;}
+.str-c{color:#f5b840;}
+.null-c{color:#888;}
+.new-c{color:#f5b840;font-style:italic;}
+.legend{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#888;}
+.legend-dot{width:8px;height:8px;border-radius:50%;}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.topbar-left{display:flex;align-items:center;gap:6px;font-size:13px;color:#a0a0a0;}
+.topbar-right{display:flex;align-items:center;gap:8px;}
+.btn{padding:6px 14px;border-radius:6px;font-size:12px;font-weight:500;border:none;cursor:pointer;}
+.btn-invoice{background:#333;color:#f0ede8;border:0.5px solid #555;}
+.btn-submit{background:#c8960c;color:#1a1000;}
+.inv-tabs{display:flex;border-bottom:0.5px solid #383838;margin-bottom:14px;}
+.inv-tab{font-size:13px;padding:8px 14px;color:#888;border-bottom:2px solid transparent;cursor:pointer;}
+.inv-tab.active{color:#f0ede8;border-bottom:2px solid #c8960c;}
+.doc-id{font-size:16px;font-weight:500;color:#f8f5f0;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.badge-draft{background:#333;color:#a0a0a0;font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500;}
+.fields-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
+.field-label{font-size:11px;color:#a0a0a0;margin-bottom:4px;}
+.req{color:#e05050;}
+.field-val{background:#2a2a2c;border:0.5px solid #3a3a3a;border-radius:6px;padding:7px 10px;font-size:12px;color:#d8d4cc;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.card{background:#242424;border:0.5px solid #383838;border-radius:10px;padding:14px;}
+.card-title{font-size:13px;font-weight:500;color:#f8f5f0;margin-bottom:10px;}
+.section-title{font-size:13px;font-weight:500;color:#f8f5f0;margin-bottom:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.items-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px;table-layout:fixed;}
+.items-table th{text-align:left;color:#a0a0a0;font-weight:500;padding:6px 8px;border-bottom:0.5px solid #383838;}
+.items-table td{padding:8px;border-bottom:0.5px solid #2e2e2e;color:#d8d4cc;vertical-align:top;}
+.items-table tr:last-child td{border-bottom:none;}
+.items-table .num{text-align:right;}
+.remarks-summary{display:grid;grid-template-columns:1fr 320px;gap:10px;margin-bottom:10px;align-items:start;}
+.textarea-mock{background:#2a2a2c;border:0.5px solid #3a3a3a;border-radius:6px;padding:10px;color:#666;font-size:12px;min-height:80px;}
+.tc-box{background:#2a2a2c;border:0.5px solid #3a3a3a;border-radius:6px;padding:10px;font-size:11px;color:#888;line-height:1.6;max-height:80px;overflow:hidden;}
+.summary-block{background:#242424;border:0.5px solid #383838;border-radius:10px;padding:14px;}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;font-size:13px;}
+.sum-row.grand{font-weight:500;font-size:15px;border-top:0.5px solid #3a3a3a;padding-top:10px;margin-top:6px;}
+.sum-row .lbl{color:#a0a0a0;}
+.sum-row .val{color:#f0ede8;font-variant-numeric:tabular-nums;}
+.sum-divider{border:none;border-top:0.5px solid #3a3a3a;margin:8px 0;}
+.sum-row.new .lbl{color:#b8b4ac;}
+.sum-row.new .val{color:#d8d4cc;}
+.sum-row.due-now .lbl{color:#f8f5f0;font-weight:500;}
+.sum-row.due-now .val{color:#f5b840;font-weight:500;font-size:15px;}
+.as-at{font-size:11px;color:#777;text-align:right;margin-top:2px;}
+.api-pill{font-size:10px;font-weight:500;background:#1a2a3a;color:#6aabf0;padding:1px 6px;border-radius:4px;font-family:monospace;white-space:nowrap;}
+.new-badge{font-size:10px;font-weight:500;background:#1a2e14;color:#8fcc5a;padding:1px 6px;border-radius:4px;}
+.new-section{background:#242424;border:0.5px solid #383838;border-radius:10px;padding:14px;margin-bottom:10px;}
+.new-section-note{font-size:11px;color:#777;font-weight:400;}
+.pr-table{width:100%;border-collapse:collapse;font-size:12px;}
+.pr-table th{text-align:left;color:#a0a0a0;font-weight:500;padding:6px 8px;border-bottom:0.5px solid #383838;font-size:11px;}
+.pr-table td{padding:7px 8px;border-bottom:0.5px solid #2e2e2e;color:#d8d4cc;}
+.pr-table tr:last-child td{border-bottom:none;}
+.pr-table .num{text-align:right;}
+.pr-footer{display:flex;justify-content:space-between;padding:8px 8px 0;font-size:12px;border-top:0.5px solid #383838;margin-top:2px;}
+.pr-footer .lbl{color:#a0a0a0;}
+.pr-footer .val{color:#f0ede8;font-weight:500;}
+.credit-row td{font-style:italic;color:#888;}
+.pt-table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;}
+.pt-table th{text-align:left;color:#a0a0a0;font-weight:500;padding:6px 8px;border-bottom:0.5px solid #383838;font-size:11px;}
+.pt-table td{padding:8px;border-bottom:0.5px solid #2e2e2e;color:#d8d4cc;vertical-align:middle;}
+.pt-table tr:last-child td{border-bottom:none;}
+.pt-table .num{text-align:right;}
+.overdue-row td{background:#2e1a1a;}
+.status-badge{font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;white-space:nowrap;}
+.s-paid{background:#1a3018;color:#8fcc5a;}
+.s-overdue{background:#341818;color:#e86060;}
+.s-due{background:#342210;color:#f5b840;}
+.s-pending{background:#333;color:#a0a0a0;}
+.s-delivery{background:#102038;color:#6aabf0;}
+.pt-footer{display:flex;justify-content:flex-end;gap:24px;padding:8px 8px 0;font-size:12px;border-top:0.5px solid #383838;color:#a0a0a0;}
+.pt-footer span{color:#d8d4cc;}
+.add-btn{background:#c8960c;color:#1a1000;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:500;cursor:pointer;margin-top:10px;}
+.orange-btn{background:#c8960c;color:#1a1000;border:none;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;}
+code{font-family:monospace;font-size:11px;color:#6aabf0;}
+.ann{display:inline-flex;align-items:center;gap:3px;background:#1a2a3a;border:0.5px solid #2a4a6a;border-radius:5px;padding:1px 7px;font-size:10px;font-weight:500;color:#6aabf0;font-family:monospace;cursor:pointer;position:relative;white-space:nowrap;vertical-align:middle;user-select:none;}
+.ann.open{background:#1e3a5a;border-color:#6aabf0;}
+.ann-tip{display:none;position:fixed;background:#242424;border:0.5px solid #444;border-radius:8px;padding:10px 12px;font-size:11px;color:#b8b4ac;width:260px;max-width:260px;z-index:9999;line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:400;white-space:normal;word-wrap:break-word;text-align:left;}
+.ann-tip.visible{display:block;}
+.ann-tip strong{color:#f0ede8;font-weight:500;display:block;margin-bottom:4px;}
+.ann-tip code{background:#333;padding:1px 5px;border-radius:3px;color:#6aabf0;font-size:10px;}
+.ann-tip .tf{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px;}
+.ann-tip .tf span{font-size:10px;background:#333;border:0.5px solid #444;border-radius:3px;padding:1px 5px;font-family:monospace;color:#a0a0a0;}
+.ann-tip .tn{font-size:10px;color:#666;margin-top:5px;}
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title">MAIA · Invoice</span>
+    <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">&#8942;</button>
+  </div>
+  <div class="sidebar-nav">
+    <div class="page-tab active" onclick="switchTab('overview', this)"><span class="tab-icon">🗂</span><span class="tab-label">Overview</span></div>
+    <div class="page-tab" onclick="switchTab('mockup', this);showCase(0,null)"><span class="tab-icon">🧾</span><span class="tab-label">Invoice mockup</span></div>
+    <div class="sub-tab active" id="sub-uc0" onclick="switchTab('mockup',document.querySelector('.page-tab:nth-child(2)'));showCase(0,this)"><span class="tab-label">UC-1 · Draft</span></div>
+    <div class="sub-tab" id="sub-uc1" onclick="switchTab('mockup',document.querySelector('.page-tab:nth-child(2)'));showCase(1,this)"><span class="tab-label">UC-2 · CIA overdue</span></div>
+    <div class="sub-tab" id="sub-uc2" onclick="switchTab('mockup',document.querySelector('.page-tab:nth-child(2)'));showCase(2,this)"><span class="tab-label">UC-3 · Partial pay</span></div>
+    <div class="sub-tab" id="sub-uc3" onclick="switchTab('mockup',document.querySelector('.page-tab:nth-child(2)'));showCase(3,this)"><span class="tab-label">UC-4 · Settled</span></div>
+    <div class="page-tab" onclick="switchTab('api', this)"><span class="tab-icon">⚡</span><span class="tab-label">API reference</span></div>
+    <div class="page-tab" onclick="switchTab('pdf', this)"><span class="tab-icon">📄</span><span class="tab-label">PDF generator</span></div>
+    <div class="page-tab" onclick="switchTab('chat', this)"><span class="tab-icon">💬</span><span class="tab-label">Chatbot</span></div>
+    <div class="page-tab" onclick="switchTab('flow', this)"><span class="tab-icon">🔀</span><span class="tab-label">Workflow</span></div>
+    <div class="page-tab" onclick="switchTab('scope', this)"><span class="tab-icon">🔧</span><span class="tab-label">Backend scope</span></div>
+    <div class="page-tab" onclick="switchTab('oos', this)"><span class="tab-icon">🚫</span><span class="tab-label">Out of scope</span></div>
+  </div>
+</div>
+<div class="content-area">
+
+<div id="tab-overview" class="tab-content active">
+<style>
+.ov-section{margin-bottom:28px;}
+.ov-title{font-size:11px;font-weight:500;color:#a0a0a0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;padding-bottom:6px;border-bottom:0.5px solid #383838;}
+.ov-card{background:#242424;border:0.5px solid #383838;border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.ov-card-title{font-size:13px;font-weight:500;color:#f0ede8;margin-bottom:6px;}
+.ov-card-body{font-size:12px;color:#a0a0a0;line-height:1.7;}
+.ov-before-after{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;}
+.ov-before{background:#2a1818;border:0.5px solid #4a2828;border-radius:10px;padding:14px 16px;}
+.ov-after{background:#1a2e18;border:0.5px solid #2a4a28;border-radius:10px;padding:14px 16px;} .ov-list.after li{border-bottom-color:#2a4a28;}
+.ov-before-title{font-size:11px;font-weight:500;color:#e05050;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;}
+.ov-after-title{font-size:11px;font-weight:500;color:#8fcc5a;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;}
+.ov-list{list-style:none;padding:0;margin:0;}
+.ov-list li{font-size:12px;color:#e8d8d0;padding:4px 0;border-bottom:0.5px solid #4a3030;line-height:1.5;}
+.ov-list li:last-child{border-bottom:none;}
+.ov-list.after li{color:#c8e8c0;}
+.ov-highlight{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.ov-highlight-card{background:#242424;border:0.5px solid #383838;border-radius:10px;padding:14px;}
+.ov-highlight-num{font-size:28px;font-weight:500;margin-bottom:2px;}
+.ov-highlight-lbl{font-size:11px;color:#888;}
+.ov-highlight-sub{font-size:11px;color:#555;margin-top:3px;}
+.ov-problem-row{display:flex;gap:14px;padding:12px 0;border-bottom:0.5px solid #2e2e2e;align-items:flex-start;}
+.ov-problem-row:last-child{border-bottom:none;}
+.ov-problem-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+.ov-problem-title{font-size:13px;font-weight:500;color:#f0ede8;margin-bottom:3px;}
+.ov-problem-body{font-size:12px;color:#a0a0a0;line-height:1.6;}
+.ov-who-row{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:10px 0;border-bottom:0.5px solid #2e2e2e;font-size:12px;}
+.ov-who-row:last-child{border-bottom:none;}
+.ov-who-role{font-weight:500;color:#d8d4cc;}
+.ov-who-benefit{color:#a0a0a0;line-height:1.6;}
+.ov-quote{background:#1a1f2e;border-left:3px solid #3060a8;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:#a0b8d8;line-height:1.7;font-style:italic;margin-top:4px;}
+</style>
+
+<div style="max-width:800px;">
+
+<div style="margin-bottom:24px;">
+  <div style="font-size:18px;font-weight:500;color:#f0ede8;margin-bottom:6px;">Invoice & CN — Payment Terms Visibility + Payment History Display</div>
+  <div style="font-size:12px;color:#666;">MAIA · Phase 1 · Backend + PDF + Frontend</div>
+</div>
+
+<div class="ov-section">
+  <div class="ov-title">The problem in one sentence</div>
+  <div class="ov-quote">MAIA currently shows clients a number. This feature makes it show clients a story — what was agreed, what has been paid, what is due now, and what is coming next. All from one document, automatically, without Finance having to explain it manually every time.</div>
+</div>
+
+<div class="ov-section">
+  <div class="ov-title">Three problems we are solving</div>
+
+  <div class="ov-problem-row">
+    <div class="ov-problem-icon" style="background:#2a1818; color:#e05050;">1</div>
+    <div>
+      <div class="ov-problem-title">Invoice only shows a grand total — clients have to call Finance to know what to pay</div>
+      <div class="ov-problem-body">When a deal has instalment terms (e.g. 20% now, 60% in 30 days, 20% in 60 days), MAIA knows the schedule internally but never surfaces it. The client receives an invoice showing only RM50,000 total. They call Finance to ask "how much do I pay today?" Finance manually does the math. This happens every single invoice, every payment, every client.</div>
+    </div>
+  </div>
+
+  <div class="ov-problem-row">
+    <div class="ov-problem-icon" style="background:#2a1818; color:#e05050;">2</div>
+    <div>
+      <div class="ov-problem-title">Payments already made are invisible on the invoice document</div>
+      <div class="ov-problem-body">When Finance records a payment against an invoice, that payment never appears on the invoice document itself. The client has no way to see what they have paid, when they paid it, or what they still owe — without calling Finance again. There is no self-service payment history.</div>
+    </div>
+  </div>
+
+  <div class="ov-problem-row">
+    <div class="ov-problem-icon" style="background:#2a1818; color:#e05050;">3</div>
+    <div>
+      <div class="ov-problem-title">Overdue status in the invoice list is wrong for multi-term invoices</div>
+      <div class="ov-problem-body">The invoice list derives overdue status from the header <code style="font-family:monospace;font-size:11px;background:#2a2a2a;padding:1px 5px;border-radius:3px;">due_date</code> field — which on multi-term invoices is set to the last instalment date (Day 60). This means if a client never pays the CIA term on Day 1, the system shows the invoice as "Unpaid" (not overdue) for 60 days. Finance has no system alert that money is already late.</div>
+    </div>
+  </div>
+</div>
+
+<div class="ov-section">
+  <div class="ov-title">What the invoice looks like today vs after this feature</div>
+
+  <div class="ov-before-after">
+    <div class="ov-before">
+      <div class="ov-before-title">Today</div>
+      <ul class="ov-list">
+        <li>Grand Total: RM50,000</li>
+        <li>Outstanding: RM50,000</li>
+        <li style="color:#c8a0a0;font-style:italic;">— no payment schedule —</li>
+        <li style="color:#c8a0a0;font-style:italic;">— no payments received —</li>
+        <li style="color:#c8a0a0;font-style:italic;">— no due now amount —</li>
+        <li style="color:#c8a0a0;font-style:italic;">— client must call Finance —</li>
+      </ul>
+    </div>
+    <div class="ov-after">
+      <div class="ov-after-title">After this feature</div>
+      <ul class="ov-list after">
+        <li>Grand Total: RM50,000</li>
+        <li>Total Received: RM8,000</li>
+        <li>Outstanding: RM42,000</li>
+        <li>Due Now: RM2,000 (as at 09/06/2026)</li>
+        <li>Payments Received: REC-2026-0041 RM8k</li>
+        <li>Payment Schedule: CIA · Net 30 · Net 60 with Allocated / Balance / Status per row</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="ov-section">
+  <div class="ov-title">What we are building — four changes</div>
+
+  <div class="ov-card">
+    <div class="ov-card-title">1 — Invoice PDF and detail page</div>
+    <div class="ov-card-body">Three new sections added in fixed order: Summary block extended with Total Received / Outstanding / Due Now · Payments Received table (one row per payment, omitted if no payments) · Payment Schedule table with Allocated / Balance / Status columns per term row. Overdue rows are visually distinct. All figures computed server-side at render time — never cached.</div>
+  </div>
+
+  <div class="ov-card">
+    <div class="ov-card-title">2 — Invoice list overdue status fix</div>
+    <div class="ov-card-body">The listing API now derives overdue status from payment schedule term rows, not the header due_date. A CIA term that's been unpaid since Day 1 shows as Overdue immediately. New status set: Draft / Unpaid / Partially Paid / Overdue / Paid / Cancelled. Overdue takes priority over Partially Paid. Paid takes priority over all.</div>
+  </div>
+
+  <div class="ov-card">
+    <div class="ov-card-title">3 — Payment terms inheritance (QT → SO → SI)</div>
+    <div class="ov-card-body">Payment terms agreed at quotation stage now flow automatically to the Sales Order and then to the Sales Invoice at create time. Finance no longer re-enters terms manually on every invoice. Both QT→SO and SO→SI paths are confirmed working via MAIA's custom APIs and ERPNext core.</div>
+  </div>
+
+  <div class="ov-card">
+    <div class="ov-card-title">4 — Payment Term doctype extension</div>
+    <div class="ov-card-body">Two new fields added to the Payment Term master: <code style="font-family:monospace;font-size:11px;background:#2a2a2a;padding:1px 5px;border-radius:3px;">term_type</code> (standard / advance / on_delivery / immediate) and <code style="font-family:monospace;font-size:11px;background:#2a2a2a;padding:1px 5px;border-radius:3px;">is_advance_payment</code> (boolean). These fields let the system compute due dates and statuses deterministically — without guessing from term names. bench migrate auto-populates all 52 existing records with the default value.</div>
+  </div>
+</div>
+
+<div class="ov-section">
+  <div class="ov-title">Who benefits and how</div>
+  <div class="ov-card" style="padding:10px 16px;">
+    <div class="ov-who-row">
+      <div class="ov-who-role">Finance / AR staff</div>
+      <div class="ov-who-benefit">No more manual "how much do you owe today" calculations. Invoice is the single source of truth. Overdue invoices surface immediately in the list — no more hidden late payments for 60 days.</div>
+    </div>
+    <div class="ov-who-row">
+      <div class="ov-who-role">Client</div>
+      <div class="ov-who-benefit">Opens one document and understands everything — what was agreed, what they have paid, what is overdue, what is coming. No need to call Finance.</div>
+    </div>
+    <div class="ov-who-row">
+      <div class="ov-who-role">Business owner</div>
+      <div class="ov-who-benefit">Accurate overdue reporting from Day 1 of any unpaid term. Faster cash collection. Clean accounting — terms agreed at QT flow through to the invoice without manual re-entry.</div>
+    </div>
+  </div>
+</div>
+
+<div class="ov-section">
+  <div class="ov-title">Key numbers from codebase audit</div>
+  <div class="ov-highlight">
+    <div class="ov-highlight-card">
+      <div class="ov-highlight-num" style="color:#6aabf0;">765</div>
+      <div class="ov-highlight-lbl">Submitted SIs in database</div>
+      <div class="ov-highlight-sub">572 (75%) have payment schedule · 193 (25%) do not</div>
+    </div>
+    <div class="ov-highlight-card">
+      <div class="ov-highlight-num" style="color:#f0a840;">52</div>
+      <div class="ov-highlight-lbl">Payment Term master records</div>
+      <div class="ov-highlight-sub">All default to "standard" after bench migrate — ~7 need manual update</div>
+    </div>
+    <div class="ov-highlight-card">
+      <div class="ov-highlight-num" style="color:#8fcc5a;">1.5d</div>
+      <div class="ov-highlight-lbl">Estimated backend effort</div>
+      <div class="ov-highlight-sub">1d dev · 0.5d test · PDF covered by separate dev</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="tab-mockup" class="tab-content">
+
+<div style="font-size:11px;color:#666;margin-bottom:16px;padding:8px 12px;background:#1a1a1a;border:0.5px solid #2e2e2e;border-radius:8px;">
+  Same invoice <strong style="color:#e0ded8;">INV-2026-00497</strong>, different points in time. Click any <span style="color:#6aabf0;font-family:monospace;font-size:10px;background:#1a2030;padding:1px 5px;border-radius:3px;">blue annotation tag</span> to see field source and computation logic.
+</div>
+
+<div id="uc-label" style="font-size:12px;font-weight:500;color:#f0a840;margin-bottom:14px;">UC-1 — Day 31/5/2026 &nbsp;·&nbsp; Invoice created, draft, no payments yet</div>
+
+<script>
+const ucLabels=[
+  'UC-1 — Day 31/5/2026 &nbsp;&middot;&nbsp; Invoice created, draft, no payments yet',
+  'UC-2 — Day 10/6/2026 &nbsp;&middot;&nbsp; Invoice submitted, CIA term overdue, no payments received',
+  'UC-3 — Day 7/7/2026 &nbsp;&middot;&nbsp; RM8,000 received against CIA. Net 30 now overdue.',
+  'UC-4 — Day 5/8/2026 &nbsp;&middot;&nbsp; All terms settled. RM3,000 credit on account.'
+];
+function showCase(idx, subtab){
+  document.querySelectorAll('.case-panel').forEach((p,i)=>p.style.display=i===idx?'block':'none');
+  document.querySelectorAll('.sub-tab').forEach(s=>s.classList.remove('active'));
+  const target = document.getElementById('sub-uc'+idx);
+  if(target) target.classList.add('active');
+  document.getElementById('uc-label').innerHTML=ucLabels[idx];
+  window.scrollTo(0,0);
+}
+</script>
+
+<!-- ═══ UC-1: Draft, no payment ═══ -->
+<div class="case-panel">
+
+<div class="topbar">
+  <div class="topbar-left">
+    &#9776;
+    <span style="background:#2a2a2a;padding:3px 10px;border-radius:6px;font-size:12px;color:#e0ded8;">Mackessen</span>
+    <span style="color:#555;">&rsaquo;</span> Invoices <span style="color:#555;">&rsaquo;</span>
+    <span style="color:#e0ded8;">INV-2026-00497</span>
+  </div>
+  <div class="topbar-right">
+    <span style="font-size:11px;color:#555;">Last saved: Jun 3, 2026, 12:20 PM</span>
+    <button class="btn btn-invoice">&#128196; Invoice</button>
+    <button class="btn btn-submit">&#10003; Submit</button>
+  </div>
+</div>
+
+<div class="inv-tabs">
+  <div class="inv-tab active">Details</div>
+  <div class="inv-tab">Document Trail</div>
+</div>
+
+<div class="doc-id">#INV-2026-00497 <span class="badge-draft">Draft</span></div>
+
+<div class="fields-row">
+  <div><div class="field-label">Date <span class="req">*</span></div><div class="field-val">31/05/2026</div></div>
+  <div>
+    <div class="field-label">Payment Due Date <span class="req">*</span>
+      <span class="ann" style="margin-left:4px;">scheduler-driven
+        <div class="ann-tip">
+          <strong>Auto-updated by scheduler</strong>
+          <div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">tabSales Invoice.due_date</div>
+          Always shows the due date of the first term row where <code>balance &gt; 0</code>, ordered by <code>due_date ASC</code>. No API or frontend change needed — reads the field as always.<br><br>
+          <div style="font-size:10px;line-height:1.8;">
+            &#9679; <code>Daily</code> — runs every midnight, catches terms overdue overnight with no payment activity<br>
+            &#9679; <code>Payment Entry on_submit</code> — runs immediately on payment, jumps to next unpaid term without waiting for midnight
+          </div>
+        </div>
+      </span>
+    </div>
+    <div class="field-val" style="display:flex;align-items:center;gap:6px;">
+      06/06/2026
+      <span style="font-size:10px;background:#1a2e14;color:#8fcc5a;padding:1px 6px;border-radius:4px;font-weight:500;">&#8635; auto</span>
+    </div>
+  </div>
+  <div><div class="field-label">Currency <span class="req">*</span></div><div class="field-val">MYR (RM)</div></div>
+  <div><div class="field-label">Incoterm</div><div class="field-val" style="color:#555;">&#8212;</div></div>
+</div>
+
+<div class="two-col">
+  <div class="card">
+    <div class="card-title">Biller information</div>
+    <div class="field-label" style="margin-bottom:4px;">Contact Person <span class="req">*</span></div>
+    <div class="field-val" style="margin-bottom:8px;">Jason Lee &middot; jason.lee@mackessen.com &middot; +60137849988</div>
+    <div class="field-label" style="margin-bottom:4px;">Address <span class="req">*</span></div>
+    <div class="field-val">Level 17, Menara Mitsui, No.7, Jalan Pinang, Kuala Lumpur, 50450</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+      <div><div class="field-label" style="margin-bottom:4px;">Fulfillment Method <span class="req">*</span></div><div class="field-val">Delivery</div></div>
+      <div><div class="field-label" style="margin-bottom:4px;">Tax</div><div class="field-val" style="color:#555;"></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Customer information <span style="font-size:11px;color:#666;font-weight:400;margin-left:8px;">Credit (RM): <strong style="color:#e0ded8;">Unlimited</strong></span></div>
+    <div class="field-label" style="margin-bottom:4px;">Contact Person <span class="req">*</span></div>
+    <div class="field-val" style="margin-bottom:8px;">Azib Harun &middot; azibiqbal01@gmail.com &middot; +60102144280</div>
+    <div class="field-label" style="margin-bottom:4px;">Shipping Contact <span class="req">*</span></div>
+    <div class="field-val">NO. 8, JALAN SP 3/2, Banting, Selangor, 42700, Malaysia</div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:10px;">
+  <div class="section-title">Items</div>
+  <table class="items-table">
+    <thead><tr><th style="width:28px;">No.</th><th>Item code</th><th>Description</th><th class="num">Qty</th><th class="num">Rate (RM)</th><th class="num">Tax</th><th class="num">Total (RM)</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#555;">1</td><td>Kasut-002</td><td>Leather Sneakers Black Size 8<br><span style="font-size:11px;color:#666;">Shoe Size: No</span></td><td class="num">2.00</td><td class="num">25,000.00</td><td class="num" style="color:#555;">No Tax</td><td class="num">50,000.00</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="remarks-summary">
+  <div>
+    <div class="field-label" style="margin-bottom:4px;">Remarks</div>
+    <div class="textarea-mock">No remarks</div>
+    <div class="field-label" style="margin-bottom:4px;margin-top:8px;">Terms &amp; conditions</div>
+    <div class="tc-box">1. Payment terms as per schedule below.<br>2. Late payments incur 1.5% interest/month.<br>3. Goods non-refundable unless agreed.</div>
+  </div>
+  <div class="summary-block">
+    <div class="sum-row"><span class="lbl">Subtotal</span><span class="val">RM 50,000.00</span></div>
+    <div class="sum-row"><span class="lbl">Tax</span><span class="val">RM 0.00</span></div>
+    <div class="sum-row grand"><span class="lbl">Grand Total</span><span class="val">RM 50,000.00</span></div>
+    <div style="font-size:9px;color:#555;margin:3px 0 8px;text-align:right;">Fifty Thousand Ringgit Malaysia Only</div>
+    <hr class="sum-divider">
+    <div class="sum-row new">
+      <span class="lbl">Total received <span class="ann">total_received<div class="ann-tip"><strong>total_received</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Sum of all Payment Entry amounts allocated to this SI after FIFO distribution across term rows.<div class="tf"><span>payment_entry</span><span>allocated_amount</span><span>FIFO</span></div></div></span></span>
+      <span class="val">RM 0.00</span>
+    </div>
+    <div class="sum-row new">
+      <span class="lbl">Outstanding <span class="ann">outstanding_balance<div class="ann-tip"><strong>outstanding_balance</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>MAX(0, grand_total − total_received). Never negative — excess goes to credit_on_account.<div class="tf"><span>grand_total</span><span>total_received</span></div></div></span></span>
+      <span class="val">RM 50,000.00</span>
+    </div>
+    <div class="sum-row due-now">
+      <span class="lbl">Due now <span class="ann">amount_due_now<div class="ann-tip"><strong>amount_due_now</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Sum of outstanding balances on term rows where due_date ≤ today and balance &gt; 0.<div class="tf"><span>due_date ≤ server_date</span><span>balance &gt; 0</span></div></div></span></span>
+      <span class="val">RM 0.00</span>
+    </div>
+    <div class="as-at">as at 31 May 2026 — no terms due yet</div>
+  </div>
+</div>
+
+<div class="new-section" style="margin-top:10px;">
+  <div class="section-title">Payments received
+    <span class="ann">payments_received[]<div class="ann-tip"><strong>payments_received[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Payment Entry records linked to this SI. FIFO order. Section hidden if empty.<div class="tf"><span>payment_entry</span><span>posting_date</span><span>allocated_amount</span></div><div class="tn">NEW field — not in current API response</div></div></span>
+    <span class="new-section-note">— none yet</span>
+  </div>
+  <div style="font-size:12px;color:#555;font-style:italic;padding:6px 0;">No payments recorded against this invoice.</div>
+</div>
+
+<div class="new-section">
+  <div class="section-title">Payment schedule
+    <span class="ann">payment_schedule[]<div class="ann-tip"><strong>payment_schedule[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Array of term rows derived from <code>tabPayment Schedule</code>. Each row has FIFO allocation applied. Returns <code>null</code> if no schedule exists — all new sections hidden in that case.<div class="tf"><span>payment_term</span><span>due_date</span><span>payment_amount</span><span>allocated</span><span>balance</span><span>status</span></div><div class="tn">NEW field — not in current API response</div></div></span>
+    <span class="new-badge">NEW</span>
+  </div>
+  <table class="pt-table">
+    <thead><tr><th style="width:28px;">#</th><th>Term</th><th>Due date</th><th>Description</th><th class="num">%</th><th class="num">Amount (RM)</th><th class="num">Allocated</th><th class="num">Balance</th><th style="text-align:center;">Status</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#555;">1</td><td>CIA</td><td>31/05/2026</td><td style="font-size:11px;color:#666;">Payment before goods/services</td><td class="num">20.0%</td><td class="num">10,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num">10,000.00</td><td style="text-align:center;"><span class="status-badge s-pending">Pending</span></td></tr>
+      <tr><td style="color:#555;">2</td><td>Net 30 Days</td><td>30/06/2026</td><td style="font-size:11px;color:#666;">Net 30 from invoice date</td><td class="num">60.0%</td><td class="num">30,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num">30,000.00</td><td style="text-align:center;"><span class="status-badge s-pending">Pending</span></td></tr>
+      <tr><td style="color:#555;">3</td><td>Net 60 Days</td><td>30/07/2026</td><td style="font-size:11px;color:#666;">Net 60 from invoice date</td><td class="num">20.0%</td><td class="num">10,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num">10,000.00</td><td style="text-align:center;"><span class="status-badge s-pending">Pending</span></td></tr>
+    </tbody>
+  </table>
+  <div class="pt-footer">Portion total: <span>100.0%</span> &nbsp;&nbsp; Total amount: <span>RM 50,000.00</span></div>
+</div>
+
+</div><!-- end UC-1 -->
+
+<!-- ═══ UC-2: Submitted, CIA overdue ═══ -->
+<div class="case-panel" style="display:none;">
+
+<div class="topbar">
+  <div class="topbar-left">&#9776;
+    <span style="background:#2a2a2a;padding:3px 10px;border-radius:6px;font-size:12px;color:#e0ded8;">Mackessen</span>
+    <span style="color:#555;">&rsaquo;</span> Invoices <span style="color:#555;">&rsaquo;</span>
+    <span style="color:#e0ded8;">INV-2026-00497</span>
+  </div>
+  <div class="topbar-right">
+    <span style="font-size:11px;color:#555;">Last saved: Jun 10, 2026, 08:14 AM</span>
+    <button class="btn btn-invoice">&#128196; Invoice</button>
+  </div>
+</div>
+<div class="inv-tabs"><div class="inv-tab active">Details</div><div class="inv-tab">Document Trail</div></div>
+<div class="doc-id">#INV-2026-00497 <span style="background:#2a0808;color:#e05050;font-size:11px;padding:2px 9px;border-radius:99px;font-weight:500;border:0.5px solid #4a1010;">Overdue</span></div>
+
+<div class="fields-row">
+  <div><div class="field-label">Date <span class="req">*</span></div><div class="field-val">31/05/2026</div></div>
+  <div><div class="field-label">Payment Due Date <span class="req">*</span></div><div class="field-val" style="color:#e05050;">31/05/2026 <span style="font-size:10px;color:#555;">↑ CIA overdue</span></div></div>
+  <div><div class="field-label">Currency <span class="req">*</span></div><div class="field-val">MYR (RM)</div></div>
+  <div><div class="field-label">Incoterm</div><div class="field-val" style="color:#555;">&#8212;</div></div>
+</div>
+
+<div class="two-col" style="margin-bottom:10px;">
+  <div class="card">
+    <div class="card-title">Biller information</div>
+    <div class="field-val" style="margin-bottom:4px;">Jason Lee &middot; jason.lee@mackessen.com</div>
+    <div class="field-val">Level 17, Menara Mitsui, No.7, Jalan Pinang, KL</div>
+  </div>
+  <div class="summary-block">
+    <div class="sum-row grand"><span class="lbl">Grand Total</span><span class="val">RM 50,000.00</span></div>
+    <hr class="sum-divider">
+    <div class="sum-row new"><span class="lbl">Total received</span><span class="val">RM 0.00</span></div>
+    <div class="sum-row new"><span class="lbl">Outstanding</span><span class="val">RM 50,000.00</span></div>
+    <div class="sum-row due-now"><span class="lbl">Due now</span><span class="val" style="color:#e05050;">RM 10,000.00</span></div>
+    <div class="as-at">as at 10 Jun 2026 — CIA term overdue since 31 May</div>
+  </div>
+</div>
+
+<div class="new-section">
+  <div class="section-title">Payments received
+    <span class="ann">payments_received[]<div class="ann-tip"><strong>payments_received[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Payment Entry records linked to this SI. Section hidden if empty.<div class="tf"><span>payment_entry</span><span>posting_date</span><span>allocated_amount</span></div><div class="tn">NEW field</div></div></span>
+    <span class="new-section-note">— none yet</span>
+  </div>
+  <div style="font-size:12px;color:#555;font-style:italic;padding:6px 0;">No payments recorded against this invoice.</div>
+</div>
+
+<div class="new-section">
+  <div class="section-title">Payment schedule
+    <span class="ann">payment_schedule[]<div class="ann-tip"><strong>payment_schedule[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Term rows with FIFO allocation. Overdue rows highlighted.<div class="tf"><span>payment_term</span><span>due_date</span><span>balance</span><span>status</span></div><div class="tn">NEW field</div></div></span>
+  </div>
+  <table class="pt-table">
+    <thead><tr><th style="width:28px;">#</th><th>Term</th><th>Due date</th><th class="num">%</th><th class="num">Amount (RM)</th><th class="num">Allocated</th><th class="num">Balance</th><th style="text-align:center;">Status</th></tr></thead>
+    <tbody>
+      <tr style="background:#2a1010;"><td style="color:#555;">1</td><td>CIA</td><td style="color:#e05050;font-weight:500;">31/05/2026</td><td class="num">20%</td><td class="num">10,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num" style="color:#e05050;font-weight:500;">10,000.00</td><td style="text-align:center;"><span class="status-badge s-overdue">Overdue</span></td></tr>
+      <tr><td style="color:#555;">2</td><td>Net 30 Days</td><td>30/06/2026</td><td class="num">60%</td><td class="num">30,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num">30,000.00</td><td style="text-align:center;"><span class="status-badge s-pending">Pending</span></td></tr>
+      <tr><td style="color:#555;">3</td><td>Net 60 Days</td><td>30/07/2026</td><td class="num">20%</td><td class="num">10,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num">10,000.00</td><td style="text-align:center;"><span class="status-badge s-pending">Pending</span></td></tr>
+    </tbody>
+  </table>
+  <div class="pt-footer">Portion total: <span>100%</span> &nbsp;&nbsp; Total amount: <span>RM 50,000.00</span></div>
+</div>
+
+</div><!-- end UC-2 -->
+
+<!-- ═══ UC-3: Partial pay, Net 30 overdue ═══ -->
+<div class="case-panel" style="display:none;">
+
+<div class="topbar">
+  <div class="topbar-left">&#9776;
+    <span style="background:#2a2a2a;padding:3px 10px;border-radius:6px;font-size:12px;color:#e0ded8;">Mackessen</span>
+    <span style="color:#555;">&rsaquo;</span> Invoices <span style="color:#555;">&rsaquo;</span>
+    <span style="color:#e0ded8;">INV-2026-00497</span>
+  </div>
+  <div class="topbar-right">
+    <span style="font-size:11px;color:#555;">Last saved: Jul 7, 2026, 09:45 AM</span>
+    <button class="btn btn-invoice">&#128196; Invoice</button>
+  </div>
+</div>
+<div class="inv-tabs"><div class="inv-tab active">Details</div><div class="inv-tab">Document Trail</div></div>
+<div class="doc-id">#INV-2026-00497 <span style="background:#2a1a00;color:#f0a840;font-size:11px;padding:2px 9px;border-radius:99px;font-weight:500;border:0.5px solid #4a3000;">Partially Paid</span></div>
+
+<div class="fields-row">
+  <div><div class="field-label">Date <span class="req">*</span></div><div class="field-val">31/05/2026</div></div>
+  <div><div class="field-label">Payment Due Date <span class="req">*</span></div><div class="field-val" style="color:#e05050;">30/06/2026 <span style="font-size:10px;color:#555;">↑ Net 30 overdue</span></div></div>
+  <div><div class="field-label">Currency <span class="req">*</span></div><div class="field-val">MYR (RM)</div></div>
+  <div><div class="field-label">Incoterm</div><div class="field-val" style="color:#555;">&#8212;</div></div>
+</div>
+
+<div class="two-col" style="margin-bottom:10px;">
+  <div class="card">
+    <div class="card-title">Biller information</div>
+    <div class="field-val" style="margin-bottom:4px;">Jason Lee &middot; jason.lee@mackessen.com</div>
+    <div class="field-val">Level 17, Menara Mitsui, No.7, Jalan Pinang, KL</div>
+  </div>
+  <div class="summary-block">
+    <div class="sum-row grand"><span class="lbl">Grand Total</span><span class="val">RM 50,000.00</span></div>
+    <hr class="sum-divider">
+    <div class="sum-row new"><span class="lbl">Total received</span><span class="val">RM 8,000.00</span></div>
+    <div class="sum-row new"><span class="lbl">Outstanding</span><span class="val">RM 42,000.00</span></div>
+    <div class="sum-row due-now"><span class="lbl">Due now</span><span class="val">RM 32,000.00</span></div>
+    <div class="as-at">as at 07 Jul 2026 — CIA partially paid, Net 30 overdue</div>
+  </div>
+</div>
+
+<div class="new-section">
+  <div class="section-title">Payments received
+    <span class="ann">payments_received[]<div class="ann-tip"><strong>payments_received[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Payment Entry records linked to this SI, FIFO ordered.<div class="tf"><span>payment_entry</span><span>posting_date</span><span>allocated_amount</span></div><div class="tn">NEW field</div></div></span>
+  </div>
+  <table class="pr-table">
+    <thead><tr><th>Date</th><th>Reference</th><th>Mode</th><th class="num">Amount (RM)</th></tr></thead>
+    <tbody>
+      <tr><td>06 Jun 2026</td><td>REC-2026-0041</td><td>Payment Entry</td><td class="num">8,000.00</td></tr>
+    </tbody>
+  </table>
+  <div class="pr-footer"><span class="lbl">Total received</span><span class="val">RM 8,000.00</span></div>
+</div>
+
+<div class="new-section">
+  <div class="section-title">Payment schedule
+    <span class="ann">payment_schedule[]<div class="ann-tip"><strong>payment_schedule[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Term rows with FIFO allocation applied. Overdue rows highlighted in red.<div class="tf"><span>payment_term</span><span>due_date</span><span>balance</span><span>status</span></div><div class="tn">NEW field</div></div></span>
+  </div>
+  <table class="pt-table">
+    <thead><tr><th style="width:28px;">#</th><th>Term</th><th>Due date</th><th class="num">%</th><th class="num">Amount (RM)</th><th class="num">Allocated</th><th class="num">Balance</th><th style="text-align:center;">Status</th></tr></thead>
+    <tbody>
+      <tr style="background:#2a1010;"><td style="color:#555;">1</td><td>CIA</td><td style="color:#e05050;font-weight:500;">31/05/2026</td><td class="num">20%</td><td class="num">10,000.00</td><td class="num">8,000.00</td><td class="num" style="color:#e05050;font-weight:500;">2,000.00</td><td style="text-align:center;"><span class="status-badge s-overdue">Overdue</span></td></tr>
+      <tr style="background:#2a1010;"><td style="color:#555;">2</td><td>Net 30 Days</td><td style="color:#e05050;font-weight:500;">30/06/2026</td><td class="num">60%</td><td class="num">30,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num" style="color:#e05050;font-weight:500;">30,000.00</td><td style="text-align:center;"><span class="status-badge s-overdue">Overdue</span></td></tr>
+      <tr><td style="color:#555;">3</td><td>Net 60 Days</td><td>30/07/2026</td><td class="num">20%</td><td class="num">10,000.00</td><td class="num" style="color:#555;">0.00</td><td class="num">10,000.00</td><td style="text-align:center;"><span class="status-badge s-pending">Pending</span></td></tr>
+    </tbody>
+  </table>
+  <div class="pt-footer">Portion total: <span>100%</span> &nbsp;&nbsp; Total amount: <span>RM 50,000.00</span></div>
+</div>
+
+</div><!-- end UC-3 -->
+
+<!-- ═══ UC-4: Fully settled ═══ -->
+<div class="case-panel" style="display:none;">
+
+<div class="topbar">
+  <div class="topbar-left">&#9776;
+    <span style="background:#2a2a2a;padding:3px 10px;border-radius:6px;font-size:12px;color:#e0ded8;">Mackessen</span>
+    <span style="color:#555;">&rsaquo;</span> Invoices <span style="color:#555;">&rsaquo;</span>
+    <span style="color:#e0ded8;">INV-2026-00497</span>
+  </div>
+  <div class="topbar-right">
+    <span style="font-size:11px;color:#555;">Last saved: Aug 5, 2026, 11:02 AM</span>
+    <button class="btn btn-invoice">&#128196; Invoice</button>
+  </div>
+</div>
+<div class="inv-tabs"><div class="inv-tab active">Details</div><div class="inv-tab">Document Trail</div></div>
+<div class="doc-id">#INV-2026-00497 <span style="background:#0a2010;color:#8fcc5a;font-size:11px;padding:2px 9px;border-radius:99px;font-weight:500;border:0.5px solid #1a4020;">Paid</span></div>
+
+<div class="fields-row">
+  <div><div class="field-label">Date <span class="req">*</span></div><div class="field-val">31/05/2026</div></div>
+  <div><div class="field-label">Payment Due Date <span class="req">*</span></div><div class="field-val" style="color:#8fcc5a;">30/07/2026 <span style="font-size:10px;color:#555;">↑ all settled</span></div></div>
+  <div><div class="field-label">Currency <span class="req">*</span></div><div class="field-val">MYR (RM)</div></div>
+  <div><div class="field-label">Incoterm</div><div class="field-val" style="color:#555;">&#8212;</div></div>
+</div>
+
+<div class="two-col" style="margin-bottom:10px;">
+  <div class="card">
+    <div class="card-title">Biller information</div>
+    <div class="field-val" style="margin-bottom:4px;">Jason Lee &middot; jason.lee@mackessen.com</div>
+    <div class="field-val">Level 17, Menara Mitsui, No.7, Jalan Pinang, KL</div>
+  </div>
+  <div class="summary-block">
+    <div class="sum-row grand"><span class="lbl">Grand Total</span><span class="val">RM 50,000.00</span></div>
+    <hr class="sum-divider">
+    <div class="sum-row new"><span class="lbl">Total received</span><span class="val" style="color:#8fcc5a;">RM 53,000.00</span></div>
+    <div class="sum-row new"><span class="lbl">Credit on account</span><span class="val" style="color:#6aabf0;font-style:italic;">RM 3,000.00</span></div>
+    <div class="sum-row new"><span class="lbl">Outstanding</span><span class="val" style="color:#8fcc5a;">RM 0.00</span></div>
+    <div class="sum-row due-now"><span class="lbl">Due now</span><span class="val" style="color:#8fcc5a;">RM 0.00</span></div>
+    <div class="as-at">as at 05 Aug 2026 — fully settled, excess credited</div>
+  </div>
+</div>
+
+<div class="new-section">
+  <div class="section-title">Payments received
+    <span class="ann">payments_received[]<div class="ann-tip"><strong>payments_received[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Payment Entry records linked to this SI, FIFO ordered.<div class="tf"><span>payment_entry</span><span>posting_date</span><span>allocated_amount</span></div><div class="tn">NEW field</div></div></span>
+  </div>
+  <table class="pr-table">
+    <thead><tr><th>Date</th><th>Reference</th><th>Mode</th><th class="num">Amount (RM)</th></tr></thead>
+    <tbody>
+      <tr><td>06 Jun 2026</td><td>REC-2026-0041</td><td>Payment Entry</td><td class="num">8,000.00</td></tr>
+      <tr><td>30 Jun 2026</td><td>REC-2026-0078</td><td>Payment Entry</td><td class="num">32,000.00</td></tr>
+      <tr><td>05 Aug 2026</td><td>REC-2026-0102</td><td>Payment Entry</td><td class="num">13,000.00</td></tr>
+      <tr class="credit-row"><td colspan="3" style="color:#6aabf0;font-style:italic;">Credit on account (excess over grand total)</td><td class="num" style="color:#6aabf0;">3,000.00</td></tr>
+    </tbody>
+  </table>
+  <div class="pr-footer"><span class="lbl">Total received</span><span class="val" style="color:#8fcc5a;">RM 53,000.00</span></div>
+</div>
+
+<div class="new-section">
+  <div class="section-title">Payment schedule
+    <span class="ann">payment_schedule[]<div class="ann-tip"><strong>payment_schedule[]</strong><div style="margin-top:4px;font-size:10px;color:#5090c8;margin-bottom:6px;">computed · get_invoice_payment_details()</div>Term rows with FIFO allocation applied. Overdue rows highlighted in red.<div class="tf"><span>payment_term</span><span>due_date</span><span>balance</span><span>status</span></div><div class="tn">NEW field</div></div></span>
+  </div>
+  <table class="pt-table">
+    <thead><tr><th style="width:28px;">#</th><th>Term</th><th>Due date</th><th class="num">%</th><th class="num">Amount (RM)</th><th class="num">Allocated</th><th class="num">Balance</th><th style="text-align:center;">Status</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#555;">1</td><td>CIA</td><td>31/05/2026</td><td class="num">20%</td><td class="num">10,000.00</td><td class="num">10,000.00</td><td class="num" style="color:#8fcc5a;">0.00</td><td style="text-align:center;"><span class="status-badge s-paid">Paid</span></td></tr>
+      <tr><td style="color:#555;">2</td><td>Net 30 Days</td><td>30/06/2026</td><td class="num">60%</td><td class="num">30,000.00</td><td class="num">30,000.00</td><td class="num" style="color:#8fcc5a;">0.00</td><td style="text-align:center;"><span class="status-badge s-paid">Paid</span></td></tr>
+      <tr><td style="color:#555;">3</td><td>Net 60 Days</td><td>30/07/2026</td><td class="num">20%</td><td class="num">10,000.00</td><td class="num">10,000.00</td><td class="num" style="color:#8fcc5a;">0.00</td><td style="text-align:center;"><span class="status-badge s-paid">Paid</span></td></tr>
+    </tbody>
+  </table>
+  <div class="pt-footer">Portion total: <span>100%</span> &nbsp;&nbsp; Total amount: <span>RM 50,000.00</span></div>
+</div>
+
+</div><!-- end UC-4 -->
+
+</div>
+
+<div id="tab-api" class="tab-content">
+
+<div class="api-card">
+  <div class="api-card-title">1 — Invoice detail page</div>
+
+  <div class="api-row">
+    <span class="api-key">Method</span>
+    <span class="api-val"><span class="api-method">POST</span></span>
+  </div>
+  <div class="api-row">
+    <span class="api-key">Endpoint</span>
+    <span class="api-val"><span class="api-endpoint">/api/method/mindhive_erpnext_apis.endpoints.v1.sales_agent_workspace.sales_invoice.get_sales_invoice_details</span></span>
+  </div>
+  <div class="api-row">
+    <span class="api-key">Status</span>
+    <span class="api-val" style="color:#f0a840;">Existing endpoint — extended with new fields</span>
+  </div>
+  <div class="api-row">
+    <span class="api-key">Drives</span>
+    <span class="api-val">Summary block &middot; Payments Received section &middot; Payment Terms table (new columns)</span>
+  </div>
+
+  <div class="api-row" style="flex-direction:column;gap:6px;">
+    <span class="api-key">Request body</span>
+    <div class="api-response-box"><span class="key-c">{</span>
+  <span class="key-c">"sales_invoice_id"</span>: <span class="str-c">"INV-2026-00497"</span>
+<span class="key-c">}</span></div>
+  </div>
+
+  <div class="api-row" style="flex-direction:column;gap:6px;">
+    <span class="api-key">Response</span>
+    <div class="api-response-box"><span class="key-c">{</span>
+  <span style="color:#555;">// ── existing fields (unchanged) ──────────────────</span>
+  <span class="key-c">"name"</span>: <span class="str-c">"INV-2026-00497"</span>,
+  <span class="key-c">"posting_date"</span>: <span class="str-c">"2026-06-06"</span>,
+  <span class="key-c">"customer"</span>: <span class="str-c">"Azib Harun"</span>,
+  <span class="key-c">"currency"</span>: <span class="str-c">"MYR"</span>,
+  <span class="key-c">"grand_total"</span>: <span class="val-c">50000.00</span>,
+  <span class="key-c">"outstanding_amount"</span>: <span class="val-c">42000.00</span>,
+  <span class="key-c">"status"</span>: <span class="str-c">"Overdue"</span>,
+  <span style="color:#555;">...other existing fields...</span>
+
+  <span style="color:#555;">// ── new fields ────────────────────────────────────</span>
+  <span class="key-c new-c">"payment_schedule"</span>: <span class="new-c">null if no terms, array if terms exist</span>
+  [
+    {
+      <span class="key-c">"idx"</span>: <span class="val-c">1</span>,
+      <span class="key-c">"payment_term_name"</span>: <span class="str-c">"CIA"</span>,
+      <span class="key-c">"term_type"</span>: <span class="str-c">"advance"</span>,
+      <span class="key-c">"is_advance_payment"</span>: <span class="val-c">true</span>,
+      <span class="key-c">"percentage"</span>: <span class="val-c">20.0</span>,
+      <span class="key-c">"payment_amount"</span>: <span class="val-c">10000.00</span>,
+      <span class="key-c">"due_date"</span>: <span class="str-c">"2026-06-06"</span>,
+      <span class="key-c new-c">"allocated"</span>: <span class="val-c">8000.00</span>,
+      <span class="key-c new-c">"balance"</span>: <span class="val-c">2000.00</span>,
+      <span class="key-c new-c">"status"</span>: <span class="str-c">"Overdue"</span>
+    },
+    {
+      <span class="key-c">"idx"</span>: <span class="val-c">2</span>,
+      <span class="key-c">"payment_term_name"</span>: <span class="str-c">"Net 30 Days"</span>,
+      <span class="key-c">"term_type"</span>: <span class="str-c">"standard"</span>,
+      <span class="key-c">"is_advance_payment"</span>: <span class="val-c">false</span>,
+      <span class="key-c">"percentage"</span>: <span class="val-c">60.0</span>,
+      <span class="key-c">"payment_amount"</span>: <span class="val-c">30000.00</span>,
+      <span class="key-c">"due_date"</span>: <span class="str-c">"2026-07-06"</span>,
+      <span class="key-c new-c">"allocated"</span>: <span class="val-c">0.00</span>,
+      <span class="key-c new-c">"balance"</span>: <span class="val-c">30000.00</span>,
+      <span class="key-c new-c">"status"</span>: <span class="str-c">"Pending"</span>
+    }
+  ],
+
+  <span class="key-c new-c">"payments_received"</span>: <span class="new-c">empty [] if no payments</span>
+  [
+    {
+      <span class="key-c">"entry_date"</span>: <span class="str-c">"2026-06-09"</span>,
+      <span class="key-c">"reference_type"</span>: <span class="str-c">"Payment Entry"</span>,
+      <span class="key-c">"reference_name"</span>: <span class="str-c">"REC-2026-0041"</span>,
+      <span class="key-c">"amount"</span>: <span class="val-c">8000.00</span>
+    }
+  ],
+
+  <span class="key-c new-c">"total_received"</span>: <span class="val-c">8000.00</span>,
+  <span class="key-c new-c">"outstanding_balance"</span>: <span class="val-c">42000.00</span>,
+  <span class="key-c new-c">"amount_due_now"</span>: <span class="val-c">2000.00</span>,
+  <span class="key-c new-c">"credit_on_account"</span>: <span class="val-c">0.00</span>,
+  <span class="key-c new-c">"as_at_date"</span>: <span class="str-c">"2026-06-09"</span>
+<span class="key-c">}</span></div>
+  </div>
+
+  <div class="api-row" style="flex-direction:column;gap:6px;">
+    <span class="api-key">How values are computed</span>
+    <div class="api-response-box"><span style="color:#888;">// payment_schedule is optional on invoices</span>
+<span style="color:#888;">// if null → skip all computation, return payment_schedule: null</span>
+<span style="color:#888;">// if rows exist → compute due_date per row using term_type:</span>
+
+term_type == "advance" | "immediate"  →  due_date = posting_date
+term_type == "standard"               →  get_due_date_from_template()
+term_type == "on_delivery"            →  invoice.items[].delivery_date
+                                          (all items must share same date)
+<span style="color:#888;">// term_type field added to tabPayment Term with default = "standard"</span>
+<span style="color:#888;">// bench migrate auto-populates all existing records with "standard"</span>
+<span style="color:#888;">// Finance updates non-standard terms (advance/on_delivery/immediate) via UI</span>
+<span style="color:#888;">// term_type == null is therefore not reachable after migration</span>
+
+<span style="color:#888;">// FIFO allocation</span>
+sort term rows by due_date ASC
+for each row (earliest first):
+  allocated = min(remaining_received, row.payment_amount)
+  balance   = row.payment_amount - allocated
+  remaining_received -= allocated
+
+<span style="color:#888;">// status per row</span>
+balance == 0                          →  "Paid"
+due_date &lt; today AND balance &gt; 0     →  "Overdue"
+due_date == today AND balance &gt; 0    →  "Due"
+due_date &gt; today AND balance &gt; 0    →  "Pending"
+on_delivery AND balance &gt; 0          →  "Pending (On Delivery)"
+
+<span style="color:#888;">// summary values</span>
+total_received     = SUM(tabPayment Entry Reference.allocated_amount)
+                     WHERE reference_name = invoice.name
+                     AND   pe.docstatus = 1
+outstanding_balance = MAX(0, grand_total - total_received)
+amount_due_now      = SUM(balance WHERE due_date &lt;= today)
+credit_on_account   = SUM(pe.unallocated_amount)
+                      WHERE pe links to this invoice
+                      AND   total_received &gt; grand_total</div>
+  </div>
+</div>
+
+<div class="api-card">
+  <div class="api-card-title">2 — Invoice list view</div>
+
+  <div class="api-row">
+    <span class="api-key">Method</span>
+    <span class="api-val"><span class="api-method">POST</span></span>
+  </div>
+  <div class="api-row">
+    <span class="api-key">Endpoint</span>
+    <span class="api-val"><span class="api-endpoint">/api/method/mindhive_erpnext_apis.endpoints.v1.sales_agent_workspace.sales_invoice.get_si_listing</span></span>
+  </div>
+  <div class="api-row">
+    <span class="api-key">Status</span>
+    <span class="api-val" style="color:#f0a840;">Existing endpoint — extended with new fields per row</span>
+  </div>
+  <div class="api-row">
+    <span class="api-key">Drives</span>
+    <span class="api-val">Invoice list status column &middot; Amount Due Now column &middot; payment_status column</span>
+  </div>
+
+  <div class="api-row" style="flex-direction:column;gap:6px;">
+    <span class="api-key">Request body</span>
+    <div class="api-response-box"><span class="key-c">{</span>
+  <span class="key-c">"search"</span>: <span class="str-c">""</span>,
+  <span class="key-c">"filters"</span>: <span class="val-c">[]</span>,
+  <span class="key-c">"sort_by"</span>: <span class="val-c">[]</span>,
+  <span class="key-c">"pagination_flag"</span>: <span class="val-c">true</span>,
+  <span class="key-c">"page"</span>: <span class="val-c">1</span>,
+  <span class="key-c">"page_size"</span>: <span class="val-c">50</span>
+<span class="key-c">}</span></div>
+  </div>
+
+  <div class="api-row" style="flex-direction:column;gap:6px;">
+    <span class="api-key">Response — one row</span>
+    <div class="api-response-box"><span class="key-c">{</span>
+  <span style="color:#555;">// ── existing fields (unchanged) ──────────────────</span>
+  <span class="key-c">"si_id"</span>: <span class="str-c">"INV-2026-00497"</span>,
+  <span class="key-c">"customer_name"</span>: <span class="str-c">"Azib Harun"</span>,
+  <span class="key-c">"grand_total"</span>: <span class="val-c">50000.00</span>,
+  <span class="key-c">"outstanding_amount"</span>: <span class="val-c">42000.00</span>,
+  <span class="key-c">"paid_amount"</span>: <span class="val-c">8000.00</span>,
+  <span class="key-c">"status"</span>: <span class="str-c">"Overdue"</span>,   <span style="color:#555;">← ERPNext native, based on header due_date</span>
+  <span class="key-c">"due_date"</span>: <span class="str-c">"2026-08-05"</span>,
+  <span class="key-c">"per_paid"</span>: <span class="val-c">16.0</span>,
+  <span class="key-c">"credit_limit"</span>: <span class="val-c">999999.00</span>,
+  <span style="color:#555;">...other existing fields...</span>
+
+  <span style="color:#555;">// ── new fields ────────────────────────────────────</span>
+  <span class="key-c new-c">"payment_status"</span>: <span class="str-c">"Overdue"</span>,   <span class="new-c">← term-derived, replaces status for display</span>
+  <span class="key-c new-c">"amount_due_now"</span>: <span class="val-c">2000.00</span>,
+  <span class="key-c new-c">"total_received"</span>: <span class="val-c">8000.00</span>,
+  <span class="key-c new-c">"outstanding_balance"</span>: <span class="val-c">42000.00</span>,
+  <span class="key-c new-c">"as_at_date"</span>: <span class="str-c">"2026-06-09"</span>
+<span class="key-c">}</span></div>
+  </div>
+
+  <div class="api-row" style="flex-direction:column;gap:6px;">
+    <span class="api-key">How payment_status is computed</span>
+    <div class="api-response-box"><span style="color:#888;">// post-query enrichment — 2 batch queries after main SELECT</span>
+
+Batch 1: fetch tabPayment Schedule rows for all SI IDs on this page
+         ORDER BY due_date ASC
+
+Batch 2: SUM(allocated_amount) FROM tabPayment Entry Reference
+         WHERE reference_name IN (si_ids)
+         AND   pe.docstatus = 1
+         GROUP BY reference_name
+
+<span style="color:#888;">// FIFO compute amount_due_now per SI (same as detail API)</span>
+<span style="color:#888;">// then derive payment_status:</span>
+
+docstatus == 2                        →  "Cancelled"
+outstanding_balance == 0              →  "Paid"
+any term: due_date &lt;= today
+         AND balance &gt; 0             →  "Overdue"
+total_received &gt; 0
+AND outstanding &gt; 0
+AND no overdue terms                  →  "Partially Paid"
+no payments AND no overdue            →  "Unpaid"
+docstatus == 0                        →  "Draft"
+
+<span style="color:#888;">// fallback — no payment_schedule rows</span>
+if payment_schedule is empty:
+  if due_date &lt;= today: payment_status = "Overdue"
+  else: payment_status = same as existing status field
+
+<span style="color:#888;">// note: amount_due_now, outstanding_balance, payment_status</span>
+<span style="color:#888;">// are NOT sortable — post-query computed, not in base SQL</span></div>
+  </div>
+
+  <div class="api-row" style="flex-direction:column;gap:6px;">
+    <span class="api-key">payment_status values</span>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;padding:8px 0;">
+      <span class="status-badge s-paid">Paid</span>
+      <span class="status-badge s-overdue">Overdue</span>
+      <span class="status-badge" style="background:#1a2030;color:#5090c8;font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;">Partially Paid</span>
+      <span class="status-badge s-pending">Unpaid</span>
+      <span class="status-badge" style="background:#2a2a2a;color:#666;font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;">Draft</span>
+      <span class="status-badge" style="background:#2a1a1a;color:#666;font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;">Cancelled</span>
+    </div>
+    <div style="font-size:11px;color:#555;margin-top:4px;">
+      Overdue takes priority over Partially Paid.
+      Paid takes priority over all non-Cancelled states.
+      The existing <code style="font-family:monospace;color:#5090c8;">status</code> field is unchanged — both are returned.
+      Frontend should display <code style="font-family:monospace;color:#5090c8;">payment_status</code> in the list view status column.
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div id="tab-pdf" class="tab-content">
+
+<div style="font-size:11px;color:#666;margin-bottom:16px;padding:8px 12px;background:#1a1a1a;border:0.5px solid #2e2e2e;border-radius:8px;">
+  Three PDFs generated from your simulation — same invoice, different dates, different states.
+</div>
+
+<div style="font-size:12px;font-weight:500;color:#f0a840;margin-bottom:8px;padding:4px 0;">Scenario 1 — Day 6/6/2026 &nbsp;·&nbsp; Invoice created, RM8k received at point of creation</div>
+<div style="background:#e8e6e0;padding:16px;border-radius:8px;margin-bottom:28px;">
+<div style="background:#fff;max-width:700px;margin:0 auto;padding:32px 36px;font-family:Georgia,serif;color:#1a1a1a;font-size:11px;line-height:1.6;">
+<table style="width:100%;border-collapse:collapse;margin-bottom:18px;"><tr>
+  <td style="vertical-align:top;width:55%;"><div style="font-size:12px;font-weight:bold;margin-bottom:3px;">Mackessen</div><div style="color:#555;font-size:10px;">Level 17, Menara Mitsui, No.7, Jalan Pinang, Kuala Lumpur, 50450</div><div style="color:#555;font-size:10px;">+60137849988 | info@mackessen.com | ROC: 201701234567</div></td>
+  <td style="vertical-align:top;text-align:right;"><div style="font-size:18px;font-weight:bold;letter-spacing:2px;margin-bottom:6px;">INVOICE</div><table style="margin-left:auto;border-collapse:collapse;font-size:10px;"><tr><td style="padding:1px 8px 1px 0;color:#888;">INVOICE ID</td><td style="font-weight:bold;">INV-2026-00498</td></tr><tr><td style="padding:1px 8px 1px 0;color:#888;">DATE</td><td>2026-06-06</td></tr><tr><td style="padding:1px 8px 1px 0;color:#888;">DUE DATE</td><td>2026-08-05</td></tr></table></td>
+</tr></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:10px;"><tr>
+  <td style="width:50%;vertical-align:top;padding-right:16px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Customer</div><div style="font-weight:bold;">Azib Harun</div><div style="color:#555;">azibiqbal01@gmail.com | +60102144280</div><div style="color:#555;">NO. 8, JALAN SP 3/2, Banting, Selangor, 42700</div></td>
+  <td style="width:50%;vertical-align:top;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Billing address</div><div style="color:#555;">NO. 8, JALAN SP 3/2,<br>Jalan Profesor Diraja Ungku Aziz,<br>Banting, Selangor, 42700, Malaysia</div></td>
+</tr></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:10px;"><thead><tr style="border-top:1.5px solid #1a1a1a;border-bottom:1px solid #1a1a1a;"><th style="padding:5px 8px 5px 0;text-align:left;">NO.</th><th style="padding:5px 8px;text-align:left;">ITEM CODE</th><th style="padding:5px 8px;text-align:left;">DESCRIPTION</th><th style="padding:5px 8px;text-align:right;">QTY</th><th style="padding:5px 8px;text-align:right;">RATE</th><th style="padding:5px 8px;text-align:right;">TAX</th><th style="padding:5px 0 5px 8px;text-align:right;">TOTAL (RM)</th></tr></thead><tbody><tr style="border-bottom:0.5px solid #e0ded8;"><td style="padding:6px 8px 6px 0;color:#888;">1.</td><td style="padding:6px 8px;">Kasut-002</td><td style="padding:6px 8px;">Leather Sneakers Black Size 8<br><span style="color:#888;font-size:9px;">Shoe Size: No</span></td><td style="padding:6px 8px;text-align:right;">2.00</td><td style="padding:6px 8px;text-align:right;">RM 25,000.00</td><td style="padding:6px 8px;text-align:right;">No Tax</td><td style="padding:6px 0 6px 8px;text-align:right;">RM 50,000.00</td></tr></tbody></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;"><tr>
+  <td style="width:52%;vertical-align:top;padding-right:16px;font-size:10px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Remarks</div><div style="color:#888;font-style:italic;">No remarks</div><div style="margin-top:10px;font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Terms &amp; conditions</div><div style="color:#555;font-size:9px;line-height:1.6;">1. Payment terms as per schedule below.<br>2. Late payments incur 1.5% interest/month.<br>3. Goods non-refundable unless agreed.</div></td>
+  <td style="width:48%;vertical-align:top;"><table style="width:100%;border-collapse:collapse;font-size:10.5px;"><tr><td style="padding:2px 0;color:#555;">Subtotal:</td><td style="text-align:right;">RM 50,000.00</td></tr><tr><td style="padding:2px 0;color:#555;">Tax:</td><td style="text-align:right;">RM 0.00</td></tr><tr style="border-top:1.5px solid #1a1a1a;"><td style="padding:5px 0 2px;font-weight:bold;font-size:12px;">Grand Total:</td><td style="text-align:right;font-weight:bold;font-size:12px;">RM 50,000.00</td></tr><tr><td colspan="2"><div style="font-size:9px;color:#888;margin:2px 0 5px;">Fifty Thousand Ringgit Malaysia Only</div></td></tr><tr style="border-top:0.5px solid #ccc;"><td style="padding:3px 0;color:#555;">Total received:</td><td style="text-align:right;color:#555;">RM 8,000.00</td></tr><tr style="border-top:0.5px solid #ccc;"><td style="padding:2px 0;color:#555;">Outstanding:</td><td style="text-align:right;color:#555;">RM 42,000.00</td></tr><tr><td style="padding:2px 0;font-weight:bold;">Due now:</td><td style="text-align:right;font-weight:bold;">RM 2,000.00</td></tr><tr><td colspan="2" style="font-size:9px;color:#888;text-align:right;">(as at 06 Jun 2026)</td></tr></table></td>
+</tr></table>
+<div style="margin-bottom:14px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:6px;">Payments received</div><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="border-bottom:0.5px solid #1a1a1a;"><th style="padding:4px 8px 4px 0;color:#888;font-weight:500;text-align:left;width:85px;">DATE</th><th style="padding:4px 8px;color:#888;font-weight:500;text-align:left;">REFERENCE</th><th style="padding:4px 8px;color:#888;font-weight:500;text-align:left;width:100px;">TYPE</th><th style="padding:4px 0 4px 8px;color:#888;font-weight:500;text-align:right;width:90px;">AMOUNT (RM)</th></tr></thead><tbody><tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 8px 5px 0;">06 Jun 2026</td><td style="padding:5px 8px;">REC-2026-0041</td><td style="padding:5px 8px;">Payment Entry</td><td style="padding:5px 0 5px 8px;text-align:right;">8,000.00</td></tr></tbody><tfoot><tr style="border-top:1px solid #1a1a1a;"><td colspan="3" style="padding:4px 8px 0 0;font-weight:bold;">Total received:</td><td style="padding:4px 0 0 8px;text-align:right;font-weight:bold;">RM 8,000.00</td></tr></tfoot></table></div>
+<div><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:6px;">Payment schedule</div><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="border-bottom:0.5px solid #1a1a1a;"><th style="padding:4px 5px 4px 0;color:#888;font-weight:500;width:18px;">#</th><th style="padding:4px 5px;color:#888;font-weight:500;">TERM</th><th style="padding:4px 5px;color:#888;font-weight:500;width:72px;">DUE DATE</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:34px;">%</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">AMOUNT</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">ALLOCATED</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">BALANCE</th><th style="padding:4px 0 4px 5px;color:#888;font-weight:500;text-align:center;width:56px;">STATUS</th></tr></thead><tbody>
+<tr style="background:#fff5f5;border-bottom:0.5px solid #f0d8d8;"><td style="padding:5px 5px 5px 0;color:#888;">1</td><td style="padding:5px;">CIA</td><td style="padding:5px;">06/06/2026</td><td style="padding:5px;text-align:right;">20%</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;">8,000.00</td><td style="padding:5px;text-align:right;color:#a32d2d;font-weight:bold;">2,000.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#a32d2d;font-weight:bold;font-size:9px;">OVERDUE</td></tr>
+<tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 5px 5px 0;color:#888;">2</td><td style="padding:5px;">Net 30</td><td style="padding:5px;">06/07/2026</td><td style="padding:5px;text-align:right;">60%</td><td style="padding:5px;text-align:right;">30,000.00</td><td style="padding:5px;text-align:right;color:#888;">0.00</td><td style="padding:5px;text-align:right;">30,000.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#888;font-size:9px;">PENDING</td></tr>
+<tr><td style="padding:5px 5px 5px 0;color:#888;">3</td><td style="padding:5px;">Net 60</td><td style="padding:5px;">05/08/2026</td><td style="padding:5px;text-align:right;">20%</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;color:#888;">0.00</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#888;font-size:9px;">PENDING</td></tr>
+</tbody><tfoot><tr style="border-top:1px solid #1a1a1a;"><td colspan="4" style="padding:4px 5px 0 0;font-size:9px;color:#888;text-align:right;">Portion total: 100%</td><td colspan="4" style="padding:4px 0 0 5px;font-size:9px;font-weight:bold;text-align:right;">Total: RM 50,000.00</td></tr></tfoot></table></div>
+<div style="margin-top:16px;padding-top:8px;border-top:0.5px solid #ccc;display:flex;justify-content:space-between;font-size:8.5px;color:#aaa;"><div>We sincerely thank you for your prompt payment and valued partnership.</div><div>Powered by MAIA · Generated 06/06/2026 09:00 (GMT+8) · Page 1 of 1</div></div>
+<div style="text-align:center;margin-top:6px;font-size:8px;color:#ccc;letter-spacing:0.1em;">DRAFT — NOT OFFICIAL</div>
+</div></div>
+
+<div style="font-size:12px;font-weight:500;color:#f0a840;margin-bottom:8px;padding:4px 0;">Scenario 2 — Day 7/7/2026 &nbsp;·&nbsp; No activity. Net 30 now overdue. Total overdue = RM32k</div>
+<div style="background:#e8e6e0;padding:16px;border-radius:8px;margin-bottom:28px;">
+<div style="background:#fff;max-width:700px;margin:0 auto;padding:32px 36px;font-family:Georgia,serif;color:#1a1a1a;font-size:11px;line-height:1.6;">
+<table style="width:100%;border-collapse:collapse;margin-bottom:18px;"><tr>
+  <td style="vertical-align:top;width:55%;"><div style="font-size:12px;font-weight:bold;margin-bottom:3px;">Mackessen</div><div style="color:#555;font-size:10px;">Level 17, Menara Mitsui, No.7, Jalan Pinang, Kuala Lumpur, 50450</div><div style="color:#555;font-size:10px;">+60137849988 | info@mackessen.com | ROC: 201701234567</div></td>
+  <td style="vertical-align:top;text-align:right;"><div style="font-size:18px;font-weight:bold;letter-spacing:2px;margin-bottom:6px;">INVOICE</div><table style="margin-left:auto;border-collapse:collapse;font-size:10px;"><tr><td style="padding:1px 8px 1px 0;color:#888;">INVOICE ID</td><td style="font-weight:bold;">INV-2026-00498</td></tr><tr><td style="padding:1px 8px 1px 0;color:#888;">DATE</td><td>2026-06-06</td></tr><tr><td style="padding:1px 8px 1px 0;color:#888;">DUE DATE</td><td>2026-08-05</td></tr></table></td>
+</tr></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:10px;"><tr>
+  <td style="width:50%;vertical-align:top;padding-right:16px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Customer</div><div style="font-weight:bold;">Azib Harun</div><div style="color:#555;">azibiqbal01@gmail.com | +60102144280</div><div style="color:#555;">NO. 8, JALAN SP 3/2, Banting, Selangor, 42700</div></td>
+  <td style="width:50%;vertical-align:top;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Billing address</div><div style="color:#555;">NO. 8, JALAN SP 3/2,<br>Jalan Profesor Diraja Ungku Aziz,<br>Banting, Selangor, 42700, Malaysia</div></td>
+</tr></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:10px;"><thead><tr style="border-top:1.5px solid #1a1a1a;border-bottom:1px solid #1a1a1a;"><th style="padding:5px 8px 5px 0;text-align:left;">NO.</th><th style="padding:5px 8px;text-align:left;">ITEM CODE</th><th style="padding:5px 8px;text-align:left;">DESCRIPTION</th><th style="padding:5px 8px;text-align:right;">QTY</th><th style="padding:5px 8px;text-align:right;">RATE</th><th style="padding:5px 8px;text-align:right;">TAX</th><th style="padding:5px 0 5px 8px;text-align:right;">TOTAL (RM)</th></tr></thead><tbody><tr style="border-bottom:0.5px solid #e0ded8;"><td style="padding:6px 8px 6px 0;color:#888;">1.</td><td style="padding:6px 8px;">Kasut-002</td><td style="padding:6px 8px;">Leather Sneakers Black Size 8<br><span style="color:#888;font-size:9px;">Shoe Size: No</span></td><td style="padding:6px 8px;text-align:right;">2.00</td><td style="padding:6px 8px;text-align:right;">RM 25,000.00</td><td style="padding:6px 8px;text-align:right;">No Tax</td><td style="padding:6px 0 6px 8px;text-align:right;">RM 50,000.00</td></tr></tbody></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;"><tr>
+  <td style="width:52%;vertical-align:top;padding-right:16px;font-size:10px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Remarks</div><div style="color:#888;font-style:italic;">No remarks</div><div style="margin-top:10px;font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Terms &amp; conditions</div><div style="color:#555;font-size:9px;line-height:1.6;">1. Payment terms as per schedule below.<br>2. Late payments incur 1.5% interest/month.<br>3. Goods non-refundable unless agreed.</div></td>
+  <td style="width:48%;vertical-align:top;"><table style="width:100%;border-collapse:collapse;font-size:10.5px;"><tr><td style="padding:2px 0;color:#555;">Subtotal:</td><td style="text-align:right;">RM 50,000.00</td></tr><tr><td style="padding:2px 0;color:#555;">Tax:</td><td style="text-align:right;">RM 0.00</td></tr><tr style="border-top:1.5px solid #1a1a1a;"><td style="padding:5px 0 2px;font-weight:bold;font-size:12px;">Grand Total:</td><td style="text-align:right;font-weight:bold;font-size:12px;">RM 50,000.00</td></tr><tr><td colspan="2"><div style="font-size:9px;color:#888;margin:2px 0 5px;">Fifty Thousand Ringgit Malaysia Only</div></td></tr><tr style="border-top:0.5px solid #ccc;"><td style="padding:3px 0;color:#555;">Total received:</td><td style="text-align:right;color:#555;">RM 8,000.00</td></tr><tr style="border-top:0.5px solid #ccc;"><td style="padding:2px 0;color:#555;">Outstanding:</td><td style="text-align:right;color:#555;">RM 42,000.00</td></tr><tr><td style="padding:2px 0;font-weight:bold;">Due now:</td><td style="text-align:right;font-weight:bold;color:#a32d2d;">RM 32,000.00</td></tr><tr><td colspan="2" style="font-size:9px;color:#888;text-align:right;">(as at 07 Jul 2026)</td></tr></table></td>
+</tr></table>
+<div style="margin-bottom:14px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:6px;">Payments received</div><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="border-bottom:0.5px solid #1a1a1a;"><th style="padding:4px 8px 4px 0;color:#888;font-weight:500;text-align:left;width:85px;">DATE</th><th style="padding:4px 8px;color:#888;font-weight:500;text-align:left;">REFERENCE</th><th style="padding:4px 8px;color:#888;font-weight:500;text-align:left;width:100px;">TYPE</th><th style="padding:4px 0 4px 8px;color:#888;font-weight:500;text-align:right;width:90px;">AMOUNT (RM)</th></tr></thead><tbody><tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 8px 5px 0;">06 Jun 2026</td><td style="padding:5px 8px;">REC-2026-0041</td><td style="padding:5px 8px;">Payment Entry</td><td style="padding:5px 0 5px 8px;text-align:right;">8,000.00</td></tr></tbody><tfoot><tr style="border-top:1px solid #1a1a1a;"><td colspan="3" style="padding:4px 8px 0 0;font-weight:bold;">Total received:</td><td style="padding:4px 0 0 8px;text-align:right;font-weight:bold;">RM 8,000.00</td></tr></tfoot></table></div>
+<div><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:6px;">Payment schedule</div><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="border-bottom:0.5px solid #1a1a1a;"><th style="padding:4px 5px 4px 0;color:#888;font-weight:500;width:18px;">#</th><th style="padding:4px 5px;color:#888;font-weight:500;">TERM</th><th style="padding:4px 5px;color:#888;font-weight:500;width:72px;">DUE DATE</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:34px;">%</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">AMOUNT</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">ALLOCATED</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">BALANCE</th><th style="padding:4px 0 4px 5px;color:#888;font-weight:500;text-align:center;width:56px;">STATUS</th></tr></thead><tbody>
+<tr style="background:#fff5f5;border-bottom:0.5px solid #f0d8d8;"><td style="padding:5px 5px 5px 0;color:#888;">1</td><td style="padding:5px;">CIA</td><td style="padding:5px;">06/06/2026</td><td style="padding:5px;text-align:right;">20%</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;">8,000.00</td><td style="padding:5px;text-align:right;color:#a32d2d;font-weight:bold;">2,000.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#a32d2d;font-weight:bold;font-size:9px;">OVERDUE</td></tr>
+<tr style="background:#fff5f5;border-bottom:0.5px solid #f0d8d8;"><td style="padding:5px 5px 5px 0;color:#888;">2</td><td style="padding:5px;">Net 30</td><td style="padding:5px;">06/07/2026</td><td style="padding:5px;text-align:right;">60%</td><td style="padding:5px;text-align:right;">30,000.00</td><td style="padding:5px;text-align:right;color:#888;">0.00</td><td style="padding:5px;text-align:right;color:#a32d2d;font-weight:bold;">30,000.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#a32d2d;font-weight:bold;font-size:9px;">OVERDUE</td></tr>
+<tr><td style="padding:5px 5px 5px 0;color:#888;">3</td><td style="padding:5px;">Net 60</td><td style="padding:5px;">05/08/2026</td><td style="padding:5px;text-align:right;">20%</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;color:#888;">0.00</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#888;font-size:9px;">PENDING</td></tr>
+</tbody><tfoot><tr style="border-top:1px solid #1a1a1a;"><td colspan="4" style="padding:4px 5px 0 0;font-size:9px;color:#888;text-align:right;">Portion total: 100%</td><td colspan="4" style="padding:4px 0 0 5px;font-size:9px;font-weight:bold;text-align:right;">Total: RM 50,000.00</td></tr></tfoot></table></div>
+<div style="margin-top:16px;padding-top:8px;border-top:0.5px solid #ccc;display:flex;justify-content:space-between;font-size:8.5px;color:#aaa;"><div>We sincerely thank you for your prompt payment and valued partnership.</div><div>Powered by MAIA · Generated 07/07/2026 10:32 (GMT+8) · Page 1 of 1</div></div>
+<div style="text-align:center;margin-top:6px;font-size:8px;color:#ccc;letter-spacing:0.1em;">DRAFT — NOT OFFICIAL</div>
+</div></div>
+
+<div style="font-size:12px;font-weight:500;color:#8fcc5a;margin-bottom:8px;padding:4px 0;">Scenario 3 — Day 5/8/2026 &nbsp;·&nbsp; Client pays RM45k. Invoice fully settled. RM3k credit on account.</div>
+<div style="background:#e8e6e0;padding:16px;border-radius:8px;margin-bottom:16px;">
+<div style="background:#fff;max-width:700px;margin:0 auto;padding:32px 36px;font-family:Georgia,serif;color:#1a1a1a;font-size:11px;line-height:1.6;">
+<table style="width:100%;border-collapse:collapse;margin-bottom:18px;"><tr>
+  <td style="vertical-align:top;width:55%;"><div style="font-size:12px;font-weight:bold;margin-bottom:3px;">Mackessen</div><div style="color:#555;font-size:10px;">Level 17, Menara Mitsui, No.7, Jalan Pinang, Kuala Lumpur, 50450</div><div style="color:#555;font-size:10px;">+60137849988 | info@mackessen.com | ROC: 201701234567</div></td>
+  <td style="vertical-align:top;text-align:right;"><div style="font-size:18px;font-weight:bold;letter-spacing:2px;margin-bottom:6px;">INVOICE</div><table style="margin-left:auto;border-collapse:collapse;font-size:10px;"><tr><td style="padding:1px 8px 1px 0;color:#888;">INVOICE ID</td><td style="font-weight:bold;">INV-2026-00498</td></tr><tr><td style="padding:1px 8px 1px 0;color:#888;">DATE</td><td>2026-06-06</td></tr><tr><td style="padding:1px 8px 1px 0;color:#888;">DUE DATE</td><td>2026-08-05</td></tr></table></td>
+</tr></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:10px;"><tr>
+  <td style="width:50%;vertical-align:top;padding-right:16px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Customer</div><div style="font-weight:bold;">Azib Harun</div><div style="color:#555;">azibiqbal01@gmail.com | +60102144280</div><div style="color:#555;">NO. 8, JALAN SP 3/2, Banting, Selangor, 42700</div></td>
+  <td style="width:50%;vertical-align:top;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Billing address</div><div style="color:#555;">NO. 8, JALAN SP 3/2,<br>Jalan Profesor Diraja Ungku Aziz,<br>Banting, Selangor, 42700, Malaysia</div></td>
+</tr></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:10px;"><thead><tr style="border-top:1.5px solid #1a1a1a;border-bottom:1px solid #1a1a1a;"><th style="padding:5px 8px 5px 0;text-align:left;">NO.</th><th style="padding:5px 8px;text-align:left;">ITEM CODE</th><th style="padding:5px 8px;text-align:left;">DESCRIPTION</th><th style="padding:5px 8px;text-align:right;">QTY</th><th style="padding:5px 8px;text-align:right;">RATE</th><th style="padding:5px 8px;text-align:right;">TAX</th><th style="padding:5px 0 5px 8px;text-align:right;">TOTAL (RM)</th></tr></thead><tbody><tr style="border-bottom:0.5px solid #e0ded8;"><td style="padding:6px 8px 6px 0;color:#888;">1.</td><td style="padding:6px 8px;">Kasut-002</td><td style="padding:6px 8px;">Leather Sneakers Black Size 8<br><span style="color:#888;font-size:9px;">Shoe Size: No</span></td><td style="padding:6px 8px;text-align:right;">2.00</td><td style="padding:6px 8px;text-align:right;">RM 25,000.00</td><td style="padding:6px 8px;text-align:right;">No Tax</td><td style="padding:6px 0 6px 8px;text-align:right;">RM 50,000.00</td></tr></tbody></table>
+<table style="width:100%;border-collapse:collapse;margin-bottom:16px;"><tr>
+  <td style="width:52%;vertical-align:top;padding-right:16px;font-size:10px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Remarks</div><div style="color:#888;font-style:italic;">No remarks</div><div style="margin-top:10px;font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:5px;">Terms &amp; conditions</div><div style="color:#555;font-size:9px;line-height:1.6;">1. Payment terms as per schedule below.<br>2. Late payments incur 1.5% interest/month.<br>3. Goods non-refundable unless agreed.</div></td>
+  <td style="width:48%;vertical-align:top;"><table style="width:100%;border-collapse:collapse;font-size:10.5px;"><tr><td style="padding:2px 0;color:#555;">Subtotal:</td><td style="text-align:right;">RM 50,000.00</td></tr><tr><td style="padding:2px 0;color:#555;">Tax:</td><td style="text-align:right;">RM 0.00</td></tr><tr style="border-top:1.5px solid #1a1a1a;"><td style="padding:5px 0 2px;font-weight:bold;font-size:12px;">Grand Total:</td><td style="text-align:right;font-weight:bold;font-size:12px;">RM 50,000.00</td></tr><tr><td colspan="2"><div style="font-size:9px;color:#888;margin:2px 0 5px;">Fifty Thousand Ringgit Malaysia Only</div></td></tr><tr style="border-top:0.5px solid #ccc;"><td style="padding:3px 0;color:#555;">Total received:</td><td style="text-align:right;color:#555;">RM 50,000.00</td></tr><tr><td style="padding:2px 0;color:#888;font-style:italic;font-size:10px;">Credit on account:</td><td style="text-align:right;color:#888;font-style:italic;font-size:10px;">RM 3,000.00</td></tr><tr style="border-top:0.5px solid #ccc;"><td style="padding:2px 0;color:#555;">Outstanding:</td><td style="text-align:right;color:#2d6a2d;font-weight:bold;">RM 0.00</td></tr><tr><td style="padding:2px 0;font-weight:bold;">Due now:</td><td style="text-align:right;font-weight:bold;color:#2d6a2d;">RM 0.00</td></tr><tr><td colspan="2" style="font-size:9px;color:#888;text-align:right;">(as at 05 Aug 2026)</td></tr></table></td>
+</tr></table>
+<div style="margin-bottom:14px;"><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:6px;">Payments received</div><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="border-bottom:0.5px solid #1a1a1a;"><th style="padding:4px 8px 4px 0;color:#888;font-weight:500;text-align:left;width:85px;">DATE</th><th style="padding:4px 8px;color:#888;font-weight:500;text-align:left;">REFERENCE</th><th style="padding:4px 8px;color:#888;font-weight:500;text-align:left;width:100px;">TYPE</th><th style="padding:4px 0 4px 8px;color:#888;font-weight:500;text-align:right;width:90px;">AMOUNT (RM)</th></tr></thead><tbody>
+<tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 8px 5px 0;">06 Jun 2026</td><td style="padding:5px 8px;">REC-2026-0041</td><td style="padding:5px 8px;">Payment Entry</td><td style="padding:5px 0 5px 8px;text-align:right;">8,000.00</td></tr>
+<tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 8px 5px 0;">05 Aug 2026</td><td style="padding:5px 8px;">REC-2026-0089</td><td style="padding:5px 8px;">Payment Entry</td><td style="padding:5px 0 5px 8px;text-align:right;">45,000.00</td></tr>
+<tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 8px 5px 0;color:#888;">—</td><td style="padding:5px 8px;color:#888;font-style:italic;">—</td><td style="padding:5px 8px;color:#888;font-style:italic;">Credit on account</td><td style="padding:5px 0 5px 8px;text-align:right;color:#888;font-style:italic;">3,000.00</td></tr>
+</tbody><tfoot><tr style="border-top:1px solid #1a1a1a;"><td colspan="3" style="padding:4px 8px 0 0;font-weight:bold;">Total received: <span style="font-size:9px;color:#888;font-weight:400;">(excl. credit on account)</span></td><td style="padding:4px 0 0 8px;text-align:right;font-weight:bold;">RM 50,000.00</td></tr></tfoot></table></div>
+<div><div style="font-weight:bold;font-size:9px;text-transform:uppercase;color:#888;border-bottom:0.5px solid #ccc;padding-bottom:2px;margin-bottom:6px;">Payment schedule</div><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="border-bottom:0.5px solid #1a1a1a;"><th style="padding:4px 5px 4px 0;color:#888;font-weight:500;width:18px;">#</th><th style="padding:4px 5px;color:#888;font-weight:500;">TERM</th><th style="padding:4px 5px;color:#888;font-weight:500;width:72px;">DUE DATE</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:34px;">%</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">AMOUNT</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">ALLOCATED</th><th style="padding:4px 5px;color:#888;font-weight:500;text-align:right;width:72px;">BALANCE</th><th style="padding:4px 0 4px 5px;color:#888;font-weight:500;text-align:center;width:56px;">STATUS</th></tr></thead><tbody>
+<tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 5px 5px 0;color:#888;">1</td><td style="padding:5px;">CIA</td><td style="padding:5px;">06/06/2026</td><td style="padding:5px;text-align:right;">20%</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;color:#2d6a2d;">0.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#2d6a2d;font-weight:bold;font-size:9px;">PAID</td></tr>
+<tr style="border-bottom:0.5px solid #e8e6e0;"><td style="padding:5px 5px 5px 0;color:#888;">2</td><td style="padding:5px;">Net 30</td><td style="padding:5px;">06/07/2026</td><td style="padding:5px;text-align:right;">60%</td><td style="padding:5px;text-align:right;">30,000.00</td><td style="padding:5px;text-align:right;">30,000.00</td><td style="padding:5px;text-align:right;color:#2d6a2d;">0.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#2d6a2d;font-weight:bold;font-size:9px;">PAID</td></tr>
+<tr><td style="padding:5px 5px 5px 0;color:#888;">3</td><td style="padding:5px;">Net 60</td><td style="padding:5px;">05/08/2026</td><td style="padding:5px;text-align:right;">20%</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;">10,000.00</td><td style="padding:5px;text-align:right;color:#2d6a2d;">0.00</td><td style="padding:5px 0 5px 5px;text-align:center;color:#2d6a2d;font-weight:bold;font-size:9px;">PAID</td></tr>
+</tbody><tfoot><tr style="border-top:1px solid #1a1a1a;"><td colspan="4" style="padding:4px 5px 0 0;font-size:9px;color:#888;text-align:right;">Portion total: 100%</td><td colspan="4" style="padding:4px 0 0 5px;font-size:9px;font-weight:bold;text-align:right;">Total: RM 50,000.00</td></tr></tfoot></table></div>
+<div style="margin-top:16px;padding-top:8px;border-top:0.5px solid #ccc;display:flex;justify-content:space-between;font-size:8.5px;color:#aaa;"><div>We sincerely thank you for your prompt payment and valued partnership.</div><div>Powered by MAIA · Generated 05/08/2026 14:20 (GMT+8) · Page 1 of 1</div></div>
+<div style="text-align:center;margin-top:6px;font-size:8px;color:#ccc;letter-spacing:0.1em;">DRAFT — NOT OFFICIAL</div>
+</div></div>
+
+</div>
+
+<div id="tab-chat" class="tab-content">
+<style>
+.chat-outer{background:#242424;border:0.5px solid #383838;border-radius:10px;padding:16px;max-width:560px;}
+.chat-hdr{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:0.5px solid #383838;margin-bottom:14px;}
+.chat-hdr-av{width:32px;height:32px;border-radius:50%;background:#3a2a10;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.chat-hdr-name{font-size:13px;font-weight:500;color:#f0ede8;}
+.chat-hdr-sub{font-size:11px;color:#888;}
+.online-dot{width:7px;height:7px;border-radius:50%;background:#4a9a4a;margin-left:auto;}
+.step-lbl{font-size:10px;font-weight:500;color:#777;text-transform:uppercase;letter-spacing:0.05em;margin:14px 0 8px 4px;}
+.mrow{display:flex;gap:8px;margin-bottom:12px;align-items:flex-start;}
+.mrow.user{flex-direction:row-reverse;}
+.mav{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;}
+.mav-bot{background:#3a2a10;color:#f5b840;}
+.mav-usr{background:#102038;color:#6aabf0;}
+.bub{max-width:84%;padding:9px 12px;border-radius:10px;font-size:12px;line-height:1.55;}
+.bub.bot{background:#2e2e30;border:0.5px solid #3a3a3a;color:#d8d4cc;}
+.bub.usr{background:#102038;border:0.5px solid #1e3a5a;color:#a8c8e8;}
+.api-chip{display:inline-flex;align-items:center;gap:4px;background:#1c1c1e;border:0.5px solid #444;border-radius:6px;padding:2px 7px;font-size:10px;font-weight:500;color:#a0a0a0;margin:6px 0 4px;cursor:pointer;position:relative;user-select:none;}
+.api-chip.open{background:#1e2e1e;border-color:#4a7a4a;color:#8fcc5a;}
+.tip{display:none;position:fixed;background:#242424;border:0.5px solid #444;border-radius:8px;padding:10px 12px;font-size:11px;color:#b8b4ac;width:270px;max-width:270px;z-index:9999;line-height:1.6;white-space:normal;word-wrap:break-word;text-align:left;}
+.tip.visible{display:block;}
+.tip strong{color:#f0ede8;font-weight:500;display:block;margin-bottom:4px;}
+.tip code{font-family:"SF Mono","Fira Code",monospace;font-size:10px;background:#333;padding:1px 5px;border-radius:3px;color:#6aabf0;}
+.tip-fields{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px;}
+.tip-field{font-size:10px;background:#333;border:0.5px solid #444;border-radius:3px;padding:1px 5px;font-family:"SF Mono","Fira Code",monospace;color:#a0a0a0;}
+.tip-note{font-size:10px;color:#777;margin-top:6px;}
+.icard{background:#2a2a2c;border:0.5px solid #383838;border-radius:8px;padding:8px 10px;margin-top:7px;font-size:12px;}
+.irow{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:0.5px solid #333;}
+.irow:last-child{border-bottom:none;}
+.ikey{color:#a0a0a0;}
+.ival{font-weight:500;color:#d8d4cc;font-variant-numeric:tabular-nums;}
+.ival.red{color:#e86060;}
+.ival.grn{color:#8fcc5a;}
+.stbl{width:100%;border-collapse:collapse;font-size:11px;margin-top:7px;}
+.stbl th{font-size:10px;font-weight:500;color:#888;padding:4px 5px;border-bottom:0.5px solid #383838;text-align:left;}
+.stbl td{padding:5px 5px;border-bottom:0.5px solid #2e2e2e;color:#d8d4cc;}
+.stbl tr:last-child td{border-bottom:none;}
+.stbl .nr{text-align:right;}
+.s-ov{color:#e86060;font-weight:500;font-size:10px;}
+.s-pd{color:#888;font-size:10px;}
+.s-ok{color:#8fcc5a;font-weight:500;font-size:10px;}
+.qrs{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.qr{font-size:11px;padding:4px 10px;border-radius:99px;border:0.5px solid #444;background:transparent;color:#888;cursor:pointer;}
+.qr:hover{background:#333;color:#d8d4cc;}
+</style>
+
+<div class="chat-outer">
+  <div class="chat-hdr">
+    <div class="chat-hdr-av">&#129302;</div>
+    <div>
+      <div class="chat-hdr-name">MAIA Assistant</div>
+      <div class="chat-hdr-sub">Invoice &amp; payment queries</div>
+    </div>
+    <div class="online-dot"></div>
+  </div>
+
+  <div class="step-lbl">Turn 1 — user asks how much they owe</div>
+
+  <div class="mrow user">
+    <div class="mav mav-usr">AH</div>
+    <div class="bub usr">Hi, how much do I owe on invoice INV-2026-00498?</div>
+  </div>
+
+  <div class="mrow">
+    <div class="mav mav-bot">M</div>
+    <div class="bub bot">
+      Let me check that for you.
+      <div class="api-chip">
+        &#128279; get_sales_invoice_details &#8964;
+        <div class="tip">
+          <strong>API called</strong>
+          <code>POST .../sales_invoice.get_sales_invoice_details</code>
+          <br><br>Request: <code>{ "sales_invoice_id": "INV-2026-00498" }</code>
+          <div class="tip-fields">
+            <span class="tip-field">grand_total</span>
+            <span class="tip-field">outstanding_balance</span>
+            <span class="tip-field">amount_due_now</span>
+            <span class="tip-field">as_at_date</span>
+            <span class="tip-field">total_received</span>
+          </div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="irow"><span class="ikey">Invoice</span><span class="ival">INV-2026-00498</span></div>
+        <div class="irow"><span class="ikey">Grand total</span><span class="ival">RM 50,000.00</span></div>
+        <div class="irow"><span class="ikey">Total received</span><span class="ival">RM 8,000.00</span></div>
+        <div class="irow"><span class="ikey">Outstanding</span><span class="ival">RM 42,000.00</span></div>
+        <div class="irow"><span class="ikey">Due now</span><span class="ival red">RM 32,000.00</span></div>
+        <div class="irow"><span class="ikey">As at</span><span class="ival">07 Jul 2026</span></div>
+      </div>
+      <div style="font-size:11px;color:#888;margin-top:7px;">You owe <strong style="color:#e05050;">RM 32,000</strong> right now. The remaining RM 10,000 is not yet due.</div>
+      <div class="qrs">
+        <button class="qr">Show payment schedule</button>
+        <button class="qr">What is overdue?</button>
+        <button class="qr">Show payment history</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-lbl">Turn 2 — user asks for full breakdown</div>
+
+  <div class="mrow user">
+    <div class="mav mav-usr">AH</div>
+    <div class="bub usr">Can you show me the full payment breakdown?</div>
+  </div>
+
+  <div class="mrow">
+    <div class="mav mav-bot">M</div>
+    <div class="bub bot">
+      Here is the full payment schedule.
+      <div class="api-chip">
+        &#128279; get_sales_invoice_details (cached) &#8964;
+        <div class="tip">
+          <strong>No new API call — uses cached response</strong>
+          Reads <code>payment_schedule[]</code> already fetched in Turn 1.
+          <div class="tip-fields" style="margin-top:6px;">
+            <span class="tip-field">payment_schedule[].payment_term_name</span>
+            <span class="tip-field">payment_schedule[].due_date</span>
+            <span class="tip-field">payment_schedule[].payment_amount</span>
+            <span class="tip-field">payment_schedule[].allocated</span>
+            <span class="tip-field">payment_schedule[].balance</span>
+            <span class="tip-field">payment_schedule[].status</span>
+          </div>
+        </div>
+      </div>
+      <table class="stbl">
+        <thead>
+          <tr><th>#</th><th>Term</th><th>Due</th><th class="nr">Amount</th><th class="nr">Balance</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:#2e1a1a;">
+            <td style="color:#555;">1</td><td>CIA</td><td>06/06</td>
+            <td class="nr">10,000</td><td class="nr" style="color:#e05050;font-weight:500;">2,000</td>
+            <td><span class="s-ov">Overdue</span></td>
+          </tr>
+          <tr style="background:#2e1a1a;">
+            <td style="color:#555;">2</td><td>Net 30</td><td>06/07</td>
+            <td class="nr">30,000</td><td class="nr" style="color:#e05050;font-weight:500;">30,000</td>
+            <td><span class="s-ov">Overdue</span></td>
+          </tr>
+          <tr>
+            <td style="color:#555;">3</td><td>Net 60</td><td>05/08</td>
+            <td class="nr">10,000</td><td class="nr">10,000</td>
+            <td><span class="s-pd">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="font-size:11px;color:#888;margin-top:7px;">Terms 1 and 2 are overdue. Term 3 is not due until 5 Aug 2026.</div>
+      <div class="qrs">
+        <button class="qr">Show what I've paid</button>
+        <button class="qr">How do I make a payment?</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-lbl">Turn 3 — user asks payment history</div>
+
+  <div class="mrow user">
+    <div class="mav mav-usr">AH</div>
+    <div class="bub usr">What payments have I made so far?</div>
+  </div>
+
+  <div class="mrow">
+    <div class="mav mav-bot">M</div>
+    <div class="bub bot">
+      Here is your payment history for this invoice.
+      <div class="api-chip">
+        &#128279; get_sales_invoice_details (cached) &#8964;
+        <div class="tip">
+          <strong>No new API call — uses cached response</strong>
+          Reads <code>payments_received[]</code> already fetched in Turn 1.
+          <div class="tip-fields" style="margin-top:6px;">
+            <span class="tip-field">payments_received[].entry_date</span>
+            <span class="tip-field">payments_received[].reference_name</span>
+            <span class="tip-field">payments_received[].reference_type</span>
+            <span class="tip-field">payments_received[].amount</span>
+            <span class="tip-field">total_received</span>
+            <span class="tip-field">credit_on_account</span>
+          </div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="irow"><span class="ikey">06 Jun 2026</span><span class="ival">RM 8,000.00 &nbsp;<span style="font-size:10px;color:#555;font-weight:400;">REC-2026-0041 · Payment Entry</span></span></div>
+        <div class="irow" style="margin-top:2px;"><span class="ikey">Total received</span><span class="ival">RM 8,000.00</span></div>
+      </div>
+      <div style="font-size:11px;color:#888;margin-top:7px;">1 payment of RM 8,000 on 6 Jun 2026 via REC-2026-0041.</div>
+      <div class="qrs">
+        <button class="qr">Check another invoice</button>
+        <button class="qr">Show all overdue invoices</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-lbl">Turn 4 — user asks about other overdue invoices</div>
+
+  <div class="mrow user">
+    <div class="mav mav-usr">AH</div>
+    <div class="bub usr">Do I have any other overdue invoices?</div>
+  </div>
+
+  <div class="mrow">
+    <div class="mav mav-bot">M</div>
+    <div class="bub bot">
+      Let me check all your invoices.
+      <div class="api-chip">
+        &#128279; get_si_listing &#8964;
+        <div class="tip">
+          <strong>New API call — invoice listing</strong>
+          <code>POST .../sales_invoice.get_si_listing</code>
+          <br><br>Request:
+          <code>{ "filters": [["customer","=","Azib Harun"]], "page": 1, "page_size": 50 }</code>
+          <div class="tip-fields" style="margin-top:6px;">
+            <span class="tip-field">si_id</span>
+            <span class="tip-field">payment_status</span>
+            <span class="tip-field">amount_due_now</span>
+            <span class="tip-field">outstanding_balance</span>
+            <span class="tip-field">grand_total</span>
+            <span class="tip-field">as_at_date</span>
+          </div>
+          <div class="tip-note">Uses new term-derived <code>payment_status</code> field — not the old header <code>due_date</code></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="irow"><span class="ikey">INV-2026-00498</span><span class="ival red">Overdue · RM 32,000 due</span></div>
+        <div class="irow"><span class="ikey">INV-2026-00501</span><span class="ival red">Overdue · RM 5,000 due</span></div>
+        <div class="irow"><span class="ikey">INV-2026-00489</span><span class="ival grn">Paid</span></div>
+      </div>
+      <div style="font-size:11px;color:#888;margin-top:7px;">You have 2 overdue invoices. Total due now: <strong style="color:#e05050;">RM 37,000</strong>.</div>
+      <div class="qrs">
+        <button class="qr">Tell me about INV-2026-00501</button>
+        <button class="qr">Done, thanks</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div id="tab-flow" class="tab-content">
+<style>
+.flow-wrap{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:4px 0;}
+.flow-title{font-size:11px;font-weight:500;color:#888;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px;}
+.flow-cols{display:flex;gap:0;position:relative;}
+.flow-lane{flex:1;min-width:0;}
+.lane-hdr{font-size:11px;font-weight:500;padding:7px 10px;border-radius:6px;text-align:center;margin-bottom:12px;}
+.lane-hdr.l-fin{background:#1a3018;color:#8fcc5a;}
+.lane-hdr.l-sys{background:#102038;color:#6aabf0;}
+.lane-hdr.l-api{background:#382a10;color:#f5b840;}
+.lane-hdr.l-sched{background:#341818;color:#e86060;}
+.lane-body{padding:0 6px;display:flex;flex-direction:column;gap:0;align-items:center;}
+.fnode{width:100%;background:#242424;border:0.5px solid #383838;border-radius:8px;padding:9px 10px;font-size:11px;color:#d8d4cc;line-height:1.45;position:relative;margin-bottom:8px;cursor:default;}
+.fnode:hover{border-color:#555;background:#2a2a2c;}
+.fnode .ftitle{font-weight:500;color:#f8f5f0;margin-bottom:2px;font-size:11px;}
+.fnode .fsub{font-size:10px;color:#888;}
+.fnode .ftag{display:inline-block;font-size:9px;font-weight:500;padding:1px 5px;border-radius:3px;margin-top:4px;}
+.ftag-new{background:#1a3018;color:#8fcc5a;}
+.ftag-ex{background:#333;color:#888;}
+.ftag-sched{background:#341818;color:#e86060;}
+.farrow{width:2px;height:16px;background:#444;margin:0 auto;flex-shrink:0;}
+.farrow-down{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #555;margin:0 auto 8px;}
+.fconnector{display:flex;align-items:center;justify-content:center;font-size:10px;color:#777;margin:4px 0 8px;gap:6px;}
+.fconnector::before,.fconnector::after{content:'';flex:1;height:0.5px;background:#383838;}
+.fdecision{width:100%;background:#28220e;border:0.5px solid #443810;border-radius:8px;padding:9px 10px;font-size:11px;color:#f5b840;margin-bottom:8px;text-align:center;}
+.fdecision .ftitle{color:#f5b840;}
+.fleg{display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;}
+.fleg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:#888;}
+.fleg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.cross-arrow{position:absolute;font-size:10px;color:#555;right:-18px;top:50%;transform:translateY(-50%);z-index:2;}
+.phase-label{font-size:9px;font-weight:500;color:#555;text-transform:uppercase;letter-spacing:0.06em;margin:12px 0 6px;text-align:center;width:100%;}
+</style>
+
+<div class="flow-wrap">
+<div class="flow-title">End-to-end — invoice creation to full settlement</div>
+
+<div class="flow-cols">
+
+  <div class="flow-lane">
+    <div class="lane-hdr l-fin">Finance / Sales Agent</div>
+    <div class="lane-body">
+
+      <div class="fnode">
+        <div class="ftitle">Create Sales Order</div>
+        <div class="fsub">Attach payment terms template (CIA + Net30 + Net60)</div>
+        <span class="ftag ftag-ex">existing</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">Create Sales Invoice from SO</div>
+        <div class="fsub">Payment schedule inherited from SO automatically</div>
+        <span class="ftag ftag-ex">existing</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">Submit Invoice</div>
+        <div class="fsub">If payment_schedule rows exist: validates every row has payment_term set. Throws if any row is null. If no payment_schedule — passes through with no validation.</div>
+        <span class="ftag ftag-new">new validation</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode" style="background:#1a3018;border-color:#2a4a28;">
+        <div class="ftitle" style="color:#8fcc5a;">View Invoice Detail Page</div>
+        <div class="fsub">Existing page — new sections added: Summary block extended with Due Now, Payments Received section, Payment Terms table with Allocated / Balance / Status columns</div>
+        <span class="ftag ftag-new">updated UI</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">Generate PDF</div>
+        <div class="fsub">Clicks Invoice button — WeasyPrint generates PDF with all new sections</div>
+        <span class="ftag ftag-new">updated PDF</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">Post Payment Entry</div>
+        <div class="fsub">Client pays RM8k — Finance creates PE and submits</div>
+        <span class="ftag ftag-ex">existing</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode" style="background:#1a3018;border-color:#2a4a28;">
+        <div class="ftitle" style="color:#8fcc5a;">Refresh Invoice Page</div>
+        <div class="fsub">Existing page — updated sections reflect new payment data. CIA shows RM8k allocated, RM2k balance, Overdue. Due Now updates.</div>
+        <span class="ftag ftag-new">updated UI</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">Post Second Payment Entry</div>
+        <div class="fsub">Client pays RM45k — full settlement + RM3k overpayment</div>
+        <span class="ftag ftag-ex">existing</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode" style="background:#1a3018;border-color:#2a4a28;">
+        <div class="ftitle" style="color:#8fcc5a;">Invoice fully settled</div>
+        <div class="fsub">Existing page — all 3 terms show PAID. Outstanding = RM0. Credit on account = RM3k shown italic in Payments Received.</div>
+        <span class="ftag ftag-new">updated UI</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="width:1px;background:#333;flex-shrink:0;"></div>
+
+  <div class="flow-lane">
+    <div class="lane-hdr l-api">Backend API</div>
+    <div class="lane-body">
+
+      <div class="fnode">
+        <div class="ftitle">get_si_listing</div>
+        <div class="fsub">Returns invoice list with payment_status, amount_due_now per row — term-derived, not header due_date</div>
+        <span class="ftag ftag-new">extended</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">get_sales_invoice_details</div>
+        <div class="fsub">Returns payment_schedule[], payments_received[], total_received, outstanding_balance, amount_due_now, credit_on_account, as_at_date</div>
+        <span class="ftag ftag-new">extended</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">FIFO allocation computed</div>
+        <div class="fsub">Sort rows by due_date ASC. Distribute total_received across terms. Compute allocated, balance, status per row.</div>
+        <span class="ftag ftag-new">new logic</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">PDF export endpoint</div>
+        <div class="fsub">Calls get_invoice_payment_details() inside _build_sales_invoice_payload() — same numbers as API</div>
+        <span class="ftag ftag-new">updated</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">get_sales_invoice_details</div>
+        <div class="fsub">Re-called on page refresh. CIA: allocated=8k, balance=2k, status=Overdue. amount_due_now=2k.</div>
+        <span class="ftag ftag-new">extended</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">Payment Entry on_submit hook fires</div>
+        <div class="fsub">update_linked_invoice_due_dates() runs immediately — updates tabSales Invoice.due_date to next unpaid term</div>
+        <span class="ftag ftag-new">new hook</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode">
+        <div class="ftitle">get_sales_invoice_details</div>
+        <div class="fsub">All terms PAID. outstanding_balance=0. credit_on_account=3000. payments_received has 2 entries + italic credit row.</div>
+        <span class="ftag ftag-new">extended</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="width:1px;background:#333;flex-shrink:0;"></div>
+
+  <div class="flow-lane">
+    <div class="lane-hdr l-sched">Scheduler</div>
+    <div class="lane-body">
+
+      <div class="fnode" style="background:#341818;border-color:#4a2020;">
+        <div class="ftitle" style="color:#e05050;">Daily midnight job</div>
+        <div class="fsub">Scans all submitted SIs with outstanding balance. Updates due_date to first unpaid term's due_date.</div>
+        <span class="ftag ftag-sched">new scheduler</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode" style="background:#341818;border-color:#4a2020;">
+        <div class="ftitle" style="color:#e05050;">Next day — Net 30 becomes overdue</div>
+        <div class="fsub">Scheduler runs at midnight. due_date on invoice header now reflects T2 Net 30 — Finance sees updated header without any action.</div>
+        <span class="ftag ftag-sched">auto-update</span>
+      </div>
+      <div class="farrow"></div><div class="farrow-down"></div>
+
+      <div class="fnode" style="background:#341818;border-color:#4a2020;">
+        <div class="ftitle" style="color:#e05050;">Payment Entry on_submit hook</div>
+        <div class="fsub">Fires immediately when PE2 (RM45k) is submitted. Runs FIFO — all terms now PAID. Updates due_date to T3's date.</div>
+        <span class="ftag ftag-sched">new hook</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="fleg">
+  <div class="fleg-item"><div class="fleg-dot" style="background:#1a2e14;border:0.5px solid #2e3a1a;"></div>New feature — UI change</div>
+  <div class="fleg-item"><div class="fleg-dot" style="background:#0e1f38;border:0.5px solid #1a3a5a;"></div>New feature — API change</div>
+  <div class="fleg-item"><div class="fleg-dot" style="background:#341818;border:0.5px solid #4a2020;"></div>New feature — Scheduler</div>
+  <div class="fleg-item"><div class="fleg-dot" style="background:#1a1a1a;border:0.5px solid #2e2e2e;"></div>Existing — unchanged</div>
+</div>
+
+</div>
+</div>
+
+<div id="tab-scope" class="tab-content">
+<style>
+.scope-section{margin-bottom:20px;}
+.scope-section-title{font-size:11px;font-weight:500;color:#a0a0a0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;padding-bottom:6px;border-bottom:0.5px solid #383838;}
+.scope-table{width:100%;border-collapse:collapse;font-size:12px;}
+.scope-table th{text-align:left;font-size:11px;font-weight:500;color:#a0a0a0;padding:6px 10px;border-bottom:0.5px solid #383838;background:#1c1c1e;}
+.scope-table td{padding:9px 10px;border-bottom:0.5px solid #2e2e2e;vertical-align:top;line-height:1.5;}
+.scope-table tr:last-child td{border-bottom:none;}
+.scope-table tr:hover td{background:#282828;}
+.col-item{color:#f0ede8;font-weight:500;}
+.col-file{font-family:monospace;font-size:11px;color:#6aabf0;}
+.col-type{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;white-space:nowrap;}
+.t-new{background:#1a3018;color:#8fcc5a;}
+.t-extend{background:#102038;color:#6aabf0;}
+.t-migrate{background:#382a10;color:#f5b840;}
+.t-hook{background:#2a1a38;color:#c088f0;}
+.col-desc{font-size:11px;color:#a0a0a0;line-height:1.6;}
+.col-dep{font-size:10px;color:#777;}
+.effort-badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:4px;white-space:nowrap;}
+.e-s{background:#1a3018;color:#8fcc5a;}
+.e-m{background:#382a10;color:#f5b840;}
+.e-l{background:#341818;color:#e86060;}
+.effort-wrap{display:flex;flex-direction:column;gap:3px;}
+.effort-dev{font-size:10px;color:#d8d4cc;white-space:nowrap;}
+.effort-test{font-size:10px;color:#888;white-space:nowrap;}
+.scope-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+.scope-legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#888;}
+.scope-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.scope-stat{background:#242424;border:0.5px solid #383838;border-radius:8px;padding:12px 14px;}
+.scope-stat-num{font-size:22px;font-weight:500;color:#f0ede8;margin-bottom:2px;}
+.scope-stat-lbl{font-size:11px;color:#888;}
+.scope-stat-sub{font-size:10px;color:#555;margin-top:2px;}
+</style>
+
+<div class="scope-summary">
+  <div class="scope-stat"><div class="scope-stat-num">2</div><div class="scope-stat-lbl">New doctypes / fields</div><div class="scope-stat-sub">Custom fields on Payment Term</div></div>
+  <div class="scope-stat"><div class="scope-stat-num">2</div><div class="scope-stat-lbl">New Python files</div><div class="scope-stat-sub">payment_terms_utils.py · payment_due_date_scheduler.py</div></div>
+  <div class="scope-stat"><div class="scope-stat-num">3</div><div class="scope-stat-lbl">Existing files extended</div><div class="scope-stat-sub">sales_invoice_v2 · hooks · sales_invoice (validate)</div></div>
+  <div class="scope-stat"><div class="scope-stat-num">2</div><div class="scope-stat-lbl">Pre-deploy tasks</div><div class="scope-stat-sub">Backfill null rows · set term_type on master records</div></div>
+</div>
+
+<div class="scope-legend">
+  <div class="scope-legend-item"><span class="col-type t-new">new</span> New file or function</div>
+  <div class="scope-legend-item"><span class="col-type t-extend">extend</span> Existing file modified</div>
+  <div class="scope-legend-item"><span class="col-type t-migrate">config</span> Doctype / field config</div>
+  <div class="scope-legend-item"><span class="col-type t-hook">hook</span> Frappe hook</div>
+</div>
+
+<div class="scope-section">
+  <div class="scope-section-title">1 — Doctype &amp; custom field changes</div>
+  <table class="scope-table">
+    <thead><tr>
+      <th style="width:180px;">Item</th>
+      <th style="width:80px;">Type</th>
+      <th style="width:260px;">File / location</th>
+      <th>What to do</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="col-item">term_type field</td>
+        <td><span class="col-type t-migrate">config</span></td>
+        <td class="col-file">Payment Term doctype JSON<br>or via Customize Form</td>
+        <td class="col-desc">Add Option field — values: standard, advance, on_delivery, immediate. Default = "standard". bench migrate auto-populates all 52 existing records with "standard". 48 records use "Day(s) after invoice date", 4 use end-of-month — all correctly default to standard.</td>
+      </tr>
+      <tr>
+        <td class="col-item">is_advance_payment field</td>
+        <td><span class="col-type t-migrate">config</span></td>
+        <td class="col-file">Payment Term doctype JSON<br>or via Customize Form</td>
+        <td class="col-desc">Add Check (boolean) field. Default = 0. bench migrate sets all 52 existing records to 0. Admin ticks this on CIA, PIA, T/T In Advance after migration.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="scope-section">
+  <div class="scope-section-title">2 — New Python files</div>
+  <table class="scope-table">
+    <thead><tr>
+      <th style="width:180px;">Item</th>
+      <th style="width:80px;">Type</th>
+      <th style="width:260px;">File / location</th>
+      <th>What to do</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="col-item">get_due_date_for_term()</td>
+        <td><span class="col-type t-new">new</span></td>
+        <td class="col-file">services/sales_agent_workspace/<br>payment_terms_utils.py<br><span style="color:#555;">File does not exist — safe to create</span></td>
+        <td class="col-desc">Accepts a payment_schedule row + invoice. Returns computed due_date based on term_type. Handles all 4 term types. Throws on on_delivery conflict (items with different delivery dates).</td>
+      </tr>
+      <tr>
+        <td class="col-item">compute_fifo_allocation()</td>
+        <td><span class="col-type t-new">new</span></td>
+        <td class="col-file">services/sales_agent_workspace/<br>payment_terms_utils.py<br><span style="color:#555;">Zero existing FIFO logic in codebase — must build fresh</span></td>
+        <td class="col-desc">Accepts payment_schedule rows + total_received. Sorts by due_date ASC. Returns rows with allocated and balance per row. Used by both get_invoice_payment_details() and get_si_listing batch enrichment.</td>
+      </tr>
+      <tr>
+        <td class="col-item">resolve_term_status()</td>
+        <td><span class="col-type t-new">new</span></td>
+        <td class="col-file">services/sales_agent_workspace/<br>payment_terms_utils.py</td>
+        <td class="col-desc">Accepts a single term row with balance and due_date. Returns status string: Paid, Overdue, Due, Pending, or Pending (On Delivery).</td>
+      </tr>
+      <tr>
+        <td class="col-item">get_payments_received()</td>
+        <td><span class="col-type t-new">new</span></td>
+        <td class="col-file">services/sales_agent_workspace/<br>payment_terms_utils.py<br><span style="color:#555;">97% of PE references have payment_term = null — FIFO post-query enrichment is the only reliable path</span></td>
+        <td class="col-desc">Queries tabPayment Entry Reference + tabPayment Entry for all payments linked to an invoice. JOIN path: per.parent = pe.name AND per.reference_name = invoice.name. Returns payments_received[], total_received, credit_on_account. Note: 21 PEs carry RM 2.5M unallocated — credit_on_account query has real volume to display.</td>
+      </tr>
+      <tr>
+        <td class="col-item">get_invoice_payment_details()</td>
+        <td><span class="col-type t-new">new</span></td>
+        <td class="col-file">services/sales_agent_workspace/<br>payment_terms_utils.py</td>
+        <td class="col-desc">Core computation service. Orchestrates all helpers above. If payment_schedule is null → returns payment_schedule: null, skips all computation. Called by both get_sales_invoice_details API and _build_sales_invoice_payload PDF — guarantees identical numbers in both.</td>
+      </tr>
+      <tr>
+        <td class="col-item">update_invoice_due_date()<br>update_all_invoice_due_dates()<br>update_linked_invoice_due_dates()</td>
+        <td><span class="col-type t-new">new</span></td>
+        <td class="col-file">services/hooks/<br>payment_due_date_scheduler.py<br><span style="color:#555;">File does not exist — safe to create</span></td>
+        <td class="col-desc">Three functions in one file. update_invoice_due_date() is the shared core — finds first unpaid term row, sets tabSales Invoice.due_date via frappe.db.set_value. Skips SIs with no payment_schedule (193 SIs / 25%). update_all_invoice_due_dates() called by midnight cron. update_linked_invoice_due_dates() called by PE on_submit hook.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="scope-section">
+  <div class="scope-section-title">3 — Existing files to extend</div>
+  <table class="scope-table">
+    <thead><tr>
+      <th style="width:180px;">Item</th>
+      <th style="width:80px;">Type</th>
+      <th style="width:260px;">File / location</th>
+      <th>What to change</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="col-item">get_sales_invoice_details_v2</td>
+        <td><span class="col-type t-extend">extend</span></td>
+        <td class="col-file">sales_invoice_v2.py:2026<br><span style="color:#555;">Enrichment hook lands inside _map_frappe_doc_to_response()</span></td>
+        <td class="col-desc">Call get_invoice_payment_details() inside _map_frappe_doc_to_response() and merge result into the response dict. No change to existing fields — only append new fields. Returns {status, message, data: enriched_response}.</td>
+      </tr>
+      <tr>
+        <td class="col-item">get_si_listing</td>
+        <td><span class="col-type t-extend">extend</span></td>
+        <td class="col-file">sales_invoice_v2.py:4293<br><span style="color:#555;">Row assembly at lines 4484–4538. SIListingItem schema must be extended.</span></td>
+        <td class="col-desc">After main SQL SELECT: run 2 batch queries (payment schedules + PE allocated amounts for all SI IDs on page). FIFO compute per SI. Append payment_status, amount_due_now, outstanding_balance, total_received, as_at_date to each row dict. SIs with no payment_schedule → payment_status mirrors existing status field. Most complex change in the feature.</td>
+      </tr>
+      <tr>
+        <td class="col-item">SI submit validation</td>
+        <td><span class="col-type t-extend">extend</span></td>
+        <td class="col-file">services/hooks/sales_invoice.py:105<br><span style="color:#555;">Insert after is_return block (line 113), before update_invoice_status(doc)</span></td>
+        <td class="col-desc">Add null check: if payment_schedule rows exist, each row must have payment_term set — frappe.throw() if null. Decision: 6 existing submitted SIs with null payment_term rows (RM 6,309.96) → backfill manually before deploying guard. Guard applies to all submissions after backfill.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="scope-section">
+  <div class="scope-section-title">4 — Frappe hooks</div>
+  <table class="scope-table">
+    <thead><tr>
+      <th style="width:180px;">Item</th>
+      <th style="width:80px;">Type</th>
+      <th style="width:260px;">File / location</th>
+      <th>What to add</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="col-item">Daily midnight scheduler</td>
+        <td><span class="col-type t-hook">hook</span></td>
+        <td class="col-file">hooks.py:641<br><span style="color:#555;">Slot into existing cron "0 0 * * *" block — refresh_invoice_status_for_open_invoices already in this roster</span></td>
+        <td class="col-desc">Add update_all_invoice_due_dates() to the daily midnight cron block. Scans all submitted SIs with outstanding_balance > 0 AND payment_schedule exists. Skips the 193 SIs (25%) with no schedule.</td>
+      </tr>
+      <tr>
+        <td class="col-item">Payment Entry on_submit hook</td>
+        <td><span class="col-type t-hook">hook</span></td>
+        <td class="col-file">hooks.py → doc_events<br><span style="color:#555;">"Payment Entry": {"on_submit": ...}</span></td>
+        <td class="col-desc">Add update_linked_invoice_due_dates() to fire immediately when a PE is submitted. Updates due_date on all SIs linked to that PE without waiting for midnight. Critical for the same-day payment scenario.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="scope-section">
+  <div class="scope-section-title">5 — Pre-deploy developer tasks</div>
+  <table class="scope-table">
+    <thead><tr>
+      <th style="width:180px;">Item</th>
+      <th style="width:80px;">Type</th>
+      <th style="width:260px;">When</th>
+      <th>What to do</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="col-item">Backfill 6 null payment_term rows</td>
+        <td><span class="col-type t-migrate">config</span></td>
+        <td class="col-file">Before deploying submit guard<br><span style="color:#555;">Run once on each environment — dev, staging, production</span></td>
+        <td class="col-desc">6 existing submitted SI rows have payment_term = null (RM 6,309.96 total). Must be backfilled before deploying the submit guard — otherwise resubmission of these invoices would throw. Set payment_term on each row via frappe.db.set_value or console script.</td>
+      </tr>
+      <tr>
+        <td class="col-item">Set term_type on ~7 non-standard Payment Term records</td>
+        <td><span class="col-type t-migrate">config</span></td>
+        <td class="col-file">After bench migrate<br><span style="color:#555;">Run once on each environment — dev, staging, production</span></td>
+        <td class="col-desc">After bench migrate, all 52 records default to "standard". Admin sets correct term_type on: CIA, PIA, T/T In Advance → "advance" · T/T Upon Delivery, C.O.D., Cash Before Delivery → "on_delivery" · LC, CAD, DA, DP → "immediate". Milestone (30%/70%) is out of scope v1. Also tick is_advance_payment on CIA, PIA, T/T In Advance.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="scope-section">
+  <div class="scope-section-title">Total estimated effort</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+    <div class="scope-stat">
+      <div class="scope-stat-num" style="color:#6aabf0;">1d</div>
+      <div class="scope-stat-lbl">Dev time</div>
+      <div class="scope-stat-sub">Full backend implementation — all new files, extensions, hooks and config</div>
+    </div>
+    <div class="scope-stat">
+      <div class="scope-stat-num" style="color:#8fcc5a;">0.5d</div>
+      <div class="scope-stat-lbl">Test time</div>
+      <div class="scope-stat-sub">Backend testing across all new and extended endpoints</div>
+    </div>
+    <div class="scope-stat" style="border-color:#5090c8;">
+      <div class="scope-stat-num" style="color:#f0ede8;">1.5d</div>
+      <div class="scope-stat-lbl">Total</div>
+      <div class="scope-stat-sub">Backend only. Excludes frontend work and integration testing buffer.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div id="tab-oos" class="tab-content">
+<style>
+.oos-table{width:100%;border-collapse:collapse;font-size:12px;}
+.oos-table th{text-align:left;font-size:11px;font-weight:500;color:#a0a0a0;padding:6px 10px;border-bottom:0.5px solid #383838;background:#1c1c1e;}
+.oos-table td{padding:9px 10px;border-bottom:0.5px solid #2e2e2e;vertical-align:top;line-height:1.5;}
+.oos-table tr:last-child td{border-bottom:none;}
+.oos-table tr:hover td{background:#282828;}
+.oos-item{color:#f0ede8;font-weight:500;}
+.oos-reason{font-size:11px;color:#a0a0a0;line-height:1.6;}
+.oos-tag{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;white-space:nowrap;}
+.oos-explicit{background:#1a3018;color:#8fcc5a;}
+.oos-design{background:#382a10;color:#f5b840;}
+.oos-separate{background:#2a1a38;color:#c088f0;}
+</style>
+
+<div style="font-size:11px;color:#666;margin-bottom:16px;padding:8px 12px;background:#1a1a1a;border:0.5px solid #2e2e2e;border-radius:8px;">
+  Items explicitly excluded from Phase 1 scope per the original intake documents. PDF generator changes are in Phase 1 but covered by a separate developer.
+</div>
+
+<div class="scope-section">
+  <div class="scope-section-title">Out of Phase 1 scope</div>
+  <table class="oos-table">
+    <thead><tr>
+      <th style="width:240px;">Item</th>
+      <th style="width:100px;">Reason</th>
+      <th>Notes</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="oos-item">Quotation (QT) and Sales Order (SO) — payment terms display</td>
+        <td><span class="oos-tag oos-explicit">explicit</span></td>
+        <td class="oos-reason">Payment terms on QT and SO remain indicative only. No status column, no Outstanding / Due Now, no Payments Received section. Terms are shown as-is from the child table — no FIFO computation, no enrichment. Explicitly excluded in intake spec.</td>
+      </tr>
+      <tr>
+        <td class="oos-item">Debit Note (DBN) — all new sections</td>
+        <td><span class="oos-tag oos-explicit">explicit</span></td>
+        <td class="oos-reason">DBN (is_debit_note = 1) is fully excluded from all new sections — Payment Terms, Payments Received, Outstanding, and Due Now are all hidden entirely. Explicitly excluded in intake spec.</td>
+      </tr>
+      <tr>
+        <td class="oos-item">Automated payment reminders and dunning workflows</td>
+        <td><span class="oos-tag oos-explicit">explicit</span></td>
+        <td class="oos-reason">No automated overdue notifications, reminder emails, or dunning logic of any kind. This feature only surfaces payment status visually — it does not trigger any actions based on overdue state. Explicitly excluded in intake spec.</td>
+      </tr>
+      <tr>
+        <td class="oos-item">Per-term payment allocation in the data model</td>
+        <td><span class="oos-tag oos-explicit">explicit</span></td>
+        <td class="oos-reason">FIFO allocation is a display-layer computation only. No write-back to tabPayment Schedule or tabPayment Entry Reference. allocated_amount and outstanding on the schedule rows remain untouched. Explicitly excluded in intake spec.</td>
+      </tr>
+      <tr>
+        <td class="oos-item">Changes to Payment Entry creation flow</td>
+        <td><span class="oos-tag oos-explicit">explicit</span></td>
+        <td class="oos-reason">No changes to how Payment Entries are created, allocated, or submitted. The existing PE flow is consumed read-only by the new computation service. Explicitly excluded in intake spec.</td>
+      </tr>
+      <tr>
+        <td class="oos-item">Enforcing single-invoice-per-order</td>
+        <td><span class="oos-tag oos-explicit">explicit</span></td>
+        <td class="oos-reason">Both practices remain supported — single SI covering the full order, and multiple partial SIs per order. No validation or enforcement is added to restrict either pattern. Explicitly excluded in intake spec.</td>
+      </tr>
+      <tr>
+        <td class="oos-item">Analytics pricing source policy</td>
+        <td><span class="oos-tag oos-separate">separate track</span></td>
+        <td class="oos-reason">Tracked separately as a data pipeline requirement. Not related to the payment terms visibility feature. Excluded from this feature's scope entirely.</td>
+      </tr>
+      <tr>
+        <td class="oos-item">Milestone payment term type<br><span style="font-size:10px;font-family:monospace;color:#6aabf0;">e.g. 30% Upon Order Confirmation; 70% On Progress Claim</span></td>
+        <td><span class="oos-tag oos-design">needs design</span></td>
+        <td class="oos-reason">1 existing Payment Term record uses milestone-based structure. Due date computation for milestone terms requires a trigger mechanism that does not exist (not date-based, event-based). Needs separate product design. Left as term_type = "standard" with a known limitation note in Phase 1.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+<script>
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  sb.classList.toggle('collapsed');
+  sb.querySelector('.sidebar-toggle').innerHTML = sb.classList.contains('collapsed') ? '&#8250;' : '&#8942;';
+}
+function switchTab(id, el) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function positionTip(trigger, tip) {
+  const rect = trigger.getBoundingClientRect();
+  const tipW = 270;
+  const margin = 8;
+  let left = rect.left;
+  if (left + tipW > window.innerWidth - margin) left = window.innerWidth - tipW - margin;
+  if (left < margin) left = margin;
+  let top = rect.bottom + 6;
+  if (top + 200 > window.innerHeight) top = rect.top - 6 - tip.offsetHeight;
+  tip.style.left = left + 'px';
+  tip.style.top = top + 'px';
+}
+
+document.addEventListener('click', function(e) {
+  const trigger = e.target.closest('.ann, .api-chip');
+
+  if (trigger) {
+    e.stopPropagation();
+    const tipClass = trigger.classList.contains('ann') ? '.ann-tip' : '.tip';
+    const tip = trigger.querySelector(tipClass);
+    if (!tip) return;
+
+    const isOpen = trigger.classList.contains('open');
+
+    // close all open tooltips first
+    document.querySelectorAll('.ann.open, .api-chip.open').forEach(t => {
+      t.classList.remove('open');
+      const tc = t.classList.contains('ann') ? '.ann-tip' : '.tip';
+      const tt = t.querySelector(tc);
+      if (tt) tt.classList.remove('visible');
+    });
+
+    // toggle: if it was closed, open it
+    if (!isOpen) {
+      trigger.classList.add('open');
+      tip.classList.add('visible');
+      positionTip(trigger, tip);
+    }
+  } else {
+    // click outside — close all
+    document.querySelectorAll('.ann.open, .api-chip.open').forEach(t => {
+      t.classList.remove('open');
+      const tc = t.classList.contains('ann') ? '.ann-tip' : '.tip';
+      const tt = t.querySelector(tc);
+      if (tt) tt.classList.remove('visible');
+    });
+  }
+});
+
+</script>
+</div><!-- content-area -->
+</div><!-- app-layout -->
+</body>
+</html>
